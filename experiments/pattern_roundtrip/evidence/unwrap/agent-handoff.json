@@ -1,0 +1,88 @@
+{
+  "status": "SOURCE_AND_FIRST_PATTERN_FROZEN",
+  "owned_source": "/workspace/work/pattern-agent-publish/experiments/pattern_roundtrip/unwrap_pattern.py",
+  "source_sha256": "54ced6667eea76a848597329c847b2c20c5d060817d61a4365c6bf8b09607306",
+  "cli": "python3 experiments/pattern_roundtrip/unwrap_pattern.py --topology experiments/oneshot_motion/evidence/topology.json --source-frame /workspace/work/pattern-unwrap/frame-0001.npz --out /workspace/work/pattern-unwrap/first",
+  "cli_exit": 0,
+  "source_state": "topology.rest_vertices, triangles from measured frame1; source mesh unchanged",
+  "outputs": {
+    "pattern.json": {
+      "path": "/workspace/work/pattern-unwrap/first/pattern.json",
+      "sha256": "8cd8eee90a8fe04b7dccb361cc466293f71046992e2566bd8bc8de693221cb5f",
+      "bytes": 863418
+    },
+    "pattern.svg": {
+      "path": "/workspace/work/pattern-unwrap/first/pattern.svg",
+      "sha256": "5138743cea0c1825dd6cd7995c13dbf0b2814dd73278640a90041a0a3332a209",
+      "bytes": 432488
+    },
+    "unwrap-report.json": {
+      "path": "/workspace/work/pattern-unwrap/first/unwrap-report.json",
+      "sha256": "fe934b16cfba3a30c6bf1b71fc9f705dbf916d7fba707a11673f4fac6b924ea4",
+      "bytes": 593
+    }
+  },
+  "summary": {
+    "panel_count": 4,
+    "all_disks": true,
+    "source_faces": 3392,
+    "seam_paths": 10,
+    "total_flipped_triangles": 0,
+    "total_positive_area_overlap_pairs": 0,
+    "max_principal_abs_strain_pct": 9.202153803214074,
+    "max_seam_length_difference_mm": 12.004104062181609,
+    "status": "MEASURED_REVERSE_ENGINEERING_ONLY",
+    "fit": "NOT_RUN",
+    "material": "NOT_CALIBRATED",
+    "seconds": 1.1190902670005016,
+    "interpretation": "Flattening distortion is measured, not accepted as a material strain allowance. Seam matching/ease, anatomy and forward cloth simulation need independent validation."
+  },
+  "full_armhole_metrics": {
+    "L": {
+      "bodice_armhole_2d_mm": 1001.1321031423067,
+      "sleeve_cap_2d_mm": 977.8613780387329,
+      "flattening_induced_metric_difference_mm": 23.270725103573795,
+      "relative_to_bodice_pct": 2.3244410033933316,
+      "note": "Difference introduced by independent flattening of originally shared3Dcurve; not validated intentional ease."
+    },
+    "R": {
+      "bodice_armhole_2d_mm": 1001.1321031423176,
+      "sleeve_cap_2d_mm": 977.8613780387482,
+      "flattening_induced_metric_difference_mm": 23.270725103569475,
+      "relative_to_bodice_pct": 2.3244410033928746,
+      "note": "Difference introduced by independent flattening of originally shared3Dcurve; not validated intentional ease."
+    }
+  },
+  "seam_convention": "a/b local chains map to the same ordered source vertex IDs; sewn boundary traversal is opposite. Same-panel sleeve underarm has two local copies of one global chain.",
+  "grainline_convention": "Anchors are actual mapped local vertices, rotated upward. Bodice source reference Z; sleeve reference capcenter-to-cuffcenter. Suggested construction direction only, not actual warp/weft or fabric calibration.",
+  "notches": "Matching labels/source IDs on both sides of armhole half-seams; topology balance markers, not independently measured anatomical landmarks.",
+  "acceptance_limits": [
+    "No manufacturing or fit approval; material/ease/strain budgets not supplied.",
+    "Local2D arc-length mismatch is not3D closed-seam gap and must not inherit the old2mm gap threshold.",
+    "Source3D correspondence is provenance/inverse initialization, not a forward sewn fit proof.",
+    "Reverse-engineered panel shapes are visibly nontraditional; they reflect original3D topology rather than a handmade conventional pattern.",
+    "No seam allowance; SVGmm units and100mm calibration provided. Main owns physical-size PDF/render.",
+    "3D generated source is nondevelopable: measured9.202% local principal-metric distortion cannot be silently accepted as a material allowance."
+  ],
+  "analytic_probes": {
+    "known_intrinsically_planar_cases": [
+      {
+        "case": "single_planar_triangle",
+        "passed": true,
+        "max_principal_length_error_pct": 1.1102230246251565e-14
+      },
+      {
+        "case": "flat_rectangle",
+        "passed": true,
+        "max_principal_length_error_pct": 8.881784197001252e-14
+      },
+      {
+        "case": "developable_polygonal_cylinder_strip",
+        "passed": true,
+        "max_principal_length_error_pct": 2.384870079197299e-10
+      }
+    ],
+    "scope": "Does not establish arbitrary nondevelopable surface flattening or physical fit."
+  },
+  "handoff_to_independent_verifier": "Shared schema delivered; verifier owns independent disk/coverage/metric/seam/notch and negative-control checks."
+}

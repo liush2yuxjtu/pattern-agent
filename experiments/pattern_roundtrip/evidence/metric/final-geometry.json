@@ -1,0 +1,1448 @@
+{
+  "analytic_tests": {
+    "test_count": 23,
+    "all_passed": true,
+    "tests": [
+      {
+        "name": "parallel_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_crossing",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_point_contact_with_plane_straddling",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_positive_area",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "coplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_point_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "sub_epsilon_parallel_gap",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "in_plane_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_noncoplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_coplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_disjoint_negative",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_vertex_crossing_beyond_common_point_detected",
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_fold_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_edge_positive_area_fold_detected",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "closed_cube_connectivity_orientation_volume",
+        "passed": true
+      },
+      {
+        "name": "open_square_tube_two_boundary_cycles",
+        "passed": true
+      },
+      {
+        "name": "independent_solid_angle_interior_exterior",
+        "passed": true
+      },
+      {
+        "name": "claimed_path_outside_armless_cube_rejected",
+        "passed": true
+      },
+      {
+        "name": "intersection_invariant_to_face_winding",
+        "passed": true
+      }
+    ],
+    "epsilon_m": 1e-06,
+    "phase": "analytic_before_legacy_comparison"
+  },
+  "oracle_sha256": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+  "rows": [
+    {
+      "case": "baseline",
+      "final_frame": 31,
+      "source_sha256": "2ffc7106bff18eb3c6571bfe2456a9f90afc4bb137868743531467ef30adc671",
+      "cloth_topology": {
+        "vertex_count": 1920,
+        "used_vertex_count": 1920,
+        "orphan_vertices": 0,
+        "triangle_count": 3392,
+        "edge_count": 5308,
+        "connected_components": 4,
+        "boundary_edges": 440,
+        "boundary_components": 4,
+        "boundary_cycles": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "degenerate_triangles": 0,
+        "duplicate_faces": 0,
+        "euler_characteristic": 4,
+        "closed_oriented_edge_manifold": false,
+        "component_signed_volumes_m3": [
+          0.044406754798639404,
+          0.03700837160712739,
+          0.00840341055023422,
+          0.009589197993787477
+        ],
+        "outward_closed_components": false,
+        "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+      },
+      "cloth_self_pairs": [
+        [
+          142,
+          1153
+        ],
+        [
+          334,
+          1345
+        ],
+        [
+          335,
+          1345
+        ],
+        [
+          383,
+          1393
+        ],
+        [
+          527,
+          1537
+        ],
+        [
+          527,
+          1584
+        ],
+        [
+          527,
+          1585
+        ],
+        [
+          529,
+          1678
+        ],
+        [
+          574,
+          1584
+        ],
+        [
+          574,
+          1585
+        ],
+        [
+          575,
+          1585
+        ],
+        [
+          576,
+          1678
+        ],
+        [
+          622,
+          1585
+        ],
+        [
+          622,
+          1632
+        ],
+        [
+          622,
+          1633
+        ],
+        [
+          625,
+          1726
+        ],
+        [
+          625,
+          1727
+        ],
+        [
+          672,
+          1774
+        ],
+        [
+          722,
+          2766
+        ],
+        [
+          723,
+          2766
+        ],
+        [
+          724,
+          2768
+        ],
+        [
+          725,
+          2766
+        ],
+        [
+          725,
+          2768
+        ],
+        [
+          725,
+          2769
+        ],
+        [
+          726,
+          2772
+        ],
+        [
+          726,
+          2773
+        ],
+        [
+          727,
+          2768
+        ],
+        [
+          727,
+          2770
+        ],
+        [
+          727,
+          2771
+        ],
+        [
+          727,
+          2773
+        ],
+        [
+          728,
+          2774
+        ],
+        [
+          728,
+          2775
+        ],
+        [
+          729,
+          2772
+        ],
+        [
+          729,
+          2775
+        ],
+        [
+          731,
+          2774
+        ],
+        [
+          958,
+          2174
+        ],
+        [
+          958,
+          2176
+        ],
+        [
+          958,
+          2177
+        ],
+        [
+          1006,
+          2016
+        ],
+        [
+          1006,
+          2017
+        ],
+        [
+          1054,
+          2065
+        ],
+        [
+          1784,
+          2132
+        ],
+        [
+          1784,
+          2135
+        ],
+        [
+          1785,
+          2132
+        ],
+        [
+          1785,
+          2135
+        ],
+        [
+          1787,
+          2134
+        ],
+        [
+          1787,
+          2135
+        ],
+        [
+          1813,
+          2752
+        ],
+        [
+          1813,
+          2753
+        ],
+        [
+          1813,
+          2830
+        ],
+        [
+          1814,
+          2754
+        ],
+        [
+          1814,
+          2757
+        ],
+        [
+          1815,
+          2754
+        ],
+        [
+          1816,
+          2756
+        ],
+        [
+          1816,
+          2759
+        ],
+        [
+          1817,
+          2756
+        ],
+        [
+          1817,
+          2757
+        ],
+        [
+          1819,
+          2758
+        ],
+        [
+          1819,
+          2759
+        ],
+        [
+          1945,
+          2146
+        ],
+        [
+          1993,
+          2150
+        ],
+        [
+          1993,
+          2152
+        ],
+        [
+          1993,
+          2153
+        ],
+        [
+          2014,
+          2814
+        ],
+        [
+          2014,
+          2816
+        ],
+        [
+          2014,
+          2817
+        ],
+        [
+          2018,
+          2158
+        ],
+        [
+          2018,
+          2160
+        ],
+        [
+          2018,
+          2161
+        ],
+        [
+          2020,
+          2158
+        ],
+        [
+          2021,
+          2158
+        ],
+        [
+          2115,
+          2192
+        ],
+        [
+          2115,
+          2193
+        ],
+        [
+          2123,
+          2125
+        ],
+        [
+          2123,
+          2204
+        ],
+        [
+          2192,
+          2194
+        ],
+        [
+          2193,
+          2194
+        ],
+        [
+          2202,
+          2204
+        ],
+        [
+          2202,
+          2205
+        ],
+        [
+          2203,
+          2205
+        ],
+        [
+          2203,
+          2284
+        ],
+        [
+          2282,
+          2284
+        ],
+        [
+          2282,
+          2285
+        ],
+        [
+          2283,
+          2285
+        ],
+        [
+          2285,
+          2362
+        ],
+        [
+          2362,
+          2364
+        ],
+        [
+          2362,
+          2365
+        ],
+        [
+          2365,
+          2442
+        ],
+        [
+          2442,
+          2444
+        ],
+        [
+          2522,
+          2525
+        ],
+        [
+          2922,
+          2925
+        ],
+        [
+          2925,
+          3002
+        ],
+        [
+          3002,
+          3004
+        ],
+        [
+          3002,
+          3005
+        ],
+        [
+          3003,
+          3005
+        ],
+        [
+          3005,
+          3082
+        ],
+        [
+          3082,
+          3084
+        ],
+        [
+          3082,
+          3085
+        ],
+        [
+          3322,
+          3325
+        ],
+        [
+          3323,
+          3325
+        ]
+      ],
+      "cloth_body_pairs": [],
+      "body_self_pairs": [],
+      "cloth_samples_inside_body": 0,
+      "winding_candidate_samples": 2396,
+      "max_sewing_gap_all_saved_frames_mm": 12.017228630984668,
+      "final_sewing_gap_mm": 7.972183067626019
+    },
+    {
+      "case": "atlas_rigid",
+      "final_frame": 31,
+      "source_sha256": "0700adee58db8ef8a78f3b21522d1e6f8d01690ef68c8b2008f5d18dbd1154dd",
+      "cloth_topology": {
+        "vertex_count": 1920,
+        "used_vertex_count": 1920,
+        "orphan_vertices": 0,
+        "triangle_count": 3392,
+        "edge_count": 5308,
+        "connected_components": 4,
+        "boundary_edges": 440,
+        "boundary_components": 4,
+        "boundary_cycles": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "degenerate_triangles": 0,
+        "duplicate_faces": 0,
+        "euler_characteristic": 4,
+        "closed_oriented_edge_manifold": false,
+        "component_signed_volumes_m3": [
+          0.04033039935467654,
+          0.04034814059893687,
+          0.009389866199203884,
+          0.010783420454530604
+        ],
+        "outward_closed_components": false,
+        "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+      },
+      "cloth_self_pairs": [
+        [
+          96,
+          1151
+        ],
+        [
+          241,
+          1342
+        ],
+        [
+          286,
+          1297
+        ],
+        [
+          287,
+          1297
+        ],
+        [
+          334,
+          1344
+        ],
+        [
+          334,
+          1345
+        ],
+        [
+          382,
+          1440
+        ],
+        [
+          382,
+          1441
+        ],
+        [
+          383,
+          1441
+        ],
+        [
+          385,
+          1487
+        ],
+        [
+          433,
+          1534
+        ],
+        [
+          478,
+          1536
+        ],
+        [
+          481,
+          1582
+        ],
+        [
+          625,
+          1726
+        ],
+        [
+          625,
+          1727
+        ],
+        [
+          625,
+          1774
+        ],
+        [
+          671,
+          1729
+        ],
+        [
+          672,
+          1774
+        ],
+        [
+          673,
+          1774
+        ],
+        [
+          721,
+          2762
+        ],
+        [
+          721,
+          2764
+        ],
+        [
+          721,
+          2765
+        ],
+        [
+          722,
+          2766
+        ],
+        [
+          723,
+          2766
+        ],
+        [
+          724,
+          2768
+        ],
+        [
+          724,
+          2771
+        ],
+        [
+          725,
+          2766
+        ],
+        [
+          725,
+          2768
+        ],
+        [
+          725,
+          2769
+        ],
+        [
+          726,
+          2773
+        ],
+        [
+          727,
+          2770
+        ],
+        [
+          727,
+          2771
+        ],
+        [
+          727,
+          2773
+        ],
+        [
+          728,
+          2774
+        ],
+        [
+          728,
+          2775
+        ],
+        [
+          729,
+          2772
+        ],
+        [
+          729,
+          2773
+        ],
+        [
+          729,
+          2775
+        ],
+        [
+          731,
+          2774
+        ],
+        [
+          766,
+          1777
+        ],
+        [
+          767,
+          1777
+        ],
+        [
+          767,
+          2122
+        ],
+        [
+          769,
+          2776
+        ],
+        [
+          838,
+          2186
+        ],
+        [
+          862,
+          2184
+        ],
+        [
+          960,
+          2800
+        ],
+        [
+          960,
+          2803
+        ],
+        [
+          963,
+          2800
+        ],
+        [
+          966,
+          2794
+        ],
+        [
+          966,
+          2796
+        ],
+        [
+          966,
+          2797
+        ],
+        [
+          968,
+          2794
+        ],
+        [
+          969,
+          2794
+        ],
+        [
+          996,
+          2174
+        ],
+        [
+          998,
+          2174
+        ],
+        [
+          999,
+          2174
+        ],
+        [
+          1002,
+          2168
+        ],
+        [
+          1004,
+          2166
+        ],
+        [
+          1004,
+          2168
+        ],
+        [
+          1004,
+          2169
+        ],
+        [
+          1005,
+          2168
+        ],
+        [
+          1006,
+          2017
+        ],
+        [
+          1777,
+          2124
+        ],
+        [
+          1777,
+          2125
+        ],
+        [
+          1783,
+          2130
+        ],
+        [
+          1783,
+          2131
+        ],
+        [
+          1784,
+          2134
+        ],
+        [
+          1785,
+          2132
+        ],
+        [
+          1785,
+          2134
+        ],
+        [
+          1785,
+          2135
+        ],
+        [
+          1787,
+          2134
+        ],
+        [
+          1815,
+          2754
+        ],
+        [
+          1815,
+          2755
+        ],
+        [
+          1818,
+          2758
+        ],
+        [
+          1819,
+          2758
+        ],
+        [
+          1821,
+          2758
+        ],
+        [
+          1821,
+          2760
+        ],
+        [
+          1821,
+          2761
+        ],
+        [
+          1822,
+          2762
+        ],
+        [
+          1823,
+          2762
+        ],
+        [
+          1823,
+          2763
+        ],
+        [
+          1918,
+          2824
+        ],
+        [
+          1921,
+          2144
+        ],
+        [
+          1944,
+          2144
+        ],
+        [
+          1945,
+          2144
+        ],
+        [
+          1945,
+          2146
+        ],
+        [
+          1945,
+          2147
+        ],
+        [
+          2014,
+          2814
+        ],
+        [
+          2014,
+          2816
+        ],
+        [
+          2014,
+          2817
+        ],
+        [
+          2018,
+          2160
+        ],
+        [
+          2020,
+          2158
+        ],
+        [
+          2026,
+          2152
+        ],
+        [
+          2682,
+          2685
+        ],
+        [
+          3002,
+          3005
+        ],
+        [
+          3002,
+          3084
+        ],
+        [
+          3003,
+          3005
+        ],
+        [
+          3003,
+          3084
+        ],
+        [
+          3003,
+          3085
+        ],
+        [
+          3082,
+          3085
+        ],
+        [
+          3083,
+          3085
+        ],
+        [
+          3162,
+          3165
+        ],
+        [
+          3322,
+          3325
+        ]
+      ],
+      "cloth_body_pairs": [],
+      "body_self_pairs": [],
+      "cloth_samples_inside_body": 0,
+      "winding_candidate_samples": 2254,
+      "max_sewing_gap_all_saved_frames_mm": 6.287856501652254,
+      "final_sewing_gap_mm": 5.05588214417543
+    },
+    {
+      "case": "left_sleeve_90",
+      "final_frame": 31,
+      "source_sha256": "2df3528d8bad82b9e857c5f0eadb881a4c134b31900a53fbee7dbc23c58e063b",
+      "cloth_topology": {
+        "vertex_count": 1920,
+        "used_vertex_count": 1920,
+        "orphan_vertices": 0,
+        "triangle_count": 3392,
+        "edge_count": 5308,
+        "connected_components": 4,
+        "boundary_edges": 440,
+        "boundary_components": 4,
+        "boundary_cycles": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "degenerate_triangles": 0,
+        "duplicate_faces": 0,
+        "euler_characteristic": 4,
+        "closed_oriented_edge_manifold": false,
+        "component_signed_volumes_m3": [
+          0.039426689361847844,
+          0.03508728535144113,
+          0.008108149679025008,
+          0.008392045032322895
+        ],
+        "outward_closed_components": false,
+        "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+      },
+      "cloth_self_pairs": [
+        [
+          238,
+          1297
+        ],
+        [
+          286,
+          1344
+        ],
+        [
+          287,
+          1297
+        ],
+        [
+          287,
+          1344
+        ],
+        [
+          287,
+          1345
+        ],
+        [
+          334,
+          1345
+        ],
+        [
+          334,
+          1392
+        ],
+        [
+          335,
+          1392
+        ],
+        [
+          335,
+          1393
+        ],
+        [
+          481,
+          1582
+        ],
+        [
+          528,
+          1582
+        ],
+        [
+          529,
+          1582
+        ],
+        [
+          529,
+          1583
+        ],
+        [
+          577,
+          1678
+        ],
+        [
+          624,
+          1678
+        ],
+        [
+          624,
+          1679
+        ],
+        [
+          625,
+          1679
+        ],
+        [
+          670,
+          1728
+        ],
+        [
+          670,
+          1729
+        ],
+        [
+          671,
+          1729
+        ],
+        [
+          718,
+          1729
+        ],
+        [
+          722,
+          2766
+        ],
+        [
+          723,
+          2766
+        ],
+        [
+          724,
+          2771
+        ],
+        [
+          725,
+          2766
+        ],
+        [
+          725,
+          2768
+        ],
+        [
+          725,
+          2769
+        ],
+        [
+          725,
+          2771
+        ],
+        [
+          726,
+          2770
+        ],
+        [
+          727,
+          2770
+        ],
+        [
+          727,
+          2771
+        ],
+        [
+          728,
+          2772
+        ],
+        [
+          728,
+          2774
+        ],
+        [
+          728,
+          2775
+        ],
+        [
+          729,
+          2772
+        ],
+        [
+          729,
+          2775
+        ],
+        [
+          731,
+          2774
+        ],
+        [
+          758,
+          2114
+        ],
+        [
+          759,
+          2114
+        ],
+        [
+          761,
+          2114
+        ],
+        [
+          761,
+          2116
+        ],
+        [
+          761,
+          2117
+        ],
+        [
+          766,
+          2122
+        ],
+        [
+          767,
+          2122
+        ],
+        [
+          793,
+          2778
+        ],
+        [
+          814,
+          2188
+        ],
+        [
+          816,
+          2778
+        ],
+        [
+          817,
+          2778
+        ],
+        [
+          817,
+          2780
+        ],
+        [
+          817,
+          2781
+        ],
+        [
+          937,
+          2792
+        ],
+        [
+          958,
+          2174
+        ],
+        [
+          960,
+          2062
+        ],
+        [
+          961,
+          2062
+        ],
+        [
+          996,
+          2172
+        ],
+        [
+          996,
+          2174
+        ],
+        [
+          996,
+          2175
+        ],
+        [
+          998,
+          2172
+        ],
+        [
+          999,
+          2172
+        ],
+        [
+          1006,
+          2016
+        ],
+        [
+          1009,
+          2110
+        ],
+        [
+          1778,
+          2126
+        ],
+        [
+          1779,
+          2126
+        ],
+        [
+          1781,
+          2126
+        ],
+        [
+          1781,
+          2128
+        ],
+        [
+          1781,
+          2129
+        ],
+        [
+          1782,
+          2133
+        ],
+        [
+          1783,
+          2130
+        ],
+        [
+          1783,
+          2133
+        ],
+        [
+          1785,
+          2132
+        ],
+        [
+          1785,
+          2133
+        ],
+        [
+          1787,
+          2134
+        ],
+        [
+          1787,
+          2137
+        ],
+        [
+          1812,
+          2752
+        ],
+        [
+          1813,
+          2752
+        ],
+        [
+          1813,
+          2753
+        ],
+        [
+          1813,
+          2830
+        ],
+        [
+          1815,
+          2752
+        ],
+        [
+          1815,
+          2754
+        ],
+        [
+          1815,
+          2755
+        ],
+        [
+          1817,
+          2754
+        ],
+        [
+          1817,
+          2756
+        ],
+        [
+          1817,
+          2757
+        ],
+        [
+          1819,
+          2758
+        ],
+        [
+          1819,
+          2759
+        ],
+        [
+          1846,
+          2830
+        ],
+        [
+          2014,
+          2814
+        ],
+        [
+          2014,
+          2816
+        ],
+        [
+          2014,
+          2817
+        ],
+        [
+          2024,
+          2154
+        ],
+        [
+          2602,
+          2682
+        ],
+        [
+          2602,
+          2683
+        ],
+        [
+          2603,
+          2683
+        ],
+        [
+          3322,
+          3325
+        ]
+      ],
+      "cloth_body_pairs": [],
+      "body_self_pairs": [],
+      "cloth_samples_inside_body": 0,
+      "winding_candidate_samples": 2342,
+      "max_sewing_gap_all_saved_frames_mm": 8.92804046818611,
+      "final_sewing_gap_mm": 8.92804046818611
+    }
+  ],
+  "coverage": "Only final saved mesh of each diagnostic run; no continuous-time or complete motion certificate.",
+  "armhole_fit": "UNKNOWN",
+  "physical_fit": "NOT_RUN",
+  "causal_control_failure_prevents_pattern_fit_inference": true
+}

@@ -1,0 +1,892 @@
+{
+  "schema_version": 1,
+  "verifier": "independent flat panel/source/seam audit",
+  "PATTERN_TRANSFER_PASS": true,
+  "FLAT_PANEL_VALIDITY_PASS": true,
+  "SEAM_COMPATIBILITY_PASS": false,
+  "SEAM_COMPATIBILITY_DECISION": "CONDITIONAL_FAIL_UNDER_DECLARED_OR_ZERO_EASE_TARGET",
+  "MANUFACTURING_COMPATIBILITY": "UNDETERMINED_EASE_AND_FABRIC",
+  "ASSEMBLY_IDENTITY_ONLY": "Stored source vertex/face identity checked; this is not2Dsewing orfit.",
+  "TWO_D_SEW_SIM": "NOT_RUN",
+  "THREE_D_WEARING": "NOT_RUN",
+  "PHYSICAL_FIT": "NOT_RUN",
+  "material_allowable_strain": "UNKNOWN_UNCALIBRATED",
+  "verdict": "FAIL",
+  "errors": [
+    {
+      "code": "SEAM_TOTAL_LENGTH",
+      "detail": "armhole_L_back"
+    },
+    {
+      "code": "SEAM_LOCAL_LENGTH",
+      "detail": "armhole_L_back"
+    },
+    {
+      "code": "SEAM_TOTAL_LENGTH",
+      "detail": "armhole_L_front"
+    },
+    {
+      "code": "SEAM_LOCAL_LENGTH",
+      "detail": "armhole_L_front"
+    },
+    {
+      "code": "SEAM_TOTAL_LENGTH",
+      "detail": "armhole_R_back"
+    },
+    {
+      "code": "SEAM_LOCAL_LENGTH",
+      "detail": "armhole_R_back"
+    },
+    {
+      "code": "SEAM_TOTAL_LENGTH",
+      "detail": "armhole_R_front"
+    },
+    {
+      "code": "SEAM_LOCAL_LENGTH",
+      "detail": "armhole_R_front"
+    }
+  ],
+  "panels": {
+    "front": {
+      "topology": {
+        "vertices": 591,
+        "used_vertices": 591,
+        "faces": 1056,
+        "edges": 1646,
+        "components": 1,
+        "euler_characteristic": 1,
+        "boundary_cycles": 1,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "disk": true
+      },
+      "positive_triangle_count": 1056,
+      "negative_triangle_count": 0,
+      "chart_orientation_sign": 1,
+      "flipped_or_collapsed_triangles": 0,
+      "barycentric_roundtrip_max_error_m": 2.5341311739065124e-15,
+      "self_overlap_pairs": [],
+      "metric": {
+        "valid_metric_triangles": 1056,
+        "invalid_metric_triangles": 0,
+        "area_2d_m2": 0.3960297231594859,
+        "area_3d_m2": 0.39609504129125517,
+        "area_ratio_2d_to_source_3d": 0.9998350948005905,
+        "principal_stretch_min": 0.9157328543190026,
+        "principal_stretch_max": 1.0537337555844637,
+        "absolute_principal_strain_p95_pct": 2.320249175875216,
+        "absolute_principal_strain_max_pct": 8.426714568099737,
+        "edge_relative_error_p95_pct": 1.2611496843875802,
+        "edge_relative_error_max_pct": 8.040315112452268,
+        "meaning": "2D paper to source3D metric change; no calibrated allowable fabric strain or physical-fit claim."
+      }
+    },
+    "back": {
+      "topology": {
+        "vertices": 591,
+        "used_vertices": 591,
+        "faces": 1056,
+        "edges": 1646,
+        "components": 1,
+        "euler_characteristic": 1,
+        "boundary_cycles": 1,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "disk": true
+      },
+      "positive_triangle_count": 1056,
+      "negative_triangle_count": 0,
+      "chart_orientation_sign": 1,
+      "flipped_or_collapsed_triangles": 0,
+      "barycentric_roundtrip_max_error_m": 2.507851037520163e-15,
+      "self_overlap_pairs": [],
+      "metric": {
+        "valid_metric_triangles": 1056,
+        "invalid_metric_triangles": 0,
+        "area_2d_m2": 0.39602972315948554,
+        "area_3d_m2": 0.39609504129125517,
+        "area_ratio_2d_to_source_3d": 0.9998350948005895,
+        "principal_stretch_min": 0.915732854319085,
+        "principal_stretch_max": 1.053733755584472,
+        "absolute_principal_strain_p95_pct": 2.320249175875544,
+        "absolute_principal_strain_max_pct": 8.426714568091498,
+        "edge_relative_error_p95_pct": 1.261149684387655,
+        "edge_relative_error_max_pct": 8.040315112444452,
+        "meaning": "2D paper to source3D metric change; no calibrated allowable fabric strain or physical-fit claim."
+      }
+    },
+    "left_sleeve": {
+      "topology": {
+        "vertices": 369,
+        "used_vertices": 369,
+        "faces": 640,
+        "edges": 1008,
+        "components": 1,
+        "euler_characteristic": 1,
+        "boundary_cycles": 1,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "disk": true
+      },
+      "positive_triangle_count": 640,
+      "negative_triangle_count": 0,
+      "chart_orientation_sign": 1,
+      "flipped_or_collapsed_triangles": 0,
+      "barycentric_roundtrip_max_error_m": 6.497413668604471e-16,
+      "self_overlap_pairs": [],
+      "metric": {
+        "valid_metric_triangles": 640,
+        "invalid_metric_triangles": 0,
+        "area_2d_m2": 0.17023069605110497,
+        "area_3d_m2": 0.17024630502562918,
+        "area_ratio_2d_to_source_3d": 0.9999083153404013,
+        "principal_stretch_min": 0.9778795868530754,
+        "principal_stretch_max": 1.052727508170337,
+        "absolute_principal_strain_p95_pct": 2.212122189652049,
+        "absolute_principal_strain_max_pct": 5.272750817033689,
+        "edge_relative_error_p95_pct": 1.3687101263969337,
+        "edge_relative_error_max_pct": 4.650789984681481,
+        "meaning": "2D paper to source3D metric change; no calibrated allowable fabric strain or physical-fit claim."
+      }
+    },
+    "right_sleeve": {
+      "topology": {
+        "vertices": 369,
+        "used_vertices": 369,
+        "faces": 640,
+        "edges": 1008,
+        "components": 1,
+        "euler_characteristic": 1,
+        "boundary_cycles": 1,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "disk": true
+      },
+      "positive_triangle_count": 640,
+      "negative_triangle_count": 0,
+      "chart_orientation_sign": 1,
+      "flipped_or_collapsed_triangles": 0,
+      "barycentric_roundtrip_max_error_m": 7.108895957933346e-16,
+      "self_overlap_pairs": [],
+      "metric": {
+        "valid_metric_triangles": 640,
+        "invalid_metric_triangles": 0,
+        "area_2d_m2": 0.17023069605110808,
+        "area_3d_m2": 0.1702463050256292,
+        "area_ratio_2d_to_source_3d": 0.9999083153404194,
+        "principal_stretch_min": 0.9778795868530648,
+        "principal_stretch_max": 1.0527275081703602,
+        "absolute_principal_strain_p95_pct": 2.2121221896530674,
+        "absolute_principal_strain_max_pct": 5.27275081703602,
+        "edge_relative_error_p95_pct": 1.368710126395379,
+        "edge_relative_error_max_pct": 4.650789984677239,
+        "meaning": "2D paper to source3D metric change; no calibrated allowable fabric strain or physical-fit claim."
+      }
+    }
+  },
+  "seams": [
+    {
+      "id": "armhole_L_back",
+      "inferred_kind": "armhole_L",
+      "a_panel": "back",
+      "b_panel": "left_sleeve",
+      "a_length_mm": 500.85657493389755,
+      "b_length_mm": 488.8524708717228,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": 12.00410406217478,
+      "total_tolerance_mm": 2.504282874669488,
+      "max_segment_difference_mm": 2.4548160112917716,
+      "segment_count": 20,
+      "source_order_matches": true,
+      "total_length_pass": false,
+      "local_length_pass": false
+    },
+    {
+      "id": "armhole_L_front",
+      "inferred_kind": "armhole_L",
+      "a_panel": "front",
+      "b_panel": "left_sleeve",
+      "a_length_mm": 500.2755282084091,
+      "b_length_mm": 489.0089071670101,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": 11.266621041399084,
+      "total_tolerance_mm": 2.501377641042046,
+      "max_segment_difference_mm": 2.144813246206634,
+      "segment_count": 20,
+      "source_order_matches": true,
+      "total_length_pass": false,
+      "local_length_pass": false
+    },
+    {
+      "id": "armhole_R_back",
+      "inferred_kind": "armhole_R",
+      "a_panel": "back",
+      "b_panel": "right_sleeve",
+      "a_length_mm": 500.27552820841015,
+      "b_length_mm": 489.0089071670223,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": 11.26662104138787,
+      "total_tolerance_mm": 2.501377641042051,
+      "max_segment_difference_mm": 2.144813246206776,
+      "segment_count": 20,
+      "source_order_matches": true,
+      "total_length_pass": false,
+      "local_length_pass": false
+    },
+    {
+      "id": "armhole_R_front",
+      "inferred_kind": "armhole_R",
+      "a_panel": "front",
+      "b_panel": "right_sleeve",
+      "a_length_mm": 500.85657493390755,
+      "b_length_mm": 488.8524708717259,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": 12.004104062181609,
+      "total_tolerance_mm": 2.5042828746695376,
+      "max_segment_difference_mm": 2.454816011294093,
+      "segment_count": 20,
+      "source_order_matches": true,
+      "total_length_pass": false,
+      "local_length_pass": false
+    },
+    {
+      "id": "bodice_shoulder_L",
+      "inferred_kind": "other_cut",
+      "a_panel": "back",
+      "b_panel": "front",
+      "a_length_mm": 171.18199270790657,
+      "b_length_mm": 171.2978100929517,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": -0.11581738504512495,
+      "total_tolerance_mm": 2.0,
+      "max_segment_difference_mm": 0.0754963125961794,
+      "segment_count": 2,
+      "source_order_matches": true,
+      "total_length_pass": true,
+      "local_length_pass": true
+    },
+    {
+      "id": "bodice_shoulder_R",
+      "inferred_kind": "other_cut",
+      "a_panel": "back",
+      "b_panel": "front",
+      "a_length_mm": 171.2978100929508,
+      "b_length_mm": 171.1819927079053,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": 0.11581738504551353,
+      "total_tolerance_mm": 2.0,
+      "max_segment_difference_mm": 0.0754963125964292,
+      "segment_count": 2,
+      "source_order_matches": true,
+      "total_length_pass": true,
+      "local_length_pass": true
+    },
+    {
+      "id": "bodice_side_L",
+      "inferred_kind": "other_cut",
+      "a_panel": "back",
+      "b_panel": "front",
+      "a_length_mm": 400.25032887721704,
+      "b_length_mm": 400.2647010073028,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": -0.014372130085704704,
+      "total_tolerance_mm": 2.001323505036514,
+      "max_segment_difference_mm": 0.002239404593096239,
+      "segment_count": 16,
+      "source_order_matches": true,
+      "total_length_pass": true,
+      "local_length_pass": true
+    },
+    {
+      "id": "bodice_side_R",
+      "inferred_kind": "other_cut",
+      "a_panel": "back",
+      "b_panel": "front",
+      "a_length_mm": 400.2647010072994,
+      "b_length_mm": 400.2503288772251,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": 0.014372130074269407,
+      "total_tolerance_mm": 2.0013235050364973,
+      "max_segment_difference_mm": 0.002239404592496025,
+      "segment_count": 16,
+      "source_order_matches": true,
+      "total_length_pass": true,
+      "local_length_pass": true
+    },
+    {
+      "id": "sleeve_underarm_L",
+      "inferred_kind": "other_cut",
+      "a_panel": "left_sleeve",
+      "b_panel": "left_sleeve",
+      "a_length_mm": 129.40957267961144,
+      "b_length_mm": 129.5175749367571,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": -0.10800225714563405,
+      "total_tolerance_mm": 2.0,
+      "max_segment_difference_mm": 0.031174991251822076,
+      "segment_count": 8,
+      "source_order_matches": true,
+      "total_length_pass": true,
+      "local_length_pass": true
+    },
+    {
+      "id": "sleeve_underarm_R",
+      "inferred_kind": "other_cut",
+      "a_panel": "right_sleeve",
+      "b_panel": "right_sleeve",
+      "a_length_mm": 129.40957267961167,
+      "b_length_mm": 129.51757493675728,
+      "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC",
+      "intentional_ease_a_minus_b_mm": 0.0,
+      "total_difference_mm": -0.1080022571456063,
+      "total_tolerance_mm": 2.0,
+      "max_segment_difference_mm": 0.031174991251849832,
+      "segment_count": 8,
+      "source_order_matches": true,
+      "total_length_pass": true,
+      "local_length_pass": true
+    }
+  ],
+  "notches": [
+    {
+      "label": "armhole_L_front_start",
+      "marks": [
+        [
+          "front",
+          424,
+          768
+        ],
+        [
+          "left_sleeve",
+          12,
+          768
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_L_front_balance",
+      "marks": [
+        [
+          "front",
+          476,
+          919
+        ],
+        [
+          "left_sleeve",
+          74,
+          919
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_L_front_end",
+      "marks": [
+        [
+          "front",
+          564,
+          998
+        ],
+        [
+          "left_sleeve",
+          54,
+          998
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_R_front_start",
+      "marks": [
+        [
+          "front",
+          401,
+          792
+        ],
+        [
+          "right_sleeve",
+          14,
+          792
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_R_front_balance",
+      "marks": [
+        [
+          "front",
+          465,
+          907
+        ],
+        [
+          "right_sleeve",
+          34,
+          907
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_R_front_end",
+      "marks": [
+        [
+          "front",
+          529,
+          1022
+        ],
+        [
+          "right_sleeve",
+          54,
+          1022
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_L_back_start",
+      "marks": [
+        [
+          "back",
+          401,
+          768
+        ],
+        [
+          "left_sleeve",
+          14,
+          768
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_L_back_balance",
+      "marks": [
+        [
+          "back",
+          465,
+          894
+        ],
+        [
+          "left_sleeve",
+          34,
+          894
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_L_back_end",
+      "marks": [
+        [
+          "back",
+          529,
+          998
+        ],
+        [
+          "left_sleeve",
+          54,
+          998
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_R_back_start",
+      "marks": [
+        [
+          "back",
+          424,
+          792
+        ],
+        [
+          "right_sleeve",
+          12,
+          792
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_R_back_balance",
+      "marks": [
+        [
+          "back",
+          476,
+          906
+        ],
+        [
+          "right_sleeve",
+          74,
+          906
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    },
+    {
+      "label": "armhole_R_back_end",
+      "marks": [
+        [
+          "back",
+          564,
+          1022
+        ],
+        [
+          "right_sleeve",
+          54,
+          1022
+        ]
+      ],
+      "same_source_vertex": true,
+      "paired": true
+    }
+  ],
+  "missing_or_duplicate_cut_edges": [],
+  "source_face_count": 3392,
+  "covered_source_faces": 3392,
+  "cut_edge_side_count": 264,
+  "open_boundary_edge_count": 176,
+  "threshold_policy": {
+    "seam_total": "max(2mm,0.5% longer seam), around explicitly declared ease target",
+    "seam_segment": "max(1mm,2% corresponding segment), around declared local ease",
+    "scope": "Engineering transfer diagnostics, not universal sewing/fabric-fit tolerances."
+  },
+  "analytic_tests": {
+    "test_count": 6,
+    "all_passed": true,
+    "tests": [
+      {
+        "name": "disjoint",
+        "expected_overlap_area_m2": 0.0,
+        "observed_overlap_area_m2": 0.0,
+        "passed": true
+      },
+      {
+        "name": "valid_edge_contact",
+        "expected_overlap_area_m2": 0.0,
+        "observed_overlap_area_m2": 0.0,
+        "passed": true
+      },
+      {
+        "name": "valid_point_contact",
+        "expected_overlap_area_m2": 0.0,
+        "observed_overlap_area_m2": 0.0,
+        "passed": true
+      },
+      {
+        "name": "nested_overlap",
+        "expected_overlap_area_m2": 0.02,
+        "observed_overlap_area_m2": 0.02,
+        "passed": true
+      },
+      {
+        "name": "shared_vertex_area_overlap",
+        "expected_overlap_area_m2": 0.245,
+        "observed_overlap_area_m2": 0.24499999999999997,
+        "passed": true
+      },
+      {
+        "name": "two_triangle_disk_with_legitimate_shared_edge",
+        "passed": true
+      }
+    ],
+    "scope": "Known-answer2D clipping and topology tests, not a general accuracy benchmark."
+  },
+  "inputs": {
+    "pattern_sha256": "8cd8eee90a8fe04b7dccb361cc466293f71046992e2566bd8bc8de693221cb5f",
+    "source_topology_sha256": "ebc99a9fd72072a7d8732824f14b602cf521a5730cdc0caad3759745bcea68c0",
+    "source_frame_sha256": "a220813005e49af005664dfe2045416dc064740c9517312c4f6d225043069dbc",
+    "verifier_sha256": "fd1fa5628fadf0d7c038cbe57742720f96a661d585bb95300b605a6babf076c0"
+  },
+  "negative_controls": {
+    "baseline_verdict": "FAIL",
+    "baseline_failure_codes": [
+      "SEAM_LOCAL_LENGTH",
+      "SEAM_TOTAL_LENGTH"
+    ],
+    "cases": [
+      {
+        "case": "left_right_source_labels_swapped",
+        "rejected": true,
+        "expected_failure_codes": [
+          "SOURCE_PANEL_ROLE"
+        ],
+        "observed_failure_codes": [
+          "GRAINLINE_SOURCE_ROLE",
+          "SEAM_DECLARED_SOURCE_CHAIN",
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_SOURCE_ORDER",
+          "SEAM_TOTAL_LENGTH",
+          "SEAM_WRONG_SOURCE_EDGE",
+          "SOURCE_PANEL_ROLE"
+        ],
+        "new_failure_codes_vs_baseline": [
+          "GRAINLINE_SOURCE_ROLE",
+          "SEAM_DECLARED_SOURCE_CHAIN",
+          "SEAM_SOURCE_ORDER",
+          "SEAM_WRONG_SOURCE_EDGE",
+          "SOURCE_PANEL_ROLE"
+        ],
+        "injected_effect_witness": null,
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": false,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      },
+      {
+        "case": "sleeve_scaled20percent",
+        "rejected": true,
+        "expected_failure_codes": [
+          "SEAM_TOTAL_LENGTH",
+          "SEAM_LOCAL_LENGTH"
+        ],
+        "observed_failure_codes": [
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_TOTAL_LENGTH"
+        ],
+        "new_failure_codes_vs_baseline": [],
+        "injected_effect_witness": {
+          "injected_effect_detected": true,
+          "measured_sleeve_edge_scale_ratios": [
+            1.2000000000000002,
+            1.1999999999999997,
+            1.2,
+            1.2000000000000002
+          ],
+          "baseline_max_left_armhole_gap_mm": 12.00410406217478,
+          "modified_max_left_armhole_gap_mm": 86.53516039200282
+        },
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": true,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      },
+      {
+        "case": "local_balance_changed_but_total_arclength_preserved",
+        "rejected": true,
+        "expected_failure_codes": [
+          "SEAM_LOCAL_LENGTH"
+        ],
+        "observed_failure_codes": [
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_TOTAL_LENGTH"
+        ],
+        "new_failure_codes_vs_baseline": [],
+        "injected_effect_witness": {
+          "injected_effect_detected": true,
+          "total_sleeve_chain_length_change_mm": 0.0,
+          "baseline_local_mismatch_mm": 2.4548160112917716,
+          "modified_local_mismatch_mm": 27.884167563459204,
+          "local_mismatch_increase_mm": 25.429351552167432,
+          "meaning": "The complete seam arclength is unchanged; local matched-edge lengths changed."
+        },
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": true,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      },
+      {
+        "case": "missing_seam",
+        "rejected": true,
+        "expected_failure_codes": [
+          "CUT_EDGE_COVERAGE"
+        ],
+        "observed_failure_codes": [
+          "CUT_EDGE_COVERAGE",
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_TOTAL_LENGTH"
+        ],
+        "new_failure_codes_vs_baseline": [
+          "CUT_EDGE_COVERAGE"
+        ],
+        "injected_effect_witness": null,
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": false,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      },
+      {
+        "case": "one_seam_reversed",
+        "rejected": true,
+        "expected_failure_codes": [
+          "SEAM_SOURCE_ORDER",
+          "SEAM_WRONG_SOURCE_EDGE"
+        ],
+        "observed_failure_codes": [
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_SOURCE_ORDER",
+          "SEAM_TOTAL_LENGTH",
+          "SEAM_WRONG_SOURCE_EDGE"
+        ],
+        "new_failure_codes_vs_baseline": [
+          "SEAM_SOURCE_ORDER",
+          "SEAM_WRONG_SOURCE_EDGE"
+        ],
+        "injected_effect_witness": null,
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": false,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      },
+      {
+        "case": "notch_source_moved",
+        "rejected": true,
+        "expected_failure_codes": [
+          "MARK_SOURCE_MISMATCH"
+        ],
+        "observed_failure_codes": [
+          "MARK_SOURCE_MISMATCH",
+          "NOTCH_UNPAIRED",
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_TOTAL_LENGTH"
+        ],
+        "new_failure_codes_vs_baseline": [
+          "MARK_SOURCE_MISMATCH",
+          "NOTCH_UNPAIRED"
+        ],
+        "injected_effect_witness": null,
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": false,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      },
+      {
+        "case": "source_triangle_missing",
+        "rejected": true,
+        "expected_failure_codes": [
+          "SOURCE_FACE_COVERAGE",
+          "SOURCE_PANEL_ROLE"
+        ],
+        "observed_failure_codes": [
+          "CUT_EDGE_COVERAGE",
+          "CUT_EDGE_MULTIPLICITY",
+          "DECLARED_BOUNDARY_MISMATCH",
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_TOTAL_LENGTH",
+          "SOURCE_FACE_COVERAGE",
+          "SOURCE_PANEL_ROLE"
+        ],
+        "new_failure_codes_vs_baseline": [
+          "CUT_EDGE_COVERAGE",
+          "CUT_EDGE_MULTIPLICITY",
+          "DECLARED_BOUNDARY_MISMATCH",
+          "SOURCE_FACE_COVERAGE",
+          "SOURCE_PANEL_ROLE"
+        ],
+        "injected_effect_witness": null,
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": false,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      },
+      {
+        "case": "grainline_rotated90degrees",
+        "rejected": true,
+        "expected_failure_codes": [
+          "GRAINLINE_MAPPED_DIRECTION"
+        ],
+        "observed_failure_codes": [
+          "GRAINLINE_MAPPED_DIRECTION",
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_TOTAL_LENGTH"
+        ],
+        "new_failure_codes_vs_baseline": [
+          "GRAINLINE_MAPPED_DIRECTION"
+        ],
+        "injected_effect_witness": null,
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": false,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      },
+      {
+        "case": "grainline_missing",
+        "rejected": true,
+        "expected_failure_codes": [
+          "GRAINLINE_MISSING"
+        ],
+        "observed_failure_codes": [
+          "GRAINLINE_MISSING",
+          "SEAM_LOCAL_LENGTH",
+          "SEAM_TOTAL_LENGTH"
+        ],
+        "new_failure_codes_vs_baseline": [
+          "GRAINLINE_MISSING"
+        ],
+        "injected_effect_witness": null,
+        "expected_failure_detected": true,
+        "summary": {
+          "PATTERN_TRANSFER_PASS": false,
+          "FLAT_PANEL_VALIDITY_PASS": true,
+          "SEAM_COMPATIBILITY_PASS": false
+        }
+      }
+    ],
+    "all_faults_detected": true,
+    "limits": "Baseline already has conditional seam-length FAIL, so rejection alone is not counted as fault detection. Each control needs a new specific code or a measured injected differential. Same-fixture injection is not a blind accuracy estimate. L/R checks declared source identity; symmetric physical sleeves may be interchangeable."
+  },
+  "metamorphic_controls": {
+    "cases": [
+      {
+        "case": "rigid_atlas_rotation_translation",
+        "passed": true,
+        "maximum_seam_metric_change_mm": 2.2737367544323206e-13,
+        "same_failure_codes_as_baseline": true,
+        "baseline_conditional_verdict": "FAIL",
+        "transformed_conditional_verdict": "FAIL"
+      },
+      {
+        "case": "uniform_chart_reflection",
+        "passed": true,
+        "maximum_seam_metric_change_mm": 0.0,
+        "same_failure_codes_as_baseline": true,
+        "baseline_conditional_verdict": "FAIL",
+        "transformed_conditional_verdict": "FAIL"
+      }
+    ],
+    "all_invariants_passed": true,
+    "meaning": "Whole-chart reflection changes orientation convention, not flattening validity; source roles and boundary correspondences remain fixed."
+  },
+  "elapsed_seconds": 75.72555247999844
+}

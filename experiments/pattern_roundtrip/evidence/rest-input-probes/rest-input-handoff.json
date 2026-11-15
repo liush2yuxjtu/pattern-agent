@@ -1,0 +1,162 @@
+{
+  "status": "DYNAMIC_BASE_REST_INFLUENCE_CONFIRMED; STATIC_REST_KEY_PATH_INEFFECTIVE_IN_TESTED_SETUPS",
+  "blender_version": "4.3.2",
+  "actual_fix_for_main": "Animate a dedicated input shape key0atframe1/1fromframe2, use_dynamic_mesh=True, do not use a static rest_shape_key pointer; no pins so updating rest input does not impose physical point goals.",
+  "scope": "Rest-metric influence only, not direct flat sewing, force accuracy, calibrated material or fit.",
+  "comparisons": [
+    {
+      "a": "leading-baseline",
+      "b": "leading-short",
+      "frame1_exact_equal": true,
+      "topology_exact_equal": true,
+      "max_coordinate_response_m": 0.0,
+      "frame_by_frame_response_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "a": "constructive-baseline",
+      "b": "constructive-short",
+      "frame1_exact_equal": true,
+      "topology_exact_equal": true,
+      "max_coordinate_response_m": 0.0,
+      "frame_by_frame_response_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "a": "leading-pad-baseline",
+      "b": "leading-pad-short",
+      "frame1_exact_equal": true,
+      "topology_exact_equal": true,
+      "max_coordinate_response_m": 0.0,
+      "frame_by_frame_response_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "a": "constructive-pad-baseline",
+      "b": "constructive-pad-short",
+      "frame1_exact_equal": true,
+      "topology_exact_equal": true,
+      "max_coordinate_response_m": 0.0,
+      "frame_by_frame_response_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "a": "staticbase-baseline",
+      "b": "staticbase-short",
+      "frame1_exact_equal": true,
+      "topology_exact_equal": true,
+      "max_coordinate_response_m": 0.0,
+      "frame_by_frame_response_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "a": "dynamicbase-baseline",
+      "b": "dynamicbase-short",
+      "frame1_exact_equal": true,
+      "topology_exact_equal": true,
+      "max_coordinate_response_m": 0.3093765079975128,
+      "frame_by_frame_response_m": [
+        0.0,
+        0.06729334592819214,
+        0.10214725136756897,
+        0.1402217447757721,
+        0.18074968457221985,
+        0.22295823693275452,
+        0.26608216762542725,
+        0.3093765079975128
+      ]
+    }
+  ],
+  "rejected_hypotheses": [
+    "TRIANGULATE no-op alone did not restore static-rest-key response.",
+    "Adding third identical rest-key copy also gave no response.",
+    "Official4.3.2 RNA and BKE key-block APIs are both0-based, so off-by-one was not supported."
+  ],
+  "dynamic_non_morph_evidence": "Initial source plane atz.30, animated rest plane atz0; dynamic output remainsz.300000012 forboth baseline andshort. DynamicFalse inputs have no physicalresponse; DynamicTrue UVshortening changesphysicalpositions.",
+  "limitations": [
+    "Tiny high-stiffness sheet oscillates/overshoots; output changing is causal wiring evidence, not a stable cloth quality approval.",
+    "Complete static-rest-key CD_CLOTH_ORCO ingestion failure root cause not proven end-to-end; leading-deform source paths support a missing-layer hypothesis, but constructive no-op did not repair it."
+  ],
+  "source_sha256": {
+    "rest_key_probe.py": "c2f3f2780f4710ff94d44fe3fd08ad718e2920a94b531d5b7559fea515b65c66",
+    "rest_key_probe_index.py": "41fbe964983683895571a54f4b62086d4929dbf5f51e90ad76b14fd156a23b10",
+    "dynamic_rest_probe.py": "7d7c24aa9b03ec58d50ebc30512f469976896a458cf228e7f8ae37d8c5b68b21"
+  },
+  "official_sources": [
+    {
+      "url": "https://github.com/blender/blender/blob/v4.3.2/source/blender/blenkernel/intern/cloth.cc#L747",
+      "fact": "Static rest-key coordinates are used only when shapekey_rest nonzero, DYNAMIC_BASEMESH false and CD_CLOTH_ORCO layer exists; otherwise fallback tocurrentpositions."
+    },
+    {
+      "url": "https://github.com/blender/blender/blob/v4.3.2/source/blender/blenkernel/intern/cloth.cc#L286",
+      "fact": "Dynamic base mesh calls cloth_update_verts and cloth_update_spring_lengths on solver steps."
+    },
+    {
+      "url": "https://github.com/blender/blender/blob/v4.3.2/source/blender/blenkernel/intern/mesh_data_update.cc#L382",
+      "fact": "Leading OnlyDeform branch explicitly handlesCD_ORCO but notCD_CLOTH_ORCO."
+    },
+    {
+      "url": "https://github.com/blender/blender/blob/v4.3.2/source/blender/modifiers/intern/MOD_cloth.cc#L96",
+      "fact": "Legacy rest-key custom-layer setup guarded by mesh==nullptr; OnlyDeform pipeline providesnonnullmesh."
+    },
+    {
+      "url": "https://github.com/blender/blender/blob/v4.3.2/source/blender/makesrna/intern/rna_key.cc#L287",
+      "fact": "RNAshape-key helper gets/sets raw0-basedlistindices."
+    },
+    {
+      "url": "https://github.com/blender/blender/blob/v4.3.2/source/blender/blenkernel/intern/key.cc#L1923",
+      "fact": "BKE_keyblock_find_by_index also uses0-basedBLI_findlink."
+    },
+    {
+      "url": "https://github.com/blender/blender/blob/v4.3.2/source/blender/blenkernel/intern/cloth.cc#L1147",
+      "fact": "cloth_update_verts writes only verts->xrest from evaluated base-mesh positions; it does not directly overwrite physical verts->x."
+    }
+  ],
+  "frozen_sources": [
+    "/workspace/work/pattern-unwrap/rest_key_probe.py",
+    "/workspace/work/pattern-unwrap/rest_key_probe_index.py",
+    "/workspace/work/pattern-unwrap/dynamic_rest_probe.py"
+  ],
+  "raw_evidence_directory": "/workspace/work/pattern-unwrap/rest-key-probes",
+  "complete_receipt": "/workspace/work/pattern-unwrap/rest-metric-mechanism-handoff.json"
+}

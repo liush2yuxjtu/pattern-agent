@@ -1,0 +1,111 @@
+{
+  "date_utc": "2026-11-15T13:03:17.368465+00:00",
+  "candidate_base_commit": "f7b111f347102f0650764c88ff65317161758029",
+  "verification_skill": ".agents/skills/verify/SKILL.md",
+  "candidate_source_sha256": {
+    "experiments/pattern_roundtrip/compare_metric_runs.py": "be2954c96fc11e5016eeba7bdd17b3348d077019e56445bf0db4b472b4ecd92a",
+    "experiments/pattern_roundtrip/drape_metric.py": "1f075842b3ed76fe2a790e44f04be703683380802e93de3b5bed55b62c9b44c3",
+    "experiments/pattern_roundtrip/evidence/static-rest-failure/static-rest-trial.py": "e5fb993ab1596bef4b3487dcf19f882be0a5f6405525907697deb497aecfce60",
+    "experiments/pattern_roundtrip/export_pattern_pdf.py": "3a264e79bee8a3c90fcf287f6dacd621c19ef8d56d7e424c3597a9c6a6ac3b65",
+    "experiments/pattern_roundtrip/inspect_metric_results.py": "5f578a1bfcb6e5a8aa3d2a47870652fad8667814b9fee9498b9af583433f5b17",
+    "experiments/pattern_roundtrip/plot_results.py": "2581d9051a41631bb4e3f8c9de491cc16c14df35b33649923246ecdb30f9c066",
+    "experiments/pattern_roundtrip/probes/dynamic_rest_probe.py": "7d7c24aa9b03ec58d50ebc30512f469976896a458cf228e7f8ae37d8c5b68b21",
+    "experiments/pattern_roundtrip/probes/rest_key_probe.py": "c2f3f2780f4710ff94d44fe3fd08ad718e2920a94b531d5b7559fea515b65c66",
+    "experiments/pattern_roundtrip/probes/rest_key_probe_index.py": "41fbe964983683895571a54f4b62086d4929dbf5f51e90ad76b14fd156a23b10",
+    "experiments/pattern_roundtrip/reopen_metric.py": "6062704bbfae36a226b1d5f2e87caefc53f99cd920f181d6b9b1e6d3b6e27208",
+    "experiments/pattern_roundtrip/section_proxies.py": "3f9971093a73aba66b2dfd9f2a2539a576e33d22c806e3315eeae475c59fafda",
+    "experiments/pattern_roundtrip/split_assets.py": "9a6cf4e6abe291abd80eb75bd320fa134279da702131d157ccc22546e5fbb1b5",
+    "experiments/pattern_roundtrip/unwrap_pattern.py": "54ced6667eea76a848597329c847b2c20c5d060817d61a4365c6bf8b09607306",
+    "experiments/pattern_roundtrip/verify_pattern.py": "fd1fa5628fadf0d7c038cbe57742720f96a661d585bb95300b605a6babf076c0",
+    "experiments/oneshot_motion/one_shot_model.py": "66f95f1f9bb157a7de8101eef4b8a53488528cee963b0c580d64555ceb152915",
+    "experiments/oneshot_motion/one_shot_cloth.py": "9ac6bef0f0840c87ff923f5dc35f332d7a3ebce07457fa75990ebaef7c610b0a",
+    "experiments/oneshot_control/independent_oracle_v2.py": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9"
+  },
+  "experiment_manifest_sha256": "aa342a337fcc5bc04f7b468bb78bb959581db7a94f8ddc0437232255dcfe7873",
+  "commands": [
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/pattern_roundtrip/split_assets.py -- --human experiments/oneshot_motion/assets/model.blend --topology experiments/oneshot_motion/evidence/topology.json --source-frame /workspace/work/pattern-roundtrip/source/frame-0001.npz --out /workspace/work/pattern-roundtrip/separated",
+      "exit_code": 0,
+      "observation": "Both pure .blend files independently reopened; complete arrays exact; no external geometry."
+    },
+    {
+      "command": "python3 experiments/pattern_roundtrip/unwrap_pattern.py --topology experiments/oneshot_motion/evidence/topology.json --source-frame experiments/pattern_roundtrip/assets/source-frame-0001.npz --out /workspace/work/pattern-roundtrip/rebuild-check",
+      "exit_code": 0,
+      "observation": "Three analytic flattening probes pass; exact pattern JSON/SVG rebuild."
+    },
+    {
+      "command": "python3 experiments/pattern_roundtrip/export_pattern_pdf.py --svg experiments/pattern_roundtrip/pattern/pattern.svg --out experiments/pattern_roundtrip/pattern/pattern.pdf",
+      "exit_code": 0,
+      "observation": "Physical page dimension error0.000056532mm; no seam allowance."
+    },
+    {
+      "command": "python3 experiments/pattern_roundtrip/verify_pattern.py --pattern experiments/pattern_roundtrip/pattern/pattern.json --source-topology experiments/oneshot_motion/evidence/topology.json --source-frame experiments/pattern_roundtrip/assets/source-frame-0001.npz --out /workspace/work/pattern-roundtrip/published-validator.json --negative-controls",
+      "exit_code": 2,
+      "observation": "Six known answers, two invariances, nine injected effects detected. Transfer and panel validity pass; conditional zero-ease seam failure."
+    },
+    {
+      "command": "python3 experiments/pattern_roundtrip/section_proxies.py --pair /workspace/work/pattern-roundtrip/separated/source-pair.npz --out /workspace/work/armhole-fit-challenge/section-final",
+      "exit_code": 0,
+      "observation": "Independent agent:10 analytic tests pass; four stale body associations rejected; real section ambiguity preserved."
+    },
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/pattern_roundtrip/drape_metric.py -- --pattern /workspace/work/pattern-unwrap/first/pattern.json --pair /workspace/work/pattern-roundtrip/separated/source-pair.npz --topology experiments/oneshot_motion/evidence/topology.json --case baseline --frames 31 --out /workspace/work/pattern-roundtrip/dynamic-baseline",
+      "exit_code": 0,
+      "observation": "All31 physical frames saved; preplaced3D initial condition, dynamic2D rest input; frozen A-pose collider."
+    },
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/pattern_roundtrip/drape_metric.py -- --pattern /workspace/work/pattern-unwrap/first/pattern.json --pair /workspace/work/pattern-roundtrip/separated/source-pair.npz --topology experiments/oneshot_motion/evidence/topology.json --case atlas_rigid --frames 31 --out /workspace/work/pattern-roundtrip/dynamic-atlas_rigid",
+      "exit_code": 0,
+      "observation": "All31 physical frames saved; preplaced3D initial condition, dynamic2D rest input; frozen A-pose collider."
+    },
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/pattern_roundtrip/drape_metric.py -- --pattern /workspace/work/pattern-unwrap/first/pattern.json --pair /workspace/work/pattern-roundtrip/separated/source-pair.npz --topology experiments/oneshot_motion/evidence/topology.json --case left_sleeve_90 --frames 31 --out /workspace/work/pattern-roundtrip/dynamic-left_sleeve_90",
+      "exit_code": 0,
+      "observation": "All31 physical frames saved; preplaced3D initial condition, dynamic2D rest input; frozen A-pose collider."
+    },
+    {
+      "command": "python3 experiments/pattern_roundtrip/compare_metric_runs.py --baseline experiments/pattern_roundtrip/evidence/metric/baseline --atlas experiments/pattern_roundtrip/evidence/metric/atlas_rigid --short experiments/pattern_roundtrip/evidence/metric/left_sleeve_90 --protocol experiments/pattern_roundtrip/causal-protocol.json --out experiments/pattern_roundtrip/evidence/metric/control-comparison.json",
+      "exit_code": 2,
+      "observation": "Expected FAIL_CAUSAL_CONTROL; maximumatlas129.872mm, size182.281mm, ratio1.404."
+    },
+    {
+      "command": "python3 experiments/pattern_roundtrip/inspect_metric_results.py --runs experiments/pattern_roundtrip/evidence/metric --out experiments/pattern_roundtrip/evidence/metric/final-geometry.json",
+      "exit_code": 0,
+      "observation": "23 known answers pass; final3 meshes self-intersect100/103/94pairs. Not all-frame audit."
+    },
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/pattern_roundtrip/reopen_metric.py -- --runs experiments/pattern_roundtrip/evidence/metric --out experiments/pattern_roundtrip/evidence/metric/reload.json",
+      "exit_code": 0,
+      "observation": "All3 final snapshots independently reopen; arrays exact; no Cloth modifier or external library."
+    },
+    {
+      "command": "python3 experiments/pattern_roundtrip/plot_results.py --metric experiments/pattern_roundtrip/evidence/metric",
+      "exit_code": 0,
+      "observation": "Inspected measured curves and all3 actual final Blender renders; original pattern and separate assets inspected."
+    },
+    {
+      "command": "python3 -m compileall -q experiments/pattern_roundtrip",
+      "exit_code": 0,
+      "observation": "Syntax validation; generated __pycache__ cleaned."
+    }
+  ],
+  "verdicts": {
+    "SEPARATE_ASSETS": "PASS",
+    "PATTERN_TRANSFER": "PASS",
+    "FLAT_PANEL_VALIDITY": "PASS",
+    "SEAM_COMPATIBILITY": "CONDITIONAL_FAIL_UNDER_ZERO_EASE_REVERSIBILITY_DIAGNOSTIC",
+    "MANUFACTURING_COMPATIBILITY": "UNDETERMINED_EASE_AND_FABRIC",
+    "FORWARD_CAUSAL_CONTROLS": "FAIL",
+    "ARMHOLE_FIT": "UNKNOWN",
+    "PHYSICAL_FIT": "NOT_RUN"
+  },
+  "limits": [
+    "Source3D placement is preassembled; no sewing fromflat or donning.",
+    "Materials, human and anatomical landmarks not measured/calibrated.",
+    "Actual rest field readback semantics clarified in evidence/metric/report-field-notes.json.",
+    "Original241/121 dynamic failures remain; earlier74MB original project missing.",
+    "No universal accuracy or physical fit certification."
+  ],
+  "privacy_scan": "No private connected-storage URLs/account IDs found in new experiment text; no permissions changes.",
+  "formatting": "Normalized generated section SVG line-end whitespace; all XML content and geometry tokens unchanged. Control SVG exporter normalizes line endings."
+}

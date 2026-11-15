@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "review_role": "independent armhole-fit challenger",
+  "status": "REVIEW_COMPLETE_NOT_A_FIT_APPROVAL",
+  "interpretation": {
+    "two_parts": "Two separate assets: human and garment. Four sewing panels may then be cut from the garment: front, back, left sleeve, right sleeve.",
+    "unzip": "Cut explicitly declared sewing paths and flatten panels at real scale; not merely generate a texture UV atlas."
+  },
+  "current_evidence_boundary": {
+    "body": "Synthetic, uncalibrated. Bone shoulder point is available; anatomical acromion and axillary folds are not independently measured.",
+    "cloth": "Preassembled synthetic 3D rest mesh. Existing sewn/shared-vertex topology is not evidence of a manufactured flat pattern.",
+    "material": "Unmeasured. Area density alone does not determine directional stretch, bending, shear, recovery or contact response.",
+    "allowed_claim": "Independent assets, traceable panel cutting, flat-metric distortion, seam compatibility, and explicitly scoped numerical diagnostics.",
+    "not_allowed_claims": [
+      "Natural human armhole has been measured",
+      "UV unwrapping establishes a manufacturable pattern",
+      "Sewn seam lengths establish fit",
+      "Source3D-to2D-to-source3D indexing proves physical reconstruction",
+      "Uncalibrated simulation establishes comfort or physical fit"
+    ],
+    "fit_status": "UNKNOWN",
+    "physical_fit_status": "NOT_RUN"
+  },
+  "independent_body_target": {
+    "definition": "The body has no literal sleeve hole. Define a design-dependent arm-root reference region and a moving upper-arm/axilla envelope independently of the garment.",
+    "landmarks": [
+      "acromion/shoulder reference",
+      "anterior axillary fold reference",
+      "posterior axillary fold reference",
+      "inferior axilla/underarm reference",
+      "upper-arm axis and biceps section",
+      "torso/chest and scapular reference"
+    ],
+    "persistence": "Bind actual landmarks to the evaluated body mesh with triangle IDs and barycentric coordinates or equivalent deforming attachment, body/source hashes and pose/frame. Never retain unrelated world coordinates after body motion.",
+    "synthetic_proxy_policy": "Bone points and local mesh sections may be reported as proxies only; they cannot become anatomical ground truth by renaming them.",
+    "design_intent_required": [
+      "garment style and intended silhouette",
+      "desired ease/negative ease by region",
+      "required motions and allowed hem/shoulder displacement",
+      "target wearer dimensions",
+      "fabric and seam construction"
+    ]
+  },
+  "gates": [
+    {
+      "id": "ASSET_SPLIT_PASS",
+      "claim": "Human and garment are independently loadable assets",
+      "checks": [
+        "Human file has no garment object or garment cache",
+        "Garment file has no human mesh or linked human dependency",
+        "Units/world frame/body-pose contract explicit",
+        "Source vertex/triangle identity or declared remapping preserved with hashes",
+        "Standalone reload is tested rather than inferred from save success"
+      ]
+    },
+    {
+      "id": "PATTERN_REPRESENTATION_PASS",
+      "claim": "Four scale-correct flattened sewing panels exist",
+      "checks": [
+        "Use undeformed rest mesh, not stretched raised-arm simulation frame",
+        "Every source triangle belongs to exactly one declared panel; only cut-boundary vertices may duplicate",
+        "Each intended panel is a connected disk; each sleeve has an explicit underarm longitudinal cut",
+        "No flipped or degenerate2D triangles; no unintended panel self-overlap",
+        "Persist per-panel2D-to3D triangle/vertex mapping",
+        "Measure edge-length, area and angular distortion; report full distribution and maxima",
+        "Output stitch lines, seam IDs/notches, front/back labels, grain assumption, scale bar and seam-allowance status",
+        "Keep atlas packing transforms separate from metric coordinates"
+      ],
+      "threshold_policy": "No universal flattening-distortion percentage is asserted. Compare measured distortion against declared project numerical budget and measured fabric capacity; missing capacity produces UNKNOWN for manufacturability."
+    },
+    {
+      "id": "SEAM_COMPATIBILITY_PASS",
+      "claim": "Panels are compatible with the declared sewing design",
+      "checks": [
+        "Compare stitch-line arc lengths, not seam-allowance cut edges",
+        "Define monotonic seam pairing and reversal explicitly",
+        "Measure front and back armhole segments separately against the appropriate sleeve-cap segments",
+        "Preserve notch-to-notch local arc-length correspondence",
+        "Declare cap ease distribution rather than silently imposing equal total lengths",
+        "Check sleeve underarm seam and bodice shoulder/side seams",
+        "Verify front/back and left/right labels against actual geometry and body pose"
+      ],
+      "threshold_policy": "The target ease curve is a design input. Total cap length equality is necessary only for a specifically zero-ease design and is never sufficient for fit. Inherited2mm seam-closure limit is a numerical assembly check, not an armhole-fit standard."
+    },
+    {
+      "id": "FLAT_METRIC_SOLVER_DIAGNOSTIC_PASS",
+      "claim": "Actual Cloth response uses the2D pattern rest metric from a source3D initial placement",
+      "checks": [
+        "Rest-shape key is the intended flattened2D data with correct remapped vertex count",
+        "Shape-key display value remains0 so initial visible3D positions are unchanged",
+        "Independently recompute rest edge lengths and initial3D-to2D strain",
+        "Reset scene/cache for each trial and preserve source and settings hashes",
+        "A deliberate left-sleeve rest-metric perturbation causes a mechanically consistent measurable response",
+        "Rigid2D atlas transforms, with grain basis co-transformed when relevant, do not change intrinsic metric or trajectory",
+        "Confirm loose stitch edges operate as sewing constraints and do not inherit arbitrary atlas separation as structural rest length"
+      ],
+      "interpretation": "This is an intervention on rest metric, not reconstruction from initially flat panels, automatic dressing, or fit approval."
+    },
+    {
+      "id": "GEOMETRIC_WEARING_PASS",
+      "claim": "The garment is geometrically worn by this evaluated body for specified saved poses",
+      "checks": [
+        "Valid oriented body and garment topology",
+        "Incident and nonincident true self-intersections checked without blanket shared-vertex exclusion",
+        "Actual cloth/body crossings and containment checked",
+        "Current internal arm path ranges are tied to the actual body and skeleton, not independent supplied coordinates",
+        "Correct side and through-cuff topology with no fabric-wall passage",
+        "Cap/spanning-surface construction is independently valid; cap-dependent verdicts remain UNKNOWN"
+      ],
+      "limits": "Saved-pose checks do not establish collision freedom during every solver substep or actual donning."
+    },
+    {
+      "id": "FUNCTIONAL_FIT_SUPPORTED",
+      "claim": "The numerical garment meets declared functional-fit goals within calibrated model limits",
+      "required_inputs": [
+        "independently defined body landmarks/regions",
+        "measured dimensions or explicit synthetic dimensions",
+        "warp/weft/bias material response, bending/shear, thickness, density and recovery as relevant",
+        "validated seam behavior",
+        "declared functional motions and design-dependent acceptance ranges"
+      ],
+      "checks": [
+        "Arm abduction and forward flexion, across-chest reach, elbow flexion and return motions, with trajectories rather than only final frames",
+        "Regional warp/weft strain and shear relative to2D material axes and validated material curves",
+        "Sleeve/armhole migration and hem rise against declared movement allowances",
+        "Body contact pressure separated from in-plane fabric stress",
+        "Numerical resolution/timestep sensitivity and repeatability",
+        "No missing metadata represented as a zero measurement"
+      ],
+      "missing_input_rule": "UNKNOWN / BLOCKED; do not invent universal ease, pressure or strain thresholds."
+    },
+    {
+      "id": "PHYSICAL_FIT_PASS",
+      "claim": "The garment meets the real wearer’s fit and comfort goals",
+      "checks": [
+        "Measured wearer and actual material",
+        "Printed/calibrated pattern, real cutting and sewing",
+        "Same motion protocol in real wear",
+        "Wearer comfort and mobility feedback plus observed garment behavior",
+        "Compare physical observations to numerical predictions"
+      ],
+      "current_status": "NOT_RUN"
+    }
+  ],
+  "required_counterexamples": [
+    {
+      "id": "N_TOTAL_LENGTH_ONLY",
+      "mutation": "Keep total sleeve-cap/armhole length fixed but redistribute front/back length or move notches",
+      "must_detect": "Local seam/notch mismatch; equal totals cannot yield seam-fit approval."
+    },
+    {
+      "id": "N_REVERSED_SLEEVE",
+      "mutation": "Sew front cap to back armhole, exchange left/right or rotate a non-axisymmetric sleeve",
+      "must_detect": "Semantic pairing/orientation error even when counts and total lengths match."
+    },
+    {
+      "id": "N_WRONG_BODY",
+      "mutation": "Move/scale the actual body while preserving garment and old paths/landmarks",
+      "must_detect": "Current body/path/landmark association or body/ease mismatch; source-body roundtrip must not dominate verdict."
+    },
+    {
+      "id": "N_ATLAS_LAYOUT_PHYSICS",
+      "mutation": "Translate/rotate panels in2D atlas without altering edge lengths or co-moving grain basis",
+      "must_detect": "Trajectory change indicates unwanted atlas-coordinate or stitch-rest-length dependence."
+    },
+    {
+      "id": "N_REST_METRIC_ACTIVE",
+      "mutation": "Scale only one sleeve material direction in rest key by0.9, keep initial3D geometry/body/settings fixed",
+      "must_detect": "For edges parallel to the scaled direction, initial stretch ratio changes by1/0.9. For any edge use its exact new length sqrt(0.9^2*parallel_component^2+perpendicular_component^2); do not assign11.11% to diagonals. Actual solver response must differ beyond repeatability noise."
+    },
+    {
+      "id": "N_GRAIN_ROTATION",
+      "mutation": "Rotate grain90degrees with geometry unchanged for a genuinely anisotropic calibrated material",
+      "must_detect": "Material-orientation contract changes; isotropic simulation cannot claim the same physical behavior."
+    },
+    {
+      "id": "N_NONDEVELOPABLE_FLATTEN",
+      "mutation": "Provide a curved panel needing stretch, darts or additional cuts while output2D triangles stay nonoverlapping",
+      "must_detect": "Metric distortion remains visible; zero UV overlap is not manufacturability."
+    },
+    {
+      "id": "N_TOO_TIGHT_OR_TOO_LOOSE",
+      "mutation": "Change upper-arm circumference or garment ease while retaining seam compatibility",
+      "must_detect": "Fail the declared design-specific fit range, or UNKNOWN when no range is specified; no universal tight/loose judgment."
+    },
+    {
+      "id": "N_CAP_DEPENDENT",
+      "mutation": "Use different spanning surfaces over the same nonplanar cuff boundary",
+      "must_detect": "Unstable passage verdict is UNKNOWN, not select-the-passing-cap."
+    }
+  ],
+  "immediately_runnable_minimum": [
+    "Asset object/dependency audits and source-array hash/remapping comparison",
+    "Four-panel coverage, disk topology,2D flip/overlap checks and distortion report",
+    "Segment-wise seam/notch arc-length table with explicit ease assumption",
+    "Per-panel atlas rigid-transform invariance control",
+    "Left-sleeve0.9rest-metric perturbation with same3D initial state and fresh cache",
+    "Re-run strictv2 actual-mesh and body-association checks; retain existing FAIL/UNKNOWN results",
+    "Emit separate numerical-diagnostic, geometric-wearing, functional-fit and physical-fit status fields"
+  ],
+  "sources": [
+    {
+      "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/uv/unwrapping/introduction.html",
+      "publisher": "Blender Manual",
+      "retrieved_version_label": "5.3 at retrieval",
+      "reviewed_scope": "UV coordinates map mesh faces to2D images; workflow includes distortion inspection. This supports the distinction between UV mapping and metric-preserving pattern construction, not any4.3 API guarantee."
+    },
+    {
+      "url": "https://support.clo3d.com/hc/en-us/articles/360041074334-Fabric-Kit-Manual",
+      "publisher": "CLO Support",
+      "reviewed_scope": "Measures weight, thickness, bending and stretch on warp, weft and bias swatches; material-direction and measured-response inputs are required for stronger fitting claims."
+    },
+    {
+      "url": "https://support.clo3d.com/hc/en-us/articles/115012227307-Stress-Map",
+      "publisher": "CLO Support",
+      "reviewed_scope": "In-plane garment stress is not avatar contact pressure; Pressure Map is the relevant separate quantity."
+    }
+  ],
+  "observed_flatten_result": {
+    "source_pattern": "/workspace/work/pattern-unwrap/first/pattern.json",
+    "measurements": {
+      "L": {
+        "source3Dshared_curve_length_mm": 986.9444070271923,
+        "bodice2D_armhole_mm": 1001.1321031423067,
+        "sleeve2D_cap_mm": 977.8613780387329,
+        "introduced_difference_mm": 23.270725103573795,
+        "difference_pct_of_bodice": 2.324441003393331
+      },
+      "R": {
+        "source3Dshared_curve_length_mm": 986.9444070271923,
+        "bodice2D_armhole_mm": 1001.1321031423176,
+        "sleeve2D_cap_mm": 977.8613780387482,
+        "introduced_difference_mm": 23.270725103569475,
+        "difference_pct_of_bodice": 2.3244410033928746
+      }
+    },
+    "interpretation": "Same source3D shared curve is flattened independently in bodice and sleeve. Difference is an introduced metric mismatch, not declared designer easing. Neither length equality nor mismatch establishes fit."
+  },
+  "body_section_proxy_contract": {
+    "inputs": "A-pose actual body and garment meshes; planes normal to evaluated upper-arm bone axis at declared offsets such as0.12m and0.22m from shoulder bone point. Offsets define an experiment, not anatomy.",
+    "requirements": [
+      "Intersection curves must be assembled from actual triangle-plane intersections with explicit contact/coplanarity tolerance",
+      "Report all loops and open polylines; do not close an open section artificially",
+      "Use simple closed loops containing the projected bone-axis point; centroid-nearest alone is insufficient",
+      "Multiple qualifying loops, branch points, tangency or missing enclosure produce UNKNOWN",
+      "Require the selected actual body section to lie inside the selected garment loop before reporting a positive clearance",
+      "Minimum unsigned boundary distance alone is not clearance; disjoint body and garment can be far apart",
+      "Record section area, perimeter, complete contour coordinates, containment, signed separation convention, frame and source hashes",
+      "Do not equate sleeve-cap arc length with biceps circumference; these are geometrically and anatomically different quantities"
+    ],
+    "claims_allowed": "Local geometric section proxy at the tested pose, with measured numerical separation only.",
+    "claims_disallowed": "Anatomical armhole ground truth, complete shoulder/axilla clearance, comfort, or full-motion fit."
+  }
+}

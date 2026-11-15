@@ -1,0 +1,192 @@
+{
+  "agent": "roundtrip_independent_verifier",
+  "status": "COMPLETE",
+  "source": "experiments/pattern_roundtrip/verify_pattern.py",
+  "source_sha256": "fd1fa5628fadf0d7c038cbe57742720f96a661d585bb95300b605a6babf076c0",
+  "command": "python3 experiments/pattern_roundtrip/verify_pattern.py --pattern /workspace/work/pattern-unwrap/first/pattern.json --source-topology experiments/oneshot_motion/evidence/topology.json --source-frame /workspace/work/pattern-unwrap/frame-0001.npz --out /workspace/work/pattern-roundtrip-verify/final.json --negative-controls",
+  "exit_code": 2,
+  "exit_meaning": "Expected conditional seam incompatibility of the actual flattened source under zero-ease reversible-transfer diagnostic; execution succeeded.",
+  "report": "/workspace/work/pattern-roundtrip-verify/final.json",
+  "report_sha256": "b01ffb275629aecaafbe30ce2bab8dde82c70cac2c655650fd539dde566111e9",
+  "analytic_tests": 6,
+  "positive_invariance_controls": {
+    "cases": [
+      {
+        "case": "rigid_atlas_rotation_translation",
+        "passed": true,
+        "maximum_seam_metric_change_mm": 2.2737367544323206e-13,
+        "same_failure_codes_as_baseline": true,
+        "baseline_conditional_verdict": "FAIL",
+        "transformed_conditional_verdict": "FAIL"
+      },
+      {
+        "case": "uniform_chart_reflection",
+        "passed": true,
+        "maximum_seam_metric_change_mm": 0.0,
+        "same_failure_codes_as_baseline": true,
+        "baseline_conditional_verdict": "FAIL",
+        "transformed_conditional_verdict": "FAIL"
+      }
+    ],
+    "all_invariants_passed": true,
+    "meaning": "Whole-chart reflection changes orientation convention, not flattening validity; source roles and boundary correspondences remain fixed."
+  },
+  "negative_controls_count": 9,
+  "negative_controls_all_specific_injected_effects_detected": true,
+  "baseline": {
+    "PATTERN_TRANSFER_PASS": true,
+    "FLAT_PANEL_VALIDITY_PASS": true,
+    "SEAM_COMPATIBILITY_PASS": false,
+    "SEAM_COMPATIBILITY_DECISION": "CONDITIONAL_FAIL_UNDER_DECLARED_OR_ZERO_EASE_TARGET",
+    "MANUFACTURING_COMPATIBILITY": "UNDETERMINED_EASE_AND_FABRIC",
+    "source_face_count": 3392,
+    "covered_source_faces": 3392,
+    "cut_edge_side_count": 264,
+    "open_boundary_edge_count": 176
+  },
+  "panel_metrics": {
+    "front": {
+      "valid_metric_triangles": 1056,
+      "invalid_metric_triangles": 0,
+      "area_2d_m2": 0.3960297231594859,
+      "area_3d_m2": 0.39609504129125517,
+      "area_ratio_2d_to_source_3d": 0.9998350948005905,
+      "principal_stretch_min": 0.9157328543190026,
+      "principal_stretch_max": 1.0537337555844637,
+      "absolute_principal_strain_p95_pct": 2.320249175875216,
+      "absolute_principal_strain_max_pct": 8.426714568099737,
+      "edge_relative_error_p95_pct": 1.2611496843875802,
+      "edge_relative_error_max_pct": 8.040315112452268,
+      "meaning": "2D paper to source3D metric change; no calibrated allowable fabric strain or physical-fit claim."
+    },
+    "back": {
+      "valid_metric_triangles": 1056,
+      "invalid_metric_triangles": 0,
+      "area_2d_m2": 0.39602972315948554,
+      "area_3d_m2": 0.39609504129125517,
+      "area_ratio_2d_to_source_3d": 0.9998350948005895,
+      "principal_stretch_min": 0.915732854319085,
+      "principal_stretch_max": 1.053733755584472,
+      "absolute_principal_strain_p95_pct": 2.320249175875544,
+      "absolute_principal_strain_max_pct": 8.426714568091498,
+      "edge_relative_error_p95_pct": 1.261149684387655,
+      "edge_relative_error_max_pct": 8.040315112444452,
+      "meaning": "2D paper to source3D metric change; no calibrated allowable fabric strain or physical-fit claim."
+    },
+    "left_sleeve": {
+      "valid_metric_triangles": 640,
+      "invalid_metric_triangles": 0,
+      "area_2d_m2": 0.17023069605110497,
+      "area_3d_m2": 0.17024630502562918,
+      "area_ratio_2d_to_source_3d": 0.9999083153404013,
+      "principal_stretch_min": 0.9778795868530754,
+      "principal_stretch_max": 1.052727508170337,
+      "absolute_principal_strain_p95_pct": 2.212122189652049,
+      "absolute_principal_strain_max_pct": 5.272750817033689,
+      "edge_relative_error_p95_pct": 1.3687101263969337,
+      "edge_relative_error_max_pct": 4.650789984681481,
+      "meaning": "2D paper to source3D metric change; no calibrated allowable fabric strain or physical-fit claim."
+    },
+    "right_sleeve": {
+      "valid_metric_triangles": 640,
+      "invalid_metric_triangles": 0,
+      "area_2d_m2": 0.17023069605110808,
+      "area_3d_m2": 0.1702463050256292,
+      "area_ratio_2d_to_source_3d": 0.9999083153404194,
+      "principal_stretch_min": 0.9778795868530648,
+      "principal_stretch_max": 1.0527275081703602,
+      "absolute_principal_strain_p95_pct": 2.2121221896530674,
+      "absolute_principal_strain_max_pct": 5.27275081703602,
+      "edge_relative_error_p95_pct": 1.368710126395379,
+      "edge_relative_error_max_pct": 4.650789984677239,
+      "meaning": "2D paper to source3D metric change; no calibrated allowable fabric strain or physical-fit claim."
+    }
+  },
+  "source_face_barycentric_roundtrip_max_m": 2.5341311739065124e-15,
+  "armholes": {
+    "L": {
+      "bodice_armhole_2d_mm": 1001.1321031423067,
+      "sleeve_cap_2d_mm": 977.8613780387329,
+      "bodice_minus_cap_mm": 23.270725103573866,
+      "segments": [
+        {
+          "id": "armhole_L_back",
+          "a_length_mm": 500.85657493389755,
+          "b_length_mm": 488.8524708717228,
+          "total_difference_mm": 12.00410406217478,
+          "max_segment_difference_mm": 2.4548160112917716,
+          "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC"
+        },
+        {
+          "id": "armhole_L_front",
+          "a_length_mm": 500.2755282084091,
+          "b_length_mm": 489.0089071670101,
+          "total_difference_mm": 11.266621041399084,
+          "max_segment_difference_mm": 2.144813246206634,
+          "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC"
+        }
+      ]
+    },
+    "R": {
+      "bodice_armhole_2d_mm": 1001.1321031423176,
+      "sleeve_cap_2d_mm": 977.8613780387482,
+      "bodice_minus_cap_mm": 23.27072510356948,
+      "segments": [
+        {
+          "id": "armhole_R_back",
+          "a_length_mm": 500.27552820841015,
+          "b_length_mm": 489.0089071670223,
+          "total_difference_mm": 11.26662104138787,
+          "max_segment_difference_mm": 2.144813246206776,
+          "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC"
+        },
+        {
+          "id": "armhole_R_front",
+          "a_length_mm": 500.85657493390755,
+          "b_length_mm": 488.8524708717259,
+          "total_difference_mm": 12.004104062181609,
+          "max_segment_difference_mm": 2.454816011294093,
+          "ease_assumption": "ZERO_ONLY_FOR_REVERSIBLE_TRANSFER_DIAGNOSTIC"
+        }
+      ]
+    }
+  },
+  "strongest_counterexample": {
+    "case": "local_balance_changed_but_total_arclength_preserved",
+    "rejected": true,
+    "expected_failure_codes": [
+      "SEAM_LOCAL_LENGTH"
+    ],
+    "observed_failure_codes": [
+      "SEAM_LOCAL_LENGTH",
+      "SEAM_TOTAL_LENGTH"
+    ],
+    "new_failure_codes_vs_baseline": [],
+    "injected_effect_witness": {
+      "injected_effect_detected": true,
+      "total_sleeve_chain_length_change_mm": 0.0,
+      "baseline_local_mismatch_mm": 2.4548160112917716,
+      "modified_local_mismatch_mm": 27.884167563459204,
+      "local_mismatch_increase_mm": 25.429351552167432,
+      "meaning": "The complete seam arclength is unchanged; local matched-edge lengths changed."
+    },
+    "expected_failure_detected": true,
+    "summary": {
+      "PATTERN_TRANSFER_PASS": true,
+      "FLAT_PANEL_VALIDITY_PASS": true,
+      "SEAM_COMPATIBILITY_PASS": false
+    }
+  },
+  "important_limits": [
+    "The existing source has no intended armhole ease declaration. The zero-ease threshold only diagnoses reversibility of the transfer; a general sleeve need not have equal seam lengths.",
+    "The negative-control baseline already FAILs seam lengths. We require new failure codes or quantified changes, never rejection alone.",
+    "Current notches are source-topology registration markers, not anatomically measured front/back balance points.",
+    "Grainline is a mapped construction proposal, not measured warp/weft or fabric calibration.",
+    "A global chart reflection is valid and must not be mislabeled as a local fold; both positive/negative uniform orientation are accepted.",
+    "Shared-vertex and shared-edge2D triangle pairs are retained when they have positive overlap area; legitimate edge/point contact is not overlap.",
+    "Face+barycentric coordinate roundtrip is bookkeeping identity; it is not2D physical sewing or evidence of fit.",
+    "L/R source-label control checks provenance, not proof that geometrically symmetric physical sleeves cannot interchange.",
+    "2D->3D principal strain max8.4267% differs from reciprocal3D->2D9.202% because mapping direction differs; neither is a calibrated fabric limit.",
+    "TWO_D_SEW_SIM,THREE_D_WEARING,PHYSICAL_FIT areNOT_RUN in this verifier. Main run may provide separate evidence."
+  ]
+}

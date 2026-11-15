@@ -1,0 +1,22 @@
+{
+  "declared_before_comparing_simulation_outputs": true,
+  "time_utc": "2026-11-15T12:40:34.038110+00:00",
+  "cases": [
+    "baseline",
+    "atlas_rigid",
+    "left_sleeve_90"
+  ],
+  "same_initial3D_max_delta_m": 1e-07,
+  "atlas_structural_rest_length_max_delta_m": 1e-06,
+  "atlas_trajectory_max_delta_m": 0.001,
+  "threshold_scope": "Provisional deterministic-solver invariance diagnostic, not fabric/fit tolerance",
+  "left_grain_probe_expected_stretch_ratio_factor": 1.1111111111111112,
+  "grain_probe_factor_tolerance": 1e-05,
+  "response_isolation": "Report perturbed-vs-baseline max vertex displacement and its ratio to atlas-control displacement; require at least5x control drift and>1mm to claim clearly isolated response.",
+  "fail_or_unknown_allowed": true,
+  "never_claim": [
+    "flat2D sewing executed",
+    "material calibrated",
+    "armholewellfit fromshapechangealone"
+  ]
+}

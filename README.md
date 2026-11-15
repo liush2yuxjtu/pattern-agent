@@ -48,6 +48,12 @@ are retained separately from the analytic rectangular controls.
 
 ## Verification and history
 
+The [one-shot pattern roundtrip](experiments/pattern_roundtrip/README.md) separates
+the human/cloth into pure standalone files, unwraps4 actual2D panels and challenges
+armhole fit independently. Representation checks pass, each armhole/cap has a
+23.27mm transfer mismatch, and the forward solver fails atlas invariance. Real
+fit remains UNKNOWN; the source patterns have no seam allowance.
+
 Follow `AGENTS.md` and `.agents/skills/verify/SKILL.md` before committing.
 Runtime recipes and observations are recorded under `docs/verification/`.
 No generic GitHub Actions verification workflow is used.

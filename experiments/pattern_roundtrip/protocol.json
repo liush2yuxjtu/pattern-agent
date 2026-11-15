@@ -1,0 +1,29 @@
+{
+  "declared_before_unwrap_results": true,
+  "time_utc": "2026-11-15T12:30:28.967354+00:00",
+  "source": "Frozen single-file one-shot motion generators, unstrained rest1782vertices3392triangles",
+  "asset_split": "human mesh+rig in human.blend, garment-only rest mesh in cloth.blend; independent reload",
+  "pattern_pieces": [
+    "front",
+    "back",
+    "left_sleeve",
+    "right_sleeve"
+  ],
+  "interpretation": "Two parts means separate human and clothing assets; clothing needs four seam-cut disk panels for unfolding.",
+  "planned_gates": [
+    "one-to-one source face coverage and closed cut-edge inventory",
+    "metric flattening distortion/flip/overlap audit",
+    "explicit sleeve-cap/armhole local ordered correspondences and grain proposal",
+    "2D rest-metric-driven drape diagnostic with original3D only initial placement",
+    "independent adversarial review; material/landmarks remain uncalibrated"
+  ],
+  "known_loop_hazard": "Restoring source3D coordinates proves indexing only; cannot prove manufacturing or fit.",
+  "fit_scope": "No calibrated human landmarks, measuredwarp/weftfabriccurve or humantryon; PHYSICAL_FIT_NOT_RUN",
+  "static_seam_criteria": "Provisional engineering compatibility only: total mismatch<=max(2mm,0.5%pairlength); local segment<=max(1mm,2%length). Zero designed ease is declared assumption, not general shirt requirement.",
+  "forbidden_claims": [
+    "equal total seam lengths proves fit",
+    "unwrapping UV equals manufacturing pattern",
+    "original3D roundtrip proves2Dsewing",
+    "no collision proves comfort"
+  ]
+}

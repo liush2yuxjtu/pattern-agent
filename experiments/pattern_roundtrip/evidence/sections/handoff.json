@@ -1,0 +1,20 @@
+{
+  "source": "/workspace/work/pattern-agent-publish/experiments/pattern_roundtrip/section_proxies.py",
+  "source_sha256": "3f9971093a73aba66b2dfd9f2a2539a576e33d22c806e3315eeae475c59fafda",
+  "source_frozen": true,
+  "command": "python3 experiments/pattern_roundtrip/section_proxies.py --pair /workspace/work/pattern-roundtrip/separated/source-pair.npz --out /workspace/work/armhole-fit-challenge/section-final",
+  "exit_code": 0,
+  "analytic_tests": 10,
+  "figures_inspected": [
+    "baseline.png",
+    "negative-stale-paths.png"
+  ],
+  "negative_control": {
+    "all_four_body_associations_and_enclosures_rejected": true,
+    "at_least_one_positive_unsigned_distance_exists": true,
+    "passed": true,
+    "explanation": "A positive unsigned gap between separated curves cannot establish wearing or fit."
+  },
+  "fit_verdict": "UNKNOWN",
+  "results": "/workspace/work/armhole-fit-challenge/section-final/section-proxies.json"
+}
