@@ -1,0 +1,62 @@
+{
+  "claim": "The published full-arm experiment has runnable tests and a functioning public CLI with real generated and independently reloaded geometry.",
+  "candidate_base_commit": "e4b0727a6cf733c5bb754ef004e1af1a7f23275f",
+  "project_verifier": ".agents/skills/verify/SKILL.md",
+  "checks": [
+    {
+      "cwd": "experiments/full_arm",
+      "command": "python3 -m unittest discover -s verification -p test_pipeline_gate.py -v",
+      "tests": 8,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "cwd": "experiments/full_arm",
+      "command": "blender -b -t 1 --python-exit-code 2 --python verification/test_geometry.py",
+      "tests": 16,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "cwd": "experiments/full_arm",
+      "command": "python3 run_pipeline.py --out runs/publication-smoke --frames 3",
+      "saved_frames": 3,
+      "real_negative_controls": 7,
+      "independent_portable_reload": true,
+      "exit": 0,
+      "verdict": "PASS"
+    }
+  ],
+  "edge_probe": "Missing or duplicate frames, a middle-frame failure and deliberately invalid meshes are rejected by the preserved executable tests.",
+  "publication_runtime_verdict": "PASS",
+  "full_motion_cloth_verdict": "FAIL",
+  "limits": [
+    "The smoke covers only the initial3-frame prefix",
+    "No real human dimensions or material calibration",
+    "No actual donning or flat-pattern sewing sequence",
+    "Physical fit NOT_RUN"
+  ],
+  "cleanup": "No background service; generated smoke outputs are ignored by Git. No PR, Issue or generic Actions workflow created.",
+  "runtime_observation": {
+    "execution_complete": true,
+    "expected_frames": 3,
+    "observed_frames": 3,
+    "ARM_ENTRY_PASS": true,
+    "CLOTH_SIM_PASS": true,
+    "physical_fit_status": "NOT_RUN"
+  },
+  "candidate_sources": {
+    "experiments/full_arm/run_pipeline.py": "500e44cd25aff47499b1093bcc9c85b8cd4f1b34bad39af1bbea6303b8f283d3",
+    "experiments/full_arm/simulation/full_arm_scene.py": "627c49bfdd4467b5980223dbf82968c34b8129a00260a617cbfd978919a0c5df",
+    "experiments/full_arm/simulation/full_arm_scene_v2.py": "3ea7dab0af997ff05ddc779d9c40585879c6b6e65e286e28e275c6ec671b6eb0",
+    "experiments/full_arm/simulation/replay_and_render.py": "3aaf2fd8d446a24c2f7afb464e3ff22fe599613d2eca3094f60d5e61a06324c6",
+    "experiments/full_arm/verification/frame_report.py": "52d174b9dc0d975ba07d7ee2fb7beaf4acb7a85145903f5126ca3cdfa150f278",
+    "experiments/full_arm/verification/geometry.py": "2638cd4771c5c418d9ee55e3c707e96aeb2d1562731ceb8376102741208546c6",
+    "experiments/full_arm/verification/merge_chunks.py": "f704121bfa99864609c32498c590cac02fcb2d007a520e382a5d18f283de34f1",
+    "experiments/full_arm/verification/motion_diagnostic.py": "cd96e7b149a4f0d9ed69bbccce14ba35a171260c764b35e65c8f46d55e8aa3d5",
+    "experiments/full_arm/verification/raised_diagnostic.py": "e6e3d8e4b2bc29c586235c65f40f183d8b7dec066ebbc60f40a10bdab78b1376",
+    "experiments/full_arm/verification/test_geometry.py": "7b0abbca383d415a4a551ffc5d91c893b57182c944facd3984766bb83bcb68d9",
+    "experiments/full_arm/verification/test_pipeline_gate.py": "14bbb4ad66857d1c3c28b9b2e05f4a2d0c48e2a6783ad76de06b8118ceb73743",
+    "experiments/full_arm/verification/verify_replay.py": "22e24389f952eebbc2070f777c1726b6a3baf2182d4c1e89bab57ca004297cc0"
+  }
+}
