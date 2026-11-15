@@ -3,7 +3,7 @@
 Static verification calibration is executed. Garment release remains **NO_GO**;
 cloth quality and physical fit are not approved.
 
-1. Require independent SAT/self-overlap and current body/path association gates.
+1. Require v2 SAT/self-overlap and current body/path association gates.
    Zero from the frozen BVH checker cannot establish safety. Retain the frozen
    legacy source and false-positive fixtures for regression comparisons.
 2. For general avatars, derive internal sample ranges from evaluated skeletal
@@ -12,9 +12,10 @@ cloth quality and physical fit are not approved.
 3. Validate cap planarity, simple boundaries and sleeve embeddedness before using
    cap fans/winding as a physical passage. The rectangle oracle is limited to
    this analytic static control.
-4. Before claiming corrected full-motion verification, run the stronger method
-   on every frame and add temporal swept checks. Six independent checkpoints
-   do not certify all241 saved frames or solver substeps.
+4. V2 has audited every old saved frame:161 fail, peak595. V1's earlier six-frame
+   agreement is historical and incomplete because it also excluded incident
+   pairs. Saved frames still do not certify solver substeps; add temporal swept
+   checks before claiming continuous collision freedom.
 5. Repair the synthetic garment's observed folds without relaxing thresholds.
    Restore the original paper-pattern archive separately; its implementation
    and original assets are still absent from this repository.

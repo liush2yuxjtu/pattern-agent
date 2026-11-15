@@ -15,7 +15,7 @@ import sys
 import numpy as np
 
 from control_io import pair, read_obj
-import independent_oracle as oracle
+import independent_oracle_v2 as oracle
 
 HERE=Path(__file__).resolve().parent
 

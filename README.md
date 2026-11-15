@@ -33,11 +33,18 @@ includes a standalone full-body model and T-shirt, independent geometry code,
 input fixtures and results. Four positive controls pass; eight invalid cases
 are rejected by the independent static gate.
 
-**Both problems are real:** six old-frame audits confirm garment self-crossings;
+**Both problems are real:** the strict v2 audit of all241 old frames confirms161
+frames with garment self-crossings and a595-pair peak. Earlier v1 evidence is
+historical and incomplete because v1 also excluded shared-vertex pairs.
 new controls expose false approvals for a displaced body with stale paths and
-54 coplanar overlaps omitted by the legacy Blender BVH. A clean static mesh does
+64 coplanar overlaps omitted by the legacy Blender BVH. A clean static mesh does
 not establish cloth simulation or physical fit. Download the two files in
 [`experiments/oneshot_control/assets/`](experiments/oneshot_control/assets/).
+
+The exact recovered single-file dynamic generators and a newly executed121-frame
+reproduction are in [`experiments/oneshot_motion`](experiments/oneshot_motion/).
+Its portable model/cloth files, all saved meshes and independent reload evidence
+are retained separately from the analytic rectangular controls.
 
 ## Verification and history
 

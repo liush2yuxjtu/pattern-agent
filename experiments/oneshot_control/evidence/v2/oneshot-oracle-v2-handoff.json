@@ -1,0 +1,171 @@
+{
+  "status": "COMPLETE targeted v2 implementation and audit; not a claim of general verifier completeness",
+  "v1_status": "Frozen historical v1 is INCOMPLETE: its blanket shared-vertex exclusion encoded a false negative. Source/tests/receipts preserved unchanged.",
+  "v1_source_sha256": "04425c5fffa46b824909f8eb634d92cfe700c2566acb4b017b927ae96ea960e2",
+  "v2_source": "experiments/oneshot_control/independent_oracle_v2.py",
+  "v2_source_sha256": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+  "versioned_change": "Remove the same-mesh shares_vertex candidate filter; retain strict geometric contact predicate unchanged. Replace invalid exclusion regression and add valid point/edge contact and folded-edge overlap controls.",
+  "independence": "NumPy/SciPy SAT+cKDTree+solid-angle implementation; no legacy geometry, BVHTree, mathutils, or Blender imports.",
+  "analytic_tests": {
+    "count": 23,
+    "all_passed": true,
+    "executed_before_old_data": true,
+    "receipt": "/workspace/work/oneshot-oracle-v2-all-old-analytic-first.json"
+  },
+  "all_old_frames": {
+    "frame_count": 241,
+    "complete_1_through_241": true,
+    "fail_frames": 161,
+    "first_fail_frame": 66,
+    "sum_v2_garment_self_frame_pairs": 32326,
+    "sum_legacy_garment_self_frame_pairs": 28770,
+    "sum_extra_vs_legacy": 3556,
+    "sum_newly_retained_incident_frame_pairs": 3554,
+    "peak_frame": 146,
+    "peak_self_pairs": 595,
+    "peak_legacy_pairs": 519,
+    "peak_retained_incident_pairs": 76,
+    "body_self_pairs_all_frames": 0,
+    "garment_body_pairs_all_frames": 0,
+    "elapsed_seconds": 178.77963107400137,
+    "receipt": "/workspace/work/oneshot-oracle-v2-all-old.json"
+  },
+  "fresh_control": {
+    "source": "cases/new_pair/arrays.npz",
+    "garment_self_pairs": 0,
+    "body_self_pairs": 0,
+    "garment_body_pairs": 0,
+    "garment_components": 1,
+    "garment_boundary_cycles": 4,
+    "body_closed_outward": true,
+    "false_contact_pairs": 0,
+    "receipt": "/workspace/work/oneshot-oracle-v2-new-pair.json"
+  },
+  "shared_vertex_witness": {
+    "frame": 153,
+    "pair": [
+      2349,
+      2351
+    ],
+    "shared_vertex_ids": [
+      1259
+    ],
+    "intersection_length_mm": 36.494811835651454,
+    "intersection_beyond_common_vertex_mm": 36.49481183565187,
+    "interior_midpoint_strictly_inside_both": true,
+    "v2_detects_pair": true,
+    "receipt": "/workspace/work/oneshot-oracle-v2-shared-vertex-witness.json",
+    "reproducer": "/workspace/work/oneshot-oracle-v2-shared-witness.py"
+  },
+  "residual_diagnosis": {
+    "summary": "3554 added incident pairs plus2 submicrometre numerical-policy differences, not3556 incident pairs. No source/threshold tuning was performed.",
+    "method": "Separate barycentric LP computes exact triangle-plane common-segment endpoints numerically; main separately traced frozen legacy BVH/narrow-phase stages.",
+    "legacy_source_sha256": "2638cd4771c5c418d9ee55e3c707e96aeb2d1562731ceb8376102741208546c6",
+    "cases": [
+      {
+        "frame": 120,
+        "submicrometre_pairs": [
+          {
+            "pair": [
+              2172,
+              2266
+            ],
+            "intersection_length_m": 9.359270399496194e-07,
+            "points": [
+              [
+                0.10077339788815798,
+                0.016989422480036914,
+                1.4917579945586321
+              ],
+              [
+                0.1007733431998743,
+                0.016989858914281206,
+                1.4917588206904413
+              ]
+            ],
+            "reconstruction_errors_m": [
+              4.443195430789018e-16,
+              2.2247786310271853e-16
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 150,
+        "submicrometre_pairs": [
+          {
+            "pair": [
+              3501,
+              3559
+            ],
+            "intersection_length_m": 6.654728569466717e-07,
+            "points": [
+              [
+                -0.21773517605890771,
+                0.05176049647581414,
+                1.579415490169654
+              ],
+              [
+                -0.21773477400997088,
+                0.051760008734501636,
+                1.5794156983022747
+              ]
+            ],
+            "reconstruction_errors_m": [
+              8.900196549101993e-16,
+              5.594315114139762e-17
+            ]
+          }
+        ]
+      }
+    ],
+    "main_authored_legacy_stage_traces": [
+      {
+        "frame": 120,
+        "receipt": "/workspace/work/oneshot-control/residuals/120-trace.json",
+        "sha256": "868c04a1078a67ed959c7ef7c10ff726517c9363415db71b33ad94feb88071a6",
+        "direct_legacy_narrow_false_pairs": [
+          [
+            2172,
+            2266
+          ]
+        ]
+      },
+      {
+        "frame": 150,
+        "receipt": "/workspace/work/oneshot-control/residuals/150-trace.json",
+        "sha256": "41fe1f4763bcaa6456e74e61e3025edbe04c5f3c4db6e1c3597821e8d2c560ab",
+        "direct_legacy_narrow_false_pairs": [
+          [
+            3501,
+            3559
+          ]
+        ]
+      }
+    ],
+    "receipt": "/workspace/work/oneshot-oracle-v2-residual-lp.json"
+  },
+  "conclusions": [
+    "V1 and the legacy checker both missed real intersections extending beyond a shared vertex; adjacency is not a sound reason to exclude a whole pair.",
+    "All241 old frames are recounted with incident pairs retained.161 still fail, but the magnitude was undercounted:3554 additional incident frame-pairs.",
+    "The595 peak is at frame146. Frame153 is588, not595, under the frozen v2 numerical rules.",
+    "Two extra nonincident counts are true geometric slivers shorter than1micrometre: frame120 pair2172/2266 length0.935927\u00b5m and frame150 pair3501/3559 length0.665473\u00b5m. Legacy explicitly excludes segments at/below1\u00b5m; v2 SAT has no identical common-segment-length cutoff. This is a documented tolerance-policy difference, not another claimed legacy defect.",
+    "Fresh rectilinear body/garment remains clean, with legitimate incident contacts producing zero false self counts.",
+    "Implementation independence and targeted analytic controls are evidence, not a formal proof of general completeness."
+  ],
+  "limits": [
+    "Totals sum repeated frame-pairs over time, not globally unique pairs.",
+    "Finite numerical tolerance remains part of each predicate; equal scalar epsilon does not make different geometric cutoffs identical.",
+    "No cloth physics, material calibration, comfort, manufacturing or physical fit is established by this audit.",
+    "Main new121-frame experiment and new strict matrix are separate authored/executed evidence."
+  ],
+  "artifact_sha256": {
+    "oneshot-oracle-v2-analytic.json": "fe3036ba76f2817729353c42ce26ac1f0ce7529e5470993b25e7e8f45f290980",
+    "oneshot-oracle-v2-all-old.json": "164328d55fc141f4cb2aeb3fd7a149b01d1d0c0469777d484ab220d5b2863a3c",
+    "oneshot-oracle-v2-new-pair.json": "b9132a0be0a0c98aa356daeb951e35cb0bfa48c03baf83f35135102197f62969",
+    "oneshot-oracle-v2-shared-vertex-witness.json": "b433d908be159f2186c3b1bfa0fb71e71037e2628b6b9d9f628fa4bdfbe011a2",
+    "oneshot-oracle-v2-shared-witness.py": "986374779e637591b5790bdf6d1ee22a19a86cf7f589cda250478cfcebeabd87",
+    "oneshot-oracle-v2-residual-lp.json": "18fb5f108c45d2707aa5e775577ca7b462c85c5091b052adeb50f9363a6a8329",
+    "oneshot-oracle-v2-old-runner.py": "6a9dd0bb83b3445e92303f22e4cba734f750179bbd94884129fea86e2f2be952"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "candidate_base": "76c3c4c3be568125ccb5c293fc7f756b25dcf474",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "claim": "Strengthen verification with versioned incident-aware v2, publish exact recovered single-file generators and a measured121-frame reproduction. Preserve all quality failures and cap uncertainty.",
+  "source_hashes": {
+    "experiments/oneshot_control/audit_old_sequence.py": "6a9dd0bb83b3445e92303f22e4cba734f750179bbd94884129fea86e2f2be952",
+    "experiments/oneshot_control/certify_overlap.py": "00258c208f0a295a648eaaa2fd91f13c1e6d73c6496d11c1d3684fca99e32a33",
+    "experiments/oneshot_control/certify_shared_vertex.py": "986374779e637591b5790bdf6d1ee22a19a86cf7f589cda250478cfcebeabd87",
+    "experiments/oneshot_control/control_io.py": "eea2df0ce2d93305b74e783aac3132ac7d15ead8b64efd3c5ba4ea1c25ad4843",
+    "experiments/oneshot_control/diagnose_broadphase.py": "99a848b2ceca854b6fca0989ad72d49b874eb361f59e4a4547e450b2c0d77014",
+    "experiments/oneshot_control/generate_cloth.py": "57763b3947a7f53ec40101865acda7ba027b28729c5978a0c34fefefb0061660",
+    "experiments/oneshot_control/generate_model.py": "f26780a86926219f8662f22667713cb13c32a404189098146c93de5a78de71ea",
+    "experiments/oneshot_control/independent_oracle.py": "04425c5fffa46b824909f8eb634d92cfe700c2566acb4b017b927ae96ea960e2",
+    "experiments/oneshot_control/independent_oracle_v2.py": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+    "experiments/oneshot_control/legacy_runner.py": "6f45ba4c5319110cffa70ef35ef60ebf75dfee102055e3b66d2e479173ecbb5a",
+    "experiments/oneshot_control/probe_coplanar.py": "7c2f4985859e45b98cac1758536513e1af8b87a2d6d116af1298769a92abe2f7",
+    "experiments/oneshot_control/reopen_and_render.py": "492dc100adb0a1900f67400d9010ffc995077db08336b475bf3b72dfa619c6bd",
+    "experiments/oneshot_control/run_experiment.py": "b0a05ceaa2af803621da3b5af885fe806cea173237be0f5b6a24b2e9b2387868",
+    "experiments/oneshot_motion/adjudicate.py": "330df34dc39bd9187f5cb6c215aea3b4f417a2a874ae75848a91316b135cfa5e",
+    "experiments/oneshot_motion/inspect_caps.py": "9c9c19c278ed61d76f4aa11a2d61cc53047831eef9684ae54a6bd0b3920d3fae",
+    "experiments/oneshot_motion/one_shot_cloth.py": "9ac6bef0f0840c87ff923f5dc35f332d7a3ebce07457fa75990ebaef7c610b0a",
+    "experiments/oneshot_motion/one_shot_model.py": "66f95f1f9bb157a7de8101eef4b8a53488528cee963b0c580d64555ceb152915",
+    "experiments/oneshot_motion/test_containment.py": "a8d9e60a688e2e79ad840b41029b0152605a7323cd7ed4ea060e8f4dcffba950",
+    "experiments/oneshot_motion/verify_motion.py": "18075c44f89a56965aaca658b615033e1e4c113379a3f6d15181e8ae153aa06c"
+  },
+  "commands": [
+    {
+      "command": "python3 experiments/oneshot_control/run_experiment.py --out /workspace/work/oneshot-control/matrix-v2 --model experiments/oneshot_control/assets/model.obj --cloth experiments/oneshot_control/assets/cloth.obj --original-cloth experiments/oneshot_control/assets/first-export-cloth.obj",
+      "exit": 0,
+      "observation": "23 analytic tests before all11 cases;4 positive accepted,7 invalid rejected byv2; legacy false approval displacedbody/stalepaths retained."
+    },
+    {
+      "command": "python3 experiments/oneshot_control/probe_coplanar.py --matrix /workspace/work/oneshot-control/matrix-v2 --out /workspace/work/oneshot-control/coplanar-v2",
+      "exit": 0,
+      "observation": "Exploratory12th control: v2rejects64 overlaps, legacy bothflagsPASSwith0self. All64 missing fromBVH, directnarrow64true; separateLP64/64confirmed."
+    },
+    {
+      "command": "python3 /workspace/work/oneshot-oracle-v2-old-runner.py --run /workspace/work/pattern-agent/evidence/v2-root-mass-full --source /workspace/work/pattern-agent/experiments/oneshot_control/independent_oracle_v2.py --out /workspace/work/oneshot-oracle-v2-all-old.json",
+      "exit": 0,
+      "observation": "Independentagent executed frozen685fea10...v2 acrossall241frames in178.8seconds:161fail,first66,peak595at146.3554retainedincidentframepairs plus2submicrometrepolicy differences; bodypairs0."
+    },
+    {
+      "command": "blender -b -t 2 --python-exit-code 2 --python experiments/oneshot_motion/one_shot_model.py -- --out /workspace/work/oneshot-motion-reproduction/model",
+      "exit": 0,
+      "observation": "Recoveredsource SHA66f95f1f...152915 unchanged. Actual fullbodyriggedmodel generated."
+    },
+    {
+      "command": "blender -b -t 2 --python-exit-code 2 --python experiments/oneshot_motion/one_shot_cloth.py -- --model /workspace/work/oneshot-motion-reproduction/model/model.blend --out /workspace/work/oneshot-motion-reproduction/cloth",
+      "exit": 0,
+      "observation": "Recoveredsource SHA9ac6bef0...610b0a unchanged. RealBlenderCloth121frames completed, measuredNPZsaved."
+    },
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/full_arm/verification/geometry.py -- --frames /workspace/work/oneshot-motion-reproduction/cloth/frames --topology /workspace/work/oneshot-motion-reproduction/cloth/topology.json --out /workspace/work/oneshot-motion-reproduction/legacy-verification",
+      "exit": 2,
+      "observation": "ExpectedqualityFAIL;38strictfailframes incl35selfcrossingframes and3rightcuff alarms."
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 experiments/oneshot_motion/verify_motion.py --workers 4 --frames /workspace/work/oneshot-motion-reproduction/cloth/frames --legacy-report /workspace/work/oneshot-motion-reproduction/legacy-verification/verification.json --out /workspace/work/oneshot-motion-reproduction/independent-verification.json",
+      "exit": 2,
+      "observation": "ActualpublicCLI all121frames:35selfcrossingframes,peak34pairs; bodyself/cross/insidesamples0.86cleanmeshes are not86wearingPASS."
+    },
+    {
+      "command": "python3 -m unittest discover -s experiments/oneshot_motion -p test_containment.py -v",
+      "exit": 0,
+      "observation": "3known-volume pruning tests PASS; optimizedfirstframe also compared againstfullwinding5,174samples with identicalmask."
+    },
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/oneshot_motion/inspect_caps.py -- --run /workspace/work/oneshot-motion-reproduction/cloth --legacy-report /workspace/work/oneshot-motion-reproduction/legacy-verification/verification.json --out /workspace/work/oneshot-motion-reproduction/cap-diagnostic.json",
+      "exit": 0,
+      "observation": "118,120,121: rightcuff oldforcedaxisfan3hits,cornerfan1,consistentlyorientedsignedsum1,wallcross0. RetainUNKNOWN."
+    },
+    {
+      "command": "python3 experiments/oneshot_motion/adjudicate.py --audit /workspace/work/oneshot-motion-reproduction/independent-verification.json --caps /workspace/work/oneshot-motion-reproduction/cap-diagnostic.json --out /workspace/work/oneshot-motion-reproduction/adjudication.json",
+      "exit": 0,
+      "observation": "83PASS35FAIL3UNKNOWN,overallFAIL,physicalfitNOT_RUN."
+    },
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/full_arm/simulation/replay_and_render.py -- --run /workspace/work/oneshot-motion-reproduction/cloth --out /workspace/work/oneshot-motion-reproduction/replay --stills",
+      "exit": 0,
+      "observation": "Portable121frames,12actualboundary-markedstills generated;0081oblique renderedpixels inspected."
+    },
+    {
+      "command": "blender -b -t 1 --python-exit-code 2 --python experiments/full_arm/verification/verify_replay.py -- --blend /workspace/work/oneshot-motion-reproduction/replay/measured-replay.blend --frames /workspace/work/oneshot-motion-reproduction/cloth/frames --out /workspace/work/oneshot-motion-reproduction/replay/reload-audit.json",
+      "exit": 0,
+      "observation": "Isolatedreload121/121 completecloth/bodyvertexarraysandtriangleconnectivitymatch,max1.49e-8m;0externalgeometrydependencies."
+    }
+  ],
+  "result": {
+    "verification_calibration": "PASS for declared targeted controls, not general completeness",
+    "garment_quality": "FAIL",
+    "physical_fit": "NOT_RUN",
+    "original_paper_pattern_archive": "NOT_RECOVERED"
+  },
+  "provenance_limits": [
+    "Recovered generator source bytes verified; output here is a fresh reproduction, not a download of the previous121-frame archive.",
+    "Frozen v1 retained as historical/incomplete; currentv2 supersedes it.",
+    "Old report stores counts and limitedexamples, not allfulllegacypairsets.",
+    "Savedframes only, nocontinuous-time certificate.",
+    "MainPage and another experimentPage were concurrently updated; unrelatedsourcecontentpreserved."
+  ],
+  "cleanup": "Serial draft audit was stopped after the equivalent conservative pruning optimization; finalcandidatewasexecutedfromframe1with4workers. No running service, paid compute, sharing/access changes or PR/Issue created."
+}

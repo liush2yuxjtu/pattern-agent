@@ -1,0 +1,416 @@
+{
+  "schema_version": 1,
+  "implementation": "independent_oracle_numpy_scipy_sat_v2_retained_incident_pairs",
+  "source_sha256": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+  "analytic_tests": {
+    "test_count": 23,
+    "all_passed": true,
+    "tests": [
+      {
+        "name": "parallel_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_crossing",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_point_contact_with_plane_straddling",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_positive_area",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "coplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_point_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "sub_epsilon_parallel_gap",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "in_plane_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_noncoplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_coplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_disjoint_negative",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_vertex_crossing_beyond_common_point_detected",
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_fold_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_edge_positive_area_fold_detected",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "closed_cube_connectivity_orientation_volume",
+        "passed": true
+      },
+      {
+        "name": "open_square_tube_two_boundary_cycles",
+        "passed": true
+      },
+      {
+        "name": "independent_solid_angle_interior_exterior",
+        "passed": true
+      },
+      {
+        "name": "claimed_path_outside_armless_cube_rejected",
+        "passed": true
+      },
+      {
+        "name": "intersection_invariant_to_face_winding",
+        "passed": true
+      }
+    ],
+    "epsilon_m": 1e-06,
+    "phase": "analytic_before_legacy_comparison"
+  },
+  "control_audit": {
+    "source_file": "arrays.npz",
+    "source_sha256": "b46bac85b7cfb3640827c5adf91df8fd9fbc77afc0e9ddebb8fa7600d7195522",
+    "garment_mesh": {
+      "vertex_count": 1308,
+      "used_vertex_count": 1308,
+      "orphan_vertices": 0,
+      "triangle_count": 2500,
+      "edge_count": 3810,
+      "connected_components": 1,
+      "boundary_edges": 120,
+      "boundary_components": 4,
+      "boundary_cycles": 4,
+      "boundary_branch_vertices": 0,
+      "nonmanifold_edges": 0,
+      "winding_conflicts": 0,
+      "degenerate_triangles": 0,
+      "duplicate_faces": 0,
+      "euler_characteristic": -2,
+      "closed_oriented_edge_manifold": false,
+      "component_signed_volumes_m3": [
+        0.13936533333333284
+      ],
+      "outward_closed_components": false,
+      "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+    },
+    "body_mesh": {
+      "vertex_count": 2934,
+      "used_vertex_count": 2934,
+      "orphan_vertices": 0,
+      "triangle_count": 5864,
+      "edge_count": 8796,
+      "connected_components": 1,
+      "boundary_edges": 0,
+      "boundary_components": 0,
+      "boundary_cycles": 0,
+      "boundary_branch_vertices": 0,
+      "nonmanifold_edges": 0,
+      "winding_conflicts": 0,
+      "degenerate_triangles": 0,
+      "duplicate_faces": 0,
+      "euler_characteristic": 2,
+      "closed_oriented_edge_manifold": true,
+      "component_signed_volumes_m3": [
+        0.0943173999999998
+      ],
+      "outward_closed_components": true,
+      "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+    },
+    "garment_self_pairs": [],
+    "body_self_pairs": [],
+    "garment_body_pairs": [],
+    "path_body_correspondence": {
+      "claimed_internal_path_L": {
+        "points": [
+          [
+            0.12000000000000001,
+            0.0,
+            1.42
+          ],
+          [
+            0.235,
+            0.0,
+            1.42
+          ],
+          [
+            0.385,
+            0.0,
+            1.42
+          ],
+          [
+            0.5349999999999999,
+            0.0,
+            1.42
+          ],
+          [
+            0.6799999999999999,
+            0.0,
+            1.42
+          ],
+          [
+            0.8,
+            0.0,
+            1.42
+          ]
+        ],
+        "winding_numbers": [
+          1.0000000000000002,
+          1.0000000000000002,
+          1.0,
+          0.9999999999999997,
+          1.0000000000000002,
+          1.0000000000000002
+        ],
+        "inside": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "all_inside": true
+      },
+      "path_L": {
+        "points": [
+          [
+            0.07,
+            0.0,
+            1.42
+          ],
+          [
+            0.17,
+            0.0,
+            1.42
+          ],
+          [
+            0.3,
+            0.0,
+            1.42
+          ],
+          [
+            0.47,
+            0.0,
+            1.42
+          ],
+          [
+            0.6,
+            0.0,
+            1.42
+          ],
+          [
+            0.76,
+            0.0,
+            1.42
+          ],
+          [
+            0.84,
+            0.0,
+            1.42
+          ]
+        ],
+        "winding_numbers": [
+          1.0000000000000002,
+          1.0,
+          1.0000000000000002,
+          1.0000000000000002,
+          1.0,
+          1.0000000000000002,
+          0.49999999999999994
+        ],
+        "inside": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "all_inside": false
+      },
+      "claimed_internal_path_R": {
+        "points": [
+          [
+            -0.12000000000000001,
+            0.0,
+            1.42
+          ],
+          [
+            -0.235,
+            0.0,
+            1.42
+          ],
+          [
+            -0.385,
+            0.0,
+            1.42
+          ],
+          [
+            -0.5349999999999999,
+            0.0,
+            1.42
+          ],
+          [
+            -0.6799999999999999,
+            0.0,
+            1.42
+          ],
+          [
+            -0.8,
+            0.0,
+            1.42
+          ]
+        ],
+        "winding_numbers": [
+          1.0000000000000002,
+          1.0000000000000002,
+          1.0000000000000002,
+          1.0,
+          1.0000000000000002,
+          1.0
+        ],
+        "inside": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "all_inside": true
+      },
+      "path_R": {
+        "points": [
+          [
+            -0.07,
+            0.0,
+            1.42
+          ],
+          [
+            -0.17,
+            0.0,
+            1.42
+          ],
+          [
+            -0.3,
+            0.0,
+            1.42
+          ],
+          [
+            -0.47,
+            0.0,
+            1.42
+          ],
+          [
+            -0.6,
+            0.0,
+            1.42
+          ],
+          [
+            -0.76,
+            0.0,
+            1.42
+          ],
+          [
+            -0.84,
+            0.0,
+            1.42
+          ]
+        ],
+        "winding_numbers": [
+          1.0,
+          1.0,
+          1.0000000000000002,
+          0.9999999999999999,
+          1.0,
+          1.0000000000000002,
+          1.0000000000000002
+        ],
+        "inside": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "all_inside": true
+      }
+    },
+    "limits": [
+      "Static geometry only; no cloth simulation or physical fit is established.",
+      "Require only explicitly claimed internal skeletal samples inside body; arbitrary path extensions can be outside."
+    ]
+  }
+}

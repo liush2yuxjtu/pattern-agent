@@ -1,5 +1,10 @@
 # One-shot assets and verifier calibration
 
+**Current method: v2, with incident triangle pairs retained.** The original v1
+oracle and its18-test/six-frame receipts are historical and incomplete: v1 shared
+the legacy method's blanket shared-vertex exclusion. V2 passes23 analytic probes
+and has now audited all241 old frames. See `evidence/v2/` for current results.
+
 **Both the old garment and the verification method have problems.** Independently
 checking six saved old frames confirms real garment self-intersections. New
 controls expose two false approvals by the frozen legacy checker: an absent body
@@ -35,7 +40,7 @@ Observed prerequisites: Python3.12, NumPy2.3.5, SciPy1.17.0, Blender4.3.2 on PAT
 From this directory, use fresh output directories:
 
 ```sh
-python3 independent_oracle.py --self-test --out runs/analytic.json
+python3 independent_oracle_v2.py --self-test --out runs/analytic.json
 python3 run_experiment.py --out runs/controls
 python3 probe_coplanar.py --matrix runs/controls --out runs/coplanar
 blender -b -t 1 --python-exit-code 2 --python diagnose_broadphase.py -- \
@@ -54,9 +59,9 @@ Add `--model assets/model.obj --cloth assets/cloth.obj` to reuse delivered asset
 
 ## Independent method and measured cases
 
-The oracle uses NumPy/SciPy cKDTree bounding spheres/AABBs, triangle SAT, separate
+The v2 oracle uses NumPy/SciPy cKDTree bounding spheres/AABBs, triangle SAT, separate
 coplanar area construction, topology and signed solid angles. It imports no
-legacy code, Blender, mathutils or BVHTree. Eighteen analytic tests ran before
+legacy code, Blender, mathutils or BVHTree. Twenty-three analytic tests ran before
 the old-data comparisons. This is implementation independence, not formal proof.
 
 For the rectangular sleeve, a separate analytic route oracle intersects the
@@ -77,9 +82,9 @@ self-overlaps, cloth/body crossings and sampled containment must also pass.
 | Path stops before cuff | FAIL / FAIL | FAIL |
 | Body displaced2m, stale paths retained | **PASS / PASS** | **FAIL** |
 | Sleeve roof pushed through lower wall | PASS / FAIL,6 self pairs | FAIL,6 self pairs |
-| Front cloth pushed into body | PASS / FAIL,336 body pairs | FAIL,336 body pairs and581 coplanar self pairs |
+| Front cloth pushed into body | PASS / FAIL,336 body pairs | FAIL,336 body pairs; additional self-overlaps |
 | Original incorrect sleeve labels | FAIL / FAIL | FAIL |
-| Coplanar roof fold, added diagnostic | **PASS / PASS**,0 self pairs | **FAIL**,54 overlapping pairs |
+| Coplanar roof fold, added diagnostic | **PASS / PASS**,0 self pairs | **FAIL**,64 overlapping pairs |
 
 The first ten cases were specified in `protocol.json` before generation. The
 annotation receipt preserves an actual export mistake. The final case was added
@@ -97,13 +102,29 @@ cannot by itself support the stronger claim that the actual body wears the shirt
 
 **Coplanar overlaps:** moving one roof vertex from `(0.39,0.105,1.53)` to
 `(0.39,-0.105,1.53)` folds cloth over cloth above the arm. The independent oracle
-finds54 nonadjacent positive-area overlapping pairs. All54 are absent from the
-legacy BVH candidate list, although direct legacy narrow-phase calls accept
-all54. Passing a narrow-phase unit test did not establish the integrated detector.
+finds64 positive-area overlapping pairs, including10 incident pairs omitted by
+v1's policy. All64 are absent from the legacy BVH candidate list, although direct
+legacy narrow-phase calls accept all64. Passing a narrow-phase unit test did not
+establish the integrated detector.
 Independent interior-point/barycentric witnesses confirm real overlap, well above
 tolerance-scale contact; receipts and a witness reproducer are included.
 
-## What this says about the old garment
+## Full old-cloth audit with v2
+
+All241 saved frames were audited:161 contain self-intersections, with the first
+at66 and a peak of595 pairs at146. Retaining incident pairs finds3,554 genuine
+shared-vertex intersections previously excluded. A separate LP witness confirms
+one intersection extends36.4948mm beyond its shared vertex. Two further count
+differences are submicrometre segments counted under the SAT policy but ignored
+by the legacy1µm common-segment cutoff; they are documented separately and are
+not described as additional large penetrations. Body/self and cloth/body pair
+counts remain0 in all241 frames. The geometry remains FAIL.
+
+V2 detects crossings beyond a shared point/edge and ignores legitimate contact
+using geometry, rather than dropping a pair merely because indices overlap.
+V1's earlier table below is retained as a versioned result, not the final count.
+
+## Historical v1 six-checkpoint result
 
 | Saved old frame | Old self-pair count | Independent count |
 | --- | --- | --- |
@@ -118,16 +139,30 @@ Cloth/body and body self-pair counts are0 in these six independent audits.
 Every saved legacy example pair is in the independent set. The old report stores
 at most20 examples per frame: this is count/example agreement, not complete
 legacy pair-set equality. A full241-frame independent SAT audit has not been run.
-The sampled failures already establish genuine cloth defects.
+The sampled failures already established genuine cloth defects. V2's complete
+audit above supersedes v1 as the current result.
 
 ```sh
 python3 independent_oracle.py --old-run evidence/old-fixtures --out runs/old-audit.json
 ```
 
+Reproduce the complete current audit from the delivered synthetic inputs:
+
+```sh
+unzip evidence/v2/old-241-inputs.zip -d runs/old-inputs
+python3 audit_old_sequence.py --run runs/old-inputs --source independent_oracle_v2.py --out runs/old-v2.json
+python3 certify_shared_vertex.py --npz runs/old-inputs/frames/frame-0153.npz --pair 2349 2351 --out runs/shared-witness.json
+```
+
+`MANIFEST-v1.sha256.json` belongs to the frozen v1 publication at commit76c3c4c.
+`MANIFEST.sha256.json` describes this current checkout. V1 and v2 receipts remain
+separate so their different adjacency/contact policies can be compared honestly.
+
 Inputs, hashes, receipts and actual Blender renders are under `evidence/`.
 Each .blend was reopened: one mesh, no linked libraries/external assets, matching
 OBJ coordinates within0.00006mm. The cutaway is labeled as a diagnostic view.
 
-Old full-motion Cloth FAIL remains. No new dynamic cloth simulation, actual
-donning, calibrated material validation or human fit test is claimed.
+Old full-motion Cloth FAIL remains. This static package itself runs no cloth
+simulation. Recovered exact generator sources and a new121-frame dynamic
+reproduction are in `../oneshot_motion`; they do not approve physical fit.
 See [`HANDOFF.md`](HANDOFF.md) for the next engineering steps.

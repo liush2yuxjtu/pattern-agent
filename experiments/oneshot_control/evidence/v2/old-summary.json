@@ -1,0 +1,2334 @@
+{
+  "implementation": "independent_oracle_v2_retained_incident_pairs",
+  "source_sha256": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+  "analytic_tests": {
+    "test_count": 23,
+    "all_passed": true,
+    "tests": [
+      {
+        "name": "parallel_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_crossing",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_point_contact_with_plane_straddling",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_positive_area",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "coplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_point_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "sub_epsilon_parallel_gap",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "in_plane_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_noncoplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_coplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_disjoint_negative",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_vertex_crossing_beyond_common_point_detected",
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_fold_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_edge_positive_area_fold_detected",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "closed_cube_connectivity_orientation_volume",
+        "passed": true
+      },
+      {
+        "name": "open_square_tube_two_boundary_cycles",
+        "passed": true
+      },
+      {
+        "name": "independent_solid_angle_interior_exterior",
+        "passed": true
+      },
+      {
+        "name": "claimed_path_outside_armless_cube_rejected",
+        "passed": true
+      },
+      {
+        "name": "intersection_invariant_to_face_winding",
+        "passed": true
+      }
+    ],
+    "epsilon_m": 1e-06,
+    "phase": "analytic_before_legacy_comparison"
+  },
+  "complete_241_frames": true,
+  "frame_count": 241,
+  "garment_self_fail_frames": 161,
+  "triangle_gate_fail_frames": 161,
+  "first_fail_frame": 66,
+  "sum_garment_self_pairs": 32326,
+  "sum_legacy_self_pairs": 28770,
+  "sum_extra_pairs": 3556,
+  "sum_incident_pairs": 3554,
+  "nonincident_count_disagreement_frames": [
+    120,
+    150
+  ],
+  "peak_frame": 146,
+  "peak_garment_self_count": 595,
+  "peak_legacy_self_count": 519,
+  "peak_incident_count": 76,
+  "sum_garment_body_pairs": 0,
+  "sum_body_self_pairs": 0,
+  "elapsed_seconds": 178.77963107400137,
+  "limits": [
+    "Independent triangle intersection audit only; no physics or physical-fit claim.",
+    "Pair totals sum repeated frame-pairs across time, not globally unique pairs.",
+    "Frozen v1 and legacy receipts are historical and incomplete under the retained-incident-pair definition."
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 2,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 3,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 4,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 5,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 6,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 7,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 8,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 9,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 10,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 11,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 12,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 13,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 14,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 15,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 16,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 17,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 18,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 19,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 20,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 21,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 22,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 23,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 24,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 25,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 26,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 27,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 28,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 29,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 30,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 31,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 32,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 33,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 34,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 35,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 36,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 37,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 38,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 39,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 40,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 41,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 42,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 43,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 44,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 45,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 46,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 47,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 48,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 49,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 50,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 51,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 52,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 53,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 54,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 55,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 56,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 57,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 58,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 59,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 60,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 61,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 62,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 63,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 64,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 65,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 66,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 67,
+      "garment_self_count": 3,
+      "incident_self_count": 2,
+      "legacy_self_count": 1,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 68,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 69,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 70,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 71,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 72,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 73,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 74,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 75,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 76,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 77,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 78,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 79,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 80,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 81,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 82,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 83,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 84,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 85,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 86,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 87,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 88,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 89,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 90,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 91,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 92,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 93,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 94,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 95,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 96,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 97,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 98,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 99,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 100,
+      "garment_self_count": 16,
+      "incident_self_count": 8,
+      "legacy_self_count": 8,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 101,
+      "garment_self_count": 11,
+      "incident_self_count": 6,
+      "legacy_self_count": 5,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 102,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 103,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 104,
+      "garment_self_count": 21,
+      "incident_self_count": 10,
+      "legacy_self_count": 11,
+      "delta_from_legacy": 10,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 105,
+      "garment_self_count": 20,
+      "incident_self_count": 10,
+      "legacy_self_count": 10,
+      "delta_from_legacy": 10,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 106,
+      "garment_self_count": 16,
+      "incident_self_count": 8,
+      "legacy_self_count": 8,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 107,
+      "garment_self_count": 16,
+      "incident_self_count": 6,
+      "legacy_self_count": 10,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 108,
+      "garment_self_count": 16,
+      "incident_self_count": 8,
+      "legacy_self_count": 8,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 109,
+      "garment_self_count": 25,
+      "incident_self_count": 10,
+      "legacy_self_count": 15,
+      "delta_from_legacy": 10,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 110,
+      "garment_self_count": 21,
+      "incident_self_count": 8,
+      "legacy_self_count": 13,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 111,
+      "garment_self_count": 16,
+      "incident_self_count": 8,
+      "legacy_self_count": 8,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 112,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 113,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 114,
+      "garment_self_count": 12,
+      "incident_self_count": 6,
+      "legacy_self_count": 6,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 115,
+      "garment_self_count": 20,
+      "incident_self_count": 8,
+      "legacy_self_count": 12,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 116,
+      "garment_self_count": 16,
+      "incident_self_count": 8,
+      "legacy_self_count": 8,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 117,
+      "garment_self_count": 27,
+      "incident_self_count": 12,
+      "legacy_self_count": 15,
+      "delta_from_legacy": 12,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 118,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 119,
+      "garment_self_count": 0,
+      "incident_self_count": 0,
+      "legacy_self_count": 0,
+      "delta_from_legacy": 0,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 120,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 1,
+      "delta_from_legacy": 3,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 121,
+      "garment_self_count": 6,
+      "incident_self_count": 4,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 122,
+      "garment_self_count": 20,
+      "incident_self_count": 10,
+      "legacy_self_count": 10,
+      "delta_from_legacy": 10,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 123,
+      "garment_self_count": 41,
+      "incident_self_count": 10,
+      "legacy_self_count": 31,
+      "delta_from_legacy": 10,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 124,
+      "garment_self_count": 17,
+      "incident_self_count": 6,
+      "legacy_self_count": 11,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 125,
+      "garment_self_count": 20,
+      "incident_self_count": 8,
+      "legacy_self_count": 12,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 126,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 127,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 128,
+      "garment_self_count": 15,
+      "incident_self_count": 6,
+      "legacy_self_count": 9,
+      "delta_from_legacy": 6,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 129,
+      "garment_self_count": 4,
+      "incident_self_count": 2,
+      "legacy_self_count": 2,
+      "delta_from_legacy": 2,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 130,
+      "garment_self_count": 8,
+      "incident_self_count": 4,
+      "legacy_self_count": 4,
+      "delta_from_legacy": 4,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 131,
+      "garment_self_count": 23,
+      "incident_self_count": 8,
+      "legacy_self_count": 15,
+      "delta_from_legacy": 8,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 132,
+      "garment_self_count": 26,
+      "incident_self_count": 10,
+      "legacy_self_count": 16,
+      "delta_from_legacy": 10,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 133,
+      "garment_self_count": 27,
+      "incident_self_count": 16,
+      "legacy_self_count": 11,
+      "delta_from_legacy": 16,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 134,
+      "garment_self_count": 35,
+      "incident_self_count": 22,
+      "legacy_self_count": 13,
+      "delta_from_legacy": 22,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 135,
+      "garment_self_count": 92,
+      "incident_self_count": 26,
+      "legacy_self_count": 66,
+      "delta_from_legacy": 26,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 136,
+      "garment_self_count": 118,
+      "incident_self_count": 30,
+      "legacy_self_count": 88,
+      "delta_from_legacy": 30,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 137,
+      "garment_self_count": 144,
+      "incident_self_count": 38,
+      "legacy_self_count": 106,
+      "delta_from_legacy": 38,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 138,
+      "garment_self_count": 181,
+      "incident_self_count": 44,
+      "legacy_self_count": 137,
+      "delta_from_legacy": 44,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 139,
+      "garment_self_count": 202,
+      "incident_self_count": 37,
+      "legacy_self_count": 165,
+      "delta_from_legacy": 37,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 140,
+      "garment_self_count": 246,
+      "incident_self_count": 48,
+      "legacy_self_count": 198,
+      "delta_from_legacy": 48,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 141,
+      "garment_self_count": 353,
+      "incident_self_count": 55,
+      "legacy_self_count": 298,
+      "delta_from_legacy": 55,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 142,
+      "garment_self_count": 471,
+      "incident_self_count": 53,
+      "legacy_self_count": 418,
+      "delta_from_legacy": 53,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 143,
+      "garment_self_count": 591,
+      "incident_self_count": 61,
+      "legacy_self_count": 530,
+      "delta_from_legacy": 61,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 144,
+      "garment_self_count": 505,
+      "incident_self_count": 40,
+      "legacy_self_count": 465,
+      "delta_from_legacy": 40,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 145,
+      "garment_self_count": 537,
+      "incident_self_count": 50,
+      "legacy_self_count": 487,
+      "delta_from_legacy": 50,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 146,
+      "garment_self_count": 595,
+      "incident_self_count": 76,
+      "legacy_self_count": 519,
+      "delta_from_legacy": 76,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 147,
+      "garment_self_count": 522,
+      "incident_self_count": 63,
+      "legacy_self_count": 459,
+      "delta_from_legacy": 63,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 148,
+      "garment_self_count": 485,
+      "incident_self_count": 54,
+      "legacy_self_count": 431,
+      "delta_from_legacy": 54,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 149,
+      "garment_self_count": 585,
+      "incident_self_count": 59,
+      "legacy_self_count": 526,
+      "delta_from_legacy": 59,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 150,
+      "garment_self_count": 553,
+      "incident_self_count": 47,
+      "legacy_self_count": 505,
+      "delta_from_legacy": 48,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 151,
+      "garment_self_count": 575,
+      "incident_self_count": 63,
+      "legacy_self_count": 512,
+      "delta_from_legacy": 63,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 152,
+      "garment_self_count": 535,
+      "incident_self_count": 53,
+      "legacy_self_count": 482,
+      "delta_from_legacy": 53,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 153,
+      "garment_self_count": 588,
+      "incident_self_count": 53,
+      "legacy_self_count": 535,
+      "delta_from_legacy": 53,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 154,
+      "garment_self_count": 449,
+      "incident_self_count": 35,
+      "legacy_self_count": 414,
+      "delta_from_legacy": 35,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 155,
+      "garment_self_count": 472,
+      "incident_self_count": 44,
+      "legacy_self_count": 428,
+      "delta_from_legacy": 44,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 156,
+      "garment_self_count": 403,
+      "incident_self_count": 33,
+      "legacy_self_count": 370,
+      "delta_from_legacy": 33,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 157,
+      "garment_self_count": 440,
+      "incident_self_count": 39,
+      "legacy_self_count": 401,
+      "delta_from_legacy": 39,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 158,
+      "garment_self_count": 424,
+      "incident_self_count": 37,
+      "legacy_self_count": 387,
+      "delta_from_legacy": 37,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 159,
+      "garment_self_count": 423,
+      "incident_self_count": 39,
+      "legacy_self_count": 384,
+      "delta_from_legacy": 39,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 160,
+      "garment_self_count": 428,
+      "incident_self_count": 29,
+      "legacy_self_count": 399,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 161,
+      "garment_self_count": 430,
+      "incident_self_count": 31,
+      "legacy_self_count": 399,
+      "delta_from_legacy": 31,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 162,
+      "garment_self_count": 454,
+      "incident_self_count": 37,
+      "legacy_self_count": 417,
+      "delta_from_legacy": 37,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 163,
+      "garment_self_count": 391,
+      "incident_self_count": 29,
+      "legacy_self_count": 362,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 164,
+      "garment_self_count": 370,
+      "incident_self_count": 35,
+      "legacy_self_count": 335,
+      "delta_from_legacy": 35,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 165,
+      "garment_self_count": 373,
+      "incident_self_count": 34,
+      "legacy_self_count": 339,
+      "delta_from_legacy": 34,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 166,
+      "garment_self_count": 370,
+      "incident_self_count": 30,
+      "legacy_self_count": 340,
+      "delta_from_legacy": 30,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 167,
+      "garment_self_count": 359,
+      "incident_self_count": 36,
+      "legacy_self_count": 323,
+      "delta_from_legacy": 36,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 168,
+      "garment_self_count": 352,
+      "incident_self_count": 34,
+      "legacy_self_count": 318,
+      "delta_from_legacy": 34,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 169,
+      "garment_self_count": 340,
+      "incident_self_count": 30,
+      "legacy_self_count": 310,
+      "delta_from_legacy": 30,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 170,
+      "garment_self_count": 341,
+      "incident_self_count": 30,
+      "legacy_self_count": 311,
+      "delta_from_legacy": 30,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 171,
+      "garment_self_count": 329,
+      "incident_self_count": 31,
+      "legacy_self_count": 298,
+      "delta_from_legacy": 31,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 172,
+      "garment_self_count": 317,
+      "incident_self_count": 29,
+      "legacy_self_count": 288,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 173,
+      "garment_self_count": 312,
+      "incident_self_count": 27,
+      "legacy_self_count": 285,
+      "delta_from_legacy": 27,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 174,
+      "garment_self_count": 283,
+      "incident_self_count": 21,
+      "legacy_self_count": 262,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 175,
+      "garment_self_count": 279,
+      "incident_self_count": 21,
+      "legacy_self_count": 258,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 176,
+      "garment_self_count": 276,
+      "incident_self_count": 23,
+      "legacy_self_count": 253,
+      "delta_from_legacy": 23,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 177,
+      "garment_self_count": 269,
+      "incident_self_count": 19,
+      "legacy_self_count": 250,
+      "delta_from_legacy": 19,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 178,
+      "garment_self_count": 285,
+      "incident_self_count": 27,
+      "legacy_self_count": 258,
+      "delta_from_legacy": 27,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 179,
+      "garment_self_count": 269,
+      "incident_self_count": 21,
+      "legacy_self_count": 248,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 180,
+      "garment_self_count": 273,
+      "incident_self_count": 23,
+      "legacy_self_count": 250,
+      "delta_from_legacy": 23,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 181,
+      "garment_self_count": 272,
+      "incident_self_count": 25,
+      "legacy_self_count": 247,
+      "delta_from_legacy": 25,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 182,
+      "garment_self_count": 272,
+      "incident_self_count": 27,
+      "legacy_self_count": 245,
+      "delta_from_legacy": 27,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 183,
+      "garment_self_count": 277,
+      "incident_self_count": 29,
+      "legacy_self_count": 248,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 184,
+      "garment_self_count": 281,
+      "incident_self_count": 31,
+      "legacy_self_count": 250,
+      "delta_from_legacy": 31,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 185,
+      "garment_self_count": 285,
+      "incident_self_count": 35,
+      "legacy_self_count": 250,
+      "delta_from_legacy": 35,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 186,
+      "garment_self_count": 281,
+      "incident_self_count": 33,
+      "legacy_self_count": 248,
+      "delta_from_legacy": 33,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 187,
+      "garment_self_count": 284,
+      "incident_self_count": 32,
+      "legacy_self_count": 252,
+      "delta_from_legacy": 32,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 188,
+      "garment_self_count": 275,
+      "incident_self_count": 30,
+      "legacy_self_count": 245,
+      "delta_from_legacy": 30,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 189,
+      "garment_self_count": 275,
+      "incident_self_count": 29,
+      "legacy_self_count": 246,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 190,
+      "garment_self_count": 272,
+      "incident_self_count": 27,
+      "legacy_self_count": 245,
+      "delta_from_legacy": 27,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 191,
+      "garment_self_count": 291,
+      "incident_self_count": 29,
+      "legacy_self_count": 262,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 192,
+      "garment_self_count": 273,
+      "incident_self_count": 25,
+      "legacy_self_count": 248,
+      "delta_from_legacy": 25,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 193,
+      "garment_self_count": 274,
+      "incident_self_count": 35,
+      "legacy_self_count": 239,
+      "delta_from_legacy": 35,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 194,
+      "garment_self_count": 277,
+      "incident_self_count": 29,
+      "legacy_self_count": 248,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 195,
+      "garment_self_count": 282,
+      "incident_self_count": 29,
+      "legacy_self_count": 253,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 196,
+      "garment_self_count": 301,
+      "incident_self_count": 38,
+      "legacy_self_count": 263,
+      "delta_from_legacy": 38,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 197,
+      "garment_self_count": 258,
+      "incident_self_count": 26,
+      "legacy_self_count": 232,
+      "delta_from_legacy": 26,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 198,
+      "garment_self_count": 266,
+      "incident_self_count": 32,
+      "legacy_self_count": 234,
+      "delta_from_legacy": 32,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 199,
+      "garment_self_count": 250,
+      "incident_self_count": 22,
+      "legacy_self_count": 228,
+      "delta_from_legacy": 22,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 200,
+      "garment_self_count": 254,
+      "incident_self_count": 26,
+      "legacy_self_count": 228,
+      "delta_from_legacy": 26,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 201,
+      "garment_self_count": 238,
+      "incident_self_count": 28,
+      "legacy_self_count": 210,
+      "delta_from_legacy": 28,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 202,
+      "garment_self_count": 217,
+      "incident_self_count": 17,
+      "legacy_self_count": 200,
+      "delta_from_legacy": 17,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 203,
+      "garment_self_count": 218,
+      "incident_self_count": 17,
+      "legacy_self_count": 201,
+      "delta_from_legacy": 17,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 204,
+      "garment_self_count": 229,
+      "incident_self_count": 19,
+      "legacy_self_count": 210,
+      "delta_from_legacy": 19,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 205,
+      "garment_self_count": 234,
+      "incident_self_count": 19,
+      "legacy_self_count": 215,
+      "delta_from_legacy": 19,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 206,
+      "garment_self_count": 234,
+      "incident_self_count": 21,
+      "legacy_self_count": 213,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 207,
+      "garment_self_count": 235,
+      "incident_self_count": 19,
+      "legacy_self_count": 216,
+      "delta_from_legacy": 19,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 208,
+      "garment_self_count": 224,
+      "incident_self_count": 19,
+      "legacy_self_count": 205,
+      "delta_from_legacy": 19,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 209,
+      "garment_self_count": 222,
+      "incident_self_count": 21,
+      "legacy_self_count": 201,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 210,
+      "garment_self_count": 230,
+      "incident_self_count": 21,
+      "legacy_self_count": 209,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 211,
+      "garment_self_count": 207,
+      "incident_self_count": 17,
+      "legacy_self_count": 190,
+      "delta_from_legacy": 17,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 212,
+      "garment_self_count": 201,
+      "incident_self_count": 17,
+      "legacy_self_count": 184,
+      "delta_from_legacy": 17,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 213,
+      "garment_self_count": 217,
+      "incident_self_count": 21,
+      "legacy_self_count": 196,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 214,
+      "garment_self_count": 219,
+      "incident_self_count": 27,
+      "legacy_self_count": 192,
+      "delta_from_legacy": 27,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 215,
+      "garment_self_count": 218,
+      "incident_self_count": 27,
+      "legacy_self_count": 191,
+      "delta_from_legacy": 27,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 216,
+      "garment_self_count": 221,
+      "incident_self_count": 25,
+      "legacy_self_count": 196,
+      "delta_from_legacy": 25,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 217,
+      "garment_self_count": 215,
+      "incident_self_count": 25,
+      "legacy_self_count": 190,
+      "delta_from_legacy": 25,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 218,
+      "garment_self_count": 217,
+      "incident_self_count": 25,
+      "legacy_self_count": 192,
+      "delta_from_legacy": 25,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 219,
+      "garment_self_count": 216,
+      "incident_self_count": 29,
+      "legacy_self_count": 187,
+      "delta_from_legacy": 29,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 220,
+      "garment_self_count": 205,
+      "incident_self_count": 25,
+      "legacy_self_count": 180,
+      "delta_from_legacy": 25,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 221,
+      "garment_self_count": 190,
+      "incident_self_count": 21,
+      "legacy_self_count": 169,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 222,
+      "garment_self_count": 195,
+      "incident_self_count": 21,
+      "legacy_self_count": 174,
+      "delta_from_legacy": 21,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 223,
+      "garment_self_count": 195,
+      "incident_self_count": 23,
+      "legacy_self_count": 172,
+      "delta_from_legacy": 23,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 224,
+      "garment_self_count": 203,
+      "incident_self_count": 25,
+      "legacy_self_count": 178,
+      "delta_from_legacy": 25,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 225,
+      "garment_self_count": 205,
+      "incident_self_count": 24,
+      "legacy_self_count": 181,
+      "delta_from_legacy": 24,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 226,
+      "garment_self_count": 203,
+      "incident_self_count": 20,
+      "legacy_self_count": 183,
+      "delta_from_legacy": 20,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 227,
+      "garment_self_count": 202,
+      "incident_self_count": 20,
+      "legacy_self_count": 182,
+      "delta_from_legacy": 20,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 228,
+      "garment_self_count": 195,
+      "incident_self_count": 20,
+      "legacy_self_count": 175,
+      "delta_from_legacy": 20,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 229,
+      "garment_self_count": 189,
+      "incident_self_count": 20,
+      "legacy_self_count": 169,
+      "delta_from_legacy": 20,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 230,
+      "garment_self_count": 192,
+      "incident_self_count": 22,
+      "legacy_self_count": 170,
+      "delta_from_legacy": 22,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 231,
+      "garment_self_count": 198,
+      "incident_self_count": 22,
+      "legacy_self_count": 176,
+      "delta_from_legacy": 22,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 232,
+      "garment_self_count": 191,
+      "incident_self_count": 16,
+      "legacy_self_count": 175,
+      "delta_from_legacy": 16,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 233,
+      "garment_self_count": 199,
+      "incident_self_count": 22,
+      "legacy_self_count": 177,
+      "delta_from_legacy": 22,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 234,
+      "garment_self_count": 190,
+      "incident_self_count": 20,
+      "legacy_self_count": 170,
+      "delta_from_legacy": 20,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 235,
+      "garment_self_count": 202,
+      "incident_self_count": 22,
+      "legacy_self_count": 180,
+      "delta_from_legacy": 22,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 236,
+      "garment_self_count": 192,
+      "incident_self_count": 18,
+      "legacy_self_count": 174,
+      "delta_from_legacy": 18,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 237,
+      "garment_self_count": 193,
+      "incident_self_count": 18,
+      "legacy_self_count": 175,
+      "delta_from_legacy": 18,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 238,
+      "garment_self_count": 200,
+      "incident_self_count": 18,
+      "legacy_self_count": 182,
+      "delta_from_legacy": 18,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 239,
+      "garment_self_count": 199,
+      "incident_self_count": 16,
+      "legacy_self_count": 183,
+      "delta_from_legacy": 16,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 240,
+      "garment_self_count": 185,
+      "incident_self_count": 16,
+      "legacy_self_count": 169,
+      "delta_from_legacy": 16,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    },
+    {
+      "frame": 241,
+      "garment_self_count": 192,
+      "incident_self_count": 18,
+      "legacy_self_count": 174,
+      "delta_from_legacy": 18,
+      "garment_body_count": 0,
+      "body_self_count": 0
+    }
+  ]
+}

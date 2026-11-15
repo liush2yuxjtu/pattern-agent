@@ -1,0 +1,125 @@
+{
+  "oracle_source_sha256": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+  "input_sha256": "3ef8d4628dd63b82a866175082bf34f941805f8be568aec2ae774c8241334358",
+  "pair": [
+    2349,
+    2351
+  ],
+  "vertex_indices": [
+    [
+      1210,
+      1259,
+      1258
+    ],
+    [
+      1211,
+      1212,
+      1259
+    ]
+  ],
+  "triangles_m": [
+    [
+      [
+        0.12269467115402222,
+        0.046924859285354614,
+        1.4698143005371094
+      ],
+      [
+        0.08756116032600403,
+        0.022664692252874374,
+        1.5070282220840454
+      ],
+      [
+        0.07969434559345245,
+        0.015884261578321457,
+        1.5057635307312012
+      ]
+    ],
+    [
+      [
+        0.11924102157354355,
+        0.050168074667453766,
+        1.4637928009033203
+      ],
+      [
+        0.097444549202919,
+        0.021782461553812027,
+        1.5067294836044312
+      ],
+      [
+        0.08756116032600403,
+        0.022664692252874374,
+        1.5070282220840454
+      ]
+    ]
+  ],
+  "shared_vertex_ids": [
+    1259
+  ],
+  "shared_vertex_positions_m": [
+    [
+      0.08756116032600403,
+      0.022664692252874374,
+      1.5070282220840454
+    ]
+  ],
+  "independent_v2_detects_local_incident_pair": true,
+  "intersection_segment_endpoints": [
+    {
+      "point": [
+        0.10979447633955007,
+        0.03786580970855886,
+        1.4824014687848401
+      ],
+      "barycentric_a": [
+        0.6579485027280066,
+        0.2298428256130343,
+        0.11220867165895912
+      ],
+      "barycentric_b": [
+        0.5666021054524056,
+        0.4333978945475945,
+        0.0
+      ],
+      "reconstruction_error_m": 0.0
+    },
+    {
+      "point": [
+        0.08756116032600399,
+        0.022664692252874364,
+        1.5070282220840447
+      ],
+      "barycentric_a": [
+        0.0,
+        0.9999999999999996,
+        -0.0
+      ],
+      "barycentric_b": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "reconstruction_error_m": 6.675147411826494e-16
+    }
+  ],
+  "intersection_segment_length_mm": 36.494811835651454,
+  "maximum_distance_beyond_shared_vertex_mm": 36.49481183565187,
+  "interior_midpoint_m": [
+    0.09867781833277703,
+    0.030265250980716613,
+    1.4947148454344426
+  ],
+  "midpoint_barycentric_a": [
+    0.3289742513640033,
+    0.6149214128065169,
+    0.05610433582947956
+  ],
+  "midpoint_barycentric_b": [
+    0.2833010527262028,
+    0.21669894727379724,
+    0.5
+  ],
+  "midpoint_strictly_inside_both": true,
+  "method": "LP equality of independent barycentric combinations, optimized in both directions along triangle-plane intersection line.",
+  "limits": "Numerical corroboration of a shared-vertex crossing, not formal proof or cloth physics."
+}

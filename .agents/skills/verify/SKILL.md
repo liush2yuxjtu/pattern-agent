@@ -277,3 +277,35 @@ logs, inputs, source hashes and exact candidate in `docs/verification/`.
 Static calibration PASS is distinct from garment release: old Cloth FAIL remains;
 no new dynamics or physical fit is claimed. Only six old frames have independent
 SAT count/example audits. No continuous-time collision certificate is established.
+
+## Current strict v2 and recovered dynamic generators
+
+The preceding18-test/v1 recipe is historical and incomplete: v1 also excluded
+shared-vertex pairs. Current `run_experiment.py` imports `independent_oracle_v2`.
+Run23 analytic probes before the11 standard/annotation cases and exploratory
+coplanar case. Current roof count is64, all64 omitted by BVH, all64 accepted by
+the legacy narrow phase and independently certified by LP. Keep old v1 receipts.
+
+From `experiments/oneshot_control`:
+
+```sh
+python3 independent_oracle_v2.py --self-test --out runs/strict-analytic.json
+python3 run_experiment.py --out runs/strict --model assets/model.obj --cloth assets/cloth.obj --original-cloth assets/first-export-cloth.obj
+python3 probe_coplanar.py --matrix runs/strict --out runs/strict-coplanar
+unzip evidence/v2/old-241-inputs.zip -d runs/old-inputs
+python3 audit_old_sequence.py --run runs/old-inputs --source independent_oracle_v2.py --out runs/old-strict.json
+```
+
+Observed full old audit:241 frames,161 self-intersection frames, first66, peak595
+at146;3,554 added incident frame-pairs and2 documented submicrometre cutoff
+differences. No thresholds were changed to match the old result.
+
+For `experiments/oneshot_motion`, follow its README. Execute both recovered source
+generators unchanged, legacy geometry CLI, `verify_motion.py --workers 4`,
+`inspect_caps.py`, and `adjudicate.py` on all121 saved meshes. Run the3 containment
+pruning tests before publication. Geometry FAIL exits2 are expected diagnostic
+outcomes. A cap-sensitive frame must remain UNKNOWN rather than being upgraded.
+Generate portable replay with `../full_arm/simulation/replay_and_render.py`, then
+use `../full_arm/verification/verify_replay.py` on the independently reopened file.
+Require121/121 full-array matches and inspect actual stills. Record candidate,
+source hashes, commands, exit status, findings and cleanup before direct main push.
