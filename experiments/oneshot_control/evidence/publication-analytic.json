@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "implementation": "independent_oracle_numpy_scipy_sat_v1",
+  "source_sha256": "04425c5fffa46b824909f8eb634d92cfe700c2566acb4b017b927ae96ea960e2",
+  "analytic_tests": {
+    "test_count": 18,
+    "all_passed": true,
+    "tests": [
+      {
+        "name": "parallel_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_crossing",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_point_contact_with_plane_straddling",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_positive_area",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "coplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_point_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "sub_epsilon_parallel_gap",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "in_plane_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_noncoplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_coplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_disjoint_negative",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_vertex_exclusion",
+        "passed": true
+      },
+      {
+        "name": "closed_cube_connectivity_orientation_volume",
+        "passed": true
+      },
+      {
+        "name": "open_square_tube_two_boundary_cycles",
+        "passed": true
+      },
+      {
+        "name": "independent_solid_angle_interior_exterior",
+        "passed": true
+      },
+      {
+        "name": "claimed_path_outside_armless_cube_rejected",
+        "passed": true
+      },
+      {
+        "name": "intersection_invariant_to_face_winding",
+        "passed": true
+      }
+    ],
+    "epsilon_m": 1e-06,
+    "phase": "analytic_before_legacy_comparison"
+  }
+}

@@ -28,11 +28,16 @@ Use a fresh output directory to preserve evidence.
 
 ## Controlled verification experiment
 
-The next experiment generates a standalone model and standalone garment without
-the prior garment generator, then compares the frozen verifier against an
-independent geometric oracle and known invalid controls. Results will distinguish
-cloth defects from detector errors and limits of the arm-routing claim. A clean
-static mesh does not establish cloth simulation or real-world fit.
+The completed [one-shot control experiment](experiments/oneshot_control/README.md)
+includes a standalone full-body model and T-shirt, independent geometry code,
+input fixtures and results. Four positive controls pass; eight invalid cases
+are rejected by the independent static gate.
+
+**Both problems are real:** six old-frame audits confirm garment self-crossings;
+new controls expose false approvals for a displaced body with stale paths and
+54 coplanar overlaps omitted by the legacy Blender BVH. A clean static mesh does
+not establish cloth simulation or physical fit. Download the two files in
+[`experiments/oneshot_control/assets/`](experiments/oneshot_control/assets/).
 
 ## Verification and history
 

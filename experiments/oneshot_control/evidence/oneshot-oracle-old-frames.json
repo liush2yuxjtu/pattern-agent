@@ -1,0 +1,5284 @@
+{
+  "schema_version": 1,
+  "implementation": "independent_oracle_numpy_scipy_sat_v1",
+  "source_sha256": "04425c5fffa46b824909f8eb634d92cfe700c2566acb4b017b927ae96ea960e2",
+  "analytic_tests": {
+    "test_count": 18,
+    "all_passed": true,
+    "tests": [
+      {
+        "name": "parallel_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_crossing",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_point_contact_with_plane_straddling",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_positive_area",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "coplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_point_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "sub_epsilon_parallel_gap",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "in_plane_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_noncoplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_coplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_disjoint_negative",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_vertex_exclusion",
+        "passed": true
+      },
+      {
+        "name": "closed_cube_connectivity_orientation_volume",
+        "passed": true
+      },
+      {
+        "name": "open_square_tube_two_boundary_cycles",
+        "passed": true
+      },
+      {
+        "name": "independent_solid_angle_interior_exterior",
+        "passed": true
+      },
+      {
+        "name": "claimed_path_outside_armless_cube_rejected",
+        "passed": true
+      },
+      {
+        "name": "intersection_invariant_to_face_winding",
+        "passed": true
+      }
+    ],
+    "epsilon_m": 1e-06,
+    "phase": "analytic_before_legacy_comparison"
+  },
+  "old_scene_audit": {
+    "frame_count": 6,
+    "frames": [
+      {
+        "frame": 1,
+        "source_npz_sha256": "c68d4b2bd11727b259fa1334bb870bf8d66c3b6a3a2434e57a6d08279e190c60",
+        "garment_mesh": {
+          "vertex_count": 1916,
+          "used_vertex_count": 1916,
+          "orphan_vertices": 0,
+          "triangle_count": 3664,
+          "edge_count": 5582,
+          "connected_components": 1,
+          "boundary_edges": 172,
+          "boundary_components": 4,
+          "boundary_cycles": 4,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": -2,
+          "closed_oriented_edge_manifold": false,
+          "component_signed_volumes_m3": [
+            0.10854636034228218
+          ],
+          "outward_closed_components": false,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "body_mesh": {
+          "vertex_count": 4984,
+          "used_vertex_count": 4984,
+          "orphan_vertices": 0,
+          "triangle_count": 9964,
+          "edge_count": 14946,
+          "connected_components": 1,
+          "boundary_edges": 0,
+          "boundary_components": 0,
+          "boundary_cycles": 0,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": 2,
+          "closed_oriented_edge_manifold": true,
+          "component_signed_volumes_m3": [
+            0.05570663056107578
+          ],
+          "outward_closed_components": true,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "comparisons": {
+          "garment_self": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "garment_body": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "body_self": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          }
+        },
+        "exported_path_membership": {
+          "L": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              0.9999999999999999,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              0.0
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          },
+          "R": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9999999999999999,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              0.9999999999999999,
+              0.9999999999999999,
+              1.0,
+              0.9999999999999999,
+              -6.6261555863823264e-18
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          }
+        },
+        "elapsed_seconds": 0.893224286000077
+      },
+      {
+        "frame": 66,
+        "source_npz_sha256": "0fb9f5581f481c9f8e29492604f1475fc8a5ddd1846b726c798f7d18600abd51",
+        "garment_mesh": {
+          "vertex_count": 1916,
+          "used_vertex_count": 1916,
+          "orphan_vertices": 0,
+          "triangle_count": 3664,
+          "edge_count": 5582,
+          "connected_components": 1,
+          "boundary_edges": 172,
+          "boundary_components": 4,
+          "boundary_cycles": 4,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": -2,
+          "closed_oriented_edge_manifold": false,
+          "component_signed_volumes_m3": [
+            0.08778075999310356
+          ],
+          "outward_closed_components": false,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "body_mesh": {
+          "vertex_count": 4984,
+          "used_vertex_count": 4984,
+          "orphan_vertices": 0,
+          "triangle_count": 9964,
+          "edge_count": 14946,
+          "connected_components": 1,
+          "boundary_edges": 0,
+          "boundary_components": 0,
+          "boundary_cycles": 0,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": 2,
+          "closed_oriented_edge_manifold": true,
+          "component_signed_volumes_m3": [
+            0.05660184884460232
+          ],
+          "outward_closed_components": true,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "comparisons": {
+          "garment_self": {
+            "independent_count": 2,
+            "legacy_count": 2,
+            "count_difference": 0,
+            "pairs": [
+              [
+                2140,
+                2222
+              ],
+              [
+                2140,
+                2225
+              ]
+            ],
+            "saved_legacy_example_count": 2,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "garment_body": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "body_self": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          }
+        },
+        "exported_path_membership": {
+          "L": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              -2.208718528794109e-18
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          },
+          "R": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0000000000000002,
+              0.9999999999999999,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              0.9999999999999999,
+              0.9999999999999999,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              0.9999999999999999,
+              0.9999999999999999,
+              1.0,
+              1.0,
+              0.9999999999999999,
+              -4.417437057588218e-18
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          }
+        },
+        "elapsed_seconds": 0.7983757229994808
+      },
+      {
+        "frame": 81,
+        "source_npz_sha256": "e256a32af357e51522b1951e23452114dbf4ab04191133dc2cfc7af75a988d42",
+        "garment_mesh": {
+          "vertex_count": 1916,
+          "used_vertex_count": 1916,
+          "orphan_vertices": 0,
+          "triangle_count": 3664,
+          "edge_count": 5582,
+          "connected_components": 1,
+          "boundary_edges": 172,
+          "boundary_components": 4,
+          "boundary_cycles": 4,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": -2,
+          "closed_oriented_edge_manifold": false,
+          "component_signed_volumes_m3": [
+            0.08207196409672535
+          ],
+          "outward_closed_components": false,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "body_mesh": {
+          "vertex_count": 4984,
+          "used_vertex_count": 4984,
+          "orphan_vertices": 0,
+          "triangle_count": 9964,
+          "edge_count": 14946,
+          "connected_components": 1,
+          "boundary_edges": 0,
+          "boundary_components": 0,
+          "boundary_cycles": 0,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": 2,
+          "closed_oriented_edge_manifold": true,
+          "component_signed_volumes_m3": [
+            0.05690136671355904
+          ],
+          "outward_closed_components": true,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "comparisons": {
+          "garment_self": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "garment_body": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "body_self": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          }
+        },
+        "exported_path_membership": {
+          "L": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              0.9999999999999999,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              0.9999999999999999,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              -2.208718528794109e-18
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          },
+          "R": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0000000000000002,
+              0.9999999999999999,
+              1.0000000000000002,
+              1.0,
+              0.9999999999999999,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              0.9999999999999999,
+              1.0000000000000002,
+              1.0000000000000002,
+              0.9999999999999999,
+              1.0000000000000002,
+              -2.208718528794109e-18
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          }
+        },
+        "elapsed_seconds": 0.8668476699995153
+      },
+      {
+        "frame": 141,
+        "source_npz_sha256": "757813e9f93c964891abcddd909f4bf266912ef9aadc9f32dbc0bb0b94e1fca3",
+        "garment_mesh": {
+          "vertex_count": 1916,
+          "used_vertex_count": 1916,
+          "orphan_vertices": 0,
+          "triangle_count": 3664,
+          "edge_count": 5582,
+          "connected_components": 1,
+          "boundary_edges": 172,
+          "boundary_components": 4,
+          "boundary_cycles": 4,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": -2,
+          "closed_oriented_edge_manifold": false,
+          "component_signed_volumes_m3": [
+            0.04391964100318945
+          ],
+          "outward_closed_components": false,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "body_mesh": {
+          "vertex_count": 4984,
+          "used_vertex_count": 4984,
+          "orphan_vertices": 0,
+          "triangle_count": 9964,
+          "edge_count": 14946,
+          "connected_components": 1,
+          "boundary_edges": 0,
+          "boundary_components": 0,
+          "boundary_cycles": 0,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": 2,
+          "closed_oriented_edge_manifold": true,
+          "component_signed_volumes_m3": [
+            0.05933931013530743
+          ],
+          "outward_closed_components": true,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "comparisons": {
+          "garment_self": {
+            "independent_count": 298,
+            "legacy_count": 298,
+            "count_difference": 0,
+            "pairs": [
+              [
+                36,
+                133
+              ],
+              [
+                221,
+                222
+              ],
+              [
+                432,
+                711
+              ],
+              [
+                433,
+                711
+              ],
+              [
+                434,
+                614
+              ],
+              [
+                434,
+                615
+              ],
+              [
+                434,
+                617
+              ],
+              [
+                434,
+                710
+              ],
+              [
+                434,
+                712
+              ],
+              [
+                435,
+                710
+              ],
+              [
+                435,
+                711
+              ],
+              [
+                435,
+                712
+              ],
+              [
+                435,
+                714
+              ],
+              [
+                435,
+                715
+              ],
+              [
+                484,
+                857
+              ],
+              [
+                485,
+                857
+              ],
+              [
+                487,
+                857
+              ],
+              [
+                518,
+                612
+              ],
+              [
+                518,
+                613
+              ],
+              [
+                520,
+                708
+              ],
+              [
+                521,
+                613
+              ],
+              [
+                521,
+                708
+              ],
+              [
+                522,
+                709
+              ],
+              [
+                522,
+                804
+              ],
+              [
+                523,
+                708
+              ],
+              [
+                523,
+                709
+              ],
+              [
+                524,
+                805
+              ],
+              [
+                524,
+                900
+              ],
+              [
+                525,
+                804
+              ],
+              [
+                525,
+                805
+              ],
+              [
+                526,
+                804
+              ],
+              [
+                526,
+                807
+              ],
+              [
+                527,
+                804
+              ],
+              [
+                527,
+                805
+              ],
+              [
+                527,
+                807
+              ],
+              [
+                527,
+                900
+              ],
+              [
+                528,
+                711
+              ],
+              [
+                528,
+                806
+              ],
+              [
+                529,
+                804
+              ],
+              [
+                529,
+                806
+              ],
+              [
+                529,
+                807
+              ],
+              [
+                530,
+                714
+              ],
+              [
+                531,
+                714
+              ],
+              [
+                577,
+                1048
+              ],
+              [
+                577,
+                1051
+              ],
+              [
+                577,
+                1146
+              ],
+              [
+                578,
+                1051
+              ],
+              [
+                579,
+                1051
+              ],
+              [
+                579,
+                1146
+              ],
+              [
+                580,
+                857
+              ],
+              [
+                580,
+                952
+              ],
+              [
+                581,
+                952
+              ],
+              [
+                581,
+                953
+              ],
+              [
+                581,
+                1048
+              ],
+              [
+                581,
+                1051
+              ],
+              [
+                582,
+                856
+              ],
+              [
+                582,
+                857
+              ],
+              [
+                582,
+                859
+              ],
+              [
+                585,
+                859
+              ],
+              [
+                626,
+                714
+              ],
+              [
+                626,
+                716
+              ],
+              [
+                626,
+                717
+              ],
+              [
+                626,
+                719
+              ],
+              [
+                627,
+                719
+              ],
+              [
+                664,
+                759
+              ],
+              [
+                665,
+                759
+              ],
+              [
+                666,
+                852
+              ],
+              [
+                666,
+                854
+              ],
+              [
+                666,
+                855
+              ],
+              [
+                667,
+                759
+              ],
+              [
+                667,
+                854
+              ],
+              [
+                668,
+                852
+              ],
+              [
+                668,
+                853
+              ],
+              [
+                668,
+                948
+              ],
+              [
+                669,
+                852
+              ],
+              [
+                670,
+                1048
+              ],
+              [
+                671,
+                948
+              ],
+              [
+                671,
+                950
+              ],
+              [
+                671,
+                951
+              ],
+              [
+                671,
+                953
+              ],
+              [
+                671,
+                1048
+              ],
+              [
+                672,
+                1146
+              ],
+              [
+                674,
+                1146
+              ],
+              [
+                675,
+                1146
+              ],
+              [
+                678,
+                859
+              ],
+              [
+                678,
+                954
+              ],
+              [
+                679,
+                954
+              ],
+              [
+                679,
+                957
+              ],
+              [
+                680,
+                859
+              ],
+              [
+                681,
+                859
+              ],
+              [
+                719,
+                722
+              ],
+              [
+                722,
+                814
+              ],
+              [
+                724,
+                814
+              ],
+              [
+                724,
+                815
+              ],
+              [
+                724,
+                909
+              ],
+              [
+                724,
+                1004
+              ],
+              [
+                725,
+                814
+              ],
+              [
+                725,
+                1004
+              ],
+              [
+                727,
+                815
+              ],
+              [
+                727,
+                908
+              ],
+              [
+                727,
+                909
+              ],
+              [
+                727,
+                910
+              ],
+              [
+                727,
+                911
+              ],
+              [
+                774,
+                957
+              ],
+              [
+                774,
+                1052
+              ],
+              [
+                774,
+                1054
+              ],
+              [
+                774,
+                1055
+              ],
+              [
+                775,
+                1054
+              ],
+              [
+                820,
+                1004
+              ],
+              [
+                820,
+                1007
+              ],
+              [
+                821,
+                1007
+              ],
+              [
+                866,
+                961
+              ],
+              [
+                867,
+                868
+              ],
+              [
+                867,
+                961
+              ],
+              [
+                868,
+                961
+              ],
+              [
+                868,
+                1054
+              ],
+              [
+                869,
+                961
+              ],
+              [
+                870,
+                1054
+              ],
+              [
+                871,
+                1054
+              ],
+              [
+                914,
+                1006
+              ],
+              [
+                914,
+                1007
+              ],
+              [
+                915,
+                1006
+              ],
+              [
+                915,
+                1009
+              ],
+              [
+                916,
+                1007
+              ],
+              [
+                917,
+                1007
+              ],
+              [
+                948,
+                953
+              ],
+              [
+                961,
+                962
+              ],
+              [
+                1009,
+                1010
+              ],
+              [
+                1453,
+                1642
+              ],
+              [
+                1453,
+                1643
+              ],
+              [
+                1453,
+                1738
+              ],
+              [
+                1453,
+                1741
+              ],
+              [
+                1496,
+                1593
+              ],
+              [
+                1499,
+                1593
+              ],
+              [
+                1501,
+                1692
+              ],
+              [
+                1502,
+                1694
+              ],
+              [
+                1503,
+                1694
+              ],
+              [
+                1505,
+                1694
+              ],
+              [
+                1505,
+                1697
+              ],
+              [
+                1548,
+                1642
+              ],
+              [
+                1548,
+                1645
+              ],
+              [
+                1548,
+                1740
+              ],
+              [
+                1548,
+                1741
+              ],
+              [
+                1549,
+                1740
+              ],
+              [
+                1593,
+                1594
+              ],
+              [
+                1600,
+                1697
+              ],
+              [
+                1634,
+                1728
+              ],
+              [
+                1637,
+                1728
+              ],
+              [
+                1637,
+                1731
+              ],
+              [
+                1698,
+                1795
+              ],
+              [
+                1700,
+                1797
+              ],
+              [
+                1712,
+                1809
+              ],
+              [
+                1715,
+                1809
+              ],
+              [
+                1809,
+                1810
+              ],
+              [
+                1810,
+                1868
+              ],
+              [
+                1810,
+                1871
+              ],
+              [
+                1922,
+                1971
+              ],
+              [
+                2069,
+                2115
+              ],
+              [
+                2090,
+                2136
+              ],
+              [
+                2090,
+                2137
+              ],
+              [
+                2090,
+                2220
+              ],
+              [
+                2093,
+                2220
+              ],
+              [
+                2093,
+                2222
+              ],
+              [
+                2093,
+                2223
+              ],
+              [
+                2115,
+                2116
+              ],
+              [
+                2140,
+                2222
+              ],
+              [
+                2140,
+                2223
+              ],
+              [
+                2141,
+                2223
+              ],
+              [
+                2196,
+                2297
+              ],
+              [
+                2202,
+                3114
+              ],
+              [
+                2202,
+                3115
+              ],
+              [
+                2204,
+                2301
+              ],
+              [
+                2204,
+                3114
+              ],
+              [
+                2204,
+                3117
+              ],
+              [
+                2205,
+                3114
+              ],
+              [
+                2206,
+                3117
+              ],
+              [
+                2206,
+                3192
+              ],
+              [
+                2206,
+                3193
+              ],
+              [
+                2207,
+                3117
+              ],
+              [
+                2209,
+                3117
+              ],
+              [
+                2209,
+                3192
+              ],
+              [
+                2223,
+                2224
+              ],
+              [
+                2238,
+                2339
+              ],
+              [
+                2242,
+                2342
+              ],
+              [
+                2242,
+                2343
+              ],
+              [
+                2250,
+                2264
+              ],
+              [
+                2251,
+                2264
+              ],
+              [
+                2253,
+                2262
+              ],
+              [
+                2253,
+                2264
+              ],
+              [
+                2253,
+                2265
+              ],
+              [
+                2262,
+                2348
+              ],
+              [
+                2262,
+                2351
+              ],
+              [
+                2264,
+                2346
+              ],
+              [
+                2264,
+                2348
+              ],
+              [
+                2264,
+                2349
+              ],
+              [
+                2264,
+                2351
+              ],
+              [
+                2265,
+                2351
+              ],
+              [
+                2574,
+                2579
+              ],
+              [
+                2574,
+                2654
+              ],
+              [
+                3091,
+                3092
+              ],
+              [
+                3106,
+                3193
+              ],
+              [
+                3109,
+                3188
+              ],
+              [
+                3109,
+                3190
+              ],
+              [
+                3109,
+                3191
+              ],
+              [
+                3109,
+                3193
+              ],
+              [
+                3184,
+                3188
+              ],
+              [
+                3184,
+                3189
+              ],
+              [
+                3185,
+                3186
+              ],
+              [
+                3185,
+                3189
+              ],
+              [
+                3250,
+                3324
+              ],
+              [
+                3250,
+                3325
+              ],
+              [
+                3250,
+                3327
+              ],
+              [
+                3251,
+                3325
+              ],
+              [
+                3322,
+                3395
+              ],
+              [
+                3323,
+                3395
+              ],
+              [
+                3325,
+                3395
+              ],
+              [
+                3330,
+                3393
+              ],
+              [
+                3331,
+                3392
+              ],
+              [
+                3331,
+                3393
+              ],
+              [
+                3331,
+                3395
+              ],
+              [
+                3331,
+                3470
+              ],
+              [
+                3332,
+                3468
+              ],
+              [
+                3333,
+                3393
+              ],
+              [
+                3333,
+                3468
+              ],
+              [
+                3334,
+                3468
+              ],
+              [
+                3335,
+                3468
+              ],
+              [
+                3336,
+                3471
+              ],
+              [
+                3337,
+                3468
+              ],
+              [
+                3337,
+                3471
+              ],
+              [
+                3338,
+                3471
+              ],
+              [
+                3339,
+                3471
+              ],
+              [
+                3341,
+                3471
+              ],
+              [
+                3394,
+                3399
+              ],
+              [
+                3395,
+                3398
+              ],
+              [
+                3395,
+                3400
+              ],
+              [
+                3395,
+                3401
+              ],
+              [
+                3406,
+                3470
+              ],
+              [
+                3406,
+                3473
+              ],
+              [
+                3409,
+                3472
+              ],
+              [
+                3409,
+                3473
+              ],
+              [
+                3409,
+                3475
+              ],
+              [
+                3409,
+                3550
+              ],
+              [
+                3414,
+                3553
+              ],
+              [
+                3415,
+                3552
+              ],
+              [
+                3415,
+                3553
+              ],
+              [
+                3415,
+                3554
+              ],
+              [
+                3415,
+                3555
+              ],
+              [
+                3416,
+                3471
+              ],
+              [
+                3416,
+                3548
+              ],
+              [
+                3416,
+                3551
+              ],
+              [
+                3416,
+                3553
+              ],
+              [
+                3417,
+                3553
+              ],
+              [
+                3418,
+                3470
+              ],
+              [
+                3418,
+                3471
+              ],
+              [
+                3419,
+                3470
+              ],
+              [
+                3419,
+                3471
+              ],
+              [
+                3419,
+                3473
+              ],
+              [
+                3419,
+                3548
+              ],
+              [
+                3419,
+                3550
+              ],
+              [
+                3419,
+                3551
+              ],
+              [
+                3419,
+                3553
+              ],
+              [
+                3484,
+                3550
+              ],
+              [
+                3484,
+                3552
+              ],
+              [
+                3484,
+                3553
+              ],
+              [
+                3484,
+                3554
+              ],
+              [
+                3484,
+                3555
+              ],
+              [
+                3486,
+                3552
+              ],
+              [
+                3486,
+                3554
+              ],
+              [
+                3486,
+                3555
+              ],
+              [
+                3486,
+                3556
+              ],
+              [
+                3486,
+                3557
+              ],
+              [
+                3486,
+                3558
+              ],
+              [
+                3486,
+                3559
+              ],
+              [
+                3486,
+                3561
+              ],
+              [
+                3487,
+                3552
+              ],
+              [
+                3487,
+                3554
+              ],
+              [
+                3487,
+                3555
+              ],
+              [
+                3488,
+                3561
+              ],
+              [
+                3489,
+                3558
+              ],
+              [
+                3489,
+                3559
+              ],
+              [
+                3489,
+                3561
+              ],
+              [
+                3490,
+                3554
+              ],
+              [
+                3490,
+                3556
+              ],
+              [
+                3490,
+                3557
+              ],
+              [
+                3491,
+                3556
+              ],
+              [
+                3491,
+                3558
+              ],
+              [
+                3491,
+                3559
+              ],
+              [
+                3491,
+                3561
+              ],
+              [
+                3584,
+                3616
+              ],
+              [
+                3584,
+                3617
+              ],
+              [
+                3585,
+                3616
+              ],
+              [
+                3585,
+                3617
+              ],
+              [
+                3587,
+                3616
+              ],
+              [
+                3587,
+                3617
+              ],
+              [
+                3616,
+                3660
+              ],
+              [
+                3617,
+                3660
+              ],
+              [
+                3619,
+                3660
+              ],
+              [
+                3619,
+                3661
+              ]
+            ],
+            "saved_legacy_example_count": 20,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "garment_body": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "body_self": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          }
+        },
+        "exported_path_membership": {
+          "L": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              0.0
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          },
+          "R": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              0.9999999999999999,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              -4.417437057588218e-18
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          }
+        },
+        "elapsed_seconds": 1.0568544660000043
+      },
+      {
+        "frame": 153,
+        "source_npz_sha256": "3ef8d4628dd63b82a866175082bf34f941805f8be568aec2ae774c8241334358",
+        "garment_mesh": {
+          "vertex_count": 1916,
+          "used_vertex_count": 1916,
+          "orphan_vertices": 0,
+          "triangle_count": 3664,
+          "edge_count": 5582,
+          "connected_components": 1,
+          "boundary_edges": 172,
+          "boundary_components": 4,
+          "boundary_cycles": 4,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": -2,
+          "closed_oriented_edge_manifold": false,
+          "component_signed_volumes_m3": [
+            0.04276987413026827
+          ],
+          "outward_closed_components": false,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "body_mesh": {
+          "vertex_count": 4984,
+          "used_vertex_count": 4984,
+          "orphan_vertices": 0,
+          "triangle_count": 9964,
+          "edge_count": 14946,
+          "connected_components": 1,
+          "boundary_edges": 0,
+          "boundary_components": 0,
+          "boundary_cycles": 0,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": 2,
+          "closed_oriented_edge_manifold": true,
+          "component_signed_volumes_m3": [
+            0.05888672478406155
+          ],
+          "outward_closed_components": true,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "comparisons": {
+          "garment_self": {
+            "independent_count": 535,
+            "legacy_count": 535,
+            "count_difference": 0,
+            "pairs": [
+              [
+                32,
+                129
+              ],
+              [
+                432,
+                806
+              ],
+              [
+                433,
+                806
+              ],
+              [
+                435,
+                710
+              ],
+              [
+                435,
+                711
+              ],
+              [
+                435,
+                712
+              ],
+              [
+                435,
+                713
+              ],
+              [
+                435,
+                715
+              ],
+              [
+                435,
+                806
+              ],
+              [
+                482,
+                855
+              ],
+              [
+                483,
+                855
+              ],
+              [
+                483,
+                950
+              ],
+              [
+                484,
+                854
+              ],
+              [
+                484,
+                857
+              ],
+              [
+                485,
+                854
+              ],
+              [
+                485,
+                855
+              ],
+              [
+                487,
+                856
+              ],
+              [
+                487,
+                857
+              ],
+              [
+                518,
+                613
+              ],
+              [
+                519,
+                613
+              ],
+              [
+                520,
+                709
+              ],
+              [
+                521,
+                613
+              ],
+              [
+                521,
+                708
+              ],
+              [
+                521,
+                709
+              ],
+              [
+                522,
+                709
+              ],
+              [
+                522,
+                804
+              ],
+              [
+                523,
+                709
+              ],
+              [
+                524,
+                804
+              ],
+              [
+                525,
+                804
+              ],
+              [
+                526,
+                807
+              ],
+              [
+                527,
+                804
+              ],
+              [
+                527,
+                807
+              ],
+              [
+                528,
+                806
+              ],
+              [
+                529,
+                806
+              ],
+              [
+                529,
+                807
+              ],
+              [
+                530,
+                714
+              ],
+              [
+                530,
+                715
+              ],
+              [
+                530,
+                717
+              ],
+              [
+                531,
+                717
+              ],
+              [
+                570,
+                852
+              ],
+              [
+                571,
+                852
+              ],
+              [
+                573,
+                852
+              ],
+              [
+                573,
+                853
+              ],
+              [
+                576,
+                1046
+              ],
+              [
+                577,
+                951
+              ],
+              [
+                577,
+                1046
+              ],
+              [
+                578,
+                950
+              ],
+              [
+                579,
+                950
+              ],
+              [
+                579,
+                951
+              ],
+              [
+                579,
+                1046
+              ],
+              [
+                580,
+                764
+              ],
+              [
+                580,
+                765
+              ],
+              [
+                581,
+                764
+              ],
+              [
+                581,
+                767
+              ],
+              [
+                582,
+                856
+              ],
+              [
+                582,
+                858
+              ],
+              [
+                582,
+                859
+              ],
+              [
+                583,
+                765
+              ],
+              [
+                583,
+                858
+              ],
+              [
+                583,
+                860
+              ],
+              [
+                583,
+                861
+              ],
+              [
+                613,
+                614
+              ],
+              [
+                616,
+                708
+              ],
+              [
+                616,
+                709
+              ],
+              [
+                626,
+                716
+              ],
+              [
+                626,
+                717
+              ],
+              [
+                627,
+                716
+              ],
+              [
+                627,
+                719
+              ],
+              [
+                664,
+                759
+              ],
+              [
+                665,
+                759
+              ],
+              [
+                666,
+                852
+              ],
+              [
+                666,
+                854
+              ],
+              [
+                666,
+                855
+              ],
+              [
+                667,
+                759
+              ],
+              [
+                667,
+                854
+              ],
+              [
+                668,
+                853
+              ],
+              [
+                668,
+                948
+              ],
+              [
+                670,
+                948
+              ],
+              [
+                670,
+                951
+              ],
+              [
+                671,
+                948
+              ],
+              [
+                676,
+                767
+              ],
+              [
+                676,
+                862
+              ],
+              [
+                677,
+                769
+              ],
+              [
+                677,
+                862
+              ],
+              [
+                718,
+                723
+              ],
+              [
+                719,
+                722
+              ],
+              [
+                719,
+                723
+              ],
+              [
+                769,
+                772
+              ],
+              [
+                772,
+                864
+              ],
+              [
+                772,
+                866
+              ],
+              [
+                772,
+                867
+              ],
+              [
+                1010,
+                1014
+              ],
+              [
+                1011,
+                1014
+              ],
+              [
+                1013,
+                1014
+              ],
+              [
+                1014,
+                1106
+              ],
+              [
+                1014,
+                1107
+              ],
+              [
+                1017,
+                1107
+              ],
+              [
+                1017,
+                1202
+              ],
+              [
+                1017,
+                1205
+              ],
+              [
+                1112,
+                1205
+              ],
+              [
+                1113,
+                1205
+              ],
+              [
+                1204,
+                1304
+              ],
+              [
+                1204,
+                1305
+              ],
+              [
+                1205,
+                1206
+              ],
+              [
+                1205,
+                1208
+              ],
+              [
+                1205,
+                1209
+              ],
+              [
+                1205,
+                1304
+              ],
+              [
+                1205,
+                1305
+              ],
+              [
+                1208,
+                1300
+              ],
+              [
+                1209,
+                1300
+              ],
+              [
+                1300,
+                1304
+              ],
+              [
+                1300,
+                1305
+              ],
+              [
+                1303,
+                1304
+              ],
+              [
+                1500,
+                1597
+              ],
+              [
+                1500,
+                1692
+              ],
+              [
+                1500,
+                1693
+              ],
+              [
+                1503,
+                1693
+              ],
+              [
+                1503,
+                1788
+              ],
+              [
+                1598,
+                1788
+              ],
+              [
+                1598,
+                1791
+              ],
+              [
+                1599,
+                1791
+              ],
+              [
+                1636,
+                1730
+              ],
+              [
+                1636,
+                1733
+              ],
+              [
+                1642,
+                1739
+              ],
+              [
+                1642,
+                2470
+              ],
+              [
+                1643,
+                2470
+              ],
+              [
+                1645,
+                2470
+              ],
+              [
+                1645,
+                2473
+              ],
+              [
+                1648,
+                1874
+              ],
+              [
+                1648,
+                1875
+              ],
+              [
+                1649,
+                1875
+              ],
+              [
+                1650,
+                1874
+              ],
+              [
+                1650,
+                1876
+              ],
+              [
+                1650,
+                1877
+              ],
+              [
+                1651,
+                1874
+              ],
+              [
+                1653,
+                1830
+              ],
+              [
+                1653,
+                1831
+              ],
+              [
+                1653,
+                1876
+              ],
+              [
+                1653,
+                1878
+              ],
+              [
+                1653,
+                1879
+              ],
+              [
+                1694,
+                1791
+              ],
+              [
+                1740,
+                2473
+              ],
+              [
+                1742,
+                1872
+              ],
+              [
+                1743,
+                1872
+              ],
+              [
+                1744,
+                1875
+              ],
+              [
+                1745,
+                1872
+              ],
+              [
+                1745,
+                1875
+              ],
+              [
+                1748,
+                1830
+              ],
+              [
+                1752,
+                1978
+              ],
+              [
+                1753,
+                1978
+              ],
+              [
+                1755,
+                1933
+              ],
+              [
+                1755,
+                1978
+              ],
+              [
+                1755,
+                1980
+              ],
+              [
+                1755,
+                1981
+              ],
+              [
+                1826,
+                1872
+              ],
+              [
+                1836,
+                1978
+              ],
+              [
+                1836,
+                1979
+              ],
+              [
+                1836,
+                2026
+              ],
+              [
+                1837,
+                2026
+              ],
+              [
+                1838,
+                1932
+              ],
+              [
+                1838,
+                1933
+              ],
+              [
+                1838,
+                1934
+              ],
+              [
+                1838,
+                1935
+              ],
+              [
+                1839,
+                1934
+              ],
+              [
+                1882,
+                1979
+              ],
+              [
+                1883,
+                1979
+              ],
+              [
+                1884,
+                2026
+              ],
+              [
+                1885,
+                1979
+              ],
+              [
+                1885,
+                2026
+              ],
+              [
+                1930,
+                1979
+              ],
+              [
+                1990,
+                2039
+              ],
+              [
+                2013,
+                2014
+              ],
+              [
+                2021,
+                2067
+              ],
+              [
+                2039,
+                3124
+              ],
+              [
+                2039,
+                3125
+              ],
+              [
+                2067,
+                2068
+              ],
+              [
+                2106,
+                2155
+              ],
+              [
+                2196,
+                2296
+              ],
+              [
+                2196,
+                2297
+              ],
+              [
+                2238,
+                2339
+              ],
+              [
+                2240,
+                2341
+              ],
+              [
+                2242,
+                2342
+              ],
+              [
+                2242,
+                2343
+              ],
+              [
+                2349,
+                2350
+              ],
+              [
+                2786,
+                2860
+              ],
+              [
+                2789,
+                2860
+              ],
+              [
+                2790,
+                2860
+              ],
+              [
+                2791,
+                2860
+              ],
+              [
+                2792,
+                2860
+              ],
+              [
+                2793,
+                2860
+              ],
+              [
+                2794,
+                2861
+              ],
+              [
+                2795,
+                2860
+              ],
+              [
+                2795,
+                2861
+              ],
+              [
+                2796,
+                2936
+              ],
+              [
+                2797,
+                2861
+              ],
+              [
+                2797,
+                2936
+              ],
+              [
+                2798,
+                2863
+              ],
+              [
+                2798,
+                2938
+              ],
+              [
+                2799,
+                2860
+              ],
+              [
+                2799,
+                2861
+              ],
+              [
+                2799,
+                2863
+              ],
+              [
+                2799,
+                2936
+              ],
+              [
+                2799,
+                2938
+              ],
+              [
+                2801,
+                2863
+              ],
+              [
+                2801,
+                2938
+              ],
+              [
+                2801,
+                2940
+              ],
+              [
+                2801,
+                2941
+              ],
+              [
+                2860,
+                2864
+              ],
+              [
+                2860,
+                2866
+              ],
+              [
+                2860,
+                2867
+              ],
+              [
+                2870,
+                2944
+              ],
+              [
+                2872,
+                2944
+              ],
+              [
+                2873,
+                2944
+              ],
+              [
+                2875,
+                2944
+              ],
+              [
+                2875,
+                2945
+              ],
+              [
+                2876,
+                2940
+              ],
+              [
+                2876,
+                2943
+              ],
+              [
+                2877,
+                2942
+              ],
+              [
+                2877,
+                2943
+              ],
+              [
+                2877,
+                2945
+              ],
+              [
+                2945,
+                2950
+              ],
+              [
+                2945,
+                2952
+              ],
+              [
+                2945,
+                2953
+              ],
+              [
+                3082,
+                3162
+              ],
+              [
+                3083,
+                3162
+              ],
+              [
+                3083,
+                3163
+              ],
+              [
+                3083,
+                3238
+              ],
+              [
+                3083,
+                3239
+              ],
+              [
+                3088,
+                3239
+              ],
+              [
+                3088,
+                3314
+              ],
+              [
+                3089,
+                3239
+              ],
+              [
+                3091,
+                3314
+              ],
+              [
+                3098,
+                3241
+              ],
+              [
+                3099,
+                3241
+              ],
+              [
+                3100,
+                3316
+              ],
+              [
+                3101,
+                3241
+              ],
+              [
+                3101,
+                3316
+              ],
+              [
+                3102,
+                3317
+              ],
+              [
+                3103,
+                3316
+              ],
+              [
+                3103,
+                3317
+              ],
+              [
+                3104,
+                3317
+              ],
+              [
+                3105,
+                3317
+              ],
+              [
+                3106,
+                3314
+              ],
+              [
+                3106,
+                3317
+              ],
+              [
+                3106,
+                3390
+              ],
+              [
+                3107,
+                3317
+              ],
+              [
+                3107,
+                3390
+              ],
+              [
+                3109,
+                3314
+              ],
+              [
+                3109,
+                3315
+              ],
+              [
+                3109,
+                3390
+              ],
+              [
+                3158,
+                3239
+              ],
+              [
+                3162,
+                3239
+              ],
+              [
+                3164,
+                3239
+              ],
+              [
+                3165,
+                3239
+              ],
+              [
+                3166,
+                3240
+              ],
+              [
+                3166,
+                3314
+              ],
+              [
+                3168,
+                3238
+              ],
+              [
+                3168,
+                3239
+              ],
+              [
+                3168,
+                3240
+              ],
+              [
+                3168,
+                3241
+              ],
+              [
+                3168,
+                3314
+              ],
+              [
+                3169,
+                3240
+              ],
+              [
+                3169,
+                3314
+              ],
+              [
+                3174,
+                3241
+              ],
+              [
+                3174,
+                3316
+              ],
+              [
+                3174,
+                3318
+              ],
+              [
+                3174,
+                3319
+              ],
+              [
+                3175,
+                3318
+              ],
+              [
+                3176,
+                3388
+              ],
+              [
+                3177,
+                3388
+              ],
+              [
+                3177,
+                3391
+              ],
+              [
+                3178,
+                3388
+              ],
+              [
+                3178,
+                3391
+              ],
+              [
+                3179,
+                3388
+              ],
+              [
+                3180,
+                3390
+              ],
+              [
+                3180,
+                3391
+              ],
+              [
+                3181,
+                3391
+              ],
+              [
+                3182,
+                3323
+              ],
+              [
+                3182,
+                3390
+              ],
+              [
+                3182,
+                3393
+              ],
+              [
+                3183,
+                3323
+              ],
+              [
+                3183,
+                3390
+              ],
+              [
+                3183,
+                3393
+              ],
+              [
+                3184,
+                3393
+              ],
+              [
+                3185,
+                3323
+              ],
+              [
+                3185,
+                3393
+              ],
+              [
+                3187,
+                3392
+              ],
+              [
+                3187,
+                3393
+              ],
+              [
+                3244,
+                3388
+              ],
+              [
+                3244,
+                3389
+              ],
+              [
+                3244,
+                3391
+              ],
+              [
+                3244,
+                3466
+              ],
+              [
+                3245,
+                3388
+              ],
+              [
+                3245,
+                3389
+              ],
+              [
+                3245,
+                3391
+              ],
+              [
+                3245,
+                3466
+              ],
+              [
+                3246,
+                3464
+              ],
+              [
+                3246,
+                3467
+              ],
+              [
+                3247,
+                3464
+              ],
+              [
+                3247,
+                3466
+              ],
+              [
+                3247,
+                3467
+              ],
+              [
+                3249,
+                3466
+              ],
+              [
+                3249,
+                3467
+              ],
+              [
+                3249,
+                3469
+              ],
+              [
+                3250,
+                3318
+              ],
+              [
+                3250,
+                3321
+              ],
+              [
+                3252,
+                3391
+              ],
+              [
+                3252,
+                3466
+              ],
+              [
+                3253,
+                3320
+              ],
+              [
+                3253,
+                3321
+              ],
+              [
+                3253,
+                3466
+              ],
+              [
+                3253,
+                3469
+              ],
+              [
+                3255,
+                3256
+              ],
+              [
+                3256,
+                3328
+              ],
+              [
+                3256,
+                3330
+              ],
+              [
+                3256,
+                3331
+              ],
+              [
+                3258,
+                3322
+              ],
+              [
+                3258,
+                3323
+              ],
+              [
+                3258,
+                3324
+              ],
+              [
+                3258,
+                3325
+              ],
+              [
+                3258,
+                3328
+              ],
+              [
+                3258,
+                3393
+              ],
+              [
+                3258,
+                3468
+              ],
+              [
+                3259,
+                3328
+              ],
+              [
+                3260,
+                3323
+              ],
+              [
+                3260,
+                3324
+              ],
+              [
+                3260,
+                3326
+              ],
+              [
+                3260,
+                3328
+              ],
+              [
+                3260,
+                3329
+              ],
+              [
+                3260,
+                3468
+              ],
+              [
+                3261,
+                3324
+              ],
+              [
+                3261,
+                3328
+              ],
+              [
+                3261,
+                3468
+              ],
+              [
+                3262,
+                3323
+              ],
+              [
+                3262,
+                3392
+              ],
+              [
+                3262,
+                3394
+              ],
+              [
+                3262,
+                3395
+              ],
+              [
+                3262,
+                3396
+              ],
+              [
+                3262,
+                3397
+              ],
+              [
+                3263,
+                3323
+              ],
+              [
+                3263,
+                3324
+              ],
+              [
+                3263,
+                3326
+              ],
+              [
+                3263,
+                3327
+              ],
+              [
+                3263,
+                3392
+              ],
+              [
+                3263,
+                3395
+              ],
+              [
+                3263,
+                3468
+              ],
+              [
+                3263,
+                3471
+              ],
+              [
+                3264,
+                3396
+              ],
+              [
+                3264,
+                3398
+              ],
+              [
+                3265,
+                3323
+              ],
+              [
+                3265,
+                3394
+              ],
+              [
+                3265,
+                3396
+              ],
+              [
+                3265,
+                3397
+              ],
+              [
+                3265,
+                3398
+              ],
+              [
+                3266,
+                3398
+              ],
+              [
+                3266,
+                3399
+              ],
+              [
+                3267,
+                3396
+              ],
+              [
+                3267,
+                3398
+              ],
+              [
+                3267,
+                3399
+              ],
+              [
+                3268,
+                3398
+              ],
+              [
+                3268,
+                3399
+              ],
+              [
+                3269,
+                3398
+              ],
+              [
+                3269,
+                3399
+              ],
+              [
+                3270,
+                3399
+              ],
+              [
+                3271,
+                3398
+              ],
+              [
+                3271,
+                3399
+              ],
+              [
+                3273,
+                3396
+              ],
+              [
+                3273,
+                3397
+              ],
+              [
+                3273,
+                3399
+              ],
+              [
+                3273,
+                3472
+              ],
+              [
+                3273,
+                3475
+              ],
+              [
+                3320,
+                3328
+              ],
+              [
+                3320,
+                3466
+              ],
+              [
+                3320,
+                3469
+              ],
+              [
+                3322,
+                3328
+              ],
+              [
+                3322,
+                3395
+              ],
+              [
+                3323,
+                3328
+              ],
+              [
+                3323,
+                3392
+              ],
+              [
+                3323,
+                3393
+              ],
+              [
+                3323,
+                3395
+              ],
+              [
+                3323,
+                3468
+              ],
+              [
+                3323,
+                3469
+              ],
+              [
+                3324,
+                3328
+              ],
+              [
+                3324,
+                3329
+              ],
+              [
+                3324,
+                3392
+              ],
+              [
+                3324,
+                3393
+              ],
+              [
+                3324,
+                3395
+              ],
+              [
+                3324,
+                3468
+              ],
+              [
+                3324,
+                3469
+              ],
+              [
+                3325,
+                3328
+              ],
+              [
+                3325,
+                3329
+              ],
+              [
+                3325,
+                3395
+              ],
+              [
+                3325,
+                3404
+              ],
+              [
+                3325,
+                3405
+              ],
+              [
+                3326,
+                3392
+              ],
+              [
+                3327,
+                3392
+              ],
+              [
+                3327,
+                3395
+              ],
+              [
+                3328,
+                3468
+              ],
+              [
+                3328,
+                3469
+              ],
+              [
+                3329,
+                3392
+              ],
+              [
+                3329,
+                3393
+              ],
+              [
+                3329,
+                3468
+              ],
+              [
+                3338,
+                3471
+              ],
+              [
+                3340,
+                3471
+              ],
+              [
+                3340,
+                3546
+              ],
+              [
+                3341,
+                3471
+              ],
+              [
+                3342,
+                3470
+              ],
+              [
+                3343,
+                3470
+              ],
+              [
+                3343,
+                3471
+              ],
+              [
+                3343,
+                3546
+              ],
+              [
+                3344,
+                3473
+              ],
+              [
+                3345,
+                3470
+              ],
+              [
+                3345,
+                3473
+              ],
+              [
+                3346,
+                3398
+              ],
+              [
+                3346,
+                3400
+              ],
+              [
+                3346,
+                3401
+              ],
+              [
+                3346,
+                3403
+              ],
+              [
+                3346,
+                3472
+              ],
+              [
+                3346,
+                3473
+              ],
+              [
+                3347,
+                3400
+              ],
+              [
+                3347,
+                3403
+              ],
+              [
+                3347,
+                3473
+              ],
+              [
+                3348,
+                3472
+              ],
+              [
+                3348,
+                3475
+              ],
+              [
+                3349,
+                3402
+              ],
+              [
+                3349,
+                3403
+              ],
+              [
+                3349,
+                3405
+              ],
+              [
+                3349,
+                3472
+              ],
+              [
+                3349,
+                3480
+              ],
+              [
+                3364,
+                3368
+              ],
+              [
+                3365,
+                3368
+              ],
+              [
+                3367,
+                3368
+              ],
+              [
+                3368,
+                3438
+              ],
+              [
+                3368,
+                3439
+              ],
+              [
+                3368,
+                3440
+              ],
+              [
+                3368,
+                3441
+              ],
+              [
+                3368,
+                3512
+              ],
+              [
+                3368,
+                3514
+              ],
+              [
+                3368,
+                3515
+              ],
+              [
+                3369,
+                3512
+              ],
+              [
+                3371,
+                3440
+              ],
+              [
+                3371,
+                3441
+              ],
+              [
+                3371,
+                3514
+              ],
+              [
+                3371,
+                3515
+              ],
+              [
+                3394,
+                3398
+              ],
+              [
+                3394,
+                3400
+              ],
+              [
+                3394,
+                3401
+              ],
+              [
+                3395,
+                3402
+              ],
+              [
+                3397,
+                3398
+              ],
+              [
+                3397,
+                3400
+              ],
+              [
+                3397,
+                3401
+              ],
+              [
+                3402,
+                3470
+              ],
+              [
+                3403,
+                3470
+              ],
+              [
+                3403,
+                3472
+              ],
+              [
+                3403,
+                3473
+              ],
+              [
+                3403,
+                3475
+              ],
+              [
+                3408,
+                3496
+              ],
+              [
+                3409,
+                3496
+              ],
+              [
+                3410,
+                3496
+              ],
+              [
+                3411,
+                3496
+              ],
+              [
+                3412,
+                3494
+              ],
+              [
+                3413,
+                3494
+              ],
+              [
+                3413,
+                3496
+              ],
+              [
+                3413,
+                3497
+              ],
+              [
+                3415,
+                3494
+              ],
+              [
+                3415,
+                3495
+              ],
+              [
+                3424,
+                3480
+              ],
+              [
+                3424,
+                3482
+              ],
+              [
+                3424,
+                3483
+              ],
+              [
+                3425,
+                3482
+              ],
+              [
+                3425,
+                3484
+              ],
+              [
+                3425,
+                3485
+              ],
+              [
+                3444,
+                3512
+              ],
+              [
+                3444,
+                3513
+              ],
+              [
+                3445,
+                3513
+              ],
+              [
+                3445,
+                3588
+              ],
+              [
+                3450,
+                3460
+              ],
+              [
+                3451,
+                3460
+              ],
+              [
+                3452,
+                3460
+              ],
+              [
+                3453,
+                3460
+              ],
+              [
+                3454,
+                3460
+              ],
+              [
+                3455,
+                3460
+              ],
+              [
+                3456,
+                3460
+              ],
+              [
+                3457,
+                3460
+              ],
+              [
+                3459,
+                3460
+              ],
+              [
+                3460,
+                3526
+              ],
+              [
+                3461,
+                3526
+              ],
+              [
+                3474,
+                3478
+              ],
+              [
+                3474,
+                3479
+              ],
+              [
+                3475,
+                3478
+              ],
+              [
+                3484,
+                3496
+              ],
+              [
+                3484,
+                3498
+              ],
+              [
+                3484,
+                3499
+              ],
+              [
+                3484,
+                3500
+              ],
+              [
+                3484,
+                3501
+              ],
+              [
+                3520,
+                3588
+              ],
+              [
+                3520,
+                3589
+              ],
+              [
+                3521,
+                3589
+              ],
+              [
+                3521,
+                3616
+              ],
+              [
+                3521,
+                3617
+              ],
+              [
+                3526,
+                3536
+              ],
+              [
+                3527,
+                3536
+              ],
+              [
+                3527,
+                3537
+              ],
+              [
+                3537,
+                3602
+              ],
+              [
+                3538,
+                3590
+              ],
+              [
+                3538,
+                3593
+              ],
+              [
+                3539,
+                3588
+              ],
+              [
+                3539,
+                3590
+              ],
+              [
+                3539,
+                3591
+              ],
+              [
+                3540,
+                3593
+              ],
+              [
+                3541,
+                3593
+              ],
+              [
+                3543,
+                3590
+              ],
+              [
+                3543,
+                3591
+              ],
+              [
+                3543,
+                3593
+              ],
+              [
+                3588,
+                3614
+              ],
+              [
+                3589,
+                3614
+              ],
+              [
+                3589,
+                3616
+              ],
+              [
+                3589,
+                3617
+              ],
+              [
+                3596,
+                3616
+              ],
+              [
+                3596,
+                3617
+              ],
+              [
+                3596,
+                3618
+              ],
+              [
+                3596,
+                3619
+              ],
+              [
+                3597,
+                3618
+              ],
+              [
+                3597,
+                3619
+              ],
+              [
+                3599,
+                3617
+              ],
+              [
+                3599,
+                3618
+              ],
+              [
+                3602,
+                3612
+              ],
+              [
+                3602,
+                3615
+              ],
+              [
+                3605,
+                3615
+              ],
+              [
+                3616,
+                3662
+              ],
+              [
+                3616,
+                3663
+              ],
+              [
+                3617,
+                3660
+              ],
+              [
+                3617,
+                3661
+              ],
+              [
+                3617,
+                3662
+              ],
+              [
+                3617,
+                3663
+              ]
+            ],
+            "saved_legacy_example_count": 20,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "garment_body": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "body_self": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          }
+        },
+        "exported_path_membership": {
+          "L": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              0.9999999999999999,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              0.9999999999999999,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              0.9999999999999999,
+              0.0
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          },
+          "R": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              0.9999999999999999,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              -4.417437057588218e-18
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          }
+        },
+        "elapsed_seconds": 1.0215909520002242
+      },
+      {
+        "frame": 241,
+        "source_npz_sha256": "1e1df57a91aaed6903c2ddd51b6254eb373fbb88e8b89bc32a8cc1f8f2b45b67",
+        "garment_mesh": {
+          "vertex_count": 1916,
+          "used_vertex_count": 1916,
+          "orphan_vertices": 0,
+          "triangle_count": 3664,
+          "edge_count": 5582,
+          "connected_components": 1,
+          "boundary_edges": 172,
+          "boundary_components": 4,
+          "boundary_cycles": 4,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": -2,
+          "closed_oriented_edge_manifold": false,
+          "component_signed_volumes_m3": [
+            0.06353573799094113
+          ],
+          "outward_closed_components": false,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "body_mesh": {
+          "vertex_count": 4984,
+          "used_vertex_count": 4984,
+          "orphan_vertices": 0,
+          "triangle_count": 9964,
+          "edge_count": 14946,
+          "connected_components": 1,
+          "boundary_edges": 0,
+          "boundary_components": 0,
+          "boundary_cycles": 0,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": 2,
+          "closed_oriented_edge_manifold": true,
+          "component_signed_volumes_m3": [
+            0.05570663056107578
+          ],
+          "outward_closed_components": true,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        },
+        "comparisons": {
+          "garment_self": {
+            "independent_count": 174,
+            "legacy_count": 174,
+            "count_difference": 0,
+            "pairs": [
+              [
+                328,
+                425
+              ],
+              [
+                434,
+                531
+              ],
+              [
+                480,
+                854
+              ],
+              [
+                481,
+                854
+              ],
+              [
+                483,
+                854
+              ],
+              [
+                483,
+                856
+              ],
+              [
+                483,
+                857
+              ],
+              [
+                522,
+                614
+              ],
+              [
+                522,
+                617
+              ],
+              [
+                523,
+                614
+              ],
+              [
+                523,
+                617
+              ],
+              [
+                525,
+                614
+              ],
+              [
+                525,
+                617
+              ],
+              [
+                576,
+                854
+              ],
+              [
+                576,
+                855
+              ],
+              [
+                576,
+                950
+              ],
+              [
+                577,
+                950
+              ],
+              [
+                578,
+                856
+              ],
+              [
+                580,
+                856
+              ],
+              [
+                580,
+                858
+              ],
+              [
+                580,
+                859
+              ],
+              [
+                580,
+                861
+              ],
+              [
+                581,
+                856
+              ],
+              [
+                581,
+                861
+              ],
+              [
+                614,
+                620
+              ],
+              [
+                615,
+                620
+              ],
+              [
+                620,
+                710
+              ],
+              [
+                622,
+                710
+              ],
+              [
+                622,
+                712
+              ],
+              [
+                622,
+                713
+              ],
+              [
+                623,
+                710
+              ],
+              [
+                624,
+                715
+              ],
+              [
+                625,
+                712
+              ],
+              [
+                625,
+                715
+              ],
+              [
+                627,
+                714
+              ],
+              [
+                627,
+                715
+              ],
+              [
+                627,
+                717
+              ],
+              [
+                664,
+                758
+              ],
+              [
+                666,
+                854
+              ],
+              [
+                667,
+                758
+              ],
+              [
+                667,
+                759
+              ],
+              [
+                667,
+                854
+              ],
+              [
+                668,
+                855
+              ],
+              [
+                669,
+                854
+              ],
+              [
+                669,
+                855
+              ],
+              [
+                670,
+                950
+              ],
+              [
+                671,
+                855
+              ],
+              [
+                671,
+                950
+              ],
+              [
+                676,
+                860
+              ],
+              [
+                676,
+                861
+              ],
+              [
+                676,
+                863
+              ],
+              [
+                677,
+                769
+              ],
+              [
+                677,
+                862
+              ],
+              [
+                677,
+                863
+              ],
+              [
+                716,
+                722
+              ],
+              [
+                717,
+                722
+              ],
+              [
+                719,
+                722
+              ],
+              [
+                719,
+                723
+              ],
+              [
+                723,
+                814
+              ],
+              [
+                723,
+                817
+              ],
+              [
+                769,
+                770
+              ],
+              [
+                769,
+                772
+              ],
+              [
+                769,
+                773
+              ],
+              [
+                1834,
+                1883
+              ],
+              [
+                1834,
+                1930
+              ],
+              [
+                1837,
+                1930
+              ],
+              [
+                1837,
+                1933
+              ],
+              [
+                1884,
+                1933
+              ],
+              [
+                1938,
+                1987
+              ],
+              [
+                2790,
+                2861
+              ],
+              [
+                2791,
+                2861
+              ],
+              [
+                2793,
+                2861
+              ],
+              [
+                2794,
+                2861
+              ],
+              [
+                2795,
+                2861
+              ],
+              [
+                2797,
+                2861
+              ],
+              [
+                2860,
+                2864
+              ],
+              [
+                2860,
+                2865
+              ],
+              [
+                2861,
+                2864
+              ],
+              [
+                2861,
+                2866
+              ],
+              [
+                2861,
+                2867
+              ],
+              [
+                2861,
+                2868
+              ],
+              [
+                2861,
+                2870
+              ],
+              [
+                2861,
+                2871
+              ],
+              [
+                2861,
+                2872
+              ],
+              [
+                2870,
+                2944
+              ],
+              [
+                2872,
+                2936
+              ],
+              [
+                2872,
+                2938
+              ],
+              [
+                2872,
+                2939
+              ],
+              [
+                2873,
+                2944
+              ],
+              [
+                2875,
+                2938
+              ],
+              [
+                2875,
+                2941
+              ],
+              [
+                2875,
+                2942
+              ],
+              [
+                2875,
+                2945
+              ],
+              [
+                2940,
+                2950
+              ],
+              [
+                2940,
+                2952
+              ],
+              [
+                2940,
+                2953
+              ],
+              [
+                2941,
+                2950
+              ],
+              [
+                2941,
+                2952
+              ],
+              [
+                2941,
+                2953
+              ],
+              [
+                2942,
+                2950
+              ],
+              [
+                2943,
+                2950
+              ],
+              [
+                2944,
+                2948
+              ],
+              [
+                2944,
+                2950
+              ],
+              [
+                2944,
+                2951
+              ],
+              [
+                2945,
+                2950
+              ],
+              [
+                3248,
+                3313
+              ],
+              [
+                3249,
+                3313
+              ],
+              [
+                3251,
+                3313
+              ],
+              [
+                3258,
+                3390
+              ],
+              [
+                3259,
+                3388
+              ],
+              [
+                3259,
+                3390
+              ],
+              [
+                3259,
+                3391
+              ],
+              [
+                3260,
+                3393
+              ],
+              [
+                3261,
+                3390
+              ],
+              [
+                3261,
+                3393
+              ],
+              [
+                3262,
+                3392
+              ],
+              [
+                3262,
+                3393
+              ],
+              [
+                3263,
+                3393
+              ],
+              [
+                3265,
+                3392
+              ],
+              [
+                3265,
+                3395
+              ],
+              [
+                3312,
+                3322
+              ],
+              [
+                3312,
+                3324
+              ],
+              [
+                3312,
+                3325
+              ],
+              [
+                3313,
+                3324
+              ],
+              [
+                3313,
+                3326
+              ],
+              [
+                3314,
+                3318
+              ],
+              [
+                3314,
+                3319
+              ],
+              [
+                3315,
+                3318
+              ],
+              [
+                3315,
+                3320
+              ],
+              [
+                3315,
+                3321
+              ],
+              [
+                3315,
+                3322
+              ],
+              [
+                3315,
+                3323
+              ],
+              [
+                3326,
+                3388
+              ],
+              [
+                3328,
+                3388
+              ],
+              [
+                3329,
+                3388
+              ],
+              [
+                3330,
+                3388
+              ],
+              [
+                3331,
+                3388
+              ],
+              [
+                3332,
+                3388
+              ],
+              [
+                3332,
+                3389
+              ],
+              [
+                3333,
+                3388
+              ],
+              [
+                3333,
+                3389
+              ],
+              [
+                3334,
+                3388
+              ],
+              [
+                3335,
+                3388
+              ],
+              [
+                3340,
+                3395
+              ],
+              [
+                3343,
+                3394
+              ],
+              [
+                3343,
+                3395
+              ],
+              [
+                3343,
+                3396
+              ],
+              [
+                3343,
+                3397
+              ],
+              [
+                3343,
+                3398
+              ],
+              [
+                3343,
+                3399
+              ],
+              [
+                3343,
+                3401
+              ],
+              [
+                3400,
+                3418
+              ],
+              [
+                3401,
+                3418
+              ],
+              [
+                3402,
+                3418
+              ],
+              [
+                3403,
+                3418
+              ],
+              [
+                3404,
+                3418
+              ],
+              [
+                3405,
+                3418
+              ],
+              [
+                3407,
+                3418
+              ],
+              [
+                3411,
+                3412
+              ],
+              [
+                3412,
+                3417
+              ],
+              [
+                3412,
+                3486
+              ],
+              [
+                3413,
+                3417
+              ],
+              [
+                3417,
+                3488
+              ],
+              [
+                3418,
+                3482
+              ],
+              [
+                3418,
+                3484
+              ],
+              [
+                3418,
+                3485
+              ],
+              [
+                3419,
+                3484
+              ],
+              [
+                3419,
+                3486
+              ],
+              [
+                3419,
+                3487
+              ],
+              [
+                3419,
+                3489
+              ],
+              [
+                3488,
+                3492
+              ],
+              [
+                3488,
+                3494
+              ],
+              [
+                3488,
+                3495
+              ],
+              [
+                3489,
+                3494
+              ]
+            ],
+            "saved_legacy_example_count": 20,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "garment_body": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          },
+          "body_self": {
+            "independent_count": 0,
+            "legacy_count": 0,
+            "count_difference": 0,
+            "pairs": [],
+            "saved_legacy_example_count": 0,
+            "saved_legacy_examples_missing_from_independent": [],
+            "full_legacy_pair_set_available": false
+          }
+        },
+        "exported_path_membership": {
+          "L": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              0.9999999999999999,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              0.0
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          },
+          "R": {
+            "sample_count": 22,
+            "interior_count": 21,
+            "winding_numbers": [
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9999999999999999,
+              1.0000000000000002,
+              1.0,
+              1.0,
+              1.0,
+              1.0000000000000002,
+              1.0000000000000002,
+              1.0000000000000002,
+              0.9999999999999999,
+              0.9999999999999999,
+              1.0,
+              0.9999999999999999,
+              -6.6261555863823264e-18
+            ],
+            "strictly_inside_mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "note": "Full exported path includes deliberate end extensions; only claimed internal-bone samples should be required inside."
+          }
+        },
+        "elapsed_seconds": 0.9505415919993538
+      }
+    ],
+    "comparison_limit": "Saved legacy report contains counts and at most20 example pairs, not complete pair sets.",
+    "independence": "Independent SAT/cKDTree/solid-angle implementation; no imported legacy geometry or BVH. Not formal proof."
+  }
+}

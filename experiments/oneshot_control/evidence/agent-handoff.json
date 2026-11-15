@@ -1,0 +1,159 @@
+{
+  "agent": "geometry_verifier",
+  "task": "independently authored SAT/solid-angle oracle for one-shot controls",
+  "source": "experiments/oneshot_control/independent_oracle.py",
+  "source_sha256": "04425c5fffa46b824909f8eb634d92cfe700c2566acb4b017b927ae96ea960e2",
+  "implementation_independence": [
+    "NumPy/SciPy cKDTree bounding-sphere/AABB broadphase",
+    "SAT two face normals plus nine edge-cross axes; strict plane crossing; separate coplanar positive-area construction",
+    "Signed solid-angle body-volume membership",
+    "No imports/calls of legacy geometry, BVHTree, mathutils, or Blender"
+  ],
+  "apis": [
+    "intersect_pairs(vertices, triangles, other_vertices=None, other_triangles=None, epsilon_m=1e-6)",
+    "mesh_audit(vertices, triangles)",
+    "point_inside_mesh(vertices, triangles, points)",
+    "winding_numbers(vertices, triangles, points)"
+  ],
+  "analytic_tests": {
+    "count": 18,
+    "passed": true,
+    "receipt": "/workspace/work/oneshot-oracle-analytic.json",
+    "phase": "executed and saved before legacy audit"
+  },
+  "old_checkpoints": [
+    {
+      "frame": 1,
+      "garment_self": 0,
+      "legacy_garment_self": 0,
+      "garment_body": 0,
+      "body_self": 0
+    },
+    {
+      "frame": 66,
+      "garment_self": 2,
+      "legacy_garment_self": 2,
+      "garment_body": 0,
+      "body_self": 0
+    },
+    {
+      "frame": 81,
+      "garment_self": 0,
+      "legacy_garment_self": 0,
+      "garment_body": 0,
+      "body_self": 0
+    },
+    {
+      "frame": 141,
+      "garment_self": 298,
+      "legacy_garment_self": 298,
+      "garment_body": 0,
+      "body_self": 0
+    },
+    {
+      "frame": 153,
+      "garment_self": 535,
+      "legacy_garment_self": 535,
+      "garment_body": 0,
+      "body_self": 0
+    },
+    {
+      "frame": 241,
+      "garment_self": 174,
+      "legacy_garment_self": 174,
+      "garment_body": 0,
+      "body_self": 0
+    }
+  ],
+  "old_result": "/workspace/work/oneshot-oracle-old-frames.json",
+  "old_result_sha256": "2d0935947b31903095a16b3e89fb5686cf9f3fadd006b9deb70cd42a1c51d2a3",
+  "conclusions": [
+    "Both kinds of defect are demonstrated: old cloth genuinely self-crosses, and legacy validation has independent semantic/coverage defects.",
+    "Old sampled self counts exactly match independent SAT results: frames1/66/81/141/153/241 ->0/2/0/298/535/174. Every saved legacy example is corroborated, but full legacy pair-set equality is not claimed because saved report contains only examples.",
+    "Valid newly generated static body/garment geometry passes independent checks, with12/12 current-path midpoint samples inside body.",
+    "Translating only the real body2m leaves all legacy flags PASS but current-path membership becomes0/12; collision absence does not establish wearing.",
+    "An exploratory isolated roof overlap yields54 genuine coplanar intersections and54 positive LP witnesses, yet legacy reports0 and PASS; main tracing localizes this to BVH candidate omission, while its narrow phase accepts54/54.",
+    "Initial wrong sleeve face annotations were correctly rejected by legacy. Correction changed labels only; independent OBJ readback confirms vertex/triangle arrays exactly unchanged."
+  ],
+  "control_status": "Completed independently; current path midpoints used for membership readback",
+  "limits": [
+    "Independent numerical implementations and witnesses, not formal proof.",
+    "Old independent SAT audit covers6 frozen frames, not all241 frames.",
+    "Static geometric controls do not establish cloth dynamics, material calibration, comfort, manufacture, or physical fit.",
+    "The new body/path membership check is necessary correspondence evidence, not a complete continuous arm-surface or material test."
+  ],
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "status": "COMPLETE; source frozen; static controlled experiment only",
+  "old_saved_examples_all_matched": true,
+  "controls": {
+    "receipt": "/workspace/work/oneshot-oracle-controls.json",
+    "sha256": "00856a8d22970f256c45f79fdd3e0aaa9e465397f20b6b5e9a6cc313e23bc313",
+    "valid_body_and_garment": {
+      "mesh_geometry_pass": true,
+      "body_association_inside_samples_L": 6,
+      "body_association_inside_samples_R": 6
+    },
+    "translated_body_only": {
+      "translation_m": [
+        2,
+        0,
+        0
+      ],
+      "cloth_and_paths_unchanged": true,
+      "mesh_collision_counts_remain_zero": true,
+      "body_association_inside_samples_L": 0,
+      "body_association_inside_samples_R": 0
+    },
+    "sample_rule": "Directly recompute CURRENT path segment midpoints; do not trust separately provided claimed coordinate arrays",
+    "annotation_only_correction_independently_verified": {
+      "vertex_arrays_exactly_equal": true,
+      "triangle_arrays_exactly_equal": true
+    }
+  },
+  "independently_authored_coplanar_findings": {
+    "isolated_pair_count": 54,
+    "all_pairs_coplanar": true,
+    "all_pairs_nonadjacent": true,
+    "area_min_mm2": 5.8333333333333846,
+    "area_median_mm2": 93.3333333333335,
+    "area_max_mm2": 554.1666666666672,
+    "lp_witness_count": 54,
+    "positive_area_lp_witnesses": 54,
+    "minimum_lp_interior_disk_radius_mm": 0.406949560980839,
+    "maximum_lp_interior_disk_radius_mm": 10.251262658470848,
+    "area_and_sample_witness_receipt": "/workspace/work/oneshot-oracle-coplanar-isolated.json",
+    "all_lp_witness_receipt": "/workspace/work/oneshot-oracle-isolated-lp-all.json"
+  },
+  "main_authored_legacy_trace_observed_separately": {
+    "authorship": "Main agent executed/traced the frozen legacy checker; this agent read the result but did not import/call legacy code",
+    "receipt": "/workspace/work/oneshot-control/coplanar-broadphase.json",
+    "receipt_sha256": "38897f3034d337559919bdd65a3462a7b0b3807860299d16372988b6e5812e93",
+    "legacy_source_sha256": "2638cd4771c5c418d9ee55e3c707e96aeb2d1562731ceb8376102741208546c6",
+    "independent_pairs_present_in_BVH": 0,
+    "independent_pairs_accepted_by_legacy_narrow_phase": 54,
+    "legacy_full_reported_self_count": 0,
+    "isolated_case_legacy_arm_entry": true,
+    "isolated_case_legacy_cloth_flag": true,
+    "translated_body_legacy_arm_entry": true,
+    "translated_body_legacy_cloth_flag": true
+  },
+  "witness_reproducer": {
+    "source": "/workspace/work/oneshot-coplanar-witness.py",
+    "source_sha256": "00258c208f0a295a648eaaa2fd91f13c1e6d73c6496d11c1d3684fca99e32a33",
+    "public_destination": "experiments/oneshot_control/certify_overlap.py",
+    "command": "python certify_overlap.py --npz CASE/arrays.npz --out witnesses.json --sample-count 54",
+    "note": "Oracle only supplies candidates; LP disk and barycentric witness are separately authored."
+  },
+  "receipt_sha256": {
+    "oneshot-oracle-analytic.json": "173ab688dd4da3469c21397bd500a91c9cd363d245a9290fe6987cba39f71a9c",
+    "oneshot-oracle-old-frames.json": "2d0935947b31903095a16b3e89fb5686cf9f3fadd006b9deb70cd42a1c51d2a3",
+    "oneshot-oracle-controls.json": "00856a8d22970f256c45f79fdd3e0aaa9e465397f20b6b5e9a6cc313e23bc313",
+    "oneshot-oracle-coplanar-investigation.json": "deb20d34ba1fde95339f402eedbf594eb9cc444bfe961258a212eee17d82087c",
+    "oneshot-oracle-coplanar-isolated.json": "f8e62eef276dac66584aa4eb74a304cbbe3b57a756b6bb446480115970544f2d",
+    "oneshot-oracle-isolated-lp-all.json": "1d598d90fb6cc1500f50d4a6433a205c42c845355ad7865b1f088f8aa61e58d2"
+  }
+}

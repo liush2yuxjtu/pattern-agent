@@ -1,0 +1,972 @@
+{
+  "frames": [
+    {
+      "schema_version": 1,
+      "epsilon_m": 1e-06,
+      "seam_limit_m": 0.002,
+      "arm_entry_pass": true,
+      "cloth_sim_pass": true,
+      "errors": [],
+      "cloth_topology": {
+        "boundary_loops": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.10854636034228218
+        ]
+      },
+      "body_topology": {
+        "boundary_loops": 0,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.05570663056107578
+        ]
+      },
+      "body_topology_pass": true,
+      "body_self_intersection_pairs": 0,
+      "body_self_intersection_examples": [],
+      "body_embedding_pass": true,
+      "cloth_structure_pass": true,
+      "body_mesh_valid": true,
+      "sleeves": {
+        "L": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 3.475541019975193,
+          "cuff_min_vertex_radius_mm": 88.28443448157282,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.13941814496306631,
+              "direction": 1,
+              "triangle": 24
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.42122230011168765,
+              "direction": 1,
+              "triangle": 24
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.999999999999999,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 281.80415514862136,
+          "cuff_center_to_arm_path_mm": 26.280767762831093,
+          "pass": true
+        },
+        "R": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 3.475541019975193,
+          "cuff_min_vertex_radius_mm": 88.28443448157282,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.13941814496306631,
+              "direction": 1,
+              "triangle": 24
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.42122230011168765,
+              "direction": 1,
+              "triangle": 24
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999994,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 281.80415514862136,
+          "cuff_center_to_arm_path_mm": 26.280767762831093,
+          "pass": true
+        }
+      },
+      "seam_pair_count": 76,
+      "welded_seam_pair_count": 76,
+      "seam_mode": "welded_shared_vertices",
+      "seam_max_gap_mm": 0.0,
+      "seam_pass": true,
+      "strain_abs_p95_pct": 0.0,
+      "strain_abs_max_pct": 0.0,
+      "strain_extension_max_pct": 0.0,
+      "self_intersection_pairs": 0,
+      "self_intersection_examples": [],
+      "cloth_body_intersection_pairs": 0,
+      "cloth_body_intersection_examples": [],
+      "body_sample_count": 5580,
+      "body_inside_sample_count": 0,
+      "body_containment_method": "three_ray_parity_with_winding_confirmation",
+      "body_parity_disagreements": 0,
+      "body_penetration_max_mm": 0.0,
+      "finite_pass": true,
+      "frame_file": "frame-0001.npz",
+      "frame": 1,
+      "motion_rms_mm": 0.0
+    },
+    {
+      "schema_version": 1,
+      "epsilon_m": 1e-06,
+      "seam_limit_m": 0.002,
+      "arm_entry_pass": true,
+      "cloth_sim_pass": false,
+      "errors": [],
+      "cloth_topology": {
+        "boundary_loops": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.08778075999310356
+        ]
+      },
+      "body_topology": {
+        "boundary_loops": 0,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.05660184884460232
+        ]
+      },
+      "body_topology_pass": true,
+      "body_self_intersection_pairs": 0,
+      "body_self_intersection_examples": [],
+      "body_embedding_pass": true,
+      "cloth_structure_pass": true,
+      "body_mesh_valid": true,
+      "sleeves": {
+        "L": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 13.139939148874713,
+          "cuff_min_vertex_radius_mm": 58.39078820668537,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.13021140270186055,
+              "direction": 1,
+              "triangle": 5
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.4022224965766441,
+              "direction": 1,
+              "triangle": 24
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999997,
+          "interior_winding_max": 1.0000000000000009,
+          "entry_to_exit_path_length_mm": 272.01109387478357,
+          "cuff_center_to_arm_path_mm": 52.43975831656296,
+          "pass": true
+        },
+        "R": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 12.988773784659628,
+          "cuff_min_vertex_radius_mm": 59.058998639348786,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.12933294570563514,
+              "direction": 1,
+              "triangle": 4
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.3999673805843899,
+              "direction": 1,
+              "triangle": 25
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999989,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 270.63443487875475,
+          "cuff_center_to_arm_path_mm": 52.26269799725759,
+          "pass": true
+        }
+      },
+      "seam_pair_count": 76,
+      "welded_seam_pair_count": 76,
+      "seam_mode": "welded_shared_vertices",
+      "seam_max_gap_mm": 0.0,
+      "seam_pass": true,
+      "strain_abs_p95_pct": 1.4999434658761552,
+      "strain_abs_max_pct": 53.04853830366065,
+      "strain_extension_max_pct": 53.04853830366065,
+      "self_intersection_pairs": 2,
+      "self_intersection_examples": [
+        [
+          2140,
+          2225
+        ],
+        [
+          2140,
+          2222
+        ]
+      ],
+      "cloth_body_intersection_pairs": 0,
+      "cloth_body_intersection_examples": [],
+      "body_sample_count": 5580,
+      "body_inside_sample_count": 0,
+      "body_containment_method": "three_ray_parity_with_winding_confirmation",
+      "body_parity_disagreements": 0,
+      "body_penetration_max_mm": 0.0,
+      "finite_pass": true,
+      "frame_file": "frame-0066.npz",
+      "frame": 66,
+      "motion_rms_mm": 3.3374938211798395
+    },
+    {
+      "schema_version": 1,
+      "epsilon_m": 1e-06,
+      "seam_limit_m": 0.002,
+      "arm_entry_pass": true,
+      "cloth_sim_pass": true,
+      "errors": [],
+      "cloth_topology": {
+        "boundary_loops": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.08207196409672535
+        ]
+      },
+      "body_topology": {
+        "boundary_loops": 0,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.05690136671355904
+        ]
+      },
+      "body_topology_pass": true,
+      "body_self_intersection_pairs": 0,
+      "body_self_intersection_examples": [],
+      "body_embedding_pass": true,
+      "cloth_structure_pass": true,
+      "body_mesh_valid": true,
+      "sleeves": {
+        "L": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 15.147292894780504,
+          "cuff_min_vertex_radius_mm": 46.74612705015497,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.1338918513962653,
+              "direction": 1,
+              "triangle": 3
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.39802660223805164,
+              "direction": 1,
+              "triangle": 26
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 1.0,
+          "interior_winding_max": 1.0000000000000024,
+          "entry_to_exit_path_length_mm": 264.13475084178634,
+          "cuff_center_to_arm_path_mm": 51.47503595351203,
+          "pass": true
+        },
+        "R": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 14.414383344108273,
+          "cuff_min_vertex_radius_mm": 48.168757811511114,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.1253653190331515,
+              "direction": 1,
+              "triangle": 6
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.3873148463301696,
+              "direction": 1,
+              "triangle": 25
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999984,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 261.9495272970181,
+          "cuff_center_to_arm_path_mm": 51.50998653478203,
+          "pass": true
+        }
+      },
+      "seam_pair_count": 76,
+      "welded_seam_pair_count": 76,
+      "seam_mode": "welded_shared_vertices",
+      "seam_max_gap_mm": 0.0,
+      "seam_pass": true,
+      "strain_abs_p95_pct": 2.5446941887464694,
+      "strain_abs_max_pct": 55.43340858416943,
+      "strain_extension_max_pct": 55.43340858416943,
+      "self_intersection_pairs": 0,
+      "self_intersection_examples": [],
+      "cloth_body_intersection_pairs": 0,
+      "cloth_body_intersection_examples": [],
+      "body_sample_count": 5580,
+      "body_inside_sample_count": 0,
+      "body_containment_method": "three_ray_parity_with_winding_confirmation",
+      "body_parity_disagreements": 0,
+      "body_penetration_max_mm": 0.0,
+      "finite_pass": true,
+      "frame_file": "frame-0081.npz",
+      "frame": 81,
+      "motion_rms_mm": 2.5361226498254688
+    },
+    {
+      "schema_version": 1,
+      "epsilon_m": 1e-06,
+      "seam_limit_m": 0.002,
+      "arm_entry_pass": true,
+      "cloth_sim_pass": false,
+      "errors": [],
+      "cloth_topology": {
+        "boundary_loops": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.04391964100318945
+        ]
+      },
+      "body_topology": {
+        "boundary_loops": 0,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.05933931013530743
+        ]
+      },
+      "body_topology_pass": true,
+      "body_self_intersection_pairs": 0,
+      "body_self_intersection_examples": [],
+      "body_embedding_pass": true,
+      "cloth_structure_pass": true,
+      "body_mesh_valid": true,
+      "sleeves": {
+        "L": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 16.15007028679716,
+          "cuff_min_vertex_radius_mm": 26.581004860285763,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.10560549598909133,
+              "direction": 1,
+              "triangle": 1
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.34130596105502836,
+              "direction": 1,
+              "triangle": 26
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999991,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 235.70046506593704,
+          "cuff_center_to_arm_path_mm": 54.92058432521992,
+          "pass": true
+        },
+        "R": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 12.543888154225254,
+          "cuff_min_vertex_radius_mm": 25.275575503027902,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.10419725802713851,
+              "direction": 1,
+              "triangle": 2
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.344860290130512,
+              "direction": 1,
+              "triangle": 28
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999986,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 240.66303210337347,
+          "cuff_center_to_arm_path_mm": 47.209972795689616,
+          "pass": true
+        }
+      },
+      "seam_pair_count": 76,
+      "welded_seam_pair_count": 76,
+      "seam_mode": "welded_shared_vertices",
+      "seam_max_gap_mm": 0.0,
+      "seam_pass": true,
+      "strain_abs_p95_pct": 50.715399381241255,
+      "strain_abs_max_pct": 441.408329245379,
+      "strain_extension_max_pct": 441.408329245379,
+      "self_intersection_pairs": 298,
+      "self_intersection_examples": [
+        [
+          871,
+          1054
+        ],
+        [
+          870,
+          1054
+        ],
+        [
+          681,
+          859
+        ],
+        [
+          680,
+          859
+        ],
+        [
+          585,
+          859
+        ],
+        [
+          869,
+          961
+        ],
+        [
+          866,
+          961
+        ],
+        [
+          867,
+          961
+        ],
+        [
+          867,
+          868
+        ],
+        [
+          868,
+          961
+        ],
+        [
+          868,
+          1054
+        ],
+        [
+          775,
+          1054
+        ],
+        [
+          774,
+          1054
+        ],
+        [
+          774,
+          1052
+        ],
+        [
+          774,
+          1055
+        ],
+        [
+          774,
+          957
+        ],
+        [
+          679,
+          957
+        ],
+        [
+          679,
+          954
+        ],
+        [
+          678,
+          954
+        ],
+        [
+          678,
+          859
+        ]
+      ],
+      "cloth_body_intersection_pairs": 0,
+      "cloth_body_intersection_examples": [],
+      "body_sample_count": 5580,
+      "body_inside_sample_count": 0,
+      "body_containment_method": "three_ray_parity_with_winding_confirmation",
+      "body_parity_disagreements": 1,
+      "body_penetration_max_mm": 0.0,
+      "finite_pass": true,
+      "frame_file": "frame-0141.npz",
+      "frame": 141,
+      "motion_rms_mm": 16.739445350591236
+    },
+    {
+      "schema_version": 1,
+      "epsilon_m": 1e-06,
+      "seam_limit_m": 0.002,
+      "arm_entry_pass": true,
+      "cloth_sim_pass": false,
+      "errors": [],
+      "cloth_topology": {
+        "boundary_loops": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.04276987413026827
+        ]
+      },
+      "body_topology": {
+        "boundary_loops": 0,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.05888672478406155
+        ]
+      },
+      "body_topology_pass": true,
+      "body_self_intersection_pairs": 0,
+      "body_self_intersection_examples": [],
+      "body_embedding_pass": true,
+      "cloth_structure_pass": true,
+      "body_mesh_valid": true,
+      "sleeves": {
+        "L": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 11.861050533098128,
+          "cuff_min_vertex_radius_mm": 30.293527581778275,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.08439617715545311,
+              "direction": 1,
+              "triangle": 0
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.33527347381405437,
+              "direction": 1,
+              "triangle": 28
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999989,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 250.87729665860127,
+          "cuff_center_to_arm_path_mm": 45.84348358173926,
+          "pass": true
+        },
+        "R": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 2.635845446543923,
+          "cuff_min_vertex_radius_mm": 40.60857220779683,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.08835609216889663,
+              "direction": 1,
+              "triangle": 37
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.31249445972737155,
+              "direction": 1,
+              "triangle": 29
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.999999999999999,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 224.13836755847493,
+          "cuff_center_to_arm_path_mm": 40.130003762859026,
+          "pass": true
+        }
+      },
+      "seam_pair_count": 76,
+      "welded_seam_pair_count": 76,
+      "seam_mode": "welded_shared_vertices",
+      "seam_max_gap_mm": 0.0,
+      "seam_pass": true,
+      "strain_abs_p95_pct": 42.38185125003624,
+      "strain_abs_max_pct": 364.4284449042529,
+      "strain_extension_max_pct": 364.4284449042529,
+      "self_intersection_pairs": 535,
+      "self_intersection_examples": [
+        [
+          3348,
+          3475
+        ],
+        [
+          3348,
+          3472
+        ],
+        [
+          3273,
+          3475
+        ],
+        [
+          3273,
+          3399
+        ],
+        [
+          3273,
+          3472
+        ],
+        [
+          3273,
+          3397
+        ],
+        [
+          3273,
+          3396
+        ],
+        [
+          3475,
+          3478
+        ],
+        [
+          3349,
+          3403
+        ],
+        [
+          3349,
+          3402
+        ],
+        [
+          3349,
+          3405
+        ],
+        [
+          3349,
+          3472
+        ],
+        [
+          3349,
+          3480
+        ],
+        [
+          3474,
+          3479
+        ],
+        [
+          3474,
+          3478
+        ],
+        [
+          3403,
+          3475
+        ],
+        [
+          3403,
+          3472
+        ],
+        [
+          3403,
+          3473
+        ],
+        [
+          3403,
+          3470
+        ],
+        [
+          3347,
+          3403
+        ]
+      ],
+      "cloth_body_intersection_pairs": 0,
+      "cloth_body_intersection_examples": [],
+      "body_sample_count": 5580,
+      "body_inside_sample_count": 0,
+      "body_containment_method": "three_ray_parity_with_winding_confirmation",
+      "body_parity_disagreements": 1,
+      "body_penetration_max_mm": 0.0,
+      "finite_pass": true,
+      "frame_file": "frame-0153.npz",
+      "frame": 153,
+      "motion_rms_mm": 15.847027240894855
+    },
+    {
+      "schema_version": 1,
+      "epsilon_m": 1e-06,
+      "seam_limit_m": 0.002,
+      "arm_entry_pass": true,
+      "cloth_sim_pass": false,
+      "errors": [],
+      "cloth_topology": {
+        "boundary_loops": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.06353573799094113
+        ]
+      },
+      "body_topology": {
+        "boundary_loops": 0,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "component_signed_volumes": [
+          0.05570663056107578
+        ]
+      },
+      "body_topology_pass": true,
+      "body_self_intersection_pairs": 0,
+      "body_self_intersection_examples": [],
+      "body_embedding_pass": true,
+      "cloth_structure_pass": true,
+      "body_mesh_valid": true,
+      "sleeves": {
+        "L": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 2.5607181986993273,
+          "cuff_min_vertex_radius_mm": 57.643952905401825,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.09709535205721781,
+              "direction": 1,
+              "triangle": 35
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.3542004704973322,
+              "direction": 1,
+              "triangle": 37
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999994,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 257.10511844011444,
+          "cuff_center_to_arm_path_mm": 13.707644612617859,
+          "pass": true
+        },
+        "R": {
+          "errors": [],
+          "arm_axis_to_sleeve_axis_deg": 0.755279424252534,
+          "cuff_min_vertex_radius_mm": 52.77554861951768,
+          "armhole_crossings": 1,
+          "cuff_crossings": 1,
+          "armhole_hits": [
+            {
+              "distance_m": 0.08585439537094666,
+              "direction": 1,
+              "triangle": 36
+            }
+          ],
+          "cuff_hits": [
+            {
+              "distance_m": 0.3382063675653892,
+              "direction": 1,
+              "triangle": 34
+            }
+          ],
+          "sleeve_wall_crossings": 0,
+          "wrong_side_crossings": 0,
+          "armhole_attached": true,
+          "cuff_is_open": true,
+          "interior_winding_min": 0.9999999999999984,
+          "interior_winding_max": 1.0000000000000002,
+          "entry_to_exit_path_length_mm": 252.3519721944425,
+          "cuff_center_to_arm_path_mm": 19.296409081520512,
+          "pass": true
+        }
+      },
+      "seam_pair_count": 76,
+      "welded_seam_pair_count": 76,
+      "seam_mode": "welded_shared_vertices",
+      "seam_max_gap_mm": 0.0,
+      "seam_pass": true,
+      "strain_abs_p95_pct": 10.644255178306294,
+      "strain_abs_max_pct": 115.85814990080068,
+      "strain_extension_max_pct": 115.85814990080068,
+      "self_intersection_pairs": 174,
+      "self_intersection_examples": [
+        [
+          3314,
+          3319
+        ],
+        [
+          3314,
+          3318
+        ],
+        [
+          3315,
+          3318
+        ],
+        [
+          3315,
+          3321
+        ],
+        [
+          3315,
+          3320
+        ],
+        [
+          3315,
+          3322
+        ],
+        [
+          3315,
+          3323
+        ],
+        [
+          3265,
+          3395
+        ],
+        [
+          3265,
+          3392
+        ],
+        [
+          3262,
+          3392
+        ],
+        [
+          3262,
+          3393
+        ],
+        [
+          3326,
+          3388
+        ],
+        [
+          3313,
+          3324
+        ],
+        [
+          3313,
+          3326
+        ],
+        [
+          3249,
+          3313
+        ],
+        [
+          3248,
+          3313
+        ],
+        [
+          3251,
+          3313
+        ],
+        [
+          3312,
+          3324
+        ],
+        [
+          3312,
+          3325
+        ],
+        [
+          3312,
+          3322
+        ]
+      ],
+      "cloth_body_intersection_pairs": 0,
+      "cloth_body_intersection_examples": [],
+      "body_sample_count": 5580,
+      "body_inside_sample_count": 0,
+      "body_containment_method": "three_ray_parity_with_winding_confirmation",
+      "body_parity_disagreements": 0,
+      "body_penetration_max_mm": 0.0,
+      "finite_pass": true,
+      "frame_file": "frame-0241.npz",
+      "frame": 241,
+      "motion_rms_mm": 6.695032055730379
+    }
+  ],
+  "scope": "Selected6 rows of saved241-frame legacy report, synthetic full-arm baseline",
+  "original_full_report_sha256": "62a72097f9f38e7d5e01794ff8c3cace769f305a1b58c20e7f7a677d50c54202"
+}

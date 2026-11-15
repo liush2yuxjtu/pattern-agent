@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "declared_before_generating_assets_and_running_legacy": true,
+  "time_utc": "2026-11-15T10:26:47.629987+00:00",
+  "claim": "Discriminate invalid legacy garment geometry from verifier implementation errors or an incomplete body/path contract",
+  "assets": "two self-contained .blend files and optional equivalent OBJ files, each one-shot direct generation; no prior cloth code import, no simulation or tuning",
+  "control": "Analytic rectilinear T-pose full mannequin and one-piece hollow T-shirt with four open boundaries. Deliberately simple so geometric truth is independently checkable. Not physical fit evidence.",
+  "body_bounds_m": {
+    "torso_x": [
+      -0.18,
+      0.18
+    ],
+    "torso_y": [
+      -0.09,
+      0.09
+    ],
+    "torso_z": [
+      0.84,
+      1.48
+    ],
+    "arm_center_z": 1.42,
+    "hand_abs_x": 0.84
+  },
+  "cloth_cavity_m": {
+    "torso_abs_x": 0.25,
+    "sleeve_abs_x": 0.53,
+    "y": [
+      -0.14,
+      0.14
+    ],
+    "sleeve_z": [
+      1.27,
+      1.53
+    ],
+    "hem_z": 0.81,
+    "neck_rectangle": {
+      "x": [
+        -0.1,
+        0.1
+      ],
+      "y": [
+        -0.07,
+        0.07
+      ],
+      "z": 1.53
+    }
+  },
+  "required_positives": [
+    "new_pair",
+    "rigid_transform_both_and_paths",
+    "uniform_scale_both_and_paths",
+    "opposite_quad_diagonal_tessellation"
+  ],
+  "required_negatives": [
+    "wrong_side_paths",
+    "path_pierces_fabric",
+    "path_stops_before_cuff",
+    "body_displaced_but_stale_paths",
+    "garment_self_intersection",
+    "cloth_body_penetration"
+  ],
+  "independent_oracle": "Separating-axis triangle intersections + independently implemented topology/solid-angle containment; no legacy imports",
+  "important_contract_test": "A closed full body moved entirely away from the garment while leaving fake or stale paths inside may pass the old narrow geometry flags; test this instead of assuming full-body wearing is proved.",
+  "old_frames": [
+    1,
+    66,
+    81,
+    141,
+    153,
+    241
+  ],
+  "acceptance": "Report actual agreements/disagreements and limitations; do not tune known-good control until old verifier returns PASS; preserve legacy source hash."
+}
