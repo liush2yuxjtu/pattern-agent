@@ -16,3 +16,4 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | oneshot-motion | saved meshes and independently reopened replay | [oneshot-motion.md](oneshot-motion.md) |
 | pattern-roundtrip | physical-size PDF, independent verifier, replay | [pattern-roundtrip.md](pattern-roundtrip.md) |
 | legacy-cloth | archived evidence; unavailable legacy runtime | [legacy-cloth.md](legacy-cloth.md) |
+| skill-evals | skill package/helper CLIs, native metadata routing, editable query review | [skill-evals.md](skill-evals.md) |

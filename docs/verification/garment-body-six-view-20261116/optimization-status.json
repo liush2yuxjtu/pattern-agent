@@ -1,0 +1,19 @@
+{
+  "upload_target": "https://github.com/liush2yuxjtu/pattern-agent",
+  "native_trigger_status": "BLOCKED",
+  "reason": "No local claude CLI/login runtime; no remote agent executor discovered",
+  "description_applied": "v0 retained",
+  "candidate_descriptions": [
+    "v1",
+    "v2",
+    "v3"
+  ],
+  "native_trigger_results": null,
+  "functional_helper_tests": "16 tests; verify receipt contains actual invocation",
+  "dataset": "20 labeled cases plus 4 separate routing challenges",
+  "notes": [
+    "Candidates are unmeasured",
+    "No Claude-native trigger success rate asserted",
+    "Existing 3 dry-run plans are not native trigger benchmarks"
+  ]
+}

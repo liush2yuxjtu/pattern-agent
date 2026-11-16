@@ -1,0 +1,108 @@
+{
+  "scope": "binary-mask/overlay helper robustness on analytical controls; not native skill triggering, full workflow quality or body-measurement accuracy",
+  "baseline": {
+    "passed": 5,
+    "total": 9,
+    "elapsed_seconds": 0.009550509999826318,
+    "checks": [
+      {
+        "check": "known_overlap",
+        "passed": true,
+        "observation": "returned_result"
+      },
+      {
+        "check": "identical_boundary_zero",
+        "passed": true,
+        "observation": "returned_result"
+      },
+      {
+        "check": "empty_rejected",
+        "passed": true,
+        "observation": "rejected_with_ValueError"
+      },
+      {
+        "check": "shape_mismatch_rejected",
+        "passed": true,
+        "observation": "rejected_with_ValueError"
+      },
+      {
+        "check": "probability_mask_rejected",
+        "passed": false,
+        "observation": "returned_result"
+      },
+      {
+        "check": "nan_mask_rejected",
+        "passed": false,
+        "observation": "returned_result"
+      },
+      {
+        "check": "infinite_mask_rejected",
+        "passed": false,
+        "observation": "returned_result"
+      },
+      {
+        "check": "negative_photo_rejected",
+        "passed": false,
+        "observation": "returned_result"
+      },
+      {
+        "check": "valid_overlay_colors",
+        "passed": true,
+        "observation": "returned_result"
+      }
+    ]
+  },
+  "current": {
+    "passed": 9,
+    "total": 9,
+    "elapsed_seconds": 0.000923294001040631,
+    "checks": [
+      {
+        "check": "known_overlap",
+        "passed": true,
+        "observation": "returned_result"
+      },
+      {
+        "check": "identical_boundary_zero",
+        "passed": true,
+        "observation": "returned_result"
+      },
+      {
+        "check": "empty_rejected",
+        "passed": true,
+        "observation": "rejected_with_ValueError"
+      },
+      {
+        "check": "shape_mismatch_rejected",
+        "passed": true,
+        "observation": "rejected_with_ValueError"
+      },
+      {
+        "check": "probability_mask_rejected",
+        "passed": true,
+        "observation": "rejected_with_ValueError"
+      },
+      {
+        "check": "nan_mask_rejected",
+        "passed": true,
+        "observation": "rejected_with_ValueError"
+      },
+      {
+        "check": "infinite_mask_rejected",
+        "passed": true,
+        "observation": "rejected_with_ValueError"
+      },
+      {
+        "check": "negative_photo_rejected",
+        "passed": true,
+        "observation": "rejected_with_ValueError"
+      },
+      {
+        "check": "valid_overlay_colors",
+        "passed": true,
+        "observation": "returned_result"
+      }
+    ]
+  },
+  "timing_scope": "single in-process functional pass; no model latency/token comparison"
+}

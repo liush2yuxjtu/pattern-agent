@@ -1,0 +1,91 @@
+{
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/skill-evals.md",
+  "candidate": {
+    "branch": "main",
+    "base_commit": "571238e7dea7459ec1ab33818827cbfc75e6976e",
+    "source_identity": "source-content-manifest.json (SHA256 per delivered source file; precommit candidate)",
+    "package_sha256": "8fe822eac16dc418f4d36c44b1ade14526819f146a90b5b32dadbbc199caba87"
+  },
+  "recorded_utc": "2026-11-16T11:00:44.176228+00:00",
+  "verdict": "BLOCKED",
+  "claim": "Install skill into Pattern Agent; improve helpers; prepare and execute native trigger hill climbing and benchmarks",
+  "observations": {
+    "helper_unit_tests": {
+      "verdict": "PASS",
+      "tests": 16
+    },
+    "harness_fixture_tests": {
+      "verdict": "PASS",
+      "tests": 11,
+      "scope": "error handling, deterministic preparation, fixture native events; not native inference"
+    },
+    "public_helper_clis": {
+      "verdict": "PASS",
+      "evidence": "public-cli-summary.json",
+      "scope": "analytical masks and actual VTK OBJ cylinder reloaded by CLI; no human-fit claim"
+    },
+    "helper_robustness_benchmark": {
+      "verdict": "PASS",
+      "baseline": {
+        "passed": 5,
+        "total": 9
+      },
+      "current": {
+        "passed": 9,
+        "total": 9
+      },
+      "evidence": "helper-benchmark.json",
+      "scope": "binary mask/overlay robustness; not trigger rate or anatomical accuracy"
+    },
+    "upstream_review_browser": {
+      "verdict": "PASS",
+      "evidence": [
+        "review-browser-summary.json",
+        "review-browser-review.png"
+      ],
+      "scope": "real local HTTP UI, 20 queries, visible slider and query edit, download/reopen, no page errors; edited data remains a fixture"
+    },
+    "package_format_and_source_readback": {
+      "verdict": "PASS",
+      "files": 8
+    },
+    "native_trigger_hill_climbing": {
+      "verdict": "BLOCKED",
+      "reason": "claude executable absent; authenticated/model/runtime probe cannot run",
+      "native_trigger_results": null,
+      "evidence": "native-readiness.json",
+      "development_cases": 12,
+      "untouched_final_holdout_cases": 8,
+      "repeats_configured": 3,
+      "max_iterations_configured": 5,
+      "selection": "v0 retained; v1-v3 unmeasured candidates"
+    },
+    "full_image_generation_and_body_fitting": {
+      "verdict": "BLOCKED",
+      "reason": "Not run during skill installation; no end-to-end quality or anatomical performance result asserted"
+    }
+  },
+  "findings": [
+    "Managed browser blocks file URL; normal loopback HTTP preview succeeded with no policy changes.",
+    "First UI driver tried hidden checkbox; corrected to real visible slider and passed.",
+    "Pinned upstream packager requires PYTHONPATH module root; documented working command.",
+    "Symlink resolves to canonical source; native discovery/autoload is unverified.",
+    "Initial 3 plan-only agent comparisons are historical design evidence, not Claude-native trigger or end-to-end image benchmarks.",
+    "git diff --cached --check flags two existing whitespace lines inside byte-preserved upstream scripts. Excluding pinned upstream, all changed files pass whitespace check. Upstream integrity hash tests pass; originals intentionally unmodified."
+  ],
+  "remote_main_before_commit": "571238e7dea7459ec1ab33818827cbfc75e6976e",
+  "commands": "commands.json",
+  "cleanup": {
+    "review_browser": "closed",
+    "loopback_server": "closed",
+    "trial_commands": "none created: native preflight blocked",
+    "ignored_work": "analytical fixtures/review artifacts retained under work/skill-evals"
+  },
+  "historical_claims_preserved": {
+    "tshirt_seam_gap_mm": 7.6455,
+    "nonadjacent_face_intersections": 20,
+    "geometry": "FAIL",
+    "physical_fit": "NOT_RUN"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "verdict": "PASS",
+  "scope": "actual helper CLI/serialization/overlay boundaries on analytical controls; not a human-fit or native agent test",
+  "expected_iou": 0.391304347826087,
+  "observed_iou": 0.391304347826087,
+  "expected_circle_cm": 62.83185307179586,
+  "observed_circle_cm": 62.83105556572394,
+  "commands": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/work/pattern-agent/.agents/skills/garment-body-six-view/scripts/verify_masks.py",
+        "--reference",
+        "/workspace/work/pattern-agent/work/skill-evals/smoke/reference.png",
+        "--projected",
+        "/workspace/work/pattern-agent/work/skill-evals/smoke/projected.png",
+        "--photo",
+        "/workspace/work/pattern-agent/work/skill-evals/smoke/photo.png",
+        "--out",
+        "/workspace/work/pattern-agent/work/skill-evals/smoke/mask-result"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/work/pattern-agent/.agents/skills/garment-body-six-view/scripts/measure_mesh.py",
+        "--mesh",
+        "/workspace/work/pattern-agent/work/skill-evals/smoke/cylinder.obj",
+        "--sections",
+        "/workspace/work/pattern-agent/work/skill-evals/smoke/sections.json",
+        "--unit",
+        "cm",
+        "--out",
+        "/workspace/work/pattern-agent/work/skill-evals/smoke/measurements.json"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/work/pattern-agent/work/skill-evals/review/review.html
+Call log:
+[2m  - navigating to "file:///workspace/work/pattern-agent/work/skill-evals/review/review.html", waiting until "load"[22m
+
+    at /workspace/work/pattern-agent/tools/skill_evals/verify_review.cjs:4:12 {
+  log: [
+    '  - navigating to "file:///workspace/work/pattern-agent/work/skill-evals/review/review.html", waiting until "load"'
+  ],
+  name: 'Error'
+}
+
+Node.js v24.22.1

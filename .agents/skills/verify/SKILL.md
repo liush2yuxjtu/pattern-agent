@@ -25,6 +25,7 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Strict static geometry controls | [oneshot-control](references/oneshot-control.md) — experiment CLI and independent oracle | 23 analytic probes and strict fault controls |
 | Recovered motion | [oneshot-motion](references/oneshot-motion.md) — saved meshes and independently reopened replay | 121 full-array matches, UNKNOWN retained |
 | 2D roundtrip and metric response | [pattern-roundtrip](references/pattern-roundtrip.md) — physical-size PDF, independent verifier, replay | negative controls, seam/trajectory FAIL retained |
+| Apparel body skill and trigger evals | [skill-evals](references/skill-evals.md) — shipped helper CLIs and actual Claude routing | helper controls, package readback, native events or BLOCKED |
 | Historical T-shirt claims | [legacy-cloth](references/legacy-cloth.md) — archived evidence; unavailable legacy runtime | known FAIL and NOT_RUN limitations |
 
 The question is whether the changed behavior works for a real caller. Shift tests left by running them locally before the commit, then verify the running product surface. Tests, type checks, builds, CI green, Vercel READY, and static review are supporting evidence; they do not replace runtime evidence when a real user/programmatic surface exists.

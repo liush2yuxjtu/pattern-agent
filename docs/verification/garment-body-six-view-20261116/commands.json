@@ -1,0 +1,174 @@
+[
+  {
+    "name": "helper-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".agents/skills/garment-body-six-view/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "helper-tests.log"
+  },
+  {
+    "name": "harness-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/skill_evals",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "harness-tests.log"
+  },
+  {
+    "name": "skill-format",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/upstream/scripts/quick_validate.py",
+      ".agents/skills/garment-body-six-view"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "skill-format.log"
+  },
+  {
+    "name": "public-cli-smoke",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/smoke_helpers.py",
+      "--out",
+      "work/skill-evals/smoke"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "public-cli-smoke.log"
+  },
+  {
+    "name": "helper-benchmark",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/helper_benchmark.py",
+      "--out",
+      "/workspace/work/pattern-agent/docs/verification/garment-body-six-view-20261116/helper-benchmark.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "helper-benchmark.log"
+  },
+  {
+    "name": "prepare-triggers",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/run.py",
+      "prepare",
+      "--out",
+      "work/skill-evals/review"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "prepare-triggers.log"
+  },
+  {
+    "name": "native-readiness",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/run.py",
+      "doctor",
+      "--out",
+      "work/skill-evals/readiness"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "log": "native-readiness.log"
+  },
+  {
+    "name": "native-blocked-run",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/run.py",
+      "optimize",
+      "--model",
+      "runtime-model-not-available",
+      "--out",
+      "work/skill-evals/blocked-native-attempt"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "log": "native-blocked-run.log"
+  },
+  {
+    "name": "review-browser",
+    "argv": [
+      "node",
+      "tools/skill_evals/verify_review.cjs"
+    ],
+    "exit_code": 0,
+    "log": "review-browser.log"
+  },
+  {
+    "name": "package-byte-readback",
+    "verdict": "PASS",
+    "files": [
+      "garment-body-six-view/INSTALL.md",
+      "garment-body-six-view/requirements.txt",
+      "garment-body-six-view/SKILL.md",
+      "garment-body-six-view/scripts/verify_masks.py",
+      "garment-body-six-view/scripts/measure_mesh.py",
+      "garment-body-six-view/references/tools-and-evidence.md",
+      "garment-body-six-view/references/test-status.md",
+      "garment-body-six-view/tests/test_helpers.py"
+    ],
+    "all_source_bytes_match": true
+  },
+  {
+    "name": "package-rebuild",
+    "argv": [
+      "env",
+      "PYTHONPATH=tools/skill_evals/upstream",
+      "python",
+      "tools/skill_evals/upstream/scripts/package_skill.py",
+      ".agents/skills/garment-body-six-view",
+      "skill-packages"
+    ],
+    "exit_code": 0,
+    "recovery": "Direct script first failed to import scripts; adding documented module root succeeded without changing upstream."
+  },
+  {
+    "name": "staged-whitespace-check",
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 2,
+    "expected_exit": 2,
+    "log": "staged-whitespace-0.log"
+  },
+  {
+    "name": "staged-whitespace-check",
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude)tools/skill_evals/upstream/**"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "staged-whitespace-1.log"
+  }
+]

@@ -1,0 +1,27 @@
+test_empty_is_failure (test_helpers.TestMasks.test_empty_is_failure) ... ok
+test_identical (test_helpers.TestMasks.test_identical) ... ok
+test_invalid_mask_values_fail_on_either_input (test_helpers.TestMasks.test_invalid_mask_values_fail_on_either_input) ... ok
+test_invalid_photo_shape_and_channels_fail (test_helpers.TestMasks.test_invalid_photo_shape_and_channels_fail) ... ok
+test_known_overlap (test_helpers.TestMasks.test_known_overlap) ... ok
+test_load_mask_keeps_explicit_threshold (test_helpers.TestMasks.test_load_mask_keeps_explicit_threshold) ... ok
+test_mask_dimensions_fail (test_helpers.TestMasks.test_mask_dimensions_fail) ... ok
+test_numeric_binary_masks_preserve_metrics (test_helpers.TestMasks.test_numeric_binary_masks_preserve_metrics) ... ok
+test_overlay_dimensions (test_helpers.TestMasks.test_overlay_dimensions) ... ok
+test_shape_mismatch_is_failure (test_helpers.TestMasks.test_shape_mismatch_is_failure) ... ok
+test_invalid_vectors_fail_before_vtk (test_helpers.TestMesh.test_invalid_vectors_fail_before_vtk) ... ok
+test_known_circle (test_helpers.TestMesh.test_known_circle) ... 2026-11-16 18:58:52.250 (   0.305s) [    7FD67AABF740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+ok
+test_missed_plane_fails (test_helpers.TestMesh.test_missed_plane_fails) ... 2026-11-16 18:58:52.253 (   0.308s) [    7FD67AABF740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+ok
+test_normal_scaling_preserves_closed_section (test_helpers.TestMesh.test_normal_scaling_preserves_closed_section) ... 2026-11-16 18:58:52.253 (   0.309s) [    7FD67AABF740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+2026-11-16 18:58:52.256 (   0.311s) [    7FD67AABF740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+2026-11-16 18:58:52.258 (   0.313s) [    7FD67AABF740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+ok
+test_open_section_remains_failure (test_helpers.TestMesh.test_open_section_remains_failure) ... 2026-11-16 18:58:52.261 (   0.316s) [    7FD67AABF740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+ok
+test_zero_normal_fails (test_helpers.TestMesh.test_zero_normal_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.036s
+
+OK

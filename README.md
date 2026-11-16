@@ -3,6 +3,25 @@
 Runnable Blender garment experiments and independent geometry checks. This is a
 research repository; physical garment fit has not been verified.
 
+## Apparel six-view and adjustable-body skill
+
+The new [garment-body-six-view skill](.agents/skills/garment-body-six-view/SKILL.md)
+connects original apparel photos, six independent images, an adjustable neutral
+body, actual 3D snapshots, OpenCV overlays and provenance-qualified parameters.
+The `.claude/skills/garment-body-six-view` symlink points Claude’s skill path at the canonical source.
+Download the [installable skill package](skill-packages/garment-body-six-view.skill)
+or read the [installation guide](.agents/skills/garment-body-six-view/INSTALL.md).
+
+[Native trigger evaluation tools](tools/skill_evals/README.md) include the pinned
+Anthropic skill-creator, 20 balanced routing queries, a reserved final holdout and
+unmeasured description candidates. Current local helper tests and CLI controls
+pass; native Claude routing/hill climbing is **BLOCKED** because this execution
+environment has no authenticated Claude CLI. File installation is not proof of
+live auto-triggering. See the [verification receipt](docs/verification/garment-body-six-view-20261116/receipt.json).
+
+Generated side/back views establish internal consistency only; their agreement
+with a body proxy does not validate real anatomical dimensions or physical fit.
+
 ## Printable straight skirt and GitHub Pages
 
 The static download site is prepared for
