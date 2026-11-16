@@ -1,0 +1,58 @@
+{
+  "environment": "Node.js + jsdom 26; WebGL unavailable by design. Not a real-browser visual test.",
+  "results": [
+    {
+      "check": "Initialization and functional 2D fallback when WebGL is unavailable",
+      "passed": true
+    },
+    {
+      "check": "Individual seam release is distinct from hiding seam overlays",
+      "passed": true
+    },
+    {
+      "check": "Release all, assembly slider state, and reassembly",
+      "passed": true
+    },
+    {
+      "check": "Unfold finishes at 2D with all seam connections released",
+      "passed": true
+    },
+    {
+      "check": "Compare and shared panel selection",
+      "passed": true
+    },
+    {
+      "check": "Dimension edits, invalid taper rejection and allowance recalculation",
+      "passed": true
+    },
+    {
+      "check": "Review note save, safe text rendering and JSON export",
+      "passed": true
+    },
+    {
+      "check": "Review JSON import restores notes and draft",
+      "passed": true
+    },
+    {
+      "check": "SVG export has 16 panels, millimetre dimensions and calibration square",
+      "passed": true
+    },
+    {
+      "check": "Downloaded HTML reopens offline with current settings and can be downloaded again",
+      "passed": true
+    },
+    {
+      "check": "Share link restores draft state and omits review notes",
+      "passed": true
+    },
+    {
+      "check": "Direct expert review link",
+      "passed": true
+    },
+    {
+      "check": "No unhandled DOM integration errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

@@ -353,3 +353,46 @@ reopen_metric.py (all3 snapshots, full arrays), and inspect the actual renders,
 2D pattern and measured-control chart. Preserve exact commands, source hashes,
 base candidate, logs and honest conditional/unknown verdicts before direct main
 commit. Physical fit NOT_RUN; this is not flat-panel sewing or donning.
+
+## Chat verification recipe — 2026-11-16 — Aster developable dress handoff
+
+Target: `experiments/aster_dress/source`. The handoff is a separate Three.js
+study; it does not replace the Blender experiments or the GitHub Pages site.
+
+The repository handoff run used Node.js, npm, Three.js 0.180.0, esbuild and jsdom26
+from the committed package lock. From the target directory:
+
+```sh
+npm ci --ignore-scripts
+node build.mjs
+node verify.mjs
+node verify-dom.mjs
+```
+
+Compare generated `dist/aster-studio.html`, `dist/aster-pattern-1-to-1.svg`,
+`dist/geometry-verification.json` and `dist/dom-verification.json` byte-for-byte
+with the corresponding files one directory above. Keep raw output, exact source
+hashes and candidate base under `docs/verification/aster-20261116/`.
+
+The numeric checks cover four configurations, 30,720 sampled edge comparisons,
+96 seam pairs, allowance distances and cut-contour self-intersections. Thirteen
+DOM checks cover controls and export/import, with WebGL deliberately unavailable.
+They do not establish a GPU/browser PASS.
+
+Real application acceptance remains BLOCKED: managed preview relay failed, the
+workspace browser could not initialize, and a shell public-URL request was
+rejected by the environment proxy. Preserve this evidence; do not bypass the
+runtime restrictions or substitute jsdom for browser acceptance.
+
+When an approved real browser is available, open the exact archived HTML or the
+matching published Aster URL from its README. Drive orbit/zoom, individual seam
+release/rejoin, unfold/reassemble, Compare selection, invalid dimension input,
+review export/import, SVG download and saved-HTML reopening with real input.
+Capture desktop/mobile pixels, console/network errors, exact candidate hashes
+and observations. Do not report PASS until the real surface works.
+
+Physical cloth behavior, material calibration, printing, sample sewing and human
+fit are NOT_RUN. Historical T-shirt geometry FAILs remain unchanged. The initial
+Aster website was already published before this archive commit; publication
+success is not runtime acceptance.
+

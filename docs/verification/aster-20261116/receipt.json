@@ -1,0 +1,43 @@
+{
+  "scope": "Archive Aster dress studio and review handoff as a separate experiment; existing runtimes unchanged",
+  "candidate_base_commit": "693d3b30fff70e0f981936003bd4b4c62f9b5904",
+  "candidate_source_manifest": "docs/verification/aster-20261116/source-manifest.json",
+  "candidate_source_manifest_sha256": "672e98156c8407517fce2d610f18867959897fb964724ff866db2d78cbb636eb",
+  "project_verifier": ".agents/skills/verify/SKILL.md",
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts && node build.mjs && node verify.mjs && node verify-dom.mjs",
+      "cwd": "experiments/aster_dress/source",
+      "exit_code": 0,
+      "raw_log": "commands.log"
+    }
+  ],
+  "observations": {
+    "four_geometry_configurations_passed": true,
+    "mesh_edges_compared": 30720,
+    "seam_pairs_checked": 96,
+    "dom_checks_passed": 13,
+    "dom_unhandled_errors": [],
+    "rebuilt_files_identical": [
+      "aster-studio.html",
+      "aster-pattern-1-to-1.svg",
+      "geometry-verification.json",
+      "dom-verification.json"
+    ]
+  },
+  "runtime": {
+    "verdict": "BLOCKED",
+    "method": "Prior supported managed preview and workspace browser attempts could not initialize",
+    "evidence": "experiments/aster_dress/VERIFICATION.md",
+    "not_established": [
+      "GPU rendering",
+      "desktop/mobile visual layout",
+      "real pointer/touch interactions",
+      "actual browser downloads"
+    ]
+  },
+  "overall_application_verdict": "BLOCKED",
+  "physical_fit": "NOT_RUN",
+  "cleanup": "No browser/server started for the archive transfer; dependency and generated build directories are excluded from the commit",
+  "limitations": "Numeric and DOM checks do not establish real-browser acceptance, physical drape or production suitability. Historical T-shirt failures remain unchanged."
+}

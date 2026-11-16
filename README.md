@@ -35,6 +35,20 @@ not change account permissions, enable paid services, or bypass environment rule
 The working verification recipe and receipt are in `.agents/skills/verify/`
 and `docs/verification/`.
 
+## Aster developable dress studio
+
+[Open the Three.js studio](https://aster-pattern-studio-161126.liushiyuxjtu.chatgpt.site/)
+or [open expert 3D and 2D review](https://aster-pattern-studio-161126.liushiyuxjtu.chatgpt.site/#review).
+The [self-contained handoff](experiments/aster_dress/README.md) preserves the HTML,
+readable source, full-scale SVG, seam map checks, decisions and verification record.
+It models 8 conical bodice sectors and 8 skirt gores with 24 releasable seam pairs.
+
+Geometry checks and 13 DOM integration checks pass. Real-browser visual/GPU
+verification is BLOCKED in the build environment; fabric mechanics and human fit
+are NOT_RUN. This is a developable concept study, not a production garment block.
+The [repository handoff receipt](docs/verification/aster-20261116/receipt.json)
+records the candidate source manifest, commands and verification limits.
+
 ## Current full-arm experiment
 
 Code is in `experiments/full_arm/`. It creates a complete synthetic mannequin and
@@ -98,3 +112,4 @@ remain separate from the newer synthetic experiment.
 
 Private workspace notes and connected-storage artifacts are maintained outside
 this public repository.
+

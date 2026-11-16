@@ -1,0 +1,11 @@
+Command: npm ci --ignore-scripts && node build.mjs && node verify.mjs && node verify-dom.mjs
+Working directory: experiments/aster_dress/source
+Exit code: 0
+
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+
+added 42 packages in 1s
+Built self-contained HTML: 587903 bytes. Three.js bundled, no CDN.
+PASS: 4 drafts, 30720 sampled edge comparisons, 96 seam pairs, all cut offsets and contour intersections. Self-contained HTML 587903 bytes.
+PASS: 13 DOM integration checks. GPU rendering and visual layout remain unverified.
+
