@@ -86,3 +86,43 @@ the favicon in the served site so an otherwise working page does not hide a 404.
 
 Physical printed dimensions, fabric calibration, a sewn sample and human fit are
 NOT_RUN. Never promote numerical geometry checks to manufacturing approval.
+
+## Verified public-only fallback — 2026-11-16
+
+Pages run `43819293093`, attempt 2, successfully deployed commit
+`2a254fa7899bce5302aebbae87172ee29d837578`. The complete existing
+`scripts/verify_pages.py` then passed against the public URL, including real
+browser file-save, all four download hashes, mobile, and native export/import.
+See the [live receipt](../../../../docs/verification/pages-20261116/live/receipt.json).
+
+When this VM cannot reach the Pages domain, the working fallback is an authorized
+Firecrawl `firecrawl_interact` session using **Bash**, not its preconnected browser
+proxy. The proxy canceled downloads even with `acceptDownloads: true`; the host
+has `/usr/bin/google-chrome`, Python and pip, and can reach the public site.
+
+1. Open an interact session at the public site. Use only public URLs and public
+   source. Do not transfer unpublished local pattern fixtures: automatic approval
+   review rejected that transfer. The successful route transmitted no such data.
+2. In a fresh `/tmp/pattern-agent-browser/`, install the observed Playwright 1.62.0
+   with `python3 -m pip install --no-cache-dir --target ... playwright==1.62.0`.
+   Python Playwright was absent on that host; no browser installation was needed.
+3. Fetch the verifier from the **public pinned commit** over normal HTTPS. Check
+   its reviewed SHA-256 before executing it. The verified source digest was
+   `31d73128e61b35bc0bbc5e4a22d581196f48a6df669f9e097d5e397ef569bc42`.
+4. Run the same Python verifier with `--base-url`, `--expected-commit`,
+   `--browser /usr/bin/google-chrome` and an explicit `/tmp/.../evidence` output.
+   The exact executed command is preserved in
+   [remote-command.sh](../../../../docs/verification/pages-20261116/live/remote-command.sh).
+   This uses the real published app and its generated files, not synthetic local
+   fixtures, altered response headers, mocked downloads or replaced assertions.
+5. Retrieve the report, actual downloads and screenshots. The interact tool caps
+   stdout at 1 MiB: the observed 930285-byte evidence ZIP required two base64
+   transfers of at most 700000 binary bytes per chunk. Verify the reconstructed
+   archive SHA-256 and ZIP integrity before reading its evidence locally.
+6. Inspect the screenshots and reopen the actual downloaded PDFs. Stop the
+   interact session afterwards. The Python verifier closes its own Chrome.
+
+Do not mark the browser-proxy cancellation as PASS. Here the subsequent standalone
+Chrome run independently completed the full unchanged verifier with exit 0 and
+`verdict: PASS`. Retain earlier failed publication receipts as history; the new
+live receipt resolves their blocker without rewriting them.

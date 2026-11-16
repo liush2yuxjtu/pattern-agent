@@ -1,0 +1,95 @@
+{
+  "verdict": "PASS",
+  "claim": "GitHub Pages deployment and complete live browser acceptance",
+  "public_url": "https://liush2yuxjtu.github.io/pattern-agent/",
+  "deployed_commit": "2a254fa7899bce5302aebbae87172ee29d837578",
+  "documentation_candidate_base": "804cf28b0b28e51c6d233200a660e20e0d7865d3",
+  "source_sha256": "c92e623da7e7fc71a6c5e962ebf19e4b264cb483002a71fc700e2d457ac2b96c",
+  "workflow": {
+    "run_id": 43819293093,
+    "attempt": 2,
+    "job_id": 133141250319,
+    "conclusion": "success",
+    "url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/43819293093"
+  },
+  "verification": {
+    "method": "Unchanged public pinned Python verifier, standalone Google Chrome in Firecrawl execution host",
+    "public_verifier_sha256": "31d73128e61b35bc0bbc5e4a22d581196f48a6df669f9e097d5e397ef569bc42",
+    "playwright_version": "1.62.0",
+    "browser": "/usr/bin/google-chrome",
+    "exit_code": 0,
+    "checks": [
+      "desktop render",
+      "modal open and Escape close",
+      "print details toggle",
+      "four real downloads match deployed hashes",
+      "375 px mobile without overflow",
+      "mobile modal close",
+      "existing workbench zoom and native export",
+      "native edit/import hides invalidated cutlines",
+      "review export stays unapproved",
+      "unsupported parametric import is explicitly rejected",
+      "missing download returns 404"
+    ],
+    "downloads": [
+      {
+        "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/straight-skirt-eu40/print-a4.pdf",
+        "file": "straight-skirt-eu40-a4.pdf",
+        "sha256": "a524be81dffb911837dc54d2749046deaa4fd7092b68ba1c986263fb826d7e4b",
+        "bytes": 72356
+      },
+      {
+        "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/straight-skirt-eu40/print-fullsize.pdf",
+        "file": "straight-skirt-eu40-fullsize.pdf",
+        "sha256": "09e2559c3275850c81bc1b100c9c587345c8aac8c59ebe6f5bb334341cf0ef8a",
+        "bytes": 10436
+      },
+      {
+        "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/straight-skirt-eu40/使用说明.pdf",
+        "file": "straight-skirt-eu40-guide-cn.pdf",
+        "sha256": "103256afa162d115babb699d5550826c9910e99f48efeafc996fac9f1b1a810b",
+        "bytes": 107648
+      },
+      {
+        "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/straight-skirt-eu40.zip",
+        "file": "straight-skirt-eu40.zip",
+        "sha256": "65eb8dccc5864df8bde437f79dd1c45885629a7b87bd360585593d383da5841a",
+        "bytes": 187769
+      }
+    ],
+    "page_errors": [],
+    "failed_requests": [],
+    "asset_http_errors": [],
+    "downloaded_pdf_reopen": {
+      "a4_pages": 14,
+      "calibration_square_mm": [
+        100.0001,
+        100.0001
+      ]
+    },
+    "native_edit_delta_x_mm": 1.2,
+    "imported_cutlines_invalidated": true
+  },
+  "evidence_files_sha256": {
+    "browser-report.json": "3c2eb6a3648ba8866bcd8f95b02c2629ec1381d00ba61df0ba48fe35d417d67e",
+    "command-output.log": "8b7aafec1bc73632135ad68997213cbe437f94d20669da6cfce4f6e0e66f7c16",
+    "desktop.png": "814c599939ef4df98f1bec775c7bf78ded12767432124c3c11de6bd00568ecfe",
+    "existing-workbench-edited.sloper": "e9fb6d1bb638f1d3c4732b663686f3283de580e09b74ddde9acf93bd23714e8f",
+    "existing-workbench-export.sloper": "0a98a6dd8b0f98ac9107da5a2dab675905679588f3bd8eaf41e3dfc83c122188",
+    "existing-workbench-review.json": "d8273a3aeaed43d9d0f63aae1f7cfe514fa17ef76b7a5823e91b85fd934b1ee4",
+    "existing-workbench.png": "4b0d97acaae973d96c5b168a13b1fc289116035c9358d01f85c8b1b0ce1597a9",
+    "install.log": "ce54db8b603b2311fa5673b60219abdcaf01b8d2dbab32455eb82539fd633b1b",
+    "mobile.png": "de90e30fab1e2f3656fcf6488976ac378373aa96ca8073e84e1371ce16fc1d11",
+    "remote-command.sh": "81480028bb08fce471037cfa1ff1924f8cae217b528db4170395bec3ac21f3bd",
+    "workflow.json": "28e710581107c34f861b572ba9a233b97b3de065ced48ce61dd4d219a3483269"
+  },
+  "transport_archive": {
+    "bytes": 930285,
+    "sha256": "4015757abff4d0e676e100fe6b4f874f1da5f84a05d9f097a548925163df636c",
+    "integrity_verified": true
+  },
+  "privacy": "No unpublished local pattern fixture was sent. Only public pinned repository source and public live-site files were used.",
+  "cleanup": "Standalone Chrome closed by verifier; Firecrawl interact_stop succeeded. Temporary local evidence remains in ignored work/.",
+  "recorded_at_utc": "2026-11-16T07:24:39.022712+00:00",
+  "physical_fit": "NOT_RUN"
+}
