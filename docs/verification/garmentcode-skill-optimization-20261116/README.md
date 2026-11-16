@@ -112,3 +112,11 @@ python scripts/verify_garmentcode_skill_outputs.py \
 源码根目录运行 aggregate_benchmark，再用 eval-viewer/generate_review.py
 的 --benchmark 与 --static 生成同类审阅页。指南固定来源为 anthropics/skills
 提交 1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064。
+
+## 发布后回读
+
+应用提交 a3af391 已推送并在公开 build.json 确认。新预览的 12 项线上检查、
+4 项下载及两份评估页面均通过。旧站完整回归在不存在 PDF 的最终探针上两次
+收到 GitHub 503，应为 404，因此旧站线上回归为 FAIL；断言未改。详见
+[发布后回执](hosted-receipt.json)。原生触发仍 BLOCKED；本补充只记录事实，
+不修改应用、技能或旧站。远程截图未导出归档，不宣称已有完整线上截图包。

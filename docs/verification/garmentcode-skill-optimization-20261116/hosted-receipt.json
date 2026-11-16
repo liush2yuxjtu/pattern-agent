@@ -1,0 +1,34 @@
+{
+  "timestamp_utc": "2026-11-16T11:26:45.353007+00:00",
+  "application_commit": "a3af3911afe2e44eeea906056a70ff8dcca94f95",
+  "remote_main_readback": "a3af3911afe2e44eeea906056a70ff8dcca94f95",
+  "public_build_commit": "a3af3911afe2e44eeea906056a70ff8dcca94f95",
+  "public_source_sha256": "0d6c1830b0939428bba96c90e014884980f893d91e5f35201ad6fe7bcf4371a6",
+  "verification_transport": "Public-only hosted standalone Chrome; fetched unchanged verifiers from pinned public commit and checked their SHA-256. VM direct Pages access returned proxy 403.",
+  "new_preview": {
+    "verdict": "PASS",
+    "checks": 12,
+    "real_downloads": 4,
+    "skill_package_sha256": "2eaecf1b877f05ac0f93ff228e294b6466059887860d5c0265a3e1c1ba2b0861",
+    "skill_package_bytes": 38199
+  },
+  "public_eval_review_ui": {
+    "functional_review": "PASS",
+    "trigger_review": "PASS",
+    "javascript_errors": []
+  },
+  "legacy_pages_regression": {
+    "verdict": "FAIL",
+    "boundary": "Nonexistent patterns/no-such-pattern.pdf should return 404; returned 503.",
+    "attempts": 2,
+    "independent_get_status": 503,
+    "verifier_assertions_changed": false,
+    "other_steps": "The script reached the final missing-download probe; no overall legacy PASS is claimed.",
+    "scope": "Existing site/CDN response; new preview missing-model 404 probe passed."
+  },
+  "native_skill_activation": "BLOCKED: Claude CLI absent; routing proxy is not native activation.",
+  "garment_zero_self_intersections": "FAIL: upstream counter 2",
+  "physical_fit": "NOT_RUN",
+  "remote_screenshot_archive": "NOT_EXPORTED; tool-reported live results retained, no complete local archive claim.",
+  "followup_commit_scope": "Documentation only; application bytes and skill source unchanged."
+}
