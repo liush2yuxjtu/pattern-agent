@@ -32,7 +32,7 @@ for(const [key,p] of Object.entries(source.patterns)){
  }
  objects.push(piece);
 }
-return {format:'pattern',version:1,units:'mm',measurementFile:'reference-garment.slm',notes:'EXPERIMENTAL / 非生产批准。PA-TSHIRT-001。人工修改后的静态采样曲线；参数关系、面料标定和人体合身均未验证；剪口和折边已尝试几何映射，仍须人工核验。需在 OpenSloper 原生软件中打开、检查配缝并确认剪口。',nextId:id,variables:[],objects};
+return {format:'pattern',version:1,units:'mm',notes:'EXPERIMENTAL / 非生产批准。PA-TSHIRT-001。人工修改后的静态采样曲线；参数关系、面料标定和人体合身均未验证；剪口和折边已尝试几何映射，仍须人工核验。需在 OpenSloper 原生软件中打开、检查配缝并确认剪口。',nextId:id,variables:[],objects};
 }
 $('exportSloper').onclick=()=>{try{let output=toOpenSloper(data);dl('PA-TSHIRT-001-reviewed-candidate.sloper',new Blob([JSON.stringify(output,null,2)+'\n'],{type:'application/json'}))}catch(err){alert('导出失败：'+err.message)}};
 $('importBtn').onclick=()=>$('file').click();$('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(j.unit!=='mm'||!j.patterns||!Object.values(j.patterns).every(p=>Array.isArray(p.seamline_xy_mm)&&Array.isArray(p.cutline_xy_mm)))throw Error('结构不符合纸样 schema');data=j;selected=Object.keys(j.patterns)[0];point=-1;dirty=0;history=[];render();alert('已导入 '+f.name)}catch(err){alert('导入失败：'+err.message)}};render();})();
