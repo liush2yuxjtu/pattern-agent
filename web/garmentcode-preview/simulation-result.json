@@ -1,0 +1,69 @@
+{
+  "sample_name": "example-shirt",
+  "source": "官方 GarmentCode 仓库示例（非下载的数据集条目）",
+  "input": {
+    "file": "example-shirt_specification.json",
+    "sha256": "048aac4e8b90ffcda38f2b928eebe6354c48a4528ed7f31a885ce38e38ccf88e",
+    "panels": 8,
+    "stitches": 18,
+    "units_in_meter": 100
+  },
+  "mode": "simulate",
+  "garmentcode_commit": "d449629979028123a5c4dc9e732a2ec19b7fce31",
+  "resolution_cm": 1.5,
+  "body": {
+    "file": "GarmentCode/assets/bodies/mean_all.obj",
+    "sha256": "f6b2bdf2881b839089a6da06c39e63993a77607939b21522ae906c0131fa54d9",
+    "measurements": "GarmentCode/assets/bodies/mean_all.yaml",
+    "measurements_sha256": "aed8c58d445a732a45f8bc9e042d36f7d8c57d8df7a6ef24061f1caa08e794c6",
+    "scale_to_meters": 1.0,
+    "sample_id": null
+  },
+  "units": {
+    "glb": "meters",
+    "simulation_obj": "centimeters"
+  },
+  "simulation": {
+    "executed": true,
+    "solver": "GarmentCode Warp XPBD",
+    "warp_version": "1.0.0-beta.6",
+    "device": "cpu",
+    "frames": 232,
+    "elapsed_seconds": 163.581,
+    "cpu_static_check_snapshot_fix": true,
+    "static": true,
+    "moving_vertices": 50,
+    "body_intersections": 0,
+    "self_intersections": 2,
+    "quality_passed": true,
+    "error": null,
+    "config_sha256": "6f2de9ed78cdd888d5c115b6db84679abc32f54e0b3f5b527513297b0eff4d49",
+    "warp_source_commit": "63baf6855efdd89b2834b74640f84b3bb0d86b50",
+    "max_body_intersections": 35,
+    "max_self_intersections": 300
+  },
+  "preview_label": "CPU 仿真完成 · 研究预览",
+  "mesh": {
+    "vertices": 3569,
+    "triangles": 6958,
+    "bounds_m": [
+      [
+        -0.5357347770869189,
+        0.9457103829637592,
+        -0.2
+      ],
+      [
+        0.5357347770869189,
+        1.4055698990089327,
+        0.25
+      ]
+    ]
+  },
+  "release": {
+    "upstream_threshold_check": "PASS",
+    "strict_zero_self_intersections": "FAIL",
+    "physical_fit": "NOT_RUN",
+    "independent_full_geometry_audit": "NOT_RUN",
+    "reason": "Upstream self-intersection counter is 2; the repository zero-intersection release criterion is not met. This publication certifies preview functionality, not garment fitness."
+  }
+}

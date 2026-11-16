@@ -1,0 +1,26 @@
+{
+  "skill_name": "garmentcode-preview",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把官方示例纸样生成真实三角网格，导出 GLB 并给我可旋转的离线三维预览。暂时不做物理仿真，界面要明确标注未仿真。",
+      "expected_output": "Valid generated mesh and GLB, offline preview, source attribution and honest un-simulated status.",
+      "files": ["assets/example-shirt_specification.json"],
+      "assertions": ["Exports a nonempty GLB mesh with finite vertices and valid triangles", "Preview clearly labels the initial mesh as not physically simulated", "Preserves input SHA-256 and identifies the official repository fixture rather than a dataset row"]
+    },
+    {
+      "id": 2,
+      "prompt": "这是 random_body 目录中的一个 GarmentCodeData 纸样；我只有纸样和身体测量，没有对应人体网格。请给我这个人的物理试穿预览，不要换成平均人体。",
+      "expected_output": "Specific missing-body error, no fabricated personal-fit simulation or neutral-body replacement.",
+      "files": [],
+      "assertions": ["Rejects custom-fit draping without the matching body mesh", "Does not silently substitute the neutral body", "Reports the exact missing input needed to continue"]
+    },
+    {
+      "id": 3,
+      "prompt": "我已有 GarmentCodeData 的 _sim.ply，不要重新仿真，给我一个离线线框预览并导出 GLB。",
+      "expected_output": "Loads the existing mesh with process=False, exports the preview, and does not claim new meshing or simulation.",
+      "files": [],
+      "assertions": ["Uses the existing-mesh path without running cloth simulation", "States that the mesh was previously generated", "Produces an offline preview and a loadable GLB"]
+    }
+  ]
+}

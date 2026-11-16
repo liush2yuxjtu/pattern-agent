@@ -1,0 +1,112 @@
+{
+  "scope": "Commit a separate GarmentCode skill/model viewer folder and publish an additional GitHub Pages route",
+  "candidate_base_commit": "07c820913e1e474a639daa854c53952b3604db92",
+  "candidate_source_manifest": "source-manifest.json",
+  "candidate_source_manifest_sha256": "3c8e2feff5f2d705432f85a5b95843c1b0da31928af388c4f55e071cfcfe3601",
+  "project_verifier": ".agents/skills/verify/SKILL.md",
+  "surface_recipe": ".agents/skills/verify/references/garmentcode-preview.md",
+  "timestamp_utc": "2026-11-16T09:13:08.660111+00:00",
+  "commands": [
+    {
+      "command": [
+        "/workspace/work/venv/bin/python",
+        "scripts/build_pages.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.093,
+      "raw_log": "command-1.log"
+    },
+    {
+      "command": [
+        "/workspace/work/venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_verify_garmentcode_preview.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.28,
+      "raw_log": "command-2.log"
+    },
+    {
+      "command": [
+        "/workspace/work/venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_verify_artifacts.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.335,
+      "raw_log": "command-3.log"
+    },
+    {
+      "command": [
+        "/workspace/work/venv/bin/python",
+        "scripts/verify_artifacts.py",
+        "--cli",
+        "work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli"
+      ],
+      "exit_code": 0,
+      "seconds": 0.258,
+      "raw_log": "command-4.log"
+    },
+    {
+      "command": [
+        "/workspace/work/venv/bin/python",
+        "scripts/verify_mcp.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.04,
+      "raw_log": "command-5.log"
+    },
+    {
+      "command": [
+        "/workspace/work/venv/bin/python",
+        "scripts/verify_garmentcode_preview.py",
+        "--output",
+        "work/verify-garmentcode-preview"
+      ],
+      "exit_code": 0,
+      "seconds": 7.581,
+      "raw_log": "command-6.log"
+    },
+    {
+      "command": [
+        "/workspace/work/venv/bin/python",
+        "scripts/verify_pages.py",
+        "--output",
+        "work/verify-pages"
+      ],
+      "exit_code": 0,
+      "seconds": 4.283,
+      "raw_log": "command-7.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.014,
+      "raw_log": "command-8.log"
+    }
+  ],
+  "verdict": "PASS",
+  "claim": "Local prepublication viewer, downloads and existing-site regression checks",
+  "runtime_method": "Real headless Chromium/SwiftShader, actual pointer input and saved downloads at /pattern-agent/",
+  "geometry_verdict": "FAIL: upstream self-intersection count 2, zero-intersection release not met",
+  "physical_fit": "NOT_RUN",
+  "hosted_verdict": "NOT_RUN: requires publication of candidate commit and same live browser checks",
+  "cleanup": "Both verifiers close their own browsers and ephemeral HTTP servers; environment and local caches remain under ignored work/; no CI added"
+}

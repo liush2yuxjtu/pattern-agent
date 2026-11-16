@@ -35,6 +35,16 @@ not change account permissions, enable paid services, or bypass environment rule
 The working verification recipe and receipt are in `.agents/skills/verify/`
 and `docs/verification/`.
 
+## GarmentCode mesh and 3D preview
+
+[Open the GarmentCode 3D preview](https://liush2yuxjtu.github.io/pattern-agent/garmentcode-preview/)
+to rotate the generated garment, inspect its wireframe, compare the initial and
+CPU-simulated meshes, and download the skill, GLB, input pattern or offline viewer.
+The [separate handoff folder](web/garmentcode-preview/README.md) includes readable
+skill source and simulation provenance. This is an official repository example,
+not a downloaded GarmentCodeData row. The 232-frame result has two self-intersection
+counts: strict zero-intersection geometry release is **FAIL**, physical fit **NOT_RUN**.
+
 ## Aster developable dress studio
 
 [Open the Three.js studio](https://aster-pattern-studio-161126.liushiyuxjtu.chatgpt.site/)

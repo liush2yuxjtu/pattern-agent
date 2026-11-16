@@ -32,6 +32,12 @@ Local prepublication verification and hosted verification receive separate
 verdicts. An unavailable Pages setting or blocked public URL cannot be reported
 as hosted PASS.
 
+For the independent GarmentCode mesh/GLB viewer under
+`web/garmentcode-preview/`, additionally follow
+[its publication recipe](references/garmentcode-preview.md). Its runtime gate
+checks real rendered mesh interaction, offline and hosted downloads, and keeps
+the zero-self-intersection garment FAIL separate from website functionality.
+
 The question is whether the changed behavior works for a real caller. Shift tests left by running them locally before the PR, then verify the running product surface. Tests, type checks, builds, CI green, Vercel READY, and static review are supporting evidence; they do not replace runtime evidence when a real user/programmatic surface exists.
 
 ## Invariant: persist the repo's verification path
