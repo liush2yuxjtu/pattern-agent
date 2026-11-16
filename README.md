@@ -49,6 +49,34 @@ are NOT_RUN. This is a developable concept study, not a production garment block
 The [repository handoff receipt](docs/verification/aster-20261116/receipt.json)
 records the candidate source manifest, commands and verification limits.
 
+### Vercel deployments
+
+- **Current Aster production:** [3D studio](https://aster-dress-pattern-studio.vercel.app/) · [expert 3D/2D review](https://aster-dress-pattern-studio.vercel.app/#review).
+- **Downloads:** [standalone HTML](https://aster-dress-pattern-studio.vercel.app/aster-studio.html) · [complete handoff ZIP](https://aster-dress-pattern-studio.vercel.app/aster-handoff.zip).
+- **Original Sites publication:** [Aster on Sites](https://aster-pattern-studio-161126.liushiyuxjtu.chatgpt.site/) remains available.
+
+| Published | Variant | Vercel project | Artifact source | Fixed deployment URL |
+| --- | --- | --- | --- | --- |
+| 2026-11-16 | Aster 01 developable dress | `aster-dress-pattern-studio` | [8555490](https://github.com/liush2yuxjtu/pattern-agent/commit/855549017ec7bdf92c1dccca303c9cfcfe2042e7), `experiments/aster_dress/` | [Aster 01 snapshot](https://aster-dress-pattern-studio-fagpddri4-nyn5255-8475s-projects.vercel.app/) |
+
+Deployment ID: `dpl_CSyNWEo8fVhkX2UEkcLuMaK94UCb`. This is a manual static-file
+publication, with no Git-connected CI or automatic build pipeline. The production
+alias may point to a later release; the fixed URL identifies this deployment.
+For subsequent releases, append a dated row with its artifact commit and fixed
+URL. Keep distinct design variants in separately identified projects and preserve
+older rows. The related `pattern-agent-review` and `first-skirt-pattern-9gla3`
+projects are separate from Aster and were not replaced.
+
+**Deployment verification:** Vercel reports READY. Connector HTTP retrieval returned
+200 for the production HTML, fixed-deployment HTML and baseline SVG; their full
+contents matched the uploaded artifacts exactly. These are publication/integrity
+checks, not browser or garment acceptance. The live Playwright command
+`node verify-live.mjs` using Chromium at the fixed URL stopped at
+`page.goto: net::ERR_TUNNEL_CONNECTION_FAILED`, before any interaction ran.
+Real-browser application acceptance remains **BLOCKED**. The earlier 30,720
+geometry-edge comparisons, 96 seam-pair checks and 13 DOM checks retain their
+limited scope; cloth behavior and physical fit remain NOT_RUN.
+
 ## Current full-arm experiment
 
 Code is in `experiments/full_arm/`. It creates a complete synthetic mannequin and
