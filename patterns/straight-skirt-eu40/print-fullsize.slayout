@@ -1,0 +1,53 @@
+{
+  "format": "layout",
+  "version": 1,
+  "units": "mm",
+  "name": "Straight skirt EU40 | W74 H98 | 100 percent",
+  "nextId": 2,
+  "sources": [
+    {
+      "id": 1,
+      "pattern": "straight-skirt-eu40.sloper"
+    }
+  ],
+  "output": {
+    "kind": "large",
+    "rollWidth": 914,
+    "margin": 10,
+    "fill": "none"
+  },
+  "placements": [
+    {
+      "source": 1,
+      "piece": 35,
+      "copy": 1,
+      "x": 5,
+      "y": 5,
+      "rotation": 0
+    },
+    {
+      "source": 1,
+      "piece": 61,
+      "copy": 1,
+      "x": 295,
+      "y": 5,
+      "rotation": 0
+    },
+    {
+      "source": 1,
+      "piece": 75,
+      "copy": 1,
+      "x": 5,
+      "y": 665,
+      "rotation": 0
+    }
+  ],
+  "titleBlock": {
+    "corner": "bottomRight",
+    "fields": [
+      "pattern.name",
+      "measurements.name"
+    ],
+    "everyPage": false
+  }
+}

@@ -3,6 +3,38 @@
 Runnable Blender garment experiments and independent geometry checks. This is a
 research repository; physical garment fit has not been verified.
 
+## Printable straight skirt and GitHub Pages
+
+The static download site is prepared for
+[GitHub Pages](https://liush2yuxjtu.github.io/pattern-agent/). It includes the
+EU40 straight-skirt preview, A4 and full-size PDFs, Chinese instructions and a
+complete editable source bundle. The existing T-shirt review workbench remains
+at `/pattern-agent/pattern-review/`.
+
+The [skirt source and measurement assumptions](patterns/straight-skirt-eu40/README.md)
+are tracked separately from the older T-shirt experiments. Its digital geometry
+checks pass; sewn-sample and human-fit verification remain NOT_RUN.
+
+```sh
+python3 scripts/build_pages.py
+python3 -m pip install -r scripts/requirements-verify.txt
+python3 -m unittest discover -s scripts -p test_verify_artifacts.py -v
+python3 scripts/verify_artifacts.py --cli /path/to/opensloper-cli
+python3 scripts/verify_pages.py --output work/verify-pages
+```
+
+For OpenSloper on Linux x86_64, run `bash scripts/install_opensloper.sh`. It checks
+the pinned official release archive and installs under ignored `work/tools/`.
+The project `.mcp.json` starts the installed CLI through
+`scripts/opensloper-mcp.sh`. Set `OPENSLOPER_CLI` to use another installation.
+
+`.github/workflows/pages.yml` performs publication only: build static files,
+upload the Pages artifact, and deploy. Generic verification stays local. GitHub
+Pages must use **Settings → Pages → Source → GitHub Actions**; this workflow does
+not change account permissions, enable paid services, or bypass environment rules.
+The working verification recipe and receipt are in `.agents/skills/verify/`
+and `docs/verification/`.
+
 ## Current full-arm experiment
 
 Code is in `experiments/full_arm/`. It creates a complete synthetic mannequin and

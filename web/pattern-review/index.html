@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pattern Agent｜T 恤纸样审阅工作台</title><style>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pattern Agent｜T 恤纸样审阅工作台</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><style>
 :root{font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;color:#1f2937;background:#eef2f4}*{box-sizing:border-box}body{margin:0}header{height:69px;background:#172a35;color:white;display:flex;align-items:center;justify-content:space-between;padding:12px 22px;gap:12px}.brand{font-size:19px;font-weight:750}.sub{font-size:12px;opacity:.7;margin-top:3px}button,.btn{font:inherit;border:1px solid #ced6db;background:white;color:#243b46;padding:9px 13px;border-radius:8px;cursor:pointer}button:hover{border-color:#408b9b}button.primary{background:#18788e;color:white;border:0}button:disabled{opacity:.5;cursor:not-allowed}main{display:grid;grid-template-columns:240px minmax(320px,1fr) 290px;gap:14px;padding:14px;height:calc(100vh - 69px);min-height:540px}.panel{background:white;border-radius:12px;border:1px solid #dce2e6;overflow:auto}.left,.right{padding:17px}.panel h2{font-size:15px;margin:5px 0 16px}.muted{font-size:12px;color:#667885;line-height:1.6}.small-head{font-weight:750;font-size:12px;color:#8799a5;margin:23px 0 12px}.piece{display:flex;gap:9px;align-items:center;padding:10px;border-radius:7px;cursor:pointer;font-size:13px}.piece:hover{background:#ecf6f7}.piece.active{background:#dff2f3;color:#126e7a;font-weight:700}.swatch{height:10px;width:10px;border-radius:3px}.line{height:1px;background:#e6eaed;margin:20px 0}.control{display:flex;justify-content:space-between;align-items:center;margin:12px 0;font-size:13px;gap:8px}.control input{accent-color:#18788e}.state{border-radius:8px;background:#fff0e0;padding:10px;color:#885012;font-size:12px;line-height:1.5}.canvas{display:flex;flex-direction:column;overflow:hidden;background:#fcfdfd}.toolbar{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e5e9eb;flex-wrap:wrap}#drawing{flex:1;min-height:240px;position:relative;overflow:hidden;background-color:#fafcfb;background-image:linear-gradient(#e9eff1 1px,transparent 1px),linear-gradient(90deg,#e9eff1 1px,transparent 1px);background-size:25px 25px}#svg{width:100%;height:100%;touch-action:none;display:block}.footer{font-size:12px;padding:10px 15px;border-top:1px solid #e6ebed;color:#677783;display:flex;justify-content:space-between}.pill{background:#eef3f5;padding:5px 8px;border-radius:7px;font-size:12px}.metric{display:grid;grid-template-columns:1fr auto;gap:10px;padding:9px 0;border-bottom:1px solid #edf1f3;font-size:13px}.metric strong{font-variant-numeric:tabular-nums}.ok{color:#13805b}.warn{color:#ae6318}.fail{color:#b84242}select,input[type=number],textarea{border:1px solid #d3dfe3;border-radius:7px;padding:8px;font:inherit;max-width:100%}label{font-size:12px;color:#536874}.editor input{width:100%}.editor{display:grid;grid-template-columns:1fr 1fr;gap:8px}.editor label{display:block;margin-bottom:5px}.actions{display:flex;flex-wrap:wrap;gap:8px}.notice{font-size:12px;padding:9px;border:1px dashed #cbd4d9;border-radius:7px;margin-top:13px}svg .piece-outline{cursor:pointer}svg .piece-outline.selected{stroke-width:2.6}svg .edit-point{cursor:move;fill:#e28a32;stroke:white;stroke-width:1.6}svg text{user-select:none}#file{display:none}@media(max-width:980px){main{grid-template-columns:175px 1fr}.right{grid-column:1/-1;max-height:260px}main{height:auto}.canvas{height:570px}}@media(max-width:600px){header{height:auto;padding:12px}.brand{font-size:15px}main{padding:8px;gap:8px;grid-template-columns:1fr}.left{padding:12px}.left .piece-list{display:flex;overflow-x:auto}.left .piece{white-space:nowrap}.right{grid-column:auto;max-height:none}.canvas{height:60vh;min-height:420px}.toolbar button{padding:7px 8px}}
 </style></head><body><header><div><div class="brand">Pattern Agent · 纸样审阅工作台</div><div class="sub">PA-TSHIRT-001 / v001 · 全中文 · 单 HTML · 本地数据不上传</div></div><div class="actions"><button id="importBtn">导入 JSON / .sloper</button><input id="file" type="file" accept=".json,.sloper,application/json"><button id="saveJSON" class="primary">导出修改版 JSON</button><button id="exportSloper" title="导出 OpenSloper 0.3 格式 v1 候选；需要在原生软件打开并核验">导出 OpenSloper .sloper</button></div></header>
 <main><aside class="panel left"><h2>裁片列表</h2><div class="piece-list" id="pieces"></div><div class="small-head">显示图层</div><div class="control">裁剪线 <input id="cut" type="checkbox" checked></div><div class="control">缝合线 <input id="seam" type="checkbox" checked></div><div class="control">裁片标识 <input id="names" type="checkbox" checked></div><div class="control">编辑控制点 <input id="points" type="checkbox" checked></div><div class="line"></div><div class="state"><b>未批准生产</b><br>胸宽、衣长、肩宽和袖长来自历史参考数据；面料与真人合身尚未验证。</div><div class="small-head">资料来源</div><div class="muted">本工作台内置上轮实际生成的 v001 JSON 全量坐标。可导入修改后文件；所有编辑只在浏览器内进行。</div></aside>
@@ -37,6 +37,7 @@ return {format:'pattern',version:1,units:'mm',notes:'EXPERIMENTAL / 非生产批
 $('exportSloper').onclick=()=>{try{let output=toOpenSloper(data);dl('PA-TSHIRT-001-reviewed-candidate.sloper',new Blob([JSON.stringify(output,null,2)+'\n'],{type:'application/json'}))}catch(err){alert('导出失败：'+err.message)}};
 function fromOpenSloper(j){
 if(j.format!=='pattern'||j.version!==1||j.units!=='mm'||!Array.isArray(j.objects))throw Error('仅支持 OpenSloper pattern v1 单位 mm');
+if(j.variables?.length)throw Error('包含参数变量：请使用 OpenSloper 原生软件，不做有损导入');
 const byId=new Map(j.objects.map(o=>[o.id,o]));if(byId.size!==j.objects.length)throw Error('OpenSloper ID 重复');
 const allowed=new Set(['freePoint','line','piece']);if(j.objects.some(o=>!allowed.has(o.type)))throw Error('包含当前无法还原的参数化对象：请使用 OpenSloper 原生软件，不做有损导入');
 const names={Front_Bodice:'front',Back_Bodice:'back',Sleeve:'sleeve',Neckband:'neckband'}, next=structuredClone(baseData),pieces=j.objects.filter(o=>o.type==='piece');
@@ -48,3 +49,35 @@ for(const [i,ref] of (piece.path||[]).entries()){
  const edge=byId.get(ref.edge);if(!edge||edge.type!=='line')throw Error('含曲线/复杂边，无法安全导入：'+piece.name);
  const startId=ref.reversed?edge.end:edge.start,endId=ref.reversed?edge.start:edge.end;
  if(i&&lastEnd!==startId)throw Error('边界不连续：'+piece.name);
+ const a=byId.get(startId),b=byId.get(endId);
+ if(!a||!b||a.type!=='freePoint'||b.type!=='freePoint')throw Error('边界引用了无效点：'+piece.name);
+ const numeric=value=>{if(!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(String(value).trim()))throw Error('含非数值点坐标，须使用 OpenSloper 原生软件');const n=Number(value);if(!Number.isFinite(n))throw Error('点坐标不是有限数值');return n;};
+ if(i===0)firstStart=startId;
+ coords.push([numeric(a.x),numeric(a.y)]);lastEnd=endId;
+}
+if(coords.length<3||lastEnd!==firstStart)throw Error('边界未闭合：'+piece.name);
+const origin=next.patterns[key].origin_on_layout_mm||[0,0];
+coords=coords.map(([x,y])=>[x-origin[0],y-origin[1]]);coords.push(coords[0].slice());
+next.patterns[key].seamline_xy_mm=coords;
+next.patterns[key].cutline_xy_mm=[];
+}
+next.release='DRAFT_NOT_APPROVED';
+next.editor_note='静态 OpenSloper 坐标回读；旧裁剪线失效。参数关系与制造验收未验证，剪口、缝份和配缝须重新核验。';
+return next;
+}
+$('importBtn').onclick=()=>$('file').click();
+$('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{
+ const j=JSON.parse(await f.text());
+ if(j.format==='pattern'){
+  data=fromOpenSloper(j);dirty=1;$('cut').checked=false;
+ }else{
+  if(j.unit!=='mm'||!j.patterns||Object.keys(j.patterns).length!==4||!Object.keys(baseData.patterns).every(k=>j.patterns[k]))throw Error('结构不符合纸样 schema');
+  for(const p of Object.values(j.patterns)){
+   if(!Array.isArray(p.seamline_xy_mm)||p.seamline_xy_mm.length<3||!Array.isArray(p.cutline_xy_mm)||p.seamline_xy_mm.some(q=>!Array.isArray(q)||q.length!==2||q.some(v=>typeof v!=='number'||!Number.isFinite(v))))throw Error('无效纸样坐标');
+  }
+  data=j;dirty=0;
+ }
+ selected=Object.keys(data.patterns)[0];point=-1;history=[];render();alert('已导入 '+f.name+(j.format==='pattern'?'；旧裁剪线已隐藏，请重新走缝。':''));
+}catch(err){alert('导入失败：'+err.message)}finally{$('file').value='';}};
+render();})();
+</script></body></html>

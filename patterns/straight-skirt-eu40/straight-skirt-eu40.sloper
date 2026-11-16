@@ -1,0 +1,930 @@
+{
+  "format": "pattern",
+  "version": 1,
+  "units": "mm",
+  "notes": "Straight skirt, Burda reference 40: body W740 H980; finished W750 H1020. Body length 600 + waistband 40. Darts are sewn markings, NOT cutouts. Main seams 10 mm; back centre 15 mm; hem 30 mm; front fold 0. Back zip 200 mm; centre-back slit 180 mm. Make a toile and true waist/hem after fitting.",
+  "measurementFile": "measurements-eu40.slm",
+  "identity": "454fcd08-c89f-416a-bfce-63c764560fe7",
+  "nextId": 84,
+  "variables": [
+    {
+      "id": 1,
+      "name": "hip_ease",
+      "formula": "40",
+      "description": "Total hip ease"
+    },
+    {
+      "id": 2,
+      "name": "waist_ease",
+      "formula": "10",
+      "description": "Total waist ease"
+    },
+    {
+      "id": 3,
+      "name": "half_hip",
+      "formula": "(@hip + {1}) / 2",
+      "description": "Half the finished hip"
+    },
+    {
+      "id": 4,
+      "name": "back_hip",
+      "formula": "{3} / 2 - 10",
+      "description": "Back quarter width"
+    },
+    {
+      "id": 5,
+      "name": "front_hip",
+      "formula": "{3} - {4}",
+      "description": "Front quarter width"
+    },
+    {
+      "id": 6,
+      "name": "suppression",
+      "formula": "(@hip + {1} - @waist - {2}) / 2",
+      "description": "Half-skirt shaping"
+    },
+    {
+      "id": 7,
+      "name": "side_take",
+      "formula": "{6} / 4",
+      "description": "Waist intake at each quarter side"
+    },
+    {
+      "id": 8,
+      "name": "back_dart",
+      "formula": "{6} * 0.3",
+      "description": "Back dart intake"
+    },
+    {
+      "id": 9,
+      "name": "front_dart",
+      "formula": "{6} * 0.2",
+      "description": "Front dart intake"
+    },
+    {
+      "id": 10,
+      "name": "back_dart_length",
+      "formula": "140",
+      "description": "Back dart length"
+    },
+    {
+      "id": 11,
+      "name": "front_dart_length",
+      "formula": "90",
+      "description": "Front dart length"
+    },
+    {
+      "id": 12,
+      "name": "waistband_height",
+      "formula": "40",
+      "description": "Finished folded waistband height"
+    },
+    {
+      "id": 13,
+      "name": "waistband_overlap",
+      "formula": "30",
+      "description": "Extension for hook/bar fastening"
+    },
+    {
+      "id": 14,
+      "name": "zip_length",
+      "formula": "200",
+      "description": "Back zipper length"
+    },
+    {
+      "id": 15,
+      "name": "slit_height",
+      "formula": "180",
+      "description": "Centre-back walking slit"
+    }
+  ],
+  "objects": [
+    {
+      "id": 17,
+      "type": "freePoint",
+      "name": "B_A",
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "id": 18,
+      "type": "offsetPoint",
+      "name": "B_Hem_centre",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "@skirt_length"
+    },
+    {
+      "id": 19,
+      "type": "offsetPoint",
+      "name": "B_Hip_side",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "{4}",
+      "dy": "@waist_to_hip"
+    },
+    {
+      "id": 20,
+      "type": "offsetPoint",
+      "name": "B_Hem_side",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "{4}",
+      "dy": "@skirt_length"
+    },
+    {
+      "id": 21,
+      "type": "offsetPoint",
+      "name": "B_Waist_side",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "{4} - {7}",
+      "dy": "0"
+    },
+    {
+      "id": 22,
+      "type": "offsetPoint",
+      "name": "B_Dart_left",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "({4} - {7} - {8}) / 2",
+      "dy": "0"
+    },
+    {
+      "id": 23,
+      "type": "offsetPoint",
+      "name": "B_Dart_right",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "({4} - {7} + {8}) / 2",
+      "dy": "0"
+    },
+    {
+      "id": 24,
+      "type": "offsetPoint",
+      "name": "B_Dart_tip",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "({4} - {7}) / 2",
+      "dy": "{10}",
+      "markerSize": "2",
+      "marker": "match"
+    },
+    {
+      "id": 25,
+      "type": "offsetPoint",
+      "name": "B_Dart_cap",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "({4} - {7}) / 2",
+      "dy": "-{8} * {8} / (4 * {10})"
+    },
+    {
+      "id": 26,
+      "type": "offsetPoint",
+      "name": "B_Hip_centre",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "@waist_to_hip"
+    },
+    {
+      "id": 27,
+      "type": "line",
+      "name": "B_Waist_centre",
+      "start": 17,
+      "end": 22,
+      "role": "outline"
+    },
+    {
+      "id": 28,
+      "type": "line",
+      "name": "B_Cap_left",
+      "start": 22,
+      "end": 25,
+      "role": "outline"
+    },
+    {
+      "id": 29,
+      "type": "line",
+      "name": "B_Cap_right",
+      "start": 25,
+      "end": 23,
+      "role": "outline"
+    },
+    {
+      "id": 30,
+      "type": "line",
+      "name": "B_Waist_outer",
+      "start": 23,
+      "end": 21,
+      "role": "outline"
+    },
+    {
+      "id": 31,
+      "type": "curve",
+      "name": "B_Side_curve",
+      "start": 21,
+      "end": 19,
+      "angle1": "275",
+      "length1": "@waist_to_hip / 3",
+      "angle2": "90",
+      "length2": "@waist_to_hip / 3",
+      "role": "outline"
+    },
+    {
+      "id": 32,
+      "type": "line",
+      "name": "B_Side_lower",
+      "start": 19,
+      "end": 20,
+      "role": "outline"
+    },
+    {
+      "id": 33,
+      "type": "line",
+      "name": "B_Hem",
+      "start": 20,
+      "end": 18,
+      "role": "outline"
+    },
+    {
+      "id": 34,
+      "type": "line",
+      "name": "B_Centre",
+      "start": 17,
+      "end": 18,
+      "role": "outline"
+    },
+    {
+      "id": 36,
+      "type": "offsetPoint",
+      "name": "B_Zip_end",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "{14}"
+    },
+    {
+      "id": 37,
+      "type": "offsetPoint",
+      "name": "B_Slit_top",
+      "base": 17,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "@skirt_length - {15}"
+    },
+    {
+      "id": 38,
+      "type": "line",
+      "name": "B_Dart_leg_1",
+      "start": 22,
+      "end": 24,
+      "role": "stitch"
+    },
+    {
+      "id": 39,
+      "type": "line",
+      "name": "B_Dart_leg_2",
+      "start": 24,
+      "end": 23,
+      "role": "stitch"
+    },
+    {
+      "id": 40,
+      "type": "line",
+      "name": "B_Hip_guide",
+      "start": 26,
+      "end": 19,
+      "role": "placement"
+    },
+    {
+      "id": 35,
+      "type": "piece",
+      "name": "Back",
+      "path": [
+        {
+          "edge": 28,
+          "reversed": false
+        },
+        {
+          "edge": 29,
+          "reversed": false
+        },
+        {
+          "edge": 30,
+          "reversed": false
+        },
+        {
+          "edge": 31,
+          "reversed": false
+        },
+        {
+          "edge": 32,
+          "reversed": false
+        },
+        {
+          "edge": 33,
+          "reversed": false,
+          "allowance": "30"
+        },
+        {
+          "edge": 34,
+          "reversed": true,
+          "allowance": "15"
+        },
+        {
+          "edge": 27,
+          "reversed": false
+        }
+      ],
+      "allowance": "10",
+      "grainline": {
+        "angle": "90"
+      },
+      "notches": [
+        {
+          "point": 36
+        },
+        {
+          "point": 37
+        },
+        {
+          "point": 19
+        },
+        {
+          "point": 22
+        },
+        {
+          "point": 23
+        }
+      ],
+      "markings": [
+        {
+          "kind": "line",
+          "edge": 38
+        },
+        {
+          "kind": "line",
+          "edge": 39
+        },
+        {
+          "kind": "point",
+          "point": 24
+        },
+        {
+          "kind": "line",
+          "edge": 40
+        }
+      ],
+      "cut": {
+        "count": 2,
+        "mirrored": true
+      },
+      "material": 16
+    },
+    {
+      "id": 41,
+      "type": "note",
+      "name": "B_Info",
+      "anchor": {
+        "point": 17
+      },
+      "dx": "35",
+      "dy": "330",
+      "text": "BACK | EU40\nCUT 2 MIRRORED\nCentre back: 15 mm\nZip 200 / slit 180 mm",
+      "size": 10,
+      "print": true
+    },
+    {
+      "id": 42,
+      "type": "note",
+      "name": "B_Hem_note",
+      "anchor": {
+        "point": 17
+      },
+      "dx": "40",
+      "dy": "@skirt_length - 45",
+      "text": "HEM: 30 mm included",
+      "size": 9,
+      "print": true
+    },
+    {
+      "id": 43,
+      "type": "freePoint",
+      "name": "F_A",
+      "x": "350",
+      "y": "0"
+    },
+    {
+      "id": 44,
+      "type": "offsetPoint",
+      "name": "F_Hem_centre",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "@skirt_length"
+    },
+    {
+      "id": 45,
+      "type": "offsetPoint",
+      "name": "F_Hip_side",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "{5}",
+      "dy": "@waist_to_hip"
+    },
+    {
+      "id": 46,
+      "type": "offsetPoint",
+      "name": "F_Hem_side",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "{5}",
+      "dy": "@skirt_length"
+    },
+    {
+      "id": 47,
+      "type": "offsetPoint",
+      "name": "F_Waist_side",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "{5} - {7}",
+      "dy": "0"
+    },
+    {
+      "id": 48,
+      "type": "offsetPoint",
+      "name": "F_Dart_left",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "({5} - {7} - {9}) / 2",
+      "dy": "0"
+    },
+    {
+      "id": 49,
+      "type": "offsetPoint",
+      "name": "F_Dart_right",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "({5} - {7} + {9}) / 2",
+      "dy": "0"
+    },
+    {
+      "id": 50,
+      "type": "offsetPoint",
+      "name": "F_Dart_tip",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "({5} - {7}) / 2",
+      "dy": "{11}",
+      "markerSize": "2",
+      "marker": "match"
+    },
+    {
+      "id": 51,
+      "type": "offsetPoint",
+      "name": "F_Dart_cap",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "({5} - {7}) / 2",
+      "dy": "-{9} * {9} / (4 * {11})"
+    },
+    {
+      "id": 52,
+      "type": "offsetPoint",
+      "name": "F_Hip_centre",
+      "base": 43,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "@waist_to_hip"
+    },
+    {
+      "id": 53,
+      "type": "line",
+      "name": "F_Waist_centre",
+      "start": 43,
+      "end": 48,
+      "role": "outline"
+    },
+    {
+      "id": 54,
+      "type": "line",
+      "name": "F_Cap_left",
+      "start": 48,
+      "end": 51,
+      "role": "outline"
+    },
+    {
+      "id": 55,
+      "type": "line",
+      "name": "F_Cap_right",
+      "start": 51,
+      "end": 49,
+      "role": "outline"
+    },
+    {
+      "id": 56,
+      "type": "line",
+      "name": "F_Waist_outer",
+      "start": 49,
+      "end": 47,
+      "role": "outline"
+    },
+    {
+      "id": 57,
+      "type": "curve",
+      "name": "F_Side_curve",
+      "start": 47,
+      "end": 45,
+      "angle1": "275",
+      "length1": "@waist_to_hip / 3",
+      "angle2": "90",
+      "length2": "@waist_to_hip / 3",
+      "role": "outline"
+    },
+    {
+      "id": 58,
+      "type": "line",
+      "name": "F_Side_lower",
+      "start": 45,
+      "end": 46,
+      "role": "outline"
+    },
+    {
+      "id": 59,
+      "type": "line",
+      "name": "F_Hem",
+      "start": 46,
+      "end": 44,
+      "role": "outline"
+    },
+    {
+      "id": 60,
+      "type": "line",
+      "name": "F_Centre",
+      "start": 43,
+      "end": 44,
+      "role": "outline"
+    },
+    {
+      "id": 62,
+      "type": "line",
+      "name": "F_Dart_leg_1",
+      "start": 48,
+      "end": 50,
+      "role": "stitch"
+    },
+    {
+      "id": 63,
+      "type": "line",
+      "name": "F_Dart_leg_2",
+      "start": 50,
+      "end": 49,
+      "role": "stitch"
+    },
+    {
+      "id": 64,
+      "type": "line",
+      "name": "F_Hip_guide",
+      "start": 52,
+      "end": 45,
+      "role": "placement"
+    },
+    {
+      "id": 61,
+      "type": "piece",
+      "name": "Front",
+      "path": [
+        {
+          "edge": 54,
+          "reversed": false
+        },
+        {
+          "edge": 55,
+          "reversed": false
+        },
+        {
+          "edge": 56,
+          "reversed": false
+        },
+        {
+          "edge": 57,
+          "reversed": false
+        },
+        {
+          "edge": 58,
+          "reversed": false
+        },
+        {
+          "edge": 59,
+          "reversed": false,
+          "allowance": "30"
+        },
+        {
+          "edge": 60,
+          "reversed": true
+        },
+        {
+          "edge": 53,
+          "reversed": false
+        }
+      ],
+      "allowance": "10",
+      "grainline": {
+        "angle": "90"
+      },
+      "notches": [
+        {
+          "point": 45
+        },
+        {
+          "point": 48
+        },
+        {
+          "point": 49
+        }
+      ],
+      "markings": [
+        {
+          "kind": "line",
+          "edge": 62
+        },
+        {
+          "kind": "line",
+          "edge": 63
+        },
+        {
+          "kind": "point",
+          "point": 50
+        },
+        {
+          "kind": "line",
+          "edge": 64
+        }
+      ],
+      "cut": {
+        "count": 1,
+        "mirrored": false
+      },
+      "foldEdge": 60,
+      "material": 16
+    },
+    {
+      "id": 65,
+      "type": "note",
+      "name": "F_Info",
+      "anchor": {
+        "point": 43
+      },
+      "dx": "35",
+      "dy": "330",
+      "text": "FRONT | EU40\nCUT 1 ON FOLD\nKeep dart fabric\nSew marked dart legs",
+      "size": 10,
+      "print": true
+    },
+    {
+      "id": 66,
+      "type": "note",
+      "name": "F_Hem_note",
+      "anchor": {
+        "point": 43
+      },
+      "dx": "40",
+      "dy": "@skirt_length - 45",
+      "text": "HEM: 30 mm included",
+      "size": 9,
+      "print": true
+    },
+    {
+      "id": 67,
+      "type": "freePoint",
+      "name": "WB_A",
+      "x": "0",
+      "y": "700"
+    },
+    {
+      "id": 68,
+      "type": "offsetPoint",
+      "name": "A",
+      "base": 67,
+      "mode": "cartesian",
+      "dx": "@waist + {2} + {13}",
+      "dy": "0"
+    },
+    {
+      "id": 69,
+      "type": "offsetPoint",
+      "name": "B",
+      "base": 67,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "2 * {12}"
+    },
+    {
+      "id": 70,
+      "type": "offsetPoint",
+      "name": "C",
+      "base": 68,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "{69}.y - {67}.y"
+    },
+    {
+      "id": 71,
+      "type": "line",
+      "name": "WB_Attach",
+      "start": 67,
+      "end": 68,
+      "role": "outline"
+    },
+    {
+      "id": 72,
+      "type": "line",
+      "name": "WB_End",
+      "start": 68,
+      "end": 70,
+      "role": "outline"
+    },
+    {
+      "id": 73,
+      "type": "line",
+      "name": "WB_Upper",
+      "start": 70,
+      "end": 69,
+      "role": "outline"
+    },
+    {
+      "id": 74,
+      "type": "line",
+      "name": "WB_Start",
+      "start": 69,
+      "end": 67,
+      "role": "outline"
+    },
+    {
+      "id": 76,
+      "type": "offsetPoint",
+      "name": "WB_Fold_start",
+      "base": 67,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "{12}"
+    },
+    {
+      "id": 77,
+      "type": "offsetPoint",
+      "name": "WB_Fold_end",
+      "base": 67,
+      "mode": "cartesian",
+      "dx": "@waist + {2} + {13}",
+      "dy": "{12}"
+    },
+    {
+      "id": 78,
+      "type": "line",
+      "name": "WB_Fold",
+      "start": 76,
+      "end": 77,
+      "role": "fold"
+    },
+    {
+      "id": 79,
+      "type": "offsetPoint",
+      "name": "WB_Overlap_start",
+      "base": 67,
+      "mode": "cartesian",
+      "dx": "@waist + {2}",
+      "dy": "0"
+    },
+    {
+      "id": 80,
+      "type": "offsetPoint",
+      "name": "WB_Overlap_end",
+      "base": 79,
+      "mode": "cartesian",
+      "dx": "0",
+      "dy": "2 * {12}"
+    },
+    {
+      "id": 81,
+      "type": "line",
+      "name": "WB_Overlap",
+      "start": 79,
+      "end": 80,
+      "role": "placement"
+    },
+    {
+      "id": 75,
+      "type": "piece",
+      "name": "Waistband",
+      "path": [
+        {
+          "edge": 72,
+          "reversed": false
+        },
+        {
+          "edge": 73,
+          "reversed": false
+        },
+        {
+          "edge": 74,
+          "reversed": false
+        },
+        {
+          "edge": 71,
+          "reversed": false
+        }
+      ],
+      "allowance": "10",
+      "grainline": {
+        "angle": "0"
+      },
+      "notches": [
+        {
+          "edge": 71,
+          "position": "{4} - {7} - {8}"
+        },
+        {
+          "edge": 71,
+          "position": "(@waist + {2}) / 2"
+        },
+        {
+          "edge": 71,
+          "position": "@waist + {2} - ({4} - {7} - {8})"
+        },
+        {
+          "edge": 71,
+          "position": "@waist + {2}"
+        }
+      ],
+      "markings": [
+        {
+          "kind": "line",
+          "edge": 78
+        },
+        {
+          "kind": "line",
+          "edge": 81
+        }
+      ],
+      "cut": {
+        "count": 1,
+        "mirrored": false
+      },
+      "material": 16
+    },
+    {
+      "id": 82,
+      "type": "note",
+      "name": "WB_Info",
+      "anchor": {
+        "point": 67
+      },
+      "dx": "20",
+      "dy": "12",
+      "text": "WAISTBAND | CUT 1 MAIN + 1 FUSIBLE | FOLD TO 40 mm | 30 mm OVERLAP",
+      "size": 9,
+      "print": true
+    },
+    {
+      "id": 83,
+      "type": "seam",
+      "name": "Side_seam_match",
+      "sideA": [
+        {
+          "piece": 35,
+          "edge": 31
+        },
+        {
+          "piece": 35,
+          "edge": 32
+        }
+      ],
+      "sideB": [
+        {
+          "piece": 61,
+          "edge": 57
+        },
+        {
+          "piece": 61,
+          "edge": 58
+        }
+      ],
+      "reversed": false,
+      "ease": "0",
+      "tolerance": "0.5"
+    }
+  ],
+  "materials": [
+    {
+      "id": 16,
+      "name": "Main",
+      "color": "#C9DDD7",
+      "fill": "tint",
+      "allowance": 10,
+      "width": 1500
+    }
+  ]
+}

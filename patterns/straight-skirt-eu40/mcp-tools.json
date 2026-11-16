@@ -1,0 +1,1986 @@
+{
+  "tools": [
+    {
+      "name": "open",
+      "description": "Opens a pattern, optionally with another measurement file and a size. Returns: The pattern's file, measurement file, unit, object and variable counts, and whether it is modified.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "description": "The pattern file (.sloper)",
+            "type": "string"
+          },
+          "measurements": {
+            "description": "A measurement file to use in place of the one the pattern names",
+            "type": "string"
+          },
+          "size": {
+            "description": "The size to use from a size table",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "save",
+      "description": "Saves the pattern. Returns: The pattern's file, measurement file, unit, object and variable counts, and whether it is modified.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "description": "Where to save it, a .sloper file; by default, where it was opened from. A file that is not a pattern is never replaced",
+            "type": "string"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "convert_units",
+      "description": "Converts the pattern to another unit, rewriting only lengths, as one undo step. While a number's role is open nothing changes and the reply lists it; mark each and call again. Returns: `converted` true and the new `units`; or `converted` false and the `undecided` numbers, each with its object, `field`, `token`, `number`, `formula` and `position` in it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "units": {
+            "description": "The unit to convert to",
+            "enum": [
+              "mm",
+              "cm",
+              "in"
+            ],
+            "type": "string"
+          },
+          "marks": {
+            "description": "The numbers the formulas leave open, each marked as a length or a number",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+                },
+                "field": {
+                  "description": "The field the number is in",
+                  "type": "string"
+                },
+                "token": {
+                  "description": "The number's token, as the reply listed it",
+                  "type": "integer"
+                },
+                "role": {
+                  "description": "What the number is",
+                  "enum": [
+                    "length",
+                    "number"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "token",
+                "role"
+              ]
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "units"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "undo",
+      "description": "Undoes the last change. Returns: The pattern's file, measurement file, unit, object and variable counts, and whether it is modified.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "redo",
+      "description": "Redoes the change last undone. Returns: The pattern's file, measurement file, unit, object and variable counts, and whether it is modified.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "get_measurements",
+      "description": "Lists the current measurement set: its file, sizes and values in mm. Returns: `path`, `size` and `sizes` for a size table, and `measurements`, each with `key`, `value` and `description`.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "set_measurement",
+      "description": "Adds or changes one value in the measurement file, and saves the file. Returns: `key`, `value`, whether it was `added`, and its `oldValue` when it had one.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "description": "The measurement's key, such as waist",
+            "type": "string"
+          },
+          "value": {
+            "description": "The value in mm",
+            "type": "number"
+          },
+          "size": {
+            "description": "For a size table, the size to change",
+            "type": "string"
+          },
+          "description": {
+            "description": "Its description; by default, the one it has",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "missing_measurements",
+      "description": "Lists what the pattern needs that the measurement set lacks. Returns: `missing`, each with its `key` and the `sizes` with no value.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "list_objects",
+      "description": "Lists the variables and objects with their formulas, values and state. Returns: `variables` and `objects`, each as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "get_object",
+      "description": "Gives one object or variable: its name, ID, type, formulas (as shown), computed values, state and whether it is locked. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "set_formula",
+      "description": "Changes one formula of an object or variable. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "field": {
+            "description": "The field, such as length or formula",
+            "type": "string"
+          },
+          "formula": {
+            "description": "The new formula",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field",
+          "formula"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "rename",
+      "description": "Renames an object or variable; formulas that use it follow. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "newName": {
+            "description": "The new name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "newName"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "delete",
+      "description": "Deletes an object or variable that nothing uses. Returns: The pattern's file, measurement file, unit, object and variable counts, and whether it is modified.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_locked",
+      "description": "Locks or unlocks an object. A locked object cannot be moved, edited or deleted, but its formulas still run, so it follows what it uses; a change that would alter it is refused. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "locked": {
+            "description": "true to lock, false to unlock",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "locked"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_variable",
+      "description": "Adds a variable. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Its name, used in formulas as #name",
+            "type": "string"
+          },
+          "formula": {
+            "description": "Its formula",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "description": {
+            "description": "What it is for",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "formula"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_point",
+      "description": "Adds a point of any type. The type's members, as on the operations page; points and edges are given by ID or name. Members of each type: freePoint: x, y; offsetPoint: base, mode (polar | cartesian), length, angle, dx, dy; alongEdgePoint: edge, from (start | end), mode (length | ratio), value; betweenPoint: a, b, mode (length | ratio), value; intersectPoint: edgeA, edgeB, extendA, extendB, pick; circleEdgePoint: centre, radius, edge, extend, pick; circleCirclePoint: centreA, radiusA, centreB, radiusB, pick; projectPoint: point, edge, direction (perpendicular | angle), angle, extend. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The point's type",
+            "enum": [
+              "freePoint",
+              "offsetPoint",
+              "alongEdgePoint",
+              "betweenPoint",
+              "intersectPoint",
+              "circleEdgePoint",
+              "circleCirclePoint",
+              "projectPoint"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "description": "Its name; by default the next free one",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_edge",
+      "description": "Adds an edge: a line, curve, curve path, circle, arc or offset edge. The type's members, as on the operations page; points and edges are given by ID or name. An offset edge's `side` may also be `inside` or `outside` a `piece`. Members of each type: line: start, end; curve: start, end, angle1, length1, angle2, length2; curvePath: nodes (a list, each with point, angle, lengthIn, lengthOut); circle: centre, radius; arc: centre, radius, angle1, angle2; offsetEdge: edge, edges (a list, each with edge, reversed), side (left | right), distance. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The edge's type",
+            "enum": [
+              "line",
+              "curve",
+              "curvePath",
+              "circle",
+              "arc",
+              "offsetEdge"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "description": "Its name; by default the next free one",
+            "type": "string"
+          },
+          "role": {
+            "description": "Its role; by default construction",
+            "enum": [
+              "construction",
+              "outline",
+              "placement",
+              "stitch",
+              "fold",
+              "cut",
+              "skive",
+              "edgeFinish"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_repeat",
+      "description": "Adds a repeat: points evenly spaced between two points or along an edge. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "description": "The first point",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "b": {
+            "description": "The last point",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "edge": {
+            "description": "Along this edge, in place of a and b",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "count": {
+            "description": "How many points",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "ends": {
+            "description": "Whether the ends have points of their own",
+            "enum": [
+              "include",
+              "exclude"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "description": "Its name; by default the next free one",
+            "type": "string"
+          }
+        },
+        "required": [
+          "count"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "split_edge",
+      "description": "Splits an edge at a point on it into two parts; pieces and seams that used it take the parts. Returns: The two parts.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "edge": {
+            "description": "The edge",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "point": {
+            "description": "The point on it",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "edge",
+          "point"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_rectangle",
+      "description": "Adds a rectangle of four lines from a corner. Returns: The four lines.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "corner": {
+            "description": "The corner point",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "width": {
+            "description": "How far right the opposite corner is",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "height": {
+            "description": "How far down the opposite corner is",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "role": {
+            "description": "Its role; by default construction",
+            "enum": [
+              "construction",
+              "outline",
+              "placement",
+              "stitch",
+              "fold",
+              "cut",
+              "skive",
+              "edgeFinish"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "corner",
+          "width",
+          "height"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "round_corner",
+      "description": "Rounds the corner where two edges meet with an arc. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "edgeA": {
+            "description": "The first edge",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "edgeB": {
+            "description": "The second edge",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "radius": {
+            "description": "The arc's radius",
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "edgeA",
+          "edgeB",
+          "radius"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "convert_edge",
+      "description": "Changes an edge to a line or a curve in place, keeping its ID. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "to": {
+            "description": "What it becomes",
+            "enum": [
+              "line",
+              "curve"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "to"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "merge_points",
+      "description": "Merges two or more points into one, which every edge and formula then uses. Returns: The point kept.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "description": "The points",
+            "items": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "points"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "break_point",
+      "description": "Breaks a point into one for each edge that meets there. Returns: `points`, the points it became.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "copy_objects",
+      "description": "Copies points and edges, with what they depend on, as Edit \u2192 Copy does. Returns: `fragment`, the copy as text for `paste_objects`; `names`, the copied objects' names; `leftOut`, the names of those that cannot be copied.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "objects": {
+            "description": "The points and edges to copy",
+            "items": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "objects"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "paste_objects",
+      "description": "Pastes a copy as Edit \u2192 Paste does: into the pattern it came from, the objects join what they used there; into another, what they depend on comes too. They take new IDs, and a name already taken the next number. Returns: `objects`, the pasted copies of the copied objects; `renamed`, names that changed, as \"A \u2192 A2\".",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "fragment": {
+            "description": "The `fragment` that `copy_objects` gave",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fragment"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "arrange",
+      "description": "Aligns or distributes points. Points a formula places are left as they are and listed, unless named in replace. Returns: The names of the points `changed`, `asked` (left, as a formula places them) and `kept`.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "description": "What to do",
+            "enum": [
+              "alignVertical",
+              "alignHorizontal",
+              "distribute",
+              "distributeHorizontal",
+              "distributeVertical",
+              "distributeAlongEdge"
+            ],
+            "type": "string"
+          },
+          "points": {
+            "description": "The points",
+            "items": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            },
+            "type": "array"
+          },
+          "reference": {
+            "description": "For aligning: the point to line up with",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "edge": {
+            "description": "For distributeAlongEdge: the edge",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "replace": {
+            "description": "Points placed by a formula to change all the same",
+            "items": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "action",
+          "points"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_transform",
+      "description": "Adds rotated, mirrored or moved copies of points and edges. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The transform",
+            "enum": [
+              "rotate",
+              "mirror",
+              "move"
+            ],
+            "type": "string"
+          },
+          "sources": {
+            "description": "The points and edges to copy",
+            "items": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            },
+            "type": "array"
+          },
+          "name": {
+            "description": "The transform's name",
+            "type": "string"
+          },
+          "suffix": {
+            "description": "Added to the names of the copies",
+            "type": "string"
+          },
+          "pivot": {
+            "description": "rotate: the point to turn about; move: a point to turn the copies about",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "angle": {
+            "description": "rotate: how far to turn; mirror with axis.a only: the axis's direction; move: the direction",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "axis": {
+            "description": "mirror: the line to reflect in",
+            "type": "object",
+            "properties": {
+              "edge": {
+                "description": "An edge",
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              },
+              "a": {
+                "description": "Or a point on the line",
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              },
+              "b": {
+                "description": "And a second point on it",
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              }
+            }
+          },
+          "length": {
+            "description": "move: how far, at the angle",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "dx": {
+            "description": "move: how far right, in place of length",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "dy": {
+            "description": "move: how far down",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "rotate": {
+            "description": "move with pivot: how far the copies turn",
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "sources"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_role",
+      "description": "Changes an edge's role. A marking role puts it on the pieces it lies in. Returns: The edge, as `get_object` gives it, with the `pieces` it is marked on.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "role": {
+            "description": "The new role",
+            "enum": [
+              "construction",
+              "outline",
+              "placement",
+              "stitch",
+              "fold",
+              "cut",
+              "skive",
+              "edgeFinish"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "role"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_marker",
+      "description": "Gives a point or repeat a marker; it is marked on the pieces it lies in. Returns: The edge, as `get_object` gives it, with the `pieces` it is marked on.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "marker": {
+            "description": "The marker",
+            "enum": [
+              "plain",
+              "hole",
+              "button",
+              "match"
+            ],
+            "type": "string"
+          },
+          "size": {
+            "description": "Its size; by default a size for the marker and the pattern's unit",
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "marker"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "create_piece",
+      "description": "Makes a piece from the closed outline around a place. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "description": "Across, in mm, inside the outline",
+            "type": "number"
+          },
+          "y": {
+            "description": "Down, in mm",
+            "type": "number"
+          },
+          "name": {
+            "description": "Its name",
+            "type": "string"
+          },
+          "allowance": {
+            "description": "Its seam allowance; by default the first material's, or a round value for the pattern's unit",
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_edge_allowance",
+      "description": "Gives one edge of a piece its own seam allowance, or clears it. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "edge": {
+            "description": "The edge",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "allowance": {
+            "description": "The allowance; left out, the edge goes back to the piece's",
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "edge"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_grainline",
+      "description": "Sets a piece's grainline: at an angle, between two points, or none. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "angle": {
+            "description": "At this angle",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "start": {
+            "description": "Or from this point",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "end": {
+            "description": "To this one",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "none": {
+            "description": "No grainline",
+            "type": "boolean"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_notch",
+      "description": "Adds a notch on a piece's seam line, at a point or a distance along an edge. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "point": {
+            "description": "At this point",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "edge": {
+            "description": "Or on this edge of the piece",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "position": {
+            "description": "With edge: the distance from its start",
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "remove_notch",
+      "description": "Removes a notch. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "notch": {
+            "description": "Its number, from 1",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "notch"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_marking",
+      "description": "Marks a point or a line on a piece, or adds stitch holes along an edge. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "kind": {
+            "description": "What to add",
+            "enum": [
+              "point",
+              "line",
+              "stitch"
+            ],
+            "type": "string"
+          },
+          "point": {
+            "description": "point: the point or repeat",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "edge": {
+            "description": "line, stitch: the edge",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "spacing": {
+            "description": "stitch: the distance between holes",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "size": {
+            "description": "stitch: the hole size",
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "remove_marking",
+      "description": "Removes a marking. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "marking": {
+            "description": "Its number, from 1",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "marking"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_cut",
+      "description": "Sets how many of a piece to cut, and whether every other one is mirrored. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "count": {
+            "description": "How many",
+            "type": "integer"
+          },
+          "mirrored": {
+            "description": "Whether every other one is mirrored",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "count"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_fold",
+      "description": "Puts a piece on the fold of one of its straight edges, or takes it off. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "edge": {
+            "description": "The edge",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "none": {
+            "description": "Off the fold",
+            "type": "boolean"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_piece_material",
+      "description": "Sets the material a piece is cut from. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "material": {
+            "description": "The material",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "none": {
+            "description": "No material",
+            "type": "boolean"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_piece_fill",
+      "description": "Sets how a piece is filled on screen. Returns: The piece, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The piece, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "color": {
+            "description": "Its own colour, as #rrggbb, or empty for its material's",
+            "type": "string"
+          },
+          "style": {
+            "description": "How it is filled",
+            "enum": [
+              "material",
+              "tint",
+              "hatch"
+            ],
+            "type": "string"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "list_materials",
+      "description": "Lists the materials and the cut list. Returns: `materials`, each with `id`, `name`, `color`, `fill`, and `allowance`, `width`, `length` and `allowTurns` when set, and the `cutList`.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "add_material",
+      "description": "Adds a material. Returns: The materials and the cut list, as `list_materials` gives them.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Its name; by default the next free one",
+            "type": "string"
+          },
+          "color": {
+            "description": "Its colour, as #rrggbb",
+            "type": "string"
+          },
+          "fill": {
+            "description": "How pieces of it are filled",
+            "enum": [
+              "tint",
+              "hatch"
+            ],
+            "type": "string"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "rename_material",
+      "description": "Renames a material. Returns: The materials and the cut list, as `list_materials` gives them.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "material": {
+            "description": "The material, by ID or name",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "name": {
+            "description": "The new name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "material",
+          "name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_material",
+      "description": "Changes a material's colour, fill, seam allowance or size. Pieces that cannot fit its size are problems. Returns: The materials and the cut list, as `list_materials` gives them.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "material": {
+            "description": "The material, by ID or name",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "color": {
+            "description": "Its colour, as #rrggbb",
+            "type": "string"
+          },
+          "fill": {
+            "description": "How pieces of it are filled",
+            "enum": [
+              "tint",
+              "hatch"
+            ],
+            "type": "string"
+          },
+          "allowance": {
+            "description": "A seam allowance for pieces of it, in the pattern's unit",
+            "type": "number"
+          },
+          "noAllowance": {
+            "description": "Takes its seam allowance away",
+            "type": "boolean"
+          },
+          "width": {
+            "description": "Its width in the pattern's unit, 0 for none, which takes the length away too; a width alone is a roll",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of a sheet of it in the pattern's unit, with a width; 0 for a roll",
+            "type": "number"
+          },
+          "allowTurns": {
+            "description": "Whether pieces may lie a quarter turn round on it, for material with no grain",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "material"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "delete_material",
+      "description": "Deletes a material; its pieces are left with none. Returns: The materials and the cut list, as `list_materials` gives them.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "material": {
+            "description": "The material, by ID or name",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "material"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "add_seam",
+      "description": "Adds a seam: two runs of piece edges sewn together, whose lengths are checked. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sideA": {
+            "description": "Side A, in order along the seam",
+            "items": {
+              "type": "object",
+              "properties": {
+                "piece": {
+                  "description": "The piece",
+                  "type": [
+                    "integer",
+                    "string"
+                  ]
+                },
+                "edge": {
+                  "description": "The edge of that piece",
+                  "type": [
+                    "integer",
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "piece",
+                "edge"
+              ]
+            },
+            "type": "array"
+          },
+          "sideB": {
+            "description": "Side B",
+            "items": {
+              "type": "object",
+              "properties": {
+                "piece": {
+                  "description": "The piece",
+                  "type": [
+                    "integer",
+                    "string"
+                  ]
+                },
+                "edge": {
+                  "description": "The edge of that piece",
+                  "type": [
+                    "integer",
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "piece",
+                "edge"
+              ]
+            },
+            "type": "array"
+          },
+          "name": {
+            "description": "Its name",
+            "type": "string"
+          },
+          "ease": {
+            "description": "How much longer side B should be; by default 0",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "tolerance": {
+            "description": "How far the difference may be from the ease; by default a small value for the pattern's unit",
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "sideA",
+          "sideB"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "flip_seam",
+      "description": "Turns a seam's side B round, for edges sewn running the same way. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "suggest_seams",
+      "description": "Suggests pairs of piece edges that look like they are sewn together, without adding them. Returns: `suggestions`, each with `sideA`, `sideB`, whether the edge is `shared`, and the length `difference`.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "add_note",
+      "description": "Adds a note, free or hung from a point, edge or piece; with a leader it is a callout. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "description": "The text, with draft values such as {=@waist / 4}",
+            "type": "string"
+          },
+          "anchor": {
+            "description": "What it hangs from; left out for a free note",
+            "type": "object",
+            "properties": {
+              "point": {
+                "description": "A point",
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              },
+              "edge": {
+                "description": "Or an edge",
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              },
+              "piece": {
+                "description": "Or a piece",
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              },
+              "position": {
+                "description": "With edge: how far along it, 0 to 1",
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            }
+          },
+          "x": {
+            "description": "A free note: its place across",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "y": {
+            "description": "A free note: its place down",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "dx": {
+            "description": "A hung note: how far right of what it hangs from",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "dy": {
+            "description": "A hung note: how far down",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "size": {
+            "description": "The text size in points",
+            "type": "number"
+          },
+          "print": {
+            "description": "Whether it prints; by default true",
+            "type": "boolean"
+          },
+          "leader": {
+            "description": "A line to what it hangs from",
+            "enum": [
+              "none",
+              "arrow",
+              "dot",
+              "line"
+            ],
+            "type": "string"
+          },
+          "align": {
+            "description": "How its lines line up",
+            "enum": [
+              "left",
+              "centre",
+              "right"
+            ],
+            "type": "string"
+          },
+          "box": {
+            "description": "A white box behind it",
+            "type": "boolean"
+          },
+          "font": {
+            "description": "The font family it prints in; empty for the default sans-serif. One not installed prints in the default font",
+            "type": "string"
+          },
+          "bold": {
+            "description": "Bold",
+            "type": "boolean"
+          },
+          "italic": {
+            "description": "Italic",
+            "type": "boolean"
+          },
+          "name": {
+            "description": "Its name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "set_text",
+      "description": "Changes a note's text, size, printing, leader, alignment, box or font. Returns: The object, as `get_object` gives it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object, by its ID or its name: give \"id\" or \"name\"."
+          },
+          "text": {
+            "description": "The text, with draft values such as {=@waist / 4}",
+            "type": "string"
+          },
+          "size": {
+            "description": "The text size in points",
+            "type": "number"
+          },
+          "print": {
+            "description": "Whether it prints; by default true",
+            "type": "boolean"
+          },
+          "leader": {
+            "description": "A line to what it hangs from",
+            "enum": [
+              "none",
+              "arrow",
+              "dot",
+              "line"
+            ],
+            "type": "string"
+          },
+          "align": {
+            "description": "How its lines line up",
+            "enum": [
+              "left",
+              "centre",
+              "right"
+            ],
+            "type": "string"
+          },
+          "box": {
+            "description": "A white box behind it",
+            "type": "boolean"
+          },
+          "font": {
+            "description": "The font family it prints in; empty for the default sans-serif. One not installed prints in the default font",
+            "type": "string"
+          },
+          "bold": {
+            "description": "Bold",
+            "type": "boolean"
+          },
+          "italic": {
+            "description": "Italic",
+            "type": "boolean"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "evaluate",
+      "description": "Works the pattern out again and lists its problems. Returns: The problems: objects that are invalid or blocked, gaps, and seams out of tolerance.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "check",
+      "description": "As evaluate, with the full report of every computed value. Returns: The problems, and every object's computed values.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "render",
+      "description": "Draws the pattern as SVG or as a PNG image, as the drafting window shows it. Returns: `format` and the `svg` text; or, for png, the `png` file as base64 and its `width`.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "format": {
+            "description": "svg, or png for an image; by default svg",
+            "enum": [
+              "svg",
+              "png"
+            ],
+            "type": "string"
+          },
+          "width": {
+            "description": "png: the image's width in pixels, from 16 to 4096; by default 1600. Its height follows the drawing",
+            "type": "integer"
+          },
+          "labels": {
+            "description": "Name the points and pieces",
+            "type": "boolean"
+          },
+          "hiddenRoles": {
+            "description": "Roles of edges to leave out",
+            "items": {
+              "enum": [
+                "construction",
+                "outline",
+                "placement",
+                "stitch",
+                "fold",
+                "cut",
+                "skive",
+                "edgeFinish"
+              ]
+            },
+            "type": "array"
+          },
+          "annotations": {
+            "description": "Whether to draw notes; by default true",
+            "type": "boolean"
+          },
+          "region": {
+            "description": "Only this part, in mm",
+            "type": "object",
+            "properties": {
+              "minX": {
+                "description": "The left or top",
+                "type": "number"
+              },
+              "minY": {
+                "description": "The left or top",
+                "type": "number"
+              },
+              "maxX": {
+                "description": "The right or bottom",
+                "type": "number"
+              },
+              "maxY": {
+                "description": "The right or bottom",
+                "type": "number"
+              }
+            },
+            "required": [
+              "minX",
+              "minY",
+              "maxX",
+              "maxY"
+            ]
+          },
+          "garment": {
+            "description": "The Garment view instead: each piece as sewn, darts closed and folds opened, shaded, arranged as on the canvas; labels, hiddenRoles, annotations and region do not apply. By default false",
+            "type": "boolean"
+          },
+          "material": {
+            "description": "garment: only the pieces cut from this material, by name; by default all",
+            "type": "string"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "ui_state",
+      "description": "Gives the design window's state: its pattern file, the selection, the label mode and the part of the draft in view. Only through opensloper-cli serve --connect, with the window in automation mode. Returns: `file`, `modified`, `units`, `selection` (each with `id`, `name` and `type`), `labels` and `view`, the region in view in mm (`minX`, `minY`, `maxX`, `maxY`), which `render` takes as its `region`.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "export",
+      "description": "Exports a saved layout file as PDF, SVG, DXF or machine DXF. Returns: The `path` written.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "layout": {
+            "description": "The layout file (.slayout)",
+            "type": "string"
+          },
+          "path": {
+            "description": "The file to write, ending in the format's extension (.pdf, .svg or .dxf)",
+            "type": "string"
+          },
+          "format": {
+            "description": "By default, from the file name's extension",
+            "enum": [
+              "pdf",
+              "svg",
+              "dxf",
+              "machine-dxf"
+            ],
+            "type": "string"
+          },
+          "profile": {
+            "description": "A machine profile from the settings, in place of the layout's",
+            "type": "string"
+          }
+        },
+        "required": [
+          "layout",
+          "path"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    }
+  ]
+}

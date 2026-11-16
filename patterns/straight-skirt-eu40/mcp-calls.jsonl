@@ -1,0 +1,117 @@
+{"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": {"name": "skirt-pattern-builder", "version": "1"}}}
+{"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": {"name": "open", "arguments": {"path": "/workspace/work/skirt-eu40/straight-skirt-eu40.sloper"}}}
+{"jsonrpc": "2.0", "id": 3, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "hip_ease", "formula": "40", "description": "Total hip ease"}}}
+{"jsonrpc": "2.0", "id": 4, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "waist_ease", "formula": "10", "description": "Total waist ease"}}}
+{"jsonrpc": "2.0", "id": 5, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "half_hip", "formula": "(@hip + #hip_ease) / 2", "description": "Half the finished hip"}}}
+{"jsonrpc": "2.0", "id": 6, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "back_hip", "formula": "#half_hip / 2 - 10", "description": "Back quarter width"}}}
+{"jsonrpc": "2.0", "id": 7, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "front_hip", "formula": "#half_hip - #back_hip", "description": "Front quarter width"}}}
+{"jsonrpc": "2.0", "id": 8, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "suppression", "formula": "(@hip + #hip_ease - @waist - #waist_ease) / 2", "description": "Half-skirt shaping"}}}
+{"jsonrpc": "2.0", "id": 9, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "side_take", "formula": "#suppression / 4", "description": "Waist intake at each quarter side"}}}
+{"jsonrpc": "2.0", "id": 10, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "back_dart", "formula": "#suppression * 0.3", "description": "Back dart intake"}}}
+{"jsonrpc": "2.0", "id": 11, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "front_dart", "formula": "#suppression * 0.2", "description": "Front dart intake"}}}
+{"jsonrpc": "2.0", "id": 12, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "back_dart_length", "formula": "140", "description": "Back dart length"}}}
+{"jsonrpc": "2.0", "id": 13, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "front_dart_length", "formula": "90", "description": "Front dart length"}}}
+{"jsonrpc": "2.0", "id": 14, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "waistband_height", "formula": "40", "description": "Finished folded waistband height"}}}
+{"jsonrpc": "2.0", "id": 15, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "waistband_overlap", "formula": "30", "description": "Extension for hook/bar fastening"}}}
+{"jsonrpc": "2.0", "id": 16, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "zip_length", "formula": "200", "description": "Back zipper length"}}}
+{"jsonrpc": "2.0", "id": 17, "method": "tools/call", "params": {"name": "add_variable", "arguments": {"name": "slit_height", "formula": "180", "description": "Centre-back walking slit"}}}
+{"jsonrpc": "2.0", "id": 18, "method": "tools/call", "params": {"name": "set_material", "arguments": {"material": "Main", "color": "#C9DDD7", "allowance": 10, "width": 1500}}}
+{"jsonrpc": "2.0", "id": 19, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "freePoint", "name": "B_A", "x": "0", "y": "0"}}}
+{"jsonrpc": "2.0", "id": 20, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Hem_centre", "base": "B_A", "mode": "cartesian", "dx": "0", "dy": "@skirt_length"}}}
+{"jsonrpc": "2.0", "id": 21, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Hip_side", "base": "B_A", "mode": "cartesian", "dx": "#back_hip", "dy": "@waist_to_hip"}}}
+{"jsonrpc": "2.0", "id": 22, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Hem_side", "base": "B_A", "mode": "cartesian", "dx": "#back_hip", "dy": "@skirt_length"}}}
+{"jsonrpc": "2.0", "id": 23, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Waist_side", "base": "B_A", "mode": "cartesian", "dx": "#back_hip - #side_take", "dy": "0"}}}
+{"jsonrpc": "2.0", "id": 24, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Dart_left", "base": "B_A", "mode": "cartesian", "dx": "(#back_hip - #side_take - #back_dart) / 2", "dy": "0"}}}
+{"jsonrpc": "2.0", "id": 25, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Dart_right", "base": "B_A", "mode": "cartesian", "dx": "(#back_hip - #side_take + #back_dart) / 2", "dy": "0"}}}
+{"jsonrpc": "2.0", "id": 26, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Dart_tip", "base": "B_A", "mode": "cartesian", "dx": "(#back_hip - #side_take) / 2", "dy": "#back_dart_length"}}}
+{"jsonrpc": "2.0", "id": 27, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Dart_cap", "base": "B_A", "mode": "cartesian", "dx": "(#back_hip - #side_take) / 2", "dy": "-#back_dart * #back_dart / (4 * #back_dart_length)"}}}
+{"jsonrpc": "2.0", "id": 28, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Hip_centre", "base": "B_A", "mode": "cartesian", "dx": "0", "dy": "@waist_to_hip"}}}
+{"jsonrpc": "2.0", "id": 29, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Waist_centre", "start": "B_A", "end": "B_Dart_left", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 30, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Cap_left", "start": "B_Dart_left", "end": "B_Dart_cap", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 31, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Cap_right", "start": "B_Dart_cap", "end": "B_Dart_right", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 32, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Waist_outer", "start": "B_Dart_right", "end": "B_Waist_side", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 33, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "curve", "name": "B_Side_curve", "role": "outline", "start": "B_Waist_side", "end": "B_Hip_side", "angle1": "275", "length1": "@waist_to_hip / 3", "angle2": "90", "length2": "@waist_to_hip / 3"}}}
+{"jsonrpc": "2.0", "id": 34, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Side_lower", "start": "B_Hip_side", "end": "B_Hem_side", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 35, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Hem", "start": "B_Hem_side", "end": "B_Hem_centre", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 36, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Centre", "start": "B_A", "end": "B_Hem_centre", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 37, "method": "tools/call", "params": {"name": "create_piece", "arguments": {"x": 80, "y": 300, "name": "Back", "allowance": "10"}}}
+{"jsonrpc": "2.0", "id": 38, "method": "tools/call", "params": {"name": "set_edge_allowance", "arguments": {"name": "Back", "edge": "B_Hem", "allowance": "30"}}}
+{"jsonrpc": "2.0", "id": 39, "method": "tools/call", "params": {"name": "set_grainline", "arguments": {"name": "Back", "angle": "90"}}}
+{"jsonrpc": "2.0", "id": 40, "method": "tools/call", "params": {"name": "set_cut", "arguments": {"name": "Back", "count": 2, "mirrored": true}}}
+{"jsonrpc": "2.0", "id": 41, "method": "tools/call", "params": {"name": "set_edge_allowance", "arguments": {"name": "Back", "edge": "B_Centre", "allowance": "15"}}}
+{"jsonrpc": "2.0", "id": 42, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Zip_end", "base": "B_A", "mode": "cartesian", "dx": "0", "dy": "#zip_length"}}}
+{"jsonrpc": "2.0", "id": 43, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "B_Slit_top", "base": "B_A", "mode": "cartesian", "dx": "0", "dy": "@skirt_length - #slit_height"}}}
+{"jsonrpc": "2.0", "id": 44, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Back", "point": "B_Zip_end"}}}
+{"jsonrpc": "2.0", "id": 45, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Back", "point": "B_Slit_top"}}}
+{"jsonrpc": "2.0", "id": 46, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Dart_leg_1", "start": "B_Dart_left", "end": "B_Dart_tip", "role": "stitch"}}}
+{"jsonrpc": "2.0", "id": 47, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Dart_leg_2", "start": "B_Dart_tip", "end": "B_Dart_right", "role": "stitch"}}}
+{"jsonrpc": "2.0", "id": 48, "method": "tools/call", "params": {"name": "set_marker", "arguments": {"name": "B_Dart_tip", "marker": "match", "size": "2"}}}
+{"jsonrpc": "2.0", "id": 49, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "B_Hip_guide", "start": "B_Hip_centre", "end": "B_Hip_side", "role": "placement"}}}
+{"jsonrpc": "2.0", "id": 50, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Back", "point": "B_Hip_side"}}}
+{"jsonrpc": "2.0", "id": 51, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Back", "point": "B_Dart_left"}}}
+{"jsonrpc": "2.0", "id": 52, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Back", "point": "B_Dart_right"}}}
+{"jsonrpc": "2.0", "id": 53, "method": "tools/call", "params": {"name": "add_note", "arguments": {"name": "B_Info", "anchor": {"point": "B_A"}, "dx": "35", "dy": "330", "size": 10, "text": "BACK | EU40\nCUT 2 MIRRORED\nCentre back: 15 mm\nZip 200 / slit 180 mm"}}}
+{"jsonrpc": "2.0", "id": 54, "method": "tools/call", "params": {"name": "add_note", "arguments": {"name": "B_Hem_note", "anchor": {"point": "B_A"}, "dx": "40", "dy": "@skirt_length - 45", "size": 9, "text": "HEM: 30 mm included"}}}
+{"jsonrpc": "2.0", "id": 55, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "freePoint", "name": "F_A", "x": "350", "y": "0"}}}
+{"jsonrpc": "2.0", "id": 56, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Hem_centre", "base": "F_A", "mode": "cartesian", "dx": "0", "dy": "@skirt_length"}}}
+{"jsonrpc": "2.0", "id": 57, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Hip_side", "base": "F_A", "mode": "cartesian", "dx": "#front_hip", "dy": "@waist_to_hip"}}}
+{"jsonrpc": "2.0", "id": 58, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Hem_side", "base": "F_A", "mode": "cartesian", "dx": "#front_hip", "dy": "@skirt_length"}}}
+{"jsonrpc": "2.0", "id": 59, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Waist_side", "base": "F_A", "mode": "cartesian", "dx": "#front_hip - #side_take", "dy": "0"}}}
+{"jsonrpc": "2.0", "id": 60, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Dart_left", "base": "F_A", "mode": "cartesian", "dx": "(#front_hip - #side_take - #front_dart) / 2", "dy": "0"}}}
+{"jsonrpc": "2.0", "id": 61, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Dart_right", "base": "F_A", "mode": "cartesian", "dx": "(#front_hip - #side_take + #front_dart) / 2", "dy": "0"}}}
+{"jsonrpc": "2.0", "id": 62, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Dart_tip", "base": "F_A", "mode": "cartesian", "dx": "(#front_hip - #side_take) / 2", "dy": "#front_dart_length"}}}
+{"jsonrpc": "2.0", "id": 63, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Dart_cap", "base": "F_A", "mode": "cartesian", "dx": "(#front_hip - #side_take) / 2", "dy": "-#front_dart * #front_dart / (4 * #front_dart_length)"}}}
+{"jsonrpc": "2.0", "id": 64, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "F_Hip_centre", "base": "F_A", "mode": "cartesian", "dx": "0", "dy": "@waist_to_hip"}}}
+{"jsonrpc": "2.0", "id": 65, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Waist_centre", "start": "F_A", "end": "F_Dart_left", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 66, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Cap_left", "start": "F_Dart_left", "end": "F_Dart_cap", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 67, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Cap_right", "start": "F_Dart_cap", "end": "F_Dart_right", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 68, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Waist_outer", "start": "F_Dart_right", "end": "F_Waist_side", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 69, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "curve", "name": "F_Side_curve", "role": "outline", "start": "F_Waist_side", "end": "F_Hip_side", "angle1": "275", "length1": "@waist_to_hip / 3", "angle2": "90", "length2": "@waist_to_hip / 3"}}}
+{"jsonrpc": "2.0", "id": 70, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Side_lower", "start": "F_Hip_side", "end": "F_Hem_side", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 71, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Hem", "start": "F_Hem_side", "end": "F_Hem_centre", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 72, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Centre", "start": "F_A", "end": "F_Hem_centre", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 73, "method": "tools/call", "params": {"name": "create_piece", "arguments": {"x": 430, "y": 300, "name": "Front", "allowance": "10"}}}
+{"jsonrpc": "2.0", "id": 74, "method": "tools/call", "params": {"name": "set_edge_allowance", "arguments": {"name": "Front", "edge": "F_Hem", "allowance": "30"}}}
+{"jsonrpc": "2.0", "id": 75, "method": "tools/call", "params": {"name": "set_grainline", "arguments": {"name": "Front", "angle": "90"}}}
+{"jsonrpc": "2.0", "id": 76, "method": "tools/call", "params": {"name": "set_cut", "arguments": {"name": "Front", "count": 1, "mirrored": false}}}
+{"jsonrpc": "2.0", "id": 77, "method": "tools/call", "params": {"name": "set_fold", "arguments": {"name": "Front", "edge": "F_Centre"}}}
+{"jsonrpc": "2.0", "id": 78, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Dart_leg_1", "start": "F_Dart_left", "end": "F_Dart_tip", "role": "stitch"}}}
+{"jsonrpc": "2.0", "id": 79, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Dart_leg_2", "start": "F_Dart_tip", "end": "F_Dart_right", "role": "stitch"}}}
+{"jsonrpc": "2.0", "id": 80, "method": "tools/call", "params": {"name": "set_marker", "arguments": {"name": "F_Dart_tip", "marker": "match", "size": "2"}}}
+{"jsonrpc": "2.0", "id": 81, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "F_Hip_guide", "start": "F_Hip_centre", "end": "F_Hip_side", "role": "placement"}}}
+{"jsonrpc": "2.0", "id": 82, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Front", "point": "F_Hip_side"}}}
+{"jsonrpc": "2.0", "id": 83, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Front", "point": "F_Dart_left"}}}
+{"jsonrpc": "2.0", "id": 84, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Front", "point": "F_Dart_right"}}}
+{"jsonrpc": "2.0", "id": 85, "method": "tools/call", "params": {"name": "add_note", "arguments": {"name": "F_Info", "anchor": {"point": "F_A"}, "dx": "35", "dy": "330", "size": 10, "text": "FRONT | EU40\nCUT 1 ON FOLD\nKeep dart fabric\nSew marked dart legs"}}}
+{"jsonrpc": "2.0", "id": 86, "method": "tools/call", "params": {"name": "add_note", "arguments": {"name": "F_Hem_note", "anchor": {"point": "F_A"}, "dx": "40", "dy": "@skirt_length - 45", "size": 9, "text": "HEM: 30 mm included"}}}
+{"jsonrpc": "2.0", "id": 87, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "freePoint", "name": "WB_A", "x": "0", "y": "700"}}}
+{"jsonrpc": "2.0", "id": 88, "method": "tools/call", "params": {"name": "add_rectangle", "arguments": {"corner": "WB_A", "width": "@waist + #waist_ease + #waistband_overlap", "height": "2 * #waistband_height", "role": "outline"}}}
+{"jsonrpc": "2.0", "id": 89, "method": "tools/call", "params": {"name": "rename", "arguments": {"id": 71, "newName": "WB_Attach"}}}
+{"jsonrpc": "2.0", "id": 90, "method": "tools/call", "params": {"name": "rename", "arguments": {"id": 72, "newName": "WB_End"}}}
+{"jsonrpc": "2.0", "id": 91, "method": "tools/call", "params": {"name": "rename", "arguments": {"id": 73, "newName": "WB_Upper"}}}
+{"jsonrpc": "2.0", "id": 92, "method": "tools/call", "params": {"name": "rename", "arguments": {"id": 74, "newName": "WB_Start"}}}
+{"jsonrpc": "2.0", "id": 93, "method": "tools/call", "params": {"name": "create_piece", "arguments": {"x": 200, "y": 730, "name": "Waistband", "allowance": "10"}}}
+{"jsonrpc": "2.0", "id": 94, "method": "tools/call", "params": {"name": "set_grainline", "arguments": {"name": "Waistband", "angle": "0"}}}
+{"jsonrpc": "2.0", "id": 95, "method": "tools/call", "params": {"name": "set_cut", "arguments": {"name": "Waistband", "count": 1}}}
+{"jsonrpc": "2.0", "id": 96, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "WB_Fold_start", "base": "WB_A", "mode": "cartesian", "dx": "0", "dy": "#waistband_height"}}}
+{"jsonrpc": "2.0", "id": 97, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "WB_Fold_end", "base": "WB_A", "mode": "cartesian", "dx": "@waist + #waist_ease + #waistband_overlap", "dy": "#waistband_height"}}}
+{"jsonrpc": "2.0", "id": 98, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "WB_Fold", "start": "WB_Fold_start", "end": "WB_Fold_end", "role": "fold"}}}
+{"jsonrpc": "2.0", "id": 99, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "WB_Overlap_start", "base": "WB_A", "mode": "cartesian", "dx": "@waist + #waist_ease", "dy": "0"}}}
+{"jsonrpc": "2.0", "id": 100, "method": "tools/call", "params": {"name": "add_point", "arguments": {"type": "offsetPoint", "name": "WB_Overlap_end", "base": "WB_Overlap_start", "mode": "cartesian", "dx": "0", "dy": "2 * #waistband_height"}}}
+{"jsonrpc": "2.0", "id": 101, "method": "tools/call", "params": {"name": "add_edge", "arguments": {"type": "line", "name": "WB_Overlap", "start": "WB_Overlap_start", "end": "WB_Overlap_end", "role": "placement"}}}
+{"jsonrpc": "2.0", "id": 102, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Waistband", "edge": "WB_Attach", "position": "#back_hip - #side_take - #back_dart"}}}
+{"jsonrpc": "2.0", "id": 103, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Waistband", "edge": "WB_Attach", "position": "(@waist + #waist_ease) / 2"}}}
+{"jsonrpc": "2.0", "id": 104, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Waistband", "edge": "WB_Attach", "position": "@waist + #waist_ease - (#back_hip - #side_take - #back_dart)"}}}
+{"jsonrpc": "2.0", "id": 105, "method": "tools/call", "params": {"name": "add_notch", "arguments": {"name": "Waistband", "edge": "WB_Attach", "position": "@waist + #waist_ease"}}}
+{"jsonrpc": "2.0", "id": 106, "method": "tools/call", "params": {"name": "add_note", "arguments": {"name": "WB_Info", "anchor": {"point": "WB_A"}, "dx": "20", "dy": "12", "size": 9, "text": "WAISTBAND | CUT 1 MAIN + 1 FUSIBLE | FOLD TO 40 mm | 30 mm OVERLAP"}}}
+{"jsonrpc": "2.0", "id": 107, "method": "tools/call", "params": {"name": "add_seam", "arguments": {"name": "Side_seam_match", "sideA": [{"piece": "Back", "edge": "B_Side_curve"}, {"piece": "Back", "edge": "B_Side_lower"}], "sideB": [{"piece": "Front", "edge": "F_Side_curve"}, {"piece": "Front", "edge": "F_Side_lower"}], "tolerance": "0.5", "ease": "0"}}}
+{"jsonrpc": "2.0", "id": 108, "method": "tools/call", "params": {"name": "evaluate", "arguments": {}}}
+{"jsonrpc": "2.0", "id": 109, "method": "tools/call", "params": {"name": "check", "arguments": {}}}
+{"jsonrpc": "2.0", "id": 110, "method": "tools/call", "params": {"name": "save", "arguments": {}}}
+{"jsonrpc": "2.0", "id": 111, "method": "tools/call", "params": {"name": "render", "arguments": {"format": "svg", "labels": false, "hiddenRoles": ["construction"]}}}
+{"jsonrpc": "2.0", "id": 112, "method": "tools/call", "params": {"name": "render", "arguments": {"format": "png", "width": 1800, "labels": false, "hiddenRoles": ["construction"]}}}
+{"jsonrpc": "2.0", "id": 113, "method": "tools/call", "params": {"name": "list_objects", "arguments": {}}}
+{"jsonrpc": "2.0", "id": 114, "method": "tools/call", "params": {"name": "export", "arguments": {"layout": "/workspace/work/skirt-eu40/print-a4.slayout", "path": "/workspace/work/skirt-eu40/print-a4.pdf", "format": "pdf"}}}
+{"jsonrpc": "2.0", "id": 115, "method": "tools/call", "params": {"name": "export", "arguments": {"layout": "/workspace/work/skirt-eu40/print-fullsize.slayout", "path": "/workspace/work/skirt-eu40/print-fullsize.pdf", "format": "pdf"}}}
+{"jsonrpc": "2.0", "id": 116, "method": "tools/call", "params": {"name": "export", "arguments": {"layout": "/workspace/work/skirt-eu40/print-fullsize.slayout", "path": "/workspace/work/skirt-eu40/cutting-layout.svg", "format": "svg"}}}
+{"jsonrpc": "2.0", "id": 117, "method": "tools/call", "params": {"name": "export", "arguments": {"layout": "/workspace/work/skirt-eu40/print-fullsize.slayout", "path": "/workspace/work/skirt-eu40/cutting-layout.dxf", "format": "dxf"}}}

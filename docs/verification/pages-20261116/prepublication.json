@@ -1,0 +1,55 @@
+{
+  "claim": "Local prepublication gate for the Pages site, skirt downloads and restored T-shirt workbench",
+  "verdict": "PASS",
+  "candidate_base_commit": "6fb5c7e800bf75e9ca84dbf58bc58d3d891bd3d1",
+  "candidate_source_manifest_sha256": "2442e986e69313ae4f4bceba77eb0e912e4bd8e3f6004e874b0bf18707a7d64f",
+  "site_source_sha256": "c92e623da7e7fc71a6c5e962ebf19e4b264cb483002a71fc700e2d457ac2b96c",
+  "observed_at_utc": "2026-11-16T06:47:17.059505+00:00",
+  "commands": [
+    {
+      "command": "bash scripts/install_opensloper.sh",
+      "exit": 0,
+      "observation": "Pinned official Linux release archive SHA-256 checked; OpenSloper 0.2.0 starts"
+    },
+    {
+      "command": "python3 scripts/build_pages.py",
+      "exit": 0
+    },
+    {
+      "command": "python3 -m unittest discover -s scripts -p test_verify_artifacts.py -v",
+      "exit": 0,
+      "observation": "6 tests: 1 positive control, 5 witnessed faults rejected"
+    },
+    {
+      "command": "python3 scripts/verify_artifacts.py --cli work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli",
+      "exit": 0
+    },
+    {
+      "command": "python3 scripts/verify_mcp.py",
+      "exit": 0,
+      "observation": "56 MCP tools; native pattern reopen and evaluate without problems"
+    },
+    {
+      "command": "python3 scripts/verify_pages.py --output work/verify-pages",
+      "exit": 0,
+      "observation": "Real clicks, four hash-checked downloads, desktop/mobile, workbench roundtrip and invalidation"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0
+    }
+  ],
+  "baseline_fault_fixed": {
+    "base": "6fb5c7e800bf75e9ca84dbf58bc58d3d891bd3d1",
+    "file": "web/pattern-review/index.html",
+    "observation": "File ended inside fromOpenSloper, with no closing script or initialization. Browser rendered zero piece groups despite no page error. Restored guarded import, event binding and initialization; 4 groups and real roundtrip now work."
+  },
+  "hosted_publication": {
+    "status": "PENDING",
+    "pages_enabled_observed": false,
+    "observation": "Connected GitHub repository read returned has_pages=false. Needs Pages source GitHub Actions. VM public Pages egress is denied; connected browser currently unavailable. Local PASS does not claim hosted deployment or live verification."
+  },
+  "physical_fit": "NOT_RUN",
+  "cleanup": "Browser and ephemeral HTTP server closed by verifier; local outputs remain in ignored work/ and dist/.",
+  "binary_format_note": "PDF and generated DXF are explicitly binary in .gitattributes, preserving xref bytes and native exporter CRLF. Geometry, file hashes and fault controls remain required."
+}

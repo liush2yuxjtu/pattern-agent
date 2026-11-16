@@ -5,6 +5,26 @@ description: Verify a code change before shipping by running the relevant existi
 
 # Verify before shipping
 
+## Pattern Agent web and printable-skirt route
+
+For `web/`, `patterns/straight-skirt-eu40/`, the repository OpenSloper MCP setup,
+or GitHub Pages publication, follow
+[the project Pages recipe](references/github-pages.md). It contains the working
+launch, browser drive, artifact checks, fault controls, cleanup and live deployment
+read-back. Preserve the older experiment-specific recipes below for their own
+surfaces; they are not substitutes for exercising the download website.
+
+| Claim | Real surface | Required evidence |
+| --- | --- | --- |
+| Printable skirt is internally consistent | native OpenSloper CLI/MCP and rendered PDFs | native reopen, matched seam lengths, 100 mm calibration square, 14 A4 pages, five negative controls |
+| Download website works | Chromium at `/pattern-agent/` | real modal/details controls, four downloaded file hashes, desktop/mobile screenshots, no console or asset errors |
+| T-shirt review page still works | browser workbench | four visible pieces, zoom, native export/edit/import, stale cutline invalidation, unsupported-file rejection |
+| GitHub Pages is published | actual workflow and public URL | successful deployment for the named SHA plus the same live browser checks and remote ref read-back |
+
+Local prepublication verification and hosted verification receive separate
+verdicts. An unavailable Pages setting or blocked public URL cannot be reported
+as hosted PASS.
+
 The question is whether the changed behavior works for a real caller. Shift tests left by running them locally before the PR, then verify the running product surface. Tests, type checks, builds, CI green, Vercel READY, and static review are supporting evidence; they do not replace runtime evidence when a real user/programmatic surface exists.
 
 ## Invariant: persist the repo's verification path
