@@ -1,0 +1,105 @@
+{
+  "engine": "independent_subagent_routing_proxy",
+  "results": [
+    {
+      "id": "p01",
+      "triggered": true,
+      "reason": "A GarmentCode specification is supplied and the requested initial triangular mesh and rotatable offline preview directly match the description; simulation is explicitly deferred."
+    },
+    {
+      "id": "p02",
+      "triggered": true,
+      "reason": "The request supplies a GarmentCodeData specification and body assets and asks for a newly simulated drape with GLB export, all within the described workflow."
+    },
+    {
+      "id": "p03",
+      "triggered": true,
+      "reason": "This is inspection of an existing GarmentCodeData simulation, with wireframe and offline preview requirements. The description explicitly distinguishes existing dataset simulations, making consultation appropriate even without the original pattern."
+    },
+    {
+      "id": "p04",
+      "triggered": true,
+      "reason": "The desired result is a draped GarmentCode shirt and downloadable 3D preview using a real example. Although no sample is supplied yet, the core generation and preview task fits the opening description."
+    },
+    {
+      "id": "p05",
+      "triggered": false,
+      "reason": "The requested deliverable is a source-grounded explanation of the simulation call chain and integration commands, without a supplied sample or a request to produce a mesh, drape, export, or preview. The description does not advertise implementation analysis, so general code investigation is the closer route."
+    },
+    {
+      "id": "p06",
+      "triggered": true,
+      "reason": "The NumPy aliasing investigation is part of repairing a GarmentCode draping run and regenerating its preview. The requested final artifact and simulation context justify consulting this skill alongside coding tools."
+    },
+    {
+      "id": "p07",
+      "triggered": true,
+      "reason": "The user requests a revised GarmentCode simulation viewer with accurate interpretation of its simulation state. Preview export and distinguishing what a simulation result represents fall within the description."
+    },
+    {
+      "id": "p08",
+      "triggered": true,
+      "reason": "A specific GarmentCode sample is identified and the user wants its simulation preview, subject to the availability of the matching body. Missing input assets do not change the applicability of the garment simulation workflow."
+    },
+    {
+      "id": "p09",
+      "triggered": true,
+      "reason": "Converting an existing GarmentCode simulation OBJ to a correctly scaled GLB and offline rotatable viewer directly matches export and preview capabilities."
+    },
+    {
+      "id": "p10",
+      "triggered": true,
+      "reason": "The request is to remesh a changed GarmentCode pattern, run CPU draping, and preserve initial and final models. These are the described generation and simulation stages."
+    },
+    {
+      "id": "n01",
+      "triggered": false,
+      "reason": "The OBJ viewer and GLB export concern a mechanical arm, with no GarmentCode or sewing-pattern workflow. General frontend and 3D tooling fit the request."
+    },
+    {
+      "id": "n02",
+      "triggered": false,
+      "reason": "This is a mathematical explanation of particle constraints and explicitly excludes garments, GarmentCode inputs, and preview artifacts."
+    },
+    {
+      "id": "n03",
+      "triggered": false,
+      "reason": "The request concerns React layout with an existing video and a button label. It involves no garment mesh generation, simulation, model export, or 3D inspection."
+    },
+    {
+      "id": "n04",
+      "triggered": false,
+      "reason": "Editing seam allowances in a 2D SVG and exporting DXF is a CAD task, with neither GarmentCode pattern JSON nor a requested 3D result."
+    },
+    {
+      "id": "n05",
+      "triggered": false,
+      "reason": "The user explicitly requests collision repair and rebaking within an existing Blender cloth project. The described skill is specific to the GarmentCode garment pipeline."
+    },
+    {
+      "id": "n06",
+      "triggered": false,
+      "reason": "This is a general NumPy and GLB exporter defect involving mechanical point clouds. Shared formats and debugging concepts do not establish garment-skill applicability."
+    },
+    {
+      "id": "n07",
+      "triggered": false,
+      "reason": "Translating a paper introduction requires no generation, simulation, implementation analysis, or preview workflow; the GarmentCode name alone is insufficient."
+    },
+    {
+      "id": "n08",
+      "triggered": false,
+      "reason": "Grouping metadata and drawing a bar chart is a tabular analysis task that explicitly avoids patterns and 3D files. Dataset provenance does not make the mesh-preview skill relevant."
+    },
+    {
+      "id": "n09",
+      "triggered": false,
+      "reason": "Changing a GitHub Pages custom domain is deployment configuration. The existing preview content and all garment processing are explicitly outside the requested change."
+    },
+    {
+      "id": "n10",
+      "triggered": false,
+      "reason": "The requested fix concerns an evaluation statistics script and its tests. It requires no garment input, simulation, export, or viewer work."
+    }
+  ]
+}

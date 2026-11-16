@@ -1,0 +1,94 @@
+{
+  "timestamp_utc": "2026-11-16T11:20:54.835000+00:00",
+  "workflow": "local /verify -> direct main commit -> non-force push",
+  "base_commit_before_reconciliation": "571238e7dea7459ec1ab33818827cbfc75e6976e",
+  "reconciled_parent_commit": "dcff3d67f494e7c9b6705a80c7564e6b3f88a45e",
+  "local_skill_delivery_verdict": "PASS",
+  "native_activation_verdict": "BLOCKED",
+  "physical_fit": "NOT_RUN",
+  "strict_garment_zero_self_intersections": "FAIL",
+  "functional_evals": {
+    "old_skill": {
+      "passed": 6,
+      "total": 13
+    },
+    "with_skill": {
+      "passed": 13,
+      "total": 13
+    },
+    "runs_per_case_per_configuration": 1,
+    "model_context": "Independent inherited-model subagents; exact runtime identifier and tokens not exposed"
+  },
+  "routing_proxy": {
+    "reviewers_per_version": 3,
+    "queries": 20,
+    "v0_train": "35/36",
+    "v1_train": "36/36",
+    "v0_holdout": "24/24",
+    "v1_holdout": "24/24",
+    "native_trigger_results": null
+  },
+  "checks": [
+    {
+      "name": "consumer CLI input/unit/output controls",
+      "verdict": "PASS",
+      "tests": 6
+    },
+    {
+      "name": "independent stdlib GLB fault controls",
+      "verdict": "PASS",
+      "tests": 4
+    },
+    {
+      "name": "new mesh-only actual execution",
+      "verdict": "PASS",
+      "assertions": 3
+    },
+    {
+      "name": "actual CPU old/new simulation",
+      "verdict": "PASS",
+      "frames_each": 232
+    },
+    {
+      "name": "new offline HTML pixels and interaction",
+      "verdict": "PASS",
+      "reports": "fresh-preview-browser-report.json"
+    },
+    {
+      "name": "main preview and four actual downloads",
+      "verdict": "PASS",
+      "reports": "published-viewer-local.json"
+    },
+    {
+      "name": "old Pages regression",
+      "verdict": "PASS",
+      "reports": "existing-pages-local.json"
+    },
+    {
+      "name": "actual review UI Outputs/Benchmark and 20 trigger fields",
+      "verdict": "PASS",
+      "reports": "review-ui-local.json"
+    },
+    {
+      "name": "canonical/mirror/ZIP content",
+      "verdict": "PASS",
+      "files": 16
+    },
+    {
+      "name": "Anthropic quick_validate",
+      "verdict": "PASS"
+    },
+    {
+      "name": "git diff --check",
+      "verdict": "PASS"
+    }
+  ],
+  "limitations": [
+    "Claude CLI absent; native trigger and native automated hill-climb BLOCKED; applicability proxy is not native activation.",
+    "User feedback not collected.",
+    "Managed browser file URL navigation blocked; offline HTML bytes rendered without changing browser policy.",
+    "No independent full garment audit, physical sample, calibrated fabric fit or performance superiority claim."
+  ],
+  "cleanup": "All local test servers and browsers closed; blocked Codex probe terminated; raw outputs retained under ignored work.",
+  "hosted_verification": "Pending push and publication; local PASS does not claim hosted PASS."
+}

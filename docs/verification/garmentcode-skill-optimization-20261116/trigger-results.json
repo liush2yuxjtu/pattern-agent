@@ -1,0 +1,71 @@
+{
+  "engine": "independent_subagent_routing_proxy",
+  "native_activation": "BLOCKED",
+  "reviewers_per_version": 3,
+  "queries": 20,
+  "split": {
+    "seed": 42,
+    "train_ids": [
+      "p06",
+      "p07",
+      "p10",
+      "p05",
+      "p01",
+      "p02",
+      "n02",
+      "n09",
+      "n08",
+      "n01",
+      "n07",
+      "n10"
+    ],
+    "test_ids": [
+      "p08",
+      "p04",
+      "p03",
+      "p09",
+      "n04",
+      "n06",
+      "n03",
+      "n05"
+    ]
+  },
+  "versions": {
+    "v0": {
+      "train": {
+        "correct": 35,
+        "total": 36,
+        "accuracy": 0.9722222222222222,
+        "errors": [
+          {
+            "id": "p05",
+            "triggered": false,
+            "reason": "The requested deliverable is a source-grounded explanation of the simulation call chain and integration commands, without a supplied sample or a request to produce a mesh, drape, export, or preview. The description does not advertise implementation analysis, so general code investigation is the closer route.",
+            "reviewer": "reviewer-b",
+            "correct": false
+          }
+        ]
+      },
+      "test": {
+        "correct": 24,
+        "total": 24,
+        "accuracy": 1.0,
+        "errors": []
+      }
+    },
+    "v1": {
+      "train": {
+        "correct": 36,
+        "total": 36,
+        "accuracy": 1.0,
+        "errors": []
+      },
+      "test": {
+        "correct": 24,
+        "total": 24,
+        "accuracy": 1.0,
+        "errors": []
+      }
+    }
+  }
+}

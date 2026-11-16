@@ -1,0 +1,316 @@
+{
+  "metadata": {
+    "skill_name": "garmentcode-preview",
+    "skill_path": "/workspace/work/pattern-agent/.agents/skills/garmentcode-preview",
+    "executor_model": "Inherited Codex session model; exact runtime identifier not exposed",
+    "analyzer_model": "Root session inline programmatic grader",
+    "timestamp": "2026-11-16T11:09:30Z",
+    "evals_run": [
+      2,
+      3,
+      4
+    ],
+    "runs_per_configuration": 1,
+    "baseline": "old skill snapshot at repository 571238e",
+    "tokens_available": false,
+    "human_feedback": "NOT_COLLECTED"
+  },
+  "runs": [
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "CLI rejects a random-body simulation without its matching mesh",
+          "passed": true,
+          "evidence": "Real CLI diagnostic rejects random-body input"
+        },
+        {
+          "text": "Missing input diagnostic names the matching body mesh rather than substituting mean_all",
+          "passed": true,
+          "evidence": "CLI names matching --body-mesh and refuses neutral substitution"
+        },
+        {
+          "text": "Rejected request creates no GLB or simulated garment output",
+          "passed": true,
+          "evidence": "No GLB or simulated OBJ exists under this rejected request"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Existing GLB alone exports a loadable mesh and offline HTML without pattern/repository input",
+          "passed": true,
+          "evidence": "Real standalone export produced valid GLB and offline HTML"
+        },
+        {
+          "text": "Reloaded exported positions and indices preserve meter-scale input geometry",
+          "passed": true,
+          "evidence": "All 3569 positions and 20874 indices match actual meter-unit input"
+        },
+        {
+          "text": "Manifest records the actual existing-mesh hash and no newly generated mesh or simulation",
+          "passed": true,
+          "evidence": "Actual existing input SHA; generated_this_run=false and simulation.executed=false"
+        },
+        {
+          "text": "Existing preview is clearly labeled and physical-fit status remains NOT_RUN",
+          "passed": true,
+          "evidence": "已有网格 · 本次未重新生成或仿真"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "CPU XPBD actually executes beyond the early-static bug and ends without a runtime error",
+          "passed": true,
+          "evidence": "CPU executed 232 frames; error=None; snapshot fix=True"
+        },
+        {
+          "text": "Real initial and final GLBs have valid identical topology and measurable deformation",
+          "passed": true,
+          "evidence": "Independent GLB decoder: 3569 vertices, 6958 triangles, same topology; max displacement 0.29277665217860793m"
+        },
+        {
+          "text": "Input hash and upstream source revision identify the official fixture",
+          "passed": true,
+          "evidence": "Actual official-fixture hash and pinned upstream commit match"
+        },
+        {
+          "text": "Manifest separates permissive thresholds from strict zero-intersection outcomes",
+          "passed": true,
+          "evidence": "{\"simulation_execution\": \"PASS\", \"stability\": \"PASS\", \"upstream_threshold_check\": \"PASS\", \"strict_zero_body_intersections\": \"PASS\", \"strict_zero_self_intersections\": \"FAIL\", \"independent_full_geometry_audit\": \"NOT_RUN\", \"physical_fit\": \"NOT_RUN\", \"reason\": \"Intersection counters are upstream diagnostics, not an independent garment or physical-fit certificate.\"}"
+        },
+        {
+          "text": "Independent full garment audit and physical fit remain NOT_RUN",
+          "passed": true,
+          "evidence": "Both independent full audit and physical fit explicitly NOT_RUN"
+        },
+        {
+          "text": "Preview label does not upgrade permissive threshold success to garment-quality approval",
+          "passed": true,
+          "evidence": "物理仿真完成 · 零穿透检查未通过（研究预览）"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "CLI rejects a random-body simulation without its matching mesh",
+          "passed": true,
+          "evidence": "Real CLI diagnostic rejects random-body input"
+        },
+        {
+          "text": "Missing input diagnostic names the matching body mesh rather than substituting mean_all",
+          "passed": true,
+          "evidence": "CLI names matching --body-mesh and refuses neutral substitution"
+        },
+        {
+          "text": "Rejected request creates no GLB or simulated garment output",
+          "passed": true,
+          "evidence": "No GLB or simulated OBJ exists under this rejected request"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "failed": 4,
+        "total": 4,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Existing GLB alone exports a loadable mesh and offline HTML without pattern/repository input",
+          "passed": false,
+          "evidence": "AssertionError: Expected one existing manifest, got 0"
+        },
+        {
+          "text": "Reloaded exported positions and indices preserve meter-scale input geometry",
+          "passed": false,
+          "evidence": "AssertionError: Expected one existing manifest, got 0"
+        },
+        {
+          "text": "Manifest records the actual existing-mesh hash and no newly generated mesh or simulation",
+          "passed": false,
+          "evidence": "AssertionError: Expected one existing manifest, got 0"
+        },
+        {
+          "text": "Existing preview is clearly labeled and physical-fit status remains NOT_RUN",
+          "passed": false,
+          "evidence": "AssertionError: Expected one existing manifest, got 0"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "CPU XPBD actually executes beyond the early-static bug and ends without a runtime error",
+          "passed": true,
+          "evidence": "CPU executed 232 frames; error=None; snapshot fix=True"
+        },
+        {
+          "text": "Real initial and final GLBs have valid identical topology and measurable deformation",
+          "passed": true,
+          "evidence": "Independent GLB decoder: 3569 vertices, 6958 triangles, same topology; max displacement 0.29277665217860793m"
+        },
+        {
+          "text": "Input hash and upstream source revision identify the official fixture",
+          "passed": true,
+          "evidence": "Actual official-fixture hash and pinned upstream commit match"
+        },
+        {
+          "text": "Manifest separates permissive thresholds from strict zero-intersection outcomes",
+          "passed": false,
+          "evidence": "KeyError: 'release'"
+        },
+        {
+          "text": "Independent full garment audit and physical fit remain NOT_RUN",
+          "passed": false,
+          "evidence": "KeyError: 'release'"
+        },
+        {
+          "text": "Preview label does not upgrade permissive threshold success to garment-quality approval",
+          "passed": false,
+          "evidence": "AssertionError: "
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 0.5,
+        "stddev": 0.5,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.50",
+      "time_seconds": "+0.0",
+      "tokens": "UNAVAILABLE"
+    }
+  },
+  "notes": [
+    "This compares the delivered CLI artifacts under the old and optimized skill, not general agent intelligence or cloth solver accuracy.",
+    "Candidate 13/13 assertions; original 6/13. Case-macro rates are 100% and 50%; weighted original rate is 6/13.",
+    "Both real CPU runs produced 232 frames, body counter 0 and self counter 2; the solver and garment geometry did not improve.",
+    "The original executor correctly discussed strict FAIL in prose, but its manifest and default preview lacked explicit strict/audit/fit fields.",
+    "Only one run per case/configuration. Wall times include concurrent execution and different tool overhead; no speed comparison is valid.",
+    "Token measurements unavailable. Any numeric zero token column is an upstream viewer placeholder, not observed zero usage.",
+    "Native Claude/Codex activation is BLOCKED. Three independent blind-description reviewers per version provide routing-proxy results separately.",
+    "Browser file:// navigation is administratively blocked. Exact saved HTML bytes were rendered in an offline browser context without changing browser policy.",
+    "User review feedback has not been collected; no feedback.json approval is fabricated."
+  ]
+}

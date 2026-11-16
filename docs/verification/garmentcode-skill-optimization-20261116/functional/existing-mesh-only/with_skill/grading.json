@@ -1,0 +1,33 @@
+{
+  "expectations": [
+    {
+      "text": "Existing GLB alone exports a loadable mesh and offline HTML without pattern/repository input",
+      "passed": true,
+      "evidence": "Real standalone export produced valid GLB and offline HTML"
+    },
+    {
+      "text": "Reloaded exported positions and indices preserve meter-scale input geometry",
+      "passed": true,
+      "evidence": "All 3569 positions and 20874 indices match actual meter-unit input"
+    },
+    {
+      "text": "Manifest records the actual existing-mesh hash and no newly generated mesh or simulation",
+      "passed": true,
+      "evidence": "Actual existing input SHA; generated_this_run=false and simulation.executed=false"
+    },
+    {
+      "text": "Existing preview is clearly labeled and physical-fit status remains NOT_RUN",
+      "passed": true,
+      "evidence": "已有网格 · 本次未重新生成或仿真"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "eval_feedback": {
+    "overall": "Real geometry and explicit scope are checked. Single-run cases do not establish statistical superiority."
+  }
+}

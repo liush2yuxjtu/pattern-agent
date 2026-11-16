@@ -1,0 +1,57 @@
+{
+  "skill_name": "garmentcode-preview",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把官方示例纸样生成真实三角网格，导出 GLB 并给我可旋转的离线三维预览。暂时不做物理仿真，界面要明确标注未仿真。",
+      "expected_output": "Valid generated mesh and GLB, offline preview, source attribution and honest un-simulated status.",
+      "files": [
+        "assets/example-shirt_specification.json"
+      ],
+      "assertions": [
+        "Exports a nonempty GLB mesh with finite vertices and valid triangles",
+        "Preview clearly labels the initial mesh as not physically simulated",
+        "Preserves input SHA-256 and identifies the official repository fixture rather than a dataset row"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "这是 random_body 目录中的一个 GarmentCodeData 纸样；我只有纸样和身体测量，没有对应人体网格。请给我这个人的物理试穿预览，不要换成平均人体。",
+      "expected_output": "Specific missing-body error, no fabricated personal-fit simulation or neutral-body replacement.",
+      "files": [],
+      "assertions": [
+        "Rejects custom-fit draping without the matching body mesh",
+        "Does not silently substitute the neutral body",
+        "Reports the exact missing input needed to continue"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "我只有一份已有 garment.glb，没有原始纸样和 GarmentCode 仓库；不要重新仿真。请保持米单位，输出可离线旋转的线框查看器和 GLB，记录真实输入哈希。",
+      "expected_output": "Loads the existing mesh with process=False, exports the preview, and does not claim new meshing or simulation.",
+      "files": [],
+      "assertions": [
+        "Existing GLB alone exports a loadable mesh and offline HTML without pattern/repository input",
+        "Reloaded exported positions and indices preserve meter-scale input geometry",
+        "Manifest records the actual existing-mesh hash and no newly generated mesh or simulation",
+        "Existing preview is clearly labeled and physical-fit status remains NOT_RUN"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "用官方上衣纸样与 mean_all 人体做真实 CPU 下垂仿真，保存初始和最终 GLB、离线 HTML 与 manifest。请区分计算完成、上游阈值、零穿透和实体合身，保留原始几何，不要修饰质量结论。",
+      "expected_output": "Actual CPU XPBD drape, input/source provenance, independently readable initial/final meshes, separate permissive/strict/fit states.",
+      "files": [
+        "assets/example-shirt_specification.json"
+      ],
+      "assertions": [
+        "CPU XPBD actually executes beyond the early-static bug and ends without a runtime error",
+        "Real initial and final GLBs have valid identical topology and measurable deformation",
+        "Input hash and upstream source revision identify the official fixture",
+        "Manifest separates permissive thresholds from strict zero-intersection outcomes",
+        "Independent full garment audit and physical fit remain NOT_RUN",
+        "Preview label does not upgrade permissive threshold success to garment-quality approval"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "CPU XPBD actually executes beyond the early-static bug and ends without a runtime error",
+      "passed": true,
+      "evidence": "CPU executed 232 frames; error=None; snapshot fix=True"
+    },
+    {
+      "text": "Real initial and final GLBs have valid identical topology and measurable deformation",
+      "passed": true,
+      "evidence": "Independent GLB decoder: 3569 vertices, 6958 triangles, same topology; max displacement 0.29277665217860793m"
+    },
+    {
+      "text": "Input hash and upstream source revision identify the official fixture",
+      "passed": true,
+      "evidence": "Actual official-fixture hash and pinned upstream commit match"
+    },
+    {
+      "text": "Manifest separates permissive thresholds from strict zero-intersection outcomes",
+      "passed": false,
+      "evidence": "KeyError: 'release'"
+    },
+    {
+      "text": "Independent full garment audit and physical fit remain NOT_RUN",
+      "passed": false,
+      "evidence": "KeyError: 'release'"
+    },
+    {
+      "text": "Preview label does not upgrade permissive threshold success to garment-quality approval",
+      "passed": false,
+      "evidence": "AssertionError: "
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 3,
+    "total": 6,
+    "pass_rate": 0.5
+  },
+  "eval_feedback": {
+    "overall": "Real geometry and explicit scope are checked. Single-run cases do not establish statistical superiority."
+  }
+}

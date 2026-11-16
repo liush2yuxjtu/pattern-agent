@@ -1,0 +1,28 @@
+{
+  "expectations": [
+    {
+      "text": "CLI rejects a random-body simulation without its matching mesh",
+      "passed": true,
+      "evidence": "Real CLI diagnostic rejects random-body input"
+    },
+    {
+      "text": "Missing input diagnostic names the matching body mesh rather than substituting mean_all",
+      "passed": true,
+      "evidence": "CLI names matching --body-mesh and refuses neutral substitution"
+    },
+    {
+      "text": "Rejected request creates no GLB or simulated garment output",
+      "passed": true,
+      "evidence": "No GLB or simulated OBJ exists under this rejected request"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "eval_feedback": {
+    "overall": "Real geometry and explicit scope are checked. Single-run cases do not establish statistical superiority."
+  }
+}

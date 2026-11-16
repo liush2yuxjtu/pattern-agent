@@ -12,6 +12,10 @@ GarmentCodeData 的单个样本包含 `*_specification.json`。根对象的 `pat
 
 ## 输出
 
+`existing` 模式直接接受 OBJ/PLY/GLB，不需要原纸样、源码或人体。GLB 默认米；
+OBJ/PLY 默认厘米，其他单位用 `--existing-scale` 显式指定。其 manifest 输入哈希
+来自实际网格，`mesh_generated_this_run=false`，`simulation.executed=false`。
+
 - `preview.html`：独立离线三维预览，拖动旋转、滚轮缩放、线框、人体显隐、正面／背面。不是实时布料求解器。
 - `preview-fragment.html`：同一预览的聊天片段。
 - `garment-initial.glb`：本次生成的初始缝合网格，米单位。
@@ -24,6 +28,15 @@ GarmentCodeData 的单个样本包含 `*_specification.json`。根对象的 `pat
 
 ## 失败与状态
 
-未知单位、非有限坐标、越界边索引、错误缝合关系、重复缝边会在调用原生网格器之前拒绝。物理仿真超时、没有稳定、穿透超限的结果标记 `quality_passed: false`，仍保留用于排查的几何；不称为成功试穿。
+无效单位、非有限坐标、越界边索引、错误缝合关系、重复缝边会在调用原生网格器之前拒绝。物理超时、没有稳定或超出配置阈值时，上游阈值检查为 FAIL，保留诊断几何；不称为成功试穿。
+
+schema_version=2 分别记录执行、稳定、上游宽松阈值、零人体/自相交计数、独立全量
+审计和实体合身。`quality_passed` 兼容旧格式，仅对应上游配置阈值，与新增
+`upstream_threshold_passed` 同义；使用 `release` 读取严格判定。计数检查通过也不
+升级完整独立审计和合身的 NOT_RUN。未执行模式的检查一律 NOT_RUN。
+
+退出码 0 表示所选计算/导出流程完成，零穿透 FAIL 的研究网格仍可交付排查；
+仿真异常退出码 2，普通输入/环境错误为 1，argparse 参数错误为 2。读取 manifest
+中的实际状态，不仅以退出码判断质量。达到帧数上限却尚未稳定时不会伪称静止。
 
 更改人体、布料刚度、分辨率、碰撞策略或初始化都会影响最终褶皱。本工具负责技术预览，不推导生产缝份、排料或制造合格性。

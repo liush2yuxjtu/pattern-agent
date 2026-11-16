@@ -4,6 +4,34 @@ Surface: `/pattern-agent/garmentcode-preview/`, source in `web/garmentcode-previ
 This recipe verifies the website and its downloads. It does not approve physical
 fit or the simulated garment's geometry release.
 
+## Agent skill runtime
+
+Canonical source: .agents/skills/garmentcode-preview/; Claude links the same
+directory. scripts/sync_garmentcode_skill.py generates the web mirror and
+deterministic .skill download. Before shipping, use its isolated Python:
+
+~~~sh
+GARMENTCODE_PYTHON=/absolute/venv/bin/python \
+  python -m unittest discover -s scripts -p test_garment_preview_skill.py -v
+python scripts/sync_garmentcode_skill.py --check
+~~~
+
+For solver/status changes, run a real official-fixture CPU simulation, independently
+reopen initial/final GLBs, and exercise missing-body and existing mesh-only requests.
+Record execution, stability, permissive threshold, strict counter, audit and fit
+separately. Never infer strict PASS from quality_passed. Preserve original geometry
+and failures. Existing GLB-only mode must not require a pattern or source repository.
+
+Drive fresh HTML with scripts/verify_garmentcode_skill_outputs.py and real
+pointer/zoom/wireframe pixel checks. Managed Chromium blocks file://; the verified
+saved-HTML route is offline context + set_content, without changing policy.
+Native file navigation remains separately BLOCKED.
+
+Use scripts/grade_garmentcode_skill_evals.py --workspace WORKSPACE and Anthropic's
+review generator. Keep native activation, description routing proxy, programmatic
+assertions and human feedback distinct. Evidence and commands are preserved under
+docs/verification/garmentcode-skill-optimization-20261116/.
+
 ## Local gate
 
 Use the repository Python environment with Playwright and Chromium. No Warp,

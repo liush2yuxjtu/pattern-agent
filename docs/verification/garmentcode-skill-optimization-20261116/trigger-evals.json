@@ -1,0 +1,22 @@
+[
+  {"id":"p01","query":"assets/Patterns/shirt_mean_specification.json 是 GarmentCode 的官方上衣纸样。请生成三角网格和能旋转的离线预览，先不要跑物理。","should_trigger":true},
+  {"id":"p02","query":"我有 GarmentCodeData 的 sample_042_specification.json、对应的人体 OBJ 和 body_measurements.yaml，想用 CPU 做一次布料下垂仿真，交付 GLB 和运行记录。","should_trigger":true},
+  {"id":"p03","query":"只有一份 garment_sim.ply，来自 GarmentCodeData，原始纸样已经丢了。别重新计算，帮我做能切换线框的独立 HTML，尺寸按厘米转成米。","should_trigger":true},
+  {"id":"p04","query":"ok can u show me a 3d shirt draped on a mannequin like garment code? no sample yet, use their real example and give me a downloadable preview","should_trigger":true},
+  {"id":"p05","query":"我们想接 GarmentCode 的物理仿真。请根据它的代码解释从纸样、缝合到 XPBD 的调用关系，给出可实际执行的 Python 命令和需要的人体文件。","should_trigger":true},
+  {"id":"p06","query":"GarmentCode 在 CPU 上第 11 帧就 static 了，但模型明显没落下来。我发现 current_verts 和 last_verts 可能共享 NumPy 内存；请排查并重新生成预览。","should_trigger":true},
+  {"id":"p07","query":"这份 GarmentCode manifest 里 quality_passed=true，可 self_intersections=2。帮我区分仿真运行完成、严格零自交和合身结论，并重新导出说明清楚的查看器。","should_trigger":true},
+  {"id":"p08","query":"random_body/rand_ABC 里有 GarmentCode 纸样与测量，但没有 ABC.obj。能否给这个人的仿真预览？不要偷偷换平均人体；缺什么就具体说。","should_trigger":true},
+  {"id":"p09","query":"GarmentCode 导出的 shirt_sim.obj 是厘米单位，我要交给网页同事一个米单位 GLB 和可离线旋转查看的版本，不要把衣服放大一百倍。","should_trigger":true},
+  {"id":"p10","query":"我改了 GarmentCode 上衣的袖窿纸样，想重跑网格与 CPU 下垂，保存初始和最终模型供前后对照。输出别覆盖昨天的结果。","should_trigger":true},
+  {"id":"n01","query":"扫描仪给我一个 robot-arm.obj，单位毫米。请写一个通用 Three.js 查看器，显示机械臂并导出 GLB，没有服装或纸样。","should_trigger":false},
+  {"id":"n02","query":"我在上图形学课，请用一个双粒子例子解释 PBD 与 XPBD 的数学区别，不需要衣服、GarmentCode 文件或任何预览产物。","should_trigger":false},
+  {"id":"n03","query":"给服装品牌做一个 React 落地页，hero 放我已有的衬衫视频，按钮叫 3D Preview。只做前端排版，不接模型或物理求解器。","should_trigger":false},
+  {"id":"n04","query":"帮我修改这张二维 SVG 裙样的缝份为 10mm，保留 100mm 校准方块，再导出给 ET CAD 的 DXF。现在不做三维。","should_trigger":false},
+  {"id":"n05","query":"现有 Blender cloth.blend 的布料掉穿桌子，请调它的碰撞设置并在 Blender 重烘焙，保持原有 Blender 工程，不迁移到 GarmentCode。","should_trigger":false},
+  {"id":"n06","query":"机械零件点云的 NumPy 数组出现 NaN，导致我导出的 GLB 黑屏。请排查通用导出代码，项目与服装无关。","should_trigger":false},
+  {"id":"n07","query":"请把 GarmentCode 论文的 introduction 翻译成中文，保留引用编号。这里只需要翻译，不分析实现或运行仿真。","should_trigger":false},
+  {"id":"n08","query":"GarmentCodeData 的 metadata.csv 有 body_id 和 garment_type 两列，帮我按上衣分类统计人数并画柱状图，不读取纸样或三维文件。","should_trigger":false},
+  {"id":"n09","query":"已有的 garmentcode-preview 网页内容无需修改。请只把 GitHub Pages 的自定义域名改成 preview.example.com，别运行网格或物理。","should_trigger":false},
+  {"id":"n10","query":"我在维护 skill-creator 的评估统计脚本，trigger_rate 的分母算错了。请修 JSON 汇总和单元测试，不需要运行任何服装技能。","should_trigger":false}
+]

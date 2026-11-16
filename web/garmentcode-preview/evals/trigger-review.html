@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Set Review - garmentcode-preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lora', Georgia, serif; background: #faf9f5; padding: 2rem; color: #141413; }
+    h1 { font-family: 'Poppins', sans-serif; margin-bottom: 0.5rem; font-size: 1.5rem; }
+    .description { color: #b0aea5; margin-bottom: 1.5rem; font-style: italic; max-width: 900px; }
+    .controls { margin-bottom: 1rem; display: flex; gap: 0.5rem; }
+    .btn { font-family: 'Poppins', sans-serif; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.875rem; font-weight: 500; }
+    .btn-add { background: #6a9bcc; color: white; }
+    .btn-add:hover { background: #5889b8; }
+    .btn-export { background: #d97757; color: white; }
+    .btn-export:hover { background: #c4613f; }
+    table { width: 100%; max-width: 1100px; border-collapse: collapse; background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th { font-family: 'Poppins', sans-serif; background: #141413; color: #faf9f5; padding: 0.75rem 1rem; text-align: left; font-size: 0.875rem; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid #e8e6dc; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf9f5; }
+    tr:hover td { background: #f3f1ea; }
+    .section-header td { background: #e8e6dc; font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.8rem; color: #141413; text-transform: uppercase; letter-spacing: 0.05em; }
+    .query-input { width: 100%; padding: 0.4rem; border: 1px solid #e8e6dc; border-radius: 4px; font-size: 0.875rem; font-family: 'Lora', Georgia, serif; resize: vertical; min-height: 60px; }
+    .query-input:focus { outline: none; border-color: #d97757; box-shadow: 0 0 0 2px rgba(217,119,87,0.15); }
+    .toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle .slider { position: absolute; inset: 0; background: #b0aea5; border-radius: 24px; cursor: pointer; transition: 0.2s; }
+    .toggle .slider::before { content: ""; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.2s; }
+    .toggle input:checked + .slider { background: #d97757; }
+    .toggle input:checked + .slider::before { transform: translateX(20px); }
+    .btn-delete { background: #c44; color: white; padding: 0.3rem 0.6rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-family: 'Poppins', sans-serif; }
+    .btn-delete:hover { background: #a33; }
+    .summary { margin-top: 1rem; color: #b0aea5; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <h1>Eval Set Review: <span id="skill-name">garmentcode-preview</span></h1>
+  <p class="description">Current description: <span id="skill-desc">Run, explain, or troubleshoot GarmentCode-based garment meshing and 3D cloth draping. Use for GarmentCodeData samples, sewing-pattern JSON, existing garment OBJ/PLY/GLB previews, CPU/GPU XPBD setup, early-static failures, and simulation quality reports; also when the user asks how to implement this pipeline or wants a draped-clothing demo without supplying a sample. Covers 纸样生成网格、布料物理仿真、三维试穿预览. Do not use for generic 3D models or physics lessons, Blender-only projects, 2D/CAD-only edits, dataset statistics, paper translation, or deployment-only tasks.</span></p>
+
+  <div class="controls">
+    <button class="btn btn-add" onclick="addRow()">+ Add Query</button>
+    <button class="btn btn-export" onclick="exportEvalSet()">Export Eval Set</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:65%">Query</th>
+        <th style="width:18%">Should Trigger</th>
+        <th style="width:10%">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="eval-body"></tbody>
+  </table>
+
+  <p class="summary" id="summary"></p>
+
+  <script>
+    const EVAL_DATA = [{"id": "p01", "query": "assets/Patterns/shirt_mean_specification.json 是 GarmentCode 的官方上衣纸样。请生成三角网格和能旋转的离线预览，先不要跑物理。", "should_trigger": true}, {"id": "p02", "query": "我有 GarmentCodeData 的 sample_042_specification.json、对应的人体 OBJ 和 body_measurements.yaml，想用 CPU 做一次布料下垂仿真，交付 GLB 和运行记录。", "should_trigger": true}, {"id": "p03", "query": "只有一份 garment_sim.ply，来自 GarmentCodeData，原始纸样已经丢了。别重新计算，帮我做能切换线框的独立 HTML，尺寸按厘米转成米。", "should_trigger": true}, {"id": "p04", "query": "ok can u show me a 3d shirt draped on a mannequin like garment code? no sample yet, use their real example and give me a downloadable preview", "should_trigger": true}, {"id": "p05", "query": "我们想接 GarmentCode 的物理仿真。请根据它的代码解释从纸样、缝合到 XPBD 的调用关系，给出可实际执行的 Python 命令和需要的人体文件。", "should_trigger": true}, {"id": "p06", "query": "GarmentCode 在 CPU 上第 11 帧就 static 了，但模型明显没落下来。我发现 current_verts 和 last_verts 可能共享 NumPy 内存；请排查并重新生成预览。", "should_trigger": true}, {"id": "p07", "query": "这份 GarmentCode manifest 里 quality_passed=true，可 self_intersections=2。帮我区分仿真运行完成、严格零自交和合身结论，并重新导出说明清楚的查看器。", "should_trigger": true}, {"id": "p08", "query": "random_body/rand_ABC 里有 GarmentCode 纸样与测量，但没有 ABC.obj。能否给这个人的仿真预览？不要偷偷换平均人体；缺什么就具体说。", "should_trigger": true}, {"id": "p09", "query": "GarmentCode 导出的 shirt_sim.obj 是厘米单位，我要交给网页同事一个米单位 GLB 和可离线旋转查看的版本，不要把衣服放大一百倍。", "should_trigger": true}, {"id": "p10", "query": "我改了 GarmentCode 上衣的袖窿纸样，想重跑网格与 CPU 下垂，保存初始和最终模型供前后对照。输出别覆盖昨天的结果。", "should_trigger": true}, {"id": "n01", "query": "扫描仪给我一个 robot-arm.obj，单位毫米。请写一个通用 Three.js 查看器，显示机械臂并导出 GLB，没有服装或纸样。", "should_trigger": false}, {"id": "n02", "query": "我在上图形学课，请用一个双粒子例子解释 PBD 与 XPBD 的数学区别，不需要衣服、GarmentCode 文件或任何预览产物。", "should_trigger": false}, {"id": "n03", "query": "给服装品牌做一个 React 落地页，hero 放我已有的衬衫视频，按钮叫 3D Preview。只做前端排版，不接模型或物理求解器。", "should_trigger": false}, {"id": "n04", "query": "帮我修改这张二维 SVG 裙样的缝份为 10mm，保留 100mm 校准方块，再导出给 ET CAD 的 DXF。现在不做三维。", "should_trigger": false}, {"id": "n05", "query": "现有 Blender cloth.blend 的布料掉穿桌子，请调它的碰撞设置并在 Blender 重烘焙，保持原有 Blender 工程，不迁移到 GarmentCode。", "should_trigger": false}, {"id": "n06", "query": "机械零件点云的 NumPy 数组出现 NaN，导致我导出的 GLB 黑屏。请排查通用导出代码，项目与服装无关。", "should_trigger": false}, {"id": "n07", "query": "请把 GarmentCode 论文的 introduction 翻译成中文，保留引用编号。这里只需要翻译，不分析实现或运行仿真。", "should_trigger": false}, {"id": "n08", "query": "GarmentCodeData 的 metadata.csv 有 body_id 和 garment_type 两列，帮我按上衣分类统计人数并画柱状图，不读取纸样或三维文件。", "should_trigger": false}, {"id": "n09", "query": "已有的 garmentcode-preview 网页内容无需修改。请只把 GitHub Pages 的自定义域名改成 preview.example.com，别运行网格或物理。", "should_trigger": false}, {"id": "n10", "query": "我在维护 skill-creator 的评估统计脚本，trigger_rate 的分母算错了。请修 JSON 汇总和单元测试，不需要运行任何服装技能。", "should_trigger": false}];
+
+    let evalItems = [...EVAL_DATA];
+
+    function render() {
+      const tbody = document.getElementById('eval-body');
+      tbody.innerHTML = '';
+
+      // Sort: should-trigger first, then should-not-trigger
+      const sorted = evalItems
+        .map((item, origIdx) => ({ ...item, origIdx }))
+        .sort((a, b) => (b.should_trigger ? 1 : 0) - (a.should_trigger ? 1 : 0));
+
+      let lastGroup = null;
+      sorted.forEach(item => {
+        const group = item.should_trigger ? 'trigger' : 'no-trigger';
+        if (group !== lastGroup) {
+          const headerRow = document.createElement('tr');
+          headerRow.className = 'section-header';
+          headerRow.innerHTML = `<td colspan="3">${item.should_trigger ? 'Should Trigger' : 'Should NOT Trigger'}</td>`;
+          tbody.appendChild(headerRow);
+          lastGroup = group;
+        }
+
+        const idx = item.origIdx;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><textarea class="query-input" onchange="updateQuery(${idx}, this.value)">${escapeHtml(item.query)}</textarea></td>
+          <td>
+            <label class="toggle">
+              <input type="checkbox" ${item.should_trigger ? 'checked' : ''} onchange="updateTrigger(${idx}, this.checked)">
+              <span class="slider"></span>
+            </label>
+            <span style="margin-left:8px;font-size:0.8rem;color:#b0aea5">${item.should_trigger ? 'Yes' : 'No'}</span>
+          </td>
+          <td><button class="btn-delete" onclick="deleteRow(${idx})">Delete</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateSummary();
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function updateQuery(idx, value) { evalItems[idx].query = value; updateSummary(); }
+    function updateTrigger(idx, value) { evalItems[idx].should_trigger = value; render(); }
+    function deleteRow(idx) { evalItems.splice(idx, 1); render(); }
+
+    function addRow() {
+      evalItems.push({ query: '', should_trigger: true });
+      render();
+      const inputs = document.querySelectorAll('.query-input');
+      inputs[inputs.length - 1].focus();
+    }
+
+    function updateSummary() {
+      const trigger = evalItems.filter(i => i.should_trigger).length;
+      const noTrigger = evalItems.filter(i => !i.should_trigger).length;
+      document.getElementById('summary').textContent =
+        `${evalItems.length} queries total: ${trigger} should trigger, ${noTrigger} should not trigger`;
+    }
+
+    function exportEvalSet() {
+      const valid = evalItems.filter(i => i.query.trim() !== '');
+      const data = valid.map(i => ({ query: i.query.trim(), should_trigger: i.should_trigger }));
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'eval_set.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    render();
+  </script>
+</body>
+</html>

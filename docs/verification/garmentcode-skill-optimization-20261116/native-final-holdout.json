@@ -1,0 +1,34 @@
+[
+  {
+    "query": "random_body/rand_ABC 里有 GarmentCode 纸样与测量，但没有 ABC.obj。能否给这个人的仿真预览？不要偷偷换平均人体；缺什么就具体说。",
+    "should_trigger": true
+  },
+  {
+    "query": "ok can u show me a 3d shirt draped on a mannequin like garment code? no sample yet, use their real example and give me a downloadable preview",
+    "should_trigger": true
+  },
+  {
+    "query": "只有一份 garment_sim.ply，来自 GarmentCodeData，原始纸样已经丢了。别重新计算，帮我做能切换线框的独立 HTML，尺寸按厘米转成米。",
+    "should_trigger": true
+  },
+  {
+    "query": "GarmentCode 导出的 shirt_sim.obj 是厘米单位，我要交给网页同事一个米单位 GLB 和可离线旋转查看的版本，不要把衣服放大一百倍。",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我修改这张二维 SVG 裙样的缝份为 10mm，保留 100mm 校准方块，再导出给 ET CAD 的 DXF。现在不做三维。",
+    "should_trigger": false
+  },
+  {
+    "query": "机械零件点云的 NumPy 数组出现 NaN，导致我导出的 GLB 黑屏。请排查通用导出代码，项目与服装无关。",
+    "should_trigger": false
+  },
+  {
+    "query": "给服装品牌做一个 React 落地页，hero 放我已有的衬衫视频，按钮叫 3D Preview。只做前端排版，不接模型或物理求解器。",
+    "should_trigger": false
+  },
+  {
+    "query": "现有 Blender cloth.blend 的布料掉穿桌子，请调它的碰撞设置并在 Blender 重烘焙，保持原有 Blender 工程，不迁移到 GarmentCode。",
+    "should_trigger": false
+  }
+]

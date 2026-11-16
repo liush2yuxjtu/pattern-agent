@@ -4,6 +4,34 @@
 
 本目录独立保存技能、官方输入纸样、本次生成的网格和静态网页。页面可旋转、缩放、查看线框、隐藏人体，并比较初始网格和仿真结果；不在浏览器中重新计算物理。
 
+## 技能安装与复用
+
+可发现的规范源码在仓库 `.agents/skills/garmentcode-preview/`；Claude 通过
+`.claude/skills/garmentcode-preview` 链接读取同一份源码。本目录的 `skill/` 与
+`.skill` 是 `python scripts/sync_garmentcode_skill.py` 生成的发布副本，
+`--check` 可核对逐文件及包字节一致性。
+
+在装好依赖的环境中，从仓库根目录：
+
+```sh
+python .agents/skills/garmentcode-preview/scripts/garment_preview.py build \
+  --pattern .agents/skills/garmentcode-preview/assets/example-shirt_specification.json \
+  --repo /absolute/GarmentCode --mode simulate --resolution 1.5 \
+  --out work/new-shirt-drape
+
+python .agents/skills/garmentcode-preview/scripts/garment_preview.py build \
+  --mode existing --existing-mesh /data/shirt.glb --out work/existing-shirt
+```
+
+已有网格预览不需要原纸样、GarmentCode 源码或 Warp。GLB 默认为米，OBJ/PLY
+默认为厘米，其他单位显式指定 `--existing-scale`。新仿真分开报告运行、稳定、
+宽松配置阈值、严格零穿透、完整独立审计和实体合身；旧 `quality_passed`
+字段只表示上游阈值，不能单独作为服装质量结论。
+
+按 Anthropic skill-creator 进行旧版/新版功能对照与描述路由优化的材料见
+[评估记录](../../docs/verification/garmentcode-skill-optimization-20261116/README.md)。
+原生 Claude 触发测试在当前环境 BLOCKED，代理路由评估会单独标明。
+
 ## 文件
 
 - `index.html`：GitHub Pages 入口，无外部 CDN 依赖。

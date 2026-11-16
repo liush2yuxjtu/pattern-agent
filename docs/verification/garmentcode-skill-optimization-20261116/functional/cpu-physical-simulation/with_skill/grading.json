@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "CPU XPBD actually executes beyond the early-static bug and ends without a runtime error",
+      "passed": true,
+      "evidence": "CPU executed 232 frames; error=None; snapshot fix=True"
+    },
+    {
+      "text": "Real initial and final GLBs have valid identical topology and measurable deformation",
+      "passed": true,
+      "evidence": "Independent GLB decoder: 3569 vertices, 6958 triangles, same topology; max displacement 0.29277665217860793m"
+    },
+    {
+      "text": "Input hash and upstream source revision identify the official fixture",
+      "passed": true,
+      "evidence": "Actual official-fixture hash and pinned upstream commit match"
+    },
+    {
+      "text": "Manifest separates permissive thresholds from strict zero-intersection outcomes",
+      "passed": true,
+      "evidence": "{\"simulation_execution\": \"PASS\", \"stability\": \"PASS\", \"upstream_threshold_check\": \"PASS\", \"strict_zero_body_intersections\": \"PASS\", \"strict_zero_self_intersections\": \"FAIL\", \"independent_full_geometry_audit\": \"NOT_RUN\", \"physical_fit\": \"NOT_RUN\", \"reason\": \"Intersection counters are upstream diagnostics, not an independent garment or physical-fit certificate.\"}"
+    },
+    {
+      "text": "Independent full garment audit and physical fit remain NOT_RUN",
+      "passed": true,
+      "evidence": "Both independent full audit and physical fit explicitly NOT_RUN"
+    },
+    {
+      "text": "Preview label does not upgrade permissive threshold success to garment-quality approval",
+      "passed": true,
+      "evidence": "物理仿真完成 · 零穿透检查未通过（研究预览）"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "eval_feedback": {
+    "overall": "Real geometry and explicit scope are checked. Single-run cases do not establish statistical superiority."
+  }
+}

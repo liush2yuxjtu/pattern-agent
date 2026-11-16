@@ -1,0 +1,107 @@
+<div id="garment-preview">
+  <style>
+    #garment-preview{color:var(--foreground);width:100%;font-family:system-ui,sans-serif}
+    #garment-preview .gp-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding-right:90px;margin-bottom:12px}
+    #garment-preview .gp-controls{margin-bottom:10px}
+    #garment-preview .gp-stage{position:relative;width:100%;height:520px}
+    #garment-preview canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+    #garment-preview .gp-caption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:8px}
+    #garment-preview .gp-note{margin-top:8px;overflow-wrap:anywhere}
+    @media(max-width:500px){#garment-preview .gp-stage{height:420px}#garment-preview .gp-top{padding-right:0}}
+  </style>
+  <div class="gp-top"><h2>GarmentCode 三维网格</h2><span class="text-small" data-role="status" aria-live="polite"></span></div>
+  <div class="viz-controls gp-controls">
+    <label class="form-check"><input class="form-check-input" type="checkbox" data-role="wire"><span class="form-check-label">线框</span></label>
+    <label class="form-check"><input class="form-check-input" type="checkbox" checked data-role="body"><span class="form-check-label">人体</span></label>
+    <button class="btn" type="button" data-role="initial">初始网格</button>
+    <button class="btn" type="button" data-role="final">仿真结果</button>
+    <button class="btn" type="button" data-role="front">正面</button>
+    <button class="btn" type="button" data-role="back">背面</button>
+  </div>
+  <div class="gp-stage"><canvas role="img" aria-label="可旋转的衣服三角网格；拖动旋转，滚轮缩放。方向键也可旋转。"></canvas></div>
+  <div class="gp-caption text-small"><span data-role="stats" class="tabular-nums"></span><span class="text-muted">拖动旋转 · 滚轮缩放</span></div>
+  <div class="gp-note text-small text-muted" data-role="source"></div>
+  <script type="application/json" id="garment-mesh-data">__MESH_DATA__</script>
+  <script>
+  (()=>{
+    const root=document.getElementById('garment-preview');
+    const data=JSON.parse(document.getElementById('garment-mesh-data').textContent);
+    const el=n=>root.querySelector('[data-role="'+n+'"]');
+    const canvas=root.querySelector('canvas');
+    const gl=canvas.getContext('webgl',{antialias:true,alpha:true,preserveDrawingBuffer:true});
+    if(!gl){el('status').textContent='此浏览器未启用 WebGL，请换用支持 WebGL 的浏览器。';return;}
+    const css=()=>getComputedStyle(root);
+    function rgb(name,fallback){
+      const c=document.createElement('span');c.style.color='var('+name+','+fallback+')';root.append(c);
+      const s=getComputedStyle(c).color;c.remove();const a=s.match(/[\d.]+/g);
+      return a&&a.length>=3?a.slice(0,3).map(Number).map(x=>x/255):[.25,.5,.45];
+    }
+    function shader(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
+    const program=gl.createProgram();
+    gl.attachShader(program,shader(gl.VERTEX_SHADER,'attribute vec3 p;attribute vec3 n;uniform mat4 mvp;varying vec3 norm;void main(){gl_Position=mvp*vec4(p,1.);norm=n;}'));
+    gl.attachShader(program,shader(gl.FRAGMENT_SHADER,'precision mediump float;varying vec3 norm;uniform vec3 color;uniform float unlit;void main(){vec3 N=normalize(norm);float L=.38+.42*abs(dot(N,normalize(vec3(-.5,.8,1.))))+.20*abs(dot(N,normalize(vec3(.8,.1,-.4))));gl_FragColor=vec4(color*mix(L,1.,unlit),1.);}'));
+    gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
+    gl.useProgram(program);
+    const loc={p:gl.getAttribLocation(program,'p'),n:gl.getAttribLocation(program,'n'),mvp:gl.getUniformLocation(program,'mvp'),color:gl.getUniformLocation(program,'color'),unlit:gl.getUniformLocation(program,'unlit')};
+    const base=data.final||data.initial;
+    const bounds=[Infinity,Infinity,Infinity,-Infinity,-Infinity,-Infinity];
+    for(let i=0;i<base.vertices.length;i++){let k=i%3;bounds[k]=Math.min(bounds[k],base.vertices[i]);bounds[k+3]=Math.max(bounds[k+3],base.vertices[i]);}
+    const center=bounds.slice(0,3).map((x,k)=>(x+bounds[k+3])/2);
+    const height=Math.max(...center.map((x,k)=>bounds[k+3]-bounds[k]),.2);
+    function buffer(values){const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(values),gl.STATIC_DRAW);return b;}
+    function prepare(mesh){
+      if(!mesh)return null;
+      const v=mesh.vertices,f=mesh.faces,n=new Float32Array(v.length),points=[],normals=[],lines=[],lineN=[];
+      for(let i=0;i<f.length;i+=3){
+        const a=f[i]*3,b=f[i+1]*3,c=f[i+2]*3;
+        const u=[v[b]-v[a],v[b+1]-v[a+1],v[b+2]-v[a+2]],w=[v[c]-v[a],v[c+1]-v[a+1],v[c+2]-v[a+2]];
+        const q=[u[1]*w[2]-u[2]*w[1],u[2]*w[0]-u[0]*w[2],u[0]*w[1]-u[1]*w[0]];
+        for(const idx of [a,b,c])for(let k=0;k<3;k++)n[idx+k]+=q[k];
+      }
+      for(let i=0;i<n.length;i+=3){const len=Math.hypot(n[i],n[i+1],n[i+2])||1;for(let k=0;k<3;k++)n[i+k]/=len;}
+      for(let i=0;i<f.length;i+=3){
+        for(let j=0;j<3;j++){const idx=f[i+j]*3;for(let k=0;k<3;k++){points.push(v[idx+k]-center[k]);normals.push(n[idx+k]);}}
+        for(const pair of [[0,1],[1,2],[2,0]])for(const j of pair){const idx=f[i+j]*3;for(let k=0;k<3;k++){lines.push(v[idx+k]-center[k]);lineN.push(n[idx+k]);}}
+      }
+      return {v:buffer(points),n:buffer(normals),lv:buffer(lines),ln:buffer(lineN),count:points.length/3,lineCount:lines.length/3,vertices:v.length/3,triangles:f.length/3};
+    }
+    const meshes={initial:prepare(data.initial),final:prepare(data.final),body:prepare(data.body)};
+    let mode=meshes.final?'final':'initial',yaw=-.30,pitch=.04,distance=height*1.85,drag=null;
+    const saved=window.openai&&window.openai.widgetState;
+    if(saved&&saved.privateContent){const s=saved.privateContent;if(Number.isFinite(s.yaw))yaw=s.yaw;if(Number.isFinite(s.pitch))pitch=s.pitch;}
+    function save(){if(window.openai&&window.openai.setWidgetState)window.openai.setWidgetState({modelContent:{mode,wireframe:el('wire').checked,body:el('body').checked},privateContent:{yaw,pitch}}).catch(()=>{});}
+    function multiply(a,b){const o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let k=0;k<4;k++)o[c*4+r]+=a[k*4+r]*b[c*4+k];return o;}
+    function camera(){
+      const aspect=canvas.width/canvas.height,t=1/Math.tan(Math.PI/8),near=.01,far=100;
+      const projection=new Float32Array([t/aspect,0,0,0,0,t,0,0,0,0,(far+near)/(near-far),-1,0,0,2*far*near/(near-far),0]);
+      const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+      const ry=new Float32Array([cy,0,-sy,0,0,1,0,0,sy,0,cy,0,0,0,0,1]);
+      const rx=new Float32Array([1,0,0,0,0,cp,sp,0,0,-sp,cp,0,0,0,-distance,1]);
+      return multiply(projection,multiply(rx,ry));
+    }
+    function attributes(v,n){gl.bindBuffer(gl.ARRAY_BUFFER,v);gl.vertexAttribPointer(loc.p,3,gl.FLOAT,false,0,0);gl.enableVertexAttribArray(loc.p);gl.bindBuffer(gl.ARRAY_BUFFER,n);gl.vertexAttribPointer(loc.n,3,gl.FLOAT,false,0,0);gl.enableVertexAttribArray(loc.n);}
+    function drawMesh(mesh,color,wire){
+      if(!mesh)return;
+      attributes(mesh.v,mesh.n);gl.uniform3fv(loc.color,color);gl.uniform1f(loc.unlit,0);gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(1,1);gl.drawArrays(gl.TRIANGLES,0,mesh.count);gl.disable(gl.POLYGON_OFFSET_FILL);
+      if(wire){attributes(mesh.lv,mesh.ln);gl.uniform3fv(loc.color,rgb('--foreground','#23352f'));gl.uniform1f(loc.unlit,1);gl.drawArrays(gl.LINES,0,mesh.lineCount);}
+    }
+    let queued=false;
+    function draw(){queued=false;const dpr=Math.min(devicePixelRatio||1,2),r=canvas.getBoundingClientRect();const w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}gl.viewport(0,0,w,h);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);gl.uniformMatrix4fv(loc.mvp,false,camera());if(el('body').checked)drawMesh(meshes.body,rgb('--muted-foreground','#7c8780'),false);drawMesh(meshes[mode],rgb('--viz-series-1','#238f83'),el('wire').checked);root.dataset.rendered='true';root.dataset.mode=mode;}
+    function request(){if(!queued){queued=true;requestAnimationFrame(draw);}}
+    function sync(){el('initial').disabled=!meshes.initial;el('final').disabled=!meshes.final;el('initial').setAttribute('aria-pressed',String(mode==='initial'));el('final').setAttribute('aria-pressed',String(mode==='final'));el('final').textContent=data.label.startsWith('已有')?'已有网格':'仿真结果';el('status').textContent=mode==='initial'?'初始缝合网格 · 未物理仿真':data.label;const m=meshes[mode];el('stats').textContent=m.vertices.toLocaleString()+' 个顶点 · '+m.triangles.toLocaleString()+' 个三角形';request();}
+    for(const n of ['wire','body'])el(n).addEventListener('change',()=>{request();save();});
+    for(const n of ['initial','final'])el(n).addEventListener('click',()=>{mode=n;sync();save();});
+    el('front').onclick=()=>{yaw=0;pitch=0;request();save();};el('back').onclick=()=>{yaw=Math.PI;pitch=0;request();save();};
+    canvas.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId);});
+    canvas.addEventListener('pointermove',e=>{if(drag){yaw+=(e.clientX-drag[0])*.008;pitch=Math.max(-1.4,Math.min(1.4,pitch+(e.clientY-drag[1])*.008));drag=[e.clientX,e.clientY];request();}});
+    canvas.addEventListener('pointerup',()=>{drag=null;save();});canvas.addEventListener('pointercancel',()=>{drag=null;});
+    canvas.addEventListener('wheel',e=>{e.preventDefault();distance=Math.max(height*.4,Math.min(height*5,distance*Math.exp(e.deltaY*.001)));request();},{passive:false});
+    root.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')yaw-=.12;else if(e.key==='ArrowRight')yaw+=.12;else if(e.key==='ArrowUp')pitch-=.12;else if(e.key==='ArrowDown')pitch+=.12;else return;e.preventDefault();request();save();});
+    window.addEventListener('openai:set_globals',e=>{const s=e.detail&&e.detail.globals&&e.detail.globals.widgetState;if(s&&s.privateContent){if(Number.isFinite(s.privateContent.yaw))yaw=s.privateContent.yaw;if(Number.isFinite(s.privateContent.pitch))pitch=s.privateContent.pitch;request();}});
+    el('source').textContent=data.name+' · '+data.source;
+    new ResizeObserver(request).observe(canvas);
+    new MutationObserver(request).observe(document.documentElement,{attributes:true,attributeFilter:['class','style','data-theme']});
+    sync();
+  })();
+  </script>
+</div>

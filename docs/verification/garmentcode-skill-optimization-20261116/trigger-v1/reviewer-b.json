@@ -1,0 +1,105 @@
+{
+  "engine": "independent_subagent_routing_proxy",
+  "results": [
+    {
+      "id": "p01",
+      "triggered": true,
+      "reason": "Requests meshing a GarmentCode sewing-pattern JSON and producing an offline 3D preview; physical simulation is optional for this scope."
+    },
+    {
+      "id": "p02",
+      "triggered": true,
+      "reason": "Requests the GarmentCodeData pattern-to-draping pipeline on CPU with body inputs, GLB output, and execution records."
+    },
+    {
+      "id": "p03",
+      "triggered": true,
+      "reason": "Requests a preview of an existing GarmentCodeData garment PLY with unit conversion; the description explicitly includes existing garment previews without rerunning simulation."
+    },
+    {
+      "id": "p04",
+      "triggered": true,
+      "reason": "Requests a real GarmentCode-style draped-clothing demo and downloadable preview without providing a sample, an expressly covered starting point."
+    },
+    {
+      "id": "p05",
+      "triggered": true,
+      "reason": "Requests implementation guidance for GarmentCode pattern meshing, stitching, and XPBD, including executable commands and required body assets."
+    },
+    {
+      "id": "p06",
+      "triggered": true,
+      "reason": "Requests troubleshooting a GarmentCode CPU early-static failure and regenerating the resulting preview."
+    },
+    {
+      "id": "p07",
+      "triggered": true,
+      "reason": "Requests interpretation of GarmentCode simulation quality evidence and an accurately qualified viewer; simulation quality reports are covered."
+    },
+    {
+      "id": "p08",
+      "triggered": true,
+      "reason": "Requests a person-specific GarmentCode simulation preview with explicit missing-body handling; consulting the pipeline is appropriate even if the missing OBJ blocks execution."
+    },
+    {
+      "id": "p09",
+      "triggered": true,
+      "reason": "Requests converting an existing GarmentCode garment OBJ into a correctly scaled GLB and offline preview, which falls within existing garment-preview support."
+    },
+    {
+      "id": "p10",
+      "triggered": true,
+      "reason": "Requests rerunning GarmentCode meshing and CPU cloth draping after a pattern change, with initial and final model deliverables."
+    },
+    {
+      "id": "n01",
+      "triggered": false,
+      "reason": "Requests a generic mechanical-model viewer and conversion; there is no garment or sewing-pattern pipeline."
+    },
+    {
+      "id": "n02",
+      "triggered": false,
+      "reason": "Requests a generic mathematical explanation of PBD versus XPBD, with no garment implementation or preview task."
+    },
+    {
+      "id": "n03",
+      "triggered": false,
+      "reason": "Requests React layout around an existing video; the button label does not create a garment meshing, model-preview, or simulation task."
+    },
+    {
+      "id": "n04",
+      "triggered": false,
+      "reason": "Requests only 2D SVG pattern editing and CAD export, an explicitly excluded scope."
+    },
+    {
+      "id": "n05",
+      "triggered": false,
+      "reason": "Requests fixing and rebaking an existing Blender cloth project while retaining its Blender pipeline, an explicitly excluded scope."
+    },
+    {
+      "id": "n06",
+      "triggered": false,
+      "reason": "Requests generic NumPy and GLB export debugging for mechanical data, unrelated to the garment pipeline."
+    },
+    {
+      "id": "n07",
+      "triggered": false,
+      "reason": "Requests only translation of a paper introduction, without implementation analysis or simulation."
+    },
+    {
+      "id": "n08",
+      "triggered": false,
+      "reason": "Requests CSV aggregation and a chart, with no pattern or 3D asset processing; dataset statistics are excluded."
+    },
+    {
+      "id": "n09",
+      "triggered": false,
+      "reason": "Requests only deployment-domain configuration for an existing page; deployment-only work is explicitly excluded."
+    },
+    {
+      "id": "n10",
+      "triggered": false,
+      "reason": "Requests repairing an evaluation statistics script and its tests; mention of skill evaluation does not require consulting the garment workflow."
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "engine": "independent_subagent_routing_proxy",
+  "results": [
+    {
+      "id": "p01",
+      "triggered": true,
+      "reason": "GarmentCode sewing-pattern JSON meshing and an offline 3D preview are expressly covered, even without physics."
+    },
+    {
+      "id": "p02",
+      "triggered": true,
+      "reason": "Requests a GarmentCodeData CPU cloth simulation using a pattern, body, and measurements, with GLB and run records."
+    },
+    {
+      "id": "p03",
+      "triggered": true,
+      "reason": "Existing GarmentCodeData PLY preview and unit conversion fall within the existing garment preview scope; rerunning simulation is unnecessary."
+    },
+    {
+      "id": "p04",
+      "triggered": true,
+      "reason": "The description explicitly covers a draped-clothing demo without a supplied sample, including a real GarmentCode example."
+    },
+    {
+      "id": "p05",
+      "triggered": true,
+      "reason": "Explaining and implementing the GarmentCode pattern-to-sewing-to-XPBD pipeline with executable setup is explicitly included."
+    },
+    {
+      "id": "p06",
+      "triggered": true,
+      "reason": "An early-static CPU GarmentCode simulation failure and regenerated preview directly match the troubleshooting scope."
+    },
+    {
+      "id": "p07",
+      "triggered": true,
+      "reason": "GarmentCode simulation quality reports, self-intersection interpretation, and a clarified viewer are covered."
+    },
+    {
+      "id": "p08",
+      "triggered": true,
+      "reason": "A GarmentCode simulation preview request with a missing specific body asset requires the pipeline and asset troubleshooting described."
+    },
+    {
+      "id": "p09",
+      "triggered": true,
+      "reason": "Converting an existing GarmentCode garment OBJ into a correctly scaled GLB and offline viewer is covered."
+    },
+    {
+      "id": "p10",
+      "triggered": true,
+      "reason": "Rerunning GarmentCode meshing and CPU draping after a pattern change, with before-and-after artifacts, matches the central workflow."
+    },
+    {
+      "id": "n01",
+      "triggered": false,
+      "reason": "A generic mechanical OBJ viewer and conversion are explicitly outside the garment-specific scope."
+    },
+    {
+      "id": "n02",
+      "triggered": false,
+      "reason": "A generic PBD/XPBD mathematics lesson without garments or preview artifacts is explicitly excluded."
+    },
+    {
+      "id": "n03",
+      "triggered": false,
+      "reason": "Frontend landing-page layout with an existing video does not involve garment meshing, model preview implementation, or draping."
+    },
+    {
+      "id": "n04",
+      "triggered": false,
+      "reason": "The request is exclusively a 2D SVG/CAD pattern edit and DXF export, which the description excludes."
+    },
+    {
+      "id": "n05",
+      "triggered": false,
+      "reason": "Blender-only cloth collision repair and rebaking are explicitly excluded."
+    },
+    {
+      "id": "n06",
+      "triggered": false,
+      "reason": "Generic mechanical point-cloud export debugging has no GarmentCode or garment simulation context."
+    },
+    {
+      "id": "n07",
+      "triggered": false,
+      "reason": "Paper translation without implementation analysis or simulation is explicitly excluded."
+    },
+    {
+      "id": "n08",
+      "triggered": false,
+      "reason": "Dataset metadata statistics and charting without pattern or 3D work are explicitly excluded."
+    },
+    {
+      "id": "n09",
+      "triggered": false,
+      "reason": "A deployment-only GitHub Pages domain change is explicitly outside the skill scope."
+    },
+    {
+      "id": "n10",
+      "triggered": false,
+      "reason": "Evaluation aggregation and unit-test repair are general coding tasks, with no garment workflow requested."
+    }
+  ]
+}

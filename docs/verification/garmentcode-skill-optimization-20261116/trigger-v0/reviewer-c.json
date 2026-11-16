@@ -1,0 +1,105 @@
+{
+  "engine": "independent_subagent_routing_proxy",
+  "results": [
+    {
+      "id": "p01",
+      "triggered": true,
+      "reason": "Directly requests a sewn garment triangle mesh from a GarmentCode specification and a rotatable offline preview without physics."
+    },
+    {
+      "id": "p02",
+      "triggered": true,
+      "reason": "Requests a new CPU garment drape from GarmentCodeData pattern and body inputs, with GLB export and a run record."
+    },
+    {
+      "id": "p03",
+      "triggered": true,
+      "reason": "Requests wireframe inspection and an offline viewer for an existing GarmentCodeData simulated mesh, including unit conversion and no new simulation."
+    },
+    {
+      "id": "p04",
+      "triggered": true,
+      "reason": "Requests a real GarmentCode example draped on a mannequin and a downloadable 3D preview; obtaining an example is preparation for the core workflow."
+    },
+    {
+      "id": "p05",
+      "triggered": true,
+      "reason": "Requests actionable integration of GarmentCode's sewing-to-physics pipeline, executable simulation commands, and required body inputs, so the garment draping workflow should materially inform the answer."
+    },
+    {
+      "id": "p06",
+      "triggered": true,
+      "reason": "Debugging a premature GarmentCode simulation stop is coupled to regenerating the garment preview and verifying that a new drape actually occurred."
+    },
+    {
+      "id": "p07",
+      "triggered": true,
+      "reason": "Requests interpretation of garment simulation completion and quality claims plus re-export of the viewer, closely matching the workflow's simulation-state distinctions."
+    },
+    {
+      "id": "p08",
+      "triggered": true,
+      "reason": "Requests a person-specific GarmentCode simulation preview from a dataset sample folder; assessing the missing body asset is necessary to that workflow."
+    },
+    {
+      "id": "p09",
+      "triggered": true,
+      "reason": "Requests meter-scale GLB export and an offline rotatable preview of an existing GarmentCode garment simulation mesh."
+    },
+    {
+      "id": "p10",
+      "triggered": true,
+      "reason": "Directly requests remeshing an edited GarmentCode pattern, a new CPU drape, and separately preserved initial and final garment models."
+    },
+    {
+      "id": "n01",
+      "triggered": false,
+      "reason": "A generic mechanical OBJ viewer and GLB conversion need ordinary 3D frontend tools, with no garment or sewing-pattern workflow."
+    },
+    {
+      "id": "n02",
+      "triggered": false,
+      "reason": "The task is a mathematical explanation of PBD and XPBD using two particles, with no garment inputs or preview deliverables."
+    },
+    {
+      "id": "n03",
+      "triggered": false,
+      "reason": "The request is React page layout using an existing video; the button wording does not create a garment meshing or simulation task."
+    },
+    {
+      "id": "n04",
+      "triggered": false,
+      "reason": "Editing 2D SVG seam allowance and exporting DXF for CAD does not use the described GarmentCode 3D workflow."
+    },
+    {
+      "id": "n05",
+      "triggered": false,
+      "reason": "The requested work stays in an existing Blender cloth project and uses Blender collision and bake controls."
+    },
+    {
+      "id": "n06",
+      "triggered": false,
+      "reason": "This is generic NumPy and GLB export debugging for mechanical geometry, unrelated to garment generation or preview."
+    },
+    {
+      "id": "n07",
+      "triggered": false,
+      "reason": "Translating a paper introduction does not require the garment mesh, drape, or preview workflow."
+    },
+    {
+      "id": "n08",
+      "triggered": false,
+      "reason": "CSV grouping and charting require data-analysis tools rather than reading garment patterns or 3D assets."
+    },
+    {
+      "id": "n09",
+      "triggered": false,
+      "reason": "Changing a GitHub Pages custom domain is hosting configuration; the existing garment preview content and processing are explicitly outside scope."
+    },
+    {
+      "id": "n10",
+      "triggered": false,
+      "reason": "Fixing evaluation JSON aggregation and tests is ordinary repository maintenance, with no garment workflow to execute."
+    }
+  ]
+}

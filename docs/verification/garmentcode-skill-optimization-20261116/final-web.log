@@ -1,0 +1,55 @@
+{
+  "verdict": "PASS",
+  "claim": "Viewer and downloads work; not a garment-release approval",
+  "url": "http://127.0.0.1:42157/pattern-agent/garmentcode-preview/",
+  "commit": "dcff3d67f494e7c9b6705a80c7564e6b3f88a45e",
+  "source_sha256": "0d6c1830b0939428bba96c90e014884980f893d91e5f35201ad6fe7bcf4371a6",
+  "timestamp_utc": "2026-11-16T11:19:37.774965+00:00",
+  "downloads": [
+    {
+      "file": "garmentcode-preview.skill",
+      "sha256": "2eaecf1b877f05ac0f93ff228e294b6466059887860d5c0265a3e1c1ba2b0861",
+      "bytes": 38199
+    },
+    {
+      "file": "garment.glb",
+      "sha256": "0c0c9852477cbb6be4503200e867dc3271075712d56e7e97fa47012404561a93",
+      "bytes": 127280
+    },
+    {
+      "file": "example-shirt_specification.json",
+      "sha256": "048aac4e8b90ffcda38f2b928eebe6354c48a4528ed7f31a885ce38e38ccf88e",
+      "bytes": 20416
+    },
+    {
+      "file": "offline-preview.html",
+      "sha256": "a2d91e38a1fd1f22992ed76f45b046d7efa02261bf2d9cc9b7d52e9d9115ed6c",
+      "bytes": 628667
+    }
+  ],
+  "geometry": {
+    "vertices": 3569,
+    "triangles": 6958,
+    "max_vertex_displacement_m": 0.29277665217860793,
+    "decoder": "independent stdlib GLB reader"
+  },
+  "checks": [
+    "actual WebGL pixels",
+    "wireframe",
+    "body visibility",
+    "initial/final switch",
+    "real pointer rotation",
+    "wheel zoom",
+    "front/back",
+    "four downloaded file hashes",
+    "offline downloaded HTML reopen",
+    "375px mobile",
+    "WebGL-disabled image fallback",
+    "missing model returns 404"
+  ],
+  "errors": [],
+  "failed_requests": [],
+  "asset_http_errors": [],
+  "strict_geometry_release": "FAIL",
+  "physical_fit": "NOT_RUN"
+}

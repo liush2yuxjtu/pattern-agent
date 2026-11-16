@@ -1,0 +1,12 @@
+{
+  "status": "PREPARED",
+  "native_trigger_results": null,
+  "upstream_commit": "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064",
+  "skill_sha256": "3a5af1998345c149233d55fff8acddda5588d1440e416e786b02e6a8312b3d2e",
+  "dataset_sha256": "1dce60ef27e9a5300117c52bcb091c198a346dbbb64f7f1ede781502fdec273c",
+  "cases": 20,
+  "development_cases": 12,
+  "final_holdout_cases": 8,
+  "protocol": "Outer 60/40 development/final-holdout; official loop internally splits development 2/3 train,1/3 validation. Only final evaluation sees outer holdout.",
+  "review_required": "Review labels in review.html before real optimization; no dataset or model score has been inferred from preparation."
+}

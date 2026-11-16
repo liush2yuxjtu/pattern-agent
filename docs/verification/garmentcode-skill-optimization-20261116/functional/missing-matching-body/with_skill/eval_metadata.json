@@ -1,0 +1,10 @@
+{
+  "eval_id": 2,
+  "eval_name": "missing-matching-body",
+  "prompt": "random_body/rand_ABC 里只有纸样和身体测量，没有 ABC.obj。请给这个人的物理试穿预览，不要换平均人体。缺输入时明确指出并停止，不虚构仿真。",
+  "assertions": [
+    "CLI rejects a random-body simulation without its matching mesh",
+    "Missing input diagnostic names the matching body mesh rather than substituting mean_all",
+    "Rejected request creates no GLB or simulated garment output"
+  ]
+}

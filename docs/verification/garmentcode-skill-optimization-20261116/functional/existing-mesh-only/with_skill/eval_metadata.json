@@ -1,0 +1,11 @@
+{
+  "eval_id": 3,
+  "eval_name": "existing-mesh-only",
+  "prompt": "我只有一份已有 garment.glb，没有原始纸样和 GarmentCode 仓库；不要重新仿真。请保持米单位，输出可离线旋转的线框查看器和 GLB，记录真实输入哈希。",
+  "assertions": [
+    "Existing GLB alone exports a loadable mesh and offline HTML without pattern/repository input",
+    "Reloaded exported positions and indices preserve meter-scale input geometry",
+    "Manifest records the actual existing-mesh hash and no newly generated mesh or simulation",
+    "Existing preview is clearly labeled and physical-fit status remains NOT_RUN"
+  ]
+}

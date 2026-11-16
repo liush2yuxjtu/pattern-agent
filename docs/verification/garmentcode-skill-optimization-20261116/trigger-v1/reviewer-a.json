@@ -1,0 +1,105 @@
+{
+  "engine": "independent_subagent_routing_proxy",
+  "results": [
+    {
+      "id": "p01",
+      "triggered": true,
+      "reason": "Creating a mesh and offline 3D preview from a GarmentCode sewing-pattern JSON is directly covered, even without physics."
+    },
+    {
+      "id": "p02",
+      "triggered": true,
+      "reason": "CPU draping of a GarmentCodeData sample with its body and measurements, plus GLB and run records, is the described simulation workflow."
+    },
+    {
+      "id": "p03",
+      "triggered": true,
+      "reason": "The description covers previews of existing GarmentCodeData PLY garments; missing patterns and a request to avoid recomputation do not remove that applicability."
+    },
+    {
+      "id": "p04",
+      "triggered": true,
+      "reason": "A draped garment demo using a real GarmentCode example without a supplied sample is explicitly within the described scope."
+    },
+    {
+      "id": "p05",
+      "triggered": true,
+      "reason": "Explaining and implementing the GarmentCode pattern-to-stitching-to-XPBD pipeline, including commands and body prerequisites, is directly covered."
+    },
+    {
+      "id": "p06",
+      "triggered": true,
+      "reason": "An implausible early-static result in GarmentCode CPU simulation and regeneration of its preview match the described troubleshooting scope."
+    },
+    {
+      "id": "p07",
+      "triggered": true,
+      "reason": "Interpreting GarmentCode simulation quality claims and exporting a viewer that accurately describes the result are covered by quality reporting and preview work."
+    },
+    {
+      "id": "p08",
+      "triggered": true,
+      "reason": "Determining whether the requested person's GarmentCode simulation can run with a missing body mesh is a pipeline prerequisite and troubleshooting task."
+    },
+    {
+      "id": "p09",
+      "triggered": true,
+      "reason": "Converting an existing GarmentCode garment OBJ to correctly scaled GLB and an offline preview falls within existing garment preview support."
+    },
+    {
+      "id": "p10",
+      "triggered": true,
+      "reason": "Remeshing an edited GarmentCode pattern and rerunning CPU draping with initial and final artifacts is a direct use of the described workflow."
+    },
+    {
+      "id": "n01",
+      "triggered": false,
+      "reason": "This is a generic mechanical-model viewer and export task, explicitly outside garment meshing or draping."
+    },
+    {
+      "id": "n02",
+      "triggered": false,
+      "reason": "A two-particle mathematical explanation of PBD and XPBD is a generic physics lesson, which the description excludes."
+    },
+    {
+      "id": "n03",
+      "triggered": false,
+      "reason": "The deliverable is React page layout around an existing video; the button text does not introduce garment geometry or a simulation workflow."
+    },
+    {
+      "id": "n04",
+      "triggered": false,
+      "reason": "Editing seam allowance in SVG and exporting DXF remains a 2D CAD task, explicitly excluded by the description."
+    },
+    {
+      "id": "n05",
+      "triggered": false,
+      "reason": "The user requests Blender-only collision correction and baking while retaining that project, which the description excludes."
+    },
+    {
+      "id": "n06",
+      "triggered": false,
+      "reason": "Debugging NaNs in a mechanical point-cloud export is generic geometry code unrelated to the described garment pipeline."
+    },
+    {
+      "id": "n07",
+      "triggered": false,
+      "reason": "Translating the paper introduction without implementation analysis is paper translation, an explicit exclusion."
+    },
+    {
+      "id": "n08",
+      "triggered": false,
+      "reason": "Aggregating metadata and charting counts is dataset statistics, with no garment geometry or simulation work; that is explicitly excluded."
+    },
+    {
+      "id": "n09",
+      "triggered": false,
+      "reason": "Changing only an existing site's custom domain is deployment-only work, explicitly excluded regardless of the site's name."
+    },
+    {
+      "id": "n10",
+      "triggered": false,
+      "reason": "Repairing evaluation JSON aggregation and unit tests is ordinary tooling maintenance, with no need for the garment meshing or draping workflow."
+    }
+  ]
+}

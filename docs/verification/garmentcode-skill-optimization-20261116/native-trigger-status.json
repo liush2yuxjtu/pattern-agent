@@ -1,0 +1,10 @@
+{
+  "verdict": "BLOCKED",
+  "claude_cli_available": false,
+  "codex_cli_probe": {
+    "outcome": "HTTP CONNECT proxy 403; model stream never completed; stopped after retries",
+    "command": "codex exec --ephemeral --json --skip-git-repo-check --sandbox read-only -C trigger-probe <READY prompt>",
+    "skill_activation_observed": false
+  },
+  "fallback": "Three independent blind-description routing-proxy reviewers per version; not native activation."
+}

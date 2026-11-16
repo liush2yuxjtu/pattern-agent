@@ -64,6 +64,12 @@ skill source and simulation provenance. This is an official repository example,
 not a downloaded GarmentCodeData row. The 232-frame result has two self-intersection
 counts: strict zero-intersection geometry release is **FAIL**, physical fit **NOT_RUN**.
 
+The installable [agent skill](.agents/skills/garmentcode-preview/SKILL.md) has a
+Claude discovery link and a generated, byte-checked web download.
+[Optimization evidence](docs/verification/garmentcode-skill-optimization-20261116/README.md)
+records real old/new CPU runs, standalone existing-mesh preview, missing-body
+controls, and routing-proxy evaluations. Native activation remains separately BLOCKED.
+
 ## Aster developable dress studio
 
 [Open the Three.js studio](https://aster-pattern-studio-161126.liushiyuxjtu.chatgpt.site/)
