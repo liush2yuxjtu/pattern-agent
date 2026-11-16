@@ -28,7 +28,7 @@ Seamly2D 原生纸样为 .sm2d；测量文件为 .smis/.smms。维护者明确�
 
 ## 必须完成的原生验收
 
-1. 在 OpenSloper 0.3.0 原生 Design 打开 .sloper，再执行 opensloper-cli check PATTERN --json。
+1. 在 OpenSloper 官方当前发布版 v0.2.0（2026-11-14 标记为 Pre-release；development 分支已有 83 个后续提交）原生 Design 打开 .sloper，再执行 opensloper-cli check PATTERN --json。
 2. OpenSloper 原生修改一个袖山点，保存后导回，比较变更前后坐标和配缝。
 3. 单独检查 foldEdge、notches、grainline、seam allowance 和曲线走向。
 4. 通过 .slayout 排料后导出 SVG/DXF，并进行真实 CAD 回读。
@@ -47,3 +47,18 @@ Chromium Playwright：实际渲染 4 裁片、SVG 8 条线、导出初版 .slope
 用户可在中文工作台导入由本工作台生成的静态 .sloper（或其点坐标仍为数值的原生修改版本）；解析 freePoint、line 和 piece，逐段检查边界连续性、闭合性、4 个裁片完整性。含曲线对象、公式依赖、未知部件或非数值坐标时明确拒绝，不静默丢弃。导回以后**删除旧裁剪线（并隐藏显示）**，状态置为需要重新走缝；必须由专业软件重新生成缝份和检查剪口。这不是任意 OpenSloper 原生项目的无损读取。
 
 本地 Chromium 已完成从网页导出 → 修改 → 导回静态 .sloper → 隐藏失效裁剪线的实际控件测试；尚未在 OpenSloper 原生运行时生成/修改/重新导回文件。
+
+## 2026-11-16 补充：Seamly2D 原生格式已有可复用 XML 样例
+
+最新官方 GitHub release 为 **v2026.11.16.133**（2026-11-16）；Linux x86_64 提供 AppImage。Seamly2D 源码仓库包含正式的 pattern XML Schema **v0.7.6**，并包含可参考的 T 恤样例 tshirt_test.sm2d。这说明可研究从 Pattern Agent 结构化几何生成原生 XML，而不只是停留在“DXF 无法直接导入”的结论。
+
+- [Seamly2D v2026.11.16.133 release](https://github.com/FashionFreedom/Seamly2D/releases/tag/v2026.11.16.133)
+- [pattern v0.7.6 XSD](https://github.com/FashionFreedom/Seamly2D/blob/develop/src/libs/ifc/schema/pattern/v0.7.6.xsd)
+- [官方 T 恤样例 tshirt_test.sm2d](https://github.com/FashionFreedom/Seamly2D/blob/develop/src/test/CollectionTest/share/tshirt_test.sm2d)
+- [Seamly2D 原生 XML 解析器](https://github.com/FashionFreedom/Seamly2D/blob/develop/src/libs/ifc/xml/vpatternconverter.cpp)
+
+已从源码与样例确认的结构：根节点 pattern；版本与单位；每个 draw 包含 calculation、modeling、details；几何可由计算点、线、spline 和 detail contour 节点关联。原生格式不是 DXF，也不是简单的 SVG 包装。
+
+**新路线**：为四个 T 恤裁片建立独立 draw block，以静态点和 detail contour 生成 .sm2d 候选；先按 v0.7.6 XSD 校验，再用 Seamly2D v2026.11.16.133 打开、保存、关闭重开、导出 DXF，并回读比较。第一阶段是静态轮廓可编辑候选，不伪装成有尺寸公式、人体测量关联或放码规则的参数化版型。
+
+**本轮未完成的原因**：当前执行容器无法解析外网 DNS；Mac mini MCP 返回 429；Boat sandbox API 探针内部失败。没有可用的原生 GUI/CLI 执行环境。因此 OpenSloper 原生 check、Seamly2D XSD/GUI 实测仍 NOT_RUN。没有安装收费软件、启动付费计算或改变安全配置。
