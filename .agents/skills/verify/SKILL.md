@@ -1,9 +1,16 @@
 ---
 name: verify
-description: Verify a code change before shipping by running the relevant existing tests locally, then running the real application or public surface and observing the affected behavior end to end. Use before every pull request, for PR verification, manual acceptance, confirming a fix, or validating local changes before shipping.
+description: Verify a code change before shipping by running the relevant existing tests locally, then running the real application or public surface and observing the affected behavior end to end. Use before direct commits and pushes, for manual acceptance, confirming a fix, or validating local changes before shipping.
 ---
 
 # Verify before shipping
+
+## Repository workflow
+
+Follow `AGENTS.md`: `/verify` → direct commit to `main` → push without force.
+Do not add or run CI, create pull requests, or create GitHub Issues. Generic PR
+examples below do not override this repository policy. Preserve required local
+tests and record PASS, FAIL, BLOCKED or SKIP honestly.
 
 ## Pattern Agent web and printable-skirt route
 
@@ -356,43 +363,156 @@ commit. Physical fit NOT_RUN; this is not flat-panel sewing or donning.
 
 ## Chat verification recipe — 2026-11-16 — Aster developable dress handoff
 
-Target: `experiments/aster_dress/source`. The handoff is a separate Three.js
-study; it does not replace the Blender experiments or the GitHub Pages site.
+### Scope and candidate identity
 
-The repository handoff run used Node.js, npm, Three.js 0.180.0, esbuild and jsdom26
-from the committed package lock. From the target directory:
+Target: `experiments/aster_dress/source`. This is a developable Three.js study,
+not a cloth simulation or a fit-approved garment. Preserve the other experiments
+and their historical FAIL results.
+
+Before a run, record the remote main SHA, artifact source commit, source-file
+hashes, exact deployment ID and fixed deployment URL. Do not treat the current
+production alias as a permanent identifier: it can advance independently.
+For each new variant or release, append its own README deployment row; preserve
+earlier URLs and other Vercel projects.
+
+Recorded Aster artifact: commit `855549017ec7bdf92c1dccca303c9cfcfe2042e7`.
+Vercel project: `aster-dress-pattern-studio`.
+Deployment: `dpl_CSyNWEo8fVhkX2UEkcLuMaK94UCb`.
+Fixed URL: https://aster-dress-pattern-studio-fagpddri4-nyn5255-8475s-projects.vercel.app/
+Production alias: https://aster-dress-pattern-studio.vercel.app/
+
+### Local reproducible checks
+
+The handoff run used Node.js, npm, Three.js 0.180.0, esbuild and jsdom 26 from
+the committed package lock. From the repository root:
 
 ```sh
+cd experiments/aster_dress/source
 npm ci --ignore-scripts
 node build.mjs
 node verify.mjs
 node verify-dom.mjs
+cmp dist/aster-studio.html ../aster-studio.html
+cmp dist/aster-pattern-1-to-1.svg ../aster-pattern-1-to-1.svg
+cmp dist/geometry-verification.json ../geometry-verification.json
+cmp dist/dom-verification.json ../dom-verification.json
 ```
 
-Compare generated `dist/aster-studio.html`, `dist/aster-pattern-1-to-1.svg`,
-`dist/geometry-verification.json` and `dist/dom-verification.json` byte-for-byte
-with the corresponding files one directory above. Keep raw output, exact source
-hashes and candidate base under `docs/verification/aster-20261116/`.
+The archived run actually performed byte comparisons in Python; `cmp` above
+is the equivalent reproduction command, not an additional claimed historical run.
+For a changed candidate, regenerate intended outputs and review their differences
+before comparison; do not overwrite baseline evidence merely to make a check pass.
 
-The numeric checks cover four configurations, 30,720 sampled edge comparisons,
-96 seam pairs, allowance distances and cut-contour self-intersections. Thirteen
-DOM checks cover controls and export/import, with WebGL deliberately unavailable.
-They do not establish a GPU/browser PASS.
+Observed evidence:
 
-Real application acceptance remains BLOCKED: managed preview relay failed, the
-workspace browser could not initialize, and a shell public-URL request was
-rejected by the environment proxy. Preserve this evidence; do not bypass the
-runtime restrictions or substitute jsdom for browser acceptance.
+- Four dimension/allowance configurations, 30,720 sampled 3D/2D mesh-edge
+  comparisons and 96 seam-pair checks (65 paired coordinate samples per join).
+- Default maximum relative edge difference: 0.0024878841%; triangle-area
+  difference: 0.0024878808%. These are finite mesh-chord approximation differences,
+  not a measured fabric-strain result.
+- Default seam-length mismatch: 0 mm; maximum coincident-edge gap approximately
+  9.36e-14 mm. Matching mathematical edges do not prove sewn closure or body fit.
+- Perpendicular cut allowances checked at 6, 10, 15 and 20 mm, with 25 mm hems,
+  within 0.00001 mm. No cut-contour self-intersections in the four tested drafts.
+- Thirteen DOM integration checks: fallback startup, individual release versus
+  overlay visibility, release-all/reassembly, unfold completion, linked selection,
+  valid/invalid dimensions, allowance updates, safe review notes, review import/
+  export, SVG units/panels/calibration, repeated saved-HTML reopening, shared draft
+  state without notes, direct expert entry and absence of unhandled DOM errors.
+  The script groups these behaviors into 13 checks.
+- Rebuilding the copied source reproduced the HTML, SVG and both verification
+  JSON files byte-for-byte. All 25 archive-commit file blob hashes were compared
+  against the remote Git tree after push.
 
-When an approved real browser is available, open the exact archived HTML or the
-matching published Aster URL from its README. Drive orbit/zoom, individual seam
-release/rejoin, unfold/reassemble, Compare selection, invalid dimension input,
-review export/import, SVG download and saved-HTML reopening with real input.
-Capture desktop/mobile pixels, console/network errors, exact candidate hashes
-and observations. Do not report PASS until the real surface works.
+The DOM harness deliberately provides no WebGL context. It tests application
+state and exports, not GPU rendering, real input, pixels or real browser downloads.
+The checks use the project's mathematical model; they are not independent
+acceptance by a garment/pattern expert.
 
-Physical cloth behavior, material calibration, printing, sample sewing and human
-fit are NOT_RUN. Historical T-shirt geometry FAILs remain unchanged. The initial
-Aster website was already published before this archive commit; publication
-success is not runtime acceptance.
+Keep commands, exit codes, observations, source manifest and overall verdict in
+a fresh directory under `docs/verification/`. Existing evidence is in
+`docs/verification/aster-20261116/` and
+`experiments/aster_dress/{VERIFICATION.md,geometry-verification.json,dom-verification.json}`.
+
+### Hosted publication checks
+
+For the exact Vercel deployment, call the connected Vercel `get_deployment`
+tool and inspect `readyState`, URL, project and aliases. READY establishes
+deployment completion only.
+
+Use `web_fetch_vercel_url` to retrieve:
+
+1. the production alias root;
+2. the fixed deployment root;
+3. `/aster-pattern-1-to-1.svg` on the production alias.
+
+Require HTTP 200 and compare the complete returned text against the uploaded
+`index.html` and SVG. The recorded Aster deployment passed all three comparisons.
+Keep these checks separate from browser acceptance. This connector can use an
+authenticated share mechanism, so its success alone is not proof of anonymous
+access; inspect protection settings and test an unauthenticated browser when
+available. Never change existing protection or permissions to obtain PASS.
+
+The Aster publication was a manual static-file upload with no Git-connected CI.
+It included the archived HTML as both `index.html` and `aster-studio.html`,
+the SVG, handoff files and a download header for the standalone HTML.
+No other Vercel project was replaced.
+
+### Real-browser acceptance and the observed blocker
+
+Prefer Playwright with actual clicks, then the approved interactive-browser
+fallback if needed. The attempted live run used an isolated scratch directory:
+
+```sh
+npm init -y
+npm install playwright
+node verify-live.mjs
+```
+
+The driver launched the installed `/usr/bin/chromium` headlessly with Playwright,
+created a 1440 x 1100 viewport with downloads enabled, and navigated to the fixed
+deployment URL using `waitUntil: 'networkidle'` and a 30-second timeout.
+It stopped at `page.goto: net::ERR_TUNNEL_CONNECTION_FAILED`, before any
+interaction or screenshot. Its checks array was empty and verdict BLOCKED.
+This is launch/navigation evidence, not a browser test pass.
+
+Earlier managed Sites preview failed to open its relay, the workspace browser
+failed to initialize, and shell HTTP retrieval was rejected by the environment
+proxy. Preserve those failures. Do not bypass the environment restrictions.
+
+When the approved live browser becomes reachable, finish these pending steps:
+
+1. Require the intended build, a working WebGL renderer and no page, asset or
+   console errors. Capture actual rendered pixels; a state flag alone is not enough.
+2. Orbit and zoom with real pointer input; check front/back/reset views.
+3. Release B01 and observe the gap; rejoin and observe closure. Hiding seam lines
+   must not change join state.
+4. Unpick/unfold and observe completion to 16 2D panels, then reassemble.
+5. In Compare, select S06 and verify matching visible selection in both views.
+6. Probe invalid dimensions (top ring 60 cm must be rejected for the default
+   draft), then change a valid dimension and allowance and inspect both views.
+7. Save a panel/seam note, export and import the review, and confirm restored
+   values after reopening.
+8. Download the SVG, inspect its 16 pieces, units and 100 mm calibration square;
+   download the HTML and reopen it independently with the selected draft.
+9. Capture desktop and 390 x 844 mobile layouts; inspect clipping and controls.
+   Record the exact URL, candidate hashes, actions, observations and failures.
+10. Close the browser and any test server; keep evidence and remove only
+    disposable scratch state. Never delete source tests or historical failures.
+
+### Verdict and garment limits
+
+Overall real-application acceptance remains **BLOCKED** for the recorded build.
+Geometry and DOM assertions passed within their stated scope; READY plus HTTP
+content equality does not upgrade the application verdict.
+
+Cloth mechanics, calibrated fabric behavior, physical print scale, sample sewing
+and human wear fit are NOT_RUN. The conical bodice is not anatomical bust shaping.
+A patternmaker must review grain, hems, closure, facings/lining/support and fit a
+toile before production. Do not claim a production-ready pattern from these checks.
+
+For documentation-only changes to this recipe, runtime verdict is SKIP. Check
+the instructions and evidence for accuracy, preserve unrelated recipes, reread
+remote main, commit and push directly without force, then independently read back
+the changed file and commit. Do not open CI, a PR or an Issue.
 
