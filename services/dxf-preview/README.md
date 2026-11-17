@@ -2,7 +2,7 @@
 
 将本项目女士紧身长袖上衣的文本 DXF 转成可旋转的 GLB 外观模型。每次根据上传几何重新计算，可在 Linux 或 Vercel Python Functions 运行，不依赖 Blender、桌面软件、外部模型服务或任务数据库。
 
-[打开在线转换网站](https://pattern-agent-convert.vercel.app/) · [交互接口文档](https://pattern-agent-convert.vercel.app/docs) · [线上验收证据](../../docs/verification/dxf-service-20261117/)
+[复用已有纸样并生成预览](https://pattern-agent-convert.vercel.app/?reuse=fitted-tshirt-v1#convert) · [打开在线转换网站](https://pattern-agent-convert.vercel.app/) · [交互接口文档](https://pattern-agent-convert.vercel.app/docs) · [线上验收证据](../../docs/verification/dxf-service-20261117/)
 
 这是限定模板的第一版转换器。前后身轮廓参与三角化，袖宽取自匹配后的纸样；人体厚度、袖长布置、姿态、领口装配和材质含展示用假定。它不等于按缝合图进行布料求解，也不保证每个纸样尺寸在三维中等距保留。原始 PRJ 和 EMF 保留在原型资料中，不作为此接口输入。
 
@@ -78,15 +78,17 @@ python scripts/verify_dxf_service.py \
 
 ## 已发布版本
 
-2026 年 11 月 17 日，线上匿名浏览器的 11 组验收与本地 10 项测试通过。验收时首轮 HTTP 转换约 1.0 秒，原文件输出 1,314,124 字节；两次在线调用模型逐字节一致，线上下载模型、报告及离线包与本地版本摘要相同。这是实测样本，不是容量或可用性承诺。
+2026 年 11 月 17 日，线上匿名浏览器的 15 组验收与本地 10 项测试通过，包含旧纸样复用、表单回填、再次生成及复用直达链接。验收时首轮 HTTP 转换约 1.0 秒，原文件输出 1,314,124 字节；两次在线调用模型逐字节一致，线上下载模型、报告及离线包与本地版本摘要相同。这是实测样本，不是容量或可用性承诺。
 
-项目 `pattern-agent-convert`；当前生产部署 `dpl_7z2AtsF1p6rZMdgzFctjJpCpyxiL`；运行源码提交 `5c83bdaf09e93de893a07b5b2fc8ce8b0d212ae7`；应用源摘要 `ab96dfe2978ea8d9ba2758ac82cbc52a6166a1cee037e55a698a16d5f7c8e121`。后续文档提交不表示已重新部署函数。
+项目 `pattern-agent-convert`；当前生产部署 `dpl_B9bvShHiB9s84XHJF8ZiUdhWoPr2`；运行源码提交 `0f9edae21e6fc28183bcaedd7c47d03ea29ef5b2`；应用源摘要 `e77db4e7cd6ea82d4ff8a55a47a2de0a4ecaff18274f3aa21cf77ecfa5c24049`。后续文档提交不表示已重新部署函数。
 
 | 部署 | 固定地址 | 记录 |
 | --- | --- | --- |
 | 首次发布 | [7phar6sp7](https://pattern-agent-convert-7phar6sp7-nyn5255-8475s-projects.vercel.app/) | 转换通过；聚合源摘要有差异，未完成全部线上验收 |
 | 逐文件诊断 | [hkah8e9z4](https://pattern-agent-convert-hkah8e9z4-nyn5255-8475s-projects.vercel.app/) | 定位构建改写 vercel.json；应用文件一致 |
 | 摘要修正 | [c7hobhy9l](https://pattern-agent-convert-c7hobhy9l-nyn5255-8475s-projects.vercel.app/) | 实际源码同当前版本；提交标记录入错误，由下条更正 |
-| 当前生产版本 | [fuegobiac](https://pattern-agent-convert-fuegobiac-nyn5255-8475s-projects.vercel.app/) | 源文件、提交标记与线上浏览器验收通过 |
+| 首版验收通过 | [fuegobiac](https://pattern-agent-convert-fuegobiac-nyn5255-8475s-projects.vercel.app/) | 源文件、提交标记与线上浏览器验收通过 |
+
+| 旧纸样一键复用 | [g9sdxn3c7](https://pattern-agent-convert-g9sdxn3c7-nyn5255-8475s-projects.vercel.app/) | 当前生产版本，15组线上验收通过 |
 
 固定部署地址保留 Vercel 原有登录保护；生产别名可匿名访问。没有为验收关闭保护或改变其他项目。
