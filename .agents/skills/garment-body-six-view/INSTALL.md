@@ -24,12 +24,12 @@
 ## 依赖与能力
 
 SKILL.md 是 agent 的操作指令。图像生成、模型权重、3D 模型资源和网页浏览能力由运行环境提供。
-包内提供两个可执行核验辅助脚本，不声称提供完整的一键人体重建引擎。
+包内提供掩膜叠加、网格截面及 Human Studio 状态核验脚本，不声称提供完整的一键人体重建引擎。
 需要辅助脚本时，在隔离 Python 环境安装 requirements.txt；使用方法见 references/tools-and-evidence.md。
 
 ## 验证范围
 
-已通过 Anthropic 官方 quick_validate.py 的技能格式检查，以及当前 16 项 Python 辅助脚本测试。
+格式与执行检查按 references/test-status.md 分阶段记录，不能把历史评测视为新版本的完整复测。
 另完成 3 个方案场景的独立 agent 有/无技能对照；这不是 Claude 平台的端到端图像生成评测。
 此包没有包含本次对话的商品图片、原图、人体网格或任何密钥。
 
@@ -38,3 +38,12 @@ SKILL.md 是 agent 的操作指令。图像生成、模型权重、3D 模型资�
 规范源码：`.agents/skills/garment-body-six-view/`。`.claude/skills/garment-body-six-view` 的相对链接指向同一份源码，供 Claude 发现；实际自动加载尚未实测。
 触发评测准备、原生运行依赖和严格错误处理见仓库 `tools/skill_evals/README.md`。
 本环境没有 Claude CLI，原生触发率、描述 hill climbing 及 Claude 端到端任务评测仍为 BLOCKED，不能从文件存在推断自动加载成功。
+
+## 当前人体编辑器工作流
+
+默认使用 [Human Studio](https://liush2yuxjtu.github.io/pattern-agent/human-studio/)：12 个厘米尺寸、163 骨骼和角度姿态控制。
+先调整尺寸和姿态，再保存模型 JSON、三维快照与实际 OBJ/GLB；完整合同见 [Human Studio 参考](references/human-studio.md)。
+尺寸目标和实测网格值分别报告。OBJ 为 cm，GLB 为 m；状态不保存相机。
+`inspect_human_state.py` 无第三方依赖；提供匹配的 human.json 时可独立重算中性网格尺寸。
+形变资产不随技能包附带，请使用编辑器仓库中的资源及其 provenance.json 核对指纹。
+编辑器没有照片重建、六图生成、深度估计或自动人体拟合服务；按 SKILL.md 调用实际可用工具。

@@ -1,6 +1,6 @@
 # 工具与证据实现
 
-这两个辅助脚本负责可重复的数值核验，不包含图像生成后端或完整人体拟合器。
+辅助脚本负责可重复的数值核验，不包含图像生成后端或完整人体拟合器。
 由执行技能的 agent 根据当前工具创建网格、相机、分割和优化流程；不要声称此包自带 SMPL、
 Depth Anything 权重、物理试衣引擎或云图像生成服务。
 
@@ -26,11 +26,11 @@ IoU 包括所有前景，轮廓误差使用外轮廓；若需要衣服空隙、�
 
 ## 真实网格截面
 
-sections.json 示例；以下数字只是调用格式示意，按当前人体标志点改写：
+sections.json 示例（Human Studio 的 Y-up 坐标）；以下数字只是调用格式示意，按当前人体标志点改写：
 
 ```json
 [
-  {"name":"chest_section","origin":[0,0,128],"normal":[0,0,1],"seed":[0,0,128]}
+  {"name":"chest_section","origin":[0,128,0],"normal":[0,1,0],"seed":[0,128,0]}
 ]
 ```
 
@@ -56,3 +56,11 @@ python scripts/measure_mesh.py --mesh model/body.obj --sections sections.json \
 直接调用 compare/overlay 时，掩膜数组只能为布尔值或数值 0/1；概率、NaN/Inf 和 0/255 数组应先显式处理。
 CLI 的 PNG 读取仍按 >127 二值化。叠加照片须为有限的 H×W×3 BGR 数组，通道范围 0..255。
 网格截面的 origin、normal、seed 须为有限长度3向量；零法线会在调用 VTK 前被拒绝。
+
+## Human Studio 接口与单位
+
+优先阅读 [Human Studio 工作流](human-studio.md)，其中包含 12 个尺寸键、姿态 API、导出合同、相机限制和完整核验入口。
+`scripts/inspect_human_state.py` 仅用 Python 标准库检查导出状态；有对应资源时重建中性网格带尺尺寸。
+没有资源时它只能检查结构，不会把导出文件里自报的数字当作独立网格证据。
+OBJ 输入本身必须已经以 cm 表示；GLB 的米坐标应由正确的导入/转换流程处理，不能只给 `measure_mesh.py` 传 `--unit cm`。
+Human Studio 的 surface tape path 尺寸和 VTK 截面周长采用不同定义；分开记录 method、标志点与姿态。

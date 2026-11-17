@@ -11,7 +11,7 @@
 编写结构参考：
 https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 
-采用其 SKILL.md + 按需资源 + 测试迭代结构。本技能的领域流程与两个辅助脚本根据本次工作编写，
+采用其 SKILL.md + 按需资源 + 测试迭代结构。本技能的领域流程与辅助脚本根据本次工作编写，
 不是 Anthropic 官方发布的领域技能，也不代表人体重建精度得到其认证。
 
 ## Pattern Agent 集成后的实际检查
@@ -31,3 +31,11 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 额外定性问题均公开：修订运行的一个查看器缺少viewport元信息；一个拟合搜索近似与最终三角渲染相差每视图2像素，最终导出指标仍正确。
 - 六图生成质量、真实人体测量精度和物理试衣仍NOT_RUN；token元数据缺失且各执行计时范围不同，未比较耗时或token。
 - 详见仓库docs/verification/garment-body-functional-20261117/及GitHub Pages的garment-body/eval.html。
+
+## 2026-11-17 Human Studio 合同更新
+
+- 当前产品默认改为 MakeHuman 解剖网格、12 个 cm 尺寸和 163 骨骼；上面的合成 loft 测试结果保留为历史控制，不代表当前编辑器。
+- 新增状态合同检查与可选独立中性网格重算；区分结构检查、目标残差、实际网格尺寸、OBJ cm / GLB m 和 Y-up 坐标。
+- 当前模型已有独立的 37 项真实浏览器检查、OBJ/GLB NumPy 审计和 3 项破坏控制，见仓库 docs/verification/human-studio-20261117/；这些是模型证据，不是本轮新增的六图生成评测。
+- 本次技能集成的命令、状态重算和包/网页读回证据另存 docs/verification/human-studio-skill-20261117/。
+- 新增说明未重跑 description hill climb，也未测六图生成质量或真实人体测量误差；此前原生 Claude BLOCKED 和物理试衣 NOT_RUN 保持不变。

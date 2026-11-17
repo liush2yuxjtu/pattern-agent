@@ -101,3 +101,37 @@ deployed source; preserve the live receipt after verification.
 Functional verification is distinct from native Claude trigger tests, which
 remain BLOCKED until that runtime is available. Current evidence:
 [functional20261117](../../../../docs/verification/garment-body-functional-20261117/README.md).
+
+## Current Human Studio skill contract and public download
+
+For changes to the anatomical-model integration, run the bundled
+`inspect_human_state.py` CLI on a real saved state, with the matching
+`web/human-studio/assets/human.json` and `--require-match`. Recompute neutral
+dimensions; reject a false measured value, wrong asset SHA and wrong units.
+Structure-only checks must not claim mesh or posed-skinning validation.
+The model's separate browser/OBJ/GLB verifier remains in human-studio.md.
+
+After the upstream packager, run `python scripts/build_garment_body_skill_page.py`,
+then `python scripts/build_pages.py`. The guide builder rejects stale package
+entries, copies canonical resources and publishes their hashes. It adds only
+navigation/favicon to the historical review; confirm embedded evaluation JSON
+and feedback keys remain byte-identical.
+
+Serve dist over loopback HTTP, then run:
+
+```sh
+node scripts/verify_garment_body_skill.cjs --url http://127.0.0.1:8765/ --output work/human-skill/browser
+```
+
+The browser follows editor → guide → actual .skill download, checks all public
+hashes, mobile overflow, historical review navigation, return to the editor and
+real cm/pose state changes. Independently reopen the downloaded ZIP, compare
+every member with canonical source, run its actual state helper and inspect
+desktop/mobile screenshots. Stop the owned loopback server after verification.
+
+After publication, use the same script against the site root with
+`--expected-commit SHA`. If needed use the established public-only Firecrawl
+fallback: download the exact committed verifier and check its SHA before use.
+Keep publication evidence separate from native Claude triggers and six-image
+generation quality. Current integration evidence:
+[human-studio-skill-20261117](../../../../docs/verification/human-studio-skill-20261117/README.md).

@@ -1,0 +1,60 @@
+{
+  "verdict": "PASS",
+  "scope": "Human Studio skill contract, packaged state CLI and related static pages; local verification before direct-main commit",
+  "candidate_base": "b85ca600fba8df70c0356a4401033768a0dc46b4",
+  "candidate_source_sha256": "2767cc76935141af8d18b22bfc49539528462b73378ad6a7393ad6b6675a1435",
+  "verifier": ".agents/skills/verify/SKILL.md + references/skill-evals.md",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s .agents/skills/garment-body-six-view/tests -v",
+      "exit_code": 0,
+      "observed": "24 tests passed (16 existing + 8 state contract controls)"
+    },
+    {
+      "command": "python -m unittest discover -s tools/skill_evals -p 'test_*.py' -v",
+      "exit_code": 0,
+      "observed": "16 tests passed; pinned upstream unchanged"
+    },
+    {
+      "command": "python tools/skill_evals/upstream/scripts/quick_validate.py .agents/skills/garment-body-six-view",
+      "exit_code": 0,
+      "observed": "Skill is valid"
+    },
+    {
+      "command": "PYTHONPATH=tools/skill_evals/upstream python tools/skill_evals/upstream/scripts/package_skill.py .agents/skills/garment-body-six-view skill-packages",
+      "exit_code": 0,
+      "observed": "12 entries; all source bytes reopened and matched, no eval/cache entries"
+    },
+    {
+      "command": "python scripts/build_garment_body_skill_page.py && python scripts/build_pages.py",
+      "exit_code": 0,
+      "observed": "Canonical resources, package and manifest published to generated site"
+    },
+    {
+      "command": "node scripts/verify_garment_body_skill.cjs --url http://127.0.0.1:8765/ --output work/human-skill/browser",
+      "exit_code": 0,
+      "observed": "17 checks passed; actual download reopened; cm/pose controls driven; mobile no overflow; zero console/page/network errors"
+    },
+    {
+      "command": "python <downloaded-skill>/scripts/inspect_human_state.py --state <downloaded-skill>/tests/fixtures/human-model.json --asset-json web/human-studio/assets/human.json --require-match --out work/human-skill/downloaded-state-audit.json",
+      "exit_code": 0,
+      "observed": "All 12 dimensions recomputed; max difference 4.263256414560601e-14 cm; max target residual 0.004172058422767577 cm"
+    }
+  ],
+  "negative_controls": "Three actual CLI invocations: false measuredNeutral, wrong asset and wrong units all rejected with exit 2; reports retained",
+  "screenshots": "Desktop/mobile guide tops and returned posed model independently inspected",
+  "initial_findings": [
+    "Browser test locator used button instead of actual tab; corrected driver",
+    "Missing guide/historical favicon caused browser console error; corrected page links",
+    "Markdown paragraph joins improved after mobile screenshot review"
+  ],
+  "unchanged_history": "Embedded evaluation data and local feedback key byte-identical; historical scores unchanged",
+  "not_retested": [
+    "Native Claude routing (previous BLOCKED)",
+    "six-image generation quality",
+    "real person measurement accuracy",
+    "physical garment fit (NOT_RUN)"
+  ],
+  "publication": "PENDING exact committed SHA live readback; separate receipt after push",
+  "cleanup": "Loopback server closed after browser check"
+}

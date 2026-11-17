@@ -67,3 +67,7 @@ Serve the existing `web/` tree with loopback HTTP; the page is an ES module app.
 The project static builder copies it unchanged into the existing Pages site.
 See the repository `human-studio` verification recipe for actual browser and
 independent downloaded-file checks.
+
+## Skill integration
+
+[Six-view skill & current workflow](../garment-body/skill/) documents the exact state/API contract, neutral measurements, pose controls and exports. Canonical source: `.agents/skills/garment-body-six-view/`; regenerate its public guide with `python scripts/build_garment_body_skill_page.py` after the upstream skill packager.

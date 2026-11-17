@@ -19,12 +19,14 @@ editor uses detailed anatomical geometry and authored skin weights.
 
 ## Apparel six-view and adjustable-body skill
 
-The new [garment-body-six-view skill](.agents/skills/garment-body-six-view/SKILL.md)
+The [garment-body-six-view skill](.agents/skills/garment-body-six-view/SKILL.md)
 connects original apparel photos, six independent images, an adjustable neutral
 body, actual 3D snapshots, OpenCV overlays and provenance-qualified parameters.
 The `.claude/skills/garment-body-six-view` symlink points Claude’s skill path at the canonical source.
 Download the [installable skill package](skill-packages/garment-body-six-view.skill)
 or read the [installation guide](.agents/skills/garment-body-six-view/INSTALL.md).
+The [published skill workflow and download](https://liush2yuxjtu.github.io/pattern-agent/garment-body/skill/) now use Human Studio: anatomical mesh, 12 cm dimensions, 163 bones, versioned state, OBJ cm / GLB m and independent neutral-mesh checks.
+Historical loft evaluations retain their original scope and scores.
 
 [Native trigger evaluation tools](tools/skill_evals/README.md) include the pinned
 Anthropic skill-creator, 20 balanced routing queries, a reserved final holdout and

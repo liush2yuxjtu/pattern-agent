@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Body & six-view skill — Pattern Agent</title><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><style>
+*{box-sizing:border-box}body{margin:0;background:#f5f4ef;color:#202a28;font:17px/1.65 system-ui,sans-serif}main,nav{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:20px;flex-wrap:wrap}a{color:#116750}h1{font-size:clamp(28px,5vw,44px);line-height:1.15}h2{margin-top:48px}pre{background:#202a28;color:#f5f4ef;padding:18px;overflow:auto;border-radius:8px}code{font-size:.9em}p{overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}td{padding:10px;border-bottom:1px solid #cfd6d0}.table{overflow:auto}.notice{background:#e5ede5;border-radius:12px;padding:22px}.download{display:inline-block;background:#116750;color:white;padding:10px 18px;border-radius:8px;margin:8px 12px 8px 0}footer{border-top:1px solid #ccc;margin-top:40px;padding-top:24px}
+</style><nav><a href="../../">Pattern Agent</a><a href="../../human-studio/">Open Human Studio</a><a href="../eval.html">Historical evaluations</a></nav><main>
+<h1>Reference photo → six views → verified body parameters</h1>
+<p>商品模特图 → 六张独立图像 → 可调节人体 → 三维快照与 OpenCV 叠加 → 带证据的人体参数。</p>
+<div class="notice"><strong>Current workflow</strong><p>Use the anatomical Human Studio model: 12 dimensions in centimetres, 163 bones and pose controls in degrees. Keep requested sizes, measured mesh values and image-based estimates separate.</p>
+<a class="download" href="garment-body-six-view.skill" download>Download .skill</a><a href="SKILL.md">Canonical instructions</a> · <a href="INSTALL.md">Installation</a></div>
+<p>Deliver six separate images: front, side, back, close-up, pose annotation and relative depth. Record the original item photo, model state and actual generation/rendering provenance. The editor supplies the adjustable mannequin; generation and fitting require their own tools.</p>
+<h1>Human Studio: anatomical body, centimetres and pose</h1>
+<p>Use the working anatomical editor for the product workflow: https://liush2yuxjtu.github.io/pattern-agent/human-studio/</p>
+<p>Repository implementation: <code>web/human-studio/</code>. The current adult-female MakeHuman mesh/morphs/rig are CC0; the Three.js renderer is MIT. Record the actual version and asset SHA256 from the saved state and provenance, rather than assuming every future model uses the same asset or body template.</p>
+<p>The editor has 13,380 surface vertices, 26,756 triangles and 163 bones. The older loft models in the functional evaluation history are synthetic controls, not the current product model. Reuse the anatomical model before constructing another proxy. Use a different appropriately licensed anatomical template when the task requires it; do not silently present this female template as every body.</p>
+<h2>1. Configure shape in cm, then pose in degrees</h2>
+<p>Open <strong>Body dimensions</strong>. The current keys are:</p>
+<div class="table"><table><tbody>
+<tr><td>Key</td><td>Dimension / definition</td></tr>
+<tr><td><code>height</code></td><td>Standing height in neutral pose</td></tr>
+<tr><td><code>bust</code></td><td>Closed mesh bust tape path</td></tr>
+<tr><td><code>waist</code></td><td>Closed mesh waist tape path</td></tr>
+<tr><td><code>hips</code></td><td>Closed mesh hip tape path</td></tr>
+<tr><td><code>shoulders</code></td><td>Bilateral acromion landmark distance</td></tr>
+<tr><td><code>upperArm</code></td><td>Upper-arm circumference</td></tr>
+<tr><td><code>thigh</code></td><td>Thigh circumference</td></tr>
+<tr><td><code>neck</code></td><td>Neck circumference</td></tr>
+<tr><td><code>upperArmLength</code></td><td>Upper-arm landmark distance</td></tr>
+<tr><td><code>forearmLength</code></td><td>Forearm landmark distance</td></tr>
+<tr><td><code>thighLength</code></td><td>Thigh landmark distance</td></tr>
+<tr><td><code>calf</code></td><td>Calf circumference</td></tr>
+</tbody></table></div>
+<p>Expand <strong>Arms, legs &amp; neck</strong> for the additional controls. Current size inputs are cm with 0.1 increments. Authored morph targets are numerically calibrated against mesh paths/landmarks. Compare requested and measured values; if the bounded morph envelope cannot reach a target, preserve the reported residual and closest measured result. Do not report the requested value as achieved.</p>
+<p>Use <strong>Pose &amp; joints</strong> for local XYZ rotations in degrees, also with 0.1 increments in the current UI. Primary joints include shoulders, elbows, wrists, hips, knees, ankles, spine, neck and head. The full menu includes fingers and face bones. Mirror editing is optional. UI presets map to:</p>
+<div class="table"><table><tbody>
+<tr><td>UI preset</td><td>API name</td></tr>
+<tr><td>Neutral</td><td><code>neutral</code></td></tr>
+<tr><td>T-pose</td><td><code>tpose</code></td></tr>
+<tr><td>Walking</td><td><code>walk</code></td></tr>
+<tr><td>Seated</td><td><code>sit</code></td></tr>
+<tr><td>Arms up</td><td><code>reach</code></td></tr>
+</tbody></table></div>
+<p>Verify actual vertex and image changes. A posed bounding-box height is not standing height. Neutral dimensions stay separate from pose, and linear-blend skinning is not a tissue, joint-collision or cloth simulation.</p>
+<h2>2. Supported programmatic integration</h2>
+<p>Wait for <code>window.humanStudio?.ready</code>. In the editor page&#x27;s JavaScript context:</p>
+<pre><code>
+const model = window.humanStudio;
+model.setDimensions({height: 170, bust: 90, waist: 70, hips: 96});
+const saved = model.getSnapshot();
+model.setPose({...saved.poseDegrees, &quot;lowerarm01.L&quot;: [65, 0, 0]});
+const state = model.getSnapshot();
+const geometry = model.getGeometry();
+</code></pre>
+<p>These numbers are an example mannequin configuration, not estimates of the reference person. <code>setDimensions</code> merges supplied dimensions with current ones. <code>setPose</code> replaces the entire pose map; merge the previous map when changing a single joint. <code>preset(name)</code> resets existing joint edits. These APIs do not provide photo fitting, image generation, inverse kinematics or medical measures.</p>
+<p><code>getGeometry()</code> returns actual renderer rest vertices (flat XYZ), posed surface vertices, <code>bodyVertexIds</code>, triangle <code>indices</code> and world joint positions. Rest data includes non-rendered landmarks; indices refer to the original vertex buffer. When building a surface-only mesh from <code>posed</code>, remap original indices through <code>bodyVertexIds</code> instead of assuming they index the compact posed array.</p>
+<p>The model has no exposed camera-state restore or depth-export API. Do not invent one. Dimensions, presets and Fit view can reframe the camera; grounding can change the pose&#x27;s world offset. For strict image comparisons, finish shape/pose first and freeze explicitly recorded camera settings in an independent renderer.</p>
+<h2>3. Save state and real exports</h2>
+<p>Use <strong>Save model</strong> and keep the exported JSON with the run. Its contract is:</p>
+<div class="table"><table><tbody>
+<tr><td>Field</td><td>Meaning</td></tr>
+<tr><td><code>version</code></td><td>Model/state implementation version</td></tr>
+<tr><td><code>asset</code></td><td>SHA256 fingerprint of the matching <code>human.json</code></td></tr>
+<tr><td><code>units</code></td><td><code>cm</code></td></tr>
+<tr><td><code>dimensions</code></td><td>Requested neutral-pose dimensions</td></tr>
+<tr><td><code>measuredNeutral</code></td><td>Dimensions calculated on the neutral mesh</td></tr>
+<tr><td><code>maximumTargetErrorCm</code></td><td>Largest requested/measured difference</td></tr>
+<tr><td><code>morphWeights</code></td><td>Calibrated coefficients for exact shape restoration</td></tr>
+<tr><td><code>poseDegrees</code></td><td>Complete edited joint map, local XYZ degree triples</td></tr>
+</tbody></table></div>
+<p>Import only compatible version/fingerprint data. Keep morph coefficients and pose, not just visible numbers. Internal browser cache uses implementation fields that differ from this export contract; use Import or the supported APIs rather than writing arbitrary cache objects.</p>
+<p>- <strong>PNG 2×</strong> rerenders the actual current view at double pixel dimensions. Save   the observed width/height; it is a 3D snapshot, not a new photographic output. - <strong>Export OBJ</strong> contains the actual posed surface in centimetres, without a rig. - <strong>Export GLB</strong> contains current shape, pose and rig, using standard metre world   coordinates. Its 0.01 conversion and centimetre dimension metadata are explicit.   Recalibration in cm remains in this editor; GLB is not a standalone Blender   centimetre-control plugin and does not bundle this skill&#x27;s solver UI.</p>
+<p>JSON and GLB exports do not save the viewer camera. Preserve camera/projection, viewport, model/pose identity and file hashes separately for image evidence.</p>
+<h2>4. Coordinates and measurements</h2>
+<p>Human Studio uses X left/right, <strong>Y up</strong>, Z front/back. OBJ values are cm; GLB world coordinates are metres. To express a Y-up cm mesh in a Z-up metre system, one explicit right-handed transform is <code>(x, y, z) -&gt; (x, -z, y) / 100</code>. Apply transforms consistently to geometry, normals, joints and inverse binds. If the importer already handles glTF units/axes, do not apply the conversion again. Confirm actual dimensions/bounds rather than relabelling units.</p>
+<p>Tape paths and mesh-plane intersections are different definitions. A tape path can be nonplanar and should be reported as <code>surface_tape_path</code>; use <code>landmark_distance</code> for shoulder/limb lengths and <code>standing_height</code> for height. Do not substitute shoulder joint spacing, clothed outer width or posed height. When using a Y-up horizontal section, the normal is <code>[0, 1, 0]</code>; choose actual anatomical levels and component seeds instead of copying a fixed height.</p>
+<p>These dimensions have basis <code>mesh_parameter</code> (or an explicitly labelled prior), not <code>observed_scaled</code> simply because the model can be measured. Keep the original image evidence, scale assumptions and unavailable landmarks separate.</p>
+<h2>5. Verify state, surface, pose and files at their actual boundaries</h2>
+<p>The bundled helper runs with Python standard library only:</p>
+<pre><code>
+python scripts/inspect_human_state.py --state human-model.json --out state-check.json
+python scripts/inspect_human_state.py --state human-model.json \
+  --asset-json PATH/TO/human.json --expected-asset ASSET_SHA256 \
+  --require-match --out neutral-mesh-check.json
+</code></pre>
+<p>Without the matching asset, this validates structure only. With the asset it checks its fingerprint, reconstructs neutral vertices from saved coefficients and independently recomputes tape/landmark dimensions. A valid closest-supported state is distinct from achieving all target sizes; <code>--require-match</code> rejects a largest residual above 0.2 cm. This is a numerical model tolerance, not a human measurement error bound. It does not validate posed GLB skinning or image fit.</p>
+<p>For full repository verification, use the actual editor, save/download/reopen files, and run the independent geometry validators from repository root:</p>
+<pre><code>
+node scripts/verify_human_studio.cjs --url HUMAN_STUDIO_URL --output RUN_DIR
+python scripts/verify_human_studio_geometry.py --output RUN_DIR
+python scripts/test_human_studio_geometry.py --fixture RUN_DIR
+</code></pre>
+<p>The browser verifier exercises all 12 dimensions, real elbow/finger deformation, presets, framing, cameras, save/reload/import, actual mobile viewport and exports. The independent NumPy audit decodes OBJ/GLB geometry, joint matrices, inverse binds and weights. Corruption controls reject false dimensions, displaced vertices and a 100× unit error. These repository tools are not bundled with the small skill package; clone Pattern Agent or use an equivalent independent audit.</p>
+<h2>6. Use this model with the original product photo</h2>
+<p>Preserve the original photo&#x27;s source/hash. Save calibrated body state, complete pose, neutral mesh measurements and actual 3D snapshots before generation. Provide the product photo for garment appearance and the versioned mannequin renders for shape/pose. Keep the six independent clothing-image contract: front, side, back, close-up, pose lines and relative depth.</p>
+<p>Human Studio does not generate those six clothed images, reconstruct a person from photos, run Depth Anything, or certify garment fit. Its skeleton overlay is a 3D rig projection, not a detector result. Obtain depth from a real renderer Z-buffer or an actually executed estimator; label illustrative alternatives. Continue comparing original observations and generated-view consistency separately, with unchanged references and a frozen final camera protocol.</p>
+<p>Current editor: https://liush2yuxjtu.github.io/pattern-agent/human-studio/</p>
+<p>Historical functional review: https://liush2yuxjtu.github.io/pattern-agent/garment-body/eval.html</p>
+<p>Model verification and actual screenshots: https://github.com/liush2yuxjtu/pattern-agent/tree/main/docs/verification/human-studio-20261117</p><footer><a href="references/human-studio.md">Workflow source</a> · <a href="references/tools-and-evidence.md">Tools & evidence</a> · <a href="references/test-status.md">Evaluation limits</a> · <a href="manifest.json">Download hashes</a><p>Earlier loft-model scores remain historical. This update does not establish six-image quality, real-person measurement accuracy or a new native Claude trigger score.</p></footer></main></html>
