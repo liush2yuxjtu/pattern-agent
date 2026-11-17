@@ -1,0 +1,94 @@
+{
+  "verdict": "PASS",
+  "scope": "Public single-file skirt demonstrator and actual downloaded exports; digital verification only",
+  "verified_at_utc": "2026-11-17T12:04:12.742630+00:00",
+  "application_commit": "fdcf48400cd6aa3c4ea6cb8a367fc82bb899e671",
+  "evidence_candidate_base": "fdcf48400cd6aa3c4ea6cb8a367fc82bb899e671",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab.html",
+  "html_sha256": "eb6c6b373971cf7c9d1a7582d1b198fe61687f8e13312eded7d0e9376f7bd880",
+  "html_bytes": 1421030,
+  "publication_run": {
+    "conclusion": "success",
+    "headSha": "fdcf48400cd6aa3c4ea6cb8a367fc82bb899e671",
+    "status": "completed",
+    "url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44078973739"
+  },
+  "browser_checks": 38,
+  "independent_verdict": "PASS",
+  "source_and_live_coordinates_exactly_equal": true,
+  "seam_gap_mm": 0,
+  "body_intersections": 0,
+  "self_intersections_in_inspected_drape": 0,
+  "inside_body_vertices": [],
+  "heatmap_errors": {
+    "peak_stretch_percent": 137.0650195980281,
+    "peak_stress_kPa": 46.234620564827885,
+    "max_stretch_error": 6.661338147750939e-16,
+    "max_stress_error_kPa": 5.0737192225369654e-14
+  },
+  "negative_controls": {
+    "reverse-seam": true,
+    "swap-panel": true,
+    "gap": true,
+    "uv": true,
+    "body-penetration": true,
+    "overlapping-face": true
+  },
+  "downloaded_exports": {
+    "OBJ_vertices_and_faces": "exact match",
+    "SVG_panels": "exact match",
+    "SVG_cut_offset_mm": 10,
+    "DXF_panels": "match within 0.000002 mm"
+  },
+  "printing": {
+    "pages": 42,
+    "format": "A4, 210 x 297 mm",
+    "calibration100mm": true,
+    "page_format_tolerance_mm": 0.22,
+    "calibration_line_tolerance_mm": 0.053
+  },
+  "performance": {
+    "steps": 360,
+    "time_s": 3,
+    "peakStretch": 1.3706501959802813,
+    "peakStress_kPa": 46.234620564827885,
+    "seamGap_mm": 0,
+    "waist_mm": 736.3414168681662,
+    "contacts": 211,
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 30.799999999813735,
+    "solver_ms_p95": 46.200000000186265,
+    "frame_ms_p95": 283.3000000000002,
+    "jsHeap_bytes": 32487542
+  },
+  "browser": "Playwright Chromium with SwiftShader; 1440x1100 and 390x844",
+  "commands": [
+    "python experiments/single_html_cloth/verify_browser.py --url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab.html --out /workspace/work/cloth-lab/evidence/live",
+    "python experiments/single_html_cloth/independent.py /workspace/work/cloth-lab/evidence/live/simulation.json --repo . --out /workspace/work/cloth-lab/evidence/live/independent.json"
+  ],
+  "download_hashes": {
+    "pattern.svg": "0038934c597f968ff7c3c70a764d3602cd5fa7e01fbc41e666c1fa22e5966240",
+    "pattern.dxf": "4094f8eab99e12d2e4bbb3d53bf33bdfbc5e42f68191e46e08df714e4c7cb20c",
+    "garment.obj": "fa47c2e231789ba4693cd4c855f4f03e763ad62f74a0abd49777028455c6770b",
+    "simulation.json": "8caf59805344796e0300eb235b202df384607a55c3927f2c181a9d7203ef90e1",
+    "pattern-a4.pdf": "9a5b985f345c25f39b6e2b9a6b25b89baecd35307b55671b37200e7dae4ded23",
+    "downloaded.html": "5767e1a541a49209e59d4bd55005007616a4d3391856ad4ed1e37966be23b552"
+  },
+  "visual_review": "Live fabric/stress screenshots inspected with view_image; mobile also verified locally and captured live. No outstanding overlap or clipping.",
+  "not_validated": [
+    "Fabric calibration and wearable fit (peak stretch about 137%)",
+    "General dynamic cloth self-contact",
+    "Physical printer output",
+    "Waistband/closure/manufacturing",
+    "Hardware 60 fps",
+    "Direct file URL opening blocked by managed Chromium policy"
+  ],
+  "docs_only_commit_gate": {
+    "verdict": "SKIP",
+    "reason": "Only new evidence files are added; no executable behavior changes. The separate live application checks above passed."
+  }
+}

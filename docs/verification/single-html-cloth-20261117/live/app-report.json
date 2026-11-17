@@ -1,0 +1,174 @@
+{
+  "schema": "pattern-agent-cloth-lab-verification-1",
+  "time": "2026-11-17T12:01:13.638Z",
+  "scope": "Digital skirt demonstrator; sample tests do not certify exact triangle intersections, cloth self-collision, calibrated physics, print hardware, sewability or fit",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "claim": "Finite solver state",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Four correctly directed equal-length seam pairs",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Maximum seam gap \u2264 2 mm",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "One sewn shell, Euler 0, two intended boundary loops",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Body clearance samples: penetration \u2264 0.5 mm",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Analytic strain and stress controls",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Gravity has been simulated (\u2265 1 second)",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Cloth changed from the initial arrangement",
+      "verdict": "PASS"
+    }
+  ],
+  "stats": {
+    "steps": 360,
+    "time_s": 3,
+    "peakStretch": 1.3706501959802813,
+    "peakStress_kPa": 46.234620564827885,
+    "seamGap_mm": 0,
+    "waist_mm": 736.3414168681662,
+    "contacts": 211,
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 30.799999999813735,
+    "solver_ms_p95": 46.200000000186265,
+    "frame_ms_p95": 283.3000000000002,
+    "jsHeap_bytes": 32487542
+  },
+  "topology": {
+    "vertices": 1856,
+    "edges": 5440,
+    "faces": 3584,
+    "euler": 0,
+    "boundaryLoops": 2,
+    "nonmanifold": 0,
+    "windingErrors": 0
+  },
+  "collision": {
+    "samples": 16192,
+    "minClearance_mm": 3.0096222724690342,
+    "penetratingSamples": 0,
+    "contactSamples": 2556,
+    "tolerance_mm": 0.5,
+    "method": "signed nearest body triangle, vertices + edge midpoints + centroids; independent exact triangle intersections also required"
+  },
+  "numericControls": {
+    "identity": {
+      "stretch": 1,
+      "minStretch": 1,
+      "stress": 0,
+      "green": [
+        0,
+        0,
+        0
+      ],
+      "sigma": [
+        0,
+        0,
+        0
+      ]
+    },
+    "rotation": {
+      "stretch": 1,
+      "minStretch": 1,
+      "stress": 0,
+      "green": [
+        0,
+        0,
+        0
+      ],
+      "sigma": [
+        0,
+        0,
+        0
+      ]
+    },
+    "extension10": {
+      "stretch": 1.1,
+      "minStretch": 0.9999999999999999,
+      "stress": 9.230769230769239,
+      "green": [
+        0.1050000000000001,
+        0,
+        0
+      ],
+      "sigma": [
+        9230.76923076924,
+        2769.230769230772,
+        0
+      ]
+    },
+    "doubleModulus": {
+      "stretch": 1.1,
+      "minStretch": 0.9999999999999999,
+      "stress": 18.461538461538478,
+      "green": [
+        0.1050000000000001,
+        0,
+        0
+      ],
+      "sigma": [
+        18461.53846153848,
+        5538.461538461544,
+        0
+      ]
+    },
+    "pass": true
+  },
+  "revision": 1,
+  "bodyProvenance": {
+    "source": "Pattern Agent authored-morph neutral MakeHuman surface",
+    "sourceFile": "web/garment-body/product-case/model/final-neutral.obj",
+    "sourceSHA256": "2cd7c641d2610148d715f0e33128e9d9d9c7f61283c982fb096a11086e2d3f8c",
+    "license": "CC0-1.0",
+    "unit": "metre",
+    "vertices": 13380,
+    "triangles": 26756
+  },
+  "material": {
+    "E": 80000,
+    "nu": 0.3,
+    "density": 0.16,
+    "thickness": 0.00035,
+    "bend": 4e-05,
+    "color": 12416852,
+    "calibrated": false
+  },
+  "fitAssessment": {
+    "verdict": "NOT_VALIDATED",
+    "trianglesAbove120Percent": 40
+  },
+  "physics": {
+    "solver": "XPBD distance constraints / Verlet, embedded WebAssembly",
+    "dt_s": 0.008333333333333333,
+    "iterations": 60,
+    "skinOffset_m": 0.005,
+    "waistPinned": true,
+    "selfCollision": false
+  },
+  "notRun": [
+    "Calibrated fabric testing",
+    "Garment self-contact collision",
+    "Manufacturing sample and wearer fit"
+  ]
+}
