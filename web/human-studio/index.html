@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Human Studio — Pattern Agent</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="../">Pattern Agent <span>/</span> <strong>Human Studio</strong></a>
+    <div class="file-actions">
+      <button id="import-state">Import</button><input id="state-file" type="file" accept=".json,application/json" hidden>
+      <button id="export-state">Save model</button>
+      <button id="export-png" title="Render the current view at double resolution">PNG 2×</button>
+      <button id="export-obj">Export OBJ</button>
+      <button id="export-glb" class="primary">Export GLB</button>
+    </div>
+  </header>
+  <main>
+    <section class="viewport" aria-label="Interactive human model">
+      <div class="view-header"><div><h1>Your human, in 3D.</h1><p>Shape in centimetres. Pose in degrees.</p></div><span id="status" role="status">Loading anatomical mesh…</span></div>
+      <div id="scene" tabindex="0" aria-label="Drag to orbit the human model; scroll to zoom"></div>
+      <div class="view-tools">
+        <div class="camera-tools" aria-label="Camera views"><button data-view="front">Front</button><button data-view="side">Side</button><button data-view="back">Back</button><button data-view="three">3D</button><button id="frame-model">Fit view</button></div>
+        <div class="display-tools"><label><input id="show-rig" type="checkbox"> Skeleton</label><label><input id="show-ruler" type="checkbox" checked> Tape path</label></div>
+      </div>
+      <div class="scene-caption"><span id="ruler-label">Standing height · cm</span><span>Drag to orbit · scroll to zoom</span></div>
+    </section>
+    <aside class="inspector">
+      <div class="tabs" role="tablist"><button id="tab-body" class="active" role="tab" aria-selected="true">Body dimensions</button><button id="tab-pose" role="tab" aria-selected="false">Pose & joints</button></div>
+      <section id="body-panel" class="panel">
+        <div class="panel-heading"><h2>Dimensions</h2><span>cm</span></div>
+        <p class="hint">Measured on the neutral-pose mesh. Posing does not change these body dimensions.</p>
+        <div id="primary-dimensions"></div>
+        <details id="advanced-dimensions"><summary>Arms, legs & neck</summary><div id="secondary-dimensions"></div></details>
+        <div id="fit-result" class="fit-result">Calibrating mesh…</div>
+        <button id="reset-body" class="wide">Reset body dimensions</button>
+      </section>
+      <section id="pose-panel" class="panel" hidden>
+        <div class="panel-heading"><h2>Pose</h2><span>degrees</span></div>
+        <p class="hint">Choose a joint below, or click a joint on the skeleton.</p>
+        <div class="pose-presets" aria-label="Pose presets"><button data-preset="neutral">Neutral</button><button data-preset="tpose">T-pose</button><button data-preset="walk">Walking</button><button data-preset="sit">Seated</button><button data-preset="reach">Arms up</button></div>
+        <label class="field-label" for="joint-select">Joint</label><select id="joint-select"></select>
+        <label class="check-label"><input id="mirror-pose" type="checkbox" checked> Mirror left / right</label>
+        <div id="joint-rotations"></div>
+        <div class="pose-actions"><button id="reset-joint">Reset joint</button><button id="reset-pose">Reset all joints</button></div>
+        <details><summary>Finger & face joints</summary><p class="hint">The complete rig is available in the joint menu, including fingers, jaw and eyes. All controls rotate actual bones.</p><label class="check-label"><input id="full-rig" type="checkbox"> Show all joints in menu</label></details>
+      </section>
+      <footer class="inspector-footer"><details><summary>About this model</summary><p>Adult female MakeHuman mesh and anatomical rig, released under CC0. Body shape uses authored morph targets, calibrated against mesh landmarks.</p><p>These are dimensions of a configurable model, not recovered measurements of a photographed person. Pose deformation is skeletal skinning, not a physical tissue simulation.</p><a href="assets/provenance.json" target="_blank" rel="noopener">Asset provenance & definitions</a> · <a href="assets/MAKEHUMAN-CC0.txt">CC0 license</a></details></footer>
+    </aside>
+  </main>
+  <div id="toast" role="alert" hidden></div>
+  <script type="module" src="./app.js"></script>
+</body></html>

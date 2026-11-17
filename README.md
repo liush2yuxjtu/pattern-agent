@@ -3,6 +3,20 @@
 Runnable Blender garment experiments and independent geometry checks. This is a
 research repository; physical garment fit has not been verified.
 
+## Human Studio — articulated model with cm controls
+
+[Open Human Studio](https://liush2yuxjtu.github.io/pattern-agent/human-studio/)
+to adjust an anatomical MakeHuman adult-female mesh with 12 centimetre dimensions
+and 163 bones. Change body shape, pose individual joints or use presets, then
+save/import the model, render a 2×PNG, or export a posed centimetre OBJ and rigged
+GLB (metres). Dimensions are calibrated from neutral-pose mesh tape paths and
+landmarks; they remain separate from joint angles.
+
+The old loft figures remain archived synthetic evaluation fixtures. The current
+editor uses detailed anatomical geometry and authored skin weights.
+[Source and measurement definitions](web/human-studio/README.md) ·
+[verification evidence](docs/verification/human-studio-20261117/README.md).
+
 ## Apparel six-view and adjustable-body skill
 
 The new [garment-body-six-view skill](.agents/skills/garment-body-six-view/SKILL.md)

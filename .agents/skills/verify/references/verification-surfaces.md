@@ -18,3 +18,4 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | fitted-tshirt | original DXF reconstruction, browser and source downloads | [fitted-tshirt.md](fitted-tshirt.md) |
 | legacy-cloth | archived evidence; unavailable legacy runtime | [legacy-cloth.md](legacy-cloth.md) |
 | skill-evals | skill package/helper CLIs, native metadata routing, editable query review | [skill-evals.md](skill-evals.md) |
+| human-studio | anatomical mesh, cm shape calibration, joint skinning and exported file readback | [human-studio.md](human-studio.md) |

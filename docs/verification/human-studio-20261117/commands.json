@@ -1,0 +1,64 @@
+[
+  {
+    "argv": [
+      "python",
+      "scripts/build_human_studio_asset.py"
+    ],
+    "observed": "PASS; source/morph/rig assetscompiled andhashesrecorded"
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/build_pages.py"
+    ],
+    "observed": "PASS; existingstaticsite build"
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/verify_human_studio.cjs",
+      "--url",
+      "http://127.0.0.1:8771/human-studio/",
+      "--output",
+      "work/human-studio-built",
+      "--expected-commit",
+      "120acb24f240f2c62122409bb14d6783f6ecf441"
+    ],
+    "exit_code": 0,
+    "checks": 37
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/verify_human_studio_geometry.py",
+      "--output",
+      "work/human-studio-built"
+    ],
+    "exit_code": 0,
+    "evidence": "local/independent-geometry.json"
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/test_human_studio_geometry.py",
+      "--fixture",
+      "work/human-studio-built"
+    ],
+    "exit_code": 0,
+    "evidence": "local/negative-controls.json"
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/verify_pages.py",
+      "--base-url",
+      "http://127.0.0.1:8771/",
+      "--expected-commit",
+      "120acb24f240f2c62122409bb14d6783f6ecf441",
+      "--output",
+      "work/human-studio-existing-pages"
+    ],
+    "exit_code": 0,
+    "evidence": "local/existing-pages.json"
+  }
+]

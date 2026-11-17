@@ -1,0 +1,84 @@
+{
+  "verdict": "PASS",
+  "claim": "Localprepublication verification ofanatomicalhuman editor withcalibratedcm dimensions, realjointskinning,persistenceandexports",
+  "base_commit": "120acb24f240f2c62122409bb14d6783f6ecf441",
+  "candidate_identity": "source-content-manifest.json(precommit sourcehashes)",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/human-studio.md",
+  "sources": {
+    "makehuman": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
+    "asset_license": "CC0-1.0",
+    "three": "r180 / MIT"
+  },
+  "model": {
+    "surface_vertices": 13380,
+    "triangles": 26756,
+    "bones": 163,
+    "cm_controls": 12
+  },
+  "browser": {
+    "verdict": "PASS",
+    "checks": 37,
+    "evidence": "local/report.json"
+  },
+  "independent_file_math": {
+    "verdict": "PASS",
+    "scope": "Independent decoded file geometry, centimetre tape paths and linear blend skinning; no anatomical recovery claim",
+    "measurements_cm": {
+      "height": 180.00001525878906,
+      "bust": 96.00416519193215,
+      "waist": 76.00003748729519,
+      "hips": 102.00012404643968,
+      "shoulders": 36.99942398071289,
+      "upperArm": 27.000031987787192,
+      "thigh": 54.00010718656212,
+      "neck": 32.00002973847724,
+      "upperArmLength": 29.000078356367432,
+      "forearmLength": 23.00000742397155,
+      "thighLength": 40.00009282163049,
+      "calf": 36.00000522933196
+    },
+    "max_target_error_cm": 0.004165191932145262,
+    "max_reported_measurement_error_cm": 6.866490608103959e-06,
+    "max_obj_error_cm": 4.999300813324226e-07,
+    "max_glb_world_error_metres": 7.62572067714018e-08,
+    "rig_joints": 163,
+    "surface_vertices": 13380,
+    "triangles": 26756
+  },
+  "negative_controls": {
+    "verdict": "PASS",
+    "controls": [
+      {
+        "control": "actual downloaded files",
+        "expected": "PASS",
+        "observed": "PASS"
+      },
+      {
+        "control": "wrong_dimension",
+        "expected": "REJECT",
+        "observed": "REJECT"
+      },
+      {
+        "control": "displaced_obj",
+        "expected": "REJECT",
+        "observed": "REJECT"
+      },
+      {
+        "control": "wrong_glb_units",
+        "expected": "REJECT",
+        "observed": "REJECT"
+      }
+    ]
+  },
+  "existing_pages": "PASS: preserved root navigation, fourdownloads andnativepatternworkbench behavior; local/existing-pages.json",
+  "hosted_publication": "PENDING existingPages deploymentandexactlivebrowser verification",
+  "limits": [
+    "Meshlandmark/tape dimensions describe the model,not recovered anatomical measurements.",
+    "Standard linearblend skinning,nophysicaltissue,collisionorclothvalidation.",
+    "GLB retains rig/current shape; cmrecalibrationis providedbyweb editor ratherthan astandaloneBlendercontrolplugin."
+  ],
+  "historical_tshirt": "7.6455mm seamgap,20 intersections FAIL;physicalfitNOT_RUN unchanged",
+  "cleanup": "Taskbrowsersclosed. Two localstagingservers tocloseafterexactpostcommitchecks.",
+  "source_note": "PinnedThree.js sourcecontainsonepre-existingwhitespacewarning; vendorbytesretainedandhashesverified. Authoredfilespasswhitespacecheck."
+}
