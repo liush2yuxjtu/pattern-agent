@@ -1,0 +1,9 @@
+
+Traceback (most recent call last):
+  File "/tmp/pattern-agent-live-5047e64/verify_fitted_tshirt.py", line 71, in <module>
+    if a.base_url:verify(a.base_url,a.output,a.expected_commit,a.browser)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/pattern-agent-live-5047e64/verify_fitted_tshirt.py", line 61, in verify
+    missing=c.request.get(urljoin(base,'fitted-tshirt/assets/no-such-model.glb'));assert missing.status==404;checks.append('missing model returns 404')
+                                                                                         ^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,56 @@
+{
+  "verdict": "PASS",
+  "claim": "web preview, source downloads and archive integrity only",
+  "physical_fit": "NOT_RUN",
+  "strict_geometry_release": "NOT_RUN",
+  "base_url": "https://liush2yuxjtu.github.io/pattern-agent/",
+  "commit": "5047e64a975894725c099ecbb50031f4e6a7b48c",
+  "source_sha256": "85b114393f3d8dc6a6b606e977426d246393ccd0c0d37d2a094062ff6c1f0ef2",
+  "checks": [
+    "identity and meaningful desktop render",
+    "explicit visual-only status",
+    "three render view controls",
+    "actual WebGL mesh pixels",
+    "pointer rotation changes canvas pixels",
+    "wheel zoom",
+    "wireframe pixel change",
+    "keyboard rotation and reset",
+    "full ten-row eight-size table",
+    "five real downloads match build hashes; all archive entries match source hashes",
+    "375 px mobile with working view controls and contained table scrolling",
+    "missing model returns 404",
+    "real WebGL-disabled browser exposes loaded image fallback"
+  ],
+  "downloads": [
+    {
+      "path": "fitted-tshirt/downloads/fitted-tshirt-complete.zip",
+      "sha256": "db8a0642ecb3dac99fbc7f34fb2797eca9516cc20f3a0a03057d9f0c85a00784",
+      "bytes": 9378928
+    },
+    {
+      "path": "fitted-tshirt/assets/fitted-tshirt.blend",
+      "sha256": "d01bc81c75d60b29fd33c9fcedaddecad87dfe2c5433041d86461a513fb52579",
+      "bytes": 3224480
+    },
+    {
+      "path": "fitted-tshirt/assets/fitted-tshirt.glb",
+      "sha256": "6a74f6661b81e95e0c3700d193897cac3c9741b1ceaf0024e215b752831ff7cc",
+      "bytes": 2671732
+    },
+    {
+      "path": "fitted-tshirt/downloads/prototype-notes.md",
+      "sha256": "aaf98679bc73a958888d4bb0617284e137d4f6c66ae953b0fa07a415c54e6975",
+      "bytes": 10480
+    },
+    {
+      "path": "fitted-tshirt/downloads/manifest.json",
+      "sha256": "4ab0897e6d669933700c6750e04f8af0110a87acdeff8b4c8e90074f924efb10",
+      "bytes": 3883
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "asset_http_errors": [],
+  "browser": "Chromium via local Playwright; ego-browser unavailable"
+}
+

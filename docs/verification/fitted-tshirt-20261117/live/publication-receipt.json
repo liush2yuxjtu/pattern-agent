@@ -1,0 +1,26 @@
+{
+  "verdict": "PASS",
+  "scope": "public deployment, real browser interaction and file delivery only",
+  "deployed_commit": "5047e64a975894725c099ecbb50031f4e6a7b48c",
+  "source_sha256": "85b114393f3d8dc6a6b606e977426d246393ccd0c0d37d2a094062ff6c1f0ef2",
+  "workflow_run_id": 44016354047,
+  "workflow_url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44016354047",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/fitted-tshirt/",
+  "new_surface_checks": 13,
+  "existing_surface_checks": 11,
+  "runtime": "Firecrawl-hosted /usr/bin/google-chrome driven by unchanged public Python Playwright verifiers",
+  "script_hashes": {
+    "verify_fitted_tshirt.py": "344fda87a6ffd2c3322890024ebf19f906deba4d3ca404bc524427047cd1880c",
+    "verify_pages.py": "31d73128e61b35bc0bbc5e4a22d581196f48a6df669f9e097d5e397ef569bc42"
+  },
+  "evidence_archive_sha256": "09883f2806ac97d2f0af0158944383c993a168ffcdff1671046dfcac3e900ed3",
+  "browser_report_label_note": "The raw fitted report retains its static local-Chromium label; actual executable was /usr/bin/google-chrome on the remote host, supplied with --browser. This wrapper records the real runtime.",
+  "preserved_failures": [
+    "local Chromium and APIRequestContext rejected the environment certificate chain",
+    "connected Playwright server unavailable",
+    "first hosted new-surface attempt failed at missing-model status assertion; exact unexpected status was not recorded; independent probe returned GitHub 404 and the complete unchanged verifier subsequently passed"
+  ],
+  "physical_fit": "NOT_RUN",
+  "strict_geometry_release": "NOT_RUN",
+  "cleanup": "remote browser session stopped; verifier contexts closed; no TLS bypass or trust-store change"
+}

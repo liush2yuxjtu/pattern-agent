@@ -56,3 +56,18 @@ separate live output directories. A workflow result is not browser acceptance.
 Reopen remote main and the public archive. Record network blockers explicitly;
 use the public-only route in `github-pages.md` if the Pages domain is blocked.
 The website can PASS while physical fit and strict garment release remain NOT_RUN.
+
+## Observed public-browser fallback on 2026-11-17
+
+Local Chromium rejected the environment TLS chain; do not set ignore HTTPS errors
+or change trust settings. A connected Playwright endpoint was unavailable. The
+existing Firecrawl interact Bash route worked against public commit
+`5047e64a975894725c099ecbb50031f4e6a7b48c`. The host has `/usr/bin/google-chrome`.
+Install Playwright 1.62.0 and Pillow into a fresh `/tmp` target, download the two
+verifiers from that public pinned commit, and check the source hashes recorded
+in `docs/verification/fitted-tshirt-20261117/live/publication-receipt.json`.
+Run both unmodified with the public base URL, exact commit and `--browser` path.
+Retain initial failures and complete rerun receipts separately. Do not transfer
+private fixtures or credentials. The two complete live runs passed. Retrieve
+the PNG/JSON evidence in sub-megabyte base64 chunks, verify archive SHA-256 and
+ZIP integrity before inspecting images, then stop the interact session.
