@@ -1,0 +1,90 @@
+{
+  "native_pixels": [
+    1000,
+    1276
+  ],
+  "points": [
+    {
+      "joint": "neck01",
+      "pixel": [
+        398,
+        360
+      ],
+      "source": "manual approximate neck-base, visible neckline/hair uncertainty"
+    },
+    {
+      "joint": "upperarm01.L",
+      "pixel": [
+        641,
+        454
+      ],
+      "source": "manual shoulder joint estimated under knit; uncertain"
+    },
+    {
+      "joint": "upperarm01.R",
+      "pixel": [
+        171,
+        454
+      ],
+      "source": "manual shoulder joint estimated under knit; uncertain"
+    },
+    {
+      "joint": "lowerarm01.L",
+      "pixel": [
+        680,
+        688
+      ],
+      "source": "manual elbow joint estimated under sleeve; uncertain"
+    },
+    {
+      "joint": "lowerarm01.R",
+      "pixel": [
+        112,
+        684
+      ],
+      "source": "manual elbow joint estimated under sleeve; uncertain"
+    },
+    {
+      "joint": "wrist.L",
+      "pixel": [
+        455,
+        813
+      ],
+      "source": "manual visible wrist near sleeve and hand overlap; uncertain"
+    },
+    {
+      "joint": "wrist.R",
+      "pixel": [
+        184,
+        786
+      ],
+      "source": "manual visible wrist near cuff; uncertain"
+    },
+    {
+      "joint": "eye.L",
+      "pixel": [
+        343,
+        163
+      ],
+      "source": "fresh manual visible left-anatomical eye center"
+    },
+    {
+      "joint": "eye.R",
+      "pixel": [
+        258,
+        158
+      ],
+      "source": "fresh manual visible right-anatomical eye center"
+    },
+    {
+      "vertex": 201,
+      "pixel": [
+        292,
+        218
+      ],
+      "source": "fresh manual visible nose tip; actual MakeHuman central most-anterior nose vertex201"
+    }
+  ],
+  "source": "Fresh manual visible eyes/nose added; hidden shoulder/elbow centers retain explicit uncertainty. Bone-eye centers and actual mesh nose vertex201 are projected.",
+  "shape_unchanged": true
+}

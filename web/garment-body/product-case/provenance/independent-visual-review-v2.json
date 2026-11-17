@@ -1,0 +1,533 @@
+{
+  "version": "v2",
+  "date_utc": "2026-11-17",
+  "verdict": "CONDITIONAL_PASS_FOR_GENERATED_GARMENT_REFERENCE",
+  "fit_review_status": "COMPLETE_CONDITIONAL_DIAGNOSTIC_ONLY",
+  "review_method": "逐张打开原始分辨率文件与原图/官网页面；未仅依据contact sheet。只写本报告，不修改图像、代码或提交。",
+  "findings": [
+    {
+      "id": "source",
+      "verdict": "CONFIRMED_SOURCE",
+      "views": [
+        "reference/asos-page.png",
+        "reference/original-product.jpg",
+        "reference/source-verification.json",
+        "reference/asos-product-excerpt.md"
+      ],
+      "detail": "官网截图中的hero与原图在脸、发型、提衣手势、领口和裤腰细节上视觉一致；来源文件报告0.993相关。页面/摘录确证boatneck、three-quarter sleeves、slim fit、100% cotton及171cm模特穿S。这个身高/尺码不提供胸腰臀真实测量。"
+    },
+    {
+      "id": "sleeves",
+      "verdict": "PASS_ILLUSTRATIVE",
+      "views": [
+        "front",
+        "side",
+        "back",
+        "closeup"
+      ],
+      "detail": "四张彩色图均已变成肘以下、腕以上袖口，明显露出前臂；v1错误长袖已修正。front/back袖口位于前臂中段，side弯臂袖口略靠肘，closeup弯肘露前臂，均属七分袖合理视觉范围。不能由不同弯肘图反推精确衣长或袖纸样。"
+    },
+    {
+      "id": "neckline",
+      "verdict": "PASS_WITH_DETAIL_WARNING",
+      "views": [
+        "front",
+        "side",
+        "closeup"
+      ],
+      "detail": "浅而宽的船领、窄平滑红包边得以保留，v1明显picot/锯齿花边已消失。原图肩头有可见叠片/信封式边缘，v2 front和closeup弱化成普通肩缝；若要求原商品构造级复刻，这两图需重做肩头细节。"
+    },
+    {
+      "id": "rosette",
+      "verdict": "PASS_WITH_DETAIL_WARNING",
+      "views": [
+        "front",
+        "closeup"
+      ],
+      "detail": "领口中央小红绿装饰保留；closeup的玫瑰依然较原图更大、更规则、叶片更对称。现在不再压过整体设计，但不能当真实针织附件尺寸依据。优先小幅缩小closeup玫瑰而不是全组六图重生。"
+    },
+    {
+      "id": "knit",
+      "verdict": "PARTIAL",
+      "views": [
+        "front",
+        "side",
+        "back",
+        "closeup"
+      ],
+      "detail": "红色细针织、纵列纹理与小眼孔已保留。高清closeup显示规则花形/菱形孔眼；原图纵列较细、更低对比、局部更不规则。属于可信的pointelle视觉族类，不足以认证针法、孔距/重复单元和实际色值完全相同。"
+    },
+    {
+      "id": "pants",
+      "verdict": "INFERRED",
+      "views": [
+        "front",
+        "side",
+        "back",
+        "closeup"
+      ],
+      "detail": "红裤、松紧褶皱腰口和中央小红绿装饰保留。原图只展示腰与上腿，官网截图侧栏全身缩略图分辨率有限；直筒裤脚、完整后片和裸脚不是从原图可靠恢复。closeup提衣露腹与原图一致；front/back平放衣摆不能据原图验证实际上衣长度。"
+    },
+    {
+      "id": "cross-view",
+      "verdict": "PARTIAL",
+      "views": [
+        "front",
+        "side",
+        "back",
+        "closeup",
+        "pose",
+        "depth"
+      ],
+      "detail": "front/pose的脸与发型、躯干、红套装总体连贯；side鼻/下颌为相容的侧面想象，不能确认真实身份。back无脸且发型遮背，缺乏身份核验依据。front/back近似外展双臂；side弯肘前伸、远侧手/腿遮挡；closeup双手提衣，属于另一个姿势。不能把六图作为同一3D姿势的严格多视投影。各图主体高度/领口到衣摆比例略有不同。"
+    },
+    {
+      "id": "pose",
+      "verdict": "ILLUSTRATIVE_ONLY",
+      "views": [
+        "pose"
+      ],
+      "detail": "彩色线节点比v1更简洁可读，腕/肘/踝大致落在合理可见位置。但骨盆是腰带处单中央点、肩线为绘制示意，不能当标准姿态检测器输出、真实关节定位或三维骨骼量测。pose照片局部比例也与front有轻微变化。"
+    },
+    {
+      "id": "depth",
+      "verdict": "ILLUSTRATIVE_ONLY",
+      "views": [
+        "depth"
+      ],
+      "detail": "v2去除了多数针织孔眼，形成较平滑灰度体积效果，视觉上比v1更像深度示意。但仍有发丝、面部明暗和表面照明感；无标定/距离单位/相机投影保证，不能作为测得或计算的metric depth。应始终标注生成深度示意，与actual mesh Z-buffer分列。"
+    }
+  ],
+  "priority_corrections": [
+    {
+      "views": [
+        "front",
+        "closeup"
+      ],
+      "priority": "If construction-level faithful reproduction is required",
+      "action": "恢复原图肩头叠片/信封式边缘；保持平滑窄船领。"
+    },
+    {
+      "views": [
+        "closeup"
+      ],
+      "priority": "Minor fidelity refinement",
+      "action": "将领口玫瑰缩小到更接近原图的tiny bud，避免对称放大绿叶。"
+    },
+    {
+      "views": [
+        "side"
+      ],
+      "priority": "If synchronized multiview pose is required",
+      "action": "重生为与front/back相同骨骼姿势的侧投影；明确保留远侧遮挡的不确定性。"
+    },
+    {
+      "views": [
+        "pose",
+        "depth"
+      ],
+      "priority": "Required labeling",
+      "action": "只能标注illustrative，真实投影骨架与Z-buffer另行展示。"
+    }
+  ],
+  "fit_review_note": "已复核最终冻结v2的actual renders、三视photo overlays、shape-fit、view-specific与original-reference；先前并发重算的PENDING已被此次最终审查替代。v1历史审查不改。",
+  "hashes": {
+    "reference/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+    "reference/asos-page.png": "1d78f18ca02370eb9d550aed90138d3b272bc4431b428cd667f550b21596f6ee",
+    "reference/source-verification.json": "7d892f86723773736c81465b6e94e4656661102e3581d1994e15bf5a0daed4a5",
+    "reference/asos-product-excerpt.md": "25b0647a7deaa94448e1e95b65d71106ce1f9b82ee989c691063cc1ee47c3f92",
+    "iterations/generation-2/front.png": "64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d",
+    "iterations/generation-2/side.png": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1",
+    "iterations/generation-2/back.png": "25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e",
+    "iterations/generation-2/closeup.png": "650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215",
+    "iterations/generation-2/pose.png": "6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620",
+    "iterations/generation-2/depth.png": "b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d",
+    "model/final-state.json": "2c44c7236d83c827097312ed5dfbf4899a2c921c2860bfd564e47af2dbe2008f",
+    "model/render-provenance.json": "a048c0dec8e1902a7c0d375c019144a4c3b60d28158931edc2d664706ab2e4a4",
+    "model/final-geometry-check.json": "0899ca08560a974fef1e37263e6f5924b48fc52b32eada9fdaee151d14c277a1",
+    "model/fit/metrics.json": "5b9a4cd5cf4c73bd9372d4d96f36354d46ae8f722382732fd78007dffe1e25ab",
+    "model/shape-fit/metrics.json": "951559a3c9b7ed51eb3b715ea2ecdd2acc4ad357ddae199c2385340f41d1caec",
+    "model/shape-fit/optimization.json": "ce8bdd69a6716df208825e48127be0b8bb1d8bb15ae963eba74493c193e26ded",
+    "model/shape-fit/side-before-after.png": "dd60b037fa864df4f34b0959e8400758b342ba38ccabcf45d8a20fc1ed91309d",
+    "model/view-specific/summary.json": "b403c1a36df7d2c76e8a77d679de579f6dff600bd59cb1451082833521ab7ac4",
+    "model/view-specific/back/before-after.png": "ab943b9ab0c3a0f08a5e1cf0a4e651e606c7f9a0a75fd6732e109f58e5d37dc0",
+    "model/view-specific/side/before-after.png": "ae3c29df5815c4d4f40dca8f26e97feefebfc83a190c1095cce433e194738f3f",
+    "model/original-reference/state.json": "e48d77d763557f8ab4ccae0c29f2e4dcafa5cb939ed219f0050ec7ec5f8edf7b",
+    "model/original-reference/metrics.json": "74af0e13bb7004f7da63c9a67fb50553682630a264b50e8299483965c7d5238e",
+    "model/original-reference/before-after.png": "d3b4001b3415fe03c38c7273467a71dbabab78cf9501865c805e66598e38895b",
+    "model/fit/front-final-photo-overlay.png": "f2d32194db9134d5182121b55ade087b19174bac2d872cd4781ebaaab60d76d9",
+    "model/fit/side-final-photo-overlay.png": "2d9d4706d55780be7644e0e4e7b92d2fce8cfe211d467711e96244254a8ebc57",
+    "model/fit/back-final-photo-overlay.png": "1633f94dd935a8d0989519eefe024765fed3c40f7f2154db98b335a64c1be8f6",
+    "model/final-renders/front.png": "e1cab36638ab6000f43d20af4e38e5d0d5560323540059fa5191e5659af4b92f",
+    "model/final-renders/side.png": "25873054a75a19dc0ffd3d003665d566c7b04e94ac032048b29788bbfb8ddeaf",
+    "model/final-renders/back.png": "8bd68d52d4650c620ac3b2c7b382044b24d992b00dd9f205daab15c04bbfa2ef",
+    "model/final-renders/pose.png": "9020152eec937466470744414f5694f96ce503a3871f552af8b775714050c37d",
+    "model/final-renders/depth.png": "66584982712a2284bd7f83be3a62e897c69e1bb2ac869bf289b423490d08e14f",
+    "model/original-reference/camera.json": "39b9e3e37fd84161476ca9a226500d010ff434d689538b571ea56e04f989da0c",
+    "model/original-reference/posed.obj": "4779e58db22a85651ce9a39e02c2f5e15e47d67031ee044db7dd5033fa8ae1c4",
+    "model/original-reference/posed.glb": "db27b4fc00b7e18d6744813c567e029e608785879225d3d24155d4123af023d9",
+    "model/original-reference/posed-joints.json": "cc868ee88d77fb267fcf59129044baa1f3fe05fcbb4f509f3f3c87740f0d4183",
+    "model/original-reference/renders/front.png": "11380447162b2dd0dc19410fd238adeb0ce7376559fb24b18e49393894e293f8",
+    "model/original-reference/iteration-1/state.json": "cd4095d7eb427b7fe541b097d16e32f12bd812f6a0d52bcbba54b62e6a549da8",
+    "model/original-reference/iteration-1/metrics.json": "4a34fe04bda5bb63cbee1f6bec0d6ca985114e979c36ef39b8db775bd2692196",
+    "model/original-reference/renders/side.png": "544e35eb15664c29c0b28f69d044a26de60b113ec51d72cf5c041b0c284c0bac",
+    "model/original-reference/inspection-camera.json": "f6312fa6c91306e0571091bedfee1a628e8fabdb54dbaae137e6a18a991822ee",
+    "model/original-reference/candidate-status.json": "884e19defa91a57d211dd8cfc4626f75c5c8730eaaef8312f99b48397661d253",
+    "model/original-reference/ik-depth-feasibility.json": "304b85ad8da69ff69d498fcd1faa718a41c6c128105b5e393558ebc96a3d171a",
+    "model/original-reference/hand-depth-check.json": "3790fd8fdd93b7509d2548826f43f9af4bf0b6c307a47b6edc87933df8ea3f6a",
+    "model/original-reference/geometry-check.json": "b5115590e87c6c7e112d125bcbd467b2f0ef8d236d511a65fb8e3a5b1f452ab2",
+    "model/view-specific/side/state.json": "f047fd128c120963265c36c0e7affe7fa990bfdc4432eb03109d9dc1f23d8317",
+    "model/view-specific/back/state.json": "b86d5e04b678fff6cb907cff8ea32465bf27236e93a0ec92686d2945584578b8"
+  },
+  "limitations": [
+    "生成图不是实拍多视角；保留同一人物外观不等于验证身份。",
+    "100% cotton为官网文案，不能由图像验证材料。",
+    "171cm/S不等于恢复胸腰臀或授权精确人体测量声明。",
+    "没有物理服装拟合、接触、布料模拟或真实人体误差验证。"
+  ],
+  "garment_fidelity_acceptable": true,
+  "visible_basic_feature_checks": {
+    "three_quarter_sleeves": true,
+    "shallow_boat_neck": true,
+    "small_central_rosette": true,
+    "pointelle_hole_pattern": true
+  },
+  "acceptance_scope": "Only four visible basic design features; not exact shoulder construction, knit repeat, accessory dimensions, unseen back, real model identity or measured garment fit.",
+  "final_anatomical_review": {
+    "selected_dimensions_cm": {
+      "height": 170,
+      "bust": 90,
+      "waist": 69,
+      "hips": 96,
+      "shoulders": 37,
+      "upperArm": 27,
+      "thigh": 50,
+      "neck": 32,
+      "upperArmLength": 29,
+      "forearmLength": 23,
+      "thighLength": 40,
+      "calf": 36
+    },
+    "dimension_basis": "height170及未变尺寸为M先验；waist72→69、thigh54→50为冻结相机下生成衣物包络的一侧包含性条件估计，不是官网171cm/S模特实测。",
+    "provenance_hash_checks": {
+      "final-state.json": true,
+      "final-posed.obj": true,
+      "camera.json": true,
+      "all_render_hashes": true,
+      "all_reference_hashes": true
+    },
+    "same_shape_state_checks": {
+      "original-reference/state.json": {
+        "version": true,
+        "asset": true,
+        "dimensions": true,
+        "morphWeights": true
+      },
+      "shape-source-state.json": {
+        "version": true,
+        "asset": true,
+        "dimensions": true,
+        "morphWeights": true
+      },
+      "selected-neutral-state.json": {
+        "version": true,
+        "asset": true,
+        "dimensions": true,
+        "morphWeights": true
+      },
+      "view-specific/side/state.json": {
+        "version": true,
+        "asset": true,
+        "dimensions": true,
+        "morphWeights": true
+      },
+      "view-specific/back/state.json": {
+        "version": true,
+        "asset": true,
+        "dimensions": true,
+        "morphWeights": true
+      }
+    },
+    "actual_surface": "final-renders/front/side/back可见真实三角人体表面与真实骨骼投影；depth为该裸人体的Z-buffer，不能当穿衣照片深度。这里只核查输出一致性，不重跑完整几何验证。",
+    "shape_tradeoff": {
+      "one_sided_training_containment_outside_pixels": {
+        "front": [
+          936,
+          797
+        ],
+        "side": [
+          3578,
+          2850
+        ]
+      },
+      "loss": [
+        0.023971593154553026,
+        0.013978560825811136
+      ],
+      "full_clothed_iou_fixed_M_to_selected": {
+        "front": [
+          0.8142032215580994,
+          0.8056408581073723
+        ],
+        "side": [
+          0.6867644171652355,
+          0.6837573018732364
+        ],
+        "back": [
+          0.7496211838934843,
+          0.7443743362279003
+        ]
+      },
+      "visual": "shape-fit/side-before-after的腹腰/大腿线略收窄；改善范围小且头脸、胸前、手指/脚趾仍明显错位。包含性改善与全衣物IoU下降同时成立；不应写成整体fit全面提升。"
+    },
+    "shared_pose": {
+      "front_final_joint_errors_px": [
+        3.4643,
+        0.1831,
+        3.0945,
+        2.8874
+      ],
+      "side_final_joint_errors_px": [
+        5.3984,
+        3.4511
+      ],
+      "back_final_joint_errors_px": [
+        23.1498,
+        30.7555,
+        3.3625,
+        9.9856
+      ],
+      "verdict": "FAIL_STRICT_SAME_POSE_MULTIVIEW",
+      "visual": "front腕踝大致对齐但肩臂/手足轮廓残差；side头脸前突、臀部与大腿及脚趾不同；back双腕cyan与magenta明显分离，不能宣称十点均小误差或严格同姿势重建。"
+    },
+    "view_specific": {
+      "body_and_camera_frozen": true,
+      "back_wrist_errors_shared_to_specific_px": [
+        [
+          23.149807715321394,
+          30.75548971690878
+        ],
+        [
+          0.22409683060108918,
+          0.08095716944574816
+        ]
+      ],
+      "side_wrist_error_shared_to_specific_px": [
+        5.398396993797794,
+        0.18225775242399916
+      ],
+      "back_iou_shared_to_specific": [
+        0.7443743362279003,
+        0.7995672774432132
+      ],
+      "side_iou_shared_to_specific": [
+        0.6837573018732364,
+        0.6849322216076889
+      ],
+      "visual": "back view-specific手腕标记确实对上，臂线更接近，但手指、肩外沿及脚部仍未精确吻合；side仅细调腕，头脸/胸腹/腿残差未解决。",
+      "scope": "明确优化了该view自己的manual wrist labels，是in-sample同body不同pose诊断。不是held-out准确性、自动姿态检测或真实多视一致性；不能与shared heldout back混合评分。"
+    },
+    "original_reference": {
+      "verdict": "POSE_FAIL",
+      "observed_original_fit": "UNRESOLVED / DEPTH_AMBIGUOUS",
+      "accepted_matched_candidate": null,
+      "latest_failed_candidate": "iteration-5-forward-IK",
+      "state_matches_final_shape": true,
+      "same_shape_state_checks": {
+        "version": true,
+        "asset": true,
+        "dimensions": true,
+        "morphWeights": true
+      },
+      "camera_matches_iteration_1_bytewise": true,
+      "iteration_2_review": {
+        "state_matches_final_shape": true,
+        "camera_matches_iteration_1_bytewise": true,
+        "iteration_1_preserved_at": "model/original-reference/iteration-1",
+        "iteration_1_review": {
+          "state_matches_final_shape": true,
+          "cropped_iou_neutral_to_bent": [
+            0.6164970688282551,
+            0.7239734020473217
+          ],
+          "candidate_joint_errors_px": {
+            "shoulder_L": 26.300236551729697,
+            "shoulder_R": 26.300236551729697,
+            "elbow_L": 0.2962700378135039,
+            "elbow_R": 19.296831850496986,
+            "wrist_L": 0.1410261149918555,
+            "wrist_R": 42.008056669045516
+          },
+          "verdict": "FAIL_OBSERVED_REAL_PERSON_FIT_CLAIM",
+          "visual": "before-after右图双臂由外展调整为弯臂，贴近提衣动作；但cyan脸中线/轮廓穿过原图面部、头肩比例和原图不符，肩点有26px残差，右腕42px。固定neck近零是相机标定锚点，不是独立成功。",
+          "scope": "新shape同版本的原图姿态近似对齐可展示；单张斜视裁图、隐藏关节人工估计和衣物褶皱不支持原模特尺寸或精确人体恢复。"
+        },
+        "cropped_iou_previous_to_refined": [
+          0.7239734020473217,
+          0.7413521950573155
+        ],
+        "refined_joint_errors_px": {
+          "neck": 1.7767448064970006,
+          "shoulder_L": 26.597223801545855,
+          "shoulder_R": 24.97855900712984,
+          "elbow_L": 0.4249217382250961,
+          "elbow_R": 0.6119938825623898,
+          "wrist_L": 0.3875779364328437,
+          "wrist_R": 0.46292264762103214,
+          "eye_L": 6.309126751282691,
+          "eye_R": 13.750493288334084,
+          "nose_vertex201": 12.788975286492354
+        },
+        "verdict": "PASS_IN_SAMPLE_2D_POSE_REFINEMENT__FAIL_OBSERVED_SHAPE_OR_PHYSICAL_HAND_FIT",
+        "visual": "before-after右图头部转向/倾斜更接近原图，cyan脸轮廓不再从照片中央穿过；腕肘点肉眼贴合。但头部/肩宽轮廓仍不完全匹配，颈肩倾斜大。实际renders/front.png图左手腕/手掌呈竖向扭折轮廓、图右前臂/手被躯干遮住，未重现原图两手在腹前提衣的手部表面和接触。",
+        "bound_warning": "neck01 roll=22deg reached upper bound; head/spine compensate. Low 2D point error does not establish anatomically/physically correct 3D configuration.",
+        "scope": "same final conditional shape and byte-identical crop camera; optimizes original manual points directly, hence in-sample diagnostic only. Not independent observed body shape validation, physical garment fit, true 3D hand pose or tissue/contact validation."
+      },
+      "iterations_3_to_5_visual_review": [
+        {
+          "path": "iteration-3-depth-dominant",
+          "verdict": "POSE_FAIL",
+          "visual": "正面手横向会合改善，但双掌/指互相穿叠；侧面双上臂抬胸前、肘大幅前突、前臂近竖直向下，像抱球，偏离近身提衣。",
+          "elbow_errors_px": [
+            57,
+            142
+          ]
+        },
+        {
+          "path": "iteration-4-elbow-dominant",
+          "verdict": "POSE_FAIL",
+          "visual": "正面大掌平展重叠；侧面手部再次入腹/遮入躯干，上臂前抬仍明显。",
+          "elbow_errors_px": [
+            27.5,
+            45.6
+          ]
+        },
+        {
+          "path": "iteration-5-forward-IK",
+          "verdict": "POSE_FAIL",
+          "visual": "正面手横向更连续自然、腕肘近照片点；侧面双臂向前悬伸，手距腹前表面21–25cm+，明显没有原图近腹握衣摆动作。手指也不是可信的衣物握持接触。"
+        }
+      ],
+      "latest_joint_errors_px": {
+        "neck01": 1.7767448064970006,
+        "upperarm01.L": 26.59722380154618,
+        "upperarm01.R": 24.978559007130233,
+        "lowerarm01.L": 1.7816086216140106,
+        "lowerarm01.R": 4.766595573306732,
+        "wrist.L": 1.2644452959907055,
+        "wrist.R": 3.9235730402397504,
+        "eye.L": 6.309126751283083,
+        "eye.R": 13.750493288334429,
+        "nose_vertex201": 12.788975286492354
+      },
+      "latest_cropped_clothed_envelope": {
+        "iou": 0.7397312768703336,
+        "dice": 0.8503971696146813,
+        "symmetric_contour_mean_px": 47.99163055419922,
+        "symmetric_contour_p95_px": 101.393798828125
+      },
+      "latest_hand_front_fraction": [
+        1.0,
+        1.0
+      ],
+      "latest_hand_min_front_clearance_cm": [
+        21.157725083503365,
+        25.3026167252225
+      ],
+      "latest_palm_distance_cm": 6.0241877284033425,
+      "inspection_side_camera": "inspection-camera.json uses inspection-only horizontal recentering so forward hands stay in frame; main crop camera/reference point scores remain unchanged.",
+      "scope": "固定body/实际骨头长度、近似正交crop camera、人工可见/隐藏点假设下的pose解仍未解决；不是声称真人无法做该动作或所有其他相机/体型/标点都不可能。手部可见形态和动作合理性优先于隐藏关节的subpixel重投影。",
+      "geometry_not_pose": "geometry-check numerical export PASS does not override its explicit POSE_FAIL; report error~1.22e-5cm concerns LBS export only.",
+      "stop_reason": "多轮实际正侧图审查均不满足近身提衣动作；保持失败与深度歧义而停止，无accepted candidate，主final A-pose不变。"
+    }
+  },
+  "grader_reference": "tools/skill_evals/upstream/agents/grader.md (read; evidence-based assertions and quality-claim checks; no aggregate pass_rate across heterogeneous claims)",
+  "expectations": [
+    {
+      "text": "v2四个可见服装基本特征通过",
+      "passed": true,
+      "evidence": "逐张高清front/side/back/closeup；七分袖露前臂、窄浅船领、小中央红绿装饰、纵列pointelle眼孔；细节WARN保留。"
+    },
+    {
+      "text": "最终actual资源和原图/分view诊断使用同一选中shape",
+      "passed": true,
+      "evidence": "独立比较asset/version/dimensions/morphWeights并计算state/OBJ/camera/reference/render hashes；结果全部true。"
+    },
+    {
+      "text": "条件shape相对fixed M提高全部全clothed IoU",
+      "passed": false,
+      "evidence": "shape-fit/metrics.json三视IoU都下降，front .81420→.80564，side .68676→.68376，back .74962→.74437。"
+    },
+    {
+      "text": "shared pose严格匹配三个生成view",
+      "passed": false,
+      "evidence": "fit/back-final-photo-overlay.png双腕明显错位，23.15/30.76px；front/side也有局部表面残差。"
+    },
+    {
+      "text": "同body分view姿态调节改善其被优化手腕",
+      "passed": true,
+      "evidence": "view-specific/back/before-after.png手腕对齐；summary.json back .224/.081px、side .182px。仅in-sample，未证明heldout。"
+    },
+    {
+      "text": "原图候选证明原模特人体准确恢复",
+      "passed": false,
+      "evidence": "原图iterations2–5均POSE_FAIL。最新forward-IK腕1.26/3.92px、肘1.78/4.77px且手100%在腹前，但side实际手离腹min21.16/25.30cm，与近身提衣不符。accepted_matched_candidate=null；低2D误差不能证明正确3D/shape。"
+    },
+    {
+      "text": "原图第二轮在同shape同camera下改善被优化的2D头/肘/腕点",
+      "passed": true,
+      "evidence": "该历史改善保留于original-reference/iteration-2与iteration_2_review；其实际手部失败后继续3–5，最新仍POSE_FAIL，没有accepted candidate。"
+    },
+    {
+      "text": "原图最新候选重现合理的近腹提衣三维手姿",
+      "passed": false,
+      "evidence": "实际renders/front.png正面可显得相容，但renders/side.png双手悬伸远离腹部；hand-depth-check.json全部手顶点在torso前但minclearance21.16/25.30cm。candidate-status.json overall POSE_FAIL，accepted null。"
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      "不要仅验证六张文件存在：v1同样存在六图但袖型错误，必须保留四项可见设计检查。",
+      "不能把只优化两个手腕、或包含性loss下降，充当全表面/真实人体/heldout通过。",
+      "分开记录shared back失败与view-specific back in-sample改善；不能替换heldout基准。",
+      "原图neck锚点零误差不可用来证明独立姿态准确。",
+      "本case两轮是修正历史，不是skill因果benchmark或泛化成功率。",
+      "原图关键点拟合需同时检查实际mesh手部轮廓与遮挡：腕肘<1px仍可能是错误3D扭转或手部穿遮，不能只靠点误差通过物理姿态。",
+      "手部100%在腹前仍可能离身过远；需正侧实际mesh与动作语义共同判断，不能把front fraction当contact或自然动作验收。"
+    ]
+  },
+  "usable_scope": [
+    "展示从一张商品图到六张生成参考，再到真实可调人体/骨骼/导出文件及OpenCV包络匹配的可审计工作流。",
+    "展示同一条件shape下共享pose不足、分view pose可以改善人工腕点的诊断。",
+    "在明确标注prior/estimate和误差的前提下作为后续人工调整起点。"
+  ],
+  "prohibited_claims": [
+    "精确复制ASOS商品针织/肩部结构/所有背部和裤脚细节。",
+    "六图是同一个真实人物的同步多视实拍或严格同一姿势投影。",
+    "恢复官网171cm/S模特真实胸腰臀/体型。",
+    "generated pose/depth是检测器真值或metric depth。",
+    "包含性shape优化提升全部IoU、heldout准确性或真实体型准确性。",
+    "view-specific腕点改善属于heldout验证。",
+    "原图候选达到observed body fit PASS。",
+    "验证真实布料、衣物松量、碰撞/支撑、缝合或物理穿着。",
+    "将原图最新forward-IK解当选中的合理提衣pose；它是明确拒绝的latest_failed_candidate，数值导出PASS不等于姿态PASS。"
+  ],
+  "reviewed_model_artifact_sha256": {
+    "model/original-reference/state.json": "e48d77d763557f8ab4ccae0c29f2e4dcafa5cb939ed219f0050ec7ec5f8edf7b",
+    "model/original-reference/metrics.json": "74af0e13bb7004f7da63c9a67fb50553682630a264b50e8299483965c7d5238e",
+    "model/original-reference/before-after.png": "d3b4001b3415fe03c38c7273467a71dbabab78cf9501865c805e66598e38895b",
+    "model/original-reference/renders/front.png": "11380447162b2dd0dc19410fd238adeb0ce7376559fb24b18e49393894e293f8",
+    "model/original-reference/renders/side.png": "544e35eb15664c29c0b28f69d044a26de60b113ec51d72cf5c041b0c284c0bac",
+    "model/original-reference/camera.json": "39b9e3e37fd84161476ca9a226500d010ff434d689538b571ea56e04f989da0c",
+    "model/original-reference/inspection-camera.json": "f6312fa6c91306e0571091bedfee1a628e8fabdb54dbaae137e6a18a991822ee",
+    "model/original-reference/posed.obj": "4779e58db22a85651ce9a39e02c2f5e15e47d67031ee044db7dd5033fa8ae1c4",
+    "model/original-reference/posed.glb": "db27b4fc00b7e18d6744813c567e029e608785879225d3d24155d4123af023d9",
+    "model/original-reference/posed-joints.json": "cc868ee88d77fb267fcf59129044baa1f3fe05fcbb4f509f3f3c87740f0d4183",
+    "model/original-reference/candidate-status.json": "884e19defa91a57d211dd8cfc4626f75c5c8730eaaef8312f99b48397661d253",
+    "model/original-reference/ik-depth-feasibility.json": "304b85ad8da69ff69d498fcd1faa718a41c6c128105b5e393558ebc96a3d171a",
+    "model/original-reference/hand-depth-check.json": "3790fd8fdd93b7509d2548826f43f9af4bf0b6c307a47b6edc87933df8ea3f6a",
+    "model/original-reference/geometry-check.json": "b5115590e87c6c7e112d125bcbd467b2f0ef8d236d511a65fb8e3a5b1f452ab2",
+    "model/final-state.json": "2c44c7236d83c827097312ed5dfbf4899a2c921c2860bfd564e47af2dbe2008f",
+    "model/view-specific/side/state.json": "f047fd128c120963265c36c0e7affe7fa990bfdc4432eb03109d9dc1f23d8317",
+    "model/view-specific/back/state.json": "b86d5e04b678fff6cb907cff8ea32465bf27236e93a0ec92686d2945584578b8"
+  }
+}

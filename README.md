@@ -36,6 +36,8 @@ The `.claude/skills/garment-body-six-view` symlink points Claude’s skill path 
 Download the [installable skill package](skill-packages/garment-body-six-view.skill)
 or read the [installation guide](.agents/skills/garment-body-six-view/INSTALL.md).
 The [published skill workflow and download](https://liush2yuxjtu.github.io/pattern-agent/garment-body/skill/) now use Human Studio: anatomical mesh, 12 cm dimensions, 163 bones, versioned state, OBJ cm / GLB m and independent neutral-mesh checks.
+
+The [real garment case gallery](https://liush2yuxjtu.github.io/pattern-agent/garment-body/product-case/eval.html) shows the original ASOS reference, six separate native Image Gen outputs, actual anatomical renders and OpenCV before/after overlays. It preserves the failed first generation and separates conditional avatar fitting from real-person measurements. The case model opens directly in Human Studio with editable cm dimensions and joint angles.
 Historical loft evaluations retain their original scope and scores.
 
 [Native trigger evaluation tools](tools/skill_evals/README.md) include the pinned

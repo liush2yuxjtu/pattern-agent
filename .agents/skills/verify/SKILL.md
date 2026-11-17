@@ -26,6 +26,7 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Recovered motion | [oneshot-motion](references/oneshot-motion.md) — saved meshes and independently reopened replay | 121 full-array matches, UNKNOWN retained |
 | 2D roundtrip and metric response | [pattern-roundtrip](references/pattern-roundtrip.md) — physical-size PDF, independent verifier, replay | negative controls, seam/trajectory FAIL retained |
 | Anatomical pose and centimetre editor | [human-studio](references/human-studio.md) — actual skinned mesh, measured dimensions, exported OBJ/GLB | browser input, independent tape/skin math, persistence and units |
+| Actual garment six-image case | [product-case](references/product-case.md) — native generation, anatomical fit and four-stage visual review | source hashes, actual overlays, editable model handoff and live downloads |
 | Apparel body skill and trigger evals | [skill-evals](references/skill-evals.md) — shipped helper CLIs and actual Claude routing | helper controls, package readback, native events or BLOCKED |
 | Fitted T-shirt source and visual preview | [fitted-tshirt](references/fitted-tshirt.md) — real WebGL, downloaded archive and rebuilt mesh | source hashes, real controls and fallback; physical fit NOT_RUN |
 | Prototype package reference page | [prototype-package](references/prototype-package.md) — actual diagrams, JSON-backed examples and saved source downloads | original file digests, two responsive workflows, unchanged existing pages |

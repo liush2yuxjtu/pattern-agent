@@ -1,0 +1,519 @@
+{
+  "previous_candidate": {
+    "manual_joint_errors_px": [
+      {
+        "landmark": "neck01",
+        "error_px": 1.7767448064970006
+      },
+      {
+        "landmark": "upperarm01.L",
+        "error_px": 26.597223801545855
+      },
+      {
+        "landmark": "upperarm01.R",
+        "error_px": 24.97855900712984
+      },
+      {
+        "landmark": "lowerarm01.L",
+        "error_px": 0.4249217382250961
+      },
+      {
+        "landmark": "lowerarm01.R",
+        "error_px": 0.6119938825623898
+      },
+      {
+        "landmark": "wrist.L",
+        "error_px": 0.3875779364328437
+      },
+      {
+        "landmark": "wrist.R",
+        "error_px": 0.46292264762103214
+      },
+      {
+        "landmark": "eye.L",
+        "error_px": 6.309126751282691
+      },
+      {
+        "landmark": "eye.R",
+        "error_px": 13.750493288334084
+      },
+      {
+        "landmark": "nose_vertex201",
+        "error_px": 12.788975286492354
+      }
+    ],
+    "cropped_clothed_envelope": {
+      "iou": 0.7413521950573155,
+      "dice": 0.8514672645333695,
+      "symmetric_contour_mean_px": 46.599510192871094,
+      "symmetric_contour_p95_px": 101.0
+    }
+  },
+  "refined_head_and_arms": {
+    "manual_joint_errors_px": [
+      {
+        "landmark": "neck01",
+        "error_px": 1.7767448064970006
+      },
+      {
+        "landmark": "upperarm01.L",
+        "error_px": 26.59722380154618
+      },
+      {
+        "landmark": "upperarm01.R",
+        "error_px": 24.978559007130233
+      },
+      {
+        "landmark": "lowerarm01.L",
+        "error_px": 1.7816086216140106
+      },
+      {
+        "landmark": "lowerarm01.R",
+        "error_px": 4.766595573306732
+      },
+      {
+        "landmark": "wrist.L",
+        "error_px": 1.2644452959907055
+      },
+      {
+        "landmark": "wrist.R",
+        "error_px": 3.9235730402397504
+      },
+      {
+        "landmark": "eye.L",
+        "error_px": 6.309126751283083
+      },
+      {
+        "landmark": "eye.R",
+        "error_px": 13.750493288334429
+      },
+      {
+        "landmark": "nose_vertex201",
+        "error_px": 12.788975286492354
+      }
+    ],
+    "cropped_clothed_envelope": {
+      "iou": 0.7397312768703336,
+      "dice": 0.8503971696146813,
+      "symmetric_contour_mean_px": 47.99163055419922,
+      "symmetric_contour_p95_px": 101.393798828125
+    },
+    "actual_hand_surface_depth": {
+      "L": {
+        "hand_surface_vertices": 1403,
+        "hand_surface_torso_front_clearance_cm_min": 21.157725003788567,
+        "hand_surface_torso_front_clearance_cm_p05": 21.918097955074764,
+        "hand_surface_fraction_in_front_of_torso": 1.0,
+        "wrist_world_cm": [
+          4.132468943055288,
+          112.58747910279784,
+          36.35471956071553
+        ],
+        "palm_center_world_cm": [
+          -3.2581452793780596,
+          111.4460905501729,
+          42.2723121038088
+        ],
+        "palm_direction_world": [
+          -0.7749945457935359,
+          -0.11968827979554154,
+          0.6205305549848897
+        ],
+        "palm_cross_normal_world": [
+          0.5816363255159105,
+          0.05645747940444173,
+          0.8114873614910136
+        ],
+        "wrist_euler_degrees": [
+          9.9,
+          0.7,
+          -1.5
+        ]
+      },
+      "R": {
+        "hand_surface_vertices": 1403,
+        "hand_surface_torso_front_clearance_cm_min": 25.302616708036176,
+        "hand_surface_torso_front_clearance_cm_p05": 27.605807919766352,
+        "hand_surface_fraction_in_front_of_torso": 1.0,
+        "wrist_world_cm": [
+          -15.06216114535687,
+          114.30007161258982,
+          47.67211374420888
+        ],
+        "palm_center_world_cm": [
+          -5.776304808937034,
+          112.12893913286854,
+          47.702176575768235
+        ],
+        "palm_direction_world": [
+          0.9737334133749824,
+          -0.2276692815154391,
+          0.003152448468882385
+        ],
+        "palm_cross_normal_world": [
+          -0.14227104532335427,
+          -0.4187261135886375,
+          -0.8968987632177645
+        ],
+        "wrist_euler_degrees": [
+          30.9,
+          22.8,
+          49.0
+        ]
+      }
+    }
+  },
+  "protocol": {
+    "separate_from_generated_validation": true,
+    "same_shape_as_main_final": true,
+    "camera_unchanged": true,
+    "native_evaluation_resolution": [
+      1000,
+      1276
+    ],
+    "optimized": "bounded actual spine02 yaw/roll, neck/head XYZ, shoulders/upperarm XYZ and elbow XYZ; no shape edits",
+    "objective_calls": 2522,
+    "solver_nfev": 142,
+    "pose_bounds_deg": [
+      {
+        "joint": "spine02",
+        "axis": 1,
+        "min": -12,
+        "max": 12
+      },
+      {
+        "joint": "spine02",
+        "axis": 2,
+        "min": -12,
+        "max": 12
+      },
+      {
+        "joint": "neck01",
+        "axis": 0,
+        "min": -25,
+        "max": 30
+      },
+      {
+        "joint": "neck01",
+        "axis": 1,
+        "min": -35,
+        "max": 35
+      },
+      {
+        "joint": "neck01",
+        "axis": 2,
+        "min": -22,
+        "max": 22
+      },
+      {
+        "joint": "head",
+        "axis": 0,
+        "min": -35,
+        "max": 35
+      },
+      {
+        "joint": "head",
+        "axis": 1,
+        "min": -55,
+        "max": 55
+      },
+      {
+        "joint": "head",
+        "axis": 2,
+        "min": -22,
+        "max": 22
+      },
+      {
+        "joint": "upperarm01.L",
+        "axis": 0,
+        "min": -85,
+        "max": 90
+      },
+      {
+        "joint": "upperarm01.L",
+        "axis": 1,
+        "min": -85,
+        "max": 85
+      },
+      {
+        "joint": "upperarm01.L",
+        "axis": 2,
+        "min": -65,
+        "max": 65
+      },
+      {
+        "joint": "upperarm01.R",
+        "axis": 0,
+        "min": -85,
+        "max": 90
+      },
+      {
+        "joint": "upperarm01.R",
+        "axis": 1,
+        "min": -85,
+        "max": 85
+      },
+      {
+        "joint": "upperarm01.R",
+        "axis": 2,
+        "min": -65,
+        "max": 65
+      },
+      {
+        "joint": "lowerarm01.L",
+        "axis": 0,
+        "min": -85,
+        "max": 85
+      },
+      {
+        "joint": "lowerarm01.L",
+        "axis": 1,
+        "min": -85,
+        "max": 85
+      },
+      {
+        "joint": "lowerarm01.L",
+        "axis": 2,
+        "min": -145,
+        "max": 20
+      },
+      {
+        "joint": "lowerarm01.R",
+        "axis": 0,
+        "min": -85,
+        "max": 85
+      },
+      {
+        "joint": "lowerarm01.R",
+        "axis": 1,
+        "min": -85,
+        "max": 85
+      },
+      {
+        "joint": "lowerarm01.R",
+        "axis": 2,
+        "min": -20,
+        "max": 145
+      }
+    ],
+    "selected_pose_degrees": {
+      "finger1-1.L": [
+        -4.9,
+        0.0,
+        -1.0
+      ],
+      "finger1-1.R": [
+        -5.0,
+        -0.0,
+        0.7
+      ],
+      "finger1-2.L": [
+        -8.3,
+        0.4,
+        -5.5
+      ],
+      "finger1-2.R": [
+        -7.3,
+        -0.4,
+        6.8
+      ],
+      "finger1-3.L": [
+        -2.9,
+        0.1,
+        -4.0
+      ],
+      "finger1-3.R": [
+        -0.8,
+        -0.0,
+        4.9
+      ],
+      "finger2-1.L": [
+        -2.1,
+        0.1,
+        -5.6
+      ],
+      "finger2-1.R": [
+        0.3,
+        0.0,
+        6.0
+      ],
+      "finger2-2.L": [
+        -6.2,
+        0.6,
+        -10.2
+      ],
+      "finger2-2.R": [
+        -0.6,
+        -0.1,
+        12.0
+      ],
+      "finger2-3.L": [
+        -3.6,
+        0.2,
+        -4.8
+      ],
+      "finger2-3.R": [
+        -0.4,
+        -0.0,
+        6.0
+      ],
+      "finger3-1.L": [
+        -2.4,
+        0.1,
+        -5.5
+      ],
+      "finger3-1.R": [
+        1.0,
+        0.1,
+        5.9
+      ],
+      "finger3-2.L": [
+        -5.6,
+        0.5,
+        -10.6
+      ],
+      "finger3-2.R": [
+        1.0,
+        0.1,
+        12.0
+      ],
+      "finger3-3.L": [
+        -3.2,
+        0.1,
+        -5.1
+      ],
+      "finger3-3.R": [
+        0.6,
+        0.0,
+        6.0
+      ],
+      "finger4-1.L": [
+        -2.5,
+        0.1,
+        -5.5
+      ],
+      "finger4-1.R": [
+        1.4,
+        0.1,
+        5.8
+      ],
+      "finger4-2.L": [
+        -5.6,
+        0.5,
+        -10.6
+      ],
+      "finger4-2.R": [
+        2.0,
+        0.2,
+        11.8
+      ],
+      "finger4-3.L": [
+        -3.0,
+        0.1,
+        -5.2
+      ],
+      "finger4-3.R": [
+        1.2,
+        0.1,
+        5.9
+      ],
+      "finger5-1.L": [
+        -2.8,
+        0.1,
+        -5.3
+      ],
+      "finger5-1.R": [
+        1.4,
+        0.1,
+        5.8
+      ],
+      "finger5-2.L": [
+        -6.1,
+        0.5,
+        -10.3
+      ],
+      "finger5-2.R": [
+        2.2,
+        0.2,
+        11.8
+      ],
+      "finger5-3.L": [
+        -3.0,
+        0.1,
+        -5.2
+      ],
+      "finger5-3.R": [
+        1.2,
+        0.1,
+        5.9
+      ],
+      "head": [
+        20.4,
+        -17.5,
+        -20.4
+      ],
+      "lowerarm01.L": [
+        -17.3,
+        5.4,
+        -47.7
+      ],
+      "lowerarm01.R": [
+        27.5,
+        -60.8,
+        63.6
+      ],
+      "neck01": [
+        -20.6,
+        -7.0,
+        22.0
+      ],
+      "upperarm01.L": [
+        54.3,
+        -19.2,
+        -23.3
+      ],
+      "upperarm01.R": [
+        35.7,
+        55.2,
+        20.6
+      ],
+      "spine02": [
+        0.0,
+        7.7,
+        -0.1
+      ],
+      "wrist.L": [
+        9.9,
+        0.7,
+        -1.5
+      ],
+      "wrist.R": [
+        30.9,
+        22.8,
+        49.0
+      ]
+    },
+    "landmarks": "Manual visible eye/nose/wrist and uncertain clothing-occluded shoulder/elbow centers; eye bone centers and actual nose meshvertex201",
+    "limits": [
+      "Original crop has oblique perspective, different face identity, hair and garment gathering.",
+      "Camera anchor neck and manually estimated occluded joints are not independent real-person body validation.",
+      "Low2Dreprojection error alone does not identify true3Dpose or tissue/cloth fit.",
+      "Main generation2 finalshape/pose/camera/renders remain unchanged."
+    ],
+    "previous_phase_key": "previous_candidate",
+    "selected_phase_key": "refined_head_and_arms",
+    "phase_label": "Forward-IK branch iteration5 diagnostic, original photo only",
+    "objective_calls_iteration3": 2621,
+    "solver_nfev_iteration3": 95,
+    "actual_torso_depth": "Source-skinned torso-only triangles rasterized to torso-front-depth-cm.npy; joints and actual hand surfaces compared against its front envelope",
+    "finger_pose": "Mild actual joint flexion into abdomen direction; approximate grasp only, no cloth/contact simulation",
+    "pose_status": "POSE_FAIL",
+    "observed_original_fit": "UNRESOLVED / DEPTH_AMBIGUOUS",
+    "accepted_matched_candidate": null,
+    "latest_failed_candidate": "iteration-5-forward-IK",
+    "stop_reason": "Independent front+side actual-mesh review rejects the forward branch as outstretched hands, not near-abdomen cloth grip; no bounded candidate satisfied2D and plausible3D under frozen body/camera.",
+    "depth_branch_evidence": "ik-depth-feasibility.json",
+    "reviewer": "/root/red_case_review",
+    "manual_hidden_landmark_boundary": "Shoulder/elbow points are manual estimates beneath clothing, not hard anatomical truth. The depth-branch conclusion is conditional on this fixed avatar/actual bone-head lengths, orthographic crop approximation and these uncertain2Dpoints; it is neither a universal IK impossibility claim nor evidence the real person cannot make the pose. Visible palm/finger/hem appearance and plausible3D action take precedence over subpixel hidden-joint scores."
+  }
+}

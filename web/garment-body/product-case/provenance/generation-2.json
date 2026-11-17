@@ -1,0 +1,193 @@
+{
+  "paths": {
+    "front": {
+      "path": "work/product-red-pointelle-20261117/iterations/generation-2/front.png",
+      "sha256": "64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    "side": {
+      "path": "work/product-red-pointelle-20261117/iterations/generation-2/side.png",
+      "sha256": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    "back": {
+      "path": "work/product-red-pointelle-20261117/iterations/generation-2/back.png",
+      "sha256": "25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    "closeup": {
+      "path": "work/product-red-pointelle-20261117/iterations/generation-2/closeup.png",
+      "sha256": "650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215",
+      "pixels": [
+        1110,
+        1417
+      ]
+    },
+    "pose": {
+      "path": "work/product-red-pointelle-20261117/iterations/generation-2/pose.png",
+      "sha256": "6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    "depth": {
+      "path": "work/product-red-pointelle-20261117/iterations/generation-2/depth.png",
+      "sha256": "b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d",
+      "pixels": [
+        1086,
+        1448
+      ]
+    }
+  },
+  "prompts": {
+    "common": "Edit the provided garment-reference image into ONE standalone high-resolution image, preserving the exact adult woman's face, body proportions, pose, hands, bare feet, framing, lighting and matching red pajama trousers. This is a precise garment correction, not a new person or body. The original product photo is the authoritative garment reference; official ASOS product211010805 is a RED COTTON POINTELLE BOATNECK THREE-QUARTER-SLEEVE TOP, slim fit. CRITICAL CORRECTION: sleeves end at the mid forearm, approximately halfway between elbow and wrist, leaving several inches of forearm bare. They must NOT reach the wrists. Keep a broad shallow BOAT neckline, with narrow smooth red binding, NOT a deep scoop and NOT conspicuous scalloped/lace/picot trim. Keep the neckline ornament a TINY dark-red rosebud with two minuscule green leaves, not a large embroidered rose. Preserve the original fine vertical eyelet pointelle knit columns; no ornate new floral lace pattern. Keep the red matching straight-leg relaxed pajama trousers and small waist ornament; keep original garment seams and natural hem without inventing decorative shoulder tabs. No text, no watermarks, no collage, no panel layout. Maximum native resolution. Preserve the body's pixel placement and camera of the existing full-body image.",
+    "specs": [
+      [
+        "front",
+        "Correct only the garment details in the provided straight-on full-body front photo; exact same A pose and locations of ankles, wrists and head.",
+        "/workspace/work/pattern-agent/work/product-red-pointelle-20261117/images/front.png"
+      ],
+      [
+        "side",
+        "Correct only the garment details in the provided exact90degree side photo, woman facingright; exact same body pose, camera and anatomy placement.",
+        "/workspace/work/pattern-agent/work/product-red-pointelle-20261117/images/side.png"
+      ],
+      [
+        "back",
+        "Correct only the garment details in the provided full-body rear view. Preserve the stance and body. Three-quarter cuffs expose forearms. Back is a plain conservative continuation of the pointelle fabric; don't invent fasteners.",
+        "/workspace/work/pattern-agent/work/product-red-pointelle-20261117/images/back.png"
+      ],
+      [
+        "closeup",
+        "Correct the close-up while worn: show the exact shallow boat-neck smooth narrow binding, tiny rosebud and original fine pointelle texture. Both three-quarter sleeve ends should be visibly above the wrists if within crop. No extra lace or oversize flower. Maintain same person and crop.",
+        "/workspace/work/pattern-agent/work/product-red-pointelle-20261117/images/closeup.png"
+      ],
+      [
+        "pose",
+        "Produce a front full-body POSE-ESTIMATION-STYLE illustration using this supplied regular FRONT photo as its exact visual anchor; correct sleeves to three-quarter, then overlay small colored joint dots and thin skeleton lines at the actual body locations. The clothed person, framing, pose and clothing must otherwise match the supplied FRONT. This is an illustrative generated annotation, not measured detector data.",
+        "/workspace/work/pattern-agent/work/product-red-pointelle-20261117/images/front.png"
+      ],
+      [
+        "depth",
+        "Produce a front full-body grayscale RELATIVE-DEPTH-STYLE illustration using this supplied regular FRONT photo as exact silhouette/pose/framing anchor, with corrected three-quarter sleeve outlines. Blackbackground, smooth lighter-nearer depth surfaces. Remove photographic color/albedo/knit texture rather than merely desaturating the photo. Same body and red garment silhouettes. This is an illustrative generated relative-depth visual, not actual estimator output or metric depth.",
+        "/workspace/work/pattern-agent/work/product-red-pointelle-20261117/images/front.png"
+      ]
+    ]
+  },
+  "tool": "image_gen.imagegen",
+  "batch": "Six independent edit calls orchestrated concurrently; not one native multi-image tool call",
+  "collage_cropped": false,
+  "upscaled": false,
+  "timing": null,
+  "total_tokens": null,
+  "source_reference": {
+    "path": "reference/original-product.jpg",
+    "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+  },
+  "edit_anchor_references": {
+    "front": {
+      "path": "iterations/generation-1/front.png",
+      "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84"
+    },
+    "side": {
+      "path": "iterations/generation-1/side.png",
+      "sha256": "5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6"
+    },
+    "back": {
+      "path": "iterations/generation-1/back.png",
+      "sha256": "01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575"
+    },
+    "closeup": {
+      "path": "iterations/generation-1/closeup.png",
+      "sha256": "4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50"
+    },
+    "pose": {
+      "path": "iterations/generation-1/front.png",
+      "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84"
+    },
+    "depth": {
+      "path": "iterations/generation-1/front.png",
+      "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84"
+    }
+  },
+  "semantics": {
+    "front": "imagegen_clothed_reference",
+    "side": "imagegen_clothed_reference",
+    "back": "imagegen_clothed_reference",
+    "closeup": "imagegen_clothed_reference",
+    "pose": "illustrative_imagegen_not_detector_or_metric_depth",
+    "depth": "illustrative_imagegen_not_detector_or_metric_depth"
+  },
+  "native_tool_outputs": [
+    {
+      "view": "front",
+      "original_tool_path": "/workspace/generated_images/exec-622fd42e-f3a1-49d9-990c-55594f1c54ee.png",
+      "sha256": "64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "view": "side",
+      "original_tool_path": "/workspace/generated_images/exec-db88cdd0-4ac7-4112-a02a-db7cceaa6d22.png",
+      "sha256": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "view": "back",
+      "original_tool_path": "/workspace/generated_images/exec-d9644e17-7aa0-4a7d-8516-4c7f9431a35e.png",
+      "sha256": "25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "view": "closeup",
+      "original_tool_path": "/workspace/generated_images/exec-9457d313-db69-4f0d-adc0-e4a651031763.png",
+      "sha256": "650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215",
+      "native_pixels": [
+        1110,
+        1417
+      ],
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "view": "pose",
+      "original_tool_path": "/workspace/generated_images/exec-88481723-f286-4ee2-bec4-51be18ad9643.png",
+      "sha256": "6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "view": "depth",
+      "original_tool_path": "/workspace/generated_images/exec-d28c985a-20ae-43e7-8464-f9c1dbd18eb8.png",
+      "sha256": "b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "tool": "image_gen.imagegen"
+    }
+  ]
+}

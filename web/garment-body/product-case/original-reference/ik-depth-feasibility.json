@@ -1,0 +1,151 @@
+{
+  "status": "POSE_FAIL",
+  "interpretation": "UNRESOLVED / DEPTH_AMBIGUOUS under this fixed body/camera/approximate2Dlandmark hypothesis, not a claim that the real person cannot make this pose.",
+  "equations": [
+    "Orthographic inverse: x=(u-W/2)/s+cx; y=cy-(v-H/2)/s.",
+    "For fixed shoulderS and elbowXY: elbowZ=shoulderZ +/- sqrt(Lupper^2-dX^2-dY^2).",
+    "For elbowZ and wristXY: wristZ=elbowZ +/- sqrt(Lforearm^2-dX^2-dY^2)."
+  ],
+  "arms": {
+    "L": {
+      "shoulder_world_cm": [
+        16.80963340823787,
+        136.36928886469647,
+        -0.1424363605863589
+      ],
+      "reference_elbow_xy_cm": [
+        20.162515158186178,
+        121.45464608864697
+      ],
+      "reference_wrist_xy_cm": [
+        4.075402000058908,
+        112.51736100079847
+      ],
+      "actual_neutral_shoulder_to_elbow_joint_distance_cm": 26.851287155295136,
+      "actual_neutral_elbow_to_wrist_joint_distance_cm": 23.216182674681683,
+      "upperArmLength_dimension_target_cm": 29,
+      "forearmLength_dimension_target_cm": 23,
+      "length_definition_note": "Target ruler landmark lengths29/23cm are not blindly substituted for actual bone-head distances used in the IK arithmetic.",
+      "upper_segment_depth_magnitude_cm": 22.074945905478806,
+      "forearm_depth_magnitude_cm": 14.15347531457625,
+      "reference_wrist_torso_front_cm": 13.356715202331543,
+      "four_algebraic_depth_branches": [
+        {
+          "elbow_depth_sign": -1,
+          "wrist_depth_sign": -1,
+          "elbow_z_cm": -22.217382266065165,
+          "wrist_z_cm": -36.37085758064141,
+          "wrist_minus_reference_torso_front_cm": -49.727572782972956
+        },
+        {
+          "elbow_depth_sign": -1,
+          "wrist_depth_sign": 1,
+          "elbow_z_cm": -22.217382266065165,
+          "wrist_z_cm": -8.063906951488915,
+          "wrist_minus_reference_torso_front_cm": -21.42062215382046
+        },
+        {
+          "elbow_depth_sign": 1,
+          "wrist_depth_sign": -1,
+          "elbow_z_cm": 21.932509544892447,
+          "wrist_z_cm": 7.7790342303161975,
+          "wrist_minus_reference_torso_front_cm": -5.5776809720153455
+        },
+        {
+          "elbow_depth_sign": 1,
+          "wrist_depth_sign": 1,
+          "elbow_z_cm": 21.932509544892447,
+          "wrist_z_cm": 36.085984859468695,
+          "wrist_minus_reference_torso_front_cm": 22.729269657137152
+        }
+      ],
+      "iteration2_rear_solution_hand_fraction_in_front_of_torso": 0.0,
+      "iteration2_hand_min_clearance_cm": -18.154225251333415,
+      "latest_forward_solution_hand_fraction_in_front_of_torso": 1.0,
+      "latest_forward_hand_min_clearance_cm": 21.157725083503365
+    },
+    "R": {
+      "shoulder_world_cm": [
+        -16.491505514093056,
+        136.41855283915055,
+        4.360166756008385
+      ],
+      "reference_elbow_xy_cm": [
+        -20.448508280997327,
+        121.74063921145812
+      ],
+      "reference_wrist_xy_cm": [
+        -15.300632070396603,
+        114.44781457977375
+      ],
+      "actual_neutral_shoulder_to_elbow_joint_distance_cm": 26.851287155295136,
+      "actual_neutral_elbow_to_wrist_joint_distance_cm": 23.216182674681683,
+      "upperArmLength_dimension_target_cm": 29,
+      "forearmLength_dimension_target_cm": 23,
+      "length_definition_note": "Target ruler landmark lengths29/23cm are not blindly substituted for actual bone-head distances used in the IK arithmetic.",
+      "upper_segment_depth_magnitude_cm": 22.133517626821774,
+      "forearm_depth_magnitude_cm": 21.43140726588011,
+      "reference_wrist_torso_front_cm": 14.051084518432617,
+      "four_algebraic_depth_branches": [
+        {
+          "elbow_depth_sign": -1,
+          "wrist_depth_sign": -1,
+          "elbow_z_cm": -17.77335087081339,
+          "wrist_z_cm": -39.2047581366935,
+          "wrist_minus_reference_torso_front_cm": -53.255842655126116
+        },
+        {
+          "elbow_depth_sign": -1,
+          "wrist_depth_sign": 1,
+          "elbow_z_cm": -17.77335087081339,
+          "wrist_z_cm": 3.6580563950667226,
+          "wrist_minus_reference_torso_front_cm": -10.393028123365895
+        },
+        {
+          "elbow_depth_sign": 1,
+          "wrist_depth_sign": -1,
+          "elbow_z_cm": 26.49368438283016,
+          "wrist_z_cm": 5.06227711695005,
+          "wrist_minus_reference_torso_front_cm": -8.988807401482568
+        },
+        {
+          "elbow_depth_sign": 1,
+          "wrist_depth_sign": 1,
+          "elbow_z_cm": 26.49368438283016,
+          "wrist_z_cm": 47.92509164871027,
+          "wrist_minus_reference_torso_front_cm": 33.874007130277654
+        }
+      ],
+      "iteration2_rear_solution_hand_fraction_in_front_of_torso": 0.0,
+      "iteration2_hand_min_clearance_cm": -25.638905893621924,
+      "latest_forward_solution_hand_fraction_in_front_of_torso": 1.0,
+      "latest_forward_hand_min_clearance_cm": 25.3026167252225
+    }
+  },
+  "constraints_not_resolved": [
+    "Rear branch matches2D but actual hand surface hides inside/behind abdomen or folds unnaturally.",
+    "Depth-dominant compromise puts elbows high/forward and hands overlap; rejected.",
+    "Elbow-dominant compromise leaves hands through abdomen and exaggerated wrists; rejected.",
+    "Forward branch has nearly matching2D and visible hands but actual hand surfaces remain21\u201325cm in front of torso, an outstretched action inconsistent with near-abdomen hem gripping."
+  ],
+  "torso_depth_semantics": "Actual selected source-skinned torso-only triangles, excluding arm-dominant vertices, frontmost worldZ over XY; stored4px/cm grid280x200 centered[0,115]cm. Invalid projected ray falls back conservatively to row-front maximum. Not a collision/physical contact certification.",
+  "camera_sha256": "39b9e3e37fd84161476ca9a226500d010ff434d689538b571ea56e04f989da0c",
+  "fixed_dimensions": {
+    "height": 170,
+    "bust": 90,
+    "waist": 69,
+    "hips": 96,
+    "shoulders": 37,
+    "upperArm": 27,
+    "thigh": 50,
+    "neck": 32,
+    "upperArmLength": 29,
+    "forearmLength": 23,
+    "thighLength": 40,
+    "calf": 36
+  },
+  "morph_identical_to_main_final": true,
+  "main_final_untouched": true,
+  "source_original_sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+  "manual_hidden_landmark_boundary": "Shoulder/elbow points are manual estimates beneath clothing, not hard anatomical truth. The depth-branch conclusion is conditional on this fixed avatar/actual bone-head lengths, orthographic crop approximation and these uncertain2Dpoints; it is neither a universal IK impossibility claim nor evidence the real person cannot make the pose. Visible palm/finger/hem appearance and plausible3D action take precedence over subpixel hidden-joint scores."
+}

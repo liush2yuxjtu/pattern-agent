@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+<style>.quick-review{padding:22px;background:#fff;border:1px solid #dedfd6;border-radius:12px;margin-bottom:20px;color:#202b29;font:15px/1.5 system-ui,sans-serif}.quick-heading{display:flex;justify-content:space-between;align-items:start;gap:18px;flex-wrap:wrap}.quick-heading h2{font-size:24px;margin:0}.quick-heading p{margin:5px 0 14px;color:#5c6861}.quick-review select{max-width:100%;padding:10px;border:1px solid #aab8ae;border-radius:6px;background:white;color:#202b29;font:inherit}.evidence-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}.evidence-stage{min-width:0;background:#f6f7f2;border:1px solid #e0e4da;border-radius:9px;padding:12px}.evidence-stage h3{font-size:16px;margin:0 0 10px}.evidence-stage .stage-status{font-size:12px;display:inline-block;padding:2px 7px;border-radius:4px;background:#e2e9df;color:#405240;margin:0 0 10px}.evidence-stage .stage-status.unavailable{background:#eee8dc;color:#756238}.evidence-empty{min-height:205px;display:flex;flex-direction:column;justify-content:center;padding:16px;color:#61685f;font-size:14px;border:1px dashed #c6cdbd;border-radius:6px;overflow-wrap:anywhere}.evidence-empty strong{display:block;color:#3b4439;margin-bottom:9px}.evidence-stage figure{margin:0 0 12px}.evidence-stage figure:last-child{margin-bottom:0}.evidence-image{display:block;width:100%;border:0;padding:0;background:#eceee9;border-radius:5px;cursor:zoom-in}.evidence-image img{display:block;width:100%;height:220px;object-fit:contain}.evidence-stage figcaption{font-size:12px;line-height:1.45;margin-top:7px;color:#566254;overflow-wrap:anywhere}.evidence-stage .thumb-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:8px}.thumb-strip button{border:1px solid #cdd6ca;background:white;padding:3px;cursor:zoom-in;border-radius:4px}.thumb-strip img{display:block;width:100%;height:65px;object-fit:contain}.evidence-footnote{font-size:13px;color:#596557;margin:14px 0 0}.quick-review a{color:#116750}.evidence-lightbox{position:fixed;inset:0;margin:auto;overflow:auto;border:0;border-radius:12px;background:#111c19;color:#fff;width:min(96vw,1100px);max-height:96vh;padding:18px;box-shadow:0 20px 100px #0008}.evidence-lightbox::backdrop{background:#07100de8}.lightbox-head,.lightbox-controls{display:flex;justify-content:space-between;gap:14px;align-items:center}.evidence-lightbox button,.evidence-lightbox a{background:#263c34;border:1px solid #587266;color:white;padding:9px 14px;border-radius:6px;cursor:pointer;font:inherit;text-decoration:none}.lightbox-image{display:block;max-width:100%;height:min(68vh,820px);object-fit:contain;margin:14px auto}.lightbox-caption{font-size:14px;margin:8px 0 14px;overflow-wrap:anywhere}.quick-raw summary{padding:14px;cursor:pointer;font-weight:600}.quick-raw{margin-bottom:18px;border:1px solid #dedfd6;border-radius:8px}.quick-raw .section{border:0;margin:0}.quick-prompt summary{cursor:pointer;padding:8px 0;color:#586451}@media(max-width:1050px){.evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:580px){.quick-review{padding:14px}.quick-heading h2{font-size:21px}.evidence-grid{grid-template-columns:1fr}.evidence-image img{height:260px}.evidence-empty{min-height:130px}.quick-review select{width:100%}.evidence-lightbox{padding:12px}.evidence-lightbox button,.evidence-lightbox a{padding:8px}.lightbox-controls{flex-wrap:wrap}}
+</style>
+<style>.product-nav{padding:12px 24px;background:#e5ede5;font:14px/1.5 system-ui}.product-nav a,.product-intro a,.product-results a{color:#116750}.product-intro{padding:20px 24px;background:#fff;font:15px/1.65 system-ui}.product-intro h2{font-size:25px;margin:0}.product-intro p{max-width:1000px;margin:8px 0}.product-primary{display:inline-block;background:#145d47;color:#fff!important;border-radius:6px;padding:9px 14px;text-decoration:none}.product-results{font:14px/1.6 system-ui;background:#fff;border:1px solid #dedfd6;border-radius:10px;padding:20px;margin:0 0 20px}.product-results h2{margin-top:0;font-size:23px}.product-results h3{margin-top:22px}.table-scroll{overflow-x:auto}.product-results table{width:100%;border-collapse:collapse;white-space:nowrap}.product-results th,.product-results td{text-align:left;padding:9px;border-bottom:1px solid #e0e4da}.product-results th{font-weight:600}.quality-table{white-space:normal!important;min-width:680px}.quality-table th{min-width:170px}.quality-evidence{white-space:normal;min-width:300px}.product-downloads{line-height:2}.quick-review .evidence-image img{height:280px}.pose-tabs{display:flex;gap:8px;margin:12px 0}.pose-tabs button{font:inherit;padding:8px 14px;border:1px solid #aab8ae;border-radius:6px;cursor:pointer;background:#fff;color:#202b29}.pose-tabs button[aria-selected="true"]{background:#145d47;color:white}.pose-comparisons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.pose-comparisons[hidden]{display:none}.pose-comparisons figure{margin:0;text-align:center}.pose-comparisons img{width:100%;height:440px;object-fit:contain;background:#f6f7f2}.pose-comparisons figcaption{padding:7px}@media(max-width:580px){.product-intro{padding:16px}.product-intro h2{font-size:22px}.product-results{padding:14px}.product-nav{padding:10px 16px}.pose-comparisons{grid-template-columns:1fr}}</style><style>.original-comparison{margin:16px 0}.original-comparison img{display:block;width:100%;max-height:650px;object-fit:contain;background:#f6f7f2}.original-comparison figcaption{font-size:13px;padding:7px 0}</style></head>
+<body><nav class="product-nav"><a href="../skill/">技能与下载</a> · <a href="../anatomical-evals/eval.html">历史合成组件评测</a> · <a href="manifest.json">本案例文件摘要</a></nav><div class="product-intro"><h2>从电商原图到六图与可调人体</h2><p>实际商品：<a href="https://www.asos.com/us/asos-design/asos-design-lounge-pointelle-boatneck-3-4-sleeve-top-in-red/prd/211010805" target="_blank" rel="noopener">ASOS 船领七分袖 pointelle 红色上衣</a>。官网原模特 171 cm、穿 S；演示裸模以用户允许的 170 cm 中码先验初始化。先检查商品，再比较真实网格与照片叠加。</p><p>第1轮袖长错误保留为失败对照；第2轮修正七分袖。六图生成已执行。<strong>原始商品图的人体姿态仍 POSE_FAIL，未达到三维动作匹配。</strong>裸模不是布料仿真，物理合身 <strong>NOT_RUN</strong>。</p><p><a class="product-primary" id="adjust-model" href="../../human-studio/?model=../garment-body/product-case/model/final-state.json">打开第2轮选中人体，调厘米尺寸与姿态</a></p><p>输入链：原图 + 初始中码裸模 → 第1轮；原图 + 第1轮照片 → 第2轮衣物修正；最后再拟合 69 cm 腰围 / 50 cm 大腿围的条件人体。最终拟合人体未重新送入这两轮生成。</p></div>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. Submit All Reviews downloads feedback.json for your next review round.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback was downloaded as feedback.json. Keep the file and share it with your agent to continue the review.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "\u771f\u5b9e\u5546\u54c1\u516d\u56fe\u4e0e\u53c2\u6570\u4eba\u4f53\uff1a\u6587\u4ef6\u6267\u884c\u5b8c\u6574\u6027", "runs": [{"id": "eval-product-generation_2-run-1", "prompt": "\u4f9d\u636e\u539f\u59cb\u7535\u5546\u5546\u54c1\u56fe\u4e0e\u53ef\u8c03\u4eba\u4f53\uff0c\u751f\u6210\u6b63\u9762\u3001\u4fa7\u9762\u3001\u80cc\u9762\u3001\u7279\u5199\u3001\u59ff\u6001\u793a\u610f\u548c\u6df1\u5ea6\u98ce\u683c\u516d\u5f20\u72ec\u7acb\u56fe\uff1b\u4f7f\u7528\u771f\u5b9e\u53c2\u6570\u5316\u4eba\u4f53\u3001\u76f8\u673a\u6821\u51c6\u4e0e OpenCV \u53e0\u52a0\u9a8c\u8bc1\u3002\u7b2c2\u8f6e\u3002\u672a\u89c1\u7ed3\u6784\u4e3a\u751f\u6210\u63a8\u6d4b\uff0c\u80f8\u8170\u81c0\u4ecd\u4e3a\u4e2d\u7801\u5148\u9a8c\u3002", "eval_id": 1, "outputs": [{"name": "artifacts.md", "type": "text", "content": "## \u7b2c2\u8f6e \u00b7 \u4e03\u5206\u8896\u4fee\u6b63\n\n\u672c\u9875\u56db\u9636\u6bb5\u753b\u5eca\u4fdd\u7559\u72ec\u7acb\u539f\u56fe\u4e0eSHA256\u3002\n\n[\u516d\u5f20Image Gen\u6587\u4ef6\u53ca\u6a21\u578b\u8f93\u51fa\u6e05\u5355](manifest.json)\n\n[\u5b9e\u9645\u751f\u6210\u8bb0\u5f55](provenance/generation-2.json)\n\n\u540c\u4e00case\u4fee\u6b63\u5386\u53f2\uff0c\u4e0d\u662f\u968f\u673a\u6216\u914d\u5bf9\u6280\u80fd\u56e0\u679c\u57fa\u51c6\u3002token\u4e0e\u5b8c\u6574\u8017\u65f6\u672a\u8bb0\u5f55\uff0c\u4fdd\u7559null\u3002\u7269\u7406\u670d\u88c5\u5408\u8eab\u9a8c\u8bc1 NOT_RUN\u3002\n"}, {"name": "fit-metrics.json", "type": "text", "content": "{\n  \"front\": {\n    \"initial\": {\n      \"full_clothed_envelope_comparison\": {\n        \"iou\": 0.7888707739831817,\n        \"dice\": 0.8819762561458209,\n        \"symmetric_contour_mean_px\": 6.950682640075684,\n        \"symmetric_contour_p95_px\": 18.199996948242188\n      },\n      \"clothed_limb_pose_roi\": {\n        \"iou\": 0.6666738801125297,\n        \"dice\": 0.800005193658543,\n        \"symmetric_contour_mean_px\": 6.337672233581543,\n        \"symmetric_contour_p95_px\": 16.799997329711914\n      }\n    },\n    \"final\": {\n      \"full_clothed_envelope_comparison\": {\n        \"iou\": 0.8056408581073723,\n        \"dice\": 0.8923600221938098,\n        \"symmetric_contour_mean_px\": 6.280754089355469,\n        \"symmetric_contour_p95_px\": 20.772096633911133\n      },\n      \"clothed_limb_pose_roi\": {\n        \"iou\": 0.7096573069985972,\n        \"dice\": 0.8301749176207036,\n        \"symmetric_contour_mean_px\": 5.405250072479248,\n        \"symmetric_contour_p95_px\": 20.181398391723633\n      }\n    }\n  },\n  \"side\": {\n    \"initial\": {\n      \"full_clothed_envelope_comparison\": {\n        \"iou\": 0.5874090795084023,\n        \"dice\": 0.7400853215357877,\n        \"symmetric_contour_mean_px\": 15.472044944763184,\n        \"symmetric_contour_p95_px\": 37.75969696044922\n      },\n      \"clothed_limb_pose_roi\": {\n        \"iou\": 0.4441925428120319,\n        \"dice\": 0.6151431054298769,\n        \"symmetric_contour_mean_px\": 19.220029830932617,\n        \"symmetric_contour_p95_px\": 40.544193267822266\n      }\n    },\n    \"final\": {\n      \"full_clothed_envelope_comparison\": {\n        \"iou\": 0.6837573018732364,\n        \"dice\": 0.8121803553428198,\n        \"symmetric_contour_mean_px\": 11.814811706542969,\n        \"symmetric_contour_p95_px\": 29.362794876098633\n      },\n      \"clothed_limb_pose_roi\": {\n        \"iou\": 0.7733684843439249,\n        \"dice\": 0.8722028063220489,\n        \"symmetric_contour_mean_px\": 9.492321014404297,\n        \"symmetric_contour_p95_px\": 23.0\n      }\n    }\n  },\n  \"back\": {\n    \"initial\": {\n      \"full_clothed_envelope_comparison\": {\n        \"iou\": 0.7384907480704532,\n        \"dice\": 0.8495768515191724,\n        \"symmetric_contour_mean_px\": 8.920633316040039,\n        \"symmetric_contour_p95_px\": 28.19379425048828\n      },\n      \"clothed_limb_pose_roi\": {\n        \"iou\": 0.5760284448682041,\n        \"dice\": 0.7309873711275239,\n        \"symmetric_contour_mean_px\": 9.56689167022705,\n        \"symmetric_contour_p95_px\": 33.793792724609375\n      }\n    },\n    \"final\": {\n      \"full_clothed_envelope_comparison\": {\n        \"iou\": 0.7443743362279003,\n        \"dice\": 0.8534571058154443,\n        \"symmetric_contour_mean_px\": 8.661297798156738,\n        \"symmetric_contour_p95_px\": 24.5751953125\n      },\n      \"clothed_limb_pose_roi\": {\n        \"iou\": 0.5855196217305428,\n        \"dice\": 0.7385838859458167,\n        \"symmetric_contour_mean_px\": 8.72631549835205,\n        \"symmetric_contour_p95_px\": 26.374420166015625\n      }\n    }\n  },\n  \"protocol\": {\n    \"optimized_views\": [\n      \"front\",\n      \"side\"\n    ],\n    \"held_out_view\": \"back\",\n    \"shape\": \"actual source fitDimensions cm optimization, one-sided body containment inside garment; height170prior fixed\",\n    \"pose_parameters\": [\n      \"upperarm01.L\",\n      \"upperarm01.R\",\n      \"lowerarm01.L\",\n      \"lowerarm01.R\",\n      \"upperleg01.L\",\n      \"upperleg01.R\",\n      \"upperleg01.L\",\n      \"upperleg01.R\",\n      \"lowerleg01.L\",\n      \"lowerleg01.R\"\n    ],\n    \"camera\": \"camera calibration separately recorded in camera-calibration.json, then frozen model/camera.json for initial/final pose comparison\",\n    \"mask_resolution\": [\n      768,\n      1024\n    ],\n    \"fit_search_resolution\": [\n      384,\n      512\n    ],\n    \"reference_type\": \"AI generated, internal consistency only\",\n    \"manual_landmark_count\": 10,\n    \"initial_manual_landmark_errors_px\": [\n      14.824233164977032,\n      11.28353734017269,\n      4.489601450015925,\n      8.489601450015925,\n      12.619904094714979,\n      33.10256728718889\n    ],\n    \"final_manual_landmark_errors_px\": [\n      3.464258730456168,\n      0.1831124815759673,\n      3.094546959597885,\n      2.8873572233223963,\n      5.398396993797794,\n      3.451130725577612\n    ],\n    \"optimization_evaluations\": 520,\n    \"initial_loss\": 0.12348869679160662,\n    \"best_loss\": 0.01166122304704025,\n    \"generation\": \"generation-2\",\n    \"reference_image_sha256\": {\n      \"front\": \"64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d\",\n      \"side\": \"c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1\",\n      \"back\": \"25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e\"\n    },\n    \"frozen_mask_sha256\": {\n      \"front\": \"8ea396a34982060ed4eca51c96d20316cabe696c96b2ad33185bcdbc10ee2d2a\",\n      \"side\": \"8c59a1224006e0163b2b58df93216ec094d4aead6444b492b49c454e2c33827f\",\n      \"back\": \"cc294bf9e89ebddfda240a3052a2f28ca9f5340b2042c9da894445bd6c8d4e27\"\n    },\n    \"manual_landmark_count_training\": 6,\n    \"manual_landmark_count_heldout\": 4,\n    \"pose_axes\": [\n      {\n        \"joint\": \"upperarm01.L\",\n        \"axis\": \"Z\"\n      },\n      {\n        \"joint\": \"upperarm01.R\",\n        \"axis\": \"Z\"\n      },\n      {\n        \"joint\": \"lowerarm01.L\",\n        \"axis\": \"X\"\n      },\n      {\n        \"joint\": \"lowerarm01.R\",\n        \"axis\": \"X\"\n      },\n      {\n        \"joint\": \"upperleg01.L\",\n        \"axis\": \"Z\"\n      },\n      {\n        \"joint\": \"upperleg01.R\",\n        \"axis\": \"Z\"\n      },\n      {\n        \"joint\": \"upperleg01.L\",\n        \"axis\": \"X\"\n      },\n      {\n        \"joint\": \"upperleg01.R\",\n        \"axis\": \"X\"\n      },\n      {\n        \"joint\": \"lowerleg01.L\",\n        \"axis\": \"X\"\n      },\n      {\n        \"joint\": \"lowerleg01.R\",\n        \"axis\": \"X\"\n      }\n    ],\n    \"initial\": \"Original170/90/72/96/37cm M neutral with calibrated camera\",\n    \"final\": \"Conditional clothed-envelope shape + same shared pose, calibrated cameras unchanged\",\n    \"shape_fit_evidence\": \"shape-fit/optimization.json\",\n    \"fixed_M_pose_baseline\": \"fixed-M-baseline/fit/metrics.json\",\n    \"camera_and_pose_only_contributions\": \"fixed-M-baseline/fit/camera-pose-contributions.json\",\n    \"final_pose_state_sha256\": \"2c44c7236d83c827097312ed5dfbf4899a2c921c2860bfd564e47af2dbe2008f\",\n    \"final_posed_obj_sha256\": \"9ec3c3db817d8400f5f12c41e07809bb1b7117e8dfa548e20549a4e25002fe65\",\n    \"heldout_back_manual_landmark_errors_px\": [\n      23.149807715321394,\n      30.75548971690878,\n      3.3624888934937527,\n      9.985566579953133\n    ],\n    \"body_dimensions_basis\": \"waist and thigh changed:clothed_envelope_estimate; unchanged dimensions:prior; not observed realperson sizes\"\n  },\n  \"manual_landmarks\": {\n    \"front\": {\n      \"initial\": [\n        {\n          \"joint\": \"wrist.L\",\n          \"error_px\": 14.824233164977032\n        },\n        {\n          \"joint\": \"wrist.R\",\n          \"error_px\": 11.28353734017269\n        },\n        {\n          \"joint\": \"foot.L\",\n          \"error_px\": 4.489601450015925\n        },\n        {\n          \"joint\": \"foot.R\",\n          \"error_px\": 8.489601450015925\n        }\n      ],\n      \"final\": [\n        {\n          \"joint\": \"wrist.L\",\n          \"error_px\": 3.464258730456168\n        },\n        {\n          \"joint\": \"wrist.R\",\n          \"error_px\": 0.1831124815759673\n        },\n        {\n          \"joint\": \"foot.L\",\n          \"error_px\": 3.094546959597885\n        },\n        {\n          \"joint\": \"foot.R\",\n          \"error_px\": 2.8873572233223963\n        }\n      ]\n    },\n    \"side\": {\n      \"initial\": [\n        {\n          \"joint\": \"wrist.L\",\n          \"error_px\": 12.619904094714979\n        },\n        {\n          \"joint\": \"foot.L\",\n          \"error_px\": 33.10256728718889\n        }\n      ],\n      \"final\": [\n        {\n          \"joint\": \"wrist.L\",\n          \"error_px\": 5.398396993797794\n        },\n        {\n          \"joint\": \"foot.L\",\n          \"error_px\": 3.451130725577612\n        }\n      ]\n    },\n    \"back\": {\n      \"initial\": [\n        {\n          \"joint\": \"wrist.L\",\n          \"error_px\": 34.58416339531841\n        },\n        {\n          \"joint\": \"wrist.R\",\n          \"error_px\": 42.47221071811155\n        },\n        {\n          \"joint\": \"foot.L\",\n          \"error_px\": 4.936863635229372\n        },\n        {\n          \"joint\": \"foot.R\",\n          \"error_px\": 2.063136364770628\n        }\n      ],\n      \"final\": [\n        {\n          \"joint\": \"wrist.L\",\n          \"error_px\": 23.149807715321394\n        },\n        {\n          \"joint\": \"wrist.R\",\n          \"error_px\": 30.75548971690878\n        },\n        {\n          \"joint\": \"foot.L\",\n          \"error_px\": 3.3624888934937527\n        },\n        {\n          \"joint\": \"foot.R\",\n          \"error_px\": 9.985566579953133\n        }\n      ]\n    }\n  }\n}"}, {"name": "independent-review.json", "type": "text", "content": "{\n  \"version\": \"v2\",\n  \"date_utc\": \"2026-11-17\",\n  \"verdict\": \"CONDITIONAL_PASS_FOR_GENERATED_GARMENT_REFERENCE\",\n  \"fit_review_status\": \"COMPLETE_CONDITIONAL_DIAGNOSTIC_ONLY\",\n  \"review_method\": \"\u9010\u5f20\u6253\u5f00\u539f\u59cb\u5206\u8fa8\u7387\u6587\u4ef6\u4e0e\u539f\u56fe/\u5b98\u7f51\u9875\u9762\uff1b\u672a\u4ec5\u4f9d\u636econtact sheet\u3002\u53ea\u5199\u672c\u62a5\u544a\uff0c\u4e0d\u4fee\u6539\u56fe\u50cf\u3001\u4ee3\u7801\u6216\u63d0\u4ea4\u3002\",\n  \"findings\": [\n    {\n      \"id\": \"source\",\n      \"verdict\": \"CONFIRMED_SOURCE\",\n      \"views\": [\n        \"reference/asos-page.png\",\n        \"reference/original-product.jpg\",\n        \"reference/source-verification.json\",\n        \"reference/asos-product-excerpt.md\"\n      ],\n      \"detail\": \"\u5b98\u7f51\u622a\u56fe\u4e2d\u7684hero\u4e0e\u539f\u56fe\u5728\u8138\u3001\u53d1\u578b\u3001\u63d0\u8863\u624b\u52bf\u3001\u9886\u53e3\u548c\u88e4\u8170\u7ec6\u8282\u4e0a\u89c6\u89c9\u4e00\u81f4\uff1b\u6765\u6e90\u6587\u4ef6\u62a5\u544a0.993\u76f8\u5173\u3002\u9875\u9762/\u6458\u5f55\u786e\u8bc1boatneck\u3001three-quarter sleeves\u3001slim fit\u3001100% cotton\u53ca171cm\u6a21\u7279\u7a7fS\u3002\u8fd9\u4e2a\u8eab\u9ad8/\u5c3a\u7801\u4e0d\u63d0\u4f9b\u80f8\u8170\u81c0\u771f\u5b9e\u6d4b\u91cf\u3002\"\n    },\n    {\n      \"id\": \"sleeves\",\n      \"verdict\": \"PASS_ILLUSTRATIVE\",\n      \"views\": [\n        \"front\",\n        \"side\",\n        \"back\",\n        \"closeup\"\n      ],\n      \"detail\": \"\u56db\u5f20\u5f69\u8272\u56fe\u5747\u5df2\u53d8\u6210\u8098\u4ee5\u4e0b\u3001\u8155\u4ee5\u4e0a\u8896\u53e3\uff0c\u660e\u663e\u9732\u51fa\u524d\u81c2\uff1bv1\u9519\u8bef\u957f\u8896\u5df2\u4fee\u6b63\u3002front/back\u8896\u53e3\u4f4d\u4e8e\u524d\u81c2\u4e2d\u6bb5\uff0cside\u5f2f\u81c2\u8896\u53e3\u7565\u9760\u8098\uff0ccloseup\u5f2f\u8098\u9732\u524d\u81c2\uff0c\u5747\u5c5e\u4e03\u5206\u8896\u5408\u7406\u89c6\u89c9\u8303\u56f4\u3002\u4e0d\u80fd\u7531\u4e0d\u540c\u5f2f\u8098\u56fe\u53cd\u63a8\u7cbe\u786e\u8863\u957f\u6216\u8896\u7eb8\u6837\u3002\"\n    },\n    {\n      \"id\": \"neckline\",\n      \"verdict\": \"PASS_WITH_DETAIL_WARNING\",\n      \"views\": [\n        \"front\",\n        \"side\",\n        \"closeup\"\n      ],\n      \"detail\": \"\u6d45\u800c\u5bbd\u7684\u8239\u9886\u3001\u7a84\u5e73\u6ed1\u7ea2\u5305\u8fb9\u5f97\u4ee5\u4fdd\u7559\uff0cv1\u660e\u663epicot/\u952f\u9f7f\u82b1\u8fb9\u5df2\u6d88\u5931\u3002\u539f\u56fe\u80a9\u5934\u6709\u53ef\u89c1\u53e0\u7247/\u4fe1\u5c01\u5f0f\u8fb9\u7f18\uff0cv2 front\u548ccloseup\u5f31\u5316\u6210\u666e\u901a\u80a9\u7f1d\uff1b\u82e5\u8981\u6c42\u539f\u5546\u54c1\u6784\u9020\u7ea7\u590d\u523b\uff0c\u8fd9\u4e24\u56fe\u9700\u91cd\u505a\u80a9\u5934\u7ec6\u8282\u3002\"\n    },\n    {\n      \"id\": \"rosette\",\n      \"verdict\": \"PASS_WITH_DETAIL_WARNING\",\n      \"views\": [\n        \"front\",\n        \"closeup\"\n      ],\n      \"detail\": \"\u9886\u53e3\u4e2d\u592e\u5c0f\u7ea2\u7eff\u88c5\u9970\u4fdd\u7559\uff1bcloseup\u7684\u73ab\u7470\u4f9d\u7136\u8f83\u539f\u56fe\u66f4\u5927\u3001\u66f4\u89c4\u5219\u3001\u53f6\u7247\u66f4\u5bf9\u79f0\u3002\u73b0\u5728\u4e0d\u518d\u538b\u8fc7\u6574\u4f53\u8bbe\u8ba1\uff0c\u4f46\u4e0d\u80fd\u5f53\u771f\u5b9e\u9488\u7ec7\u9644\u4ef6\u5c3a\u5bf8\u4f9d\u636e\u3002\u4f18\u5148\u5c0f\u5e45\u7f29\u5c0fcloseup\u73ab\u7470\u800c\u4e0d\u662f\u5168\u7ec4\u516d\u56fe\u91cd\u751f\u3002\"\n    },\n    {\n      \"id\": \"knit\",\n      \"verdict\": \"PARTIAL\",\n      \"views\": [\n        \"front\",\n        \"side\",\n        \"back\",\n        \"closeup\"\n      ],\n      \"detail\": \"\u7ea2\u8272\u7ec6\u9488\u7ec7\u3001\u7eb5\u5217\u7eb9\u7406\u4e0e\u5c0f\u773c\u5b54\u5df2\u4fdd\u7559\u3002\u9ad8\u6e05closeup\u663e\u793a\u89c4\u5219\u82b1\u5f62/\u83f1\u5f62\u5b54\u773c\uff1b\u539f\u56fe\u7eb5\u5217\u8f83\u7ec6\u3001\u66f4\u4f4e\u5bf9\u6bd4\u3001\u5c40\u90e8\u66f4\u4e0d\u89c4\u5219\u3002\u5c5e\u4e8e\u53ef\u4fe1\u7684pointelle\u89c6\u89c9\u65cf\u7c7b\uff0c\u4e0d\u8db3\u4ee5\u8ba4\u8bc1\u9488\u6cd5\u3001\u5b54\u8ddd/\u91cd\u590d\u5355\u5143\u548c\u5b9e\u9645\u8272\u503c\u5b8c\u5168\u76f8\u540c\u3002\"\n    },\n    {\n      \"id\": \"pants\",\n      \"verdict\": \"INFERRED\",\n      \"views\": [\n        \"front\",\n        \"side\",\n        \"back\",\n        \"closeup\"\n      ],\n      \"detail\": \"\u7ea2\u88e4\u3001\u677e\u7d27\u8936\u76b1\u8170\u53e3\u548c\u4e2d\u592e\u5c0f\u7ea2\u7eff\u88c5\u9970\u4fdd\u7559\u3002\u539f\u56fe\u53ea\u5c55\u793a\u8170\u4e0e\u4e0a\u817f\uff0c\u5b98\u7f51\u622a\u56fe\u4fa7\u680f\u5168\u8eab\u7f29\u7565\u56fe\u5206\u8fa8\u7387\u6709\u9650\uff1b\u76f4\u7b52\u88e4\u811a\u3001\u5b8c\u6574\u540e\u7247\u548c\u88f8\u811a\u4e0d\u662f\u4ece\u539f\u56fe\u53ef\u9760\u6062\u590d\u3002closeup\u63d0\u8863\u9732\u8179\u4e0e\u539f\u56fe\u4e00\u81f4\uff1bfront/back\u5e73\u653e\u8863\u6446\u4e0d\u80fd\u636e\u539f\u56fe\u9a8c\u8bc1\u5b9e\u9645\u4e0a\u8863\u957f\u5ea6\u3002\"\n    },\n    {\n      \"id\": \"cross-view\",\n      \"verdict\": \"PARTIAL\",\n      \"views\": [\n        \"front\",\n        \"side\",\n        \"back\",\n        \"closeup\",\n        \"pose\",\n        \"depth\"\n      ],\n      \"detail\": \"front/pose\u7684\u8138\u4e0e\u53d1\u578b\u3001\u8eaf\u5e72\u3001\u7ea2\u5957\u88c5\u603b\u4f53\u8fde\u8d2f\uff1bside\u9f3b/\u4e0b\u988c\u4e3a\u76f8\u5bb9\u7684\u4fa7\u9762\u60f3\u8c61\uff0c\u4e0d\u80fd\u786e\u8ba4\u771f\u5b9e\u8eab\u4efd\u3002back\u65e0\u8138\u4e14\u53d1\u578b\u906e\u80cc\uff0c\u7f3a\u4e4f\u8eab\u4efd\u6838\u9a8c\u4f9d\u636e\u3002front/back\u8fd1\u4f3c\u5916\u5c55\u53cc\u81c2\uff1bside\u5f2f\u8098\u524d\u4f38\u3001\u8fdc\u4fa7\u624b/\u817f\u906e\u6321\uff1bcloseup\u53cc\u624b\u63d0\u8863\uff0c\u5c5e\u4e8e\u53e6\u4e00\u4e2a\u59ff\u52bf\u3002\u4e0d\u80fd\u628a\u516d\u56fe\u4f5c\u4e3a\u540c\u4e003D\u59ff\u52bf\u7684\u4e25\u683c\u591a\u89c6\u6295\u5f71\u3002\u5404\u56fe\u4e3b\u4f53\u9ad8\u5ea6/\u9886\u53e3\u5230\u8863\u6446\u6bd4\u4f8b\u7565\u6709\u4e0d\u540c\u3002\"\n    },\n    {\n      \"id\": \"pose\",\n      \"verdict\": \"ILLUSTRATIVE_ONLY\",\n      \"views\": [\n        \"pose\"\n      ],\n      \"detail\": \"\u5f69\u8272\u7ebf\u8282\u70b9\u6bd4v1\u66f4\u7b80\u6d01\u53ef\u8bfb\uff0c\u8155/\u8098/\u8e1d\u5927\u81f4\u843d\u5728\u5408\u7406\u53ef\u89c1\u4f4d\u7f6e\u3002\u4f46\u9aa8\u76c6\u662f\u8170\u5e26\u5904\u5355\u4e2d\u592e\u70b9\u3001\u80a9\u7ebf\u4e3a\u7ed8\u5236\u793a\u610f\uff0c\u4e0d\u80fd\u5f53\u6807\u51c6\u59ff\u6001\u68c0\u6d4b\u5668\u8f93\u51fa\u3001\u771f\u5b9e\u5173\u8282\u5b9a\u4f4d\u6216\u4e09\u7ef4\u9aa8\u9abc\u91cf\u6d4b\u3002pose\u7167\u7247\u5c40\u90e8\u6bd4\u4f8b\u4e5f\u4e0efront\u6709\u8f7b\u5fae\u53d8\u5316\u3002\"\n    },\n    {\n      \"id\": \"depth\",\n      \"verdict\": \"ILLUSTRATIVE_ONLY\",\n      \"views\": [\n        \"depth\"\n      ],\n      \"detail\": \"v2\u53bb\u9664\u4e86\u591a\u6570\u9488\u7ec7\u5b54\u773c\uff0c\u5f62\u6210\u8f83\u5e73\u6ed1\u7070\u5ea6\u4f53\u79ef\u6548\u679c\uff0c\u89c6\u89c9\u4e0a\u6bd4v1\u66f4\u50cf\u6df1\u5ea6\u793a\u610f\u3002\u4f46\u4ecd\u6709\u53d1\u4e1d\u3001\u9762\u90e8\u660e\u6697\u548c\u8868\u9762\u7167\u660e\u611f\uff1b\u65e0\u6807\u5b9a/\u8ddd\u79bb\u5355\u4f4d/\u76f8\u673a\u6295\u5f71\u4fdd\u8bc1\uff0c\u4e0d\u80fd\u4f5c\u4e3a\u6d4b\u5f97\u6216\u8ba1\u7b97\u7684metric depth\u3002\u5e94\u59cb\u7ec8\u6807\u6ce8\u751f\u6210\u6df1\u5ea6\u793a\u610f\uff0c\u4e0eactual mesh Z-buffer\u5206\u5217\u3002\"\n    }\n  ],\n  \"priority_corrections\": [\n    {\n      \"views\": [\n        \"front\",\n        \"closeup\"\n      ],\n      \"priority\": \"If construction-level faithful reproduction is required\",\n      \"action\": \"\u6062\u590d\u539f\u56fe\u80a9\u5934\u53e0\u7247/\u4fe1\u5c01\u5f0f\u8fb9\u7f18\uff1b\u4fdd\u6301\u5e73\u6ed1\u7a84\u8239\u9886\u3002\"\n    },\n    {\n      \"views\": [\n        \"closeup\"\n      ],\n      \"priority\": \"Minor fidelity refinement\",\n      \"action\": \"\u5c06\u9886\u53e3\u73ab\u7470\u7f29\u5c0f\u5230\u66f4\u63a5\u8fd1\u539f\u56fe\u7684tiny bud\uff0c\u907f\u514d\u5bf9\u79f0\u653e\u5927\u7eff\u53f6\u3002\"\n    },\n    {\n      \"views\": [\n        \"side\"\n      ],\n      \"priority\": \"If synchronized multiview pose is required\",\n      \"action\": \"\u91cd\u751f\u4e3a\u4e0efront/back\u76f8\u540c\u9aa8\u9abc\u59ff\u52bf\u7684\u4fa7\u6295\u5f71\uff1b\u660e\u786e\u4fdd\u7559\u8fdc\u4fa7\u906e\u6321\u7684\u4e0d\u786e\u5b9a\u6027\u3002\"\n    },\n    {\n      \"views\": [\n        \"pose\",\n        \"depth\"\n      ],\n      \"priority\": \"Required labeling\",\n      \"action\": \"\u53ea\u80fd\u6807\u6ce8illustrative\uff0c\u771f\u5b9e\u6295\u5f71\u9aa8\u67b6\u4e0eZ-buffer\u53e6\u884c\u5c55\u793a\u3002\"\n    }\n  ],\n  \"fit_review_note\": \"\u5df2\u590d\u6838\u6700\u7ec8\u51bb\u7ed3v2\u7684actual renders\u3001\u4e09\u89c6photo overlays\u3001shape-fit\u3001view-specific\u4e0eoriginal-reference\uff1b\u5148\u524d\u5e76\u53d1\u91cd\u7b97\u7684PENDING\u5df2\u88ab\u6b64\u6b21\u6700\u7ec8\u5ba1\u67e5\u66ff\u4ee3\u3002v1\u5386\u53f2\u5ba1\u67e5\u4e0d\u6539\u3002\",\n  \"hashes\": {\n    \"reference/original-product.jpg\": \"6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53\",\n    \"reference/asos-page.png\": \"1d78f18ca02370eb9d550aed90138d3b272bc4431b428cd667f550b21596f6ee\",\n    \"reference/source-verification.json\": \"7d892f86723773736c81465b6e94e4656661102e3581d1994e15bf5a0daed4a5\",\n    \"reference/asos-product-excerpt.md\": \"25b0647a7deaa94448e1e95b65d71106ce1f9b82ee989c691063cc1ee47c3f92\",\n    \"iterations/generation-2/front.png\": \"64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d\",\n    \"iterations/generation-2/side.png\": \"c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1\",\n    \"iterations/generation-2/back.png\": \"25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e\",\n    \"iterations/generation-2/closeup.png\": \"650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215\",\n    \"iterations/generation-2/pose.png\": \"6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620\",\n    \"iterations/generation-2/depth.png\": \"b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d\",\n    \"model/final-state.json\": \"2c44c7236d83c827097312ed5dfbf4899a2c921c2860bfd564e47af2dbe2008f\",\n    \"model/render-provenance.json\": \"a048c0dec8e1902a7c0d375c019144a4c3b60d28158931edc2d664706ab2e4a4\",\n    \"model/final-geometry-check.json\": \"0899ca08560a974fef1e37263e6f5924b48fc52b32eada9fdaee151d14c277a1\",\n    \"model/fit/metrics.json\": \"5b9a4cd5cf4c73bd9372d4d96f36354d46ae8f722382732fd78007dffe1e25ab\",\n    \"model/shape-fit/metrics.json\": \"951559a3c9b7ed51eb3b715ea2ecdd2acc4ad357ddae199c2385340f41d1caec\",\n    \"model/shape-fit/optimization.json\": \"ce8bdd69a6716df208825e48127be0b8bb1d8bb15ae963eba74493c193e26ded\",\n    \"model/shape-fit/side-before-after.png\": \"dd60b037fa864df4f34b0959e8400758b342ba38ccabcf45d8a20fc1ed91309d\",\n    \"model/view-specific/summary.json\": \"b403c1a36df7d2c76e8a77d679de579f6dff600bd59cb1451082833521ab7ac4\",\n    \"model/view-specific/back/before-after.png\": \"ab943b9ab0c3a0f08a5e1cf0a4e651e606c7f9a0a75fd6732e109f58e5d37dc0\",\n    \"model/view-specific/side/before-after.png\": \"ae3c29df5815c4d4f40dca8f26e97feefebfc83a190c1095cce433e194738f3f\",\n    \"model/original-reference/state.json\": \"e48d77d763557f8ab4ccae0c29f2e4dcafa5cb939ed219f0050ec7ec5f8edf7b\",\n    \"model/original-reference/metrics.json\": \"74af0e13bb7004f7da63c9a67fb50553682630a264b50e8299483965c7d5238e\",\n    \"model/original-reference/before-after.png\": \"d3b4001b3415fe03c38c7273467a71dbabab78cf9501865c805e66598e38895b\",\n    \"model/fit/front-final-photo-overlay.png\": \"f2d32194db9134d5182121b55ade087b19174bac2d872cd4781ebaaab60d76d9\",\n    \"model/fit/side-final-photo-overlay.png\": \"2d9d4706d55780be7644e0e4e7b92d2fce8cfe211d467711e96244254a8ebc57\",\n    \"model/fit/back-final-photo-overlay.png\": \"1633f94dd935a8d0989519eefe024765fed3c40f7f2154db98b335a64c1be8f6\",\n    \"model/final-renders/front.png\": \"e1cab36638ab6000f43d20af4e38e5d0d5560323540059fa5191e5659af4b92f\",\n    \"model/final-renders/side.png\": \"25873054a75a19dc0ffd3d003665d566c7b04e94ac032048b29788bbfb8ddeaf\",\n    \"model/final-renders/back.png\": \"8bd68d52d4650c620ac3b2c7b382044b24d992b00dd9f205daab15c04bbfa2ef\",\n    \"model/final-renders/pose.png\": \"9020152eec937466470744414f5694f96ce503a3871f552af8b775714050c37d\",\n    \"model/final-renders/depth.png\": \"66584982712a2284bd7f83be3a62e897c69e1bb2ac869bf289b423490d08e14f\",\n    \"model/original-reference/camera.json\": \"39b9e3e37fd84161476ca9a226500d010ff434d689538b571ea56e04f989da0c\",\n    \"model/original-reference/posed.obj\": \"4779e58db22a85651ce9a39e02c2f5e15e47d67031ee044db7dd5033fa8ae1c4\",\n    \"model/original-reference/posed.glb\": \"db27b4fc00b7e18d6744813c567e029e608785879225d3d24155d4123af023d9\",\n    \"model/original-reference/posed-joints.json\": \"cc868ee88d77fb267fcf59129044baa1f3fe05fcbb4f509f3f3c87740f0d4183\",\n    \"model/original-reference/renders/front.png\": \"11380447162b2dd0dc19410fd238adeb0ce7376559fb24b18e49393894e293f8\",\n    \"model/original-reference/iteration-1/state.json\": \"cd4095d7eb427b7fe541b097d16e32f12bd812f6a0d52bcbba54b62e6a549da8\",\n    \"model/original-reference/iteration-1/metrics.json\": \"4a34fe04bda5bb63cbee1f6bec0d6ca985114e979c36ef39b8db775bd2692196\",\n    \"model/original-reference/renders/side.png\": \"544e35eb15664c29c0b28f69d044a26de60b113ec51d72cf5c041b0c284c0bac\",\n    \"model/original-reference/inspection-camera.json\": \"f6312fa6c91306e0571091bedfee1a628e8fabdb54dbaae137e6a18a991822ee\",\n    \"model/original-reference/candidate-status.json\": \"884e19defa91a57d211dd8cfc4626f75c5c8730eaaef8312f99b48397661d253\",\n    \"model/original-reference/ik-depth-feasibility.json\": \"304b85ad8da69ff69d498fcd1faa718a41c6c128105b5e393558ebc96a3d171a\",\n    \"model/original-reference/hand-depth-check.json\": \"3790fd8fdd93b7509d2548826f43f9af4bf0b6c307a47b6edc87933df8ea3f6a\",\n    \"model/original-reference/geometry-check.json\": \"b5115590e87c6c7e112d125bcbd467b2f0ef8d236d511a65fb8e3a5b1f452ab2\",\n    \"model/view-specific/side/state.json\": \"f047fd128c120963265c36c0e7affe7fa990bfdc4432eb03109d9dc1f23d8317\",\n    \"model/view-specific/back/state.json\": \"b86d5e04b678fff6cb907cff8ea32465bf27236e93a0ec92686d2945584578b8\"\n  },\n  \"limitations\": [\n    \"\u751f\u6210\u56fe\u4e0d\u662f\u5b9e\u62cd\u591a\u89c6\u89d2\uff1b\u4fdd\u7559\u540c\u4e00\u4eba\u7269\u5916\u89c2\u4e0d\u7b49\u4e8e\u9a8c\u8bc1\u8eab\u4efd\u3002\",\n    \"100% cotton\u4e3a\u5b98\u7f51\u6587\u6848\uff0c\u4e0d\u80fd\u7531\u56fe\u50cf\u9a8c\u8bc1\u6750\u6599\u3002\",\n    \"171cm/S\u4e0d\u7b49\u4e8e\u6062\u590d\u80f8\u8170\u81c0\u6216\u6388\u6743\u7cbe\u786e\u4eba\u4f53\u6d4b\u91cf\u58f0\u660e\u3002\",\n    \"\u6ca1\u6709\u7269\u7406\u670d\u88c5\u62df\u5408\u3001\u63a5\u89e6\u3001\u5e03\u6599\u6a21\u62df\u6216\u771f\u5b9e\u4eba\u4f53\u8bef\u5dee\u9a8c\u8bc1\u3002\"\n  ],\n  \"garment_fidelity_acceptable\": true,\n  \"visible_basic_feature_checks\": {\n    \"three_quarter_sleeves\": true,\n    \"shallow_boat_neck\": true,\n    \"small_central_rosette\": true,\n    \"pointelle_hole_pattern\": true\n  },\n  \"acceptance_scope\": \"Only four visible basic design features; not exact shoulder construction, knit repeat, accessory dimensions, unseen back, real model identity or measured garment fit.\",\n  \"final_anatomical_review\": {\n    \"selected_dimensions_cm\": {\n      \"height\": 170,\n      \"bust\": 90,\n      \"waist\": 69,\n      \"hips\": 96,\n      \"shoulders\": 37,\n      \"upperArm\": 27,\n      \"thigh\": 50,\n      \"neck\": 32,\n      \"upperArmLength\": 29,\n      \"forearmLength\": 23,\n      \"thighLength\": 40,\n      \"calf\": 36\n    },\n    \"dimension_basis\": \"height170\u53ca\u672a\u53d8\u5c3a\u5bf8\u4e3aM\u5148\u9a8c\uff1bwaist72\u219269\u3001thigh54\u219250\u4e3a\u51bb\u7ed3\u76f8\u673a\u4e0b\u751f\u6210\u8863\u7269\u5305\u7edc\u7684\u4e00\u4fa7\u5305\u542b\u6027\u6761\u4ef6\u4f30\u8ba1\uff0c\u4e0d\u662f\u5b98\u7f51171cm/S\u6a21\u7279\u5b9e\u6d4b\u3002\",\n    \"provenance_hash_checks\": {\n      \"final-state.json\": true,\n      \"final-posed.obj\": true,\n      \"camera.json\": true,\n      \"all_render_hashes\": true,\n      \"all_reference_hashes\": true\n    },\n    \"same_shape_state_checks\": {\n      \"original-reference/state.json\": {\n        \"version\": true,\n        \"asset\": true,\n        \"dimensions\": true,\n        \"morphWeights\": true\n      },\n      \"shape-source-state.json\": {\n        \"version\": true,\n        \"asset\": true,\n        \"dimensions\": true,\n        \"morphWeights\": true\n      },\n      \"selected-neutral-state.json\": {\n        \"version\": true,\n        \"asset\": true,\n        \"dimensions\": true,\n        \"morphWeights\": true\n      },\n      \"view-specific/side/state.json\": {\n        \"version\": true,\n        \"asset\": true,\n        \"dimensions\": true,\n        \"morphWeights\": true\n      },\n      \"view-specific/back/state.json\": {\n        \"version\": true,\n        \"asset\": true,\n        \"dimensions\": true,\n        \"morphWeights\": true\n      }\n    },\n    \"actual_surface\": \"final-renders/front/side/back\u53ef\u89c1\u771f\u5b9e\u4e09\u89d2\u4eba\u4f53\u8868\u9762\u4e0e\u771f\u5b9e\u9aa8\u9abc\u6295\u5f71\uff1bdepth\u4e3a\u8be5\u88f8\u4eba\u4f53\u7684Z-buffer\uff0c\u4e0d\u80fd\u5f53\u7a7f\u8863\u7167\u7247\u6df1\u5ea6\u3002\u8fd9\u91cc\u53ea\u6838\u67e5\u8f93\u51fa\u4e00\u81f4\u6027\uff0c\u4e0d\u91cd\u8dd1\u5b8c\u6574\u51e0\u4f55\u9a8c\u8bc1\u3002\",\n    \"shape_tradeoff\": {\n      \"one_sided_training_containment_outside_pixels\": {\n        \"front\": [\n          936,\n          797\n        ],\n        \"side\": [\n          3578,\n          2850\n        ]\n      },\n      \"loss\": [\n        0.023971593154553026,\n        0.013978560825811136\n      ],\n      \"full_clothed_iou_fixed_M_to_selected\": {\n        \"front\": [\n          0.8142032215580994,\n          0.8056408581073723\n        ],\n        \"side\": [\n          0.6867644171652355,\n          0.6837573018732364\n        ],\n        \"back\": [\n          0.7496211838934843,\n          0.7443743362279003\n        ]\n      },\n      \"visual\": \"shape-fit/side-before-after\u7684\u8179\u8170/\u5927\u817f\u7ebf\u7565\u6536\u7a84\uff1b\u6539\u5584\u8303\u56f4\u5c0f\u4e14\u5934\u8138\u3001\u80f8\u524d\u3001\u624b\u6307/\u811a\u8dbe\u4ecd\u660e\u663e\u9519\u4f4d\u3002\u5305\u542b\u6027\u6539\u5584\u4e0e\u5168\u8863\u7269IoU\u4e0b\u964d\u540c\u65f6\u6210\u7acb\uff1b\u4e0d\u5e94\u5199\u6210\u6574\u4f53fit\u5168\u9762\u63d0\u5347\u3002\"\n    },\n    \"shared_pose\": {\n      \"front_final_joint_errors_px\": [\n        3.4643,\n        0.1831,\n        3.0945,\n        2.8874\n      ],\n      \"side_final_joint_errors_px\": [\n        5.3984,\n        3.4511\n      ],\n      \"back_final_joint_errors_px\": [\n        23.1498,\n        30.7555,\n        3.3625,\n        9.9856\n      ],\n      \"verdict\": \"FAIL_STRICT_SAME_POSE_MULTIVIEW\",\n      \"visual\": \"front\u8155\u8e1d\u5927\u81f4\u5bf9\u9f50\u4f46\u80a9\u81c2/\u624b\u8db3\u8f6e\u5ed3\u6b8b\u5dee\uff1bside\u5934\u8138\u524d\u7a81\u3001\u81c0\u90e8\u4e0e\u5927\u817f\u53ca\u811a\u8dbe\u4e0d\u540c\uff1bback\u53cc\u8155cyan\u4e0emagenta\u660e\u663e\u5206\u79bb\uff0c\u4e0d\u80fd\u5ba3\u79f0\u5341\u70b9\u5747\u5c0f\u8bef\u5dee\u6216\u4e25\u683c\u540c\u59ff\u52bf\u91cd\u5efa\u3002\"\n    },\n    \"view_specific\": {\n      \"body_and_camera_frozen\": true,\n      \"back_wrist_errors_shared_to_specific_px\": [\n        [\n          23.149807715321394,\n          30.75548971690878\n        ],\n        [\n          0.22409683060108918,\n          0.08095716944574816\n        ]\n      ],\n      \"side_wrist_error_shared_to_specific_px\": [\n        5.398396993797794,\n        0.18225775242399916\n      ],\n      \"back_iou_shared_to_specific\": [\n        0.7443743362279003,\n        0.7995672774432132\n      ],\n      \"side_iou_shared_to_specific\": [\n        0.6837573018732364,\n        0.6849322216076889\n      ],\n      \"visual\": \"back view-specific\u624b\u8155\u6807\u8bb0\u786e\u5b9e\u5bf9\u4e0a\uff0c\u81c2\u7ebf\u66f4\u63a5\u8fd1\uff0c\u4f46\u624b\u6307\u3001\u80a9\u5916\u6cbf\u53ca\u811a\u90e8\u4ecd\u672a\u7cbe\u786e\u543b\u5408\uff1bside\u4ec5\u7ec6\u8c03\u8155\uff0c\u5934\u8138/\u80f8\u8179/\u817f\u6b8b\u5dee\u672a\u89e3\u51b3\u3002\",\n      \"scope\": \"\u660e\u786e\u4f18\u5316\u4e86\u8be5view\u81ea\u5df1\u7684manual wrist labels\uff0c\u662fin-sample\u540cbody\u4e0d\u540cpose\u8bca\u65ad\u3002\u4e0d\u662fheld-out\u51c6\u786e\u6027\u3001\u81ea\u52a8\u59ff\u6001\u68c0\u6d4b\u6216\u771f\u5b9e\u591a\u89c6\u4e00\u81f4\u6027\uff1b\u4e0d\u80fd\u4e0eshared heldout back\u6df7\u5408\u8bc4\u5206\u3002\"\n    },\n    \"original_reference\": {\n      \"verdict\": \"POSE_FAIL\",\n      \"observed_original_fit\": \"UNRESOLVED / DEPTH_AMBIGUOUS\",\n      \"accepted_matched_candidate\": null,\n      \"latest_failed_candidate\": \"iteration-5-forward-IK\",\n      \"state_matches_final_shape\": true,\n      \"same_shape_state_checks\": {\n        \"version\": true,\n        \"asset\": true,\n        \"dimensions\": true,\n        \"morphWeights\": true\n      },\n      \"camera_matches_iteration_1_bytewise\": true,\n      \"iteration_2_review\": {\n        \"state_matches_final_shape\": true,\n        \"camera_matches_iteration_1_bytewise\": true,\n        \"iteration_1_preserved_at\": \"model/original-reference/iteration-1\",\n        \"iteration_1_review\": {\n          \"state_matches_final_shape\": true,\n          \"cropped_iou_neutral_to_bent\": [\n            0.6164970688282551,\n            0.7239734020473217\n          ],\n          \"candidate_joint_errors_px\": {\n            \"shoulder_L\": 26.300236551729697,\n            \"shoulder_R\": 26.300236551729697,\n            \"elbow_L\": 0.2962700378135039,\n            \"elbow_R\": 19.296831850496986,\n            \"wrist_L\": 0.1410261149918555,\n            \"wrist_R\": 42.008056669045516\n          },\n          \"verdict\": \"FAIL_OBSERVED_REAL_PERSON_FIT_CLAIM\",\n          \"visual\": \"before-after\u53f3\u56fe\u53cc\u81c2\u7531\u5916\u5c55\u8c03\u6574\u4e3a\u5f2f\u81c2\uff0c\u8d34\u8fd1\u63d0\u8863\u52a8\u4f5c\uff1b\u4f46cyan\u8138\u4e2d\u7ebf/\u8f6e\u5ed3\u7a7f\u8fc7\u539f\u56fe\u9762\u90e8\u3001\u5934\u80a9\u6bd4\u4f8b\u548c\u539f\u56fe\u4e0d\u7b26\uff0c\u80a9\u70b9\u670926px\u6b8b\u5dee\uff0c\u53f3\u815542px\u3002\u56fa\u5b9aneck\u8fd1\u96f6\u662f\u76f8\u673a\u6807\u5b9a\u951a\u70b9\uff0c\u4e0d\u662f\u72ec\u7acb\u6210\u529f\u3002\",\n          \"scope\": \"\u65b0shape\u540c\u7248\u672c\u7684\u539f\u56fe\u59ff\u6001\u8fd1\u4f3c\u5bf9\u9f50\u53ef\u5c55\u793a\uff1b\u5355\u5f20\u659c\u89c6\u88c1\u56fe\u3001\u9690\u85cf\u5173\u8282\u4eba\u5de5\u4f30\u8ba1\u548c\u8863\u7269\u8936\u76b1\u4e0d\u652f\u6301\u539f\u6a21\u7279\u5c3a\u5bf8\u6216\u7cbe\u786e\u4eba\u4f53\u6062\u590d\u3002\"\n        },\n        \"cropped_iou_previous_to_refined\": [\n          0.7239734020473217,\n          0.7413521950573155\n        ],\n        \"refined_joint_errors_px\": {\n          \"neck\": 1.7767448064970006,\n          \"shoulder_L\": 26.597223801545855,\n          \"shoulder_R\": 24.97855900712984,\n          \"elbow_L\": 0.4249217382250961,\n          \"elbow_R\": 0.6119938825623898,\n          \"wrist_L\": 0.3875779364328437,\n          \"wrist_R\": 0.46292264762103214,\n          \"eye_L\": 6.309126751282691,\n          \"eye_R\": 13.750493288334084,\n          \"nose_vertex201\": 12.788975286492354\n        },\n        \"verdict\": \"PASS_IN_SAMPLE_2D_POSE_REFINEMENT__FAIL_OBSERVED_SHAPE_OR_PHYSICAL_HAND_FIT\",\n        \"visual\": \"before-after\u53f3\u56fe\u5934\u90e8\u8f6c\u5411/\u503e\u659c\u66f4\u63a5\u8fd1\u539f\u56fe\uff0ccyan\u8138\u8f6e\u5ed3\u4e0d\u518d\u4ece\u7167\u7247\u4e2d\u592e\u7a7f\u8fc7\uff1b\u8155\u8098\u70b9\u8089\u773c\u8d34\u5408\u3002\u4f46\u5934\u90e8/\u80a9\u5bbd\u8f6e\u5ed3\u4ecd\u4e0d\u5b8c\u5168\u5339\u914d\uff0c\u9888\u80a9\u503e\u659c\u5927\u3002\u5b9e\u9645renders/front.png\u56fe\u5de6\u624b\u8155/\u624b\u638c\u5448\u7ad6\u5411\u626d\u6298\u8f6e\u5ed3\u3001\u56fe\u53f3\u524d\u81c2/\u624b\u88ab\u8eaf\u5e72\u906e\u4f4f\uff0c\u672a\u91cd\u73b0\u539f\u56fe\u4e24\u624b\u5728\u8179\u524d\u63d0\u8863\u7684\u624b\u90e8\u8868\u9762\u548c\u63a5\u89e6\u3002\",\n        \"bound_warning\": \"neck01 roll=22deg reached upper bound; head/spine compensate. Low 2D point error does not establish anatomically/physically correct 3D configuration.\",\n        \"scope\": \"same final conditional shape and byte-identical crop camera; optimizes original manual points directly, hence in-sample diagnostic only. Not independent observed body shape validation, physical garment fit, true 3D hand pose or tissue/contact validation.\"\n      },\n      \"iterations_3_to_5_visual_review\": [\n        {\n          \"path\": \"iteration-3-depth-dominant\",\n          \"verdict\": \"POSE_FAIL\",\n          \"visual\": \"\u6b63\u9762\u624b\u6a2a\u5411\u4f1a\u5408\u6539\u5584\uff0c\u4f46\u53cc\u638c/\u6307\u4e92\u76f8\u7a7f\u53e0\uff1b\u4fa7\u9762\u53cc\u4e0a\u81c2\u62ac\u80f8\u524d\u3001\u8098\u5927\u5e45\u524d\u7a81\u3001\u524d\u81c2\u8fd1\u7ad6\u76f4\u5411\u4e0b\uff0c\u50cf\u62b1\u7403\uff0c\u504f\u79bb\u8fd1\u8eab\u63d0\u8863\u3002\",\n          \"elbow_errors_px\": [\n            57,\n            142\n          ]\n        },\n        {\n          \"path\": \"iteration-4-elbow-dominant\",\n          \"verdict\": \"POSE_FAIL\",\n          \"visual\": \"\u6b63\u9762\u5927\u638c\u5e73\u5c55\u91cd\u53e0\uff1b\u4fa7\u9762\u624b\u90e8\u518d\u6b21\u5165\u8179/\u906e\u5165\u8eaf\u5e72\uff0c\u4e0a\u81c2\u524d\u62ac\u4ecd\u660e\u663e\u3002\",\n          \"elbow_errors_px\": [\n            27.5,\n            45.6\n          ]\n        },\n        {\n          \"path\": \"iteration-5-forward-IK\",\n          \"verdict\": \"POSE_FAIL\",\n          \"visual\": \"\u6b63\u9762\u624b\u6a2a\u5411\u66f4\u8fde\u7eed\u81ea\u7136\u3001\u8155\u8098\u8fd1\u7167\u7247\u70b9\uff1b\u4fa7\u9762\u53cc\u81c2\u5411\u524d\u60ac\u4f38\uff0c\u624b\u8ddd\u8179\u524d\u8868\u976221\u201325cm+\uff0c\u660e\u663e\u6ca1\u6709\u539f\u56fe\u8fd1\u8179\u63e1\u8863\u6446\u52a8\u4f5c\u3002\u624b\u6307\u4e5f\u4e0d\u662f\u53ef\u4fe1\u7684\u8863\u7269\u63e1\u6301\u63a5\u89e6\u3002\"\n        }\n      ],\n      \"latest_joint_errors_px\": {\n        \"neck01\": 1.7767448064970006,\n        \"upperarm01.L\": 26.59722380154618,\n        \"upperarm01.R\": 24.978559007130233,\n        \"lowerarm01.L\": 1.7816086216140106,\n        \"lowerarm01.R\": 4.766595573306732,\n        \"wrist.L\": 1.2644452959907055,\n        \"wrist.R\": 3.9235730402397504,\n        \"eye.L\": 6.309126751283083,\n        \"eye.R\": 13.750493288334429,\n        \"nose_vertex201\": 12.788975286492354\n      },\n      \"latest_cropped_clothed_envelope\": {\n        \"iou\": 0.7397312768703336,\n        \"dice\": 0.8503971696146813,\n        \"symmetric_contour_mean_px\": 47.99163055419922,\n        \"symmetric_contour_p95_px\": 101.393798828125\n      },\n      \"latest_hand_front_fraction\": [\n        1.0,\n        1.0\n      ],\n      \"latest_hand_min_front_clearance_cm\": [\n        21.157725083503365,\n        25.3026167252225\n      ],\n      \"latest_palm_distance_cm\": 6.0241877284033425,\n      \"inspection_side_camera\": \"inspection-camera.json uses inspection-only horizontal recentering so forward hands stay in frame; main crop camera/reference point scores remain unchanged.\",\n      \"scope\": \"\u56fa\u5b9abody/\u5b9e\u9645\u9aa8\u5934\u957f\u5ea6\u3001\u8fd1\u4f3c\u6b63\u4ea4crop camera\u3001\u4eba\u5de5\u53ef\u89c1/\u9690\u85cf\u70b9\u5047\u8bbe\u4e0b\u7684pose\u89e3\u4ecd\u672a\u89e3\u51b3\uff1b\u4e0d\u662f\u58f0\u79f0\u771f\u4eba\u65e0\u6cd5\u505a\u8be5\u52a8\u4f5c\u6216\u6240\u6709\u5176\u4ed6\u76f8\u673a/\u4f53\u578b/\u6807\u70b9\u90fd\u4e0d\u53ef\u80fd\u3002\u624b\u90e8\u53ef\u89c1\u5f62\u6001\u548c\u52a8\u4f5c\u5408\u7406\u6027\u4f18\u5148\u4e8e\u9690\u85cf\u5173\u8282\u7684subpixel\u91cd\u6295\u5f71\u3002\",\n      \"geometry_not_pose\": \"geometry-check numerical export PASS does not override its explicit POSE_FAIL; report error~1.22e-5cm concerns LBS export only.\",\n      \"stop_reason\": \"\u591a\u8f6e\u5b9e\u9645\u6b63\u4fa7\u56fe\u5ba1\u67e5\u5747\u4e0d\u6ee1\u8db3\u8fd1\u8eab\u63d0\u8863\u52a8\u4f5c\uff1b\u4fdd\u6301\u5931\u8d25\u4e0e\u6df1\u5ea6\u6b67\u4e49\u800c\u505c\u6b62\uff0c\u65e0accepted candidate\uff0c\u4e3bfinal A-pose\u4e0d\u53d8\u3002\"\n    }\n  },\n  \"grader_reference\": \"tools/skill_evals/upstream/agents/grader.md (read; evidence-based assertions and quality-claim checks; no aggregate pass_rate across heterogeneous claims)\",\n  \"expectations\": [\n    {\n      \"text\": \"v2\u56db\u4e2a\u53ef\u89c1\u670d\u88c5\u57fa\u672c\u7279\u5f81\u901a\u8fc7\",\n      \"passed\": true,\n      \"evidence\": \"\u9010\u5f20\u9ad8\u6e05front/side/back/closeup\uff1b\u4e03\u5206\u8896\u9732\u524d\u81c2\u3001\u7a84\u6d45\u8239\u9886\u3001\u5c0f\u4e2d\u592e\u7ea2\u7eff\u88c5\u9970\u3001\u7eb5\u5217pointelle\u773c\u5b54\uff1b\u7ec6\u8282WARN\u4fdd\u7559\u3002\"\n    },\n    {\n      \"text\": \"\u6700\u7ec8actual\u8d44\u6e90\u548c\u539f\u56fe/\u5206view\u8bca\u65ad\u4f7f\u7528\u540c\u4e00\u9009\u4e2dshape\",\n      \"passed\": true,\n      \"evidence\": \"\u72ec\u7acb\u6bd4\u8f83asset/version/dimensions/morphWeights\u5e76\u8ba1\u7b97state/OBJ/camera/reference/render hashes\uff1b\u7ed3\u679c\u5168\u90e8true\u3002\"\n    },\n    {\n      \"text\": \"\u6761\u4ef6shape\u76f8\u5bf9fixed M\u63d0\u9ad8\u5168\u90e8\u5168clothed IoU\",\n      \"passed\": false,\n      \"evidence\": \"shape-fit/metrics.json\u4e09\u89c6IoU\u90fd\u4e0b\u964d\uff0cfront .81420\u2192.80564\uff0cside .68676\u2192.68376\uff0cback .74962\u2192.74437\u3002\"\n    },\n    {\n      \"text\": \"shared pose\u4e25\u683c\u5339\u914d\u4e09\u4e2a\u751f\u6210view\",\n      \"passed\": false,\n      \"evidence\": \"fit/back-final-photo-overlay.png\u53cc\u8155\u660e\u663e\u9519\u4f4d\uff0c23.15/30.76px\uff1bfront/side\u4e5f\u6709\u5c40\u90e8\u8868\u9762\u6b8b\u5dee\u3002\"\n    },\n    {\n      \"text\": \"\u540cbody\u5206view\u59ff\u6001\u8c03\u8282\u6539\u5584\u5176\u88ab\u4f18\u5316\u624b\u8155\",\n      \"passed\": true,\n      \"evidence\": \"view-specific/back/before-after.png\u624b\u8155\u5bf9\u9f50\uff1bsummary.json back .224/.081px\u3001side .182px\u3002\u4ec5in-sample\uff0c\u672a\u8bc1\u660eheldout\u3002\"\n    },\n    {\n      \"text\": \"\u539f\u56fe\u5019\u9009\u8bc1\u660e\u539f\u6a21\u7279\u4eba\u4f53\u51c6\u786e\u6062\u590d\",\n      \"passed\": false,\n      \"evidence\": \"\u539f\u56feiterations2\u20135\u5747POSE_FAIL\u3002\u6700\u65b0forward-IK\u81551.26/3.92px\u3001\u80981.78/4.77px\u4e14\u624b100%\u5728\u8179\u524d\uff0c\u4f46side\u5b9e\u9645\u624b\u79bb\u8179min21.16/25.30cm\uff0c\u4e0e\u8fd1\u8eab\u63d0\u8863\u4e0d\u7b26\u3002accepted_matched_candidate=null\uff1b\u4f4e2D\u8bef\u5dee\u4e0d\u80fd\u8bc1\u660e\u6b63\u786e3D/shape\u3002\"\n    },\n    {\n      \"text\": \"\u539f\u56fe\u7b2c\u4e8c\u8f6e\u5728\u540cshape\u540ccamera\u4e0b\u6539\u5584\u88ab\u4f18\u5316\u76842D\u5934/\u8098/\u8155\u70b9\",\n      \"passed\": true,\n      \"evidence\": \"\u8be5\u5386\u53f2\u6539\u5584\u4fdd\u7559\u4e8eoriginal-reference/iteration-2\u4e0eiteration_2_review\uff1b\u5176\u5b9e\u9645\u624b\u90e8\u5931\u8d25\u540e\u7ee7\u7eed3\u20135\uff0c\u6700\u65b0\u4ecdPOSE_FAIL\uff0c\u6ca1\u6709accepted candidate\u3002\"\n    },\n    {\n      \"text\": \"\u539f\u56fe\u6700\u65b0\u5019\u9009\u91cd\u73b0\u5408\u7406\u7684\u8fd1\u8179\u63d0\u8863\u4e09\u7ef4\u624b\u59ff\",\n      \"passed\": false,\n      \"evidence\": \"\u5b9e\u9645renders/front.png\u6b63\u9762\u53ef\u663e\u5f97\u76f8\u5bb9\uff0c\u4f46renders/side.png\u53cc\u624b\u60ac\u4f38\u8fdc\u79bb\u8179\u90e8\uff1bhand-depth-check.json\u5168\u90e8\u624b\u9876\u70b9\u5728torso\u524d\u4f46minclearance21.16/25.30cm\u3002candidate-status.json overall POSE_FAIL\uff0caccepted null\u3002\"\n    }\n  ],\n  \"eval_feedback\": {\n    \"suggestions\": [\n      \"\u4e0d\u8981\u4ec5\u9a8c\u8bc1\u516d\u5f20\u6587\u4ef6\u5b58\u5728\uff1av1\u540c\u6837\u5b58\u5728\u516d\u56fe\u4f46\u8896\u578b\u9519\u8bef\uff0c\u5fc5\u987b\u4fdd\u7559\u56db\u9879\u53ef\u89c1\u8bbe\u8ba1\u68c0\u67e5\u3002\",\n      \"\u4e0d\u80fd\u628a\u53ea\u4f18\u5316\u4e24\u4e2a\u624b\u8155\u3001\u6216\u5305\u542b\u6027loss\u4e0b\u964d\uff0c\u5145\u5f53\u5168\u8868\u9762/\u771f\u5b9e\u4eba\u4f53/heldout\u901a\u8fc7\u3002\",\n      \"\u5206\u5f00\u8bb0\u5f55shared back\u5931\u8d25\u4e0eview-specific back in-sample\u6539\u5584\uff1b\u4e0d\u80fd\u66ff\u6362heldout\u57fa\u51c6\u3002\",\n      \"\u539f\u56feneck\u951a\u70b9\u96f6\u8bef\u5dee\u4e0d\u53ef\u7528\u6765\u8bc1\u660e\u72ec\u7acb\u59ff\u6001\u51c6\u786e\u3002\",\n      \"\u672ccase\u4e24\u8f6e\u662f\u4fee\u6b63\u5386\u53f2\uff0c\u4e0d\u662fskill\u56e0\u679cbenchmark\u6216\u6cdb\u5316\u6210\u529f\u7387\u3002\",\n      \"\u539f\u56fe\u5173\u952e\u70b9\u62df\u5408\u9700\u540c\u65f6\u68c0\u67e5\u5b9e\u9645mesh\u624b\u90e8\u8f6e\u5ed3\u4e0e\u906e\u6321\uff1a\u8155\u8098\u003c1px\u4ecd\u53ef\u80fd\u662f\u9519\u8bef3D\u626d\u8f6c\u6216\u624b\u90e8\u7a7f\u906e\uff0c\u4e0d\u80fd\u53ea\u9760\u70b9\u8bef\u5dee\u901a\u8fc7\u7269\u7406\u59ff\u6001\u3002\",\n      \"\u624b\u90e8100%\u5728\u8179\u524d\u4ecd\u53ef\u80fd\u79bb\u8eab\u8fc7\u8fdc\uff1b\u9700\u6b63\u4fa7\u5b9e\u9645mesh\u4e0e\u52a8\u4f5c\u8bed\u4e49\u5171\u540c\u5224\u65ad\uff0c\u4e0d\u80fd\u628afront fraction\u5f53contact\u6216\u81ea\u7136\u52a8\u4f5c\u9a8c\u6536\u3002\"\n    ]\n  },\n  \"usable_scope\": [\n    \"\u5c55\u793a\u4ece\u4e00\u5f20\u5546\u54c1\u56fe\u5230\u516d\u5f20\u751f\u6210\u53c2\u8003\uff0c\u518d\u5230\u771f\u5b9e\u53ef\u8c03\u4eba\u4f53/\u9aa8\u9abc/\u5bfc\u51fa\u6587\u4ef6\u53caOpenCV\u5305\u7edc\u5339\u914d\u7684\u53ef\u5ba1\u8ba1\u5de5\u4f5c\u6d41\u3002\",\n    \"\u5c55\u793a\u540c\u4e00\u6761\u4ef6shape\u4e0b\u5171\u4eabpose\u4e0d\u8db3\u3001\u5206view pose\u53ef\u4ee5\u6539\u5584\u4eba\u5de5\u8155\u70b9\u7684\u8bca\u65ad\u3002\",\n    \"\u5728\u660e\u786e\u6807\u6ce8prior/estimate\u548c\u8bef\u5dee\u7684\u524d\u63d0\u4e0b\u4f5c\u4e3a\u540e\u7eed\u4eba\u5de5\u8c03\u6574\u8d77\u70b9\u3002\"\n  ],\n  \"prohibited_claims\": [\n    \"\u7cbe\u786e\u590d\u5236ASOS\u5546\u54c1\u9488\u7ec7/\u80a9\u90e8\u7ed3\u6784/\u6240\u6709\u80cc\u90e8\u548c\u88e4\u811a\u7ec6\u8282\u3002\",\n    \"\u516d\u56fe\u662f\u540c\u4e00\u4e2a\u771f\u5b9e\u4eba\u7269\u7684\u540c\u6b65\u591a\u89c6\u5b9e\u62cd\u6216\u4e25\u683c\u540c\u4e00\u59ff\u52bf\u6295\u5f71\u3002\",\n    \"\u6062\u590d\u5b98\u7f51171cm/S\u6a21\u7279\u771f\u5b9e\u80f8\u8170\u81c0/\u4f53\u578b\u3002\",\n    \"generated pose/depth\u662f\u68c0\u6d4b\u5668\u771f\u503c\u6216metric depth\u3002\",\n    \"\u5305\u542b\u6027shape\u4f18\u5316\u63d0\u5347\u5168\u90e8IoU\u3001heldout\u51c6\u786e\u6027\u6216\u771f\u5b9e\u4f53\u578b\u51c6\u786e\u6027\u3002\",\n    \"view-specific\u8155\u70b9\u6539\u5584\u5c5e\u4e8eheldout\u9a8c\u8bc1\u3002\",\n    \"\u539f\u56fe\u5019\u9009\u8fbe\u5230observed body fit PASS\u3002\",\n    \"\u9a8c\u8bc1\u771f\u5b9e\u5e03\u6599\u3001\u8863\u7269\u677e\u91cf\u3001\u78b0\u649e/\u652f\u6491\u3001\u7f1d\u5408\u6216\u7269\u7406\u7a7f\u7740\u3002\",\n    \"\u5c06\u539f\u56fe\u6700\u65b0forward-IK\u89e3\u5f53\u9009\u4e2d\u7684\u5408\u7406\u63d0\u8863pose\uff1b\u5b83\u662f\u660e\u786e\u62d2\u7edd\u7684latest_failed_candidate\uff0c\u6570\u503c\u5bfc\u51faPASS\u4e0d\u7b49\u4e8e\u59ff\u6001PASS\u3002\"\n  ],\n  \"reviewed_model_artifact_sha256\": {\n    \"model/original-reference/state.json\": \"e48d77d763557f8ab4ccae0c29f2e4dcafa5cb939ed219f0050ec7ec5f8edf7b\",\n    \"model/original-reference/metrics.json\": \"74af0e13bb7004f7da63c9a67fb50553682630a264b50e8299483965c7d5238e\",\n    \"model/original-reference/before-after.png\": \"d3b4001b3415fe03c38c7273467a71dbabab78cf9501865c805e66598e38895b\",\n    \"model/original-reference/renders/front.png\": \"11380447162b2dd0dc19410fd238adeb0ce7376559fb24b18e49393894e293f8\",\n    \"model/original-reference/renders/side.png\": \"544e35eb15664c29c0b28f69d044a26de60b113ec51d72cf5c041b0c284c0bac\",\n    \"model/original-reference/camera.json\": \"39b9e3e37fd84161476ca9a226500d010ff434d689538b571ea56e04f989da0c\",\n    \"model/original-reference/inspection-camera.json\": \"f6312fa6c91306e0571091bedfee1a628e8fabdb54dbaae137e6a18a991822ee\",\n    \"model/original-reference/posed.obj\": \"4779e58db22a85651ce9a39e02c2f5e15e47d67031ee044db7dd5033fa8ae1c4\",\n    \"model/original-reference/posed.glb\": \"db27b4fc00b7e18d6744813c567e029e608785879225d3d24155d4123af023d9\",\n    \"model/original-reference/posed-joints.json\": \"cc868ee88d77fb267fcf59129044baa1f3fe05fcbb4f509f3f3c87740f0d4183\",\n    \"model/original-reference/candidate-status.json\": \"884e19defa91a57d211dd8cfc4626f75c5c8730eaaef8312f99b48397661d253\",\n    \"model/original-reference/ik-depth-feasibility.json\": \"304b85ad8da69ff69d498fcd1faa718a41c6c128105b5e393558ebc96a3d171a\",\n    \"model/original-reference/hand-depth-check.json\": \"3790fd8fdd93b7509d2548826f43f9af4bf0b6c307a47b6edc87933df8ea3f6a\",\n    \"model/original-reference/geometry-check.json\": \"b5115590e87c6c7e112d125bcbd467b2f0ef8d236d511a65fb8e3a5b1f452ab2\",\n    \"model/final-state.json\": \"2c44c7236d83c827097312ed5dfbf4899a2c921c2860bfd564e47af2dbe2008f\",\n    \"model/view-specific/side/state.json\": \"f047fd128c120963265c36c0e7affe7fa990bfdc4432eb03109d9dc1f23d8317\",\n    \"model/view-specific/back/state.json\": \"b86d5e04b678fff6cb907cff8ea32465bf27236e93a0ec92686d2945584578b8\"\n  }\n}\n"}, {"name": "measurements.csv", "type": "text", "content": "key,original_M_prior_cm,target_cm,independently_measured_cm,basis,mesh_checked\nheight,170,170,169.99994621466396,prior,True\nbust,90,90,89.99999996693164,prior,True\nwaist,72,69,69.0000069469558,clothed_envelope_estimate,True\nhips,96,96,95.99992042292791,prior,True\nshoulders,37,37,37.00000006177499,prior,True\nupperArm,27,27,27.00000002015713,prior,True\nthigh,54,50,50.000817957833775,clothed_envelope_estimate,True\nneck,32,32,32.00000004963003,prior,True\nupperArmLength,29,29,29.000000043017785,prior,True\nforearmLength,23,23,23.000000035994336,prior,True\nthighLength,40,40,40.00004718065299,prior,True\ncalf,36,36,36.000000039157,prior,True\n"}], "grading": {"expectations": [{"text": "\u516d\u5f20\u72ec\u7acb\u539f\u751f\u9ad8\u5206\u8fa8\u7387\u56fe\u50cf", "passed": true, "evidence": "\u5b9e\u9645\u6587\u4ef6\u5c3a\u5bf8\uff1a{\"front\": [1086, 1448], \"side\": [1086, 1448], \"back\": [1086, 1448], \"closeup\": [1110, 1417], \"pose\": [1086, 1448], \"depth\": [1086, 1448]}"}, {"text": "\u4fdd\u7559\u5931\u8d25\u8f6e\u4e0e\u5b9e\u9645\u751f\u6210\u6587\u4ef6\u6458\u8981", "passed": true, "evidence": "provenance/generation-2.json\uff1bmanifest.json\u9010\u6587\u4ef6SHA256\u3002"}], "summary": {"passed": 2, "failed": 0, "total": 2, "pass_rate": 1.0}, "execution_metrics": {"total_tokens": null, "duration_ms": null, "tool_calls": null}, "notes": ["\u540c\u4e00\u5546\u54c1\u7684\u751f\u6210\u4fee\u6b63\u5386\u53f2\uff1b\u4e0d\u662f\u914d\u5bf9\u6280\u80fd\u57fa\u51c6\u3001\u4eba\u4f53\u771f\u503c\u6216\u7269\u7406\u5408\u8eab\u9a8c\u8bc1\u3002"]}}, {"id": "eval-product-history_generation_1-run-1", "prompt": "\u4f9d\u636e\u539f\u59cb\u7535\u5546\u5546\u54c1\u56fe\u4e0e\u53ef\u8c03\u4eba\u4f53\uff0c\u751f\u6210\u6b63\u9762\u3001\u4fa7\u9762\u3001\u80cc\u9762\u3001\u7279\u5199\u3001\u59ff\u6001\u793a\u610f\u548c\u6df1\u5ea6\u98ce\u683c\u516d\u5f20\u72ec\u7acb\u56fe\uff1b\u4f7f\u7528\u771f\u5b9e\u53c2\u6570\u5316\u4eba\u4f53\u3001\u76f8\u673a\u6821\u51c6\u4e0e OpenCV \u53e0\u52a0\u9a8c\u8bc1\u3002\u7b2c1\u8f6e\u3002\u672a\u89c1\u7ed3\u6784\u4e3a\u751f\u6210\u63a8\u6d4b\uff0c\u80f8\u8170\u81c0\u4ecd\u4e3a\u4e2d\u7801\u5148\u9a8c\u3002", "eval_id": 1, "outputs": [{"name": "artifacts.md", "type": "text", "content": "## \u7b2c1\u8f6e \u00b7 \u8896\u957f\u9519\u8bef\uff08\u5931\u8d25\u5bf9\u7167\uff09\n\n\u672c\u9875\u56db\u9636\u6bb5\u753b\u5eca\u4fdd\u7559\u72ec\u7acb\u539f\u56fe\u4e0eSHA256\u3002\n\n[\u516d\u5f20Image Gen\u6587\u4ef6\u53ca\u6a21\u578b\u8f93\u51fa\u6e05\u5355](manifest.json)\n\n[\u5b9e\u9645\u751f\u6210\u8bb0\u5f55](provenance/generation-1.json)\n\n\u540c\u4e00case\u4fee\u6b63\u5386\u53f2\uff0c\u4e0d\u662f\u968f\u673a\u6216\u914d\u5bf9\u6280\u80fd\u56e0\u679c\u57fa\u51c6\u3002token\u4e0e\u5b8c\u6574\u8017\u65f6\u672a\u8bb0\u5f55\uff0c\u4fdd\u7559null\u3002\u7269\u7406\u670d\u88c5\u5408\u8eab\u9a8c\u8bc1 NOT_RUN\u3002\n"}, {"name": "independent-review.json", "type": "text", "content": "{\n  \"review_version\": \"v1\",\n  \"review_date_utc\": \"2026-11-17\",\n  \"verdict\": \"FAIL_GARMENT_FIDELITY__PARTIAL_INTERNAL_FIT\",\n  \"scope\": \"Independent visual review only; no network, generation, code changes, commits or physical validation.\",\n  \"source_status\": \"ASOS descriptor and URL supplied by parent; no local asos-* images present at time of review. Exact product match has not been visually checked against official CDN images.\",\n  \"official_candidate_url\": \"https://www.asos.com/us/asos-design/asos-design-lounge-pointelle-boatneck-3-4-sleeve-top-in-red/prd/211010805\",\n  \"findings\": [\n    {\n      \"id\": \"sleeves\",\n      \"severity\": \"FAIL\",\n      \"files\": [\n        \"reference/original-product.jpg\",\n        \"images/front.png\",\n        \"images/side.png\",\n        \"images/back.png\",\n        \"images/closeup.png\"\n      ],\n      \"observation\": \"All generated color views show sleeves reaching wrist/hand junction. The source has bent elbows and exposed forearm; its crop alone does not safely establish full sleeve length. The official three-quarter-sleeve description supplied to this review conflicts with the generated wrist-length design.\",\n      \"action\": \"Recheck official local product images, then regenerate with confirmed three-quarter cuff placement. Do not call current result faithful long sleeves.\"\n    },\n    {\n      \"id\": \"neck-trim\",\n      \"severity\": \"WARN\",\n      \"files\": [\n        \"reference/original-product.jpg\",\n        \"images/front.png\",\n        \"images/closeup.png\"\n      ],\n      \"observation\": \"Wide shallow red neckline and central red/green bud are retained. Closeup invents a pronounced scalloped/picot inner edge and a larger, sharply resolved rose with green leaves; source collar appears narrow/smoother and bud much smaller. Closeup neckline reads more U-shaped than the source shallow boat shape.\",\n      \"action\": \"Preserve source collar width/curve and tiny bud; avoid adding decorative trim unsupported by source.\"\n    },\n    {\n      \"id\": \"knit-and-color\",\n      \"severity\": \"PARTIAL\",\n      \"files\": [\n        \"reference/original-product.jpg\",\n        \"images/front.png\",\n        \"images/side.png\",\n        \"images/back.png\",\n        \"images/closeup.png\"\n      ],\n      \"observation\": \"Saturated red and repeated vertical pointelle/rib-like columns visibly carry across views. Closeup makes perforated floral/diamond motifs much more explicit and regular than the low-contrast source. Exact knit repeat, hole scale and color cannot be certified from this source and differing light.\"\n    },\n    {\n      \"id\": \"pants-and-unseen-details\",\n      \"severity\": \"UNVERIFIED\",\n      \"files\": [\n        \"reference/original-product.jpg\",\n        \"images/front.png\",\n        \"images/side.png\",\n        \"images/back.png\"\n      ],\n      \"observation\": \"Red gathered waistband and its tiny centered red/green decoration are consistent with source. Source ends around upper thighs; generated full-length straight/relaxed legs, hems, bare feet, back cut and full top hem are inferred, not recovered evidence. Source top is lifted by hands; generated hip-level unlifted length is plausible but not directly verified.\"\n    },\n    {\n      \"id\": \"views-and-framing\",\n      \"severity\": \"PARTIAL\",\n      \"files\": [\n        \"images/front.png\",\n        \"images/side.png\",\n        \"images/back.png\",\n        \"images/closeup.png\",\n        \"images/pose.png\",\n        \"images/depth.png\"\n      ],\n      \"observation\": \"Six standalone image files exist with clean unclipped full-body front/side/back/pose/depth and one torso detail. Front/back use a spread-arm stance; side bends visible forearm forward and hides far arm/leg; closeup has arms down. Back/side/frontal head size, hair silhouette, hem height and subject scale vary. These are coherent illustrative views, not synchronized projections of one captured pose or guaranteed identical person.\"\n    },\n    {\n      \"id\": \"generated-pose\",\n      \"severity\": \"ILLUSTRATIVE_ONLY\",\n      \"files\": [\n        \"images/pose.png\",\n        \"images/landmarks.json\"\n      ],\n      \"observation\": \"Orange/yellow diagram is legible but draws stylized extra central torso/face nodes and ambiguous shoulder branches. It is embedded in a separately generated photograph with slightly different garment proportions/framing. Metadata says manual visible wrist/ankle annotations and no pose detector; diagram cannot substantiate detector accuracy or 3D joint truth.\"\n    },\n    {\n      \"id\": \"generated-depth\",\n      \"severity\": \"ILLUSTRATIVE_ONLY\",\n      \"files\": [\n        \"images/depth.png\",\n        \"model/final-renders/depth.png\"\n      ],\n      \"observation\": \"Generated depth image retains grayscale facial shading, pointelle texture, folds and photoreal hair. It looks like a relit monochrome portrait on black, not an independently measured/calibrated depth map. Actual model depth rendering is visibly distinct and corresponds to bare anatomical geometry, not clothed photo surface.\"\n    },\n    {\n      \"id\": \"actual-body-fit\",\n      \"severity\": \"PARTIAL\",\n      \"files\": [\n        \"model/final-renders/front.png\",\n        \"model/fit/front-final-photo-overlay.png\",\n        \"model/fit/side-before-after.png\",\n        \"model/fit/side-final-photo-overlay.png\",\n        \"model/fit/back-final-photo-overlay.png\",\n        \"model/fit/metrics.json\",\n        \"model/README.md\"\n      ],\n      \"observation\": \"Actual faceted anatomical surface is visible, and overlays put its cyan contour on generated photos with magenta manual wrist/ankle markers. Side before/after visibly improves ankle registration. Persistent side errors: face/chin cyan outline protrudes forward, hip/buttock and thigh/waist differ, fingers and toes do not align exactly. Front/back arm contours often sit outside clothed sleeves; hand/foot contours also diverge. These images are meaningful registration diagnostics, not proof of recovered bare-body dimensions or physical clothing fit.\",\n      \"metrics\": \"Full envelope IoU front 0.8161\\u21920.8320, side 0.5891\\u21920.6898, held-out back 0.7936\\u21920.8142. P95 contour error worsens front 17.18\\u219220.38px and back 17.00\\u219217.18px. Shape is fixed prior; cameras were separately calibrated and frozen before pose comparison.\"\n    }\n  ],\n  \"reviewed_file_sha256\": {\n    \"images/back.png\": \"01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575\",\n    \"images/closeup.png\": \"4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50\",\n    \"images/depth.png\": \"b99f1e48e67345d5c73940de45838df4942d649aad3d0e940ee029754aa471f9\",\n    \"images/front.png\": \"89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84\",\n    \"images/landmarks.json\": \"878b87ba8c6bf3ceb93998d25754b98c1013d5ff026aee98532bb937aaa59310\",\n    \"images/pose.png\": \"f95488c729253d1f06c3130ba085b0f1b34284131176e729d4abf404cfac60a5\",\n    \"images/side.png\": \"5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6\",\n    \"model/README.md\": \"39b646a449862502acd069a84a6e891b4468b449d96d67959cb104e1220ac08b\",\n    \"model/final-renders/depth.png\": \"76f1a435169c87c88099107ab581d04f38e06a70bc813f19b56e6c4930d25de6\",\n    \"model/final-renders/front.png\": \"13279396309831d8ef167aeeb619a2c9a2aecfaeb36fdcab11729de3154a3421\",\n    \"model/fit/back-final-photo-overlay.png\": \"5ad09356b9514f40055b34a46000cd56d9661ea1f57c0d31c07b189b4166bd8b\",\n    \"model/fit/front-final-photo-overlay.png\": \"814ed1822cc8b16f0de7152e4280a348cfe204f905aeb9204d4715f55f08a8c2\",\n    \"model/fit/metrics.json\": \"8cdc17e80f801a626e83b5dd43582f21dbe02a581b9f8e11742a8c3031b85ea3\",\n    \"model/fit/side-before-after.png\": \"bd76927389dc5ce1a980f79019a8f6514aabe24e7c38d289c65156d4fc12d4e2\",\n    \"model/fit/side-final-photo-overlay.png\": \"1f7708dd8bee53247e5deedfdd71b6c7f66a914a556797923b32e98fe1d99ac8\",\n    \"reference/original-product.jpg\": \"6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53\"\n  },\n  \"required_next_steps\": [\n    \"Visually check official product photos and confirm original garment before asserting exact product identity.\",\n    \"Correct sleeve length and unsupported neckline trim, then review six replacement images.\",\n    \"If generated references change, rerun matching with new frozen masks/annotations and distinguish camera, pose and body-shape contributions.\",\n    \"Keep illustrative pose/depth separate from actual joint projection/Z-buffer outputs; retain limitations and metric regressions.\"\n  ]\n}\n"}], "grading": {"expectations": [{"text": "\u516d\u5f20\u72ec\u7acb\u539f\u751f\u9ad8\u5206\u8fa8\u7387\u56fe\u50cf", "passed": true, "evidence": "\u5b9e\u9645\u6587\u4ef6\u5c3a\u5bf8\uff1a{\"front\": [1086, 1448], \"side\": [1086, 1448], \"back\": [1086, 1448], \"closeup\": [1110, 1417], \"pose\": [1086, 1448], \"depth\": [1086, 1448]}"}, {"text": "\u4fdd\u7559\u5931\u8d25\u8f6e\u4e0e\u5b9e\u9645\u751f\u6210\u6587\u4ef6\u6458\u8981", "passed": true, "evidence": "provenance/generation-1.json\uff1bmanifest.json\u9010\u6587\u4ef6SHA256\u3002"}], "summary": {"passed": 2, "failed": 0, "total": 2, "pass_rate": 1.0}, "execution_metrics": {"total_tokens": null, "duration_ms": null, "tool_calls": null}, "notes": ["\u540c\u4e00\u5546\u54c1\u7684\u751f\u6210\u4fee\u6b63\u5386\u53f2\uff1b\u4e0d\u662f\u914d\u5bf9\u6280\u80fd\u57fa\u51c6\u3001\u4eba\u4f53\u771f\u503c\u6216\u7269\u7406\u5408\u8eab\u9a8c\u8bc1\u3002"]}}], "previous_feedback": {}, "previous_outputs": {}, "benchmark": {"metadata": {"skill_name": "\u771f\u5b9e\u5546\u54c1\u516d\u56fe\u4e0e\u53c2\u6570\u4eba\u4f53\uff1a\u6587\u4ef6\u6267\u884c\u5b8c\u6574\u6027", "timestamp": "2026-11-17", "evals_run": [1], "runs_per_configuration": 1}, "runs": [{"eval_id": 1, "eval_name": "\u540c\u4e00\u5546\u54c1\u7684\u4fee\u6b63\u5386\u53f2", "configuration": "generation_2", "run_number": 1, "result": {"passed": 2, "failed": 0, "total": 2, "pass_rate": 1.0, "tokens": null, "time_seconds": null, "tool_calls": null, "errors": null}, "expectations": [{"text": "\u516d\u5f20\u72ec\u7acb\u539f\u751f\u9ad8\u5206\u8fa8\u7387\u56fe\u50cf", "passed": true, "evidence": "\u5b9e\u9645\u6587\u4ef6\u5c3a\u5bf8\uff1a{\"front\": [1086, 1448], \"side\": [1086, 1448], \"back\": [1086, 1448], \"closeup\": [1110, 1417], \"pose\": [1086, 1448], \"depth\": [1086, 1448]}"}, {"text": "\u4fdd\u7559\u5931\u8d25\u8f6e\u4e0e\u5b9e\u9645\u751f\u6210\u6587\u4ef6\u6458\u8981", "passed": true, "evidence": "provenance/generation-2.json\uff1bmanifest.json\u9010\u6587\u4ef6SHA256\u3002"}]}, {"eval_id": 1, "eval_name": "\u540c\u4e00\u5546\u54c1\u7684\u4fee\u6b63\u5386\u53f2", "configuration": "generation_1", "run_number": 1, "result": {"passed": 2, "failed": 0, "total": 2, "pass_rate": 1.0, "tokens": null, "time_seconds": null, "tool_calls": null, "errors": null}, "expectations": [{"text": "\u516d\u5f20\u72ec\u7acb\u539f\u751f\u9ad8\u5206\u8fa8\u7387\u56fe\u50cf", "passed": true, "evidence": "\u5b9e\u9645\u6587\u4ef6\u5c3a\u5bf8\uff1a{\"front\": [1086, 1448], \"side\": [1086, 1448], \"back\": [1086, 1448], \"closeup\": [1110, 1417], \"pose\": [1086, 1448], \"depth\": [1086, 1448]}"}, {"text": "\u4fdd\u7559\u5931\u8d25\u8f6e\u4e0e\u5b9e\u9645\u751f\u6210\u6587\u4ef6\u6458\u8981", "passed": true, "evidence": "provenance/generation-1.json\uff1bmanifest.json\u9010\u6587\u4ef6SHA256\u3002"}]}], "run_summary": {"generation_2": {"pass_rate": {"mean": 1.0, "stddev": 0.0}}, "generation_1": {"pass_rate": {"mean": 1.0, "stddev": 0.0}}}, "notes": ["\u4ec5\u4e00\u4e2a\u5546\u54c1\u7684\u4e24\u4ee3\u4fee\u6b63\uff1b\u4e0d\u662f\u65b0\u65e7\u6280\u80fd\u914d\u5bf9\u57fa\u51c6\uff0c\u4e0d\u62a5\u544a\u56e0\u679c\u589e\u76ca\u3002", "\u6b64\u5904\u6210\u529f\u7387\u4ec5\u6c47\u603b\u516d\u6587\u4ef6\u4e0e\u6458\u8981\u7684\u5ba2\u89c2\u6267\u884c\u5b8c\u6574\u6027\u3002\u5546\u54c1\u4e3b\u89c2\u5ba1\u67e5\u3001\u51e0\u4f55\u5339\u914d\u4e0e\u539f\u56fe\u6062\u590d\u5206\u522b\u5217\u4e8eOutputs\uff0c\u4e0d\u5408\u5e76\u5f02\u8d28\u65ad\u8a00\u6210\u529f\u7387\u3002\u7b2c\u4e00\u8f6e\u670d\u88c5\u8896\u957f\u9519\u8bef\u4f9d\u7136FAIL\uff0c\u5373\u4f7f\u6587\u4ef6\u5b8c\u6574\u3002", "tokens\u3001\u5b8c\u6574\u751f\u6210/\u62df\u5408\u5899\u949f\u8017\u65f6\u672a\u77e5\uff1b\u4fdd\u7559null\u3002\u539f\u751fClaude\u89e6\u53d1\u8bc4\u6d4b\u4ecdBLOCKED\uff0c\u670d\u88c5\u7269\u7406\u5408\u8eabNOT_RUN\u3002"]}};
+
+    // ---- State ----
+    const STATIC_REVIEW_KEY = "pattern-agent:eval-review:3183cf64d9fabb3df04aa22b";
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Restore this exact review build only; prior iterations have separate keys.
+      try {
+        const stored = JSON.parse(localStorage.getItem(STATIC_REVIEW_KEY) || "{}");
+        const ids = new Set(EMBEDDED_DATA.runs.map(run => run.id));
+        for (const [id, value] of Object.entries(stored)) {
+          if (ids.has(id) && typeof value === "string") feedbackMap[id] = value;
+        }
+      } catch { /* browser storage may be disabled */ }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    // Static-only adaptation: no server endpoint or credential-bearing request.
+    function persistStaticFeedback() {
+      try {
+        localStorage.setItem(STATIC_REVIEW_KEY, JSON.stringify(feedbackMap));
+        document.getElementById("feedback-status").textContent = "Saved in this browser; submit to download";
+      } catch {
+        document.getElementById("feedback-status").textContent = "Browser storage unavailable; submit to download";
+      }
+    }
+
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") delete feedbackMap[run.id];
+      else feedbackMap[run.id] = text;
+      persistStaticFeedback();
+    }
+
+    function showDoneDialog() {
+      saveCurrentFeedback();
+      const timestamp = new Date().toISOString();
+      const reviews = EMBEDDED_DATA.runs.map(run => ({run_id: run.id, feedback: feedbackMap[run.id] || "", timestamp}));
+      const payload = JSON.stringify({reviews, status: "complete"}, null, 2);
+      const url = URL.createObjectURL(new Blob([payload], {type: "application/json"}));
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = "feedback.json";
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      document.getElementById("done-overlay").classList.add("visible");
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+<script>const VISUAL_EVIDENCE = {"eval-product-generation_2-run-1": {"title": "第2轮 · 七分袖修正", "stages": [{"key": "input", "title": "1. 实际生成输入与来源", "images": [{"src": "reference/original-product.jpg", "label": "原始电商商品图 · 实际生成输入", "caption": "实际 Image Gen 参考照片；弯臂、局部裁切，与后续标准视图的姿态不同。", "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53", "pixels": [1000, 1276]}, {"src": "reference/asos-page.png", "label": "ASOS 官方商品页 · 来源核对", "caption": "来源与规格核对截图，不是提交给 Image Gen 的输入。官网确认红色 pointelle 船领七分袖，原模特 171 cm、穿 S。", "sha256": "1d78f18ca02370eb9d550aed90138d3b272bc4431b428cd667f550b21596f6ee", "pixels": [1280, 1000]}, {"src": "images/generation-1/front.png", "label": "实际第2轮编辑锚点 · 正面", "caption": "原商品照片 + 第1轮对应照片用于衣物修正；姿态示意与深度示意都使用第1轮正面锚点。三维引导经第1轮继承，最终69/50 cm模型没有重新送入本轮 Image Gen。", "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84", "pixels": [1086, 1448]}, {"src": "images/generation-1/side.png", "label": "实际第2轮编辑锚点 · 侧面", "caption": "原商品照片 + 第1轮对应照片用于衣物修正；姿态示意与深度示意都使用第1轮正面锚点。三维引导经第1轮继承，最终69/50 cm模型没有重新送入本轮 Image Gen。", "sha256": "5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6", "pixels": [1086, 1448]}, {"src": "images/generation-1/back.png", "label": "实际第2轮编辑锚点 · 背面", "caption": "原商品照片 + 第1轮对应照片用于衣物修正；姿态示意与深度示意都使用第1轮正面锚点。三维引导经第1轮继承，最终69/50 cm模型没有重新送入本轮 Image Gen。", "sha256": "01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575", "pixels": [1086, 1448]}, {"src": "images/generation-1/closeup.png", "label": "实际第2轮编辑锚点 · 特写", "caption": "原商品照片 + 第1轮对应照片用于衣物修正；姿态示意与深度示意都使用第1轮正面锚点。三维引导经第1轮继承，最终69/50 cm模型没有重新送入本轮 Image Gen。", "sha256": "4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50", "pixels": [1110, 1417]}], "status": "实际输入与规格核对分列", "emptyTitle": "", "note": ""}, {"key": "imagegen", "title": "2. Image Gen 六张输出", "images": [{"src": "images/generation-2/front.png", "label": "正面", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。", "sha256": "64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d", "pixels": [1086, 1448]}, {"src": "images/generation-2/side.png", "label": "侧面", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。", "sha256": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1", "pixels": [1086, 1448]}, {"src": "images/generation-2/back.png", "label": "背面", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。", "sha256": "25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e", "pixels": [1086, 1448]}, {"src": "images/generation-2/closeup.png", "label": "特写", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。", "sha256": "650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215", "pixels": [1110, 1417]}, {"src": "images/generation-2/pose.png", "label": "姿态标注示意", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。 仅生成式示意，不是检测器结果或可测量深度。", "sha256": "6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620", "pixels": [1086, 1448]}, {"src": "images/generation-2/depth.png", "label": "深度风格示意", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。 仅生成式示意，不是检测器结果或可测量深度。", "sha256": "b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d", "pixels": [1086, 1448]}], "status": "已实际执行 · 6 张", "emptyTitle": "", "note": ""}, {"key": "simulation", "title": "3. 真实三维人体渲染", "images": [{"src": "simulation/front.png", "label": "真实人体渲染 · 正面", "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。", "sha256": "e1cab36638ab6000f43d20af4e38e5d0d5560323540059fa5191e5659af4b92f", "pixels": [768, 1024]}, {"src": "simulation/side.png", "label": "真实人体渲染 · 侧面", "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。", "sha256": "25873054a75a19dc0ffd3d003665d566c7b04e94ac032048b29788bbfb8ddeaf", "pixels": [768, 1024]}, {"src": "simulation/back.png", "label": "真实人体渲染 · 背面", "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。", "sha256": "8bd68d52d4650c620ac3b2c7b382044b24d992b00dd9f205daab15c04bbfa2ef", "pixels": [768, 1024]}, {"src": "simulation/closeup.png", "label": "真实人体渲染 · 特写", "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。", "sha256": "b1859ffe0686cb6c48961cc054404559a66867f2d92b1bc3f683de2f99767424", "pixels": [768, 1024]}, {"src": "simulation/pose.png", "label": "真实人体渲染 · 姿态标注示意", "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。", "sha256": "9020152eec937466470744414f5694f96ce503a3871f552af8b775714050c37d", "pixels": [768, 1024]}, {"src": "simulation/depth.png", "label": "真实人体渲染 · 深度风格示意", "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。 深度来自数值 Z-buffer。", "sha256": "66584982712a2284bd7f83be3a62e897c69e1bb2ac869bf289b423490d08e14f", "pixels": [768, 1024]}, {"src": "original-reference/renders/front.png", "label": "原始商品图姿态 · 真实三维正面", "caption": "同一条件体形的原图专项姿态诊断；实际网格渲染用于检查手臂和手掌，非生成照片。", "sha256": "11380447162b2dd0dc19410fd238adeb0ce7376559fb24b18e49393894e293f8", "pixels": [1000, 1276]}, {"src": "original-reference/renders/side.png", "label": "原始商品图姿态 · 真实三维侧面", "caption": "同一条件体形的原图专项姿态诊断；实际网格渲染用于检查手臂和手掌，非生成照片。", "sha256": "544e35eb15664c29c0b28f69d044a26de60b113ec51d72cf5c041b0c284c0bac", "pixels": [1000, 1276]}], "status": "真实模型输出", "emptyTitle": "模型输出待核验", "note": "只有图像摘要与拟合输入一致、最终网格与metrics摘要一致时才显示。"}, {"key": "overlay", "title": "4. OpenCV 核验", "images": [{"src": "overlay/front-before-after.png", "label": "正面 · 前后对比", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "75e34782d5c217e76939f5d6b0cddf6c36d88ac1f3fd1107bfa0f1b50c5ee25a", "pixels": [1536, 1024]}, {"src": "overlay/front-final-photo-overlay.png", "label": "正面 · 最终照片叠加", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "f2d32194db9134d5182121b55ade087b19174bac2d872cd4781ebaaab60d76d9", "pixels": [768, 1024]}, {"src": "overlay/front-reference-landmarks-roi.png", "label": "正面 · 手动关键点与ROI", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "d368b1b430cf1c44716029b0d376b30b577e9f4129fd04279757dc039ddc26f5", "pixels": [768, 1024]}, {"src": "overlay/side-before-after.png", "label": "侧面 · 前后对比", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "1f39df9db087e88537564bc80ffdae263b238d060e8f56febfcb0a05d3548127", "pixels": [1536, 1024]}, {"src": "overlay/side-final-photo-overlay.png", "label": "侧面 · 最终照片叠加", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "2d9d4706d55780be7644e0e4e7b92d2fce8cfe211d467711e96244254a8ebc57", "pixels": [768, 1024]}, {"src": "overlay/side-reference-landmarks-roi.png", "label": "侧面 · 手动关键点与ROI", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "b7abd8ed8c66a50f251f41d388921e51423b997c058643e07d21ade4702bc4af", "pixels": [768, 1024]}, {"src": "overlay/back-before-after.png", "label": "背面 · 前后对比", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "b7a522e30d98aa3c67d1ef397bcb9aea724527f19e015565ff9724c26df5f8cd", "pixels": [1536, 1024]}, {"src": "overlay/back-final-photo-overlay.png", "label": "背面 · 最终照片叠加", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "1633f94dd935a8d0989519eefe024765fed3c40f7f2154db98b335a64c1be8f6", "pixels": [768, 1024]}, {"src": "overlay/back-reference-landmarks-roi.png", "label": "背面 · 手动关键点与ROI", "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。", "sha256": "3b2cd6c54300009f5d3ec998a7aa2782a56f36fcc9ad36e174e83db4ce42dcb8", "pixels": [768, 1024]}, {"src": "overlay/shape-front-before-after.png", "label": "正面 · 中码到条件体形", "caption": "固定相机和共享姿态，比较原始中码与衣物包络约束的条件体形。不是裸身轮廓等值拟合。", "sha256": "8075ad38a36307be8a964a32d15aeed1a092b1ee962a2dfbd096b12b51cedf95", "pixels": [1536, 1024]}, {"src": "overlay/shape-side-before-after.png", "label": "侧面 · 中码到条件体形", "caption": "固定相机和共享姿态，比较原始中码与衣物包络约束的条件体形。不是裸身轮廓等值拟合。", "sha256": "dd60b037fa864df4f34b0959e8400758b342ba38ccabcf45d8a20fc1ed91309d", "pixels": [1536, 1024]}, {"src": "overlay/shape-back-before-after.png", "label": "背面 · 中码到条件体形", "caption": "固定相机和共享姿态，比较原始中码与衣物包络约束的条件体形。不是裸身轮廓等值拟合。", "sha256": "69b8222348202a98ef96ce8d8e1523bc6a7d40f10f54c197e10963a7e4f99810", "pixels": [1536, 1024]}, {"src": "view-specific/side/shared-overlay.png", "label": "侧面 · 共享姿态", "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。", "sha256": "46e2a4d790817fbcdefdcd38ff376b93fea1cdbf04138b8f45857ad353436d01", "pixels": [768, 1024]}, {"src": "view-specific/side/view_specific-overlay.png", "label": "侧面 · 单图姿态诊断", "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。", "sha256": "b6b48cba5ec9faff0e828994ce4594c493a937ff4199b08cb1c1eaada1e99847", "pixels": [768, 1024]}, {"src": "view-specific/side/before-after.png", "label": "侧面 · 单图姿态诊断", "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。", "sha256": "ae3c29df5815c4d4f40dca8f26e97feefebfc83a190c1095cce433e194738f3f", "pixels": [1536, 1024]}, {"src": "view-specific/back/shared-overlay.png", "label": "背面 · 共享姿态", "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。", "sha256": "e1589d2425b0814b9f7f41eacbee7c9c5163e449ba2309912c4a433eeee7503f", "pixels": [768, 1024]}, {"src": "view-specific/back/view_specific-overlay.png", "label": "背面 · 单图姿态诊断", "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。", "sha256": "ca4fc9e1103b90b163d4b3a7fb5dc78d396cca8dc7b7db649a5416b292a81f32", "pixels": [768, 1024]}, {"src": "view-specific/back/before-after.png", "label": "背面 · 单图姿态诊断", "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。", "sha256": "ab943b9ab0c3a0f08a5e1cf0a4e651e606c7f9a0a75fd6732e109f58e5d37dc0", "pixels": [1536, 1024]}, {"src": "original-reference/before-after.png", "label": "原商品图独立诊断 · 前后对比", "caption": "原始电商图本身：同一条件人体，仅重新调弯臂、头颈与躯干姿态。与生成图核验分开，不证明恢复真人体形。", "sha256": "d3b4001b3415fe03c38c7273467a71dbabab78cf9501865c805e66598e38895b", "pixels": [2000, 1276]}, {"src": "original-reference/previous_candidate-overlay.png", "label": "原商品图独立诊断 · 实际投影叠加", "caption": "原始电商图本身：同一条件人体，仅重新调弯臂、头颈与躯干姿态。与生成图核验分开，不证明恢复真人体形。", "sha256": "5bfeb487669e041e817b15802b4e7ef04f832fa1aeac12d8213aa883e401138d", "pixels": [1000, 1276]}, {"src": "original-reference/refined_head_and_arms-overlay.png", "label": "原商品图独立诊断 · 实际投影叠加", "caption": "原始电商图本身：同一条件人体，仅重新调弯臂、头颈与躯干姿态。与生成图核验分开，不证明恢复真人体形。", "sha256": "c84b24717fd46d3507f8e0efab8ff725a73d90877fe5cc85144c52abbe37ba74", "pixels": [1000, 1276]}], "status": "实际叠加与前后比较", "emptyTitle": "没有可展示的本轮叠加", "note": "第2轮必须重新标注、分割与拟合，不借用上一轮数字。"}], "note": "六张是独立图像文件，可点击缩略图逐张放大并打开原图。姿态图、深度风格图为生成式示意；实际骨架投影、数值深度在三维渲染区。原商品图之外的背面与全长为推测。人体以中码先验初始化；围度条件调整与网格参数均不能作为原模特的真人测量。"}, "eval-product-history_generation_1-run-1": {"title": "第1轮 · 袖长错误（失败对照）", "stages": [{"key": "input", "title": "1. 实际生成输入与来源", "images": [{"src": "reference/original-product.jpg", "label": "原始电商商品图 · 实际生成输入", "caption": "实际 Image Gen 参考照片；弯臂、局部裁切，与后续标准视图的姿态不同。", "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53", "pixels": [1000, 1276]}, {"src": "reference/asos-page.png", "label": "ASOS 官方商品页 · 来源核对", "caption": "来源与规格核对截图，不是提交给 Image Gen 的输入。官网确认红色 pointelle 船领七分袖，原模特 171 cm、穿 S。", "sha256": "1d78f18ca02370eb9d550aed90138d3b272bc4431b428cd667f550b21596f6ee", "pixels": [1280, 1000]}, {"src": "input/generation-1/model-front.png", "label": "实际首轮三维引导 · 正面", "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。", "sha256": "98fca6fcb53390aefdd3a23e7ba18c83fbe6f91dd615ae54e9aa86748ff0b2c9", "pixels": [768, 1024]}, {"src": "input/generation-1/model-side.png", "label": "实际首轮三维引导 · 侧面", "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。", "sha256": "0acdd46452aeda8539843c62ad5472367c451cfaa8b0e20f62a5d77cdc485c66", "pixels": [768, 1024]}, {"src": "input/generation-1/model-back.png", "label": "实际首轮三维引导 · 背面", "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。", "sha256": "88ed9c975a2d553b3514003bcb71ff08d95b40e17b5348d5fb089665ea6f5855", "pixels": [768, 1024]}, {"src": "input/generation-1/model-closeup.png", "label": "实际首轮三维引导 · 特写", "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。", "sha256": "d5126af4bd77b0051bdd76360ecb2982c67ba196cb38e0fcd66c00eeef00f0cc", "pixels": [768, 1024]}, {"src": "input/generation-1/model-pose.png", "label": "实际首轮三维引导 · 姿态标注示意", "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。", "sha256": "6b998d67c93132dcc500d43ad513b796b101e175bec4e1a0ee834ff9f3a8503a", "pixels": [768, 1024]}, {"src": "input/generation-1/model-depth.png", "label": "实际首轮三维引导 · 深度风格示意", "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。", "sha256": "827dfade9cd2f6f81d590bb35befae1152c6e0419e4b31a5a4edef542d8f1b72", "pixels": [768, 1024]}], "status": "实际输入与规格核对分列", "emptyTitle": "", "note": ""}, {"key": "imagegen", "title": "2. Image Gen 六张输出", "images": [{"src": "images/generation-1/front.png", "label": "正面", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。", "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84", "pixels": [1086, 1448]}, {"src": "images/generation-1/side.png", "label": "侧面", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。", "sha256": "5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6", "pixels": [1086, 1448]}, {"src": "images/generation-1/back.png", "label": "背面", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。", "sha256": "01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575", "pixels": [1086, 1448]}, {"src": "images/generation-1/closeup.png", "label": "特写", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。", "sha256": "4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50", "pixels": [1110, 1417]}, {"src": "images/generation-1/pose.png", "label": "姿态标注示意", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。 仅生成式示意，不是检测器结果或可测量深度。", "sha256": "f95488c729253d1f06c3130ba085b0f1b34284131176e729d4abf404cfac60a5", "pixels": [1086, 1448]}, {"src": "images/generation-1/depth.png", "label": "深度风格示意", "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。 仅生成式示意，不是检测器结果或可测量深度。", "sha256": "b99f1e48e67345d5c73940de45838df4942d649aad3d0e940ee029754aa471f9", "pixels": [1086, 1448]}], "status": "已实际执行 · 6 张", "emptyTitle": "", "note": ""}, {"key": "simulation", "title": "3. 真实三维人体渲染", "images": [], "status": "未在此轮展示", "emptyTitle": "失败轮不复用修正轮模型", "note": "只有图像摘要与拟合输入一致、最终网格与metrics摘要一致时才显示。"}, {"key": "overlay", "title": "4. OpenCV 核验", "images": [], "status": "未在此轮展示", "emptyTitle": "没有可展示的本轮叠加", "note": "第2轮必须重新标注、分割与拟合，不借用上一轮数字。"}], "note": "六张是独立图像文件，可点击缩略图逐张放大并打开原图。姿态图、深度风格图为生成式示意；实际骨架投影、数值深度在三维渲染区。原商品图之外的背面与全长为推测。人体以中码先验初始化；围度条件调整与网格参数均不能作为原模特的真人测量。"}};
+// Static adapter for the pinned Anthropic viewer. No benchmark or run edits.
+(() => {
+  const section=document.createElement('section');section.className='quick-review';section.id='quick-review';
+  section.setAttribute('aria-label','快速视觉核验');
+  section.innerHTML='<div class="quick-heading"><div><h2>快速视觉核验</h2><p>原始图 → 六张生成图 → 三维人体 → OpenCV 叠加；点击缩略图放大。</p></div><label>修正轮次<br><select id="gallery-case" aria-label="修正轮次"></select></label></div><div id="evidence-grid" class="evidence-grid"></div><p id="evidence-footnote" class="evidence-footnote"></p>';
+  document.querySelector('#panel-outputs .main').prepend(section);
+  const select=section.querySelector('select');
+  EMBEDDED_DATA.runs.forEach((run,index)=>{const option=document.createElement('option');option.value=index;option.textContent=VISUAL_EVIDENCE[run.id].title;select.append(option);});
+  const dialog=document.createElement('dialog');dialog.className='evidence-lightbox';dialog.setAttribute('aria-label','Evidence image viewer');
+  dialog.innerHTML='<div class="lightbox-head"><strong id="lightbox-title"></strong><button id="lightbox-close" aria-label="Close image viewer">Close ×</button></div><img class="lightbox-image" id="lightbox-image" alt=""><p class="lightbox-caption" id="lightbox-caption"></p><div class="lightbox-controls"><button id="lightbox-prev">← Previous image</button><span id="lightbox-position"></span><button id="lightbox-next">Next image →</button><a id="lightbox-original" target="_blank" rel="noopener">Open original</a></div>';
+  document.body.append(dialog);
+  let gallery=[],position=0,returnFocus;
+  function paint(){const item=gallery[position];dialog.querySelector('#lightbox-title').textContent=item.label;dialog.querySelector('img').src=item.src;dialog.querySelector('img').alt=item.label;dialog.querySelector('#lightbox-caption').textContent=item.caption;dialog.querySelector('#lightbox-original').href=item.src;dialog.querySelector('#lightbox-position').textContent=`${position+1} / ${gallery.length}`;dialog.querySelector('#lightbox-prev').disabled=position===0;dialog.querySelector('#lightbox-next').disabled=position===gallery.length-1;}
+  function open(index,button){position=index;returnFocus=button;paint();dialog.showModal();}
+  function close(){dialog.close();returnFocus?.focus();}
+  dialog.querySelector('#lightbox-close').onclick=close;
+  dialog.querySelector('#lightbox-prev').onclick=()=>{if(position>0){position--;paint();}};
+  dialog.querySelector('#lightbox-next').onclick=()=>{if(position<gallery.length-1){position++;paint();}};
+  dialog.addEventListener('click',event=>{if(event.target===dialog)close();});
+  dialog.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();event.stopPropagation();dialog.querySelector(event.key==='ArrowLeft'?'#lightbox-prev':'#lightbox-next').click();}else if(event.key==='Escape')event.stopPropagation();});
+  // The upstream viewer also uses arrows; keep image navigation within the modal.
+  document.addEventListener('keydown',event=>{if(dialog.open&&['ArrowLeft','ArrowRight','Escape'].includes(event.key)){event.preventDefault();event.stopImmediatePropagation();if(event.key==='Escape')close();else dialog.querySelector(event.key==='ArrowLeft'?'#lightbox-prev':'#lightbox-next').click();}},true);
+  function imageButton(item,index,thumbnail=false){const button=document.createElement('button');button.type='button';button.className=thumbnail?'':'evidence-image';button.setAttribute('aria-label','Open '+item.label);const image=document.createElement('img');image.src=item.src;image.alt=item.label;image.decoding='async';button.append(image);button.onclick=()=>open(index,button);return button;}
+  function render(index){
+    const data=VISUAL_EVIDENCE[EMBEDDED_DATA.runs[index].id];select.value=index;gallery=[];
+    const grid=section.querySelector('#evidence-grid');grid.replaceChildren();
+    for(const stage of data.stages){
+      const card=document.createElement('section');card.className='evidence-stage';card.dataset.stage=stage.key;
+      const heading=document.createElement('h3');heading.textContent=stage.title;card.append(heading);
+      const status=document.createElement('span');status.className='stage-status'+(stage.images.length?'':' unavailable');status.textContent=stage.status;card.append(status);
+      if(!stage.images.length){const empty=document.createElement('div');empty.className='evidence-empty';const strong=document.createElement('strong');strong.textContent=stage.emptyTitle;empty.append(strong,document.createTextNode(stage.note));card.append(empty);}
+      else{const start=gallery.length;gallery.push(...stage.images);const figure=document.createElement('figure');figure.append(imageButton(stage.images[0],start));const caption=document.createElement('figcaption');caption.textContent=stage.images[0].caption;figure.append(caption);card.append(figure);
+        if(stage.images.length>1){const strip=document.createElement('div');strip.className='thumb-strip';stage.images.forEach((item,j)=>strip.append(imageButton(item,start+j,true)));card.append(strip);}
+      }grid.append(card);
+    }
+    section.querySelector('#evidence-footnote').textContent=data.note;
+  }
+  const original=showRun;
+  const selectionKey=STATIC_REVIEW_KEY+':visual-case';
+  showRun=function(index){original(index);render(index);try{localStorage.setItem(selectionKey,String(index));}catch{}};
+  select.onchange=()=>{saveCurrentFeedback();showRun(Number(select.value));};
+  const prompt=document.querySelector('#prompt-text');const details=document.createElement('details');details.className='quick-prompt';const summary=document.createElement('summary');summary.textContent='Read full task prompt';prompt.parentElement.prepend(details);details.append(summary,prompt);
+  const outputs=document.querySelector('#outputs-body').closest('.section');const raw=document.createElement('details');raw.className='quick-raw';const rawTitle=document.createElement('summary');rawTitle.textContent='All output files, metrics and execution traces';outputs.before(raw);raw.append(rawTitle,outputs);
+  const firstVisual=EMBEDDED_DATA.runs.findIndex(run=>VISUAL_EVIDENCE[run.id].stages.some(stage=>stage.images.length));
+  let remembered;
+  try{const stored=localStorage.getItem(selectionKey);if(stored!==null)remembered=Number(stored);}catch{}
+  if(Number.isInteger(remembered)&&remembered>=0&&remembered<EMBEDDED_DATA.runs.length)showRun(remembered);
+  else if(currentIndex===0&&firstVisual>0)showRun(firstVisual);else render(currentIndex);
+})();
+</script>
+<script>document.querySelector("#quick-review").insertAdjacentHTML("afterend","\u003csection class=\"product-results\">\u003ch2>\u5982\u4f55\u5224\u65ad\u5339\u914d\u003c/h2>\u003cp>\u4e09\u7ef4\u6a21\u578b\u4e0e\u751f\u6210\u56fe\u7684\u5173\u952e\u70b9\u53ca\u8f6e\u5ed3\u7528\u4e8e\u68c0\u67e5\u5185\u90e8\u4e00\u81f4\u6027\u3002\u8863\u7269\u8f6e\u5ed3\u542b\u677e\u91cf\uff0c\u65e0\u6cd5\u8bc1\u660e\u88f8\u8eab\u80f8\u8170\u81c0\uff1b\u539f\u59cb\u7535\u5546\u56fe\u662f\u5f2f\u81c2\u8fd1\u666f\uff0c\u4e0d\u80fd\u7528\u6807\u51c6\u6b63\u9762\u56fe\u7684\u4f4e\u8bef\u5dee\u4ee3\u66ff\u539f\u56fe\u9a8c\u8bc1\u3002\u003c/p>\u003cp>\u003cstrong>\u5546\u54c1\u5ba1\u67e5\u4e0e\u51e0\u4f55\u68c0\u67e5\u5206\u5f00\uff1a\u003c/strong>\u7b2c\u4e8c\u8f6e\u4e03\u5206\u8896\u3001\u6d45\u8239\u9886\u3001\u5c0f\u4e2d\u592e\u73ab\u7470\u4e0e pointelle \u57fa\u672c\u89c6\u89c9\u7279\u5f81\u83b7\u6761\u4ef6\u63a5\u53d7\uff1b\u80a9\u5934\u53e0\u7247\u3001\u73ab\u7470\u5c3a\u5bf8\u4e0e\u5b54\u773c\u91cd\u590d\u5355\u5143\u4ecd\u6709\u7ec6\u8282\u504f\u5dee\u3002\u672a\u89c1\u80cc\u9762\u3001\u88e4\u811a\u4e0e\u4eba\u7269\u8eab\u4efd\u6ca1\u6709\u72ec\u7acb\u771f\u503c\uff0c\u516d\u56fe\u4e5f\u4e0d\u662f\u4e25\u683c\u540c\u6b65\u7684\u540c\u4e00\u59ff\u6001\u3002\u003c/p>\u003cp>\u003ca href=\"provenance/independent-visual-review-v2.json\">\u9010\u56fe\u72ec\u7acb\u89c6\u89c9\u5ba1\u67e5\u4e0e\u5c40\u9650\u003c/a> \u00b7 \u003ca href=\"provenance/independent-visual-review-v1.json\">\u7b2c\u4e00\u8f6e\u8896\u957f\u9519\u8bef\u5ba1\u67e5\u003c/a>\u003c/p>\u003ch3>\u72ec\u7acb\u5ba1\u67e5\u5206\u9879\u7ed3\u679c\u003c/h3>\u003cp>\u4e0d\u5c06\u5546\u54c1\u89c6\u89c9\u3001\u51e0\u4f55\u5185\u90e8\u4e00\u81f4\u6027\u3001\u539f\u56fe\u6062\u590d\u6df7\u6210\u4e00\u4e2a\u901a\u8fc7\u7387\u3002Benchmark \u9875\u53ea\u7edf\u8ba1\u6587\u4ef6\u6267\u884c\u5b8c\u6574\u6027\u3002\u003c/p>\u003cdiv class=\"table-scroll\">\u003ctable class=\"quality-table\">\u003cthead>\u003ctr>\u003cth>\u68c0\u67e5\u8303\u56f4\u003c/th>\u003cth>\u7ed3\u679c\u003c/th>\u003cth>\u8bc1\u636e\u4e0e\u9650\u5236\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth>v2\u56db\u4e2a\u53ef\u89c1\u670d\u88c5\u57fa\u672c\u7279\u5f81\u901a\u8fc7\u003c/th>\u003ctd style=\"color:#116750;font-weight:700\">PASS\u003c/td>\u003ctd class=\"quality-evidence\">\u9010\u5f20\u9ad8\u6e05front/side/back/closeup\uff1b\u4e03\u5206\u8896\u9732\u524d\u81c2\u3001\u7a84\u6d45\u8239\u9886\u3001\u5c0f\u4e2d\u592e\u7ea2\u7eff\u88c5\u9970\u3001\u7eb5\u5217pointelle\u773c\u5b54\uff1b\u7ec6\u8282WARN\u4fdd\u7559\u3002\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u6700\u7ec8actual\u8d44\u6e90\u548c\u539f\u56fe/\u5206view\u8bca\u65ad\u4f7f\u7528\u540c\u4e00\u9009\u4e2dshape\u003c/th>\u003ctd style=\"color:#116750;font-weight:700\">PASS\u003c/td>\u003ctd class=\"quality-evidence\">\u72ec\u7acb\u6bd4\u8f83asset/version/dimensions/morphWeights\u5e76\u8ba1\u7b97state/OBJ/camera/reference/render hashes\uff1b\u7ed3\u679c\u5168\u90e8true\u3002\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u6761\u4ef6shape\u76f8\u5bf9fixed M\u63d0\u9ad8\u5168\u90e8\u5168clothed IoU\u003c/th>\u003ctd style=\"color:#a32626;font-weight:700\">FAIL\u003c/td>\u003ctd class=\"quality-evidence\">shape-fit/metrics.json\u4e09\u89c6IoU\u90fd\u4e0b\u964d\uff0cfront .81420\u2192.80564\uff0cside .68676\u2192.68376\uff0cback .74962\u2192.74437\u3002\u003c/td>\u003c/tr>\u003ctr>\u003cth>shared pose\u4e25\u683c\u5339\u914d\u4e09\u4e2a\u751f\u6210view\u003c/th>\u003ctd style=\"color:#a32626;font-weight:700\">FAIL\u003c/td>\u003ctd class=\"quality-evidence\">fit/back-final-photo-overlay.png\u53cc\u8155\u660e\u663e\u9519\u4f4d\uff0c23.15/30.76px\uff1bfront/side\u4e5f\u6709\u5c40\u90e8\u8868\u9762\u6b8b\u5dee\u3002\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u540cbody\u5206view\u59ff\u6001\u8c03\u8282\u6539\u5584\u5176\u88ab\u4f18\u5316\u624b\u8155\u003c/th>\u003ctd style=\"color:#116750;font-weight:700\">PASS\u003c/td>\u003ctd class=\"quality-evidence\">view-specific/back/before-after.png\u624b\u8155\u5bf9\u9f50\uff1bsummary.json back .224/.081px\u3001side .182px\u3002\u4ec5in-sample\uff0c\u672a\u8bc1\u660eheldout\u3002\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u539f\u56fe\u5019\u9009\u8bc1\u660e\u539f\u6a21\u7279\u4eba\u4f53\u51c6\u786e\u6062\u590d\u003c/th>\u003ctd style=\"color:#a32626;font-weight:700\">FAIL\u003c/td>\u003ctd class=\"quality-evidence\">\u539f\u56feiterations2\u20135\u5747POSE_FAIL\u3002\u6700\u65b0forward-IK\u81551.26/3.92px\u3001\u80981.78/4.77px\u4e14\u624b100%\u5728\u8179\u524d\uff0c\u4f46side\u5b9e\u9645\u624b\u79bb\u8179min21.16/25.30cm\uff0c\u4e0e\u8fd1\u8eab\u63d0\u8863\u4e0d\u7b26\u3002accepted_matched_candidate=null\uff1b\u4f4e2D\u8bef\u5dee\u4e0d\u80fd\u8bc1\u660e\u6b63\u786e3D/shape\u3002\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u539f\u56fe\u7b2c\u4e8c\u8f6e\u5728\u540cshape\u540ccamera\u4e0b\u6539\u5584\u88ab\u4f18\u5316\u76842D\u5934/\u8098/\u8155\u70b9\u003c/th>\u003ctd style=\"color:#116750;font-weight:700\">PASS\u003c/td>\u003ctd class=\"quality-evidence\">\u8be5\u5386\u53f2\u6539\u5584\u4fdd\u7559\u4e8eoriginal-reference/iteration-2\u4e0eiteration_2_review\uff1b\u5176\u5b9e\u9645\u624b\u90e8\u5931\u8d25\u540e\u7ee7\u7eed3\u20135\uff0c\u6700\u65b0\u4ecdPOSE_FAIL\uff0c\u6ca1\u6709accepted candidate\u3002\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u539f\u56fe\u6700\u65b0\u5019\u9009\u91cd\u73b0\u5408\u7406\u7684\u8fd1\u8179\u63d0\u8863\u4e09\u7ef4\u624b\u59ff\u003c/th>\u003ctd style=\"color:#a32626;font-weight:700\">FAIL\u003c/td>\u003ctd class=\"quality-evidence\">\u5b9e\u9645renders/front.png\u6b63\u9762\u53ef\u663e\u5f97\u76f8\u5bb9\uff0c\u4f46renders/side.png\u53cc\u624b\u60ac\u4f38\u8fdc\u79bb\u8179\u90e8\uff1bhand-depth-check.json\u5168\u90e8\u624b\u9876\u70b9\u5728torso\u524d\u4f46minclearance21.16/25.30cm\u3002candidate-status.json overall POSE_FAIL\uff0caccepted null\u3002\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003ch3>\u539f\u59cb\u5546\u54c1\u56fe\u672c\u8eab\uff1a\u59ff\u6001\u5c1d\u8bd5\uff08POSE_FAIL\uff09\u003c/h3>\u003cp>\u003cstrong>\u672a\u627e\u5230\u5df2\u63a5\u53d7\u7684\u539f\u56fe\u5339\u914d\u59ff\u6001\u3002\u003c/strong>\u539f\u56fe\u662f\u5f2f\u81c2\u63d0\u8863\u3001\u659c\u5934\u8fd1\u666f\u3002\u8fd9\u91cc\u4fdd\u7559\u540c\u4e00\u4e2a 170 cm \u6761\u4ef6\u4f53\u5f62\uff0c\u53ea\u8c03\u6574\u5934\u9888\u3001\u8eaf\u5e72\u548c\u53cc\u81c2\uff1b\u4e0d\u4e0e\u751f\u6210\u56fe\u7684\u6807\u51c6\u89c6\u56fe\u6307\u6807\u6df7\u7b97\u3002\u5f53\u524d\u88c1\u56fe\u76f8\u673a\u4e0d\u53d8\uff0c\u624b\u5de5\u6807\u70b9\u4e0e\u9690\u85cf\u5173\u8282\u7684\u4f30\u8ba1\u5747\u6709\u4e0d\u786e\u5b9a\u6027\u3002\u003c/p>\u003cfigure class=\"original-comparison\">\u003ca href=\"original-reference/before-after.png\" target=\"_blank\" rel=\"noopener\">\u003cimg src=\"original-reference/before-after.png\" alt=\"\u539f\u59cb\u7535\u5546\u5546\u54c1\u56fe\u4e0a\u7684\u4e0a\u4e00\u59ff\u6001\u4e0e\u672c\u8f6e\u5934\u9888\u53cc\u81c2\u4f18\u5316\u53e0\u52a0\">\u003c/a>\u003cfigcaption>\u4e0a\u4e00\u5019\u9009 \u2192 \u6700\u65b0\u5931\u8d25\u5019\u9009\uff1b\u539f\u56fe\u672c\u8eab\u7684 OpenCV \u53e0\u52a0\uff0c\u4e0d\u4ee3\u8868\u5df2\u5339\u914d\u3002\u5b8c\u6574\u56fe\u4e5f\u5728\u4e0a\u65b9\u53e0\u52a0\u753b\u5eca\u53ef\u653e\u5927\u3002\u003c/figcaption>\u003c/figure>\u003cdiv class=\"table-scroll\">\u003ctable>\u003cthead>\u003ctr>\u003cth>\u539f\u56fe\u6807\u70b9 / \u6307\u6807\u003c/th>\u003cth>\u524d \u2192 \u540e\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth>\u5de6\u8155\uff08px\uff09\u003c/th>\u003ctd>0.39 \u2192 1.26\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u53f3\u8155\uff08px\uff09\u003c/th>\u003ctd>0.46 \u2192 3.92\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u5de6\u8098\uff08px\uff09\u003c/th>\u003ctd>0.42 \u2192 1.78\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u53f3\u8098\uff08px\uff09\u003c/th>\u003ctd>0.61 \u2192 4.77\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u5de6\u773c\uff08px\uff09\u003c/th>\u003ctd>6.31 \u2192 6.31\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u53f3\u773c\uff08px\uff09\u003c/th>\u003ctd>13.75 \u2192 13.75\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u9f3b\u90e8\u7f51\u683c\u70b9\uff08px\uff09\u003c/th>\u003ctd>12.79 \u2192 12.79\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u5de6\u80a9\uff08px\uff09\u003c/th>\u003ctd>26.60 \u2192 26.60\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u53f3\u80a9\uff08px\uff09\u003c/th>\u003ctd>24.98 \u2192 24.98\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u88c1\u56fe\u8863\u7269\u5305\u7edc IoU\u003c/th>\u003ctd>0.7414 \u2192 0.7397\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003cp>\u8fd9\u4e9b\u662f\u672c\u56fe\u8bad\u7ec3\u70b9\u7684\u6295\u5f71\u8bef\u5dee\uff1b\u80a9\u90e8\u3001\u8138\u90e8\u8eab\u4efd\u3001\u8863\u7269\u5f62\u6001\u548c\u624b\u90e8\u63a5\u89e6\u8fd8\u9700\u6838\u67e5\u771f\u5b9e\u4e09\u7ef4\u6295\u5f71\u3002\u53d7\u7ea6\u675f\u5173\u8282\u53ef\u80fd\u5230\u8fbe\u641c\u7d22\u8fb9\u754c\u3002\u4f4e\u6295\u5f71\u8bef\u5dee\u4e0d\u80fd\u8bc1\u660e\u771f\u5b9e\u4e09\u7ef4\u59ff\u6001\u6216\u4eba\u4f53\u5c3a\u5bf8\u6b63\u786e\u3002\u003c/p>\u003cp>\u003ca href=\"../../human-studio/?model=../garment-body/product-case/original-reference/state.json\">\u6253\u5f00\u6700\u65b0\u5931\u8d25\u5019\u9009\u7ee7\u7eed\u8c03\u8282\u003c/a> \u00b7 \u003ca href=\"original-reference/manual-landmarks.json\">\u4eba\u5de5\u6807\u70b9\u4e0e\u6765\u6e90\u003c/a> \u00b7 \u003ca href=\"original-reference/metrics.json\">\u72ec\u7acb\u539f\u56fe\u6307\u6807\u003c/a> \u00b7 \u003ca href=\"original-reference/renders/front.png\">\u771f\u5b9e\u4e09\u7ef4\u5f69\u8272\u6295\u5f71\u003c/a>\u003c/p>\u003cdiv class=\"pose-comparisons original-solid\">\u003cfigure>\u003ca href=\"original-reference/renders/front.png\" target=\"_blank\" rel=\"noopener\">\u003cimg src=\"original-reference/renders/front.png\" alt=\"\u6700\u65b0\u5931\u8d25\u5019\u9009\u7684\u5b9e\u9645\u4e09\u7ef4\u6b63\u9762\u6295\u5f71\">\u003c/a>\u003cfigcaption>\u771f\u5b9e\u4e09\u7ef4\u6b63\u9762\uff1a\u4f4e\u4e8c\u7ef4\u8155\u8098\u8bef\u5dee\u4e0d\u7b49\u4e8e\u4e09\u7ef4\u52a8\u4f5c\u6b63\u786e\u3002\u003c/figcaption>\u003c/figure>\u003cfigure>\u003ca href=\"original-reference/renders/side.png\" target=\"_blank\" rel=\"noopener\">\u003cimg src=\"original-reference/renders/side.png\" alt=\"\u6700\u65b0\u5931\u8d25\u5019\u9009\u7684\u5b9e\u9645\u4e09\u7ef4\u4fa7\u9762\uff0c\u53cc\u624b\u8fdc\u79bb\u8179\u90e8\">\u003c/a>\u003cfigcaption>\u771f\u5b9e\u4e09\u7ef4\u4fa7\u9762\uff1a\u53cc\u624b\u60ac\u4e8e\u8179\u524d\u7ea6 21\u201325 cm\uff0c\u672a\u91cd\u73b0\u8fd1\u8eab\u63d0\u8863\u3002\u003cstrong>POSE_FAIL\u3002\u003c/strong>\u003c/figcaption>\u003c/figure>\u003c/div>\u003cp>\u4ee5\u4e0b\u662f\u6700\u65b0\u88ab\u62d2\u7edd\u7684 forward-IK \u8bca\u65ad\uff0c\u672a\u63a5\u53d7\u4e3a matched candidate\uff1b\u539f\u56fe\u771f\u4eba\u52a8\u4f5c\u4e5f\u6ca1\u6709\u56e0\u6b64\u88ab\u8bc1\u660e\u4e0d\u53ef\u80fd\u3002\u003ca href=\"original-reference/candidate-status.json\">\u5404\u5019\u9009\u5224\u5b9a\u4e0e\u505c\u6b62\u539f\u56e0\u003c/a> \u00b7 \u003ca href=\"original-reference/ik-depth-feasibility.json\">\u5b9e\u9645\u9aa8\u6bb5\u4e0e\u6df1\u5ea6\u5206\u652f\u8bc1\u636e\u003c/a>\u3002\u6a21\u578b\u6807\u5c3a\u4e0a\u81c2\u957f 29 cm \u4e0e\u9006\u8fd0\u52a8\u5b66\u80a9\u8098\u9aa8\u6bb5\u7ea6 26.85 cm \u662f\u4e0d\u540c\u5b9a\u4e49\u3002\u003c/p>\u003cdiv class=\"table-scroll\">\u003ctable>\u003cthead>\u003ctr>\u003cth>\u5b9e\u9645\u624b\u8868\u9762\u6df1\u5ea6\u5305\u7edc\u003c/th>\u003cth>\u4f4d\u4e8e\u8eaf\u5e72\u524d\u65b9\u6bd4\u4f8b\u003c/th>\u003cth>\u524d\u5411\u51c0\u8ddd\u6700\u5c0f\u503c cm\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth>\u5de6\u624b\u003c/th>\u003ctd>1.000\u003c/td>\u003ctd>21.158\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u53f3\u624b\u003c/th>\u003ctd>1.000\u003c/td>\u003ctd>25.303\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003cp>\u4f7f\u7528\u5b9e\u9645\u8499\u76ae\u540e\u7684\u624b\u8868\u9762\u4e0e\u4ec5\u8eaf\u5e72\u4e09\u89d2\u5f62\u7684\u524d\u5411\u6df1\u5ea6\u5305\u7edc\u6bd4\u8f83\uff1b\u8d1f\u51c0\u8ddd\u8868\u793a\u4ecd\u6709\u8d8a\u5165\u5305\u7edc\u7684\u8868\u9762\uff1b\u5927\u5e45\u6b63\u51c0\u8ddd\u4e5f\u4e0d\u7b49\u4e8e\u8d34\u8eab\u63a5\u89e6\uff0c\u5f53\u524d\u5019\u9009\u53cc\u624b\u8fdc\u79bb\u8179\u90e8\u3002\u4e0d\u662f\u5b8c\u6574\u81ea\u78b0\u649e\u3001\u8863\u7269\u63a5\u89e6\u6216\u7269\u7406\u5408\u8eab\u9a8c\u8bc1\u3002\u003ca href=\"original-reference/hand-depth-check.json\">\u6570\u503c\u624b\u6df1\u5ea6\u8bca\u65ad\u003c/a>\u003c/p>\u003ch3>\u5398\u7c73\u4f53\u5f62\u8c03\u6574\uff1a\u51cf\u5c11\u88f8\u6a21\u8d8a\u51fa\u8863\u7269\u5305\u7edc\u003c/h3>\u003cp>\u56fa\u5b9a\u8eab\u9ad8 170 cm\u3001\u76f8\u673a\u4e0e\u59ff\u6001\uff0c\u4fdd\u7559\u4e2d\u7801\u521d\u59cb\u6a21\u578b\uff1b\u53ea\u5728\u6709\u8fb9\u754c\u7ea6\u675f\u7684\u90e8\u4f4d\u4f5c\u6761\u4ef6\u8c03\u6574\u3002\u8170\u56f4 72 \u2192 69 cm\u3001\u5927\u817f\u56f4 54 \u2192 50 cm\uff0c\u5176\u4f59\u76ee\u6807\u4fdd\u6301\u3002\u4e0d\u662f\u5c06\u5bbd\u677e\u8863\u7269\u5bbd\u5ea6\u76f4\u63a5\u5f53\u4f5c\u88f8\u8eab\u56f4\u5ea6\u3002\u003c/p>\u003cdiv class=\"table-scroll\">\u003ctable>\u003cthead>\u003ctr>\u003cth>\u89c6\u56fe\u003c/th>\u003cth>\u5305\u542b\u6027\u635f\u5931 \u524d \u2192 \u540e\u003c/th>\u003cth>\u8d8a\u754c\u50cf\u7d20 \u524d \u2192 \u540e\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth>\u6b63\u9762\u003c/th>\u003ctd>0.00066 \u2192 0.00065\u003c/td>\u003ctd>936 \u2192 797\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u4fa7\u9762\u003c/th>\u003ctd>0.02137 \u2192 0.00986\u003c/td>\u003ctd>3578 \u2192 2850\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003cp>\u635f\u5931\u3001\u8d8a\u754c\u50cf\u7d20\u3001\u5168\u8863\u7269 IoU \u662f\u4e0d\u540c\u6307\u6807\u3002\u66f4\u5c0f\u7684\u88f8\u6a21\u53ef\u80fd\u63d0\u9ad8\u5305\u542b\u6027\uff0c\u540c\u65f6\u964d\u4f4e\u8863\u7269\u5305\u7edc IoU\uff1b\u4e0d\u628a\u635f\u5931\u4e0b\u964d\u89e3\u91ca\u6210\u4eba\u4f53\u5c3a\u5bf8\u66f4\u51c6\u786e\u3002\u003ca href=\"model/shape-fit/optimization.json\">\u5b8c\u6574\u641c\u7d22\u5386\u53f2\u4e0e\u534f\u8bae\u003c/a>\u003c/p>\u003ch3>\u5171\u4eab\u59ff\u6001\u4e0e\u5355\u56fe\u59ff\u6001\u8bca\u65ad\u003c/h3>\u003cp>\u516d\u5f20\u751f\u6210\u56fe\u7684\u624b\u81c2\u59ff\u52bf\u4e0d\u5b8c\u5168\u540c\u6b65\u3002\u9ed8\u8ba4\u4e0b\u8f7d\u4fdd\u7559\u5171\u4eab\u59ff\u6001\uff1b\u4ee5\u4e0b\u5355\u56fe\u8bca\u65ad\u4fdd\u6301\u540c\u4e00\u4eba\u4f53\u5c3a\u5bf8\u4e0e\u76f8\u673a\uff0c\u5206\u522b\u8c03\u59ff\u6001\uff0c\u4e0d\u4f5c\u4e3a\u7559\u51fa\u6cdb\u5316\u5f97\u5206\u3002\u003c/p>\u003cdiv class=\"pose-tabs\" role=\"tablist\" aria-label=\"\u59ff\u6001\u6bd4\u8f83\">\u003cbutton role=\"tab\" id=\"pose-mode-shared\" aria-selected=\"true\" aria-controls=\"pose-shared\">\u5171\u4eab\u59ff\u6001\u003c/button>\u003cbutton role=\"tab\" id=\"pose-mode-specific\" aria-selected=\"false\" aria-controls=\"pose-specific\">\u5404\u89c6\u56fe\u5355\u72ec\u59ff\u6001\u003c/button>\u003c/div>\u003cdiv class=\"pose-comparisons\" role=\"tabpanel\" id=\"pose-shared\">\u003cfigure>\u003ca href=\"view-specific/side/shared-overlay.png\" target=\"_blank\" rel=\"noopener\">\u003cimg src=\"view-specific/side/shared-overlay.png\" alt=\"\u4fa7\u9762\u5171\u4eab\u59ff\u6001\">\u003c/a>\u003cfigcaption>\u4fa7\u9762 \u00b7 \u5171\u4eab\u59ff\u6001\u003c/figcaption>\u003c/figure>\u003cfigure>\u003ca href=\"view-specific/back/shared-overlay.png\" target=\"_blank\" rel=\"noopener\">\u003cimg src=\"view-specific/back/shared-overlay.png\" alt=\"\u80cc\u9762\u5171\u4eab\u59ff\u6001\">\u003c/a>\u003cfigcaption>\u80cc\u9762 \u00b7 \u5171\u4eab\u59ff\u6001\u003c/figcaption>\u003c/figure>\u003c/div>\u003cdiv class=\"pose-comparisons\" role=\"tabpanel\" id=\"pose-specific\" hidden>\u003cfigure>\u003ca href=\"view-specific/side/view_specific-overlay.png\" target=\"_blank\" rel=\"noopener\">\u003cimg src=\"view-specific/side/view_specific-overlay.png\" alt=\"\u4fa7\u9762\u5355\u72ec\u59ff\u6001\">\u003c/a>\u003cfigcaption>\u4fa7\u9762 \u00b7 \u003ca href=\"../../human-studio/?model=../garment-body/product-case/view-specific/side/state.json\">\u6253\u5f00\u8fd9\u4e00\u59ff\u6001\u8c03\u8282\u003c/a>\u003c/figcaption>\u003c/figure>\u003cfigure>\u003ca href=\"view-specific/back/view_specific-overlay.png\" target=\"_blank\" rel=\"noopener\">\u003cimg src=\"view-specific/back/view_specific-overlay.png\" alt=\"\u80cc\u9762\u5355\u72ec\u59ff\u6001\">\u003c/a>\u003cfigcaption>\u80cc\u9762 \u00b7 \u003ca href=\"../../human-studio/?model=../garment-body/product-case/view-specific/back/state.json\">\u6253\u5f00\u8fd9\u4e00\u59ff\u6001\u8c03\u8282\u003c/a>\u003c/figcaption>\u003c/figure>\u003c/div>\u003cdiv class=\"table-scroll\">\u003ctable>\u003cthead>\u003ctr>\u003cth>\u89c6\u56fe\u003c/th>\u003cth>\u8f6e\u5ed3 IoU \u524d \u2192 \u540e\u003c/th>\u003cth>\u5e73\u5747\u8f6e\u5ed3\u8bef\u5dee px \u524d \u2192 \u540e\u003c/th>\u003cth>95% \u8f6e\u5ed3\u8bef\u5dee px \u524d \u2192 \u540e\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth>\u6b63\u9762\u003c/th>\u003ctd>0.789 \u2192 0.806\u003c/td>\u003ctd>6.951 \u2192 6.281\u003c/td>\u003ctd>18.200 \u2192 20.772\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u4fa7\u9762\u003c/th>\u003ctd>0.587 \u2192 0.684\u003c/td>\u003ctd>15.472 \u2192 11.815\u003c/td>\u003ctd>37.760 \u2192 29.363\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u80cc\u9762\uff08\u672a\u8bad\u7ec3\u5171\u4eab\u59ff\u6001\uff09\u003c/th>\u003ctd>0.738 \u2192 0.744\u003c/td>\u003ctd>8.921 \u2192 8.661\u003c/td>\u003ctd>28.194 \u2192 24.575\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003cp>\u76f8\u673a\u5148\u72ec\u7acb\u6821\u51c6\u518d\u51bb\u7ed3\uff1b\u4e0a\u8868\u6bd4\u8f83\u540c\u4e00\u76f8\u673a\u4e0b\u7684\u4f18\u5316\u3002\u5168\u8eab\u8863\u7269\u5305\u7edc\u4e0e\u88f8\u6a21\u8f6e\u5ed3\u4e0d\u5e94\u5b8c\u5168\u91cd\u5408\uff1b\u8bef\u5dee\u4e0a\u5347\u7684\u9879\u76ee\u5982\u5b9e\u4fdd\u7559\u3002\u003c/p>\u003ch3>\u7b2c2\u8f6e\u9009\u4e2d\u4eba\u4f53\u5c3a\u5bf8\uff08cm\uff09\u003c/h3>\u003cp>\u4ee5\u4e2d\u7801\u5148\u9a8c\u521d\u59cb\u5316\uff0c\u7ecf\u771f\u5b9e\u7f51\u683c\u91cd\u65b0\u91cf\u6d4b\uff1b\u8863\u7269\u5305\u7edc\u7ea6\u675f\u4e0b\u7684\u8c03\u6574\u662f\u6761\u4ef6\u4f30\u8ba1\u3002\u5b83\u4eec\u662f\u53ef\u8c03\u53c2\u6570\uff0c\u4e0d\u662f\u4ece\u7167\u7247\u8bc6\u522b\u51fa\u7684\u771f\u4eba\u5c3a\u5bf8\u3002\u4f9d\u636e\u5217\u4fdd\u7559\u5f53\u524d\u6d4b\u91cf\u6587\u4ef6\u7684\u5206\u7c7b\u3002\u003c/p>\u003cdiv class=\"table-scroll\">\u003ctable>\u003cthead>\u003ctr>\u003cth>\u90e8\u4f4d\u003c/th>\u003cth>\u539f\u59cb\u4e2d\u7801\u5148\u9a8c cm\u003c/th>\u003cth>\u5f53\u524d\u76ee\u6807 cm\u003c/th>\u003cth>\u72ec\u7acb\u7f51\u683c\u91cf\u6d4b cm\u003c/th>\u003cth>\u4f9d\u636e\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth>\u8eab\u9ad8\u003c/th>\u003ctd>170\u003c/td>\u003ctd>170\u003c/td>\u003ctd>169.9999\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u80f8\u56f4\u003c/th>\u003ctd>90\u003c/td>\u003ctd>90\u003c/td>\u003ctd>90.0000\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u8170\u56f4\u003c/th>\u003ctd>72\u003c/td>\u003ctd>69\u003c/td>\u003ctd>69.0000\u003c/td>\u003ctd>\u8863\u7269\u5305\u7edc\u6761\u4ef6\u4f30\u8ba1\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u81c0\u56f4\u003c/th>\u003ctd>96\u003c/td>\u003ctd>96\u003c/td>\u003ctd>95.9999\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u80a9\u5bbd\u003c/th>\u003ctd>37\u003c/td>\u003ctd>37\u003c/td>\u003ctd>37.0000\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u4e0a\u81c2\u56f4\u003c/th>\u003ctd>27\u003c/td>\u003ctd>27\u003c/td>\u003ctd>27.0000\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u5927\u817f\u56f4\u003c/th>\u003ctd>54\u003c/td>\u003ctd>50\u003c/td>\u003ctd>50.0008\u003c/td>\u003ctd>\u8863\u7269\u5305\u7edc\u6761\u4ef6\u4f30\u8ba1\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u9888\u56f4\u003c/th>\u003ctd>32\u003c/td>\u003ctd>32\u003c/td>\u003ctd>32.0000\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u4e0a\u81c2\u957f\u003c/th>\u003ctd>29\u003c/td>\u003ctd>29\u003c/td>\u003ctd>29.0000\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u524d\u81c2\u957f\u003c/th>\u003ctd>23\u003c/td>\u003ctd>23\u003c/td>\u003ctd>23.0000\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u5927\u817f\u957f\u003c/th>\u003ctd>40\u003c/td>\u003ctd>40\u003c/td>\u003ctd>40.0000\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003ctr>\u003cth>\u5c0f\u817f\u56f4\u003c/th>\u003ctd>36\u003c/td>\u003ctd>36\u003c/td>\u003ctd>36.0000\u003c/td>\u003ctd>\u5148\u9a8c / \u7f51\u683c\u53c2\u6570\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003cp>\u672a\u80fd\u53ef\u9760\u83b7\u5f97\uff1a\u4e0b\u80f8\u56f4\u3001\u80f8\u70b9\u8ddd\u3001\u80a9\u659c\u3001\u524d\u8170\u8282\u957f\u3001\u540e\u8170\u8282\u957f\u3001\u88c6\u5f27\u957f\u3002\u8fd9\u4e9b\u9879\u5728\u5b8c\u6574 JSON/CSV \u4e2d\u660e\u786e\u4e3a null\u3001\u4f9d\u636e unavailable\uff1b\u6ca1\u6709\u8865\u9020\u7cbe\u786e\u6570\u503c\u3002\u80a9\u659c\u7684\u5355\u4f4d\u4e3a\u5ea6\uff0c\u5176\u4f59\u672a\u77e5\u957f\u5ea6/\u56f4\u5ea6\u9879\u4e3a cm\u3002\u003c/p>\u003cp class=\"product-downloads\">\u003ca download href=\"measurements.json\">\u5b8c\u6574\u5c3a\u5bf8\u4e0e\u672a\u77e5\u9879 JSON\u003c/a> \u00b7 \u003ca download href=\"measurements.csv\">\u5b8c\u6574\u5c3a\u5bf8\u4e0e\u672a\u77e5\u9879 CSV\u003c/a> \u00b7 \u003ca download href=\"model/final-state.json\">\u53ef\u8c03\u72b6\u6001 JSON\u003c/a> \u00b7 \u003ca download href=\"model/final-posed.obj\">\u5398\u7c73 OBJ\u003c/a> \u00b7 \u003ca download href=\"model/final-posed.glb\">\u5e26\u9aa8\u9abc GLB\uff08\u7c73\uff09\u003c/a> \u00b7 \u003ca download href=\"model/neutral-measurements.csv\">12\u7ef4\u7f51\u683c\u539f\u59cb\u91cf\u6d4b CSV\u003c/a> \u00b7 \u003ca download href=\"model/fit/metrics.json\">\u62df\u5408\u539f\u59cb\u6307\u6807\u003c/a> \u00b7 \u003ca download href=\"model/fit/input-hashes.json\">\u672c\u8f6e\u8f93\u5165\u6458\u8981\u003c/a>\u003c/p>\u003cp>\u003ca download href=\"reproduce.zip\">\u4e0b\u8f7d\u5b9e\u9645\u6848\u4f8b\u590d\u6838\u5305\uff08\u4e24\u8f6e\u56fe\u3001\u7f51\u683c\u3001\u539f\u59cb\u6df1\u5ea6\u3001\u5206\u5272\u4e0e\u811a\u672c\uff09\u003c/a> \u00b7 \u003ca href=\"REPRODUCE.md\">\u89e3\u538b\u4e0e\u91cd\u653e\u8bf4\u660e\u003c/a>\u3002\u5148 clone \u4ed3\u5e93\uff0c\u518d\u4ece\u4ed3\u5e93\u6839\u76ee\u5f55\u89e3\u538b\uff0c\u4fdd\u7559\u5305\u5185 work/ \u76f8\u5bf9\u8def\u5f84\u3002\u003c/p>\u003cp>\u003ca href=\"benchmark.json\">\u65ad\u8a00\u4e0e\u672a\u77e5\u8d44\u6e90\u503c\u003c/a> \u00b7 \u003ca href=\"reference/source-verification.json\">\u5b98\u7f51\u56fe\u50cf\u6765\u6e90\u6838\u9a8c\u003c/a>\u3002\u4e0b\u65b9\u4fdd\u7559\u5b98\u65b9 Anthropic \u8f93\u51fa\u3001\u65ad\u8a00\u3001Benchmark \u4e0e\u53cd\u9988\u4e0b\u8f7d\uff1b\u8f93\u5165\u53cd\u9988\u53ea\u4fdd\u5b58\u5728\u5f53\u524d\u6d4f\u89c8\u5668\u3002\u003c/p>\u003c/section>");
+const galleryShowRun=showRun;
+function syncProductResults(index){
+  document.querySelector('.product-results').hidden=!VISUAL_EVIDENCE[EMBEDDED_DATA.runs[index].id].title.includes('第2轮');
+}
+showRun=function(index){galleryShowRun(index);syncProductResults(index);};
+syncProductResults(currentIndex);
+const poseTabs=[...document.querySelectorAll('.pose-tabs [role=tab]')];
+function selectPoseTab(tab){
+  poseTabs.forEach(other=>{other.setAttribute('aria-selected',String(other===tab));other.tabIndex=other===tab?0:-1;});
+  document.querySelectorAll('.pose-comparisons[role=tabpanel]').forEach(panel=>panel.hidden=panel.id!==tab.getAttribute('aria-controls'));
+}
+poseTabs.forEach((tab,index)=>{
+  tab.tabIndex=index===0?0:-1;
+  tab.addEventListener('click',()=>selectPoseTab(tab));
+  tab.addEventListener('keydown',event=>{
+    if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+    event.preventDefault();event.stopPropagation();
+    const next=event.key==='Home'?0:event.key==='End'?poseTabs.length-1:(index+(event.key==='ArrowRight'?1:-1)+poseTabs.length)%poseTabs.length;
+    selectPoseTab(poseTabs[next]);poseTabs[next].focus();
+  });
+});
+</script></body>
+</html>

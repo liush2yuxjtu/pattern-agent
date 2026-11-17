@@ -1,0 +1,100 @@
+{
+  "protocol": "Fit per-view isotropic orthographic scale from neck-to-ankle vertical span and translation from neck projected position; no shape changes. Calibration is nuisance registration, not recovered physical camera. Back calibration independent of pose optimization.",
+  "anchors": {
+    "front": {
+      "manual_anchors": {
+        "neck_pixel": [
+          384,
+          232
+        ],
+        "ankle_mid_pixel": [
+          382,
+          915
+        ]
+      },
+      "neck_world_cm": [
+        0.0,
+        144.90610849168644,
+        -0.10521980085008206
+      ],
+      "ankle_mid_world_cm": [
+        0.0,
+        7.072601765501187,
+        2.8813509448621275
+      ],
+      "scale_px_per_cm": 4.955253742160254,
+      "center_cm": [
+        0.0,
+        88.40042491433377
+      ],
+      "horizontal_anchor": "neck only, leaving ankle horizontal discrepancy for pose test",
+      "vertical_anchors": "neck and mean ankle heights; same fixed170cm shape prior",
+      "annotation_uncertainty": "Manual neck-base location under hair/near collar and ankle centers under cuffs uncertain by several pixels; not detector or observed-person measurements",
+      "role": "camera calibration only; back is excluded from shared-pose training"
+    },
+    "side": {
+      "manual_anchors": {
+        "neck_pixel": [
+          374,
+          232
+        ],
+        "ankle_mid_pixel": [
+          356,
+          929
+        ]
+      },
+      "neck_world_cm": [
+        0.0,
+        144.90610849168644,
+        -0.10521980085008206
+      ],
+      "ankle_mid_world_cm": [
+        0.0,
+        7.072601765501187,
+        2.8813509448621275
+      ],
+      "scale_px_per_cm": 5.056825561179644,
+      "center_cm": [
+        1.872305403255876,
+        89.53540277671962
+      ],
+      "horizontal_anchor": "neck only, leaving ankle horizontal discrepancy for pose test",
+      "vertical_anchors": "neck and mean ankle heights; same fixed170cm shape prior",
+      "annotation_uncertainty": "Manual neck-base location under hair/near collar and ankle centers under cuffs uncertain by several pixels; not detector or observed-person measurements",
+      "role": "camera calibration only; back is excluded from shared-pose training"
+    },
+    "back": {
+      "manual_anchors": {
+        "neck_pixel": [
+          383,
+          196
+        ],
+        "ankle_mid_pixel": [
+          379.5,
+          929
+        ]
+      },
+      "neck_world_cm": [
+        0.0,
+        144.90610849168644,
+        -0.10521980085008206
+      ],
+      "ankle_mid_world_cm": [
+        0.0,
+        7.072601765501187,
+        2.8813509448621275
+      ],
+      "scale_px_per_cm": 5.3180102386580765,
+      "center_cm": [
+        0.18804025474240824,
+        85.48538799308542
+      ],
+      "horizontal_anchor": "neck only, leaving ankle horizontal discrepancy for pose test",
+      "vertical_anchors": "neck and mean ankle heights; same fixed170cm shape prior",
+      "annotation_uncertainty": "Manual neck-base location under hair/near collar and ankle centers under cuffs uncertain by several pixels; not detector or observed-person measurements",
+      "role": "camera calibration only; back is excluded from shared-pose training"
+    }
+  },
+  "source_camera_sha256": "d0003cbb25fd044b8308715037195deec8b66f976ca27e2b175e1528f8a7f6a7",
+  "calibrated_camera_sha256": "53ec96e7f35d54f1bc32b02e2df4bc7bef970a65002983c7f0a61dd8f31f6917"
+}

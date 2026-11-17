@@ -56,7 +56,7 @@ def build(workspace,site,evidence):
         page=site/('eval.html' if number==2 else f'iteration-{number}.html')
         document=page.read_text().replace('<head>','<head>\n<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">',1)
         document=document.replace('<body>','<body>\n<nav style="padding:12px 20px;background:#e5ede5;font:14px/1.5 system-ui">'
-            '<a href="../skill/">Current skill & download</a> · <a href="iteration-1.html">First candidate</a> · '
+            '<a href="../product-case/eval.html">真实商品六图与模型叠加</a> · <a href="../skill/">Current skill & download</a> · <a href="iteration-1.html">First candidate</a> · '
             '<a href="eval.html">Selected lean revision</a> · <a href="iteration-3.html">Untuned camera holdout</a> · '
             '<a href="opencv-before-after.png">OpenCV before/after</a> · <a href="manifest.json">Raw artifact hashes</a>'
             '<br>14 subagent executions. Round 1: 22/22 each. Round 2: lean 22/22, original 21/22 (missing metrics field, geometry correct). '

@@ -14,6 +14,23 @@ model; historical evaluation fixtures remain unchanged.
   clickable joint markers, orbit/zoom and front/side/back views.
 - Save/import JSON, actual 2×renderer PNG, posed OBJ in cm and rigged GLB in metres.
 
+## Open a reviewed model
+
+Use a same-origin JSON link, for example:
+`./?model=../garment-body/product-case/model/final-state.json`.
+The editor visibly reports loading, success or an error. A successful link loads
+that published state instead of the browser's cached shape; all centimetre and
+joint controls remain editable. **Save model** downloads the edited state.
+Open the plain editor URL to resume the local cached changes, or import the
+downloaded JSON. Reopening the explicit review link starts from its published
+state again.
+
+Linked and manually imported JSON share version, asset, centimetre, finite-range
+dimension, bone-angle and morph-coefficient checks. The link loader only requests
+same-origin `.json` files, omits credentials and rejects redirects; invalid files
+leave the current editable model intact. Model dimensions still describe the
+configurable mesh, not verified measurements of the photographed person.
+
 ## Measurement and geometry contract
 
 The CC0 source supplies detailed surface topology, anatomical joint landmarks,
@@ -67,6 +84,19 @@ Serve the existing `web/` tree with loopback HTTP; the page is an ES module app.
 The project static builder copies it unchanged into the existing Pages site.
 See the repository `human-studio` verification recipe for actual browser and
 independent downloaded-file checks.
+
+Verify the reviewed-state handoff against a served JSON file with:
+
+```sh
+node scripts/verify_human_studio_handoff.cjs \
+  --url http://127.0.0.1:PORT/human-studio/ \
+  --model-url ../garment-body/product-case/model/final-state.json \
+  --output work/human-studio-handoff-verify
+```
+
+This exercises the actual linked file, cm and pose input, JSON download/import,
+local persistence and rejected-file controls in Chromium. Negative file bodies
+are explicit test probes; the positive handoff uses the real served model.
 
 ## Skill integration
 

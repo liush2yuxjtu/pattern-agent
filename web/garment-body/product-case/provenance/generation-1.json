@@ -1,0 +1,98 @@
+{
+  "tool": "image_gen.imagegen",
+  "batch": "six independent tool calls orchestrated together; not one native multi-image call",
+  "reference_inputs": [
+    "reference/original-product.jpg",
+    "corresponding actual model/initial-renders/*.png"
+  ],
+  "collage_cropped": false,
+  "upscaled": false,
+  "outputs": [
+    {
+      "view": "front",
+      "path": "/workspace/generated_images/exec-dc808544-f273-4b72-864d-663afc4f093b.png",
+      "tool": "image_gen.imagegen",
+      "batch_exec_cell": "154",
+      "semantics": "imagegen_clothed_reference",
+      "image": "work/product-red-pointelle-20261117/images/front.png",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84"
+    },
+    {
+      "view": "side",
+      "path": "/workspace/generated_images/exec-03597efe-5c5b-4fd4-a6cd-0b661544eb5f.png",
+      "tool": "image_gen.imagegen",
+      "batch_exec_cell": "154",
+      "semantics": "imagegen_clothed_reference",
+      "image": "work/product-red-pointelle-20261117/images/side.png",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "sha256": "5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6"
+    },
+    {
+      "view": "back",
+      "path": "/workspace/generated_images/exec-91aabc51-aa09-41f6-bf70-0619d39fa44a.png",
+      "tool": "image_gen.imagegen",
+      "batch_exec_cell": "154",
+      "semantics": "imagegen_clothed_reference",
+      "image": "work/product-red-pointelle-20261117/images/back.png",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "sha256": "01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575"
+    },
+    {
+      "view": "closeup",
+      "path": "/workspace/generated_images/exec-3c7714bf-54b1-4b0a-8656-3df784fbb2c3.png",
+      "tool": "image_gen.imagegen",
+      "batch_exec_cell": "154",
+      "semantics": "imagegen_clothed_reference",
+      "image": "work/product-red-pointelle-20261117/images/closeup.png",
+      "native_pixels": [
+        1110,
+        1417
+      ],
+      "sha256": "4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50"
+    },
+    {
+      "view": "pose",
+      "path": "/workspace/generated_images/exec-9321bd93-3d55-42ca-8654-1822de181cfa.png",
+      "tool": "image_gen.imagegen",
+      "batch_exec_cell": "154",
+      "semantics": "illustrative_imagegen_not_detector_or_numeric_depth",
+      "image": "work/product-red-pointelle-20261117/images/pose.png",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "sha256": "f95488c729253d1f06c3130ba085b0f1b34284131176e729d4abf404cfac60a5"
+    },
+    {
+      "view": "depth",
+      "path": "/workspace/generated_images/exec-481057ba-2a52-43f9-b8dd-8c8c9d44e2c9.png",
+      "tool": "image_gen.imagegen",
+      "batch_exec_cell": "154",
+      "semantics": "illustrative_imagegen_not_detector_or_numeric_depth",
+      "image": "work/product-red-pointelle-20261117/images/depth.png",
+      "native_pixels": [
+        1086,
+        1448
+      ],
+      "sha256": "b99f1e48e67345d5c73940de45838df4942d649aad3d0e940ee029754aa471f9"
+    }
+  ],
+  "model_height_cm_prior": 170,
+  "body_dimensions_prior": {
+    "bust": 90,
+    "waist": 72,
+    "hips": 96,
+    "shoulders": 37
+  },
+  "pose_depth_semantics": "Generated pose/depth are illustrative. Actual model projection/z-buffer will be separate evidence."
+}

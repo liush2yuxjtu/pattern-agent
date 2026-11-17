@@ -1,0 +1,189 @@
+{
+  "scope": "Model parameters and conditional estimates, not real-person measurements",
+  "official_model": {
+    "height_cm": 171,
+    "size": "S US4–6"
+  },
+  "measurements": [
+    {
+      "key": "height",
+      "label": "身高",
+      "initial_prior_cm": 170,
+      "target_cm": 170.0,
+      "mesh_cm": 169.99994621466396,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "bust",
+      "label": "胸围",
+      "initial_prior_cm": 90,
+      "target_cm": 90.0,
+      "mesh_cm": 89.99999996693164,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "waist",
+      "label": "腰围",
+      "initial_prior_cm": 72,
+      "target_cm": 69.0,
+      "mesh_cm": 69.0000069469558,
+      "basis": "clothed_envelope_estimate",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "hips",
+      "label": "臀围",
+      "initial_prior_cm": 96,
+      "target_cm": 96.0,
+      "mesh_cm": 95.99992042292791,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "shoulders",
+      "label": "肩宽",
+      "initial_prior_cm": 37,
+      "target_cm": 37.0,
+      "mesh_cm": 37.00000006177499,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "upperArm",
+      "label": "上臂围",
+      "initial_prior_cm": 27,
+      "target_cm": 27.0,
+      "mesh_cm": 27.00000002015713,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "thigh",
+      "label": "大腿围",
+      "initial_prior_cm": 54,
+      "target_cm": 50.0,
+      "mesh_cm": 50.000817957833775,
+      "basis": "clothed_envelope_estimate",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "neck",
+      "label": "颈围",
+      "initial_prior_cm": 32,
+      "target_cm": 32.0,
+      "mesh_cm": 32.00000004963003,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "upperArmLength",
+      "label": "上臂长",
+      "initial_prior_cm": 29,
+      "target_cm": 29.0,
+      "mesh_cm": 29.000000043017785,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "forearmLength",
+      "label": "前臂长",
+      "initial_prior_cm": 23,
+      "target_cm": 23.0,
+      "mesh_cm": 23.000000035994336,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "thighLength",
+      "label": "大腿长",
+      "initial_prior_cm": 40,
+      "target_cm": 40.0,
+      "mesh_cm": 40.00004718065299,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "calf",
+      "label": "小腿围",
+      "initial_prior_cm": 36,
+      "target_cm": 36.0,
+      "mesh_cm": 36.000000039157,
+      "basis": "prior",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "underbust",
+      "label": "下胸围",
+      "initial_prior_cm": null,
+      "target_cm": null,
+      "mesh_cm": null,
+      "basis": "unavailable",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "bustPointDistance",
+      "label": "胸点距",
+      "initial_prior_cm": null,
+      "target_cm": null,
+      "mesh_cm": null,
+      "basis": "unavailable",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "shoulderSlope",
+      "label": "肩斜",
+      "initial_prior_cm": null,
+      "target_cm": null,
+      "mesh_cm": null,
+      "basis": "unavailable",
+      "real_person_accuracy": null,
+      "unit": "degree"
+    },
+    {
+      "key": "frontWaistLength",
+      "label": "前腰节长",
+      "initial_prior_cm": null,
+      "target_cm": null,
+      "mesh_cm": null,
+      "basis": "unavailable",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "backWaistLength",
+      "label": "后腰节长",
+      "initial_prior_cm": null,
+      "target_cm": null,
+      "mesh_cm": null,
+      "basis": "unavailable",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    },
+    {
+      "key": "crotchArc",
+      "label": "裆弧长",
+      "initial_prior_cm": null,
+      "target_cm": null,
+      "mesh_cm": null,
+      "basis": "unavailable",
+      "real_person_accuracy": null,
+      "unit": "cm"
+    }
+  ]
+}

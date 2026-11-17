@@ -1,0 +1,127 @@
+{
+  "review_version": "v1",
+  "review_date_utc": "2026-11-17",
+  "verdict": "FAIL_GARMENT_FIDELITY__PARTIAL_INTERNAL_FIT",
+  "scope": "Independent visual review only; no network, generation, code changes, commits or physical validation.",
+  "source_status": "ASOS descriptor and URL supplied by parent; no local asos-* images present at time of review. Exact product match has not been visually checked against official CDN images.",
+  "official_candidate_url": "https://www.asos.com/us/asos-design/asos-design-lounge-pointelle-boatneck-3-4-sleeve-top-in-red/prd/211010805",
+  "findings": [
+    {
+      "id": "sleeves",
+      "severity": "FAIL",
+      "files": [
+        "reference/original-product.jpg",
+        "images/front.png",
+        "images/side.png",
+        "images/back.png",
+        "images/closeup.png"
+      ],
+      "observation": "All generated color views show sleeves reaching wrist/hand junction. The source has bent elbows and exposed forearm; its crop alone does not safely establish full sleeve length. The official three-quarter-sleeve description supplied to this review conflicts with the generated wrist-length design.",
+      "action": "Recheck official local product images, then regenerate with confirmed three-quarter cuff placement. Do not call current result faithful long sleeves."
+    },
+    {
+      "id": "neck-trim",
+      "severity": "WARN",
+      "files": [
+        "reference/original-product.jpg",
+        "images/front.png",
+        "images/closeup.png"
+      ],
+      "observation": "Wide shallow red neckline and central red/green bud are retained. Closeup invents a pronounced scalloped/picot inner edge and a larger, sharply resolved rose with green leaves; source collar appears narrow/smoother and bud much smaller. Closeup neckline reads more U-shaped than the source shallow boat shape.",
+      "action": "Preserve source collar width/curve and tiny bud; avoid adding decorative trim unsupported by source."
+    },
+    {
+      "id": "knit-and-color",
+      "severity": "PARTIAL",
+      "files": [
+        "reference/original-product.jpg",
+        "images/front.png",
+        "images/side.png",
+        "images/back.png",
+        "images/closeup.png"
+      ],
+      "observation": "Saturated red and repeated vertical pointelle/rib-like columns visibly carry across views. Closeup makes perforated floral/diamond motifs much more explicit and regular than the low-contrast source. Exact knit repeat, hole scale and color cannot be certified from this source and differing light."
+    },
+    {
+      "id": "pants-and-unseen-details",
+      "severity": "UNVERIFIED",
+      "files": [
+        "reference/original-product.jpg",
+        "images/front.png",
+        "images/side.png",
+        "images/back.png"
+      ],
+      "observation": "Red gathered waistband and its tiny centered red/green decoration are consistent with source. Source ends around upper thighs; generated full-length straight/relaxed legs, hems, bare feet, back cut and full top hem are inferred, not recovered evidence. Source top is lifted by hands; generated hip-level unlifted length is plausible but not directly verified."
+    },
+    {
+      "id": "views-and-framing",
+      "severity": "PARTIAL",
+      "files": [
+        "images/front.png",
+        "images/side.png",
+        "images/back.png",
+        "images/closeup.png",
+        "images/pose.png",
+        "images/depth.png"
+      ],
+      "observation": "Six standalone image files exist with clean unclipped full-body front/side/back/pose/depth and one torso detail. Front/back use a spread-arm stance; side bends visible forearm forward and hides far arm/leg; closeup has arms down. Back/side/frontal head size, hair silhouette, hem height and subject scale vary. These are coherent illustrative views, not synchronized projections of one captured pose or guaranteed identical person."
+    },
+    {
+      "id": "generated-pose",
+      "severity": "ILLUSTRATIVE_ONLY",
+      "files": [
+        "images/pose.png",
+        "images/landmarks.json"
+      ],
+      "observation": "Orange/yellow diagram is legible but draws stylized extra central torso/face nodes and ambiguous shoulder branches. It is embedded in a separately generated photograph with slightly different garment proportions/framing. Metadata says manual visible wrist/ankle annotations and no pose detector; diagram cannot substantiate detector accuracy or 3D joint truth."
+    },
+    {
+      "id": "generated-depth",
+      "severity": "ILLUSTRATIVE_ONLY",
+      "files": [
+        "images/depth.png",
+        "model/final-renders/depth.png"
+      ],
+      "observation": "Generated depth image retains grayscale facial shading, pointelle texture, folds and photoreal hair. It looks like a relit monochrome portrait on black, not an independently measured/calibrated depth map. Actual model depth rendering is visibly distinct and corresponds to bare anatomical geometry, not clothed photo surface."
+    },
+    {
+      "id": "actual-body-fit",
+      "severity": "PARTIAL",
+      "files": [
+        "model/final-renders/front.png",
+        "model/fit/front-final-photo-overlay.png",
+        "model/fit/side-before-after.png",
+        "model/fit/side-final-photo-overlay.png",
+        "model/fit/back-final-photo-overlay.png",
+        "model/fit/metrics.json",
+        "model/README.md"
+      ],
+      "observation": "Actual faceted anatomical surface is visible, and overlays put its cyan contour on generated photos with magenta manual wrist/ankle markers. Side before/after visibly improves ankle registration. Persistent side errors: face/chin cyan outline protrudes forward, hip/buttock and thigh/waist differ, fingers and toes do not align exactly. Front/back arm contours often sit outside clothed sleeves; hand/foot contours also diverge. These images are meaningful registration diagnostics, not proof of recovered bare-body dimensions or physical clothing fit.",
+      "metrics": "Full envelope IoU front 0.8161\u21920.8320, side 0.5891\u21920.6898, held-out back 0.7936\u21920.8142. P95 contour error worsens front 17.18\u219220.38px and back 17.00\u219217.18px. Shape is fixed prior; cameras were separately calibrated and frozen before pose comparison."
+    }
+  ],
+  "reviewed_file_sha256": {
+    "images/back.png": "01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575",
+    "images/closeup.png": "4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50",
+    "images/depth.png": "b99f1e48e67345d5c73940de45838df4942d649aad3d0e940ee029754aa471f9",
+    "images/front.png": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84",
+    "images/landmarks.json": "878b87ba8c6bf3ceb93998d25754b98c1013d5ff026aee98532bb937aaa59310",
+    "images/pose.png": "f95488c729253d1f06c3130ba085b0f1b34284131176e729d4abf404cfac60a5",
+    "images/side.png": "5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6",
+    "model/README.md": "39b646a449862502acd069a84a6e891b4468b449d96d67959cb104e1220ac08b",
+    "model/final-renders/depth.png": "76f1a435169c87c88099107ab581d04f38e06a70bc813f19b56e6c4930d25de6",
+    "model/final-renders/front.png": "13279396309831d8ef167aeeb619a2c9a2aecfaeb36fdcab11729de3154a3421",
+    "model/fit/back-final-photo-overlay.png": "5ad09356b9514f40055b34a46000cd56d9661ea1f57c0d31c07b189b4166bd8b",
+    "model/fit/front-final-photo-overlay.png": "814ed1822cc8b16f0de7152e4280a348cfe204f905aeb9204d4715f55f08a8c2",
+    "model/fit/metrics.json": "8cdc17e80f801a626e83b5dd43582f21dbe02a581b9f8e11742a8c3031b85ea3",
+    "model/fit/side-before-after.png": "bd76927389dc5ce1a980f79019a8f6514aabe24e7c38d289c65156d4fc12d4e2",
+    "model/fit/side-final-photo-overlay.png": "1f7708dd8bee53247e5deedfdd71b6c7f66a914a556797923b32e98fe1d99ac8",
+    "reference/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+  },
+  "required_next_steps": [
+    "Visually check official product photos and confirm original garment before asserting exact product identity.",
+    "Correct sleeve length and unsupported neckline trim, then review six replacement images.",
+    "If generated references change, rerun matching with new frozen masks/annotations and distinguish camera, pose and body-shape contributions.",
+    "Keep illustrative pose/depth separate from actual joint projection/Z-buffer outputs; retain limitations and metric regressions."
+  ]
+}

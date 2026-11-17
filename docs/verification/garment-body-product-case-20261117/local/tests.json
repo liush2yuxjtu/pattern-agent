@@ -1,0 +1,30 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".agents/skills/garment-body-six-view/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "tests-0.log"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/skill_evals",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "tests-1.log"
+  }
+]

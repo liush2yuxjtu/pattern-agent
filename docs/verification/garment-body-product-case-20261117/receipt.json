@@ -1,0 +1,41 @@
+{
+  "verification_verdict": "PASS",
+  "claim": "Actual real-product evidence gallery and adjustable anatomical-model handoff work with explicit unresolved original-photo pose",
+  "base_commit": "cbfd645520862b5db0ba83cc39601c523530ed18",
+  "source_sha256": "2cf3f9c5e6e2f129de788ae665f8c0fb2e1f667ed1fbd0944c49b131f1b3f2f3",
+  "project_verifier": ".agents/skills/verify/SKILL.md",
+  "recipes": [
+    "product-case",
+    "human-studio",
+    "skill-evals"
+  ],
+  "local_checks": {
+    "case_browser": 126,
+    "model_handoff": 30,
+    "human_studio_regression": 36,
+    "skill_guide_browser": 18,
+    "historical_gallery_regression": 52,
+    "helper_tests": 24,
+    "eval_tool_tests": 20,
+    "builder_controls": 10,
+    "native_generated_images_byte_checked": 12
+  },
+  "domain_results": {
+    "generated_garment_features": "CONDITIONAL_PASS for four visible basic features; exact shoulder/knit/identity not established",
+    "original_photo_pose": "POSE_FAIL / DEPTH_AMBIGUOUS; no accepted candidate",
+    "real_person_measurements": "NOT_ESTABLISHED; conditional avatar dimensions only",
+    "physical_garment_fit": "NOT_RUN",
+    "native_claude_trigger": "BLOCKED; CLI unavailable"
+  },
+  "reproduction_zip_sha256": "c6a0c28dba9fe83ebe6c0797f6ce365ef51cb26c844c1dbffbc3485562808b6e",
+  "package_sha256": "6fb7450138c4b5ad13e0483ca7197df6819670121fb325a41443113cb27403c5",
+  "notes": [
+    "Camera, shared pose, conditional size search, per-view pose and original-photo diagnostics are separate protocols.",
+    "Full clothing IoU regresses after containment-size tuning; regressions remain public.",
+    "Initial root browser attempt supplied abbreviated expected SHA; exact SHA retry passed unchanged assertions.",
+    "Current baseline reconciles concurrent DXF work without changing its files.",
+    "Unpushed candidate amended after staged whitespace check: removed one verifier trailing space, preserved raw CSV CRLF and source excerpt through narrowly scoped data whitespace attributes; full patch whitespace gate reran successfully. No evidence bytes changed."
+  ],
+  "publication": "PENDING exact-SHA live verification",
+  "cleanup": "Owned local server will be closed after post-commit verification; remote public-only browser prepared for live checks."
+}

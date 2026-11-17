@@ -1,0 +1,187 @@
+{
+  "verdict": "PASS",
+  "scope": "Actual builder stale-generation and independent model-integrity controls; no real-person accuracy or cloth physics claim",
+  "source_workspace": "/workspace/work/pattern-agent/work/product-red-pointelle-20261117",
+  "native_source_checks": [
+    {
+      "generation": 1,
+      "view": "front",
+      "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-dc808544-f273-4b72-864d-663afc4f093b.png"
+    },
+    {
+      "generation": 1,
+      "view": "side",
+      "sha256": "5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-03597efe-5c5b-4fd4-a6cd-0b661544eb5f.png"
+    },
+    {
+      "generation": 1,
+      "view": "back",
+      "sha256": "01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-91aabc51-aa09-41f6-bf70-0619d39fa44a.png"
+    },
+    {
+      "generation": 1,
+      "view": "closeup",
+      "sha256": "4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50",
+      "pixels": [
+        1110,
+        1417
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-3c7714bf-54b1-4b0a-8656-3df784fbb2c3.png"
+    },
+    {
+      "generation": 1,
+      "view": "pose",
+      "sha256": "f95488c729253d1f06c3130ba085b0f1b34284131176e729d4abf404cfac60a5",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-9321bd93-3d55-42ca-8654-1822de181cfa.png"
+    },
+    {
+      "generation": 1,
+      "view": "depth",
+      "sha256": "b99f1e48e67345d5c73940de45838df4942d649aad3d0e940ee029754aa471f9",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-481057ba-2a52-43f9-b8dd-8c8c9d44e2c9.png"
+    },
+    {
+      "generation": 2,
+      "view": "front",
+      "sha256": "64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-622fd42e-f3a1-49d9-990c-55594f1c54ee.png"
+    },
+    {
+      "generation": 2,
+      "view": "side",
+      "sha256": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-db88cdd0-4ac7-4112-a02a-db7cceaa6d22.png"
+    },
+    {
+      "generation": 2,
+      "view": "back",
+      "sha256": "25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-d9644e17-7aa0-4a7d-8516-4c7f9431a35e.png"
+    },
+    {
+      "generation": 2,
+      "view": "closeup",
+      "sha256": "650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215",
+      "pixels": [
+        1110,
+        1417
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-9457d313-db69-4f0d-adc0-e4a651031763.png"
+    },
+    {
+      "generation": 2,
+      "view": "pose",
+      "sha256": "6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-88481723-f286-4ee2-bec4-51be18ad9643.png"
+    },
+    {
+      "generation": 2,
+      "view": "depth",
+      "sha256": "b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "native_tool_source": "/workspace/generated_images/exec-d28c985a-20ae-43e7-8464-f9c1dbd18eb8.png"
+    }
+  ],
+  "controls": [
+    {
+      "name": "actual frozen model and six native images",
+      "expected": "PASS",
+      "observed": "PASS"
+    },
+    {
+      "name": "v1 front substituted without refitting",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Stale fit reference: front"
+    },
+    {
+      "name": "cropped closeup falsely redeclared as native image",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Copied image disagrees with native tool output: closeup"
+    },
+    {
+      "name": "false saved measurement with updated hashes",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Saved measuredNeutral disagrees with reconstructed mesh"
+    },
+    {
+      "name": "false asset with updated hashes",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Expected asset fingerprint mismatch"
+    },
+    {
+      "name": "neutral mesh vertex shifted 1cm",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Neutral OBJ disagrees with authored morph reconstruction"
+    },
+    {
+      "name": "posed render mesh shifted 1cm with updated hashes",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Skinned GLB in metres disagrees with posed OBJ in cm"
+    },
+    {
+      "name": "render bytes replaced without rerender provenance",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Changed render artifact: front.png"
+    },
+    {
+      "name": "state joint angle changed without actual rig export",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Actual GLB bone transforms do not match saved joint angles"
+    },
+    {
+      "name": "restored actual candidate rebuild",
+      "expected": "PASS",
+      "observed": "PASS"
+    }
+  ]
+}

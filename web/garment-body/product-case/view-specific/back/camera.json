@@ -1,0 +1,29 @@
+{
+  "width": 768,
+  "height": 1024,
+  "projection": "orthographic",
+  "source_axis": "Y up",
+  "units": "cm",
+  "pixel_convention": "u=(horizontal-centerX)*scale+width/2; v=height/2-(Y-centerY)*scale",
+  "depth_range_cm": [
+    -40,
+    40
+  ],
+  "depth_semantics": "largest world Z for front / largest world X for side / largest negative world Z for back; larger is nearer; background -Infinity with separate valid mask",
+  "views": {
+    "back": {
+      "axis": "back",
+      "px_per_cm": 5.3180102386580765,
+      "center_cm": [
+        0.18804025474240824,
+        85.48538799308542
+      ]
+    }
+  },
+  "calibration": {
+    "source": "Fresh generation2 manual stable anchors; same head/ankle placements visually checked independently of v1",
+    "record": "camera-calibration.json",
+    "shape_prior_cm": 170,
+    "frozen_before_pose": true
+  }
+}

@@ -3,6 +3,7 @@ import {OrbitControls} from './vendor/OrbitControls.js';
 import {GLTFExporter} from './vendor/GLTFExporter.js';
 import {clone as cloneRig} from './vendor/SkeletonUtils.js';
 import {DEFAULT_DIMENSIONS,MODEL_VERSION,normalizeDimensions,fitDimensions,jointPosition} from './body-engine.js';
+import {validateModelState,resolveModelUrl} from './state-contract.js';
 
 const $=id=>document.getElementById(id),RAD=Math.PI/180,CACHE='pattern-agent:human-studio:v1';
 const MAIN_JOINTS=[['root','Whole body'],['spine04','Lower spine'],['spine02','Chest'],['neck01','Neck'],['head','Head'],['shoulder01.L','Left collar / shoulder'],['shoulder01.R','Right collar / shoulder'],['upperarm01.L','Left shoulder'],['upperarm01.R','Right shoulder'],['lowerarm01.L','Left elbow'],['lowerarm01.R','Right elbow'],['wrist.L','Left wrist'],['wrist.R','Right wrist'],['upperleg01.L','Left hip'],['upperleg01.R','Right hip'],['lowerleg01.L','Left knee'],['lowerleg01.R','Right knee'],['foot.L','Left ankle'],['foot.R','Right ankle']];
@@ -33,6 +34,23 @@ function validWeights(values){return Array.isArray(values)&&values.length===data
 function saveCache(){try{localStorage.setItem(CACHE,JSON.stringify({version:MODEL_VERSION,asset:provenance?.human_sha256,dimensions,pose,morphWeights:fit?.weights}));}catch{}}
 function loadCache(){try{const state=JSON.parse(localStorage.getItem(CACHE));if(state?.version===MODEL_VERSION&&state.asset===provenance.human_sha256){dimensions=normalizeDimensions(data,state.dimensions);pose=normalizePose(state.pose);cachedMorphWeights=validWeights(state.morphWeights);}}catch{dimensions={...DEFAULT_DIMENSIONS};pose={};}}
 function setBusy(value){for(const id of ['export-state','export-png','export-obj','export-glb'])$(id).disabled=value;}
+function restoreState(saved){
+  const checked=validateModelState(saved,data,provenance.human_sha256);
+  dimensions=checked.dimensions;pose=checked.pose;cachedMorphWeights=checked.weights;fit=null;
+  updateBody();syncPoseControls();frameModel();
+}
+async function loadLinkedModel(){
+  const params=new URLSearchParams(location.search);if(!params.has('model'))return;
+  const message=$('model-source');message.hidden=false;message.dataset.state='loading';message.textContent='Loading linked model…';
+  try{
+    const url=resolveModelUrl(params.get('model'),location.href);
+    const response=await fetch(url,{mode:'same-origin',credentials:'omit',redirect:'error',signal:AbortSignal.timeout(10000)});
+    if(!response.ok)throw Error('Model download failed (HTTP '+response.status+').');
+    if(Number(response.headers.get('content-length'))>2000000)throw Error('Model file is too large.');
+    const text=await response.text();if(text.length>2000000)throw Error('Model file is too large.');
+    restoreState(JSON.parse(text));message.dataset.state='loaded';message.textContent='Linked model loaded · '+url.pathname.split('/').pop()+'. Edit dimensions in cm and joints in degrees; Save model keeps your changes.';
+  }catch(error){message.dataset.state='error';message.textContent='Could not load linked model: '+error.message+' The current editable model is preserved.';}
+}
 
 function coordinateFrame(head,tail){
   const y=tail.clone().sub(head).normalize();if(y.lengthSq()<.5)y.set(0,1,0);
@@ -186,9 +204,10 @@ async function init(){
     for(const b of document.querySelectorAll('[data-preset]'))b.onclick=()=>preset(b.dataset.preset);$('frame-model').onclick=frameModel;
     $('export-state').onclick=()=>download('human-model.json',JSON.stringify(exportSnapshot(),null,2),'application/json');$('export-obj').onclick=exportObj;$('export-glb').onclick=exportGlb;
     $('export-png').onclick=()=>{const ratio=renderer.getPixelRatio();try{renderer.setPixelRatio(ratio*2);renderer.render(scene,camera);const url=renderer.domElement.toDataURL('image/png'),a=document.createElement('a');a.href=url;a.download='human-view-2x.png';a.click();}finally{renderer.setPixelRatio(ratio);renderer.render(scene,camera);}};
-    $('import-state').onclick=()=>$('state-file').click();$('state-file').onchange=async e=>{try{const saved=JSON.parse(await e.target.files[0].text());if(saved.version!==MODEL_VERSION||saved.asset!==provenance.human_sha256)throw Error('This file belongs to a different model version.');dimensions=normalizeDimensions(data,saved.dimensions);pose=normalizePose(saved.poseDegrees);cachedMorphWeights=validWeights(saved.morphWeights);fit=null;updateBody();syncPoseControls();frameModel();toast('Dimensions and joint pose restored.');}catch(error){toast('Could not import: '+error.message);}e.target.value='';};
+    $('import-state').onclick=()=>$('state-file').click();$('state-file').onchange=async e=>{try{if(!e.target.files[0])return;restoreState(JSON.parse(await e.target.files[0].text()));toast('Dimensions and joint pose restored.');}catch(error){toast('Could not import: '+error.message);}finally{e.target.value='';}};
     const raycaster=new THREE.Raycaster();let down;
     renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);renderer.domElement.addEventListener('pointerup',e=>{if(tab!=='pose'||!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5)return;const rect=renderer.domElement.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);const hit=raycaster.intersectObjects(markers)[0];if(hit){selectedJoint=hit.object.userData.boneName;$('joint-select').value=selectedJoint;syncPoseControls();}});
+    await loadLinkedModel();
     window.humanStudio={getSnapshot:exportSnapshot,getViewBounds:viewBounds,getGeometry:()=>({unit:'cm',rest:Array.from(mesh.geometry.attributes.position.array),posed:data.bodyVertexIds.map(i=>posedVertex(i).toArray()),bodyVertexIds:data.bodyVertexIds,indices:data.indices,bones:bones.map(b=>({name:b.name,position:b.getWorldPosition(new THREE.Vector3()).toArray()}))}),getAsset:()=>data,setDimensions:values=>{dimensions=normalizeDimensions(data,{...dimensions,...values});updateBody();},setPose:values=>{pose=normalizePose(values);applyPose();syncPoseControls();},preset,ready:true};
     rendered=true;
   }catch(error){$('status').textContent='Could not load model';toast(error.message);console.error(error);}

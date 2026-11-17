@@ -2,3 +2,8 @@
 # and the official exporter's DXF line endings. Verify their geometry separately.
 *.pdf binary
 *.dxf binary
+
+# Preserve verbatim case evidence: RFC-style CSV CRLF and raw source excerpt.
+web/garment-body/product-case/*.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+web/garment-body/product-case/model/*.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+web/garment-body/product-case/reference/asos-product-excerpt.md whitespace=-blank-at-eof

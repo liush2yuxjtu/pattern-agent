@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "skill_name": "真实商品六图与参数人体：文件执行完整性",
+    "timestamp": "2026-11-17",
+    "evals_run": [
+      1
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "同一商品的修正历史",
+      "configuration": "generation_2",
+      "run_number": 1,
+      "result": {
+        "passed": 2,
+        "failed": 0,
+        "total": 2,
+        "pass_rate": 1.0,
+        "tokens": null,
+        "time_seconds": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "六张独立原生高分辨率图像",
+          "passed": true,
+          "evidence": "实际文件尺寸：{\"front\": [1086, 1448], \"side\": [1086, 1448], \"back\": [1086, 1448], \"closeup\": [1110, 1417], \"pose\": [1086, 1448], \"depth\": [1086, 1448]}"
+        },
+        {
+          "text": "保留失败轮与实际生成文件摘要",
+          "passed": true,
+          "evidence": "provenance/generation-2.json；manifest.json逐文件SHA256。"
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "同一商品的修正历史",
+      "configuration": "generation_1",
+      "run_number": 1,
+      "result": {
+        "passed": 2,
+        "failed": 0,
+        "total": 2,
+        "pass_rate": 1.0,
+        "tokens": null,
+        "time_seconds": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "六张独立原生高分辨率图像",
+          "passed": true,
+          "evidence": "实际文件尺寸：{\"front\": [1086, 1448], \"side\": [1086, 1448], \"back\": [1086, 1448], \"closeup\": [1110, 1417], \"pose\": [1086, 1448], \"depth\": [1086, 1448]}"
+        },
+        {
+          "text": "保留失败轮与实际生成文件摘要",
+          "passed": true,
+          "evidence": "provenance/generation-1.json；manifest.json逐文件SHA256。"
+        }
+      ]
+    }
+  ],
+  "run_summary": {
+    "generation_2": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0
+      }
+    },
+    "generation_1": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0
+      }
+    }
+  },
+  "notes": [
+    "仅一个商品的两代修正；不是新旧技能配对基准，不报告因果增益。",
+    "此处成功率仅汇总六文件与摘要的客观执行完整性。商品主观审查、几何匹配与原图恢复分别列于Outputs，不合并异质断言成功率。第一轮服装袖长错误依然FAIL，即使文件完整。",
+    "tokens、完整生成/拟合墙钟耗时未知；保留null。原生Claude触发评测仍BLOCKED，服装物理合身NOT_RUN。"
+  ]
+}

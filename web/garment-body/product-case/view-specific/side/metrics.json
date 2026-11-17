@@ -1,0 +1,48 @@
+{
+  "shared": {
+    "clothed_envelope": {
+      "iou": 0.6837573018732364,
+      "dice": 0.8121803553428198,
+      "symmetric_contour_mean_px": 11.814811706542969,
+      "symmetric_contour_p95_px": 29.362794876098633
+    },
+    "manual_joint_errors_px": [
+      {
+        "joint": "wrist.L",
+        "error_px": 5.398396993797794
+      },
+      {
+        "joint": "foot.L",
+        "error_px": 3.451130725577612
+      }
+    ]
+  },
+  "view_specific": {
+    "clothed_envelope": {
+      "iou": 0.6849322216076889,
+      "dice": 0.8130086336103851,
+      "symmetric_contour_mean_px": 11.65575885772705,
+      "symmetric_contour_p95_px": 29.346107482910156
+    },
+    "manual_joint_errors_px": [
+      {
+        "joint": "wrist.L",
+        "error_px": 0.18225775242399916
+      },
+      {
+        "joint": "foot.L",
+        "error_px": 3.451130725577612
+      }
+    ]
+  },
+  "protocol": {
+    "mode": "view_specific_pose diagnostic, not heldout evaluation",
+    "body_shape_unchanged": true,
+    "camera_unchanged": true,
+    "optimized_landmarks": "manual visible wrist centers only",
+    "objective": "joint reprojection with regularization toward shared pose; no clothing silhouette or dimensions optimization",
+    "reference_sha256": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1",
+    "solver_nfev": 7,
+    "shared_default_preserved": true
+  }
+}

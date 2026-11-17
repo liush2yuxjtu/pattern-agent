@@ -1,0 +1,634 @@
+{
+  "eval-product-generation_2-run-1": {
+    "title": "第2轮 · 七分袖修正",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. 实际生成输入与来源",
+        "images": [
+          {
+            "src": "reference/original-product.jpg",
+            "label": "原始电商商品图 · 实际生成输入",
+            "caption": "实际 Image Gen 参考照片；弯臂、局部裁切，与后续标准视图的姿态不同。",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+            "pixels": [
+              1000,
+              1276
+            ]
+          },
+          {
+            "src": "reference/asos-page.png",
+            "label": "ASOS 官方商品页 · 来源核对",
+            "caption": "来源与规格核对截图，不是提交给 Image Gen 的输入。官网确认红色 pointelle 船领七分袖，原模特 171 cm、穿 S。",
+            "sha256": "1d78f18ca02370eb9d550aed90138d3b272bc4431b428cd667f550b21596f6ee",
+            "pixels": [
+              1280,
+              1000
+            ]
+          },
+          {
+            "src": "images/generation-1/front.png",
+            "label": "实际第2轮编辑锚点 · 正面",
+            "caption": "原商品照片 + 第1轮对应照片用于衣物修正；姿态示意与深度示意都使用第1轮正面锚点。三维引导经第1轮继承，最终69/50 cm模型没有重新送入本轮 Image Gen。",
+            "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-1/side.png",
+            "label": "实际第2轮编辑锚点 · 侧面",
+            "caption": "原商品照片 + 第1轮对应照片用于衣物修正；姿态示意与深度示意都使用第1轮正面锚点。三维引导经第1轮继承，最终69/50 cm模型没有重新送入本轮 Image Gen。",
+            "sha256": "5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-1/back.png",
+            "label": "实际第2轮编辑锚点 · 背面",
+            "caption": "原商品照片 + 第1轮对应照片用于衣物修正；姿态示意与深度示意都使用第1轮正面锚点。三维引导经第1轮继承，最终69/50 cm模型没有重新送入本轮 Image Gen。",
+            "sha256": "01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-1/closeup.png",
+            "label": "实际第2轮编辑锚点 · 特写",
+            "caption": "原商品照片 + 第1轮对应照片用于衣物修正；姿态示意与深度示意都使用第1轮正面锚点。三维引导经第1轮继承，最终69/50 cm模型没有重新送入本轮 Image Gen。",
+            "sha256": "4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50",
+            "pixels": [
+              1110,
+              1417
+            ]
+          }
+        ],
+        "status": "实际输入与规格核对分列",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen 六张输出",
+        "images": [
+          {
+            "src": "images/generation-2/front.png",
+            "label": "正面",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。",
+            "sha256": "64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-2/side.png",
+            "label": "侧面",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。",
+            "sha256": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-2/back.png",
+            "label": "背面",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。",
+            "sha256": "25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-2/closeup.png",
+            "label": "特写",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。",
+            "sha256": "650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215",
+            "pixels": [
+              1110,
+              1417
+            ]
+          },
+          {
+            "src": "images/generation-2/pose.png",
+            "label": "姿态标注示意",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。 仅生成式示意，不是检测器结果或可测量深度。",
+            "sha256": "6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-2/depth.png",
+            "label": "深度风格示意",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。 仅生成式示意，不是检测器结果或可测量深度。",
+            "sha256": "b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d",
+            "pixels": [
+              1086,
+              1448
+            ]
+          }
+        ],
+        "status": "已实际执行 · 6 张",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "simulation",
+        "title": "3. 真实三维人体渲染",
+        "images": [
+          {
+            "src": "simulation/front.png",
+            "label": "真实人体渲染 · 正面",
+            "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。",
+            "sha256": "e1cab36638ab6000f43d20af4e38e5d0d5560323540059fa5191e5659af4b92f",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "simulation/side.png",
+            "label": "真实人体渲染 · 侧面",
+            "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。",
+            "sha256": "25873054a75a19dc0ffd3d003665d566c7b04e94ac032048b29788bbfb8ddeaf",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "simulation/back.png",
+            "label": "真实人体渲染 · 背面",
+            "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。",
+            "sha256": "8bd68d52d4650c620ac3b2c7b382044b24d992b00dd9f205daab15c04bbfa2ef",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "simulation/closeup.png",
+            "label": "真实人体渲染 · 特写",
+            "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。",
+            "sha256": "b1859ffe0686cb6c48961cc054404559a66867f2d92b1bc3f683de2f99767424",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "simulation/pose.png",
+            "label": "真实人体渲染 · 姿态标注示意",
+            "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。",
+            "sha256": "9020152eec937466470744414f5694f96ce503a3871f552af8b775714050c37d",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "simulation/depth.png",
+            "label": "真实人体渲染 · 深度风格示意",
+            "caption": "实际 MakeHuman 参数化网格投影；无服装、无布料物理。 深度来自数值 Z-buffer。",
+            "sha256": "66584982712a2284bd7f83be3a62e897c69e1bb2ac869bf289b423490d08e14f",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "original-reference/renders/front.png",
+            "label": "原始商品图姿态 · 真实三维正面",
+            "caption": "同一条件体形的原图专项姿态诊断；实际网格渲染用于检查手臂和手掌，非生成照片。",
+            "sha256": "11380447162b2dd0dc19410fd238adeb0ce7376559fb24b18e49393894e293f8",
+            "pixels": [
+              1000,
+              1276
+            ]
+          },
+          {
+            "src": "original-reference/renders/side.png",
+            "label": "原始商品图姿态 · 真实三维侧面",
+            "caption": "同一条件体形的原图专项姿态诊断；实际网格渲染用于检查手臂和手掌，非生成照片。",
+            "sha256": "544e35eb15664c29c0b28f69d044a26de60b113ec51d72cf5c041b0c284c0bac",
+            "pixels": [
+              1000,
+              1276
+            ]
+          }
+        ],
+        "status": "真实模型输出",
+        "emptyTitle": "模型输出待核验",
+        "note": "只有图像摘要与拟合输入一致、最终网格与metrics摘要一致时才显示。"
+      },
+      {
+        "key": "overlay",
+        "title": "4. OpenCV 核验",
+        "images": [
+          {
+            "src": "overlay/front-before-after.png",
+            "label": "正面 · 前后对比",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "75e34782d5c217e76939f5d6b0cddf6c36d88ac1f3fd1107bfa0f1b50c5ee25a",
+            "pixels": [
+              1536,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/front-final-photo-overlay.png",
+            "label": "正面 · 最终照片叠加",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "f2d32194db9134d5182121b55ade087b19174bac2d872cd4781ebaaab60d76d9",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/front-reference-landmarks-roi.png",
+            "label": "正面 · 手动关键点与ROI",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "d368b1b430cf1c44716029b0d376b30b577e9f4129fd04279757dc039ddc26f5",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/side-before-after.png",
+            "label": "侧面 · 前后对比",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "1f39df9db087e88537564bc80ffdae263b238d060e8f56febfcb0a05d3548127",
+            "pixels": [
+              1536,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/side-final-photo-overlay.png",
+            "label": "侧面 · 最终照片叠加",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "2d9d4706d55780be7644e0e4e7b92d2fce8cfe211d467711e96244254a8ebc57",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/side-reference-landmarks-roi.png",
+            "label": "侧面 · 手动关键点与ROI",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "b7abd8ed8c66a50f251f41d388921e51423b997c058643e07d21ade4702bc4af",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/back-before-after.png",
+            "label": "背面 · 前后对比",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "b7a522e30d98aa3c67d1ef397bcb9aea724527f19e015565ff9724c26df5f8cd",
+            "pixels": [
+              1536,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/back-final-photo-overlay.png",
+            "label": "背面 · 最终照片叠加",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "1633f94dd935a8d0989519eefe024765fed3c40f7f2154db98b335a64c1be8f6",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/back-reference-landmarks-roi.png",
+            "label": "背面 · 手动关键点与ROI",
+            "caption": "实际 OpenCV 输出；照片为生成参考。关键点与轮廓一致性不等于恢复真人裸模尺寸。",
+            "sha256": "3b2cd6c54300009f5d3ec998a7aa2782a56f36fcc9ad36e174e83db4ce42dcb8",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/shape-front-before-after.png",
+            "label": "正面 · 中码到条件体形",
+            "caption": "固定相机和共享姿态，比较原始中码与衣物包络约束的条件体形。不是裸身轮廓等值拟合。",
+            "sha256": "8075ad38a36307be8a964a32d15aeed1a092b1ee962a2dfbd096b12b51cedf95",
+            "pixels": [
+              1536,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/shape-side-before-after.png",
+            "label": "侧面 · 中码到条件体形",
+            "caption": "固定相机和共享姿态，比较原始中码与衣物包络约束的条件体形。不是裸身轮廓等值拟合。",
+            "sha256": "dd60b037fa864df4f34b0959e8400758b342ba38ccabcf45d8a20fc1ed91309d",
+            "pixels": [
+              1536,
+              1024
+            ]
+          },
+          {
+            "src": "overlay/shape-back-before-after.png",
+            "label": "背面 · 中码到条件体形",
+            "caption": "固定相机和共享姿态，比较原始中码与衣物包络约束的条件体形。不是裸身轮廓等值拟合。",
+            "sha256": "69b8222348202a98ef96ce8d8e1523bc6a7d40f10f54c197e10963a7e4f99810",
+            "pixels": [
+              1536,
+              1024
+            ]
+          },
+          {
+            "src": "view-specific/side/shared-overlay.png",
+            "label": "侧面 · 共享姿态",
+            "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。",
+            "sha256": "46e2a4d790817fbcdefdcd38ff376b93fea1cdbf04138b8f45857ad353436d01",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "view-specific/side/view_specific-overlay.png",
+            "label": "侧面 · 单图姿态诊断",
+            "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。",
+            "sha256": "b6b48cba5ec9faff0e828994ce4594c493a937ff4199b08cb1c1eaada1e99847",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "view-specific/side/before-after.png",
+            "label": "侧面 · 单图姿态诊断",
+            "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。",
+            "sha256": "ae3c29df5815c4d4f40dca8f26e97feefebfc83a190c1095cce433e194738f3f",
+            "pixels": [
+              1536,
+              1024
+            ]
+          },
+          {
+            "src": "view-specific/back/shared-overlay.png",
+            "label": "背面 · 共享姿态",
+            "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。",
+            "sha256": "e1589d2425b0814b9f7f41eacbee7c9c5163e449ba2309912c4a433eeee7503f",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "view-specific/back/view_specific-overlay.png",
+            "label": "背面 · 单图姿态诊断",
+            "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。",
+            "sha256": "ca4fc9e1103b90b163d4b3a7fb5dc78d396cca8dc7b7db649a5416b292a81f32",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "view-specific/back/before-after.png",
+            "label": "背面 · 单图姿态诊断",
+            "caption": "同一人体尺寸、同一相机；单图仅调姿态以解释生成图的不一致。训练过本图后不再是留出验证。",
+            "sha256": "ab943b9ab0c3a0f08a5e1cf0a4e651e606c7f9a0a75fd6732e109f58e5d37dc0",
+            "pixels": [
+              1536,
+              1024
+            ]
+          },
+          {
+            "src": "original-reference/before-after.png",
+            "label": "原商品图独立诊断 · 前后对比",
+            "caption": "原始电商图本身：同一条件人体，仅重新调弯臂、头颈与躯干姿态。与生成图核验分开，不证明恢复真人体形。",
+            "sha256": "d3b4001b3415fe03c38c7273467a71dbabab78cf9501865c805e66598e38895b",
+            "pixels": [
+              2000,
+              1276
+            ]
+          },
+          {
+            "src": "original-reference/previous_candidate-overlay.png",
+            "label": "原商品图独立诊断 · 实际投影叠加",
+            "caption": "原始电商图本身：同一条件人体，仅重新调弯臂、头颈与躯干姿态。与生成图核验分开，不证明恢复真人体形。",
+            "sha256": "5bfeb487669e041e817b15802b4e7ef04f832fa1aeac12d8213aa883e401138d",
+            "pixels": [
+              1000,
+              1276
+            ]
+          },
+          {
+            "src": "original-reference/refined_head_and_arms-overlay.png",
+            "label": "原商品图独立诊断 · 实际投影叠加",
+            "caption": "原始电商图本身：同一条件人体，仅重新调弯臂、头颈与躯干姿态。与生成图核验分开，不证明恢复真人体形。",
+            "sha256": "c84b24717fd46d3507f8e0efab8ff725a73d90877fe5cc85144c52abbe37ba74",
+            "pixels": [
+              1000,
+              1276
+            ]
+          }
+        ],
+        "status": "实际叠加与前后比较",
+        "emptyTitle": "没有可展示的本轮叠加",
+        "note": "第2轮必须重新标注、分割与拟合，不借用上一轮数字。"
+      }
+    ],
+    "note": "六张是独立图像文件，可点击缩略图逐张放大并打开原图。姿态图、深度风格图为生成式示意；实际骨架投影、数值深度在三维渲染区。原商品图之外的背面与全长为推测。人体以中码先验初始化；围度条件调整与网格参数均不能作为原模特的真人测量。"
+  },
+  "eval-product-history_generation_1-run-1": {
+    "title": "第1轮 · 袖长错误（失败对照）",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. 实际生成输入与来源",
+        "images": [
+          {
+            "src": "reference/original-product.jpg",
+            "label": "原始电商商品图 · 实际生成输入",
+            "caption": "实际 Image Gen 参考照片；弯臂、局部裁切，与后续标准视图的姿态不同。",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+            "pixels": [
+              1000,
+              1276
+            ]
+          },
+          {
+            "src": "reference/asos-page.png",
+            "label": "ASOS 官方商品页 · 来源核对",
+            "caption": "来源与规格核对截图，不是提交给 Image Gen 的输入。官网确认红色 pointelle 船领七分袖，原模特 171 cm、穿 S。",
+            "sha256": "1d78f18ca02370eb9d550aed90138d3b272bc4431b428cd667f550b21596f6ee",
+            "pixels": [
+              1280,
+              1000
+            ]
+          },
+          {
+            "src": "input/generation-1/model-front.png",
+            "label": "实际首轮三维引导 · 正面",
+            "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。",
+            "sha256": "98fca6fcb53390aefdd3a23e7ba18c83fbe6f91dd615ae54e9aa86748ff0b2c9",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "input/generation-1/model-side.png",
+            "label": "实际首轮三维引导 · 侧面",
+            "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。",
+            "sha256": "0acdd46452aeda8539843c62ad5472367c451cfaa8b0e20f62a5d77cdc485c66",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "input/generation-1/model-back.png",
+            "label": "实际首轮三维引导 · 背面",
+            "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。",
+            "sha256": "88ed9c975a2d553b3514003bcb71ff08d95b40e17b5348d5fb089665ea6f5855",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "input/generation-1/model-closeup.png",
+            "label": "实际首轮三维引导 · 特写",
+            "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。",
+            "sha256": "d5126af4bd77b0051bdd76360ecb2982c67ba196cb38e0fcd66c00eeef00f0cc",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "input/generation-1/model-pose.png",
+            "label": "实际首轮三维引导 · 姿态标注示意",
+            "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。",
+            "sha256": "6b998d67c93132dcc500d43ad513b796b101e175bec4e1a0ee834ff9f3a8503a",
+            "pixels": [
+              768,
+              1024
+            ]
+          },
+          {
+            "src": "input/generation-1/model-depth.png",
+            "label": "实际首轮三维引导 · 深度风格示意",
+            "caption": "第1轮实际 Image Gen 输入：原始中码人体渲染（170/90/72/96 cm），不是后来69 cm腰围、50 cm大腿围的条件模型。",
+            "sha256": "827dfade9cd2f6f81d590bb35befae1152c6e0419e4b31a5a4edef542d8f1b72",
+            "pixels": [
+              768,
+              1024
+            ]
+          }
+        ],
+        "status": "实际输入与规格核对分列",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen 六张输出",
+        "images": [
+          {
+            "src": "images/generation-1/front.png",
+            "label": "正面",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。",
+            "sha256": "89b80726e814212e5699070f693826782704fad7d0a8107529910851c3430c84",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-1/side.png",
+            "label": "侧面",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。",
+            "sha256": "5d34727acfe685bceaf14fafe5921365953b6a4938406d00b5c1d08e795fdce6",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-1/back.png",
+            "label": "背面",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。",
+            "sha256": "01cad6c780397d8978e3e88854bd4d520feffeb87b58a6ba277afc54e3bb0575",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-1/closeup.png",
+            "label": "特写",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。",
+            "sha256": "4adb758256b8fa0b242ee9abbb2173cf42e1370de1fbc8135c6b68443b353a50",
+            "pixels": [
+              1110,
+              1417
+            ]
+          },
+          {
+            "src": "images/generation-1/pose.png",
+            "label": "姿态标注示意",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。 仅生成式示意，不是检测器结果或可测量深度。",
+            "sha256": "f95488c729253d1f06c3130ba085b0f1b34284131176e729d4abf404cfac60a5",
+            "pixels": [
+              1086,
+              1448
+            ]
+          },
+          {
+            "src": "images/generation-1/depth.png",
+            "label": "深度风格示意",
+            "caption": "实际 Image Gen 独立文件；原生分辨率、未拼图。 仅生成式示意，不是检测器结果或可测量深度。",
+            "sha256": "b99f1e48e67345d5c73940de45838df4942d649aad3d0e940ee029754aa471f9",
+            "pixels": [
+              1086,
+              1448
+            ]
+          }
+        ],
+        "status": "已实际执行 · 6 张",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "simulation",
+        "title": "3. 真实三维人体渲染",
+        "images": [],
+        "status": "未在此轮展示",
+        "emptyTitle": "失败轮不复用修正轮模型",
+        "note": "只有图像摘要与拟合输入一致、最终网格与metrics摘要一致时才显示。"
+      },
+      {
+        "key": "overlay",
+        "title": "4. OpenCV 核验",
+        "images": [],
+        "status": "未在此轮展示",
+        "emptyTitle": "没有可展示的本轮叠加",
+        "note": "第2轮必须重新标注、分割与拟合，不借用上一轮数字。"
+      }
+    ],
+    "note": "六张是独立图像文件，可点击缩略图逐张放大并打开原图。姿态图、深度风格图为生成式示意；实际骨架投影、数值深度在三维渲染区。原商品图之外的背面与全长为推测。人体以中码先验初始化；围度条件调整与网格参数均不能作为原模特的真人测量。"
+  }
+}

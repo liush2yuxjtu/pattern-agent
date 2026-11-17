@@ -1,0 +1,130 @@
+{
+  "verdict": "PASS",
+  "review_scope": "新增技能要求的实际构建执行与真实模型完整性；不是触发准确率、真人尺寸精度或技能因果增益评测",
+  "candidate_files_sha256": {
+    ".agents/skills/garment-body-six-view/SKILL.md": "1055f0d6c1a3c42daad143bb2ccfa382e373181536e48dcfa885b53e0dab0fa9",
+    "tools/skill_evals/build_product_case_review.py": "0f53391d2a3947a7379111af600cbe89fced1bfe73c21a0f7b2e8b4c7ab89ae7",
+    "tools/skill_evals/validate_product_model.py": "5a64ed343b2e941a7312d485b3292f2f6f21ba1ca205a0f99eebbe0018f7dff5",
+    "tools/skill_evals/test_product_case_integrity.py": "1289a6933edb4078f398e8e5505a53bf86f13c56c935f63df8f00ffbd7450963"
+  },
+  "findings": [
+    {
+      "finding": "仅核对3张拟合输入不足以保护六图原生输出声明",
+      "resolution": "构建器对两代全部6图检查原生tool输出记录、sha及像素；实物逐字节比对12个保留tool原文件。裁半closeup并更新copied声明仍拒绝。",
+      "status": "CLOSED"
+    },
+    {
+      "finding": "仅hash匹配无法排除相互一致但内容错误的状态/网格",
+      "resolution": "独立重建asset morph与neutral尺路径，核对neutral OBJ、GLB rest、163骨骼local transform与保存Euler，再独立LBS解码米制GLB对厘米OBJ；篡改测量/asset/mesh/pose即使更新关联SHA仍拒绝。",
+      "status": "CLOSED"
+    },
+    {
+      "finding": "中性OBJ经过Float32蒙皮导出，比双精度asset重建差1.227245e-5cm，超过严格1e-5cm门槛",
+      "resolution": "几何agent改为用同一final-state/morphWeights直接Float64重构导出真正中性OBJ；不修改状态、posedGLB/渲染或阈值。独立重算通过原严格1e-5cm门槛。",
+      "status": "CLOSED",
+      "actual_neutral_obj_max_delta_cm": 4.99951191557102e-11
+    }
+  ],
+  "controls": [
+    {
+      "name": "actual frozen model and six native images",
+      "expected": "PASS",
+      "observed": "PASS"
+    },
+    {
+      "name": "v1 front substituted without refitting",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Stale fit reference: front"
+    },
+    {
+      "name": "cropped closeup falsely redeclared as native image",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Copied image disagrees with native tool output: closeup"
+    },
+    {
+      "name": "false saved measurement with updated hashes",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Saved measuredNeutral disagrees with reconstructed mesh"
+    },
+    {
+      "name": "false asset with updated hashes",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Expected asset fingerprint mismatch"
+    },
+    {
+      "name": "neutral mesh vertex shifted 1cm",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Neutral OBJ disagrees with authored morph reconstruction"
+    },
+    {
+      "name": "posed render mesh shifted 1cm with updated hashes",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Skinned GLB in metres disagrees with posed OBJ in cm"
+    },
+    {
+      "name": "render bytes replaced without rerender provenance",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Changed render artifact: front.png"
+    },
+    {
+      "name": "state joint angle changed without actual rig export",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "rejection": "Actual GLB bone transforms do not match saved joint angles"
+    },
+    {
+      "name": "restored actual candidate rebuild",
+      "expected": "PASS",
+      "observed": "PASS"
+    }
+  ],
+  "limitations": [
+    "生成pose/depth为illustrative；数值深度只来自实际模拟Z-buffer。",
+    "171cm/S来自官方原模特信息；170cm、中码围度及后续条件化模型参数不是真人测量。",
+    "一个商品两轮修正不能报告新旧技能因果增益；原生Claude trigger仍BLOCKED；服装物理合身NOT_RUN。"
+  ],
+  "independent_model_report": {
+    "verdict": "PASS",
+    "scope": "Independent model/file/pose integrity, not photograph recovery or cloth physics",
+    "asset_sha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "state": {
+      "verdict": "PASS",
+      "neutral_mesh_checked": true,
+      "asset": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+      "units": "cm",
+      "reportedMaximumTargetErrorCm": 0.0008179578337745852,
+      "dimensions_matched": true,
+      "limits": "No posed skinning, camera, photo match or real-person accuracy validation.",
+      "measuredNeutral": {
+        "height": 169.99994621466396,
+        "bust": 89.99999996693164,
+        "waist": 69.0000069469558,
+        "hips": 95.99992042292791,
+        "shoulders": 37.00000006177499,
+        "upperArm": 27.00000002015713,
+        "thigh": 50.000817957833775,
+        "neck": 32.00000004963003,
+        "upperArmLength": 29.000000043017785,
+        "forearmLength": 23.000000035994336,
+        "thighLength": 40.00004718065299,
+        "calf": 36.000000039157
+      },
+      "maximumReconstructionDifferenceCm": 1.4210854715202004e-14,
+      "maximumTargetErrorCm": 0.0008179578337745852
+    },
+    "neutral_obj_max_delta_cm": 4.99951191557102e-11,
+    "glb_rest_max_delta_cm": 7.625281682521745e-06,
+    "glb_bone_transform_max_delta": 5.46229728115577e-14,
+    "glb_vs_posed_obj_max_delta_m": 1.037716454987958e-07,
+    "render_provenance_checked": true,
+    "frozen_mask_iou_dice_max_error": 0.0,
+    "finite_depth_valid_pixels": 115625
+  }
+}

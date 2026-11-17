@@ -1,0 +1,29 @@
+{
+  "overall": "POSE_FAIL",
+  "accepted_matched_candidate": null,
+  "latest_failed_candidate": "iteration-5-forward-IK",
+  "candidates": [
+    {
+      "path": "iteration-2",
+      "status": "POSE_FAIL",
+      "reason": "Good2Dpoints, hand behind abdomen/vertical wrist folding"
+    },
+    {
+      "path": "iteration-3-depth-dominant",
+      "status": "POSE_FAIL",
+      "reason": "Hands meet but elbows shift57/142px, raised arms, palms overlap"
+    },
+    {
+      "path": "iteration-4-elbow-dominant",
+      "status": "POSE_FAIL",
+      "reason": "Elbows closer but hand through abdomen and wrist compensation"
+    },
+    {
+      "path": "iteration-5-forward-IK",
+      "status": "POSE_FAIL",
+      "reason": "Visible hands and low2D error, but outstretched21\u201325cm gap inconsistent with near-abdomen action"
+    }
+  ],
+  "main_final_default_avatar": "Unchanged; its generated-view validation/conditional shape are separate from original-photo pose failure.",
+  "manual_hidden_landmark_boundary": "Shoulder/elbow points are manual estimates beneath clothing, not hard anatomical truth. The depth-branch conclusion is conditional on this fixed avatar/actual bone-head lengths, orthographic crop approximation and these uncertain2Dpoints; it is neither a universal IK impossibility claim nor evidence the real person cannot make the pose. Visible palm/finger/hem appearance and plausible3D action take precedence over subpixel hidden-joint scores."
+}
