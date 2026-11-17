@@ -62,3 +62,7 @@ Chromium Playwright：实际渲染 4 裁片、SVG 8 条线、导出初版 .slope
 **新路线**：为四个 T 恤裁片建立独立 draw block，以静态点和 detail contour 生成 .sm2d 候选；先按 v0.7.6 XSD 校验，再用 Seamly2D v2026.11.16.133 打开、保存、关闭重开、导出 DXF，并回读比较。第一阶段是静态轮廓可编辑候选，不伪装成有尺寸公式、人体测量关联或放码规则的参数化版型。
 
 **本轮未完成的原因**：当前执行容器无法解析外网 DNS；Mac mini MCP 返回 429；Boat sandbox API 探针内部失败。没有可用的原生 GUI/CLI 执行环境。因此 OpenSloper 原生 check、Seamly2D XSD/GUI 实测仍 NOT_RUN。没有安装收费软件、启动付费计算或改变安全配置。
+
+## 2026-11-17 样本范围澄清
+
+另一个独立的基础直身裙样本已在 OpenSloper 0.2.0 CLI/MCP 原生检查与导出 PASS。该结果**不转移**到本文件的 PA-TSHIRT-001 T 恤样本。本 T 恤的 .sloper 原生打开、GUI 修改袖山、保存并导回仍为 NOT_RUN；Seamly2D .sm2d 生成和原生 GUI 往返也仍为 NOT_RUN。
