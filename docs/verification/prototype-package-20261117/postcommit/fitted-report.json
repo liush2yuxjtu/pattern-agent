@@ -1,0 +1,55 @@
+{
+  "verdict": "PASS",
+  "claim": "web preview, source downloads and archive integrity only",
+  "physical_fit": "NOT_RUN",
+  "strict_geometry_release": "NOT_RUN",
+  "base_url": "http://127.0.0.1:41079/pattern-agent/",
+  "commit": "331a27daf46f5debf3745834b478641f96ace06a",
+  "source_sha256": "5c19ba6e4d29bcf44cc5eee4c43a42cd448160b8f037ba4f40a4dc73e6f76acb",
+  "checks": [
+    "identity and meaningful desktop render",
+    "explicit visual-only status",
+    "three render view controls",
+    "actual WebGL mesh pixels",
+    "pointer rotation changes canvas pixels",
+    "wheel zoom",
+    "wireframe pixel change",
+    "keyboard rotation and reset",
+    "full ten-row eight-size table",
+    "five real downloads match build hashes; all archive entries match source hashes",
+    "375 px mobile with working view controls and contained table scrolling",
+    "missing model returns 404",
+    "real WebGL-disabled browser exposes loaded image fallback"
+  ],
+  "downloads": [
+    {
+      "path": "fitted-tshirt/downloads/fitted-tshirt-complete.zip",
+      "sha256": "bdcd9e7e1e0edef3be8105fd8a483b87f456127e0c8c8f3d3b266ae24f4677fd",
+      "bytes": 9378982
+    },
+    {
+      "path": "fitted-tshirt/assets/fitted-tshirt.blend",
+      "sha256": "d01bc81c75d60b29fd33c9fcedaddecad87dfe2c5433041d86461a513fb52579",
+      "bytes": 3224480
+    },
+    {
+      "path": "fitted-tshirt/assets/fitted-tshirt.glb",
+      "sha256": "6a74f6661b81e95e0c3700d193897cac3c9741b1ceaf0024e215b752831ff7cc",
+      "bytes": 2671732
+    },
+    {
+      "path": "fitted-tshirt/downloads/prototype-notes.md",
+      "sha256": "aaf98679bc73a958888d4bb0617284e137d4f6c66ae953b0fa07a415c54e6975",
+      "bytes": 10480
+    },
+    {
+      "path": "fitted-tshirt/downloads/manifest.json",
+      "sha256": "be98a62771a8dae01b96c81d3f3d42fa2d718491a155dba1c11ec6bffcc8f40c",
+      "bytes": 3883
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "asset_http_errors": [],
+  "browser": "Chromium via local Playwright; ego-browser unavailable"
+}

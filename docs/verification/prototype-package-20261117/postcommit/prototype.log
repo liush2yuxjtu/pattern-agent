@@ -1,0 +1,69 @@
+{
+  "source_and_bindings": {
+    "source_integrity": "PASS",
+    "entity_part_coverage": "PASS",
+    "bound_coordinate_and_text_fields": 3367,
+    "geometry_counts": {
+      "POLYLINE": 126,
+      "LINE": 78,
+      "TEXT": 27
+    },
+    "observed_measurement_paths_checked": 8,
+    "semantic_compile": "NOT_IMPLEMENTED",
+    "edited_dxf": "NOT_GENERATED",
+    "new_3d_preview": "NOT_GENERATED"
+  },
+  "manifest_files_checked": 40,
+  "examples_reference_only": 3
+}
+{
+  "verdict": "PASS",
+  "claim": "new prototype reference route, diagrams, examples and source downloads only",
+  "base_url": "http://127.0.0.1:43371/pattern-agent/",
+  "route": "prototype-package/",
+  "commit": "331a27daf46f5debf3745834b478641f96ace06a",
+  "checks": [
+    "correct new route, source preview pixels and loaded real example JSON",
+    "source preview modal opens and closes by keyboard",
+    "two rendered workflow diagrams, readable labels and automatic frame heights",
+    "pointer and keyboard change cases; ambiguous goal retains an empty operation list",
+    "five actual downloads match build hashes; complete archive and original file hashes verified",
+    "375px and 320px mobile with reflowing workflows and real case changes",
+    "spec disclosure presents the actual selected reference file",
+    "missing archive returns 404"
+  ],
+  "downloads": [
+    {
+      "path": "prototype-package/downloads/fitted-tshirt-prototype-package-v0.2.zip",
+      "sha256": "ac888a5310924fbc37f4e98132ded34ece85d6c577ed52cae84ecf932e0032d8",
+      "bytes": 1096775
+    },
+    {
+      "path": "prototype-package/package/source/女紧身款T恤.dxf",
+      "sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+      "bytes": 108836
+    },
+    {
+      "path": "prototype-package/package/design-spec.json",
+      "sha256": "e3c5238d91663d0311a64deeec29e00bdbf7b3f6aa928e5917a38b07bc7c1279",
+      "bytes": 2300
+    },
+    {
+      "path": "prototype-package/package/prototype-spec.json",
+      "sha256": "bfdb8af96831f76881ee6e598dcd5594bf24920d04f93ceacd1cea58eeec331c",
+      "bytes": 868450
+    },
+    {
+      "path": "prototype-package/package/SHA256.json",
+      "sha256": "fc98daaafca71fca52e4b4f7d22c8a514bd67d87cc9daafa13336420ea82a8a9",
+      "bytes": 4150
+    }
+  ],
+  "errors": [],
+  "http_errors": [],
+  "failed_requests": [],
+  "semantic_compiler": "NOT_IMPLEMENTED",
+  "edited_dxf": "NOT_GENERATED",
+  "new_3d_preview": "NOT_GENERATED",
+  "browser": "local Playwright Chromium; ego-browser unavailable in the Cloud environment"
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "name": "prototype",
+    "command": [
+      "python3",
+      "/tmp/pattern-agent-prototype-331a27d/scripts/verify_prototype_package.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/",
+      "--expected-commit",
+      "331a27daf46f5debf3745834b478641f96ace06a",
+      "--browser",
+      "/usr/bin/google-chrome",
+      "--output",
+      "/tmp/pattern-agent-prototype-331a27d/evidence/prototype"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 5.88
+  },
+  {
+    "name": "existing",
+    "command": [
+      "python3",
+      "/tmp/pattern-agent-prototype-331a27d/scripts/verify_pages.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/",
+      "--expected-commit",
+      "331a27daf46f5debf3745834b478641f96ace06a",
+      "--browser",
+      "/usr/bin/google-chrome",
+      "--output",
+      "/tmp/pattern-agent-prototype-331a27d/evidence/existing"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 5.08
+  },
+  {
+    "name": "fitted",
+    "command": [
+      "python3",
+      "/tmp/pattern-agent-prototype-331a27d/scripts/verify_fitted_tshirt.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/",
+      "--expected-commit",
+      "331a27daf46f5debf3745834b478641f96ace06a",
+      "--browser",
+      "/usr/bin/google-chrome",
+      "--output",
+      "/tmp/pattern-agent-prototype-331a27d/evidence/fitted"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 11.14
+  }
+]

@@ -53,3 +53,24 @@ The full corrected browser path was rerun successfully, without weakened checks.
 The existing 3D prototype is linked as an existing appearance reference. No new
 3D result or manufacturing approval is implied. The historical cloth seam gap
 7.6455 mm and 20 nonadjacent intersections remain FAIL; physical fit is NOT_RUN.
+
+## Published and driven at the public URL
+
+Hosted verdict: **PASS**. Pages run `44037343240` deployed
+`331a27daf46f5debf3745834b478641f96ace06a` to the new
+[prototype route](https://liush2yuxjtu.github.io/pattern-agent/prototype-package/).
+The complete unchanged public verifiers passed 8 new-page checks, 11 existing
+main/workbench checks and 13 existing T-shirt checks against that exact live
+revision. All 14 actual browser downloads matched their published hashes.
+
+The local live Playwright path encountered IPv6 ENETUNREACH. The documented
+public-only Firecrawl Bash fallback downloaded the three scripts from the public
+pinned commit, checked their reviewed SHA-256 values, and ran standalone Chrome
+with normal HTTPS. No unpublished fixtures or credentials were transferred.
+The reports, commands, source identity, selected screenshots and deployment
+receipt are in `live/`. The downloaded new package was independently reopened
+after retrieving and checking the complete evidence archive.
+
+All 271 existing web files, shared assets, builder and deployment workflow remain
+unchanged by this addition. The follow-up evidence commit changes only this
+documentation directory; it does not trigger a new Pages deployment.
