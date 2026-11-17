@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Synthetic Body Proxy — Viewer Sync Control</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#edf0f3;color:#26313e;font:16px system-ui}main{display:flex;gap:32px;padding:28px;max-width:1100px;margin:auto;align-items:flex-start}canvas{background:white;border:1px solid #ccd3dc;width:min(100%,600px);height:auto;min-width:0}aside{width:320px;flex-shrink:0}label{display:block;margin:22px 0}input{width:100%}button{padding:10px;margin:0 7px 8px 0;cursor:pointer}small{display:block;margin:15px 0;color:#586677}output{float:right}h1{margin-top:0}@media(max-width:800px){main{flex-direction:column;padding:16px;gap:20px}canvas{max-width:600px;margin:auto}aside{width:100%}label{margin:18px 0}}</style>
+<main><canvas id="view" width="600" height="720"></canvas><aside><h1>Body proxy</h1><p>SYNTHETIC CONTROL · illustrative geometry</p><small>170 cm prior; mesh units are assumed centimetres. Front / side / back are rendered views.</small>
+<label>Height <output id="heightValue"></output><input id="height" type="range" min="145" max="195" step="1"></label>
+<label>Chest <output id="chestValue"></output><input id="chest" type="range" min="65" max="130" step="1"></label>
+<label>Waist <output id="waistValue"></output><input id="waist" type="range" min="55" max="120" step="1"></label>
+<label>Hip <output id="hipValue"></output><input id="hip" type="range" min="65" max="135" step="1"></label>
+<button data-angle="0">Front</button><button data-angle="1.57079632679">Side</button><button data-angle="3.14159265359">Back</button><label>Rotate<input id="rotation" type="range" min="-180" max="180" value="0"></label><small id="status"></small></aside></main>
+<script>
+'use strict';
+// Standalone file:// input: this mirrors body.json so no network/server is required.
+const FINAL_BODY={version:2,height:170,chest:98,waist:74,hip:102,depth_ratio:0.78};
+const CACHE_KEY='synthetic-body-viewer';
+const LIMITS={height:[145,195],chest:[65,130],waist:[55,120],hip:[65,135]};
+let state={...FINAL_BODY};
+let cacheMessage='Final v2 defaults';
+try {
+ const cached=JSON.parse(localStorage.getItem(CACHE_KEY));
+ if(cached && cached.version===FINAL_BODY.version && cached.depth_ratio===FINAL_BODY.depth_ratio && Object.entries(LIMITS).every(([k,[min,max]])=>Number.isFinite(cached[k]) && cached[k]>=min && cached[k]<=max)) {
+  for(const key of Object.keys(LIMITS)) state[key]=cached[key];
+  cacheMessage='Restored saved v2 edits';
+ } else if(cached) cacheMessage='Replaced obsolete or invalid cache with final v2 defaults';
+} catch(e) {cacheMessage='Final v2 defaults (cache unavailable or invalid)'}
+function persist(){try{localStorage.setItem(CACHE_KEY,JSON.stringify(state))}catch(e){cacheMessage='Edits active; browser storage unavailable'}}
+persist();
+let angle=0;
+function radii(c,r){const a=c/(Math.PI*(3*(1+r)-Math.sqrt((3+r)*(1+3*r))));return [a,a*r]}
+function buildMesh(p){
+ const vertices=[],faces=[];
+ function loft(rows,cx=0){const start=vertices.length,n=48;
+  for(const [y,rx,rz] of rows)for(let k=0;k<n;k++){const t=k*2*Math.PI/n;vertices.push([(cx+rx*Math.cos(t))*p.height/170,y*p.height/170,rz*Math.sin(t)*p.height/170])}
+  for(let j=0;j<rows.length-1;j++)for(let k=0;k<n;k++){let a=start+j*n+k,b=start+j*n+(k+1)%n;faces.push([a,b,b+n],[a,b+n,a+n])}
+  for(const row of [0,rows.length-1]){const ci=vertices.length;vertices.push([cx*p.height/170,rows[row][0]*p.height/170,0]);for(let k=0;k<n;k++)faces.push([ci,start+row*n+k,start+row*n+(k+1)%n])}
+ }
+ const c=radii(p.chest,p.depth_ratio),w=radii(p.waist,p.depth_ratio),h=radii(p.hip,p.depth_ratio);
+ loft([[76,h[0]*.8,h[1]*.8],[88,...h],[98,h[0]*.95,h[1]*.95],[109,...w],[119,c[0]*.94,c[1]*.94],[128,...c],[138,c[0]*1.02,c[1]*.85],[145,9,6],[149,5,4]]);
+ loft([[148,4,4],[151,7,7],[159,8,8],[166,6,6],[170,.3,.3]]);
+ for(const sign of [-1,1]){loft([[0,4,6],[8,4,4],[39,5,5],[75,7,7],[85,7,7]],sign*8);loft([[80,3,3],[105,4,4],[128,5,5],[141,4,4]],sign*27)}
+ return {vertices,faces};
+}
+// Build real current geometry from the same state used by controls and persistence.
+let mesh=buildMesh(state);
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');
+function render(){ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
+ const c=Math.cos(angle),s=Math.sin(angle),points=mesh.vertices.map(([x,y,z])=>[300+(x*c+z*s)*3.65,690-y*3.65,-x*s+z*c]);
+ const ordered=mesh.faces.map((f,i)=>({f,i,z:f.reduce((a,j)=>a+points[j][2],0)/3})).sort((a,b)=>a.z-b.z);
+ for(const {f,i} of ordered){ctx.beginPath();ctx.moveTo(points[f[0]][0],points[f[0]][1]);for(const j of f.slice(1))ctx.lineTo(points[j][0],points[j][1]);ctx.closePath();ctx.fillStyle=`hsl(213,18%,${58+(i%9)*2}%)`;ctx.fill()}
+ ctx.fillStyle='#344153';ctx.font='13px system-ui';ctx.fillText('SYNTHETIC CONTROL / assumed scale',16,24);
+ document.querySelector('#status').textContent=`${cacheMessage} · v${state.version} · ${mesh.vertices.length} vertices · ${mesh.faces.length} triangles`;
+}
+for(const key of ['height','chest','waist','hip']){const input=document.getElementById(key),label=document.getElementById(key+'Value');input.value=state[key];label.value=state[key]+' cm';input.addEventListener('input',()=>{state[key]=Number(input.value);label.value=state[key]+' cm';mesh=buildMesh(state);cacheMessage='Saved v2 edits';persist();render()})}
+Object.defineProperty(window,'evalState',{value:()=>({version:state.version,params:{...state},vertices:mesh.vertices.map(v=>[...v])}),writable:false,configurable:false});
+for(const b of document.querySelectorAll('button[data-angle]'))b.onclick=()=>{angle=Number(b.dataset.angle);document.getElementById('rotation').value=angle*180/Math.PI;render()};
+document.getElementById('rotation').oninput=e=>{angle=Number(e.target.value)*Math.PI/180;render()};render();
+</script></html>

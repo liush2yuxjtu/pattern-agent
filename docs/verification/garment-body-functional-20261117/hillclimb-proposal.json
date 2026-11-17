@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "parent": "v0",
+  "created_utc": "2026-11-17T03:29:35.601142+00:00",
+  "cause": "Independent real Chromium probe: original with-skill and no-skill outputs accepted off-step same-version cache, leaving control171 vs geometry/label170.5. Separate extra finding, not retroactively added to iteration1 core grades.",
+  "change": "General type/range/step cache canonicalization and one state across controls, geometry, labels and export; cross-height circumference semantics check. No fixture filenames/values in skill.",
+  "new_assertion": "Same-version off-step cached dimensions are rejected or normalized to one valid state: all four visible controls, labels, actual geometry and export agree after load and reload.",
+  "iteration2_protocol": "fresh paired candidate-v1 vs frozen-v0 executions on all3tasks; task prompt/data identical between configurations; executor reads task.json only (not grader assertions).",
+  "core_assertions": 18,
+  "added_regression_assertions": 1,
+  "scope": "Functional prompt effect on execution, not native trigger or anatomy accuracy",
+  "v0_sha256": "1557b4a6c83b55a8cb3bb5726d9dbbdcc0fd92e9dc28dcc896c0b8d3738015c4",
+  "v1_sha256": "76da9f370a2204474b110b13b9ba453fd5354ec69c090561e72e926ae0b13fe7"
+}

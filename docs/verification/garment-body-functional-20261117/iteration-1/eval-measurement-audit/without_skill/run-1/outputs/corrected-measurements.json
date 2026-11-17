@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "subject": "synthetic controlled fixtures; no real-person dimensions claimed",
+  "reference": {
+    "reference_type": "single synthetic front image",
+    "source_front": "source-front.png",
+    "observed_views": [
+      "front"
+    ],
+    "generated_views": [
+      "generated-side.png",
+      "generated-back.png"
+    ],
+    "scale": {
+      "kind": "assumption",
+      "height_cm": 170,
+      "source": "170 cm prior; no calibration object or known camera distance"
+    },
+    "depth": {
+      "kind": "illustrative",
+      "source": "proxy design assumption; front reference does not establish physical depth"
+    },
+    "bust_point_distance": {
+      "kind": "unknown",
+      "reason": "no semantic bust landmarks or reliable multi-view evidence supplied"
+    },
+    "mesh": "body.obj",
+    "mesh_topology": "disconnected central torso, head, legs and arms; y is vertical"
+  },
+  "units": {
+    "mesh": "prior-scaled cm",
+    "output": "cm",
+    "up_axis": "y"
+  },
+  "scale_assumption": {
+    "height_cm": 170,
+    "kind": "uncalibrated prior",
+    "mesh_y_bounds_cm": [
+      0.0,
+      170.0
+    ],
+    "conversion_factor": 1,
+    "calibration_evidence": null
+  },
+  "method": {
+    "intersection": "Intersect each actual triangle edge against y plane, merge coincident endpoints at 1e-6 cm, deduplicate undirected segments, traverse degree-two adjacency into closed loops",
+    "selection": "Select origin-enclosing x-z contour of largest polygon area; no OBJ group values used",
+    "tolerance_cm": 1e-06
+  },
+  "dimensions": [
+    {
+      "name": "chest_circumference",
+      "value": 95.93147706242993,
+      "unit": "cm",
+      "basis": "polygonal perimeter of actual mesh-plane central torso loop; assumed 170 cm height scale",
+      "mesh_checked": true,
+      "evidence_status": "synthetic mesh proxy, not observed real-person measurement",
+      "uncertainty": {
+        "numerical_join_tolerance_cm": 1e-06,
+        "physical_error_cm": null,
+        "scale_uncertainty_cm": null
+      },
+      "limitations": [
+        "Polygonal mesh discretization; no anatomical landmark validation",
+        "Uncalibrated 170 cm height prior; physical accuracy unknown",
+        "Single synthetic front; generated side/back do not constrain observed dimensions"
+      ]
+    },
+    {
+      "name": "waist_circumference",
+      "value": 71.94860759832905,
+      "unit": "cm",
+      "basis": "polygonal perimeter of actual mesh-plane central torso loop; assumed 170 cm height scale",
+      "mesh_checked": true,
+      "evidence_status": "synthetic mesh proxy, not observed real-person measurement",
+      "uncertainty": {
+        "numerical_join_tolerance_cm": 1e-06,
+        "physical_error_cm": null,
+        "scale_uncertainty_cm": null
+      },
+      "limitations": [
+        "Polygonal mesh discretization; no anatomical landmark validation",
+        "Uncalibrated 170 cm height prior; physical accuracy unknown",
+        "Single synthetic front; generated side/back do not constrain observed dimensions"
+      ]
+    },
+    {
+      "name": "hip_circumference",
+      "value": 99.92862081865191,
+      "unit": "cm",
+      "basis": "polygonal perimeter of actual mesh-plane central torso loop; assumed 170 cm height scale",
+      "mesh_checked": true,
+      "evidence_status": "synthetic mesh proxy, not observed real-person measurement",
+      "uncertainty": {
+        "numerical_join_tolerance_cm": 1e-06,
+        "physical_error_cm": null,
+        "scale_uncertainty_cm": null
+      },
+      "limitations": [
+        "Polygonal mesh discretization; no anatomical landmark validation",
+        "Uncalibrated 170 cm height prior; physical accuracy unknown",
+        "Single synthetic front; generated side/back do not constrain observed dimensions"
+      ]
+    },
+    {
+      "name": "height",
+      "value": 170,
+      "unit": "cm",
+      "basis": "assumed height prior; mesh y bounds 0\u2013170 agree with prior",
+      "evidence_status": "assumed, not observed",
+      "uncertainty": {
+        "physical_error_cm": null
+      },
+      "mesh_checked": true,
+      "limitations": [
+        "No calibrated physical measurement supplied"
+      ]
+    },
+    {
+      "name": "bust_point_distance",
+      "value": null,
+      "unit": "cm",
+      "basis": "unknown: no semantic bust landmarks or reliable multi-view evidence",
+      "evidence_status": "unavailable",
+      "uncertainty": {
+        "physical_error_cm": null
+      },
+      "mesh_checked": false,
+      "limitations": [
+        "No calibrated physical measurement supplied"
+      ]
+    },
+    {
+      "name": "depth",
+      "value": null,
+      "unit": "cm",
+      "basis": "illustrative proxy design assumption; single front image cannot establish physical depth",
+      "evidence_status": "illustrative only, no estimated centimeter depth",
+      "uncertainty": {
+        "physical_error_cm": null
+      },
+      "mesh_checked": false,
+      "limitations": [
+        "No calibrated physical measurement supplied"
+      ]
+    }
+  ],
+  "section_results": [
+    {
+      "name": "chest",
+      "plane_y_cm": 128,
+      "loops": [
+        {
+          "index": 0,
+          "selected": false,
+          "perimeter_cm": 31.39350199281143,
+          "polygon_area_cm2": 78.315715144136,
+          "mean_vertex_xz_cm": [
+            -27.000000000000004,
+            7.401486830834377e-17
+          ],
+          "vertex_count": 48
+        },
+        {
+          "index": 1,
+          "selected": true,
+          "perimeter_cm": 95.93147706242993,
+          "polygon_area_cm2": 714.64816408453,
+          "mean_vertex_xz_cm": [
+            -2.220446049250313e-16,
+            5.921189464667501e-16
+          ],
+          "vertex_count": 48
+        },
+        {
+          "index": 2,
+          "selected": false,
+          "perimeter_cm": 31.39350199281143,
+          "polygon_area_cm2": 78.31571514413599,
+          "mean_vertex_xz_cm": [
+            27.0,
+            7.401486830834377e-17
+          ],
+          "vertex_count": 48
+        }
+      ],
+      "selected_component_index": 1,
+      "unique_segment_count": 144,
+      "all_loops_sum_cm": 158.7184810480528
+    },
+    {
+      "name": "waist",
+      "plane_y_cm": 109,
+      "loops": [
+        {
+          "index": 0,
+          "selected": false,
+          "perimeter_cm": 26.20674896288179,
+          "polygon_area_cm2": 54.57524398887055,
+          "mean_vertex_xz_cm": [
+            -26.999999999999986,
+            -1.3877787807814457e-16
+          ],
+          "vertex_count": 96
+        },
+        {
+          "index": 1,
+          "selected": true,
+          "perimeter_cm": 71.94860759832905,
+          "polygon_area_cm2": 401.9895891068061,
+          "mean_vertex_xz_cm": [
+            1.1102230246251565e-16,
+            2.1741867565575981e-16
+          ],
+          "vertex_count": 48
+        },
+        {
+          "index": 2,
+          "selected": false,
+          "perimeter_cm": 26.20674896288179,
+          "polygon_area_cm2": 54.575243988870554,
+          "mean_vertex_xz_cm": [
+            27.00000000000001,
+            -1.3877787807814457e-16
+          ],
+          "vertex_count": 96
+        }
+      ],
+      "selected_component_index": 1,
+      "unique_segment_count": 240,
+      "all_loops_sum_cm": 124.36210552409263
+    },
+    {
+      "name": "hip",
+      "plane_y_cm": 88,
+      "loops": [
+        {
+          "index": 0,
+          "selected": false,
+          "perimeter_cm": 20.845284857660708,
+          "polygon_area_cm2": 34.529084001773334,
+          "mean_vertex_xz_cm": [
+            -26.999999999999996,
+            -5.84023570245525e-17
+          ],
+          "vertex_count": 96
+        },
+        {
+          "index": 1,
+          "selected": true,
+          "perimeter_cm": 99.92862081865191,
+          "polygon_area_cm2": 775.442870442346,
+          "mean_vertex_xz_cm": [
+            2.220446049250313e-16,
+            1.5265566588595902e-16
+          ],
+          "vertex_count": 48
+        },
+        {
+          "index": 2,
+          "selected": false,
+          "perimeter_cm": 20.845284857660708,
+          "polygon_area_cm2": 34.529084001773334,
+          "mean_vertex_xz_cm": [
+            27.00000000000001,
+            -5.84023570245525e-17
+          ],
+          "vertex_count": 96
+        }
+      ],
+      "selected_component_index": 1,
+      "unique_segment_count": 240,
+      "all_loops_sum_cm": 141.61919053397332
+    }
+  ],
+  "source_hashes_sha256": {
+    "README.md": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b",
+    "body.obj": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9",
+    "depth-claim.png": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c",
+    "generated-back.png": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89",
+    "generated-side.png": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f",
+    "measurements.json": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7",
+    "sections.json": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a",
+    "source-evidence.json": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8",
+    "source-front.png": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+  }
+}

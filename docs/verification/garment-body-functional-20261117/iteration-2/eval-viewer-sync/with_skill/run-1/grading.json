@@ -1,0 +1,133 @@
+{
+  "expectations": [
+    {
+      "text": "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+      "passed": true,
+      "evidence": "Fresh v2 1548 vertices match body.json and OBJ within 0; independent OBJ-render pixel oracle differs in 0/411000 pixels. See grader-evidence/checks.json."
+    },
+    {
+      "text": "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+      "passed": true,
+      "evidence": "Real ArrowRight input on all four ranges changed vertices/pixels: height 1450/33499, chest 144/5366, waist 48/2794, hip 144/4930. All finite. Actual executor eval-state-after.json reconstructed with keyboard and matches exact current/reloaded geometry; UI download not implemented (diagnostic JSON artifact supplied). See grader-evidence/checks.json."
+    },
+    {
+      "text": "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+      "passed": true,
+      "evidence": "Injected known v1 values; full state equals fresh final defaults after reload: true. See grader-evidence/checks.json."
+    },
+    {
+      "text": "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+      "passed": true,
+      "evidence": "Camera pixel changes 59845,59830,55681; rotation 39812; geometry unchanged; front exact reproduction true; saved reload geometry/controls/canvas exact true. See grader-evidence/checks.json."
+    },
+    {
+      "text": "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+      "passed": true,
+      "evidence": "Independent fresh and edited screenshots show 33585 changed canvas pixels; supplied before/after/mobile PNGs exist. Reopened executor export reconstructed through visible controls and survives reload exactly: true. See grader-evidence/checks.json."
+    },
+    {
+      "text": "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed.",
+      "passed": true,
+      "evidence": "At 1100 and 375 pixels overflow=false/false; JS/console errors=0. Report explicitly identifies synthetic geometry and assumed cm scale. See grader-evidence/checks.json. Report.md: Assumptions and limits: this is the supplied synthetic, faceted, disconnected simplified body proxy; no anatomical or photographic fit is claimed. Units are assumed centimetres from the fixture's 170 cm prior. Parameters denote ideal ellipse girths; the actual 48-sided OBJ sections measure approximately 97.9300, 73.9472, and 101.9272 cm for labels 98/74/102. This approximately 0.071% polygon approximation is inherited from the authoritative export, not silently calibrated away. Height deformation preserves those actual ring values. Source body.json/body.obj are final defaults, not overwritten by browser interactions. Camera angle resets to front on reload; body dimensions persist. No external services, image generation, or paid services were used."
+    },
+    {
+      "text": "Same-version off-step cached dimensions are rejected or normalized to one valid state: all four visible controls, labels, actual geometry and export agree after load and reload.",
+      "passed": true,
+      "evidence": "Off-step same-version cache probes: {\"supplied\":{\"height\":170.5},\"passed\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":121,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":121,\"waist\":75,\"hip\":103},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}; {\"supplied\":{\"height\":175.25},\"passed\":true,\"params\":{\"version\":2,\"height\":175,\"chest\":121,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":175,\"chest\":121,\"waist\":75,\"hip\":103},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}; {\"supplied\":{\"chest\":99.5},\"passed\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":100,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":100,\"waist\":75,\"hip\":103},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}; {\"supplied\":{\"waist\":75.25},\"passed\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":121,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":121,\"waist\":75,\"hip\":103},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}; {\"supplied\":{\"hip\":103.5},\"passed\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":121,\"waist\":75,\"hip\":104,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":121,\"waist\":75,\"hip\":104},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}. Accepting canonical normalized values or rejecting to defaults are both allowed; actual controls, labels, schema, vertices and pixels must agree. See grader-evidence/checks.json."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1
+  },
+  "execution_metrics": {
+    "total_tokens": null,
+    "transcript_chars": 2720
+  },
+  "timing": {
+    "executor_duration_seconds": 152.276928,
+    "grader_duration_seconds": 15.992,
+    "total_duration_seconds": 168.268928
+  },
+  "claims": [
+    {
+      "claim": "Actual default mesh matches authoritative final OBJ",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Fresh v2 1548 vertices match body.json and OBJ within 0; independent OBJ-render pixel oracle differs in 0/411000 pixels."
+    },
+    {
+      "claim": "Circumference controls display actual current girths in cm after height change",
+      "type": "quality",
+      "verified": true,
+      "evidence": "{\"height\":180,\"chestControl\":98,\"displayedChest\":\"98 cm\",\"polygonCircumference170\":97.93004882230717,\"polygonCircumference180\":97.93004882230717,\"relativeHeightScaling\":1,\"labelVsMeasuredDifference\":-0.06995117769282899,\"allCurrentDimensions\":{\"height\":{\"label\":\"180 cm\",\"actualVerticalExtent\":180},\"chest\":{\"label\":\"98 cm\",\"actualSection\":97.93004882230717},\"waist\":{\"label\":\"74 cm\",\"actualSection\":73.94717973637131},\"hip\":{\"label\":\"102 cm\",\"actualSection\":101.92719412319856}},\"interpretation\":\"UI cm label agrees with current torso circumference within polygon discretization.\"}",
+      "scope": "Additional UI-implied claim; executor without_skill explicitly disclaims independent physical dimensions."
+    },
+    {
+      "claim": "Invalid v2 cache yields finite coherent state (normalization or rejection allowed)",
+      "type": "factual",
+      "verified": true,
+      "evidence": "[{\"name\":\"negative\",\"returnedDefaults\":false,\"finite\":true,\"coherent\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":65,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":65,\"waist\":75,\"hip\":103}},{\"name\":\"numeric-string\",\"returnedDefaults\":false,\"finite\":true,\"coherent\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":98,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":98,\"waist\":75,\"hip\":103}},{\"name\":\"nonfinite-null\",\"returnedDefaults\":false,\"finite\":true,\"coherent\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":98,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":98,\"waist\":75,\"hip\":103}},{\"name\":\"literal-NaN-invalid-JSON\",\"returnedDefaults\":true,\"coherent\":true}]"
+    },
+    {
+      "claim": "Cached dimension state agrees with visible slider after off-step finite cache",
+      "type": "quality",
+      "verified": true,
+      "evidence": "{\"seedHeight\":170.5,\"actualHeight\":171,\"controlHeight\":171,\"displayedHeight\":\"171 cm\",\"controlMatchesState\":true}",
+      "scope": "Additional nearby edge; excluded from frozen core grades."
+    },
+    {
+      "claim": "Mobile layout viewport uses requested375 device CSS pixels",
+      "type": "quality",
+      "verified": false,
+      "evidence": "{\"deviceViewport\":375,\"innerWidth\":981,\"visualViewportWidth\":980.0000610351562,\"scrollWidth\":981,\"viewportMeta\":null,\"horizontalOverflow\":false,\"usesDeviceWidth\":false}",
+      "scope": "Additional genuine mobile-device context; frozen overflow assertion uses explicitly375 CSS-pixel viewport."
+    },
+    {
+      "claim": "Maximum height195 remains fully inside canvas",
+      "type": "quality",
+      "verified": true,
+      "evidence": "{\"height\":195,\"projectedTop\":56.25,\"projectedBottom\":690,\"canvasHeight\":720,\"fullyInsideCanvas\":true}",
+      "scope": "Additional projection-framing probe."
+    },
+    {
+      "claim": "No external services or image generation used",
+      "type": "process",
+      "verified": true,
+      "evidence": "Complete execution transcript records local Python/Playwright; output HTML contains standalone Canvas JS and no network assets. No native CAD or anatomical fidelity claim evaluated."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Synthetic proxy; assumed scale, no measured anatomy."
+    ],
+    "needs_review": [
+      "Missing viewport meta: actual mobile context uses981 CSS-pixel layout on375px device."
+    ],
+    "workarounds": [
+      "Exported JSON generated via diagnostic rather than a user-facing export button."
+    ]
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "Retain off-step sibling-field cache probes; one canonical state must feed controls, labels, geometry, pixels and exports."
+      },
+      {
+        "reason": "Add a physical cross-section probe after height change: all frozen geometry/pixel assertions pass even when displayed chest cm differs from actual current circumference. Treat this separately from core functional synchronization."
+      },
+      {
+        "reason": "Clarify whether exported state requires a user-facing download control. Current frozen text permits an executor-generated diagnostic JSON; without_skill supplies that artifact but lacks export UI."
+      },
+      {
+        "reason": "Cover same-version invalid numeric/string caches, not only obsolete version: independent probes here pass."
+      },
+      {
+        "reason": "Missing viewport meta leaves actual375px mobile device context at981 CSS pixels; desktop resize375 alone misses the scaled-down desktop layout."
+      }
+    ],
+    "overall": "Core functional assertions and explicit off-step cache canonicalization graded independently. See offStepProbes for held-out sibling cases."
+  }
+}

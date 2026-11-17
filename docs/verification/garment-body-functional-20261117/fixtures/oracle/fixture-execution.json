@@ -1,0 +1,71 @@
+{
+  "generator_execution": "completed; initial OBJ and all six image outputs exist",
+  "mask_checks": {
+    "front": {
+      "initial_iou": 0.9527538726333907,
+      "target_foreground_pixels": 69144,
+      "shape": [
+        640,
+        384
+      ]
+    },
+    "side": {
+      "initial_iou": 0.8887537029200169,
+      "target_foreground_pixels": 37696,
+      "shape": [
+        640,
+        384
+      ]
+    }
+  },
+  "audit_geometry_sections": {
+    "chest": {
+      "section_y": 128,
+      "intersection_tolerance": 1e-05,
+      "torso_perimeter": 95.93147187694387,
+      "all_group_perimeters": {
+        "torso": 95.93147187694387,
+        "arm": 62.78699440139813
+      }
+    },
+    "waist": {
+      "section_y": 109,
+      "intersection_tolerance": 1e-05,
+      "torso_perimeter": 71.94862555004862,
+      "all_group_perimeters": {
+        "torso": 71.94862555004862,
+        "arm": 52.41350450191327
+      }
+    },
+    "hip": {
+      "section_y": 88,
+      "intersection_tolerance": 1e-05,
+      "torso_perimeter": 99.92861628560794,
+      "all_group_perimeters": {
+        "torso": 99.92861628560794,
+        "arm": 41.69057571942277
+      }
+    }
+  },
+  "mesh_vertices": 1548,
+  "mesh_triangles": 3072,
+  "viewer": {
+    "browser": "Chromium /usr/bin/chromium",
+    "page_errors": [],
+    "initial_cache": {
+      "version": 1,
+      "height": 164,
+      "chest": 78,
+      "waist": 88,
+      "hip": 84,
+      "depth_ratio": 0.7
+    },
+    "initial_label": "78 cm",
+    "after_chest_label": "110 cm",
+    "vertices": 1548,
+    "triangles": 3072,
+    "bug_reproduced_label_changes_without_canvas_change": true,
+    "side_camera_changes_canvas": true
+  },
+  "browser_environment_note": "Chromium policy blocks file://; smoke used ephemeral loopback HTTP server with no external network."
+}

@@ -1,0 +1,37 @@
+{
+  "initial": {
+    "front": {
+      "iou": 0.9527538726333907,
+      "dice": 0.9758053853950905,
+      "mean_symmetric_contour_distance_px": 1.1226374844314824,
+      "p95_symmetric_contour_distance_px": 9.0
+    },
+    "side": {
+      "iou": 0.8887537029200169,
+      "dice": 0.9411006861784064,
+      "mean_symmetric_contour_distance_px": 3.146641885455812,
+      "p95_symmetric_contour_distance_px": 12.0
+    }
+  },
+  "final": {
+    "front": {
+      "iou": 1.0,
+      "dice": 1.0,
+      "mean_symmetric_contour_distance_px": 0.0,
+      "p95_symmetric_contour_distance_px": 0.0
+    },
+    "side": {
+      "iou": 1.0,
+      "dice": 1.0,
+      "mean_symmetric_contour_distance_px": 0.0,
+      "p95_symmetric_contour_distance_px": 0.0
+    }
+  },
+  "checks": {
+    "independent_opencv_metrics_match": true,
+    "obj_reopened": true,
+    "mesh_preview_and_final_mask_rerenders_pixel_identical": true,
+    "both_iou_improvements_at_least_0.03": true,
+    "constraints_pass": true
+  }
+}

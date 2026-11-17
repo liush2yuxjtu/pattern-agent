@@ -1,0 +1,213 @@
+{
+  "expectations": [
+    {
+      "text": "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+      "passed": true,
+      "evidence": "Independently parsed 1548 finite XYZ vertices and 3072 indexed triangles; spans [64.0, 170.0, 27.783642] cm, 0 zero-area triangles. See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+      "passed": true,
+      "evidence": "Reopened initial/final OBJ projections exactly equal all four delivered masks (0 differing pixels); frozen 384x640 camera unchanged. IoU front 0.952753872633 -> 1.000000000000 (gain 0.047246127367); side 0.888753702920 -> 1.000000000000 (gain 0.111246297080). See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+      "passed": true,
+      "evidence": "Parameters {'height': 170.0, 'chest': 96.07174144787164, 'waist': 71.94736992050557, 'hip': 99.6914922451739, 'depth_ratio': 0.7837551414825598}; mesh height 170.0; independently checked torso controls against OBJ ring radii (max error 3.52974483e-07 cm). Full executor transcript states only inputs and (with_skill) supplied workflow/helper were read; reproduction source opens only declared inputs. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit. See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+      "passed": true,
+      "evidence": "All 14 requested artifacts present; initial/final mask rerasterization has 0 differing pixels; all front/side/back preview rerenders have 0 differing channel values. Final overlap overlays have foreground colors {'front': [[140, 231, 179]], 'side': [[140, 231, 179]]}; generated back is not observed evidence. See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+      "passed": true,
+      "evidence": "All four IoU/Dice/mean/P95 records agree to <1e-6 using independently reopened mesh masks and declared external contour protocol. Reference hashes {'front': 'db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a', 'side': '0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21'} match metrics protocol. Maximum absolute metric discrepancy 8.42249741e-08. See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions.",
+      "passed": true,
+      "evidence": "Report: \"The 170 cm height is a fixed scale prior, not an observed human dimension\"; \"synthetic simplified body proxy, not anatomical measurement or anatomical accuracy\"; back is \"unobserved projection\". See independent-grader-evidence/validation.json for measured details."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "total_tokens": null,
+    "metadata_not_available": true,
+    "tool_calls": null,
+    "total_tool_calls": null,
+    "transcript_chars": 2529,
+    "note": "outputs/metrics.json contains geometry/fit measurements, not execution token/tool telemetry; transcript is a narrative and does not justify tool-call totals."
+  },
+  "artifact_metrics": {
+    "protocol": {
+      "camera": {
+        "projection": "orthographic",
+        "width": 384,
+        "height": 640,
+        "horizontal_extent_cm": [
+          -50,
+          50
+        ],
+        "vertical_extent_cm": [
+          -4,
+          180
+        ],
+        "near_axis": "front +z; side +x; back -z",
+        "scale_assumption": "height prior 170 cm; synthetic controls"
+      },
+      "threshold": ">127",
+      "contours": "OpenCV RETR_EXTERNAL / CHAIN_APPROX_NONE, exact Euclidean distance transform, concatenated bidirectional boundary samples; P95 over concatenation",
+      "reference_sha256": {
+        "front": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a",
+        "side": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+      },
+      "mesh_sha256": "21232711a054b0c7719d69b00b4eda2b759d71654b18d54575b57b4ac7b5f72c",
+      "scale": "170 cm prior; synthetic proxy, not anatomical accuracy"
+    },
+    "initial": {
+      "front": {
+        "iou": 0.9527538726333907,
+        "dice": 0.9758053853950905,
+        "mean_symmetric_contour_distance_px": 1.1226375102996826,
+        "p95_symmetric_contour_distance_px": 9.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      },
+      "side": {
+        "iou": 0.8887537029200169,
+        "dice": 0.9411006861784064,
+        "mean_symmetric_contour_distance_px": 3.146641969680786,
+        "p95_symmetric_contour_distance_px": 12.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      }
+    },
+    "final": {
+      "front": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      },
+      "side": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      }
+    }
+  },
+  "timing": {
+    "start_time_utc": "2026-11-17T03:19:33+00:00",
+    "end_time_utc": "2026-11-17T03:21:30.450662+00:00",
+    "total_duration_seconds": 117.450662,
+    "total_tokens": null,
+    "metadata_not_available": true,
+    "timing_scope": "Measured local implementation, optimization and artifact checks; initial task/skill/input preparation precedes measured start."
+  },
+  "claims": [
+    {
+      "claim": "Both target silhouettes match exactly at frozen raster resolution.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Reopened initial/final OBJ projections exactly equal all four delivered masks (0 differing pixels); frozen 384x640 camera unchanged. IoU front 0.952753872633 -> 1.000000000000 (gain 0.047246127367); side 0.888753702920 -> 1.000000000000 (gain 0.111246297080)."
+    },
+    {
+      "claim": "All three previews and final masks derive from the delivered OBJ.",
+      "type": "process",
+      "verified": true,
+      "evidence": "All 14 requested artifacts present; initial/final mask rerasterization has 0 differing pixels; all front/side/back preview rerenders have 0 differing channel values. Final overlap overlays have foreground colors {'front': [[140, 231, 179]], 'side': [[140, 231, 179]]}; generated back is not observed evidence."
+    },
+    {
+      "claim": "Saved controls correspond to delivered torso geometry.",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Parameters {'height': 170.0, 'chest': 96.07174144787164, 'waist': 71.94736992050557, 'hip': 99.6914922451739, 'depth_ratio': 0.7837551414825598}; mesh height 170.0; independently checked torso controls against OBJ ring radii (max error 3.52974483e-07 cm). Full executor transcript states only inputs and (with_skill) supplied workflow/helper were read; reproduction source opens only declared inputs. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit."
+    },
+    {
+      "claim": "Reproduction works after relocation with only declared inputs and delivered code.",
+      "type": "process",
+      "verified": true,
+      "evidence": {
+        "status": "PASS",
+        "exit_code": 0,
+        "artifact_sha256_identical": {
+          "fitted.obj": true,
+          "params.json": true,
+          "camera.json": true,
+          "initial-front-mask.png": true,
+          "initial-side-mask.png": true,
+          "final-front-mask.png": true,
+          "final-side-mask.png": true,
+          "front.png": true,
+          "side.png": true,
+          "back.png": true,
+          "front-overlay.png": true,
+          "side-overlay.png": true
+        },
+        "duration_seconds": 12.186079842000254,
+        "scope": "fresh temporary working directory; copies of delivered code plus declared inputs only; no original output modification"
+      }
+    },
+    {
+      "claim": "No hidden target parameter or oracle was accessed.",
+      "type": "process",
+      "verified": true,
+      "evidence": "Full executor transcript states only inputs and (with_skill) supplied workflow/helper were read; reproduction source opens only declared inputs. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit."
+    },
+    {
+      "claim": "Two silhouettes do not uniquely identify anatomy or body measurements.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Both reports explicitly disclaim anatomical accuracy and unique latent parameters. Across the two independently validated fits, different controls produce identical front/side masks. Full six-image reconstruction and physical validation are NOT_RUN."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Only two synthetic silhouettes; nonunique raster plateaus; assumed height; fixed head/limbs; generated unobserved back."
+    ],
+    "needs_review": [],
+    "workarounds": [],
+    "user_notes_md": null
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "Both runs obtain exact silhouettes with different controls, demonstrating nonidentifiability: do not equate this pass with unique body measurements or real six-image reconstruction."
+      },
+      {
+        "reason": "Freeze the contour/raster protocol explicitly in future fixtures: external contours and cross-erosion happen to agree here; OpenCV polygon filling changes edge pixels relative to Pillow. This validator records alternate-kernel sensitivity without changing the frozen criterion."
+      },
+      {
+        "reason": "Runnability/relocation is requested in the prompt but not explicit among the six frozen assertions. Keep portability as an extra verified claim; consider a separate future assertion."
+      },
+      {
+        "reason": "The no-hidden-access clause is supported by narrative transcript and reproduction source, not a complete access audit. Future isolated execution/file-open logging would strengthen provenance without retroactively changing this grade."
+      }
+    ],
+    "overall": "All six frozen functional assertions pass for this controlled fit in both configurations. No skill advantage is demonstrated on this case; full six-image reconstruction and physical/anatomical validation remain NOT_RUN."
+  }
+}

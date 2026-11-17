@@ -1,0 +1,98 @@
+[
+  {
+    "name": "tool-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/skill_evals",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "local-logs/tool-tests.log"
+  },
+  {
+    "name": "helper-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".agents/skills/garment-body-six-view/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "local-logs/helper-tests.log"
+  },
+  {
+    "name": "skill-format",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/upstream/scripts/quick_validate.py",
+      ".agents/skills/garment-body-six-view"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "local-logs/skill-format.log"
+  },
+  {
+    "name": "local-asset-readback",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/verify_functional_publish.py",
+      "--base-url",
+      "http://127.0.0.1:8768/",
+      "--expected-commit",
+      "1d2e75acfc18b31b0e645159e09dd9a3b4581f0e",
+      "--out",
+      "work/functional-review-local-readback"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "local-logs/local-asset-readback.log"
+  },
+  {
+    "name": "package-source-byte-readback",
+    "verdict": "PASS",
+    "files": 8,
+    "package_sha256": "cb941881e0dcfe741c47e8f99a90a0da803470b40f76df2a0daab189cb7307b5"
+  },
+  {
+    "name": "functional-execution-and-grading",
+    "evidence": "iteration-1/ anditeration-2/ per-run transcript.md,timing.json,grading.json andindependent verifier artifacts",
+    "scope": "12actualfresh-context agentexecutions; real geometry, image andbrowser validation, not complete tool-event logs"
+  },
+  {
+    "name": "official-aggregation",
+    "argv": [
+      "python",
+      "tools/skill_evals/aggregate_functional.py",
+      "WORKSPACE/iteration-N"
+    ],
+    "evidence": "iteration-N/aggregate-upstream.log andbenchmark-upstream-raw.json",
+    "scope": "officialpinned aggregator invoked thenunknownresourceplaceholders removed"
+  },
+  {
+    "name": "local-static-review-browser",
+    "argv": [
+      "node",
+      "tools/skill_evals/verify_functional_review.cjs",
+      "--url",
+      "http://127.0.0.1:8768/garment-body/eval.html",
+      "--out",
+      "work/functional-review-final-browser",
+      "--expected-runs",
+      "6"
+    ],
+    "exit_code": 0,
+    "checks": 17,
+    "evidence": "local-browser/report.json"
+  }
+]

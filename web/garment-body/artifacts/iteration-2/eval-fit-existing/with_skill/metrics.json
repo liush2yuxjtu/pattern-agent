@@ -1,0 +1,359 @@
+{
+  "initial": {
+    "front": {
+      "iou": 0.9527538726333907,
+      "dice": 0.9758053853950905,
+      "mean_symmetric_contour_distance_px": 1.1226375102996826,
+      "p95_symmetric_contour_distance_px": 9.0
+    },
+    "side": {
+      "iou": 0.8887537029200169,
+      "dice": 0.9411006861784064,
+      "mean_symmetric_contour_distance_px": 3.146641969680786,
+      "p95_symmetric_contour_distance_px": 12.0
+    }
+  },
+  "final": {
+    "front": {
+      "iou": 1.0,
+      "dice": 1.0,
+      "mean_symmetric_contour_distance_px": 0.0,
+      "p95_symmetric_contour_distance_px": 0.0
+    },
+    "side": {
+      "iou": 1.0,
+      "dice": 1.0,
+      "mean_symmetric_contour_distance_px": 0.0,
+      "p95_symmetric_contour_distance_px": 0.0
+    }
+  },
+  "protocol": {
+    "width_px": 384,
+    "height_px": 640,
+    "camera": {
+      "projection": "orthographic",
+      "width": 384,
+      "height": 640,
+      "horizontal_extent_cm": [
+        -50,
+        50
+      ],
+      "vertical_extent_cm": [
+        -4,
+        180
+      ],
+      "near_axis": "front +z; side +x; back -z",
+      "scale_assumption": "height prior 170 cm; synthetic controls"
+    },
+    "threshold": 127,
+    "contours": "OpenCV RETR_EXTERNAL CHAIN_APPROX_NONE; pooled bidirectional nearest Euclidean contour pixel distances",
+    "full_canvas": true,
+    "no_alignment_or_resizing": true,
+    "final_source": "Reopened fitted.obj, source generator triangle rasterizer; metrics reloaded from persisted PNGs"
+  },
+  "optimization": {
+    "method": "SciPy bounded differential_evolution then Powell",
+    "seed": 731,
+    "bounds": {
+      "chest": [
+        60.0,
+        125.0
+      ],
+      "waist": [
+        50.0,
+        115.0
+      ],
+      "hip": [
+        65.0,
+        130.0
+      ],
+      "depth_ratio": [
+        0.45,
+        1.05
+      ]
+    },
+    "height_fixed_cm": 170,
+    "evaluations": 1424,
+    "search_objective": "mean per-view symmetric-difference / union on projected loft outlines",
+    "best_search_loss": 4.09905844489402e-05,
+    "history": [
+      {
+        "evaluation": 1,
+        "loss": 0.07928700473862077,
+        "params": {
+          "height": 170.0,
+          "chest": 78.0,
+          "waist": 88.0,
+          "hip": 84.0,
+          "depth_ratio": 0.7
+        }
+      },
+      {
+        "evaluation": 4,
+        "loss": 0.07255721498672833,
+        "params": {
+          "height": 170.0,
+          "chest": 108.33188097937617,
+          "waist": 52.01158941801161,
+          "hip": 111.98880575411685,
+          "depth_ratio": 1.0181624409035173
+        }
+      },
+      {
+        "evaluation": 6,
+        "loss": 0.07160475970942348,
+        "params": {
+          "height": 170.0,
+          "chest": 91.62703256257439,
+          "waist": 81.66042015304849,
+          "hip": 71.53014971780726,
+          "depth_ratio": 0.9761345543436777
+        }
+      },
+      {
+        "evaluation": 8,
+        "loss": 0.03458451126026058,
+        "params": {
+          "height": 170.0,
+          "chest": 98.78802378844448,
+          "waist": 83.04148572590206,
+          "hip": 94.88105288318087,
+          "depth_ratio": 0.8957551850223717
+        }
+      },
+      {
+        "evaluation": 25,
+        "loss": 0.03439548407679465,
+        "params": {
+          "height": 170.0,
+          "chest": 106.4860863772098,
+          "waist": 75.76915069180563,
+          "hip": 100.21474510407984,
+          "depth_ratio": 0.6861860713312267
+        }
+      },
+      {
+        "evaluation": 30,
+        "loss": 0.03150595183168499,
+        "params": {
+          "height": 170.0,
+          "chest": 95.72661707170072,
+          "waist": 88.73423568051578,
+          "hip": 89.50142024005875,
+          "depth_ratio": 0.8090819810070549
+        }
+      },
+      {
+        "evaluation": 70,
+        "loss": 0.030151179168515615,
+        "params": {
+          "height": 170.0,
+          "chest": 85.73424496271925,
+          "waist": 67.60601597585895,
+          "hip": 93.36273492249074,
+          "depth_ratio": 0.8650186509421596
+        }
+      },
+      {
+        "evaluation": 100,
+        "loss": 0.026797116474919194,
+        "params": {
+          "height": 170.0,
+          "chest": 97.9878065848359,
+          "waist": 51.97635465224764,
+          "hip": 102.46002248639992,
+          "depth_ratio": 0.8245714664750228
+        }
+      },
+      {
+        "evaluation": 117,
+        "loss": 0.02647552190694283,
+        "params": {
+          "height": 170.0,
+          "chest": 102.81743574205873,
+          "waist": 59.24790966944185,
+          "hip": 102.75680766728503,
+          "depth_ratio": 0.7900646232973502
+        }
+      },
+      {
+        "evaluation": 145,
+        "loss": 0.025259266093724506,
+        "params": {
+          "height": 170.0,
+          "chest": 97.58388849610765,
+          "waist": 59.438569291101075,
+          "hip": 102.75680766728503,
+          "depth_ratio": 0.8494290660862129
+        }
+      },
+      {
+        "evaluation": 148,
+        "loss": 0.020503248165888846,
+        "params": {
+          "height": 170.0,
+          "chest": 101.00998540247515,
+          "waist": 66.43848611902447,
+          "hip": 100.34900878324747,
+          "depth_ratio": 0.8253305718322075
+        }
+      },
+      {
+        "evaluation": 197,
+        "loss": 0.02023781633149605,
+        "params": {
+          "height": 170.0,
+          "chest": 103.71776448273556,
+          "waist": 71.9707955860996,
+          "hip": 98.44603066387377,
+          "depth_ratio": 0.8062845844039196
+        }
+      },
+      {
+        "evaluation": 216,
+        "loss": 0.020120584170524633,
+        "params": {
+          "height": 170.0,
+          "chest": 96.1952485266992,
+          "waist": 95.38609318253307,
+          "hip": 99.87500552770734,
+          "depth_ratio": 0.7791392513507638
+        }
+      },
+      {
+        "evaluation": 266,
+        "loss": 0.019231856528628265,
+        "params": {
+          "height": 170.0,
+          "chest": 96.94780967290495,
+          "waist": 87.6900026663374,
+          "hip": 100.56191278222579,
+          "depth_ratio": 0.8034393014396632
+        }
+      },
+      {
+        "evaluation": 278,
+        "loss": 0.018554363747353288,
+        "params": {
+          "height": 170.0,
+          "chest": 95.36371237855415,
+          "waist": 58.63888021654338,
+          "hip": 102.69209707533135,
+          "depth_ratio": 0.8035924876139277
+        }
+      },
+      {
+        "evaluation": 284,
+        "loss": 0.014415603507048427,
+        "params": {
+          "height": 170.0,
+          "chest": 94.4127623239085,
+          "waist": 81.66769818991412,
+          "hip": 101.32074845598235,
+          "depth_ratio": 0.7794907480585592
+        }
+      },
+      {
+        "evaluation": 293,
+        "loss": 0.004262894401422337,
+        "params": {
+          "height": 170.0,
+          "chest": 94.51161291591171,
+          "waist": 72.34063017354785,
+          "hip": 100.34900878324747,
+          "depth_ratio": 0.7761875861523255
+        }
+      },
+      {
+        "evaluation": 345,
+        "loss": 0.001282664311589851,
+        "params": {
+          "height": 170.0,
+          "chest": 96.29738286601426,
+          "waist": 71.41079343633712,
+          "hip": 100.06535253902945,
+          "depth_ratio": 0.7802691099835118
+        }
+      },
+      {
+        "evaluation": 702,
+        "loss": 0.0008502274355476609,
+        "params": {
+          "height": 170.0,
+          "chest": 96.00935779054069,
+          "waist": 71.33165892480835,
+          "hip": 100.15274921635313,
+          "depth_ratio": 0.7809897589026652
+        }
+      },
+      {
+        "evaluation": 771,
+        "loss": 0.000575518160653914,
+        "params": {
+          "height": 170.0,
+          "chest": 95.87743440425817,
+          "waist": 71.58191679358151,
+          "hip": 100.20537582197848,
+          "depth_ratio": 0.7776871387790951
+        }
+      },
+      {
+        "evaluation": 775,
+        "loss": 4.09905844489402e-05,
+        "params": {
+          "height": 170.0,
+          "chest": 95.79680810674424,
+          "waist": 72.02018866787928,
+          "hip": 99.55080889988442,
+          "depth_ratio": 0.7825560201065958
+        }
+      }
+    ],
+    "termination": "Optimization terminated successfully.",
+    "powell_termination": "Optimization terminated successfully."
+  },
+  "mesh_checks": {
+    "vertices": 1548,
+    "triangles": 3072,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "height_cm": 170.0,
+    "connected_lofts": 6,
+    "overlap_note": "Disconnected capped component lofts; component intersections are source design, not a watertight anatomical body."
+  },
+  "sections": {
+    "hip": {
+      "height_y_cm": 88.0,
+      "polygon_perimeter_cm": 99.94120917972927,
+      "basis": "mesh_parameter",
+      "mesh_checked": true
+    },
+    "waist": {
+      "height_y_cm": 109.0,
+      "polygon_perimeter_cm": 71.8788231401997,
+      "basis": "mesh_parameter",
+      "mesh_checked": true
+    },
+    "chest": {
+      "height_y_cm": 128.0,
+      "polygon_perimeter_cm": 96.22636553787186,
+      "basis": "mesh_parameter",
+      "mesh_checked": true
+    }
+  },
+  "sha256": {
+    "generator.py": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991",
+    "camera.json": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd",
+    "initial-params.json": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e",
+    "target-front-mask.png": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a",
+    "target-side-mask.png": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21",
+    "fitted.obj": "80d42009d639d9ed80c261e0a64290f772fea05e90d65334b6e6d5834139d198"
+  },
+  "versions": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pillow": "13.0.0",
+    "opencv": "5.0.0"
+  }
+}

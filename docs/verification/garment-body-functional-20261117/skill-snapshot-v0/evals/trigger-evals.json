@@ -1,0 +1,82 @@
+[
+  {
+    "query": "我给淘宝针织衫做打版参考，附件只有一张模特正面商品照。请补齐正、侧、背、细节、姿态点线和相对深度六张独立图，再做可调胸腰臀的中性裸模，用 OpenCV 叠加检查，最后把哪些尺寸只是推断写清楚。",
+    "should_trigger": true
+  },
+  {
+    "query": "这张针织衫平铺图给拼多多上架用，请抠掉灰色背景换纯白、去褶皱，并各导出原色和深蓝色版本。只修这两张平面商品图，保留领口和织纹。",
+    "should_trigger": false
+  },
+  {
+    "query": "For our small apparel studio, use refs/dress_model.jpg to build a rotatable neutral body with height/chest/waist/hip controls and six separate reference images, including pose and depth. Fit the mesh against the photos, show before/after silhouette overlays, and export body parameters with their evidence source. We only know the model is 170 cm tall.",
+    "should_trigger": true
+  },
+  {
+    "query": "I run a sock shop. Please make six independent square product images from this flat-lay: white background, beige background, cuff close-up, weave close-up, packaging and care-label detail. All shots are of the socks alone; I need image edits for the listing.",
+    "should_trigger": false
+  },
+  {
+    "query": "这件宽松风衣只有一张穿着图，商家标 M 码但没有模特尺寸。我想要完整六个视图和一个可调人体，拿渲染轮廓与图片反复对齐。无法从遮挡处判断的围度别装成实测，JSON/CSV 里标出假设。",
+    "should_trigger": true
+  },
+  {
+    "query": "我身高 165、体重 56kg，平时穿优衣库 M。这件外套尺码表写胸围 S=104、M=108，想里面加毛衣，日常通勤选哪个？帮我结合买家评价解释一下松量。",
+    "should_trigger": false
+  },
+  {
+    "query": "ok can you continue yesterday’s jacket fitting? The six generated files and final_body.glb are already in runs/jacket-03/. The side silhouette is still too thin. Keep the existing references, improve the constrained body fit and rerun the OpenCV overlays; do not pay to regenerate the pictures.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you compare these two brands’ size charts? My measured bust/waist/hip are 92/74/99 cm and I prefer a relaxed fit. Recommend a size for each dress and explain garment measurements versus body measurements.",
+    "should_trigger": false
+  },
+  {
+    "query": "上次根据连衣裙商品照拟合的 viewer.html 有问题：页面显示腰围 68，导出的 measurements.json 是 72，拖滑块只有数字变，模型没变。请把最终裸模网格、尺寸、默认滑块和保存状态同步，检查正侧背相机；已有六图不用重做。",
+    "should_trigger": true
+  },
+  {
+    "query": "In Blender I’m making a stylized astronaut NPC for a mobile game. Add height and shoulder-width controls to my existing cartoon rig, keep the helmet proportions fixed, and export a low-poly GLB with idle animation. This is for game art, with no garment-photo fitting.",
+    "should_trigger": false
+  },
+  {
+    "query": "I have front, side and rear photos of the same model wearing our fitted T-shirt, plus her measured height. Create the six independent outputs and an adjustable body proxy, fit to the real photos, and leave one real view out as a check. I need the mesh, overlays and a table separating clothed-envelope estimates from actual scaled observations.",
+    "should_trigger": true
+  },
+  {
+    "query": "我们虚拟直播间有一个已经绑定骨骼的二次元 avatar，three.js viewer 的 orbit controls 在手机上卡住了。请定位触摸事件冲突、修复旋转和缩放，保持模型与材质不变。",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我把附件里的运动套装模特图变成一套能复查的体形参考。不要拼图，要六个文件，能转动的人体和胸腰臀滑块，给我看哪里和照片轮廓对不上。没可靠身高就先输出比例，不要强行换算厘米。",
+    "should_trigger": true
+  },
+  {
+    "query": "I’m learning OpenCV for a conveyor-belt inspection project. In masks/sample_a.png and sample_b.png, compute IoU, Dice and symmetric contour distance, then save a colored overlap image. Explain how empty masks should be handled.",
+    "should_trigger": false
+  },
+  {
+    "query": "We already generated six apparel references for SKU KN-214. Before I pass the body specs to the designer, audit the fit: render the actual adjustable mesh, compare front/side/back silhouettes with OpenCV, calculate section circumferences, and label inferred values or unavailable landmarks. A high IoU must not become a claimed measurement accuracy.",
+    "should_trigger": true
+  },
+  {
+    "query": "客户来店里已经用软尺量好胸围 96、腰围 80、臀围 100、肩宽 40、背长 42cm。请仅按这些实测值起一份女装原型纸样，输出带省道和缝份的 DXF；这个单子没有照片，不需要人体模型。",
+    "should_trigger": false
+  },
+  {
+    "query": "我想按这张穿着旗袍的参考图做数字人台。先用 168cm 作为明确标注的假设，生成独立正侧背、细节、pose、depth，再把可调裸模拟合好，给我三维快照、轮廓叠加和参数。胸点距和裆弧看不出来就留空。",
+    "should_trigger": true
+  },
+  {
+    "query": "我想给康复门诊做个研究方案：用病人正侧面照片估计 BMI、内脏脂肪和脊柱侧弯风险，和临床金标准对照。请评估这些医疗指标能否从图像得到、需要什么验证以及研究局限。",
+    "should_trigger": false
+  },
+  {
+    "query": "请接着 run-07 的服装照片→六图→人体拟合项目，把刚优化的 body_v4.glb 放进 web viewer。Check that the saved v3 state cannot overwrite the new defaults, sliders deform real geometry, and the front/side/back views match the exported mesh; update the parameter provenance report too.",
+    "should_trigger": true
+  },
+  {
+    "query": "Please clean exports/body_measurements_2026.csv for our tailoring CRM. Columns are customer_id, height, bust, waist, hip and unit; some rows use inches, some use cm, and customer_id repeats. Normalize units, flag impossible values and deduplicate while preserving an audit log. This is existing tape-measure data, with no image processing.",
+    "should_trigger": false
+  }
+]

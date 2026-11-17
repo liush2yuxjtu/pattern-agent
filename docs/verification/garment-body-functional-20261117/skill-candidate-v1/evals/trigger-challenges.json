@@ -1,0 +1,18 @@
+[
+  {
+    "query": "我有一份GarmentCodeData的 *_specification.json 和对应body_measurements.yaml，帮我生成衣服网格、做布料下垂并导出GLB预览，不需要从照片估算身体。",
+    "should_trigger": false
+  },
+  {
+    "query": "Use this sewing-pattern specification JSON to mesh the garment and inspect seam errors on the supplied body. No photo-derived body fitting is needed.",
+    "should_trigger": false
+  },
+  {
+    "query": "先从我的服装模特正侧照拟合可调人体并检查轮廓，再把这个人体交给现有GarmentCode纸样跑下垂仿真；两部分的证据和失败分别报告。",
+    "should_trigger": true
+  },
+  {
+    "query": "The six apparel views are already approved. The body viewer is loading last week’s mesh and the old saved waist. Fix the photo-fitted body handoff and prove the controls and exported section sizes agree.",
+    "should_trigger": true
+  }
+]

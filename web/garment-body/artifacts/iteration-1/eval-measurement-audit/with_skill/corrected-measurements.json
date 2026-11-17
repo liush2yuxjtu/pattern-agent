@@ -1,0 +1,268 @@
+{
+  "mode": "prior_avatar",
+  "synthetic_control": true,
+  "anatomical_accuracy_verified": false,
+  "source_evidence": {
+    "reference_type": "single synthetic front image",
+    "source_front": "source-front.png",
+    "observed_views": [
+      "front"
+    ],
+    "generated_views": [
+      "generated-side.png",
+      "generated-back.png"
+    ],
+    "scale": {
+      "kind": "assumption",
+      "height_cm": 170,
+      "source": "170 cm prior; no calibration object or known camera distance"
+    },
+    "depth": {
+      "kind": "illustrative",
+      "source": "proxy design assumption; front reference does not establish physical depth"
+    },
+    "bust_point_distance": {
+      "kind": "unknown",
+      "reason": "no semantic bust landmarks or reliable multi-view evidence supplied"
+    },
+    "mesh": "body.obj",
+    "mesh_topology": "disconnected central torso, head, legs and arms; y is vertical"
+  },
+  "source_hashes_sha256": {
+    "README.md": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b",
+    "body.obj": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9",
+    "depth-claim.png": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c",
+    "generated-back.png": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89",
+    "generated-side.png": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f",
+    "measurements.json": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7",
+    "sections.json": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a",
+    "source-evidence.json": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8",
+    "source-front.png": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+  },
+  "mesh_sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9",
+  "mesh_coordinates": {
+    "up_axis": "y",
+    "left_right_axis": "x",
+    "front_back_axis": "z",
+    "units": "prior-scaled cm",
+    "scale_assumption": {
+      "kind": "assumption",
+      "height_cm": 170,
+      "source": "170 cm prior; no calibration object or known camera distance"
+    },
+    "mesh_vertical_extent_cm": 170.0,
+    "additional_rescaling_applied": false
+  },
+  "method": {
+    "intersection": "Actual OBJ triangles intersected with y=constant planes; edge crossing endpoints joined by quantized 3D coordinates; deduplicated undirected segments form degree-2 closed loops. Polygon perimeter sums only selected loop edge lengths.",
+    "tolerance_cm": 1e-06,
+    "input_claims_trusted": false
+  },
+  "depth": {
+    "kind": "illustrative",
+    "physical_depth_cm": null,
+    "caption_replaced": true,
+    "content": "Existing synthetic side proxy preview; not an inferred depth map."
+  },
+  "dimensions": [
+    {
+      "name": "height",
+      "value": 170,
+      "unit": "cm",
+      "basis": "prior",
+      "mesh_checked": false,
+      "definition": "Assumed scale height, not measured human stature",
+      "evidence_status": "assumed",
+      "limitations": [
+        "Synthetic simplified body proxy; no anatomical accuracy established.",
+        "Single synthetic front only; generated side/back add no observed dimensions.",
+        "Centimetres inherit the assumed 170 cm height; no calibrated scale.",
+        "Landmark levels are fixture-defined, not verified anatomical landmarks."
+      ]
+    },
+    {
+      "name": "chest_circumference",
+      "value": 95.93147706242992,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal circumference of central torso at horizontal y=128 cm",
+      "evidence_status": "calculated_synthetic_proxy",
+      "plane_origin": [
+        0,
+        128,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "component_selection": "Closed loop whose vertex-mean XZ center is closest to central axis; inspect evidence; disconnected arms excluded.",
+      "selected_component_index_left_to_right": 1,
+      "component_count": 3,
+      "all_component_perimeters_cm": [
+        31.39350199281143,
+        95.93147706242992,
+        31.39350199281143
+      ],
+      "world_axis_spans_cm": [
+        34.203802,
+        0.0,
+        26.678966
+      ],
+      "limitations": [
+        "Synthetic simplified body proxy; no anatomical accuracy established.",
+        "Single synthetic front only; generated side/back add no observed dimensions.",
+        "Centimetres inherit the assumed 170 cm height; no calibrated scale.",
+        "Landmark levels are fixture-defined, not verified anatomical landmarks."
+      ],
+      "uncertainty": {
+        "statistical_interval": null,
+        "section_join_tolerance_mesh_cm": 1e-06,
+        "scale_sensitivity": "A different assumed height H scales all lengths by H/170. A 1% height change changes these girths by 1%.",
+        "unquantified": [
+          "polygon tessellation",
+          "chosen anatomical section level",
+          "body shape prior",
+          "single-view and camera ambiguity"
+        ]
+      }
+    },
+    {
+      "name": "waist_circumference",
+      "value": 71.94860759832905,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal circumference of central torso at horizontal y=109 cm",
+      "evidence_status": "calculated_synthetic_proxy",
+      "plane_origin": [
+        0,
+        109,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "component_selection": "Closed loop whose vertex-mean XZ center is closest to central axis; inspect evidence; disconnected arms excluded.",
+      "selected_component_index_left_to_right": 1,
+      "component_count": 3,
+      "all_component_perimeters_cm": [
+        26.206748962881793,
+        71.94860759832905,
+        26.206748962881793
+      ],
+      "world_axis_spans_cm": [
+        25.652852,
+        0.0,
+        20.009224
+      ],
+      "limitations": [
+        "Synthetic simplified body proxy; no anatomical accuracy established.",
+        "Single synthetic front only; generated side/back add no observed dimensions.",
+        "Centimetres inherit the assumed 170 cm height; no calibrated scale.",
+        "Landmark levels are fixture-defined, not verified anatomical landmarks."
+      ],
+      "uncertainty": {
+        "statistical_interval": null,
+        "section_join_tolerance_mesh_cm": 1e-06,
+        "scale_sensitivity": "A different assumed height H scales all lengths by H/170. A 1% height change changes these girths by 1%.",
+        "unquantified": [
+          "polygon tessellation",
+          "chosen anatomical section level",
+          "body shape prior",
+          "single-view and camera ambiguity"
+        ]
+      }
+    },
+    {
+      "name": "hip_circumference",
+      "value": 99.92862081865191,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal circumference of central torso at horizontal y=88 cm",
+      "evidence_status": "calculated_synthetic_proxy",
+      "plane_origin": [
+        0,
+        88,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "component_selection": "Closed loop whose vertex-mean XZ center is closest to central axis; inspect evidence; disconnected arms excluded.",
+      "selected_component_index_left_to_right": 1,
+      "component_count": 3,
+      "all_component_perimeters_cm": [
+        20.845284857660708,
+        99.92862081865191,
+        20.845284857660708
+      ],
+      "world_axis_spans_cm": [
+        35.62896,
+        0.0,
+        27.790588
+      ],
+      "limitations": [
+        "Synthetic simplified body proxy; no anatomical accuracy established.",
+        "Single synthetic front only; generated side/back add no observed dimensions.",
+        "Centimetres inherit the assumed 170 cm height; no calibrated scale.",
+        "Landmark levels are fixture-defined, not verified anatomical landmarks."
+      ],
+      "uncertainty": {
+        "statistical_interval": null,
+        "section_join_tolerance_mesh_cm": 1e-06,
+        "scale_sensitivity": "A different assumed height H scales all lengths by H/170. A 1% height change changes these girths by 1%.",
+        "unquantified": [
+          "polygon tessellation",
+          "chosen anatomical section level",
+          "body shape prior",
+          "single-view and camera ambiguity"
+        ]
+      }
+    },
+    {
+      "name": "bust_point_distance",
+      "value": null,
+      "unit": "cm",
+      "basis": "unavailable",
+      "mesh_checked": false,
+      "definition": "No semantic bust landmarks or reliable multiview evidence supplied.",
+      "evidence_status": "unknown",
+      "limitations": [
+        "No semantic bust landmarks or reliable multiview evidence supplied.",
+        "Synthetic simplified body proxy; no anatomical accuracy established.",
+        "Single synthetic front only; generated side/back add no observed dimensions.",
+        "Centimetres inherit the assumed 170 cm height; no calibrated scale.",
+        "Landmark levels are fixture-defined, not verified anatomical landmarks."
+      ]
+    },
+    {
+      "name": "physical_depth",
+      "value": null,
+      "unit": "cm",
+      "basis": "unavailable",
+      "mesh_checked": false,
+      "definition": "Illustrative side proxy is not a depth estimate or observed centimetre depth.",
+      "evidence_status": "unknown",
+      "limitations": [
+        "Illustrative side proxy is not a depth estimate or observed centimetre depth.",
+        "Synthetic simplified body proxy; no anatomical accuracy established.",
+        "Single synthetic front only; generated side/back add no observed dimensions.",
+        "Centimetres inherit the assumed 170 cm height; no calibrated scale.",
+        "Landmark levels are fixture-defined, not verified anatomical landmarks."
+      ]
+    }
+  ],
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8"
+  }
+}

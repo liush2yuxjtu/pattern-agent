@@ -1,0 +1,215 @@
+{
+  "expectations": [
+    {
+      "text": "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+      "passed": true,
+      "evidence": "Independently parsed 1548 finite XYZ vertices and 3072 indexed triangles; spans [64.0, 170.0, 27.76681] cm, 0 zero-area triangles. See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+      "passed": true,
+      "evidence": "Reopened initial/final OBJ projections exactly equal all four delivered masks (0 differing pixels); frozen 384x640 camera unchanged. IoU front 0.952753872633 -> 1.000000000000 (gain 0.047246127367); side 0.888753702920 -> 1.000000000000 (gain 0.111246297080). See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+      "passed": true,
+      "evidence": "Parameters {'height': 170.0, 'chest': 95.76895901773013, 'waist': 72.59665936499452, 'hip': 99.89305238999965, 'depth_ratio': 0.7802819757968494}; mesh height 170.0; independently checked torso controls against OBJ ring radii (max error 4.34183304e-07 cm). Full executor transcript states only declared task data and authorized workflow/helper code were read; reproduction source opens only declared inputs and local helper code. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit. See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+      "passed": true,
+      "evidence": "All 14 requested artifacts present; initial/final mask rerasterization has 0 differing pixels; all front/side/back preview rerenders have 0 differing channel values. Final overlap overlays have foreground colors {'front': [[46, 136, 84]], 'side': [[46, 136, 84]]}; generated back is not observed evidence. See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+      "passed": true,
+      "evidence": "All four IoU/Dice/mean/P95 records agree to <1e-6 using independently reopened mesh masks and declared external contour protocol. Reference hashes {'front': 'db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a', 'side': '0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21'} match metrics protocol. Maximum absolute metric discrepancy 8.42249741e-08. See independent-grader-evidence/validation.json for measured details."
+    },
+    {
+      "text": "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions.",
+      "passed": true,
+      "evidence": "Actual report excerpts: Executed a constrained four-parameter fit to the two supplied binary target masks. No photographs, target parameters, or back evidence were used. This is a synthetic proxy consistency test; it does not recover a real person or establish anatomical accuracy.\nBounds (cm under the prior): chest 60\u2013120, waist 50\u2013110, hip 65\u2013130; depth_ratio 0.45\u20131.05. All scales remain positive. Additional bounds are broad proxy regularization, not observed anatomy. Objective is mean front/side (1\u2212IoU); deterministic differential evolution followed by bounded Powell. The finite budget and raster plateaus mean the solution is not guaranteed unique or globally optimal.\nFinal parameters: `{\"height\": 170.0, \"chest\": 95.76895901773013, \"waist\": 72.59665936499452, \"hip\": 99.89305238999965, \"depth_ratio\": 0.7802819757968494}`. These are mesh parameters inferred from synthetic silhouette evidence conditional on the source model and height prior. Circumference labels use the generator\u2019s Ramanujan ellipse approximation; no anatomical measurement claim or unsupported confidence interval is made.\nFinal masks and all previews were rendered from vertices/faces independently reopened from fitted.obj, then all PNG masks were reopened for scoring. Initial and final metrics use identical targets, full canvas, thresholds and external-contour protocol. See validation.json for actual topology checks. The proxy consists of disconnected capped components and lacks anatomical detail.\nOverlay legend: green overlap, pink target-only, cyan model-only. Front/side/back PNGs are actual mesh previews; back is a symmetry-driven model prediction with no observed back target. No held-out view exists. Neither IoU nor contour distance is a percentage of body measurement accuracy. Pixel quantization and shared generator assumptions limit identifiability; unmodeled anatomy, asymmetric depth, pose and perspective remain unconstrained. See independent-grader-evidence/validation.json for measured details."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "total_tokens": null,
+    "metadata_not_available": true,
+    "tool_calls": null,
+    "total_tool_calls": null,
+    "transcript_chars": 3098,
+    "note": "outputs/metrics.json contains geometry/fit measurements, not execution token/tool telemetry; transcript is a narrative and does not justify tool-call totals."
+  },
+  "artifact_metrics": {
+    "initial": {
+      "front": {
+        "iou": 0.9527538726333907,
+        "dice": 0.9758053853950905,
+        "mean_symmetric_contour_distance_px": 1.1226375102996826,
+        "p95_symmetric_contour_distance_px": 9.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      },
+      "side": {
+        "iou": 0.8887537029200169,
+        "dice": 0.9411006861784064,
+        "mean_symmetric_contour_distance_px": 3.146641969680786,
+        "p95_symmetric_contour_distance_px": 12.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      }
+    },
+    "final": {
+      "front": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      },
+      "side": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      }
+    },
+    "protocol": {
+      "resolution_px": [
+        384,
+        640
+      ],
+      "camera": {
+        "projection": "orthographic",
+        "width": 384,
+        "height": 640,
+        "horizontal_extent_cm": [
+          -50,
+          50
+        ],
+        "vertical_extent_cm": [
+          -4,
+          180
+        ],
+        "near_axis": "front +z; side +x; back -z",
+        "scale_assumption": "height prior 170 cm; synthetic controls"
+      },
+      "threshold": ">127",
+      "contours": "external contours, all components, one-pixel boundary; pooled bidirectional Euclidean distances",
+      "target_evidence": "only supplied synthetic front/side binary masks",
+      "scale": "170 cm assumed height; no observed anatomical scale"
+    }
+  },
+  "timing": {
+    "scope": "Actual reproduce.py optimization, export, independent OBJ/mask reopening, validation, metrics and report; excludes prior task/skill reading and later visual review",
+    "start": "2026-11-17T03:31:31.174503+00:00",
+    "end": "2026-11-17T03:32:23.198423+00:00",
+    "total_duration_seconds": 52.023921642999994,
+    "total_tokens": null,
+    "metadata_not_available": true
+  },
+  "claims": [
+    {
+      "claim": "Both target silhouettes match exactly at frozen raster resolution.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Reopened initial/final OBJ projections exactly equal all four delivered masks (0 differing pixels); frozen 384x640 camera unchanged. IoU front 0.952753872633 -> 1.000000000000 (gain 0.047246127367); side 0.888753702920 -> 1.000000000000 (gain 0.111246297080)."
+    },
+    {
+      "claim": "All three previews and final masks derive from the delivered OBJ.",
+      "type": "process",
+      "verified": true,
+      "evidence": "All 14 requested artifacts present; initial/final mask rerasterization has 0 differing pixels; all front/side/back preview rerenders have 0 differing channel values. Final overlap overlays have foreground colors {'front': [[46, 136, 84]], 'side': [[46, 136, 84]]}; generated back is not observed evidence."
+    },
+    {
+      "claim": "Saved controls correspond to delivered torso geometry.",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Parameters {'height': 170.0, 'chest': 95.76895901773013, 'waist': 72.59665936499452, 'hip': 99.89305238999965, 'depth_ratio': 0.7802819757968494}; mesh height 170.0; independently checked torso controls against OBJ ring radii (max error 4.34183304e-07 cm). Full executor transcript states only declared task data and authorized workflow/helper code were read; reproduction source opens only declared inputs and local helper code. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit."
+    },
+    {
+      "claim": "Reproduction works after relocation with only declared inputs and delivered code.",
+      "type": "process",
+      "verified": true,
+      "evidence": {
+        "status": "PASS",
+        "exit_code": 0,
+        "artifact_sha256_identical": {
+          "fitted.obj": true,
+          "params.json": true,
+          "camera.json": true,
+          "initial-front-mask.png": true,
+          "initial-side-mask.png": true,
+          "final-front-mask.png": true,
+          "final-side-mask.png": true,
+          "front.png": true,
+          "side.png": true,
+          "back.png": true,
+          "front-overlay.png": true,
+          "side-overlay.png": true
+        },
+        "duration_seconds": 38.31009464999988,
+        "scope": "fresh temporary directory; delivered code and declared inputs only; Python audit hook rejects open() paths resolving under /workspace; no original outputs modified",
+        "open_events_observed": 599,
+        "portability_limits": "Installed interpreter and packages remain available. Python audit hooks are not an OS sandbox and do not prove absence of native-code filesystem dependencies. This test demonstrates successful relocated reproduction with original workspace Python file opens denied; fresh cwd alone would not establish that."
+      }
+    },
+    {
+      "claim": "No hidden target parameter or oracle was accessed.",
+      "type": "process",
+      "verified": true,
+      "evidence": "Full executor transcript states only declared task data and authorized workflow/helper code were read; reproduction source opens only declared inputs and local helper code. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit."
+    },
+    {
+      "claim": "Two silhouettes do not uniquely identify anatomy or body measurements.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "The actual report excerpts in provenance.report_evidence_quotes disclaim anatomical accuracy and discuss model/scale uncertainty. Exact two-mask agreement does not independently validate unseen surfaces. Full six-image reconstruction and physical validation are NOT_RUN."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Only two synthetic silhouettes; nonunique raster plateaus; assumed height; fixed head/limbs; generated unobserved back."
+    ],
+    "needs_review": [],
+    "workarounds": [],
+    "user_notes_md": null
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "Both runs obtain exact silhouettes with different controls, demonstrating nonidentifiability: do not equate this pass with unique body measurements or real six-image reconstruction."
+      },
+      {
+        "reason": "Freeze the contour/raster protocol explicitly in future fixtures: external contours and cross-erosion happen to agree here; OpenCV polygon filling changes edge pixels relative to Pillow. This validator records alternate-kernel sensitivity without changing the frozen criterion."
+      },
+      {
+        "reason": "Runnability/relocation is requested in the prompt but not explicit among the six frozen assertions. Keep portability as an extra verified claim; consider a separate future assertion."
+      },
+      {
+        "reason": "The no-hidden-access clause is supported by narrative transcript and reproduction source, not a complete access audit. Future isolated execution/file-open logging would strengthen provenance without retroactively changing this grade."
+      }
+    ],
+    "overall": "This grading applies only to this configuration and the frozen synthetic two-mask case. Full six-image reconstruction and physical/anatomical validation remain NOT_RUN. Compare configurations only after reviewing their independent grades."
+  }
+}

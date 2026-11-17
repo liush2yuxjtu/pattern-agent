@@ -1,0 +1,129 @@
+{
+  "validation_scope": "Tests grader discrimination using a disposable cloned run, not executor quality; original outputs unchanged.",
+  "deterministic_replay": true,
+  "baseline_core_grades": {
+    "old_skill": 6,
+    "with_skill": 6
+  },
+  "mutations": [
+    "Chest replaced by all-component sum",
+    "Chest selected_loop points to arm",
+    "Height basis changed from prior to observed",
+    "Unknown bust-point distance replaced by0",
+    "Actual depth PNG pixel changed, invalidating visual inspection attestation",
+    "Mesh provenance hash replaced byzeros"
+  ],
+  "negative_control_expectations": [
+    {
+      "text": "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+      "passed": false
+    },
+    {
+      "text": "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+      "passed": false
+    },
+    {
+      "text": "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+      "passed": false
+    },
+    {
+      "text": "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+      "passed": false
+    },
+    {
+      "text": "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+      "passed": false
+    },
+    {
+      "text": "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim.",
+      "passed": false
+    }
+  ],
+  "original_output_mutation": false,
+  "actual_replay_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/work/pattern-agent/tools/skill_evals/grade_functional_audit.py",
+    "--case",
+    "/workspace/work/skill-authoring/garment-body-six-view-workspace/iteration-2/eval-measurement-audit"
+  ],
+  "atomic_negative_controls": [
+    {
+      "single_mutation": "all-loop sum instead of chest",
+      "target_assertion_number": 1,
+      "target_correctly_rejected": true,
+      "all_expectation_results": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "single_mutation": "selected chest component is arm",
+      "target_assertion_number": 2,
+      "target_correctly_rejected": true,
+      "all_expectation_results": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "single_mutation": "height basis falsely observed",
+      "target_assertion_number": 3,
+      "target_correctly_rejected": true,
+      "all_expectation_results": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "single_mutation": "bust unknown replaced byzero",
+      "target_assertion_number": 4,
+      "target_correctly_rejected": true,
+      "all_expectation_results": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "single_mutation": "depth PNG differs from inspected bytes",
+      "target_assertion_number": 5,
+      "target_correctly_rejected": true,
+      "all_expectation_results": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "single_mutation": "mesh hash mismatch",
+      "target_assertion_number": 6,
+      "target_correctly_rejected": true,
+      "all_expectation_results": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ]
+    }
+  ]
+}

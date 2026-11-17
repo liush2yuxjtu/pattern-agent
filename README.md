@@ -24,6 +24,13 @@ compares four prior descriptions and a shorter v4 candidate on development data
 and a new blinded holdout. It reports explicit routing judgments, not native
 Claude trigger rates; installed v0 is retained.
 
+[Functional evaluation and review](https://liush2yuxjtu.github.io/pattern-agent/garment-body/eval.html)
+contains12 real subagent executions across two iterations, actual mesh/browser
+evidence, a targeted cache-state improvement and downloadable review feedback.
+The current skill body includes that verified guard; its original trigger
+description is retained. [Evidence and limitations](docs/verification/garment-body-functional-20261117/README.md)
+separate synthetic software checks from human anatomy and image-generation quality.
+
 Generated side/back views establish internal consistency only; their agreement
 with a body proxy does not validate real anatomical dimensions or physical fit.
 

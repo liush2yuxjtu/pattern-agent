@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "mode": "prior_avatar",
+  "subject": "synthetic controlled proxy only",
+  "up_axis": "y",
+  "mesh_units": "prior-scaled cm",
+  "scale_assumption": {
+    "kind": "assumption",
+    "height_cm": 170,
+    "source": "170 cm prior; no calibration object or known camera distance"
+  },
+  "evidence_status": "single synthetic front; side/back generated; geometry checks establish proxy dimensions only",
+  "mesh_sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9",
+  "source_hashes": {
+    "README.md": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b",
+    "body.obj": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9",
+    "depth-claim.png": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c",
+    "generated-back.png": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89",
+    "generated-side.png": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f",
+    "measurements.json": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7",
+    "sections.json": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a",
+    "source-evidence.json": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8",
+    "source-front.png": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+  },
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8"
+  },
+  "mesh_statistics": {
+    "vertices": 1548,
+    "triangles": 3072,
+    "min_xyz": [
+      -32.0,
+      0.0,
+      -13.895294
+    ],
+    "max_xyz": [
+      32.0,
+      170.0,
+      13.895294
+    ],
+    "y_span": 170.0
+  },
+  "method": {
+    "intersection": "Triangle edge intersections with y plane, endpoint welding, undirected unique edges, degree-two graph traversal into closed loops",
+    "tolerance_mesh_units": 1e-06,
+    "selection": "Central centroid nearest x=z=0; arm loops excluded; plot used for inspection",
+    "limitations": "No coplanar triangles encountered at requested cuts. Not an anatomical or physical validation."
+  },
+  "measurements": [
+    {
+      "name": "chest_circumference",
+      "value": 95.93147706242993,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal perimeter of central torso closed loop at y=128 in supplied mesh",
+      "evidence_status": "calculated synthetic proxy; not observed real-person dimensions",
+      "section": [
+        0,
+        128,
+        0
+      ],
+      "limitations": [
+        "Centimetres rely on supplied 170 cm height prior, without external calibration.",
+        "Anatomical section labels are supplied controls, not verified landmarks.",
+        "Polygonal discretization and section level affect perimeter; no statistical confidence interval."
+      ],
+      "uncertainty": {
+        "endpoint_weld_tolerance_mesh_units": 1e-06,
+        "statistical_interval": null,
+        "scale_sensitivity": "All lengths scale linearly; a 1% assumed-scale change changes length by 1%."
+      }
+    },
+    {
+      "name": "waist_circumference",
+      "value": 71.94860759832905,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal perimeter of central torso closed loop at y=109 in supplied mesh",
+      "evidence_status": "calculated synthetic proxy; not observed real-person dimensions",
+      "section": [
+        0,
+        109,
+        0
+      ],
+      "limitations": [
+        "Centimetres rely on supplied 170 cm height prior, without external calibration.",
+        "Anatomical section labels are supplied controls, not verified landmarks.",
+        "Polygonal discretization and section level affect perimeter; no statistical confidence interval."
+      ],
+      "uncertainty": {
+        "endpoint_weld_tolerance_mesh_units": 1e-06,
+        "statistical_interval": null,
+        "scale_sensitivity": "All lengths scale linearly; a 1% assumed-scale change changes length by 1%."
+      }
+    },
+    {
+      "name": "hip_circumference",
+      "value": 99.92862081865191,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal perimeter of central torso closed loop at y=88 in supplied mesh",
+      "evidence_status": "calculated synthetic proxy; not observed real-person dimensions",
+      "section": [
+        0,
+        88,
+        0
+      ],
+      "limitations": [
+        "Centimetres rely on supplied 170 cm height prior, without external calibration.",
+        "Anatomical section labels are supplied controls, not verified landmarks.",
+        "Polygonal discretization and section level affect perimeter; no statistical confidence interval."
+      ],
+      "uncertainty": {
+        "endpoint_weld_tolerance_mesh_units": 1e-06,
+        "statistical_interval": null,
+        "scale_sensitivity": "All lengths scale linearly; a 1% assumed-scale change changes length by 1%."
+      }
+    },
+    {
+      "name": "height",
+      "value": 170,
+      "unit": "cm",
+      "basis": "prior",
+      "mesh_checked": false,
+      "definition": "Assumed stature used for proxy scale",
+      "evidence_status": "assumption",
+      "limitations": [
+        "No calibration object or known camera distance.",
+        "Mesh y span is separately recorded; prior is not an observed person measurement."
+      ]
+    },
+    {
+      "name": "bust_point_distance",
+      "value": null,
+      "unit": "cm",
+      "basis": "unavailable",
+      "mesh_checked": false,
+      "definition": "Distance between semantic bust landmarks",
+      "evidence_status": "unknown",
+      "limitations": [
+        "no semantic bust landmarks or reliable multi-view evidence supplied"
+      ]
+    },
+    {
+      "name": "depth",
+      "value": null,
+      "unit": "cm",
+      "basis": "unavailable",
+      "mesh_checked": false,
+      "definition": "Observed physical depth claimed by original screenshot",
+      "evidence_status": "unknown; screenshot is illustrative",
+      "limitations": [
+        "25.3 cm observed claim withdrawn.",
+        "No calibrated physical depth, depth estimator or Z-buffer is supplied; generated side/back views add no observed dimensions."
+      ]
+    }
+  ],
+  "section_audit": [
+    {
+      "name": "chest",
+      "plane_origin": [
+        0,
+        128,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "selected_component_index": 1,
+      "selection": "minimum centroid distance to central x=z=0 axis; inspected green contour is central torso",
+      "components": [
+        {
+          "perimeter": 31.39350199281143,
+          "center_xz": [
+            -27.0,
+            -1.850371707708594e-17
+          ],
+          "area": 78.31571514413591,
+          "degree_two": true,
+          "segments": 48
+        },
+        {
+          "perimeter": 95.93147706242993,
+          "center_xz": [
+            1.1102230246251565e-16,
+            -7.401486830834377e-17
+          ],
+          "area": 714.64816408453,
+          "degree_two": true,
+          "segments": 48
+        },
+        {
+          "perimeter": 31.39350199281143,
+          "center_xz": [
+            27.0,
+            -1.850371707708594e-17
+          ],
+          "area": 78.31571514413619,
+          "degree_two": true,
+          "segments": 48
+        }
+      ],
+      "torso_axis_spans": [
+        34.203802,
+        0.0,
+        26.678966
+      ],
+      "all_loop_perimeters_sum": 158.7184810480528
+    },
+    {
+      "name": "waist",
+      "plane_origin": [
+        0,
+        109,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "selected_component_index": 1,
+      "selection": "minimum centroid distance to central x=z=0 axis; inspected green contour is central torso",
+      "components": [
+        {
+          "perimeter": 26.20674896288179,
+          "center_xz": [
+            -27.0,
+            -2.0816681711721685e-17
+          ],
+          "area": 54.57524398887008,
+          "degree_two": true,
+          "segments": 96
+        },
+        {
+          "perimeter": 71.94860759832905,
+          "center_xz": [
+            0.0,
+            -2.312964634635743e-17
+          ],
+          "area": 401.989589106806,
+          "degree_two": true,
+          "segments": 48
+        },
+        {
+          "perimeter": 26.20674896288179,
+          "center_xz": [
+            27.0,
+            -2.0816681711721685e-17
+          ],
+          "area": 54.575243988870554,
+          "degree_two": true,
+          "segments": 96
+        }
+      ],
+      "torso_axis_spans": [
+        25.652852,
+        0.0,
+        20.009224
+      ],
+      "all_loop_perimeters_sum": 124.36210552409263
+    },
+    {
+      "name": "hip",
+      "plane_origin": [
+        0,
+        88,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "selected_component_index": 1,
+      "selection": "minimum centroid distance to central x=z=0 axis; inspected green contour is central torso",
+      "components": [
+        {
+          "perimeter": 20.845284857660708,
+          "center_xz": [
+            -27.0,
+            1.7925475918427008e-17
+          ],
+          "area": 34.52908400177387,
+          "degree_two": true,
+          "segments": 96
+        },
+        {
+          "perimeter": 99.92862081865191,
+          "center_xz": [
+            3.700743415417188e-17,
+            -3.23815048849004e-17
+          ],
+          "area": 775.442870442346,
+          "degree_two": true,
+          "segments": 48
+        },
+        {
+          "perimeter": 20.845284857660708,
+          "center_xz": [
+            27.0,
+            1.7925475918427008e-17
+          ],
+          "area": 34.529084001773654,
+          "degree_two": true,
+          "segments": 96
+        }
+      ],
+      "torso_axis_spans": [
+        35.62896,
+        0.0,
+        27.790588
+      ],
+      "all_loop_perimeters_sum": 141.61919053397332
+    }
+  ],
+  "depth_caption": "ILLUSTRATIVE SYNTHETIC PROXY \u2014 no observed physical depth; 25.3 cm claim withdrawn"
+}

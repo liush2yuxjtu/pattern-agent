@@ -1,0 +1,56 @@
+{
+  "skill_name": "garment-body-six-view",
+  "evals": [
+    {
+      "id": 1,
+      "name": "fit-existing",
+      "prompt": "Fit the existing synthetic neutral body proxy to target-front-mask.png and target-side-mask.png using generator.py and initial-params.json. Execute a constrained parameter fit with the frozen camera and 170 cm height prior. Export fitted params, actual OBJ, front/side/back previews, initial/final per-view silhouette metrics and a short evidence/uncertainty report. Use only the two masks as target evidence; do not invent observed side/back photographs or anatomical truth.\n\nSave top-level fitted.obj, params.json, initial-front-mask.png, initial-side-mask.png, final-front-mask.png, final-side-mask.png, front.png, side.png, back.png, front-overlay.png, side-overlay.png, metrics.json (initial/final by view), report.md and runnable reproduce.py. If names differ explain in report. Metrics should include IoU, Dice, mean and P95 symmetric contour distance in pixels. Do not read any oracle or other run.\nAll work is authorized on these synthetic controlled fixtures. Use existing local Python/browser capabilities; do not invoke image generation or external paid services. Execute the work; a plan alone is not completion.",
+      "expected_output": "Real executed artifacts, independent reproducibility and provenance-limited report. Synthetic-control functional subtask only.",
+      "files": [
+        "fixtures/fit-existing"
+      ],
+      "assertions": [
+        "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+        "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+        "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+        "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+        "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+        "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "viewer-sync",
+      "prompt": "Repair the offline body viewer so its initial actual mesh agrees with the version 2 final body.json and body.obj, including when stale version 1 localStorage already exists. Make height/chest/waist/hip sliders deform actual mesh vertices and keep camera buttons and rotation functional. Execute it in Chromium, exercise stale-cache migration and slider interaction followed by reload, and provide before/after visible browser evidence. Explain the synchronization change and assumptions.\n\nSave standalone viewer.html plus body.json/body.obj if used, report.md, reproducible browser check script and desktop-before.png/desktop-after.png/mobile.png. Expose a read-only window.evalState() diagnostic returning {version,params,vertices} for independent verification, preserving real current 3D geometry. The diagnostic is not a substitute for rendered-pixel tests. Keep expected height/chest/waist/hip slider IDs and camera button data attributes from fixture if possible.\nAll work is authorized on these synthetic controlled fixtures. Use existing local Python/browser capabilities; do not invoke image generation or external paid services. Execute the work; a plan alone is not completion.",
+      "expected_output": "Real executed artifacts, independent reproducibility and provenance-limited report. Synthetic-control functional subtask only.",
+      "files": [
+        "fixtures/viewer-sync"
+      ],
+      "assertions": [
+        "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+        "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+        "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+        "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+        "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+        "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "measurement-audit",
+      "prompt": "Audit measurements.json and depth-claim.png using source-evidence.json, sections.json and actual body.obj. Execute mesh-plane section measurements and choose the central torso contour where disconnected arm loops also intersect. Save corrected measurements with explicit units, scale assumption, evidence status and uncertainty; preserve unavailable bust-point distance as unknown. Correct the misleading depth caption and provide rendered section evidence. Do not claim real-person dimensions from these synthetic controls.\n\nSave top-level corrected-measurements.json, report.md, section-evidence.png, corrected-depth.png and runnable reproduce.py. Corrected dimensions should include name,value,unit,basis,mesh_checked,limitations. Unknown values stay null; include source hashes. Execute actual mesh sections rather than copying provided numeric report.\nAll work is authorized on these synthetic controlled fixtures. Use existing local Python/browser capabilities; do not invoke image generation or external paid services. Execute the work; a plan alone is not completion.",
+      "expected_output": "Real executed artifacts, independent reproducibility and provenance-limited report. Synthetic-control functional subtask only.",
+      "files": [
+        "fixtures/measurement-audit"
+      ],
+      "assertions": [
+        "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+        "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+        "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+        "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+        "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+        "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim."
+      ]
+    }
+  ]
+}

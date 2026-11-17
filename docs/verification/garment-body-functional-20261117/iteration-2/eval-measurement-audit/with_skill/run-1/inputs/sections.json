@@ -1,0 +1,22 @@
+{
+  "units": "prior-scaled cm",
+  "up_axis": "y",
+  "sections": [
+    {
+      "name": "chest",
+      "y": 128,
+      "component_hint": "central torso; detached arms also intersect this plane"
+    },
+    {
+      "name": "waist",
+      "y": 109,
+      "component_hint": "central torso; detached arms also intersect this plane"
+    },
+    {
+      "name": "hip",
+      "y": 88,
+      "component_hint": "central torso; detached arms also intersect this plane"
+    }
+  ],
+  "instruction": "Intersect the actual triangles, reconstruct closed loops, select the torso loop and calculate its polygonal perimeter. Do not add disconnected arm perimeters. Report component selection and section tolerance."
+}

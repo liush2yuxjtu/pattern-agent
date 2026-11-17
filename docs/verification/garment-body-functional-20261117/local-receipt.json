@@ -1,0 +1,62 @@
+{
+  "verdict": "PASS",
+  "claim": "Local prepublication verification of executed functional evaluation, targeted skill guard and official static review UI; hosted publication pending",
+  "base_commit": "1d2e75acfc18b31b0e645159e09dd9a3b4581f0e",
+  "candidate_identity": "source-content-manifest.json (precommit source/evidence hashes)",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/skill-evals.md",
+  "functional_runs": 12,
+  "iteration1": {
+    "with_skill": {
+      "passed": 18,
+      "total": 18
+    },
+    "without_skill": {
+      "passed": 18,
+      "total": 18
+    }
+  },
+  "iteration2": {
+    "with_skill": {
+      "passed": 19,
+      "total": 19
+    },
+    "old_skill": {
+      "passed": 18,
+      "total": 19
+    },
+    "original_assertions_unchanged": 18,
+    "new_prospective_assertions": 1,
+    "off_step_probes": {
+      "new_passed": 5,
+      "old_passed": 0
+    }
+  },
+  "local_browser": {
+    "verdict": "PASS",
+    "checks": 17,
+    "evidence": "local-browser/report.json"
+  },
+  "local_tests": {
+    "tool_tests": 16,
+    "helper_tests": 16,
+    "format": "PASS",
+    "package_source_bytes": "PASS"
+  },
+  "qualitative_failures": [
+    "Newviewer missingmobileviewport",
+    "Newfit exactsearch wording overstates2pixel approximation",
+    "Supplemental reproduction and historicalcall provenance limits"
+  ],
+  "not_claimed": [
+    "Claude native triggering (BLOCKED)",
+    "Fullsix-imagegeneration (NOT_RUN)",
+    "Humananatomicalaccuracy (NOT_RUN)",
+    "Physicalgarmentfit (NOT_RUN)",
+    "Controlled token/time superiority (unavailable)"
+  ],
+  "commands": "commands.json",
+  "cleanup": "All functional agents closed services. Localstaging server retained onlyfor exactpostcommit verification, thenclosed beforepush; hosted publicverification session closesafterreadback.",
+  "historical_tshirt": "7.6455mm seam gap and20 intersections FAIL; physical fit NOT_RUN unchanged",
+  "hosted_publication": "PENDING exact-SHA existing Pages deployment and live browser verification"
+}

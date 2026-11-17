@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "title": "Apparel body functional execution controls",
+  "synthetic_controls": true,
+  "dependency_notes": {
+    "python": [
+      "Python 3",
+      "numpy",
+      "Pillow"
+    ],
+    "browser": [
+      "Chromium",
+      "No CDN or external service"
+    ],
+    "smoke_tooling": [
+      "Node.js",
+      "playwright available from runtime"
+    ]
+  },
+  "isolation": "Provide only the selected task input directory to the candidate. Never expose fixtures/oracle or other task directories as task input. Oracle files contain target parameters and independent fixture smoke evidence, not public instructions.",
+  "tasks": [
+    {
+      "id": "fit-existing",
+      "input_directory": "fit-existing",
+      "suggested_task_prompt": "Fit the existing synthetic neutral body proxy to target-front-mask.png and target-side-mask.png using generator.py and initial-params.json. Execute a constrained parameter fit with the frozen camera and 170 cm height prior. Export fitted params, actual OBJ, front/side/back previews, initial/final per-view silhouette metrics and a short evidence/uncertainty report. Use only the two masks as target evidence; do not invent observed side/back photographs or anatomical truth.",
+      "dependencies": [
+        "Python 3 + numpy + Pillow"
+      ],
+      "suggested_start_command": "python generator.py --params initial-params.json --out initial",
+      "file_inventory": [
+        {
+          "path": "README.md",
+          "bytes": 1530
+        },
+        {
+          "path": "camera.json",
+          "bytes": 274
+        },
+        {
+          "path": "generator.py",
+          "bytes": 3697
+        },
+        {
+          "path": "initial/back-mask.png",
+          "bytes": 2969
+        },
+        {
+          "path": "initial/back.png",
+          "bytes": 12714
+        },
+        {
+          "path": "initial/body.obj",
+          "bytes": 95176
+        },
+        {
+          "path": "initial/camera.json",
+          "bytes": 274
+        },
+        {
+          "path": "initial/front-mask.png",
+          "bytes": 2969
+        },
+        {
+          "path": "initial/front.png",
+          "bytes": 12490
+        },
+        {
+          "path": "initial/params.json",
+          "bytes": 93
+        },
+        {
+          "path": "initial/side-mask.png",
+          "bytes": 2700
+        },
+        {
+          "path": "initial/side.png",
+          "bytes": 9859
+        },
+        {
+          "path": "initial-params.json",
+          "bytes": 65
+        },
+        {
+          "path": "target-front-mask.png",
+          "bytes": 3098
+        },
+        {
+          "path": "target-side-mask.png",
+          "bytes": 2865
+        }
+      ]
+    },
+    {
+      "id": "viewer-sync",
+      "input_directory": "viewer-sync",
+      "suggested_task_prompt": "Repair the offline body viewer so its initial actual mesh agrees with the version 2 final body.json and body.obj, including when stale version 1 localStorage already exists. Make height/chest/waist/hip sliders deform actual mesh vertices and keep camera buttons and rotation functional. Execute it in Chromium, exercise stale-cache migration and slider interaction followed by reload, and provide before/after visible browser evidence. Explain the synchronization change and assumptions.",
+      "dependencies": [
+        "Chromium; optional python -m http.server for browser policy"
+      ],
+      "suggested_start_command": "python -m http.server 8765 --bind 127.0.0.1",
+      "file_inventory": [
+        {
+          "path": "README.md",
+          "bytes": 1273
+        },
+        {
+          "path": "body.json",
+          "bytes": 103
+        },
+        {
+          "path": "body.obj",
+          "bytes": 95286
+        },
+        {
+          "path": "index.html",
+          "bytes": 4698
+        }
+      ]
+    },
+    {
+      "id": "measurement-audit",
+      "input_directory": "measurement-audit",
+      "suggested_task_prompt": "Audit measurements.json and depth-claim.png using source-evidence.json, sections.json and actual body.obj. Execute mesh-plane section measurements and choose the central torso contour where disconnected arm loops also intersect. Save corrected measurements with explicit units, scale assumption, evidence status and uncertainty; preserve unavailable bust-point distance as unknown. Correct the misleading depth caption and provide rendered section evidence. Do not claim real-person dimensions from these synthetic controls.",
+      "dependencies": [
+        "Python 3 + numpy + image renderer"
+      ],
+      "suggested_start_command": "Read README.md and source-evidence.json; load body.obj for section computation",
+      "file_inventory": [
+        {
+          "path": "README.md",
+          "bytes": 1105
+        },
+        {
+          "path": "body.obj",
+          "bytes": 95270
+        },
+        {
+          "path": "depth-claim.png",
+          "bytes": 14222
+        },
+        {
+          "path": "generated-back.png",
+          "bytes": 13949
+        },
+        {
+          "path": "generated-side.png",
+          "bytes": 11095
+        },
+        {
+          "path": "measurements.json",
+          "bytes": 330
+        },
+        {
+          "path": "sections.json",
+          "bytes": 696
+        },
+        {
+          "path": "source-evidence.json",
+          "bytes": 737
+        },
+        {
+          "path": "source-front.png",
+          "bytes": 13708
+        }
+      ]
+    }
+  ],
+  "fixture_smoke_report": "oracle/fixture-execution.json"
+}

@@ -1,0 +1,402 @@
+{
+  "mode": "prior_avatar",
+  "synthetic_controls_only": true,
+  "units": "cm (prior-scaled)",
+  "coordinate_system": "Y up; X lateral; Z front/back",
+  "scale_assumption": {
+    "kind": "assumption",
+    "height_cm": 170,
+    "source": "170 cm prior; no calibration object or known camera distance"
+  },
+  "reference_status": {
+    "reference_type": "single synthetic front image",
+    "source_front": "source-front.png",
+    "observed_views": [
+      "front"
+    ],
+    "generated_views": [
+      "generated-side.png",
+      "generated-back.png"
+    ],
+    "scale": {
+      "kind": "assumption",
+      "height_cm": 170,
+      "source": "170 cm prior; no calibration object or known camera distance"
+    },
+    "depth": {
+      "kind": "illustrative",
+      "source": "proxy design assumption; front reference does not establish physical depth"
+    },
+    "bust_point_distance": {
+      "kind": "unknown",
+      "reason": "no semantic bust landmarks or reliable multi-view evidence supplied"
+    },
+    "mesh": "body.obj",
+    "mesh_topology": "disconnected central torso, head, legs and arms; y is vertical"
+  },
+  "mesh_sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9",
+  "source_sha256": {
+    "README.md": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b",
+    "body.obj": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9",
+    "depth-claim.png": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c",
+    "generated-back.png": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89",
+    "generated-side.png": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f",
+    "measurements.json": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7",
+    "sections.json": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a",
+    "source-evidence.json": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8",
+    "source-front.png": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+  },
+  "mesh_stats": {
+    "vertices": 1548,
+    "triangles": 3072,
+    "bounds_min": [
+      -32.0,
+      0.0,
+      -13.895294
+    ],
+    "bounds_max": [
+      32.0,
+      170.0,
+      13.895294
+    ]
+  },
+  "measurements": [
+    {
+      "name": "chest_circumference",
+      "value": 95.93147706242992,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal perimeter of selected central torso loop",
+      "plane_origin": [
+        0,
+        128,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "limitations": [
+        "Synthetic proxy geometry; not a measured person",
+        "Centimetres depend on supplied 170 cm height prior",
+        "Chosen y plane is supplied, not an independently identified anatomical landmark",
+        "Finite triangulation; no statistical uncertainty interval available"
+      ],
+      "uncertainty": {
+        "endpoint_merge_tolerance_mesh_units": 1e-06,
+        "scale_sensitivity": "All lengths scale linearly with assumed height: value * new_height_cm / 170"
+      },
+      "evidence_status": "computed synthetic mesh dimension under assumed scale"
+    },
+    {
+      "name": "waist_circumference",
+      "value": 71.94860759832905,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal perimeter of selected central torso loop",
+      "plane_origin": [
+        0,
+        109,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "limitations": [
+        "Synthetic proxy geometry; not a measured person",
+        "Centimetres depend on supplied 170 cm height prior",
+        "Chosen y plane is supplied, not an independently identified anatomical landmark",
+        "Finite triangulation; no statistical uncertainty interval available"
+      ],
+      "uncertainty": {
+        "endpoint_merge_tolerance_mesh_units": 1e-06,
+        "scale_sensitivity": "All lengths scale linearly with assumed height: value * new_height_cm / 170"
+      },
+      "evidence_status": "computed synthetic mesh dimension under assumed scale"
+    },
+    {
+      "name": "hip_circumference",
+      "value": 99.92862081865191,
+      "unit": "cm",
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "Polygonal perimeter of selected central torso loop",
+      "plane_origin": [
+        0,
+        88,
+        0
+      ],
+      "plane_normal": [
+        0,
+        1,
+        0
+      ],
+      "limitations": [
+        "Synthetic proxy geometry; not a measured person",
+        "Centimetres depend on supplied 170 cm height prior",
+        "Chosen y plane is supplied, not an independently identified anatomical landmark",
+        "Finite triangulation; no statistical uncertainty interval available"
+      ],
+      "uncertainty": {
+        "endpoint_merge_tolerance_mesh_units": 1e-06,
+        "scale_sensitivity": "All lengths scale linearly with assumed height: value * new_height_cm / 170"
+      },
+      "evidence_status": "computed synthetic mesh dimension under assumed scale"
+    },
+    {
+      "name": "height",
+      "value": 170,
+      "unit": "cm",
+      "basis": "prior",
+      "mesh_checked": true,
+      "definition": "Assumed scale prior; mesh Y extent checked",
+      "mesh_y_extent": 170.0,
+      "evidence_status": "assumed, not observed",
+      "limitations": [
+        "No calibration object or camera distance; no real-person height measurement"
+      ]
+    },
+    {
+      "name": "bust_point_distance",
+      "value": null,
+      "unit": "cm",
+      "basis": "unavailable",
+      "mesh_checked": false,
+      "evidence_status": "unknown",
+      "definition": "Distance between semantic bust points",
+      "limitations": [
+        "no semantic bust landmarks or reliable multi-view evidence supplied"
+      ]
+    },
+    {
+      "name": "depth",
+      "value": null,
+      "unit": "cm",
+      "basis": "unavailable",
+      "mesh_checked": false,
+      "evidence_status": "illustrative image; physical depth unknown",
+      "definition": "Claimed observed physical depth from input screenshot",
+      "limitations": [
+        "No physical depth estimator or calibrated camera",
+        "Side image is generated synthetic preview; cannot establish observed depth"
+      ]
+    }
+  ],
+  "section_method": {
+    "algorithm": "Intersect actual triangles with Y plane; deduplicate hits and undirected segments; snap endpoints to 1e-6 grid; build degree-2 graph and traverse each closed component; select unique loop containing torso axis",
+    "tolerance_mesh_units": 1e-06
+  },
+  "sections": [
+    {
+      "name": "chest",
+      "y": 128,
+      "loop_count": 3,
+      "selected_loop": 0,
+      "selection": "Unique closed XZ contour containing (0,0); other components are lateral detached arms",
+      "components": [
+        {
+          "index": 0,
+          "perimeter": 95.93147706242992,
+          "area": 714.64816408453,
+          "centroid": [
+            2.220446049250313e-16,
+            128.0,
+            5.828670879282072e-16
+          ],
+          "world_axis_spans": [
+            34.203802,
+            0.0,
+            26.678966
+          ],
+          "vertex_count": 48,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": true
+        },
+        {
+          "index": 1,
+          "perimeter": 31.393501992811434,
+          "area": 78.315715144136,
+          "centroid": [
+            -26.999999999999996,
+            128.0,
+            6.47630097698008e-17
+          ],
+          "world_axis_spans": [
+            10.0,
+            0.0,
+            10.0
+          ],
+          "vertex_count": 48,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": false
+        },
+        {
+          "index": 2,
+          "perimeter": 31.393501992811434,
+          "area": 78.315715144136,
+          "centroid": [
+            27.000000000000004,
+            128.0,
+            6.47630097698008e-17
+          ],
+          "world_axis_spans": [
+            10.0,
+            0.0,
+            10.0
+          ],
+          "vertex_count": 48,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": false
+        }
+      ],
+      "all_loops_perimeter": 158.71848104805278
+    },
+    {
+      "name": "waist",
+      "y": 109,
+      "loop_count": 3,
+      "selected_loop": 0,
+      "selection": "Unique closed XZ contour containing (0,0); other components are lateral detached arms",
+      "components": [
+        {
+          "index": 0,
+          "perimeter": 71.94860759832905,
+          "area": 401.989589106806,
+          "centroid": [
+            -3.3306690738754696e-16,
+            109.0,
+            -8.326672684688674e-17
+          ],
+          "world_axis_spans": [
+            25.652852,
+            0.0,
+            20.009224
+          ],
+          "vertex_count": 48,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": true
+        },
+        {
+          "index": 1,
+          "perimeter": 26.20674896288179,
+          "area": 54.575243988870554,
+          "centroid": [
+            -27.00000000000001,
+            109.0,
+            -2.555825921272496e-16
+          ],
+          "world_axis_spans": [
+            8.347826086956523,
+            0.0,
+            8.347826086956522
+          ],
+          "vertex_count": 96,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": false
+        },
+        {
+          "index": 2,
+          "perimeter": 26.20674896288179,
+          "area": 54.575243988870554,
+          "centroid": [
+            26.99999999999999,
+            109.0,
+            -2.555825921272496e-16
+          ],
+          "world_axis_spans": [
+            8.347826086956523,
+            0.0,
+            8.347826086956522
+          ],
+          "vertex_count": 96,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": false
+        }
+      ],
+      "all_loops_perimeter": 124.36210552409263
+    },
+    {
+      "name": "hip",
+      "y": 88,
+      "loop_count": 3,
+      "selected_loop": 0,
+      "selection": "Unique closed XZ contour containing (0,0); other components are lateral detached arms",
+      "components": [
+        {
+          "index": 0,
+          "perimeter": 99.92862081865191,
+          "area": 775.442870442346,
+          "centroid": [
+            3.7007434154171886e-16,
+            88.0,
+            -2.4054832200211723e-16
+          ],
+          "world_axis_spans": [
+            35.62896,
+            0.0,
+            27.790588
+          ],
+          "vertex_count": 48,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": true
+        },
+        {
+          "index": 1,
+          "perimeter": 20.845284857660708,
+          "area": 34.52908400177333,
+          "centroid": [
+            -27.00000000000001,
+            88.0,
+            -3.23815048849004e-17
+          ],
+          "world_axis_spans": [
+            6.640000000000001,
+            0.0,
+            6.64
+          ],
+          "vertex_count": 96,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": false
+        },
+        {
+          "index": 2,
+          "perimeter": 20.845284857660708,
+          "area": 34.529084001773334,
+          "centroid": [
+            26.999999999999986,
+            88.0,
+            -3.23815048849004e-17
+          ],
+          "world_axis_spans": [
+            6.640000000000001,
+            0.0,
+            6.64
+          ],
+          "vertex_count": 96,
+          "closed": true,
+          "all_degrees_two": true,
+          "selected": false
+        }
+      ],
+      "all_loops_perimeter": 141.61919053397332
+    }
+  ],
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8"
+  }
+}

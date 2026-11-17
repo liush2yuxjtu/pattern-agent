@@ -1,0 +1,103 @@
+iteration 5 loss 0.009794701095112712
+iteration 10 loss 0.0020223048510981173
+iteration 15 loss 0.0009826021617247557
+iteration 20 loss 0.0
+iteration 25 loss 0.0
+iteration 30 loss 0.0
+{
+  "params": {
+    "height": 170.0,
+    "chest": 95.76895901773013,
+    "waist": 72.59665936499452,
+    "hip": 99.89305238999965,
+    "depth_ratio": 0.7802819757968494
+  },
+  "metrics": {
+    "initial": {
+      "front": {
+        "iou": 0.9527538726333907,
+        "dice": 0.9758053853950905,
+        "mean_symmetric_contour_distance_px": 1.1226375102996826,
+        "p95_symmetric_contour_distance_px": 9.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      },
+      "side": {
+        "iou": 0.8887537029200169,
+        "dice": 0.9411006861784064,
+        "mean_symmetric_contour_distance_px": 3.146641969680786,
+        "p95_symmetric_contour_distance_px": 12.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      }
+    },
+    "final": {
+      "front": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      },
+      "side": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0,
+        "evaluation_size_px": [
+          384,
+          640
+        ],
+        "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+      }
+    },
+    "protocol": {
+      "resolution_px": [
+        384,
+        640
+      ],
+      "camera": {
+        "projection": "orthographic",
+        "width": 384,
+        "height": 640,
+        "horizontal_extent_cm": [
+          -50,
+          50
+        ],
+        "vertical_extent_cm": [
+          -4,
+          180
+        ],
+        "near_axis": "front +z; side +x; back -z",
+        "scale_assumption": "height prior 170 cm; synthetic controls"
+      },
+      "threshold": ">127",
+      "contours": "external contours, all components, one-pixel boundary; pooled bidirectional Euclidean distances",
+      "target_evidence": "only supplied synthetic front/side binary masks",
+      "scale": "170 cm assumed height; no observed anatomical scale"
+    }
+  },
+  "validation": {
+    "vertices": 1548,
+    "triangles": 3072,
+    "finite_vertices": true,
+    "height_cm_prior": 170.0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "zero_area_triangles": 0,
+    "max_obj_vertex_rounding_error_cm": 4.992816293736269e-07,
+    "connected_components_expected": 6,
+    "mesh_limitation": "Disconnected capped torso, head, two legs and two arms; not an anatomical or watertight union body."
+  },
+  "duration_seconds": 52.023921642999994
+}

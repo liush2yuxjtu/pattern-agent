@@ -1,0 +1,112 @@
+{
+  "expectations": [
+    {
+      "text": "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+      "passed": true,
+      "evidence": "Independent triangle-plane/connected-section recomputation (1548 vertices, 3072 triangles): chest=95.931477062 cm, waist=71.948607598 cm, hip=99.928620819 cm. Absolute output errors(cm)={'chest': 0.0, 'waist': 0.0, 'hip': 0.0}; within0.5cm=True. Relocated execution matches dimensions=True; output dimensions cm and mesh_checked=true."
+    },
+    {
+      "text": "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+      "passed": true,
+      "evidence": "Independent geometric components=[{\"name\": \"chest\", \"plane_y_cm\": 128, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 31.393501992811434, \"encloses_origin\": false, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 95.93147706242992, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 31.393501992811434, \"encloses_origin\": false, \"vertex_count\": 48, \"segment_count\": 48}], \"selected_index\": 1, \"torso_cm\": 95.93147706242992, \"all_components_sum_cm\": 158.71848104805278}, {\"name\": \"waist\", \"plane_y_cm\": 109, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 26.20674896288179, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 71.94860759832905, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 26.20674896288179, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}], \"selected_index\": 1, \"torso_cm\": 71.94860759832905, \"all_components_sum_cm\": 124.36210552409263}, {\"name\": \"hip\", \"plane_y_cm\": 88, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 20.845284857660708, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 99.92862081865191, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 20.845284857660708, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}], \"selected_index\": 1, \"torso_cm\": 99.92862081865191, \"all_components_sum_cm\": 141.61919053397332}]. Executor component diagnostics verified against geometry=[{\"name\": \"chest\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [95.93147706242992, 31.393501992811434, 31.393501992811434], \"selected_value_cm\": 95.93147706242992, \"component_geometry_matches\": true, \"selected_torso_matches\": true}, {\"name\": \"waist\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [71.94860759832905, 26.20674896288179, 26.20674896288179], \"selected_value_cm\": 71.94860759832905, \"component_geometry_matches\": true, \"selected_torso_matches\": true}, {\"name\": \"hip\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [99.92862081865191, 20.845284857660708, 20.845284857660708], \"selected_value_cm\": 99.92862081865191, \"component_geometry_matches\": true, \"selected_torso_matches\": true}]. Indices may differ by traversal order; selected contour identity and perimeter are checked. Actual reviewed section plot: Opened actual image with view_image: real triangulated proxy body on left, colored central torso sections and gray detached arms; three XZ plots on right show chest95.931/waist71.949/hip99.929 and three loops per plane; readable170cm-prior/no-real-person warning."
+    },
+    {
+      "text": "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+      "passed": true,
+      "evidence": "Structured dimension fields complete=True; cm units, mesh/proxy basis, 170cm uncalibrated prior and assumed height distinguished from observed real-person dimensions. Structured scale assumption={'kind': 'assumption', 'height_cm': 170, 'source': '170 cm prior; no calibration object or known camera distance'}; corrected source status retained; report rejects real-person/anatomical inference."
+    },
+    {
+      "text": "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+      "passed": true,
+      "evidence": "bust_point_distance.value=None; physical depth.value=None. Depth evidence illustrative; actual visible replacement review: Opened actual image with view_image: old observed25.3cm footer removed fully; enlarged readable ILLUSTRATIVE SYNTHETIC SIDE PREVIEW and Physical depth:UNKNOWN; no calibrated depth or observed centimetres; proxy assumption/front-only source; generated side-back caveat; not measured depth map or Z-buffer."
+    },
+    {
+      "text": "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+      "passed": true,
+      "evidence": "Both actual PNGs decoded and independently viewed, with exact hashes recorded in independent-grader-evidence.json. Opened actual image with view_image: real triangulated proxy body on left, colored central torso sections and gray detached arms; three XZ plots on right show chest95.931/waist71.949/hip99.929 and three loops per plane; readable170cm-prior/no-real-person warning. Opened actual image with view_image: old observed25.3cm footer removed fully; enlarged readable ILLUSTRATIVE SYNTHETIC SIDE PREVIEW and Physical depth:UNKNOWN; no calibrated depth or observed centimetres; proxy assumption/front-only source; generated side-back caveat; not measured depth map or Z-buffer."
+    },
+    {
+      "text": "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim.",
+      "passed": true,
+      "evidence": "Source status matches supplied single synthetic front/generated side-back categories=True; SHA256 all9 actual input files matches stored provenance=True. Units prior-scaled cm; uncalibrated170cm prior, unresolved physical/shape/landmark uncertainty, no anatomical accuracy claim remain explicit."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "total_tokens": null,
+    "metadata_not_available": true,
+    "note": "No executor metrics.json; no inferred token/tool-call/step counts."
+  },
+  "timing": {
+    "scope": "Recorded wallclock from first explicit UTC timestamp after task/skill/JSON intake, through computation, helper cross-check, rendered evidence inspection and deliverable verification. Earlier intake excluded.",
+    "start": "2026-11-17T03:30:57.106386+00:00",
+    "end": "2026-11-17T03:32:55.396041+00:00",
+    "total_duration_seconds": 118.289655,
+    "total_tokens": null,
+    "metadata_not_available": true
+  },
+  "timing_interpretation": "Copied unchanged. Timed interval excludes initial task/skill/input inspection. Not full-session duration; no cross-clock mixing; grader duration not measured.",
+  "claims": [
+    {
+      "claim": "Circumferences derive from actual torso mesh sections, excluding detached arms",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Independent triangle-plane/connected-section recomputation (1548 vertices, 3072 triangles): chest=95.931477062 cm, waist=71.948607598 cm, hip=99.928620819 cm. Absolute output errors(cm)={'chest': 0.0, 'waist': 0.0, 'hip': 0.0}; within0.5cm=True. Relocated execution matches dimensions=True; output dimensions cm and mesh_checked=true. Independent geometric components=[{\"name\": \"chest\", \"plane_y_cm\": 128, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 31.393501992811434, \"encloses_origin\": false, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 95.93147706242992, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 31.393501992811434, \"encloses_origin\": false, \"vertex_count\": 48, \"segment_count\": 48}], \"selected_index\": 1, \"torso_cm\": 95.93147706242992, \"all_components_sum_cm\": 158.71848104805278}, {\"name\": \"waist\", \"plane_y_cm\": 109, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 26.20674896288179, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 71.94860759832905, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 26.20674896288179, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}], \"selected_index\": 1, \"torso_cm\": 71.94860759832905, \"all_components_sum_cm\": 124.36210552409263}, {\"name\": \"hip\", \"plane_y_cm\": 88, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 20.845284857660708, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 99.92862081865191, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 20.845284857660708, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}], \"selected_index\": 1, \"torso_cm\": 99.92862081865191, \"all_components_sum_cm\": 141.61919053397332}]. Executor component diagnostics verified against geometry=[{\"name\": \"chest\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [95.93147706242992, 31.393501992811434, 31.393501992811434], \"selected_value_cm\": 95.93147706242992, \"component_geometry_matches\": true, \"selected_torso_matches\": true}, {\"name\": \"waist\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [71.94860759832905, 26.20674896288179, 26.20674896288179], \"selected_value_cm\": 71.94860759832905, \"component_geometry_matches\": true, \"selected_torso_matches\": true}, {\"name\": \"hip\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [99.92862081865191, 20.845284857660708, 20.845284857660708], \"selected_value_cm\": 99.92862081865191, \"component_geometry_matches\": true, \"selected_torso_matches\": true}]. Indices may differ by traversal order; selected contour identity and perimeter are checked. Actual reviewed section plot: Opened actual image with view_image: real triangulated proxy body on left, colored central torso sections and gray detached arms; three XZ plots on right show chest95.931/waist71.949/hip99.929 and three loops per plane; readable170cm-prior/no-real-person warning."
+    },
+    {
+      "claim": "All input provenance hashes are correct",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Computed SHA256 of all9 input files; exact mapping equality=True"
+    },
+    {
+      "claim": "Reproduction runs after relocation with only input files and script",
+      "type": "process",
+      "verified": true,
+      "evidence": "Temporary clean run exit=0; dimension equality=True; image byte equality={'corrected-depth.png': True, 'section-evidence.png': True}"
+    },
+    {
+      "claim": "reproduce.py alone regenerates all five requested top-level deliverables",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Generated files: corrected-depth.png, corrected-measurements.json, report.md, reproduce.py, section-evidence.png. Core assertions do not explicitly require report regeneration."
+    },
+    {
+      "claim": "Executor visually inspected outputs and used the documented independent VTK check",
+      "type": "process",
+      "verified": false,
+      "evidence": "Narrative transcript and VTK result files corroborate this, but raw tool-event provenance was not retained. Grader separately opened the actual images and recomputed geometry; executor historical tool calls remain unverifiable."
+    },
+    {
+      "claim": "These are synthetic proxy values; anatomical and physical accuracy remain unestablished",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Source fixtures and output limitations support this restricted scope. Controlled synthetic geometry/caption audit only; no real anatomy, physical fit, full six-view or image-generation validation."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Uncalibrated170cm prior, unvalidated landmarks, shape/discretization error, single synthetic front and generated side/back; physical uncertainty unquantified."
+    ],
+    "needs_review": [
+      "Raw executor process provenance unavailable."
+    ],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "Clean relocation regenerates the core report but omits appended supplemental VTK cross-check paragraphs and does not recreate those separately generated cross-check artifacts. Distinguish core deliverable reproduction from a complete verification handoff."
+      },
+      {
+        "reason": "Both supplied transcripts are summarized command narratives rather than raw tool events. Preserve raw calls/results to independently verify executor process claims and timing scope; current grades rely on inspected artifacts and isolated reruns."
+      }
+    ],
+    "overall": "All six frozen core assertions assessed using independent geometry, source hashes, actual visual inspection and relocated execution. Synthetic-control evidence only; no score proves full imagegen/physical/anatomical validity."
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "fresh": {
+    "version": 2,
+    "params": {
+      "version": 2,
+      "height": 170,
+      "chest": 98,
+      "waist": 74,
+      "hip": 102,
+      "depth_ratio": 0.78
+    },
+    "vertices": 1548,
+    "objMaxDelta": 4.939497078026989e-7,
+    "objPixelOracle": {
+      "differing": 0,
+      "total": 411000
+    },
+    "passed": true
+  },
+  "sliders": [
+    {
+      "key": "height",
+      "before": 170,
+      "after": 171,
+      "changedVertices": 1548,
+      "changedPixels": 49999,
+      "finite": true,
+      "stateMatchesControl": true
+    },
+    {
+      "key": "chest",
+      "before": 98,
+      "after": 99,
+      "changedVertices": 144,
+      "changedPixels": 6363,
+      "finite": true,
+      "stateMatchesControl": true
+    },
+    {
+      "key": "waist",
+      "before": 74,
+      "after": 75,
+      "changedVertices": 48,
+      "changedPixels": 3281,
+      "finite": true,
+      "stateMatchesControl": true
+    },
+    {
+      "key": "hip",
+      "before": 102,
+      "after": 103,
+      "changedVertices": 144,
+      "changedPixels": 5838,
+      "finite": true,
+      "stateMatchesControl": true
+    }
+  ],
+  "staleV1Rejected": true,
+  "camera": [
+    {
+      "angle": "1.57079632679",
+      "changedPixels": 75791,
+      "geometryUnchanged": true,
+      "rotation": 90
+    },
+    {
+      "angle": "3.14159265359",
+      "changedPixels": 75727,
+      "geometryUnchanged": true,
+      "rotation": 180
+    },
+    {
+      "angle": "0",
+      "changedPixels": 70552,
+      "geometryUnchanged": true,
+      "rotation": 0
+    }
+  ],
+  "rotation": {
+    "changedPixels": 48128,
+    "geometryUnchanged": true
+  },
+  "frontReproduced": true,
+  "reload": true,
+  "uiExport": null,
+  "exportedArtifact": {
+    "name": "edited-state.json",
+    "reopenedMatches": true
+  },
+  "desktopOverflow": false,
+  "mobileOverflow": false,
+  "errors": [],
+  "invalidCache": [
+    {
+      "name": "negative",
+      "returnedDefaults": true,
+      "finite": true
+    },
+    {
+      "name": "numeric-string",
+      "returnedDefaults": true,
+      "finite": true
+    },
+    {
+      "name": "nonfinite-null",
+      "returnedDefaults": true,
+      "finite": true
+    },
+    {
+      "name": "literal-NaN-invalid-JSON",
+      "returnedDefaults": true
+    }
+  ],
+  "heightCircumferenceProbe": {
+    "height": 180,
+    "chestControl": 98,
+    "displayedChest": "98 cm",
+    "polygonCircumference170": 97.93004885639822,
+    "polygonCircumference180": 103.69063996559812,
+    "relativeHeightScaling": 1.058823529411765,
+    "labelVsMeasuredDifference": 5.690639965598123,
+    "allCurrentDimensions": {
+      "height": {
+        "label": "180 cm",
+        "actualVerticalExtent": 180
+      },
+      "chest": {
+        "label": "98 cm",
+        "actualSection": 103.69063996559812
+      },
+      "waist": {
+        "label": "74 cm",
+        "actualSection": 78.2970138515741
+      },
+      "hip": {
+        "label": "102 cm",
+        "actualSection": 107.92291098460211
+      }
+    },
+    "interpretation": "UI cm label reports template parameter; actual current torso circumference differs."
+  },
+  "fractionalCache": {
+    "seedHeight": 170.5,
+    "actualHeight": 170.5,
+    "controlHeight": 171,
+    "displayedHeight": "170.5 cm",
+    "controlMatchesState": false
+  }
+}

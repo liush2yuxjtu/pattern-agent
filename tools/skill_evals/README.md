@@ -95,5 +95,35 @@ and sets `native_trigger_results` to null. For the executed run, methodology,
 command and raw evidence see [2026-11-17 benchmark](../../docs/verification/garment-body-subagent-hillclimb-20261117/README.md).
 
 The current v4 candidate is shorter and explicitly covers workflow continuation;
-no routing accuracy gain was observed. Installed v0 remains unchanged pending
+no routing accuracy gain was observed. Installed trigger description v0 remains unchanged pending
 native event evidence. These scores do not assess image generation or body fitting.
+
+## Executed functional evaluation and review
+
+The current canonical `evals/evals.json` contains actual file-based execution
+cases. Historical plan-only cases are preserved as `evals/planning-evals.json`.
+See [functional review tooling](FUNCTIONAL_REVIEW.md) and the
+[executed two-iteration receipt](../../docs/verification/garment-body-functional-20261117/README.md).
+
+The official pinned grader/analyzer instructions and aggregation script are
+vendored unchanged. Fresh-context agents execute task/skill pairs, and separate
+validators reopen real OBJ/masks/browser state. `aggregate_functional.py` invokes
+the official aggregator, preserves its raw output, then removes unavailable
+tokens and incomparable timing placeholders. One execution per case/config is
+reported as one, and old-skill is distinct from no-skill.
+
+The narrow v1 body-text cache guard passed19/19 vs18/19 frozen-v0 checks; the
+original18 assertions passed both. This is a small synthetic functional result,
+not a production reliability, native trigger or anatomy measurement score.
+
+Build review assets (existing Pages workflow publishes `web/**`; no CI added):
+
+```sh
+python tools/skill_evals/aggregate_functional.py WORKSPACE/iteration-2
+python tools/skill_evals/build_functional_assets.py --workspace WORKSPACE \
+  --evidence docs/verification/garment-body-functional-20261117 --site web/garment-body
+python scripts/build_pages.py
+```
+
+Public review: https://liush2yuxjtu.github.io/pattern-agent/garment-body/eval.html
+Submit downloads real `feedback.json`. Browser fixture feedback is never human approval.

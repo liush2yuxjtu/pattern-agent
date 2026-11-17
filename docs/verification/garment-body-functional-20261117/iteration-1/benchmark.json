@@ -1,0 +1,368 @@
+{
+  "metadata": {
+    "skill_name": "garment-body-six-view",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "Inherited session subagent model; ID not exposed",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-17T03:38:37.152966+00:00",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 1,
+    "protocol": "Executed synthetic-control functional tasks; not native Claude routing",
+    "resource_metrics": "Tokens unavailable. Raw executor wallclock scopes differ; no time/token comparison."
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+          "passed": true,
+          "evidence": "Independently parsed 1548 finite XYZ vertices and 3072 indexed triangles; spans [64.0, 170.0, 27.783642] cm, 0 zero-area triangles. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+          "passed": true,
+          "evidence": "Reopened initial/final OBJ projections exactly equal all four delivered masks (0 differing pixels); frozen 384x640 camera unchanged. IoU front 0.952753872633 -> 1.000000000000 (gain 0.047246127367); side 0.888753702920 -> 1.000000000000 (gain 0.111246297080). See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+          "passed": true,
+          "evidence": "Parameters {'height': 170.0, 'chest': 96.07174144787164, 'waist': 71.94736992050557, 'hip': 99.6914922451739, 'depth_ratio': 0.7837551414825598}; mesh height 170.0; independently checked torso controls against OBJ ring radii (max error 3.52974483e-07 cm). Full executor transcript states only inputs and (with_skill) supplied workflow/helper were read; reproduction source opens only declared inputs. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+          "passed": true,
+          "evidence": "All 14 requested artifacts present; initial/final mask rerasterization has 0 differing pixels; all front/side/back preview rerenders have 0 differing channel values. Final overlap overlays have foreground colors {'front': [[140, 231, 179]], 'side': [[140, 231, 179]]}; generated back is not observed evidence. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+          "passed": true,
+          "evidence": "All four IoU/Dice/mean/P95 records agree to <1e-6 using independently reopened mesh masks and declared external contour protocol. Reference hashes {'front': 'db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a', 'side': '0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21'} match metrics protocol. Maximum absolute metric discrepancy 8.42249741e-08. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions.",
+          "passed": true,
+          "evidence": "Report: \"The 170 cm height is a fixed scale prior, not an observed human dimension\"; \"synthetic simplified body proxy, not anatomical measurement or anatomical accuracy\"; back is \"unobserved projection\". See independent-grader-evidence/validation.json for measured details."
+        }
+      ],
+      "notes": [
+        "Only two synthetic silhouettes; nonunique raster plateaus; assumed height; fixed head/limbs; generated unobserved back."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+          "passed": true,
+          "evidence": "Independently parsed 1548 finite XYZ vertices and 3072 indexed triangles; spans [64.0, 170.0, 27.92713] cm, 0 zero-area triangles. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+          "passed": true,
+          "evidence": "Reopened initial/final OBJ projections exactly equal all four delivered masks (0 differing pixels); frozen 384x640 camera unchanged. IoU front 0.952753872633 -> 1.000000000000 (gain 0.047246127367); side 0.888753702920 -> 1.000000000000 (gain 0.111246297080). See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+          "passed": true,
+          "evidence": "Parameters {'height': 170.0, 'chest': 95.72345288793053, 'waist': 72.63514672160662, 'hip': 100.05735708116242, 'depth_ratio': 0.7857343938493941}; mesh height 170.0; independently checked torso controls against OBJ ring radii (max error 4.7723527e-07 cm). Full executor transcript states only inputs and (with_skill) supplied workflow/helper were read; reproduction source opens only declared inputs. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+          "passed": true,
+          "evidence": "All 14 requested artifacts present; initial/final mask rerasterization has 0 differing pixels; all front/side/back preview rerenders have 0 differing channel values. Final overlap overlays have foreground colors {'front': [[215, 215, 215]], 'side': [[215, 215, 215]]}; generated back is not observed evidence. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+          "passed": true,
+          "evidence": "All four IoU/Dice/mean/P95 records agree to <1e-6 using independently reopened mesh masks and declared cross_erosion contour protocol. Reference hashes {'front': 'db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a', 'side': '0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21'} match metrics protocol. Maximum absolute metric discrepancy 1.11837646e-08. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions.",
+          "passed": true,
+          "evidence": "Report: \"height 170 cm (fixed prior)\"; \"synthetic model and are not observed real-person measurements\"; \"exact pixel match does not identify unique latent parameters or prove anatomical accuracy\"; back has no observed reference. See independent-grader-evidence/validation.json for measured details."
+        }
+      ],
+      "notes": [
+        "Only two synthetic silhouettes; nonunique raster plateaus; assumed height; fixed head/limbs; generated unobserved back."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+          "passed": true,
+          "evidence": "Fresh v2 1548 vertices match body.json and OBJ within 4.939497078026989e-7; independent OBJ-render pixel oracle differs in 0/411000 pixels. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+          "passed": true,
+          "evidence": "Real ArrowRight input on all four ranges changed vertices/pixels: height 1450/39567, chest 144/6299, waist 48/3261, hip 144/5813. All finite. Actual executor current-body-state.json reconstructed with keyboard and matches exact current/reloaded geometry; UI download matches. See grader-evidence/checks.json."
+        },
+        {
+          "text": "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+          "passed": true,
+          "evidence": "Injected known v1 values; full state equals fresh final defaults after reload: true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+          "passed": true,
+          "evidence": "Camera pixel changes 75264,75227,70147; rotation 48254; geometry unchanged; front exact reproduction true; saved reload geometry/controls/canvas exact true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+          "passed": true,
+          "evidence": "Independent fresh and edited screenshots show 39967 changed canvas pixels; supplied before/after/mobile PNGs exist. Reopened executor export reconstructed through visible controls and survives reload exactly: true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed.",
+          "passed": true,
+          "evidence": "At 1100 and 375 pixels overflow=false/false; JS/console errors=0. Report explicitly identifies synthetic geometry and assumed cm scale. See grader-evidence/checks.json."
+        }
+      ],
+      "notes": [
+        "Synthetic proxy; assumed scale, no measured anatomy.",
+        "Accepted off-step same-version cache leaves slider and mesh/label inconsistent."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+          "passed": true,
+          "evidence": "Fresh v2 1548 vertices match body.json and OBJ within 4.939497078026989e-7; independent OBJ-render pixel oracle differs in 0/411000 pixels. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+          "passed": true,
+          "evidence": "Real ArrowRight input on all four ranges changed vertices/pixels: height 1548/49999, chest 144/6363, waist 48/3281, hip 144/5838. All finite. Actual executor edited-state.json reconstructed with keyboard and matches exact current/reloaded geometry; UI download not implemented (diagnostic JSON artifact supplied). See grader-evidence/checks.json."
+        },
+        {
+          "text": "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+          "passed": true,
+          "evidence": "Injected known v1 values; full state equals fresh final defaults after reload: true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+          "passed": true,
+          "evidence": "Camera pixel changes 75791,75727,70552; rotation 48128; geometry unchanged; front exact reproduction true; saved reload geometry/controls/canvas exact true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+          "passed": true,
+          "evidence": "Independent fresh and edited screenshots show 51208 changed canvas pixels; supplied before/after/mobile PNGs exist. Reopened executor export reconstructed through visible controls and survives reload exactly: true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed.",
+          "passed": true,
+          "evidence": "At 1100 and 375 pixels overflow=false/false; JS/console errors=0. Report explicitly identifies synthetic geometry and assumed cm scale. See grader-evidence/checks.json."
+        }
+      ],
+      "notes": [
+        "Synthetic proxy; assumed scale, no measured anatomy.",
+        "Accepted off-step same-version cache leaves slider and mesh/label inconsistent.",
+        "UI chest cm label describes template dimension at changed height, despite actual section circumference mismatch.",
+        "Exported JSON generated via diagnostic rather than a user-facing export button."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+          "passed": true,
+          "evidence": "Independent triangle-plane/connected-section recomputation (1548 vertices, 3072 triangles): chest=95.931477062 cm, waist=71.948607598 cm, hip=99.928620819 cm. Absolute output errors(cm)={'chest': 0.0, 'waist': 0.0, 'hip': 0.0}; within0.5cm=True. Relocated execution matches dimensions=True; output dimensions cm and mesh_checked=true."
+        },
+        {
+          "text": "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+          "passed": true,
+          "evidence": "Independent section graphs each contain3 closed loops; unique origin-enclosing central torso is index1 left-to-right. Arm centers x=-27/+27cm. Rejected all-component sums=[158.71848104805278, 124.36210552409263, 141.61919053397332]. report.md describes selection; exact-hash reviewed section plots visibly distinguish selected torso/excluded arms; reproduction executes actual triangles."
+        },
+        {
+          "text": "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+          "passed": true,
+          "evidence": "Structured dimension fields complete=True; cm units, mesh/proxy basis, 170cm uncalibrated prior and assumed height distinguished from observed real-person dimensions. Source reference retained and report rejects real-person/anatomical inference."
+        },
+        {
+          "text": "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+          "passed": true,
+          "evidence": "bust_point_distance.value=None; physical depth.value=None. Depth evidence illustrative; visually reviewed replacement explicitly says physical depth unknown and no centimeter estimate."
+        },
+        {
+          "text": "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+          "passed": true,
+          "evidence": "Both actual PNGs decoded and independently viewed, with exact hashes recorded in independent-grader-evidence.json. Opened with view_image: actual three-plane OBJ render and three XZ section plots, colored central torso selected; gray detached arms excluded; 95.931/71.949/99.929 cm; prior scale and synthetic warning readable. Opened with view_image: retained synthetic side illustration; old observed 25.3 cm footer entirely absent. Readable replacement: ILLUSTRATIVE SYNTHETIC SIDE PROXY; Not an estimated depth map. Physical depth: UNKNOWN.; assumed170cm and generated-view caveats."
+        },
+        {
+          "text": "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim.",
+          "passed": true,
+          "evidence": "Source status matches supplied single synthetic front/generated side-back metadata=True; SHA256 all9 actual input files matches stored provenance=True. Units prior-scaled cm; uncalibrated170cm prior, unresolved physical/shape/landmark uncertainty, no anatomical accuracy claim remain explicit."
+        }
+      ],
+      "notes": [
+        "Uncalibrated170cm prior, unvalidated landmarks, shape/discretization error, single synthetic front and generated side/back; physical uncertainty unquantified.",
+        "Raw executor process provenance unavailable."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+          "passed": true,
+          "evidence": "Independent triangle-plane/connected-section recomputation (1548 vertices, 3072 triangles): chest=95.931477062 cm, waist=71.948607598 cm, hip=99.928620819 cm. Absolute output errors(cm)={'chest': 1.4210854715202004e-14, 'waist': 0.0, 'hip': 0.0}; within0.5cm=True. Relocated execution matches dimensions=True; output dimensions cm and mesh_checked=true."
+        },
+        {
+          "text": "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+          "passed": true,
+          "evidence": "Independent section graphs each contain3 closed loops; unique origin-enclosing central torso is index1 left-to-right. Arm centers x=-27/+27cm. Rejected all-component sums=[158.71848104805278, 124.36210552409263, 141.61919053397332]. report.md describes selection; exact-hash reviewed section plots visibly distinguish selected torso/excluded arms; reproduction executes actual triangles."
+        },
+        {
+          "text": "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+          "passed": true,
+          "evidence": "Structured dimension fields complete=True; cm units, mesh/proxy basis, 170cm uncalibrated prior and assumed height distinguished from observed real-person dimensions. Source reference retained and report rejects real-person/anatomical inference."
+        },
+        {
+          "text": "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+          "passed": true,
+          "evidence": "bust_point_distance.value=None; physical depth.value=None. Depth evidence illustrative; visually reviewed replacement explicitly says physical depth unknown and no centimeter estimate."
+        },
+        {
+          "text": "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+          "passed": true,
+          "evidence": "Both actual PNGs decoded and independently viewed, with exact hashes recorded in independent-grader-evidence.json. Opened with view_image: chest/waist/hip actual triangle-plane contours, central green component1, red excluded components0 and2, readable perimeters and prior-scaled cm axes; synthetic-control warning. Opened with view_image: old observed 25.3 cm footer absent; readable ILLUSTRATIVE SYNTHETIC SIDE / DEPTH and Physical depth: unknown (no centimeter estimate), assumed170cm, generated side/back, no real-person dimension warning."
+        },
+        {
+          "text": "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim.",
+          "passed": true,
+          "evidence": "Source status matches supplied single synthetic front/generated side-back metadata=True; SHA256 all9 actual input files matches stored provenance=True. Units prior-scaled cm; uncalibrated170cm prior, unresolved physical/shape/landmark uncertainty, no anatomical accuracy claim remain explicit."
+        }
+      ],
+      "notes": [
+        "Uncalibrated170cm prior, unvalidated landmarks, shape/discretization error, single synthetic front and generated side/back; physical uncertainty unquantified.",
+        "Raw executor process provenance unavailable.",
+        "without_skill independent VTK window changed23 to20cm after arm contamination; explicitly fixture-specific."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.0000"
+    }
+  },
+  "notes": [
+    "Actual OBJ/mask/browser/output executions, not plan-only or metadata routing judgments.",
+    "Three controlled tasks, one execution per configuration/task; standard deviation is across tasks, not repeated-run reliability.",
+    "Synthetic controls do not validate real human anatomy, cloth fit, or the full six-image generation workflow.",
+    "Token notification metadata was unavailable. Executor wallclock scopes differed; raw timing is retained, comparative time/token metrics omitted.",
+    "benchmark-upstream-raw.json preserves official aggregation, including fallback placeholders; only this normalized benchmark is used for interpretation.",
+    "All 18 frozen core assertions pass in each configuration, across the fit, viewer and measurement-audit cases. No individual core assertion differentiates with_skill from without_skill; the observed tie is confined to these controlled functional tasks.",
+    "There is one execution per configuration per case, not three repeated executions of a single case. The three tasks do not establish repeated-run reliability or variance. These executions test functional task completion rather than native skill triggering.",
+    "Fit case: both independently reopened OBJ meshes reproduce the frozen 384x640 front and side target masks exactly, but the fitted chest/waist/hip/depth_ratio controls differ: with_skill 96.071741/71.947370/99.691492/0.783755 versus without_skill 95.723453/72.635147/100.057357/0.785734. Exact raster agreement therefore does not uniquely identify these proxy parameters, anatomy or real measurements.",
+    "Fit case: independent validation uses the original Pillow polygon raster kernel and frozen camera. The alternate OpenCV fill probe changes 32 front and 11 side pixels in both configurations. Exact-mask results are protocol-specific; external-contour and cross-erosion distance protocols happen to agree on this fixture. Both relocated reproductions regenerate the checked fit artifacts with identical hashes.",
+    "Viewer case: core browser probes exercise actual finite vertices, rendered pixels, camera changes, save/reload, obsolete-v1 rejection and desktop/mobile layouts. Additional same-version off-step cache probes fail in both outputs: cached height170.5 leaves geometry and label170.5 while the integer-step slider shows171. Negative, numeric-string, null and invalid-JSON cache probes return defaults in both. The core pass rate hides this off-step state mismatch.",
+    "Viewer case: an extra cross-height geometry check distinguishes circumference semantics. At height180 with chest control98, with_skill measures97.930049cm at the chest section, while without_skill measures103.690640cm but labels98cm; its waist and hip labels likewise describe template controls after height scaling. This additional UI-implied claim is outside the frozen core score, and without_skill explicitly disclaims independently measured physical dimensions. The observation does not establish that the skill caused the difference.",
+    "Viewer case: with_skill includes a UI download whose state matches the geometry; without_skill supplies a diagnostic JSON artifact without a user-facing export control. Both satisfy the frozen exported-state wording, so that criterion does not discriminate between these handoff mechanisms.",
+    "Measurement-audit case: independent triangle-plane sections yield chest95.931477062cm, waist71.948607598cm and hip99.928620819cm in both outputs. Each plane contains three closed loops; both select the central torso and exclude arms rather than using contaminated all-component sums158.718481/124.362106/141.619191cm. Corrected images and provenance hashes were independently checked, and bust-point distance and physical depth remain null.",
+    "Measurement-audit extra claims expose a reproduction limit beyond the core score: the with_skill script regenerates structured measurements and both PNGs in a clean relocated directory but omits report.md, whereas without_skill regenerates all five top-level deliverables. The without_skill independent VTK check also records changing a fixture-specific crop window from23 to20cm after arm contamination.",
+    "Process evidence is narrower than artifact evidence: the fit no-hidden-access claim rests on narrative transcripts and reproduction source, not an OS-level access audit. In the measurement case, executor visual-inspection/VTK historical tool-call claims remain unverified because raw tool events were not retained; the grader separately inspected actual images and recomputed geometry.",
+    "Normalized benchmark time_seconds, tokens and tool_calls are null. Raw timer scopes differ and omit some preparation; token and call telemetry is unavailable. Raw durations, narrative lengths and reproduction timings do not support comparative latency, token-cost or efficiency conclusions.",
+    "All three cases use synthetic proxy fixtures and assumed170cm scale. The fit uses two synthetic silhouettes; the audit uses a single synthetic front with generated side/back. Real anatomy, physical garment fit, unique shape recovery, the full six-image generation workflow and physical uncertainty calibration remain untested.",
+    "hillclimb-proposal.json records an upcoming v1 revision prompted by the independently observed off-step cache mismatch, with general type/range/step canonicalization and cross-height semantics checks, plus a separate regression assertion. This is revision provenance only; it does not change iteration-1 core grades or establish any iteration-2 outcome."
+  ],
+  "native_trigger_results": null
+}

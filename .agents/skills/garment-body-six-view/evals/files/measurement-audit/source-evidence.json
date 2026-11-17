@@ -1,0 +1,26 @@
+{
+  "reference_type": "single synthetic front image",
+  "source_front": "source-front.png",
+  "observed_views": [
+    "front"
+  ],
+  "generated_views": [
+    "generated-side.png",
+    "generated-back.png"
+  ],
+  "scale": {
+    "kind": "assumption",
+    "height_cm": 170,
+    "source": "170 cm prior; no calibration object or known camera distance"
+  },
+  "depth": {
+    "kind": "illustrative",
+    "source": "proxy design assumption; front reference does not establish physical depth"
+  },
+  "bust_point_distance": {
+    "kind": "unknown",
+    "reason": "no semantic bust landmarks or reliable multi-view evidence supplied"
+  },
+  "mesh": "body.obj",
+  "mesh_topology": "disconnected central torso, head, legs and arms; y is vertical"
+}

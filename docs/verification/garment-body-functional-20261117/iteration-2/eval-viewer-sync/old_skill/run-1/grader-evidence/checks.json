@@ -1,0 +1,505 @@
+{
+  "maximumHeightFraming": {
+    "height": 195,
+    "projectedTop": -21.75,
+    "projectedBottom": 690,
+    "canvasHeight": 720,
+    "fullyInsideCanvas": false
+  },
+  "actualMobile": {
+    "deviceViewport": 375,
+    "innerWidth": 375,
+    "visualViewportWidth": 375,
+    "scrollWidth": 375,
+    "viewportMeta": "width=device-width,initial-scale=1",
+    "horizontalOverflow": false,
+    "usesDeviceWidth": true
+  },
+  "projection": {
+    "offsetX": 300,
+    "scaleX": 3.65,
+    "offsetY": 690,
+    "scaleY": 3.65,
+    "contract": "source inspected affine orthographic XZ rotation/Y up; default front angle0"
+  },
+  "reportEvidence": [
+    "The cache is accepted only when both version 2 and model identifier `final-v2-obj` match. Stale v1, malformed, missing and incompatible caches fall back to final defaults: height 170, chest 98, waist 74, hip 102, depth ratio .78. Numeric cached inputs are bounded; storage failures leave the viewer functional. Slider input rebuilds the actual mesh from procedural deltas relative to final geometry, then persists parameters. Centered cross-sections retain their centers. `window.evalState()` is non-writable and returns detached snapshots of current renderer vertices and parameters.",
+    "| Height slider | 1,548 vertices; 76,157 pixels changed |",
+    "Assumptions: this remains the fixture's simplified synthetic loft proxy, with assumed centimetres and a 170cm height prior. Coordinates preserve fixture X horizontal, Y up, Z depth. The existing procedural proportions and renderer are retained; height scales all axes, so circumference labels remain model controls rather than independently verified anatomical measurements at changed height. No image fitting, new anatomy, photorealism or real-person measurement accuracy is claimed. Shoulder control was outside the requested four-slider repair. Camera angles are functional; front/back geometric symmetry means differences also reflect triangle shading. Persistence assumes the same browser origin. File delivery is standalone, but Chromium execution was verified through loopback HTTP because managed file URLs are blocked."
+  ],
+  "fresh": {
+    "version": 2,
+    "params": {
+      "version": 2,
+      "height": 170,
+      "chest": 98,
+      "waist": 74,
+      "hip": 102,
+      "depth_ratio": 0.78
+    },
+    "vertices": 1548,
+    "objMaxDelta": 3.552713678800501e-15,
+    "objPixelOracle": {
+      "differing": 0,
+      "total": 411000
+    },
+    "passed": true
+  },
+  "sliders": [
+    {
+      "key": "height",
+      "before": 170,
+      "after": 171,
+      "changedVertices": 1548,
+      "changedPixels": 49999,
+      "finite": true,
+      "stateMatchesControl": true
+    },
+    {
+      "key": "chest",
+      "before": 98,
+      "after": 99,
+      "changedVertices": 144,
+      "changedPixels": 6363,
+      "finite": true,
+      "stateMatchesControl": true
+    },
+    {
+      "key": "waist",
+      "before": 74,
+      "after": 75,
+      "changedVertices": 48,
+      "changedPixels": 3281,
+      "finite": true,
+      "stateMatchesControl": true
+    },
+    {
+      "key": "hip",
+      "before": 102,
+      "after": 103,
+      "changedVertices": 144,
+      "changedPixels": 5838,
+      "finite": true,
+      "stateMatchesControl": true
+    }
+  ],
+  "staleV1Rejected": true,
+  "camera": [
+    {
+      "angle": "1.57079632679",
+      "changedPixels": 75791,
+      "geometryUnchanged": true,
+      "rotation": 90
+    },
+    {
+      "angle": "3.14159265359",
+      "changedPixels": 75727,
+      "geometryUnchanged": true,
+      "rotation": 180
+    },
+    {
+      "angle": "0",
+      "changedPixels": 70552,
+      "geometryUnchanged": true,
+      "rotation": 0
+    }
+  ],
+  "rotation": {
+    "changedPixels": 48128,
+    "geometryUnchanged": true
+  },
+  "frontReproduced": true,
+  "reload": true,
+  "uiExport": null,
+  "exportedArtifact": {
+    "name": "diagnostic-slider-reloaded.json",
+    "reopenedMatches": true
+  },
+  "desktopOverflow": false,
+  "mobileOverflow": false,
+  "errors": [],
+  "invalidCache": [
+    {
+      "name": "negative",
+      "returnedDefaults": false,
+      "finite": true,
+      "coherent": true,
+      "params": {
+        "version": 2,
+        "height": 146,
+        "chest": 98,
+        "waist": 56,
+        "hip": 66,
+        "depth_ratio": 0.78
+      },
+      "controls": {
+        "height": 146,
+        "chest": 98,
+        "waist": 56,
+        "hip": 66
+      }
+    },
+    {
+      "name": "numeric-string",
+      "returnedDefaults": false,
+      "finite": true,
+      "coherent": true,
+      "params": {
+        "version": 2,
+        "height": 146,
+        "chest": 98,
+        "waist": 56,
+        "hip": 66,
+        "depth_ratio": 0.78
+      },
+      "controls": {
+        "height": 146,
+        "chest": 98,
+        "waist": 56,
+        "hip": 66
+      }
+    },
+    {
+      "name": "nonfinite-null",
+      "returnedDefaults": false,
+      "finite": true,
+      "coherent": true,
+      "params": {
+        "version": 2,
+        "height": 146,
+        "chest": 98,
+        "waist": 56,
+        "hip": 66,
+        "depth_ratio": 0.78
+      },
+      "controls": {
+        "height": 146,
+        "chest": 98,
+        "waist": 56,
+        "hip": 66
+      }
+    },
+    {
+      "name": "literal-NaN-invalid-JSON",
+      "returnedDefaults": true,
+      "coherent": true
+    }
+  ],
+  "heightCircumferenceProbe": {
+    "height": 180,
+    "chestControl": 98,
+    "displayedChest": "98 cm",
+    "polygonCircumference170": 97.93004882230717,
+    "polygonCircumference180": 103.69063993150687,
+    "relativeHeightScaling": 1.0588235294322401,
+    "labelVsMeasuredDifference": 5.690639931506865,
+    "allCurrentDimensions": {
+      "height": {
+        "label": "180 cm",
+        "actualVerticalExtent": 180
+      },
+      "chest": {
+        "label": "98 cm",
+        "actualSection": 103.69063993150687
+      },
+      "waist": {
+        "label": "74 cm",
+        "actualSection": 78.2970138392364
+      },
+      "hip": {
+        "label": "102 cm",
+        "actualSection": 107.92291140012075
+      }
+    },
+    "interpretation": "UI cm label reports template parameter; actual current torso circumference differs."
+  },
+  "fractionalCache": {
+    "seedHeight": 170.5,
+    "actualHeight": 170.5,
+    "controlHeight": 171,
+    "displayedHeight": "170.5 cm",
+    "controlMatchesState": false
+  },
+  "offStepProbes": [
+    {
+      "supplied": {
+        "height": 170.5
+      },
+      "params": {
+        "version": 2,
+        "height": 170.5,
+        "chest": 66,
+        "waist": 56,
+        "hip": 66,
+        "depth_ratio": 0.78
+      },
+      "controls": {
+        "height": 171,
+        "chest": 66,
+        "waist": 56,
+        "hip": 66
+      },
+      "fields": {
+        "height": {
+          "value": 171,
+          "min": 145,
+          "max": 195,
+          "step": 1,
+          "label": "170.5 cm"
+        },
+        "chest": {
+          "value": 66,
+          "min": 65,
+          "max": 130,
+          "step": 1,
+          "label": "66 cm"
+        },
+        "waist": {
+          "value": 56,
+          "min": 55,
+          "max": 120,
+          "step": 1,
+          "label": "56 cm"
+        },
+        "hip": {
+          "value": 66,
+          "min": 65,
+          "max": 135,
+          "step": 1,
+          "label": "66 cm"
+        }
+      },
+      "allControlsMatch": false,
+      "labelsMatch": true,
+      "validSchema": false,
+      "finite": true,
+      "geometryMatchesControls": false,
+      "pixelsMatchControls": false,
+      "passed": false
+    },
+    {
+      "supplied": {
+        "height": 175.25
+      },
+      "params": {
+        "version": 2,
+        "height": 175.25,
+        "chest": 66,
+        "waist": 56,
+        "hip": 66,
+        "depth_ratio": 0.78
+      },
+      "controls": {
+        "height": 175,
+        "chest": 66,
+        "waist": 56,
+        "hip": 66
+      },
+      "fields": {
+        "height": {
+          "value": 175,
+          "min": 145,
+          "max": 195,
+          "step": 1,
+          "label": "175.25 cm"
+        },
+        "chest": {
+          "value": 66,
+          "min": 65,
+          "max": 130,
+          "step": 1,
+          "label": "66 cm"
+        },
+        "waist": {
+          "value": 56,
+          "min": 55,
+          "max": 120,
+          "step": 1,
+          "label": "56 cm"
+        },
+        "hip": {
+          "value": 66,
+          "min": 65,
+          "max": 135,
+          "step": 1,
+          "label": "66 cm"
+        }
+      },
+      "allControlsMatch": false,
+      "labelsMatch": true,
+      "validSchema": false,
+      "finite": true,
+      "geometryMatchesControls": false,
+      "pixelsMatchControls": false,
+      "passed": false
+    },
+    {
+      "supplied": {
+        "chest": 99.5
+      },
+      "params": {
+        "version": 2,
+        "height": 146,
+        "chest": 99.5,
+        "waist": 56,
+        "hip": 66,
+        "depth_ratio": 0.78
+      },
+      "controls": {
+        "height": 146,
+        "chest": 100,
+        "waist": 56,
+        "hip": 66
+      },
+      "fields": {
+        "height": {
+          "value": 146,
+          "min": 145,
+          "max": 195,
+          "step": 1,
+          "label": "146 cm"
+        },
+        "chest": {
+          "value": 100,
+          "min": 65,
+          "max": 130,
+          "step": 1,
+          "label": "99.5 cm"
+        },
+        "waist": {
+          "value": 56,
+          "min": 55,
+          "max": 120,
+          "step": 1,
+          "label": "56 cm"
+        },
+        "hip": {
+          "value": 66,
+          "min": 65,
+          "max": 135,
+          "step": 1,
+          "label": "66 cm"
+        }
+      },
+      "allControlsMatch": false,
+      "labelsMatch": true,
+      "validSchema": false,
+      "finite": true,
+      "geometryMatchesControls": false,
+      "pixelsMatchControls": false,
+      "passed": false
+    },
+    {
+      "supplied": {
+        "waist": 75.25
+      },
+      "params": {
+        "version": 2,
+        "height": 146,
+        "chest": 66,
+        "waist": 75.25,
+        "hip": 66,
+        "depth_ratio": 0.78
+      },
+      "controls": {
+        "height": 146,
+        "chest": 66,
+        "waist": 75,
+        "hip": 66
+      },
+      "fields": {
+        "height": {
+          "value": 146,
+          "min": 145,
+          "max": 195,
+          "step": 1,
+          "label": "146 cm"
+        },
+        "chest": {
+          "value": 66,
+          "min": 65,
+          "max": 130,
+          "step": 1,
+          "label": "66 cm"
+        },
+        "waist": {
+          "value": 75,
+          "min": 55,
+          "max": 120,
+          "step": 1,
+          "label": "75.25 cm"
+        },
+        "hip": {
+          "value": 66,
+          "min": 65,
+          "max": 135,
+          "step": 1,
+          "label": "66 cm"
+        }
+      },
+      "allControlsMatch": false,
+      "labelsMatch": true,
+      "validSchema": false,
+      "finite": true,
+      "geometryMatchesControls": false,
+      "pixelsMatchControls": false,
+      "passed": false
+    },
+    {
+      "supplied": {
+        "hip": 103.5
+      },
+      "params": {
+        "version": 2,
+        "height": 146,
+        "chest": 66,
+        "waist": 56,
+        "hip": 103.5,
+        "depth_ratio": 0.78
+      },
+      "controls": {
+        "height": 146,
+        "chest": 66,
+        "waist": 56,
+        "hip": 104
+      },
+      "fields": {
+        "height": {
+          "value": 146,
+          "min": 145,
+          "max": 195,
+          "step": 1,
+          "label": "146 cm"
+        },
+        "chest": {
+          "value": 66,
+          "min": 65,
+          "max": 130,
+          "step": 1,
+          "label": "66 cm"
+        },
+        "waist": {
+          "value": 56,
+          "min": 55,
+          "max": 120,
+          "step": 1,
+          "label": "56 cm"
+        },
+        "hip": {
+          "value": 104,
+          "min": 65,
+          "max": 135,
+          "step": 1,
+          "label": "103.5 cm"
+        }
+      },
+      "allControlsMatch": false,
+      "labelsMatch": true,
+      "validSchema": false,
+      "finite": true,
+      "geometryMatchesControls": false,
+      "pixelsMatchControls": false,
+      "passed": false
+    }
+  ]
+}

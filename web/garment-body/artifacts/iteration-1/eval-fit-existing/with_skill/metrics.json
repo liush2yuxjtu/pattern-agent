@@ -1,0 +1,75 @@
+{
+  "protocol": {
+    "camera": {
+      "projection": "orthographic",
+      "width": 384,
+      "height": 640,
+      "horizontal_extent_cm": [
+        -50,
+        50
+      ],
+      "vertical_extent_cm": [
+        -4,
+        180
+      ],
+      "near_axis": "front +z; side +x; back -z",
+      "scale_assumption": "height prior 170 cm; synthetic controls"
+    },
+    "threshold": ">127",
+    "contours": "OpenCV RETR_EXTERNAL / CHAIN_APPROX_NONE, exact Euclidean distance transform, concatenated bidirectional boundary samples; P95 over concatenation",
+    "reference_sha256": {
+      "front": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a",
+      "side": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    "mesh_sha256": "21232711a054b0c7719d69b00b4eda2b759d71654b18d54575b57b4ac7b5f72c",
+    "scale": "170 cm prior; synthetic proxy, not anatomical accuracy"
+  },
+  "initial": {
+    "front": {
+      "iou": 0.9527538726333907,
+      "dice": 0.9758053853950905,
+      "mean_symmetric_contour_distance_px": 1.1226375102996826,
+      "p95_symmetric_contour_distance_px": 9.0,
+      "evaluation_size_px": [
+        384,
+        640
+      ],
+      "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+    },
+    "side": {
+      "iou": 0.8887537029200169,
+      "dice": 0.9411006861784064,
+      "mean_symmetric_contour_distance_px": 3.146641969680786,
+      "p95_symmetric_contour_distance_px": 12.0,
+      "evaluation_size_px": [
+        384,
+        640
+      ],
+      "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+    }
+  },
+  "final": {
+    "front": {
+      "iou": 1.0,
+      "dice": 1.0,
+      "mean_symmetric_contour_distance_px": 0.0,
+      "p95_symmetric_contour_distance_px": 0.0,
+      "evaluation_size_px": [
+        384,
+        640
+      ],
+      "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+    },
+    "side": {
+      "iou": 1.0,
+      "dice": 1.0,
+      "mean_symmetric_contour_distance_px": 0.0,
+      "p95_symmetric_contour_distance_px": 0.0,
+      "evaluation_size_px": [
+        384,
+        640
+      ],
+      "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+    }
+  }
+}

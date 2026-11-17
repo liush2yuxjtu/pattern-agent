@@ -1,0 +1,270 @@
+{
+  "method": "independent OBJ parser + NumPy frozen-camera projection + original Pillow polygon kernel; OpenCV boundaries/distance transforms; no executor self-grade imported",
+  "geometry": {
+    "vertices": 1548,
+    "triangles": 3072,
+    "finite": true,
+    "axis_spans_cm": [
+      64.0,
+      170.0,
+      27.951942
+    ],
+    "zero_area_triangles": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0
+  },
+  "constraints": {
+    "positive_parameters": true,
+    "height_prior_and_mesh_170": true,
+    "depth_ratio_in_bounds": true,
+    "torso_control_max_errors_cm": {
+      "chest": 4.512624158792278e-07,
+      "waist": 4.92696896614575e-07,
+      "hip": 3.377547521665747e-07
+    }
+  },
+  "metrics": {
+    "front": {
+      "initial": {
+        "iou": 0.9527538726333907,
+        "dice": 0.9758053853950905,
+        "mean_symmetric_contour_distance_px": 1.1226374844314824,
+        "p95_symmetric_contour_distance_px": 9.0
+      },
+      "final": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    },
+    "side": {
+      "initial": {
+        "iou": 0.8887537029200169,
+        "dice": 0.9411006861784064,
+        "mean_symmetric_contour_distance_px": 3.146641885455812,
+        "p95_symmetric_contour_distance_px": 12.0
+      },
+      "final": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    }
+  },
+  "iou_gains": {
+    "front": 0.04724612736660927,
+    "side": 0.11124629707998313
+  },
+  "saved_metric_absolute_errors": {
+    "front": {
+      "initial": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "mean_symmetric_contour_distance_px": 2.586820024852443e-08,
+        "p95_symmetric_contour_distance_px": 0.0
+      },
+      "final": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    },
+    "side": {
+      "initial": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "mean_symmetric_contour_distance_px": 8.422497410620622e-08,
+        "p95_symmetric_contour_distance_px": 0.0
+      },
+      "final": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    }
+  },
+  "mask_differing_pixels": {
+    "front": {
+      "initial": 0,
+      "final": 0
+    },
+    "side": {
+      "initial": 0,
+      "final": 0
+    }
+  },
+  "previews": {
+    "front": {
+      "shape": [
+        640,
+        384,
+        3
+      ],
+      "different_channel_values": 0,
+      "nonempty": true
+    },
+    "side": {
+      "shape": [
+        640,
+        384,
+        3
+      ],
+      "different_channel_values": 0,
+      "nonempty": true
+    },
+    "back": {
+      "shape": [
+        640,
+        384,
+        3
+      ],
+      "different_channel_values": 0,
+      "nonempty": true
+    }
+  },
+  "overlays": {
+    "front": {
+      "size": [
+        640,
+        384,
+        3
+      ],
+      "foreground_rgb_colors": [
+        [
+          55,
+          220,
+          125
+        ]
+      ],
+      "foreground_counts": [
+        69144
+      ],
+      "foreground_uniform_overlap": true
+    },
+    "side": {
+      "size": [
+        640,
+        384,
+        3
+      ],
+      "foreground_rgb_colors": [
+        [
+          55,
+          220,
+          125
+        ]
+      ],
+      "foreground_counts": [
+        37696
+      ],
+      "foreground_uniform_overlap": true
+    }
+  },
+  "provenance": {
+    "reference_sha256": {
+      "front": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a",
+      "side": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    "saved_reference_hashes_agree": true,
+    "fitted_obj_sha256": "80d42009d639d9ed80c261e0a64290f772fea05e90d65334b6e6d5834139d198",
+    "saved_source_hashes_agree": {
+      "generator.py": true,
+      "camera.json": true,
+      "initial-params.json": true
+    },
+    "source_sha256": {
+      "generator.py": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991",
+      "camera.json": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd",
+      "initial-params.json": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e"
+    },
+    "generator_unchanged": true,
+    "generator_source": "inputs/generator.py",
+    "saved_reference_hash_field": "metrics.json.sha256",
+    "metric_field_mapping": {
+      "stages": "initial/final",
+      "views": "front/side",
+      "scalars": [
+        "iou",
+        "dice",
+        "mean_symmetric_contour_distance_px",
+        "p95_symmetric_contour_distance_px"
+      ],
+      "contour_protocol": "external"
+    },
+    "report_evidence_quotes": [
+      "Executed bounded SciPy optimization using only the supplied front and side binary masks. This is controlled synthetic silhouette consistency, not anatomical ground truth or a person's body measurement. The supplied source geometry, pose and camera are preserved. No back reference photograph exists; back.png is an inferred rendering of the same proxy.",
+      "Source masks were visually inspected before fitting. Height is frozen to the **assumed 170 cm prior**; bounds are recorded in metrics.json, with depth ratio constrained to [0.45, 1.05]. Circumference bounds are deliberately broad engineering priors, not population confidence intervals. Both views participate in fitting; neither is held out. No mask, camera, scale or source generator was modified. Native coordinates are X left/right, Y up, Z depth; these are preserved to avoid changing the existing model convention. Orthographic front views along +Z, side along +X and back along -Z; canvas is 384\u00d7640, horizontal [-50,50] cm, vertical [-4,180] cm.",
+      "Final parameters: `{\"height\": 170.0, \"chest\": 96.29509988633787, \"waist\": 71.9301658975463, \"hip\": 100.01259696783724, \"depth_ratio\": 0.7875177015874257}`. Chest/waist/hip are ellipse-circumference controls in prior-scaled cm, not observed anatomy. Mesh-derived 48-edge torso-ring perimeters at native Y=128/109/88 cm are recorded under sections in metrics.json; small differences from parameter values follow polygon discretization and the ellipse formula. Source lofts include fixed head/limbs and have overlapping disconnected capped components. Reopened mesh has 1548 finite vertices and 3072 triangles; no boundary or nonmanifold edges, height 170 cm. This is a simplified synthetic proxy, not a production anatomical or physical fitting body.",
+      "Two silhouettes constrain projected widths and depths under this fixed model; they do not determine arbitrary cross-section shapes, anatomical landmarks, clothing ease, tissue structure or an independently validated back surface. Side depth is inferred through the shared ellipse-ratio prior and observed synthetic side envelope. All cm values depend on assumed height; proportional changes in that prior scale all lengths. No statistical confidence interval or anatomical accuracy percentage is claimed. Pixel quantization permits multiple nearby parameters with the same raster silhouette. Remaining pixel discrepancies and each view's changes are preserved above. The weaker final view by IoU is front; any tie is equivalent. No unseen back evidence or extra observed photograph was invented.",
+      "Opened all three actual mesh previews and both overlays after export. The previews show the existing capped, disconnected synthetic loft design; overlays are entirely overlap green where foreground exists. Independently imported the skill verification script and recomputed all four metrics for both stages and both views from saved mask files; every value matched metrics.json exactly (see independent-verification.json). Pixel-perfect final silhouettes do not imply unique parameters or human anatomical accuracy."
+    ],
+    "camera_unchanged": true,
+    "initial_input_hashes": {
+      "initial-params.json": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e",
+      "camera.json": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd",
+      "generator.py": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    "access_evidence": "Full executor transcript states only declared task data and authorized workflow/helper code were read; reproduction source opens only declared inputs and local helper code. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit.",
+    "transcript_sha256": "d08176d378313a1f577fb74c82c3b1a6cddcc7b3cc3f2ecd66f9e666045a08be",
+    "report_sha256": "1b107664f6dcda1b07a8588653154645b21c3f41ed6e0e5087bd4ac4291ac100"
+  },
+  "search_outline_exactness": {
+    "front": {
+      "outline_vs_delivered_triangle_different_pixels": 2
+    },
+    "side": {
+      "outline_vs_delivered_triangle_different_pixels": 2
+    }
+  },
+  "opencv_alternate_raster_sensitivity": {
+    "front": {
+      "differing_pixels_from_frozen_raster": 32,
+      "metrics": {
+        "iou": 0.9995373984445023,
+        "dice": 0.9997686457098239,
+        "mean_symmetric_contour_distance_px": 0.011544011544011544,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    },
+    "side": {
+      "differing_pixels_from_frozen_raster": 11,
+      "metrics": {
+        "iou": 0.9997082615037793,
+        "dice": 0.9998541094709479,
+        "mean_symmetric_contour_distance_px": 0.00859375,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    }
+  },
+  "portability": {
+    "status": "PASS",
+    "exit_code": 0,
+    "artifact_sha256_identical": {
+      "fitted.obj": true,
+      "params.json": true,
+      "camera.json": true,
+      "initial-front-mask.png": true,
+      "initial-side-mask.png": true,
+      "final-front-mask.png": true,
+      "final-side-mask.png": true,
+      "front.png": true,
+      "side.png": true,
+      "back.png": true,
+      "front-overlay.png": true,
+      "side-overlay.png": true
+    },
+    "duration_seconds": 31.16504033700039,
+    "scope": "fresh temporary directory; delivered code and declared inputs only; Python audit hook rejects open() paths resolving under /workspace; no original outputs modified",
+    "open_events_observed": 599,
+    "portability_limits": "Installed interpreter and packages remain available. Python audit hooks are not an OS sandbox and do not prove absence of native-code filesystem dependencies. This test demonstrates successful relocated reproduction with original workspace Python file opens denied; fresh cwd alone would not establish that."
+  },
+  "scope": {
+    "synthetic_constraints": "RUN",
+    "full_six_image_reconstruction": "NOT_RUN",
+    "anatomical_accuracy": "NOT_RUN"
+  }
+}

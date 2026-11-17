@@ -1,0 +1,13 @@
+{
+  "eval_id": 3,
+  "eval_name": "measurement-audit",
+  "prompt": "Audit measurements.json and depth-claim.png using source-evidence.json, sections.json and actual body.obj. Execute mesh-plane section measurements and choose the central torso contour where disconnected arm loops also intersect. Save corrected measurements with explicit units, scale assumption, evidence status and uncertainty; preserve unavailable bust-point distance as unknown. Correct the misleading depth caption and provide rendered section evidence. Do not claim real-person dimensions from these synthetic controls.\n\nSave top-level corrected-measurements.json, report.md, section-evidence.png, corrected-depth.png and runnable reproduce.py. Corrected dimensions should include name,value,unit,basis,mesh_checked,limitations. Unknown values stay null; include source hashes. Execute actual mesh sections rather than copying provided numeric report.\nAll work is authorized on these synthetic controlled fixtures. Use existing local Python/browser capabilities; do not invoke image generation or external paid services. Execute the work; a plan alone is not completion.",
+  "assertions": [
+    "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+    "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+    "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+    "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+    "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+    "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim."
+  ]
+}

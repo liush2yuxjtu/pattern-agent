@@ -70,3 +70,34 @@ or missing decision through the same CLI and require rejection. Run the local
 The scorer verifies arithmetic only. Check that aggregate repeated decisions
 are not described as new independent queries, final holdout was not used to tune,
 and no native trigger claim is made. Native overall verdict stays BLOCKED.
+
+## Executed functional review / existing Pages publication
+
+Use `tools/skill_evals/grade_functional_fit.py --case CASE`,
+`grade_functional_audit.py --case CASE`, and
+`node tools/skill_evals/grade_functional_viewer.cjs --case CASE`.
+These independently reopen actual geometry, images, source evidence and browser
+state. Preserve expectation failures as measured outcomes; they are not a
+reason to rewrite or weaken a test. New regression expectations apply
+prospectively and are distinct from earlier frozen grades.
+
+Invoke `aggregate_functional.py ITERATION`, then
+`build_functional_assets.py --workspace WORKSPACE --evidence EVIDENCE --site web/garment-body`.
+Keep the official upstream files hash-pinned; static feedback/security fixes are
+in the separate `build_functional_review.py` adapter. Build with
+`python scripts/build_pages.py`. Serve dist with loopback HTTP and drive
+`node tools/skill_evals/verify_functional_review.cjs --url URL --out OUT --expected-runs 6`. Require actual Outputs/Benchmark
+navigation, grades, reload persistence, downloaded/reopened feedback, mobile and
+no API or page errors. Independently open screenshots.
+
+The existing Pages workflow only publishes. No CI or workflow change is needed.
+After direct-main push, inspect its exact-SHA deployment then run the same
+public pinned browser verifier against the real Pages URL. If this VM's proxy
+blocks the domain, follow the public-only Firecrawl Bash/standalone Chrome
+fallback in github-pages.md. Never send unpublished local artifacts to that host.
+Require hosted build.json SHA and downloaded public asset hashes to match the
+deployed source; preserve the live receipt after verification.
+
+Functional verification is distinct from native Claude trigger tests, which
+remain BLOCKED until that runtime is available. Current evidence:
+[functional20261117](../../../../docs/verification/garment-body-functional-20261117/README.md).

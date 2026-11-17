@@ -1,0 +1,75 @@
+{
+  "initial": {
+    "front": {
+      "iou": 0.9527538726333907,
+      "dice": 0.9758053853950905,
+      "mean_symmetric_contour_distance_px": 1.1226375102996826,
+      "p95_symmetric_contour_distance_px": 9.0,
+      "evaluation_size_px": [
+        384,
+        640
+      ],
+      "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+    },
+    "side": {
+      "iou": 0.8887537029200169,
+      "dice": 0.9411006861784064,
+      "mean_symmetric_contour_distance_px": 3.146641969680786,
+      "p95_symmetric_contour_distance_px": 12.0,
+      "evaluation_size_px": [
+        384,
+        640
+      ],
+      "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+    }
+  },
+  "final": {
+    "front": {
+      "iou": 1.0,
+      "dice": 1.0,
+      "mean_symmetric_contour_distance_px": 0.0,
+      "p95_symmetric_contour_distance_px": 0.0,
+      "evaluation_size_px": [
+        384,
+        640
+      ],
+      "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+    },
+    "side": {
+      "iou": 1.0,
+      "dice": 1.0,
+      "mean_symmetric_contour_distance_px": 0.0,
+      "p95_symmetric_contour_distance_px": 0.0,
+      "evaluation_size_px": [
+        384,
+        640
+      ],
+      "interpretation": "2D silhouette agreement; not anatomical measurement accuracy"
+    }
+  },
+  "protocol": {
+    "resolution_px": [
+      384,
+      640
+    ],
+    "camera": {
+      "projection": "orthographic",
+      "width": 384,
+      "height": 640,
+      "horizontal_extent_cm": [
+        -50,
+        50
+      ],
+      "vertical_extent_cm": [
+        -4,
+        180
+      ],
+      "near_axis": "front +z; side +x; back -z",
+      "scale_assumption": "height prior 170 cm; synthetic controls"
+    },
+    "threshold": ">127",
+    "contours": "external contours, all components, one-pixel boundary; pooled bidirectional Euclidean distances",
+    "target_evidence": "only supplied synthetic front/side binary masks",
+    "scale": "170 cm assumed height; no observed anatomical scale"
+  }
+}

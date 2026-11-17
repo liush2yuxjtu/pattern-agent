@@ -1,0 +1,170 @@
+[
+  {
+    "run": "iteration-1/eval-fit-existing/with_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "start_time_utc": "2026-11-17T03:19:33+00:00",
+      "end_time_utc": "2026-11-17T03:21:30.450662+00:00",
+      "total_duration_seconds": 117.450662,
+      "total_tokens": null,
+      "metadata_not_available": true,
+      "timing_scope": "Measured local implementation, optimization and artifact checks; initial task/skill/input preparation precedes measured start."
+    }
+  },
+  {
+    "run": "iteration-1/eval-fit-existing/without_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "start_time_utc": "2026-11-17T03:19:14+00:00",
+      "end_time_utc": "2026-11-17T03:22:16.301195+00:00",
+      "total_duration_seconds": 182.301195,
+      "total_tokens": null,
+      "metadata_not_available": true,
+      "notes": "Start is first recorded UTC wallclock; brief metadata inspection preceded recording. Token totals are not exposed by tool notifications."
+    }
+  },
+  {
+    "run": "iteration-1/eval-measurement-audit/with_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "start_utc": "2026-11-17T03:19:56.779052+00:00",
+      "end_utc": "2026-11-17T03:21:48.956720+00:00",
+      "total_duration_seconds": 112.177668,
+      "total_tokens": null,
+      "metadata_not_available": true,
+      "timing_scope": "deliverable implementation and verification; initial task and skill inspection preceded timer"
+    }
+  },
+  {
+    "run": "iteration-1/eval-measurement-audit/without_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "start_time_utc": "2026-11-17T03:20:48Z",
+      "start_epoch_seconds": 1794885648.2256393,
+      "end_time_utc": "2026-11-17T03:23:13Z",
+      "total_duration_seconds": 144.99309277534485,
+      "total_tokens": null,
+      "metadata_not_available": true,
+      "end_epoch_seconds": 1794885793.218732,
+      "timing_scope": "implementation and verification; initial input inspection preceded recorded start"
+    }
+  },
+  {
+    "run": "iteration-1/eval-viewer-sync/with_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "start_wallclock": "2026-11-17T03:19:26+00:00",
+      "end_wallclock": "2026-11-17T03:23:33.219463+00:00",
+      "total_duration_seconds": 247.219463,
+      "total_tokens": null,
+      "metadata_not_available": true
+    }
+  },
+  {
+    "run": "iteration-1/eval-viewer-sync/without_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "start_time": "2026-11-17T03:19:37+00:00",
+      "end_time": "2026-11-17T03:23:03.551076+00:00",
+      "total_duration_seconds": 206.551076,
+      "total_tokens": null,
+      "metadata_not_available": true
+    }
+  },
+  {
+    "run": "iteration-2/eval-fit-existing/old_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "scope": "Actual reproduce.py optimization, export, independent OBJ/mask reopening, validation, metrics and report; excludes prior task/skill reading and later visual review",
+      "start": "2026-11-17T03:31:31.174503+00:00",
+      "end": "2026-11-17T03:32:23.198423+00:00",
+      "total_duration_seconds": 52.023921642999994,
+      "total_tokens": null,
+      "metadata_not_available": true
+    }
+  },
+  {
+    "run": "iteration-2/eval-fit-existing/with_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "scope": "reproduce.py execution: load inputs, bounded optimization, export, reopen and evaluate, generate artifacts/report; excludes skill reading and later reviewer image inspection",
+      "start": "2026-11-17T03:31:38.979147+00:00",
+      "end": "2026-11-17T03:32:17.299705+00:00",
+      "total_duration_seconds": 38.32057276000069,
+      "total_tokens": null,
+      "metadata_not_available": true
+    }
+  },
+  {
+    "run": "iteration-2/eval-measurement-audit/old_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "scope": "Recorded wallclock from first explicit UTC timestamp after task/skill/JSON intake, through computation, helper cross-check, rendered evidence inspection and deliverable verification. Earlier intake excluded.",
+      "start": "2026-11-17T03:30:57.106386+00:00",
+      "end": "2026-11-17T03:32:55.396041+00:00",
+      "total_duration_seconds": 118.289655,
+      "total_tokens": null,
+      "metadata_not_available": true
+    }
+  },
+  {
+    "run": "iteration-2/eval-measurement-audit/with_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "scope": "Implementation, mesh computation, rendering and verification after task and input intake; excludes initial intake.",
+      "start": "2026-11-17T03:30:54.047546+00:00",
+      "end": "2026-11-17T03:32:42.489752+00:00",
+      "total_duration_seconds": 108.442206,
+      "total_tokens": null,
+      "metadata_not_available": true
+    }
+  },
+  {
+    "run": "iteration-2/eval-viewer-sync/old_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "scope": "Repair implementation, browser verification, screenshot inspection and report writing; excludes initial task/skill/input inspection",
+      "start": "2026-11-17T03:30:56.163524+00:00",
+      "end": "2026-11-17T03:33:45.786634+00:00",
+      "duration_seconds": 169.62311,
+      "total_tokens": null,
+      "metadata_not_available": true
+    }
+  },
+  {
+    "run": "iteration-2/eval-viewer-sync/with_skill/run-1",
+    "notification_total_tokens": null,
+    "notification_duration_ms": null,
+    "reason": "Completion tool exposes text only, not requested telemetry",
+    "executor_timing": {
+      "scope": "Measured wall-clock from start of implementation (after input and skill inspection) through repair, browser verification, visual inspection, and delivery documentation; excludes initial input/skill reading.",
+      "start": "2026-11-17T03:30:47+00:00",
+      "end": "2026-11-17T03:33:19.276928+00:00",
+      "duration_seconds": 152.276928,
+      "total_tokens": null,
+      "metadata_not_available": true
+    }
+  }
+]

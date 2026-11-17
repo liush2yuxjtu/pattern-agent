@@ -1,0 +1,21 @@
+{
+  "skill_name": "garment-body-six-view",
+  "current_best": "v1-cache-canonicalization",
+  "iterations": [
+    {
+      "version": "v0",
+      "parent": null,
+      "expectation_pass_rate": 1,
+      "grading_result": "18original assertions tied with no-skill baseline; extra synchronization defectfound",
+      "is_current_best": false
+    },
+    {
+      "version": "v1-cache-canonicalization",
+      "parent": "v0",
+      "expectation_pass_rate": 1,
+      "grading_result": "19/19 vs18/19 old underprospectivelyexpanded19assertions; original18 unchanged",
+      "is_current_best": true
+    }
+  ],
+  "limitations": "Different assertion sets across iterations; compare configurations within each iteration only."
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "v0",
+    "description": "从模特穿着商品的参考图生成六张独立图像（正面、侧面、背面、特写、姿态点线、相对深度），建立可调节裸模，用三维渲染和 OpenCV 叠加迭代拟合，并输出有来源标注的人体体形参数。用户提到电商服装多视图、六维度图、人体尺寸估算、参数化裸模、可调节人体或轮廓验证时使用，尤其是生成图与三维体形联合验证的任务。普通穿搭建议、医学测量和仅生成一张服装图不使用。",
+    "status": "original_unmeasured"
+  },
+  {
+    "id": "v1",
+    "description": "用于服装模特参考照片到六张独立视图、可调人体和验证证据的工作流，以及继续已有项目的人体拟合、尺寸证据审计、网格与查看器滑块同步。生成正面、侧面、背面、特写、姿态点线和相对深度，用真实三维网格与 OpenCV 对比并输出有来源的体形参数。不要用于仅修平铺商品图、普通选码、纯量体表处理、无照片的纸样 CAD、无关游戏角色或通用 OpenCV/3D 教学。",
+    "status": "candidate_not_empirically_tested"
+  },
+  {
+    "id": "v2",
+    "description": "Use for apparel-reference photo → six independent views → adjustable body proxy → silhouette verification and qualified body parameters. Also use for follow-up fitting, body-measurement provenance audits, or synchronizing a fitted mesh with its sliders/viewer in that same apparel-photo workflow. 支持正侧背、特写、姿态点线、相对深度及 OpenCV/真实三维快照验证。Exclude standalone product-photo edits, shopping/size-chart advice, measurement-only CAD or CSV cleanup, medical estimation, unrelated avatars, and general OpenCV/3D tasks.",
+    "status": "candidate_not_empirically_tested"
+  },
+  {
+    "id": "v3",
+    "description": "Use for apparel-reference photos → six independent views, adjustable body proxies, silhouette fitting and qualified body parameters; also use for continuing that workflow: improving a fitted body, auditing parameter provenance, or synchronizing the mesh and viewer/sliders. 支持服装模特图、正侧背、特写、姿态点线、相对深度、OpenCV 和真实三维快照验证。Exclude product-only image edits, ordinary size advice, tape-measure CAD/CSV tasks, medical inference, unrelated avatars and generic OpenCV/3D work. Sewing-pattern JSON → garment meshing/draping belongs to the garment-preview workflow; combine both only when photo-based body fitting is explicitly included.",
+    "status": "static_review_candidate_not_empirically_tested"
+  },
+  {
+    "id": "v4",
+    "description": "从服装穿着参考照生成六张独立图（正侧背、特写、姿态点线、相对深度），建立可调裸模，用三维渲染与OpenCV轮廓叠加拟合，输出注明证据来源及推断的体形尺寸。也用于该流程续作、拟合审计和滑块、网格、导出尺寸一致性修复。不用于独立商品修图、尺码表、医学、通用视觉或虚拟人编辑；纸样/CAD及服装预览须含照片人体拟合。",
+    "status": "subagent_surrogate_shortlisted_native_unmeasured",
+    "evidence": "docs/verification/garment-body-subagent-hillclimb-20261117/benchmark.json",
+    "installed": false
+  }
+]

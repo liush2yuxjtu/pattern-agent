@@ -1,0 +1,211 @@
+{
+  "absolute_output_error_cm": {
+    "chest": 1.4210854715202004e-14,
+    "hip": 0.0,
+    "waist": 0.0
+  },
+  "geometry": {
+    "method": "Independent stdlib triangle-plane intersections, segment graph connected components; positive-x ray crossing selects unique origin-enclosing loop; fsum segment lengths.",
+    "sections": [
+      {
+        "all_components_sum_cm": 158.71848104805278,
+        "components": [
+          {
+            "center_xz_cm": [
+              -27.0,
+              0.0
+            ],
+            "encloses_origin": false,
+            "perimeter_cm": 31.393501992811434,
+            "segment_count": 48,
+            "vertex_count": 48
+          },
+          {
+            "center_xz_cm": [
+              0.0,
+              0.0
+            ],
+            "encloses_origin": true,
+            "perimeter_cm": 95.93147706242992,
+            "segment_count": 48,
+            "vertex_count": 48
+          },
+          {
+            "center_xz_cm": [
+              27.0,
+              0.0
+            ],
+            "encloses_origin": false,
+            "perimeter_cm": 31.393501992811434,
+            "segment_count": 48,
+            "vertex_count": 48
+          }
+        ],
+        "name": "chest",
+        "plane_y_cm": 128,
+        "selected_index": 1,
+        "torso_cm": 95.93147706242992
+      },
+      {
+        "all_components_sum_cm": 124.36210552409263,
+        "components": [
+          {
+            "center_xz_cm": [
+              -27.0,
+              0.0
+            ],
+            "encloses_origin": false,
+            "perimeter_cm": 26.20674896288179,
+            "segment_count": 96,
+            "vertex_count": 96
+          },
+          {
+            "center_xz_cm": [
+              0.0,
+              0.0
+            ],
+            "encloses_origin": true,
+            "perimeter_cm": 71.94860759832905,
+            "segment_count": 48,
+            "vertex_count": 48
+          },
+          {
+            "center_xz_cm": [
+              27.0,
+              0.0
+            ],
+            "encloses_origin": false,
+            "perimeter_cm": 26.20674896288179,
+            "segment_count": 96,
+            "vertex_count": 96
+          }
+        ],
+        "name": "waist",
+        "plane_y_cm": 109,
+        "selected_index": 1,
+        "torso_cm": 71.94860759832905
+      },
+      {
+        "all_components_sum_cm": 141.61919053397332,
+        "components": [
+          {
+            "center_xz_cm": [
+              -27.0,
+              0.0
+            ],
+            "encloses_origin": false,
+            "perimeter_cm": 20.845284857660708,
+            "segment_count": 96,
+            "vertex_count": 96
+          },
+          {
+            "center_xz_cm": [
+              0.0,
+              0.0
+            ],
+            "encloses_origin": true,
+            "perimeter_cm": 99.92862081865191,
+            "segment_count": 48,
+            "vertex_count": 48
+          },
+          {
+            "center_xz_cm": [
+              27.0,
+              0.0
+            ],
+            "encloses_origin": false,
+            "perimeter_cm": 20.845284857660708,
+            "segment_count": 96,
+            "vertex_count": 96
+          }
+        ],
+        "name": "hip",
+        "plane_y_cm": 88,
+        "selected_index": 1,
+        "torso_cm": 99.92862081865191
+      }
+    ],
+    "triangle_count": 3072,
+    "vertex_count": 1548,
+    "y_bounds": [
+      0.0,
+      170.0
+    ]
+  },
+  "input_sha256": {
+    "README.md": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b",
+    "body.obj": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9",
+    "depth-claim.png": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c",
+    "generated-back.png": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89",
+    "generated-side.png": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f",
+    "measurements.json": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7",
+    "sections.json": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a",
+    "source-evidence.json": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8",
+    "source-front.png": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+  },
+  "output_sha256": {
+    "corrected-depth.png": "cf2ec5805725692032ad6316a72174f599af47f31d69f616888367a87eb3dc91",
+    "corrected-measurements.json": "b3f5d80f6c08b8802f56b18e212404f0712a6a83e3ba2bf45235a6642354db40",
+    "independent-check.py": "6f303b78ed4b5ed65013c6f66c5d1c4c0c035e62531553d46212e059490549a8",
+    "independent-verification.json": "8aa40b82d836aca3f55b49932e4b38f7e1a8daf725905310dc3cb615cc215b4e",
+    "index.html": "dc69d3e56f86e4598cfc2a90734fb9b912a71d82935e8c70dea715cacd1a28ae",
+    "report.md": "74c297c474537160c1b555c5d275d492ccfc9960676cce8836cbfb4a09544a35",
+    "reproduce.py": "a5105afb050b00db4b5d29493062f060fa65830f74f183a0c53772138780ab3b",
+    "reproduction-log.json": "9b96af57e6b6cb0e0b8acd49040fb4acd9a0b8e54dad2c848d7899dcafc1d870",
+    "section-evidence.png": "dea8502ac058b01a36683007756de8b33a1c47eff8742530a153b6417141488f",
+    "verification-log.txt": "6805bd08344ce99025085fed606acd7d008b1ecd2c6e123f04de9aea838adb3f"
+  },
+  "provenance_limit": "Transcript is complete available narrative but contains no raw event log; historical process claims not automatically certified.",
+  "read_artifacts": [
+    "transcript.md",
+    "outputs/report.md",
+    "outputs/reproduce.py",
+    "outputs/corrected-measurements.json",
+    "outputs/independent-check.py",
+    "outputs/independent-verification.json",
+    "outputs/index.html",
+    "outputs/reproduction-log.json",
+    "outputs/verification-log.txt"
+  ],
+  "relocated_reproduction": {
+    "dimensions_identical": true,
+    "exit_code": 0,
+    "generated_files": [
+      "corrected-depth.png",
+      "corrected-measurements.json",
+      "report.md",
+      "reproduce.py",
+      "section-evidence.png"
+    ],
+    "image_bytes_identical": {
+      "corrected-depth.png": true,
+      "section-evidence.png": true
+    },
+    "isolation": "Only copied inputs and reproduce.py; temporary relocated cwd; original outputs untouched.",
+    "json_identical": true,
+    "regenerates_report": true,
+    "stderr": "",
+    "stdout": "{\n  \"sections\": [\n    {\n      \"name\": \"chest\",\n      \"plane_y_cm\": 128,\n      \"loops\": [\n        {\n          \"index\": 0,\n          \"selected\": false,\n          \"perimeter_cm\": 31.39350199281143,\n          \"polygon_area_cm2\": 78.315715144136,\n          \"mean_vertex_xz_cm\": [\n            -27.000000000000004,\n            7.401486830834377e-17\n          ],\n          \"vertex_count\": 48\n        },\n        {\n          \"index\": 1,\n          \"selected\": true,\n          \"perimeter_cm\": 95.93147706242993,\n          \"polygon_area_cm2\": 714.64816408453,\n          \"mean_vertex_xz_cm\": [\n            -2.220446049250313e-16,\n            5.921189464667501e-16\n          ],\n          \"vertex_count\": 48\n        },\n        {\n          \"index\": 2,\n          \"selected\": false,\n          \"perimeter_cm\": 31.39350199281143,\n          \"polygon_area_cm2\": 78.31571514413599,\n          \"mean_vertex_xz_cm\": [\n            27.0,\n            7.401486830834377e-17\n          ],\n          \"vertex_count\": 48\n        }\n      ],\n      \"selected_component_index\": 1,\n      \"unique_segment_count\": 144,\n      \"all_loops_sum_cm\": 158.7184810480528\n    },\n    {\n      \"name\": \"waist\",\n      \"plane_y_cm\": 109,\n      \"loops\": [\n        {\n          \"index\": 0,\n          \"selected\": false,\n          \"perimeter_cm\": 26.20674896288179,\n          \"polygon_area_cm2\": 54.57524398887055,\n          \"mean_vertex_xz_cm\": [\n            -26.999999999999986,\n            -1.3877787807814457e-16\n          ],\n          \"vertex_count\": 96\n        },\n        {\n          \"index\": 1,\n          \"selected\": true,\n          \"perimeter_cm\": 71.94860759832905,\n          \"polygon_area_cm2\": 401.9895891068061,\n          \"mean_vertex_xz_cm\": [\n            1.1102230246251565e-16,\n            2.1741867565575981e-16\n          ],\n          \"vertex_count\": 48\n        },\n        {\n          \"index\": 2,\n          \"selected\": false,\n          \"perimeter_cm\": 26.20674896288179,\n          \"polygon_area_cm2\": 54.575243988870554,\n          \"mean_vertex_xz_cm\": [\n            27.00000000000001,\n            -1.3877787807814457e-16\n          ],\n          \"vertex_count\": 96\n        }\n      ],\n      \"selected_component_index\": 1,\n      \"unique_segment_count\": 240,\n      \"all_loops_sum_cm\": 124.36210552409263\n    },\n    {\n      \"name\": \"hip\",\n      \"plane_y_cm\": 88,\n      \"loops\": [\n        {\n          \"index\": 0,\n          \"selected\": false,\n          \"perimeter_cm\": 20.845284857660708,\n          \"polygon_area_cm2\": 34.529084001773334,\n          \"mean_vertex_xz_cm\": [\n            -26.999999999999996,\n            -5.84023570245525e-17\n          ],\n          \"vertex_count\": 96\n        },\n        {\n          \"index\": 1,\n          \"selected\": true,\n          \"perimeter_cm\": 99.92862081865191,\n          \"polygon_area_cm2\": 775.442870442346,\n          \"mean_vertex_xz_cm\": [\n            2.220446049250313e-16,\n            1.5265566588595902e-16\n          ],\n          \"vertex_count\": 48\n        },\n        {\n          \"index\": 2,\n          \"selected\": false,\n          \"perimeter_cm\": 20.845284857660708,\n          \"polygon_area_cm2\": 34.529084001773334,\n          \"mean_vertex_xz_cm\": [\n            27.00000000000001,\n            -5.84023570245525e-17\n          ],\n          \"vertex_count\": 96\n        }\n      ],\n      \"selected_component_index\": 1,\n      \"unique_segment_count\": 240,\n      \"all_loops_sum_cm\": 141.61919053397332\n    }\n  ],\n  \"deliverables\": [\n    \"corrected-depth.png\",\n    \"corrected-measurements.json\",\n    \"report.md\",\n    \"reproduce.py\",\n    \"section-evidence.png\"\n  ]\n}"
+  },
+  "scope": "Controlled synthetic measurement-audit only; independent grader, not executor self-grade.",
+  "visual_inspection": {
+    "corrected-depth.png": {
+      "review_binding": "Independent human/model visual inspection in grader session, exact SHA256 bound. Unknown bytes require fresh visual review.",
+      "sha256": "cf2ec5805725692032ad6316a72174f599af47f31d69f616888367a87eb3dc91",
+      "size_px": [
+        768,
+        850
+      ],
+      "visual_review": "Opened with view_image: old observed 25.3 cm footer absent; readable ILLUSTRATIVE SYNTHETIC SIDE / DEPTH and Physical depth: unknown (no centimeter estimate), assumed170cm, generated side/back, no real-person dimension warning."
+    },
+    "section-evidence.png": {
+      "review_binding": "Independent human/model visual inspection in grader session, exact SHA256 bound. Unknown bytes require fresh visual review.",
+      "sha256": "dea8502ac058b01a36683007756de8b33a1c47eff8742530a153b6417141488f",
+      "size_px": [
+        2100,
+        840
+      ],
+      "visual_review": "Opened with view_image: chest/waist/hip actual triangle-plane contours, central green component1, red excluded components0 and2, readable perimeters and prior-scaled cm axes; synthetic-control warning."
+    }
+  }
+}

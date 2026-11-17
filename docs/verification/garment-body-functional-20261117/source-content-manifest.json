@@ -1,0 +1,3062 @@
+{
+  "base_commit": "1d2e75acfc18b31b0e645159e09dd9a3b4581f0e",
+  "scope": "stagedsource,evidenceandstaticassets; excludes thismanifestandlocalreceipt toavoidselfreference",
+  "files": [
+    {
+      "path": ".agents/skills/garment-body-six-view/SKILL.md",
+      "sha256": "76da9f370a2204474b110b13b9ba453fd5354ec69c090561e72e926ae0b13fe7"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/evals.json",
+      "sha256": "a55fa08d72a16f9602419183266fdc8dd3eab066b71dd8fcbe51dab60f2ec863"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/README.md",
+      "sha256": "5be69e085e2339f47d63efdebdac4b62b14c81d52038031b9841fbb3b8bafad4"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial-params.json",
+      "sha256": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/back-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/back.png",
+      "sha256": "638d26ebb2293ca1251b6d253fb0d6a9db20f9828c8d03b2508fd9c879a8c6a3"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/body.obj",
+      "sha256": "1cde78b7b99c65d7da58afbb182508a24e21b56ba96960ae92abed907de511cd"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/front.png",
+      "sha256": "f2e4e8431e3b6ce841182af24b980505c65f5814021be7498690683cb207ff13"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/params.json",
+      "sha256": "cada545d18b8f9db40eb3a8ed2b344445f862fc357d4331f7618713d7dfea6d6"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/initial/side.png",
+      "sha256": "72164a8da1033a57c915b8fcc2c06fdc14d252ec852f1130624bbde5700bbb8a"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/target-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/fit-existing/target-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/README.md",
+      "sha256": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/body.obj",
+      "sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/depth-claim.png",
+      "sha256": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/generated-back.png",
+      "sha256": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/generated-side.png",
+      "sha256": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/measurements.json",
+      "sha256": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/sections.json",
+      "sha256": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/source-evidence.json",
+      "sha256": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/measurement-audit/source-front.png",
+      "sha256": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/viewer-sync/README.md",
+      "sha256": "157c0e127f4c530e627ebd2dd1fc39adf4995260ca698cf5ed71b01c8f90592e"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/viewer-sync/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/viewer-sync/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/files/viewer-sync/index.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/evals/planning-evals.json",
+      "sha256": "35fe1d9842e20f2dcb69d71b95ea3fe79dfa9e3dbb8808850f48efff7f1dbb17"
+    },
+    {
+      "path": ".agents/skills/garment-body-six-view/references/test-status.md",
+      "sha256": "b19140e2477205d6ef50817d0e65ea826fd90dbd142c0e057b46f6197d58b73f"
+    },
+    {
+      "path": ".agents/skills/verify/references/skill-evals.md",
+      "sha256": "2d7d9412d9f0cbdb6e76dbfd3becc79bf04d8c1325d39bbb34953790b07ed258"
+    },
+    {
+      "path": "README.md",
+      "sha256": "596ebbde1746728d25280fcb923d5a810cc28ee2a5bc993fa1ea383d9290cf56"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/README.md",
+      "sha256": "a6e1001e16e2b8a1a3f903d97b504196deddf7a42f85394c8cffd1af4f8715a2"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/commands.json",
+      "sha256": "501e7ca4daab05511fa9db560b4bcf2576aa5225f95a1dd0a834ff7eeb9d1692"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/README.md",
+      "sha256": "5be69e085e2339f47d63efdebdac4b62b14c81d52038031b9841fbb3b8bafad4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial-params.json",
+      "sha256": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/back-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/back.png",
+      "sha256": "638d26ebb2293ca1251b6d253fb0d6a9db20f9828c8d03b2508fd9c879a8c6a3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/body.obj",
+      "sha256": "1cde78b7b99c65d7da58afbb182508a24e21b56ba96960ae92abed907de511cd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/front.png",
+      "sha256": "f2e4e8431e3b6ce841182af24b980505c65f5814021be7498690683cb207ff13"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/params.json",
+      "sha256": "cada545d18b8f9db40eb3a8ed2b344445f862fc357d4331f7618713d7dfea6d6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/initial/side.png",
+      "sha256": "72164a8da1033a57c915b8fcc2c06fdc14d252ec852f1130624bbde5700bbb8a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/target-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/fit-existing/target-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/manifest.json",
+      "sha256": "f58f6cbd8bb1d0133d14a83ff37ab198d1d9b3e04bfa1f4c12d64cc00e46e512"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/README.md",
+      "sha256": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/body.obj",
+      "sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/depth-claim.png",
+      "sha256": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/generated-back.png",
+      "sha256": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/generated-side.png",
+      "sha256": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/measurements.json",
+      "sha256": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/sections.json",
+      "sha256": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/source-evidence.json",
+      "sha256": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/measurement-audit/source-front.png",
+      "sha256": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/oracle/fit-target-params.json",
+      "sha256": "100be4ed1213d02e17a662e694ef0fe1579d9e82106469a0573b85385a433698"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/oracle/fixture-execution.json",
+      "sha256": "1faeb6bd8733d05e5481a7e87523b1137609c845fac79384b8d7779bd7cf796a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/oracle/smoke-viewer.cjs",
+      "sha256": "941f96a52e627bb73cb76df3a04602a068b09ede10a0583f3d855ae479560201"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/oracle/viewer-initial-smoke.png",
+      "sha256": "8b2e5ca4b3628d1685b65debfaa190a94f17394ba0fa90a3f3a288b013912ef8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/oracle/viewer-smoke.json",
+      "sha256": "151818992fe3f774b084d78c5339a37ff39e6792d3d2666820d47136b8bb1f9e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/viewer-sync/README.md",
+      "sha256": "157c0e127f4c530e627ebd2dd1fc39adf4995260ca698cf5ed71b01c8f90592e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/viewer-sync/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/viewer-sync/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/fixtures/viewer-sync/index.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/frozen-assertions.json",
+      "sha256": "6638472c38c6c7ac22a37de0988e81ca7703a0cd7e12fc7ffd7d1e52daee5b5f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/functional-evals.json",
+      "sha256": "9c7875a7d61ed5c69a7baa5b3b98837716583e97996934e993678cbb7c8a05a6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/hillclimb-proposal.json",
+      "sha256": "dafb84c0947ba2c5f0a62dce6b50f7e2c54a64d0e8eec25c47f782d46762b948"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/history.json",
+      "sha256": "92310d33d65edc330de0199047770b553ba84cdba63836ed20ed851d3849a6f8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/aggregate-upstream.log",
+      "sha256": "b3b99eb5c4c0e367df42cf1fc0dc2c9e759fa552c74e1a78cd970a8f54c955c8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/analysis.json",
+      "sha256": "f69e04dbc1ad3d1c2e938d1fe61d4c265d152ba8553a7bb66f43b354f6993967"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/benchmark-upstream-raw.json",
+      "sha256": "12e0b585bc91af22bbf6d5f4ac4f36f41c2341439de588154b15e90eb57ad2b1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/benchmark-upstream-raw.md",
+      "sha256": "acf915119a3183ed18f48cd43e474c5efd9500f12dbd6638e1bf1b1fbf518b4c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/benchmark.json",
+      "sha256": "92d790f9bdcbd2661b09b504d24a12a352501594885d00a5984fa931db32d760"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/benchmark.md",
+      "sha256": "5e3769b36a4a86796ea27a06701c788b8881859d3f8d5789ced5dc7c5b4d08bc"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/eval_metadata.json",
+      "sha256": "47c5435e24303f29bdd95a22768293d31cb33f0af15a1935b65fb90ff8581e49"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/eval_metadata.json",
+      "sha256": "47c5435e24303f29bdd95a22768293d31cb33f0af15a1935b65fb90ff8581e49"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/grading.json",
+      "sha256": "1455031292df8eb8fe353cbdd6648c2f59abf0d210bb26ef2a14953e01e62cf6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/opencv-final-front-mask.png",
+      "sha256": "a698d03e962f7c27c2464f4864f8557775364d912cbd59caf0c96911b54e2aec"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/opencv-final-side-mask.png",
+      "sha256": "94ea6a57c7a94c0794bb524f0abaa5ccdad943f7be6505268b6fc728f7e6af5f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/relocated-reproduction.log",
+      "sha256": "c43ef236fe4554e450ad238eb6098b86e905c7ec6f3322570ef8e93f65b5cf30"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-back.png",
+      "sha256": "e3d4f68f4ad3a1bfc0b1aeaa82727820e2b5f47c38a309346177096d8a358532"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-final-front-mask.png",
+      "sha256": "99a15889de612db57fcca5f5c0f7f0507d3a7a3f04dc41468b63c01e3773220a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-final-side-mask.png",
+      "sha256": "6a862a30adb1f84672073a4e79b8b5688869ce6ad3550a35ab076cbfc739ae44"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-front.png",
+      "sha256": "4da1f0a7097e0881a79bb215422a65e85fe045b29f456bf9cd0fad56eb19efd2"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-initial-front-mask.png",
+      "sha256": "01d297a950f27451d448d865e305b6d4ede64ae08a2f3e87c0c0a4c8d8f99ac4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-initial-side-mask.png",
+      "sha256": "b0d35035cf60979f17d9c62b48db8d38d85d6a02a838d277195fec4e151e54d1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-side.png",
+      "sha256": "ade6e60a63abe74e7c38b7d6f6c9ffb5121b5374a122634a14a36dded1c6c80d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/independent-grader-evidence/validation.json",
+      "sha256": "a8bb9b794079b07a2de3dae9d80f910f4453bf95b19c5c63aa6dfdd47133db13"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/README.md",
+      "sha256": "5be69e085e2339f47d63efdebdac4b62b14c81d52038031b9841fbb3b8bafad4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial-params.json",
+      "sha256": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/back-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/back.png",
+      "sha256": "638d26ebb2293ca1251b6d253fb0d6a9db20f9828c8d03b2508fd9c879a8c6a3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/body.obj",
+      "sha256": "1cde78b7b99c65d7da58afbb182508a24e21b56ba96960ae92abed907de511cd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/front.png",
+      "sha256": "f2e4e8431e3b6ce841182af24b980505c65f5814021be7498690683cb207ff13"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/params.json",
+      "sha256": "cada545d18b8f9db40eb3a8ed2b344445f862fc357d4331f7618713d7dfea6d6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/initial/side.png",
+      "sha256": "72164a8da1033a57c915b8fcc2c06fdc14d252ec852f1130624bbde5700bbb8a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/target-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/inputs/target-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/back.png",
+      "sha256": "e3d4f68f4ad3a1bfc0b1aeaa82727820e2b5f47c38a309346177096d8a358532"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/final-back-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/final-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/final-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/fitted.obj",
+      "sha256": "21232711a054b0c7719d69b00b4eda2b759d71654b18d54575b57b4ac7b5f72c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/front-overlay.png",
+      "sha256": "9fd68aa5bb8f2aea50001324aeed6f4af9a5192c3bd055f4e7576eaeb27de5f3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/front.png",
+      "sha256": "4da1f0a7097e0881a79bb215422a65e85fe045b29f456bf9cd0fad56eb19efd2"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/independent-check.json",
+      "sha256": "b9fa163e544a9a38254502e9d4a92dc9d23d8c4d8e2b9af6fd61b276c4fe7522"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/independent_check.py",
+      "sha256": "e6fb27ab149ea6f41b69da0eb6fbb74eebda83d9c7fe1f5b27ffb043821b8a5d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/index.html",
+      "sha256": "b8db79cd434be2f7c72dc028ec35cbd645002d9158bdaeaef84785158583864c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/initial-front-mask.png",
+      "sha256": "01d297a950f27451d448d865e305b6d4ede64ae08a2f3e87c0c0a4c8d8f99ac4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/initial-front-overlay.png",
+      "sha256": "d1af326d11f798e3373fb9d002ab60f5ec4264e3bb1c54c9d6ddf6b38d7c4aa5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/initial-params.json",
+      "sha256": "8e3188cd2b4d4fa7b850d3b66ae106b481349f33eeda4a4dd7dadfbd3c95e353"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/initial-side-mask.png",
+      "sha256": "b0d35035cf60979f17d9c62b48db8d38d85d6a02a838d277195fec4e151e54d1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/initial-side-overlay.png",
+      "sha256": "61df38b9267502e860beb0fc7ce3a0d4dd3ccc161fa740e7289cd3180492d7fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/mesh-check.json",
+      "sha256": "26992b31210dcd877a0116b607ce61852508facd7b92a5cb313d866bcaf26f9e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/metrics.json",
+      "sha256": "8fd0c6faa2d3dde5057789836f0cad6acca0f1bb88884cdf59f099438f12cdf0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/optimization-history.json",
+      "sha256": "eba20d333160c9f096590950af428ec764a3fad4a11f864e731f5a5024ee68de"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/params.json",
+      "sha256": "e15c64364be9d125737c7d16a662da803a6937e06e0bec3dc1ba7e736862da04"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/report.md",
+      "sha256": "ba10ad797aa5f8283f781ae08a5f939aafe2b28b246e73b6d7b2d83e9b9cb9d5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/reproduce.py",
+      "sha256": "62e26436337df0fe7b646d4d1906535c072591292124d9b157c7c5c3d1016e71"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/review-sheet.png",
+      "sha256": "98f70bb72e7dfbfc89cbfe59adfc1230c5185a388c742f629a541c0340574be5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/run.json",
+      "sha256": "86843330e9154cb145c8ae07f9a703dd9be675bdb71a445cdcf7852b1a324141"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/side-overlay.png",
+      "sha256": "39e8382721a91824b32ffcf79494eef94e53d4906f6899c5019e7c8ca82c2450"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/side.png",
+      "sha256": "ade6e60a63abe74e7c38b7d6f6c9ffb5121b5374a122634a14a36dded1c6c80d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/target-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/target-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/outputs/verify_masks.py",
+      "sha256": "94556ef220febe7f55916070617da60069c249b65c06aa16328a5d8e4d59adbb"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/start-time.txt",
+      "sha256": "6abd6850e6a42ffed4e27dfe9daf01d5f9b5906a799ba6030d33ce36c0f99a07"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/timing.json",
+      "sha256": "f4423ee1963ec9a88be57b392d0902c401ce07c3e9fc2a1fc84bc219e9f1a015"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/with_skill/run-1/transcript.md",
+      "sha256": "60f0a8b7cb229ebd1bc590eeef601b782869f0b1bde4a376c22a2e1bb08fdfae"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/eval_metadata.json",
+      "sha256": "47c5435e24303f29bdd95a22768293d31cb33f0af15a1935b65fb90ff8581e49"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/grading.json",
+      "sha256": "e29a4e581e73c8926c0a7fb169c7a696a8f5f9ca53336f42d162f9db6736ef5d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/opencv-final-front-mask.png",
+      "sha256": "a698d03e962f7c27c2464f4864f8557775364d912cbd59caf0c96911b54e2aec"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/opencv-final-side-mask.png",
+      "sha256": "94ea6a57c7a94c0794bb524f0abaa5ccdad943f7be6505268b6fc728f7e6af5f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/relocated-reproduction.log",
+      "sha256": "ecd985475d1d261ecc0db05fe7a15029d0cfb0964a142a6008ae573ec3a371e1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/reopened-back.png",
+      "sha256": "999d6c6576aa56e26c73cfd6eab1ebf13b5bcb1406332326b1654da76911e0ed"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/reopened-final-front-mask.png",
+      "sha256": "99a15889de612db57fcca5f5c0f7f0507d3a7a3f04dc41468b63c01e3773220a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/reopened-final-side-mask.png",
+      "sha256": "6a862a30adb1f84672073a4e79b8b5688869ce6ad3550a35ab076cbfc739ae44"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/reopened-front.png",
+      "sha256": "a9a63093d206c50d93f6e50234ba1b2332bc0b353edf7d238507cc070481ed5e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/reopened-initial-front-mask.png",
+      "sha256": "01d297a950f27451d448d865e305b6d4ede64ae08a2f3e87c0c0a4c8d8f99ac4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/reopened-initial-side-mask.png",
+      "sha256": "b0d35035cf60979f17d9c62b48db8d38d85d6a02a838d277195fec4e151e54d1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/reopened-side.png",
+      "sha256": "6a1e2461e2b6937cb05a969d21c2b1757a56fab19951fec7680366b1896a142b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/independent-grader-evidence/validation.json",
+      "sha256": "e663bcae690e600200ed55d3417471768c32eb2c0b2979c8b0cd5486df930c1b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/README.md",
+      "sha256": "5be69e085e2339f47d63efdebdac4b62b14c81d52038031b9841fbb3b8bafad4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial-params.json",
+      "sha256": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/back-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/back.png",
+      "sha256": "638d26ebb2293ca1251b6d253fb0d6a9db20f9828c8d03b2508fd9c879a8c6a3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/body.obj",
+      "sha256": "1cde78b7b99c65d7da58afbb182508a24e21b56ba96960ae92abed907de511cd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/front.png",
+      "sha256": "f2e4e8431e3b6ce841182af24b980505c65f5814021be7498690683cb207ff13"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/params.json",
+      "sha256": "cada545d18b8f9db40eb3a8ed2b344445f862fc357d4331f7618713d7dfea6d6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/initial/side.png",
+      "sha256": "72164a8da1033a57c915b8fcc2c06fdc14d252ec852f1130624bbde5700bbb8a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/target-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/inputs/target-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/back.png",
+      "sha256": "999d6c6576aa56e26c73cfd6eab1ebf13b5bcb1406332326b1654da76911e0ed"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/final-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/final-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/fit-log.txt",
+      "sha256": "2f839430e30ea0ed33636d65582ebd6b8e08fe69d1b4af14e38ea32c60aa896b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/fitted.obj",
+      "sha256": "2fa3592746bf0fd06c8371d7c9fb0dd7cc84f76d1b343f80b90dc7c0fa0d059d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/front-overlay.png",
+      "sha256": "a00b8e713517fe07011109115e4c298f2f467354f64a7a03b50e104ac7a282e5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/front.png",
+      "sha256": "a9a63093d206c50d93f6e50234ba1b2332bc0b353edf7d238507cc070481ed5e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/index.html",
+      "sha256": "c68543b1c4b2c02d986200e4b90a8dddf67562c3a6d96655fb082419f043c3c0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/initial-front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/initial-side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/metrics.json",
+      "sha256": "1078affa1d7a9420750b61b0c8f65c35c3569c386a24fc1ca56c6a6c91ccd26c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/params.json",
+      "sha256": "e388af03b2be65f5ae091b70c64cf1bd2a95c58f6dbeaf71f50e2c877cfae2e0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/preview-contact.png",
+      "sha256": "257dd207eee6c474249289afc12c233018d48ea0ec89f496e4803bfb7257b00a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/report.md",
+      "sha256": "4a78cb033dfe32edba1760cbd8d9362916338296820758db867936426e52bf93"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/reproduce.py",
+      "sha256": "71aee255bb29247335a9b837d48ff62d0081fe6807c1fcd1519748d093c3e1c6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/side-overlay.png",
+      "sha256": "c908717fca591ce29219e744518d75bca292da8604985732efd402974b90a0de"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/side.png",
+      "sha256": "6a1e2461e2b6937cb05a969d21c2b1757a56fab19951fec7680366b1896a142b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/verification.json",
+      "sha256": "55afc167bd67405ceda2ac6fbd3d0cc0272b2455caedff25c474562103141e4c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/outputs/verify.py",
+      "sha256": "a45901c64ddff9ec4b192c0fca22226bd335ca7cb2481ba524542dba7b58fb37"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/timing.json",
+      "sha256": "ce32337d4a02b2eda6b4cc3ac2725b2a6b0cfd1656faf79035bf4f79b6ee6b11"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-fit-existing/without_skill/run-1/transcript.md",
+      "sha256": "de6d97ba21dcf6b3a2653534aab0e2d2b1bdfb965d48a3acd653e61691819eba"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/eval_metadata.json",
+      "sha256": "8fd2988709329e0414b18e9221fd9c85d44e3b1e18ffe343e8ceab36c40be72c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/grader-visual-review.json",
+      "sha256": "b0c4a12e875285ea85b44b08f5132a4b91253d3125f65e29975e6d9b07896980"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/eval_metadata.json",
+      "sha256": "8fd2988709329e0414b18e9221fd9c85d44e3b1e18ffe343e8ceab36c40be72c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/grading.json",
+      "sha256": "62d06bee57934c0182a54113932b1391a4c4809450904955c965ec02bce05c0a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/independent-grader-evidence.json",
+      "sha256": "e4632c5ceb9c71d16eebd95ecd10d664b30b1ef5528b17f4b99595684c0bb469"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/README.md",
+      "sha256": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/body.obj",
+      "sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/depth-claim.png",
+      "sha256": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/generated-back.png",
+      "sha256": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/generated-side.png",
+      "sha256": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/measurements.json",
+      "sha256": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/sections.json",
+      "sha256": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/source-evidence.json",
+      "sha256": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/inputs/source-front.png",
+      "sha256": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/outputs/corrected-depth.png",
+      "sha256": "3cb0273be0d7b590f5ccc444bd1d4cdca63a9c721221d03973d0c3eaca036e11"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/outputs/corrected-measurements.json",
+      "sha256": "fe81fa23098e7ba6a192b7497df30b015870e412277d8b52cda6dc327e88595f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/outputs/report.md",
+      "sha256": "7d5d321b20062aebbd080b626f58b4c21c7c0bcd46597307e69934ce22c38d57"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/outputs/reproduce.py",
+      "sha256": "733361364bf5c84a6bac5803970acff0332828b5a080936edffd26a8d3a843c8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/outputs/section-evidence.png",
+      "sha256": "93dc1fbc21c334b9df5e62436f135011da6bc58e2c8ab8b21eed784964d4a466"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/outputs/vtk-independent-check.json",
+      "sha256": "6413e5949edcbac7f0a46ddfff5d22aebc434364065eb883b7bc28be9fbf08ae"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/outputs/vtk-sections.json",
+      "sha256": "b02d9c7b30e6db836e7a1e08627919ee116843411366410debad7b60290dddc6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/timing.json",
+      "sha256": "7e8c6ef87f4b4edd994fec028c3acc618a75dbddcd342dd2d3f94453d6025be0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/with_skill/run-1/transcript.md",
+      "sha256": "f1f18ee5974760c01c7b645afb37f78f6044aabcb48b7807abe870819045b240"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/eval_metadata.json",
+      "sha256": "8fd2988709329e0414b18e9221fd9c85d44e3b1e18ffe343e8ceab36c40be72c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/grading.json",
+      "sha256": "a379248e22d1f478b3a7b9fdb8e74c62c5343ff410451513f2d49dd896c8b149"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/independent-grader-evidence.json",
+      "sha256": "be97f078ea4a694024d2c010ade46f2ff11fc8e10d4771ec6a321a3b5114129c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/README.md",
+      "sha256": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/body.obj",
+      "sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/depth-claim.png",
+      "sha256": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/generated-back.png",
+      "sha256": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/generated-side.png",
+      "sha256": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/measurements.json",
+      "sha256": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/sections.json",
+      "sha256": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/source-evidence.json",
+      "sha256": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/inputs/source-front.png",
+      "sha256": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/corrected-depth.png",
+      "sha256": "cf2ec5805725692032ad6316a72174f599af47f31d69f616888367a87eb3dc91"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/corrected-measurements.json",
+      "sha256": "b3f5d80f6c08b8802f56b18e212404f0712a6a83e3ba2bf45235a6642354db40"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/independent-check.py",
+      "sha256": "6f303b78ed4b5ed65013c6f66c5d1c4c0c035e62531553d46212e059490549a8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/independent-verification.json",
+      "sha256": "8aa40b82d836aca3f55b49932e4b38f7e1a8daf725905310dc3cb615cc215b4e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/index.html",
+      "sha256": "dc69d3e56f86e4598cfc2a90734fb9b912a71d82935e8c70dea715cacd1a28ae"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/report.md",
+      "sha256": "74c297c474537160c1b555c5d275d492ccfc9960676cce8836cbfb4a09544a35"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/reproduce.py",
+      "sha256": "a5105afb050b00db4b5d29493062f060fa65830f74f183a0c53772138780ab3b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/reproduction-log.json",
+      "sha256": "9b96af57e6b6cb0e0b8acd49040fb4acd9a0b8e54dad2c848d7899dcafc1d870"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/section-evidence.png",
+      "sha256": "dea8502ac058b01a36683007756de8b33a1c47eff8742530a153b6417141488f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/outputs/verification-log.txt",
+      "sha256": "6805bd08344ce99025085fed606acd7d008b1ecd2c6e123f04de9aea838adb3f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/timing.json",
+      "sha256": "e00dfe59af53ebe86bd124a9e1262dd20ca614fbfc4a82f46a2fb6d62461d225"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-measurement-audit/without_skill/run-1/transcript.md",
+      "sha256": "24d150cf37c5dc55c805c665dfae91aae8853fa6a4f65f159c850aa124c9d941"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/eval_metadata.json",
+      "sha256": "367d46cd9c6813ce14c3fdb5e03803b6942610fd02bfc714f4f3bb33778c78d5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/eval_metadata.json",
+      "sha256": "367d46cd9c6813ce14c3fdb5e03803b6942610fd02bfc714f4f3bb33778c78d5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/grader-evidence/checks.json",
+      "sha256": "2131554ae4ab21f1ca791817bb1c9d2cc3970ab85d684e290dc221bbc3b57e75"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/grader-evidence/edited-desktop.png",
+      "sha256": "309f0547db678ecf0da16b7df8150ab34a08641613f4df4c12673a9f9ede1a1f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/grader-evidence/fresh-desktop.png",
+      "sha256": "576aa24f0ddce7812b044de14da99516fbe41a28fa2f5448439c24efc204b263"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/grader-evidence/independent-export.json",
+      "sha256": "3cb67614674c004db28ef7057fc5fa1767b903b60f6ee89fb83550c6889862d5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/grader-evidence/mobile-375.png",
+      "sha256": "7949dd9273be275fa616b13df9e052c67b6e821b13bc6433ef488bfd907b948a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/grader-evidence/ui-export.json",
+      "sha256": "3cb67614674c004db28ef7057fc5fa1767b903b60f6ee89fb83550c6889862d5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/grader-evidence/visual-inspection.json",
+      "sha256": "93f43c8507c132943b77edd844228f2e73cebabb5fbf1dc1888d694950c0c88e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/grading.json",
+      "sha256": "979095776e4f4ff821557c7150e41aa9ef628361b7a088f4f0eff66c4f4b0e83"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/inputs/README.md",
+      "sha256": "157c0e127f4c530e627ebd2dd1fc39adf4995260ca698cf5ed71b01c8f90592e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/inputs/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/inputs/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/inputs/index.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/before.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/browser-check.cjs",
+      "sha256": "ebf8ba7033f04804b25bdba8a6bdc6a38b71286a0415983c32c5304ac09473f2"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/browser-fresh-check.cjs",
+      "sha256": "3d3719e9ed751912182706c0be819709f7789a89de6eaf60e881f8fb9fc9b743"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/browser-fresh-results.json",
+      "sha256": "4d61247763360542e33be3853d1aa653edc677f44d22fd5b37baddcb5fbc6ffa"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/browser-results.json",
+      "sha256": "0be733e73da50de866f003a36689b43702b36aabf539089a648044db63fe3f3f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/current-body-state.json",
+      "sha256": "1beaeac726a2c799f6f4ec315091fabba87419cec0402bd625c9cbc7afb70875"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/desktop-after.png",
+      "sha256": "83e1849f0c3cfff52be49473187509d7323ee0933864293cc05b2edd565db339"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/desktop-before.png",
+      "sha256": "ef5bba44b1ecc4e3f43e327d13129d5ce094c483f3aaee3b3394c56a2e3753b6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/desktop-final-default.png",
+      "sha256": "82f97636df8adb5dcb37d044752ebbc57e5c94795f4c647ba1b6bd83922c58c8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/mobile.png",
+      "sha256": "69fa21b24625383e2dfd585fc51b982743eccb4f4809b0d4063cb9fa1e43d0c5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/report.md",
+      "sha256": "a33b4f36fdf711b521a33a4351eb217810cc29b1650e71b3457d84ceb77c2ad6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/outputs/viewer.html",
+      "sha256": "af162d2e3e31751f39d3d2800f5d5a46e7c36f4f2dfb2c2d4dcb99eb8aa8c3fa"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/server.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/server.pid",
+      "sha256": "983ca4a5cc2999035f49a02461a4aeb3164c6c8510698475360488eb9433ee44"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/timing.json",
+      "sha256": "50c7467e50b553993face80a12049bcd5402cfb0eec10d91aebf8ed3d2b7f739"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/with_skill/run-1/transcript.md",
+      "sha256": "d98ff20362a16653ddcf0e8d709a560af6ac4d31654af7e434f57e0212d6cbe9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/eval_metadata.json",
+      "sha256": "367d46cd9c6813ce14c3fdb5e03803b6942610fd02bfc714f4f3bb33778c78d5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/grader-evidence/checks.json",
+      "sha256": "240b2f1aa2380ad73da0dca52967e91b108da0383b6e298f2c373e9ffd3e679d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/grader-evidence/edited-desktop.png",
+      "sha256": "292989c52c020f619ccdafdee2602294d471034942d5ee99f02b65f1b33a240e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/grader-evidence/fresh-desktop.png",
+      "sha256": "f765acc2fbd22d54bf168624726dd6b984deacfe427a74633bc8b5b644904717"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/grader-evidence/independent-export.json",
+      "sha256": "4c2d8bcc4f9adb19472e9a0150a85a71d8d7d7dc24a62a10f46d518a8d514fc0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/grader-evidence/mobile-375.png",
+      "sha256": "914004905040027f7c2258ac16398639c270d4788b14dbcd05798a51afe1c079"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/grader-evidence/visual-inspection.json",
+      "sha256": "b9c9a08cfb2fb3c4fcae07cd6a4b51491977b73d395e3408d435b2c4ea793050"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/grading.json",
+      "sha256": "01da015bfa5ca9dd27374bc4fb3b51633e8dc3fbf98b8d87f0424e033791fbff"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/inputs/README.md",
+      "sha256": "157c0e127f4c530e627ebd2dd1fc39adf4995260ca698cf5ed71b01c8f90592e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/inputs/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/inputs/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/inputs/index.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/browser-check.cjs",
+      "sha256": "f6a5f5fa460413104fb491393c10a78494489cb6f2dcb152b3cc2a1c71ff2037"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/browser-results.json",
+      "sha256": "d08a1b20144451b35de702795a8a73db4ab86e72fac97f59957057d5caf97363"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/desktop-after.png",
+      "sha256": "033c53e7848cdcfc7b2cb8c6ad39950a3835bf86050f38614833bde9c9c30a8f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/desktop-before.png",
+      "sha256": "96d07ad555737d6588361415cfa56fbbc4f0939873cec88cbbe29deb717e7742"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/edited-state.json",
+      "sha256": "bef808dfcdad458043350caefd504d182ef716c4456665ccb85f87dc90196ef6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/initial-state.json",
+      "sha256": "1a2723efbaba36ed501259491ea11ceb232ef064eb4f0d04a8da417ab2e9d8e8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/mobile.png",
+      "sha256": "e43f248b258e26f2e130da973436e2f0a1460ba02af824d3f192d19191c5f551"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/original-stale.png",
+      "sha256": "d7f8a0fcb650bfa466a4632d5d5ca95afa1687bcc86f1e9b65ef6b2299606e75"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/report.md",
+      "sha256": "fb54f287934eede2967a91fd129f734a6461b217355af2a48b07fd1548f7cbc3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/outputs/viewer.html",
+      "sha256": "f7b905a94c960420235789c6528fbeb29292915165b0b51283a82b0688a6f6e5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/timing.json",
+      "sha256": "1114bb9a154071fa6db029892121bbf3bb62d03c459e9913b29fa37aba0ec3ec"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-1/eval-viewer-sync/without_skill/run-1/transcript.md",
+      "sha256": "6a913219bfa33fb6d784cbb19f9a2923c1f87064bf4a5aac727bf93b927811d6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/aggregate-upstream.log",
+      "sha256": "d456a05109846c4c043937c1768854f8b9f69c84f005622df9b41d79133d8b88"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/analysis.json",
+      "sha256": "7db539a3703191e7723cbaa14260509a8837ca79f22c3e872c22ed0a68e2f7d8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/benchmark-upstream-raw.json",
+      "sha256": "d938d5a83f1d0efe249fafe5b9d5ca358ef1e22ab8edcfb1e9af54105fc26c89"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/benchmark-upstream-raw.md",
+      "sha256": "e0b6eac2ed4fc6de9ce343baba162442dc32ab797c708623f4b8fa9ef936a552"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/benchmark.json",
+      "sha256": "4fbc52784e7a862a784ee67166e8525ef7c3d5dce50a49d85c539e29fe956c81"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/benchmark.md",
+      "sha256": "73af6e80af96e724ee465bd6436ff3bc1281fa708e3c67ab2138bc7c67f3dd88"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/eval_metadata.json",
+      "sha256": "47c5435e24303f29bdd95a22768293d31cb33f0af15a1935b65fb90ff8581e49"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/eval_metadata.json",
+      "sha256": "47c5435e24303f29bdd95a22768293d31cb33f0af15a1935b65fb90ff8581e49"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/grading.json",
+      "sha256": "da596d0ad38bf0976f4e45c7484b22218ea782dc1b579ae7e4eb6b8467d75a75"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/opencv-final-front-mask.png",
+      "sha256": "a698d03e962f7c27c2464f4864f8557775364d912cbd59caf0c96911b54e2aec"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/opencv-final-side-mask.png",
+      "sha256": "94ea6a57c7a94c0794bb524f0abaa5ccdad943f7be6505268b6fc728f7e6af5f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/relocated-file-access-audit.json",
+      "sha256": "1c7da06362ef055686d1dda0fadbf7694942ea185f846376363ca8bd5af9f117"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/relocated-reproduction.log",
+      "sha256": "0b003388862e3349ff262a3d7230dfc47d6758caee3b837e9781d76b76c7d6a7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/reopened-back.png",
+      "sha256": "36cc669bb0f81cf4a49058e7043ae65bb4210c94dcc44c2d2e0f2bd614906f48"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/reopened-final-front-mask.png",
+      "sha256": "99a15889de612db57fcca5f5c0f7f0507d3a7a3f04dc41468b63c01e3773220a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/reopened-final-side-mask.png",
+      "sha256": "6a862a30adb1f84672073a4e79b8b5688869ce6ad3550a35ab076cbfc739ae44"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/reopened-front.png",
+      "sha256": "9fe5a087a6953b8ebf84efd26d3ecaf6ce38e5b7e721d3781f7a89c6d9b73c2a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/reopened-initial-front-mask.png",
+      "sha256": "01d297a950f27451d448d865e305b6d4ede64ae08a2f3e87c0c0a4c8d8f99ac4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/reopened-initial-side-mask.png",
+      "sha256": "b0d35035cf60979f17d9c62b48db8d38d85d6a02a838d277195fec4e151e54d1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/reopened-side.png",
+      "sha256": "453a6a77affdd1b88c7b8b444ddcd37c534e2cf0fb055b0214116af0c7fc11de"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/validation.json",
+      "sha256": "edca6ff9b2986ab0db4ffbbc48393e03e76470bc13b3eb7304535134ff611314"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/independent-grader-evidence/visual-inspection.json",
+      "sha256": "18cd3f0079c4b0e09ddea47da842635afa3529686a337a4a24f590c9c8450e39"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/README.md",
+      "sha256": "5be69e085e2339f47d63efdebdac4b62b14c81d52038031b9841fbb3b8bafad4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial-params.json",
+      "sha256": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/back-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/back.png",
+      "sha256": "638d26ebb2293ca1251b6d253fb0d6a9db20f9828c8d03b2508fd9c879a8c6a3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/body.obj",
+      "sha256": "1cde78b7b99c65d7da58afbb182508a24e21b56ba96960ae92abed907de511cd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/front.png",
+      "sha256": "f2e4e8431e3b6ce841182af24b980505c65f5814021be7498690683cb207ff13"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/params.json",
+      "sha256": "cada545d18b8f9db40eb3a8ed2b344445f862fc357d4331f7618713d7dfea6d6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/initial/side.png",
+      "sha256": "72164a8da1033a57c915b8fcc2c06fdc14d252ec852f1130624bbde5700bbb8a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/target-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/inputs/target-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/back.png",
+      "sha256": "36cc669bb0f81cf4a49058e7043ae65bb4210c94dcc44c2d2e0f2bd614906f48"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/execution.log",
+      "sha256": "c8dc21fc82e5477af4f508a8414f8b6ce4afb2e4e11b21d28426ac4bc865d21a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/final-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/final-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/fitted.obj",
+      "sha256": "80cbdce415afa539cef77ec2187406ee1616fc0f3dc9fd1638a023c1b51ab06d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/front-overlay.png",
+      "sha256": "3eae4529edb40d9e7fa7d66076c5dbd433cc54a3dfcebc8c0a3df22810b3c142"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/front.png",
+      "sha256": "9fe5a087a6953b8ebf84efd26d3ecaf6ce38e5b7e721d3781f7a89c6d9b73c2a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/initial-front-mask.png",
+      "sha256": "01d297a950f27451d448d865e305b6d4ede64ae08a2f3e87c0c0a4c8d8f99ac4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/initial-side-mask.png",
+      "sha256": "b0d35035cf60979f17d9c62b48db8d38d85d6a02a838d277195fec4e151e54d1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/metrics.json",
+      "sha256": "c002e53daae8c80c114ad3bcb762b504d3faf2ddb962f34f5f82f85f8ef57886"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/optimization-history.json",
+      "sha256": "663f48c449391e02654a89d8607cedcb783837c89209ac4efb0b58dadc7549ac"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/params.json",
+      "sha256": "17fb07f6b0f76b2ce2f7ef9e23ac7ae4b20eec289cd19025116cc167a1b726fa"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/provenance.json",
+      "sha256": "35676033905bd92db406b9325c416a141b54e9d804d205e796eef35254849caa"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/report.md",
+      "sha256": "11f1889b23c9135ff49134815be162e93889dca75e8154dc7906e21b202fe548"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/reproduce.py",
+      "sha256": "4c3eb70c9465e5d54a86d043dcf9bb67640a03e1edebaee6a3a3374805e06fc6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/side-overlay.png",
+      "sha256": "7636bd3abcb7080723b459aedf423dba64a74f480bdba5c73c15eef28fa0e9eb"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/side.png",
+      "sha256": "453a6a77affdd1b88c7b8b444ddcd37c534e2cf0fb055b0214116af0c7fc11de"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/validation.json",
+      "sha256": "293732f85188b37e94b49f30348b2f4d4b60e0e9a9510720e9c508c8e381a9d5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/outputs/verify_masks.py",
+      "sha256": "94556ef220febe7f55916070617da60069c249b65c06aa16328a5d8e4d59adbb"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/task.json",
+      "sha256": "5300ac7a2834bfd74448ff6e9bdb8ef372513a7ea6706eeab3837f00570ce76c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/timing.json",
+      "sha256": "4e734398e6708f3ca070580403a52445ee8c7fc8560c7d08d803cf15dffbd369"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/old_skill/run-1/transcript.md",
+      "sha256": "50946219bdee8dd8d0abf786d9ae97e64953f77d77fe8f7db37a0febc5067e97"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/eval_metadata.json",
+      "sha256": "47c5435e24303f29bdd95a22768293d31cb33f0af15a1935b65fb90ff8581e49"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/grading.json",
+      "sha256": "81c4b211093b99427d26a261fa87c0bb10ec42360f683da81e3f1d33c124f30b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/opencv-final-front-mask.png",
+      "sha256": "a698d03e962f7c27c2464f4864f8557775364d912cbd59caf0c96911b54e2aec"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/opencv-final-side-mask.png",
+      "sha256": "94ea6a57c7a94c0794bb524f0abaa5ccdad943f7be6505268b6fc728f7e6af5f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/relocated-file-access-audit.json",
+      "sha256": "1a52e99c4bdf0caa385fc4635e993977a3b5b9733bb0c26e32737e5b177f9b19"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/relocated-reproduction.log",
+      "sha256": "85409a64d922e999713a9b970cb7f4293b4738a5d6bca591ed58233c9f375132"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-back.png",
+      "sha256": "fa3b4644d87e28bc5d5493881ea064d6199324d1754b7e716ba8af8b5c16677b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-final-front-mask.png",
+      "sha256": "99a15889de612db57fcca5f5c0f7f0507d3a7a3f04dc41468b63c01e3773220a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-final-side-mask.png",
+      "sha256": "6a862a30adb1f84672073a4e79b8b5688869ce6ad3550a35ab076cbfc739ae44"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-front.png",
+      "sha256": "c500d50e4b5787100b7cafca7bae5b142bedcb8f7988887d78c74fa14fc5867a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-initial-front-mask.png",
+      "sha256": "01d297a950f27451d448d865e305b6d4ede64ae08a2f3e87c0c0a4c8d8f99ac4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-initial-side-mask.png",
+      "sha256": "b0d35035cf60979f17d9c62b48db8d38d85d6a02a838d277195fec4e151e54d1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/reopened-side.png",
+      "sha256": "302b3ddacc94764de188f43a7ea323c55fe753713c055f9f2293f9719a9e6ed6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/search-outline-check.json",
+      "sha256": "8d412140f5ae4a0c1620f503ffd1e914982d0da4f4061d67832d2377a92baa3f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/validation.json",
+      "sha256": "ddf67cd092ac172489ed19e416ec8b4640ae13451b3a6e014b15908a2473e47e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/independent-grader-evidence/visual-inspection.json",
+      "sha256": "75ae331c401629a4c58332a1bbdf9c607ba0def55f9570e19fec841df9e50897"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/README.md",
+      "sha256": "5be69e085e2339f47d63efdebdac4b62b14c81d52038031b9841fbb3b8bafad4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial-params.json",
+      "sha256": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/back-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/back.png",
+      "sha256": "638d26ebb2293ca1251b6d253fb0d6a9db20f9828c8d03b2508fd9c879a8c6a3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/body.obj",
+      "sha256": "1cde78b7b99c65d7da58afbb182508a24e21b56ba96960ae92abed907de511cd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/front.png",
+      "sha256": "f2e4e8431e3b6ce841182af24b980505c65f5814021be7498690683cb207ff13"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/params.json",
+      "sha256": "cada545d18b8f9db40eb3a8ed2b344445f862fc357d4331f7618713d7dfea6d6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/initial/side.png",
+      "sha256": "72164a8da1033a57c915b8fcc2c06fdc14d252ec852f1130624bbde5700bbb8a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/target-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/inputs/target-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/back.png",
+      "sha256": "fa3b4644d87e28bc5d5493881ea064d6199324d1754b7e716ba8af8b5c16677b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/final-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/final-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/fitted.obj",
+      "sha256": "80d42009d639d9ed80c261e0a64290f772fea05e90d65334b6e6d5834139d198"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/front-overlay.png",
+      "sha256": "3587cf3da240dd5cea7c835dbd2f1ffe54519886508a1fbc451f43b5ca3a9d5a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/front.png",
+      "sha256": "c500d50e4b5787100b7cafca7bae5b142bedcb8f7988887d78c74fa14fc5867a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/independent-verification.json",
+      "sha256": "f474bd37ad10951701eb05fcd0d8a9c82587fcf3a94ddfc6d3e45285efa4cd40"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/initial-front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/initial-side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/metrics.json",
+      "sha256": "cdcc9954e9ffa8cfc9e587736e30d70058aca161a12abf34017703b1439b7475"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/params.json",
+      "sha256": "8f10ff90e714660be5c3bd2f536a663f953ac9b65e7a107cf1c4cf4c94f4e5ab"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/report.md",
+      "sha256": "1b107664f6dcda1b07a8588653154645b21c3f41ed6e0e5087bd4ac4291ac100"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/reproduce.py",
+      "sha256": "e22c6b4e1b57a00610e6cad33092c2d0121bd0f840248247038a9d50481f3e25"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/side-overlay.png",
+      "sha256": "0cda06b12dfe047ea2d97df8b2e10b26dc0dcaf39416a856ff5a310230bbbec5"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/outputs/side.png",
+      "sha256": "302b3ddacc94764de188f43a7ea323c55fe753713c055f9f2293f9719a9e6ed6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/task.json",
+      "sha256": "5300ac7a2834bfd74448ff6e9bdb8ef372513a7ea6706eeab3837f00570ce76c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/timing.json",
+      "sha256": "3fb0d1cf257b07d76f679fca17a26661b9657f167d30c90d08e8e07c7101db53"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-fit-existing/with_skill/run-1/transcript.md",
+      "sha256": "d08176d378313a1f577fb74c82c3b1a6cddcc7b3cc3f2ecd66f9e666045a08be"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/eval_metadata.json",
+      "sha256": "8fd2988709329e0414b18e9221fd9c85d44e3b1e18ffe343e8ceab36c40be72c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/grader-validation-evidence.json",
+      "sha256": "b977bf02b19de16a5f52c0c2c8ed0e2d54327a5976e7bcab6e70724a2149140f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/grader-visual-review.json",
+      "sha256": "0a7467e66146d8359614cffebf7e803dfb479caa153283782ca08d5d7b59627f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/eval_metadata.json",
+      "sha256": "8fd2988709329e0414b18e9221fd9c85d44e3b1e18ffe343e8ceab36c40be72c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/grading.json",
+      "sha256": "d9d23c1bd628a97a3b5d58b5881da0deeeaddcec9d22fd96b009a0e9e35f4ec9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/independent-grader-evidence.json",
+      "sha256": "5f7f5ecd4000b257902a7b3fec84fd613a50cb910dddfd5b1549f80d3a314568"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/README.md",
+      "sha256": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/body.obj",
+      "sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/depth-claim.png",
+      "sha256": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/generated-back.png",
+      "sha256": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/generated-side.png",
+      "sha256": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/measurements.json",
+      "sha256": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/sections.json",
+      "sha256": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/source-evidence.json",
+      "sha256": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/inputs/source-front.png",
+      "sha256": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/outputs/corrected-depth.png",
+      "sha256": "0f38d7c64b95afe00c2fb6f4959bc3ab95c0e1738ecaf2fe4c91014ad9951367"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/outputs/corrected-measurements.json",
+      "sha256": "9e6c673aba1e6cfd51d71337c4bb6d4656ea31caadcaf98d1e65be03769ff1af"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/outputs/execution-results.json",
+      "sha256": "599304efd114ce118ced7e79a0dfdc0921bf00eccd427fa4b9cb571b2132b7e3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/outputs/helper-crosscheck.json",
+      "sha256": "6413e5949edcbac7f0a46ddfff5d22aebc434364065eb883b7bc28be9fbf08ae"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/outputs/helper-sections.json",
+      "sha256": "b02d9c7b30e6db836e7a1e08627919ee116843411366410debad7b60290dddc6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/outputs/report.md",
+      "sha256": "c0b0af224f8bd9f779ecbbedffde3d587358585e982bc50d2a7450143e41b2a6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/outputs/reproduce.py",
+      "sha256": "cd3b3e42e4365b67fc78b9843e5589f703d524c158b9f5bb0df6e0b1f742337a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/outputs/section-evidence.png",
+      "sha256": "2e30cd46bb8e1b21de0e850bb46fd3e0c219b6e93fe214f72d63851cfd6998b7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/task.json",
+      "sha256": "32f9ac0488a193ac67752665d2c9ed27bc5e053ef82bfceb8de0c9ad34414bf0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/timing.json",
+      "sha256": "9e7299c258d107429f67fabb2ca4c21833a2345ba75225bf3cac6868362e7146"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/old_skill/run-1/transcript.md",
+      "sha256": "43ea300540ab428b73ec476fef8021e6d738cd0f974215eb44c5109e8d31a618"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/eval_metadata.json",
+      "sha256": "8fd2988709329e0414b18e9221fd9c85d44e3b1e18ffe343e8ceab36c40be72c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/grading.json",
+      "sha256": "835a19482182a3efa7eaeee1b18e020a8b7781b90a24a55df24f1c435a1e588f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/independent-grader-evidence.json",
+      "sha256": "862003ac85988a38802c6a8c1a2fbfae83a9ac69161de5b7935c9e8afeb277a6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/README.md",
+      "sha256": "09058b5aec1080ec7648feebdaeefce156819431da9b670dcabae5e7599e126b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/body.obj",
+      "sha256": "fb32489bbc68ee4cdd8eabdda38633ad32b864dc7cf09277751e829d9f6da0d9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/depth-claim.png",
+      "sha256": "aa3d6735a2ba972ca028337ea7b2d0ff9c93cad585325c8e552046e79d0d519c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/generated-back.png",
+      "sha256": "93dc541e749235906160657881d3f1816bb6659d17319e9852499497ce740b89"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/generated-side.png",
+      "sha256": "3db1a633c871f6ec80f8f25030cc63787577816f34d8e47e37078fa37b10e52f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/measurements.json",
+      "sha256": "a6bd877f5e9a5f6407eeb18cd93aa5e34d9409123e2f627ddd6ced98379372c7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/sections.json",
+      "sha256": "92b5a228540a4434c1bb65eef1f351a044fb7fe85cb1d7e8bdaca625702a029a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/source-evidence.json",
+      "sha256": "350e91ba3c13c49ce4eef499c091a95a3757ece5c279ecbedf8954a1a176ebd8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/inputs/source-front.png",
+      "sha256": "ec99bee0ae25e39a960165fe9b20026e406cabdf1c52165a3f0d76808f13ceb8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/outputs/corrected-depth.png",
+      "sha256": "8b4840133fc4b5fd646aff644ec1d38c1e69a168c7196edcca3992937d64cc4c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/outputs/corrected-measurements.json",
+      "sha256": "0683d86d8910d24c894ff51483c815df201c41866429ad6f395a00b677ebe523"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/outputs/report.md",
+      "sha256": "2d6df8f594beb46925cd582aa32f43d769a59fedfc1bc9ea08254c18eb097980"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/outputs/reproduce.py",
+      "sha256": "dcacaabb3b352a633801114c10563c42e8438fa23ebb9b0f285b814e37324c68"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/outputs/section-evidence.png",
+      "sha256": "35413ee04c239eae6cc6e75c9ec6eeac65ed0e5a5e71df18d4da650968b48789"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/outputs/timing.json",
+      "sha256": "709ef2b7b6a8b2f04bd0dcc91ad5b9fab77705c8ba604c05d27b74007f13fd4f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/outputs/transcript.md",
+      "sha256": "521b0a8d8c81015411b6b0dc815c84b87eceede18c1bb8e9f74d19495076ba33"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/outputs/vtk-crosscheck.json",
+      "sha256": "395dd56bc9bdea55e79b846cce3f7000365fcb36f2e0f6c61863616375862f26"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/task.json",
+      "sha256": "32f9ac0488a193ac67752665d2c9ed27bc5e053ef82bfceb8de0c9ad34414bf0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/timing-start.json",
+      "sha256": "e1b92867b3f757c21ab70567ab5cca5408fc8baefe2359a80c85133602c0778e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/timing.json",
+      "sha256": "709ef2b7b6a8b2f04bd0dcc91ad5b9fab77705c8ba604c05d27b74007f13fd4f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-measurement-audit/with_skill/run-1/transcript.md",
+      "sha256": "521b0a8d8c81015411b6b0dc815c84b87eceede18c1bb8e9f74d19495076ba33"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/eval_metadata.json",
+      "sha256": "efda5aa57d4a3aede7d8947a04a9527a682fddd8462f808418a9b2a907fff02b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/eval_metadata.json",
+      "sha256": "efda5aa57d4a3aede7d8947a04a9527a682fddd8462f808418a9b2a907fff02b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/grader-evidence/actual-mobile-device-375.png",
+      "sha256": "3177b2048aaa3b4cdea2fb4a769de6b1a7610cbbd42beef55ea8e5ab27deb6ed"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/grader-evidence/checks.json",
+      "sha256": "0629c2955677199fef90356fa90c622a6a6ceb8079bbcf38256ed7e7018824c9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/grader-evidence/edited-desktop.png",
+      "sha256": "28530f1f56796575ca859a98320239aa9cc32cf3faa686380af3599c81dc730f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/grader-evidence/fresh-desktop.png",
+      "sha256": "8fca56acb99ade45f91e57d322797bd5dd9d24aaa57031f86a7671488407633a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/grader-evidence/independent-export.json",
+      "sha256": "3d0814065407792fe3918c5ae91c0c622dec0cb06ab473206669fa9983a98239"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/grader-evidence/mobile-375.png",
+      "sha256": "d9c1731fd10a8e11df32942593ca90d4357d253ed534d1a50c5117dc325e2a1e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/grader-evidence/visual-inspection.json",
+      "sha256": "6fc1fb8d479674559b800fad9b09b65fc173fe06f3c45d9ec6bfae3146a216ad"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/grading.json",
+      "sha256": "f2a1e50e66f434d86c6f5a18b007780e7da78af698686a50756cfeb861d475ae"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/inputs/README.md",
+      "sha256": "157c0e127f4c530e627ebd2dd1fc39adf4995260ca698cf5ed71b01c8f90592e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/inputs/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/inputs/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/inputs/index.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/browser-check.cjs",
+      "sha256": "dd6e1f94be339ba57ec055806cc695684fc90f752e5c40e11c9f5e93662ab97d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/browser-results.json",
+      "sha256": "c0ff583cf455a54b0970fc2ddb804f64cbdc6522961eef33b55951ce15991bc2"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/desktop-after.png",
+      "sha256": "3f0bbc8986a4a8f315b88c922a1d259841db8fa4f6b0bde5ccf5254dec891f13"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/desktop-before.png",
+      "sha256": "c65bb4270df76becc747b4ca623c7be5e26fd820e5e37ec73e7ed8a7bacc156f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/desktop-slider-after.png",
+      "sha256": "d7064085147b47242222eabd1706c61591207eb23646bddc82b86700f0f311c4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/diagnostic-initial.json",
+      "sha256": "2d5ba17afd63bee7a5f249e69be6a562fa0c181cf452d48a135259864154501a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/diagnostic-slider-reloaded.json",
+      "sha256": "0980be9eaa91a75fd2af1a0a55156d1fce8716e60b2d9109ca8c7f98b769406f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/mobile.png",
+      "sha256": "5ddee7b5a58f3000d7dfbbf12ce07b85c96398cf28b97d7035104def1000b4a0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/report.md",
+      "sha256": "77151fc32943a72779b75cf3765f58acae129f3d6e4e339d3515e8063fceff5e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/sha256.json",
+      "sha256": "6257d25bea0aca0fcbc568872fbdb4642fc1bc34a596e4070a8356e33b21be8c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/timing.json",
+      "sha256": "b2824a0e4be084e617a71bbd2894a261cf516b178feb637b67667d8f1d0e6478"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/transcript.md",
+      "sha256": "fc3b0012bb179e8e2c37d9e8f6526ad3c1d45cb24d1e66b8199ee7f8de0b5733"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/viewer-before.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/outputs/viewer.html",
+      "sha256": "655fc7c37be3335b50292ef8bccadb4748b6f6a95e752e1552b7fb316613c280"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/old_skill/run-1/task.json",
+      "sha256": "67c680b78502a64735bf2bb5215e9e061c2ca35378691b6c30a37a40ffcbd751"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/eval_metadata.json",
+      "sha256": "efda5aa57d4a3aede7d8947a04a9527a682fddd8462f808418a9b2a907fff02b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/grader-evidence/actual-mobile-device-375.png",
+      "sha256": "e74c194cbe16d93bc9bfb030096f49ee95468a11a800f8a8d09c2d8a7d1df0c9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/grader-evidence/checks.json",
+      "sha256": "4e90ef955befc830becbcaf5c424231f1b0186e1b7bfa05caa533bf92462d5b1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/grader-evidence/edited-desktop.png",
+      "sha256": "1b1a18eb3327d8c0c1c2a9fa260e5c40cf51e3507cb55d2bc9041b05eec6fd50"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/grader-evidence/fresh-desktop.png",
+      "sha256": "c3b97e09151a2d0c590dac75f9b4d832d2d39513287436f85521c9ff5670cdb3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/grader-evidence/independent-export.json",
+      "sha256": "564367f4337be381b6f40a0ca7af653d0c5833c86aa4760e652fa182ad17d3e8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/grader-evidence/mobile-375.png",
+      "sha256": "e1c2638c91971bcdd845725373d0195896e6f02259e7c2887274d45939700741"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/grader-evidence/visual-inspection.json",
+      "sha256": "9fca71538027c0bca9a9dae7792655935e9153a8a773857992c3a391694a8f51"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/grading.json",
+      "sha256": "e61559e8d9ad7d4a654b9385ebd7f1a6f0382cf3cd1224b07e4a0b16caac0c65"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/inputs/README.md",
+      "sha256": "157c0e127f4c530e627ebd2dd1fc39adf4995260ca698cf5ed71b01c8f90592e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/inputs/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/inputs/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/inputs/index.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/browser-check.cjs",
+      "sha256": "4622a089f312e3a06fada11098bbdf57384f953ce8df973dc2628028841e36f3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/browser-results.json",
+      "sha256": "91cdecb8c8b337ad0587275e2f9c02970a9fd1d41f7e44300d66ad02ea120e0a"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/check-console.txt",
+      "sha256": "f74a4ecd99bd7fae471eceaadf9d0ca2b65d22e9ca3670e6b44fd9a436b718d3"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/desktop-after.png",
+      "sha256": "608f27150b87e83069d0b24697a469dda599e7d8d957919ab54465ac2142cb11"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/desktop-before.png",
+      "sha256": "f940ebdc8747ee11f47acba428e7f28191644c50c577aa183d1a043951b0ac12"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/desktop-initial-v2.png",
+      "sha256": "a1054a793c1b9c11323132a8b410264ab7c4725ed01a82ea54771b67ac2b0d18"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/eval-state-after.json",
+      "sha256": "57d4b3e56a77da066e73ae4f8bbf09207354f321561f809e5969e6572a230738"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/eval-state-initial.json",
+      "sha256": "67fb163fabffe38382a420ee889296e94d7912b886d66882f24f242e04c1f30e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/fixture-original.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/mobile.png",
+      "sha256": "1e0a44d0316a7eec8d2877342b6b73685ab188c0b7c48fb4ece882b05d5c1649"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/report.md",
+      "sha256": "03db516de8c6219b0570a7f5aad5b37412bdaf0e95128a705b6911af823cc5c1"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/source-hashes.json",
+      "sha256": "247c1a597fa7aa5fb39bc849a38d7550790ce9f5a29df5a1b4732e86ca4f3ff7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/timing.json",
+      "sha256": "270e23b34e094cb5708cc78c0d497a86a14b9417d452ff8700690d349709b8c0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/transcript.md",
+      "sha256": "f85075179967ec32dc2b10ee2ed4aaa7bf81f6dcd1ee9b5d4889ce6045f19b2b"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/outputs/viewer.html",
+      "sha256": "645739fbc14286d1b69d6396d1311cdecf02c72861cc86e9b6905cbd41a91bb8"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/iteration-2/eval-viewer-sync/with_skill/run-1/task.json",
+      "sha256": "67c680b78502a64735bf2bb5215e9e061c2ca35378691b6c30a37a40ffcbd751"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-asset-readback.json",
+      "sha256": "75f3b26c8ce88827dfffd5d07bbb1dc17305f9bb136eccf418665c9f9cf3fc94"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-browser/benchmark.png",
+      "sha256": "6f7bddd859ff8e042fe6ef60db02632e781005b70dfc63a631d6a1b88bbac4b0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-browser/desktop.png",
+      "sha256": "eace9443eac3154af4092fe4f47d7117deda5d2c6920eb20668afa6d2705ae8f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-browser/feedback-fixture.json",
+      "sha256": "2a7f53a05c0e07d5be89d842b7c7ae153ba234853489e43a3d581c726d691f0e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-browser/mobile.png",
+      "sha256": "57cef27cc1bedc7efdd0436aa06986ddfd53ac786b7397d6141baf5577b287b4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-browser/report.json",
+      "sha256": "8919db2bb7f08af42f7782b2ea9a4c83a1c6aada1a25b16be1fea66675e4a265"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-logs/helper-tests.log",
+      "sha256": "be9db4796e417229b0fdc86b0e4faa999c99be836e34804fc2a90e2796ddf677"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-logs/local-asset-readback.log",
+      "sha256": "56e033f70980fbb00ef796d351f091e552a5c586be5fd5de330e43976376c74d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-logs/skill-format.log",
+      "sha256": "db349825903d66adffea3ecf1bd8e1803043e8a71cf1a051235dabc5371f5bb0"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/local-logs/tool-tests.log",
+      "sha256": "72f01fd963e46c0137f03214ac61cb57a9b1786cf53b3f950a922c9d12a9d490"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/notification-metadata.json",
+      "sha256": "c138aa3840bbce8a3399b660a898e4480cdcaa89dfaf8e135df509b0a77e0ce6"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/protocol.json",
+      "sha256": "02aa633777c09d93d8440d003adec7c6b4cf93bd1e2a53d736b770942d02bcef"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/selection.json",
+      "sha256": "46b1cc8cb5e50a39f0a937f263ba5e63b05c42ef843e71ea33976b9dfc635a96"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/site-manifest.json",
+      "sha256": "1399ee0b7a2fe6aeafce13ff6e9ac7c5f4f4912d49ec9234b2d782ecc28b2b5f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/INSTALL.md",
+      "sha256": "8f162a19345f2985a37b08a5eaa127352133242be155e41d1e141adb56a0a145"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/SKILL.md",
+      "sha256": "76da9f370a2204474b110b13b9ba453fd5354ec69c090561e72e926ae0b13fe7"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/evals/description-candidates.json",
+      "sha256": "6b3950d4df89d54172a66bdb3309c5c6b4bcfedcd0f7abd30c61fd6e68deb304"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/evals/evals.json",
+      "sha256": "35fe1d9842e20f2dcb69d71b95ea3fe79dfa9e3dbb8808850f48efff7f1dbb17"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/evals/trigger-challenges.json",
+      "sha256": "541807690083ab9c7e54544817f730cf57d8184806b92de70890bff15e46a136"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/evals/trigger-evals.json",
+      "sha256": "5c08a3a5b8c481deebc8a2025c6e16d38957e66042b21de09e7633c6da29c520"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/evals/trigger-rationale.md",
+      "sha256": "9ca15e8a949c6b0a3c4669a341e028ea2229539ce106ccb5aaf5d40ca4e40a1e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/references/test-status.md",
+      "sha256": "2df51393e59c26486e6b86db5ad1d8a1996a27ffa4b21350c172e90a6b1d4c77"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/references/tools-and-evidence.md",
+      "sha256": "59b76f2282e0cb139e4a00ca311a3e901b61493d2b1f4dc1d2183195097a790d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/requirements.txt",
+      "sha256": "5570a3dee4890b714aaba2156d3c5d3bf9e23a9691ead4312baac27e514daf89"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/scripts/measure_mesh.py",
+      "sha256": "c904c1c3b3e789314c8459612913357f5e9e30e16713aabf0c763d434f8440f4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/scripts/verify_masks.py",
+      "sha256": "94556ef220febe7f55916070617da60069c249b65c06aa16328a5d8e4d59adbb"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-candidate-v1/tests/test_helpers.py",
+      "sha256": "d1b53d70539b8985d340e2a006ec9566eb1414f8ffe41be8a8fce46b9fe6053f"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/INSTALL.md",
+      "sha256": "8f162a19345f2985a37b08a5eaa127352133242be155e41d1e141adb56a0a145"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/SKILL.md",
+      "sha256": "1557b4a6c83b55a8cb3bb5726d9dbbdcc0fd92e9dc28dcc896c0b8d3738015c4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/evals/description-candidates.json",
+      "sha256": "6b3950d4df89d54172a66bdb3309c5c6b4bcfedcd0f7abd30c61fd6e68deb304"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/evals/evals.json",
+      "sha256": "35fe1d9842e20f2dcb69d71b95ea3fe79dfa9e3dbb8808850f48efff7f1dbb17"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/evals/trigger-challenges.json",
+      "sha256": "541807690083ab9c7e54544817f730cf57d8184806b92de70890bff15e46a136"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/evals/trigger-evals.json",
+      "sha256": "5c08a3a5b8c481deebc8a2025c6e16d38957e66042b21de09e7633c6da29c520"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/evals/trigger-rationale.md",
+      "sha256": "9ca15e8a949c6b0a3c4669a341e028ea2229539ce106ccb5aaf5d40ca4e40a1e"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/references/test-status.md",
+      "sha256": "2df51393e59c26486e6b86db5ad1d8a1996a27ffa4b21350c172e90a6b1d4c77"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/references/tools-and-evidence.md",
+      "sha256": "59b76f2282e0cb139e4a00ca311a3e901b61493d2b1f4dc1d2183195097a790d"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/requirements.txt",
+      "sha256": "5570a3dee4890b714aaba2156d3c5d3bf9e23a9691ead4312baac27e514daf89"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/scripts/measure_mesh.py",
+      "sha256": "c904c1c3b3e789314c8459612913357f5e9e30e16713aabf0c763d434f8440f4"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/scripts/verify_masks.py",
+      "sha256": "94556ef220febe7f55916070617da60069c249b65c06aa16328a5d8e4d59adbb"
+    },
+    {
+      "path": "docs/verification/garment-body-functional-20261117/skill-snapshot-v0/tests/test_helpers.py",
+      "sha256": "d1b53d70539b8985d340e2a006ec9566eb1414f8ffe41be8a8fce46b9fe6053f"
+    },
+    {
+      "path": "skill-packages/garment-body-six-view.skill",
+      "sha256": "cb941881e0dcfe741c47e8f99a90a0da803470b40f76df2a0daab189cb7307b5"
+    },
+    {
+      "path": "tools/skill_evals/FUNCTIONAL_REVIEW.md",
+      "sha256": "0a061f0c5a3cc3cdfedfd3077e7746eb827f2361f14b7e40737f9cffc87e83e9"
+    },
+    {
+      "path": "tools/skill_evals/README.md",
+      "sha256": "364d46ec58967d7a0eb810f64b2548bfa48d8807e644b4e3a2f52e797e59225d"
+    },
+    {
+      "path": "tools/skill_evals/aggregate_functional.py",
+      "sha256": "eba6f6bdd3082f89f9f268891a9d978836af81e7ccb8e0609c574bbc3aa5941b"
+    },
+    {
+      "path": "tools/skill_evals/build_functional_assets.py",
+      "sha256": "4c2a691a9cc0011ff341baae3f86e7a0926c98027105f7221934ac26bef1aa82"
+    },
+    {
+      "path": "tools/skill_evals/build_functional_review.py",
+      "sha256": "676f868cab6029542dd8d7fafd99e68ea9da42d91ffa1810ace05a1156ebd20b"
+    },
+    {
+      "path": "tools/skill_evals/grade_functional_audit.py",
+      "sha256": "d0f5d4ca7defc4c31a1ba26f663af92a12e6c6aee2c2cf0f3a2bb865bc5165b7"
+    },
+    {
+      "path": "tools/skill_evals/grade_functional_fit.py",
+      "sha256": "e1b082bc5c8c869bfdf2366a783a0c5f09eafd2135f83b75e0feb616eb41caf6"
+    },
+    {
+      "path": "tools/skill_evals/grade_functional_viewer.cjs",
+      "sha256": "4cb85ff4eb30b820e5c8fcfa4e57f41b1f36fb25979e7612e3d948745b3bfeb3"
+    },
+    {
+      "path": "tools/skill_evals/test_functional_review.py",
+      "sha256": "0a105e8ec1a5d758618729463e31e727773eb9f3e058f0b0d3d595c2be249458"
+    },
+    {
+      "path": "tools/skill_evals/upstream/agents/analyzer.md",
+      "sha256": "bf68f4cac5a56c673a928c2e6d619586c5b93ea364026ab37547772cb45a663a"
+    },
+    {
+      "path": "tools/skill_evals/upstream/agents/comparator.md",
+      "sha256": "fe1fc9787c495d864c5d6eada47396478572325fde1b33a96d78bf4b849b7a3e"
+    },
+    {
+      "path": "tools/skill_evals/upstream/agents/grader.md",
+      "sha256": "57134da0c1a4eea33fbd74a1c9c44aa814f07d6bc64de303edb586f941e5d21a"
+    },
+    {
+      "path": "tools/skill_evals/upstream/provenance.json",
+      "sha256": "527117c3cc973600c6c25da7bdaa7e185d8ceccc6d000f2246b6d45376b03200"
+    },
+    {
+      "path": "tools/skill_evals/upstream/references/schemas.md",
+      "sha256": "8e8876180a8989b406a4d3edddf875b04cdfd5805cc8616686d552b11ce4455f"
+    },
+    {
+      "path": "tools/skill_evals/upstream/scripts/aggregate_benchmark.py",
+      "sha256": "123ef128ea5ccc01a4b1ac212ef5567f21e9c13d3d240609780beeb3200c49aa"
+    },
+    {
+      "path": "tools/skill_evals/verify_functional_publish.py",
+      "sha256": "e26398a0c3e355c12651e3d05fb23eafebd559beaba06a88f2ea8926fb1dcca4"
+    },
+    {
+      "path": "tools/skill_evals/verify_functional_review.cjs",
+      "sha256": "fe594db629851ae9dfe12ec6bf8f1ae764cbc8f8fc46cde6850d6bc2c4bec5d1"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/back.png",
+      "sha256": "e3d4f68f4ad3a1bfc0b1aeaa82727820e2b5f47c38a309346177096d8a358532"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/final-back-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/final-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/final-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/fitted.obj",
+      "sha256": "21232711a054b0c7719d69b00b4eda2b759d71654b18d54575b57b4ac7b5f72c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/front-overlay.png",
+      "sha256": "9fd68aa5bb8f2aea50001324aeed6f4af9a5192c3bd055f4e7576eaeb27de5f3"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/front.png",
+      "sha256": "4da1f0a7097e0881a79bb215422a65e85fe045b29f456bf9cd0fad56eb19efd2"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/independent-check.json",
+      "sha256": "b9fa163e544a9a38254502e9d4a92dc9d23d8c4d8e2b9af6fd61b276c4fe7522"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/independent_check.py",
+      "sha256": "e6fb27ab149ea6f41b69da0eb6fbb74eebda83d9c7fe1f5b27ffb043821b8a5d"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/index.html",
+      "sha256": "b8db79cd434be2f7c72dc028ec35cbd645002d9158bdaeaef84785158583864c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/initial-front-mask.png",
+      "sha256": "01d297a950f27451d448d865e305b6d4ede64ae08a2f3e87c0c0a4c8d8f99ac4"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/initial-front-overlay.png",
+      "sha256": "d1af326d11f798e3373fb9d002ab60f5ec4264e3bb1c54c9d6ddf6b38d7c4aa5"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/initial-params.json",
+      "sha256": "8e3188cd2b4d4fa7b850d3b66ae106b481349f33eeda4a4dd7dadfbd3c95e353"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/initial-side-mask.png",
+      "sha256": "b0d35035cf60979f17d9c62b48db8d38d85d6a02a838d277195fec4e151e54d1"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/initial-side-overlay.png",
+      "sha256": "61df38b9267502e860beb0fc7ce3a0d4dd3ccc161fa740e7289cd3180492d7fd"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/mesh-check.json",
+      "sha256": "26992b31210dcd877a0116b607ce61852508facd7b92a5cb313d866bcaf26f9e"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/metrics.json",
+      "sha256": "8fd0c6faa2d3dde5057789836f0cad6acca0f1bb88884cdf59f099438f12cdf0"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/optimization-history.json",
+      "sha256": "eba20d333160c9f096590950af428ec764a3fad4a11f864e731f5a5024ee68de"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/params.json",
+      "sha256": "e15c64364be9d125737c7d16a662da803a6937e06e0bec3dc1ba7e736862da04"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/report.md",
+      "sha256": "ba10ad797aa5f8283f781ae08a5f939aafe2b28b246e73b6d7b2d83e9b9cb9d5"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/reproduce.py",
+      "sha256": "62e26436337df0fe7b646d4d1906535c072591292124d9b157c7c5c3d1016e71"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/review-sheet.png",
+      "sha256": "98f70bb72e7dfbfc89cbfe59adfc1230c5185a388c742f629a541c0340574be5"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/run.json",
+      "sha256": "86843330e9154cb145c8ae07f9a703dd9be675bdb71a445cdcf7852b1a324141"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/side-overlay.png",
+      "sha256": "39e8382721a91824b32ffcf79494eef94e53d4906f6899c5019e7c8ca82c2450"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/side.png",
+      "sha256": "ade6e60a63abe74e7c38b7d6f6c9ffb5121b5374a122634a14a36dded1c6c80d"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/target-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/target-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/with_skill/verify_masks.py",
+      "sha256": "94556ef220febe7f55916070617da60069c249b65c06aa16328a5d8e4d59adbb"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/back.png",
+      "sha256": "999d6c6576aa56e26c73cfd6eab1ebf13b5bcb1406332326b1654da76911e0ed"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/final-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/final-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/fit-log.txt",
+      "sha256": "2f839430e30ea0ed33636d65582ebd6b8e08fe69d1b4af14e38ea32c60aa896b"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/fitted.obj",
+      "sha256": "2fa3592746bf0fd06c8371d7c9fb0dd7cc84f76d1b343f80b90dc7c0fa0d059d"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/front-overlay.png",
+      "sha256": "a00b8e713517fe07011109115e4c298f2f467354f64a7a03b50e104ac7a282e5"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/front.png",
+      "sha256": "a9a63093d206c50d93f6e50234ba1b2332bc0b353edf7d238507cc070481ed5e"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/index.html",
+      "sha256": "c68543b1c4b2c02d986200e4b90a8dddf67562c3a6d96655fb082419f043c3c0"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/initial-front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/initial-side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/metrics.json",
+      "sha256": "1078affa1d7a9420750b61b0c8f65c35c3569c386a24fc1ca56c6a6c91ccd26c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/params.json",
+      "sha256": "e388af03b2be65f5ae091b70c64cf1bd2a95c58f6dbeaf71f50e2c877cfae2e0"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/preview-contact.png",
+      "sha256": "257dd207eee6c474249289afc12c233018d48ea0ec89f496e4803bfb7257b00a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/report.md",
+      "sha256": "4a78cb033dfe32edba1760cbd8d9362916338296820758db867936426e52bf93"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/reproduce.py",
+      "sha256": "71aee255bb29247335a9b837d48ff62d0081fe6807c1fcd1519748d093c3e1c6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/side-overlay.png",
+      "sha256": "c908717fca591ce29219e744518d75bca292da8604985732efd402974b90a0de"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/side.png",
+      "sha256": "6a1e2461e2b6937cb05a969d21c2b1757a56fab19951fec7680366b1896a142b"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/verification.json",
+      "sha256": "55afc167bd67405ceda2ac6fbd3d0cc0272b2455caedff25c474562103141e4c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-fit-existing/without_skill/verify.py",
+      "sha256": "a45901c64ddff9ec4b192c0fca22226bd335ca7cb2481ba524542dba7b58fb37"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/with_skill/corrected-depth.png",
+      "sha256": "3cb0273be0d7b590f5ccc444bd1d4cdca63a9c721221d03973d0c3eaca036e11"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/with_skill/corrected-measurements.json",
+      "sha256": "fe81fa23098e7ba6a192b7497df30b015870e412277d8b52cda6dc327e88595f"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/with_skill/report.md",
+      "sha256": "7d5d321b20062aebbd080b626f58b4c21c7c0bcd46597307e69934ce22c38d57"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/with_skill/reproduce.py",
+      "sha256": "733361364bf5c84a6bac5803970acff0332828b5a080936edffd26a8d3a843c8"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/with_skill/section-evidence.png",
+      "sha256": "93dc1fbc21c334b9df5e62436f135011da6bc58e2c8ab8b21eed784964d4a466"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/with_skill/vtk-independent-check.json",
+      "sha256": "6413e5949edcbac7f0a46ddfff5d22aebc434364065eb883b7bc28be9fbf08ae"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/with_skill/vtk-sections.json",
+      "sha256": "b02d9c7b30e6db836e7a1e08627919ee116843411366410debad7b60290dddc6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/corrected-depth.png",
+      "sha256": "cf2ec5805725692032ad6316a72174f599af47f31d69f616888367a87eb3dc91"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/corrected-measurements.json",
+      "sha256": "b3f5d80f6c08b8802f56b18e212404f0712a6a83e3ba2bf45235a6642354db40"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/independent-check.py",
+      "sha256": "6f303b78ed4b5ed65013c6f66c5d1c4c0c035e62531553d46212e059490549a8"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/independent-verification.json",
+      "sha256": "8aa40b82d836aca3f55b49932e4b38f7e1a8daf725905310dc3cb615cc215b4e"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/index.html",
+      "sha256": "dc69d3e56f86e4598cfc2a90734fb9b912a71d82935e8c70dea715cacd1a28ae"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/report.md",
+      "sha256": "74c297c474537160c1b555c5d275d492ccfc9960676cce8836cbfb4a09544a35"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/reproduce.py",
+      "sha256": "a5105afb050b00db4b5d29493062f060fa65830f74f183a0c53772138780ab3b"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/reproduction-log.json",
+      "sha256": "9b96af57e6b6cb0e0b8acd49040fb4acd9a0b8e54dad2c848d7899dcafc1d870"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/section-evidence.png",
+      "sha256": "dea8502ac058b01a36683007756de8b33a1c47eff8742530a153b6417141488f"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-measurement-audit/without_skill/verification-log.txt",
+      "sha256": "6805bd08344ce99025085fed606acd7d008b1ecd2c6e123f04de9aea838adb3f"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/before.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/browser-check.cjs",
+      "sha256": "ebf8ba7033f04804b25bdba8a6bdc6a38b71286a0415983c32c5304ac09473f2"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/browser-fresh-check.cjs",
+      "sha256": "3d3719e9ed751912182706c0be819709f7789a89de6eaf60e881f8fb9fc9b743"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/browser-fresh-results.json",
+      "sha256": "4d61247763360542e33be3853d1aa653edc677f44d22fd5b37baddcb5fbc6ffa"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/browser-results.json",
+      "sha256": "0be733e73da50de866f003a36689b43702b36aabf539089a648044db63fe3f3f"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/current-body-state.json",
+      "sha256": "1beaeac726a2c799f6f4ec315091fabba87419cec0402bd625c9cbc7afb70875"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/desktop-after.png",
+      "sha256": "83e1849f0c3cfff52be49473187509d7323ee0933864293cc05b2edd565db339"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/desktop-before.png",
+      "sha256": "ef5bba44b1ecc4e3f43e327d13129d5ce094c483f3aaee3b3394c56a2e3753b6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/desktop-final-default.png",
+      "sha256": "82f97636df8adb5dcb37d044752ebbc57e5c94795f4c647ba1b6bd83922c58c8"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/mobile.png",
+      "sha256": "69fa21b24625383e2dfd585fc51b982743eccb4f4809b0d4063cb9fa1e43d0c5"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/report.md",
+      "sha256": "a33b4f36fdf711b521a33a4351eb217810cc29b1650e71b3457d84ceb77c2ad6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/with_skill/viewer.html",
+      "sha256": "af162d2e3e31751f39d3d2800f5d5a46e7c36f4f2dfb2c2d4dcb99eb8aa8c3fa"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/browser-check.cjs",
+      "sha256": "f6a5f5fa460413104fb491393c10a78494489cb6f2dcb152b3cc2a1c71ff2037"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/browser-results.json",
+      "sha256": "d08a1b20144451b35de702795a8a73db4ab86e72fac97f59957057d5caf97363"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/desktop-after.png",
+      "sha256": "033c53e7848cdcfc7b2cb8c6ad39950a3835bf86050f38614833bde9c9c30a8f"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/desktop-before.png",
+      "sha256": "96d07ad555737d6588361415cfa56fbbc4f0939873cec88cbbe29deb717e7742"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/edited-state.json",
+      "sha256": "bef808dfcdad458043350caefd504d182ef716c4456665ccb85f87dc90196ef6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/initial-state.json",
+      "sha256": "1a2723efbaba36ed501259491ea11ceb232ef064eb4f0d04a8da417ab2e9d8e8"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/mobile.png",
+      "sha256": "e43f248b258e26f2e130da973436e2f0a1460ba02af824d3f192d19191c5f551"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/original-stale.png",
+      "sha256": "d7f8a0fcb650bfa466a4632d5d5ca95afa1687bcc86f1e9b65ef6b2299606e75"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/report.md",
+      "sha256": "fb54f287934eede2967a91fd129f734a6461b217355af2a48b07fd1548f7cbc3"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-1/eval-viewer-sync/without_skill/viewer.html",
+      "sha256": "f7b905a94c960420235789c6528fbeb29292915165b0b51283a82b0688a6f6e5"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/back.png",
+      "sha256": "36cc669bb0f81cf4a49058e7043ae65bb4210c94dcc44c2d2e0f2bd614906f48"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/execution.log",
+      "sha256": "c8dc21fc82e5477af4f508a8414f8b6ce4afb2e4e11b21d28426ac4bc865d21a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/final-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/final-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/fitted.obj",
+      "sha256": "80cbdce415afa539cef77ec2187406ee1616fc0f3dc9fd1638a023c1b51ab06d"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/front-overlay.png",
+      "sha256": "3eae4529edb40d9e7fa7d66076c5dbd433cc54a3dfcebc8c0a3df22810b3c142"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/front.png",
+      "sha256": "9fe5a087a6953b8ebf84efd26d3ecaf6ce38e5b7e721d3781f7a89c6d9b73c2a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/generator.py",
+      "sha256": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/initial-front-mask.png",
+      "sha256": "01d297a950f27451d448d865e305b6d4ede64ae08a2f3e87c0c0a4c8d8f99ac4"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/initial-side-mask.png",
+      "sha256": "b0d35035cf60979f17d9c62b48db8d38d85d6a02a838d277195fec4e151e54d1"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/metrics.json",
+      "sha256": "c002e53daae8c80c114ad3bcb762b504d3faf2ddb962f34f5f82f85f8ef57886"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/optimization-history.json",
+      "sha256": "663f48c449391e02654a89d8607cedcb783837c89209ac4efb0b58dadc7549ac"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/params.json",
+      "sha256": "17fb07f6b0f76b2ce2f7ef9e23ac7ae4b20eec289cd19025116cc167a1b726fa"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/provenance.json",
+      "sha256": "35676033905bd92db406b9325c416a141b54e9d804d205e796eef35254849caa"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/report.md",
+      "sha256": "11f1889b23c9135ff49134815be162e93889dca75e8154dc7906e21b202fe548"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/reproduce.py",
+      "sha256": "4c3eb70c9465e5d54a86d043dcf9bb67640a03e1edebaee6a3a3374805e06fc6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/side-overlay.png",
+      "sha256": "7636bd3abcb7080723b459aedf423dba64a74f480bdba5c73c15eef28fa0e9eb"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/side.png",
+      "sha256": "453a6a77affdd1b88c7b8b444ddcd37c534e2cf0fb055b0214116af0c7fc11de"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/validation.json",
+      "sha256": "293732f85188b37e94b49f30348b2f4d4b60e0e9a9510720e9c508c8e381a9d5"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/old_skill/verify_masks.py",
+      "sha256": "94556ef220febe7f55916070617da60069c249b65c06aa16328a5d8e4d59adbb"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/back.png",
+      "sha256": "fa3b4644d87e28bc5d5493881ea064d6199324d1754b7e716ba8af8b5c16677b"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/camera.json",
+      "sha256": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/final-front-mask.png",
+      "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/final-side-mask.png",
+      "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/fitted.obj",
+      "sha256": "80d42009d639d9ed80c261e0a64290f772fea05e90d65334b6e6d5834139d198"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/front-overlay.png",
+      "sha256": "3587cf3da240dd5cea7c835dbd2f1ffe54519886508a1fbc451f43b5ca3a9d5a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/front.png",
+      "sha256": "c500d50e4b5787100b7cafca7bae5b142bedcb8f7988887d78c74fa14fc5867a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/independent-verification.json",
+      "sha256": "f474bd37ad10951701eb05fcd0d8a9c82587fcf3a94ddfc6d3e45285efa4cd40"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/initial-front-mask.png",
+      "sha256": "e8b3942bd76639ccc913bc6f8e2ea6020d7565ff11f337808ca3a5bd574701ad"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/initial-side-mask.png",
+      "sha256": "5a3ad7133574a19fe7190504115f01d7d70ae42a6a8a0dcf33bc7c6090efcf09"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/metrics.json",
+      "sha256": "cdcc9954e9ffa8cfc9e587736e30d70058aca161a12abf34017703b1439b7475"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/params.json",
+      "sha256": "8f10ff90e714660be5c3bd2f536a663f953ac9b65e7a107cf1c4cf4c94f4e5ab"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/report.md",
+      "sha256": "1b107664f6dcda1b07a8588653154645b21c3f41ed6e0e5087bd4ac4291ac100"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/reproduce.py",
+      "sha256": "e22c6b4e1b57a00610e6cad33092c2d0121bd0f840248247038a9d50481f3e25"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/side-overlay.png",
+      "sha256": "0cda06b12dfe047ea2d97df8b2e10b26dc0dcaf39416a856ff5a310230bbbec5"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-fit-existing/with_skill/side.png",
+      "sha256": "302b3ddacc94764de188f43a7ea323c55fe753713c055f9f2293f9719a9e6ed6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/old_skill/corrected-depth.png",
+      "sha256": "0f38d7c64b95afe00c2fb6f4959bc3ab95c0e1738ecaf2fe4c91014ad9951367"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/old_skill/corrected-measurements.json",
+      "sha256": "9e6c673aba1e6cfd51d71337c4bb6d4656ea31caadcaf98d1e65be03769ff1af"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/old_skill/execution-results.json",
+      "sha256": "599304efd114ce118ced7e79a0dfdc0921bf00eccd427fa4b9cb571b2132b7e3"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/old_skill/helper-crosscheck.json",
+      "sha256": "6413e5949edcbac7f0a46ddfff5d22aebc434364065eb883b7bc28be9fbf08ae"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/old_skill/helper-sections.json",
+      "sha256": "b02d9c7b30e6db836e7a1e08627919ee116843411366410debad7b60290dddc6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/old_skill/report.md",
+      "sha256": "c0b0af224f8bd9f779ecbbedffde3d587358585e982bc50d2a7450143e41b2a6"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/old_skill/reproduce.py",
+      "sha256": "cd3b3e42e4365b67fc78b9843e5589f703d524c158b9f5bb0df6e0b1f742337a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/old_skill/section-evidence.png",
+      "sha256": "2e30cd46bb8e1b21de0e850bb46fd3e0c219b6e93fe214f72d63851cfd6998b7"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/with_skill/corrected-depth.png",
+      "sha256": "8b4840133fc4b5fd646aff644ec1d38c1e69a168c7196edcca3992937d64cc4c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/with_skill/corrected-measurements.json",
+      "sha256": "0683d86d8910d24c894ff51483c815df201c41866429ad6f395a00b677ebe523"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/with_skill/report.md",
+      "sha256": "2d6df8f594beb46925cd582aa32f43d769a59fedfc1bc9ea08254c18eb097980"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/with_skill/reproduce.py",
+      "sha256": "dcacaabb3b352a633801114c10563c42e8438fa23ebb9b0f285b814e37324c68"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/with_skill/section-evidence.png",
+      "sha256": "35413ee04c239eae6cc6e75c9ec6eeac65ed0e5a5e71df18d4da650968b48789"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/with_skill/timing.json",
+      "sha256": "709ef2b7b6a8b2f04bd0dcc91ad5b9fab77705c8ba604c05d27b74007f13fd4f"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/with_skill/transcript.md",
+      "sha256": "521b0a8d8c81015411b6b0dc815c84b87eceede18c1bb8e9f74d19495076ba33"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-measurement-audit/with_skill/vtk-crosscheck.json",
+      "sha256": "395dd56bc9bdea55e79b846cce3f7000365fcb36f2e0f6c61863616375862f26"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/browser-check.cjs",
+      "sha256": "dd6e1f94be339ba57ec055806cc695684fc90f752e5c40e11c9f5e93662ab97d"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/browser-results.json",
+      "sha256": "c0ff583cf455a54b0970fc2ddb804f64cbdc6522961eef33b55951ce15991bc2"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/desktop-after.png",
+      "sha256": "3f0bbc8986a4a8f315b88c922a1d259841db8fa4f6b0bde5ccf5254dec891f13"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/desktop-before.png",
+      "sha256": "c65bb4270df76becc747b4ca623c7be5e26fd820e5e37ec73e7ed8a7bacc156f"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/desktop-slider-after.png",
+      "sha256": "d7064085147b47242222eabd1706c61591207eb23646bddc82b86700f0f311c4"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/diagnostic-initial.json",
+      "sha256": "2d5ba17afd63bee7a5f249e69be6a562fa0c181cf452d48a135259864154501a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/diagnostic-slider-reloaded.json",
+      "sha256": "0980be9eaa91a75fd2af1a0a55156d1fce8716e60b2d9109ca8c7f98b769406f"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/mobile.png",
+      "sha256": "5ddee7b5a58f3000d7dfbbf12ce07b85c96398cf28b97d7035104def1000b4a0"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/report.md",
+      "sha256": "77151fc32943a72779b75cf3765f58acae129f3d6e4e339d3515e8063fceff5e"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/sha256.json",
+      "sha256": "6257d25bea0aca0fcbc568872fbdb4642fc1bc34a596e4070a8356e33b21be8c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/timing.json",
+      "sha256": "b2824a0e4be084e617a71bbd2894a261cf516b178feb637b67667d8f1d0e6478"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/transcript.md",
+      "sha256": "fc3b0012bb179e8e2c37d9e8f6526ad3c1d45cb24d1e66b8199ee7f8de0b5733"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/viewer-before.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/old_skill/viewer.html",
+      "sha256": "655fc7c37be3335b50292ef8bccadb4748b6f6a95e752e1552b7fb316613c280"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/body.json",
+      "sha256": "e931371d5aa2b4c7eb554e7d30b6922edf7bec2ad380dca5ece5133613668b67"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/body.obj",
+      "sha256": "4ad60c6444999be98c6680e813921754670d270640420df85cc2049fdb8b1a3c"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/browser-check.cjs",
+      "sha256": "4622a089f312e3a06fada11098bbdf57384f953ce8df973dc2628028841e36f3"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/browser-results.json",
+      "sha256": "91cdecb8c8b337ad0587275e2f9c02970a9fd1d41f7e44300d66ad02ea120e0a"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/check-console.txt",
+      "sha256": "f74a4ecd99bd7fae471eceaadf9d0ca2b65d22e9ca3670e6b44fd9a436b718d3"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/desktop-after.png",
+      "sha256": "608f27150b87e83069d0b24697a469dda599e7d8d957919ab54465ac2142cb11"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/desktop-before.png",
+      "sha256": "f940ebdc8747ee11f47acba428e7f28191644c50c577aa183d1a043951b0ac12"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/desktop-initial-v2.png",
+      "sha256": "a1054a793c1b9c11323132a8b410264ab7c4725ed01a82ea54771b67ac2b0d18"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/eval-state-after.json",
+      "sha256": "57d4b3e56a77da066e73ae4f8bbf09207354f321561f809e5969e6572a230738"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/eval-state-initial.json",
+      "sha256": "67fb163fabffe38382a420ee889296e94d7912b886d66882f24f242e04c1f30e"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/fixture-original.html",
+      "sha256": "f5e20aebd7d14ae3d3335da9de9273a4f46b4170aecbb30ec890213a46259cf9"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/mobile.png",
+      "sha256": "1e0a44d0316a7eec8d2877342b6b73685ab188c0b7c48fb4ece882b05d5c1649"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/report.md",
+      "sha256": "03db516de8c6219b0570a7f5aad5b37412bdaf0e95128a705b6911af823cc5c1"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/source-hashes.json",
+      "sha256": "247c1a597fa7aa5fb39bc849a38d7550790ce9f5a29df5a1b4732e86ca4f3ff7"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/timing.json",
+      "sha256": "270e23b34e094cb5708cc78c0d497a86a14b9417d452ff8700690d349709b8c0"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/transcript.md",
+      "sha256": "f85075179967ec32dc2b10ee2ed4aaa7bf81f6dcd1ee9b5d4889ce6045f19b2b"
+    },
+    {
+      "path": "web/garment-body/artifacts/iteration-2/eval-viewer-sync/with_skill/viewer.html",
+      "sha256": "645739fbc14286d1b69d6396d1311cdecf02c72861cc86e9b6905cbd41a91bb8"
+    },
+    {
+      "path": "web/garment-body/benchmark-iteration-1.json",
+      "sha256": "92d790f9bdcbd2661b09b504d24a12a352501594885d00a5984fa931db32d760"
+    },
+    {
+      "path": "web/garment-body/benchmark-iteration-2.json",
+      "sha256": "4fbc52784e7a862a784ee67166e8525ef7c3d5dce50a49d85c539e29fe956c81"
+    },
+    {
+      "path": "web/garment-body/eval.html",
+      "sha256": "94fd694a486097007db6e8c486442b32a15f37e19c2d07ba6535b673609d2c36"
+    },
+    {
+      "path": "web/garment-body/iteration-1.html",
+      "sha256": "cbd0e0c8f9e926bcae656ad6899cbaa38529052f4d9c6afb3b0705cac16d4bf9"
+    },
+    {
+      "path": "web/garment-body/manifest.json",
+      "sha256": "1399ee0b7a2fe6aeafce13ff6e9ac7c5f4f4912d49ec9234b2d782ecc28b2b5f"
+    }
+  ]
+}

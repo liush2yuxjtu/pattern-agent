@@ -1,0 +1,15 @@
+{
+  "created_utc": "2026-11-17T03:17:28.644446+00:00",
+  "skill": "garment-body-six-view",
+  "scope": "Executed functional sub-tasks on synthetic controlled files, using session subagents; not Claude-native routing or full six-image generator evaluation",
+  "iteration1": "three paired with-v0 versus no-skill executions, fresh context, identical task inputs",
+  "iteration2": "if execution failures justify a general skill improvement: revised skill versus frozen-v0, same tasks, independent fresh executions",
+  "grading": "frozen assertions, independent artifact/CLI/browser verification, no self-grading",
+  "timing": "actual token/duration notification metadata absent: total_tokens null; observed wallclock recorded separately, no invented model throughput",
+  "review": "official upstream generate_review.py through separate static adapter, qualitative outputs plus benchmark; download feedback.json on public static site",
+  "limits": [
+    "single execution per configuration/case; not stochastic reliability",
+    "subagents share same model family",
+    "synthetic fixture success does not establish human anatomy, imagegen quality or physical garment fit"
+  ]
+}

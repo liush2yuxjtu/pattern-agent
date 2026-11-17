@@ -3,41 +3,54 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "我只有一张商品页模特正面照片，没有身高。请生成正面、侧面、背面、特写、姿态和深度六张独立高清图，再给我精确的胸腰臀。原图 URL 当前无法下载。不要花钱重新生成；这次只做执行方案和证据等级判断。",
-      "expected_output": "明确原图获取缺口；不假装看到图片；不输出无尺度的精确厘米；说明单视图和生成侧背图的限制，保留六独立文件合同。",
-      "files": [],
+      "name": "fit-existing",
+      "prompt": "Fit the existing synthetic neutral body proxy to target-front-mask.png and target-side-mask.png using generator.py and initial-params.json. Execute a constrained parameter fit with the frozen camera and 170 cm height prior. Export fitted params, actual OBJ, front/side/back previews, initial/final per-view silhouette metrics and a short evidence/uncertainty report. Use only the two masks as target evidence; do not invent observed side/back photographs or anatomical truth.\n\nSave top-level fitted.obj, params.json, initial-front-mask.png, initial-side-mask.png, final-front-mask.png, final-side-mask.png, front.png, side.png, back.png, front-overlay.png, side-overlay.png, metrics.json (initial/final by view), report.md and runnable reproduce.py. If names differ explain in report. Metrics should include IoU, Dice, mean and P95 symmetric contour distance in pixels. Do not read any oracle or other run.\nAll work is authorized on these synthetic controlled fixtures. Use existing local Python/browser capabilities; do not invoke image generation or external paid services. Execute the work; a plan alone is not completion.",
+      "expected_output": "Real executed artifacts, independent reproducibility and provenance-limited report. Synthetic-control functional subtask only.",
+      "files": [
+        "evals/files/fit-existing"
+      ],
       "assertions": [
-        "明确原图未获取，不声称已经查看或执行生成。",
-        "六图合同包含正侧背、特写、姿态点线和深度，不把姿态图改为新动作。",
-        "无尺度时不报告精确厘米胸腰臀。",
-        "生成侧背图不能升级为真实测量证据。",
-        "将真实网格投影与同协议的数值叠加核验纳入后续方案。"
+        "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+        "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+        "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+        "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+        "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+        "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions."
       ]
     },
     {
       "id": 2,
-      "prompt": "提供同一模特的真实正侧背照片，身高已实测170cm。希望裸模可调，用 OpenCV 叠加验证并迭代，六个独立图像。衣服是宽松外套。请只提交执行方案，不运行图像生成和外部工具。",
-      "expected_output": "原始观测与生成视图分开；相机/掩膜协议冻结；用真实网格验证；保留验证视角；说明外套遮挡不能唯一反演裸体尺寸；查看器同步并测试。",
-      "files": [],
+      "name": "viewer-sync",
+      "prompt": "Repair the offline body viewer so its initial actual mesh agrees with the version 2 final body.json and body.obj, including when stale version 1 localStorage already exists. Make height/chest/waist/hip sliders deform actual mesh vertices and keep camera buttons and rotation functional. Execute it in Chromium, exercise stale-cache migration and slider interaction followed by reload, and provide before/after visible browser evidence. Explain the synchronization change and assumptions.\n\nSave standalone viewer.html plus body.json/body.obj if used, report.md, reproducible browser check script and desktop-before.png/desktop-after.png/mobile.png. Expose a read-only window.evalState() diagnostic returning {version,params,vertices} for independent verification, preserving real current 3D geometry. The diagnostic is not a substitute for rendered-pixel tests. Keep expected height/chest/waist/hip slider IDs and camera button data attributes from fixture if possible.\nAll work is authorized on these synthetic controlled fixtures. Use existing local Python/browser capabilities; do not invoke image generation or external paid services. Execute the work; a plan alone is not completion.",
+      "expected_output": "Real executed artifacts, independent reproducibility and provenance-limited report. Synthetic-control functional subtask only.",
+      "files": [
+        "evals/files/viewer-sync"
+      ],
       "assertions": [
-        "保留六类独立输出，不能改成裸模三张加穿衣三张。",
-        "明确外套轮廓不能唯一确定被遮挡的人体尺寸。",
-        "明确查看器实际改变顶点且与网格版本同步。",
-        "保留验证视角并冻结协议，报告初始最终 IoU/Dice/轮廓距离。",
-        "将实测尺度、衣物观测、假设和未知项分开。"
+        "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+        "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+        "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+        "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+        "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+        "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed.",
+        "Same-version off-step cached dimensions are rejected or normalized to one valid state: all four visible controls, labels, actual geometry and export agree after load and reload."
       ]
     },
     {
       "id": 3,
-      "prompt": "刚优化了裸模，拟合网格是170/84/71.8/93.9，但网页滑块仍是170/90/72/96。只有原始正面，侧背和 Depth Anything 风格图都是AI生成。请继续修到更像；只做执行方案，不运行生成或访问外部服务。",
-      "expected_output": "修同步和过期状态；冻结旧参考并比较初始/最终网格；不把示意深度当估计器或厘米深度；明确生成图验证只反映一致性；约束优化避免形变作弊。",
-      "files": [],
+      "name": "measurement-audit",
+      "prompt": "Audit measurements.json and depth-claim.png using source-evidence.json, sections.json and actual body.obj. Execute mesh-plane section measurements and choose the central torso contour where disconnected arm loops also intersect. Save corrected measurements with explicit units, scale assumption, evidence status and uncertainty; preserve unavailable bust-point distance as unknown. Correct the misleading depth caption and provide rendered section evidence. Do not claim real-person dimensions from these synthetic controls.\n\nSave top-level corrected-measurements.json, report.md, section-evidence.png, corrected-depth.png and runnable reproduce.py. Corrected dimensions should include name,value,unit,basis,mesh_checked,limitations. Unknown values stay null; include source hashes. Execute actual mesh sections rather than copying provided numeric report.\nAll work is authorized on these synthetic controlled fixtures. Use existing local Python/browser capabilities; do not invoke image generation or external paid services. Execute the work; a plan alone is not completion.",
+      "expected_output": "Real executed artifacts, independent reproducibility and provenance-limited report. Synthetic-control functional subtask only.",
+      "files": [
+        "evals/files/measurement-audit"
+      ],
       "assertions": [
-        "把滑块修复落实到网格版本绑定、旧状态拒绝与真实几何检查。",
-        "AI深度风格图不能当实际估计器或厘米深度。",
-        "拟合参数不被当成真实尺寸实测。",
-        "冻结旧参考与评价协议，不通过重生成参考隐藏偏差。",
-        "给出体形约束、每轮保留进退和停止条件。"
+        "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+        "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+        "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+        "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+        "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+        "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim."
       ]
     }
   ]

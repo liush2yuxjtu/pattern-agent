@@ -1,0 +1,13 @@
+{
+  "eval_id": 2,
+  "eval_name": "viewer-sync",
+  "prompt": "Repair the offline body viewer so its initial actual mesh agrees with the version 2 final body.json and body.obj, including when stale version 1 localStorage already exists. Make height/chest/waist/hip sliders deform actual mesh vertices and keep camera buttons and rotation functional. Execute it in Chromium, exercise stale-cache migration and slider interaction followed by reload, and provide before/after visible browser evidence. Explain the synchronization change and assumptions.\n\nSave standalone viewer.html plus body.json/body.obj if used, report.md, reproducible browser check script and desktop-before.png/desktop-after.png/mobile.png. Expose a read-only window.evalState() diagnostic returning {version,params,vertices} for independent verification, preserving real current 3D geometry. The diagnostic is not a substitute for rendered-pixel tests. Keep expected height/chest/waist/hip slider IDs and camera button data attributes from fixture if possible.\nAll work is authorized on these synthetic controlled fixtures. Use existing local Python/browser capabilities; do not invoke image generation or external paid services. Execute the work; a plan alone is not completion.",
+  "assertions": [
+    "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+    "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+    "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+    "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+    "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+    "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed."
+  ]
+}

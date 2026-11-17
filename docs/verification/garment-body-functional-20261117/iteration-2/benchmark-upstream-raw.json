@@ -1,0 +1,382 @@
+{
+  "metadata": {
+    "skill_name": "garment-body-six-view",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-17T03:38:37Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 52.023921642999994,
+        "tokens": 0,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+          "passed": true,
+          "evidence": "Independently parsed 1548 finite XYZ vertices and 3072 indexed triangles; spans [64.0, 170.0, 27.76681] cm, 0 zero-area triangles. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+          "passed": true,
+          "evidence": "Reopened initial/final OBJ projections exactly equal all four delivered masks (0 differing pixels); frozen 384x640 camera unchanged. IoU front 0.952753872633 -> 1.000000000000 (gain 0.047246127367); side 0.888753702920 -> 1.000000000000 (gain 0.111246297080). See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+          "passed": true,
+          "evidence": "Parameters {'height': 170.0, 'chest': 95.76895901773013, 'waist': 72.59665936499452, 'hip': 99.89305238999965, 'depth_ratio': 0.7802819757968494}; mesh height 170.0; independently checked torso controls against OBJ ring radii (max error 4.34183304e-07 cm). Full executor transcript states only declared task data and authorized workflow/helper code were read; reproduction source opens only declared inputs and local helper code. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+          "passed": true,
+          "evidence": "All 14 requested artifacts present; initial/final mask rerasterization has 0 differing pixels; all front/side/back preview rerenders have 0 differing channel values. Final overlap overlays have foreground colors {'front': [[46, 136, 84]], 'side': [[46, 136, 84]]}; generated back is not observed evidence. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+          "passed": true,
+          "evidence": "All four IoU/Dice/mean/P95 records agree to <1e-6 using independently reopened mesh masks and declared external contour protocol. Reference hashes {'front': 'db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a', 'side': '0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21'} match metrics protocol. Maximum absolute metric discrepancy 8.42249741e-08. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions.",
+          "passed": true,
+          "evidence": "Actual report excerpts: Executed a constrained four-parameter fit to the two supplied binary target masks. No photographs, target parameters, or back evidence were used. This is a synthetic proxy consistency test; it does not recover a real person or establish anatomical accuracy.\nBounds (cm under the prior): chest 60\u2013120, waist 50\u2013110, hip 65\u2013130; depth_ratio 0.45\u20131.05. All scales remain positive. Additional bounds are broad proxy regularization, not observed anatomy. Objective is mean front/side (1\u2212IoU); deterministic differential evolution followed by bounded Powell. The finite budget and raster plateaus mean the solution is not guaranteed unique or globally optimal.\nFinal parameters: `{\"height\": 170.0, \"chest\": 95.76895901773013, \"waist\": 72.59665936499452, \"hip\": 99.89305238999965, \"depth_ratio\": 0.7802819757968494}`. These are mesh parameters inferred from synthetic silhouette evidence conditional on the source model and height prior. Circumference labels use the generator\u2019s Ramanujan ellipse approximation; no anatomical measurement claim or unsupported confidence interval is made.\nFinal masks and all previews were rendered from vertices/faces independently reopened from fitted.obj, then all PNG masks were reopened for scoring. Initial and final metrics use identical targets, full canvas, thresholds and external-contour protocol. See validation.json for actual topology checks. The proxy consists of disconnected capped components and lacks anatomical detail.\nOverlay legend: green overlap, pink target-only, cyan model-only. Front/side/back PNGs are actual mesh previews; back is a symmetry-driven model prediction with no observed back target. No held-out view exists. Neither IoU nor contour distance is a percentage of body measurement accuracy. Pixel quantization and shared generator assumptions limit identifiability; unmodeled anatomy, asymmetric depth, pose and perspective remain unconstrained. See independent-grader-evidence/validation.json for measured details."
+        }
+      ],
+      "notes": [
+        "Only two synthetic silhouettes; nonunique raster plateaus; assumed height; fixed head/limbs; generated unobserved back."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 118.289655,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+          "passed": true,
+          "evidence": "Independent triangle-plane/connected-section recomputation (1548 vertices, 3072 triangles): chest=95.931477062 cm, waist=71.948607598 cm, hip=99.928620819 cm. Absolute output errors(cm)={'chest': 0.0, 'waist': 0.0, 'hip': 0.0}; within0.5cm=True. Relocated execution matches dimensions=True; output dimensions cm and mesh_checked=true."
+        },
+        {
+          "text": "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+          "passed": true,
+          "evidence": "Independent geometric components=[{\"name\": \"chest\", \"plane_y_cm\": 128, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 31.393501992811434, \"encloses_origin\": false, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 95.93147706242992, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 31.393501992811434, \"encloses_origin\": false, \"vertex_count\": 48, \"segment_count\": 48}], \"selected_index\": 1, \"torso_cm\": 95.93147706242992, \"all_components_sum_cm\": 158.71848104805278}, {\"name\": \"waist\", \"plane_y_cm\": 109, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 26.20674896288179, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 71.94860759832905, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 26.20674896288179, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}], \"selected_index\": 1, \"torso_cm\": 71.94860759832905, \"all_components_sum_cm\": 124.36210552409263}, {\"name\": \"hip\", \"plane_y_cm\": 88, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 20.845284857660708, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 99.92862081865191, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 20.845284857660708, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}], \"selected_index\": 1, \"torso_cm\": 99.92862081865191, \"all_components_sum_cm\": 141.61919053397332}]. Executor component diagnostics verified against geometry=[{\"name\": \"chest\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [95.93147706242992, 31.393501992811434, 31.393501992811434], \"selected_value_cm\": 95.93147706242992, \"component_geometry_matches\": true, \"selected_torso_matches\": true}, {\"name\": \"waist\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [71.94860759832905, 26.20674896288179, 26.20674896288179], \"selected_value_cm\": 71.94860759832905, \"component_geometry_matches\": true, \"selected_torso_matches\": true}, {\"name\": \"hip\", \"output_selected_index\": 0, \"output_component_perimeters_cm\": [99.92862081865191, 20.845284857660708, 20.845284857660708], \"selected_value_cm\": 99.92862081865191, \"component_geometry_matches\": true, \"selected_torso_matches\": true}]. Indices may differ by traversal order; selected contour identity and perimeter are checked. Actual reviewed section plot: Opened actual image with view_image: real triangulated proxy body on left, colored central torso sections and gray detached arms; three XZ plots on right show chest95.931/waist71.949/hip99.929 and three loops per plane; readable170cm-prior/no-real-person warning."
+        },
+        {
+          "text": "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+          "passed": true,
+          "evidence": "Structured dimension fields complete=True; cm units, mesh/proxy basis, 170cm uncalibrated prior and assumed height distinguished from observed real-person dimensions. Structured scale assumption={'kind': 'assumption', 'height_cm': 170, 'source': '170 cm prior; no calibration object or known camera distance'}; corrected source status retained; report rejects real-person/anatomical inference."
+        },
+        {
+          "text": "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+          "passed": true,
+          "evidence": "bust_point_distance.value=None; physical depth.value=None. Depth evidence illustrative; actual visible replacement review: Opened actual image with view_image: old observed25.3cm footer removed fully; enlarged readable ILLUSTRATIVE SYNTHETIC SIDE PREVIEW and Physical depth:UNKNOWN; no calibrated depth or observed centimetres; proxy assumption/front-only source; generated side-back caveat; not measured depth map or Z-buffer."
+        },
+        {
+          "text": "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+          "passed": true,
+          "evidence": "Both actual PNGs decoded and independently viewed, with exact hashes recorded in independent-grader-evidence.json. Opened actual image with view_image: real triangulated proxy body on left, colored central torso sections and gray detached arms; three XZ plots on right show chest95.931/waist71.949/hip99.929 and three loops per plane; readable170cm-prior/no-real-person warning. Opened actual image with view_image: old observed25.3cm footer removed fully; enlarged readable ILLUSTRATIVE SYNTHETIC SIDE PREVIEW and Physical depth:UNKNOWN; no calibrated depth or observed centimetres; proxy assumption/front-only source; generated side-back caveat; not measured depth map or Z-buffer."
+        },
+        {
+          "text": "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim.",
+          "passed": true,
+          "evidence": "Source status matches supplied single synthetic front/generated side-back categories=True; SHA256 all9 actual input files matches stored provenance=True. Units prior-scaled cm; uncalibrated170cm prior, unresolved physical/shape/landmark uncertainty, no anatomical accuracy claim remain explicit."
+        }
+      ],
+      "notes": [
+        "Uncalibrated170cm prior, unvalidated landmarks, shape/discretization error, single synthetic front and generated side/back; physical uncertainty unquantified.",
+        "Raw executor process provenance unavailable."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8571428571428571,
+        "passed": 6,
+        "failed": 1,
+        "total": 7,
+        "time_seconds": 179.21411,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+          "passed": true,
+          "evidence": "Fresh v2 1548 vertices match body.json and OBJ within 3.552713678800501e-15; independent OBJ-render pixel oracle differs in 0/411000 pixels. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+          "passed": true,
+          "evidence": "Real ArrowRight input on all four ranges changed vertices/pixels: height 1548/49999, chest 144/6363, waist 48/3281, hip 144/5838. All finite. Actual executor diagnostic-slider-reloaded.json reconstructed with keyboard and matches exact current/reloaded geometry; UI download not implemented (diagnostic JSON artifact supplied). See grader-evidence/checks.json."
+        },
+        {
+          "text": "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+          "passed": true,
+          "evidence": "Injected known v1 values; full state equals fresh final defaults after reload: true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+          "passed": true,
+          "evidence": "Camera pixel changes 75791,75727,70552; rotation 48128; geometry unchanged; front exact reproduction true; saved reload geometry/controls/canvas exact true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+          "passed": true,
+          "evidence": "Independent fresh and edited screenshots show 51208 changed canvas pixels; supplied before/after/mobile PNGs exist. Reopened executor export reconstructed through visible controls and survives reload exactly: true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed.",
+          "passed": true,
+          "evidence": "At 1100 and 375 pixels overflow=false/false; JS/console errors=0. Report explicitly identifies synthetic geometry and assumed cm scale. See grader-evidence/checks.json. Report.md: Assumptions: this remains the fixture's simplified synthetic loft proxy, with assumed centimetres and a 170cm height prior. Coordinates preserve fixture X horizontal, Y up, Z depth. The existing procedural proportions and renderer are retained; height scales all axes, so circumference labels remain model controls rather than independently verified anatomical measurements at changed height. No image fitting, new anatomy, photorealism or real-person measurement accuracy is claimed. Shoulder control was outside the requested four-slider repair. Camera angles are functional; front/back geometric symmetry means differences also reflect triangle shading. Persistence assumes the same browser origin. File delivery is standalone, but Chromium execution was verified through loopback HTTP because managed file URLs are blocked."
+        },
+        {
+          "text": "Same-version off-step cached dimensions are rejected or normalized to one valid state: all four visible controls, labels, actual geometry and export agree after load and reload.",
+          "passed": false,
+          "evidence": "Off-step same-version cache probes: {\"supplied\":{\"height\":170.5},\"passed\":false,\"params\":{\"version\":2,\"height\":170.5,\"chest\":66,\"waist\":56,\"hip\":66,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":66,\"waist\":56,\"hip\":66},\"finite\":true,\"geometryMatchesControls\":false,\"pixelsMatchControls\":false}; {\"supplied\":{\"height\":175.25},\"passed\":false,\"params\":{\"version\":2,\"height\":175.25,\"chest\":66,\"waist\":56,\"hip\":66,\"depth_ratio\":0.78},\"controls\":{\"height\":175,\"chest\":66,\"waist\":56,\"hip\":66},\"finite\":true,\"geometryMatchesControls\":false,\"pixelsMatchControls\":false}; {\"supplied\":{\"chest\":99.5},\"passed\":false,\"params\":{\"version\":2,\"height\":146,\"chest\":99.5,\"waist\":56,\"hip\":66,\"depth_ratio\":0.78},\"controls\":{\"height\":146,\"chest\":100,\"waist\":56,\"hip\":66},\"finite\":true,\"geometryMatchesControls\":false,\"pixelsMatchControls\":false}; {\"supplied\":{\"waist\":75.25},\"passed\":false,\"params\":{\"version\":2,\"height\":146,\"chest\":66,\"waist\":75.25,\"hip\":66,\"depth_ratio\":0.78},\"controls\":{\"height\":146,\"chest\":66,\"waist\":75,\"hip\":66},\"finite\":true,\"geometryMatchesControls\":false,\"pixelsMatchControls\":false}; {\"supplied\":{\"hip\":103.5},\"passed\":false,\"params\":{\"version\":2,\"height\":146,\"chest\":66,\"waist\":56,\"hip\":103.5,\"depth_ratio\":0.78},\"controls\":{\"height\":146,\"chest\":66,\"waist\":56,\"hip\":104},\"finite\":true,\"geometryMatchesControls\":false,\"pixelsMatchControls\":false}. Accepting canonical normalized values or rejecting to defaults are both allowed; actual controls, labels, schema, vertices and pixels must agree. See grader-evidence/checks.json."
+        }
+      ],
+      "notes": [
+        "Synthetic proxy; assumed scale, no measured anatomy.",
+        "Accepted off-step same-version cache leaves slider and mesh/label inconsistent.",
+        "UI chest cm label describes template dimension at changed height, despite actual section circumference mismatch.",
+        "Exported JSON generated via diagnostic rather than a user-facing export button."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 38.32057276000069,
+        "tokens": 0,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+          "passed": true,
+          "evidence": "Independently parsed 1548 finite XYZ vertices and 3072 indexed triangles; spans [64.0, 170.0, 27.951942] cm, 0 zero-area triangles. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+          "passed": true,
+          "evidence": "Reopened initial/final OBJ projections exactly equal all four delivered masks (0 differing pixels); frozen 384x640 camera unchanged. IoU front 0.952753872633 -> 1.000000000000 (gain 0.047246127367); side 0.888753702920 -> 1.000000000000 (gain 0.111246297080). See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+          "passed": true,
+          "evidence": "Parameters {'height': 170.0, 'chest': 96.29509988633787, 'waist': 71.9301658975463, 'hip': 100.01259696783724, 'depth_ratio': 0.7875177015874257}; mesh height 170.0; independently checked torso controls against OBJ ring radii (max error 4.92696897e-07 cm). Full executor transcript states only declared task data and authorized workflow/helper code were read; reproduction source opens only declared inputs and local helper code. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+          "passed": true,
+          "evidence": "All 14 requested artifacts present; initial/final mask rerasterization has 0 differing pixels; all front/side/back preview rerenders have 0 differing channel values. Final overlap overlays have foreground colors {'front': [[55, 220, 125]], 'side': [[55, 220, 125]]}; generated back is not observed evidence. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+          "passed": true,
+          "evidence": "All four IoU/Dice/mean/P95 records agree to <1e-6 using independently reopened mesh masks and declared external contour protocol. Reference hashes {'front': 'db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a', 'side': '0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21'} match metrics protocol. Maximum absolute metric discrepancy 8.42249741e-08. See independent-grader-evidence/validation.json for measured details."
+        },
+        {
+          "text": "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions.",
+          "passed": true,
+          "evidence": "Actual report excerpts: Executed bounded SciPy optimization using only the supplied front and side binary masks. This is controlled synthetic silhouette consistency, not anatomical ground truth or a person's body measurement. The supplied source geometry, pose and camera are preserved. No back reference photograph exists; back.png is an inferred rendering of the same proxy.\nSource masks were visually inspected before fitting. Height is frozen to the **assumed 170 cm prior**; bounds are recorded in metrics.json, with depth ratio constrained to [0.45, 1.05]. Circumference bounds are deliberately broad engineering priors, not population confidence intervals. Both views participate in fitting; neither is held out. No mask, camera, scale or source generator was modified. Native coordinates are X left/right, Y up, Z depth; these are preserved to avoid changing the existing model convention. Orthographic front views along +Z, side along +X and back along -Z; canvas is 384\u00d7640, horizontal [-50,50] cm, vertical [-4,180] cm.\nFinal parameters: `{\"height\": 170.0, \"chest\": 96.29509988633787, \"waist\": 71.9301658975463, \"hip\": 100.01259696783724, \"depth_ratio\": 0.7875177015874257}`. Chest/waist/hip are ellipse-circumference controls in prior-scaled cm, not observed anatomy. Mesh-derived 48-edge torso-ring perimeters at native Y=128/109/88 cm are recorded under sections in metrics.json; small differences from parameter values follow polygon discretization and the ellipse formula. Source lofts include fixed head/limbs and have overlapping disconnected capped components. Reopened mesh has 1548 finite vertices and 3072 triangles; no boundary or nonmanifold edges, height 170 cm. This is a simplified synthetic proxy, not a production anatomical or physical fitting body.\nTwo silhouettes constrain projected widths and depths under this fixed model; they do not determine arbitrary cross-section shapes, anatomical landmarks, clothing ease, tissue structure or an independently validated back surface. Side depth is inferred through the shared ellipse-ratio prior and observed synthetic side envelope. All cm values depend on assumed height; proportional changes in that prior scale all lengths. No statistical confidence interval or anatomical accuracy percentage is claimed. Pixel quantization permits multiple nearby parameters with the same raster silhouette. Remaining pixel discrepancies and each view's changes are preserved above. The weaker final view by IoU is front; any tie is equivalent. No unseen back evidence or extra observed photograph was invented.\nOpened all three actual mesh previews and both overlays after export. The previews show the existing capped, disconnected synthetic loft design; overlays are entirely overlap green where foreground exists. Independently imported the skill verification script and recomputed all four metrics for both stages and both views from saved mask files; every value matched metrics.json exactly (see independent-verification.json). Pixel-perfect final silhouettes do not imply unique parameters or human anatomical accuracy. See independent-grader-evidence/validation.json for measured details."
+        }
+      ],
+      "notes": [
+        "Only two synthetic silhouettes; nonunique raster plateaus; assumed height; fixed head/limbs; generated unobserved back."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 108.442206,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+          "passed": true,
+          "evidence": "Independent triangle-plane/connected-section recomputation (1548 vertices, 3072 triangles): chest=95.931477062 cm, waist=71.948607598 cm, hip=99.928620819 cm. Absolute output errors(cm)={'chest': 1.4210854715202004e-14, 'waist': 0.0, 'hip': 0.0}; within0.5cm=True. Relocated execution matches dimensions=True; output dimensions cm and mesh_checked=true."
+        },
+        {
+          "text": "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+          "passed": true,
+          "evidence": "Independent geometric components=[{\"name\": \"chest\", \"plane_y_cm\": 128, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 31.393501992811434, \"encloses_origin\": false, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 95.93147706242992, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 31.393501992811434, \"encloses_origin\": false, \"vertex_count\": 48, \"segment_count\": 48}], \"selected_index\": 1, \"torso_cm\": 95.93147706242992, \"all_components_sum_cm\": 158.71848104805278}, {\"name\": \"waist\", \"plane_y_cm\": 109, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 26.20674896288179, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 71.94860759832905, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 26.20674896288179, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}], \"selected_index\": 1, \"torso_cm\": 71.94860759832905, \"all_components_sum_cm\": 124.36210552409263}, {\"name\": \"hip\", \"plane_y_cm\": 88, \"components\": [{\"center_xz_cm\": [-27.0, 0.0], \"perimeter_cm\": 20.845284857660708, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}, {\"center_xz_cm\": [0.0, 0.0], \"perimeter_cm\": 99.92862081865191, \"encloses_origin\": true, \"vertex_count\": 48, \"segment_count\": 48}, {\"center_xz_cm\": [27.0, 0.0], \"perimeter_cm\": 20.845284857660708, \"encloses_origin\": false, \"vertex_count\": 96, \"segment_count\": 96}], \"selected_index\": 1, \"torso_cm\": 99.92862081865191, \"all_components_sum_cm\": 141.61919053397332}]. Executor component diagnostics verified against geometry=[{\"name\": \"chest\", \"output_selected_index\": 1, \"output_component_perimeters_cm\": [31.39350199281143, 95.93147706242993, 31.39350199281143], \"selected_value_cm\": 95.93147706242993, \"component_geometry_matches\": true, \"selected_torso_matches\": true}, {\"name\": \"waist\", \"output_selected_index\": 1, \"output_component_perimeters_cm\": [26.20674896288179, 71.94860759832905, 26.20674896288179], \"selected_value_cm\": 71.94860759832905, \"component_geometry_matches\": true, \"selected_torso_matches\": true}, {\"name\": \"hip\", \"output_selected_index\": 1, \"output_component_perimeters_cm\": [20.845284857660708, 99.92862081865191, 20.845284857660708], \"selected_value_cm\": 99.92862081865191, \"component_geometry_matches\": true, \"selected_torso_matches\": true}]. Indices may differ by traversal order; selected contour identity and perimeter are checked. Actual reviewed section plot: Opened actual image with view_image: three chest/waist/hip XZ plots at128/109/88cm; green central torso and red excluded lateral arm loops, labels95.9315/71.9486/99.9286cm, three components at each cut, prior-scaled axes and synthetic/no-real-person warning. Legends overlap some lower contour edges but central selection remains clear."
+        },
+        {
+          "text": "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+          "passed": true,
+          "evidence": "Structured dimension fields complete=True; cm units, mesh/proxy basis, 170cm uncalibrated prior and assumed height distinguished from observed real-person dimensions. Structured scale assumption={'kind': 'assumption', 'height_cm': 170, 'source': '170 cm prior; no calibration object or known camera distance'}; corrected source status retained; report rejects real-person/anatomical inference."
+        },
+        {
+          "text": "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+          "passed": true,
+          "evidence": "bust_point_distance.value=None; physical depth.value=None. Depth evidence illustrative; actual visible replacement review: Opened actual384x640 image with view_image: entire original footer replaced; visible red ILLUSTRATIVE SYNTHETIC PROXY; No observed physical depth;25.3cm claim withdrawn.; Side design assumption;no calibrated depth evidence. Text is small but legible at native resolution; no active observed-depth claim survives."
+        },
+        {
+          "text": "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+          "passed": true,
+          "evidence": "Both actual PNGs decoded and independently viewed, with exact hashes recorded in independent-grader-evidence.json. Opened actual image with view_image: three chest/waist/hip XZ plots at128/109/88cm; green central torso and red excluded lateral arm loops, labels95.9315/71.9486/99.9286cm, three components at each cut, prior-scaled axes and synthetic/no-real-person warning. Legends overlap some lower contour edges but central selection remains clear. Opened actual384x640 image with view_image: entire original footer replaced; visible red ILLUSTRATIVE SYNTHETIC PROXY; No observed physical depth;25.3cm claim withdrawn.; Side design assumption;no calibrated depth evidence. Text is small but legible at native resolution; no active observed-depth claim survives."
+        },
+        {
+          "text": "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim.",
+          "passed": true,
+          "evidence": "Source status matches supplied single synthetic front/generated side-back categories=True; SHA256 all9 actual input files matches stored provenance=True. Units prior-scaled cm; uncalibrated170cm prior, unresolved physical/shape/landmark uncertainty, no anatomical accuracy claim remain explicit."
+        }
+      ],
+      "notes": [
+        "Uncalibrated170cm prior, unvalidated landmarks, shape/discretization error, single synthetic front and generated side/back; physical uncertainty unquantified.",
+        "Raw executor process provenance unavailable."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 168.268928,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+          "passed": true,
+          "evidence": "Fresh v2 1548 vertices match body.json and OBJ within 0; independent OBJ-render pixel oracle differs in 0/411000 pixels. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+          "passed": true,
+          "evidence": "Real ArrowRight input on all four ranges changed vertices/pixels: height 1450/33499, chest 144/5366, waist 48/2794, hip 144/4930. All finite. Actual executor eval-state-after.json reconstructed with keyboard and matches exact current/reloaded geometry; UI download not implemented (diagnostic JSON artifact supplied). See grader-evidence/checks.json."
+        },
+        {
+          "text": "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+          "passed": true,
+          "evidence": "Injected known v1 values; full state equals fresh final defaults after reload: true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+          "passed": true,
+          "evidence": "Camera pixel changes 59845,59830,55681; rotation 39812; geometry unchanged; front exact reproduction true; saved reload geometry/controls/canvas exact true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+          "passed": true,
+          "evidence": "Independent fresh and edited screenshots show 33585 changed canvas pixels; supplied before/after/mobile PNGs exist. Reopened executor export reconstructed through visible controls and survives reload exactly: true. See grader-evidence/checks.json."
+        },
+        {
+          "text": "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed.",
+          "passed": true,
+          "evidence": "At 1100 and 375 pixels overflow=false/false; JS/console errors=0. Report explicitly identifies synthetic geometry and assumed cm scale. See grader-evidence/checks.json. Report.md: Assumptions and limits: this is the supplied synthetic, faceted, disconnected simplified body proxy; no anatomical or photographic fit is claimed. Units are assumed centimetres from the fixture's 170 cm prior. Parameters denote ideal ellipse girths; the actual 48-sided OBJ sections measure approximately 97.9300, 73.9472, and 101.9272 cm for labels 98/74/102. This approximately 0.071% polygon approximation is inherited from the authoritative export, not silently calibrated away. Height deformation preserves those actual ring values. Source body.json/body.obj are final defaults, not overwritten by browser interactions. Camera angle resets to front on reload; body dimensions persist. No external services, image generation, or paid services were used."
+        },
+        {
+          "text": "Same-version off-step cached dimensions are rejected or normalized to one valid state: all four visible controls, labels, actual geometry and export agree after load and reload.",
+          "passed": true,
+          "evidence": "Off-step same-version cache probes: {\"supplied\":{\"height\":170.5},\"passed\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":121,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":121,\"waist\":75,\"hip\":103},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}; {\"supplied\":{\"height\":175.25},\"passed\":true,\"params\":{\"version\":2,\"height\":175,\"chest\":121,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":175,\"chest\":121,\"waist\":75,\"hip\":103},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}; {\"supplied\":{\"chest\":99.5},\"passed\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":100,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":100,\"waist\":75,\"hip\":103},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}; {\"supplied\":{\"waist\":75.25},\"passed\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":121,\"waist\":75,\"hip\":103,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":121,\"waist\":75,\"hip\":103},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}; {\"supplied\":{\"hip\":103.5},\"passed\":true,\"params\":{\"version\":2,\"height\":171,\"chest\":121,\"waist\":75,\"hip\":104,\"depth_ratio\":0.78},\"controls\":{\"height\":171,\"chest\":121,\"waist\":75,\"hip\":104},\"finite\":true,\"geometryMatchesControls\":true,\"pixelsMatchControls\":true}. Accepting canonical normalized values or rejecting to defaults are both allowed; actual controls, labels, schema, vertices and pixels must agree. See grader-evidence/checks.json."
+        }
+      ],
+      "notes": [
+        "Synthetic proxy; assumed scale, no measured anatomy.",
+        "Missing viewport meta: actual mobile context uses981 CSS-pixel layout on375px device.",
+        "Exported JSON generated via diagnostic rather than a user-facing export button."
+      ]
+    }
+  ],
+  "run_summary": {
+    "old_skill": {
+      "pass_rate": {
+        "mean": 0.9524,
+        "stddev": 0.0825,
+        "min": 0.8571,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 116.5092,
+        "stddev": 63.6138,
+        "min": 52.0239,
+        "max": 179.2141
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 105.0106,
+        "stddev": 65.0421,
+        "min": 38.3206,
+        "max": 168.2689
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "-0.05",
+      "time_seconds": "+11.5",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

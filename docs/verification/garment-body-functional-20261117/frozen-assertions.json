@@ -1,0 +1,26 @@
+{
+  "fit-existing": [
+    "The delivered OBJ contains finite nonempty triangular 3D proxy geometry and is independently reopened.",
+    "With camera, resolution and reference masks unchanged, both front and side IoU improve by at least0.03 from the biased initial model.",
+    "Final dimensions are positive, height stays170cm and depth_ratio remains within0.45..1.05; no hidden target parameter file is accessed.",
+    "Deliver before/after masks, pixel overlap evidence and front/side/back snapshots recomputable from the actual delivered mesh.",
+    "Saved metrics agree with independently computed mask IoU, Dice and contour distances; the reference masks and protocol are traceable.",
+    "Report treats170cm as prior and fitted/generated geometry as synthetic proxy evidence, not anatomical accuracy or real observed dimensions."
+  ],
+  "viewer-sync": [
+    "Fresh default state matches final body.json parameters and version2, and the displayed geometry matches its embedded final parameter state.",
+    "Each of the four sliders changes actual finite3D vertices and rendered pixels, with changes reflected in the exported state.",
+    "A stale version1 cached state cannot replace version2 final defaults on initial load.",
+    "Front, side, back and rotation controls work and geometry state survives an intentional save/reload without stale resurrection.",
+    "Browser screenshots show real before/after geometry and exported/reopened state agrees with the visible controls.",
+    "Desktop and375px mobile show no JavaScript errors or horizontal overflow; report labels the mesh synthetic and scale assumed."
+  ],
+  "measurement-audit": [
+    "Chest, waist and hip are recalculated from actual mesh-plane intersections in cm and agree with independent torso-only geometry within0.5cm.",
+    "Torso loops are selected rather than summing disconnected arm loops; evidence identifies the contour/component selection.",
+    "Corrected structured dimensions distinguish mesh/proxy values and assumed170cm scale from real observed measurements.",
+    "Unavailable bust-point distance is null and illustrative depth is not presented as estimated centimeter depth.",
+    "Actual mesh-section visual evidence is delivered and the misleading depth caption is corrected visibly.",
+    "Single synthetic front, generated side/back, units, source file hashes and unresolved uncertainty remain explicit; no anatomical accuracy claim."
+  ]
+}

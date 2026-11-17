@@ -1,0 +1,230 @@
+{
+  "method": "independent OBJ parser + NumPy frozen-camera projection + original Pillow polygon kernel; OpenCV boundaries/distance transforms; no executor self-grade imported",
+  "geometry": {
+    "vertices": 1548,
+    "triangles": 3072,
+    "finite": true,
+    "axis_spans_cm": [
+      64.0,
+      170.0,
+      27.92713
+    ],
+    "zero_area_triangles": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0
+  },
+  "constraints": {
+    "positive_parameters": true,
+    "height_prior_and_mesh_170": true,
+    "depth_ratio_in_bounds": true,
+    "torso_control_max_errors_cm": {
+      "chest": 2.2710991487429055e-07,
+      "waist": 1.9186749788957513e-07,
+      "hip": 4.772352699689009e-07
+    }
+  },
+  "metrics": {
+    "front": {
+      "initial": {
+        "iou": 0.9527538726333907,
+        "dice": 0.9758053853950905,
+        "mean_symmetric_contour_distance_px": 1.1226374844314824,
+        "p95_symmetric_contour_distance_px": 9.0
+      },
+      "final": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    },
+    "side": {
+      "initial": {
+        "iou": 0.8887537029200169,
+        "dice": 0.9411006861784064,
+        "mean_symmetric_contour_distance_px": 3.146641885455812,
+        "p95_symmetric_contour_distance_px": 12.0
+      },
+      "final": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    }
+  },
+  "iou_gains": {
+    "front": 0.04724612736660927,
+    "side": 0.11124629707998313
+  },
+  "saved_metric_absolute_errors": {
+    "front": {
+      "initial": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "mean_symmetric_contour_distance_px": 2.681568300744175e-09,
+        "p95_symmetric_contour_distance_px": 0.0
+      },
+      "final": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    },
+    "side": {
+      "initial": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "mean_symmetric_contour_distance_px": 1.1183764581090827e-08,
+        "p95_symmetric_contour_distance_px": 0.0
+      },
+      "final": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    }
+  },
+  "mask_differing_pixels": {
+    "front": {
+      "initial": 0,
+      "final": 0
+    },
+    "side": {
+      "initial": 0,
+      "final": 0
+    }
+  },
+  "previews": {
+    "front": {
+      "shape": [
+        640,
+        384,
+        3
+      ],
+      "different_channel_values": 0,
+      "nonempty": true
+    },
+    "side": {
+      "shape": [
+        640,
+        384,
+        3
+      ],
+      "different_channel_values": 0,
+      "nonempty": true
+    },
+    "back": {
+      "shape": [
+        640,
+        384,
+        3
+      ],
+      "different_channel_values": 0,
+      "nonempty": true
+    }
+  },
+  "overlays": {
+    "front": {
+      "size": [
+        640,
+        384,
+        3
+      ],
+      "foreground_rgb_colors": [
+        [
+          215,
+          215,
+          215
+        ]
+      ],
+      "foreground_counts": [
+        69144
+      ],
+      "foreground_uniform_overlap": true
+    },
+    "side": {
+      "size": [
+        640,
+        384,
+        3
+      ],
+      "foreground_rgb_colors": [
+        [
+          215,
+          215,
+          215
+        ]
+      ],
+      "foreground_counts": [
+        37696
+      ],
+      "foreground_uniform_overlap": true
+    }
+  },
+  "provenance": {
+    "reference_sha256": {
+      "front": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a",
+      "side": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+    },
+    "saved_reference_hashes_agree": true,
+    "fitted_obj_sha256": "2fa3592746bf0fd06c8371d7c9fb0dd7cc84f76d1b343f80b90dc7c0fa0d059d",
+    "generator_unchanged": true,
+    "camera_unchanged": true,
+    "initial_input_hashes": {
+      "initial-params.json": "8f2a0a8cee0ecfa9a57abb65f5573f4a075efb4151107da17c76481a32e0116e",
+      "camera.json": "e967e504e34ed9946323b53cfd1bd88125931bb16c417b1dba28a04dcacd39fd",
+      "generator.py": "98fad4d1831a53eeefaa29cc8e61f25701981f12024ab727d48709d8a8c3c991"
+    },
+    "access_evidence": "Full executor transcript states only inputs and (with_skill) supplied workflow/helper were read; reproduction source opens only declared inputs. No forbidden-read event appears. This is transcript/source evidence, not an OS-level access audit.",
+    "transcript_sha256": "de6d97ba21dcf6b3a2653534aab0e2d2b1bdfb965d48a3acd653e61691819eba",
+    "report_sha256": "4a78cb033dfe32edba1760cbd8d9362916338296820758db867936426e52bf93"
+  },
+  "opencv_alternate_raster_sensitivity": {
+    "front": {
+      "differing_pixels_from_frozen_raster": 32,
+      "metrics": {
+        "iou": 0.9995373984445023,
+        "dice": 0.9997686457098239,
+        "mean_symmetric_contour_distance_px": 0.011544011544011544,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    },
+    "side": {
+      "differing_pixels_from_frozen_raster": 11,
+      "metrics": {
+        "iou": 0.9997082615037793,
+        "dice": 0.9998541094709479,
+        "mean_symmetric_contour_distance_px": 0.00859375,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    }
+  },
+  "portability": {
+    "status": "PASS",
+    "exit_code": 0,
+    "artifact_sha256_identical": {
+      "fitted.obj": true,
+      "params.json": true,
+      "camera.json": true,
+      "initial-front-mask.png": true,
+      "initial-side-mask.png": true,
+      "final-front-mask.png": true,
+      "final-side-mask.png": true,
+      "front.png": true,
+      "side.png": true,
+      "back.png": true,
+      "front-overlay.png": true,
+      "side-overlay.png": true
+    },
+    "duration_seconds": 38.91151227800037,
+    "scope": "fresh temporary working directory; copies of delivered code plus declared inputs only; no original output modification"
+  },
+  "scope": {
+    "synthetic_constraints": "RUN",
+    "full_six_image_reconstruction": "NOT_RUN",
+    "anatomical_accuracy": "NOT_RUN"
+  }
+}

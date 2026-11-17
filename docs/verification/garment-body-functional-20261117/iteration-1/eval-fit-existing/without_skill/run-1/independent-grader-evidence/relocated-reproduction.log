@@ -1,0 +1,140 @@
+geometric_initialization [96.70867371666732, 73.11025900679998, 100.68112820424267, 0.7863554424067306]
+{
+  "params": {
+    "height": 170.0,
+    "chest": 95.72345288793053,
+    "waist": 72.63514672160662,
+    "hip": 100.05735708116242,
+    "depth_ratio": 0.7857343938493941
+  },
+  "metrics": {
+    "protocol": {
+      "resolution": [
+        384,
+        640
+      ],
+      "camera": {
+        "projection": "orthographic",
+        "width": 384,
+        "height": 640,
+        "horizontal_extent_cm": [
+          -50,
+          50
+        ],
+        "vertical_extent_cm": [
+          -4,
+          180
+        ],
+        "near_axis": "front +z; side +x; back -z",
+        "scale_assumption": "height prior 170 cm; synthetic controls"
+      },
+      "foreground": "grayscale > 127",
+      "contour": "foreground minus 3x3 cross binary erosion (SciPy default), outside background",
+      "distance": "pooled bidirectional contour nearest-neighbor Euclidean distances; mean and NumPy percentile 95; pixels",
+      "targets": {
+        "front": {
+          "file": "inputs/target-front-mask.png",
+          "sha256": "db9f5c1f8ed2354fa1f144827feaa6d9ab682df6fa88581465c8facbd928250a"
+        },
+        "side": {
+          "file": "inputs/target-side-mask.png",
+          "sha256": "0f32e51eb7d8320a9f74a4fac801ca95aa64f0d6c5362605b12fd708ca4b2a21"
+        }
+      }
+    },
+    "initial": {
+      "front": {
+        "iou": 0.9527538726333907,
+        "dice": 0.9758053853950905,
+        "mean_symmetric_contour_distance_px": 1.1226374871130507,
+        "p95_symmetric_contour_distance_px": 9.0
+      },
+      "side": {
+        "iou": 0.8887537029200169,
+        "dice": 0.9411006861784064,
+        "mean_symmetric_contour_distance_px": 3.1466418966395766,
+        "p95_symmetric_contour_distance_px": 12.0
+      }
+    },
+    "final": {
+      "front": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      },
+      "side": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "mean_symmetric_contour_distance_px": 0.0,
+        "p95_symmetric_contour_distance_px": 0.0
+      }
+    },
+    "optimization": {
+      "evaluations": 703,
+      "seed": 3107,
+      "objective": "sum of front and side (1-IoU), equally weighted",
+      "bounds": {
+        "circumferences_cm": [
+          40,
+          160
+        ],
+        "depth_ratio": [
+          0.45,
+          1.05
+        ],
+        "height_cm": [
+          170,
+          170
+        ]
+      },
+      "initialization": [
+        96.70867371666732,
+        73.11025900679998,
+        100.68112820424267,
+        0.7863554424067306
+      ],
+      "local_search_bounds": [
+        [
+          92.70867371666732,
+          100.70867371666732
+        ],
+        [
+          69.11025900679998,
+          77.11025900679998
+        ],
+        [
+          96.68112820424267,
+          104.68112820424267
+        ],
+        [
+          0.7463554424067306,
+          0.8263554424067306
+        ]
+      ],
+      "final_objective": 0.0
+    },
+    "mesh_verification": {
+      "vertices": 1548,
+      "triangles": 3072,
+      "finite": true,
+      "height_cm": 170.0,
+      "bounds_cm": [
+        [
+          -32.0,
+          0.0,
+          -13.963565
+        ],
+        [
+          32.0,
+          170.0,
+          13.963565
+        ]
+      ],
+      "reopened_obj": true
+    }
+  },
+  "completed": 1794886049.4304512
+}
+
+STDERR:
