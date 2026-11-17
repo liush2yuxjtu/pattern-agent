@@ -10,6 +10,7 @@ import threading
 from urllib.parse import urljoin,urlsplit
 
 from playwright.sync_api import sync_playwright
+from playwright_http import new_api_context
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -37,8 +38,10 @@ def verify(base,output,expected_commit=None,executable='/usr/bin/chromium'):
     errors=[]; failed=[]; bad_responses=[]
     with sync_playwright() as pw:
         browser=pw.chromium.launch(executable_path=executable,headless=True,args=['--no-sandbox'])
+        api=None
         try:
             context=browser.new_context(viewport={'width':1440,'height':1100},accept_downloads=True)
+            api=new_api_context(pw,base)
             page=context.new_page()
             page.on('pageerror',lambda error:errors.append(str(error)))
             page.on('console',lambda message:errors.append(message.text) if message.type=='error' else None)
@@ -49,7 +52,7 @@ def verify(base,output,expected_commit=None,executable='/usr/bin/chromium'):
             assert page.title()=='Pattern Agent · 基础直身裙纸样'
             page.locator('#pattern-preview').wait_for()
             assert page.locator('#pattern-preview').evaluate('(img)=>img.complete && img.naturalWidth>0')
-            metadata_response=context.request.get(urljoin(base,'build.json'))
+            metadata_response=api.get(urljoin(base,'build.json'))
             assert metadata_response.status==200
             metadata=metadata_response.json()
             if expected_commit: assert metadata['commit']==expected_commit,(metadata['commit'],expected_commit)
@@ -112,7 +115,7 @@ def verify(base,output,expected_commit=None,executable='/usr/bin/chromium'):
             reviewed=output/'existing-workbench-review.json'
             event.value.save_as(reviewed)
             assert json.loads(reviewed.read_text())['release']=='DRAFT_NOT_APPROVED'
-            advanced_response=context.request.get(urljoin(base,'patterns/straight-skirt-eu40/straight-skirt-eu40.sloper'))
+            advanced_response=api.get(urljoin(base,'patterns/straight-skirt-eu40/straight-skirt-eu40.sloper'))
             assert advanced_response.status==200
             advanced=output/'advanced-skirt.sloper'
             advanced.write_bytes(advanced_response.body())
@@ -123,7 +126,7 @@ def verify(base,output,expected_commit=None,executable='/usr/bin/chromium'):
             assert page.locator('#svg g[data-piece]').count()==4
             page.screenshot(path=str(output/'existing-workbench.png'),full_page=True)
             # Nearby edge case: a nonexistent download returns 404, not an HTML SPA fallback.
-            missing=context.request.get(urljoin(base,'patterns/no-such-pattern.pdf'))
+            missing=api.get(urljoin(base,'patterns/no-such-pattern.pdf'))
             assert missing.status==404
             assert not errors,{'console':errors,'http':bad_responses,'failed':failed}
             assert not failed,failed
@@ -140,7 +143,9 @@ def verify(base,output,expected_commit=None,executable='/usr/bin/chromium'):
             (output/'browser-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
             print(json.dumps(report,ensure_ascii=False,indent=2))
             return report
-        finally: browser.close()
+        finally:
+            if api is not None: api.dispose()
+            browser.close()
 
 
 if __name__=='__main__':

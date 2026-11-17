@@ -126,3 +126,18 @@ Do not mark the browser-proxy cancellation as PASS. Here the subsequent standalo
 Chrome run independently completed the full unchanged verifier with exit 0 and
 `verdict: PASS`. Retain earlier failed publication receipts as history; the new
 live receipt resolves their blocker without rewriting them.
+
+## Current native Playwright path — 2026-11-17
+
+The selected managed host can now reach the public Pages URL in Chromium.
+Its separate APIRequestContext did not automatically inherit the environment's
+HTTP(S) proxy and failed on direct IPv6. `scripts/playwright_http.py` explicitly
+uses the existing proxy settings and NO_PROXY for this HTTP client, with normal
+TLS verification. Do not change network/security policy or disable TLS.
+
+The actual existing Pages browser/download verifier passed against deployed
+`b90b22582072912df8ab4041bbf3d4113bab49d8` using `/usr/bin/chromium` and this
+transport; the full new WASM cloth verifier also passed. See
+`docs/verification/cloth-lab-20261117/live/existing-pages.json` and `receipt.json`.
+The earlier Firecrawl-host workaround and earlier BLOCKED observations remain
+historical evidence, not a reason to assume the current host is still blocked.

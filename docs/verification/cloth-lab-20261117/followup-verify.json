@@ -1,0 +1,38 @@
+{
+  "verdict": "PASS",
+  "candidateCommit": "b90b22582072912df8ab4041bbf3d4113bab49d8",
+  "scope": "HTTP verification transport and permanent real live evidence; deployed app bytes unchanged",
+  "verifier": ".agents/skills/verify/references/cloth-lab.md",
+  "commands": [
+    {
+      "command": "python -m py_compile scripts/playwright_http.py scripts/verify_pages.py tools/cloth_lab/verify_browser.py",
+      "exit": 0
+    },
+    {
+      "command": "python tools/cloth_lab/test_kernel.py",
+      "exit": 0,
+      "observed": "3 actual-WASM consumer tests passed"
+    },
+    {
+      "command": "python scripts/verify_pages.py --expected-commit b90b225... --output work/cloth-lab/proxy-local-pages",
+      "exit": 0
+    },
+    {
+      "command": "python scripts/verify_pages.py --base-url https://liush2yuxjtu.github.io/pattern-agent/ --expected-commit b90b225...",
+      "exit": 0,
+      "receipt": "live/existing-pages.json"
+    },
+    {
+      "command": "python tools/cloth_lab/verify_browser.py --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ --expected-commit b90b225... --expected-html-sha 2581406c...",
+      "exit": 0,
+      "receipt": "live/receipt.json"
+    }
+  ],
+  "changedExecutableHashes": {
+    "scripts/playwright_http.py": "ce485ddb17df2009b0a7cd75d3db28fcc2eb8b9bfa1e0ae221e7dfa80249fed1",
+    "scripts/verify_pages.py": "e5eb97bebbaee5b2c7084dd3859f7014edc4841a86be3d4169859f4fa8e5f770",
+    "tools/cloth_lab/verify_browser.py": "33652a27a11d24ebd314627abc9c9b443dd75a95d5987039813f2fd5842fabfe"
+  },
+  "timestamp": "2026-11-17T12:22:05.261626+00:00",
+  "cleanup": "Owned local HTTP servers and browsers closed by verification scripts"
+}

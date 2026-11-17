@@ -12,6 +12,7 @@ from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 import json
 from pathlib import Path
 import statistics
+import sys
 import threading
 import time
 import xml.etree.ElementTree as ET
@@ -21,6 +22,8 @@ from playwright.sync_api import sync_playwright
 import trimesh
 
 from oracle import ROOT, tensors, verify, seam_audit
+sys.path.insert(0,str(ROOT/'scripts'))
+from playwright_http import new_api_context
 
 
 def save_json(path,data):
@@ -39,6 +42,7 @@ def run(args,base):
     with sync_playwright() as p:
         browser=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
         context=browser.new_context(viewport={'width':1440,'height':1050},accept_downloads=True)
+        api=new_api_context(p,base)
         page=context.new_page()
         page.on('pageerror',lambda e:report['pageErrors'].append(str(e)))
         page.on('console',lambda m:report['consoleErrors'].append(m.text) if m.type=='error' else None)
@@ -46,12 +50,12 @@ def run(args,base):
         res=page.goto(base,wait_until='networkidle');assert res.status==200
         page.wait_for_function('window.clothLab?.ready',timeout=30000)
         report['source']=page.evaluate('clothLab.source')
-        actual_html=context.request.get(base).body()
+        actual_html=api.get(base).body()
         report['htmlSha256']=hashlib.sha256(actual_html).hexdigest()
         if args.expected_html_sha:assert report['htmlSha256']==args.expected_html_sha
         if args.expected_commit:
             from urllib.parse import urljoin
-            build=context.request.get(urljoin(base,'../build.json')).json()
+            build=api.get(urljoin(base,'../build.json')).json()
             assert build['commit']==args.expected_commit,(build['commit'],args.expected_commit)
             report['deployedCommit']=build['commit']
         # One real button press must advance one actual 1/120 s physics step.
@@ -208,6 +212,7 @@ def run(args,base):
         report['checks']['collisionBroadPhaseMatchesFullQueriesBitForBit']=True
         report['offline']={'requests':requests,'errors':offline_errors,'snapshotBytes':(out/'cloth-lab-snapshot.html').stat().st_size}
         assert not report['pageErrors'] and not report['consoleErrors'] and not report['badResponses'],report
+        api.dispose()
         browser.close()
     report['verdict']='PASS';report['finishedAtUnix']=time.time();report['scope']='WASM runtime, stated synthetic tensor model, sewing and discrete actual-body collision. Physical fit/calibration NOT_RUN.'
     save_json(out/'receipt.json',report)

@@ -91,3 +91,13 @@ The root `/build.json` binds the live app bytes and commit; the verifier must
 resolve it at the project root, not the lab's own provenance `build.json`.
 Read remote main back independently. A successful publication job is not a live
 browser PASS. Preserve BLOCKED if the public domain/browser is unreachable.
+
+## Observed live transport recovery
+
+On the current managed host, Chromium can load public Pages, while its separate
+APIRequestContext initially attempted an unreachable direct IPv6 connection.
+`scripts/playwright_http.py` now supplies the existing inherited HTTP(S) proxy to
+that client and respects NO_PROXY; TLS verification remains enabled. No network
+policy, response data or assertions were changed. The live lab verifier and the
+existing Pages verifier both passed with this path. Keep the first BLOCKED logs
+and final receipts at `docs/verification/cloth-lab-20261117/live/`.
