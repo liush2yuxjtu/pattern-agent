@@ -15,7 +15,8 @@ _slots=threading.BoundedSemaphore(1)
 logger=logging.getLogger('pattern-agent')
 
 def source_files():
-    files=[ROOT/'app.py',ROOT/'pyproject.toml',ROOT/'vercel.json',ROOT/'converter/core.py',ROOT/'converter/profile.json',*sorted((ROOT/'public').glob('*'))]
+    # Vercel rewrites vercel.json while packaging; its uploaded hash is archived separately.
+    files=[ROOT/'app.py',ROOT/'pyproject.toml',ROOT/'converter/core.py',ROOT/'converter/profile.json',*sorted((ROOT/'public').glob('*'))]
     return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
 SOURCE_FILES=source_files()
 SOURCE_SHA256=hashlib.sha256(json.dumps(SOURCE_FILES,sort_keys=True,separators=(',',':')).encode()).hexdigest()

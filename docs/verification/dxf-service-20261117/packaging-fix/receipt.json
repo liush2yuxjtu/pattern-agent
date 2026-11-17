@@ -1,0 +1,18 @@
+{
+  "verdict": "PASS",
+  "scope": "health source identity excludes Vercel-generated deployment configuration",
+  "base_commit": "8219cb69182510d1d0e209520a34f0f6dde9ba85",
+  "local_tests": 10,
+  "real_surface": "HTTP GET /api/health; independently SHA-256 checked all 12 returned application source files against disk",
+  "source_sha256": "ab96dfe2978ea8d9ba2758ac82cbc52a6166a1cee037e55a698a16d5f7c8e121",
+  "diagnosis": "Second deployment matches all explicit source files except vercel.json. Vercel modifies that build configuration. Excluded it from runtime app-source identity; uploaded configuration remains in archived manifest.",
+  "prior_deployment": {
+    "id": "dpl_5XzJ4DnYU9GpQL7AqEUauG4Bha52",
+    "commit": "8219cb69182510d1d0e209520a34f0f6dde9ba85",
+    "fixed_url": "https://pattern-agent-convert-hkah8e9z4-nyn5255-8475s-projects.vercel.app",
+    "application_identity": "FAIL until corrected",
+    "conversion_and_public_file_bytes": "PASS in first deployment; not full browser acceptance"
+  },
+  "physical_fit": "NOT_RUN",
+  "strict_geometry_release": "NOT_RUN"
+}

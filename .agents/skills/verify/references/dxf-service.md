@@ -45,6 +45,11 @@ deployment protection. No new CI, queue, store or compute subscription.
 Use connector deployment state/logs, and record ID, fixed URL, production alias,
 artifact commit and uploaded SHA-256 manifest. READY only proves build completion.
 
+Observed packaging detail: Vercel rewrites runtime `vercel.json`. Health therefore
+hashes explicit application/code/profile/pyproject/public files, not that generated
+deployment config or optional empty-package markers. Preserve the uploaded
+configuration's own hash in the source/deployment manifest separately.
+
 Run the same verifier against the live URL with `--expected-source` from local
 health, and retain separate live evidence. Compare original sample and generated
 GLB hashes against the local result. Probe fixed deployment health separately
