@@ -1,0 +1,37 @@
+{
+  "verdict": "PASS",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/garment-body/anatomical-evals/eval.html",
+  "deployed_commit": "fe8b81d4a29bb122244728b90f1b3743c77524fe",
+  "publish_workflow": {
+    "id": 44043454444,
+    "head_sha": "fe8b81d4a29bb122244728b90f1b3743c77524fe",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44043454444"
+  },
+  "source_sha256": "0c79e40b80f06f51941f266a438bf4e2002739d9cb4ac0d1e58177da2d641170",
+  "browser_checks": {
+    "selected": 52,
+    "first": 52,
+    "holdout": 34,
+    "upstream_feedback_regression": 31
+  },
+  "case_records": 14,
+  "public_file_hashes_verified": 106,
+  "verifier_sha256": {
+    "gallery": "14d6718d115d911105f1a95111e92d1ae5fcfc4d65a174873e4f9bc8f28cec6e",
+    "regression": "dbb9fec41a80e16a5b8a7c3915eecc0532ee1d4cdfcbf09261e8f1db35f0a3d5"
+  },
+  "runtime": "Pinned public verifier source, SHA checked before execution, standalone Google Chrome + Playwright1.62.1 on isolated Firecrawl host. npm tarball integrity verified; public URLs only.",
+  "observations": [
+    "All14case entries have four correctly labelled evidence stages and decoded available images",
+    "ImageGen NOT_RUN in all cases is explicitly labelled; state-data audits have truthful no-image placeholders",
+    "Case selector synchronizes current run and persists across reload with feedback",
+    "Full-size modal previous/next, arrow navigation, Escape, close/focus return, original links and mobile behavior work",
+    "Gallery pages and all referenced image bytes match trusted source hashes; exact hosted commit/source hash confirmed",
+    "Desktop/lightbox/mobile screenshots transferred with verified SHA256 and ZIP CRC; live desktop independently inspected"
+  ],
+  "evidence_zip_sha256": "625141f8498d577006cb9991ded610edf6406a1299800ea28e7c2e71d573937b",
+  "limits": "Presentation change; no new ImageGen/cloth simulation or body accuracy score. Original archives, grades, benchmark data and feedback keys unchanged.",
+  "cleanup": "Owned local HTTP server stopped, remote session explicitly stopped; no authentication or CI changes"
+}

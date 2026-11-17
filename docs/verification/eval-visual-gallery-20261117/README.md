@@ -8,4 +8,4 @@ Local verification: **PASS**, 52/52/34gallery checks across6/6/2runs and31existi
 
 Build: `python tools/skill_evals/build_anatomical_review.py --workspace work/anatomical-skill-evals-20261117 --site web/garment-body/anatomical-evals --evidence work/visual-gallery-build`, then `python scripts/build_pages.py`. Canonical gallery data adapter and assets are under tools/skill_evals/. Pinned upstream Anthropic source remains unchanged. Current source images/scores are synthetic controls, not an actual clothed-generation quality score.
 
-Live publication receipt follows exact-SHA verification.
+Live publication **PASS** at `fe8b81d4a29bb122244728b90f1b3743c77524fe`: all14case entries,52/52/34gallery checks,31feedback regression checks,106public file/image hashes. [Live receipt](live/receipt.json) · [Live desktop](live/selected/desktop.png) · [Live lightbox](live/selected/lightbox.png) · [Live mobile](live/selected/mobile.png).
