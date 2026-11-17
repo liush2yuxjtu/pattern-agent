@@ -1,0 +1,227 @@
+[
+  {
+    "case": "shared_edge_positive_area_fold",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "3D_SEAM_LENGTH_CHANGED side.right",
+      "PROPER_SELF_INTERSECTIONS"
+    ],
+    "self_intersections": 1,
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "coincident_unwelded_front",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "UNWELDED_OR_REVERSED_SEAM side.left",
+      "SEAM_NOT_TWO_FACES side.left",
+      "SEAM_WRONG_PATCH side.left",
+      "UNWELDED_OR_REVERSED_SEAM shoulder.left",
+      "SEAM_NOT_TWO_FACES shoulder.left",
+      "SEAM_WRONG_PATCH shoulder.left",
+      "UNWELDED_OR_REVERSED_SEAM armhole.left.front",
+      "SEAM_NOT_TWO_FACES armhole.left.front",
+      "SEAM_WRONG_PATCH armhole.left.front",
+      "UNWELDED_OR_REVERSED_SEAM side.right",
+      "SEAM_NOT_TWO_FACES side.right",
+      "SEAM_WRONG_PATCH side.right",
+      "UNWELDED_OR_REVERSED_SEAM shoulder.right",
+      "SEAM_NOT_TWO_FACES shoulder.right",
+      "SEAM_WRONG_PATCH shoulder.right",
+      "UNWELDED_OR_REVERSED_SEAM armhole.right.front",
+      "SEAM_NOT_TWO_FACES armhole.right.front",
+      "SEAM_WRONG_PATCH armhole.right.front",
+      "UNWELDED_OR_REVERSED_SEAM neck.front.neck.right",
+      "SEAM_NOT_TWO_FACES neck.front.neck.right",
+      "SEAM_WRONG_PATCH neck.front.neck.right",
+      "UNWELDED_OR_REVERSED_SEAM neck.front.neck.left",
+      "SEAM_NOT_TWO_FACES neck.front.neck.left",
+      "SEAM_WRONG_PATCH neck.front.neck.left",
+      "UNDECLARED_HOLE_OR_CLOSED_REQUIRED_OPENING",
+      "DISCONNECTED_GARMENT",
+      "WRONG_OPENING_COUNT",
+      "WRONG_GARMENT_TOPOLOGY",
+      "INVALID_TOPOLOGY orphan_vertices"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "entire_inside_out_shell",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "ENTIRE_GARMENT_INSIDE_OUT"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "actual_export",
+    "observed": "PASS",
+    "sha256": "dd4742ab120cb8e8abc2621ae42070657a3f07da885bd71d9ffc12fb65d15031",
+    "seams": 15,
+    "gaps_mm": 0,
+    "intersections": 0,
+    "boundary_cycles": 4
+  },
+  {
+    "case": "flipped_face_winding",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "DEGENERATE_OR_FOLDED_SOURCE_TRIANGLES front",
+      "INVALID_TOPOLOGY winding_conflicts"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "hidden_scene_mirror_transform",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "GLB_CERTIFICATE_REJECTED: UNVERIFIED_NODE_TRANSFORM"
+    ]
+  },
+  {
+    "case": "wrong_original_hash",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "INPUT_HASH_MISMATCH"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "front_point_pierces_back_despite_fake_PASS",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "PROPER_SELF_INTERSECTIONS"
+    ],
+    "self_intersections": 11,
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "deleted_face_internal_hole",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "FLAT_BOUNDARY_NOT_FULLY_COVERED front",
+      "SOURCE_PANEL_AREA_NOT_COVERED front",
+      "UNDECLARED_HOLE_OR_CLOSED_REQUIRED_OPENING",
+      "WRONG_OPENING_COUNT",
+      "WRONG_GARMENT_TOPOLOGY"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "missing_declared_seam",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "SEWING_PAIR_SET_OR_LABEL_CHANGED"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "reversed_sleeve_cap_pairing",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "SEGMENT_VERTEX_ID_MISMATCH sleeve.left.cap.front",
+      "UNWELDED_OR_REVERSED_SEAM armhole.left.front",
+      "SEAM_GAP armhole.left.front"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 165.233906741801
+  },
+  {
+    "case": "rigid_transform",
+    "expected": "PASS",
+    "observed": "PASS",
+    "failures": [],
+    "self_intersections": 0,
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "wrong_source_edge_labels",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "SOURCE_EDGE_NOT_FROM_DXF sleeve.cap.front",
+      "SOURCE_EDGE_NOT_FROM_DXF sleeve.cap.back"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 0.0
+  },
+  {
+    "case": "independent_SAT_and_topology_analytic_controls",
+    "count": 23,
+    "observed": "PASS"
+  },
+  {
+    "case": "three_mm_open_seam",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "UNWELDED_OR_REVERSED_SEAM side.left",
+      "SEAM_GAP side.left",
+      "SEAM_NOT_TWO_FACES side.left",
+      "SEAM_WRONG_PATCH side.left",
+      "UNWELDED_OR_REVERSED_SEAM shoulder.left",
+      "SEAM_GAP shoulder.left",
+      "SEAM_NOT_TWO_FACES shoulder.left",
+      "SEAM_WRONG_PATCH shoulder.left",
+      "UNWELDED_OR_REVERSED_SEAM armhole.left.front",
+      "SEAM_GAP armhole.left.front",
+      "SEAM_NOT_TWO_FACES armhole.left.front",
+      "SEAM_WRONG_PATCH armhole.left.front",
+      "UNWELDED_OR_REVERSED_SEAM side.right",
+      "SEAM_GAP side.right",
+      "SEAM_NOT_TWO_FACES side.right",
+      "SEAM_WRONG_PATCH side.right",
+      "UNWELDED_OR_REVERSED_SEAM shoulder.right",
+      "SEAM_GAP shoulder.right",
+      "SEAM_NOT_TWO_FACES shoulder.right",
+      "SEAM_WRONG_PATCH shoulder.right",
+      "UNWELDED_OR_REVERSED_SEAM armhole.right.front",
+      "SEAM_GAP armhole.right.front",
+      "SEAM_NOT_TWO_FACES armhole.right.front",
+      "SEAM_WRONG_PATCH armhole.right.front",
+      "UNWELDED_OR_REVERSED_SEAM neck.front.neck.right",
+      "SEAM_GAP neck.front.neck.right",
+      "SEAM_NOT_TWO_FACES neck.front.neck.right",
+      "SEAM_WRONG_PATCH neck.front.neck.right",
+      "UNWELDED_OR_REVERSED_SEAM neck.front.neck.left",
+      "SEAM_GAP neck.front.neck.left",
+      "SEAM_NOT_TWO_FACES neck.front.neck.left",
+      "SEAM_WRONG_PATCH neck.front.neck.left",
+      "UNDECLARED_HOLE_OR_CLOSED_REQUIRED_OPENING",
+      "DISCONNECTED_GARMENT",
+      "WRONG_OPENING_COUNT",
+      "WRONG_GARMENT_TOPOLOGY",
+      "INVALID_TOPOLOGY orphan_vertices"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 3.0000000000000027
+  },
+  {
+    "case": "hidden_extra_ease",
+    "expected": "FAIL",
+    "observed": "FAIL",
+    "failures": [
+      "UNDECLARED_SEWING_PROCESS front.side.left",
+      "SAMPLED_FLAT_LENGTH_MISMATCH side.left",
+      "3D_SEAM_LENGTH_CHANGED side.left"
+    ],
+    "self_intersections": "NOT_RUN",
+    "max_gap_mm": 0.0
+  }
+]

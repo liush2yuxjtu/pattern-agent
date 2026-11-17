@@ -1,0 +1,24 @@
+{
+  "verdict": "PASS",
+  "stage": "local precommit, exact float32 GLB and real HTTP/browser",
+  "base_commit": "419643ff90d866ff4cf56460ff2d474215c82ca9",
+  "source_sha256": "6c09e777a8fa6d51869b4581dfbae6eb386ef693fd59b35bc1abd507ac328ee4",
+  "model_sha256": "dd4742ab120cb8e8abc2621ae42070657a3f07da885bd71d9ffc12fb65d15031",
+  "model_bytes": 2477900,
+  "unit_tests": 27,
+  "analytic_oracle_controls": 23,
+  "browser_grouped_checks": 16,
+  "commands": [
+    "SEWING_TEST_EVIDENCE=work/seam-audit/accepted-tests PYTHONPATH=services/dxf-preview python -m unittest discover -s services/dxf-preview/tests -v",
+    "python scripts/reproduce_dxf_v1_baseline.py --out work/seam-audit/preserved-v1",
+    "python scripts/verify_dxf_service.py --base-url http://127.0.0.1:8765 --output work/seam-audit/browser-accepted",
+    "python services/dxf-preview/verify_connections.py --dxf services/dxf-preview/public/sample.dxf --glb work/seam-audit/browser-accepted/downloaded.glb --units mm --out docs/verification/dxf-seams-20261117/local/independent-reopen.json",
+    "git diff --check"
+  ],
+  "original_pattern_verdict": "FAIL under documented sewing contract; raw DXF unchanged",
+  "corrected_derivative_static_shell": "PASS",
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "cleanup": "Browsers closed by verifier. Local uvicorn retained temporarily for deployment source comparison."
+}

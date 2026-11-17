@@ -8,7 +8,7 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 from scipy.spatial import Delaunay, QhullError
 
-ENGINE_VERSION = '1.0.0'
+ENGINE_VERSION = '2.0.0'
 MAX_INPUT_BYTES = 512 * 1024
 MAX_VERTICES = 6000
 MAX_COORDINATE = 1e7
@@ -94,13 +94,13 @@ def register(polylines,units,profile_id):
     reverse=np.linalg.norm(a[:,None,:,:]-b[None,:,::-1,:],axis=-1)
     costs=np.minimum(normal.mean(-1),reverse.mean(-1))
     row,col=linear_sum_assignment(costs)
-    result=[None]*len(ref);maximum=0.0
+    result=[None]*len(ref);maximum=0.0;mapping=[0]*len(ref);directions=[False]*len(ref)
     for i,j in zip(row,col):
         rev=reverse[i,j].mean()<normal[i,j].mean();deviation=float((reverse if rev else normal)[i,j].max());maximum=max(maximum,deviation)
-        result[i]=normalized[j][::-1] if rev else normalized[j]
+        result[i]=np.round(normalized[j][::-1] if rev else normalized[j],6);mapping[int(i)]=int(j);directions[int(i)]=bool(rev)
     if maximum>cfg['max_match_deviation_mm']:
         raise ConversionError('PROFILE_REQUIRED','线段形状偏离已验证模板，不能可靠确认裁片和缝合关系。')
-    return result,scale,{'profile':cfg['id'],'matched_polylines':len(result),'max_sampled_deviation_mm':round(maximum,6),'physical_scale':round(scale,8),'units':units}
+    return result,scale,{'profile':cfg['id'],'matched_polylines':len(result),'max_sampled_deviation_mm':round(maximum,6),'physical_scale':round(scale,8),'units':units,'registration':{'canonical_to_input':mapping,'input_reversed':directions}}
 
 def inside(points,poly):
     """Even-odd test on actual contour; no bounding-box substitute."""
@@ -113,103 +113,7 @@ def inside(points,poly):
         previous=current
     return keep
 
-def make_panels(P):
-    cfg=get_profile()
-    def join(spec):
-        out=[]
-        for i,rev in spec:
-            q=P[i][::-1] if rev else P[i]
-            if out and np.linalg.norm(np.asarray(out[-1])-q[0])<.1:q=q[1:]
-            out.extend(q)
-        return np.asarray(out)
-    def mappt(q,front):
-        name='front' if front else 'back';x=(q[0]-cfg['center_x'][name])/1000
-        z=(q[1]+(cfg['front_z_offset_mm'] if front else 0)+cfg['origin_z_mm'])/1000
-        alpha=np.clip((z-1.35)/.15,0,1);half=np.interp(z,[1.01,1.20,1.337,1.55],[.213,.180,.2164,.2164])
-        theta=np.clip(x/half,-1,1)*math.pi/2;X=(1-alpha)*half*.735*math.sin(theta)+alpha*x
-        Y=((1-alpha)*half*.47+alpha*.064)*math.cos(theta)
-        if front:
-            Y+=.018*math.exp(-((abs(X)-.065)/.065)**2-((z-1.385)/.065)**2)*max(0,math.cos(theta))
-            Y+=.0015*math.sin((z-1.10)*125+X*24)*math.exp(-((z-1.16)/.09)**2)*(math.sin(theta)**2)
-        return [X,Y*(-1 if front else 1),z]
-    panels={};paths={}
-    for name,spec in cfg['body'].items():
-        poly=join(spec);lo,hi=poly.min(0),poly.max(0)
-        xx,yy=np.meshgrid(np.arange(lo[0],hi[0],5),np.arange(lo[1],hi[1],5));g=np.c_[xx.ravel(),yy.ravel()];g=g[inside(g,poly)]
-        pts=np.unique(np.round(np.vstack([poly,g]),4),axis=0)
-        try:tri=Delaunay(pts).simplices
-        except QhullError as exc:raise ConversionError('TRIANGULATION_FAILED','无法对裁片进行稳定三角化。') from exc
-        keep=np.ones(len(tri),dtype=bool)
-        # Off-boundary centroids avoid treating exact boundary midpoints as outside.
-        for w in [(1/3,1/3,1/3),(.499,.499,.002),(.499,.002,.499),(.002,.499,.499)]:
-            centers=sum(pts[tri[:,i]]*w[i] for i in range(3));keep &= inside(centers,poly)
-        panels[name]={'verts':[mappt(q,name=='front') for q in pts],'faces':tri[keep].tolist()}
-        def path(label,spec,n=64):paths[name+'_'+label]=np.asarray([mappt(q,name=='front') for q in sample(join(spec),n)])
-        path('neck',[(93,False),(110,True)] if name=='front' else [(52,True),(30,False)],100)
-        path('right_arm',[(112,False)] if name=='front' else [(28,False)],45)
-        path('left_arm',[(95,False)] if name=='front' else [(50,False)],45)
-        path('right_shoulder',[(111,False)] if name=='front' else [(29,True)],24)
-        path('left_shoulder',[(94,False)] if name=='front' else [(51,True)],24)
-        path('right_side',[(113,False)] if name=='front' else [(27,True),(26,False)],100)
-        path('left_side',[(96,False)] if name=='front' else [(49,True),(48,False)],100)
-    y=np.linspace(-1529.4,-1982,60)
-    def at(q):
-        order=np.argsort(q[:,1]);return np.interp(y,q[order,1],q[order,0])
-    widths=at(P[70])-at(P[73])
-    if np.any(widths<80) or np.any(widths>400):raise ConversionError('SLEEVE_RANGE','袖片宽度超出当前模板的可接受范围。')
-    return panels,paths,widths
-
-def assemble(panels,paths,widths,scale):
-    parts=[]
-    def add(name,v,f,flip=False):
-        v=np.asarray(v,dtype=float);f=np.asarray(f,dtype=np.uint32)
-        if flip:f=f[:,::-1]
-        # Export Y-up metres, preserving a right-handed frame.
-        v=v[:,[0,2,1]];v[:,2]*=-1;v*=scale
-        edges1=v[f[:,1]]-v[f[:,0]];edges2=v[f[:,2]]-v[f[:,0]];norm=np.cross(edges1,edges2)
-        good=np.linalg.norm(norm,axis=1)>1e-12;f=f[good];norm=norm[good]
-        if not len(f):raise ConversionError('EMPTY_SURFACE','生成了空裁片。')
-        # Remove unused vertices and construct smooth normals from the actual triangles.
-        used,inv=np.unique(f,return_inverse=True);v=v[used];f=inv.reshape(-1,3).astype(np.uint32)
-        n=np.zeros_like(v)
-        for k in range(3):np.add.at(n,f[:,k],norm)
-        lengths=np.linalg.norm(n,axis=1);n/=np.maximum(lengths[:,None],1e-12)
-        if not np.isfinite(v).all() or not np.isfinite(n).all():raise ConversionError('NONFINITE_OUTPUT','三维模型含无效数值。')
-        parts.append((name,v.astype('<f4'),n.astype('<f4'),f))
-    for name,panel in panels.items():add(name,panel['verts'],panel['faces'],flip=name=='back')
-    def bridge(name,a,b):
-        if np.linalg.norm(a[0]-b[-1])<np.linalg.norm(a[0]-b[0]):b=b[::-1]
-        N=len(a);v=np.vstack([a,b]);f=[]
-        for i in range(N-1):f.extend([[i,i+1,N+i+1],[i,N+i+1,N+i]])
-        add(name,v,f)
-    for side in ['left','right']:
-        bridge('side_'+side,paths['front_'+side+'_side'],paths['back_'+side+'_side'])
-        bridge('shoulder_'+side,paths['front_'+side+'_shoulder'],paths['back_'+side+'_shoulder'])
-        ring=np.vstack([paths['front_'+side+'_arm'],paths['back_'+side+'_arm'][::-1]]);N=len(ring);sign=1 if side=='right' else -1
-        center=np.array([sign*.174,0,1.438]);axis=np.array([sign*.23,-.015,-.974]);axis/=np.linalg.norm(axis);B=np.array([0,1,0]);C=np.cross(axis,B);C/=np.linalg.norm(C)
-        delta=ring-center;angles=np.arctan2(delta@C,delta@B);radial=np.cos(angles)[:,None]*B+np.sin(angles)[:,None]*C;v=[];R=64
-        for j in range(R):
-            t=j/(R-1);distance=.515*t;ctr=center+axis*distance;ctr[1]-=.006*math.sin(t*math.pi)
-            radius=widths[min(59,int(t*59))]/1000/(2*math.pi);w=min(1,t/.26);w=w*w*(3-2*w)
-            q=(ring+axis*distance)*(1-w)+(ctr+radius*radial)*w
-            q+=radial*(.0013*np.sin(t*72+angles*2)*np.exp(-((t-.57)/.15)**2))[:,None];v.extend(q)
-        f=[]
-        for j in range(R-1):
-            for k in range(N):
-                a=j*N+k;b=j*N+(k+1)%N;c=(j+1)*N+(k+1)%N;d=(j+1)*N+k;f.extend([[a,b,c],[a,c,d]])
-        add('sleeve_'+side,v,f)
-    neck=np.vstack([paths['front_neck'],paths['back_neck'][::-1]]);N=len(neck);v=[]
-    radial=neck.copy();radial[:,2]=0;radial/=np.maximum(np.linalg.norm(radial,axis=1)[:,None],1e-12)
-    for j in range(5):
-        q=neck+radial*(j/4*.010);q[:,2]-=j/4*.009;v.extend(q)
-    f=[]
-    for j in range(4):
-        for i in range(N):
-            a=j*N+i;b=j*N+(i+1)%N;c=(j+1)*N+(i+1)%N;d=(j+1)*N+i;f.extend([[a,b,c],[a,c,d]])
-    add('neckband',v,f)
-    return parts
-
-def encode_glb(parts,report):
+def encode_glb(parts,report,certificate=None):
     binary=bytearray();views=[];accessors=[];meshes=[]
     def accessor(array,kind,component,target):
         while len(binary)%4:binary.append(0)
@@ -221,17 +125,37 @@ def encode_glb(parts,report):
     for name,v,n,f in parts:
         p=accessor(v,'VEC3',5126,34962);normal=accessor(n,'VEC3',5126,34962);index=accessor(f.reshape(-1).astype('<u4'),'SCALAR',5125,34963)
         meshes.append({'name':name,'primitives':[{'attributes':{'POSITION':p,'NORMAL':normal},'indices':index,'material':0,'mode':4}]})
-    doc={'asset':{'version':'2.0','generator':'Pattern Agent '+ENGINE_VERSION,'extras':{'profile':report['profile'],'conversion_id':report['conversion_id'],'physical_fit':'NOT_RUN','mode':'visual_preview'}},'scene':0,'scenes':[{'nodes':list(range(len(meshes)))}],'nodes':[{'mesh':i,'name':m['name']} for i,m in enumerate(meshes)],'meshes':meshes,'materials':[{'name':'展示用暖白面料','doubleSided':True,'pbrMetallicRoughness':{'baseColorFactor':[.82,.79,.72,1],'metallicFactor':0,'roughnessFactor':.68}}],'buffers':[{'byteLength':len(binary)}],'bufferViews':views,'accessors':accessors}
+    if certificate is not None:
+        from copy import deepcopy
+        certificate=deepcopy(certificate)
+        for patch in certificate['patches'].values():
+            patch['flat_accessor']=accessor(np.asarray(patch.pop('flat_points'),dtype='<f4'),'VEC2',5126,34962)
+            patch['global_accessor']=accessor(np.asarray(patch.pop('global_vertices'),dtype='<u4'),'SCALAR',5125,34963)
+            patch['local_faces_accessor']=accessor(np.asarray(patch.pop('local_faces'),dtype='<u4').reshape(-1),'SCALAR',5125,34963)
+    doc={'asset':{'version':'2.0','generator':'Pattern Agent '+ENGINE_VERSION,'extras':{'profile':report['profile'],'conversion_id':report['conversion_id'],'physical_fit':'NOT_RUN','mode':report.get('mode','visual_preview')}},'scene':0,'scenes':[{'nodes':list(range(len(meshes)))}],'nodes':[{'mesh':i,'name':m['name']} for i,m in enumerate(meshes)],'meshes':meshes,'materials':[{'name':'展示用暖白面料','doubleSided':True,'pbrMetallicRoughness':{'baseColorFactor':[.82,.79,.72,1],'metallicFactor':0,'roughnessFactor':.68}}],'buffers':[{'byteLength':len(binary)}],'bufferViews':views,'accessors':accessors}
+    if certificate is not None:doc['asset']['extras']['sewing_certificate']=certificate
     js=json.dumps(doc,ensure_ascii=False,separators=(',',':'),allow_nan=False).encode();js+=b' '*((-len(js))%4);binary+=b'\0'*((-len(binary))%4)
     total=12+8+len(js)+8+len(binary)
     return struct.pack('<III',0x46546c67,2,total)+struct.pack('<II',len(js),0x4e4f534a)+js+struct.pack('<II',len(binary),0x004e4942)+bytes(binary)
 
 def convert_dxf(data:bytes,*,units:str,profile:str='fitted-tshirt-v1')->Converted:
+    from .sewn import build
+    from verification.seams import audit_glb,CONTRACT_PATH
     polylines,source=parse_dxf(data);P,scale,match=register(polylines,units,profile)
-    panels,paths,widths=make_panels(P);parts=assemble(panels,paths,widths,scale)
+    try:v,f,certificate=build(P)
+    except (ValueError,QhullError) as exc:raise ConversionError('SEWING_ASSEMBLY_REJECTED','纸样不能按当前连接规则可靠装配：'+str(exc)) from exc
+    # The actual exported surface is one welded Y-up mesh in metres.
+    v=v[:,[0,2,1]];v[:,2]*=-1;v*=scale
+    normal=np.cross(v[f[:,1]]-v[f[:,0]],v[f[:,2]]-v[f[:,0]]);n=np.zeros_like(v)
+    for k in range(3):np.add.at(n,f[:,k],normal)
+    n/=np.maximum(np.linalg.norm(n,axis=1)[:,None],1e-15)
     source_hash=hashlib.sha256(data).hexdigest();identifier=hashlib.sha256(json.dumps({'source':source_hash,'units':units,'profile':profile,'engine':ENGINE_VERSION},sort_keys=True).encode()).hexdigest()
-    report={'status':'completed','conversion_id':identifier,'engine_version':ENGINE_VERSION,'profile':profile,'input_sha256':source_hash,'input_bytes':len(data),'source':source,'matching':match,'mode':'visual_preview','physical_fit':'NOT_RUN','strict_seam_and_intersection_release':'NOT_RUN','material':'assumed off-white; no calibrated fabric mechanics','meshes':len(parts),'vertices':sum(len(p[1]) for p in parts),'triangles':sum(len(p[3]) for p in parts),'limitations':['仅支持已验证的紧身长袖上衣导出拓扑，不支持任意服装纸样','输入单位必须显式指定；人物厚度、缝合连接及材质为展示假定','输出不是布料物理仿真，不用于生产尺寸或合身性批准']}
-    glb=encode_glb(parts,report)
-    if len(glb)>4_000_000:raise ConversionError('OUTPUT_LIMIT','生成结果超过直接响应限制，请降低模型复杂度。',413)
-    report.update(output_sha256=hashlib.sha256(glb).hexdigest(),output_bytes=len(glb))
+    certificate.update(input_sha256=source_hash,input_units=units,physical_scale=scale,input_registration=match.pop('registration'),contract_sha256=hashlib.sha256(CONTRACT_PATH.read_bytes()).hexdigest())
+    report={'status':'completed','conversion_id':identifier,'engine_version':ENGINE_VERSION,'profile':profile,'input_sha256':source_hash,'input_bytes':len(data),'source':source,'matching':match,'mode':'verified_static_sewn_outer_shell','physical_fit':'NOT_RUN','material_mechanics':'NOT_RUN','production_cutting_approval':'NOT_RUN','cloth_body_collision':'NOT_RUN','meshes':1,'source_patches':5,'vertices':len(v),'triangles':len(f),'limitations':['原始纸样存在缝线差异；当前输出使用明确记录的修正缝合线，原文件字节未改动','连接验收仅适用于显示的静态单层外壳；领条隐藏内层和缝份叠层未建模','面料、人体厚度、姿态及真实试穿未标定，不构成生产纸样批准']}
+    glb=encode_glb([('verified_sewn_garment',v.astype('<f4'),n.astype('<f4'),f.astype('<u4'))],report,certificate)
+    if len(glb)>4_000_000:raise ConversionError('OUTPUT_LIMIT','带连接证书的模型超过直接响应限制。',413)
+    # Re-open the exact returned float32 GLB, not only the generator's float64 arrays.
+    verified=audit_glb(glb,data,units)
+    if verified['verdict']!='PASS':raise ConversionError('SEWING_VERIFICATION_FAILED','裁片连接未通过独立检查，已停止输出：'+'; '.join(verified['failures'][:4]))
+    report.update(strict_seam_and_intersection_release='PASS',connection_verification=verified,pattern_revision={'kind':'corrected_derivative_seam_lines','original_file_unchanged':True,'max_vertex_edit_mm':certificate['pattern']['max_vertex_edit_mm']*scale,'operations':certificate['pattern']['operations']},output_sha256=hashlib.sha256(glb).hexdigest(),output_bytes=len(glb))
     return Converted(glb,report)

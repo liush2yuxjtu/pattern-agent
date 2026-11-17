@@ -16,7 +16,7 @@ logger=logging.getLogger('pattern-agent')
 
 def source_files():
     # Vercel rewrites vercel.json while packaging; its uploaded hash is archived separately.
-    files=[ROOT/'app.py',ROOT/'pyproject.toml',ROOT/'converter/core.py',ROOT/'converter/profile.json',*sorted((ROOT/'public').glob('*'))]
+    files=[ROOT/'app.py',ROOT/'pyproject.toml',*sorted(p for p in (ROOT/'converter').rglob('*.py') if p.name!='__init__.py'),*sorted((ROOT/'converter').glob('*.json')),*sorted(p for p in (ROOT/'verification').rglob('*.py') if p.name!='__init__.py'),*sorted((ROOT/'public').glob('*'))]
     return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
 SOURCE_FILES=source_files()
 SOURCE_SHA256=hashlib.sha256(json.dumps(SOURCE_FILES,sort_keys=True,separators=(',',':')).encode()).hexdigest()
@@ -31,7 +31,7 @@ def home():return FileResponse(ROOT/'public/index.html')
 
 @app.get('/api/health')
 def health():
-    return {'status':'ok','engine_version':ENGINE_VERSION,'source_sha256':SOURCE_SHA256,'source_files':SOURCE_FILES,'mode':'visual_preview','execution':'synchronous_stateless','storage':'no_uploaded_file_persistence','supported_profiles':[get_profile()['id']],'max_input_bytes':MAX_INPUT_BYTES,'physical_fit':'NOT_RUN'}
+    return {'status':'ok','engine_version':ENGINE_VERSION,'source_sha256':SOURCE_SHA256,'source_files':SOURCE_FILES,'mode':'verified_static_sewn_outer_shell','connection_verification':'enforced_on_exact_export_per_result','execution':'synchronous_stateless','storage':'no_uploaded_file_persistence','supported_profiles':[get_profile()['id']],'max_input_bytes':MAX_INPUT_BYTES,'physical_fit':'NOT_RUN'}
 
 @app.get('/api/profiles')
 def profiles():
@@ -67,11 +67,12 @@ async def analyze(request:Request):
         return {'status':'supported','source':source,'matching':match,'engine_version':ENGINE_VERSION,'physical_fit':'NOT_RUN'}
     return await asyncio.to_thread(work)
 
-def bundle(result):
+def bundle(result,source):
     """Offline viewer reuses the same actual generated GLB; no remote CDN."""
     html=(ROOT/'public/offline.html').read_text()
     html=html.replace('__GENERATED_GLB__',base64.b64encode(result.glb).decode()).replace('__RENDERER_JS__',(ROOT/'public/renderer.js').read_text())
-    files={'model.glb':result.glb,'report.json':json.dumps(result.report,ensure_ascii=False,indent=2).encode(),'preview.html':html.encode(),'viewer.js':(ROOT/'public/renderer.js').read_bytes()}
+    from converter.exports import review_files
+    files={'model.glb':result.glb,'report.json':json.dumps(result.report,ensure_ascii=False,indent=2).encode(),'preview.html':html.encode(),'viewer.js':(ROOT/'public/renderer.js').read_bytes(),**review_files(result,source)}
     buf=io.BytesIO()
     with zipfile.ZipFile(buf,'w',zipfile.ZIP_DEFLATED) as z:
         for name,data in files.items():
@@ -93,6 +94,6 @@ async def preview(request:Request):
     if fmt=='json':return JSONResponse({'report':result.report,'glb_base64':base64.b64encode(result.glb).decode()},headers=headers)
     if fmt=='bundle':
         headers['Content-Disposition']='attachment; filename="pattern-agent-preview.zip"'
-        return Response(bundle(result),media_type='application/zip',headers=headers)
+        return Response(bundle(result,data),media_type='application/zip',headers=headers)
     headers['Content-Disposition']='attachment; filename="pattern-agent-preview.glb"'
     return Response(result.glb,media_type='model/gltf-binary',headers=headers)

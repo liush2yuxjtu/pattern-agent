@@ -64,5 +64,8 @@ SHA-256 check the downloaded script before execution. Only use already public
 sample data, no private fixtures or credentials. Preserve the first blocker,
 retrieve the PNG/JSON evidence with archive integrity checks, then stop session.
 
-Physical fit and strict seam/intersection release remain NOT_RUN even if the
-service and browser pass. No load/availability SLA follows from this acceptance.
+Service/browser acceptance alone does not establish sewing quality. For engine
+2's corrected static outer shell, also require the independent `dxf-seams.md`
+gate. Preserve engine 1's historical NOT_RUN/FAIL records. Physical fit, calibrated
+fabric behavior and production cutting approval remain NOT_RUN. No load or
+availability SLA follows from these checks.

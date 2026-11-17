@@ -34,7 +34,7 @@ class ConversionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):cls.base=convert_dxf(SAMPLE,units='mm');cls.doc,cls.vertices,cls.triangles=inspect_glb(cls.base.glb)
     def test_actual_mesh_and_repeatability(self):
-        other=convert_dxf(SAMPLE,units='mm');self.assertEqual(self.base.glb,other.glb);self.assertEqual(self.base.report,other.report);self.assertGreater(self.triangles,30000);self.assertEqual(len(self.doc['meshes']),9);self.assertEqual(self.base.report['physical_fit'],'NOT_RUN');self.assertTrue(.55<np.ptp(self.vertices[:,1])<.8)
+        other=convert_dxf(SAMPLE,units='mm');self.assertEqual(self.base.glb,other.glb);self.assertEqual(self.base.report,other.report);self.assertGreater(self.triangles,30000);self.assertEqual(len(self.doc['meshes']),1);self.assertEqual(self.base.report['source_patches'],5);self.assertEqual(self.base.report['strict_seam_and_intersection_release'],'PASS');self.assertEqual(self.base.report['physical_fit'],'NOT_RUN');self.assertTrue(.45<np.ptp(self.vertices[:,1])<.8);self.assertLess(self.base.report['connection_verification']['checks']['max_3d_seam_length_error_mm'],2);self.assertAlmostEqual(next(s['sewn_3d_length_mm'] for s in self.base.report['connection_verification']['checks']['seams'] if s['name']=='underarm.left'),455.842,delta=.1)
     def test_reordered_reversed_translated_geometry(self):
         p,_=parse_dxf(SAMPLE);rng=np.random.default_rng(713);order=rng.permutation(len(p));raw=dxf([(p[i][::-1] if i%2 else p[i])+[1234,-5678] for i in order]);r=convert_dxf(raw,units='mm');_,v,_=inspect_glb(r.glb);self.assertLess(r.report['matching']['max_sampled_deviation_mm'],.00001);np.testing.assert_allclose(v.min(0),self.vertices.min(0),atol=2e-6);np.testing.assert_allclose(v.max(0),self.vertices.max(0),atol=2e-6)
     def test_centimetre_input_uses_explicit_units(self):
@@ -42,7 +42,11 @@ class ConversionTests(unittest.TestCase):
     def test_scale_changes_actual_geometry(self):
         p,_=parse_dxf(SAMPLE);r=convert_dxf(dxf([q*1.1 for q in p]),units='mm');_,v,_=inspect_glb(r.glb);self.assertNotEqual(r.report['output_sha256'],self.base.report['output_sha256']);self.assertAlmostEqual(float(np.ptp(v[:,1])/np.ptp(self.vertices[:,1])),1.1,places=5)
     def test_local_contour_change_changes_output(self):
-        p,_=parse_dxf(SAMPLE);p[96]=p[96]+[2,0];r=convert_dxf(dxf(p),units='mm');inspect_glb(r.glb);self.assertNotEqual(r.glb,self.base.glb)
+        p,_=parse_dxf(SAMPLE);p[96][1:-1]=p[96][1:-1]+[2,0];r=convert_dxf(dxf(p),units='mm');inspect_glb(r.glb);self.assertNotEqual(r.glb,self.base.glb)
+    def test_open_source_contour_is_rejected(self):
+        p,_=parse_dxf(SAMPLE);p[96]=p[96]+[2,0]
+        with self.assertRaises(ConversionError) as cm:convert_dxf(dxf(p),units='mm')
+        self.assertEqual(cm.exception.code,'SEWING_ASSEMBLY_REJECTED')
     def test_unrelated_pattern_is_rejected(self):
         with self.assertRaises(ConversionError) as cm:convert_dxf(dxf([np.array([[0,0],[200,0],[200,400],[0,400],[0,0]])]),units='mm')
         self.assertEqual(cm.exception.code,'PROFILE_REQUIRED')
@@ -65,7 +69,7 @@ class ConversionTests(unittest.TestCase):
             result=c.post('/api/preview?units=mm&format=glb',content=SAMPLE,headers={'Content-Type':'application/dxf'});self.assertEqual(result.status_code,200);self.assertEqual(result.content,self.base.glb);self.assertEqual(hashlib.sha256(result.content).hexdigest(),result.headers['x-output-sha256'])
             response=c.post('/api/preview?units=mm&format=bundle',content=SAMPLE);self.assertEqual(response.status_code,200)
             with zipfile.ZipFile(io.BytesIO(response.content)) as z:
-                self.assertIsNone(z.testzip());self.assertEqual(z.read('model.glb'),self.base.glb);self.assertEqual(json.loads(z.read('report.json'))['output_sha256'],self.base.report['output_sha256']);self.assertNotIn(b'__GENERATED_GLB__',z.read('preview.html'));self.assertNotIn(b'__RENDERER_JS__',z.read('preview.html'))
+                self.assertIsNone(z.testzip());self.assertEqual(z.read('model.glb'),self.base.glb);self.assertEqual(json.loads(z.read('report.json'))['output_sha256'],self.base.report['output_sha256']);self.assertEqual(z.read('original-input.dxf'),SAMPLE);self.assertEqual(json.loads(z.read('connection-verification.json'))['verdict'],'PASS');self.assertIn(b'<svg',z.read('corrected-seam-lines.svg'));self.assertNotIn(b'__GENERATED_GLB__',z.read('preview.html'));self.assertNotIn(b'__RENDERER_JS__',z.read('preview.html'))
             for query,data,status in [('units=mm',b'bad',400),('units=mm&format=unknown',SAMPLE,400),('units=mm&profile=any',SAMPLE,422),('units=mm',b'x'*(MAX_INPUT_BYTES+1),413)]:
                 r=c.post('/api/preview?'+query,content=data);self.assertEqual(r.status_code,status);self.assertEqual(r.json()['status'],'rejected')
             self.assertEqual(c.get('/api/no-such-job').status_code,404)

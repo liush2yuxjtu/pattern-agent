@@ -1,0 +1,103 @@
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_actual_mesh_and_repeatability (test_conversion.ConversionTests.test_actual_mesh_and_repeatability) ... FAIL
+test_centimetre_input_uses_explicit_units (test_conversion.ConversionTests.test_centimetre_input_uses_explicit_units) ... FAIL
+test_http_contract_bundle_and_errors (test_conversion.ConversionTests.test_http_contract_bundle_and_errors) ... {"event": "conversion_rejected", "code": "INVALID_DXF"}
+{"event": "conversion_rejected", "code": "UNKNOWN_FORMAT"}
+{"event": "conversion_rejected", "code": "UNKNOWN_PROFILE"}
+{"event": "conversion_rejected", "code": "INPUT_SIZE"}
+ok
+test_invalid_units_size_and_coordinate (test_conversion.ConversionTests.test_invalid_units_size_and_coordinate) ... ok
+test_local_contour_change_changes_output (test_conversion.ConversionTests.test_local_contour_change_changes_output) ... ERROR
+test_no_persistence_or_job_claims (test_conversion.ConversionTests.test_no_persistence_or_job_claims) ... ok
+test_reordered_reversed_translated_geometry (test_conversion.ConversionTests.test_reordered_reversed_translated_geometry) ... FAIL
+test_same_count_wrong_geometry_rejected (test_conversion.ConversionTests.test_same_count_wrong_geometry_rejected) ... ok
+test_scale_changes_actual_geometry (test_conversion.ConversionTests.test_scale_changes_actual_geometry) ... ok
+test_unrelated_pattern_is_rejected (test_conversion.ConversionTests.test_unrelated_pattern_is_rejected) ... ok
+
+======================================================================
+ERROR: test_local_contour_change_changes_output (test_conversion.ConversionTests.test_local_contour_change_changes_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/services/dxf-preview/converter/sewn.py", line 251, in build
+    try:points,tri,edges=triangulate(boundary,spacing)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/pattern-agent/services/dxf-preview/converter/sewn.py", line 230, in triangulate
+    raise ValueError(f'BOUNDARY_CONFORMITY missing {len(wanted-actual)} extra {len(actual-wanted)}')
+ValueError: BOUNDARY_CONFORMITY missing 2 extra 4
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/services/dxf-preview/converter/core.py", line 145, in convert_dxf
+    try:v,f,certificate=build(P)
+                        ^^^^^^^^
+  File "/workspace/work/pattern-agent/services/dxf-preview/converter/sewn.py", line 252, in build
+    except ValueError as exc:raise ValueError(name+': '+str(exc)) from exc
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: front: BOUNDARY_CONFORMITY missing 2 extra 4
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/services/dxf-preview/tests/test_conversion.py", line 45, in test_local_contour_change_changes_output
+    p,_=parse_dxf(SAMPLE);p[96][1:-1]=p[96][1:-1]+[2,0];r=convert_dxf(dxf(p),units='mm');inspect_glb(r.glb);self.assertNotEqual(r.glb,self.base.glb)
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/pattern-agent/services/dxf-preview/converter/core.py", line 146, in convert_dxf
+    except (ValueError,QhullError) as exc:raise ConversionError('SEWING_ASSEMBLY_REJECTED','纸样不能按当前连接规则可靠装配：'+str(exc)) from exc
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+converter.core.ConversionError: 纸样不能按当前连接规则可靠装配：front: BOUNDARY_CONFORMITY missing 2 extra 4
+
+======================================================================
+FAIL: test_actual_mesh_and_repeatability (test_conversion.ConversionTests.test_actual_mesh_and_repeatability)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/services/dxf-preview/tests/test_conversion.py", line 37, in test_actual_mesh_and_repeatability
+    other=convert_dxf(SAMPLE,units='mm');self.assertEqual(self.base.glb,other.glb);self.assertEqual(self.base.report,other.report);self.assertGreater(self.triangles,30000);self.assertEqual(len(self.doc['meshes']),1);self.assertEqual(self.base.report['source_patches'],5);self.assertEqual(self.base.report['strict_seam_and_intersection_release'],'PASS');self.assertEqual(self.base.report['physical_fit'],'NOT_RUN');self.assertTrue(.55<np.ptp(self.vertices[:,1])<.8)
+                                                                                                                                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.False_ is not true
+
+======================================================================
+FAIL: test_centimetre_input_uses_explicit_units (test_conversion.ConversionTests.test_centimetre_input_uses_explicit_units)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/services/dxf-preview/tests/test_conversion.py", line 41, in test_centimetre_input_uses_explicit_units
+    p,_=parse_dxf(SAMPLE);r=convert_dxf(dxf([q/10 for q in p]),units='cm');_,v,_=inspect_glb(r.glb);np.testing.assert_allclose(v.min(0),self.vertices.min(0),atol=2e-6);np.testing.assert_allclose(v.max(0),self.vertices.max(0),atol=2e-6)
+                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 1711, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 919, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-07, atol=2e-06
+
+Mismatched elements: 1 / 3 (33.3%)
+Max absolute difference among violations: 0.0005234
+Max relative difference among violations: 0.00364091
+ ACTUAL: array([-0.483224,  0.99158 , -0.14428 ], dtype=float32)
+ DESIRED: array([-0.483224,  0.99158 , -0.143756], dtype=float32)
+
+======================================================================
+FAIL: test_reordered_reversed_translated_geometry (test_conversion.ConversionTests.test_reordered_reversed_translated_geometry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/services/dxf-preview/tests/test_conversion.py", line 39, in test_reordered_reversed_translated_geometry
+    p,_=parse_dxf(SAMPLE);rng=np.random.default_rng(713);order=rng.permutation(len(p));raw=dxf([(p[i][::-1] if i%2 else p[i])+[1234,-5678] for i in order]);r=convert_dxf(raw,units='mm');_,v,_=inspect_glb(r.glb);self.assertLess(r.report['matching']['max_sampled_deviation_mm'],.00001);np.testing.assert_allclose(v.min(0),self.vertices.min(0),atol=2e-6);np.testing.assert_allclose(v.max(0),self.vertices.max(0),atol=2e-6)
+                                                                                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 1711, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 919, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-07, atol=2e-06
+
+Mismatched elements: 1 / 3 (33.3%)
+Max absolute difference among violations: 0.00017238
+Max relative difference among violations: 0.00119909
+ ACTUAL: array([-0.483224,  0.99158 , -0.143584], dtype=float32)
+ DESIRED: array([-0.483224,  0.99158 , -0.143756], dtype=float32)
+
+----------------------------------------------------------------------
+Ran 10 tests in 48.490s
+
+FAILED (failures=3, errors=1)

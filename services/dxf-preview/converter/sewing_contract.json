@@ -1,0 +1,422 @@
+{
+  "id": "fitted-tshirt-sewing-v2",
+  "version": "2.0.0",
+  "source_profile": "fitted-tshirt-v1",
+  "scope": "static source-bound sewn outer shell, on explicitly corrected derived seam lines; not production cut paths or physical fabric fit",
+  "thresholds": {
+    "source_junction_mm": 0.05,
+    "max_derived_vertex_edit_mm": 8.0,
+    "flat_seam_residual_mm": 0.05,
+    "seam_gap_mm": 2.0,
+    "intersection_epsilon_m": 1e-06,
+    "source_surface_distance_mm": 0.002
+  },
+  "expected_patches": [
+    "front",
+    "back",
+    "sleeve.left",
+    "sleeve.right",
+    "band"
+  ],
+  "expected_boundary_cycles": 4,
+  "expected_euler_characteristic": -2,
+  "source_edges": {
+    "front.neck.left": [
+      [
+        93,
+        true
+      ]
+    ],
+    "front.neck.right": [
+      [
+        110,
+        false
+      ]
+    ],
+    "front.shoulder.left": [
+      [
+        94,
+        false
+      ]
+    ],
+    "front.shoulder.right": [
+      [
+        111,
+        false
+      ]
+    ],
+    "front.arm.left": [
+      [
+        95,
+        true
+      ]
+    ],
+    "front.arm.right": [
+      [
+        112,
+        true
+      ]
+    ],
+    "front.side.left": [
+      [
+        96,
+        false
+      ]
+    ],
+    "front.side.right": [
+      [
+        113,
+        false
+      ]
+    ],
+    "front.hem": [
+      [
+        91,
+        false
+      ],
+      [
+        109,
+        true
+      ]
+    ],
+    "back.neck.left": [
+      [
+        52,
+        true
+      ]
+    ],
+    "back.neck.right": [
+      [
+        30,
+        false
+      ]
+    ],
+    "back.shoulder.left": [
+      [
+        51,
+        true
+      ]
+    ],
+    "back.shoulder.right": [
+      [
+        29,
+        true
+      ]
+    ],
+    "back.arm.left": [
+      [
+        50,
+        true
+      ]
+    ],
+    "back.arm.right": [
+      [
+        28,
+        true
+      ]
+    ],
+    "back.side.left": [
+      [
+        49,
+        true
+      ],
+      [
+        48,
+        false
+      ]
+    ],
+    "back.side.right": [
+      [
+        27,
+        true
+      ],
+      [
+        26,
+        false
+      ]
+    ],
+    "back.hem": [
+      [
+        47,
+        false
+      ],
+      [
+        25,
+        true
+      ]
+    ],
+    "sleeve.cap.front": [
+      [
+        71,
+        true
+      ]
+    ],
+    "sleeve.cap.back": [
+      [
+        72,
+        false
+      ]
+    ],
+    "sleeve.side.front": [
+      [
+        70,
+        true
+      ]
+    ],
+    "sleeve.side.back": [
+      [
+        73,
+        true
+      ]
+    ],
+    "sleeve.cuff": [
+      [
+        68,
+        true
+      ],
+      [
+        69,
+        false
+      ]
+    ]
+  },
+  "source_loops": {
+    "front": [
+      [
+        "front.neck.left",
+        false
+      ],
+      [
+        "front.shoulder.left",
+        false
+      ],
+      [
+        "front.arm.left",
+        false
+      ],
+      [
+        "front.side.left",
+        false
+      ],
+      [
+        "front.hem",
+        false
+      ],
+      [
+        "front.side.right",
+        true
+      ],
+      [
+        "front.arm.right",
+        true
+      ],
+      [
+        "front.shoulder.right",
+        true
+      ],
+      [
+        "front.neck.right",
+        false
+      ]
+    ],
+    "back": [
+      [
+        "back.neck.left",
+        true
+      ],
+      [
+        "back.shoulder.left",
+        false
+      ],
+      [
+        "back.arm.left",
+        false
+      ],
+      [
+        "back.side.left",
+        false
+      ],
+      [
+        "back.hem",
+        false
+      ],
+      [
+        "back.side.right",
+        true
+      ],
+      [
+        "back.arm.right",
+        true
+      ],
+      [
+        "back.shoulder.right",
+        true
+      ],
+      [
+        "back.neck.right",
+        true
+      ]
+    ],
+    "sleeve": [
+      [
+        "sleeve.cap.back",
+        false
+      ],
+      [
+        "sleeve.side.back",
+        false
+      ],
+      [
+        "sleeve.cuff",
+        false
+      ],
+      [
+        "sleeve.side.front",
+        true
+      ],
+      [
+        "sleeve.cap.front",
+        true
+      ]
+    ]
+  },
+  "seams": [
+    {
+      "name": "side.left",
+      "a": "front.side.left",
+      "b": "back.side.left"
+    },
+    {
+      "name": "shoulder.left",
+      "a": "front.shoulder.left",
+      "b": "back.shoulder.left"
+    },
+    {
+      "name": "armhole.left.front",
+      "a": "sleeve.left.cap.front",
+      "b": "front.arm.left"
+    },
+    {
+      "name": "armhole.left.back",
+      "a": "sleeve.left.cap.back",
+      "b": "back.arm.left"
+    },
+    {
+      "name": "underarm.left",
+      "a": "sleeve.left.side.front",
+      "b": "sleeve.left.side.back"
+    },
+    {
+      "name": "side.right",
+      "a": "front.side.right",
+      "b": "back.side.right"
+    },
+    {
+      "name": "shoulder.right",
+      "a": "front.shoulder.right",
+      "b": "back.shoulder.right"
+    },
+    {
+      "name": "armhole.right.front",
+      "a": "sleeve.right.cap.front",
+      "b": "front.arm.right"
+    },
+    {
+      "name": "armhole.right.back",
+      "a": "sleeve.right.cap.back",
+      "b": "back.arm.right"
+    },
+    {
+      "name": "underarm.right",
+      "a": "sleeve.right.side.front",
+      "b": "sleeve.right.side.back"
+    },
+    {
+      "name": "neck.back.neck.left",
+      "a": "band.back.neck.left",
+      "b": "back.neck.left"
+    },
+    {
+      "name": "neck.back.neck.right",
+      "a": "band.back.neck.right",
+      "b": "back.neck.right"
+    },
+    {
+      "name": "neck.front.neck.right",
+      "a": "band.front.neck.right",
+      "b": "front.neck.right"
+    },
+    {
+      "name": "neck.front.neck.left",
+      "a": "band.front.neck.left",
+      "b": "front.neck.left"
+    },
+    {
+      "name": "band.end",
+      "a": "band.end.left",
+      "b": "band.end.right"
+    }
+  ],
+  "openings": [
+    "front.hem",
+    "back.hem",
+    "sleeve.left.cuff",
+    "sleeve.right.cuff",
+    "band.fold"
+  ],
+  "side_process": {
+    "front_ease_mm": 6.0,
+    "back_stretch_mm": 10.0,
+    "front_window": [
+      0.04,
+      0.22
+    ],
+    "back_window": [
+      0.24,
+      0.75
+    ],
+    "source_annotation": "DXF front 溶0.6CM and back 拔1CM; source callout spans informed these bounded assembly intervals"
+  },
+  "sleeve_process": {
+    "max_total_ease_mm": 15.0,
+    "front_share": 0.4,
+    "back_share": 0.6,
+    "ease_window": [
+      0.1,
+      0.7
+    ],
+    "source_rule": "web/prototype-package/package/rules/部件规则库_袖子_v0.1.md; explicitly derived notch interval, not a recovery of undocumented original knife marks"
+  },
+  "neck_process": {
+    "band_body_ratio_hard": [
+      0.7,
+      0.95
+    ],
+    "band_body_ratio_soft": [
+      0.78,
+      0.88
+    ],
+    "landmarks": [
+      "left_shoulder_end",
+      "back_center",
+      "right_shoulder",
+      "front_center",
+      "left_shoulder_end"
+    ],
+    "source_notch_polylines": [
+      10,
+      11,
+      8
+    ],
+    "folded_outer_half": true,
+    "hidden_inner_layer": "not represented in this single-sheet outer-shell certificate",
+    "source_rule": "web/prototype-package/package/rules/部件规则库_领子_v0.1.md"
+  },
+  "assumptions": [
+    "Millimetres are an explicit input interpretation, not a declaration found in the source.",
+    "One full back is used for this assembly; the source Quantity: 2 remains unresolved for manufacture.",
+    "Derived shoulder, side, sleeve-cap and sleeve-cuff corrections are saved and bounded; original DXF bytes remain unchanged.",
+    "Uniform preview scale transforms canonical process amounts with geometry; this is not production grading.",
+    "All geometry verdicts concern the displayed single-sheet outer shell; sewn allowance stacks, folded inner neck layer and physical material performance are not certified."
+  ]
+}

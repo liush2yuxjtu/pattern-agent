@@ -42,11 +42,11 @@ def verify(base,out,expected=None,browser='/usr/bin/chromium'):
                 with p.expect_download() as event:p.locator('#'+id).click()
                 d=event.value;assert d.failure() is None;d.save_as(out/name)
             assert sha((out/'downloaded.glb').read_bytes())==modelhash
-            report=json.loads((out/'report.json').read_text());assert report['output_sha256']==modelhash
+            report=json.loads((out/'report.json').read_text());assert report['output_sha256']==modelhash;assert report['strict_seam_and_intersection_release']=='PASS';assert report['connection_verification']['verdict']=='PASS';assert report['connection_verification']['checks']['proper_self_intersections']==0;assert p.locator('#seam-verdict').inner_text()=='修正版通过';assert '存在差异' in p.locator('#original-seams').inner_text();checks.append('exact returned model has independent seam PASS, zero intersections and visible numeric results')
             with p.expect_download(timeout=60000) as event:p.locator('#download-bundle').click()
             event.value.save_as(out/'offline.zip')
             with zipfile.ZipFile(out/'offline.zip') as z:
-                assert z.testzip() is None;assert z.read('model.glb')==model;html=z.read('preview.html').decode();assert '__GENERATED_GLB__' not in html and '__RENDERER_JS__' not in html
+                assert z.testzip() is None;assert z.read('model.glb')==model;assert z.read('original-input.dxf')==sample;assert json.loads(z.read('connection-verification.json'))['verdict']=='PASS';assert 'derived_edges' in json.loads(z.read('pattern-revision.json'))['pattern'];assert b'<svg' in z.read('corrected-seam-lines.svg');html=z.read('preview.html').decode();assert '__GENERATED_GLB__' not in html and '__RENDERER_JS__' not in html
             checks.append('real model/report downloads match output hash; offline bundle contains the same generated mesh')
             p.screenshot(path=str(out/'converted-desktop.png'),full_page=True)
             # Reuse fills the form, so the normal Generate button works without another upload.
@@ -68,7 +68,7 @@ def verify(base,out,expected=None,browser='/usr/bin/chromium'):
         try:
             p=b.new_page();p.goto(base,wait_until='networkidle');p.locator('#sample').click();p.wait_for_function('document.querySelector("#viewer-error").textContent.includes("不能显示")',timeout=60000);assert p.locator('#download-model').is_visible();assert not p.locator('#model-canvas').is_visible();p.screenshot(path=str(out/'no-webgl.png'),full_page=True);checks.append('WebGL-disabled browser still produces downloadable model and explicit display limitation')
         finally:b.close()
-    result={'verdict':'PASS','scope':'bounded profile conversion API and browser delivery','base_url':base,'health':health,'model_sha256':modelhash,'model_bytes':len(model),'first_http_seconds':round(elapsed,3),'checks':checks,'page_errors':errors,'expected_rejection_console':expected_console,'server_error_responses':requests,'physical_fit':'NOT_RUN','strict_geometry_release':'NOT_RUN','browser_executable':browser}
+    result={'verdict':'PASS','scope':'bounded profile conversion API and browser delivery','base_url':base,'health':health,'model_sha256':modelhash,'model_bytes':len(model),'first_http_seconds':round(elapsed,3),'checks':checks,'page_errors':errors,'expected_rejection_console':expected_console,'server_error_responses':requests,'physical_fit':'NOT_RUN','strict_geometry_release':'PASS_static_outer_shell_only','browser_executable':browser}
     (out/'verification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result,ensure_ascii=False,indent=2));return result
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--base-url',required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--expected-source');p.add_argument('--browser',default='/usr/bin/chromium');a=p.parse_args();verify(a.base_url,a.output,a.expected_source,a.browser)
