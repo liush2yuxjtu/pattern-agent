@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pattern Design Spec draft v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "revision",
+    "prototype",
+    "units",
+    "observations",
+    "intent",
+    "targets",
+    "program",
+    "relationships",
+    "rules",
+    "revision_contract",
+    "preview",
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "pattern-design/draft-v0.1"
+    },
+    "id": {
+      "type": "string"
+    },
+    "revision": {
+      "type": "string"
+    },
+    "prototype": {
+      "type": "object",
+      "required": [
+        "snapshot_file",
+        "snapshot_sha256",
+        "source_dxf_sha256",
+        "construction_mode",
+        "parametric_template_ref"
+      ],
+      "properties": {
+        "snapshot_file": {
+          "type": "string"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_dxf_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "construction_mode": {
+          "enum": [
+            "imported_geometry",
+            "parametric_template"
+          ]
+        },
+        "parametric_template_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "units": {
+      "type": "object"
+    },
+    "observations": {
+      "type": "object"
+    },
+    "intent": {
+      "type": "object"
+    },
+    "targets": {
+      "type": "object"
+    },
+    "program": {
+      "type": "object"
+    },
+    "relationships": {
+      "type": "object"
+    },
+    "rules": {
+      "type": "object"
+    },
+    "revision_contract": {
+      "type": "object"
+    },
+    "preview": {
+      "type": "object"
+    },
+    "status": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "pattern-design/draft-v0.1",
+  "id": "fitted-tshirt",
+  "revision": "s0",
+  "prototype": {
+    "snapshot_file": "prototype-spec.json",
+    "snapshot_sha256": "bfdb8af96831f76881ee6e598dcd5594bf24920d04f93ceacd1cea58eeec331c",
+    "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+    "construction_mode": "imported_geometry",
+    "parametric_template_ref": null
+  },
+  "units": {
+    "design_parameters": "mm",
+    "source_drawing_mm_per_unit": null,
+    "source_scale_hypothesis": 1.0,
+    "source_scale_status": "unconfirmed"
+  },
+  "observations": {
+    "style_candidate": "女式针织紧身长袖圆领T恤",
+    "source_size": "M",
+    "measurements_ref": "prototype-spec.json#/measurements",
+    "part_candidates_ref": "prototype-spec.json#/parts",
+    "source_size_table_page": "https://chatgpt.com/space/page_c526b209ad84819196c14e71e93aa5eb"
+  },
+  "intent": {
+    "text": null,
+    "visual_refs": [],
+    "interpretation": null,
+    "evidence": []
+  },
+  "targets": {
+    "garment_dimensions_mm": {},
+    "material_id": null,
+    "colorway": null
+  },
+  "program": {
+    "operations": [],
+    "parameter_refs": {},
+    "preserve_requirements": []
+  },
+  "relationships": {
+    "seam_graph_ref": "prototype-spec.json#/seam_graph",
+    "allowance_policy": null,
+    "notch_map": null
+  },
+  "rules": {
+    "catalog_file": "operation-catalog.json",
+    "source_documents": "rules/",
+    "adoption_status": "reference_only_conflicts_unresolved",
+    "implemented_operations": []
+  },
+  "revision_contract": {
+    "spec_patch_base": "design spec digest and revision",
+    "geometry_patch_base": "DXF digest and bound object digests",
+    "atomic_application": true,
+    "derived_outputs_use_same_revision": true
+  },
+  "preview": {
+    "existing_prototype_page": "https://chatgpt.com/space/page_7080f689721c8191bb29ab6b838c86cb",
+    "existing_preview_url": "https://liush2yuxjtu.github.io/pattern-agent/fitted-tshirt/",
+    "new_revision_mesh_ref": null,
+    "body_ref": null,
+    "material_simulation_ref": null
+  },
+  "status": {
+    "baseline_extracted": true,
+    "design_intent": "awaiting_input",
+    "semantic_compiler": "not_implemented",
+    "geometry_patch_applier": "not_implemented",
+    "new_3d_preview": "not_generated"
+  }
+}

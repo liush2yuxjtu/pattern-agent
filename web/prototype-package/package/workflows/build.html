@@ -1,0 +1,90 @@
+<!doctype html><html><head><meta charset="utf-8"><style>:root{--font-size-base:14px;--foreground:#24343b;--background:#fff;--muted-foreground:#59666e;--blue:#347ecc;--green:#2b8b62}body{margin:0;padding:20px}</style></head><body><div id="prototype-build-flow" data-flow="build" aria-label="制作原型包的流程">
+  <svg class="workflow-canvas" role="img" aria-labelledby="prototype-build-flow-desc"></svg>
+</div>
+<style>
+  #prototype-build-flow { color:var(--foreground); font-family:ui-rounded,"Segoe Print","Comic Sans MS",system-ui,sans-serif; font-size:var(--font-size-base,14px); }
+  #prototype-build-flow .workflow-canvas { display:block; width:100%; overflow:visible; }
+  #prototype-build-flow .node-outline { fill:var(--background); stroke:color-mix(in srgb,var(--foreground) 68%,transparent); stroke-width:1.6; stroke-linejoin:round; }
+  #prototype-build-flow .artifact .node-outline { fill:color-mix(in srgb,var(--green) 8%,var(--background)); }
+  #prototype-build-flow .spec .node-outline { fill:color-mix(in srgb,var(--blue) 7%,var(--background)); }
+  #prototype-build-flow .planned .node-outline { stroke-dasharray:6 4; }
+  #prototype-build-flow text { fill:var(--foreground); font-family:inherit; font-size:inherit; }
+  #prototype-build-flow .node-title { font-weight:500; }
+  #prototype-build-flow .node-detail { fill:var(--muted-foreground); }
+  #prototype-build-flow .connector { fill:none; stroke:color-mix(in srgb,var(--foreground) 65%,transparent); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  #prototype-build-flow .feedback { stroke-dasharray:5 5; }
+</style>
+<script>
+(() => {
+  const root = document.getElementById('prototype-build-flow');
+  const svg = root.querySelector('svg');
+  const ns = 'http://www.w3.org/2000/svg';
+  const isBuild = root.dataset.flow === 'build';
+  const buildNodes = [
+    {id:'dxf',kind:'document',title:'二维原型 DXF',lines:['原文件 + 参考图／尺码','保存原件与来源摘要']},
+    {id:'inspect',title:'核对与解析',lines:['比例、净毛样、数量','可见事实与未知项分开']},
+    {id:'bind',title:'提取对象与关系',lines:['piece ID · edge ID','几何、配缝、源文件绑定']},
+    {id:'spec',kind:'document',className:'spec',title:'原型 1D规格 S0',lines:['design-spec.json','完整几何引用 + 参数槽']},
+    {id:'check',title:'检查基线',lines:['原件摘要与对象覆盖','量测、绑定和未决项']},
+    {id:'package',kind:'document',className:'artifact',title:'原型包 P0',lines:['DXF + S0 + 二维预览','参考示例 + manifest']}
+  ];
+  const useNodes = [
+    {id:'package',kind:'document',className:'artifact',title:'原型包 P0',lines:['原样 DXF + S0','固定版本与绑定']},
+    {id:'text',kind:'note',title:'自然语言意图',lines:['要改什么','哪些保持不变']},
+    {id:'visual',kind:'note',title:'二维视觉意图',lines:['参考图／局部标注','定位部位与效果']},
+    {id:'intent',title:'对照原型理解意图',lines:['保留项 + 修改项 + 来源','只澄清影响结果的歧义']},
+    {id:'spec',kind:'document',className:'spec',title:'目标规格 S1',lines:['SpecPatch','更新参数、操作与约束']},
+    {id:'compile',className:'planned',title:'确定性几何执行',lines:['部件联动 + 约束检查','净样 → 缝份与折边']},
+    {id:'patch',kind:'document',className:'planned',title:'GeometryPatch',lines:['对象旧值与基准校验','由规格变更计算生成']},
+    {id:'dxf',kind:'document',className:'artifact planned',title:'新二维 DXF',lines:['应用到原型 DXF 副本','保存新版与修改记录']},
+    {id:'check',className:'planned',title:'二维叠加与校验',lines:['核对改前／改后','尺寸、配缝、保留项']},
+    {id:'preview',className:'artifact planned',title:'重建三维预览',lines:['使用同一新版净样','预览反馈 → 下一轮意图']}
+  ];
+  function element(tag,attrs={},text){const node=document.createElementNS(ns,tag);for(const [key,value] of Object.entries(attrs))node.setAttribute(key,value);if(text!==undefined)node.textContent=text;return node;}
+  function render(){
+    const width = Math.max(280, Math.round(root.getBoundingClientRect().width || 700));
+    const narrow = width < 650;
+    const pad = 12, gap = 44, height = 110, rowStep = 153;
+    const nodes = (isBuild ? buildNodes : useNodes).map(node=>({...node}));
+    const lane = isBuild ? 0 : 28;
+    const available = width - 2*pad - lane;
+    if(isBuild){
+      const boxWidth = narrow ? available : (available-gap)/2;
+      nodes.forEach((node,index)=>{const row=narrow?index:Math.floor(index/2);const col=narrow?0:(row%2?1-index%2:index%2);Object.assign(node,{x:pad+col*(boxWidth+gap),y:12+row*rowStep,w:boxWidth,h:height});});
+    } else if(narrow){
+      nodes.forEach((node,index)=>Object.assign(node,{x:pad,y:12+index*rowStep,w:available,h:height}));
+    } else {
+      const inputGap=20,inputWidth=(available-2*inputGap)/3;
+      nodes.slice(0,3).forEach((node,index)=>Object.assign(node,{x:pad+index*(inputWidth+inputGap),y:12,w:inputWidth,h:height}));
+      Object.assign(nodes[3],{x:pad+(available-360)/2,y:178,w:360,h:height});
+      const boxWidth=(available-gap)/2;
+      nodes.slice(4).forEach((node,index)=>{const row=Math.floor(index/2);const col=row%2?1-index%2:index%2;Object.assign(node,{x:pad+col*(boxWidth+gap),y:344+row*rowStep,w:boxWidth,h:height});});
+    }
+    const totalHeight=Math.max(...nodes.map(node=>node.y+node.h))+26;
+    svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${width} ${totalHeight}`);svg.style.height=totalHeight+'px';
+    const title=element('title',{id:root.id+'-desc'},isBuild?'原始DXF经核对、结构提取和S0规格整理，检查后形成带预览与示例的原型包。':'原型包、自然语言和视觉意图进入规格修改，再计算几何补丁、新DXF和同版次三维预览；虚线步骤尚待实现。');svg.append(title);
+    function arrow(a,b,forceDown=false){
+      let sx,sy,tx,ty,path;
+      if(!forceDown&&Math.abs(a.y-b.y)<2){const right=b.x>a.x;sx=right?a.x+a.w+9:a.x-9;sy=a.y+a.h/2;tx=right?b.x-9:b.x+b.w+9;ty=sy;path=`M${sx},${sy} Q${(sx+tx)/2},${sy-1.2} ${tx},${ty}`;}
+      else {sx=a.x+a.w/2;sy=a.y+a.h+9;tx=b.x+b.w/2;ty=b.y-10;const mid=(sy+ty)/2;path=`M${sx},${sy} C${sx+1},${mid} ${tx-1},${mid} ${tx},${ty}`;}
+      svg.append(element('path',{d:path,class:'connector'}));const dx=tx-sx,dy=ty-sy,angle=(Math.abs(a.y-b.y)<2&&!forceDown)?(dx>0?0:Math.PI):Math.PI/2;const head=7,spread=.55;
+      svg.append(element('path',{d:`M${tx-head*Math.cos(angle-spread)},${ty-head*Math.sin(angle-spread)} L${tx},${ty} L${tx-head*Math.cos(angle+spread)},${ty-head*Math.sin(angle+spread)}`,class:'connector'}));
+    }
+    if(isBuild){for(let i=0;i<nodes.length-1;i++)arrow(nodes[i],nodes[i+1]);}
+    else if(narrow){for(let i=0;i<3;i++){const a=nodes[i],b=nodes[3];if(i===2)arrow(a,b);else{const x=width-12-i*7;svg.append(element('path',{d:`M${a.x+a.w+4},${a.y+a.h/2} H${x} V${b.y+b.h/2} H${b.x+b.w+6}`,class:'connector'}));}}for(let i=3;i<nodes.length-1;i++)arrow(nodes[i],nodes[i+1]);}
+    else {for(let i=0;i<3;i++)arrow(nodes[i],nodes[3],true);for(let i=3;i<nodes.length-1;i++)arrow(nodes[i],nodes[i+1]);}
+    if(!isBuild){const a=nodes.at(-1),b=nodes[3],x=width-6;svg.append(element('path',{d:`M${a.x+a.w+7},${a.y+a.h/2} H${x} V${b.y+b.h/2} H${b.x+b.w+7}`,class:'connector feedback'}));svg.append(element('path',{d:`M${b.x+b.w+14},${b.y+b.h/2-5} L${b.x+b.w+7},${b.y+b.h/2} L${b.x+b.w+14},${b.y+b.h/2+5}`,class:'connector feedback'}));}
+    for(const node of nodes){
+      const group=element('g',{class:'node '+(node.className||''),transform:`translate(${node.x} ${node.y})`});
+      const w=node.w,h=node.h;
+      const outline=node.kind==='document'?`M1,2 Q${w*.4},-1 ${w-20},1 L${w-1},20 Q${w+1},${h*.55} ${w-1},${h-1} Q${w*.5},${h+1} 1,${h-1} Q-1,${h*.5} 1,2 M${w-20},1 L${w-20},20 L${w-1},20`:`M8,1 Q${w*.45},-1 ${w-8},2 Q${w+1},2 ${w-1},12 L${w-1},${h-9} Q${w+1},${h+1} ${w-9},${h-1} L9,${h-1} Q-1,${h+1} 1,${h-10} L1,11 Q-1,1 8,1`;
+      group.append(element('path',{d:outline,class:'node-outline'}));
+      group.append(element('text',{x:16,y:30,class:'node-title'},node.title));
+      node.lines.forEach((line,index)=>group.append(element('text',{x:16,y:57+index*23,class:'node-detail'},line)));
+      svg.append(group);
+    }
+  }
+  render();new ResizeObserver(render).observe(root);
+})();
+</script>
+</body></html>

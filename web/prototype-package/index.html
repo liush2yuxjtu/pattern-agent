@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="准备女士紧身长袖T恤的原型包：原始二维DXF、S0结构化规格、几何绑定和参考示例。查看制作原型包与使用设计意图改版的两条流程。">
+  <meta name="theme-color" content="#294d40">
+  <title>Pattern Agent · 原型包与设计意图</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="header wrap">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">pa</span><span>Pattern Agent<span class="brand-caption">尺寸 · 公式 · 纸样</span></span></a>
+    <nav aria-label="本页导航"><a href="#build">制作原型包</a><a href="#use">使用原型包</a><a href="#examples">参考示例</a><a href="#files">下载文件</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap package-hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <h1 id="page-title">原型包准备<br><em>与使用示例</em></h1>
+        <p class="intro">固定原样 DXF 与 S0 规格，<br>再把文字和视觉意图带入下一轮修改。</p>
+        <a class="button primary" href="downloads/fitted-tshirt-prototype-package-v0.2.zip" download>下载原型包 P0 <span aria-hidden="true">↓</span></a>
+        <p class="micro">女士紧身长袖 T恤 · M码原样 · 包版本 v0.2</p>
+        <p class="hero-note">内含原始二维纸样、精简1D规格、完整几何绑定、二维预览与三个参考案例。</p>
+        <div class="source-links"><a href="package/source/女紧身款T恤.dxf" download>原始 DXF</a><a href="package/design-spec.json" download>1D规格 S0</a><a href="../fitted-tshirt/">查看原型三维外观</a></div>
+      </div>
+      <figure class="prototype-paper">
+        <img src="package/preview/prototype-2d.png" alt="原始中码纸样布局，包含领条、后片、长袖和前片候选，以及内外轮廓和标记" width="2240" height="1400">
+        <figcaption><span>原型二维 DXF · 几何保持原样</span><button class="text-button" id="open-prototype" type="button">放大查看 <span aria-hidden="true">↗</span></button></figcaption>
+      </figure>
+    </section>
+    <div class="status-strip"><div class="wrap"><span>原始文件保留</span><span>S0 已提取 · 示例未执行</span><span>单位与部分裁片语义仍需核对</span></div></div>
+
+    <section class="section wrap flow-section" id="build" aria-labelledby="build-title">
+      <div class="flow-copy"><h2 id="build-title">流程一<br>制作原型包</h2><p>把一份原样，整理成可以反复引用的起点。</p><p>保留二维 DXF，核对比例与裁片，提取对象和关系，再保存 S0 规格、预览和参考案例。</p><a class="inline-link" href="#files">查看包内文件 ↘</a></div>
+      <div class="flow-board"><iframe id="build-flow" src="package/workflows/build.html" title="流程一：从原始二维DXF到原型包" loading="lazy"></iframe></div>
+    </section>
+    <section class="section flow-band" id="use" aria-labelledby="use-title"><div class="wrap flow-section">
+      <div class="flow-copy"><h2 id="use-title">流程二<br>使用原型包改版</h2><p>三个输入：<br><strong>原型包 + 自然语言 + 二维视觉意图。</strong></p><p>先编辑目标规格，记录 SpecPatch；再计算 GeometryPatch，应用到原型副本，核对新版二维纸样并重建同版次三维预览。</p><p class="flow-note">虚线表示后续待实现或连接的步骤。当前包不执行语义编译、DXF补丁或自动三维重建。</p></div>
+      <div class="flow-board"><iframe id="use-flow" src="package/workflows/use.html" title="流程二：用原型包与设计意图生成规格差异及几何补丁" loading="lazy"></iframe></div>
+    </div></section>
+
+    <section class="section wrap" id="examples" aria-labelledby="examples-title">
+      <div class="section-heading"><h2 id="examples-title">把意图写清楚，再修改纸样。</h2><p>三个参考案例。<br>示例均未执行，不是新的改版指令。</p></div>
+      <div class="example-tabs" role="tablist" aria-label="选择参考案例"><button id="tab-sleeve" type="button" role="tab" aria-controls="example-panel" aria-selected="true" data-example="01-sleeve-length">袖子加长</button><button id="tab-neckline" type="button" role="tab" aria-controls="example-panel" aria-selected="false" data-example="02-front-neckline">前领口加深</button><button id="tab-movement" type="button" role="tab" aria-controls="example-panel" aria-selected="false" data-example="03-movement-goal">抬手更舒服</button></div>
+      <div id="example-panel" role="tabpanel" aria-labelledby="tab-sleeve" class="example-panel">
+        <div class="example-reading"><h3 id="example-title">只将袖子加长2厘米</h3><blockquote id="example-intent">以原型包中的原样为基准，两只袖子分别加长2厘米；衣身、领口、领条和袖山保持原样。</blockquote><p id="example-explanation">更新袖长目标，选择 ADJUST_LENGTH，并保留衣身、领口与袖山。执行时联动袖口、袖侧缝和折边。</p><div class="example-links"><a id="intent-download" href="package/examples/01-sleeve-length/intent.txt" download>下载文字意图</a><a id="patch-download" href="package/examples/01-sleeve-length/expected-spec-patch.json" download>下载 SpecPatch 示例</a></div></div>
+        <figure class="intent-figure" id="intent-figure"><img id="intent-image" src="package/examples/01-sleeve-length/intent.png" alt="参考案例：在原袖片的袖口位置标注袖长增加20毫米，衣身、领口与袖山保持不变" width="1600" height="1067" loading="lazy"><figcaption>红色标注用于定位意图，箭头长度不代表实际比例。</figcaption></figure>
+        <div class="movement-note" id="movement-note" hidden><h3>先记录体验目标</h3><p>明确不适的动作、位置和允许变化的部分。信息不足时，操作序列保持空，不自动解释为整体加大或固定加深袖窿。</p></div>
+      </div>
+      <p class="example-status" id="example-status" role="status" aria-live="polite">参考示例，尚未执行。</p>
+      <details class="spec-details"><summary>查看当前示例的预期规格差异</summary><pre id="example-patch" tabindex="0">正在读取参考文件…</pre></details>
+      <noscript><p>无需运行脚本，也可以下载<a href="package/examples/index.json">案例索引</a>和原型包，直接阅读三个示例文件。</p></noscript>
+    </section>
+
+    <section class="section files-band" id="files" aria-labelledby="files-title"><div class="wrap">
+      <div class="section-heading"><h2 id="files-title">一份原型，连同它的依据。</h2><p>推荐整包下载。<br>精简规格与完整几何需要配套保存。</p></div>
+      <div class="package-file-list">
+        <a href="downloads/fitted-tshirt-prototype-package-v0.2.zip" download><strong>原型包 P0 v0.2</strong><span>DXF、S0、预览、规则来源、参考案例和检查记录</span><b aria-hidden="true">↓</b></a>
+        <a href="package/source/女紧身款T恤.dxf" download><strong>原型二维 DXF</strong><span>原始文件，保留坐标、中文与纸样标记</span><b aria-hidden="true">↓</b></a>
+        <a href="package/design-spec.json" download><strong>原型1D规格 S0</strong><span>精简根文件，供人和模型读取修改意图与参数</span><b aria-hidden="true">↓</b></a>
+        <a href="package/prototype-spec.json" download><strong>完整几何与源文件绑定</strong><span>原曲线顶点、裁片候选与稳定对象引用</span><b aria-hidden="true">↓</b></a>
+        <a href="package/SHA256.json" download><strong>文件校验清单</strong><span>逐文件摘要；原始 DXF、PRJ、EMF 保持原字节</span><b aria-hidden="true">↓</b></a>
+      </div>
+      <details class="reading-details"><summary>包内目录与使用前的核对项</summary><p><code>source/</code> 保存原件；<code>design-spec.json</code> 引用 <code>prototype-spec.json</code>；<code>preview/</code> 保存二维预览；<code>examples/</code> 保存文字、图示和预期规格差异；<code>rules/</code> 保存规则原件；<code>workflows/</code> 保存两条流程图。</p><p>文件没有声明原图单位。净毛样、部分裁剪数量、缝合方向、刀口关系与最终面料仍需核对。三维外观预览与实体合身分别判断；本包未修改原纸样，也没有输出新款式的三维模型。</p><a href="package/package-verification.json" download>下载包检查记录</a></details>
+      <details class="reading-details"><summary>查看精简 S0 规格</summary><pre id="baseline-spec" tabindex="0">正在读取规格文件…</pre><p>规格基线保持 s0；包版本 v0.2 是资料包版本。</p></details>
+    </div></section>
+  </main>
+  <footer class="footer wrap"><div class="brand-name">Pattern Agent<span>从二维原型，到可追溯的修改。</span></div><div><a href="../fitted-tshirt/">原型三维外观</a><a href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/web/prototype-package">查看源码</a><span id="page-build">GitHub Pages</span></div></footer>
+  <dialog id="prototype-dialog" aria-labelledby="prototype-dialog-title"><div class="dialog-header"><h2 id="prototype-dialog-title">原型二维纸样</h2><button id="close-prototype" type="button" aria-label="关闭二维预览">关闭 ×</button></div><p>这是原始布局预览，显示尺寸不作为裁剪比例。</p><img src="package/preview/prototype-2d.png" alt="放大的原始中码二维DXF布局"></dialog>
+</body>
+</html>

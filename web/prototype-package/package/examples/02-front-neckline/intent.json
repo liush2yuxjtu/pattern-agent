@@ -1,0 +1,38 @@
+{
+  "id": "02-front-neckline",
+  "title": "只将前领口加深1厘米",
+  "text": "前领口向下加深1厘米；后领深、领宽、肩部和衣身尺寸保持原样，领条根据最终净领圈重新适配。",
+  "change": {
+    "path": "targets.front_neck_depth_delta_mm",
+    "value_mm": 10
+  },
+  "operation": {
+    "op": "ADJUST_NECKLINE",
+    "params": {
+      "前开深": {
+        "ref": "targets.front_neck_depth_delta_mm"
+      },
+      "后开深": 0,
+      "开宽": 0
+    }
+  },
+  "preserve": [
+    "后领深",
+    "领宽",
+    "肩部",
+    "衣身尺寸"
+  ],
+  "dependencies": [
+    "前领口净样识别与单位",
+    "前领口曲线编辑策略",
+    "重新量取净领圈",
+    "领条材料与已确认配比",
+    "领口缝份"
+  ],
+  "reference_only": true,
+  "execution_status": "NOT_RUN",
+  "visual_ref": "intent.png",
+  "base_spec_revision": "s0",
+  "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+  "vector_ref": "intent.svg"
+}

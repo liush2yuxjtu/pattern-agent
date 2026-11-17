@@ -1,0 +1,36 @@
+{
+  "id": "01-sleeve-length",
+  "title": "只将袖子加长2厘米",
+  "text": "以原型包中的原样为基准，两只袖子分别加长2厘米；衣身、领口、领条和袖山保持原样。",
+  "change": {
+    "path": "targets.garment_dimensions_mm.sleeve_length",
+    "base_ref": "confirmed.sleeve_length",
+    "delta_mm": 20
+  },
+  "operation": {
+    "op": "ADJUST_LENGTH",
+    "params": {
+      "部位": "袖长",
+      "目标": {
+        "ref": "targets.garment_dimensions_mm.sleeve_length"
+      }
+    }
+  },
+  "preserve": [
+    "衣身",
+    "领口与领条",
+    "袖山",
+    "非关联标注"
+  ],
+  "dependencies": [
+    "袖长基准与单位",
+    "袖口和袖侧缝的编辑策略",
+    "袖口折边与相关裁剪线"
+  ],
+  "reference_only": true,
+  "execution_status": "NOT_RUN",
+  "visual_ref": "intent.png",
+  "base_spec_revision": "s0",
+  "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+  "vector_ref": "intent.svg"
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "pattern-spec-patch/draft-v0.1",
+  "example_only": true,
+  "executable": false,
+  "base_revision": "s0",
+  "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+  "input_example": "只把袖子加长2厘米，衣身和领口不变",
+  "target_changes": [
+    {
+      "path": "targets.garment_dimensions_mm.sleeve_length",
+      "expression": {
+        "operator": "add",
+        "base_measurement_ref": "confirmed.sleeve_length",
+        "delta_mm": 20
+      }
+    }
+  ],
+  "planned_operations": [
+    {
+      "op": "ADJUST_LENGTH",
+      "params": {
+        "部位": "袖长",
+        "目标": {
+          "ref": "targets.garment_dimensions_mm.sleeve_length"
+        }
+      }
+    }
+  ],
+  "preserve": [
+    "bodice_geometry",
+    "neckline_geometry",
+    "sleeve_cap_geometry",
+    "unaffected_annotations"
+  ],
+  "conditions_before_execution": [
+    "unit calibration",
+    "confirmed sleeve length baseline and anchors",
+    "implemented ADJUST_LENGTH for this imported geometry",
+    "seam and hem dependency checks"
+  ]
+}

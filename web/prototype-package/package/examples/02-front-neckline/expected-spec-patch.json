@@ -1,0 +1,38 @@
+{
+  "schema": "pattern-spec-patch/draft-v0.1",
+  "example_only": true,
+  "executable": false,
+  "base_spec_file": "../../design-spec.json",
+  "base_revision": "s0",
+  "target_changes": [
+    {
+      "path": "targets.front_neck_depth_delta_mm",
+      "value_mm": 10
+    }
+  ],
+  "planned_operations": [
+    {
+      "op": "ADJUST_NECKLINE",
+      "params": {
+        "前开深": {
+          "ref": "targets.front_neck_depth_delta_mm"
+        },
+        "后开深": 0,
+        "开宽": 0
+      }
+    }
+  ],
+  "preserve": [
+    "后领深",
+    "领宽",
+    "肩部",
+    "衣身尺寸"
+  ],
+  "conditions_before_execution": [
+    "前领口净样识别与单位",
+    "前领口曲线编辑策略",
+    "重新量取净领圈",
+    "领条材料与已确认配比",
+    "领口缝份"
+  ]
+}

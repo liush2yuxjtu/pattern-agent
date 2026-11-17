@@ -1,0 +1,31 @@
+{
+  "schema": "pattern-geometry-patch/draft-v0.1",
+  "status": "contract_only",
+  "preconditions": [
+    "exact source DXF sha256",
+    "base spec digest",
+    "verified object bindings",
+    "expected old entity digest"
+  ],
+  "operation_fields": [
+    "action",
+    "object_id",
+    "expected_old_digest",
+    "new_geometry_or_metadata",
+    "derived_from_spec_operation_id"
+  ],
+  "allowed_actions": [
+    "replace_entity",
+    "insert_entity",
+    "delete_entity",
+    "set_annotation"
+  ],
+  "postconditions": [
+    "reparsed output matches compiled instance",
+    "untouched entities preserved",
+    "changed seam relations rechecked",
+    "rendered 2D and 3D use output revision"
+  ],
+  "failure_behavior": "reject whole patch; never silently apply a subset",
+  "implementation_status": "not_implemented"
+}

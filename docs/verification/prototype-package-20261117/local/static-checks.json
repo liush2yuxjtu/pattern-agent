@@ -1,0 +1,43 @@
+[
+  {
+    "command": [
+      "python",
+      "web/prototype-package/package/verify_baseline.py"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"source_integrity\": \"PASS\",\n  \"entity_part_coverage\": \"PASS\",\n  \"bound_coordinate_and_text_fields\": 3367,\n  \"geometry_counts\": {\n    \"POLYLINE\": 126,\n    \"LINE\": 78,\n    \"TEXT\": 27\n  },\n  \"observed_measurement_paths_checked\": 8,\n  \"semantic_compile\": \"NOT_IMPLEMENTED\",\n  \"edited_dxf\": \"NOT_GENERATED\",\n  \"new_3d_preview\": \"NOT_GENERATED\"\n}\n"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_verify_artifacts.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "output": "test_broken_outline_is_rejected (test_verify_artifacts.DeliveryNegativeControls.test_broken_outline_is_rejected) ... ok\ntest_extra_archive_file_is_rejected (test_verify_artifacts.DeliveryNegativeControls.test_extra_archive_file_is_rejected) ... ok\ntest_half_size_calibration_is_rejected (test_verify_artifacts.DeliveryNegativeControls.test_half_size_calibration_is_rejected) ... ok\ntest_healthy_delivery_passes (test_verify_artifacts.DeliveryNegativeControls.test_healthy_delivery_passes) ... ok\ntest_missing_measurements_is_rejected (test_verify_artifacts.DeliveryNegativeControls.test_missing_measurements_is_rejected) ... ok\ntest_wrong_fold_edge_is_rejected (test_verify_artifacts.DeliveryNegativeControls.test_wrong_fold_edge_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 1.389s\n\nOK\n"
+  },
+  {
+    "command": [
+      "node",
+      "--check",
+      "web/prototype-package/app.js"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  }
+]

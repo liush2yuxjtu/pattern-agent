@@ -28,6 +28,7 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Anatomical pose and centimetre editor | [human-studio](references/human-studio.md) — actual skinned mesh, measured dimensions, exported OBJ/GLB | browser input, independent tape/skin math, persistence and units |
 | Apparel body skill and trigger evals | [skill-evals](references/skill-evals.md) — shipped helper CLIs and actual Claude routing | helper controls, package readback, native events or BLOCKED |
 | Fitted T-shirt source and visual preview | [fitted-tshirt](references/fitted-tshirt.md) — real WebGL, downloaded archive and rebuilt mesh | source hashes, real controls and fallback; physical fit NOT_RUN |
+| Prototype package reference page | [prototype-package](references/prototype-package.md) — actual diagrams, JSON-backed examples and saved source downloads | original file digests, two responsive workflows, unchanged existing pages |
 | Profile-bounded DXF conversion function | [dxf-service](references/dxf-service.md) — raw HTTP, file upload and actual generated GLB | repeatable output, input changes, rejection, offline/mobile controls; fit NOT_RUN |
 | Historical T-shirt claims | [legacy-cloth](references/legacy-cloth.md) — archived evidence; unavailable legacy runtime | known FAIL and NOT_RUN limitations |
 
