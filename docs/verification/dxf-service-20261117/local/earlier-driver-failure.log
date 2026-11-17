@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/scripts/verify_dxf_service.py", line 61, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--base-url',required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--expected-source');p.add_argument('--browser',default='/usr/bin/chromium');a=p.parse_args();verify(a.base_url,a.output,a.expected_source,a.browser)
+                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/pattern-agent/scripts/verify_dxf_service.py", line 51, in verify
+    assert not errors,errors;assert not requests,requests
+           ^^^^^^^^^^
+AssertionError: ['Failed to load resource: the server responded with a status of 400 (Bad Request)']

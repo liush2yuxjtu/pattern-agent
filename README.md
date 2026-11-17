@@ -54,6 +54,8 @@ with a body proxy does not validate real anatomical dimensions or physical fit.
 
 [打开原型预览与下载](https://liush2yuxjtu.github.io/pattern-agent/fitted-tshirt/)。原始中码裁剪文件驱动的参数化外观重建，提供三面渲染、可旋转模型、可编辑场景和完整资料包。[源码、重现步骤与限制](experiments/fitted_tshirt/README.md)保留面料差异、未解码工程文件和所有待确认项目。它不是校准的布料仿真；物理试穿和严格接缝／自交发布门槛 **NOT_RUN**，不覆盖历史实验的失败记录。
 
+[纸样转三维预览函数](services/dxf-preview/README.md)提供独立的 Linux／Vercel FastAPI 服务：上传已支持拓扑的 DXF，返回本次计算的 GLB、报告或可断网打开的预览包。第一版仅支持上述上衣的 126 条多段线结构，显式指定单位，支持受限的平移、重排及等比缩放；不同款式需要新的裁片配置。它不运行物理布料仿真，也不创建持久任务。
+
 ## Printable straight skirt and GitHub Pages
 
 The static download site is prepared for

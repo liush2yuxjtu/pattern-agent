@@ -1,0 +1,24 @@
+{
+  "verdict": "PASS",
+  "stage": "local acceptance before first service source commit",
+  "base_commit": "b85ca600fba8df70c0356a4401033768a0dc46b4",
+  "service_source_sha256": "47bbdadff0767759ed20857492a4388fb724fe6ee138594efca916113326b2ad",
+  "tests": {
+    "command": "PYTHONPATH=services/dxf-preview python -m unittest discover -s services/dxf-preview/tests -v",
+    "passed": 10,
+    "raw": "local/unit-tests.log"
+  },
+  "real_surface": {
+    "command": "python scripts/verify_dxf_service.py --base-url http://127.0.0.1:8765 --output work/verify-dxf-service-local-final",
+    "result": "local/verification.json",
+    "steps": 11
+  },
+  "physical_fit": "NOT_RUN",
+  "strict_geometry_release": "NOT_RUN",
+  "deployment": "NOT_RUN at this source-commit gate; live acceptance recorded separately after publication",
+  "earlier_driver_findings": [
+    "First run incorrectly counted the deliberate invalid-upload HTTP 400 as an unexpected console failure; now preserved separately from unexpected application errors.",
+    "Second run used BrowserContext.new_page(viewport=...), an unsupported test-driver call. Moved viewport to new_context; complete unchanged acceptance scope then passed."
+  ],
+  "cleanup": "Verifier browsers closed; uvicorn temporarily retained for deployment comparison."
+}

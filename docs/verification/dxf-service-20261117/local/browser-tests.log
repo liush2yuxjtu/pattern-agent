@@ -1,0 +1,42 @@
+{
+  "verdict": "PASS",
+  "scope": "bounded profile conversion API and browser delivery",
+  "base_url": "http://127.0.0.1:8765/",
+  "health": {
+    "status": "ok",
+    "engine_version": "1.0.0",
+    "source_sha256": "47bbdadff0767759ed20857492a4388fb724fe6ee138594efca916113326b2ad",
+    "mode": "visual_preview",
+    "execution": "synchronous_stateless",
+    "storage": "no_uploaded_file_persistence",
+    "supported_profiles": [
+      "fitted-tshirt-v1"
+    ],
+    "max_input_bytes": 524288,
+    "physical_fit": "NOT_RUN"
+  },
+  "model_sha256": "de34bed5c75bc2ee519624cb973891445103aacbf9511fdb8cb1c7ad4a2026a2",
+  "model_bytes": 1314124,
+  "first_http_seconds": 0.594,
+  "checks": [
+    "real raw-DXF HTTP conversion",
+    "repeated HTTP calls return byte-identical GLB and conversion ID",
+    "malformed file, absent units, wrong units and unknown profile rejected",
+    "real sample selection calls conversion API and draws mesh pixels",
+    "pointer rotation, wheel zoom, wireframe and reset",
+    "real model/report downloads match output hash; offline bundle contains the same generated mesh",
+    "real uploaded file returns and renders the same supported model",
+    "invalid upload clears stale successful model and downloads",
+    "375 px mobile actual conversion without page overflow",
+    "downloaded self-contained HTML runs with network disabled",
+    "WebGL-disabled browser still produces downloadable model and explicit display limitation"
+  ],
+  "page_errors": [],
+  "expected_rejection_console": [
+    "Failed to load resource: the server responded with a status of 400 (Bad Request)"
+  ],
+  "server_error_responses": [],
+  "physical_fit": "NOT_RUN",
+  "strict_geometry_release": "NOT_RUN",
+  "browser_executable": "/usr/bin/chromium"
+}
