@@ -34,6 +34,10 @@ separate synthetic software checks from human anatomy and image-generation quali
 Generated side/back views establish internal consistency only; their agreement
 with a body proxy does not validate real anatomical dimensions or physical fit.
 
+## 女士紧身长袖上衣原型
+
+[打开原型预览与下载](https://liush2yuxjtu.github.io/pattern-agent/fitted-tshirt/)。原始中码裁剪文件驱动的参数化外观重建，提供三面渲染、可旋转模型、可编辑场景和完整资料包。[源码、重现步骤与限制](experiments/fitted_tshirt/README.md)保留面料差异、未解码工程文件和所有待确认项目。它不是校准的布料仿真；物理试穿和严格接缝／自交发布门槛 **NOT_RUN**，不覆盖历史实验的失败记录。
+
 ## Printable straight skirt and GitHub Pages
 
 The static download site is prepared for

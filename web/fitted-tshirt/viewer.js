@@ -1,0 +1,41 @@
+'use strict';
+(() => {
+  const $ = id => document.getElementById(id), canvas=$('model-canvas'), image=$('render-image'), status=$('model-status');
+  const rows=[['后中长',49,51,53,55,57,59,61,63],['肩宽',37.6,38.8,40,41.2,42.4,43.6,44.8,46],['胸围',75,80,85,90,95,100,105,110],['腰围',62,67,72,77,82,87,92,97],['下摆围',75,80,85,90,95,100,105,110],['袖窿围',39.6,41.3,43,44.7,46.4,48.1,49.8,51.5],['袖长',58,58.5,59,59.5,60,60.5,61,61.5],['袖肥',26.1,27.3,28.5,29.7,30.9,32.1,33.3,34.5],['袖口',14.5,15.5,16.5,17.5,18.5,19.5,20.5,21.5],['领围',50.4,51.7,53,54.3,55.6,56.9,58.2,59.9]];
+  rows.forEach(row=>{const tr=document.createElement('tr');row.forEach((v,i)=>{const c=document.createElement(i?'td':'th');c.textContent=v;if(!i)c.scope='row';tr.append(c);});$('size-rows').append(tr);});
+  let renderer, loading, mode='three-quarter';
+  const captions={front:'正面',back:'背面','three-quarter':'斜侧面'};
+  function message(text){status.textContent=text;status.hidden=!text;}
+  document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',async()=>{
+    mode=button.dataset.view;document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    if(mode!=='model'){image.src='assets/'+mode+'.png';image.alt='女士紧身长袖上衣'+captions[mode]+'三维外观示意';image.hidden=false;canvas.hidden=true;$('model-tools').hidden=true;message('');return;}
+    image.hidden=true;canvas.hidden=false;message('正在载入三维模型…');
+    try {if(!loading)loading=createRenderer(canvas);renderer=await loading;if(mode!=='model')return;message('');$('model-tools').hidden=false;renderer.draw();}
+    catch(e){if(mode!=='model')return;image.hidden=false;canvas.hidden=true;$('model-tools').hidden=true;message('三维预览暂不可用，已显示渲染图。你仍可下载模型查看。');canvas.dataset.failure=e.message;}
+  }));
+  $('reset-model').addEventListener('click',()=>renderer?.reset());$('wireframe').addEventListener('change',()=>renderer?.draw());
+  async function createRenderer(canvas){
+    const gl=canvas.getContext('webgl',{antialias:true,preserveDrawingBuffer:true});if(!gl)throw Error('WebGL unavailable');
+    const response=await fetch('assets/fitted-tshirt.glb');if(!response.ok)throw Error('Model HTTP '+response.status);
+    const raw=await response.arrayBuffer(), dv=new DataView(raw);if(dv.getUint32(0,true)!==0x46546c67||dv.getUint32(4,true)!==2||dv.getUint32(8,true)!==raw.byteLength)throw Error('Invalid GLB');
+    let doc,bin;for(let offset=12;offset<raw.byteLength;){const length=dv.getUint32(offset,true),type=dv.getUint32(offset+4,true);if(offset+8+length>raw.byteLength)throw Error('Truncated GLB');if(type===0x4e4f534a)doc=JSON.parse(new TextDecoder().decode(new Uint8Array(raw,offset+8,length)));if(type===0x004e4942)bin=offset+8;offset+=8+length;}
+    if(!doc||bin===undefined)throw Error('Missing GLB chunk');
+    const components={SCALAR:1,VEC2:2,VEC3:3,VEC4:4},types={5126:[4,'getFloat32'],5125:[4,'getUint32'],5123:[2,'getUint16'],5121:[1,'getUint8']};
+    function accessor(i){const a=doc.accessors[i],v=doc.bufferViews[a.bufferView],n=components[a.type],type=types[a.componentType];if(!n||!type)throw Error('Unsupported accessor');const out=[],stride=v.byteStride||n*type[0],base=bin+(v.byteOffset||0)+(a.byteOffset||0);for(let j=0;j<a.count;j++)for(let k=0;k<n;k++){const x=dv[type[1]](base+j*stride+k*type[0],true);if(!Number.isFinite(x))throw Error('Non-finite mesh');out.push(x);}return out;}
+    const positions=[],normals=[],lines=[],lineNormals=[],bounds=[Infinity,Infinity,Infinity,-Infinity,-Infinity,-Infinity];
+    // This export uses baked identity nodes. Reject a changed export rather than silently ignore transforms.
+    for(const node of doc.nodes||[])if(node.matrix||node.rotation||node.translation||node.scale)throw Error('Unbaked node transform');
+    for(const m of doc.meshes)for(const p of m.primitives){if((p.mode??4)!==4)continue;const v=accessor(p.attributes.POSITION),n=accessor(p.attributes.NORMAL),idx=p.indices===undefined?Array.from({length:v.length/3},(_,i)=>i):accessor(p.indices);for(const i of idx){if(i*3+2>=v.length)throw Error('Invalid index');for(let k=0;k<3;k++){positions.push(v[i*3+k]);normals.push(n[i*3+k]);bounds[k]=Math.min(bounds[k],v[i*3+k]);bounds[k+3]=Math.max(bounds[k+3],v[i*3+k]);}}}
+    for(let i=0;i<positions.length;i+=9)for(const [a,b]of[[0,3],[3,6],[6,0]])for(const j of[a,b]){lines.push(...positions.slice(i+j,i+j+3));lineNormals.push(...normals.slice(i+j,i+j+3));}
+    const center=bounds.slice(0,3).map((v,k)=>(v+bounds[k+3])/2),scale=Math.max(bounds[4]-bounds[1],bounds[3]-bounds[0])*.65;
+    function shader(kind,source){const s=gl.createShader(kind);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
+    const prg=gl.createProgram();gl.attachShader(prg,shader(gl.VERTEX_SHADER,'attribute vec3 p;attribute vec3 n;uniform vec3 center;uniform float scale;uniform vec2 angle;uniform float zoom;uniform float aspect;varying vec3 normal;void main(){vec3 v=(p-center)/scale;float c=cos(angle.x),s=sin(angle.x),cp=cos(angle.y),sp=sin(angle.y);mat3 r=mat3(c,0.,-s,0.,1.,0.,s,0.,c);mat3 t=mat3(1.,0.,0.,0.,cp,sp,0.,-sp,cp);v=t*r*v;normal=t*r*n;gl_Position=vec4(v.x*zoom/aspect,v.y*zoom,-v.z*.25,1.);}'));gl.attachShader(prg,shader(gl.FRAGMENT_SHADER,'precision mediump float;varying vec3 normal;uniform float wire;void main(){vec3 N=normalize(normal);float l=.48+.40*abs(dot(N,normalize(vec3(-.5,.7,1.))))+.12*abs(dot(N,vec3(1.,0.,0.)));gl_FragColor=vec4(mix(vec3(.88,.85,.79)*l,vec3(.21,.36,.28),wire),1.);}'));gl.linkProgram(prg);if(!gl.getProgramParameter(prg,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(prg));gl.useProgram(prg);
+    const loc={};for(const k of ['center','scale','angle','zoom','aspect','wire'])loc[k]=gl.getUniformLocation(prg,k);loc.p=gl.getAttribLocation(prg,'p');loc.n=gl.getAttribLocation(prg,'n');
+    function buffer(a){const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(a),gl.STATIC_DRAW);return b;}
+    const buffers=[buffer(positions),buffer(normals),buffer(lines),buffer(lineNormals)];let yaw=-.45,pitch=.06,zoom=1,drag=null;
+    function bind(a,b){for(const [location,buf]of[[loc.p,a],[loc.n,b]]){gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.enableVertexAttribArray(location);gl.vertexAttribPointer(location,3,gl.FLOAT,false,0,0);}}
+    function draw(){if(canvas.hidden)return;const dpr=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(canvas.clientWidth*dpr)),h=Math.max(1,Math.round(canvas.clientHeight*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}gl.viewport(0,0,w,h);gl.clearColor(.26,.28,.29,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);gl.uniform3fv(loc.center,center);gl.uniform1f(loc.scale,scale);gl.uniform2f(loc.angle,yaw,pitch);gl.uniform1f(loc.zoom,zoom);gl.uniform1f(loc.aspect,w/h);gl.uniform1f(loc.wire,0);bind(buffers[0],buffers[1]);gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(1,1);gl.drawArrays(gl.TRIANGLES,0,positions.length/3);gl.disable(gl.POLYGON_OFFSET_FILL);if($('wireframe').checked){gl.uniform1f(loc.wire,1);bind(buffers[2],buffers[3]);gl.drawArrays(gl.LINES,0,lines.length/3);}canvas.dataset.ready='true';canvas.dataset.yaw=String(yaw);canvas.dataset.zoom=String(zoom);canvas.dataset.triangles=String(positions.length/9);}
+    canvas.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId);});canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*.008;pitch=Math.max(-1,Math.min(1,pitch+(e.clientY-drag[1])*.008));drag=[e.clientX,e.clientY];draw();});for(const ev of['pointerup','pointercancel'])canvas.addEventListener(ev,()=>drag=null);canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.5,Math.min(2,zoom*Math.exp(-e.deltaY*.001)));draw();},{passive:false});canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();yaw+=e.key==='ArrowLeft'?-.12:e.key==='ArrowRight'?.12:0;pitch+=e.key==='ArrowUp'?-.08:e.key==='ArrowDown'?.08:0;draw();});new ResizeObserver(draw).observe(canvas);
+    return {draw,reset(){yaw=-.45;pitch=.06;zoom=1;draw();}};
+  }
+})();
