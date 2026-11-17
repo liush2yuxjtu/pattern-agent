@@ -1,0 +1,41 @@
+{
+  "verdict": "PASS",
+  "deployed_commit": "c4e2421199366a710c41bf37c26bc06ae9419af4",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/garment-body/anatomical-evals/eval.html",
+  "workflow": {
+    "id": 44040123848,
+    "head_sha": "c4e2421199366a710c41bf37c26bc06ae9419af4",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44040123848"
+  },
+  "source_sha256": "fb1c67a10fe1c9f43ca40611ad5283c806627193d38a65354fd6b6bf81203272",
+  "verifier_sha256": {
+    "review": "498ffb92379371902f9fbb70ea80b09580ba8814077c7d67e1a9d2b5fcfa9f6d",
+    "skill": "eabf323428ff4f59c572659ade405b406ac43e7102b357f67ffa68ec881bd3ab"
+  },
+  "runtime": "Exact public committed verifiers; standalone Google Chrome and Playwright1.62.1 on isolated Firecrawl host, public sources only. npm tarball integrity and verifier SHA checked before execution.",
+  "browser_checks": {
+    "first_candidate": 31,
+    "selected_revision": 31,
+    "camera_holdout": 23,
+    "skill_package": 19
+  },
+  "observations": [
+    "All14executed runs navigated in public review pages; >=6 image previews in all render runs decode successfully",
+    "Formal grades, quantitative benchmark, feedback navigation/reload/download, mobile and no API writes/page errors verified",
+    "Hosted build commit and source hash match exact deployed source",
+    "All97public artifact files match hash-pinned manifest; all14run ZIPs pass CRC and their grading summaries match the published inventory",
+    "All13members of downloaded skill match source manifest; actual packaged helper rerun with matching public anatomical asset returns PASS",
+    "Desktop/mobile live screenshots transferred, CRC/SHA checked and independently inspected"
+  ],
+  "package_sha256": "bcbd7339bea82a05e6924deac3b7cd319a1a39948d41c1e70f45fd4fce066f59",
+  "evidence_zip_sha256": "d3b97b170abd8bdb423c8ba6c75f874cebc10d70b76edbaef9ef49bcbff4f5dd",
+  "limits": [
+    "Small synthetic anatomical component benchmark; not photo-realism, six clothed generation quality or real-person measurement accuracy",
+    "Native Claude triggers remain BLOCKED; no token/time advantage measured",
+    "Historical cloth FAIL and physical fit NOT_RUN unchanged",
+    "Browser feedback fixtures are not user acceptance"
+  ],
+  "cleanup": "Owned local HTTP server closed; all task executor/reviewer subagents completed; remote live session explicitly stopped. No authentication, branch-rule or CI changes."
+}
