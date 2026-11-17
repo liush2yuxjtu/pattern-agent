@@ -1,0 +1,652 @@
+{
+  "verdict": "PASS",
+  "scope": "Independent artifact/geometry intent benchmark; not production approval or physical fit.",
+  "auditor_independence": "No imports of generator, case implementations or shared reconstruction/measurement helpers.",
+  "baseline": {
+    "spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4"
+  },
+  "positive_cases": [
+    {
+      "case": "01_sleeve_length",
+      "verdict": "PASS",
+      "inventory": {
+        "entities": 231,
+        "counts": {
+          "POLYLINE": 126,
+          "LINE": 78,
+          "TEXT": 27
+        },
+        "polyline_vertices": 1487,
+        "raw_declared_INSUNITS": null,
+        "audit_coordinate_unit": "YAML U; physical scale uncalibrated"
+      },
+      "independent_measurements": {
+        "dimensions": {
+          "前中纵线": 434.647134,
+          "后中纵线": 472.56958,
+          "袖片纵线": 613.272857,
+          "前片胸横线": 429.508056,
+          "后片胸横线": 428.203736,
+          "前片腰横线": 356.262817,
+          "后片腰横线": 360.000305,
+          "袖片腋下横线": 286.7774380977045,
+          "前片领宽": 199.030762,
+          "前片领深": 92.38891600000005,
+          "前片肩端跨度": 341.624756,
+          "后片领宽": 217.524414,
+          "后片领深": 44.13024900000005,
+          "后片肩端跨度": 357.999268,
+          "领条展开宽": 40.0,
+          "前后胸横线合计": 857.7117920000001,
+          "前后腰横线合计": 716.2631220000001,
+          "前后下摆合计": 853.9123918728267,
+          "袖口展开线长": 161.357117,
+          "领条长边": 437.199756,
+          "领圈总长": 540.5245069828322,
+          "袖山总长": 428.3031704298663,
+          "一侧衣身袖窿总长": 420.7727191672169
+        },
+        "port_count": 25,
+        "max_interface_rounding_error_U": 4.398762314394844e-07
+      },
+      "intent_metrics": {
+        "sleeve_length_delta_U": 20.0
+      },
+      "contours": [
+        {
+          "piece": "前片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.008708390551672317,
+          "output_max_gap_U": 0.008708390551672317,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "前片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "后片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0013813880700239477,
+          "output_max_gap_U": 0.0013813880700239477,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "后片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.084212,
+          "output_max_gap_U": 0.084212,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "袖片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "袖片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.033618283239891446,
+          "output_max_gap_U": 0.033618283239891446,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "领条",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "领条",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        }
+      ],
+      "spec_patch_operations": 193,
+      "geometry_patch_operations": 161,
+      "patch_replay": "PASS",
+      "spec_reverse_semantic_restore": "PASS",
+      "DXF_reverse_byte_restore": "PASS",
+      "fault_controls": [
+        {
+          "control": "wrong_DXF_base_hash",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_DXF_old_value",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_spec_base_hash",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_spec_old_value",
+          "verdict": "PASS"
+        },
+        {
+          "control": "faulty_output_geometry",
+          "verdict": "PASS"
+        }
+      ],
+      "audit_seconds": 1.2132111549981346,
+      "physical_fit": "NOT_RUN",
+      "production_readiness": "BLOCKED"
+    },
+    {
+      "case": "02_body_length",
+      "verdict": "PASS",
+      "inventory": {
+        "entities": 231,
+        "counts": {
+          "POLYLINE": 126,
+          "LINE": 78,
+          "TEXT": 27
+        },
+        "polyline_vertices": 1487,
+        "raw_declared_INSUNITS": null,
+        "audit_coordinate_unit": "YAML U; physical scale uncalibrated"
+      },
+      "independent_measurements": {
+        "dimensions": {
+          "前中纵线": 419.647134,
+          "后中纵线": 457.56958,
+          "袖片纵线": 593.272857,
+          "前片胸横线": 429.508056,
+          "后片胸横线": 428.203736,
+          "前片腰横线": 356.262817,
+          "后片腰横线": 360.000305,
+          "袖片腋下横线": 286.7774380977045,
+          "前片领宽": 199.030762,
+          "前片领深": 92.38891600000005,
+          "前片肩端跨度": 341.624756,
+          "后片领宽": 217.524414,
+          "后片领深": 44.13024900000005,
+          "后片肩端跨度": 357.999268,
+          "领条展开宽": 40.0,
+          "前后胸横线合计": 857.7117920000001,
+          "前后腰横线合计": 716.2631220000001,
+          "前后下摆合计": 853.9123918728267,
+          "袖口展开线长": 161.357117,
+          "领条长边": 437.199756,
+          "领圈总长": 540.5245069828322,
+          "袖山总长": 428.3031704298663,
+          "一侧衣身袖窿总长": 420.7727191672169
+        },
+        "port_count": 25,
+        "max_interface_rounding_error_U": 4.398762314394844e-07
+      },
+      "intent_metrics": {
+        "前片中长变化U": -15.0,
+        "后片中长变化U": -15.0
+      },
+      "contours": [
+        {
+          "piece": "前片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.008708390551672317,
+          "output_max_gap_U": 0.008708390551671974,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "前片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "后片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0013813880700239477,
+          "output_max_gap_U": 0.0013813880700248307,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "后片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.084212,
+          "output_max_gap_U": 0.084212,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "袖片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "袖片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.033618283239891446,
+          "output_max_gap_U": 0.033618283239891446,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "领条",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "领条",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        }
+      ],
+      "spec_patch_operations": 378,
+      "geometry_patch_operations": 337,
+      "patch_replay": "PASS",
+      "spec_reverse_semantic_restore": "PASS",
+      "DXF_reverse_byte_restore": "PASS",
+      "fault_controls": [
+        {
+          "control": "wrong_DXF_base_hash",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_DXF_old_value",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_spec_base_hash",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_spec_old_value",
+          "verdict": "PASS"
+        },
+        {
+          "control": "faulty_output_geometry",
+          "verdict": "PASS"
+        }
+      ],
+      "audit_seconds": 1.1345475109992549,
+      "physical_fit": "NOT_RUN",
+      "production_readiness": "BLOCKED"
+    },
+    {
+      "case": "03_cuff_width",
+      "verdict": "PASS",
+      "inventory": {
+        "entities": 231,
+        "counts": {
+          "POLYLINE": 126,
+          "LINE": 78,
+          "TEXT": 27
+        },
+        "polyline_vertices": 1487,
+        "raw_declared_INSUNITS": null,
+        "audit_coordinate_unit": "YAML U; physical scale uncalibrated"
+      },
+      "independent_measurements": {
+        "dimensions": {
+          "前中纵线": 434.647134,
+          "后中纵线": 472.56958,
+          "袖片纵线": 593.272857,
+          "前片胸横线": 429.508056,
+          "后片胸横线": 428.203736,
+          "前片腰横线": 356.262817,
+          "后片腰横线": 360.000305,
+          "袖片腋下横线": 286.7774380977045,
+          "前片领宽": 199.030762,
+          "前片领深": 92.38891600000005,
+          "前片肩端跨度": 341.624756,
+          "后片领宽": 217.524414,
+          "后片领深": 44.13024900000005,
+          "后片肩端跨度": 357.999268,
+          "领条展开宽": 40.0,
+          "前后胸横线合计": 857.7117920000001,
+          "前后腰横线合计": 716.2631220000001,
+          "前后下摆合计": 853.9123918728267,
+          "袖口展开线长": 171.357117,
+          "领条长边": 437.199756,
+          "领圈总长": 540.5245069828322,
+          "袖山总长": 428.3031704298663,
+          "一侧衣身袖窿总长": 420.7727191672169
+        },
+        "port_count": 25,
+        "max_interface_rounding_error_U": 4.398762314394844e-07
+      },
+      "intent_metrics": {
+        "cuff_width_delta_U": 10.0
+      },
+      "contours": [
+        {
+          "piece": "前片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.008708390551672317,
+          "output_max_gap_U": 0.008708390551672317,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "前片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "后片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0013813880700239477,
+          "output_max_gap_U": 0.0013813880700239477,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "后片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.084212,
+          "output_max_gap_U": 0.084212,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "袖片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "袖片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.033618283239891446,
+          "output_max_gap_U": 0.033618283239891446,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "领条",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "领条",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        }
+      ],
+      "spec_patch_operations": 169,
+      "geometry_patch_operations": 138,
+      "patch_replay": "PASS",
+      "spec_reverse_semantic_restore": "PASS",
+      "DXF_reverse_byte_restore": "PASS",
+      "fault_controls": [
+        {
+          "control": "wrong_DXF_base_hash",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_DXF_old_value",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_spec_base_hash",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_spec_old_value",
+          "verdict": "PASS"
+        },
+        {
+          "control": "faulty_output_geometry",
+          "verdict": "PASS"
+        }
+      ],
+      "audit_seconds": 1.1715065259995754,
+      "physical_fit": "NOT_RUN",
+      "production_readiness": "BLOCKED"
+    },
+    {
+      "case": "04_front_neck",
+      "verdict": "PASS",
+      "inventory": {
+        "entities": 231,
+        "counts": {
+          "POLYLINE": 126,
+          "LINE": 78,
+          "TEXT": 27
+        },
+        "polyline_vertices": 1487,
+        "raw_declared_INSUNITS": null,
+        "audit_coordinate_unit": "YAML U; physical scale uncalibrated"
+      },
+      "independent_measurements": {
+        "dimensions": {
+          "前中纵线": 424.647134,
+          "后中纵线": 472.56958,
+          "袖片纵线": 593.272857,
+          "前片胸横线": 429.508056,
+          "后片胸横线": 428.203736,
+          "前片腰横线": 356.262817,
+          "后片腰横线": 360.000305,
+          "袖片腋下横线": 286.7774380977045,
+          "前片领宽": 199.030762,
+          "前片领深": 102.38891600000005,
+          "前片肩端跨度": 341.624756,
+          "后片领宽": 217.524414,
+          "后片领深": 44.13024900000005,
+          "后片肩端跨度": 357.999268,
+          "领条展开宽": 40.0,
+          "前后胸横线合计": 857.7117920000001,
+          "前后腰横线合计": 716.2631220000001,
+          "前后下摆合计": 853.9123918728267,
+          "袖口展开线长": 161.357117,
+          "领条长边": 448.566944,
+          "领圈总长": 554.5781374920546,
+          "袖山总长": 428.3031704298663,
+          "一侧衣身袖窿总长": 420.7727191672169
+        },
+        "port_count": 25,
+        "max_interface_rounding_error_U": 4.398762314394844e-07
+      },
+      "intent_metrics": {
+        "front_neck_depth_delta_U": 10.0,
+        "candidate_ratio_before": 0.808843540583232,
+        "candidate_ratio_after": 0.8088435401159798
+      },
+      "contours": [
+        {
+          "piece": "前片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.008708390551672317,
+          "output_max_gap_U": 0.008708390551672317,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "前片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "后片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0013813880700239477,
+          "output_max_gap_U": 0.0013813880700239477,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "后片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.084212,
+          "output_max_gap_U": 0.084212,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "袖片",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "袖片",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.033618283239891446,
+          "output_max_gap_U": 0.033618283239891446,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "领条",
+          "contour": "内圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        },
+        {
+          "piece": "领条",
+          "contour": "外圈",
+          "baseline_max_gap_U": 0.0,
+          "output_max_gap_U": 0.0,
+          "baseline_crossings": 0,
+          "output_crossings": 0,
+          "new_crossings": 0
+        }
+      ],
+      "spec_patch_operations": 244,
+      "geometry_patch_operations": 208,
+      "patch_replay": "PASS",
+      "spec_reverse_semantic_restore": "PASS",
+      "DXF_reverse_byte_restore": "PASS",
+      "fault_controls": [
+        {
+          "control": "wrong_DXF_base_hash",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_DXF_old_value",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_spec_base_hash",
+          "verdict": "PASS"
+        },
+        {
+          "control": "wrong_spec_old_value",
+          "verdict": "PASS"
+        },
+        {
+          "control": "faulty_output_geometry",
+          "verdict": "PASS"
+        }
+      ],
+      "audit_seconds": 1.093895676000102,
+      "physical_fit": "NOT_RUN",
+      "production_readiness": "BLOCKED"
+    }
+  ],
+  "negative_cases": [
+    {
+      "case": "05_uncalibrated_cm",
+      "verdict": "PASS",
+      "status": "BLOCKED",
+      "reason": "基准每U毫米数未标定，不能把物理长度转换为U。",
+      "no_success_artifacts": true
+    },
+    {
+      "case": "06_ambiguous_comfort",
+      "verdict": "PASS",
+      "status": "BLOCKED",
+      "reason": "缺少动作、受限位置、允许改变范围和量化目标。",
+      "no_success_artifacts": true
+    },
+    {
+      "case": "07_invalid_cuff",
+      "verdict": "PASS",
+      "status": "REJECTED",
+      "reason": "计算所得目标袖口宽为-838.642883U，不大于零。",
+      "no_success_artifacts": true
+    }
+  ],
+  "missing_positive_cases": [],
+  "missing_negative_cases": [],
+  "partial_debug_mode": false,
+  "suite_complete": true,
+  "gap_regression_rounding_tolerance_U": 5e-06,
+  "negative_case_requirement": "All three named rejection controls are required in a full benchmark; absence is FAIL.",
+  "positive_pass_count": 4,
+  "positive_total": 4,
+  "unit_interpretation": "Raw source and patched CAD have no declared $INSUNITS. Software loader defaults are not calibration. All measurements use YAML U.",
+  "production_readiness": "BLOCKED",
+  "physical_fit": "NOT_RUN"
+}

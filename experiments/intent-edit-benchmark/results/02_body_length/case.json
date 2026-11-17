@@ -1,0 +1,22 @@
+{
+  "id": "02_body_length",
+  "title": "前后衣身各缩短15U",
+  "intent": "前后衣身各缩短15U。腰线及以上保持，下摆和关联折边整体上移15U并保持形状，腰至下摆带之间平顺过渡；内部线、定位点和文字同步。袖片与领条全部保持。",
+  "affected_pieces": [
+    "前片",
+    "后片"
+  ],
+  "preserve_pieces": [
+    "袖片",
+    "领条"
+  ],
+  "operation": "ADJUST_LENGTH",
+  "parameters": {
+    "unit": "U",
+    "delta_length_U": -15.0,
+    "hem_translation_y_U": 15.0,
+    "waist_and_above_locked": true,
+    "hem_band_rigid": true,
+    "transition": "三次smoothstep，过渡带两端位移斜率为零"
+  }
+}

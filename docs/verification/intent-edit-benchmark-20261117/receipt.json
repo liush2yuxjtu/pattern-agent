@@ -1,0 +1,55 @@
+{
+  "verdict": "PASS",
+  "base_commit": "cc0df412a61f9afee9ec759072ae25f3213b931c",
+  "scope": "Four sub-agent code implementations of explicit U-unit intents, three rejection controls, actual spec/diff/patch/DXF and independently checked output. No general-language compiler or production/fit claim.",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/intent-edit-benchmark.md",
+  "checks": [
+    {
+      "command": "python -m unittest discover -s experiments/intent-edit-benchmark -p 'test_*.py' -v",
+      "result": "17 tests PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-benchmark/run_benchmark.py --output work/intent-edit-benchmark/results",
+      "result": "4 real generated cases and 3 no-output decisions"
+    },
+    {
+      "command": "python experiments/intent-edit-benchmark/audit_benchmark.py --results experiments/intent-edit-benchmark/results --output work/intent-edit-benchmark/shipped-audit",
+      "result": "4/4 positives, 3/3 negative controls, 20 fault controls PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-benchmark/profile_runtime.py --runs 3 --output work/intent-edit-benchmark/performance.json",
+      "result": "All 3 runs deterministic; code pipeline timing only"
+    },
+    {
+      "command": "python experiments/intent-edit-benchmark/verify_delivery.py experiments/intent-edit-benchmark/intent-edit-benchmark.zip --output docs/verification/intent-edit-benchmark-20261117/archive-replay.json",
+      "result": "Fresh extracted run/audit PASS; 16 output artifacts byte-identical"
+    },
+    {
+      "command": "python experiments/intent-edit-benchmark/render_review.py --results work/intent-edit-benchmark/results --output work/intent-edit-benchmark/review/before-after.png",
+      "result": "Actual four DXFs reopened by ezdxf, zero errors/fixes; plot visually reviewed"
+    }
+  ],
+  "input_sha256": {
+    "input-spec.yaml": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "input.dxf": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4"
+  },
+  "archive_sha256": "ee94a0159ca019be77e070c5980ec9bc8c43e783ce0a6e3f9281b6380df71065",
+  "source_manifest_sha256": "171b6ceb0aebfbf24ff3d58e6476cf358db73336efd294397ef9c2745f5f79f5",
+  "findings": [
+    "Raw DXF units undeclared; reader default6 is not calibration. Use YAML U.",
+    "Baseline minor contour gaps remain; no new crossings or gap enlargement.",
+    "17 tests include a stale-output protection and real intent-file entrypoint.",
+    "Only the implemented catalog is recognized; new intents require new code and audit."
+  ],
+  "production_readiness": "BLOCKED",
+  "physical_fit": "NOT_RUN",
+  "web_source_changes": false,
+  "cleanup": "All test/profile/archive temporary directories removed. No browser/server/CI/paid job launched.",
+  "generation_baseline_commit": "b783898028651c1686e8b69833cd481a9d183200",
+  "concurrent_reconciliation": {
+    "method": "rebase unpublished commit onto latest remote main; no force push",
+    "runtime_and_input_hashes_unchanged": 68,
+    "rebased_artifact_audit": "PASS"
+  }
+}

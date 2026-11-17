@@ -1,0 +1,26 @@
+{
+  "verdict": "PASS",
+  "source_sha256": {
+    "experiments/intent-edit-benchmark/audit_benchmark.py": "0a8768a8be2f991175ae0b4eb7e2132872ce8776028a984bd32154bab6b55252",
+    "experiments/intent-edit-benchmark/test_independent_audit.py": "b60677b8f14b8c2cafa6f9288fb212697da491a05b8267d193a793f8a5f82154"
+  },
+  "unit_tests": {
+    "count": 8,
+    "failed": 0,
+    "skipped": 0,
+    "log": "work/intent-edit-benchmark/audit/unit-tests.log"
+  },
+  "full_suite": {
+    "positive_passed": 4,
+    "positive_total": 4,
+    "negative_controls_passed": 3,
+    "fault_controls": 20,
+    "report": "work/intent-edit-benchmark/audit/final-run/independent-audit.json"
+  },
+  "public_CLI_fault_controls": {
+    "missing_negative_cases": "cli-missing-negative-controls.json",
+    "tampered_DXF": "cli-tampered-output.json"
+  },
+  "raw_INSUNITS": "not declared; YAML U retained",
+  "source_status": "frozen after final successful execution"
+}

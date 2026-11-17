@@ -1,0 +1,42 @@
+{
+  "anchors": {
+    "front_neck_center_before": {
+      "横": 0.0,
+      "高": 434.647134
+    },
+    "front_neck_center_after": {
+      "横": 0.0,
+      "高": 424.647134
+    },
+    "front_neck_depth_delta_U": 10.0,
+    "front_neck_length_before_U": 295.10583722409564,
+    "front_neck_length_after_U": 309.15946773331797,
+    "back_neck_length_U": 245.4186697587366,
+    "band_length_before_U": 437.199756,
+    "band_length_after_U": 448.566944,
+    "band_target_length_U": 448.56694425912787,
+    "band_horizontal_scale": 1.0259999876558208,
+    "band_vertical_width_U": 40.0,
+    "observed_geometric_ratio_before": 0.808843540583232,
+    "observed_geometric_ratio_after": 0.8088435401159798,
+    "ratio_absolute_error": 4.672522369020271e-10
+  },
+  "changed_front_line_names": [
+    "前片图面左领口",
+    "前片图面右领口",
+    "前片外侧轮廓第6段",
+    "前片外侧轮廓第7段",
+    "前片短线或内部直线第1条（用途待核对）",
+    "前片短线或内部直线第5条（用途待核对）",
+    "前中纵向内部线"
+  ],
+  "changed_front_landmarks": [
+    "前片领口中点"
+  ],
+  "method": "内外左右前领曲线分别按归一横向距离的二次权重下移，领肩端点固定；前中内部线上端和两条领中标记同步。领条全体使用同一个横向仿射映射，所有纵向坐标、排版原点、文字内容不变。",
+  "limitations": [
+    "只保持当前候选领条与领圈的几何长度比，不批准生产缩比。",
+    "没有推定净裁角色、缝份、面料弹性或毫米比例。",
+    "前中内部线只移动领中端点；若加深量越过相邻点则拒绝此有限策略。"
+  ]
+}

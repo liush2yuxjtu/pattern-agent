@@ -1,0 +1,140 @@
+[
+  {
+    "case": "01_sleeve_length",
+    "generation": "PASS",
+    "inventory": {
+      "裁片数": 4,
+      "线型数量": {
+        "折线": 126,
+        "直线": 78,
+        "文字": 27
+      },
+      "折线顶点数": 1487,
+      "接口数": 25,
+      "关键尺寸数": 23,
+      "连接关系数": 9,
+      "外部设计数据输入数": 0
+    },
+    "spec_operations": 193,
+    "dxf_coordinate_operations": 161,
+    "changed_coordinates_by_piece": {
+      "袖片": 161
+    },
+    "input_spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "input_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+    "new_spec_sha256": "990e2d32160413f1d2bb41ef9714d065e23e42a7adf274bc7f30188ca8e5505c",
+    "output_dxf_sha256": "830b5eb46cdd4e6eb80b58b86f94f153e85d47ae605ae265e676d43cfcd6bc40",
+    "production_readiness": "BLOCKED",
+    "execution_seconds": 1.284142
+  },
+  {
+    "case": "02_body_length",
+    "generation": "PASS",
+    "inventory": {
+      "裁片数": 4,
+      "线型数量": {
+        "折线": 126,
+        "直线": 78,
+        "文字": 27
+      },
+      "折线顶点数": 1487,
+      "接口数": 25,
+      "关键尺寸数": 23,
+      "连接关系数": 9,
+      "外部设计数据输入数": 0
+    },
+    "spec_operations": 378,
+    "dxf_coordinate_operations": 337,
+    "changed_coordinates_by_piece": {
+      "前片": 159,
+      "后片": 178
+    },
+    "input_spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "input_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+    "new_spec_sha256": "63312382be180c2a7670e85b64b993f174e7548c6b108f7d75b0bf5291d094fb",
+    "output_dxf_sha256": "aab08855b2b91d90408593d717d94aec5159ddb149b77c24c1937e11b08112b6",
+    "production_readiness": "BLOCKED",
+    "execution_seconds": 1.279838
+  },
+  {
+    "case": "03_cuff_width",
+    "generation": "PASS",
+    "inventory": {
+      "裁片数": 4,
+      "线型数量": {
+        "折线": 126,
+        "直线": 78,
+        "文字": 27
+      },
+      "折线顶点数": 1487,
+      "接口数": 25,
+      "关键尺寸数": 23,
+      "连接关系数": 9,
+      "外部设计数据输入数": 0
+    },
+    "spec_operations": 169,
+    "dxf_coordinate_operations": 138,
+    "changed_coordinates_by_piece": {
+      "袖片": 138
+    },
+    "input_spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "input_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+    "new_spec_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+    "output_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163",
+    "production_readiness": "BLOCKED",
+    "execution_seconds": 1.231916
+  },
+  {
+    "case": "04_front_neck",
+    "generation": "PASS",
+    "inventory": {
+      "裁片数": 4,
+      "线型数量": {
+        "折线": 126,
+        "直线": 78,
+        "文字": 27
+      },
+      "折线顶点数": 1487,
+      "接口数": 25,
+      "关键尺寸数": 23,
+      "连接关系数": 9,
+      "外部设计数据输入数": 0
+    },
+    "spec_operations": 244,
+    "dxf_coordinate_operations": 208,
+    "changed_coordinates_by_piece": {
+      "前片": 103,
+      "领条": 105
+    },
+    "input_spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "input_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+    "new_spec_sha256": "1f99d8ebd863e83d7b70b7c3aa21993d8cca3dc14e78e09a02de4d3422f59c67",
+    "output_dxf_sha256": "1f1e5f6c5204afb8b34c8691f6330b2f01c1754146603ef17cd4b518363d573b",
+    "production_readiness": "BLOCKED",
+    "execution_seconds": 1.2045
+  },
+  {
+    "case": "05_uncalibrated_cm",
+    "intent": "把袖子加长2厘米，其他保持。",
+    "status": "BLOCKED",
+    "reason": "基准每U毫米数未标定，不能把物理长度转换为U。",
+    "output_dxf": null,
+    "new_spec": null
+  },
+  {
+    "case": "06_ambiguous_comfort",
+    "intent": "抬手更舒服，外观尽量保持。",
+    "status": "BLOCKED",
+    "reason": "缺少动作、受限位置、允许改变范围和量化目标。",
+    "output_dxf": null,
+    "new_spec": null
+  },
+  {
+    "case": "07_invalid_cuff",
+    "intent": "袖口展开宽减少1000U。",
+    "status": "REJECTED",
+    "reason": "计算所得目标袖口宽为-838.642883U，不大于零。",
+    "output_dxf": null,
+    "new_spec": null
+  }
+]

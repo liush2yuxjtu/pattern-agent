@@ -1,0 +1,20 @@
+{
+  "id": "04_front_neck",
+  "title": "前领加深并联动候选领条",
+  "intent": "前领中点向下加深10U，领宽、领肩点、肩袖与其他衣身保持；内外前领圈相关线和领中标记同步。领条长度保持基准现状的候选几何长度比，展开宽40U不变。后片与袖片全部保持；候选比值不批准为生产配比。",
+  "affected_pieces": [
+    "前片",
+    "领条"
+  ],
+  "preserve_pieces": [
+    "后片",
+    "袖片"
+  ],
+  "operation": "ADJUST_NECKLINE",
+  "parameters": {
+    "front_depth_delta": 10.0,
+    "unit": "U",
+    "band_dependency": "保持基准现状的候选几何长度比",
+    "production_ratio_approval": "不变，仍待确认"
+  }
+}

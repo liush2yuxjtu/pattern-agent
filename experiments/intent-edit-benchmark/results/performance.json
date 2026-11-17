@@ -1,0 +1,90 @@
+{
+  "verdict": "PASS",
+  "runs": 3,
+  "scope": "实际代码流水线耗时，含每例读取、变形、复算、规格补丁和DXF写出；不含子代理推理或独立审计。",
+  "rounds": [
+    {
+      "round": 1,
+      "cli_wall_seconds": 6.491312361999007,
+      "case_pipeline_seconds": {
+        "01_sleeve_length": 1.278469,
+        "02_body_length": 1.242951,
+        "03_cuff_width": 1.244464,
+        "04_front_neck": 1.203434
+      }
+    },
+    {
+      "round": 2,
+      "cli_wall_seconds": 6.1507955660017615,
+      "case_pipeline_seconds": {
+        "01_sleeve_length": 1.19769,
+        "02_body_length": 1.24081,
+        "03_cuff_width": 1.203177,
+        "04_front_neck": 1.200235
+      }
+    },
+    {
+      "round": 3,
+      "cli_wall_seconds": 6.373415871999896,
+      "case_pipeline_seconds": {
+        "01_sleeve_length": 1.203533,
+        "02_body_length": 1.257985,
+        "03_cuff_width": 1.275247,
+        "04_front_neck": 1.329724
+      }
+    }
+  ],
+  "cases": {
+    "01_sleeve_length": {
+      "samples_seconds": [
+        1.278469,
+        1.19769,
+        1.203533
+      ],
+      "median_seconds": 1.203533,
+      "min_seconds": 1.19769,
+      "max_seconds": 1.278469,
+      "deterministic_spec_sha256": "990e2d32160413f1d2bb41ef9714d065e23e42a7adf274bc7f30188ca8e5505c",
+      "deterministic_dxf_sha256": "830b5eb46cdd4e6eb80b58b86f94f153e85d47ae605ae265e676d43cfcd6bc40"
+    },
+    "02_body_length": {
+      "samples_seconds": [
+        1.242951,
+        1.24081,
+        1.257985
+      ],
+      "median_seconds": 1.242951,
+      "min_seconds": 1.24081,
+      "max_seconds": 1.257985,
+      "deterministic_spec_sha256": "63312382be180c2a7670e85b64b993f174e7548c6b108f7d75b0bf5291d094fb",
+      "deterministic_dxf_sha256": "aab08855b2b91d90408593d717d94aec5159ddb149b77c24c1937e11b08112b6"
+    },
+    "03_cuff_width": {
+      "samples_seconds": [
+        1.244464,
+        1.203177,
+        1.275247
+      ],
+      "median_seconds": 1.244464,
+      "min_seconds": 1.203177,
+      "max_seconds": 1.275247,
+      "deterministic_spec_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+      "deterministic_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163"
+    },
+    "04_front_neck": {
+      "samples_seconds": [
+        1.203434,
+        1.200235,
+        1.329724
+      ],
+      "median_seconds": 1.203434,
+      "min_seconds": 1.200235,
+      "max_seconds": 1.329724,
+      "deterministic_spec_sha256": "1f99d8ebd863e83d7b70b7c3aa21993d8cca3dc14e78e09a02de4d3422f59c67",
+      "deterministic_dxf_sha256": "1f1e5f6c5204afb8b34c8691f6330b2f01c1754146603ef17cd4b518363d573b"
+    }
+  },
+  "model_inference_latency": "NOT_MEASURED",
+  "tokens_and_cost": "NOT_MEASURED",
+  "generalization": "四项单次子代理代码实现，不是开放任务统计成功率。"
+}

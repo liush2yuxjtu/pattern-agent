@@ -1,0 +1,21 @@
+{
+  "id": "01_sleeve_length",
+  "title": "袖片下段加长20U",
+  "intent": "仅把袖片袖口向下延伸20U。袖山、腋下及以上保持不变，从腋下到内圈袖口逐渐增加长度；袖口、折边、定位点、内部线和文字同步。前后衣身及领条全部保持。",
+  "affected_pieces": [
+    "袖片"
+  ],
+  "preserve_pieces": [
+    "前片",
+    "后片",
+    "领条"
+  ],
+  "operation": "ADJUST_LENGTH",
+  "parameters": {
+    "extension": 20.0,
+    "unit": "U",
+    "direction": "图面高度负方向",
+    "transition": "固定腋下至袖口近平行线带之间的单调三次平滑过渡",
+    "bottom_band": "当前近袖口水平内部线以下整体平移，保留线带相对间距"
+  }
+}
