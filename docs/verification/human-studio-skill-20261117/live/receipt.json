@@ -1,0 +1,35 @@
+{
+  "verdict": "PASS",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/garment-body/skill/",
+  "deployed_commit": "33256a0422c70adc38fff90ee2fa3dfc8d462cff",
+  "publish_workflow": {
+    "id": 44033590943,
+    "head_sha": "33256a0422c70adc38fff90ee2fa3dfc8d462cff",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44033590943"
+  },
+  "source_sha256": "75cd8ca0993725cc423ef17895ef1955af41994054cab3ec83c688e9bc38e2b2",
+  "package_sha256": "b9428d008ad0b86773fe02ee5513cb1a0203ae3aa31db602489fe8eddc2bd93c",
+  "verifier_sha256": "eabf323428ff4f59c572659ade405b406ac43e7102b357f67ffa68ec881bd3ab",
+  "runtime": "Exact committed public verifier, standalone Chrome + Playwright 1.62.1 in isolated Firecrawl session; public URLs only. npm tarball integrity and verifier SHA checked before execution.",
+  "command": "NODE_PATH=/tmp/pattern-agent-skill-live/node_modules CHROMIUM_BIN=/usr/bin/google-chrome /usr/local/bin/node /tmp/pattern-agent-skill-live/verify.cjs --url https://liush2yuxjtu.github.io/pattern-agent/ --output /tmp/pattern-agent-skill-live/evidence --expected-commit 33256a0422c70adc38fff90ee2fa3dfc8d462cff",
+  "browser_checks": 18,
+  "observations": [
+    "Editor → guide → actual downloaded skill works",
+    "All seven published resource hashes and all 12 ZIP members match manifest and local committed canonical sources",
+    "Desktop/mobile screenshots read back and independently inspected; no mobile document overflow",
+    "Return to anatomical editor changes actual cm and degree pose state",
+    "Downloaded state helper independently reconstructs mesh measurements with public hash-pinned human.json",
+    "Exact hosted build commit and source hash match the committed revision",
+    "No page, console or network errors"
+  ],
+  "evidence_zip_sha256": "7fcb18a6ee9055fc57aebfc7dbfc9a6e8ff7b32be4219d356c7e5f033311be5c",
+  "transport": "Three independently decoded base64 chunks; reassembled byte count, SHA256 and ZIP CRC/inventory verified before extraction",
+  "limitations": [
+    "Native Claude trigger scores not retested; prior BLOCKED remains",
+    "Six-image generation quality and real-person body accuracy not established",
+    "Historical cloth seam gap 7.6455 mm and 20 intersections remain FAIL; physical fit NOT_RUN"
+  ],
+  "cleanup": "Owned loopback server closed and Firecrawl session explicitly stopped; no authentication/security changes"
+}

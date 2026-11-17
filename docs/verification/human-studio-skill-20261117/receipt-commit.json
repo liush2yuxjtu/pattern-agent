@@ -1,0 +1,37 @@
+{
+  "verdict": "SKIP",
+  "scope": "Docs-only live evidence receipt; no product/source/package/page modifications",
+  "candidate_base": "33256a0422c70adc38fff90ee2fa3dfc8d462cff",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "commands": [
+    "git diff --check",
+    "Read live receipt/report/consumer audit; verify evidence ZIP SHA256 and CRC; inspect desktop/mobile screenshots"
+  ],
+  "observed": "Live product verification PASS is recorded separately in live/receipt.json; this commit only records it",
+  "files": {
+    "docs/verification/human-studio-skill-20261117/README.md": "8690f3b3c1cb517a99bc1152994d3158980f195eb3292e1075075554f94ba816",
+    "docs/verification/human-studio-skill-20261117/candidate-files.json": "4c8e777f305d11074a1297512ba329b84c28cf31f6afdfe24a959b7399e74c9b",
+    "docs/verification/human-studio-skill-20261117/downloaded-state-audit.json": "241fc02c12da6e213fb604b708ccbfa826e1b31953be094db27630221559160e",
+    "docs/verification/human-studio-skill-20261117/historical-integrity.json": "ff3d8e301ee8b416a612af60a7460ff6ad1ea2826b11ac54311e2ffa9c36c909",
+    "docs/verification/human-studio-skill-20261117/live/consumer-check.json": "d91b867e0653639f8717a5fab2144e5460c422dc6144a215c10e111dd2ae858f",
+    "docs/verification/human-studio-skill-20261117/live/desktop-top.png": "578523a69a0a97af1f5bf1328bc456ada75de5ddb8c9db418741cd1cca09d0bd",
+    "docs/verification/human-studio-skill-20261117/live/desktop.png": "7d6056cfd755fefba93c6e992e31dc898b92fd83b59ed698bbef157190d53f4b",
+    "docs/verification/human-studio-skill-20261117/live/downloaded-state-audit.json": "4e687cf4144903bc969e397b551f028f13a91f5ffec4998bffa394fd5a82cc39",
+    "docs/verification/human-studio-skill-20261117/live/evidence.zip": "7fcb18a6ee9055fc57aebfc7dbfc9a6e8ff7b32be4219d356c7e5f033311be5c",
+    "docs/verification/human-studio-skill-20261117/live/manifest.json": "3eb5662b22ec53a623d4c2d2303da0b035dd02513d275ed00e271e86d54c0702",
+    "docs/verification/human-studio-skill-20261117/live/mobile-top.png": "2a88e8a702ddcae380f7e5536118d11d204384adc8d128fa6c98de36c45bb9d2",
+    "docs/verification/human-studio-skill-20261117/live/mobile.png": "2241df1d3ee3eaeabaa325f7f3de3da468e07ae4fa1fb0136d3f0d9f1f7db9b8",
+    "docs/verification/human-studio-skill-20261117/live/model-return.png": "8c1c9236bb4087e4396c26853c437554f078d40906d0f45216fa5fedea6a8f01",
+    "docs/verification/human-studio-skill-20261117/live/receipt.json": "094850a935b4dec0fa794a0a5bb3aed142fbfbc779ac68fc4917b07782d5fa6b",
+    "docs/verification/human-studio-skill-20261117/live/report.json": "9db428043a57b43cb9881d7f38b23f500972b4aadfd9640800211419718ab27e",
+    "docs/verification/human-studio-skill-20261117/local-desktop-top.png": "1955ab098cb87b95e3551b79a4d93bd4a02db1f4a62bca6491372096b126898c",
+    "docs/verification/human-studio-skill-20261117/local-mobile-top.png": "d391bb3dd58d52574380ee5380280aabd9633c83710b3658e1833491f313effb",
+    "docs/verification/human-studio-skill-20261117/local-model-return.png": "76089021583f4592dcc7fddeb8f4752dd3f14305fe1b8eaa21a5ada074017fa1",
+    "docs/verification/human-studio-skill-20261117/local-report.json": "2cbedb6659e73b154a1df476f9fa84e021dc1d09ce2c773441cbe0d127997914",
+    "docs/verification/human-studio-skill-20261117/negative-controls.json": "ef8653369847e72df2b2f416f09a0a0d7d09055d4549175a2358b84865e2e695",
+    "docs/verification/human-studio-skill-20261117/package-check.json": "f93ea4c5f1d87b02b5cbd80c790fc4f5050ceacbafb3f24aefc606c89cb775ca",
+    "docs/verification/human-studio-skill-20261117/receipt.json": "1e5925c4ee34054331957b8cbe414022eb09d1dc0e0a873d04640c74e53adbf2",
+    "docs/verification/human-studio-skill-20261117/state-audit.json": "241fc02c12da6e213fb604b708ccbfa826e1b31953be094db27630221559160e"
+  },
+  "cleanup": "Local server and remote live session stopped"
+}
