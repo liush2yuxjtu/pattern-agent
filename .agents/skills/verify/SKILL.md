@@ -30,6 +30,7 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Fitted T-shirt source and visual preview | [fitted-tshirt](references/fitted-tshirt.md) — real WebGL, downloaded archive and rebuilt mesh | source hashes, real controls and fallback; physical fit NOT_RUN |
 | Prototype package reference page | [prototype-package](references/prototype-package.md) — actual diagrams, JSON-backed examples and saved source downloads | original file digests, two responsive workflows, unchanged existing pages |
 | Profile-bounded DXF conversion function | [dxf-service](references/dxf-service.md) — raw HTTP, file upload and actual generated GLB | repeatable output, input changes, rejection, offline/mobile controls; fit NOT_RUN |
+| Style3D MCP discovery and garment integration | [style3d](references/style3d.md) — read-only CLI and actual Studio GUI | real tool schemas and measured project operations; client fixture tests separate |
 | Historical T-shirt claims | [legacy-cloth](references/legacy-cloth.md) — archived evidence; unavailable legacy runtime | known FAIL and NOT_RUN limitations |
 
 The question is whether the changed behavior works for a real caller. Shift tests left by running them locally before the commit, then verify the running product surface. Tests, type checks, builds, CI green, Vercel READY, and static review are supporting evidence; they do not replace runtime evidence when a real user/programmatic surface exists.

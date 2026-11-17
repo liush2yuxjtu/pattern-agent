@@ -3,6 +3,16 @@
 Runnable Blender garment experiments and independent geometry checks. This is a
 research repository; physical garment fit has not been verified.
 
+## Style3D Studio integration
+
+The [Style3D integration record](docs/style3d-integration.md) preserves the official
+8.0.513 installation and Wine login-screen evidence, V10.1 MCP and CPU simulation
+references, licensing limits, and the remaining DXF/sewing/simulation acceptance.
+The [read-only MCP discovery CLI](tools/style3d/README.md) lists actual server tools
+without modifying a garment. Its local protocol tests do not establish that
+Style3D MCP or garment simulation works; the real integration remains BLOCKED
+pending target-version installation and account login.
+
 ## Human Studio — articulated model with cm controls
 
 [Open Human Studio](https://liush2yuxjtu.github.io/pattern-agent/human-studio/)

@@ -1,0 +1,72 @@
+{
+  "checked_at_utc": "2026-11-17T08:21:36.136958+00:00",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/style3d.md",
+  "candidate": {
+    "base_commit": "fb477e06db6bab357890ff9ef9adb9dab53f7b9e",
+    "source_sha256": {
+      "README.md": "f6854e5ab477d75023a1808bbf190bdc2a398649c7ee211528b832957818c52e",
+      ".agents/skills/verify/SKILL.md": "ce4a7ae3c4a3a4309bfa8e4de0b8751c1d28f1c0ce931eb86cc15ab3c2f8cdd6",
+      ".agents/skills/verify/references/verification-surfaces.md": "6e7d31fd8b4a3a1c66da51bf11ca49513429390ee9684288abc4c8a9f8430be9",
+      ".agents/skills/verify/references/style3d.md": "66be34048e29727517e590fd50cd80d2642a4ae28c603384e575cec3a2531ebd",
+      "docs/style3d-integration.md": "6c91dbe833a21d85ee87cb1e87b0e313b4c895d94c2d778f38b2266c2fa7f706",
+      "tools/style3d/probe_mcp.py": "3241dc21d8f4f9e217099978271b23d5c982ce5ab701de94c7a78554d19a5835",
+      "tools/style3d/tests/test_probe_mcp.py": "d5194a1642a4cf3be6139276ef84f905e1805a7d9f11bcc7875fccf9dd1befbd",
+      "tools/style3d/README.md": "b789f0101374ceb34d2962e188a24b5829c9df35fb53e0ce4b30f625b8e0bf67"
+    }
+  },
+  "verdict": "BLOCKED",
+  "scope": "Real Style3D V10.1 MCP and garment integration; local client protocol tests are supporting evidence only",
+  "local_client": {
+    "verdict": "PASS",
+    "tests": 9,
+    "command": "python3 -m unittest discover -s tools/style3d/tests -v",
+    "exit_code": 0,
+    "evidence": "tests.log",
+    "runtime": "Public CLI subprocesses against loopback protocol fixtures; no vendor process"
+  },
+  "help": {
+    "verdict": "PASS",
+    "command": "python3 tools/style3d/probe_mcp.py --help",
+    "exit_code": 0,
+    "evidence": "cli-help.log"
+  },
+  "installed_legacy_runtime": {
+    "verdict": "PASS",
+    "scope": "Official 8.0.513 installer completion and restarting installed executable to login page only",
+    "wine_version": "11.22 Staging",
+    "graphics": "llvmpipe software rendering, DRI3 acceleration unavailable",
+    "evidence_sha256": {
+      "docs/verification/style3d-20261117/evidence/installation-success.png": "e468014339d9ec02dfbe171bfe53c722c3f4eecc6849eab91f30d92cb928de22",
+      "docs/verification/style3d-20261117/evidence/login-after-restart.png": "c8e628ceaf7e68f4fdd3ff1ddbf11b4c6a9c59174de2082a8da8ada425ee2374"
+    }
+  },
+  "target_runtime": {
+    "verdict": "BLOCKED",
+    "version": "10.1",
+    "reasons": [
+      "Account registration not submitted",
+      "Target version not installed and logged in",
+      "Real tools/list and tool schemas unavailable"
+    ]
+  },
+  "garment_checks": {
+    "dxf_roundtrip": "NOT_RUN",
+    "pattern_edit_readback": "NOT_RUN",
+    "sewing": "NOT_RUN",
+    "cpu_simulation": "NOT_RUN",
+    "physical_fit": "NOT_RUN"
+  },
+  "cleanup": {
+    "fixture_servers_stopped": true,
+    "fixture_tempdirs_removed": true,
+    "boat_environment": "Archived with resumable snapshot after prior runtime verification",
+    "ci_added": false,
+    "paid_compute_added": false
+  },
+  "diff_check": {
+    "command": "git diff --cached --check",
+    "exit_code": 0,
+    "evidence": "diff-check.log"
+  }
+}

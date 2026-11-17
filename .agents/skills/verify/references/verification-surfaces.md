@@ -18,6 +18,7 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | fitted-tshirt | original DXF reconstruction, browser and source downloads | [fitted-tshirt.md](fitted-tshirt.md) |
 | prototype-package | source-bound prototype package, two workflows and reference intent examples | [prototype-package.md](prototype-package.md) |
 | dxf-service | raw DXF upload, generated GLB and Vercel browser/API | [dxf-service.md](dxf-service.md) |
+| style3d | read-only MCP CLI, actual Studio GUI and licensed garment operations | [style3d.md](style3d.md) |
 | legacy-cloth | archived evidence; unavailable legacy runtime | [legacy-cloth.md](legacy-cloth.md) |
 | skill-evals | skill package/helper CLIs, native metadata routing, editable query review | [skill-evals.md](skill-evals.md) |
 | human-studio | anatomical mesh, cm shape calibration, joint skinning and exported file readback | [human-studio.md](human-studio.md) |
