@@ -1,0 +1,53 @@
+{"deployed_commit": "e19e2ea63436cc843a7ae121ec3685e1007bdd5c", "source_sha256": "b62df88ad169325a4eeb43f06e4542f2cf6ea7aa85aae1ed310b26f1b717f28b", "primary_asset_hashes_verified": 7}
+{"verdict":"PASS","checks":37,"output":"/tmp/pattern-agent-human-live/evidence"}
+{
+  "verdict": "PASS",
+  "scope": "Independent decoded file geometry, centimetre tape paths and linear blend skinning; no anatomical recovery claim",
+  "measurements_cm": {
+    "height": 180.00001525878906,
+    "bust": 96.00416519193215,
+    "waist": 76.00003748729519,
+    "hips": 102.00012404643968,
+    "shoulders": 36.99942398071289,
+    "upperArm": 27.000031987787192,
+    "thigh": 54.00010718656212,
+    "neck": 32.00002973847724,
+    "upperArmLength": 29.000078356367432,
+    "forearmLength": 23.00000742397155,
+    "thighLength": 40.00009282163049,
+    "calf": 36.00000522933196
+  },
+  "max_target_error_cm": 0.004165191932145262,
+  "max_reported_measurement_error_cm": 6.866490608103959e-06,
+  "max_obj_error_cm": 4.999300813324226e-07,
+  "max_glb_world_error_metres": 7.62572067714018e-08,
+  "rig_joints": 163,
+  "surface_vertices": 13380,
+  "triangles": 26756
+}
+{
+  "verdict": "PASS",
+  "controls": [
+    {
+      "control": "actual downloaded files",
+      "expected": "PASS",
+      "observed": "PASS"
+    },
+    {
+      "control": "wrong_dimension",
+      "expected": "REJECT",
+      "observed": "REJECT"
+    },
+    {
+      "control": "displaced_obj",
+      "expected": "REJECT",
+      "observed": "REJECT"
+    },
+    {
+      "control": "wrong_glb_units",
+      "expected": "REJECT",
+      "observed": "REJECT"
+    }
+  ]
+}
+{"archive_bytes": 3373857, "archive_sha256": "3bda7e462b6cf7f95c1cdc154a30fa9b584b6a727a09e561c2febeabc7cb9d85", "files": ["report.json", "independent-geometry.json", "negative-controls.json", "desktop.png", "body-adjusted.png", "pose-adjusted.png", "seated.png", "mobile.png", "human-model.json", "human-posed-cm.obj", "human-rigged.glb", "human-view-2x.png", "export-geometry.json"]}

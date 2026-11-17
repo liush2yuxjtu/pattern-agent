@@ -1,0 +1,45 @@
+{
+  "verdict": "PASS",
+  "claim": "Deployed anatomicalhumanmodel withcalibratedcm controls, actualjointskinning andverified exports",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/human-studio/",
+  "deployed_commit": "e19e2ea63436cc843a7ae121ec3685e1007bdd5c",
+  "source_sha256": "b62df88ad169325a4eeb43f06e4542f2cf6ea7aa85aae1ed310b26f1b717f28b",
+  "workflow": {
+    "id": 44020618410,
+    "conclusion": "success",
+    "url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44020618410",
+    "type": "existingpublish-onlyPagesworkflow,noCIadded"
+  },
+  "verification": {
+    "browser": "standaloneGoogleChrome inFirecrawlhost",
+    "playwright": "1.62.1",
+    "numpy": "2.4.6",
+    "browser_checks": 37,
+    "primary_asset_hashes": 7,
+    "file_math": "DecodedactualdownloadedOBJ/GLB,meshtapepaths,worldtransforms/inversebindsandLBS independently",
+    "max_target_error_cm_in_exported_case": 0.004165191932145262,
+    "max_glb_world_error_metres": 7.62572067714018e-08,
+    "negative_controls": "Falsifieddimension,displacedvertexand100xuniterrorallrejected",
+    "public_pinned_verifier_sha256": {
+      "scripts/verify_human_studio.cjs": "7d42262d09172a2e19ef0e3e843545736a54c7872258a4379e194dac8cc6aa46",
+      "scripts/verify_human_studio_geometry.py": "fb35d4371b15bfdbfea55f6a203708af893c1526700dc57f3c99e0def4026a35",
+      "scripts/test_human_studio_geometry.py": "d83c5192ef730a239639774b82b2e81d2747bf88ca9effdf5da0c972d0602b9c"
+    },
+    "archive_bytes": 3373857,
+    "archive_sha256": "3bda7e462b6cf7f95c1cdc154a30fa9b584b6a727a09e561c2febeabc7cb9d85",
+    "archive_transfer": "5boundedchunks; SHA256, ZIPCRC andexact13-fileinventory verified",
+    "screenshots_visually_inspected": [
+      "desktop.png",
+      "seated.png"
+    ]
+  },
+  "cleanup": "StandaloneChromeclosedbyverifier; Firecrawlinteractsessionstopped; bothlocalstagingserversclosed. Onlypublicpinnedsources/publicsite andtask-ownedevidenceusedonremotehost.",
+  "scope": "ConfigurableMakeHumanadultfemale mesh,12dimensions,163bones. Numericalmodelmeasurements,noreal-personrecovery orphysicaltissue/clothclaim.",
+  "recorded_utc": "2026-11-17T05:08:54.949052+00:00",
+  "documentation_gate": {
+    "verifier": ".agents/skills/verify/SKILL.md",
+    "verdict": "SKIP",
+    "reason": "Documentation-onlyrecordofalreadyverifiedlivebehavior",
+    "base_commit": "e19e2ea63436cc843a7ae121ec3685e1007bdd5c"
+  }
+}

@@ -13,7 +13,7 @@ Twelve body dimensions are adjusted in cm, with actual neutral-pose mesh tape pa
 - [Fault controls](local/negative-controls.json): falsified bust dimension,1cm OBJ vertex displacement and 100×GLB unit error are all rejected.
 - [Verified exported files](local/verified-exports.zip): sample180cm model, editedbodydimensions,seatedpose, actualriggedGLB,cmOBJ,JSON,2×PNG and browservertexdata.
 - [Existing site regression](local/existing-pages.json): root/mobile navigation, fourdownloadhashes andnativepatternworkbench behavior preserved.
-- [Local receipt](local-receipt.json), [commands](commands.json), [asset provenance](../../../web/human-studio/assets/provenance.json). Hosted evidence will be recorded under live/.
+- [Local receipt](local-receipt.json), [commands](commands.json), [asset provenance](../../../web/human-studio/assets/provenance.json). [Hosted verification passed](live/receipt.json):37 actualbrowserchecks,7 primaryassethashes,independentdownloaded-filegeometryand3corruptioncontrols. [Live screenshots and exports](live/) are preserved.
 
 ![Anatomical model](local/desktop.png)
 
