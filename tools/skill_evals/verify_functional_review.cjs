@@ -33,6 +33,7 @@ function argumentsFromCLI() {
     page.on('request', request => requests.push({ method: request.method(), url: request.url() }));
     const response = await page.goto(args.url, { waitUntil: 'networkidle' });
     requireCheck(response.status() === 200, 'Actual review URL responds HTTP 200');
+    if (await page.locator('#gallery-case').count()) await page.locator('#gallery-case').selectOption('0');
     await page.locator('#progress').waitFor();
     const progress = await page.locator('#progress').innerText();
     const match = progress.match(/^1 of (\d+)$/);

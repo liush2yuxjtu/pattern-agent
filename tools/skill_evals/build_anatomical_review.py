@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import zipfile
+from visual_gallery import collect,inject
 
 HERE=Path(__file__).resolve().parent
 
@@ -60,7 +61,10 @@ def build(workspace,site,evidence):
             '<a href="opencv-before-after.png">OpenCV before/after</a> · <a href="manifest.json">Raw artifact hashes</a>'
             '<br>14 subagent executions. Round 1: 22/22 each. Round 2: lean 22/22, original 21/22 (missing metrics field, geometry correct). '
             'Holdout: 8/8 each. Core instructions 40.03% shorter; not a fit-accuracy, token-cost, native-trigger or clothed-image quality gain.</nav>',1)
+        gallery=collect(workspace,site,origin)
+        document=inject(document,gallery)
         page.write_text(document)
+        (site/f'gallery-iteration-{number}.json').write_text(json.dumps(gallery,ensure_ascii=False,indent=2)+'\n')
         for name in ['benchmark.json','benchmark.md','analysis.json','grading-summary.json','aggregate-upstream.log','benchmark-upstream-raw.json']:
             source=origin/name
             if source.is_file():

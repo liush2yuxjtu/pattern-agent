@@ -181,3 +181,23 @@ all-reference size, fit IoU, schema completeness and real-person accuracy as
 separate claims. No native trigger or full clothed-generation score is inferred.
 Current evidence:
 [anatomical-evals-20261117](../../../../docs/verification/garment-body-anatomical-evals-20261117/README.md).
+
+### Quick visual review gallery
+
+The static adapter in `visual_gallery.py` adds four provenance-labelled stages
+to each case: input, Image Gen, simulation/3D render and overlay. Image Gen is
+NOT_RUN in this dataset; state-only audits have explicit no-image placeholders.
+Some source projections/replay overlays are review-derived and labelled as such.
+Never relabel them as executor outputs or generated photos.
+
+After rebuilding, run `node tools/skill_evals/verify_visual_gallery.cjs --url URL
+--out OUT` on eval.html, iteration-1.html and iteration-3.html. Require all14case
+selections, four sections, decoded previews, honest missing-data slots, original
+file hashes, keyboard/pointer lightbox navigation, close/focus restoration and
+mobile behavior. The selected case must survive reload together with feedback;
+run the existing functional review verifier too. It selects case0 through the
+actual dropdown before testing the upstream feedback flow.
+
+Compare embedded run/grade/benchmark JSON, original run archive hashes and
+feedback keys with the prior commit. Gallery additions must leave them unchanged.
+Check the generated gallery JSON/asset hashes on the live exact-SHA Pages build.

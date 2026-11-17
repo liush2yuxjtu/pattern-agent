@@ -1,0 +1,43 @@
+{
+  "verdict": "PASS",
+  "candidate_base": "419643ff90d866ff4cf56460ff2d474215c82ca9",
+  "source_manifest_sha256": "06e7ca6bda3ad632cccce2346395185503a59f449b9cee719d7961b2cee9669d",
+  "verifier": ".agents/skills/verify/SKILL.md + references/skill-evals.md",
+  "scope": "Quick visual evidence galleries in three existing anatomical eval pages",
+  "flow": "Open eval \u2192 first image case \u2192 inspect input/ImageGen/simulation/overlay \u2192 change case \u2192 open image \u2192 previous/next/arrows/original \u2192 close/focus \u2192 reload/feedback \u2192 mobile",
+  "browser_driver": "Regular Playwright; Browser plugin not available",
+  "local_commands": [
+    {
+      "command": "python -m unittest discover -s tools/skill_evals -p test_*.py -q",
+      "exit_code": 0,
+      "observed": "20 tests passed"
+    },
+    {
+      "command": "node tools/skill_evals/verify_visual_gallery.cjs --url http://127.0.0.1:8767/garment-body/anatomical-evals/FILE --out OUT",
+      "exit_code": 0,
+      "observed": "eval.html52checks/6runs; iteration-1.html52checks/6runs; iteration-3.html34checks/2runs"
+    },
+    {
+      "command": "node tools/skill_evals/verify_functional_review.cjs --url http://127.0.0.1:8767/garment-body/anatomical-evals/eval.html --out OUT --expected-runs 6 --image-runs 3:6,4:6,5:6,6:6",
+      "exit_code": 0,
+      "observed": "31 checks passed including feedback across reload"
+    }
+  ],
+  "checks": [
+    "Four correctly labelled sections in every case",
+    "All actual previews decode and match their recorded SHA256",
+    "State-only audit empty states and ImageGen NOT_RUN are explicit",
+    "Pointer/keyboard lightbox navigation and focus restoration work",
+    "Case selector updates the actual upstream run and persists through reload",
+    "Desktop1440x1100/mobile390x844, no horizontal overflow or JS/console/network errors",
+    "Original14run archives, embedded grades/benchmarks and feedback storage keys unchanged"
+  ],
+  "findings_fixed": [
+    "Initial test launched before loopback server ready; rerun on ready server",
+    "Reload selected default image case rather than reviewed case; persisted case using page-specific key",
+    "Centered modal after visual screenshot inspection"
+  ],
+  "new_images": "Fit inputs are supplied synthetic references; pose/transfer source projections and replay overlays are review-derived and labelled, not added to executor archives or grading. ImageGen not executed.",
+  "publication": "PENDING exact-SHA live readback",
+  "cleanup": "Owned loopback server stopped after verification"
+}

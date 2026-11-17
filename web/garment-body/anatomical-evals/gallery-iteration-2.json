@@ -1,0 +1,482 @@
+{
+  "eval-1-state-audit-old_skill-run-1": {
+    "title": "Saved-state audit · Original skill",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. Input reference",
+        "images": [],
+        "status": "Not applicable",
+        "emptyTitle": "No input image",
+        "note": "This case audits saved JSON states and an OBJ, rather than an image. Use the case selector for image-fitting evidence."
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen output",
+        "images": [],
+        "status": "NOT RUN",
+        "emptyTitle": "Image Gen was not run",
+        "note": "These evaluations did not generate clothed photos. Simulation renders are shown separately and are not substituted here."
+      },
+      {
+        "key": "simulation",
+        "title": "3. Simulation / 3D render",
+        "images": [],
+        "status": "Not run in this case",
+        "emptyTitle": "No simulation image output",
+        "note": "This audit checks numerical saved-state measurements. It did not produce simulation images."
+      },
+      {
+        "key": "overlay",
+        "title": "4. Overlay comparison",
+        "images": [],
+        "status": "Not applicable",
+        "emptyTitle": "No image overlay",
+        "note": "This is a state-data audit, so no image fit or overlay was executed."
+      }
+    ],
+    "note": "Synthetic anatomical component evaluation. Image Gen, real-person measurement accuracy and cloth physics were not tested. Input and output file hashes are retained; original scores and raw artifacts remain available below."
+  },
+  "eval-1-state-audit-with_skill-run-1": {
+    "title": "Saved-state audit · Updated skill",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. Input reference",
+        "images": [],
+        "status": "Not applicable",
+        "emptyTitle": "No input image",
+        "note": "This case audits saved JSON states and an OBJ, rather than an image. Use the case selector for image-fitting evidence."
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen output",
+        "images": [],
+        "status": "NOT RUN",
+        "emptyTitle": "Image Gen was not run",
+        "note": "These evaluations did not generate clothed photos. Simulation renders are shown separately and are not substituted here."
+      },
+      {
+        "key": "simulation",
+        "title": "3. Simulation / 3D render",
+        "images": [],
+        "status": "Not run in this case",
+        "emptyTitle": "No simulation image output",
+        "note": "This audit checks numerical saved-state measurements. It did not produce simulation images."
+      },
+      {
+        "key": "overlay",
+        "title": "4. Overlay comparison",
+        "images": [],
+        "status": "Not applicable",
+        "emptyTitle": "No image overlay",
+        "note": "This is a state-data audit, so no image fit or overlay was executed."
+      }
+    ],
+    "note": "Synthetic anatomical component evaluation. Image Gen, real-person measurement accuracy and cloth physics were not tested. Input and output file hashes are retained; original scores and raw artifacts remain available below."
+  },
+  "eval-2-anatomical-fit-old_skill-run-1": {
+    "title": "Silhouette fit · Original skill",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. Input reference",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/input-front.png",
+            "label": "Input front",
+            "caption": "Supplied synthetic anatomical reference · front · not an e-commerce photograph",
+            "sha256": "4af4280f9459385c7e8b669cfa6f597d52f0dda273058ac2b0eb8eb7ef7fba31"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/input-side.png",
+            "label": "Input side",
+            "caption": "Supplied synthetic anatomical reference · side · not an e-commerce photograph",
+            "sha256": "5e68ee436234b2e589d8a70b9023d2ae51ffab95207de35a375526d893ed6011"
+          }
+        ],
+        "status": "Synthetic reference",
+        "emptyTitle": "No input image",
+        "note": "This case audits saved JSON states and an OBJ, rather than an image. Use the case selector for image-fitting evidence."
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen output",
+        "images": [],
+        "status": "NOT RUN",
+        "emptyTitle": "Image Gen was not run",
+        "note": "These evaluations did not generate clothed photos. Simulation renders are shown separately and are not substituted here."
+      },
+      {
+        "key": "simulation",
+        "title": "3. Simulation / 3D render",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/simulation-front.png",
+            "label": "Simulation front",
+            "caption": "Actual saved anatomical mesh render · front · not a cloth physics simulation",
+            "sha256": "b66e5db36f4fa90d6af6284dd04943d3f1ae116254eee6c1bb3dcc4f99865243"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/simulation-side.png",
+            "label": "Simulation side",
+            "caption": "Actual saved anatomical mesh render · side · not a cloth physics simulation",
+            "sha256": "ed26372bd6e088297d6ed2eb5bc16ad4afb422bc68891ce83f31f6bd1dc92c18"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/simulation-back.png",
+            "label": "Simulation back",
+            "caption": "Actual saved anatomical mesh render · back · not a cloth physics simulation",
+            "sha256": "0507485f35396b6e903cf7b2b6d818ad127e858225890dcaeb21d652cb527082"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/simulation-close-up.png",
+            "label": "Simulation close-up",
+            "caption": "Actual saved anatomical mesh render · close-up · not a cloth physics simulation",
+            "sha256": "e95b881d53588b86e753db203052e5dd02820af64907959c38d6dd8f74fcb58a"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/simulation-pose.png",
+            "label": "Simulation pose",
+            "caption": "Actual saved anatomical mesh render · pose · not a cloth physics simulation",
+            "sha256": "72467d537eb76dc05e7b026c9ba0fd3b12eebb149f489289a58a6d4e5ad85516"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/simulation-depth.png",
+            "label": "Simulation depth",
+            "caption": "Actual saved anatomical mesh render · depth · not a cloth physics simulation",
+            "sha256": "a30af90bba3391ffbd5276bce68398d83d13fcda7d3b596c3aa1e38f6aed706d"
+          }
+        ],
+        "status": "Saved mesh render",
+        "emptyTitle": "No simulation image output",
+        "note": "This audit checks numerical saved-state measurements. It did not produce simulation images."
+      },
+      {
+        "key": "overlay",
+        "title": "4. Overlay comparison",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/overlay-front.png",
+            "label": "Overlay front",
+            "caption": "Executed OpenCV fit overlay · green overlap, pink reference only, cyan model only",
+            "sha256": "96fd0e022b82f37fd9e979fd5c8c53a9e5a1a1f5c0d4ca79b85a5602c40324d4"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/old_skill/run-1/overlay-side.png",
+            "label": "Overlay side",
+            "caption": "Executed OpenCV fit overlay · green overlap, pink reference only, cyan model only",
+            "sha256": "02a59504c88a3b1cd1b06af3e0f7a9c764a7d919a3f6871f678eed7b91ca5ce8"
+          }
+        ],
+        "status": "OpenCV comparison",
+        "emptyTitle": "No image overlay",
+        "note": "This is a state-data audit, so no image fit or overlay was executed."
+      }
+    ],
+    "note": "Synthetic anatomical component evaluation. Image Gen, real-person measurement accuracy and cloth physics were not tested. Input and output file hashes are retained; original scores and raw artifacts remain available below."
+  },
+  "eval-2-anatomical-fit-with_skill-run-1": {
+    "title": "Silhouette fit · Updated skill",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. Input reference",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/input-front.png",
+            "label": "Input front",
+            "caption": "Supplied synthetic anatomical reference · front · not an e-commerce photograph",
+            "sha256": "4af4280f9459385c7e8b669cfa6f597d52f0dda273058ac2b0eb8eb7ef7fba31"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/input-side.png",
+            "label": "Input side",
+            "caption": "Supplied synthetic anatomical reference · side · not an e-commerce photograph",
+            "sha256": "5e68ee436234b2e589d8a70b9023d2ae51ffab95207de35a375526d893ed6011"
+          }
+        ],
+        "status": "Synthetic reference",
+        "emptyTitle": "No input image",
+        "note": "This case audits saved JSON states and an OBJ, rather than an image. Use the case selector for image-fitting evidence."
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen output",
+        "images": [],
+        "status": "NOT RUN",
+        "emptyTitle": "Image Gen was not run",
+        "note": "These evaluations did not generate clothed photos. Simulation renders are shown separately and are not substituted here."
+      },
+      {
+        "key": "simulation",
+        "title": "3. Simulation / 3D render",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/simulation-front.png",
+            "label": "Simulation front",
+            "caption": "Actual saved anatomical mesh render · front · not a cloth physics simulation",
+            "sha256": "23516a76da2f6bbe551299e9c17746a51841e3dbc9861279a1ae1bdcf8ee00ea"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/simulation-side.png",
+            "label": "Simulation side",
+            "caption": "Actual saved anatomical mesh render · side · not a cloth physics simulation",
+            "sha256": "f8282f8b8b0dc747c8231255e670b61de3e09ebdf244e9f26080f54d276f1b44"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/simulation-back.png",
+            "label": "Simulation back",
+            "caption": "Actual saved anatomical mesh render · back · not a cloth physics simulation",
+            "sha256": "d8b05a1f4b034cd08ceed2a743c228a5b317f5cc08fc0ce1dd6b15fa028e350a"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/simulation-close-up.png",
+            "label": "Simulation close-up",
+            "caption": "Actual saved anatomical mesh render · close-up · not a cloth physics simulation",
+            "sha256": "604081a585fd04be7f24a81f4d7d002580074dbd455debf04e33f02ffe8a82ee"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/simulation-pose.png",
+            "label": "Simulation pose",
+            "caption": "Actual saved anatomical mesh render · pose · not a cloth physics simulation",
+            "sha256": "b89068955fc0dcdb0b4adf081a2e62178fd24b739f57d87c998edd7f854fd3ee"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/simulation-depth.png",
+            "label": "Simulation depth",
+            "caption": "Actual saved anatomical mesh render · depth · not a cloth physics simulation",
+            "sha256": "6f4e24c981a77e7fe413616e07e0685f2c12abc99dd14ad2aed409e9a8088ce7"
+          }
+        ],
+        "status": "Saved mesh render",
+        "emptyTitle": "No simulation image output",
+        "note": "This audit checks numerical saved-state measurements. It did not produce simulation images."
+      },
+      {
+        "key": "overlay",
+        "title": "4. Overlay comparison",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/overlay-front.png",
+            "label": "Overlay front",
+            "caption": "Executed OpenCV fit overlay · green overlap, pink reference only, cyan model only",
+            "sha256": "b1dcf9098d05eebe16a5a73822aac6d91257bc716e5b2aa46e4fc5193403fa45"
+          },
+          {
+            "src": "visual/iteration-2/eval-2-anatomical-fit/with_skill/run-1/overlay-side.png",
+            "label": "Overlay side",
+            "caption": "Executed OpenCV fit overlay · green overlap, pink reference only, cyan model only",
+            "sha256": "87be7eb740cd7b54549b7ebd1272d1c082b74ea0a928cd8af8b678665aa6acdb"
+          }
+        ],
+        "status": "OpenCV comparison",
+        "emptyTitle": "No image overlay",
+        "note": "This is a state-data audit, so no image fit or overlay was executed."
+      }
+    ],
+    "note": "Synthetic anatomical component evaluation. Image Gen, real-person measurement accuracy and cloth physics were not tested. Input and output file hashes are retained; original scores and raw artifacts remain available below."
+  },
+  "eval-3-pose-depth-evidence-old_skill-run-1": {
+    "title": "Pose & depth · Original skill",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. Input reference",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/input-front.png",
+            "label": "Input front",
+            "caption": "Supplied source mesh reference render · front · not Image Gen",
+            "sha256": "6ae0acdd6e0c37aa7a14184e0251cb94597d2719017385d5fb365e992d3ec978"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/input-side.png",
+            "label": "Input side",
+            "caption": "Supplied source mesh reference render · side · not Image Gen",
+            "sha256": "43ecf29d18e4b8e01eb132c5b1c569c097a3349a578aba7d3170799566270949"
+          }
+        ],
+        "status": "Synthetic reference",
+        "emptyTitle": "No input image",
+        "note": "This case audits saved JSON states and an OBJ, rather than an image. Use the case selector for image-fitting evidence."
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen output",
+        "images": [],
+        "status": "NOT RUN",
+        "emptyTitle": "Image Gen was not run",
+        "note": "These evaluations did not generate clothed photos. Simulation renders are shown separately and are not substituted here."
+      },
+      {
+        "key": "simulation",
+        "title": "3. Simulation / 3D render",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/simulation-front.png",
+            "label": "Simulation front",
+            "caption": "Actual saved anatomical mesh render · front · not a cloth physics simulation",
+            "sha256": "6ae0acdd6e0c37aa7a14184e0251cb94597d2719017385d5fb365e992d3ec978"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/simulation-side.png",
+            "label": "Simulation side",
+            "caption": "Actual saved anatomical mesh render · side · not a cloth physics simulation",
+            "sha256": "43ecf29d18e4b8e01eb132c5b1c569c097a3349a578aba7d3170799566270949"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/simulation-back.png",
+            "label": "Simulation back",
+            "caption": "Actual saved anatomical mesh render · back · not a cloth physics simulation",
+            "sha256": "a2950324f8be9cf542c6fb92c6eb6baa6e822b96b4969c9d7bad483aa9a506d3"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/simulation-close-up.png",
+            "label": "Simulation close-up",
+            "caption": "Actual saved anatomical mesh render · close-up · not a cloth physics simulation",
+            "sha256": "e4293cf48b8e9f0b8de344ed6480a970f04d9b77359ee61ded2772626535cb7e"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/simulation-pose.png",
+            "label": "Simulation pose",
+            "caption": "Actual saved anatomical mesh render · pose · not a cloth physics simulation",
+            "sha256": "4d9f4b3f4d18497c880c4e813daacfa6aace7c99a38f7757331b46623642e6a4"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/simulation-depth.png",
+            "label": "Simulation depth",
+            "caption": "Actual saved anatomical mesh render · depth · not a cloth physics simulation",
+            "sha256": "cc1bbd656a7bf10485f0200edc54f7d923529a896c3bade6e06a026cc0bec4df"
+          }
+        ],
+        "status": "Saved mesh render",
+        "emptyTitle": "No simulation image output",
+        "note": "This audit checks numerical saved-state measurements. It did not produce simulation images."
+      },
+      {
+        "key": "overlay",
+        "title": "4. Overlay comparison",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/overlay-front.png",
+            "label": "Overlay front",
+            "caption": "Review-derived raster replay overlay · source OBJ vs saved output · front · green agreement is consistency, not real-person accuracy",
+            "sha256": "20f85b70ec7d20eba92a13f1883c724861ee5834c8d51a978f69d8eef31183c3"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/old_skill/run-1/overlay-side.png",
+            "label": "Overlay side",
+            "caption": "Review-derived raster replay overlay · source OBJ vs saved output · side · green agreement is consistency, not real-person accuracy",
+            "sha256": "b5aa3ac39e81764443e33e612b4cc0074b9aa65da416191cd98bb024ee1586c5"
+          }
+        ],
+        "status": "OpenCV comparison",
+        "emptyTitle": "No image overlay",
+        "note": "This is a state-data audit, so no image fit or overlay was executed."
+      }
+    ],
+    "note": "Synthetic anatomical component evaluation. Image Gen, real-person measurement accuracy and cloth physics were not tested. Source projections and replay overlays marked “review-derived” were created for this gallery; they do not change the original run files or grades."
+  },
+  "eval-3-pose-depth-evidence-with_skill-run-1": {
+    "title": "Pose & depth · Updated skill",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. Input reference",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/input-front.png",
+            "label": "Input front",
+            "caption": "Supplied source mesh reference render · front · not Image Gen",
+            "sha256": "6ae0acdd6e0c37aa7a14184e0251cb94597d2719017385d5fb365e992d3ec978"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/input-side.png",
+            "label": "Input side",
+            "caption": "Supplied source mesh reference render · side · not Image Gen",
+            "sha256": "43ecf29d18e4b8e01eb132c5b1c569c097a3349a578aba7d3170799566270949"
+          }
+        ],
+        "status": "Synthetic reference",
+        "emptyTitle": "No input image",
+        "note": "This case audits saved JSON states and an OBJ, rather than an image. Use the case selector for image-fitting evidence."
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen output",
+        "images": [],
+        "status": "NOT RUN",
+        "emptyTitle": "Image Gen was not run",
+        "note": "These evaluations did not generate clothed photos. Simulation renders are shown separately and are not substituted here."
+      },
+      {
+        "key": "simulation",
+        "title": "3. Simulation / 3D render",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/simulation-front.png",
+            "label": "Simulation front",
+            "caption": "Actual saved anatomical mesh render · front · not a cloth physics simulation",
+            "sha256": "6ae0acdd6e0c37aa7a14184e0251cb94597d2719017385d5fb365e992d3ec978"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/simulation-side.png",
+            "label": "Simulation side",
+            "caption": "Actual saved anatomical mesh render · side · not a cloth physics simulation",
+            "sha256": "43ecf29d18e4b8e01eb132c5b1c569c097a3349a578aba7d3170799566270949"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/simulation-back.png",
+            "label": "Simulation back",
+            "caption": "Actual saved anatomical mesh render · back · not a cloth physics simulation",
+            "sha256": "a2950324f8be9cf542c6fb92c6eb6baa6e822b96b4969c9d7bad483aa9a506d3"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/simulation-close-up.png",
+            "label": "Simulation close-up",
+            "caption": "Actual saved anatomical mesh render · close-up · not a cloth physics simulation",
+            "sha256": "e4293cf48b8e9f0b8de344ed6480a970f04d9b77359ee61ded2772626535cb7e"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/simulation-pose.png",
+            "label": "Simulation pose",
+            "caption": "Actual saved anatomical mesh render · pose · not a cloth physics simulation",
+            "sha256": "4d9f4b3f4d18497c880c4e813daacfa6aace7c99a38f7757331b46623642e6a4"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/simulation-depth.png",
+            "label": "Simulation depth",
+            "caption": "Actual saved anatomical mesh render · depth · not a cloth physics simulation",
+            "sha256": "cc1bbd656a7bf10485f0200edc54f7d923529a896c3bade6e06a026cc0bec4df"
+          }
+        ],
+        "status": "Saved mesh render",
+        "emptyTitle": "No simulation image output",
+        "note": "This audit checks numerical saved-state measurements. It did not produce simulation images."
+      },
+      {
+        "key": "overlay",
+        "title": "4. Overlay comparison",
+        "images": [
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/overlay-front.png",
+            "label": "Overlay front",
+            "caption": "Review-derived raster replay overlay · source OBJ vs saved output · front · green agreement is consistency, not real-person accuracy",
+            "sha256": "20f85b70ec7d20eba92a13f1883c724861ee5834c8d51a978f69d8eef31183c3"
+          },
+          {
+            "src": "visual/iteration-2/eval-3-pose-depth-evidence/with_skill/run-1/overlay-side.png",
+            "label": "Overlay side",
+            "caption": "Review-derived raster replay overlay · source OBJ vs saved output · side · green agreement is consistency, not real-person accuracy",
+            "sha256": "b5aa3ac39e81764443e33e612b4cc0074b9aa65da416191cd98bb024ee1586c5"
+          }
+        ],
+        "status": "OpenCV comparison",
+        "emptyTitle": "No image overlay",
+        "note": "This is a state-data audit, so no image fit or overlay was executed."
+      }
+    ],
+    "note": "Synthetic anatomical component evaluation. Image Gen, real-person measurement accuracy and cloth physics were not tested. Source projections and replay overlays marked “review-derived” were created for this gallery; they do not change the original run files or grades."
+  }
+}
