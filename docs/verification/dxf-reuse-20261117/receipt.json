@@ -1,0 +1,18 @@
+{
+  "verdict": "PASS",
+  "stage": "local precommit",
+  "base_commit": "1098ecad867708b2353163946a6fec6e1f8d2a3c",
+  "source_sha256": "e77db4e7cd6ea82d4ff8a55a47a2de0a4ecaff18274f3aa21cf77ecfa5c24049",
+  "commands": [
+    "PYTHONPATH=services/dxf-preview python -m unittest discover -s services/dxf-preview/tests -v",
+    "python scripts/verify_dxf_service.py --base-url http://127.0.0.1:8765 --output work/verify-reuse-pattern-local",
+    "git diff --check"
+  ],
+  "unit_tests": 10,
+  "browser_checks": 15,
+  "scope": "Prominent saved-pattern reuse button, real original bytes, prefilled form and direct link; no uploaded-pattern persistence",
+  "original_and_glb_hashes_unchanged": true,
+  "physical_fit": "NOT_RUN",
+  "strict_geometry_release": "NOT_RUN",
+  "cleanup": "Verifier browsers closed. Local server retained until release source comparison."
+}

@@ -28,7 +28,9 @@ Require independent GLB decoding, finite nondegenerate triangles, changed geomet
 for contour edits and uniform scale, correct units, reordered/reversed/translated
 input, unrelated/same-count-wrong-shape rejection. Drive actual raw-DXF HTTP and
 file-picker upload, sample conversion, mesh pixels, drag/zoom/wireframe/reset,
-model/report downloads with hashes, invalid upload clearing stale model, 375px
+model/report downloads with hashes, invalid upload clearing stale model, saved-pattern
+reuse button/form repopulation/re-generation, direct reuse link, unknown saved-ID
+rejection, 375px
 mobile, network-disabled self-contained HTML and WebGL-disabled fallback.
 
 Capture `verification.json`, raw test output and PNGs under

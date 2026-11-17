@@ -20,7 +20,15 @@
   }catch(e){cleanup();status(e.message,'error');}finally{busy(false);}
  }
  $('convert-form').addEventListener('submit',async e=>{e.preventDefault();const f=$('dxf-file').files[0];if(!f){cleanup();lastInput=null;status('请选择需要转换的纸样文件。','error');return;}if(f.size>524288){cleanup();lastInput=null;status('文件超过512千字节限制。','error');return;}await convert(await f.arrayBuffer(),f.name,$('units').value);});
- $('sample').addEventListener('click',async()=>{try{busy(true);status('正在读取项目示例…');const r=await fetch('/assets/sample.dxf');if(!r.ok)throw Error('示例文件暂不可用。');$('units').value='mm';await convert(await r.arrayBuffer(),'女士紧身长袖上衣示例.dxf','mm');}catch(e){status(e.message,'error');}finally{busy(false);}});
+ async function reusePattern(){
+  cleanup();lastInput=null;$('dxf-file').value='';busy(true);status('正在载入已有纸样…');
+  try{const r=await fetch('/assets/sample.dxf');if(!r.ok)throw Error('已有纸样暂时无法读取，请稍后重试。');const bytes=await r.arrayBuffer();const selection=new DataTransfer();selection.items.add(new File([bytes],'女紧身款T恤.dxf',{type:'application/dxf'}));$('dxf-file').files=selection.files;$('units').value='mm';await convert(bytes,'女紧身款T恤.dxf','mm');}
+  catch(e){cleanup();lastInput=null;$('dxf-file').value='';status(e.message,'error');}finally{busy(false);}
+ }
+ $('sample').addEventListener('click',reusePattern);
  $('wireframe').addEventListener('change',()=>renderer?.draw());$('reset-model').addEventListener('click',()=>renderer?.reset());
  $('download-bundle').addEventListener('click',async()=>{if(!lastInput)return;const input=lastInput;$('download-bundle').disabled=true;try{const r=await fetch('/api/preview?units='+encodeURIComponent(input.units)+'&format=bundle',{method:'POST',headers:{'Content-Type':'application/dxf'},body:input.bytes});if(!r.ok){const d=await r.json();throw Error(d.error?.message||'预览包生成失败。');}if(r.headers.get('X-Conversion-Id')!==input.id)throw Error('转换版本发生变化，请重新生成预览。');const u=url(await r.blob());const a=document.createElement('a');a.href=u;a.download='pattern-agent-preview.zip';a.click();status('离线预览包已生成并下载。');}catch(e){status(e.message,'error');}finally{$('download-bundle').disabled=false;}});
+ const reusable=new URLSearchParams(location.search).get('reuse');
+ if(reusable==='fitted-tshirt-v1')reusePattern();
+ else if(reusable)status('没有找到这份已有纸样，请选择上方纸样或上传文件。','error');
 })();

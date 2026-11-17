@@ -26,7 +26,12 @@ def verify(base,out,expected=None,browser='/usr/bin/chromium'):
             assert p.goto(base,wait_until='networkidle').status==200
             assert p.title()=='Pattern Agent · 纸样转三维预览';p.screenshot(path=str(out/'initial-desktop.png'),full_page=True)
             p.locator('#submit').click();assert p.locator('#status').get_attribute('data-state')=='error'
+            assert p.get_by_role('button',name='复用已有纸样',exact=True).is_visible()
             p.locator('#sample').click();p.wait_for_function('document.querySelector("#model-canvas").dataset.ready==="true"',timeout=90000);assert p.locator('#status').inner_text().startswith('转换完成')
+            assert p.locator('#result-file').inner_text()=='女紧身款T恤.dxf'
+            assert p.locator('#dxf-file').evaluate('(e)=>e.files[0].name')=='女紧身款T恤.dxf'
+            assert p.locator('#dxf-file').evaluate('(e)=>e.files[0].size')==len(sample)
+            assert p.locator('#units').input_value()=='mm';checks.append('reuse button loads the saved original DXF and populates the upload form')
             canvas=p.locator('#model-canvas');raw=canvas.screenshot()
             from PIL import Image,ImageChops
             im=Image.open(io.BytesIO(raw)).convert('RGB');bg=Image.new('RGB',im.size,im.getpixel((0,0)));diff=ImageChops.difference(im,bg).getbbox();assert diff and (diff[2]-diff[0])*(diff[3]-diff[1])>im.width*im.height*.1
@@ -44,12 +49,17 @@ def verify(base,out,expected=None,browser='/usr/bin/chromium'):
                 assert z.testzip() is None;assert z.read('model.glb')==model;html=z.read('preview.html').decode();assert '__GENERATED_GLB__' not in html and '__RENDERER_JS__' not in html
             checks.append('real model/report downloads match output hash; offline bundle contains the same generated mesh')
             p.screenshot(path=str(out/'converted-desktop.png'),full_page=True)
+            # Reuse fills the form, so the normal Generate button works without another upload.
+            with p.expect_response(lambda r:'/api/preview?' in r.url and r.request.method=='POST') as response:p.locator('#submit').click()
+            assert response.value.status==200;p.wait_for_function('document.querySelector("#model-canvas").dataset.ready==="true"');checks.append('reused pattern can be regenerated from the populated form')
             # Real file picker path, not merely the preset sample button.
             p.locator('#dxf-file').set_input_files({'name':'uploaded.dxf','mimeType':'application/dxf','buffer':sample});p.locator('#units').select_option('mm');p.locator('#submit').click();p.wait_for_function('document.querySelector("#result-file").textContent==="uploaded.dxf" && document.querySelector("#model-canvas").dataset.ready==="true"',timeout=60000);checks.append('real uploaded file returns and renders the same supported model')
             assert not errors,errors
             before_rejection=len(errors)
             p.locator('#dxf-file').set_input_files({'name':'invalid.dxf','mimeType':'application/dxf','buffer':b'bad'});p.locator('#submit').click();p.wait_for_function('document.querySelector("#status").dataset.state==="error"');assert not p.locator('#result').is_visible();assert not p.locator('#model-canvas').is_visible();p.screenshot(path=str(out/'rejected-input.png'),full_page=True);checks.append('invalid upload clears stale successful model and downloads')
             expected_console=errors[before_rejection:];assert all('status of 400' in x for x in expected_console),expected_console;del errors[before_rejection:]
+            p.goto(urljoin(base,'?reuse=fitted-tshirt-v1#convert'),wait_until='networkidle');p.wait_for_function('document.querySelector("#model-canvas").dataset.ready==="true"',timeout=60000);assert p.locator('#result-file').inner_text()=='女紧身款T恤.dxf';assert p.locator('#download-model').is_visible();p.screenshot(path=str(out/'reuse-direct.png'),full_page=True);checks.append('direct reuse link generates the saved pattern without uploading')
+            p.goto(urljoin(base,'?reuse=unavailable'),wait_until='networkidle');assert '没有找到' in p.locator('#status').inner_text();assert not p.locator('#result').is_visible();assert p.locator('#dxf-file').evaluate('(e)=>e.files.length')==0;checks.append('unknown saved pattern is explicitly rejected without showing stale output')
             p.set_viewport_size({'width':375,'height':812});p.goto(base,wait_until='networkidle');assert p.evaluate('document.documentElement.scrollWidth<=innerWidth');p.locator('#sample').click();p.wait_for_function('document.querySelector("#model-canvas").dataset.ready==="true"',timeout=60000);assert p.evaluate('document.documentElement.scrollWidth<=innerWidth');p.screenshot(path=str(out/'mobile.png'),full_page=True);checks.append('375 px mobile actual conversion without page overflow')
             assert not errors,errors;assert not requests,requests
             offline=b.new_context(offline=True,viewport={'width':1000,'height':900});pg=offline.new_page();pg.set_content(html,wait_until='load');pg.wait_for_function('document.querySelector("#canvas").dataset.ready==="true"');pg.locator('#wireframe').check();pg.screenshot(path=str(out/'offline.png'),full_page=True);offline.close();checks.append('downloaded self-contained HTML runs with network disabled')
