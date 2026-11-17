@@ -70,4 +70,9 @@ verifier after verifying its SHA-256. The full strict run may exceed one tool
 call's 60 seconds: use a detached Python subprocess with a log and completion
 file, then inspect that same process until completion. No TLS bypass. Retrieve
 evidence in sub-megabyte chunks, validate archive hashes and stop the session.
+Reuse the returned `scrapeId` for every follow-up; `conversationId` correlates
+calls but does not select the same machine. Opening the URL again creates a new
+session without the prepared files. Cross-CPU floating-point normal rounding
+may change a GLB digest; independently compare all geometry accessors rather
+than claiming cross-platform byte identity from the source hash alone.
 Close local browsers and stop only the uvicorn instance started for this task.

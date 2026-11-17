@@ -1,0 +1,15 @@
+{
+  "local_sha256": "dd4742ab120cb8e8abc2621ae42070657a3f07da885bd71d9ffc12fb65d15031",
+  "cloud_sha256": "f67f74dfbbff9859e394a3b8e8b1c0f349edbfda2a22ed65d1d5b979b09f9a86",
+  "bytes_each": 2477900,
+  "json_certificate_equal": true,
+  "positions_indices_uvs_and_source_maps_byte_equal": true,
+  "binary_differences": [
+    {
+      "accessor": 1,
+      "different_values": 1,
+      "max_abs_difference": 9.972824307651263e-17
+    }
+  ],
+  "interpretation": "Different CPU/math runtime rounding of one near-zero vertex normal; geometry and certificate bytes are identical. Byte reproducibility is verified within the fixed hosted runtime, not claimed across all math platforms."
+}

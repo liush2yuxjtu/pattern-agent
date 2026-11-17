@@ -1,0 +1,33 @@
+{
+  "verdict": "PASS",
+  "scope": "corrected static source-bound outer shell, not fit or production cutting",
+  "observed_at_utc": "2026-11-17T09:30:45.937476+00:00",
+  "deployed_source_commit": "6d65276cd1fec8510cbd07a9208a11e6131224fd",
+  "deployment_id": "dpl_2EGqdZFAW5ELhbiyLBTR2W3vrQLr",
+  "source_sha256": "6c09e777a8fa6d51869b4581dfbae6eb386ef693fd59b35bc1abd507ac328ee4",
+  "source_files_checked": 17,
+  "uploaded_source_files": 22,
+  "model_sha256": "f67f74dfbbff9859e394a3b8e8b1c0f349edbfda2a22ed65d1d5b979b09f9a86",
+  "model_bytes": 2477900,
+  "local_unit_tests": 27,
+  "analytic_controls_inside_suite": 23,
+  "live_browser_checks": 16,
+  "first_http_seconds": 12.505,
+  "seam_pairs": 15,
+  "max_seam_gap_mm": 0.0,
+  "max_3d_length_error_mm": 0.0737491202355045,
+  "proper_intersections": 0,
+  "source_original_pattern": "FAIL under sewing contract; original bytes preserved",
+  "commands": [
+    "python scripts/verify_dxf_service.py --base-url https://pattern-agent-convert.vercel.app --expected-source 6c09e777a8fa6d51869b4581dfbae6eb386ef693fd59b35bc1abd507ac328ee4 --browser /usr/bin/google-chrome --output /tmp/verified-seams/live",
+    "python services/dxf-preview/verify_connections.py --dxf work/seam-audit/live-http/original.dxf --glb work/seam-audit/live-browser/offline-model.glb --units mm --out docs/verification/dxf-seams-20261117/live/independent-browser-reopen.json"
+  ],
+  "cleanup": "Remote Playwright browsers closed; both task-owned Firecrawl sessions stopped. Task-owned local uvicorn stopped after verification.",
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "docs_followup_gate": {
+    "verdict": "SKIP",
+    "reason": "Only documentation, operational recipe and captured evidence changed after the deployed source commit. Integrity checks and independent downloaded GLB audit PASS; no executable runtime changes."
+  }
+}

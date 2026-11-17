@@ -2,7 +2,7 @@
 
 将本项目女士紧身长袖上衣的文本 DXF 转成可旋转的 GLB 外观模型。每次根据上传几何重新计算，可在 Linux 或 Vercel Python Functions 运行，不依赖 Blender、桌面软件、外部模型服务或任务数据库。
 
-[复用已有纸样并生成预览](https://pattern-agent-convert.vercel.app/?reuse=fitted-tshirt-v1#convert) · [打开在线转换网站](https://pattern-agent-convert.vercel.app/) · [交互接口文档](https://pattern-agent-convert.vercel.app/docs) · [线上验收证据](../../docs/verification/dxf-service-20261117/)
+[复用已有纸样并生成预览](https://pattern-agent-convert.vercel.app/?reuse=fitted-tshirt-v1#convert) · [打开在线转换网站](https://pattern-agent-convert.vercel.app/) · [交互接口文档](https://pattern-agent-convert.vercel.app/docs) · [裁片连接线上验收证据](../../docs/verification/dxf-seams-20261117/live/)
 
 版本2将实际纸样三角化为五个来源明确的裁片面域，按15条声明的缝合关系焊接为一个静态外壳，并重新读取最终GLB进行独立检查。原始缝线存在差异，当前模型采用另存的修正缝合线；原始DXF字节保持不变。人体厚度、姿态和材质仍为展示假定，未进行校准布料求解，不保证所有片内尺寸等距保留。PRJ与EMF不作为此接口输入。
 
@@ -52,7 +52,7 @@ curl --fail-with-body -X POST \
 | `json` | 转换报告及 `glb_base64`，供网页或其他函数接入 |
 | `bundle` | 模型、报告、自包含离线预览、原始DXF、修正缝合线SVG/JSON及逐缝验收报告ZIP |
 
-成功响应携带 `X-Conversion-Id` 和 `X-Output-Sha256`，前端核对模型 SHA-256 后显示。同一输入、单位、模板及引擎版本返回同一模型字节。转换编号用于核对版本，**不是持久任务编号**。接口没有查询任务、异步队列或长期下载地址；调用者应保存返回文件。
+成功响应携带 `X-Conversion-Id` 和 `X-Output-Sha256`，前端核对模型 SHA-256 后显示。在固定运行环境中，同一输入、单位、模板及引擎版本重复返回相同模型字节；跨CPU／数学库不承诺逐字节相同，见下方实际比较。转换编号用于核对版本，**不是持久任务编号**。接口没有查询任务、异步队列或长期下载地址；调用者应保存返回文件。
 
 错误返回 `{"status":"rejected","error":{"code":"…","message":"…"}}`。损坏文件／缺少单位为 400，过大文件为 413，不适用的模板／单位尺寸组合为 422。无法可靠闭合或未通过连接验收时为422 `SEWING_ASSEMBLY_REJECTED`／`SEWING_VERIFICATION_FAILED`；单实例正在转换时为503 `BUSY`，调用方可退避重试；这不是跨实例流量限制。未承诺并发容量或服务可用性等级。
 
@@ -92,6 +92,14 @@ python scripts/verify_dxf_service.py \
 ```
 
 测试需要测试环境中的 `httpx`、Playwright、Pillow 及 `/usr/bin/chromium`；这些不打包进函数。验证器还支持 `--browser` 指定现有浏览器，以及 `--expected-source` 核对部署的实际源摘要。操作路径见[项目验证配方](../../.agents/skills/verify/references/dxf-service.md)。
+
+## 第二版当前发布
+
+修正版部署 `dpl_2EGqdZFAW5ELhbiyLBTR2W3vrQLr` 已为READY，源码提交为 `6d65276cd1fec8510cbd07a9208a11e6131224fd`，运行时源摘要为 `6c09e777a8fa6d51869b4581dfbae6eb386ef693fd59b35bc1abd507ac328ee4`。生产别名沿用本页入口；[固定部署地址](https://pattern-agent-convert-1utxk6jp0-nyn5255-8475s-projects.vercel.app/)保留原有登录保护。
+
+本地27项测试、检查器23个解析对照、线上匿名浏览器16组验收均通过。线上首轮HTTP实测12.505秒、输出2,477,900字节；属于单次样本，不是性能保证。重复调用、网页下载、离线包内模型的摘要均为 `f67f74dfbbff9859e394a3b8e8b1c0f349edbfda2a22ed65d1d5b979b09f9a86`。下载后再次用独立检查器读取实际字节，15组缝合、间隙0毫米、最大三维缝长误差0.07375毫米、穿插0；边界仅含领口、衣摆及两袖口。
+
+本地与线上GLB的几何位置、索引、二维面域和证书逐字节相同，但一个接近零的顶点法线分量因数学运行环境存在约 `9.97×10⁻¹⁷` 的差异，因此文件摘要不同。这个差异不涉及连接几何；完整对照、源摘要、实际报告和截图见[线上原始证据](../../docs/verification/dxf-seams-20261117/live/)。后续文档提交不代表函数再次部署。
 
 ## 第一版发布历史
 
