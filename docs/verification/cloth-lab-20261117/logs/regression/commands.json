@@ -1,0 +1,53 @@
+[
+  {
+    "command": [
+      "python",
+      "scripts/build_pages.py"
+    ],
+    "exit": 0,
+    "log": "0.log"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_verify_artifacts.py",
+      "-v"
+    ],
+    "exit": 0,
+    "log": "1.log"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_artifacts.py",
+      "--cli",
+      "work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli"
+    ],
+    "exit": 0,
+    "log": "2.log"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_mcp.py"
+    ],
+    "exit": 0,
+    "log": "3.log"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_pages.py",
+      "--output",
+      "work/cloth-lab/publish-pages"
+    ],
+    "exit": 0,
+    "log": "4.log"
+  }
+]

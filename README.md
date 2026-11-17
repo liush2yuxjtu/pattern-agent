@@ -226,3 +226,15 @@ this public repository.
 
 
 The [anatomical skill functional review](https://liush2yuxjtu.github.io/pattern-agent/garment-body/anatomical-evals/eval.html) contains 14 executed subagent runs, real mesh fits, OpenCV overlays, projected joints and raw depth checks. The selected core instructions are 40.03% shorter; this is not an end-to-end clothed image generation benchmark or a native Claude trigger score.
+
+## 单文件 WASM 布料实验室
+
+[在线打开](https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/) ·
+[实现与复现](web/cloth-lab/README.md) ·
+[本地验证配方](.agents/skills/verify/references/cloth-lab.md)。
+
+同一份毫米纸样驱动二维 SVG 和三维材料坐标；单个 HTML 内嵌 WASM、Three.js
+以及 MakeHuman 成人女性资产。实际人体三角形 BVH 碰撞、理想缝合、正交各向异性
+StVK 应力应变、故障对照与状态化离线 HTML 导出均有独立数值及浏览器验证。
+材料是合成参数，局部高应变保留可见警告；没有布料自碰撞、实物标定或实体适体批准。
+这不改变历史 T 恤 FAIL，也不将几何/热图验证升级为生产批准。

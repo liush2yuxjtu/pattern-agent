@@ -1,0 +1,51 @@
+{
+  "verdict": "PASS",
+  "scope": "WASM runtime, stated synthetic constitutive model, sewing and discrete actual-body collision; calibration/fit NOT_RUN",
+  "baseCommit": "eb1ea230e81298bd0dd036e0d454a209d88bf700",
+  "verifiedHTML": {
+    "fingerprint": "c9f6bedb3ee15593140e5fb9c124f6bdf54f1db5dd6c1eb6a33f407efff92d21",
+    "htmlSha256": "2581406c2493386262fc3d0bb0af0b479eb55119021ae299ac1cafcd26dc0a1f",
+    "htmlBytes": 2056709,
+    "wasmSha256": "222409d559bb14a7de73f35c82c057599d9f3e69af33254e28a8f86de3b2b682",
+    "bodySourceSha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "vertices": 13380,
+    "triangles": 26756,
+    "tools": {
+      "zig": "0.14.1",
+      "esbuild": "0.25.12"
+    }
+  },
+  "verifier": ".agents/skills/verify/references/cloth-lab.md",
+  "localReceipt": "local/receipt.json",
+  "kernelTests": "3 passed",
+  "regression": "logs/regression/commands.json",
+  "negativeControls": [
+    "mismatch",
+    "open",
+    "reverse",
+    "collisionDisabledActualPenetration",
+    "fabricatedStress",
+    "substituteBody"
+  ],
+  "limitations": [
+    "high local strain warning retained",
+    "synthetic material parameters",
+    "no cloth self collision",
+    "no continuous collision detection",
+    "no calibrated fabric or sewn sample",
+    "rigid generic body"
+  ],
+  "visualReview": {
+    "reviewed": [
+      "step-300-fabric.png",
+      "strain.png",
+      "stress.png",
+      "fault-reverse.png",
+      "mobile.png"
+    ],
+    "observations": "Real rendered MakeHuman and skirt; distinct tensor fields; reversed-seam distortion and FAIL visible; high-strain warning retained; mobile no overflow."
+  },
+  "timestamp": "2026-11-17T12:07:25.722969+00:00",
+  "candidateBeforeAmend": "5822ac600fc6edd30f4dac3b9607e613eed134c5",
+  "reconciledUnchangedApp": true
+}

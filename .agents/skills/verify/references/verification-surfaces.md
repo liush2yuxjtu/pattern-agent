@@ -27,4 +27,5 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | legacy-cloth | archived evidence; unavailable legacy runtime | [legacy-cloth.md](legacy-cloth.md) |
 | skill-evals | skill package/helper CLIs, native metadata routing, editable query review | [skill-evals.md](skill-evals.md) |
 | human-studio | anatomical mesh, cm shape calibration, joint skinning and exported file readback | [human-studio.md](human-studio.md) |
+| cloth-lab | inline WASM, actual-body collision, synthetic material tensors and stateful HTML | [cloth-lab.md](cloth-lab.md) |
 | product-case | original garment photo, six native generated images, adjustable body handoff and OpenCV evidence gallery | [product-case.md](product-case.md) |
