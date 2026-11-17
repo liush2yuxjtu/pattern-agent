@@ -38,6 +38,8 @@ or read the [installation guide](.agents/skills/garment-body-six-view/INSTALL.md
 The [published skill workflow and download](https://liush2yuxjtu.github.io/pattern-agent/garment-body/skill/) now use Human Studio: anatomical mesh, 12 cm dimensions, 163 bones, versioned state, OBJ cm / GLB m and independent neutral-mesh checks.
 
 The [real garment case gallery](https://liush2yuxjtu.github.io/pattern-agent/garment-body/product-case/eval.html) shows the original ASOS reference, six separate native Image Gen outputs, actual anatomical renders and OpenCV before/after overlays. It preserves the failed first generation and separates conditional avatar fitting from real-person measurements. The case model opens directly in Human Studio with editable cm dimensions and joint angles.
+
+The [single-state functional review](https://liush2yuxjtu.github.io/pattern-agent/garment-body/single-state-evals/eval.html) compares the clarified skill with its frozen predecessor in six actual subagent executions: joint cm/bone/pose/camera fitting, same-action editor persistence, and original-photo fitting. Each final body's views share one pose and mesh; numerical, browser and visual checks are reported separately.
 Historical loft evaluations retain their original scope and scores.
 
 [Native trigger evaluation tools](tools/skill_evals/README.md) include the pinned

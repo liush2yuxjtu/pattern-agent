@@ -1,0 +1,34 @@
+{
+  "frozen_utc": "2026-11-17T10:46:21.686763+00:00",
+  "skill_old_sha256": "5b3e2ada5849dcb63ab5aebb102436d34bc6037120a7fff5ed14cc868cfb5880",
+  "skill_new_sha256": "23604bd1cd839da203d5a7243b25ff56313bd840586a8e7ad55c0a94ba0ff669",
+  "assertions": {
+    "1": [
+      "Actual anatomical neutral and posed meshes are finite and independently match the saved dimensions/full bone pose; neutral cm errors are <=0.2cm.",
+      "All six final geometry views use one identical body, full pose and posed mesh; independent re-projection agrees and back is never fitted as a separate pose.",
+      "Executed optimization changes at least one cm girth and one arm-length control/actual rest bone segment, arm joint angles, and global camera parameters within disclosed bounds; height stays170cm.",
+      "Final front and side bare-body silhouette IoU are each >=0.93 and improve by >=0.015 over the source-camera biased initial comparison; reference pixels remain frozen.",
+      "Mean training projected joint error is <=4px and at least50% lower than the biased initial joint error; held-out back silhouette IoU is >=0.93 using the same final state.",
+      "Real source-camera initial, camera-only and final comparisons plus OpenCV overlays and block history are saved; reported IoU/Dice agree with independently reopened images.",
+      "Six actual renders include correctly projected pose and finite nonempty raw Z-buffer/valid mask; one saved state remains cm/pose-adjustable and the report calls this a controlled model test, not real-person measurement."
+    ],
+    "2": [
+      "Actual Human Studio loads the supplied target action and UI waist+3/upperArmLength+2/forearmLength+1cm edits change real vertices and actual rest-bone lengths with neutral targets <=0.2cm.",
+      "Every original joint angle is preserved within0.1degree after cm edits; the target action is never replaced by A-pose.",
+      "Real front/side/back camera-button interactions preserve exactly the same final dimensions, full pose and posed geometry, with visible distinct screenshots.",
+      "Saved and actually imported/reloaded JSON agrees with current cm/pose; actual posed OBJ independently matches the saved anatomical state in centimetres.",
+      "Invalid or off-step input/state is visibly rejected or normalized consistently without corrupting the current anatomical body/target action.",
+      "Actual375px mobile viewport has no horizontal overflow or runtime errors; executable browser replay, before/after geometry and screenshots are delivered."
+    ],
+    "3": [
+      "Original-photo fitting actually optimizes cm/bone parameters, joint pose and camera from the provided neutral M initialization; no old fitted candidate/other executor/oracle is used.",
+      "One final complete body/pose/posed mesh supplies all front/side/back views, and independent projections match; only cameras may differ.",
+      "Mean visible eye/nose/wrist reprojection error is <=15px and at least50% lower than the initial projection at original1000x1276 resolution; uncertain hidden shoulder/elbow annotations are distinguished.",
+      "The declared source-fitting objective improves by at least10% with actual block history and before/after OpenCV masks/overlays; independent IoU/Dice readback matches the delivered files.",
+      "Actual front and side meshes show a plausible version of the shirt-holding action without obvious buried hands, severe wrist folding or grossly misplaced arms; visible anatomical pose quality is reviewed separately from2Derror.",
+      "Neutral cm and actual posed mesh are independently checked, saved final state can be consumed by Human Studio, and arm ruler lengths are distinguished from actual bone distances.",
+      "Source171cm/S, authorized M170cm initialization, conditional fitted sizes and unknown dimensions are distinct; no fresh ImageGen/true-person accuracy/perfect3Dmatch is claimed without evidence."
+    ]
+  },
+  "protocol": "3cases x2independent explicitly injected subagents, once each; controlledfit/editor and one original-photo attempt. No native Claude trigger or population benchmark claim. No new ImageGen. Null unavailable token metadata; do not invent notification timing."
+}

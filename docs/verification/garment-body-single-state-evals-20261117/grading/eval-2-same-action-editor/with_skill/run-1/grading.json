@@ -1,0 +1,91 @@
+{
+  "expectations": [
+    {
+      "text": "Actual Human Studio loads the supplied target action and UI waist+3/upperArmLength+2/forearmLength+1cm edits change real vertices and actual rest-bone lengths with neutral targets <=0.2cm.",
+      "passed": true,
+      "evidence": "Independently repeated actual UI edits; delta 2.03075cm and actual bone-head lengths changed. Neutral residual 0.000159cm."
+    },
+    {
+      "text": "Every original joint angle is preserved within0.1degree after cm edits; the target action is never replaced by A-pose.",
+      "passed": true,
+      "evidence": "Every supplied angular component preserved (missing zero bones filled semantically), not world positions."
+    },
+    {
+      "text": "Real front/side/back camera-button interactions preserve exactly the same final dimensions, full pose and posed geometry, with visible distinct screenshots.",
+      "passed": true,
+      "evidence": "Three real camera clicks and screenshots differ; independent browser and saved per-view states retain one body/full pose/mesh."
+    },
+    {
+      "text": "Saved and actually imported/reloaded JSON agrees with current cm/pose; actual posed OBJ independently matches the saved anatomical state in centimetres.",
+      "passed": true,
+      "evidence": "Independent browser downloaded/reimported/reloaded state; source Three.js posed OBJ delta 2.49e-06cm."
+    },
+    {
+      "text": "Invalid or off-step input/state is visibly rejected or normalized consistently without corrupting the current anatomical body/target action.",
+      "passed": true,
+      "evidence": "Independent actual browser rejects invalid typed JSON and normalizes off-step cm input while preserving the target action."
+    },
+    {
+      "text": "Actual375px mobile viewport has no horizontal overflow or runtime errors; executable browser replay, before/after geometry and screenshots are delivered.",
+      "passed": true,
+      "evidence": "Independent375px browser/mobile capture, no runtime errors; 18 real consumer checks. Executor replay and actual before/after vertices reopened."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": null,
+    "total_tokens": null
+  },
+  "claims": [
+    {
+      "claim": "Outputs match actual source anatomy, pose and projection",
+      "verified": true,
+      "evidence": "grade-evidence/eval-2-same-action-editor/with_skill/run-1"
+    }
+  ],
+  "eval_feedback": {
+    "overall": "Single explicitly injected subagent trial per task/configuration; geometry controls and real-photo attempt are distinct. No native trigger, statistical superiority or token claim."
+  },
+  "artifact_sha256": {
+    "TRACE.md": "52b00b25c8cf39d9cca805790945ec587e39544537213a1c96e8d8ddfd860b7c",
+    "back-screenshot.png": "6933d2db3e2dab3db2be975b45573aa4bbe5c849ee0345914241ef06be8bed2a",
+    "back.png": "9f36a3e6f8f8c95cee1d1bc01b2de1e31fb46bc0450771e2ff0a73f6a27b045a",
+    "cache-invalid-type.json": "e86a7c5980e683b6dd458fd4c186048a81d36c7cfe02b93fd83c5a1bed838f8f",
+    "cache-off-step.json": "6accb291c0a757c0f6fa067c2b58104469f2b657204710b3f4d986a09a0c94d4",
+    "cache-old-version.json": "1a7aaef09fb3c901ca83617e934fb62bf643259e9a2cb9588e400ab9f058a33a",
+    "cache-out-of-range.json": "83274d42f8a6ce56a20f3ffed74deb19ec3c98455d077d435047a45d27c61cca",
+    "final-posed.obj": "e200db69bcab6066c42769559462a64e07ffa2ed6e19c0b78e82d133ff4cee58",
+    "final-state.json": "549e7981a20836753ec2494aeb0f6593a52b06de2845e378f76eff3dad56607a",
+    "front-screenshot.png": "61c996eef9fe31b169d6b9634a2e6c510bfcea02c1a001b1b476cd622d3774b3",
+    "front.png": "bee79542a78d43f450c1b4deb1a766a2431845f1d009b4550901cd58f7fdfc3b",
+    "geometry-after.json": "3a8affc11f9a591c66d6659cfab42c9ca30e4edfcef3cbfc947c4234b9654013",
+    "geometry-before.json": "f6b754a26d2b7936b88fc3196f771951896f9cdcc9186dd89751ed95b15ca0fb",
+    "invalid-asset.png": "0a3ea1894c337636d7f2887f5e0064757c637dd6bcd84e0c53a2b5bd3f3481ce",
+    "invalid-pose.png": "815d276d80ff36e0c3d7a53d52a29a039e79eb3696090c16a5c521d6c3201f83",
+    "invalid-range.png": "03db71da9c895cc29ee36ca2f079b4d60cad0283adc10147566c81c8e528ed86",
+    "invalid-type.png": "03db71da9c895cc29ee36ca2f079b4d60cad0283adc10147566c81c8e528ed86",
+    "invalid-unit.png": "ab0f0bad89df3745782571eeb94109e698fd7729935ea3dec683a1564ed7c6ef",
+    "invalid-version.png": "0a3ea1894c337636d7f2887f5e0064757c637dd6bcd84e0c53a2b5bd3f3481ce",
+    "manifest.json": "3d2090b53aa1f1627cfc52ca6685ee568a38e0b193cfd756ba777d828d4c5636",
+    "mobile-375.png": "0c9eee9e55c3911d838e797a72e5aa3ed28191f4c2f02d18aa736b6fb60664f0",
+    "mobile-check.json": "814f068a3a0569b68fb275e7212c7113b4b96f92079bfd90c55a121da3b203ed",
+    "mobile-side.png": "432858e6e59359228e8ff817aa10db4efe4b2847d4395f6dddd4c1f61ece6360",
+    "network-events.json": "5074468cf5ef72feb126ab4e8aa2bc14c3df6fd8f98e5069c7619b4620b652c8",
+    "neutral-reconstruction-check.json": "34a5142820703191d75510ef4c9451879f93e6329a4d0a977417ec84c90c4a83",
+    "reload-screenshot.png": "0c31eba2d6b9a0b83ff17f26eb23e063b98e51a6db4b842c543d7de6b2d8e80e",
+    "report.md": "d87b6fccfb0af9ab762940dcf763ce9a90517c7fd59057ab966fbe4365dc47f5",
+    "reproduce.cjs": "1befd85a108e625ae1cb08c7910fc9b0fc59726ff86dc946755b585096cb05a6",
+    "results.json": "f7d1c97e30ab401df0fb48be4103e8f4f6057e92db51038ab55b34578b3ad180",
+    "side-screenshot.png": "c7b41838b8c47e1207f86cbe0d0e5aa5ef2b041e669c746fd57c8acbe35be52a",
+    "side.png": "1b0fb92d1ffac7c1e6d6824b44940eb8d31d465bf2f593e362310627247a2f2e",
+    "source-screenshot.png": "affb966ff64f0f4235362c0d228ffc3b5be4bb95372400200cb432286f3d073e",
+    "source-state.json": "ea3b6e9e3378a96d5b8946c542aaebf035d0ea4da525f0a347705ec357bc8fba",
+    "source.png": "84b68f47eedf3db81a14761a701fe23295ea45969c24fb0646e216b6ca3c2223",
+    "view-states.json": "af64af9c9ef0d8620c9bf8a64a2285e4a3d1a25c9462cc826cd6cc155f725257"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "verdict": "PASS",
+  "totals": {
+    "old_skill": 19,
+    "with_skill": 20
+  },
+  "runs": [
+    {
+      "case": 1,
+      "config": "old_skill",
+      "passed": 7,
+      "total": 7,
+      "source_skin_cm": 1.2359999999489446e-05,
+      "neutral_target_cm": 5.227893640835646e-05,
+      "artifacts": 67,
+      "browser_checks": 0
+    },
+    {
+      "case": 1,
+      "config": "with_skill",
+      "passed": 7,
+      "total": 7,
+      "source_skin_cm": 1.2359999999489446e-05,
+      "neutral_target_cm": 5.227893640835646e-05,
+      "artifacts": 89,
+      "browser_checks": 0
+    },
+    {
+      "case": 2,
+      "config": "old_skill",
+      "passed": 6,
+      "total": 6,
+      "source_skin_cm": 2.4899999999661304e-06,
+      "neutral_target_cm": 0.00015871106394627077,
+      "artifacts": 44,
+      "browser_checks": 18
+    },
+    {
+      "case": 2,
+      "config": "with_skill",
+      "passed": 6,
+      "total": 6,
+      "source_skin_cm": 2.4899999999661304e-06,
+      "neutral_target_cm": 0.00015871106394627077,
+      "artifacts": 35,
+      "browser_checks": 18
+    },
+    {
+      "case": 3,
+      "config": "old_skill",
+      "passed": 6,
+      "total": 7,
+      "source_skin_cm": 1.1220000004641406e-05,
+      "neutral_target_cm": 4.044085315513257e-05,
+      "artifacts": 58,
+      "browser_checks": 8
+    },
+    {
+      "case": 3,
+      "config": "with_skill",
+      "passed": 7,
+      "total": 7,
+      "source_skin_cm": 1.231000001666871e-05,
+      "neutral_target_cm": 4.0428990971008716e-05,
+      "artifacts": 72,
+      "browser_checks": 8
+    }
+  ],
+  "assertions_unchanged": true,
+  "all_graded_artifact_hashes_match": true,
+  "cleanup": "Independent source exporter subprocesses exited; grader browser HTTP servers and Chromium instances closed in finally blocks.",
+  "grader_source_files": {
+    "tools/skill_evals/grade_single_state_evals.py": "ef3df7410e27e84c14e033c45d18005ea17cae970f496666bad29d7ac2ac2975",
+    "tools/skill_evals/grade_single_state_editor.cjs": "8960df22f056274f07de817392df5a6d79bc2ee61ee594b22cdc13b897496f42",
+    "tools/skill_evals/single_state_source_export.mjs": "504921a9c281b764f03153663c2551ff7e46bd5885d43e56d4a88674a2ecea28"
+  }
+}

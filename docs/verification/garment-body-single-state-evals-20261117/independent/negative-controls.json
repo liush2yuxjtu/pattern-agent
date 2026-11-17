@@ -1,0 +1,26 @@
+{
+  "verdict": "PASS",
+  "controls": [
+    {
+      "name": "actual different side pose hidden behind common metadata",
+      "verdict": "REJECTED",
+      "reason": "View mask is not projection of the one saved mesh: side"
+    },
+    {
+      "name": "actual OBJ vertex displaced1cm with forged matching hashes",
+      "verdict": "REJECTED",
+      "reason": "Posed OBJ differs from actual source Three.js skinning"
+    },
+    {
+      "name": "actual saved metrics IoU falsified",
+      "verdict": "REJECTED",
+      "reason": "Incorrect reported iou"
+    },
+    {
+      "name": "actual frozen reference bytes changed in disposable workspace",
+      "verdict": "REJECTED",
+      "reason": "Frozen reference/runtime changed: joint-fit/reference-front-mask.png"
+    }
+  ],
+  "limits": "Tests independent checks against controlled mutations; not human-pose or cloth physics accuracy."
+}

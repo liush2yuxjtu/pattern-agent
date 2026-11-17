@@ -1,0 +1,128 @@
+{
+  "expectations": [
+    {
+      "text": "Actual anatomical neutral and posed meshes are finite and independently match the saved dimensions/full bone pose; neutral cm errors are <=0.2cm.",
+      "passed": true,
+      "evidence": "Separate Three.js skinning delta 1.24e-05cm; neutral reconstruction residual 5.23e-05cm."
+    },
+    {
+      "text": "All six final geometry views use one identical body, full pose and posed mesh; independent re-projection agrees and back is never fitted as a separate pose.",
+      "passed": true,
+      "evidence": "Reprojected one saved mesh in six cameras: {'front': {'iou': 1.0, 'dice': 1.0}, 'side': {'iou': 1.0, 'dice': 1.0}, 'back': {'iou': 1.0, 'dice': 1.0}, 'closeup': {'iou': 1.0, 'dice': 1.0}, 'pose': {'iou': 1.0, 'dice': 1.0}, 'depth': {'iou': 1.0, 'dice': 1.0}}; one state/pose/mesh fingerprint."
+    },
+    {
+      "text": "Executed optimization changes at least one cm girth and one arm-length control/actual rest bone segment, arm joint angles, and global camera parameters within disclosed bounds; height stays170cm.",
+      "passed": true,
+      "evidence": "Actual cm/bone change=True, pose=True, camera=True, bounds=True; rest bone lengths {'upperArm.L': 29.37037010746332, 'forearm.L': 25.721323130217026, 'upperArm.R': 29.37037010746332, 'forearm.R': 25.721323130217026}→{'upperArm.L': 27.355354377863847, 'forearm.L': 23.717309310030323, 'upperArm.R': 27.355354377863847, 'forearm.R': 23.717309310030323}."
+    },
+    {
+      "text": "Final front and side bare-body silhouette IoU are each >=0.93 and improve by >=0.015 over the source-camera biased initial comparison; reference pixels remain frozen.",
+      "passed": true,
+      "evidence": "Independently reopened masks: {'front': {'initial': {'iou': 0.6967737634982002, 'dice': 0.821292476920055}, 'final': {'iou': 1.0, 'dice': 1.0}}, 'side': {'initial': {'iou': 0.696967950195988, 'dice': 0.8214273582662455}, 'final': {'iou': 1.0, 'dice': 1.0}}}; frozen references unchanged."
+    },
+    {
+      "text": "Mean training projected joint error is <=4px and at least50% lower than the biased initial joint error; held-out back silhouette IoU is >=0.93 using the same final state.",
+      "passed": true,
+      "evidence": "Actual mean joint error 9.51973→6.81855e-14px; held-out same-state back IoU=1."
+    },
+    {
+      "text": "Real source-camera initial, camera-only and final comparisons plus OpenCV overlays and block history are saved; reported IoU/Dice agree with independently reopened images.",
+      "passed": true,
+      "evidence": "6 actual overlays plus camera-only/source-camera comparisons and block history; saved IoU/Dice independently agree."
+    },
+    {
+      "text": "Six actual renders include correctly projected pose and finite nonempty raw Z-buffer/valid mask; one saved state remains cm/pose-adjustable and the report calls this a controlled model test, not real-person measurement.",
+      "passed": true,
+      "evidence": "Six decoded renders, 22629 finite depth pixels;20 independent ray hits max error 4.63e-07cm; report limits this to controlled anatomy."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": null,
+    "total_tokens": null
+  },
+  "claims": [
+    {
+      "claim": "Outputs match actual source anatomy, pose and projection",
+      "verified": true,
+      "evidence": "grade-evidence/eval-1-joint-single-state-fit/old_skill/run-1"
+    }
+  ],
+  "eval_feedback": {
+    "overall": "Single explicitly injected subagent trial per task/configuration; geometry controls and real-photo attempt are distinct. No native trigger, statistical superiority or token claim."
+  },
+  "artifact_sha256": {
+    "TRACE.md": "028b7b563f24c88b6772ef92294a22daca1febdb054d20e1e1868e68e07fccfc",
+    "back-mask.png": "f68ccc278bd62d7e9e4c278d8fe07e6486370bcc126cf0cab523def1a1746629",
+    "back.png": "2d769510d1524c11b45442dea51667f16e56ccc857593817e230ddcd5736eae9",
+    "camera-projection-contract.json": "91d5139b7ae61f261ff40760987ad6088b03e9edb504bad4643bff4e5ba82b58",
+    "camera.json": "cacae77373f72a5397efdc45ebaed2429ddaecf75961b9c75363d2325f18b470",
+    "closeup-mask.png": "c4b3b8e56da5c791a9eed44b6244be08ad76947914439440b7d9ed54e30e78f4",
+    "closeup.png": "4a66307604a24eaf8788517e43efd1c4bd98e991f8e72fa903728d201b8600dc",
+    "depth-mask.png": "76c8f1ced8b168cec7f18664ddb8068cfef5f665f596b14ed0fcdb46c79d6416",
+    "depth-valid.png": "9db49bd499b310169b3abb4532626ac2f44a9dd164dc29343655695bafddb499",
+    "depth.png": "d6aa5cd7f6fefc2c5e41901bfb855093ba554a4ae29248443b705306c779d8e4",
+    "execution.log": "5995c6ab72bb5f28cb27a9d2d196e692d300334f920b286a9c7af738fc416d8a",
+    "final-camera-initial/camera.json": "cacae77373f72a5397efdc45ebaed2429ddaecf75961b9c75363d2325f18b470",
+    "final-camera-initial/front-mask.png": "9207efe0d4e8a1e83f4d6e0d10c8776b380463b59184d8f64d579aec27320645",
+    "final-camera-initial/front.png": "70d75b4b64434d70327cf5de89d313b9919dc6bf72b336f7db817748e0bfbb35",
+    "final-camera-initial/joints.json": "e1796a4de512647887d29d7e3fd55f01002a14f09f9c2136399f675ddb164b30",
+    "final-camera-initial/neutral.obj": "f63bc8980bbd358285dc19f04e1fddf9adbe237f09f895da46fe7d97b117b983",
+    "final-camera-initial/posed.obj": "5246862b940f033247d9750205b07e7aad04cc5eec1b166ab00e345c55f9929b",
+    "final-camera-initial/side-mask.png": "cd95cba938e633f72ba18a57146afa6456f31513db3a7c29ad443b793fd685f2",
+    "final-camera-initial/side.png": "ad36981224982f1b88a04596715a8d84c723f98d8e96427fb1964d5e26529d4f",
+    "final-camera-initial/state.json": "cdc0c7b63cab30a53e42294b7672e374cca4a1aaf242e32a6bb3c5156976acc1",
+    "final-camera-initial/view-provenance.json": "74bf12368b065cc54b194e7f643ce9239104d5622cfc9d45089df7ff54527fcf",
+    "final-state.json": "ec54c440af8692a54217daf72dd45d4f193050d5d3f4da7d536fd78b1fb58c1f",
+    "final_camera_final-front-mask.png": "76c8f1ced8b168cec7f18664ddb8068cfef5f665f596b14ed0fcdb46c79d6416",
+    "final_camera_final-front-overlay.png": "53f42544bd415be0035d95551e1e19134a54183bdfb62a5415e73113bb30b3c7",
+    "final_camera_final-side-mask.png": "ec9015f9820eb5ec4b4fb8696842e2b93b9d74c934dece4324654767e36fb45f",
+    "final_camera_final-side-overlay.png": "864b1a22e2e9a9949aa4f5fa4a9230102c184f7fc4ff921436d9c6c7b39872bf",
+    "final_camera_initial-front-mask.png": "9207efe0d4e8a1e83f4d6e0d10c8776b380463b59184d8f64d579aec27320645",
+    "final_camera_initial-front-overlay.png": "8de1578e67b52948fe2c16016845c0a825c3a3cc30ed7df8053bb3a3f68a9e91",
+    "final_camera_initial-side-mask.png": "cd95cba938e633f72ba18a57146afa6456f31513db3a7c29ad443b793fd685f2",
+    "final_camera_initial-side-overlay.png": "898623f0537e52913bcc1c2599b31003767d2a073788606622b16ae28428f6bb",
+    "front-mask.png": "76c8f1ced8b168cec7f18664ddb8068cfef5f665f596b14ed0fcdb46c79d6416",
+    "front.png": "4d0b0b3905c0e80f2a0b78260bd661886b89616e5942dde8efdc22579026eac7",
+    "independent-neutral-audit.json": "7fe245ff12cfd89088e12163cdaf7b248c3fc72cc195c35031a973c67d6d78bb",
+    "initial-camera.json": "30ee0be1d5d0e42d12cc0f393cd7219dc18cefc53c57f6e1e0dee67bb7975c7b",
+    "initial-state.json": "cfa12ac3135b9588595c316ee4861824e1770ece0880032935e47faff32ac483",
+    "input-hashes.json": "422130d5a6e27f774ea3df88ddfa0bd1a08f88f47534030b15f9a3d84bc13dd9",
+    "joints.json": "7a528cb206a276d17147d0b2939bbb8906fb276e5e6607c6a60fa7612d90febf",
+    "measurements.csv": "d29825ffacae1db3859842e820c890ebe968e718a958fbee72b68e705c63b2e3",
+    "measurements.json": "1e0d4fae432335b1be6417ec148cb55b99c255e314141647929fe9d19716ccfb",
+    "metrics.json": "0ea488623edd9b6d231eaca8ce95522f55926dd04d33519a05ac70b3b29fca6a",
+    "neutral.obj": "c95cbcd56ee20f7646dc39c9d52a4b0e3db5d7fa9ecaad49016d135c457d2fc4",
+    "parameter-block-history.json": "da07cfd9d59bda5bf77d5d1aa3992c9e9585a9e5c8b57153782058db0944192e",
+    "pose-mask.png": "76c8f1ced8b168cec7f18664ddb8068cfef5f665f596b14ed0fcdb46c79d6416",
+    "pose-world-projections.json": "6d63f4cd7de5cec15a14b0dd99f019c468f52d6c963cfe15fe7f102d883504a6",
+    "pose.png": "9ef590729ddf61cf02b95c2867e1fb518a23fd7d0ba150b6cbf7cf335874ebd6",
+    "posed.obj": "b4ec86b7dfdb3d170e13f59262505b55ab4a7b2d181ced30ed20b4dab3ac31c1",
+    "rawdepth.npy": "d779a3e462672cef316e2bd7e781feb3fc857feec4466a04284b8e5aa282ea56",
+    "report.md": "c2b88357358f94e374da8fd1a9841c522bc0c6755758f039b822613903dca9e6",
+    "reproduce.py": "c6f185cbbd79f52e433952c372a5bdb9793dcbba4b77f48f520086fc09fefca3",
+    "side-mask.png": "ec9015f9820eb5ec4b4fb8696842e2b93b9d74c934dece4324654767e36fb45f",
+    "side.png": "62055cbb912224145def9257d5feb7b577669891b2c7c1b687bba97d3ff200f5",
+    "source-camera-initial/camera.json": "30ee0be1d5d0e42d12cc0f393cd7219dc18cefc53c57f6e1e0dee67bb7975c7b",
+    "source-camera-initial/front-mask.png": "b3f51fc34dc56cedb1b6d4c0f78408ecb457648a6e2449b83ab1ce82448cf47a",
+    "source-camera-initial/front.png": "ce22b724a0aed9a362e2a5c6ad1ce5bed01c6430982330519b996af724c323ce",
+    "source-camera-initial/joints.json": "e1796a4de512647887d29d7e3fd55f01002a14f09f9c2136399f675ddb164b30",
+    "source-camera-initial/neutral.obj": "f63bc8980bbd358285dc19f04e1fddf9adbe237f09f895da46fe7d97b117b983",
+    "source-camera-initial/posed.obj": "5246862b940f033247d9750205b07e7aad04cc5eec1b166ab00e345c55f9929b",
+    "source-camera-initial/side-mask.png": "0744e6cd70ffcd55283bccb666f07f2ceb574e26caf9a06588c0ab280189d53e",
+    "source-camera-initial/side.png": "11825cedb4a5015c129785bcb3c6d561df5915419562f89b22c871a7e826f6c8",
+    "source-camera-initial/state.json": "cdc0c7b63cab30a53e42294b7672e374cca4a1aaf242e32a6bb3c5156976acc1",
+    "source-camera-initial/view-provenance.json": "43af7385706e7a2729745d9d36880b66536c90031cf30d4e72e414f07bd74192",
+    "source_camera_initial-front-mask.png": "b3f51fc34dc56cedb1b6d4c0f78408ecb457648a6e2449b83ab1ce82448cf47a",
+    "source_camera_initial-front-overlay.png": "d526c2f6198c09035cac68b513185733fb5c00395c5033989e295d5b905bfecd",
+    "source_camera_initial-side-mask.png": "0744e6cd70ffcd55283bccb666f07f2ceb574e26caf9a06588c0ab280189d53e",
+    "source_camera_initial-side-overlay.png": "38df0e0c68b772f2fa855dd3fb5eee3179127453674f5374331b5395d1ddd96b",
+    "validation.json": "b5b85005f240d44b642352f7d3750a873afc0dfcd8a543f66407210e37a0f84f",
+    "view-provenance.json": "021b313bcdf6fd256416858218ffec075a252becf191de3e5638c678261064df"
+  }
+}

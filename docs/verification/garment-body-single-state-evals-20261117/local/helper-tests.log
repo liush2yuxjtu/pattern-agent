@@ -1,0 +1,35 @@
+test_empty_is_failure (test_helpers.TestMasks.test_empty_is_failure) ... ok
+test_identical (test_helpers.TestMasks.test_identical) ... ok
+test_invalid_mask_values_fail_on_either_input (test_helpers.TestMasks.test_invalid_mask_values_fail_on_either_input) ... ok
+test_invalid_photo_shape_and_channels_fail (test_helpers.TestMasks.test_invalid_photo_shape_and_channels_fail) ... ok
+test_known_overlap (test_helpers.TestMasks.test_known_overlap) ... ok
+test_load_mask_keeps_explicit_threshold (test_helpers.TestMasks.test_load_mask_keeps_explicit_threshold) ... ok
+test_mask_dimensions_fail (test_helpers.TestMasks.test_mask_dimensions_fail) ... ok
+test_numeric_binary_masks_preserve_metrics (test_helpers.TestMasks.test_numeric_binary_masks_preserve_metrics) ... ok
+test_overlay_dimensions (test_helpers.TestMasks.test_overlay_dimensions) ... ok
+test_shape_mismatch_is_failure (test_helpers.TestMasks.test_shape_mismatch_is_failure) ... ok
+test_invalid_vectors_fail_before_vtk (test_helpers.TestMesh.test_invalid_vectors_fail_before_vtk) ... ok
+test_known_circle (test_helpers.TestMesh.test_known_circle) ... 2026-11-17 18:55:40.455 (   0.384s) [    7FA2946D4740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+ok
+test_missed_plane_fails (test_helpers.TestMesh.test_missed_plane_fails) ... 2026-11-17 18:55:40.458 (   0.388s) [    7FA2946D4740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+ok
+test_normal_scaling_preserves_closed_section (test_helpers.TestMesh.test_normal_scaling_preserves_closed_section) ... 2026-11-17 18:55:40.459 (   0.389s) [    7FA2946D4740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+2026-11-17 18:55:40.461 (   0.391s) [    7FA2946D4740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+2026-11-17 18:55:40.463 (   0.393s) [    7FA2946D4740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+ok
+test_open_section_remains_failure (test_helpers.TestMesh.test_open_section_remains_failure) ... 2026-11-17 18:55:40.466 (   0.396s) [    7FA2946D4740]vtkPolyDataPlaneCutter.:589   INFO| Executing vtkPolyData plane cutter
+ok
+test_zero_normal_fails (test_helpers.TestMesh.test_zero_normal_fails) ... ok
+test_rejects_asset_mismatch (test_human_state.HumanStateTests.test_rejects_asset_mismatch) ... ok
+test_rejects_false_residual (test_human_state.HumanStateTests.test_rejects_false_residual) ... ok
+test_rejects_invalid_coefficients (test_human_state.HumanStateTests.test_rejects_invalid_coefficients) ... ok
+test_rejects_invalid_pose (test_human_state.HumanStateTests.test_rejects_invalid_pose) ... ok
+test_rejects_missing_or_nonfinite_dimensions (test_human_state.HumanStateTests.test_rejects_missing_or_nonfinite_dimensions) ... ok
+test_rejects_units_and_incompatible_version (test_human_state.HumanStateTests.test_rejects_units_and_incompatible_version) ... ok
+test_require_match_requires_mesh (test_human_state.HumanStateTests.test_require_match_requires_mesh) ... ok
+test_structure_only_never_claims_independent_match (test_human_state.HumanStateTests.test_structure_only_never_claims_independent_match) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.058s
+
+OK

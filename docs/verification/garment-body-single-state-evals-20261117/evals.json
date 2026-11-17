@@ -1,0 +1,58 @@
+{
+  "skill_name": "garment-body-six-view",
+  "evals": [
+    {
+      "id": 1,
+      "name": "joint-single-state-fit",
+      "prompt": "Execute a real joint shape/bone/pose/camera fit on fixtures/joint-fit using its README and runtime. Recover a single parameterized anatomical body and the same fixed target action from the provided front/side reference images/masks and 2D joints. Start from the biased initial-state and initial cameras, use actual Human Studio fitDimensions cm morphs and real skeletal skinning; implement and run your optimizer. Optimize identifiable cm sizes including arm ruler lengths/actual bone positions, joint rotations and nuisance camera parameters (block-coordinate or joint optimization is fine). Keep height170cm as the stated prior. Never reset to A-pose or optimize different poses/bodies for different views. Save one final-state.json, camera.json, actual neutral.obj/posed.obj, full pose/world-joints metadata, six actual geometry images (front/side/back/closeup/pose/depth), raw depth+valid mask, source-camera initial and final-camera initial/final comparisons, initial/final masks, OpenCV overlays, metrics.json, parameter-block-history.json, report.md, TRACE.md and runnable reproduce.py or .mjs. Every view must bind to exactly the same final body/pose/posed-mesh hash; only camera changes. Reconstruct/measure actual neutral cm; distinguish ruler lengths from actual bone-head distances. Do not deform images or alter supplied references/ROI to improve metrics. Source code/runtime is available; no hidden target state or previous optimized outputs may be read. No external/paid generation. Deliver executed files, not a plan. Target images are controlled real MakeHuman renders, not real-person photographs or Image Gen outputs.",
+      "expected_output": "Actual joint cm/bone/pose/camera fit with one shared anatomical state and real six geometry views.",
+      "files": [
+        "fixtures/joint-fit"
+      ],
+      "assertions": [
+        "Actual anatomical neutral and posed meshes are finite and independently match the saved dimensions/full bone pose; neutral cm errors are <=0.2cm.",
+        "All six final geometry views use one identical body, full pose and posed mesh; independent re-projection agrees and back is never fitted as a separate pose.",
+        "Executed optimization changes at least one cm girth and one arm-length control/actual rest bone segment, arm joint angles, and global camera parameters within disclosed bounds; height stays170cm.",
+        "Final front and side bare-body silhouette IoU are each >=0.93 and improve by >=0.015 over the source-camera biased initial comparison; reference pixels remain frozen.",
+        "Mean training projected joint error is <=4px and at least50% lower than the biased initial joint error; held-out back silhouette IoU is >=0.93 using the same final state.",
+        "Real source-camera initial, camera-only and final comparisons plus OpenCV overlays and block history are saved; reported IoU/Dice agree with independently reopened images.",
+        "Six actual renders include correctly projected pose and finite nonempty raw Z-buffer/valid mask; one saved state remains cm/pose-adjustable and the report calls this a controlled model test, not real-person measurement."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "same-action-editor",
+      "prompt": "Execute the real Human Studio consumer task in /workspace/work/pattern-agent. Use fixtures/editor/source-state.json as the fixed target action. Load that exact bent/seated pose into the actual web/human-studio application (serve repository root on your own loopback port so model JSON is same-origin), then change waist by +3cm, upperArmLength by +2cm, and forearmLength by +1cm using actual UI inputs. Keep the same complete joint-angle pose while these dimensions change. Front/side/back are cameras around one single current posed body, not separately fitted models. Exercise actual view buttons, save/import/reload, and export the actual JSON and posed OBJ. Verify real vertices change for cm edits, actual bone segment lengths respond, but all joint angles and the target action remain unchanged. Save source.png, front.png, side.png, back.png, final-state.json, final-posed.obj, geometry-before.json, geometry-after.json, view-states.json, screenshots, report.md, TRACE.md and a runnable reproduce.cjs. Report measured neutral cm separately from posed bounding-box height. Handle invalid and off-step state/inputs using current model/version/asset rules; check 375px mobile. Do not modify shared app, shared skill or another run. This is actual anatomical editor execution, not a proposed plan or newly generated clothing photos. No paid/external image generation. Do not read private-oracle or another executor's files.",
+      "expected_output": "Actual editor cm edits preserve one target pose across views, export and reload.",
+      "files": [
+        "fixtures/editor"
+      ],
+      "assertions": [
+        "Actual Human Studio loads the supplied target action and UI waist+3/upperArmLength+2/forearmLength+1cm edits change real vertices and actual rest-bone lengths with neutral targets <=0.2cm.",
+        "Every original joint angle is preserved within0.1degree after cm edits; the target action is never replaced by A-pose.",
+        "Real front/side/back camera-button interactions preserve exactly the same final dimensions, full pose and posed geometry, with visible distinct screenshots.",
+        "Saved and actually imported/reloaded JSON agrees with current cm/pose; actual posed OBJ independently matches the saved anatomical state in centimetres.",
+        "Invalid or off-step input/state is visibly rejected or normalized consistently without corrupting the current anatomical body/target action.",
+        "Actual375px mobile viewport has no horizontal overflow or runtime errors; executable browser replay, before/after geometry and screenshots are delivered."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "original-photo-one-body",
+      "prompt": "Execute a real single-state fitting attempt for fixtures/real-photo/original-product.jpg, preserving that original shirt-holding target action. Start from its initial-state.json, not any previous optimized case. Use fixtures/joint-fit runtime and existing actual Human Studio model; build and execute a reusable local optimization entrypoint for cm shape/bone lengths, global full-body pose and camera. Joint or alternating optimization is acceptable, with one final state shared by all projections. Improve projected visible face/wrist and body/clothed-envelope alignment, and inspect actual front/side/back meshes for palm orientation/occlusion and obvious body penetration; 2D points alone do not determine 3D pose. Hidden shoulder/elbow points are uncertain; camera is an approximate crop and may be optimized rather than treated as ground truth. Keep the same target action, not an A-pose replacement or per-view pose changes. Save actual initial/final state, neutral/posed OBJ, cameras, joints, front/side/back renders, original-photo before/after OpenCV overlay and masks, metrics/optimization history containing each parameter block, measurements.json/CSV, report.md, TRACE.md and runnable reproduce.py/.mjs. Provide a local Human Studio load link or actual browser consumer proof for this same saved state. Report source171cm/S separately from authorized generic M170cm initialization; generated/past views are not real observed evidence. No new Image Gen invocation: this test reuses existing original image and focuses on the joint fitting branch. Do not read any private-oracle, another executor's files or old fitted original-reference states. Do not alter source pixels or annotations to improve scores; retain regressions and uncertainty. Execute optimization and actual projections, not merely a failure report or plan. Do not modify shared runtime/skill/app.",
+      "expected_output": "Executed original-photo single-body joint fit, actual comparison images and editable saved state.",
+      "files": [
+        "fixtures/real-photo"
+      ],
+      "assertions": [
+        "Original-photo fitting actually optimizes cm/bone parameters, joint pose and camera from the provided neutral M initialization; no old fitted candidate/other executor/oracle is used.",
+        "One final complete body/pose/posed mesh supplies all front/side/back views, and independent projections match; only cameras may differ.",
+        "Mean visible eye/nose/wrist reprojection error is <=15px and at least50% lower than the initial projection at original1000x1276 resolution; uncertain hidden shoulder/elbow annotations are distinguished.",
+        "The declared source-fitting objective improves by at least10% with actual block history and before/after OpenCV masks/overlays; independent IoU/Dice readback matches the delivered files.",
+        "Actual front and side meshes show a plausible version of the shirt-holding action without obvious buried hands, severe wrist folding or grossly misplaced arms; visible anatomical pose quality is reviewed separately from2Derror.",
+        "Neutral cm and actual posed mesh are independently checked, saved final state can be consumed by Human Studio, and arm ruler lengths are distinguished from actual bone distances.",
+        "Source171cm/S, authorized M170cm initialization, conditional fitted sizes and unknown dimensions are distinct; no fresh ImageGen/true-person accuracy/perfect3Dmatch is claimed without evidence."
+      ]
+    }
+  ]
+}

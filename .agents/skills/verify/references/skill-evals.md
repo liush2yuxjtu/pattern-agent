@@ -201,3 +201,53 @@ actual dropdown before testing the upstream feedback flow.
 Compare embedded run/grade/benchmark JSON, original run archive hashes and
 feedback keys with the prior commit. Gallery additions must leave them unchanged.
 Check the generated gallery JSON/asset hashes on the live exact-SHA Pages build.
+
+## Same-body, same-target-action functional review
+
+The paired workspace is `work/single-state-skill-evals-20261117`. Preserve its
+frozen old/new skills, prompts/assertions, shared runtime, original run archives
+and independent grades. Three cases test joint cm/bone/pose/camera optimization,
+actual editor action preservation, and the original product photograph. Every
+view of a final body must use the same complete pose and posed mesh.
+
+```sh
+python tools/skill_evals/grade_single_state_evals.py --workspace work/single-state-skill-evals-20261117
+python tools/skill_evals/grade_single_state_evals.py --workspace work/single-state-skill-evals-20261117 --negative-controls
+python tools/skill_evals/aggregate_single_state.py work/single-state-skill-evals-20261117/iteration-1
+python tools/skill_evals/build_single_state_review.py --workspace work/single-state-skill-evals-20261117 --site web/garment-body/single-state-evals
+python scripts/build_pages.py
+```
+
+Grade by reopening actual OBJ/state, source Three.js skinning, neutral rulers,
+projection matrices, masks and raw depth; use private controlled targets only
+after executor completion. Recheck browser state independently with the provided
+`grade_single_state_editor.cjs`. The grader must reject a real alternate side
+pose with forged common metadata, a1cm displaced mesh with updated hashes,
+false IoU and changed frozen references. Keep subjective action review separate
+from precise numerical and file-integrity claims.
+
+Serve the real `dist/` build, not bare `web/` (the homepage needs generated
+pattern artifacts). Drive:
+
+```sh
+node tools/skill_evals/verify_single_state_review.cjs --url http://127.0.0.1:PORT/garment-body/single-state-evals/eval.html --out work/single-state-skill-evals-20261117/browser-review
+```
+
+Require six cases, four visual stages, actual image bytes, lightbox keyboard and
+pointer behavior, official feedback/Benchmark/persistence/download, mobile,
+archive CRC and hashes, and all six same-origin Human Studio states loading as
+real finite skinned meshes. Actually edit a cm value while preserving the pose.
+Inspect desktop/mobile/real-photo screenshots. Final build rejects changed
+post-grading output files and missing grades; `--allow-pending` is only preview.
+
+Read pass rates as task-assertion completion. Single trials and an unblinded
+coarse action judgment do not establish general skill superiority, perfect
+photograph matching or real-person measurement accuracy. Shared cm/FK/LBS
+infrastructure is supplied to both groups, not bundled as a skill optimizer.
+Image Gen was not called in these tests; reused photos are context only.
+
+After the direct-main push, run the same pinned public verifier on the exact
+deployed SHA using `--expected-commit SHA`; also recheck the skill package's real
+download. Use the existing public-only browser fallback if the local proxy
+blocks Pages. Preserve receipts separately, stop owned servers/browsers, and
+keep native Claude routing BLOCKED and physical fit NOT_RUN where applicable.

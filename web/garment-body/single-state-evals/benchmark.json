@@ -1,0 +1,368 @@
+{
+  "metadata": {
+    "skill_name": "garment-body-six-view",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "Inherited session subagent model; ID not exposed",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-17T11:04:44.080207+00:00",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 1,
+    "protocol": "Six explicitly injected subagent executions: controlled single-state fit, actual editor, and original-photo fit; not native Claude routing",
+    "resource_metrics": "Completion token/duration metadata unavailable; no cost or speed comparison."
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Actual anatomical neutral and posed meshes are finite and independently match the saved dimensions/full bone pose; neutral cm errors are <=0.2cm.",
+          "passed": true,
+          "evidence": "Separate Three.js skinning delta 1.24e-05cm; neutral reconstruction residual 5.23e-05cm."
+        },
+        {
+          "text": "All six final geometry views use one identical body, full pose and posed mesh; independent re-projection agrees and back is never fitted as a separate pose.",
+          "passed": true,
+          "evidence": "Reprojected one saved mesh in six cameras: {'front': {'iou': 1.0, 'dice': 1.0}, 'side': {'iou': 1.0, 'dice': 1.0}, 'back': {'iou': 1.0, 'dice': 1.0}, 'closeup': {'iou': 1.0, 'dice': 1.0}, 'pose': {'iou': 1.0, 'dice': 1.0}, 'depth': {'iou': 1.0, 'dice': 1.0}}; one state/pose/mesh fingerprint."
+        },
+        {
+          "text": "Executed optimization changes at least one cm girth and one arm-length control/actual rest bone segment, arm joint angles, and global camera parameters within disclosed bounds; height stays170cm.",
+          "passed": true,
+          "evidence": "Actual cm/bone change=True, pose=True, camera=True, bounds=True; rest bone lengths {'upperArm.L': 29.37037010746332, 'forearm.L': 25.721323130217026, 'upperArm.R': 29.37037010746332, 'forearm.R': 25.721323130217026}→{'upperArm.L': 27.355354377863847, 'forearm.L': 23.717309310030323, 'upperArm.R': 27.355354377863847, 'forearm.R': 23.717309310030323}."
+        },
+        {
+          "text": "Final front and side bare-body silhouette IoU are each >=0.93 and improve by >=0.015 over the source-camera biased initial comparison; reference pixels remain frozen.",
+          "passed": true,
+          "evidence": "Independently reopened masks: {'front': {'initial': {'iou': 0.6967737634982002, 'dice': 0.821292476920055}, 'final': {'iou': 1.0, 'dice': 1.0}}, 'side': {'initial': {'iou': 0.696967950195988, 'dice': 0.8214273582662455}, 'final': {'iou': 1.0, 'dice': 1.0}}}; frozen references unchanged."
+        },
+        {
+          "text": "Mean training projected joint error is <=4px and at least50% lower than the biased initial joint error; held-out back silhouette IoU is >=0.93 using the same final state.",
+          "passed": true,
+          "evidence": "Actual mean joint error 9.51973→1.91718e-13px; held-out same-state back IoU=1."
+        },
+        {
+          "text": "Real source-camera initial, camera-only and final comparisons plus OpenCV overlays and block history are saved; reported IoU/Dice agree with independently reopened images.",
+          "passed": true,
+          "evidence": "8 actual overlays plus camera-only/source-camera comparisons and block history; saved IoU/Dice independently agree."
+        },
+        {
+          "text": "Six actual renders include correctly projected pose and finite nonempty raw Z-buffer/valid mask; one saved state remains cm/pose-adjustable and the report calls this a controlled model test, not real-person measurement.",
+          "passed": true,
+          "evidence": "Six decoded renders, 22629 finite depth pixels;20 independent ray hits max error 4.63e-07cm; report limits this to controlled anatomy."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Actual anatomical neutral and posed meshes are finite and independently match the saved dimensions/full bone pose; neutral cm errors are <=0.2cm.",
+          "passed": true,
+          "evidence": "Separate Three.js skinning delta 1.24e-05cm; neutral reconstruction residual 5.23e-05cm."
+        },
+        {
+          "text": "All six final geometry views use one identical body, full pose and posed mesh; independent re-projection agrees and back is never fitted as a separate pose.",
+          "passed": true,
+          "evidence": "Reprojected one saved mesh in six cameras: {'front': {'iou': 1.0, 'dice': 1.0}, 'side': {'iou': 1.0, 'dice': 1.0}, 'back': {'iou': 1.0, 'dice': 1.0}, 'closeup': {'iou': 1.0, 'dice': 1.0}, 'pose': {'iou': 1.0, 'dice': 1.0}, 'depth': {'iou': 1.0, 'dice': 1.0}}; one state/pose/mesh fingerprint."
+        },
+        {
+          "text": "Executed optimization changes at least one cm girth and one arm-length control/actual rest bone segment, arm joint angles, and global camera parameters within disclosed bounds; height stays170cm.",
+          "passed": true,
+          "evidence": "Actual cm/bone change=True, pose=True, camera=True, bounds=True; rest bone lengths {'upperArm.L': 29.37037010746332, 'forearm.L': 25.721323130217026, 'upperArm.R': 29.37037010746332, 'forearm.R': 25.721323130217026}→{'upperArm.L': 27.355354377863847, 'forearm.L': 23.717309310030323, 'upperArm.R': 27.355354377863847, 'forearm.R': 23.717309310030323}."
+        },
+        {
+          "text": "Final front and side bare-body silhouette IoU are each >=0.93 and improve by >=0.015 over the source-camera biased initial comparison; reference pixels remain frozen.",
+          "passed": true,
+          "evidence": "Independently reopened masks: {'front': {'initial': {'iou': 0.6967737634982002, 'dice': 0.821292476920055}, 'final': {'iou': 1.0, 'dice': 1.0}}, 'side': {'initial': {'iou': 0.696967950195988, 'dice': 0.8214273582662455}, 'final': {'iou': 1.0, 'dice': 1.0}}}; frozen references unchanged."
+        },
+        {
+          "text": "Mean training projected joint error is <=4px and at least50% lower than the biased initial joint error; held-out back silhouette IoU is >=0.93 using the same final state.",
+          "passed": true,
+          "evidence": "Actual mean joint error 9.51973→6.81855e-14px; held-out same-state back IoU=1."
+        },
+        {
+          "text": "Real source-camera initial, camera-only and final comparisons plus OpenCV overlays and block history are saved; reported IoU/Dice agree with independently reopened images.",
+          "passed": true,
+          "evidence": "6 actual overlays plus camera-only/source-camera comparisons and block history; saved IoU/Dice independently agree."
+        },
+        {
+          "text": "Six actual renders include correctly projected pose and finite nonempty raw Z-buffer/valid mask; one saved state remains cm/pose-adjustable and the report calls this a controlled model test, not real-person measurement.",
+          "passed": true,
+          "evidence": "Six decoded renders, 22629 finite depth pixels;20 independent ray hits max error 4.63e-07cm; report limits this to controlled anatomy."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Actual Human Studio loads the supplied target action and UI waist+3/upperArmLength+2/forearmLength+1cm edits change real vertices and actual rest-bone lengths with neutral targets <=0.2cm.",
+          "passed": true,
+          "evidence": "Independently repeated actual UI edits; delta 2.03075cm and actual bone-head lengths changed. Neutral residual 0.000159cm."
+        },
+        {
+          "text": "Every original joint angle is preserved within0.1degree after cm edits; the target action is never replaced by A-pose.",
+          "passed": true,
+          "evidence": "Every supplied angular component preserved (missing zero bones filled semantically), not world positions."
+        },
+        {
+          "text": "Real front/side/back camera-button interactions preserve exactly the same final dimensions, full pose and posed geometry, with visible distinct screenshots.",
+          "passed": true,
+          "evidence": "Three real camera clicks and screenshots differ; independent browser and saved per-view states retain one body/full pose/mesh."
+        },
+        {
+          "text": "Saved and actually imported/reloaded JSON agrees with current cm/pose; actual posed OBJ independently matches the saved anatomical state in centimetres.",
+          "passed": true,
+          "evidence": "Independent browser downloaded/reimported/reloaded state; source Three.js posed OBJ delta 2.49e-06cm."
+        },
+        {
+          "text": "Invalid or off-step input/state is visibly rejected or normalized consistently without corrupting the current anatomical body/target action.",
+          "passed": true,
+          "evidence": "Independent actual browser rejects invalid typed JSON and normalizes off-step cm input while preserving the target action."
+        },
+        {
+          "text": "Actual375px mobile viewport has no horizontal overflow or runtime errors; executable browser replay, before/after geometry and screenshots are delivered.",
+          "passed": true,
+          "evidence": "Independent375px browser/mobile capture, no runtime errors; 18 real consumer checks. Executor replay and actual before/after vertices reopened."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Actual Human Studio loads the supplied target action and UI waist+3/upperArmLength+2/forearmLength+1cm edits change real vertices and actual rest-bone lengths with neutral targets <=0.2cm.",
+          "passed": true,
+          "evidence": "Independently repeated actual UI edits; delta 2.03075cm and actual bone-head lengths changed. Neutral residual 0.000159cm."
+        },
+        {
+          "text": "Every original joint angle is preserved within0.1degree after cm edits; the target action is never replaced by A-pose.",
+          "passed": true,
+          "evidence": "Every supplied angular component preserved (missing zero bones filled semantically), not world positions."
+        },
+        {
+          "text": "Real front/side/back camera-button interactions preserve exactly the same final dimensions, full pose and posed geometry, with visible distinct screenshots.",
+          "passed": true,
+          "evidence": "Three real camera clicks and screenshots differ; independent browser and saved per-view states retain one body/full pose/mesh."
+        },
+        {
+          "text": "Saved and actually imported/reloaded JSON agrees with current cm/pose; actual posed OBJ independently matches the saved anatomical state in centimetres.",
+          "passed": true,
+          "evidence": "Independent browser downloaded/reimported/reloaded state; source Three.js posed OBJ delta 2.49e-06cm."
+        },
+        {
+          "text": "Invalid or off-step input/state is visibly rejected or normalized consistently without corrupting the current anatomical body/target action.",
+          "passed": true,
+          "evidence": "Independent actual browser rejects invalid typed JSON and normalizes off-step cm input while preserving the target action."
+        },
+        {
+          "text": "Actual375px mobile viewport has no horizontal overflow or runtime errors; executable browser replay, before/after geometry and screenshots are delivered.",
+          "passed": true,
+          "evidence": "Independent375px browser/mobile capture, no runtime errors; 18 real consumer checks. Executor replay and actual before/after vertices reopened."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Original-photo fitting actually optimizes cm/bone parameters, joint pose and camera from the provided neutral M initialization; no old fitted candidate/other executor/oracle is used.",
+          "passed": true,
+          "evidence": "Actual optimizer entrypoint and 6 shape/bone/pose/camera blocks, source input hashes; selected cm may remain prior after real trials."
+        },
+        {
+          "text": "One final complete body/pose/posed mesh supplies all front/side/back views, and independent projections match; only cameras may differ.",
+          "passed": true,
+          "evidence": "Separate source skinning and same-state front/side/back replay {'front': {'iou': 1.0, 'dice': 1.0}, 'side': {'iou': 1.0, 'dice': 1.0}, 'back': {'iou': 1.0, 'dice': 1.0}}; saved163joints agree with actual source FK."
+        },
+        {
+          "text": "Mean visible eye/nose/wrist reprojection error is <=15px and at least50% lower than the initial projection at original1000x1276 resolution; uncertain hidden shoulder/elbow annotations are distinguished.",
+          "passed": true,
+          "evidence": "Matrix independently gives visible eye/nose/wrist mean 3.29661px from initial 242.418px; hidden annotations remain uncertain."
+        },
+        {
+          "text": "The declared source-fitting objective improves by at least10% with actual block history and before/after OpenCV masks/overlays; independent IoU/Dice readback matches the delivered files.",
+          "passed": true,
+          "evidence": "Declared fixed residual objective {'initial': 5037.488892424504, 'final': 7.052004466336932, 'definition': 'weighted manual landmark residual + explicit 3D elbow/hand/action priors + small pose/camera regularization; grasp prior applied in candidate states'}; independent original-mask IoU/Dice {'iou': 0.6446595799659625, 'dice': 0.7839428752536184}, saved reports agree; before/after overlays retained."
+        },
+        {
+          "text": "Actual front and side meshes show a plausible version of the shirt-holding action without obvious buried hands, severe wrist folding or grossly misplaced arms; visible anatomical pose quality is reviewed separately from2Derror.",
+          "passed": true,
+          "evidence": "Actual front/side/back meshes show bent elbows and hands returned close to the anterior abdomen. No gross buried-hand or wrist-folding defect is obvious at this rendered resolution. This passes only coarse action plausibility: curled finger pinch/contact and collision-free tissue/cloth grip are NOT established."
+        },
+        {
+          "text": "Neutral cm and actual posed mesh are independently checked, saved final state can be consumed by Human Studio, and arm ruler lengths are distinguished from actual bone distances.",
+          "passed": true,
+          "evidence": "Neutral independent residual 4.04e-05cm; actual posed mesh source delta 1.23e-05cm; saved consumer link/check and bone-vs-ruler measures."
+        },
+        {
+          "text": "Source171cm/S, authorized M170cm initialization, conditional fitted sizes and unknown dimensions are distinct; no fresh ImageGen/true-person accuracy/perfect3Dmatch is claimed without evidence.",
+          "passed": true,
+          "evidence": "Original171cm/S and authorized170cm/M prior distinguished; report retains conditional measurements, unknowns and no fresh-generation/true-person/perfect-match claim."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8571428571428571,
+        "passed": 6,
+        "failed": 1,
+        "total": 7,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "Original-photo fitting actually optimizes cm/bone parameters, joint pose and camera from the provided neutral M initialization; no old fitted candidate/other executor/oracle is used.",
+          "passed": true,
+          "evidence": "Actual optimizer entrypoint and 15 shape/bone/pose/camera blocks, source input hashes; selected cm may remain prior after real trials."
+        },
+        {
+          "text": "One final complete body/pose/posed mesh supplies all front/side/back views, and independent projections match; only cameras may differ.",
+          "passed": true,
+          "evidence": "Separate source skinning and same-state front/side/back replay {'front': {'iou': 1.0, 'dice': 1.0}, 'side': {'iou': 1.0, 'dice': 1.0}, 'back': {'iou': 1.0, 'dice': 1.0}}; saved163joints agree with actual source FK."
+        },
+        {
+          "text": "Mean visible eye/nose/wrist reprojection error is <=15px and at least50% lower than the initial projection at original1000x1276 resolution; uncertain hidden shoulder/elbow annotations are distinguished.",
+          "passed": true,
+          "evidence": "Matrix independently gives visible eye/nose/wrist mean 3.95334px from initial 271.931px; hidden annotations remain uncertain."
+        },
+        {
+          "text": "The declared source-fitting objective improves by at least10% with actual block history and before/after OpenCV masks/overlays; independent IoU/Dice readback matches the delivered files.",
+          "passed": true,
+          "evidence": "Declared fixed residual objective {'initial': 32.016234038504145, 'final': 0.017890828659485405, 'method': 'Independent reimplementation of declared perspective residual using source Three.js mesh/joints'}; independent original-mask IoU/Dice {'iou': 0.6973048361420963, 'dice': 0.8216612847542948}, saved reports agree; before/after overlays retained."
+        },
+        {
+          "text": "Actual front and side meshes show a plausible version of the shirt-holding action without obvious buried hands, severe wrist folding or grossly misplaced arms; visible anatomical pose quality is reviewed separately from2Derror.",
+          "passed": false,
+          "evidence": "Actual side mesh shows both hands/forearms reaching well forward of lower torso with open/splayed palm-finger surfaces, rather than a close-to-body hem-holding grasp. Front head/torso compensation can align pixels while the unobserved side remains a weak action hypothesis. No obvious torso penetration is needed for this failure: the coarse shirt-holding action itself is not sufficiently supported. Fine contact and exact depth are not recoverable from this view alone."
+        },
+        {
+          "text": "Neutral cm and actual posed mesh are independently checked, saved final state can be consumed by Human Studio, and arm ruler lengths are distinguished from actual bone distances.",
+          "passed": true,
+          "evidence": "Neutral independent residual 4.04e-05cm; actual posed mesh source delta 1.12e-05cm; saved consumer link/check and bone-vs-ruler measures."
+        },
+        {
+          "text": "Source171cm/S, authorized M170cm initialization, conditional fitted sizes and unknown dimensions are distinct; no fresh ImageGen/true-person accuracy/perfect3Dmatch is claimed without evidence.",
+          "passed": true,
+          "evidence": "Original171cm/S and authorized170cm/M prior distinguished; report retains conditional measurements, unknowns and no fresh-generation/true-person/perfect-match claim."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 0.9524,
+        "stddev": 0.0825,
+        "min": 0.8571,
+        "max": 1.0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.0476"
+    }
+  },
+  "notes": [
+    "Three cases, one execution per configuration/case. Standard deviation is across heterogeneous tasks, not repeated-run reliability.",
+    "Both configurations receive the same existing anatomical model and generic cm/FK/LBS runtime. The runtime is evaluation infrastructure, not an optimizer bundled in the skill.",
+    "Case1 is controlled anatomical reconstruction; case2 is an actual editor workflow; case3 uses the original e-commerce photo. No new Image Gen call was made.",
+    "Same-state body/pose consistency and actual joint optimization are functional claims; passing them is not perfect photograph matching, true-person measurement accuracy, or physical garment contact.",
+    "Different camera protocols and self-declared objective scales in the photo runs prevent treating their raw loss delta as a causal skill-quality gain.",
+    "Missing token/duration metadata remains null. Native Claude trigger testing remains BLOCKED.",
+    "benchmark-upstream-raw.json retains unmodified official aggregation output; this adapter only corrects context and removes unavailable resource placeholders.",
+    "Each of the three tasks ran once per configuration: six explicitly injected subagent executions. There are no repeated-run reliability estimates, native Claude trigger results, or measured token/time advantages.",
+    "Controlled joint-fit and real-editor tasks pass in both configurations (13/13 each): the source anatomy can actually optimize cm/bone/pose/camera and preserve one action across cm edits and camera changes. These 13 assertions do not discriminate a revision benefit in this sample.",
+    "Case1 both configurations independently reach front/side IoU1.0 and held-out back IoU1.0, from biased initial silhouettes near0.697. These are controlled MakeHuman images with exact synthetic joint observations, not a photographed-person reconstruction accuracy result.",
+    "The one differing assertion is an unblinded independent coarse visual review of the original-photo shirt-holding action: updated7/7, old6/7. The old side view shows a more forward/open-hand action hypothesis; updated hands return near the abdomen. This single qualitative decision is not statistical or causal evidence of general skill superiority.",
+    "Original-photo raw whole-clothed IoU is higher for the old execution (~0.6973 vs updated~0.6447). Their nuisance cameras/projections and optimization objectives differ (perspective vs oblique orthographic), so this is disclosed output data rather than a fair isolated skill-effect estimate. Neither pixel overlap is a true naked-body accuracy score.",
+    "Both original-photo executions greatly improve visible eye/nose/wrist error and export a single complete body/pose shared by all views. The updated coarse pose passes the frozen plausibility criterion, but fine finger gripping, real cloth contact, precise depth, identity and a perfect pixel match remain unverified.",
+    "The generic runtime was shared evaluation infrastructure outside the shipped skill, and contains no solver or hidden answers. Executors wrote and ran their own optimization code. Passing does not mean the skill package already embeds a standalone joint-fitting engine.",
+    "Independent grader reads actual neutral/posed OBJ and uses separate Three.js source skinning; independently reprojects masks/matrices and samples20ray/triangle depth points. Editor grading additionally repeats actual browser cm input, bone-length response, camera actions, download/import/reload and375px behavior.",
+    "Four real-file fault controls are rejected: changed side pose hidden behind common metadata,1cm OBJ displacement with forged mesh hashes, falsified saved IoU, and changed reference bytes. Grading is bound to executor artifact SHA256 maps.",
+    "Exactly20 frozen assertions per configuration yield weighted20/20 vs19/20. The official aggregate macro-averages the three case rates, giving1.0 vs0.952381; its SD is across heterogeneous tasks, not repeated trials. No fresh ImageGen call or full six-photo generation score is inferred."
+  ],
+  "native_trigger_results": null
+}

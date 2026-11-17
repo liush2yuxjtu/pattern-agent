@@ -1,0 +1,100 @@
+{
+  "expectations": [
+    {
+      "text": "Actual Human Studio loads the supplied target action and UI waist+3/upperArmLength+2/forearmLength+1cm edits change real vertices and actual rest-bone lengths with neutral targets <=0.2cm.",
+      "passed": true,
+      "evidence": "Independently repeated actual UI edits; delta 2.03075cm and actual bone-head lengths changed. Neutral residual 0.000159cm."
+    },
+    {
+      "text": "Every original joint angle is preserved within0.1degree after cm edits; the target action is never replaced by A-pose.",
+      "passed": true,
+      "evidence": "Every supplied angular component preserved (missing zero bones filled semantically), not world positions."
+    },
+    {
+      "text": "Real front/side/back camera-button interactions preserve exactly the same final dimensions, full pose and posed geometry, with visible distinct screenshots.",
+      "passed": true,
+      "evidence": "Three real camera clicks and screenshots differ; independent browser and saved per-view states retain one body/full pose/mesh."
+    },
+    {
+      "text": "Saved and actually imported/reloaded JSON agrees with current cm/pose; actual posed OBJ independently matches the saved anatomical state in centimetres.",
+      "passed": true,
+      "evidence": "Independent browser downloaded/reimported/reloaded state; source Three.js posed OBJ delta 2.49e-06cm."
+    },
+    {
+      "text": "Invalid or off-step input/state is visibly rejected or normalized consistently without corrupting the current anatomical body/target action.",
+      "passed": true,
+      "evidence": "Independent actual browser rejects invalid typed JSON and normalizes off-step cm input while preserving the target action."
+    },
+    {
+      "text": "Actual375px mobile viewport has no horizontal overflow or runtime errors; executable browser replay, before/after geometry and screenshots are delivered.",
+      "passed": true,
+      "evidence": "Independent375px browser/mobile capture, no runtime errors; 18 real consumer checks. Executor replay and actual before/after vertices reopened."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": null,
+    "total_tokens": null
+  },
+  "claims": [
+    {
+      "claim": "Outputs match actual source anatomy, pose and projection",
+      "verified": true,
+      "evidence": "grade-evidence/eval-2-same-action-editor/old_skill/run-1"
+    }
+  ],
+  "eval_feedback": {
+    "overall": "Single explicitly injected subagent trial per task/configuration; geometry controls and real-photo attempt are distinct. No native trigger, statistical superiority or token claim."
+  },
+  "artifact_sha256": {
+    "TRACE.md": "e57889890fe9b88e57d675743663a328a0cc72863bf8e4bb6886b4c8d5e0f68f",
+    "artifact-manifest.json": "612e3c99f8bdfff991a848f2bcbbb2cbc30e5590f8bd4ee95f3cdebb76aae8cf",
+    "attempt-1-TRACE.md": "0dcd54047d710d7055dfe8c1fa96b77b6dd35ac745373f7fbd3c611e0d295b5f",
+    "attempt-1-failure.json": "3d544f1b202b7398ffacce1ff7b424d0c093aed1e8561a057cf2676f8cbac94f",
+    "attempt-2-TRACE.md": "87465045f4f3b8711743c4f79c1500b8a84fd742b8aa9c909d69eaa047821436",
+    "attempt-2-failure.json": "7b30864321dd85db6e013897608503df923a77b23c46ddeb914ff60c94078177",
+    "back.png": "4583d6e4d51c504436f82c2196671915d8386c6aced7a3b83aa50ce9558bb274",
+    "boundary-tests.json": "b79b0960698cd343c5a5c2367ebf37a3b420d49e4e58b21c9e6c0986eca21e99",
+    "cache-tests.json": "dc53c1c5677e40f893904932276fd8295d185f2a56760664e6a818c1f8652f2d",
+    "final-posed.obj": "e200db69bcab6066c42769559462a64e07ffa2ed6e19c0b78e82d133ff4cee58",
+    "final-state.json": "549e7981a20836753ec2494aeb0f6593a52b06de2845e378f76eff3dad56607a",
+    "front.png": "1ff70ca67ad708dcfefd62161f198e25e0c7f9751e968ef3ef3c7d12325ce55c",
+    "geometry-after.json": "4a2b9fa47c6dbaa4f9ba3a1a3039b49bfe21805c06ab2d317cfd29d0194a950b",
+    "geometry-before.json": "6f4691d0fdc4b6d9170871043523251cb644ccb7597c9bd71ca8352b33bbe014",
+    "geometry-measurements.json": "a514d827fcb6bba1e6a3bb25f30a2673448af1b97942adf4a7383f8f598b6890",
+    "invalid-bad-weights.json": "4ef746f4f274d507fac5ce2a76c21bde3cf2b0584404025da6a370cbfb9bf0fd",
+    "invalid-dimension-range.json": "bee952a82e3915ee97d2bf0a6e98e4291c587ccec328fe1de46963952bea9c3c",
+    "invalid-dimension-type.json": "33fe3455d491fa6e17e8f13dff05a50d800305df84d71c2aba44d6967c46e626",
+    "invalid-pose-range.json": "d7a8a39f2578bc5e3883f30bb49930ba0c8e10f978ce4d935bd892e136d8de6f",
+    "invalid-pose-type.json": "8709f3f31e0e8c2925b3d0929393c4f9605a39dabb9a01402929ede52e67d1c2",
+    "invalid-unknown-joint.json": "2bb3cf2f2e30c5a8f3acc9d6ce554fcd60324fe54677a7ab2d86ea9669ab4605",
+    "invalid-wrong-asset.json": "4a2adf643dcbbc1fc9ad2dd08c74893062f3b133d7b38f062b131bdbfd625ed0",
+    "invalid-wrong-units.json": "10927c137794fda136c15245dcc3c6cb0d90427f8704b80b7e2fe8086e872ebb",
+    "invalid-wrong-version.json": "5b66fedc0fd5121d5b8862eb2bc45050e7382b7a04b72d427a48a44c0b4dd5f6",
+    "mobile-375.png": "685ce58e60dd5dfe3446a07eb21ccd1a31e6cd6c053f961df52bd51aea642c2e",
+    "mobile-state.json": "de4cf16e9bf3932280eae560e980101d268a9dfdd70a857c7b76adaad468d01a",
+    "neutral-independent-check.json": "34a5142820703191d75510ef4c9451879f93e6329a4d0a977417ec84c90c4a83",
+    "off-step-import-result.json": "e3f213e64a4895a03e9043ccb4b4e5703564fcf17dd4eaa4b972cea2f9880ba9",
+    "off-step-import.json": "916b34d93b4c5ea2b9d650ce6cb8cf53b536c2ba6e226891ee6866a47b68ebdc",
+    "pose-invariance.json": "b89f41990d342aa12ef1a6933c91c7c388c61726df94366a8e90ac2e9e4b3be7",
+    "reimport-state.json": "549e7981a20836753ec2494aeb0f6593a52b06de2845e378f76eff3dad56607a",
+    "reimported.png": "01128603397de4ac0d4536f02af051ca29c0bcc29bc1c5f73a56a9f42c0d5936",
+    "reloaded-state.json": "549e7981a20836753ec2494aeb0f6593a52b06de2845e378f76eff3dad56607a",
+    "reloaded.png": "0c31eba2d6b9a0b83ff17f26eb23e063b98e51a6db4b842c543d7de6b2d8e80e",
+    "report.json": "13244ec6b2eb194730ab03e12bfa73870c4293fc6a94851a5e1379d6f39d21e5",
+    "report.md": "d63511a3d6fd5a66a466cc3ec1d0b5233d14ee7c26a9eaa09c44e067a25a0131",
+    "reproduce.cjs": "a59368b1c36e0a337ddc8ac01f3083f9f2f7b2c834dc546a5861fdc3287a1c37",
+    "restore-after-boundaries.json": "549e7981a20836753ec2494aeb0f6593a52b06de2845e378f76eff3dad56607a",
+    "restore-final.json": "549e7981a20836753ec2494aeb0f6593a52b06de2845e378f76eff3dad56607a",
+    "server.log": "20ee60ccd8a0e43078950fc00eadaae271685024f2841b6c5c039bf5ca508d64",
+    "side.png": "24ae4df8fd6c97573ef79c863d8f44b892c72b29db170b226ffc000a56f172a7",
+    "source-loaded-state.json": "ea3b6e9e3378a96d5b8946c542aaebf035d0ea4da525f0a347705ec357bc8fba",
+    "source.png": "c5c75a5b0dde243e45694e2a0f0cdb2ec00a4cf49e33359dba65495e35587974",
+    "view-states.json": "69fb1e915c95dc0daac801ad42fa343eb9f0bef766500da452309ce2666ea7e4"
+  }
+}

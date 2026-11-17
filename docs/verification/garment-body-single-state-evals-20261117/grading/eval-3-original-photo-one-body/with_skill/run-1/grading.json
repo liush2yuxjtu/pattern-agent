@@ -1,0 +1,133 @@
+{
+  "expectations": [
+    {
+      "text": "Original-photo fitting actually optimizes cm/bone parameters, joint pose and camera from the provided neutral M initialization; no old fitted candidate/other executor/oracle is used.",
+      "passed": true,
+      "evidence": "Actual optimizer entrypoint and 6 shape/bone/pose/camera blocks, source input hashes; selected cm may remain prior after real trials."
+    },
+    {
+      "text": "One final complete body/pose/posed mesh supplies all front/side/back views, and independent projections match; only cameras may differ.",
+      "passed": true,
+      "evidence": "Separate source skinning and same-state front/side/back replay {'front': {'iou': 1.0, 'dice': 1.0}, 'side': {'iou': 1.0, 'dice': 1.0}, 'back': {'iou': 1.0, 'dice': 1.0}}; saved163joints agree with actual source FK."
+    },
+    {
+      "text": "Mean visible eye/nose/wrist reprojection error is <=15px and at least50% lower than the initial projection at original1000x1276 resolution; uncertain hidden shoulder/elbow annotations are distinguished.",
+      "passed": true,
+      "evidence": "Matrix independently gives visible eye/nose/wrist mean 3.29661px from initial 242.418px; hidden annotations remain uncertain."
+    },
+    {
+      "text": "The declared source-fitting objective improves by at least10% with actual block history and before/after OpenCV masks/overlays; independent IoU/Dice readback matches the delivered files.",
+      "passed": true,
+      "evidence": "Declared fixed residual objective {'initial': 5037.488892424504, 'final': 7.052004466336932, 'definition': 'weighted manual landmark residual + explicit 3D elbow/hand/action priors + small pose/camera regularization; grasp prior applied in candidate states'}; independent original-mask IoU/Dice {'iou': 0.6446595799659625, 'dice': 0.7839428752536184}, saved reports agree; before/after overlays retained."
+    },
+    {
+      "text": "Actual front and side meshes show a plausible version of the shirt-holding action without obvious buried hands, severe wrist folding or grossly misplaced arms; visible anatomical pose quality is reviewed separately from2Derror.",
+      "passed": true,
+      "evidence": "Actual front/side/back meshes show bent elbows and hands returned close to the anterior abdomen. No gross buried-hand or wrist-folding defect is obvious at this rendered resolution. This passes only coarse action plausibility: curled finger pinch/contact and collision-free tissue/cloth grip are NOT established."
+    },
+    {
+      "text": "Neutral cm and actual posed mesh are independently checked, saved final state can be consumed by Human Studio, and arm ruler lengths are distinguished from actual bone distances.",
+      "passed": true,
+      "evidence": "Neutral independent residual 4.04e-05cm; actual posed mesh source delta 1.23e-05cm; saved consumer link/check and bone-vs-ruler measures."
+    },
+    {
+      "text": "Source171cm/S, authorized M170cm initialization, conditional fitted sizes and unknown dimensions are distinct; no fresh ImageGen/true-person accuracy/perfect3Dmatch is claimed without evidence.",
+      "passed": true,
+      "evidence": "Original171cm/S and authorized170cm/M prior distinguished; report retains conditional measurements, unknowns and no fresh-generation/true-person/perfect-match claim."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": null,
+    "total_tokens": null
+  },
+  "claims": [
+    {
+      "claim": "Outputs match actual source anatomy, pose and projection",
+      "verified": true,
+      "evidence": "grade-evidence/eval-3-original-photo-one-body/with_skill/run-1"
+    }
+  ],
+  "eval_feedback": {
+    "overall": "Single explicitly injected subagent trial per task/configuration; geometry controls and real-photo attempt are distinct. No native trigger, statistical superiority or token claim."
+  },
+  "artifact_sha256": {
+    "TRACE.md": "a7357be2ee15bcf97d83a6ff890a4d861bb68e1572fe8606c7f4da0bf6d00b80",
+    "back-mask.png": "e3903b3ea627427f1d3baaab51f4e26d8f598fdc25d508ff071340adffefa857",
+    "back.png": "fb2b70f1cdc2e5b30aaa3f9ddb9503bd4014dc4ff8ab610ba58e11ad063f4e94",
+    "camera.json": "73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd",
+    "closeup-mask.png": "2a28ce7dcab1f052c1d83970328ad072cc75dc7520eb0356c52d0da9185f202f",
+    "closeup.png": "8c4796c5683040f8fe8081d795e39379fe63b219a87416b1bf581c3c9cda8f81",
+    "consumer-check.mjs": "c47b5b87b1153d1d9f658c15a6375b38ddb55d2d370441b1f3fcdf2520c1d0ac",
+    "consumer-load-check.json": "8d7c935ec0f833b4210f032fc29e2bf1ee268cbd27838217c9a1fb2b5ffe6e4f",
+    "depth-mask.png": "8e6e1d4953ba504a89f77c7a0f5fa4990ff17bf9645d01a38365572a7d9fe3b4",
+    "depth-valid.png": "e18cde90966981c6b183f0ddf260bf5c2427808bc0587024eb4464e85057198f",
+    "depth.png": "0251dabd98c18e0bf5ef33eec88ec0a3f6608ce1363fb919fe7d9358481cd374",
+    "export.log": "ad1558fdc65ac988b7793ad95e94301c63019887f856f01bd43c9fcc65e9f384",
+    "final-export.log": "3a0fb59471dfe8584da4253556e88fc54c0e65f2cb15d0dfb2b35fe20da7eb74",
+    "final-mask.png": "68230a57ca627c7716e62aff2652854f5cc2a634d1cb5ff91be867912a8d20e9",
+    "final-overlay.png": "e1fb729232c61a6ff3d9a9594a2a51125fd69b1dec9547e2e2a738bbb65bd721",
+    "final-reproduction.log": "a8286b66790384dc71a6dcc89584825943f9cee82c1276b31499d38a931ea420",
+    "final-sourcecamera-mask.png": "e3bc5b07512e18679edb7909a6f31f0ad4ee179aa7a730245d119a71c6ee7ccf",
+    "final-sourcecamera-overlay.png": "a714ccc16a45d41b6a8e0122baba5bc859656544f033f3137764a2e3e2fb7111",
+    "final-state.json": "594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15",
+    "finalize.py": "1bea2aa96bd1cd362f85b7b37d2efc3076444e19845f7afc156f56c8bb51fa30",
+    "front-mask.png": "8e6e1d4953ba504a89f77c7a0f5fa4990ff17bf9645d01a38365572a7d9fe3b4",
+    "front.png": "509fcffcddd233fa78d837a90db8993df1a3676907ab3008cf93e4abaa8a6874",
+    "geometry-audit.json": "c4be83fce8ef5d04b84eaac18f25f30ce2dde24ccbc87cef919b287442ce67db",
+    "independent-neutral-check.json": "f31e68970e6167225ca2eadd00c7a52420497592a1a0260f956512977154c7f5",
+    "index.html": "b08cf394ff605785dd05bbd6e77ce2cad8409f97b210751c9513aee165d84ee9",
+    "initial-finalcamera-mask.png": "4891fdaf9e36803228099ae1b59eb428cabcb5a4b6a307f6c4fe9bbb3142c682",
+    "initial-finalcamera-overlay.png": "f3375574d0c1f8c7f0fe85f35924c669db4419d61196fc2720c6693414e947bc",
+    "initial-mask.png": "a2d628db759e55fb722b93cf5f3dfefe23545ad88b01acc14e0269528d809d71",
+    "initial-neutral.obj": "bafc6090e5fff755bcd797161e70fb83592bca29efd1fe585bbbb79e9d696755",
+    "initial-overlay.png": "a0ea88544652088d495db1b9eabf2a139b841428df7b277ef7fbe19d3ce99f82",
+    "initial-posed.obj": "d0e0a456677bb006e9c34974ed22a897e622c2cbdf5119b4b99617c232e9834c",
+    "initial-state.json": "8c8d3373e2aa426c6126a5e009c1b18baffd294b3ccfb9fdecaac38af1e3137e",
+    "input-provenance.json": "e569741b432df1f12a780d1fa5b472e8c3b7b31f1e1757ffa3640912f1223625",
+    "joints.json": "3eb6dd7e107e893673540399825a5bdd8de1b7d0c218c777204c6987e303be7c",
+    "load-link.txt": "4da930b1c2dbf0180032b5439694f114eba51519153f68c6e828fe3c1b8bef26",
+    "manifest.json": "28089561d4b899fc3b8b744e28f47dc5615a6103d94ba73c686b86555315150b",
+    "measurements.csv": "ed8027d14a3ee2d201dc2c6d3c3c8c804212d5a25e841f6093698703fd097deb",
+    "measurements.json": "14dd5deb4e41c58470edd89f2506fa8ae0f11d9d33d1749a7a841854174a66d2",
+    "metrics.json": "d3b873bd6c615d6e67b8e08927287d93226f80329b9fd5d8a2452e83726199b6",
+    "neutral.obj": "3d6525c3c2958d2ffe6041339704733519f594a0f720a6cdbc266dfcb818dd70",
+    "objective.json": "9d2c27ef6cee2f318dc10d287442bc3bd8c97dee595b226ae40b1904f9e946bb",
+    "optimizer.log": "34c76ef3e624944932d2c6cb77b0e4e241255c1f3af141d1bbc013ff2fef32f5",
+    "original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+    "parameter-block-history.json": "161585692569a24a540935231add9771ad1add120bffb4c98beb566e45b3677a",
+    "photo-render-overlay.png": "a683fae44eca2935a6335a05cb923a670fde82834f2774b7b269b917ff1592a8",
+    "photo-render.png": "3e0fc4ca970c1cd9f53d6966dfd4c589f822ecf8e366c5c294901a78dee0eff0",
+    "pose-mask.png": "8e6e1d4953ba504a89f77c7a0f5fa4990ff17bf9645d01a38365572a7d9fe3b4",
+    "pose.png": "09262299bb7ef9b4d305802c6a737ac84592635d7e12f4417a7eb25ba3be8fec",
+    "posed.obj": "721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580",
+    "rawdepth.npy": "ea0b1a12d382415e993892bceb13ec0eca6308200ed8f7b2cb8680225d62e984",
+    "reference-mask.png": "8a536a126416ab45af1e9db9a1df5b9ea5f4d05f0e74a4268032dc64746d7891",
+    "refine.log": "7f266f69b2718f599ced78540af9177207843e431e18da0a24197b67309329ff",
+    "rejected-depth-ambiguous-round/back.png": "a158f77d56707d207a8d4089b7be045edff9b215e122d59e5f542d2bc58e7edd",
+    "rejected-depth-ambiguous-round/camera.json": "6ee6e931a5489f80444506f6fc6aa805db7a101ca6ad2fc543dc5bc7157b3824",
+    "rejected-depth-ambiguous-round/final-overlay.png": "c9999788921bb9a0bc09115b225e48a35f643da34a62c495134d3ecb9f6615f3",
+    "rejected-depth-ambiguous-round/final-state.json": "e42eb9858598552871157e6c4648c7f3b9f7681196312c178443bb44b6f73994",
+    "rejected-depth-ambiguous-round/front.png": "b040f3da9fa2aa75860069d4c171cf7359afe70382ae2dcd089911b063a7e266",
+    "rejected-depth-ambiguous-round/measurements.json": "b04b8488bf3deea7b7366fb02b81be1489974466ec7e4dcdf8be00cb9b338680",
+    "rejected-depth-ambiguous-round/metrics.json": "d532051749dfc14e947f8e1cb0a56470bbd95fe854997eb660613e0f73381fb8",
+    "rejected-depth-ambiguous-round/parameter-block-history.json": "a12974f2ae0bfa202326cc228330b2f0ab20a5709f333be252eb18550ef5d4b0",
+    "rejected-depth-ambiguous-round/posed.obj": "8942112de57a1ef2333190ca10b0c1f65a0557c7f477e94073cca77358d90724",
+    "rejected-depth-ambiguous-round/reason.md": "eec45cdb6e4feaf1cbc252206a6861cc37176d921719108468592677b9039b8a",
+    "rejected-depth-ambiguous-round/side.png": "6d3f4983c60f9190076fdcb749749cc0a4f03a3fef0a8248eef40a1b2fc141cf",
+    "render-camera.json": "8756597dd10403866891a1a6b5203ef5815ad1ec7efc20cb1566a5a41d99b26c",
+    "report.md": "ed0807fda5274ad71a101b42937d070027cf8e4272942fafc77ba613c83a4a6d",
+    "reproduce.py": "d80423ea5451549f10947e345398c3e273faf98a720372d63e34ee6a6d7f9156",
+    "run.json": "ee1ce90e10a5e69ce8f68951fe21c568397a15054d62e1f88b8272caef76218a",
+    "server.log": "251f3e74254d6032440f61e84feed753199b1929896b3838141dbabed3df7ce5",
+    "side-mask.png": "3341d0628699a9c3b9a7083d610d3c2154f47e51cc4f49a357becb299096dac6",
+    "side.png": "79372bfa7d9327038957c2253db913da0aa4306a2f1669b2caa785f2cb38eaff",
+    "verification.json": "1ed8367b20166c8bf4b4cd621ef998458f534cb141e010c319cbe0c3e7faba69",
+    "view-provenance.json": "61ae3f577a6b93453e7db6bc1aa5cefb4704724e24b04a3fceff0cfa4bac72f5"
+  }
+}

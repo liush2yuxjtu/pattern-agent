@@ -1,0 +1,86 @@
+{
+  "initial_source_camera": {
+    "front": {
+      "IoU": 0.6967737634982002,
+      "Dice": 0.821292476920055,
+      "symmetric_contour_mean_px": 4.362344264984131,
+      "symmetric_contour_p95_px": 12.803296089172363,
+      "joint_RMSE_px": 7.707071125800387
+    },
+    "side": {
+      "IoU": 0.696967950195988,
+      "Dice": 0.8214273582662455,
+      "symmetric_contour_mean_px": 4.168142795562744,
+      "symmetric_contour_p95_px": 11.393798828125,
+      "joint_RMSE_px": 7.018894424720974
+    }
+  },
+  "initial_final_camera": {
+    "front": {
+      "IoU": 0.8644081119320861,
+      "Dice": 0.927273493823517,
+      "symmetric_contour_mean_px": 1.8245011568069458,
+      "symmetric_contour_p95_px": 10.1968994140625,
+      "joint_RMSE_px": 6.348057180454331
+    },
+    "side": {
+      "IoU": 0.8784572095257703,
+      "Dice": 0.9352964816776881,
+      "symmetric_contour_mean_px": 1.3104978799819946,
+      "symmetric_contour_p95_px": 11.393798828125,
+      "joint_RMSE_px": 6.195787275734112
+    }
+  },
+  "final_source_camera": {
+    "front": {
+      "IoU": 0.6935025889427092,
+      "Dice": 0.819015682019923,
+      "symmetric_contour_mean_px": 4.254383087158203,
+      "symmetric_contour_p95_px": 11.984498977661133,
+      "joint_RMSE_px": 7.499956682682989
+    },
+    "side": {
+      "IoU": 0.7119199380472985,
+      "Dice": 0.8317210661841464,
+      "symmetric_contour_mean_px": 3.756788969039917,
+      "symmetric_contour_p95_px": 10.187599182128906,
+      "joint_RMSE_px": 6.893400127978674
+    }
+  },
+  "final_final_camera": {
+    "front": {
+      "IoU": 1.0,
+      "Dice": 1.0,
+      "symmetric_contour_mean_px": 0.0,
+      "symmetric_contour_p95_px": 0.0,
+      "joint_RMSE_px": 2.1565210325871932e-13
+    },
+    "side": {
+      "IoU": 1.0,
+      "Dice": 1.0,
+      "symmetric_contour_mean_px": 0.0,
+      "symmetric_contour_p95_px": 0.0,
+      "joint_RMSE_px": 1.6938446360784766e-13
+    }
+  },
+  "protocol": {
+    "resolution": [
+      320,
+      448
+    ],
+    "ROI": "entire supplied image; no crop or altered reference",
+    "reference_hashes": {
+      "reference-front-mask.png": "76c8f1ced8b168cec7f18664ddb8068cfef5f665f596b14ed0fcdb46c79d6416",
+      "README.md": "3c6252e2535b05fb7b395ca794f38b9bb09f5c711a838c005ed2ba72ff73c74c",
+      "camera.json": "30ee0be1d5d0e42d12cc0f393cd7219dc18cefc53c57f6e1e0dee67bb7975c7b",
+      "reference-front.png": "43c698a7eeaa7cbb57a34027a7ddf7c1eb8297b52f7d3d4eed3a3baf25a724a5",
+      "reference-side.png": "62055cbb912224145def9257d5feb7b577669891b2c7c1b687bba97d3ff200f5",
+      "initial-state.json": "cfa12ac3135b9588595c316ee4861824e1770ece0880032935e47faff32ac483",
+      "reference-joints.json": "588d8699189017508421dac01ffc65bd0070cc8410aedf4111de91ca3b56dcdc",
+      "reference-side-mask.png": "ec9015f9820eb5ec4b4fb8696842e2b93b9d74c934dece4324654767e36fb45f"
+    },
+    "contour": "symmetric distance between 3x3 morphological boundaries; OpenCV L2 distance transform",
+    "final_state_sha256": "85c3fd0772f8d0c3bbf0df14d089eb8a9cc042e776f49b52d7aefb7ce9e370b4",
+    "posed_mesh_sha256": "f23072fd4e3070b89f06ce85e7821317871540cd617d4e609779bf6c3e269dad"
+  }
+}

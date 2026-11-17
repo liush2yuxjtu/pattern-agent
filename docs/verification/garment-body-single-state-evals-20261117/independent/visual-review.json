@@ -1,0 +1,26 @@
+{
+  "with_skill": {
+    "passed": true,
+    "evidence": "Actual front/side/back meshes show bent elbows and hands returned close to the anterior abdomen. No gross buried-hand or wrist-folding defect is obvious at this rendered resolution. This passes only coarse action plausibility: curled finger pinch/contact and collision-free tissue/cloth grip are NOT established.",
+    "method": "Independent grader opened actual final front/side/back renders together, rather than infer quality from 2D error. Subjective single-review decision with explicitly scoped criterion, not ground-truth3Dpose.",
+    "files": {
+      "front.png": "509fcffcddd233fa78d837a90db8993df1a3676907ab3008cf93e4abaa8a6874",
+      "side.png": "79372bfa7d9327038957c2253db913da0aa4306a2f1669b2caa785f2cb38eaff",
+      "back.png": "fb2b70f1cdc2e5b30aaa3f9ddb9503bd4014dc4ff8ab610ba58e11ad063f4e94",
+      "final-state.json": "594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15",
+      "posed.obj": "721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580"
+    }
+  },
+  "old_skill": {
+    "passed": false,
+    "evidence": "Actual side mesh shows both hands/forearms reaching well forward of lower torso with open/splayed palm-finger surfaces, rather than a close-to-body hem-holding grasp. Front head/torso compensation can align pixels while the unobserved side remains a weak action hypothesis. No obvious torso penetration is needed for this failure: the coarse shirt-holding action itself is not sufficiently supported. Fine contact and exact depth are not recoverable from this view alone.",
+    "method": "Independent grader opened actual final front/side/back renders together, rather than infer quality from 2D error. Subjective single-review decision with explicitly scoped criterion, not ground-truth3Dpose.",
+    "files": {
+      "front.png": "c5ad725622a83907be3a5ad65cbe206d9256dd6d4a553b6ea1856d28a144cee1",
+      "side.png": "06b0fd59352536a3f543ce3ffa41d0fac287593f3b362cbe2894480f82028907",
+      "back.png": "4790a2f6741d59a40cf671145143d15894cbda73598dab068c130ff4d5dabe92",
+      "final-state.json": "3035a60dca197e5f7c22d63ff3925d1dcac1c50e047511c4ac0e6a6d797c35f8",
+      "posed.obj": "f5171ad7a020c6c4c2ee63eee83028aaf5558c2181a3171903cfdc64d47015da"
+    }
+  }
+}

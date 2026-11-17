@@ -1,0 +1,710 @@
+{
+  "eval-1-joint-single-state-fit-old_skill-run-1": {
+    "title": "同一人体联合拟合 · 旧版对照",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. 输入与目标动作",
+        "images": [
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/input-front.png",
+            "label": "受控输入 正面",
+            "caption": "同一真实 MakeHuman 目标状态的受控参考投影；不是真人照片或 Image Gen。",
+            "sha256": "43c698a7eeaa7cbb57a34027a7ddf7c1eb8297b52f7d3d4eed3a3baf25a724a5"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/input-side.png",
+            "label": "受控输入 侧面",
+            "caption": "同一真实 MakeHuman 目标状态的受控参考投影；不是真人照片或 Image Gen。",
+            "sha256": "62055cbb912224145def9257d5feb7b577669891b2c7c1b687bba97d3ff200f5"
+          }
+        ],
+        "status": "实际输入",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen",
+        "images": [],
+        "status": "NOT_RUN",
+        "emptyTitle": "本轮未调用 Image Gen",
+        "note": "本任务检查同一人体/动作的实际执行，不新增服装生成图。"
+      },
+      {
+        "key": "simulation",
+        "title": "3. 实际三维与编辑器",
+        "images": [
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/render-front.png",
+            "label": "实际三维 正面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "4d0b0b3905c0e80f2a0b78260bd661886b89616e5942dde8efdc22579026eac7"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/render-side.png",
+            "label": "实际三维 侧面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "62055cbb912224145def9257d5feb7b577669891b2c7c1b687bba97d3ff200f5"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/render-back.png",
+            "label": "实际三维 背面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "2d769510d1524c11b45442dea51667f16e56ccc857593817e230ddcd5736eae9"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/render-closeup.png",
+            "label": "实际三维 特写",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "4a66307604a24eaf8788517e43efd1c4bd98e991f8e72fa903728d201b8600dc"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/render-pose.png",
+            "label": "实际三维 真实骨架投影",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "9ef590729ddf61cf02b95c2867e1fb518a23fd7d0ba150b6cbf7cf335874ebd6"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/render-depth.png",
+            "label": "实际三维 真实深度",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "d6aa5cd7f6fefc2c5e41901bfb855093ba554a4ae29248443b705306c779d8e4"
+          }
+        ],
+        "status": "实际执行产物",
+        "emptyTitle": "等待实际渲染",
+        "note": "没有用占位图替代执行产物。"
+      },
+      {
+        "key": "overlay",
+        "title": "4. OpenCV 比较",
+        "images": [
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/overlay-final_camera_final-front-overlay.png",
+            "label": "final camera final-front-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "53f42544bd415be0035d95551e1e19134a54183bdfb62a5415e73113bb30b3c7"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/overlay-final_camera_final-side-overlay.png",
+            "label": "final camera final-side-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "864b1a22e2e9a9949aa4f5fa4a9230102c184f7fc4ff921436d9c6c7b39872bf"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/overlay-final_camera_initial-front-overlay.png",
+            "label": "final camera initial-front-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "8de1578e67b52948fe2c16016845c0a825c3a3cc30ed7df8053bb3a3f68a9e91"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/overlay-final_camera_initial-side-overlay.png",
+            "label": "final camera initial-side-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "898623f0537e52913bcc1c2599b31003767d2a073788606622b16ae28428f6bb"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/overlay-source_camera_initial-front-overlay.png",
+            "label": "source camera initial-front-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "d526c2f6198c09035cac68b513185733fb5c00395c5033989e295d5b905bfecd"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/old_skill/overlay-source_camera_initial-side-overlay.png",
+            "label": "source camera initial-side-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "38df0e0c68b772f2fa855dd3fb5eee3179127453674f5374331b5395d1ddd96b"
+          }
+        ],
+        "status": "实际叠加与对照",
+        "emptyTitle": "尚无实际叠加",
+        "note": "厘米编辑案例通过几何、关节角度与真实浏览器验证；不伪造照片拟合。"
+      }
+    ],
+    "note": "一次独立执行；受控拟合、编辑器行为、原图动作匹配是不同验证范围。所有视图是否真实共享一份状态，请同时查看 Formal Grades、实际侧视图和完整文件。"
+  },
+  "eval-1-joint-single-state-fit-with_skill-run-1": {
+    "title": "同一人体联合拟合 · 修订技能",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. 输入与目标动作",
+        "images": [
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/input-front.png",
+            "label": "受控输入 正面",
+            "caption": "同一真实 MakeHuman 目标状态的受控参考投影；不是真人照片或 Image Gen。",
+            "sha256": "43c698a7eeaa7cbb57a34027a7ddf7c1eb8297b52f7d3d4eed3a3baf25a724a5"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/input-side.png",
+            "label": "受控输入 侧面",
+            "caption": "同一真实 MakeHuman 目标状态的受控参考投影；不是真人照片或 Image Gen。",
+            "sha256": "62055cbb912224145def9257d5feb7b577669891b2c7c1b687bba97d3ff200f5"
+          }
+        ],
+        "status": "实际输入",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen",
+        "images": [],
+        "status": "NOT_RUN",
+        "emptyTitle": "本轮未调用 Image Gen",
+        "note": "本任务检查同一人体/动作的实际执行，不新增服装生成图。"
+      },
+      {
+        "key": "simulation",
+        "title": "3. 实际三维与编辑器",
+        "images": [
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/render-front.png",
+            "label": "实际三维 正面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "f2edc9f5544547b54ea03f77f2a0b4e4a9e81e6807a74556f162a61d38b41ea6"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/render-side.png",
+            "label": "实际三维 侧面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "62055cbb912224145def9257d5feb7b577669891b2c7c1b687bba97d3ff200f5"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/render-back.png",
+            "label": "实际三维 背面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "15486c141aa9aef711c38fce11c9ed66cf8c865287e4ba0989c8ed2526404a12"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/render-closeup.png",
+            "label": "实际三维 特写",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "4a66307604a24eaf8788517e43efd1c4bd98e991f8e72fa903728d201b8600dc"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/render-pose.png",
+            "label": "实际三维 真实骨架投影",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "0b28d36cc74340fb497a753efca9d088d20bbae05ce5f05ef7cbe5c4e0d32276"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/render-depth.png",
+            "label": "实际三维 真实深度",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "d6aa5cd7f6fefc2c5e41901bfb855093ba554a4ae29248443b705306c779d8e4"
+          }
+        ],
+        "status": "实际执行产物",
+        "emptyTitle": "等待实际渲染",
+        "note": "没有用占位图替代执行产物。"
+      },
+      {
+        "key": "overlay",
+        "title": "4. OpenCV 比较",
+        "images": [
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/overlay-final_final_camera-front-overlay.png",
+            "label": "final final camera-front-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "597eb7f2b41886e2140a1d124a5295315dd317ac1c8958c5eb5296d1480de745"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/overlay-final_final_camera-side-overlay.png",
+            "label": "final final camera-side-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "e8253f36878e4e90a26b60912669778786c4ac2c8e793ecd67e19b7ebc564b74"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/overlay-final_source_camera-front-overlay.png",
+            "label": "final source camera-front-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "c0e9d5dea9e2e36f43152dbc90e15736b1ad7adde68647438db0550cb607f036"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/overlay-final_source_camera-side-overlay.png",
+            "label": "final source camera-side-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "930c349c95418f5ce4bc1fbb61e6f9f1595101c36a617a17817f50cf4341975e"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/overlay-initial_final_camera-front-overlay.png",
+            "label": "initial final camera-front-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "aa69921eaa30bb6a5572093073138043251c60d5f185c94d17967fd19ff23e27"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/overlay-initial_final_camera-side-overlay.png",
+            "label": "initial final camera-side-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "c14e1f7a691cc63405ee077d285470280bdfafaa487f9581c5c33ada4682bf29"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/overlay-initial_source_camera-front-overlay.png",
+            "label": "initial source camera-front-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "edbfcb185b804e3b6a94ccd9816e1e6321d612d57fc2683981632073ee5e4ebd"
+          },
+          {
+            "src": "visual/eval-1-joint-single-state-fit/with_skill/overlay-initial_source_camera-side-overlay.png",
+            "label": "initial source camera-side-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "7a59d055184c081db4f45b6cf4d3f407a4da1dcf7f65a56fe60efdb84a01adef"
+          }
+        ],
+        "status": "实际叠加与对照",
+        "emptyTitle": "尚无实际叠加",
+        "note": "厘米编辑案例通过几何、关节角度与真实浏览器验证；不伪造照片拟合。"
+      }
+    ],
+    "note": "一次独立执行；受控拟合、编辑器行为、原图动作匹配是不同验证范围。所有视图是否真实共享一份状态，请同时查看 Formal Grades、实际侧视图和完整文件。"
+  },
+  "eval-2-same-action-editor-old_skill-run-1": {
+    "title": "同动作厘米编辑与保存 · 旧版对照",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. 输入与目标动作",
+        "images": [
+          {
+            "src": "visual/eval-2-same-action-editor/old_skill/input-source.png",
+            "label": "编辑前固定目标动作",
+            "caption": "实际编辑器载入的原始动作；调厘米尺寸须保持完整关节角度。",
+            "sha256": "c5c75a5b0dde243e45694e2a0f0cdb2ec00a4cf49e33359dba65495e35587974"
+          }
+        ],
+        "status": "实际输入",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen",
+        "images": [],
+        "status": "NOT_RUN",
+        "emptyTitle": "本轮未调用 Image Gen",
+        "note": "本任务检查同一人体/动作的实际执行，不新增服装生成图。"
+      },
+      {
+        "key": "simulation",
+        "title": "3. 实际三维与编辑器",
+        "images": [
+          {
+            "src": "visual/eval-2-same-action-editor/old_skill/render-front.png",
+            "label": "实际三维 正面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "1ff70ca67ad708dcfefd62161f198e25e0c7f9751e968ef3ef3c7d12325ce55c"
+          },
+          {
+            "src": "visual/eval-2-same-action-editor/old_skill/render-side.png",
+            "label": "实际三维 侧面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "24ae4df8fd6c97573ef79c863d8f44b892c72b29db170b226ffc000a56f172a7"
+          },
+          {
+            "src": "visual/eval-2-same-action-editor/old_skill/render-back.png",
+            "label": "实际三维 背面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "4583d6e4d51c504436f82c2196671915d8386c6aced7a3b83aa50ce9558bb274"
+          }
+        ],
+        "status": "实际执行产物",
+        "emptyTitle": "等待实际渲染",
+        "note": "没有用占位图替代执行产物。"
+      },
+      {
+        "key": "overlay",
+        "title": "4. OpenCV 比较",
+        "images": [],
+        "status": "不适用",
+        "emptyTitle": "此任务不做照片叠加",
+        "note": "厘米编辑案例通过几何、关节角度与真实浏览器验证；不伪造照片拟合。"
+      }
+    ],
+    "note": "一次独立执行；受控拟合、编辑器行为、原图动作匹配是不同验证范围。所有视图是否真实共享一份状态，请同时查看 Formal Grades、实际侧视图和完整文件。"
+  },
+  "eval-2-same-action-editor-with_skill-run-1": {
+    "title": "同动作厘米编辑与保存 · 修订技能",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. 输入与目标动作",
+        "images": [
+          {
+            "src": "visual/eval-2-same-action-editor/with_skill/input-source.png",
+            "label": "编辑前固定目标动作",
+            "caption": "实际编辑器载入的原始动作；调厘米尺寸须保持完整关节角度。",
+            "sha256": "84b68f47eedf3db81a14761a701fe23295ea45969c24fb0646e216b6ca3c2223"
+          }
+        ],
+        "status": "实际输入",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen",
+        "images": [],
+        "status": "NOT_RUN",
+        "emptyTitle": "本轮未调用 Image Gen",
+        "note": "本任务检查同一人体/动作的实际执行，不新增服装生成图。"
+      },
+      {
+        "key": "simulation",
+        "title": "3. 实际三维与编辑器",
+        "images": [
+          {
+            "src": "visual/eval-2-same-action-editor/with_skill/render-front.png",
+            "label": "实际三维 正面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "bee79542a78d43f450c1b4deb1a766a2431845f1d009b4550901cd58f7fdfc3b"
+          },
+          {
+            "src": "visual/eval-2-same-action-editor/with_skill/render-side.png",
+            "label": "实际三维 侧面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "1b0fb92d1ffac7c1e6d6824b44940eb8d31d465bf2f593e362310627247a2f2e"
+          },
+          {
+            "src": "visual/eval-2-same-action-editor/with_skill/render-back.png",
+            "label": "实际三维 背面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "9f36a3e6f8f8c95cee1d1bc01b2de1e31fb46bc0450771e2ff0a73f6a27b045a"
+          }
+        ],
+        "status": "实际执行产物",
+        "emptyTitle": "等待实际渲染",
+        "note": "没有用占位图替代执行产物。"
+      },
+      {
+        "key": "overlay",
+        "title": "4. OpenCV 比较",
+        "images": [],
+        "status": "不适用",
+        "emptyTitle": "此任务不做照片叠加",
+        "note": "厘米编辑案例通过几何、关节角度与真实浏览器验证；不伪造照片拟合。"
+      }
+    ],
+    "note": "一次独立执行；受控拟合、编辑器行为、原图动作匹配是不同验证范围。所有视图是否真实共享一份状态，请同时查看 Formal Grades、实际侧视图和完整文件。"
+  },
+  "eval-3-original-photo-one-body-old_skill-run-1": {
+    "title": "原始商品图联合拟合 · 旧版对照",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. 输入与目标动作",
+        "images": [
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/input-original.jpg",
+            "label": "原始电商商品图",
+            "caption": "实际 ASOS 原图；本轮从 neutral M 初始化执行联合拟合。隐藏肩肘标注存在不确定性。",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+          }
+        ],
+        "status": "实际输入",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen",
+        "images": [
+          {
+            "src": "../product-case/images/generation-2/front.png",
+            "label": "复用已有生成图 正面",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d"
+          },
+          {
+            "src": "../product-case/images/generation-2/side.png",
+            "label": "复用已有生成图 侧面",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1"
+          },
+          {
+            "src": "../product-case/images/generation-2/back.png",
+            "label": "复用已有生成图 背面",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e"
+          },
+          {
+            "src": "../product-case/images/generation-2/closeup.png",
+            "label": "复用已有生成图 特写",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215"
+          },
+          {
+            "src": "../product-case/images/generation-2/pose.png",
+            "label": "复用已有生成图 真实骨架投影",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620"
+          },
+          {
+            "src": "../product-case/images/generation-2/depth.png",
+            "label": "复用已有生成图 真实深度",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d"
+          }
+        ],
+        "status": "REUSED · 本轮 NOT_RUN",
+        "emptyTitle": "本轮未调用 Image Gen",
+        "note": "本任务检查同一人体/动作的实际执行，不新增服装生成图。"
+      },
+      {
+        "key": "simulation",
+        "title": "3. 实际三维与编辑器",
+        "images": [
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/render-front.png",
+            "label": "实际三维 正面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "c5ad725622a83907be3a5ad65cbe206d9256dd6d4a553b6ea1856d28a144cee1"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/render-side.png",
+            "label": "实际三维 侧面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "06b0fd59352536a3f543ce3ffa41d0fac287593f3b362cbe2894480f82028907"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/render-back.png",
+            "label": "实际三维 背面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "4790a2f6741d59a40cf671145143d15894cbda73598dab068c130ff4d5dabe92"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/rejected-attempt-1-front.png",
+            "label": "已拒绝候选 attempt-1 正面",
+            "caption": "失败/中间候选的实际三维渲染，保留回退与姿态问题；不是选定最终结果。",
+            "sha256": "5df9833cc02d6e4e021d8d72a6b9510e46c0e760bc480db4c2e43af65d302f44"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/rejected-attempt-1-side.png",
+            "label": "已拒绝候选 attempt-1 侧面",
+            "caption": "失败/中间候选的实际三维渲染，保留回退与姿态问题；不是选定最终结果。",
+            "sha256": "607dfa45ba26ab082fcc343adccdddfc1d043b864b9cf2a8cadedb5d8e3bd375"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/rejected-attempt-1-back.png",
+            "label": "已拒绝候选 attempt-1 背面",
+            "caption": "失败/中间候选的实际三维渲染，保留回退与姿态问题；不是选定最终结果。",
+            "sha256": "b5d956cf256a4699c110cdfcc1d94a7441f695ef78440af3ca4a51847b517889"
+          }
+        ],
+        "status": "实际执行产物",
+        "emptyTitle": "等待实际渲染",
+        "note": "没有用占位图替代执行产物。"
+      },
+      {
+        "key": "overlay",
+        "title": "4. OpenCV 比较",
+        "images": [
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/overlay-final-overlay.png",
+            "label": "final-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "e0ef615fb044c01955ca05c50d777a530d3a4609109d3ef85b5857a952911752"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/overlay-final-camera-initial-overlay.png",
+            "label": "final-camera-initial-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "00d4de4134bd7116475e5d1054b41300c1c090ce40322921f990d4ab741ea0cb"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/overlay-source-camera-initial-overlay.png",
+            "label": "source-camera-initial-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "0409312ead351b10f6ce68297c83d92c77873c23d84cd9eee31b7c2a89d7c1e8"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/old_skill/rejected-attempt-1-overlay.png",
+            "label": "已拒绝候选 attempt-1 叠加",
+            "caption": "保留失败尝试的实际叠加，不将低二维点误差当三维动作通过。",
+            "sha256": "575fefc6f609bdcc175b8c1d5de23dcba69d79c8c3b15ae7e2a524fe2d6138b6"
+          }
+        ],
+        "status": "实际叠加与对照",
+        "emptyTitle": "尚无实际叠加",
+        "note": "厘米编辑案例通过几何、关节角度与真实浏览器验证；不伪造照片拟合。"
+      }
+    ],
+    "note": "一次独立执行；受控拟合、编辑器行为、原图动作匹配是不同验证范围。所有视图是否真实共享一份状态，请同时查看 Formal Grades、实际侧视图和完整文件。"
+  },
+  "eval-3-original-photo-one-body-with_skill-run-1": {
+    "title": "原始商品图联合拟合 · 修订技能",
+    "stages": [
+      {
+        "key": "input",
+        "title": "1. 输入与目标动作",
+        "images": [
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/input-original.jpg",
+            "label": "原始电商商品图",
+            "caption": "实际 ASOS 原图；本轮从 neutral M 初始化执行联合拟合。隐藏肩肘标注存在不确定性。",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+          }
+        ],
+        "status": "实际输入",
+        "emptyTitle": "",
+        "note": ""
+      },
+      {
+        "key": "imagegen",
+        "title": "2. Image Gen",
+        "images": [
+          {
+            "src": "../product-case/images/generation-2/front.png",
+            "label": "复用已有生成图 正面",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "64c0a0e45ffccf9accdb8e46e19bf4bf7e3067272601eea94f1cdaf5b3029c7d"
+          },
+          {
+            "src": "../product-case/images/generation-2/side.png",
+            "label": "复用已有生成图 侧面",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "c16cd2252005a98ac569acfcbac2294026f7783d980704dab7d8b2d2727d0bc1"
+          },
+          {
+            "src": "../product-case/images/generation-2/back.png",
+            "label": "复用已有生成图 背面",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "25f51e4460cddb5df8c0138e7d60c8db9486d49b6649499f0591f79070a3b96e"
+          },
+          {
+            "src": "../product-case/images/generation-2/closeup.png",
+            "label": "复用已有生成图 特写",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "650ee43717716d50a69b436cd788db6d6e54a59971212089f30b06ae895e2215"
+          },
+          {
+            "src": "../product-case/images/generation-2/pose.png",
+            "label": "复用已有生成图 真实骨架投影",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "6158cb4b78bd83a613a7b15b4ab1bd93dfbb81101ac2ecf6e78cbe9661dcd620"
+          },
+          {
+            "src": "../product-case/images/generation-2/depth.png",
+            "label": "复用已有生成图 真实深度",
+            "caption": "REUSED：前次已存在的 Image Gen 文件；本轮未生成，不是实拍多视角，也不是本轮原图拟合的观测输入。",
+            "sha256": "b85768466dd8cc9cb0a0a95c1e767ee80beab5861a52c460ed2b74ac5848233d"
+          }
+        ],
+        "status": "REUSED · 本轮 NOT_RUN",
+        "emptyTitle": "本轮未调用 Image Gen",
+        "note": "本任务检查同一人体/动作的实际执行，不新增服装生成图。"
+      },
+      {
+        "key": "simulation",
+        "title": "3. 实际三维与编辑器",
+        "images": [
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/render-front.png",
+            "label": "实际三维 正面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "509fcffcddd233fa78d837a90db8993df1a3676907ab3008cf93e4abaa8a6874"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/render-side.png",
+            "label": "实际三维 侧面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "79372bfa7d9327038957c2253db913da0aa4306a2f1669b2caa785f2cb38eaff"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/render-back.png",
+            "label": "实际三维 背面",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "fb2b70f1cdc2e5b30aaa3f9ddb9503bd4014dc4ff8ab610ba58e11ad063f4e94"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/render-closeup.png",
+            "label": "实际三维 特写",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "8c4796c5683040f8fe8081d795e39379fe63b219a87416b1bf581c3c9cda8f81"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/render-pose.png",
+            "label": "实际三维 真实骨架投影",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "09262299bb7ef9b4d305802c6a737ac84592635d7e12f4417a7eb25ba3be8fec"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/render-depth.png",
+            "label": "实际三维 真实深度",
+            "caption": "执行者保存的实际人体渲染/编辑器画面；同一人体与完整姿态，仅相机视角不同。是否满足任务由独立评分判断。",
+            "sha256": "0251dabd98c18e0bf5ef33eec88ec0a3f6608ce1363fb919fe7d9358481cd374"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/rejected-rejected-depth-ambiguous-round-front.png",
+            "label": "已拒绝候选 rejected-depth-ambiguous-round 正面",
+            "caption": "失败/中间候选的实际三维渲染，保留回退与姿态问题；不是选定最终结果。",
+            "sha256": "b040f3da9fa2aa75860069d4c171cf7359afe70382ae2dcd089911b063a7e266"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/rejected-rejected-depth-ambiguous-round-side.png",
+            "label": "已拒绝候选 rejected-depth-ambiguous-round 侧面",
+            "caption": "失败/中间候选的实际三维渲染，保留回退与姿态问题；不是选定最终结果。",
+            "sha256": "6d3f4983c60f9190076fdcb749749cc0a4f03a3fef0a8248eef40a1b2fc141cf"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/rejected-rejected-depth-ambiguous-round-back.png",
+            "label": "已拒绝候选 rejected-depth-ambiguous-round 背面",
+            "caption": "失败/中间候选的实际三维渲染，保留回退与姿态问题；不是选定最终结果。",
+            "sha256": "a158f77d56707d207a8d4089b7be045edff9b215e122d59e5f542d2bc58e7edd"
+          }
+        ],
+        "status": "实际执行产物",
+        "emptyTitle": "等待实际渲染",
+        "note": "没有用占位图替代执行产物。"
+      },
+      {
+        "key": "overlay",
+        "title": "4. OpenCV 比较",
+        "images": [
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/overlay-final-overlay.png",
+            "label": "final-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "e1fb729232c61a6ff3d9a9594a2a51125fd69b1dec9547e2e2a738bbb65bd721"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/overlay-final-sourcecamera-overlay.png",
+            "label": "final-sourcecamera-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "a714ccc16a45d41b6a8e0122baba5bc859656544f033f3137764a2e3e2fb7111"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/overlay-initial-finalcamera-overlay.png",
+            "label": "initial-finalcamera-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "f3375574d0c1f8c7f0fe85f35924c669db4419d61196fc2720c6693414e947bc"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/overlay-initial-overlay.png",
+            "label": "initial-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "a0ea88544652088d495db1b9eabf2a139b841428df7b277ef7fbe19d3ce99f82"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/overlay-photo-render-overlay.png",
+            "label": "photo-render-overlay",
+            "caption": "实际执行保存的 OpenCV 比较；初始、相机贡献和最终版本按文件名区分，不能把局部指标当整体匹配。",
+            "sha256": "a683fae44eca2935a6335a05cb923a670fde82834f2774b7b269b917ff1592a8"
+          },
+          {
+            "src": "visual/eval-3-original-photo-one-body/with_skill/rejected-rejected-depth-ambiguous-round-overlay.png",
+            "label": "已拒绝候选 rejected-depth-ambiguous-round 叠加",
+            "caption": "保留失败尝试的实际叠加，不将低二维点误差当三维动作通过。",
+            "sha256": "c9999788921bb9a0bc09115b225e48a35f643da34a62c495134d3ecb9f6615f3"
+          }
+        ],
+        "status": "实际叠加与对照",
+        "emptyTitle": "尚无实际叠加",
+        "note": "厘米编辑案例通过几何、关节角度与真实浏览器验证；不伪造照片拟合。"
+      }
+    ],
+    "note": "一次独立执行；受控拟合、编辑器行为、原图动作匹配是不同验证范围。所有视图是否真实共享一份状态，请同时查看 Formal Grades、实际侧视图和完整文件。"
+  }
+}

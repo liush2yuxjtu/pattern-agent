@@ -1,0 +1,153 @@
+{
+  "source_model": {
+    "height_cm": 171,
+    "size": "S",
+    "basis": "official source"
+  },
+  "initial_prior": {
+    "height_cm": 170,
+    "size": "generic M",
+    "basis": "authorized prior"
+  },
+  "dimensions": [
+    {
+      "name": "height",
+      "target_cm": 170,
+      "measured_cm": 169.99997873469175,
+      "basis": "prior",
+      "mesh_checked": true,
+      "definition": "standing_height",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "bust",
+      "target_cm": 90,
+      "measured_cm": 90.00003225682458,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "waist",
+      "target_cm": 71,
+      "measured_cm": 71.00000240353106,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "hips",
+      "target_cm": 96,
+      "measured_cm": 96.00004042899096,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "shoulders",
+      "target_cm": 37,
+      "measured_cm": 36.99999958633709,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "upperArm",
+      "target_cm": 27,
+      "measured_cm": 27.000002336675646,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "thigh",
+      "target_cm": 54,
+      "measured_cm": 54.00000799295681,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "neck",
+      "target_cm": 32,
+      "measured_cm": 32.00001191743654,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "upperArmLength",
+      "target_cm": 29,
+      "measured_cm": 29.000000836714268,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "forearmLength",
+      "target_cm": 23,
+      "measured_cm": 23.00000204178579,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "thighLength",
+      "target_cm": 40,
+      "measured_cm": 40.000032391686304,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    },
+    {
+      "name": "calf",
+      "target_cm": 36,
+      "measured_cm": 36.000000819882295,
+      "basis": "mesh_parameter",
+      "mesh_checked": true,
+      "definition": "neutral surface tape or named landmark ruler",
+      "limitations": "not real-person measurement"
+    }
+  ],
+  "bone_head_lengths": {
+    "upper_arm.L": {
+      "initial_cm": 26.85128716544042,
+      "final_cm": 26.851287187092463,
+      "definition": "actual bone-head distance; differs from surface ruler"
+    },
+    "forearm.L": {
+      "initial_cm": 23.216184868156994,
+      "final_cm": 23.216184874373234,
+      "definition": "actual bone-head distance; differs from surface ruler"
+    },
+    "upper_arm.R": {
+      "initial_cm": 26.85128716544042,
+      "final_cm": 26.851287187092463,
+      "definition": "actual bone-head distance; differs from surface ruler"
+    },
+    "forearm.R": {
+      "initial_cm": 23.216184868156994,
+      "final_cm": 23.216184874373234,
+      "definition": "actual bone-head distance; differs from surface ruler"
+    }
+  },
+  "neutral_mesh_sha256": "3d6525c3c2958d2ffe6041339704733519f594a0f720a6cdbc266dfcb818dd70",
+  "posed_bbox_height_cm": 169.9512266660498,
+  "unavailable": [
+    "underbust",
+    "bust_point_spacing",
+    "front_waist_length",
+    "back_waist_length",
+    "crotch_arc"
+  ]
+}

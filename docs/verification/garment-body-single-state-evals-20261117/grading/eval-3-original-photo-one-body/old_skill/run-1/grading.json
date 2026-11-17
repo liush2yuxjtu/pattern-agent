@@ -1,0 +1,119 @@
+{
+  "expectations": [
+    {
+      "text": "Original-photo fitting actually optimizes cm/bone parameters, joint pose and camera from the provided neutral M initialization; no old fitted candidate/other executor/oracle is used.",
+      "passed": true,
+      "evidence": "Actual optimizer entrypoint and 15 shape/bone/pose/camera blocks, source input hashes; selected cm may remain prior after real trials."
+    },
+    {
+      "text": "One final complete body/pose/posed mesh supplies all front/side/back views, and independent projections match; only cameras may differ.",
+      "passed": true,
+      "evidence": "Separate source skinning and same-state front/side/back replay {'front': {'iou': 1.0, 'dice': 1.0}, 'side': {'iou': 1.0, 'dice': 1.0}, 'back': {'iou': 1.0, 'dice': 1.0}}; saved163joints agree with actual source FK."
+    },
+    {
+      "text": "Mean visible eye/nose/wrist reprojection error is <=15px and at least50% lower than the initial projection at original1000x1276 resolution; uncertain hidden shoulder/elbow annotations are distinguished.",
+      "passed": true,
+      "evidence": "Matrix independently gives visible eye/nose/wrist mean 3.95334px from initial 271.931px; hidden annotations remain uncertain."
+    },
+    {
+      "text": "The declared source-fitting objective improves by at least10% with actual block history and before/after OpenCV masks/overlays; independent IoU/Dice readback matches the delivered files.",
+      "passed": true,
+      "evidence": "Declared fixed residual objective {'initial': 32.016234038504145, 'final': 0.017890828659485405, 'method': 'Independent reimplementation of declared perspective residual using source Three.js mesh/joints'}; independent original-mask IoU/Dice {'iou': 0.6973048361420963, 'dice': 0.8216612847542948}, saved reports agree; before/after overlays retained."
+    },
+    {
+      "text": "Actual front and side meshes show a plausible version of the shirt-holding action without obvious buried hands, severe wrist folding or grossly misplaced arms; visible anatomical pose quality is reviewed separately from2Derror.",
+      "passed": false,
+      "evidence": "Actual side mesh shows both hands/forearms reaching well forward of lower torso with open/splayed palm-finger surfaces, rather than a close-to-body hem-holding grasp. Front head/torso compensation can align pixels while the unobserved side remains a weak action hypothesis. No obvious torso penetration is needed for this failure: the coarse shirt-holding action itself is not sufficiently supported. Fine contact and exact depth are not recoverable from this view alone."
+    },
+    {
+      "text": "Neutral cm and actual posed mesh are independently checked, saved final state can be consumed by Human Studio, and arm ruler lengths are distinguished from actual bone distances.",
+      "passed": true,
+      "evidence": "Neutral independent residual 4.04e-05cm; actual posed mesh source delta 1.12e-05cm; saved consumer link/check and bone-vs-ruler measures."
+    },
+    {
+      "text": "Source171cm/S, authorized M170cm initialization, conditional fitted sizes and unknown dimensions are distinct; no fresh ImageGen/true-person accuracy/perfect3Dmatch is claimed without evidence.",
+      "passed": true,
+      "evidence": "Original171cm/S and authorized170cm/M prior distinguished; report retains conditional measurements, unknowns and no fresh-generation/true-person/perfect-match claim."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 1,
+    "total": 7,
+    "pass_rate": 0.8571428571428571
+  },
+  "timing": {
+    "executor_duration_seconds": null,
+    "total_tokens": null
+  },
+  "claims": [
+    {
+      "claim": "Outputs match actual source anatomy, pose and projection",
+      "verified": false,
+      "evidence": "grade-evidence/eval-3-original-photo-one-body/old_skill/run-1"
+    }
+  ],
+  "eval_feedback": {
+    "overall": "Single explicitly injected subagent trial per task/configuration; geometry controls and real-photo attempt are distinct. No native trigger, statistical superiority or token claim."
+  },
+  "artifact_sha256": {
+    "TRACE.md": "98827326b1f6b37594077a3e1a601580ef5e2af278e1388b542a94f6133ff645",
+    "attempt-1/back.png": "b5d956cf256a4699c110cdfcc1d94a7441f695ef78440af3ca4a51847b517889",
+    "attempt-1/camera.json": "8faac4aa41dcae369079b109365f860c761942edc6f25c8bc498d9bb0707faf6",
+    "attempt-1/final-overlay.png": "575fefc6f609bdcc175b8c1d5de23dcba69d79c8c3b15ae7e2a524fe2d6138b6",
+    "attempt-1/final-state.json": "0d375cb0e3e7209ef794b7ee18080ae434d5c59f1f3510758ec40c92dc2f86b5",
+    "attempt-1/front.png": "5df9833cc02d6e4e021d8d72a6b9510e46c0e760bc480db4c2e43af65d302f44",
+    "attempt-1/metrics.json": "f23adeb63a34980179a9cb5bad9f208adbbd2baa39126dd68a70e5caed79c632",
+    "attempt-1/parameter-block-history.json": "db8f519ba4c05ab1be035f7c1795f41088c8f60d0b6750b821ccdef58ed3659d",
+    "attempt-1/side.png": "607dfa45ba26ab082fcc343adccdddfc1d043b864b9cf2a8cadedb5d8e3bd375",
+    "back-mask.png": "344b7fd370137f07bcaa16fcfc8b361ca23fe6804a687aa59e85a254a014156b",
+    "back.png": "4790a2f6741d59a40cf671145143d15894cbda73598dab068c130ff4d5dabe92",
+    "camera-initial.json": "7542a8862061b96f2625e5f84368a8e12a8493b0f676d8c68e6596c47a01bda7",
+    "camera.json": "bad26b8883100b840417be51c5280e3275d156f8441905ddcfe7b4c836a2b21b",
+    "check_geometry.py": "f229b45195e78ac66295138008d723b59efb92f29c0e8e4b68bc442410f06fd4",
+    "delivery-hashes.json": "449efdeb4b1fe2667961c1eb30368c004218f8fa7f5dfdae734051cb21e0ed89",
+    "depth-metadata.json": "ed77e3ce4d5f07ab60f1f2ae92c2ad9357375010d350a2baae3bd1abce5736cf",
+    "depth-valid.png": "9e758ede96ead62f7571d1101ff9bfab1c1d49d247c31a000fab4c43854ec638",
+    "final-camera-initial-mask.png": "539315483ee49615195f978f03eba1f31a3bfa512781b322499cb7fb0746ba42",
+    "final-camera-initial-overlay.png": "00d4de4134bd7116475e5d1054b41300c1c090ce40322921f990d4ab741ea0cb",
+    "final-camera-initial-render.png": "dd88b4d976532ecd3e8a30cb640a7f6a26ed968082c2dbc0d48f44966ced815b",
+    "final-mask.png": "1a5ed652ef1ff4263c62c74742756a75c246a5ef5b810e6208ea958cab605960",
+    "final-overlay.png": "e0ef615fb044c01955ca05c50d777a530d3a4609109d3ef85b5857a952911752",
+    "final-render.png": "6aac529857b4dfe579c335b0f230b62258372881ecc87b8d483667ebc7fbc079",
+    "final-state.json": "3035a60dca197e5f7c22d63ff3925d1dcac1c50e047511c4ac0e6a6d797c35f8",
+    "finalize.py": "5edef7c759e2243bc1086fd9edd981f541da768b26034aa5ee3e51366cdb1235",
+    "front-mask.png": "5309ce6522e1249c6a5f70add68aca367cdc1df4e3cb5a19287ed4543ce73ea4",
+    "front.png": "c5ad725622a83907be3a5ad65cbe206d9256dd6d4a553b6ea1856d28a144cee1",
+    "geometry-check.json": "f6fb0908e21146ccee3acfec99a1e443d4f494c9f8485bf4cc32423d35e7b043",
+    "hand-inspection.json": "4dacf7d2b9dce2f770edde1484c21761dd4ed2bedb3770cd6e65c02f1dc74333",
+    "http-server.log": "80390e501da351e8ae9290726d81d869cebe5394b8dbb213bb71f73c5f55ea0d",
+    "independent-neutral-check.json": "cb011d8eaad8dee267d44941c0690b1e40d33860b3492eb8b9acb4b1d1c3dded",
+    "initial-neutral.obj": "bafc6090e5fff755bcd797161e70fb83592bca29efd1fe585bbbb79e9d696755",
+    "initial-posed.obj": "d0e0a456677bb006e9c34974ed22a897e622c2cbdf5119b4b99617c232e9834c",
+    "initial-state.json": "6ae20d41f5a920e9925bd127fe6b340f087092f5daa220a357a3cd03d31a8a34",
+    "input-hashes.json": "fde2f7498300d3574ad4617fa11e22e725f3944ad4fa199b6f7fff6eae0ac8a9",
+    "joints.json": "7c8ee577c02e367d1795ffd8bbf7bf3d32a720e63fa8970a6f4d2fa600eb3953",
+    "launch-viewer.sh": "2d6eb3d3145bf7bf6575a6f5bad8c97135793788bd90d0e0534ea43d51510509",
+    "load-link-http-check.json": "1cc8a7641d8b6a58a6208ba8873ee93c370b337241b1f0c3694b38f357132006",
+    "load-link.txt": "c212389ced815a7f587ddf0addadc74cb875fec209fab892ad5b98fdb8e9350c",
+    "measurements.csv": "57033a4591fec594b3f5769f175886c6d41d17479de0f59c1a8fab825664832a",
+    "measurements.json": "98ede94710914335d2498c043285a1b1dcaaa7300d8f8a3e01a66ce3f5956f08",
+    "metrics.json": "7a7e28883e8bbc738004b29728259193f82f942587d5e4ca0758c47a71bc84d4",
+    "neutral.obj": "bafc6090e5fff755bcd797161e70fb83592bca29efd1fe585bbbb79e9d696755",
+    "optimizer.log": "ce7ce27c88d49953b125624d1fd985c52142a74298281d5d2f627b96481e67b9",
+    "parameter-block-history.json": "a051ed6de87f343d8222dd2d099639cca21bbc4b0d9001e1221f6d7218218255",
+    "posed.obj": "f5171ad7a020c6c4c2ee63eee83028aaf5558c2181a3171903cfdc64d47015da",
+    "rawdepth.npy": "87eb074633f69597ca7ad49a8e777240d4234862dce044db11ca0c0f179e6c3c",
+    "report.md": "65ded9c5c47824e65b79c2698f0aa8d72181238da483d989bab562408abfdc33",
+    "reproduce.py": "8c2dbb7ac836d3525596317588765f8b62b34e94f64b15d792d85733517db8c1",
+    "side-mask.png": "8d062e918c5ef40ec5c22fa378df2c6652d78d1d4af3d06d147e89bc2e771325",
+    "side.png": "06b0fd59352536a3f543ce3ffa41d0fac287593f3b362cbe2894480f82028907",
+    "singlefinalstate.json": "3035a60dca197e5f7c22d63ff3925d1dcac1c50e047511c4ac0e6a6d797c35f8",
+    "source-camera-initial-mask.png": "5a43e66174815cb595574c66009f48f67978e430b96415ff5c19dcb0e40a09ec",
+    "source-camera-initial-overlay.png": "0409312ead351b10f6ce68297c83d92c77873c23d84cd9eee31b7c2a89d7c1e8",
+    "source-camera-initial-render.png": "a98c1684da4f07a558d7bd4a6d1124253e25153f00603251f73fd19c50d0c0ae",
+    "three-view-camera.json": "8a11997521a4e082d165893501dc8bc9ff40ff12c3404981193b90f3362c1093",
+    "view-provenance.json": "b8a8186bc7592c1873b2b8e0c5ecf4d7c6c8387fb41a42da6109648e42f3b076",
+    "viewer.html": "55d9f699729e92102ea6c82b45c90018c94c6a8e23aebecd80c744566380aa34"
+  }
+}
