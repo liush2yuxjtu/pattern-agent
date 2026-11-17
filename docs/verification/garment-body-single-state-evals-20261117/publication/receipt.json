@@ -1,0 +1,56 @@
+{
+  "verdict": "BLOCKED",
+  "scope": "Live interactive browser verification only; publication succeeded and same-commit local runtime checks passed",
+  "deployed_commit": "cc0df412a61f9afee9ec759072ae25f3213b931c",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/garment-body/single-state-evals/eval.html",
+  "source_sha256": "f7df6969ff898db1ccbee9ea17ba07bae313c54e9d5377e641619c12cee0f805",
+  "publish_workflow": {
+    "id": 44072592735,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "cc0df412a61f9afee9ec759072ae25f3213b931c",
+    "html_url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44072592735"
+  },
+  "same_commit_local_checks": {
+    "review": 169,
+    "guide": 19,
+    "model_links": 6
+  },
+  "public_committed_source_verified": [
+    {
+      "path": "web/garment-body/single-state-evals/manifest.json",
+      "git_blob": "c9c8c443b7d571a54f82264d68a695afe65d246c",
+      "matched": true
+    },
+    {
+      "path": "web/garment-body/single-state-evals/eval.html",
+      "git_blob": "589bc4da263b7a2d3a5101763131bf5fa28ff18a",
+      "matched": true
+    },
+    {
+      "path": "web/garment-body/skill/garment-body-six-view.skill",
+      "git_blob": "fb0f8a232b6b4969aa1a124c49cca4355122f0bf",
+      "matched": true
+    }
+  ],
+  "blocked_surfaces": [
+    {
+      "method": "Local Playwright against live Pages URL",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    },
+    {
+      "method": "Established public-only Firecrawl standalone-Chrome fallback",
+      "error": "Insufficient connected-app credits; no new session created"
+    },
+    {
+      "method": "Connected Playwright browser",
+      "error": "MCP network connection failed"
+    },
+    {
+      "method": "Cloud CUA browser",
+      "error": "Browser runtime initialization failed: gaas-browser node_repl sandbox cannot be disabled"
+    }
+  ],
+  "limits": "No live browser PASS is claimed. GitHub publish success and exact public commit blob readback are not substitutes for observing the live UI.",
+  "cleanup": "All agent-owned browsers/workers/servers and root8791server closed. No failed external browser call created a usable session. No spending/account/security changes."
+}

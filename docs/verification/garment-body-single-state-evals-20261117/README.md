@@ -56,3 +56,5 @@ are separately downloadable. Pinned upstream source remains unchanged.
 
 Publication is verified separately on the exact deployed SHA; local PASS and a
 publish-job conclusion alone are not live browser acceptance.
+
+Published at `cc0df412a61f9afee9ec759072ae25f3213b931c`; exact same-commit local recheck passes169review/19guide checks. GitHub Pages publication succeeded and committed HTML/manifest/package blob hashes match local source. Live interactive browser verification is **BLOCKED** by the VM proxy and unavailable fallback browsers/credits, so no live browser pass is claimed. [Publication receipt](publication/receipt.json).
