@@ -1,0 +1,24 @@
+{
+  "verdict": "PASS",
+  "scope": "existing fitted-T-shirt site entry, surrounding website and publication to converter",
+  "candidate_base_commit": "5c83bdaf09e93de893a07b5b2fc8ce8b0d212ae7",
+  "published_pages_commit": "a98bc78a31f3373e0e98f7ad8eae563fd10e7820",
+  "page_source_sha256": "9a01c651999882adbdcc5698285d043e5784a1d295f37eb14b331ed3ac5b986e",
+  "commands": [
+    "python scripts/build_fitted_tshirt_bundle.py",
+    "python scripts/build_pages.py",
+    "python scripts/verify_fitted_tshirt.py --output work/verify-dxf-link-fitted",
+    "python -m unittest discover -s scripts -p test_verify_artifacts.py -v",
+    "python scripts/verify_pages.py --output work/verify-dxf-link-pages",
+    "After commit: rebuild and rerun both browser verifiers with --expected-commit a98bc78a31f3373e0e98f7ad8eae563fd10e7820"
+  ],
+  "fitted_browser_checks": 13,
+  "existing_browser_checks": 11,
+  "artifact_tests": 6,
+  "public_journey": "live/report.json; actual GitHub Pages link click to Vercel and sample generation PASS",
+  "publication_run": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44036503416",
+  "note": "Publication run is only a publish receipt, not verification. Public browser path and source hash were checked independently.",
+  "physical_fit": "NOT_RUN",
+  "strict_geometry_release": "NOT_RUN",
+  "evidence_archiving_correction": "verify_pages.py writes browser-report.json, not report.json; copied the correct raw PASS report after the initial evidence-copy path error."
+}
