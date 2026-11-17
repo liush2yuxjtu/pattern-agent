@@ -88,7 +88,6 @@ python scripts/verify_dxf_service.py \
 | 逐文件诊断 | [hkah8e9z4](https://pattern-agent-convert-hkah8e9z4-nyn5255-8475s-projects.vercel.app/) | 定位构建改写 vercel.json；应用文件一致 |
 | 摘要修正 | [c7hobhy9l](https://pattern-agent-convert-c7hobhy9l-nyn5255-8475s-projects.vercel.app/) | 实际源码同当前版本；提交标记录入错误，由下条更正 |
 | 首版验收通过 | [fuegobiac](https://pattern-agent-convert-fuegobiac-nyn5255-8475s-projects.vercel.app/) | 源文件、提交标记与线上浏览器验收通过 |
-
 | 旧纸样一键复用 | [g9sdxn3c7](https://pattern-agent-convert-g9sdxn3c7-nyn5255-8475s-projects.vercel.app/) | 当前生产版本，15组线上验收通过 |
 
 固定部署地址保留 Vercel 原有登录保护；生产别名可匿名访问。没有为验收关闭保护或改变其他项目。
