@@ -210,3 +210,5 @@ remain separate from the newer synthetic experiment.
 Private workspace notes and connected-storage artifacts are maintained outside
 this public repository.
 
+
+The [anatomical skill functional review](https://liush2yuxjtu.github.io/pattern-agent/garment-body/anatomical-evals/eval.html) contains 14 executed subagent runs, real mesh fits, OpenCV overlays, projected joints and raw depth checks. The selected core instructions are 40.03% shorter; this is not an end-to-end clothed image generation benchmark or a native Claude trigger score.

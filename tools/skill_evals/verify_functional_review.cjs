@@ -7,7 +7,7 @@ function argumentsFromCLI() {
   const result = {};
   for (let i = 2; i < process.argv.length; i += 2) {
     const key = process.argv[i];
-    if (!['--url', '--out', '--expected-runs'].includes(key) || !process.argv[i + 1]) throw Error('Use --url URL --out DIR [--expected-runs N]');
+    if (!['--url', '--out', '--expected-runs', '--image-runs'].includes(key) || !process.argv[i + 1]) throw Error('Use --url URL --out DIR [--expected-runs N] [--image-runs 3:6,4:6]');
     result[key.slice(2)] = process.argv[i + 1];
   }
   if (!result.url || !result.out) throw Error('--url and --out required');
@@ -70,6 +70,24 @@ function argumentsFromCLI() {
     const saved = JSON.parse(fs.readFileSync(feedbackPath, 'utf8'));
     requireCheck(saved.status === 'complete' && saved.reviews.length === count && saved.reviews[0].feedback === feedback, 'Downloaded feedback reopens with every run and entered text');
     await page.locator('#done-overlay button').click();
+    if (args['image-runs']) {
+      const expected = Object.fromEntries(args['image-runs'].split(',').map(item => {
+        if (!/^\d+:\d+$/.test(item)) throw Error('Invalid --image-runs mapping');
+        return item.split(':').map(Number);
+      }));
+      for (let index = 1; index <= count; index++) {
+        if (index > 1) await page.locator('#next-btn').click();
+        requireCheck(await page.locator('#progress').innerText() === `${index} of ${count}`, `Output ${index} opens`);
+        if (expected[index]) {
+          const images = page.locator('#outputs-body img');
+          requireCheck(await images.count() >= expected[index], `Output ${index} contains all expected image previews`);
+          await images.evaluateAll(items => Promise.all(items.map(item => item.decode())));
+          requireCheck(await images.evaluateAll(items => items.every(item => item.naturalWidth > 0 && item.naturalHeight > 0)), `Output ${index} image bytes decode`);
+        }
+      }
+      await page.screenshot({ path: path.join(out, 'visual-output.png'), fullPage: false });
+      for (let index = 1; index < count; index++) await page.locator('#prev-btn').click();
+    }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.screenshot({ path: path.join(out, 'mobile.png'), fullPage: false });
     requireCheck(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Mobile document has no horizontal overflow');

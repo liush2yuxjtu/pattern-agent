@@ -1,0 +1,46 @@
+{
+  "expectations": [
+    {
+      "text": "All six saved states have the correct independent classification",
+      "passed": true,
+      "evidence": "classifications={\"reference.json\": \"verified\", \"metre-label.json\": \"invalid\", \"nonfinite-angle.json\": \"invalid\", \"pose-joint.json\": \"invalid\", \"reported-bust.json\": \"invalid\", \"unreached-target.json\": \"closest_supported\"}"
+    },
+    {
+      "text": "All 12 neutral dimensions are recomputed from the matching anatomical asset",
+      "passed": true,
+      "evidence": "NumPy sparse morph + fixed tape/landmark reconstruction independently checked all 12 dimensions"
+    },
+    {
+      "text": "A false reported measurement and an unknown pose bone are rejected",
+      "passed": true,
+      "evidence": "False bust and unknown pose bone both need explicit rejection reasons"
+    },
+    {
+      "text": "An honest unreached target is separated from invalid data and achieved sizes",
+      "passed": true,
+      "evidence": "Actual neutral height=180.0000124290127 cm vs target190 cm"
+    },
+    {
+      "text": "Neutral standing height is kept separate from the seated OBJ bounding box",
+      "passed": true,
+      "evidence": "Actual posed OBJ Y extent=132.672357 cm; neutral height=180.0000124290127 cm"
+    },
+    {
+      "text": "Measurement CSV and report preserve mesh_parameter basis and unknown camera/real-person accuracy",
+      "passed": true,
+      "evidence": "CSV reopened: neutral mesh basis, cm units, unknown camera/person accuracy and report exist"
+    },
+    {
+      "text": "All original state and OBJ input hashes remain unchanged",
+      "passed": true,
+      "evidence": "Independent SHA256 readback of all original six states and OBJ"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  },
+  "evaluation_errors": []
+}

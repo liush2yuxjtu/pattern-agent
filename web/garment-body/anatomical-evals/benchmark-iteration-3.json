@@ -1,0 +1,165 @@
+{
+  "metadata": {
+    "skill_name": "garment-body-six-view",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "Inherited session subagent model; ID not exposed",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-17T07:22:02.819118+00:00",
+    "evals_run": [
+      4
+    ],
+    "runs_per_configuration": 1,
+    "protocol": "Executed synthetic-control functional tasks; not native Claude routing",
+    "resource_metrics": "Tokens unavailable. Raw executor wallclock scopes differ; no time/token comparison."
+  },
+  "runs": [
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "valid_source_topology",
+          "passed": true,
+          "evidence": "{\"vertices\": 13380, \"triangles\": 26756, \"expected_triangles\": 26756}"
+        },
+        {
+          "text": "fixed_camera",
+          "passed": true,
+          "evidence": "\"Camera must equal supplied fixed camera including centimetre scale\""
+        },
+        {
+          "text": "posed_surface_preserved",
+          "passed": true,
+          "evidence": "{\"max_source_vertex_error_cm\": 0.0}"
+        },
+        {
+          "text": "neutral_dimensions_pose_state",
+          "passed": true,
+          "evidence": "{\"max_neutral_vertex_error_cm\": 0.0, \"max_neutral_measure_error_cm\": 0.0002485079928717937}"
+        },
+        {
+          "text": "six_actual_triangle_renders",
+          "passed": true,
+          "evidence": "{\"mask_iou\": {\"front\": 1.0, \"side\": 1.0, \"back\": 1.0, \"close-up\": 1.0, \"pose\": 1.0, \"depth\": 1.0}, \"mean_absolute_pixel_error\": {\"front\": 0.0, \"side\": 0.0, \"back\": 0.0, \"close-up\": 0.0, \"pose\": 0.0, \"pose_annotation\": 0.0, \"depth\": 0.0}}"
+        },
+        {
+          "text": "aligned_geometry_depth",
+          "passed": true,
+          "evidence": "{\"mean_absolute_depth_pixel_error\": 0.0, \"encoding\": \"0 background; 1..254 fixed depth_range_cm\"}"
+        },
+        {
+          "text": "neutral_and_posed_height_metrics",
+          "passed": true,
+          "evidence": "{\"neutral_height_cm\": 179.9999101, \"posed_height_cm\": 132.672357, \"reported_height_error_cm\": 0.0, \"reported_tape_error_cm\": 0.0}"
+        },
+        {
+          "text": "Independent triangle-hit depths and saved joint pixels agree with the actual mesh and frozen camera",
+          "passed": true,
+          "evidence": "{\"verdict\": \"PASS\", \"ray_count\": 40, \"max_depth_error_cm\": 1.6370462816439613e-06, \"joint_count\": 163, \"max_joint_projection_error_px\": 0.0, \"independence\": \"Own OBJ parser, vectorized cross-product intersections and camera projection; no renderer import\", \"limits\": \"Checks model-space geometric consistency, not detector accuracy or photographed people\"}"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "valid_source_topology",
+          "passed": true,
+          "evidence": "{\"vertices\": 13380, \"triangles\": 26756, \"expected_triangles\": 26756}"
+        },
+        {
+          "text": "fixed_camera",
+          "passed": true,
+          "evidence": "\"Camera must equal supplied fixed camera including centimetre scale\""
+        },
+        {
+          "text": "posed_surface_preserved",
+          "passed": true,
+          "evidence": "{\"max_source_vertex_error_cm\": 0.0}"
+        },
+        {
+          "text": "neutral_dimensions_pose_state",
+          "passed": true,
+          "evidence": "{\"max_neutral_vertex_error_cm\": 0.0, \"max_neutral_measure_error_cm\": 0.0002485079928717937}"
+        },
+        {
+          "text": "six_actual_triangle_renders",
+          "passed": true,
+          "evidence": "{\"mask_iou\": {\"front\": 1.0, \"side\": 1.0, \"back\": 1.0, \"close-up\": 1.0, \"pose\": 1.0, \"depth\": 1.0}, \"mean_absolute_pixel_error\": {\"front\": 0.0, \"side\": 0.0, \"back\": 0.0, \"close-up\": 0.0, \"pose\": 0.0, \"pose_annotation\": 0.0, \"depth\": 0.0}}"
+        },
+        {
+          "text": "aligned_geometry_depth",
+          "passed": true,
+          "evidence": "{\"mean_absolute_depth_pixel_error\": 0.0, \"encoding\": \"0 background; 1..254 fixed depth_range_cm\"}"
+        },
+        {
+          "text": "neutral_and_posed_height_metrics",
+          "passed": true,
+          "evidence": "{\"neutral_height_cm\": 179.9999101, \"posed_height_cm\": 132.672357, \"reported_height_error_cm\": 0.0, \"reported_tape_error_cm\": 0.0}"
+        },
+        {
+          "text": "Independent triangle-hit depths and saved joint pixels agree with the actual mesh and frozen camera",
+          "passed": true,
+          "evidence": "{\"verdict\": \"PASS\", \"ray_count\": 40, \"max_depth_error_cm\": 1.6370462816439613e-06, \"joint_count\": 163, \"max_joint_projection_error_px\": 0.0, \"independence\": \"Own OBJ parser, vectorized cross-product intersections and camera projection; no renderer import\", \"limits\": \"Checks model-space geometric consistency, not detector accuracy or photographed people\"}"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.0000"
+    }
+  },
+  "notes": [
+    "Actual OBJ/mask/browser/output executions, not plan-only or metadata routing judgments.",
+    "Three controlled tasks, one execution per configuration/task; standard deviation is across tasks, not repeated-run reliability.",
+    "Synthetic controls do not validate real human anatomy, cloth fit, or the full six-image generation workflow.",
+    "Token notification metadata was unavailable. Executor wallclock scopes differed; raw timing is retained, comparative time/token metrics omitted.",
+    "benchmark-upstream-raw.json preserves official aggregation, including fallback placeholders; only this normalized benchmark is used for interpretation.",
+    "Untuned held-out camera transfer: new448x576 canvas, changed framing/scale/range, front-facing pose and depth; both candidates pass8/8.",
+    "Same source seated mesh, different camera protocol. This checks transfer of geometry evidence, not new body shapes or photograph realism.",
+    "No candidate edits are based on this result; no time/token comparison."
+  ],
+  "native_trigger_results": null
+}

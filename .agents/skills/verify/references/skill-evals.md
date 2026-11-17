@@ -135,3 +135,49 @@ fallback: download the exact committed verifier and check its SHA before use.
 Keep publication evidence separate from native Claude triggers and six-image
 generation quality. Current integration evidence:
 [human-studio-skill-20261117](../../../../docs/verification/human-studio-skill-20261117/README.md).
+
+## Anatomical functional hill climb and independent projection checks
+
+Keep the old functional review immutable; new model-component evidence is under
+`web/garment-body/anatomical-evals/`. Frozen source and run archives, candidate
+snapshots, grader controls and the post-run disclosed oracle are hash-indexed
+there. Extract fixtures.zip into `work/anatomical-skill-evals-20261117/fixtures`
+and run archives into matching iteration/case/config/run directories to replay.
+The renderer uses NumPy/OpenCV, and source shape solving uses Node and the actual
+Human Studio asset/engine. No external generator is needed for these controls.
+
+```sh
+python tools/skill_evals/grade_anatomical_runs.py --workspace work/anatomical-skill-evals-20261117 --iteration 2
+python tools/skill_evals/grade_anatomical_runs.py --workspace work/anatomical-skill-evals-20261117 --iteration 3
+python tools/skill_evals/aggregate_functional.py work/anatomical-skill-evals-20261117/iteration-2
+python tools/skill_evals/plot_anatomical_fit.py --workspace work/anatomical-skill-evals-20261117 --out web/garment-body/anatomical-evals
+python tools/skill_evals/build_anatomical_review.py --workspace work/anatomical-skill-evals-20261117 --site web/garment-body/anatomical-evals --evidence docs/verification/garment-body-anatomical-evals-20261117
+```
+
+Reopen actual OBJ topology, neutral tape measurements, model state and frozen
+cameras; reproject masks and compare actual images. The shared raster replay
+is distinct from `grade_anatomical_projection.py`: this imports no renderer,
+uses its own OBJ parser and vectorized ray/triangle intersections for 40 depth
+pixels, and recomputes all joint pixels. Negative controls must reject shifted
+depth, shifted joints and a false valid mask. Visibility here means inside the
+canvas, not occlusion. These are synthetic anatomical geometry controls.
+
+The pinned official aggregator cannot sum null timing. The local adapter uses
+a temporary grading-only projection, retains original null observations and
+removes upstream fallback zeros before presenting resource metrics. Test this
+with the existing unittest command; never modify pinned upstream to hide it.
+
+After building Pages, serve dist locally and drive the existing
+`verify_functional_review.cjs` against the new eval.html (`--expected-runs 6`)
+and iteration-3.html (`--expected-runs 2`). Require formal grades, quantitative
+tab, downloaded/reopened feedback, persistence, mobile and no API writes/errors.
+Inspect actual screenshots and images. Feedback entered by the verifier is
+test data, not human acceptance. Verify the changed skill package with the
+current download recipe above, including every ZIP member/source byte.
+
+After publication, repeat on the exact-SHA live Pages build; check the new
+manifest and archived public artifact hashes. Keep core character reduction,
+all-reference size, fit IoU, schema completeness and real-person accuracy as
+separate claims. No native trigger or full clothed-generation score is inferred.
+Current evidence:
+[anatomical-evals-20261117](../../../../docs/verification/garment-body-anatomical-evals-20261117/README.md).

@@ -1,0 +1,31 @@
+{
+  "selected": "v2",
+  "baseline": "v0",
+  "iteration1": {
+    "v1": 22,
+    "v0": 22,
+    "total": 22
+  },
+  "iteration2": {
+    "v2": 22,
+    "v0": 21,
+    "total": 22
+  },
+  "holdout": {
+    "v2": 8,
+    "v0": 8,
+    "total": 8
+  },
+  "primary_reason": "Preserved tested behavior with 40.03% fewer Unicode characters in core instructions; independent domain coverage review found no missing required behavior",
+  "limited_contract_gain": "One baseline execution omitted neutral_measurements_cm despite correct geometry; no broad quality or accuracy gain claimed",
+  "fit_accuracy": "V2 final fit IoUs slightly lower than baseline in iteration2; all exceed frozen threshold. No fit superiority claimed.",
+  "human_feedback": "No user feedback submitted yet; official review provided for inspection",
+  "native_trigger": "BLOCKED, claude CLI unavailable",
+  "clothed_six_image_generation": "NOT_RUN",
+  "instruction_characters": {
+    "v0": 6522,
+    "v2": 3911,
+    "reduction_fraction": 0.40033731984053966
+  },
+  "independent_review": "independent-review.json"
+}

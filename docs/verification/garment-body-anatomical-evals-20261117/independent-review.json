@@ -1,0 +1,73 @@
+{
+  "verdict": "PROMOTE_WITH_BOUNDED_CLAIMS",
+  "coverage_preserved": true,
+  "concrete_missing_domain_requirement_blocking_promotion": null,
+  "review_scope": "Read-only inspection of v0/v2 core and linked refs; iteration 1/2 benchmark/grading, iteration 3 grading, TRACE and metrics; no rerun, network, source edits or commits",
+  "core_length": {
+    "v0_unicode_characters": 6522,
+    "v2_unicode_characters": 3911,
+    "reduction_percent": 40.033731984053965,
+    "v0_utf8_bytes": 15725,
+    "v2_utf8_bytes": 9290
+  },
+  "total_markdown": {
+    "v0_characters": 27354,
+    "v2_characters": 26531,
+    "reduction_percent": 3.0087007384660414
+  },
+  "noncache_package_bytes": {
+    "v0": 486782,
+    "v2": 484320
+  },
+  "local_markdown_links_valid": true,
+  "coverage": {
+    "original_photo_provenance": "preserved in core and/or linked references",
+    "six_independent_clothing_images": "preserved in core and/or linked references",
+    "actual_anatomy_cm_and_pose": "preserved in core and/or linked references",
+    "neutral_vs_posed": "preserved in core and/or linked references",
+    "units_and_camera": "preserved in core and/or linked references",
+    "actual_OpenCV_fitting": "preserved in core and/or linked references",
+    "exports_state_cache": "preserved in core and/or linked references",
+    "truthful_measurement_basis": "preserved in core and/or linked references"
+  },
+  "observed_results": {
+    "iteration1": {
+      "baseline": "22/22",
+      "v1": "22/22"
+    },
+    "iteration2": {
+      "baseline": "21/22",
+      "v2": "22/22",
+      "sole_baseline_failure": "KeyError neutral_measurements_cm; geometry otherwise correct",
+      "baseline_fit_iou": [
+        0.9906868451688009,
+        0.994676078243704
+      ],
+      "v2_fit_iou": [
+        0.9894413121476167,
+        0.9931392435270254
+      ]
+    },
+    "iteration3": {
+      "baseline": "8/8",
+      "v2": "8/8",
+      "scope": "related synthetic camera-transfer holdout"
+    }
+  },
+  "statistical_causal_limits": [
+    "One run per configuration/case; correlated assertions are not independent sample size",
+    "Iteration2 gain is a metrics handoff contract result, not improved mesh/depth accuracy",
+    "Baseline repeats vary; candidate edits and executor choices confound causal shortening benefit",
+    "No native Claude routing, end-to-end six clothed image generation, real-person accuracy or physical fit measured",
+    "Token/tool-call metadata unavailable; wallclock scopes differ; total context shrinks much less than core",
+    "Shared renderer replay plus sampled independent triangle depths supports internal geometry consistency, not exhaustive independent image validation"
+  ],
+  "lingering_weaknesses": [
+    "Full fitter and image generation backend are not bundled",
+    "Live browser/cache/GLB behavior is documented but not established by these synthetic cases",
+    "Photo segmentation and clothing-detail fidelity remain unmeasured",
+    "Occlusion visibility is not established by inside-canvas joint visibility"
+  ],
+  "recommendation": "Promote only as a lean core revision preserving documented domain coverage, with synthetic controls passing. Do not claim full tested coverage or statistically established quality/efficiency improvement.",
+  "report_path": "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/independent-review.md"
+}

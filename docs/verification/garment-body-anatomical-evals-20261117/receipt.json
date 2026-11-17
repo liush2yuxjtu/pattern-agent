@@ -1,0 +1,110 @@
+{
+  "verdict": "PASS",
+  "scope": "Selected lean skill instructions, executed anatomical component evaluations, graders, package and local review pages",
+  "candidate_base": "1098ecad867708b2353163946a6fec6e1f8d2a3c",
+  "verifier": ".agents/skills/verify/SKILL.md + references/skill-evals.md",
+  "anthropic_source": {
+    "pinned_commit": "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064",
+    "guide": "tools/skill_evals/upstream/SKILL.md",
+    "upstream_modified": false
+  },
+  "functional_executions": 14,
+  "results": {
+    "iteration1": {
+      "v1": "22/22",
+      "baseline": "22/22"
+    },
+    "iteration2": {
+      "v2": "22/22",
+      "baseline": "21/22"
+    },
+    "untuned_camera_holdout": {
+      "v2": "8/8",
+      "baseline": "8/8"
+    }
+  },
+  "baseline_failure": "Missing required neutral_measurements_cm field; mesh/depth/joints correct. Frozen output and FAIL retained.",
+  "core_instruction_characters": {
+    "baseline": 6522,
+    "v2": 3911,
+    "reduction_percent": 40.033731984053965
+  },
+  "all_markdown_snapshot_reduction_percent": 3.0087007384660414,
+  "commands_observed": [
+    {
+      "command": "python -m unittest discover -s .agents/skills/garment-body-six-view/tests -v",
+      "exit_code": 0,
+      "result": "24 tests passed"
+    },
+    {
+      "command": "python -m unittest discover -s tools/skill_evals -p 'test_*.py' -v",
+      "exit_code": 0,
+      "result": "20 tests passed, including analytic independent-ray probes and null-timing aggregation regression"
+    },
+    {
+      "command": "python tools/skill_evals/grade_anatomical_runs.py --workspace work/anatomical-skill-evals-20261117 --iteration N",
+      "exit_code": 0,
+      "result": "Actual independent artifact grading for N=1,2,3; raw failures preserved"
+    },
+    {
+      "command": "python tools/skill_evals/aggregate_functional.py WORKSPACE/iteration-N",
+      "exit_code": 0,
+      "result": "Official pinned aggregation through grading-only temporary projection; null resource metrics preserved in normalized output"
+    },
+    {
+      "command": "python tools/skill_evals/build_anatomical_review.py --workspace work/anatomical-skill-evals-20261117 --site web/garment-body/anatomical-evals --evidence docs/verification/garment-body-anatomical-evals-20261117",
+      "exit_code": 0,
+      "result": "Pinned official viewer with visual previews and complete exact-run archives"
+    },
+    {
+      "command": "node tools/skill_evals/verify_functional_review.cjs --url http://127.0.0.1:8766/garment-body/anatomical-evals/eval.html --out WORKSPACE/browser-review --expected-runs 6 --image-runs 3:6,4:6,5:6,6:6",
+      "exit_code": 0,
+      "result": "31 actual browser checks passed, including all image run previews"
+    },
+    {
+      "command": "node tools/skill_evals/verify_functional_review.cjs --url http://127.0.0.1:8766/garment-body/anatomical-evals/iteration-3.html --out WORKSPACE/browser-holdout --expected-runs 2 --image-runs 1:6,2:6",
+      "exit_code": 0,
+      "result": "23 actual browser checks passed, including all image previews"
+    },
+    {
+      "command": "node scripts/verify_garment_body_skill.cjs --url http://127.0.0.1:8766/ --output WORKSPACE/browser-skill",
+      "exit_code": 0,
+      "result": "18 actual browser checks passed; downloaded13-member package reopened and matched canonicalsource; bundled helper actually executed"
+    },
+    {
+      "command": "python tools/skill_evals/upstream/scripts/quick_validate.py .agents/skills/garment-body-six-view",
+      "exit_code": 0,
+      "result": "Skill is valid"
+    },
+    {
+      "command": "node tools/skill_evals/verify_functional_review.cjs --url http://127.0.0.1:8766/garment-body/anatomical-evals/iteration-1.html --out WORKSPACE/browser-first --expected-runs 6 --image-runs 3:6,4:6,5:6,6:6",
+      "exit_code": 0,
+      "result": "31 checks passed"
+    }
+  ],
+  "independence": "Raster replay uses supplied kernel; extra independent parser/triangle intersections check40depthpixels and all163jointpixels. Grader controls reject depth shift, joint shift, false validmask; audit output control rejects false classification and100xheight.",
+  "findings": [
+    "Fixture review found pose.png lacked dots/lines; corrected before raster-run launch, public input geometry unchanged after freeze; two README clarifications disclosed",
+    "Pinned aggregator TypeError for null timings; original null observations retained, grading-only adapter fixed and regression-tested",
+    "Shorter candidate did not improve fit IoU over baseline in iteration2; no superiority claimed"
+  ],
+  "not_established": [
+    "Native Claude triggers: BLOCKED (CLI unavailable)",
+    "Full six clothed photo generation quality: NOT_RUN",
+    "Real-person measurement accuracy: NOT_ESTABLISHED",
+    "Physical fit: NOT_RUN; historical T-shirt7.6455mmgap/20intersections remains FAIL",
+    "Token, cost or latency improvement: NOT_MEASURED"
+  ],
+  "human_feedback": "No user feedback received; browser feedback fixtures are not acceptance",
+  "publication": "PENDING exact committed live SHA and public archive readback",
+  "cleanup": "Owned local server closed after verification; all executor subagents completed",
+  "remote_reconciliation": "Fast-forwarded concurrent prototype/DXF changes; retained remote README update and appended only this task link; changed skill/review assets were disjoint.",
+  "browser_checks": {
+    "first_candidate": 31,
+    "selected_revision": 31,
+    "camera_holdout": 23,
+    "skill_and_download": 18
+  },
+  "browser_image_validation": "Every run navigated; all image-bearing runs contain >=6 actual decoded image previews.",
+  "candidate_source_manifest_sha256": "9cde2267844246e428642fb0b48b23bf4a9ef79cfe84b5153a2cc5b9356d7582"
+}

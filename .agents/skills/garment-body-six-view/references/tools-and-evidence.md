@@ -64,3 +64,15 @@ CLI 的 PNG 读取仍按 >127 二值化。叠加照片须为有限的 H×W×3 BG
 没有资源时它只能检查结构，不会把导出文件里自报的数字当作独立网格证据。
 OBJ 输入本身必须已经以 cm 表示；GLB 的米坐标应由正确的导入/转换流程处理，不能只给 `measure_mesh.py` 传 `--unit cm`。
 Human Studio 的 surface tape path 尺寸和 VTK 截面周长采用不同定义；分开记录 method、标志点与姿态。
+
+## 掩膜指标定义与测量记录
+
+IoU = 交集面积 / 并集面积；Dice = 2 × 交集面积 / 两掩膜面积之和。
+对称轮廓距离报告均值和 P95，单位为评价图像像素。局部区域另列协议。
+尺寸记录示例：
+```json
+{"name":"chest_girth","value":null,"unit":"cm","definition":"horizontal torso circumference at selected chest level","basis":"unavailable","mesh_checked":false,"limitations":["single front view","height unknown","garment obscures body"]}
+```
+查看器缓存检查同时覆盖同版本越界值、非法类型与非步长倍数；统一规范化状态用于控件、标签、
+几何和导出。默认顶点应与最终导出一致，旧版本缓存不能覆盖新拟合默认值。生成请求使用
+当前参数和原图引用；新的网格/姿态版本需重新计算叠加，不能沿用旧分数。

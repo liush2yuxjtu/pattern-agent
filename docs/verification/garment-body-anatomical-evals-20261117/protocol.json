@@ -1,0 +1,18 @@
+{
+  "skill_name": "garment-body-six-view",
+  "base_commit": "9464f975d39ce525a36038b610f2ca507e39b85b",
+  "executor": "Isolated subagents inheriting session model; not Claude native runtime",
+  "baseline": "Frozen existing anatomical skill",
+  "candidate": "Instruction revision informed by contract audit; no hidden case data in instructions",
+  "cases": [
+    "state-audit",
+    "anatomical-fit",
+    "pose-depth-evidence"
+  ],
+  "independent_grading": true,
+  "timing_tokens": "Record only exposed notification metadata; no zero substitutes",
+  "selection": "Measured regressions block promotion; report nondiscriminating checks and small sample limits",
+  "six_clothed_image_generation": "NOT_RUN in this controlled component benchmark",
+  "iteration_2_selection": "Reject any assertion regression; if pass counts tie and domain coverage remains intact, prefer shorter core instructions. Characters are measured, not execution/model tokens.",
+  "fixture_integrity_note": "After initial hash freeze, fixture author clarified annotation-pixel wording in the two README files only. Source mesh, cameras, masks, joints and renderer bytes did not change. Exact executor task metadata is retained; the supplied deterministic renderer and actual annotations were already required for both versions."
+}

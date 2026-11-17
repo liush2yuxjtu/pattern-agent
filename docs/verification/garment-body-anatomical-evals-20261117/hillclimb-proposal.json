@@ -1,0 +1,21 @@
+{
+  "candidate": "v1",
+  "baseline": "skill-snapshot-v0",
+  "changed_files": [
+    "SKILL.md",
+    "references/geometry-evidence.md"
+  ],
+  "hypothesis": "Make execution boundaries explicit early and consolidate geometric evidence into one short branch reference so agents produce actual rasterized pose/depth and frozen-reference mesh fitting, rather than plans or metadata-only checks.",
+  "preserved": [
+    "name",
+    "description",
+    "existing helper scripts",
+    "canonical skill unchanged"
+  ],
+  "no_helper_reason": "A renderer helper would impose a camera/rasterization stack without observed repeated execution failures; instruction-only candidate isolates the intervention.",
+  "known_risks": [
+    "More explicit artifacts may increase run time.",
+    "Independent asset availability remains a real dependency."
+  ],
+  "oracle_policy": "No future fixtures or private oracle inspected."
+}

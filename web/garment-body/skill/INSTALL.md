@@ -47,3 +47,5 @@ SKILL.md 是 agent 的操作指令。图像生成、模型权重、3D 模型资�
 `inspect_human_state.py` 无第三方依赖；提供匹配的 human.json 时可独立重算中性网格尺寸。
 形变资产不随技能包附带，请使用编辑器仓库中的资源及其 provenance.json 核对指纹。
 编辑器没有照片重建、六图生成、深度估计或自动人体拟合服务；按 SKILL.md 调用实际可用工具。
+
+当前功能评测与精简记录见 references/test-status.md；本轮验证的是解剖模型组件与证据交付，不能等同于完整穿衣六图生成质量。

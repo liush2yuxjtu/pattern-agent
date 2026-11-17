@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import shutil
+import tempfile
 
 from build_functional_review import normalize_benchmark
 
@@ -31,9 +33,19 @@ def aggregate(workspace):
                 or abs(summary['pass_rate'] - passed / len(expectations)) > 1e-12):
             raise ValueError('Incorrect grading summary: ' + str(run))
     raw = workspace / 'benchmark-upstream-raw.json'
-    command = [sys.executable, '-m', 'scripts.aggregate_benchmark', str(workspace),
-               '--skill-name', 'garment-body-six-view', '--output', str(raw)]
-    result = subprocess.run(command, cwd=HERE / 'upstream', text=True, capture_output=True)
+    # Pinned upstream arithmetic cannot accept null timing. Keep original null
+    # observations intact and give it a grading-only temporary projection. Its
+    # default zero metrics are placeholders, removed below before interpretation.
+    with tempfile.TemporaryDirectory(prefix='anthropic-grading-only-') as directory:
+        projection = Path(directory)
+        for run in runs:
+            target = projection / run.relative_to(workspace)
+            target.mkdir(parents=True)
+            for name in ['grading.json', 'eval_metadata.json']:
+                shutil.copyfile(run / name, target / name)
+        command = [sys.executable, '-m', 'scripts.aggregate_benchmark', str(projection),
+                   '--skill-name', 'garment-body-six-view', '--output', str(raw)]
+        result = subprocess.run(command, cwd=HERE / 'upstream', text=True, capture_output=True)
     (workspace / 'aggregate-upstream.log').write_text(result.stdout + result.stderr)
     if result.returncode:
         raise RuntimeError('Official aggregator failed; see aggregate-upstream.log')

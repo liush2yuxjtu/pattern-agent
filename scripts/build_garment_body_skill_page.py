@@ -65,7 +65,7 @@ def build():
         required = ['SKILL.md','references/human-studio.md','scripts/inspect_human_state.py']
         for name in required: assert 'garment-body-six-view/'+name in archive.namelist()
         entries = {name:hashlib.sha256(archive.read(name)).hexdigest() for name in archive.namelist()}
-    for relative in ['SKILL.md','INSTALL.md','references/human-studio.md','references/tools-and-evidence.md','references/test-status.md']:
+    for relative in ['SKILL.md','INSTALL.md'] + [str(p.relative_to(SKILL)) for p in sorted((SKILL/'references').glob('*.md'))]:
         target = OUTPUT/relative; target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(SKILL/relative, target)
     shutil.copyfile(package, OUTPUT/package.name)
@@ -78,7 +78,7 @@ def build():
 <p>商品模特图 → 六张独立图像 → 可调节人体 → 三维快照与 OpenCV 叠加 → 带证据的人体参数。</p>
 <div class="notice"><strong>Current workflow</strong><p>Use the anatomical Human Studio model: 12 dimensions in centimetres, 163 bones and pose controls in degrees. Keep requested sizes, measured mesh values and image-based estimates separate.</p>
 <a class="download" href="garment-body-six-view.skill" download>Download .skill</a><a href="SKILL.md">Canonical instructions</a> · <a href="INSTALL.md">Installation</a></div>
-<p>Deliver six separate images: front, side, back, close-up, pose annotation and relative depth. Record the original item photo, model state and actual generation/rendering provenance. The editor supplies the adjustable mannequin; generation and fitting require their own tools.</p>
+<p><a href="../anatomical-evals/eval.html">Current anatomical functional evaluations & hill climb</a> · <a href="../anatomical-evals/iteration-3.html">Untuned camera transfer check</a></p><p>Deliver six separate images: front, side, back, close-up, pose annotation and relative depth. Record the original item photo, model state and actual generation/rendering provenance. The editor supplies the adjustable mannequin; generation and fitting require their own tools.</p>
 ''' + body + '''<footer><a href="references/human-studio.md">Workflow source</a> · <a href="references/tools-and-evidence.md">Tools & evidence</a> · <a href="references/test-status.md">Evaluation limits</a> · <a href="manifest.json">Download hashes</a><p>Earlier loft-model scores remain historical. This update does not establish six-image quality, real-person measurement accuracy or a new native Claude trigger score.</p></footer></main></html>'''
     (OUTPUT/'index.html').write_text(page)
     files = {str(p.relative_to(OUTPUT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUTPUT.rglob('*')) if p.is_file() and p.name != 'manifest.json'}

@@ -1,0 +1,21 @@
+{
+  "eval_id": 4,
+  "eval_name": "camera-transfer",
+  "grader_case": "pose-depth-evidence",
+  "fixture_override": "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/fixtures/camera-transfer-holdout",
+  "prompt": "Using the supplied existing anatomical mannequin, produce a verifiable evidence handoff under this NEW supplied camera protocol. Preserve actual shape, seated pose, source meshes and source state. Use the provided generic render_mesh.py with the actual source joints. Deliver final.obj, neutral.obj, state.json, joints.json, camera.json, metrics.json (neutral_height_cm,posed_height_cm,neutral_measurements_cm), all six renders and masks, raw renders/depth.npy with renders/depth-valid.png and renders/pose-joints.json. Explain source and units; no photographed-person or imagegen claims. This transfer case has a different canvas, framing, depth range and front-facing pose/depth camera. Respect the supplied metadata; no hardcoded prior resolution or camera. Fixed tolerances: actual source coordinates <0.003 cm, neutral measurements <0.03cm, all deterministic render/annotation MAE<=2, masks IoU>=.99, depth grayscale MAE<=1, raw ray-depth difference<.001cm, joint projection error<.001px. Execute and save runnable code, TRACE.md and report.md.",
+  "files": [
+    "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/fixtures/camera-transfer-holdout",
+    "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/fixtures/render_mesh.py"
+  ],
+  "assertions": [
+    "valid_source_topology",
+    "fixed_camera",
+    "posed_surface_preserved",
+    "neutral_dimensions_pose_state",
+    "six_actual_triangle_renders",
+    "aligned_geometry_depth",
+    "neutral_and_posed_height_metrics",
+    "Independent triangle-hit depths and saved joint pixels agree with the actual mesh and frozen camera"
+  ]
+}

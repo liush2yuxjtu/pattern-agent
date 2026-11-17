@@ -1,0 +1,27 @@
+{
+  "skill_name": "garment-body-six-view",
+  "current_best": "v2",
+  "meaning_of_best": "selected for shorter core with observed regression checks, not statistically proven global optimum",
+  "iterations": [
+    {
+      "version": "v0",
+      "parent": null,
+      "grading_result": "baseline",
+      "is_current_best": false
+    },
+    {
+      "version": "v1",
+      "parent": "v0",
+      "expectation_pass_rate": 1.0,
+      "grading_result": "tie",
+      "is_current_best": false
+    },
+    {
+      "version": "v2",
+      "parent": "v1",
+      "expectation_pass_rate": 1.0,
+      "grading_result": "selected: shorter core; baseline one missing schema field",
+      "is_current_best": true
+    }
+  ]
+}

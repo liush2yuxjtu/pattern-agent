@@ -1,0 +1,77 @@
+{
+  "skill_name": "garment-body-six-view",
+  "evals": [
+    {
+      "eval_id": 1,
+      "eval_name": "state-audit",
+      "prompt": "# Audit a saved anatomical model handoff\n\nThese six saved states came with a posed OBJ, source manifest and a matching anatomical asset. Audit all of them, preserving the inputs. Independently recompute the neutral mesh measurements with the asset, distinguish invalid states from a valid closest-supported state whose target was not achieved, and report which state is usable. Check edited joint names as well as angles. The posed OBJ is in cm and cannot establish neutral standing height from its bounding box. These are controlled model data, not photographs.\n\nWrite outputs/audit.json with {\"cases\": [{\"file\": \"reference.json\", \"classification\": \"verified|invalid|closest_supported\", \"reason\": \"...\", \"neutral_mesh_checked\": true|false, \"maximum_target_error_cm\": number|null}], \"measurements\": {\"height\": number, ...all 12...}, \"basis\":\"mesh_parameter\", \"pose_bbox_height_cm\": number, \"camera_recovered\":false, \"real_person_accuracy_established\":false, \"input_hashes\": {\"reference.json\":\"sha256\",...all six states plus posed-cm.obj}}. The measurements refer to the usable reference state's neutral mesh. Save measurements.csv with key,value,unit,basis columns, a report.md explaining conclusions and a runnable script/worklog showing actual checks. Do not label a structurally readable state as independently mesh-verified without recomputing. Do not fix corrupted inputs in place or silently claim a target as measured.\n",
+      "files": [
+        "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/fixtures/state-audit"
+      ],
+      "assertions": [
+        "All six saved states have the correct independent classification",
+        "All 12 neutral dimensions are recomputed from the matching anatomical asset",
+        "A false reported measurement and an unknown pose bone are rejected",
+        "An honest unreached target is separated from invalid data and achieved sizes",
+        "Neutral standing height is kept separate from the seated OBJ bounding box",
+        "Measurement CSV and report preserve mesh_parameter basis and unknown camera/real-person accuracy",
+        "All original state and OBJ input hashes remain unchanged"
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "anatomical-fit",
+      "prompt": "Fit the existing anatomical MakeHuman body to reference-front.png and reference-side.png and binary masks, using the supplied fixed orthographic cameras and centimetre scale. This is a synthetic anatomical control, not a photograph. Start from initial-state.json and initial.obj; use web/human-studio/assets/human.json and body-engine.js. Preserve source topology, Y-up centimetres and neutral pose. Save final.obj (13380 body vertices in source order), state.json (dimensions, morphWeights, poseDegrees), camera.json copied from fixture, metrics.json documenting fit metrics, overlays/front.png and overlays/side.png showing reference and candidate, and renders/{front,side,back,close-up,pose,depth}.png with corresponding {view}-mask.png. Render actual triangles; pose view uses this fixture's neutral source pose. Generic raster utility fixtures/render_mesh.py is available. Do not use image generation or claim recovered person measurements. Save joints.json with units cm and joints entries name,parent,position for all actual rig bones. For pose-depth preserve source-joints.json; for fit derive each bone head using body-engine jointPosition on the final full rest buffer (not compact surface). Render pose.png with actual projected skeleton points and parent lines, using render_mesh.py --joints joints.json. Also save renders/pose-joints.json (joints entries name,world_cm,pixel,visible and parent-child edges; visible means inside canvas), renders/depth.npy and renders/rawdepth.npy float32 nearest triangle camera-space depth (signed source X for side, larger is nearer, not camera distance) with -inf background, and renders/depth-valid.png uint8 finite mask. Use the supplied render_mesh.py for deterministic renders. Depth encoding: 0 background; 1..254 maps depth_range_cm. Frozen checks: {\"valid_source_topology\": \"13380 finite vertices; exact 26756 source triangles and vertex order\", \"fixed_camera\": \"camera.json exactly equals supplied metadata; no auto-fit\", \"both_silhouettes_improve\": \"Both front and side IoU >=0.97 and each improves >=0.01 from supplied initial body\", \"state_mesh_consistency\": \"Neutral tape measures within 0.3 cm of state dimensions; vertices within 0.05 cm of engine fit for state dimensions; poseDegrees empty\", \"six_actual_triangle_renders\": \"Use supplied deterministic render_mesh.py; each six masks IoU >=0.99 against independent raw-OBJ projection; each render mean absolute pixel error <=2 against fixed triangle lighting\", \"aligned_geometry_depth\": \"Single-channel uint8; 0 background, 1..254 maps fixed depth_range_cm; mean absolute error <=1 pixel; rawdepth.npy finite triangle depth within 0.001cm and depth-valid.png equals finite mask\", \"metrics_and_overlays\": \"Nonempty metrics.json and front/side overlays of 384x512\"}",
+      "files": [
+        "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/fixtures/anatomical-fit",
+        "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/fixtures/render_mesh.py"
+      ],
+      "assertions": [
+        "valid_source_topology",
+        "fixed_camera",
+        "both_silhouettes_improve",
+        "state_mesh_consistency",
+        "six_actual_triangle_renders",
+        "aligned_geometry_depth",
+        "metrics_and_overlays"
+      ],
+      "criteria": {
+        "valid_source_topology": "13380 finite vertices; exact 26756 source triangles and vertex order",
+        "fixed_camera": "camera.json exactly equals supplied metadata; no auto-fit",
+        "both_silhouettes_improve": "Both front and side IoU >=0.97 and each improves >=0.01 from supplied initial body",
+        "state_mesh_consistency": "Neutral tape measures within 0.3 cm of state dimensions; vertices within 0.05 cm of engine fit for state dimensions; poseDegrees empty",
+        "six_actual_triangle_renders": "Use supplied deterministic render_mesh.py; each six masks IoU >=0.99 against independent raw-OBJ projection; each render mean absolute pixel error <=2 against fixed triangle lighting",
+        "aligned_geometry_depth": "Single-channel uint8; 0 background, 1..254 maps fixed depth_range_cm; mean absolute error <=1 pixel; rawdepth.npy finite triangle depth within 0.001cm and depth-valid.png equals finite mask",
+        "metrics_and_overlays": "Nonempty metrics.json and front/side overlays of 384x512"
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "pose-depth-evidence",
+      "prompt": "Produce reproducible six-view evidence for this existing posed MakeHuman anatomical surface. This is a synthetic control, not a photograph. source-posed.obj was exported from the genuine skinned app with source-state.json; source-neutral.obj records the same body's neutral dimensions. Preserve the seated legs and flexed arms exactly, with Y-up centimetres and source vertex order. Save final.obj matching the posed source, neutral.obj matching the neutral source, state.json preserving dimensions and poseDegrees, camera.json copied from fixture, metrics.json reporting separate neutral and posed heights and the neutral tape measurements, and renders/{front,side,back,close-up,pose,depth}.png plus corresponding {view}-mask.png. Generic actual-triangle raster utility fixtures/render_mesh.py is available. Depth must correspond to the same projected posed triangles. Do not reconstruct from silhouette, substitute a standing pose, use image generation, or claim measurements of a photographed person. Save joints.json with units cm and joints entries name,parent,position for all actual rig bones. For pose-depth preserve source-joints.json; for fit derive each bone head using body-engine jointPosition on the final full rest buffer (not compact surface). Render pose.png with actual projected skeleton points and parent lines, using render_mesh.py --joints joints.json. Also save renders/pose-joints.json (joints entries name,world_cm,pixel,visible and parent-child edges; visible means inside canvas), renders/depth.npy and renders/rawdepth.npy float32 nearest triangle camera-space depth (signed source X for side, larger is nearer, not camera distance) with -inf background, and renders/depth-valid.png uint8 finite mask. Use the supplied render_mesh.py for deterministic renders. Depth encoding: 0 background; 1..254 maps depth_range_cm. Frozen checks: {\"valid_source_topology\": \"13380 finite vertices; exact 26756 source triangles and vertex order\", \"fixed_camera\": \"camera.json exactly equals supplied metadata; no auto-fit\", \"posed_surface_preserved\": \"Every posed coordinate within 0.003 cm of actual source skinned surface\", \"neutral_dimensions_pose_state\": \"Neutral coordinates within 0.003 cm and tapes within 0.03 cm; dimensions and poseDegrees exactly preserved\", \"six_actual_triangle_renders\": \"Use supplied deterministic render_mesh.py; each six masks IoU >=0.99 against independent raw-OBJ projection; each render mean absolute pixel error <=2 against fixed triangle lighting\", \"aligned_geometry_depth\": \"Single-channel uint8; 0 background, 1..254 maps fixed depth_range_cm; mean absolute error <=1 pixel; rawdepth.npy finite triangle depth within 0.001cm and depth-valid.png equals finite mask\", \"neutral_and_posed_height_metrics\": \"Both heights and all neutral tape metrics within 0.03 cm of independent geometry; neutral height exceeds seated height by >20 cm\"} Also preserve renders/depth.npy, renders/depth-valid.png and renders/pose-joints.json from the renderer. A separate parser will test 40 valid pixels against actual triangle intersections (<0.001 cm) and all joint pixels against the saved camera (<0.001 px).",
+      "files": [
+        "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/fixtures/pose-depth-evidence",
+        "/workspace/work/pattern-agent/work/anatomical-skill-evals-20261117/fixtures/render_mesh.py"
+      ],
+      "assertions": [
+        "valid_source_topology",
+        "fixed_camera",
+        "posed_surface_preserved",
+        "neutral_dimensions_pose_state",
+        "six_actual_triangle_renders",
+        "aligned_geometry_depth",
+        "neutral_and_posed_height_metrics",
+        "Independent triangle-hit depths and saved joint pixels agree with the actual mesh and frozen camera"
+      ],
+      "criteria": {
+        "valid_source_topology": "13380 finite vertices; exact 26756 source triangles and vertex order",
+        "fixed_camera": "camera.json exactly equals supplied metadata; no auto-fit",
+        "posed_surface_preserved": "Every posed coordinate within 0.003 cm of actual source skinned surface",
+        "neutral_dimensions_pose_state": "Neutral coordinates within 0.003 cm and tapes within 0.03 cm; dimensions and poseDegrees exactly preserved",
+        "six_actual_triangle_renders": "Use supplied deterministic render_mesh.py; each six masks IoU >=0.99 against independent raw-OBJ projection; each render mean absolute pixel error <=2 against fixed triangle lighting",
+        "aligned_geometry_depth": "Single-channel uint8; 0 background, 1..254 maps fixed depth_range_cm; mean absolute error <=1 pixel; rawdepth.npy finite triangle depth within 0.001cm and depth-valid.png equals finite mask",
+        "neutral_and_posed_height_metrics": "Both heights and all neutral tape metrics within 0.03 cm of independent geometry; neutral height exceeds seated height by >20 cm"
+      }
+    }
+  ]
+}

@@ -39,3 +39,14 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 当前模型已有独立的 37 项真实浏览器检查、OBJ/GLB NumPy 审计和 3 项破坏控制，见仓库 docs/verification/human-studio-20261117/；这些是模型证据，不是本轮新增的六图生成评测。
 - 本次技能集成的命令、状态重算和包/网页读回证据另存 docs/verification/human-studio-skill-20261117/。
 - 新增说明未重跑 description hill climb，也未测六图生成质量或真实人体测量误差；此前原生 Claude BLOCKED 和物理试衣 NOT_RUN 保持不变。
+
+## 2026-11-17 解剖模型功能评测与精简迭代
+
+- 14 次独立子 agent 执行：v1/原版各 3 场、v2/原版各 3 场，另有两次未用于调参的相机迁移留出执行。所有执行明确提供技能，非 Claude 原生自动触发。
+- 三个实际任务：6 份状态审计；真实 MakeHuman 网格轮廓拟合与 OpenCV 叠加；真实坐姿骨架点线/原始深度/中性尺寸交付。几何来自 13,380 顶点、26,756 三角形、163 骨骼资源。
+- 第一轮两组均 22/22。第二轮精简版 22/22、原版 21/22：原版漏掉约定的 neutral_measurements_cm 字段，其几何本身正确。留出新相机两组均 8/8。不把单次字段差异包装成统计可靠的整体质量提升。
+- SKILL.md 核心 Unicode 字符数 6,522 → 3,911，减少 40.03%；被测快照的全部 Markdown 内容仅减少约 3.01%（不含之后追加的评测记录）。不是 token、耗时、成本或整个技能包体积减少 40%。
+- 精简版正/侧 IoU 为 0.989441/0.993139，原版同轮 0.990687/0.994676；两组通过事先固定的 0.97 门槛，精简版未提高本次拟合精度。
+- 独立读回 OBJ、测量、文件哈希；除共享光栅内核的图像重放外，另用独立解析与射线三角相交核验 40 个深度像素和全部 163 关节点投影。破坏控制拒绝错误深度、错位关节和伪有效掩膜。
+- 六张穿衣生成图的图像质量、真实照片人体精度、原生 Claude 触发及物理试衣没有在本轮测出；缺失的 token/时长保持 null。
+- 完整执行、代码、分数、原始文件下载和 Anthropic 官方查看器见 docs/verification/garment-body-anatomical-evals-20261117/ 和公开 garment-body/anatomical-evals/eval.html。人工反馈尚未收到。

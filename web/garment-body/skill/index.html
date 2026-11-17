@@ -6,7 +6,7 @@
 <p>商品模特图 → 六张独立图像 → 可调节人体 → 三维快照与 OpenCV 叠加 → 带证据的人体参数。</p>
 <div class="notice"><strong>Current workflow</strong><p>Use the anatomical Human Studio model: 12 dimensions in centimetres, 163 bones and pose controls in degrees. Keep requested sizes, measured mesh values and image-based estimates separate.</p>
 <a class="download" href="garment-body-six-view.skill" download>Download .skill</a><a href="SKILL.md">Canonical instructions</a> · <a href="INSTALL.md">Installation</a></div>
-<p>Deliver six separate images: front, side, back, close-up, pose annotation and relative depth. Record the original item photo, model state and actual generation/rendering provenance. The editor supplies the adjustable mannequin; generation and fitting require their own tools.</p>
+<p><a href="../anatomical-evals/eval.html">Current anatomical functional evaluations & hill climb</a> · <a href="../anatomical-evals/iteration-3.html">Untuned camera transfer check</a></p><p>Deliver six separate images: front, side, back, close-up, pose annotation and relative depth. Record the original item photo, model state and actual generation/rendering provenance. The editor supplies the adjustable mannequin; generation and fitting require their own tools.</p>
 <h1>Human Studio: anatomical body, centimetres and pose</h1>
 <p>Use the working anatomical editor for the product workflow: https://liush2yuxjtu.github.io/pattern-agent/human-studio/</p>
 <p>Repository implementation: <code>web/human-studio/</code>. The current adult-female MakeHuman mesh/morphs/rig are CC0; the Three.js renderer is MIT. Record the actual version and asset SHA256 from the saved state and provenance, rather than assuming every future model uses the same asset or body template.</p>

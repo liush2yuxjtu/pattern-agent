@@ -1,0 +1,384 @@
+{
+  "metadata": {
+    "skill_name": "garment-body-six-view",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "Inherited session subagent model; ID not exposed",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-17T07:21:00.779549+00:00",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 1,
+    "protocol": "Executed synthetic-control functional tasks; not native Claude routing",
+    "resource_metrics": "Tokens unavailable. Raw executor wallclock scopes differ; no time/token comparison."
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "All six saved states have the correct independent classification",
+          "passed": true,
+          "evidence": "classifications={\"reference.json\": \"verified\", \"metre-label.json\": \"invalid\", \"nonfinite-angle.json\": \"invalid\", \"pose-joint.json\": \"invalid\", \"reported-bust.json\": \"invalid\", \"unreached-target.json\": \"closest_supported\"}"
+        },
+        {
+          "text": "All 12 neutral dimensions are recomputed from the matching anatomical asset",
+          "passed": true,
+          "evidence": "NumPy sparse morph + fixed tape/landmark reconstruction independently checked all 12 dimensions"
+        },
+        {
+          "text": "A false reported measurement and an unknown pose bone are rejected",
+          "passed": true,
+          "evidence": "False bust and unknown pose bone both need explicit rejection reasons"
+        },
+        {
+          "text": "An honest unreached target is separated from invalid data and achieved sizes",
+          "passed": true,
+          "evidence": "Actual neutral height=180.0000124290127 cm vs target190 cm"
+        },
+        {
+          "text": "Neutral standing height is kept separate from the seated OBJ bounding box",
+          "passed": true,
+          "evidence": "Actual posed OBJ Y extent=132.672357 cm; neutral height=180.0000124290127 cm"
+        },
+        {
+          "text": "Measurement CSV and report preserve mesh_parameter basis and unknown camera/real-person accuracy",
+          "passed": true,
+          "evidence": "CSV reopened: neutral mesh basis, cm units, unknown camera/person accuracy and report exist"
+        },
+        {
+          "text": "All original state and OBJ input hashes remain unchanged",
+          "passed": true,
+          "evidence": "Independent SHA256 readback of all original six states and OBJ"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "All six saved states have the correct independent classification",
+          "passed": true,
+          "evidence": "classifications={\"reference.json\": \"verified\", \"metre-label.json\": \"invalid\", \"nonfinite-angle.json\": \"invalid\", \"pose-joint.json\": \"invalid\", \"reported-bust.json\": \"invalid\", \"unreached-target.json\": \"closest_supported\"}"
+        },
+        {
+          "text": "All 12 neutral dimensions are recomputed from the matching anatomical asset",
+          "passed": true,
+          "evidence": "NumPy sparse morph + fixed tape/landmark reconstruction independently checked all 12 dimensions"
+        },
+        {
+          "text": "A false reported measurement and an unknown pose bone are rejected",
+          "passed": true,
+          "evidence": "False bust and unknown pose bone both need explicit rejection reasons"
+        },
+        {
+          "text": "An honest unreached target is separated from invalid data and achieved sizes",
+          "passed": true,
+          "evidence": "Actual neutral height=180.0000124290127 cm vs target190 cm"
+        },
+        {
+          "text": "Neutral standing height is kept separate from the seated OBJ bounding box",
+          "passed": true,
+          "evidence": "Actual posed OBJ Y extent=132.672357 cm; neutral height=180.0000124290127 cm"
+        },
+        {
+          "text": "Measurement CSV and report preserve mesh_parameter basis and unknown camera/real-person accuracy",
+          "passed": true,
+          "evidence": "CSV reopened: neutral mesh basis, cm units, unknown camera/person accuracy and report exist"
+        },
+        {
+          "text": "All original state and OBJ input hashes remain unchanged",
+          "passed": true,
+          "evidence": "Independent SHA256 readback of all original six states and OBJ"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "valid_source_topology",
+          "passed": true,
+          "evidence": "{\"vertices\": 13380, \"triangles\": 26756, \"expected_triangles\": 26756}"
+        },
+        {
+          "text": "fixed_camera",
+          "passed": true,
+          "evidence": "\"Camera must equal supplied fixed camera including centimetre scale\""
+        },
+        {
+          "text": "both_silhouettes_improve",
+          "passed": true,
+          "evidence": "{\"front\": {\"initial_iou\": 0.9130463664142421, \"final_iou\": 0.9894413121476167, \"improvement\": 0.07639494573337458}, \"side\": {\"initial_iou\": 0.9169400187441424, \"final_iou\": 0.9931392435270254, \"improvement\": 0.07619922478288299}}"
+        },
+        {
+          "text": "state_mesh_consistency",
+          "passed": true,
+          "evidence": "{\"max_neutral_measure_error_cm\": 1.7218196092017024e-05, \"max_engine_vertex_error_cm\": 3.169498378685631e-05}"
+        },
+        {
+          "text": "six_actual_triangle_renders",
+          "passed": true,
+          "evidence": "{\"mask_iou\": {\"front\": 1.0, \"side\": 1.0, \"back\": 1.0, \"close-up\": 1.0, \"pose\": 1.0, \"depth\": 1.0}, \"mean_absolute_pixel_error\": {\"front\": 0.0, \"side\": 0.0, \"back\": 0.0, \"close-up\": 0.0, \"pose\": 0.0, \"pose_annotation\": 0.0, \"depth\": 0.0}}"
+        },
+        {
+          "text": "aligned_geometry_depth",
+          "passed": true,
+          "evidence": "{\"mean_absolute_depth_pixel_error\": 0.0, \"encoding\": \"0 background; 1..254 fixed depth_range_cm\"}"
+        },
+        {
+          "text": "metrics_and_overlays",
+          "passed": true,
+          "evidence": "{\"metrics_keys\": [\"protocol\", \"views\", \"validation\", \"six_render_masks\", \"hashes\", \"reference_hashes\"], \"overlay_shapes\": [[512, 384, 3], [512, 384, 3]]}"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "valid_source_topology",
+          "passed": true,
+          "evidence": "{\"vertices\": 13380, \"triangles\": 26756, \"expected_triangles\": 26756}"
+        },
+        {
+          "text": "fixed_camera",
+          "passed": true,
+          "evidence": "\"Camera must equal supplied fixed camera including centimetre scale\""
+        },
+        {
+          "text": "both_silhouettes_improve",
+          "passed": true,
+          "evidence": "{\"front\": {\"initial_iou\": 0.9130463664142421, \"final_iou\": 0.9906868451688009, \"improvement\": 0.07764047875455882}, \"side\": {\"initial_iou\": 0.9169400187441424, \"final_iou\": 0.994676078243704, \"improvement\": 0.07773605949956153}}"
+        },
+        {
+          "text": "state_mesh_consistency",
+          "passed": true,
+          "evidence": "{\"max_neutral_measure_error_cm\": 0.0001129136468591696, \"max_engine_vertex_error_cm\": 5.000089231543825e-11}"
+        },
+        {
+          "text": "six_actual_triangle_renders",
+          "passed": true,
+          "evidence": "{\"mask_iou\": {\"front\": 1.0, \"side\": 1.0, \"back\": 1.0, \"close-up\": 1.0, \"pose\": 1.0, \"depth\": 1.0}, \"mean_absolute_pixel_error\": {\"front\": 0.0, \"side\": 0.0, \"back\": 0.0, \"close-up\": 0.0, \"pose\": 0.0, \"pose_annotation\": 0.0, \"depth\": 0.0}}"
+        },
+        {
+          "text": "aligned_geometry_depth",
+          "passed": true,
+          "evidence": "{\"mean_absolute_depth_pixel_error\": 0.0, \"encoding\": \"0 background; 1..254 fixed depth_range_cm\"}"
+        },
+        {
+          "text": "metrics_and_overlays",
+          "passed": true,
+          "evidence": "{\"metrics_keys\": [\"mode\", \"projection\", \"initial\", \"final\", \"improvement\", \"constraints\", \"limitations\", \"hashes\"], \"overlay_shapes\": [[512, 384, 3], [512, 384, 3]]}"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "valid_source_topology",
+          "passed": true,
+          "evidence": "{\"vertices\": 13380, \"triangles\": 26756, \"expected_triangles\": 26756}"
+        },
+        {
+          "text": "fixed_camera",
+          "passed": true,
+          "evidence": "\"Camera must equal supplied fixed camera including centimetre scale\""
+        },
+        {
+          "text": "posed_surface_preserved",
+          "passed": true,
+          "evidence": "{\"max_source_vertex_error_cm\": 0.0}"
+        },
+        {
+          "text": "neutral_dimensions_pose_state",
+          "passed": true,
+          "evidence": "{\"max_neutral_vertex_error_cm\": 0.0, \"max_neutral_measure_error_cm\": 0.0002485079928717937}"
+        },
+        {
+          "text": "six_actual_triangle_renders",
+          "passed": true,
+          "evidence": "{\"mask_iou\": {\"front\": 1.0, \"side\": 1.0, \"back\": 1.0, \"close-up\": 1.0, \"pose\": 1.0, \"depth\": 1.0}, \"mean_absolute_pixel_error\": {\"front\": 0.0, \"side\": 0.0, \"back\": 0.0, \"close-up\": 0.0, \"pose\": 0.0, \"pose_annotation\": 0.0, \"depth\": 0.0}}"
+        },
+        {
+          "text": "aligned_geometry_depth",
+          "passed": true,
+          "evidence": "{\"mean_absolute_depth_pixel_error\": 0.0, \"encoding\": \"0 background; 1..254 fixed depth_range_cm\"}"
+        },
+        {
+          "text": "neutral_and_posed_height_metrics",
+          "passed": true,
+          "evidence": "{\"neutral_height_cm\": 179.9999101, \"posed_height_cm\": 132.672357, \"reported_height_error_cm\": 0.0, \"reported_tape_error_cm\": 0.0}"
+        },
+        {
+          "text": "Independent triangle-hit depths and saved joint pixels agree with the actual mesh and frozen camera",
+          "passed": true,
+          "evidence": "{\"verdict\": \"PASS\", \"ray_count\": 40, \"max_depth_error_cm\": 1.6552286155047113e-06, \"joint_count\": 163, \"max_joint_projection_error_px\": 0.0, \"independence\": \"Own OBJ parser, vectorized cross-product intersections and camera projection; no renderer import\", \"limits\": \"Checks model-space geometric consistency, not detector accuracy or photographed people\"}"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.875,
+        "passed": 7,
+        "failed": 1,
+        "total": 8,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "valid_source_topology",
+          "passed": true,
+          "evidence": "{\"vertices\": 13380, \"triangles\": 26756, \"expected_triangles\": 26756}"
+        },
+        {
+          "text": "fixed_camera",
+          "passed": true,
+          "evidence": "\"Camera must equal supplied fixed camera including centimetre scale\""
+        },
+        {
+          "text": "posed_surface_preserved",
+          "passed": true,
+          "evidence": "{\"max_source_vertex_error_cm\": 0.0}"
+        },
+        {
+          "text": "neutral_dimensions_pose_state",
+          "passed": true,
+          "evidence": "{\"max_neutral_vertex_error_cm\": 0.0, \"max_neutral_measure_error_cm\": 0.0002485079928717937}"
+        },
+        {
+          "text": "six_actual_triangle_renders",
+          "passed": true,
+          "evidence": "{\"mask_iou\": {\"front\": 1.0, \"side\": 1.0, \"back\": 1.0, \"close-up\": 1.0, \"pose\": 1.0, \"depth\": 1.0}, \"mean_absolute_pixel_error\": {\"front\": 0.0, \"side\": 0.0, \"back\": 0.0, \"close-up\": 0.0, \"pose\": 0.0, \"pose_annotation\": 0.0, \"depth\": 0.0}}"
+        },
+        {
+          "text": "aligned_geometry_depth",
+          "passed": true,
+          "evidence": "{\"mean_absolute_depth_pixel_error\": 0.0, \"encoding\": \"0 background; 1..254 fixed depth_range_cm\"}"
+        },
+        {
+          "text": "neutral_and_posed_height_metrics",
+          "passed": false,
+          "evidence": "\"KeyError: 'neutral_measurements_cm'\""
+        },
+        {
+          "text": "Independent triangle-hit depths and saved joint pixels agree with the actual mesh and frozen camera",
+          "passed": true,
+          "evidence": "{\"verdict\": \"PASS\", \"ray_count\": 40, \"max_depth_error_cm\": 1.6552286155047113e-06, \"joint_count\": 163, \"max_joint_projection_error_px\": 0.0, \"independence\": \"Own OBJ parser, vectorized cross-product intersections and camera projection; no renderer import\", \"limits\": \"Checks model-space geometric consistency, not detector accuracy or photographed people\"}"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 0.9583,
+        "stddev": 0.0722,
+        "min": 0.875,
+        "max": 1.0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.0417"
+    }
+  },
+  "notes": [
+    "Actual OBJ/mask/browser/output executions, not plan-only or metadata routing judgments.",
+    "Three controlled tasks, one execution per configuration/task; standard deviation is across tasks, not repeated-run reliability.",
+    "Synthetic controls do not validate real human anatomy, cloth fit, or the full six-image generation workflow.",
+    "Token notification metadata was unavailable. Executor wallclock scopes differed; raw timing is retained, comparative time/token metrics omitted.",
+    "benchmark-upstream-raw.json preserves official aggregation, including fallback placeholders; only this normalized benchmark is used for interpretation.",
+    "All tasks use synthetic projections of an actual MakeHuman surface; this does not test photo realism, real-person body accuracy, cloth fit or native Claude routing.",
+    "Raster replay shares the supplied rendering kernel; raw depth is additionally checked by a separate OBJ parser and vectorized triangle intersections.",
+    "Instructions and relevant references were supplied explicitly. This is functional execution, not automatic skill triggering.",
+    "Only one execution per candidate/case per iteration; baseline repeats show sampling variation. No token or wallclock advantage is inferred from missing metadata.",
+    "Candidate v2 passes22/22; original baseline passes21/22. The baseline missing neutral_measurements_cm field fails the metrics handoff contract; its mesh, depth and joint geometry are otherwise correct.",
+    "Core SKILL.md Unicode characters fall from6522 to3911 (40.03%). This measures core instruction length, not model token use, total package size or execution cost.",
+    "Baseline final front/side IoU=.990687/.994676 versus v2=.989441/.993139; both exceed frozen.97 threshold. V2 does not improve fit accuracy in this draw.",
+    "Selection criterion was recorded before iteration2: reject assertion regressions; on passing cases prefer shorter core with full domain coverage. The held-out camera transfer result is not used for tuning."
+  ],
+  "native_trigger_results": null
+}

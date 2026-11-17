@@ -1,0 +1,10 @@
+{
+  "verdict": "PASS_WITH_DISCLOSED_DOCUMENT_CLARIFICATION",
+  "v2_frozen_files_unchanged": true,
+  "baseline_skill_source_and_fixture_geometry_unchanged": true,
+  "changed_readmes_only": [
+    "fixtures/anatomical-fit/README.md",
+    "fixtures/pose-depth-evidence/README.md"
+  ],
+  "note": "After initial hash freeze, fixture author clarified annotation-pixel wording in the two README files only. Source mesh, cameras, masks, joints and renderer bytes did not change. Exact executor task metadata is retained; the supplied deterministic renderer and actual annotations were already required for both versions."
+}
