@@ -34,6 +34,9 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Profile-bounded DXF conversion function | [dxf-service](references/dxf-service.md) — raw HTTP, file upload and actual generated GLB | repeatable output, input changes, rejection, offline/mobile controls; fit NOT_RUN |
 | Style3D MCP discovery and garment integration | [style3d](references/style3d.md) — read-only CLI and actual Studio GUI | real tool schemas and measured project operations; client fixture tests separate |
 | Corrected DXF sewing connections | [dxf-seams](references/dxf-seams.md) — independent source/UV/topology/intersection reopener on actual GLB | 15 sewn pairs, four intentional openings, source edits and fault controls; material/fit NOT_RUN |
+| Source-bound sewing inspector | [seam-inspector](references/seam-inspector.md) — exact HTML/GLB/report binding and real local browser actions | independent data/fault controls, all seam buttons, 2D/3D clicks, touch, downloads and offline replay |
+| Hosted sewing inspector | [seam-sites](references/seam-sites.md) — actual existing production Site as its authorized owner | exact source/archive/publication plus authenticated live interactions; local artifact is separate |
+| Sewing inspector Page files | [seam-pages](references/seam-pages.md) — native file upload and guarded Page readback | exact delivered-file digest/size, accessible reference and preserved content; file link is not embed proof |
 | Historical T-shirt claims | [legacy-cloth](references/legacy-cloth.md) — archived evidence; unavailable legacy runtime | known FAIL and NOT_RUN limitations |
 
 The question is whether the changed behavior works for a real caller. Shift tests left by running them locally before the commit, then verify the running product surface. Tests, type checks, builds, CI green, Vercel READY, and static review are supporting evidence; they do not replace runtime evidence when a real user/programmatic surface exists.

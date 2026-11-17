@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/scripts/verify_seam_inspector.py", line 153, in main
+    ui=run_browser(artifact,data,out,args.browser)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/pattern-agent/scripts/verify_seam_inspector.py", line 86, in run_browser
+    retry.value.save_as(OUT/'retried-offline.html');assert (OUT/'retried-offline.html').read_bytes()==(ROOT/'dist/seam-inspector-offline.html').read_bytes()
+                                                                                                       ^^^^
+NameError: name 'ROOT' is not defined

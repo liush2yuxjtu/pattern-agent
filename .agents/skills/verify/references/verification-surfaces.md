@@ -21,6 +21,9 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | dxf-service | raw DXF upload, generated GLB and Vercel browser/API | [dxf-service.md](dxf-service.md) |
 | style3d | read-only MCP CLI, actual Studio GUI and licensed garment operations | [style3d.md](style3d.md) |
 | dxf-seams | corrected source sewing lines, exact exported GLB and independent adversarial geometry gate | [dxf-seams.md](dxf-seams.md) |
+| seam-inspector | source/GLB/report-bound portable inspector and actual local browser selection/downloads | [seam-inspector.md](seam-inspector.md) |
+| seam-sites | exact published source/artifact and actual authenticated production inspector | [seam-sites.md](seam-sites.md) |
+| seam-pages | inspected HTML bytes, native file receipt and guarded companion Page persistence | [seam-pages.md](seam-pages.md) |
 | legacy-cloth | archived evidence; unavailable legacy runtime | [legacy-cloth.md](legacy-cloth.md) |
 | skill-evals | skill package/helper CLIs, native metadata routing, editable query review | [skill-evals.md](skill-evals.md) |
 | human-studio | anatomical mesh, cm shape calibration, joint skinning and exported file readback | [human-studio.md](human-studio.md) |

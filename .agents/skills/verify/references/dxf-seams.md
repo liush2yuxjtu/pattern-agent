@@ -76,3 +76,21 @@ session without the prepared files. Cross-CPU floating-point normal rounding
 may change a GLB digest; independently compare all geometry accessors rather
 than claiming cross-platform byte identity from the source hash alone.
 Close local browsers and stop only the uvicorn instance started for this task.
+
+## Inspecting and preserving the result
+
+Apply [seam-inspector](seam-inspector.md) before claiming a graphical view is
+evidence for this model. It binds displayed arrays and report values to the
+independently reopened source/GLB, then verifies actual selection and downloads.
+Use [seam-sites](seam-sites.md) for authenticated production interactions and
+[seam-pages](seam-pages.md) for companion HTML file/content readback.
+
+Compare flat lengths **after the declared localized sewing process**, not raw
+edge lengths assumed equal: the corrected side has about321.220mm front and
+305.220mm back; front gather6mm and back stretch10mm yield about315.220mm each.
+Source-direction, process-window and actual 3D seam-length checks still apply.
+Shared IDs alone cannot establish correct sewing: also require correct source
+pairing, two incident source faces, full flat-domain coverage and intersections.
+Diagram dots are presentation samples; numerical acceptance covers every actual
+seam edge/vertex and all exported triangles. Preserve the original FAIL and
+single-outer-layer scope alongside any new visual PASS.

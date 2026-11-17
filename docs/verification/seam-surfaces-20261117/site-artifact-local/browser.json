@@ -1,0 +1,23 @@
+{
+  "verdict": "PASS",
+  "scope": "exact local static artifact rendered with first-party file fulfillment; not live/private-site authentication",
+  "checks": [
+    "Native page renders every actual face and exposes all independently declared seams",
+    "All 15 native buttons update 2D edges, 3D seam and exact independently measured values",
+    "Actual mouse click on a 2D shoulder edge selects that seam",
+    "Actual mouse click on an unselected 3D side seam selects and highlights it",
+    "Front/back buttons, real drag, keyboard camera slider and source-line toggle work",
+    "Selected seam and angle are restored after a real page reload",
+    "Report and single-file HTML downloads preserve the actual packaged bytes; reuse link targets the existing converter",
+    "A real failed download response shows a visible error and a subsequent retry succeeds",
+    "Native layout and controls fit desktop through 320px without overflow",
+    "Real touch tap selects a 3D seam; real touch swipe rotates the model",
+    "Exact downloaded standalone HTML executes with networking disabled, supports seam selection and downloads the embedded original report",
+    "WebGL-disabled fallback still supports seam selection and measurement display"
+  ],
+  "page_errors": [],
+  "expected_rejection_console": [
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+  ],
+  "browser_closed": true
+}

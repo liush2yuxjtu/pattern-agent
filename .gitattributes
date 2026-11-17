@@ -8,3 +8,7 @@ web/garment-body/product-case/*.csv whitespace=blank-at-eol,blank-at-eof,space-b
 web/garment-body/product-case/model/*.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 web/garment-body/product-case/reference/asos-product-excerpt.md whitespace=-blank-at-eof
 web/garment-body/single-state-evals/**/*.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Frozen inspector embeds binary geometry and a CSP script hash; preserve bytes.
+experiments/fitted_tshirt/seam_inspector/inspector.html binary
+experiments/fitted_tshirt/seam_inspector/accepted-model.glb binary

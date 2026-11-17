@@ -1,0 +1,54 @@
+{
+  "verdict": "PASS",
+  "help_exit": 0,
+  "missing_input": {
+    "expected_exit": 3,
+    "observed_exit": 3,
+    "receipt": {
+      "verdict": "BLOCKED",
+      "scope": "source-bound local sewing inspector artifact, not authenticated hosted UI",
+      "commands": [
+        "scripts/verify_seam_inspector.py",
+        "--html",
+        "work/intentionally-missing-seam-inspector.html",
+        "--glb",
+        "experiments/fitted_tshirt/seam_inspector/accepted-model.glb",
+        "--dxf",
+        "services/dxf-preview/public/sample.dxf",
+        "--units",
+        "mm",
+        "--output",
+        "work/seam-inspector-missing-input"
+      ],
+      "physical_fit": "NOT_RUN",
+      "material_mechanics": "NOT_RUN",
+      "production_cutting_approval": "NOT_RUN",
+      "reason": "[Errno 2] No such file or directory: 'work/intentionally-missing-seam-inspector.html'"
+    }
+  },
+  "missing_dependency": {
+    "expected_exit": 3,
+    "observed_exit": 3,
+    "receipt": {
+      "verdict": "BLOCKED",
+      "scope": "source-bound local sewing inspector artifact, not authenticated hosted UI",
+      "commands": [
+        "scripts/verify_seam_inspector.py",
+        "--html",
+        "experiments/fitted_tshirt/seam_inspector/inspector.html",
+        "--glb",
+        "experiments/fitted_tshirt/seam_inspector/accepted-model.glb",
+        "--dxf",
+        "services/dxf-preview/public/sample.dxf",
+        "--units",
+        "mm",
+        "--output",
+        "work/seam-inspector-missing-dependency"
+      ],
+      "physical_fit": "NOT_RUN",
+      "material_mechanics": "NOT_RUN",
+      "production_cutting_approval": "NOT_RUN",
+      "reason": "No module named 'numpy'"
+    }
+  }
+}

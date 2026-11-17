@@ -1,0 +1,61 @@
+{
+  "verdict": "PASS",
+  "scope": "source-bound local sewing inspector artifact, not authenticated hosted UI",
+  "commands": [
+    "scripts/verify_seam_inspector.py",
+    "--html",
+    "experiments/fitted_tshirt/seam_inspector/inspector.html",
+    "--glb",
+    "experiments/fitted_tshirt/seam_inspector/accepted-model.glb",
+    "--dxf",
+    "services/dxf-preview/public/sample.dxf",
+    "--units",
+    "mm",
+    "--output",
+    "work/seam-inspector-final"
+  ],
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "binding": {
+    "verdict": "PASS",
+    "scope": "source/DXF + exact exported GLB + independent report + displayed geometry binding",
+    "model_sha256": "f67f74dfbbff9859e394a3b8e8b1c0f349edbfda2a22ed65d1d5b979b09f9a86",
+    "dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+    "positions": 25758,
+    "triangles": 51150,
+    "seam_pairs": 15,
+    "openings": 4,
+    "flat_display_precision_mm": 0.01,
+    "unrounded_report_values": true
+  },
+  "browser": {
+    "verdict": "PASS",
+    "scope": "exact local static artifact rendered with first-party file fulfillment; not live/private-site authentication",
+    "checks": [
+      "Native page renders every actual face and exposes all independently declared seams",
+      "All 15 native buttons update 2D edges, 3D seam and exact independently measured values",
+      "Actual mouse click on a 2D shoulder edge selects that seam",
+      "Actual mouse click on an unselected 3D side seam selects and highlights it",
+      "Front/back buttons, real drag, keyboard camera slider and source-line toggle work",
+      "Selected seam and angle are restored after a real page reload",
+      "Report and single-file HTML downloads preserve the actual packaged bytes; reuse link targets the existing converter",
+      "A real failed download response shows a visible error and a subsequent retry succeeds",
+      "Native layout and controls fit desktop through 320px without overflow",
+      "Real touch tap selects a 3D seam; real touch swipe rotates the model",
+      "Exact downloaded standalone HTML executes with networking disabled, supports seam selection and downloads the embedded original report",
+      "WebGL-disabled fallback still supports seam selection and measurement display"
+    ],
+    "page_errors": [],
+    "expected_rejection_console": [
+      "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+    ],
+    "browser_closed": true
+  },
+  "html_sha256": "f22bb41e7f84944f4cb3cd64878c7828d8ad3385942d345f3ff1f1526f8351b4",
+  "files": {
+    "independent-report.json": "2df51913dd0536b4bf00d521a766bd7966ee87099941efbc5380f794f93a1611",
+    "seam-inspector-offline.html": "f22bb41e7f84944f4cb3cd64878c7828d8ad3385942d345f3ff1f1526f8351b4",
+    "index.html": "f22bb41e7f84944f4cb3cd64878c7828d8ad3385942d345f3ff1f1526f8351b4"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "verdict": "PASS",
+  "claim": "Enrich Pattern Agent verify skill with runnable source-bound local inspector, hosted Site and Page-persistence surfaces",
+  "initial_verification_base": "b783898028651c1686e8b69833cd481a9d183200",
+  "reconciled_base": "63a3c83dc1ad4c01164a939bc1b14954bc285b6b",
+  "verification_skill": ".agents/skills/verify/SKILL.md",
+  "new_surfaces": [
+    "seam-inspector",
+    "seam-sites",
+    "seam-pages"
+  ],
+  "binding_control_cases": 18,
+  "portable_html_browser_groups": 12,
+  "actual_site_artifact_browser_groups": 12,
+  "script_and_golden_hashes_unchanged_after_merge": [
+    "scripts/seam_inspector_binding.py",
+    "scripts/verify_seam_inspector.py",
+    "scripts/test_seam_inspector_binding.py",
+    "experiments/fitted_tshirt/seam_inspector/inspector.html",
+    "experiments/fitted_tshirt/seam_inspector/accepted-model.glb",
+    "experiments/fitted_tshirt/seam_inspector/independent-report.json"
+  ],
+  "local_links_checked": 62,
+  "remote_changes_preserved": [
+    "intent-edit-benchmark registration",
+    "single-state evaluation CSV attributes and all unrelated source/evidence"
+  ],
+  "separate_boundary_results": {
+    "independent_static_seams": "PASS",
+    "local_view_binding_and_ui": "PASS",
+    "Sites_saved_version_metadata": "PASS",
+    "authenticated_production_ui": "BLOCKED",
+    "stored_archive_payload_readback": "BLOCKED",
+    "Page_file_and_content_persistence": "PASS"
+  },
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "cleanup": "Local browsers closed by verifier; no preview server, new deployment, CI or sharing change. Temporary task-owned stash removed only after commit."
+}
