@@ -14,10 +14,11 @@ app.mount('/assets',StaticFiles(directory=ROOT/'public'),name='assets')
 _slots=threading.BoundedSemaphore(1)
 logger=logging.getLogger('pattern-agent')
 
-def source_digest():
-    files=[ROOT/'app.py',ROOT/'requirements.txt',ROOT/'vercel.json',*sorted((ROOT/'converter').glob('*.py')),ROOT/'converter/profile.json',*sorted((ROOT/'public').glob('*'))]
-    return hashlib.sha256(b'\n'.join(str(p.relative_to(ROOT)).encode()+b'\0'+p.read_bytes() for p in files)).hexdigest()
-SOURCE_SHA256=source_digest()
+def source_files():
+    files=[ROOT/'app.py',ROOT/'pyproject.toml',ROOT/'vercel.json',ROOT/'converter/core.py',ROOT/'converter/profile.json',*sorted((ROOT/'public').glob('*'))]
+    return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
+SOURCE_FILES=source_files()
+SOURCE_SHA256=hashlib.sha256(json.dumps(SOURCE_FILES,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
 @app.exception_handler(ConversionError)
 async def conversion_error(request,exc):
@@ -29,7 +30,7 @@ def home():return FileResponse(ROOT/'public/index.html')
 
 @app.get('/api/health')
 def health():
-    return {'status':'ok','engine_version':ENGINE_VERSION,'source_sha256':SOURCE_SHA256,'mode':'visual_preview','execution':'synchronous_stateless','storage':'no_uploaded_file_persistence','supported_profiles':[get_profile()['id']],'max_input_bytes':MAX_INPUT_BYTES,'physical_fit':'NOT_RUN'}
+    return {'status':'ok','engine_version':ENGINE_VERSION,'source_sha256':SOURCE_SHA256,'source_files':SOURCE_FILES,'mode':'visual_preview','execution':'synchronous_stateless','storage':'no_uploaded_file_persistence','supported_profiles':[get_profile()['id']],'max_input_bytes':MAX_INPUT_BYTES,'physical_fit':'NOT_RUN'}
 
 @app.get('/api/profiles')
 def profiles():

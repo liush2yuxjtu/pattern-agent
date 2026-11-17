@@ -1,0 +1,21 @@
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_actual_mesh_and_repeatability (test_conversion.ConversionTests.test_actual_mesh_and_repeatability) ... ok
+test_centimetre_input_uses_explicit_units (test_conversion.ConversionTests.test_centimetre_input_uses_explicit_units) ... ok
+test_http_contract_bundle_and_errors (test_conversion.ConversionTests.test_http_contract_bundle_and_errors) ... {"event": "conversion_rejected", "code": "INVALID_DXF"}
+{"event": "conversion_rejected", "code": "UNKNOWN_FORMAT"}
+{"event": "conversion_rejected", "code": "UNKNOWN_PROFILE"}
+{"event": "conversion_rejected", "code": "INPUT_SIZE"}
+ok
+test_invalid_units_size_and_coordinate (test_conversion.ConversionTests.test_invalid_units_size_and_coordinate) ... ok
+test_local_contour_change_changes_output (test_conversion.ConversionTests.test_local_contour_change_changes_output) ... ok
+test_no_persistence_or_job_claims (test_conversion.ConversionTests.test_no_persistence_or_job_claims) ... ok
+test_reordered_reversed_translated_geometry (test_conversion.ConversionTests.test_reordered_reversed_translated_geometry) ... ok
+test_same_count_wrong_geometry_rejected (test_conversion.ConversionTests.test_same_count_wrong_geometry_rejected) ... ok
+test_scale_changes_actual_geometry (test_conversion.ConversionTests.test_scale_changes_actual_geometry) ... ok
+test_unrelated_pattern_is_rejected (test_conversion.ConversionTests.test_unrelated_pattern_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 5.502s
+
+OK
