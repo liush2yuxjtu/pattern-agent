@@ -1,0 +1,46 @@
+{
+  "verdict": "PASS",
+  "scope": "Exact-SHA published evidence gallery, adjustable model handoff and downloadable skill; domain original-photo pose remains FAIL",
+  "deployed_commit": "28f46861f7f1cc83327e9b09bedd114f78c4eb06",
+  "source_sha256": "2cf3f9c5e6e2f129de788ae665f8c0fb2e1f667ed1fbd0944c49b131f1b3f2f3",
+  "publish_workflow": {
+    "id": 44058507720,
+    "name": "Publish GitHub Pages",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "28f46861f7f1cc83327e9b09bedd114f78c4eb06",
+    "html_url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44058507720"
+  },
+  "urls": {
+    "gallery": "https://liush2yuxjtu.github.io/pattern-agent/garment-body/product-case/eval.html",
+    "model": "https://liush2yuxjtu.github.io/pattern-agent/human-studio/?model=../garment-body/product-case/model/final-state.json",
+    "skill": "https://liush2yuxjtu.github.io/pattern-agent/garment-body/skill/"
+  },
+  "browser_checks": {
+    "gallery": 126,
+    "handoff": 30,
+    "guide": 19
+  },
+  "independence": "Fetched exact pinned public verifiers; verified SHA256 before execution. Standalone Google Chrome/Playwright1.62.1 on isolated public-only Firecrawl host. No unpublished fixtures transferred. npm tarball integrity verified.",
+  "archive_reopen": {
+    "verdict": "PASS",
+    "files": 461,
+    "restored_aliases": 137
+  },
+  "downloaded_skill_members_matching_canonical": 13,
+  "evidence_zip_sha256": "d3164c11eae9e1456c314a73b1aee320a1dc17b12fec7a8822ae5485085753f3",
+  "observed": [
+    "All actual input guides/edit anchors, six independent native outputs, true3D and OpenCV stage images decode and match hashes.",
+    "Actual cm and joint edits change mesh, export/import and persistence work; rejected inputs preserve model.",
+    "Official viewer feedback, Benchmark, lightbox, keyboard and mobile interactions work.",
+    "Actual86.586MiB reproduction ZIP download restores461file paths with137deduplicated aliases.",
+    "Exact public manifests/model/skill bytes match locally verified source; desktop and original-photo diagnosis screenshots independently reopened."
+  ],
+  "limits": {
+    "original_photo_pose": "POSE_FAIL / DEPTH_AMBIGUOUS, no accepted candidate",
+    "real_person_measurement_accuracy": "NOT_ESTABLISHED",
+    "physical_garment_fit": "NOT_RUN",
+    "native_claude_trigger": "BLOCKED"
+  },
+  "cleanup": "Owned local8789server and all task verifier browsers stopped; active remote interact session explicitly stopped."
+}

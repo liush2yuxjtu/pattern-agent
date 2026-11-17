@@ -1,0 +1,154 @@
+{
+  "verdict": "PASS",
+  "url": "http://127.0.0.1:8789/human-studio/",
+  "modelUrl": "http://127.0.0.1:8789/garment-body/product-case/model/final-state.json",
+  "modelSha256": "2c44c7236d83c827097312ed5dfbf4899a2c921c2860bfd564e47af2dbe2008f",
+  "checks": [
+    {
+      "passed": true,
+      "detail": "Actual linked JSON responds HTTP 200"
+    },
+    {
+      "passed": true,
+      "detail": "Visible linked-model success state"
+    },
+    {
+      "passed": true,
+      "detail": "Actual linked cm dimensions loaded",
+      "evidence": {
+        "dimensions": {
+          "height": 170,
+          "bust": 90,
+          "waist": 69,
+          "hips": 96,
+          "shoulders": 37,
+          "upperArm": 27,
+          "thigh": 50,
+          "neck": 32,
+          "upperArmLength": 29,
+          "forearmLength": 23,
+          "thighLength": 40,
+          "calf": 36
+        }
+      }
+    },
+    {
+      "passed": true,
+      "detail": "Actual linked bone angles loaded"
+    },
+    {
+      "passed": true,
+      "detail": "Loaded state deforms the actual anatomical mesh and full rig"
+    },
+    {
+      "passed": true,
+      "detail": "Cm input edits real vertices with measured target agreement"
+    },
+    {
+      "passed": true,
+      "detail": "Degree input edits actual articulated mesh"
+    },
+    {
+      "passed": true,
+      "detail": "Pose editing preserves neutral cm measurements"
+    },
+    {
+      "passed": true,
+      "detail": "Downloaded JSON contains actual current cm/pose state"
+    },
+    {
+      "passed": true,
+      "detail": "Manual import restores skinned geometry within 0.00001 cm",
+      "evidence": {
+        "maximumVertexDeltaCm": 1.1821524007223762e-7
+      }
+    },
+    {
+      "passed": true,
+      "detail": "Plain editor URL reopens saved geometry within 0.00001 cm",
+      "evidence": {
+        "maximumVertexDeltaCm": 7.317309184563954e-7
+      }
+    },
+    {
+      "passed": true,
+      "detail": "Explicit review link deliberately reloads the published case rather than stale cache"
+    },
+    {
+      "passed": true,
+      "detail": "wrong-version rejected visibly"
+    },
+    {
+      "passed": true,
+      "detail": "wrong-version preserves current editable state"
+    },
+    {
+      "passed": true,
+      "detail": "wrong-asset rejected visibly"
+    },
+    {
+      "passed": true,
+      "detail": "wrong-asset preserves current editable state"
+    },
+    {
+      "passed": true,
+      "detail": "wrong-units rejected visibly"
+    },
+    {
+      "passed": true,
+      "detail": "wrong-units preserves current editable state"
+    },
+    {
+      "passed": true,
+      "detail": "invalid-cm rejected visibly"
+    },
+    {
+      "passed": true,
+      "detail": "invalid-cm preserves current editable state"
+    },
+    {
+      "passed": true,
+      "detail": "missing-cm rejected visibly"
+    },
+    {
+      "passed": true,
+      "detail": "missing-cm preserves current editable state"
+    },
+    {
+      "passed": true,
+      "detail": "invalid-pose rejected visibly"
+    },
+    {
+      "passed": true,
+      "detail": "invalid-pose preserves current editable state"
+    },
+    {
+      "passed": true,
+      "detail": "invalid-morph rejected visibly"
+    },
+    {
+      "passed": true,
+      "detail": "invalid-morph preserves current editable state"
+    },
+    {
+      "passed": true,
+      "detail": "invalid-json rejected visibly"
+    },
+    {
+      "passed": true,
+      "detail": "invalid-json preserves current editable state"
+    },
+    {
+      "passed": true,
+      "detail": "Cross-origin model is rejected before any outbound request"
+    },
+    {
+      "passed": true,
+      "detail": "No uncaught application errors",
+      "evidence": {
+        "errors": []
+      }
+    }
+  ],
+  "scope": "Linked configurable model and saved-state handoff. No photographed-body recovery or cloth physics claim."
+}

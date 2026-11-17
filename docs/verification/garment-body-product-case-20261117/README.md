@@ -54,3 +54,5 @@ script; the complete working history also remains in the local workspace.
 Live publication evidence is recorded separately after the exact pushed SHA
 is deployed and exercised. A local browser pass or publish-job success does
 not substitute for live verification.
+
+Live publication **PASS** at `28f46861f7f1cc83327e9b09bedd114f78c4eb06`:126gallery,30model-handoff and19guide checks. The real86.586MiB ZIP restores461paths/137aliases; downloaded skill has13members identical to canonical source. [Live receipt](live/receipt.json) · [Desktop](live/case/desktop.png) · [Original-photo failed pose](live/case/original-reference.png) · [Editable model](live/handoff/linked-model.png). Original pose matching remains **FAIL**; this publication pass concerns working evidence and editor behavior.
