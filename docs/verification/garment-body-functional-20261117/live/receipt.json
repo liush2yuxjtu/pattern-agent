@@ -1,0 +1,48 @@
+{
+  "verdict": "PASS",
+  "claim": "Hosted functional evaluation review, actual browser feedbackdownload and exact deployment/asset readback",
+  "public_url": "https://liush2yuxjtu.github.io/pattern-agent/garment-body/eval.html",
+  "deployed_commit": "a5f7d073499eba2115da10cdfc653314d8d1cff0",
+  "source_sha256": "6e09036ff20251256de97cb0b95cff42511ab0c3dc9b8b8cfbd29c2e689b2b1e",
+  "workflow": {
+    "id": 44012417581,
+    "conclusion": "success",
+    "url": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44012417581",
+    "kind": "existing publish-only workflow; no CI added"
+  },
+  "verification": {
+    "browser": "standaloneGoogleChrome inFirecrawl host, Playwright1.62.1",
+    "browser_checks": 17,
+    "primary_asset_hashes": 7,
+    "sources": "Public pinnedverifiers, SHA256 checked beforeexecution; public registry packageSHA512 integrity checked",
+    "source_digests": {
+      "verify_functional_review.cjs": "fe594db629851ae9dfe12ec6bf8f1ae764cbc8f8fc46cde6850d6bc2c4bec5d1",
+      "verify_functional_publish.py": "e26398a0c3e355c12651e3d05fb23eafebd559beaba06a88f2ea8926fb1dcca4"
+    },
+    "evidence_archive_sha256": "4e04ba0b87aafa0c67058ceb621cf843aa5279ed0f53ad54c70f2b8740f01767",
+    "archive_integrity": "verifiedand6exactfilenames extracted",
+    "screenshots_inspected": [
+      "browser/desktop.png",
+      "browser/mobile.png"
+    ],
+    "feedback": "actualfeedback.jsondownload verified; contentsareautomatedtestfixture, nothumanacceptance"
+  },
+  "recovery": [
+    "Firstinactive remote session returned502beforeverification. A freshpublicsession succeeded.",
+    "Automaticreview rejected an optional broadprocess/temporarydirectory diagnostic duepossibleunrelatedfile/credentialexposure. Thatdiagnosticwasnotexecuted; continued safely with exactownedverificationfileexistence andpublicsite only. No permission/securitychanges."
+  ],
+  "cleanup": "StandaloneChrome closedbyverifier; allFirecrawl interactsessions stopped. Localstagingserver terminated afterpostcommit verification/publication; no remainingtaskserver.",
+  "scope_limits": [
+    "Onlysyntheticcontrolfunctional execution, notrealbodyanatomy orphysicalfit.",
+    "Claude-native trigger remainsBLOCKED; fullsiximagegeneration NOT_RUN.",
+    "Knownmobileviewportandsearchapproximationissues preservedforhumanreview.",
+    "Oneexecution perconfiguration/case, no reliability/time/token superiority claim."
+  ],
+  "recorded_utc": "2026-11-17T03:50:11.627975+00:00",
+  "documentation_commit_gate": {
+    "verifier": ".agents/skills/verify/SKILL.md",
+    "verdict": "SKIP",
+    "reason": "Docs-onlyrecord ofalreadyverifiedlivebehavior; noexecutable/static-site changes",
+    "base_commit": "a5f7d073499eba2115da10cdfc653314d8d1cff0"
+  }
+}
