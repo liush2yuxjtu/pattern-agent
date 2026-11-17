@@ -1,0 +1,92 @@
+{
+  "verdict": "PASS",
+  "scope": "New single-file garment demonstrator; digital checks and exact downloaded exports only",
+  "candidate_base": "00d784d84d33e06edbc7315097979aeeaaf7b2b4",
+  "html_sha256": "eb6c6b373971cf7c9d1a7582d1b198fe61687f8e13312eded7d0e9376f7bd880",
+  "html_bytes": 1421030,
+  "saved_module_and_css_exact_match": true,
+  "source_manifest": {
+    "docs/cloth-lab-research-20261117.md": "d40c8ca13daa38ef7088d36ee1c726f8ada9ac93c290e7d2b318b7302cb81837",
+    "experiments/single_html_cloth/.agents/skills/verify/SKILL.md": "61d50979b836ba4bac96c483280312607351e64c097c0cc076d833eb258e99e5",
+    "experiments/single_html_cloth/.gitignore": "d6d77abbe504046402a8977848d234eb4cd8037783370d7072e7b7298f83a0a4",
+    "experiments/single_html_cloth/README.md": "b4465cc57fce0c4e45aea391eca2e3b4bd22dc370ab57fc006968c6c944be68a",
+    "experiments/single_html_cloth/build.mjs": "f253704b0cc1dec9d7927d07fd6d5f30bde3141c5fb95c4a5378a0b5fa2807a9",
+    "experiments/single_html_cloth/independent.py": "cf99ca20ce2ef1df0ef0d00c262e2fd373d09365e68f835c59ed9c18f0803757",
+    "experiments/single_html_cloth/package-lock.json": "ae4572027060869414d489c9814d16c1a1df577077337d1b582eb3a943124185",
+    "experiments/single_html_cloth/package.json": "a44c1f32a93129f813bc4fe809c3ade6309ee1ab53d1b8859130416cc2806ef1",
+    "experiments/single_html_cloth/requirements-verify.txt": "cd28b4b0ec16304ed3dbd6452441de30ae362c42c0d6ab06aeb61cfa53eb22cc",
+    "experiments/single_html_cloth/source/app.js": "fd61d4a0d48cfbe1547e2c67135680351c49425b1aa1f76ccadc4e12bad3ad90",
+    "experiments/single_html_cloth/source/solver.wat": "1fb00bab8093d933c5970b96b82bd51cf00d422d8674aca109bc46e44e8d49dd",
+    "experiments/single_html_cloth/source/template.html": "417b7e4abc281db0626109dfdc93f889b4109a444a394a365f936761e5820f2a",
+    "experiments/single_html_cloth/verify_browser.py": "5c9469fdc324deea29d57ad6b0c5daeed5908389cb24cba780765f63453d87b6",
+    "web/cloth-lab.html": "eb6c6b373971cf7c9d1a7582d1b198fe61687f8e13312eded7d0e9376f7bd880"
+  },
+  "project_verifier": "experiments/single_html_cloth/.agents/skills/verify/SKILL.md",
+  "commands": [
+    "npm ci --prefix experiments/single_html_cloth",
+    "node experiments/single_html_cloth/build.mjs",
+    "python scripts/build_pages.py",
+    "python experiments/single_html_cloth/verify_browser.py --url http://127.0.0.1:8766/pattern-agent/cloth-lab.html --out /workspace/work/cloth-lab/evidence/local-final",
+    "python experiments/single_html_cloth/independent.py /workspace/work/cloth-lab/evidence/local-final/simulation.json --repo . --out /workspace/work/cloth-lab/evidence/local-final/independent.json",
+    "python -m unittest discover -s scripts -p test_verify_artifacts.py -v",
+    "git diff --check"
+  ],
+  "browser_checks": 38,
+  "regression_tests": 6,
+  "negative_controls": {
+    "reverse-seam": true,
+    "swap-panel": true,
+    "gap": true,
+    "uv": true,
+    "body-penetration": true,
+    "overlapping-face": true
+  },
+  "seam_gap_mm": 0,
+  "body_intersections": 0,
+  "self_intersections_in_saved_drape": 0,
+  "inside_body_vertices": [],
+  "tensor": {
+    "peak_stretch_percent": 137.0650195980281,
+    "peak_stress_kPa": 46.234620564827885,
+    "max_stretch_error": 6.661338147750939e-16,
+    "max_stress_error_kPa": 5.0737192225369654e-14
+  },
+  "download_hashes": {
+    "pattern.svg": "0038934c597f968ff7c3c70a764d3602cd5fa7e01fbc41e666c1fa22e5966240",
+    "pattern.dxf": "4094f8eab99e12d2e4bbb3d53bf33bdfbc5e42f68191e46e08df714e4c7cb20c",
+    "garment.obj": "fa47c2e231789ba4693cd4c855f4f03e763ad62f74a0abd49777028455c6770b",
+    "simulation.json": "b7717f8c5e73ff95a63ca4db1b8daa0867d6979085ccee99566bc80cef7026fd",
+    "pattern-a4.pdf": "e829745affe3b6d7786525b8814e2b7cb881dcabe6c60cef334988c71f0d66ed",
+    "downloaded.html": "707372e0722ac40bc26279367c9985a7b21eeb110752b34aae461832ce13bb5e"
+  },
+  "not_validated": [
+    "Calibrated fabric constitutive behavior",
+    "Continuous cloth self-contact solver",
+    "Garment manufacturing/closure/waistband and wearer fit",
+    "Physical printer output",
+    "Hardware 60 fps",
+    "Direct file URL opening blocked by managed Chromium policy"
+  ],
+  "visual_review": {
+    "method": "Playwright screenshots inspected with view_image",
+    "concept": "Code-native technical workbench; Image Gen omitted because user requested pure-code assets",
+    "checked": [
+      "copy and bilingual labels",
+      "desktop and mobile layout",
+      "font hierarchy and panel labels",
+      "palette and heatmap keys",
+      "actual MakeHuman and deformed skirt pixels",
+      "camera and diagnostic controls",
+      "mobile note/button overlap fixed",
+      "no horizontal overflow"
+    ],
+    "unapproved_copy_additions": 0,
+    "material_unresolved_visual_mismatches": 0
+  },
+  "historical_failures_preserved": {
+    "particle_only_body_collision": "-7.34 mm sampled clearance; fixed by signed projection and barycentric edge/face contacts",
+    "self_intersections": "278 in earlier drape; zero in current export after circumferential bending and solver convergence repair",
+    "file_url": "Blocked by administration; no policy changes; document-only HTTP reopening and offline operation tested",
+    "A4_media_box": "Initial 0.1 pt format test failed on Chromium 0.11 mm paper-box rounding; format tolerance corrected to 0.22 mm; separate 100 mm pattern-line tolerance remains 0.053 mm"
+  }
+}

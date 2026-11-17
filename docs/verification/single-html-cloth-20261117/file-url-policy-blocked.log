@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/workspace/work/cloth-lab/verify_browser.py", line 69, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--url',required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--browser',default='/usr/bin/chromium');a=p.parse_args();r=run(a.url,a.out,a.browser);print(json.dumps(r,indent=2));raise SystemExit(0 if r['verdict']=='PASS' else 2)
+                                                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/cloth-lab/verify_browser.py", line 56, in run
+    offline=ctx.new_page();offline_requests=[];offline.on('request',lambda r:offline_requests.append(r.url));offline.on('pageerror',lambda e:errors.append('offline: '+str(e)));offline.route('http://**/*',lambda r:r.abort());offline.route('https://**/*',lambda r:r.abort());offline.goto((out/'downloaded.html').resolve().as_uri());offline.wait_for_function('window.clothLab?.ready');restored=offline.evaluate('clothLab.project()');checks['offline_single_file']=not any(x.startswith('http') for x in offline_requests);checks['offline_state_exact']=np.array_equal(np.array(restored['positions']),np.array(baseline['positions'])) and restored['simulation']['steps']==360
+                                                                                                                                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/work/cloth-lab/evidence/final-local/downloaded.html
+Call log:
+  - navigating to "file:///workspace/work/cloth-lab/evidence/final-local/downloaded.html", waiting until "load"

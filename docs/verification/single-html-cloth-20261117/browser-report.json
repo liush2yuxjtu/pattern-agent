@@ -1,0 +1,99 @@
+{
+  "verdict": "PASS",
+  "url": "http://127.0.0.1:8766/pattern-agent/cloth-lab.html",
+  "html_sha256": "eb6c6b373971cf7c9d1a7582d1b198fe61687f8e13312eded7d0e9376f7bd880",
+  "browser": "Chromium / SwiftShader; Playwright explicitly requested; Browser plugin absent",
+  "viewports": [
+    "1440x1100",
+    "390x844"
+  ],
+  "checks": {
+    "identity": true,
+    "meaningful_render": true,
+    "no_overlay": true,
+    "real_run_pause": true,
+    "verification_dialog": true,
+    "view_strain": true,
+    "view_stress": true,
+    "view_seams": true,
+    "view_contact": true,
+    "trace_seam": true,
+    "camera_side": true,
+    "camera_back": true,
+    "camera_front": true,
+    "orbit_pointer": true,
+    "download_pattern.svg": true,
+    "download_pattern.dxf": true,
+    "download_garment.obj": true,
+    "download_simulation.json": true,
+    "download_downloaded.html": true,
+    "svg_mm": true,
+    "svg_100mm_calibration": true,
+    "dxf_mm": true,
+    "obj_geometry": true,
+    "a4_tiles": true,
+    "pdf_100mm_line": true,
+    "length_input": true,
+    "material_input": true,
+    "reset": true,
+    "offline_single_file": true,
+    "offline_state_exact": true,
+    "offline_edited_design": true,
+    "mobile_no_overflow": true,
+    "mobile_drape": true,
+    "research_dialog": true,
+    "console_errors": true,
+    "network": true,
+    "solver_budget": true,
+    "scene_budget": true
+  },
+  "performance": {
+    "steps": 360,
+    "time_s": 3,
+    "peakStretch": 1.3706501959802813,
+    "peakStress_kPa": 46.234620564827885,
+    "seamGap_mm": 0,
+    "waist_mm": 736.3414168681662,
+    "contacts": 211,
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 28.399999999906868,
+    "solver_ms_p95": 31.700000000186265,
+    "frame_ms_p95": 283.2999999999993,
+    "jsHeap_bytes": 28760125
+  },
+  "printing": {
+    "pages": 42,
+    "format": "A4, 210 x 297 mm",
+    "calibration100mm": true,
+    "page_format_tolerance_mm": 0.22,
+    "calibration_line_tolerance_mm": 0.053
+  },
+  "warnings": [
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x2a3c001ec800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x2a3c001ec800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x2a3c001ec800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x2a3c001ec800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    }
+  ],
+  "limitations": [
+    "Software rendering does not establish real-device 60 fps",
+    "Managed Chrome blocks file://; saved HTML tested over document-only local HTTP with network disabled after load",
+    "Stress uncalibrated; fit NOT_VALIDATED",
+    "Self-collision solver not implemented; saved scene checked independently"
+  ]
+}
