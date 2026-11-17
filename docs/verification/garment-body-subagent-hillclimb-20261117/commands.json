@@ -1,0 +1,267 @@
+[
+  {
+    "name": "harness-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/skill_evals",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/harness-tests.log"
+  },
+  {
+    "name": "helper-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".agents/skills/garment-body-six-view/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/helper-tests.log"
+  },
+  {
+    "name": "skill-format",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/upstream/scripts/quick_validate.py",
+      ".agents/skills/garment-body-six-view"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/skill-format.log"
+  },
+  {
+    "name": "native-readiness",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/run.py",
+      "doctor",
+      "--out",
+      "work/skill-evals/readiness-20261117"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "log": "logs/native-readiness.log"
+  },
+  {
+    "name": "score-development-K",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/development-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/output-K.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/development-K.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-development-K.log"
+  },
+  {
+    "name": "score-development-R",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/development-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/output-R.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/development-R.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-development-R.log"
+  },
+  {
+    "name": "score-development-M",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/development-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/output-M.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/development-M.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-development-M.log"
+  },
+  {
+    "name": "score-development-T",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/development-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/output-T.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/development-T.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-development-T.log"
+  },
+  {
+    "name": "score-development-U",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/development-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/output-U.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/development-U.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-development-U.log"
+  },
+  {
+    "name": "score-holdout-A",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-output-A.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/holdout-A.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-holdout-A.log"
+  },
+  {
+    "name": "score-holdout-B",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-output-B.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/holdout-B.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-holdout-B.log"
+  },
+  {
+    "name": "score-holdout-C",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-output-C.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/holdout-C.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-holdout-C.log"
+  },
+  {
+    "name": "score-holdout-D",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-output-D.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/holdout-D.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-holdout-D.log"
+  },
+  {
+    "name": "score-holdout-E",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-output-E.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/holdout-E.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-holdout-E.log"
+  },
+  {
+    "name": "score-holdout-F",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-labels.json",
+      "--observations",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-output-F.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/holdout-F.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/score-holdout-F.log"
+  },
+  {
+    "name": "duplicate-decision-rejected",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "tools/skill_evals/score_surrogate.py",
+      "--labels",
+      "docs/verification/garment-body-subagent-hillclimb-20261117/raw/holdout-labels.json",
+      "--observations",
+      "work/skill-evals/surrogate-rescore-20261117/duplicate.json",
+      "--out",
+      "work/skill-evals/surrogate-rescore-20261117/invalid-must-not-exist.json"
+    ],
+    "exit_code": 1,
+    "expected_exit": 1,
+    "log": "logs/duplicate-decision-rejected.log"
+  },
+  {
+    "name": "unchanged-package-source-readback",
+    "verdict": "PASS",
+    "files": 8,
+    "package_sha256": "8fe822eac16dc418f4d36c44b1ade14526819f146a90b5b32dadbbc199caba87"
+  },
+  {
+    "name": "diff-check",
+    "argv": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "logs/diff-check.log"
+  }
+]

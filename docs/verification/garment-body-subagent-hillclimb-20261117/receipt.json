@@ -1,0 +1,65 @@
+{
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/skill-evals.md",
+  "base_commit": "981b837f459f6555b2c3da33ed723c30825f9c67",
+  "candidate_identity": "source-content-manifest.json (precommit SHA256 file manifest)",
+  "claim": "Use subagents for description hill climbing and preserve auditable benchmark; native trigger requirement remains pending",
+  "verdict": "BLOCKED",
+  "boundaries": {
+    "subagent_metadata_routing": {
+      "verdict": "PASS",
+      "evidence": "benchmark.json",
+      "scope": "explicit label-hidden decisions, not native triggering"
+    },
+    "independent_arithmetic_audit": {
+      "verdict": "PASS",
+      "checks": 68,
+      "evidence": "raw/audit.json"
+    },
+    "local_harness_tests": {
+      "verdict": "PASS",
+      "tests": 14
+    },
+    "unchanged_helper_tests": {
+      "verdict": "PASS",
+      "tests": 16
+    },
+    "score_cli_reopen": {
+      "verdict": "PASS",
+      "recomputed_runs": 11,
+      "negative_control": "Duplicate decision exits1; no new output file produced"
+    },
+    "package_and_skill_format": {
+      "verdict": "PASS",
+      "canonical_description_changed": false,
+      "packaged_source_bytes_match": true
+    },
+    "native_claude_routing": {
+      "verdict": "BLOCKED",
+      "evidence": "native-readiness.json",
+      "native_trigger_results": null
+    },
+    "full_six_image_and_body_fitting_execution": {
+      "status": "NOT_RUN",
+      "reason": "This run evaluates metadata judgments only"
+    }
+  },
+  "decision": {
+    "installed_description": "v0 retained",
+    "candidate": "v4 saved;155 vs175 Unicode characters;proxy holdout tied72/72 per candidate",
+    "accuracy_improvement_observed": false,
+    "native_best_description": null
+  },
+  "agent_method": "Fresh context (fork_turns=none); inherited session model; blinding by instructions, not filesystem permissions; labels hidden from router input files. Optimizer did not receive final holdout.",
+  "stop_reason": "Development and final judgments saturated; one concise proposal completed. Do not retune on disclosed final holdout.",
+  "commands": "commands.json",
+  "cleanup": "All evaluation agents completed; no services, paid compute or model credentials created. Ignored working fixtures retained. No native trial commands created.",
+  "historical_physical_claims": "Tshirt7.6455mm seam gap and20 intersections FAIL; physical fit NOT_RUN unchanged.",
+  "findings": [
+    "No scoring errors in68 independent checks.",
+    "Allsmall synthetic routing sets saturated; no accuracy gain established.",
+    "v4 compression20 Unicode characters,11.4%; no token, latency or cost claim.",
+    "The native skill and package are unchanged; original native20-case evaluation set and8-case outer holdout remain untouched.",
+    "Surrogate routing decisions are saved observations; no actual Skill/Read tool events recorded."
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "protocol": "subagent_metadata_routing_surrogate",
+  "decisions": [
+    {
+      "case_id": "h17",
+      "trigger": true,
+      "reason": "Continues photo-based body fitting with adjustable geometry and evidence labeling."
+    },
+    {
+      "case_id": "h05",
+      "trigger": false,
+      "reason": "Standalone robotics pose and depth estimation excludes body reconstruction."
+    },
+    {
+      "case_id": "h06",
+      "trigger": true,
+      "reason": "Garment photos require independent wearer views, guides, and adjustable inferred body."
+    },
+    {
+      "case_id": "h07",
+      "trigger": false,
+      "reason": "Size-table unit cleaning without photos or body fitting is excluded."
+    },
+    {
+      "case_id": "h13",
+      "trigger": true,
+      "reason": "Worn garment reconstruction requires separate views, adjustable body, and mesh/image verification."
+    },
+    {
+      "case_id": "h11",
+      "trigger": false,
+      "reason": "Medical assessment is explicitly outside scope."
+    },
+    {
+      "case_id": "h03",
+      "trigger": true,
+      "reason": "Continues garment wearer handoff with structural guides and mesh consistency checks."
+    },
+    {
+      "case_id": "h02",
+      "trigger": true,
+      "reason": "Continuation repairs adjustable garment/body correspondence using geometry validation."
+    },
+    {
+      "case_id": "h16",
+      "trigger": false,
+      "reason": "Independent shoe product imagery has no wearer fitting."
+    },
+    {
+      "case_id": "h23",
+      "trigger": true,
+      "reason": "Repairs body slider geometry and parameter provenance in an existing photo-fitting workflow."
+    },
+    {
+      "case_id": "h08",
+      "trigger": true,
+      "reason": "Audits fitted body parameter sources in the existing six-view workflow."
+    },
+    {
+      "case_id": "h00",
+      "trigger": true,
+      "reason": "Catalog wearer pack needs independent views, pose/depth guides, adjustable proportions, and evidence."
+    },
+    {
+      "case_id": "h04",
+      "trigger": false,
+      "reason": "Standalone product cutout and retouching explicitly excludes people."
+    },
+    {
+      "case_id": "h09",
+      "trigger": false,
+      "reason": "Original game avatar design without garment photo fitting is excluded."
+    },
+    {
+      "case_id": "h19",
+      "trigger": false,
+      "reason": "Standalone pose/depth algorithm comparison is general vision, without body fitting."
+    },
+    {
+      "case_id": "h20",
+      "trigger": false,
+      "reason": "Single campaign photo retouching needs no reference set or adjustable body."
+    },
+    {
+      "case_id": "h12",
+      "trigger": false,
+      "reason": "Garment preview explicitly excludes photo-based wearer fitting."
+    },
+    {
+      "case_id": "h14",
+      "trigger": false,
+      "reason": "Virtual character clothing concept design without body reconstruction is excluded."
+    },
+    {
+      "case_id": "h22",
+      "trigger": false,
+      "reason": "Measurement table conversion requires no inference, rendering, or body fitting."
+    },
+    {
+      "case_id": "h15",
+      "trigger": true,
+      "reason": "Updates actual measurements and validates fit in an established photo-derived mannequin workflow."
+    },
+    {
+      "case_id": "h18",
+      "trigger": true,
+      "reason": "Worn garment photos need independent reconstruction references and adjustable body with inference labels."
+    },
+    {
+      "case_id": "h21",
+      "trigger": true,
+      "reason": "Garment reconstruction handoff includes separate guides and reshappable body checked against mesh/images."
+    },
+    {
+      "case_id": "h10",
+      "trigger": true,
+      "reason": "Continuation adds geometry-driving body sliders and parameter provenance."
+    },
+    {
+      "case_id": "h01",
+      "trigger": false,
+      "reason": "Shopping size advice from a chart is outside the photo-based fitting workflow."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "v4",
+  "description": "从服装穿着参考照生成六张独立图（正侧背、特写、姿态点线、相对深度），建立可调裸模，用三维渲染与OpenCV轮廓叠加拟合，输出注明证据来源及推断的体形尺寸。也用于该流程续作、拟合审计和滑块、网格、导出尺寸一致性修复。不用于独立商品修图、尺码表、医学、通用视觉或虚拟人编辑；纸样/CAD及服装预览须含照片人体拟合。",
+  "optimization_goal": "Clarify the workflow boundary and its continuation/audit scope within the 175-Unicode-character baseline budget; do not claim a routing accuracy improvement on saturated development evidence.",
+  "limitations": [
+    "All four prior candidates scored 24/24 only on the development subagent metadata-routing surrogate, so the development set cannot distinguish an accuracy improvement.",
+    "This v4 proposal has not been evaluated; no native Claude routing or end-to-end skill execution has been tested.",
+    "Only development-round-0.json and input-K.json were read; no holdout evidence informed this proposal.",
+    "A concise description cannot encode every mixed-task boundary; sewing-pattern JSON and garment-preview work qualify only when they include apparel-photo-derived body fitting."
+  ]
+}

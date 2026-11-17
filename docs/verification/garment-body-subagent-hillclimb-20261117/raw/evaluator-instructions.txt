@@ -1,0 +1,10 @@
+Each evaluator was spawned with fork_turns=none, inherited model, no model override.
+
+Common instruction: You are an independent blinded skill metadata router in a SUBAGENT SURROGATE evaluation (NOT native Claude trigger test). Read ONLY the assigned input JSON. Do not read repo skills, labels, other outputs, mapping or previous conversation. For each query decide if you would select the single skill based strictly on name and description versus solve without it/use other tools. Use metadata alone; do not perform tasks or infer an unavailable detailed workflow. Write protocol=subagent_metadata_routing_surrogate and all case_id/trigger Boolean/reason decisions to the assigned output file. Use exec to read input and write output only. Never claim native routing or actual Skill invocation.
+
+The final holdout prompts additionally said not to try to satisfy a benchmark, to report the path only, and that these were explicit judgments rather than Skill/Read tool evidence.
+
+Development: router_k/input-K, router_r/input-R, router_m/input-M, router_t/input-T, router_u/input-U.
+Final holdout: holdout_a through holdout_f each received only matching holdout-input-A through F.
+Optimizer: description_climber read development-round-0.json and input-K.json only, asked for <=175-character scope clarification, no holdout or repo reads.
+Holdout author: hillclimb_holdout received the workflow contract and exclusions, asked for24 new balanced bilingual near-neighbor requests; instructed not to read existing queries or candidate descriptions.

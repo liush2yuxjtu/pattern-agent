@@ -1,0 +1,125 @@
+{
+  "protocol": "subagent_metadata_routing_surrogate",
+  "decisions": [
+    {
+      "case_id": "h05",
+      "trigger": false,
+      "reason": "Skeleton and depth only for robotics; no garment photo body fitting."
+    },
+    {
+      "case_id": "h16",
+      "trigger": false,
+      "reason": "Independent shoe product images without a wearer are outside scope."
+    },
+    {
+      "case_id": "h04",
+      "trigger": false,
+      "reason": "Standalone garment cutout and retouching excludes body fitting."
+    },
+    {
+      "case_id": "h03",
+      "trigger": true,
+      "reason": "Continuation of wearer reference handoff with structural guides and mesh consistency."
+    },
+    {
+      "case_id": "h15",
+      "trigger": true,
+      "reason": "Existing photo fitted mannequin needs measured parameter overrides and fit validation."
+    },
+    {
+      "case_id": "h00",
+      "trigger": true,
+      "reason": "Worn coat reference pack with separate views, guides, adjustable body and provenance."
+    },
+    {
+      "case_id": "h10",
+      "trigger": true,
+      "reason": "Continuation needs body sliders and parameter source confidence on the neutral mannequin."
+    },
+    {
+      "case_id": "h22",
+      "trigger": false,
+      "reason": "Measurement table normalization and JSON export without photo body fitting."
+    },
+    {
+      "case_id": "h18",
+      "trigger": true,
+      "reason": "Worn garment photos require full separate references and adjustable body with inferred dimensions."
+    },
+    {
+      "case_id": "h11",
+      "trigger": false,
+      "reason": "Medical assessment is explicitly excluded."
+    },
+    {
+      "case_id": "h14",
+      "trigger": false,
+      "reason": "Generic virtual character outfit design without photo body fitting is excluded."
+    },
+    {
+      "case_id": "h19",
+      "trigger": false,
+      "reason": "General pose and depth algorithm visualization without a fitted body is excluded."
+    },
+    {
+      "case_id": "h13",
+      "trigger": true,
+      "reason": "Photo based garment reconstruction needs separate views, adjustable body and geometry image checks."
+    },
+    {
+      "case_id": "h06",
+      "trigger": true,
+      "reason": "Seller photos require anonymous adjustable wearer references and inferred dimension provenance."
+    },
+    {
+      "case_id": "h08",
+      "trigger": true,
+      "reason": "Audit of existing photo fitted body values and evidence labels is a stated continuation."
+    },
+    {
+      "case_id": "h07",
+      "trigger": false,
+      "reason": "Standalone size chart unit cleanup is excluded."
+    },
+    {
+      "case_id": "h01",
+      "trigger": false,
+      "reason": "Size recommendation from a chart does not involve photo body fitting."
+    },
+    {
+      "case_id": "h23",
+      "trigger": true,
+      "reason": "Repair sliders driving photo reconstructed geometry and verify fit with parameter provenance."
+    },
+    {
+      "case_id": "h20",
+      "trigger": false,
+      "reason": "Single campaign photo retouching without reference set or fitted body is excluded."
+    },
+    {
+      "case_id": "h09",
+      "trigger": false,
+      "reason": "Generic avatar creation without product photo fitting is outside scope."
+    },
+    {
+      "case_id": "h02",
+      "trigger": true,
+      "reason": "Continuation repairs adjustable body garment correspondence with actual geometry validation."
+    },
+    {
+      "case_id": "h17",
+      "trigger": true,
+      "reason": "Photo derived garment handoff needs adjustable torso geometry and fit verification."
+    },
+    {
+      "case_id": "h21",
+      "trigger": true,
+      "reason": "Worn product photos need reconstruction references, structural guides and fitted adjustable geometry."
+    },
+    {
+      "case_id": "h12",
+      "trigger": false,
+      "reason": "Garment preview from sewing data explicitly omits required photo body fitting."
+    }
+  ]
+}

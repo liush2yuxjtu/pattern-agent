@@ -1,0 +1,102 @@
+{
+  "skill_name": "garment-body-six-view",
+  "description": "从模特穿着商品的参考图生成六张独立图像（正面、侧面、背面、特写、姿态点线、相对深度），建立可调节裸模，用三维渲染和 OpenCV 叠加迭代拟合，并输出有来源标注的人体体形参数。用户提到电商服装多视图、六维度图、人体尺寸估算、参数化裸模、可调节人体或轮廓验证时使用，尤其是生成图与三维体形联合验证的任务。普通穿搭建议、医学测量和仅生成一张服装图不使用。",
+  "cases": [
+    {
+      "case_id": "h10",
+      "query": "这组穿西装的多角度参考已经验收，接下来只补身体参数面板。身高是客户填写的，胸围来自照片估算，腰围暂用默认值；请让滑杆能驱动那个中性人台，并把来源与可信程度带上。"
+    },
+    {
+      "case_id": "h23",
+      "query": "上次从穿风衣的电商图还原的人体，腿长滑杆现在只是改了表格数字，模型没动。请修成真正能调整的人台，核验修改后的几何和原参考是否一致；顺便保留照片推定、人工输入和默认值这三种参数来源。"
+    },
+    {
+      "case_id": "h04",
+      "query": "把这件连衣裙的正反面商品图抠出来，统一成浅灰背景，再做一张面料局部图。不要加人，也不要改变裙子的轮廓。"
+    },
+    {
+      "case_id": "h11",
+      "query": "看这张穿紧身衣的全身照，你能判断她是不是有脊柱侧弯，并估计严重程度吗？我想据此决定要不要去医院。"
+    },
+    {
+      "case_id": "h17",
+      "query": "Could you finish the body-fitting handoff for the raincoat reference set? The renders were made from the retailer's worn-product photos last week. Leave the images alone, but replace the placeholder torso with adjustable geometry and verify the fit in 3D; don't quietly promote estimated dimensions to tape measurements."
+    },
+    {
+      "case_id": "h07",
+      "query": "这些裤子的尺码表从 Excel 导出后单位混了：有的腰围是厘米，有的是英寸。帮我统一单位，去重，输出干净的 CSV；没有照片，也不用做模特。"
+    },
+    {
+      "case_id": "h12",
+      "query": "Our tailor exported a JSON of sewing panels, seams and fabric properties. Turn it into a rotatable garment preview on the stock mannequin. Please don't infer a wearer from photographs; we aren't doing body fitting in this task."
+    },
+    {
+      "case_id": "h19",
+      "query": "我在学 OpenCV，只想把一张街拍人物照片生成姿态点图和深度可视化，比较两种算法。不需要换衣、补角度或做人台。"
+    },
+    {
+      "case_id": "h21",
+      "query": "We have a front/back pair of a store model in these overalls. Turn them into the usual garment reconstruction handoff, with independent views, a detail shot and the structural guides. The base person should be anonymous and reshappable, and I'd like evidence from the mesh and image checks rather than a purely visual thumbs-up."
+    },
+    {
+      "case_id": "h08",
+      "query": "We already made the six separate references from the hoodie photos and fitted the editable neutral wearer. Now the UI calls a waist value 'measured', but nobody used a tape measure. Audit the body values and their sources, correct the labels, and preserve the current approved images."
+    },
+    {
+      "case_id": "h05",
+      "query": "For a robotics demo, estimate the skeleton and depth map from this clip of someone walking down a hallway. I don't need a reconstructed body or any clothing assets."
+    },
+    {
+      "case_id": "h00",
+      "query": "I have two catalog shots of this coat, one open and one buttoned. Build the wearer reference pack our garment artist can work from: separate all-around and detail views, plus pose and distance guides. Keep the person plain and let us adjust the underlying proportions later; please distinguish what the pictures support from anything you had to assume."
+    },
+    {
+      "case_id": "h02",
+      "query": "继续昨天那个穿夹克的参考人台项目：衣服图不用重做。我调宽肩以后，侧面肩线看着反而往前跑了。请检查可调身体与衣服的对应关系，用实际几何验证一下；不要只凭预览图说已经修好。"
+    },
+    {
+      "case_id": "h15",
+      "query": "我们用商品穿搭照做出的那个人台已经有六张参考了。现在客户补了真实肩宽和臀围，请把这两项覆盖原先估算值，保留其余参数的来源记录，然后验证侧面和背面的贴合；这轮不需要再出图。"
+    },
+    {
+      "case_id": "h14",
+      "query": "给这个直播虚拟主播设计一套新衣服，偏赛博朋克风。已有角色模型不能改身材，请直接在它上面做概念图，不用还原任何商品。"
+    },
+    {
+      "case_id": "h16",
+      "query": "I sell sneakers. From these product photos, make six separate angles including the sole and a stitching close-up, all on white. Keep the shoes empty; no feet or person should appear."
+    },
+    {
+      "case_id": "h22",
+      "query": "这是量体师现场记录的二十个人的尺寸表。请把缺失值留空，统一字段名并转成供打版软件读取的 JSON。不要推算缺失尺寸，也不用渲染衣服或人体。"
+    },
+    {
+      "case_id": "h13",
+      "query": "Use this shop's photos of a woman wearing the knit dress to prepare a consistent human reference for reconstruction. I need the silhouette from all around, a close look at the knit, and the two technical passes as separate files. Give me a shape-adjustable base body and run an actual geometry/image consistency check before calling it ready."
+    },
+    {
+      "case_id": "h06",
+      "query": "只有这两张卖家图，能不能先给这条裤子搭一个没有五官的标准穿着者？我要给建模同事看各个方向和腰口细节，还需要结构辅助图。身材以后要能改，哪些围度只是猜的请标出来。"
+    },
+    {
+      "case_id": "h01",
+      "query": "I'm 174 cm and usually buy medium. This jacket's chart says a 102 cm chest. Would you order M or L if you wanted room for a hoodie?"
+    },
+    {
+      "case_id": "h20",
+      "query": "The wearer looks too broad in this jacket campaign photo. Slim the silhouette slightly and smooth the wrinkles, keeping the face and lighting intact. Deliver one retouched photo; no reference set or editable body is needed."
+    },
+    {
+      "case_id": "h18",
+      "query": "这件针织衫目前只有正面穿着照和一张斜背照，先做服装建模用的完整人物参考吧。各方向、局部和辅助通道要分别交付，不要拼成一张海报。底下用可调的素色人体，缺失的尺寸可以给合理初值，但必须注明不是实测。"
+    },
+    {
+      "case_id": "h09",
+      "query": "Can you make a neutral, adjustable astronaut avatar for my game? It should have a bulky suit designed from scratch and a helmet toggle. There are no reference product photos to match."
+    },
+    {
+      "case_id": "h03",
+      "query": "The front, profile, rear and fabric-detail pictures of our fitted shirt wearer are approved. Before we hand off the neutral body proxy, can you add the two structural guide images and check that they agree with the actual mesh? The only physical measurement we have is the model's height."
+    }
+  ]
+}

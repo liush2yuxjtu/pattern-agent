@@ -1,0 +1,575 @@
+{
+  "audit_type": "retrospective_surrogate_evidence_audit",
+  "scope": "Only experiment inputs/outputs/labels/maps/protocol/proposal/notes and score_surrogate.py; no native-performance conclusions",
+  "checks": [
+    {
+      "name": "development unique IDs",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development unique exact queries",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development boolean labels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development balance",
+      "passed": true,
+      "details": {
+        "positive": 12,
+        "negative": 12
+      }
+    },
+    {
+      "name": "holdout unique IDs",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout unique exact queries",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout boolean labels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout balance",
+      "passed": true,
+      "details": {
+        "positive": 12,
+        "negative": 12
+      }
+    },
+    {
+      "name": "no exact query overlap between development and holdout",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout raw byte SHA256",
+      "passed": true,
+      "details": {
+        "actual": "f509ffc67c3088025e87047ca8194ac11b9d65f361a1f142ceb63f5a2a3522a2",
+        "registered": "f509ffc67c3088025e87047ca8194ac11b9d65f361a1f142ceb63f5a2a3522a2"
+      }
+    },
+    {
+      "name": "holdout.json and holdout-labels.json same queries/labels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout language/class balance",
+      "passed": true,
+      "details": {
+        "English_True": 6,
+        "English_False": 6,
+        "Chinese_True": 6,
+        "Chinese_False": 6
+      }
+    },
+    {
+      "name": "development K input cases label-free and exact",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development K decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development K scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development R input cases label-free and exact",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development R decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development R scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development M input cases label-free and exact",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development M decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development M scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development T input cases label-free and exact",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development T decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development T scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development U input cases label-free and exact",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development U decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development U scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout A description identity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout A input label-free schema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout A cases exact despite order",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout A decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout A scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout B description identity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout B input label-free schema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout B cases exact despite order",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout B decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout B scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout C description identity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout C input label-free schema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout C cases exact despite order",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout C decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout C scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout D description identity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout D input label-free schema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout D cases exact despite order",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout D decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout D scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout E description identity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout E input label-free schema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout E cases exact despite order",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout E decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout E scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout F description identity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout F input label-free schema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout F cases exact despite order",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout F decisions complete unique boolean",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout F scorer agrees",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "development candidate map one-to-one",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "holdout candidate/repeat map complete",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "stored development summary K",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "stored development summary R",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "stored development summary M",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "stored development summary T",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "stored v4 score",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "proposal description identity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "v4 within baseline Unicode budget",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "v4 qualifies by development correctness then character tie-break",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "selection native scope limits explicit",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "failed_checks": [],
+  "description_characters": {
+    "v0": 175,
+    "v1": 176,
+    "v2": 505,
+    "v3": 623,
+    "v4": 155
+  },
+  "results": [
+    {
+      "stage": "development",
+      "alias": "K",
+      "candidate": "v0",
+      "description_characters": 175,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "development",
+      "alias": "R",
+      "candidate": "v3",
+      "description_characters": 623,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "development",
+      "alias": "M",
+      "candidate": "v2",
+      "description_characters": 505,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "development",
+      "alias": "T",
+      "candidate": "v1",
+      "description_characters": 176,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "development",
+      "alias": "U",
+      "candidate": "v4",
+      "description_characters": 155,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "holdout",
+      "alias": "A",
+      "candidate": "v4",
+      "repeat": 2,
+      "description_characters": 155,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "holdout",
+      "alias": "B",
+      "candidate": "v0",
+      "repeat": 0,
+      "description_characters": 175,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "holdout",
+      "alias": "C",
+      "candidate": "v0",
+      "repeat": 2,
+      "description_characters": 175,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "holdout",
+      "alias": "D",
+      "candidate": "v4",
+      "repeat": 1,
+      "description_characters": 155,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "holdout",
+      "alias": "E",
+      "candidate": "v4",
+      "repeat": 0,
+      "description_characters": 155,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "stage": "holdout",
+      "alias": "F",
+      "candidate": "v0",
+      "repeat": 1,
+      "description_characters": 175,
+      "total": 24,
+      "correct": 24,
+      "confusion": {
+        "tp": 12,
+        "tn": 12,
+        "fp": 0,
+        "fn": 0
+      }
+    }
+  ],
+  "holdout_sha256": "f509ffc67c3088025e87047ca8194ac11b9d65f361a1f142ceb63f5a2a3522a2",
+  "unique_holdout_items": 24,
+  "findings": [
+    {
+      "severity": "limitation",
+      "finding": "All five development candidates and both holdout candidates saturate this explicit routing surrogate. No observed accuracy gain distinguishes v4 from v0."
+    },
+    {
+      "severity": "limitation",
+      "finding": "This is retrospective arithmetic/file-consistency auditing after outputs and labels are known; it is not a new blinded evaluation."
+    },
+    {
+      "severity": "limitation",
+      "finding": "The protocol states one model family. Distinct routing agents are repeated runs, not evidence of model diversity or proven statistical independence; model identities, sampling settings, and actual call logs are absent from the permitted artifacts."
+    },
+    {
+      "severity": "limitation",
+      "finding": "Explicit prompted trigger booleans and reasons are metadata judgments, not observed native Skill/Read routing events. No native trigger accuracy or end-to-end image/body-fitting quality follows."
+    },
+    {
+      "severity": "limitation",
+      "finding": "Each candidate has three evaluations of the same 24 holdout queries. 72 decisions per candidate are 24 distinct items with repeats, not 72 independent holdout samples. Six runs together are 144 judgments on 24 distinct items."
+    },
+    {
+      "severity": "limitation",
+      "finding": "The saved hash confirms current holdout bytes match the protocol commitment. Without append-only timestamps or execution/access logs it cannot prove registration preceded every evaluation, absence of tuning after opening, or lack of data access."
+    },
+    {
+      "severity": "limitation",
+      "finding": "Inputs omit labels and candidate/repeat identities. Sealed-directory instructions and claimed optimizer access restrictions establish intended blinding, not a security boundary; common workspace access means isolation cannot be independently guaranteed from these files."
+    },
+    {
+      "severity": "limitation",
+      "finding": "Small manually constructed, balanced English/Chinese boundary cases share task-contract semantics with development. Zero exact query overlap establishes literal novelty only, not representative production coverage or semantic independence."
+    },
+    {
+      "severity": "scope",
+      "finding": "The v4 text covers six independent reference outputs, adjustable body fitting, render/OpenCV checks, parameter provenance, continuations/audits/slider-mesh-export repair, and mixed CAD/preview only when photo-body fitting is included. It lists broad exclusions without development IDs, filenames, or enumerated cases. This is a content judgment, not execution validation."
+    },
+    {
+      "severity": "scope",
+      "finding": "Selection reports v0 retained and no native best candidate; the installed skill itself is outside the permitted audit inputs, so installation state is not independently verified."
+    }
+  ],
+  "conclusion": "Observed explicit routing correctness ties at 24/24 in every run. v4 is 155 versus baseline 175 Unicode code points (20 fewer; 11.43% shorter). It qualifies for the proxy shortlist by the registered tie-break, without evidence of improved accuracy, native routing performance, or task execution quality."
+}

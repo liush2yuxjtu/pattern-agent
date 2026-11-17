@@ -18,5 +18,12 @@
     "id": "v3",
     "description": "Use for apparel-reference photos → six independent views, adjustable body proxies, silhouette fitting and qualified body parameters; also use for continuing that workflow: improving a fitted body, auditing parameter provenance, or synchronizing the mesh and viewer/sliders. 支持服装模特图、正侧背、特写、姿态点线、相对深度、OpenCV 和真实三维快照验证。Exclude product-only image edits, ordinary size advice, tape-measure CAD/CSV tasks, medical inference, unrelated avatars and generic OpenCV/3D work. Sewing-pattern JSON → garment meshing/draping belongs to the garment-preview workflow; combine both only when photo-based body fitting is explicitly included.",
     "status": "static_review_candidate_not_empirically_tested"
+  },
+  {
+    "id": "v4",
+    "description": "从服装穿着参考照生成六张独立图（正侧背、特写、姿态点线、相对深度），建立可调裸模，用三维渲染与OpenCV轮廓叠加拟合，输出注明证据来源及推断的体形尺寸。也用于该流程续作、拟合审计和滑块、网格、导出尺寸一致性修复。不用于独立商品修图、尺码表、医学、通用视觉或虚拟人编辑；纸样/CAD及服装预览须含照片人体拟合。",
+    "status": "subagent_surrogate_shortlisted_native_unmeasured",
+    "evidence": "docs/verification/garment-body-subagent-hillclimb-20261117/benchmark.json",
+    "installed": false
   }
 ]

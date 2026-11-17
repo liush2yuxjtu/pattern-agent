@@ -1,0 +1,125 @@
+{
+  "protocol": "subagent_metadata_routing_surrogate",
+  "decisions": [
+    {
+      "case_id": "d00",
+      "trigger": true,
+      "reason": "Matches the six-view garment-photo body fitting workflow and evidence-labeled dimensions."
+    },
+    {
+      "case_id": "d01",
+      "trigger": false,
+      "reason": "Standalone flat product image retouching is explicitly excluded."
+    },
+    {
+      "case_id": "d02",
+      "trigger": true,
+      "reason": "Requests six references, adjustable body fitting, overlays and sourced parameters from apparel photos."
+    },
+    {
+      "case_id": "d03",
+      "trigger": false,
+      "reason": "Sock-only listing image edits have no photo-derived body fitting."
+    },
+    {
+      "case_id": "d04",
+      "trigger": true,
+      "reason": "Garment wearing photo reconstruction, adjustable body silhouette fitting and labeled assumptions match."
+    },
+    {
+      "case_id": "d05",
+      "trigger": false,
+      "reason": "Shopping size recommendation and chart interpretation are outside scope."
+    },
+    {
+      "case_id": "d06",
+      "trigger": true,
+      "reason": "Continuation of the existing six-view body fitting workflow with overlay refinement is included."
+    },
+    {
+      "case_id": "d07",
+      "trigger": false,
+      "reason": "Size chart comparison using existing measurements is excluded."
+    },
+    {
+      "case_id": "d08",
+      "trigger": true,
+      "reason": "Photo-fitted body viewer, mesh, slider and exported measurement consistency repair is included."
+    },
+    {
+      "case_id": "d09",
+      "trigger": false,
+      "reason": "Generic game avatar controls without garment-photo fitting are excluded."
+    },
+    {
+      "case_id": "d10",
+      "trigger": true,
+      "reason": "Six outputs, photo-fitted adjustable body, silhouette validation and evidence distinction match."
+    },
+    {
+      "case_id": "d11",
+      "trigger": false,
+      "reason": "Generic avatar viewer touch-control debugging has no apparel body fitting context."
+    },
+    {
+      "case_id": "d12",
+      "trigger": true,
+      "reason": "Six separate apparel-derived references, adjustable body and contour checks match."
+    },
+    {
+      "case_id": "d13",
+      "trigger": false,
+      "reason": "General OpenCV mask analysis is explicitly outside scope."
+    },
+    {
+      "case_id": "d14",
+      "trigger": true,
+      "reason": "Audit of existing apparel-reference body fitting and inferred dimensions is included."
+    },
+    {
+      "case_id": "d15",
+      "trigger": false,
+      "reason": "Pattern drafting from tape measurements without photos or a body model is excluded."
+    },
+    {
+      "case_id": "d16",
+      "trigger": true,
+      "reason": "Six-view garment-photo body fitting with explicit scale assumptions matches."
+    },
+    {
+      "case_id": "d17",
+      "trigger": false,
+      "reason": "Medical image inference and research assessment are explicitly excluded."
+    },
+    {
+      "case_id": "d18",
+      "trigger": true,
+      "reason": "Existing garment-photo fitting continuation and viewer/export/provenance synchronization are included."
+    },
+    {
+      "case_id": "d19",
+      "trigger": false,
+      "reason": "Cleaning existing tape-measure CSV data has no photo-derived fitting."
+    },
+    {
+      "case_id": "d20",
+      "trigger": false,
+      "reason": "Garment simulation from specifications without photo body fitting is excluded."
+    },
+    {
+      "case_id": "d21",
+      "trigger": false,
+      "reason": "Pattern mesh and seam inspection without photo-derived body fitting is excluded."
+    },
+    {
+      "case_id": "d22",
+      "trigger": true,
+      "reason": "Includes garment-photo adjustable body fitting before downstream pattern simulation."
+    },
+    {
+      "case_id": "d23",
+      "trigger": true,
+      "reason": "Repairs an existing photo-fitted body handoff and control/export dimension consistency."
+    }
+  ]
+}

@@ -77,3 +77,23 @@ python tools/skill_evals/upstream/scripts/quick_validate.py .agents/skills/garme
 
 Tests of error handling use fixtures/mocks and are labeled as such. Passing them
 is not evidence that native triggering or image generation ran.
+
+## Subagent routing surrogate
+
+When native Claude routing is unavailable, fresh-context subagents can judge a
+single skill metadata card against label-hidden queries. This is a separate
+surrogate experiment, not an alternative PASS for the native requirement.
+Use development data to revise descriptions; create a separate holdout without
+showing it to the optimizer, freeze selection, then evaluate baseline and selected
+candidate independently. Save all prompts/inputs, decisions, labels and mappings.
+Record same-model and instruction-only blinding limits, and avoid treating repeated
+judgments as new unique queries. Stop tuning after final holdout disclosure.
+
+`score_surrogate.py` validates exact case IDs and Boolean decisions and reproduces
+confusion counts from saved observations. It always labels results as surrogate
+and sets `native_trigger_results` to null. For the executed run, methodology,
+command and raw evidence see [2026-11-17 benchmark](../../docs/verification/garment-body-subagent-hillclimb-20261117/README.md).
+
+The current v4 candidate is shorter and explicitly covers workflow continuation;
+no routing accuracy gain was observed. Installed v0 remains unchanged pending
+native event evidence. These scores do not assess image generation or body fitting.

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/tools/skill_evals/score_surrogate.py", line 56, in <module>
+    main()
+  File "/workspace/work/pattern-agent/tools/skill_evals/score_surrogate.py", line 49, in main
+    result = score(json.loads(args.labels.read_text()), json.loads(args.observations.read_text()))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/pattern-agent/tools/skill_evals/score_surrogate.py", line 26, in score
+    raise ValueError('Duplicate decision ID or non-boolean decision')
+ValueError: Duplicate decision ID or non-boolean decision

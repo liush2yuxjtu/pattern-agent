@@ -1,0 +1,125 @@
+{
+  "protocol": "subagent_metadata_routing_surrogate",
+  "decisions": [
+    {
+      "case_id": "h10",
+      "trigger": true,
+      "reason": "Body parameter controls for a photo-derived mannequin, with source and confidence labels, fit the stated scope."
+    },
+    {
+      "case_id": "h23",
+      "trigger": true,
+      "reason": "Repairs adjustable photo-derived body geometry and validates it against reference, preserving provenance."
+    },
+    {
+      "case_id": "h04",
+      "trigger": false,
+      "reason": "Garment cutouts and fabric detail only; no wearer reconstruction or body fitting."
+    },
+    {
+      "case_id": "h11",
+      "trigger": false,
+      "reason": "Medical assessment is explicitly outside the skill scope."
+    },
+    {
+      "case_id": "h17",
+      "trigger": true,
+      "reason": "Continues worn-product reference body fitting with adjustable geometry, 3D validation and measurement provenance."
+    },
+    {
+      "case_id": "h07",
+      "trigger": false,
+      "reason": "Tabular size-unit cleaning does not require image reconstruction or a mannequin."
+    },
+    {
+      "case_id": "h12",
+      "trigger": false,
+      "reason": "Sewing-panel garment visualization on a stock mannequin excludes photo-based wearer fitting."
+    },
+    {
+      "case_id": "h19",
+      "trigger": false,
+      "reason": "Standalone pose and depth algorithm visualization lacks the garment/body reconstruction workflow."
+    },
+    {
+      "case_id": "h21",
+      "trigger": true,
+      "reason": "Worn-product reconstruction requests separate views, structural guides, adjustable body and mesh/image validation."
+    },
+    {
+      "case_id": "h08",
+      "trigger": true,
+      "reason": "Auditing provenance of body parameters continues the established reference and fitting workflow."
+    },
+    {
+      "case_id": "h05",
+      "trigger": false,
+      "reason": "Robotics skeleton and depth estimation without clothing assets or body reconstruction is outside scope."
+    },
+    {
+      "case_id": "h00",
+      "trigger": true,
+      "reason": "Catalog wearer pack combines independent views, pose/depth guides, adjustable proportions and sourced assumptions."
+    },
+    {
+      "case_id": "h02",
+      "trigger": true,
+      "reason": "Adjustable garment-reference mannequin repair and actual geometry verification fall within fitting iteration."
+    },
+    {
+      "case_id": "h15",
+      "trigger": true,
+      "reason": "Updates photo-derived body parameters with real measurements and validates fit while retaining provenance."
+    },
+    {
+      "case_id": "h14",
+      "trigger": false,
+      "reason": "Original costume concepts on a fixed existing avatar do not reconstruct a garment wearer."
+    },
+    {
+      "case_id": "h16",
+      "trigger": false,
+      "reason": "Empty-shoe product views do not involve a human body or wearable-body fitting."
+    },
+    {
+      "case_id": "h22",
+      "trigger": false,
+      "reason": "Measured-size table conversion without inference or rendering is a data formatting task."
+    },
+    {
+      "case_id": "h13",
+      "trigger": true,
+      "reason": "Shop wearer photos support separate multi-view and technical references plus adjustable body and geometry/image checks."
+    },
+    {
+      "case_id": "h06",
+      "trigger": true,
+      "reason": "Seller garment images are to produce anonymous adjustable wearer references, structural guides and labeled estimates."
+    },
+    {
+      "case_id": "h01",
+      "trigger": false,
+      "reason": "Ordinary jacket sizing advice does not need the reconstruction skill."
+    },
+    {
+      "case_id": "h20",
+      "trigger": false,
+      "reason": "Single-photo retouching excludes reference-set generation and editable body fitting."
+    },
+    {
+      "case_id": "h18",
+      "trigger": true,
+      "reason": "Worn-garment photos require separate full references, auxiliary passes and adjustable body with labeled inferred dimensions."
+    },
+    {
+      "case_id": "h09",
+      "trigger": false,
+      "reason": "Original game-avatar creation lacks product-photo matching and garment-body reference reconstruction."
+    },
+    {
+      "case_id": "h03",
+      "trigger": true,
+      "reason": "Adding structural guides and mesh consistency checks completes the existing garment-wearer reference handoff."
+    }
+  ]
+}

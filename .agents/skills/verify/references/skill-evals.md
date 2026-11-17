@@ -58,3 +58,15 @@ Temporary trial commands are removed by the strict adapter. Kill only processes
 started for the current check; do not alter authentication, CI or branch rules.
 After local `/verify`, commit directly to main and reconcile latest remote main
 before a non-force push. Read back the exact pushed revision with GitHub.
+
+## Subagent surrogate reporting
+
+For saved subagent routing observations, invoke `tools/skill_evals/score_surrogate.py`
+with `--labels`, `--observations` and `--out`; use the command in the dated
+[2026-11-17 report](../../../../docs/verification/garment-body-subagent-hillclimb-20261117/README.md).
+Reopen scores and compare complete case IDs and confusion counts; send a duplicate
+or missing decision through the same CLI and require rejection. Run the local
+`test_surrogate.py` controls through the existing unittest-discover command.
+The scorer verifies arithmetic only. Check that aggregate repeated decisions
+are not described as new independent queries, final holdout was not used to tune,
+and no native trigger claim is made. Native overall verdict stays BLOCKED.

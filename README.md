@@ -19,6 +19,11 @@ pass; native Claude routing/hill climbing is **BLOCKED** because this execution
 environment has no authenticated Claude CLI. File installation is not proof of
 live auto-triggering. See the [verification receipt](docs/verification/garment-body-six-view-20261116/receipt.json).
 
+[The subagent hill-climb benchmark](docs/verification/garment-body-subagent-hillclimb-20261117/README.md)
+compares four prior descriptions and a shorter v4 candidate on development data
+and a new blinded holdout. It reports explicit routing judgments, not native
+Claude trigger rates; installed v0 is retained.
+
 Generated side/back views establish internal consistency only; their agreement
 with a body proxy does not validate real anatomical dimensions or physical fit.
 
