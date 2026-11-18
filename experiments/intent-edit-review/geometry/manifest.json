@@ -1,0 +1,114 @@
+{
+  "format": "intent-edit-review-models/1",
+  "models": [
+    {
+      "id": "baseline",
+      "file": "baseline.mesh.json",
+      "sha256": "01f333f3651c181c772824bf0639aed9e7fa6e1c2804352bf44a4155f7486612",
+      "byte_length": 397176,
+      "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+      "source_spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "vertices": 2420,
+      "triangles": 4298
+    },
+    {
+      "id": "01_sleeve_length",
+      "file": "01_sleeve_length.mesh.json",
+      "sha256": "aab5693ceea96225224de0d8924463566e7f0905ce40ac7da1e3054b835844a7",
+      "byte_length": 400944,
+      "source_dxf_sha256": "830b5eb46cdd4e6eb80b58b86f94f153e85d47ae605ae265e676d43cfcd6bc40",
+      "source_spec_sha256": "990e2d32160413f1d2bb41ef9714d065e23e42a7adf274bc7f30188ca8e5505c",
+      "vertices": 2446,
+      "triangles": 4350
+    },
+    {
+      "id": "02_body_length",
+      "file": "02_body_length.mesh.json",
+      "sha256": "9966994c5637446ecb94eea415ebd20034af00b460f46c17a698d2e80bc5bb9a",
+      "byte_length": 392906,
+      "source_dxf_sha256": "aab08855b2b91d90408593d717d94aec5159ddb149b77c24c1937e11b08112b6",
+      "source_spec_sha256": "63312382be180c2a7670e85b64b993f174e7548c6b108f7d75b0bf5291d094fb",
+      "vertices": 2385,
+      "triangles": 4228
+    },
+    {
+      "id": "03_cuff_width",
+      "file": "03_cuff_width.mesh.json",
+      "sha256": "9293e4b752da09349e56e25aad1a8df2b2b21323d9a14a0ebaf7b48c98b329e4",
+      "byte_length": 398681,
+      "source_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163",
+      "source_spec_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+      "vertices": 2430,
+      "triangles": 4318
+    },
+    {
+      "id": "04_front_neck",
+      "file": "04_front_neck.mesh.json",
+      "sha256": "b1a7deff75859e8072ed86b1e3b853aba7b5347f36ee186bfe7e58147d2c93b3",
+      "byte_length": 396516,
+      "source_dxf_sha256": "1f1e5f6c5204afb8b34c8691f6330b2f01c1754146603ef17cd4b518363d573b",
+      "source_spec_sha256": "1f99d8ebd863e83d7b70b7c3aa21993d8cca3dc14e78e09a02de4d3422f59c67",
+      "vertices": 2414,
+      "triangles": 4286
+    }
+  ],
+  "common_pose": {
+    "units": "U",
+    "axis": "X right, Y up, Z front; no physical conversion",
+    "body": {
+      "前片": {
+        "y_offset_U": 0.0,
+        "underarm_y_U": 327.749704,
+        "shoulder_y_U": 498.190073,
+        "neck_half_width_U": 99.515381,
+        "neck_depth_display_U": 65.0,
+        "arm_depth_display_U": 70.0,
+        "hem_depth_display_U": 92.0,
+        "interior_bulge_U": 48.0
+      },
+      "后片": {
+        "y_offset_U": 6.398996000000011,
+        "underarm_y_U": 303.408203,
+        "shoulder_y_U": 491.791077,
+        "neck_half_width_U": 108.762207,
+        "neck_depth_display_U": 48.0,
+        "arm_depth_display_U": 70.0,
+        "hem_depth_display_U": 92.0,
+        "interior_bulge_U": 48.0
+      }
+    },
+    "sleeve_root_center_U": [
+      165.35702837999997,
+      408.48426225000003,
+      0.0
+    ],
+    "sleeve_root_major_U": [
+      9.548977620000002,
+      89.70581074999998,
+      0.0
+    ],
+    "sleeve_root_depth_U": 70.0,
+    "sleeve_axis": [
+      0.36,
+      -0.9329523031752481,
+      0.0
+    ],
+    "sleeve_transition_U": 45.0,
+    "sleeve_underarm_source_y_U": 452.581635,
+    "band_fold_display": {
+      "profile": "sinusoidal illustrative fold",
+      "height_fraction_of_flat_width": 0.5,
+      "radial_fraction_of_flat_width": 0.05,
+      "approval": "display-only; actual fold/workmanship unconfirmed"
+    },
+    "placement_policy": "Calculated from baseline once and reused byte-for-byte for every edited model."
+  },
+  "units": "U",
+  "physical_fit": "NOT_RUN",
+  "cloth_simulation": "NOT_RUN",
+  "builder_sources": {
+    "experiments/intent-edit-review/geometry/build_meshes.py": "3afa91629a777f882b0b2e5ed6c06338fb24d86a87170e65d07c763cbbd62f6d",
+    "services/dxf-preview/converter/core.py": "490348f119bf87c08e61058ca3d7ace1a768ebfc89298c78343f21711a8b1bcc",
+    "services/dxf-preview/converter/sewn.py": "9d932c32b5afc3bc7adece506ccb5587c1a35b08022058c9e630d92b8a6d2489"
+  }
+}

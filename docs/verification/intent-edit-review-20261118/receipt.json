@@ -1,0 +1,72 @@
+{
+  "verdict": "PASS",
+  "scope": "single HTML over real HTTP, source-bound views, interactions, downloads and offline-after-load; physical simulation/fit not claimed",
+  "recorded_at": "2026-11-18T10:04:01.625035+08:00",
+  "base_commit": "a1e4b0f7872265a33410ac14979ede66f385d8ab",
+  "candidate_manifest_sha256": "e5f27d085a2790e0982345f8a81e529db772d39a7dd6b3f83f8ab7a72e276d96",
+  "html_sha256": "aa7328e3a176a90dc217270779f042c6bab77fd27f5440b0d5ae454a78f377d4",
+  "commands": [
+    {
+      "command": "python experiments/intent-edit-review/build.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s experiments/intent-edit-review/verification -p 'test_*.py' -v",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/verification/audit_embedded_review.py --html web/intent-edit-review/index.html --output work/intent-edit-review/data-audit/final.json --adversarial",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/verify_browser.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/build.py --output work/intent-edit-review/rebuilt.html",
+      "exit_code": 0
+    },
+    {
+      "command": "cmp web/intent-edit-review/index.html work/intent-edit-review/rebuilt.html",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/build_pages.py --output work/intent-edit-review/site",
+      "exit_code": 0
+    },
+    {
+      "command": "cmp web/intent-edit-review/index.html work/intent-edit-review/site/intent-edit-review/index.html",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "observations": {
+    "cases": 4,
+    "exact_downloads": 18,
+    "embedded_views": 5,
+    "independent_tests": 8,
+    "adversarial_controls": 6,
+    "page_errors": [],
+    "responsive_widths": [
+      1366,
+      768,
+      375,
+      320
+    ],
+    "old_tracked_web_files_changed": [],
+    "direct_file_url": {
+      "verdict": "BLOCKED",
+      "reason": "Observed net::ERR_BLOCKED_BY_ADMINISTRATOR; managed browser policy left intact."
+    },
+    "offline_server_stopped": true,
+    "webgl_and_software_pixels_and_input": true,
+    "visual_review": "accepted concept and final native-size screenshot opened via view_image; mobile, YAML, diff, enlarged 2D, neck and fallback reviewed; scroll defect fixed",
+    "cleanup": "all owned Chromium contexts/processes and HTTP servers closed"
+  },
+  "physical_fit": "NOT_RUN",
+  "cloth_simulation": "NOT_RUN",
+  "production_readiness": "BLOCKED"
+}

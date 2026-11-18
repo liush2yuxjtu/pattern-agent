@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><link rel="icon" href="data:,"><title>原型与改版结果 一页对照</title><style>__STYLE__</style></head>
+<body><main>
+<header><h1>从设计意图到新纸样</h1><p class="subtitle">原型与改版结果，一页对照。</p></header>
+<div class="toolbar"><label for="case-select">选择已验证案例</label><select id="case-select" aria-label="选择已验证案例" disabled></select></div>
+<div class="comparison">
+<section class="stage" id="input-stage" aria-labelledby="input-title"><h2 id="input-title">1 原型输入</h2><div class="stage-inner">
+<div class="intro"><p><strong>来源：</strong>女式贴身长袖圆领T恤</p><small>输入规格 1.1 · 四块裁片 · 图形单位 U</small></div>
+<div class="model-frame"><canvas id="input-model" class="model-canvas" tabindex="0" aria-label="原型三维几何示意，可拖动或使用方向键旋转"></canvas><div id="input-model-status" class="model-status">正在读取三维模型…</div></div>
+<div class="view-tools"><div class="view-buttons"><button data-view="front" aria-label="原型正面">正面</button><button data-view="back" aria-label="原型背面">背面</button><button data-view="reset" aria-label="原型复位">复位</button></div><span class="view-hint">三维几何示意 · 拖动旋转</span></div>
+<h3 class="section-label">二维纸样 <small>点击放大</small></h3><div id="input-pattern" class="pattern-frame" role="button" tabindex="0" aria-label="放大输入二维纸样"></div>
+<h3 class="section-label">输入规格 YAML 摘要</h3><pre id="input-summary" class="summary"></pre>
+<div class="downloads"><button class="primary" data-document="input">查看完整YAML</button><button data-download="yaml" data-side="input">下载YAML</button><button data-download="dxf" data-side="input">下载DXF</button></div>
+</div></section>
+<section class="stage" id="output-stage" aria-labelledby="output-title"><h2 id="output-title">2 意图与输出</h2><div class="stage-inner">
+<div class="intro"><label class="intent-label" for="intent">设计意图</label><textarea id="intent" class="intent" readonly aria-label="本案例实际输入的设计意图"></textarea></div>
+<div class="model-frame"><canvas id="output-model" class="model-canvas" tabindex="0" aria-label="改版后三维几何示意，可拖动或使用方向键旋转"></canvas><div id="output-model-status" class="model-status">正在读取三维模型…</div></div>
+<div class="view-tools"><div class="view-buttons"><button data-view="front" aria-label="改版正面">正面</button><button data-view="back" aria-label="改版背面">背面</button><button data-view="reset" aria-label="改版复位">复位</button></div><span class="view-hint">三维几何示意 · 拖动旋转</span></div>
+<h3 class="section-label">二维纸样 <small>灰：原型　绿：改版</small></h3><div id="output-pattern" class="pattern-frame" role="button" tabindex="0" aria-label="放大输出二维纸样"></div>
+<h3 class="section-label">改版规格 YAML 摘要</h3><pre id="output-summary" class="summary"></pre>
+<div class="downloads"><button class="primary" data-document="output">查看完整YAML</button><button id="show-diff">查看差异</button><button data-download="yaml" data-side="output">下载YAML</button><button data-download="dxf" data-side="output">下载DXF</button></div>
+</div></section></div>
+<footer class="footer"><p>图形单位 U，毫米比例未标定。三维为静态几何示意，未做布料仿真或试穿。</p><button id="show-source" class="text-button">三维说明与来源</button></footer>
+<p id="loading-note" class="loading-note" aria-live="polite">正在校验内嵌文件…</p><div id="fatal" class="fatal" role="alert" hidden></div>
+</main>
+<dialog id="document-dialog" aria-labelledby="document-title"><div class="dialog-header"><h2 id="document-title">完整规格 YAML</h2><button data-close="document-dialog">关闭</button></div><div class="dialog-content"><pre id="document-pre" class="doc-pre"></pre></div></dialog>
+<dialog id="diff-dialog" aria-labelledby="diff-title"><div class="dialog-header"><h2 id="diff-title">规格变化与补丁</h2><button data-close="diff-dialog">关闭</button></div><div class="dialog-content"><div class="modal-tabs" role="tablist" aria-label="差异内容"><button role="tab" data-diff-tab="measurements" aria-selected="true">尺寸变化</button><button role="tab" data-diff-tab="spec_diff" aria-selected="false">规格补丁</button><button role="tab" data-diff-tab="geometry_patch" aria-selected="false">DXF补丁</button></div><div id="diff-content"></div><div class="downloads"><button data-download="spec_diff" data-side="output">下载规格补丁</button><button data-download="geometry_patch" data-side="output">下载DXF补丁</button></div></div></dialog>
+<dialog id="pattern-dialog" aria-labelledby="pattern-title"><div class="dialog-header"><h2 id="pattern-title">二维纸样</h2><button data-close="pattern-dialog">关闭</button></div><div class="dialog-content"><div id="large-pattern" class="large-pattern"></div></div></dialog>
+<dialog id="source-dialog" aria-labelledby="source-title"><div class="dialog-header"><h2 id="source-title">三维说明与来源</h2><button data-close="source-dialog">关闭</button></div><div class="dialog-content"><p>两套模型分别从对应的二维 DXF 重建，使用同一套明确的展示姿态。裁片映射、镜像展示、领条折叠与深度是示意假设，不是已批准的缝制或布料模拟。</p><dl id="source-detail" class="source-detail"></dl><p>两侧相机同步旋转和缩放，保持同一尺寸参照。未标定的 U 不能按读取软件的默认单位直接裁剪。</p></div></dialog>
+<script id="app-data" type="application/json">__DATA__</script><script>__VIEWER__
+__APP__</script></body></html>
