@@ -1,0 +1,40 @@
+{
+  "verification_skill": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/human-studio.md",
+  "candidate_manifest": "candidate.json",
+  "verdict": "PASS",
+  "scope": "Actual model-derived primary dimension exports and official review/skill delivery; no original-person recovery or new fit acceptance claim",
+  "tests": {
+    "skill_unit": 37,
+    "new_geometry_controls": 8,
+    "eval_tool_unit": 20,
+    "actual_historical_neutral_models": 10,
+    "measurement_ui_browser": 22,
+    "legacy_editor_browser": 36,
+    "legacy_geometry_faults_rejected": 3,
+    "review_current_browser": 587,
+    "review_history_browser": 308,
+    "skill_browser": 21,
+    "downloaded_skill_exact_members": 20
+  },
+  "commands": [
+    "python -m unittest discover -s .agents/skills/garment-body-six-view/tests -q",
+    "python -m unittest discover -s tools/skill_evals -p 'test_*.py' -q",
+    "quick_validate.py + package_skill.py + build_garment_body_skill_page.py",
+    "build_commerce_review.py --iteration 2 --include-holdout + build_pages.py",
+    "verify_commerce_review.cjs latest and historical URLs",
+    "verify_measurement_export.cjs --url linked real case",
+    "verify_human_studio.cjs + verify_human_studio_geometry.py + test_human_studio_geometry.py",
+    "verify_garment_body_skill.cjs",
+    "Independent Python export_report actual initial/edited/residual browser-download OBJ replay"
+  ],
+  "observations": [
+    "Actual waist99.0830995cm exported despite target108cm in the boundary control.",
+    "Actual neutral measurements independent of target/cache; posed edits preserve them.",
+    "All historical grades/run archives/official embedded data unchanged; new post-run reports separate.",
+    "Inspected actual model-measurement table screenshot.",
+    "No source asset, calibration engine, state contract, fitting runtime or frozen grade modification."
+  ],
+  "cleanup": "Task browser contexts closed; owned8955 HTTP stopped after checks. No CI, PR, Issue, new image generation or permission changes.",
+  "reconciliation": "Fast-forwarded unrelated concurrent main through655d85a; affected model/skill/eval/calibration source paths unchanged by concurrent commits."
+}

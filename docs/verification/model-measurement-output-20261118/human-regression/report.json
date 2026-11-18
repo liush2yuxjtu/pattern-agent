@@ -1,0 +1,491 @@
+{
+  "verdict": "PASS",
+  "url": "http://127.0.0.1:8955/human-studio/",
+  "checks": [
+    {
+      "passed": true,
+      "detail": "Human Studio responds HTTP 200"
+    },
+    {
+      "passed": true,
+      "detail": "Anatomical mesh and full163-bone rig loaded",
+      "evidence": {
+        "vertices": 13380,
+        "triangles": 26756,
+        "bones": 163
+      }
+    },
+    {
+      "passed": true,
+      "detail": "Initial actual mesh and skinned positions are finite"
+    },
+    {
+      "passed": true,
+      "detail": "Independently measured rendered neutral mesh matches12 cm targets",
+      "evidence": {
+        "maxErrorCm": 0.00004131095792558881,
+        "measured": {
+          "height": 169.99998474121094,
+          "bust": 90.00003155388085,
+          "waist": 70.0000026441784,
+          "hips": 96.00004131095793,
+          "shoulders": 37,
+          "upperArm": 27.00000306577356,
+          "thigh": 54.000008141089786,
+          "neck": 32.00001214558679,
+          "upperArmLength": 28.999997212848005,
+          "forearmLength": 23.000002043728003,
+          "thighLength": 40.00003277877504,
+          "calf": 36.00000034545172
+        }
+      }
+    },
+    {
+      "passed": true,
+      "detail": "height control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.003972923367896897
+      }
+    },
+    {
+      "passed": true,
+      "detail": "bust control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.0019146642575122996
+      }
+    },
+    {
+      "passed": true,
+      "detail": "waist control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.002186972057288017
+      }
+    },
+    {
+      "passed": true,
+      "detail": "hips control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.0002024532957136671
+      }
+    },
+    {
+      "passed": true,
+      "detail": "shoulders control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.00060272216796875
+      }
+    },
+    {
+      "passed": true,
+      "detail": "upperArm control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.0009204642309086353
+      }
+    },
+    {
+      "passed": true,
+      "detail": "thigh control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.0004581854653125106
+      }
+    },
+    {
+      "passed": true,
+      "detail": "neck control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.0015835091836251536
+      }
+    },
+    {
+      "passed": true,
+      "detail": "upperArmLength control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.002260615262237309
+      }
+    },
+    {
+      "passed": true,
+      "detail": "forearmLength control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.0010831292496717992
+      }
+    },
+    {
+      "passed": true,
+      "detail": "thighLength control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.000024618703378109785
+      }
+    },
+    {
+      "passed": true,
+      "detail": "calf control changes real mesh and preserves all requested cm dimensions",
+      "evidence": {
+        "maxErrorCm": 0.0022359662466087116
+      }
+    },
+    {
+      "passed": true,
+      "detail": "Tall195cm model is reframed without clipping or hiding the head behind toolbar",
+      "evidence": {
+        "left": 331.7133014833948,
+        "top": 87.7325438869069,
+        "right": 692.4635061591298,
+        "bottom": 853.5478015932096,
+        "width": 1090,
+        "height": 936
+      }
+    },
+    {
+      "passed": true,
+      "detail": "Size changes alter actual rendered pixels"
+    },
+    {
+      "passed": true,
+      "detail": "Front, side and back cameras render distinct actual views"
+    },
+    {
+      "passed": true,
+      "detail": "Elbow angle articulates actual wrist and smoothly skinned vertices"
+    },
+    {
+      "passed": true,
+      "detail": "Pose is independent of neutral-pose cm dimensions"
+    },
+    {
+      "passed": true,
+      "detail": "Pose range uses canonical0.1-degree state"
+    },
+    {
+      "passed": true,
+      "detail": "tpose preset rotates real rig without nonfinite geometry"
+    },
+    {
+      "passed": true,
+      "detail": "walk preset rotates real rig without nonfinite geometry"
+    },
+    {
+      "passed": true,
+      "detail": "sit preset rotates real rig without nonfinite geometry"
+    },
+    {
+      "passed": true,
+      "detail": "reach preset rotates real rig without nonfinite geometry"
+    },
+    {
+      "passed": true,
+      "detail": "Finger joint controls deform actual detailed hand geometry"
+    },
+    {
+      "passed": true,
+      "detail": "Downloaded JSON contains actual current pose and cm dimensions"
+    },
+    {
+      "passed": true,
+      "detail": "PNG export renders actual pose at double pixel resolution"
+    },
+    {
+      "passed": true,
+      "detail": "GLB download is a real complete glTF2 binary",
+      "evidence": {
+        "bytes": 1169272
+      }
+    },
+    {
+      "passed": true,
+      "detail": "Save/reload preserves exact calibrated mesh and articulated pose"
+    },
+    {
+      "passed": true,
+      "detail": "Imported downloaded JSON restores actual geometry, not labels only"
+    },
+    {
+      "passed": true,
+      "detail": "Responsive390px screen has no horizontal overflow"
+    },
+    {
+      "passed": true,
+      "detail": "Real mobile device uses375CSS-pixel viewport"
+    },
+    {
+      "passed": true,
+      "detail": "Off-step same-version cm/degree cache normalizes to one control/mesh state",
+      "evidence": {
+        "number": 170.6,
+        "range": 170.6
+      }
+    },
+    {
+      "passed": true,
+      "detail": "No JavaScript errors or failed asset requests",
+      "evidence": {
+        "errors": [],
+        "failedRequests": []
+      }
+    }
+  ],
+  "initial": {
+    "version": "makehuman-cm-rig-v1",
+    "asset": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "units": "cm",
+    "dimensions": {
+      "height": 170,
+      "bust": 90,
+      "waist": 70,
+      "hips": 96,
+      "shoulders": 37,
+      "upperArm": 27,
+      "thigh": 54,
+      "neck": 32,
+      "upperArmLength": 29,
+      "forearmLength": 23,
+      "thighLength": 40,
+      "calf": 36
+    },
+    "measuredNeutral": {
+      "height": 169.99997811573763,
+      "bust": 90.00003325440349,
+      "waist": 70.00000516358458,
+      "hips": 96.00004040158042,
+      "shoulders": 36.999999597590524,
+      "upperArm": 27.000002341587287,
+      "thigh": 54.000007992320946,
+      "neck": 32.00001192888249,
+      "upperArmLength": 29.000000847156706,
+      "forearmLength": 23.000002050715114,
+      "thighLength": 40.000033006439395,
+      "calf": 36.00000082186855
+    },
+    "maximumTargetErrorCm": 0.00004040158042073472,
+    "morphWeights": [
+      0.08368808539116783,
+      0.29452168329134076,
+      -0.29184173715325096,
+      -0.03548310640936881,
+      0.40786938965650155,
+      0.17405347569663293,
+      0.22753435179941464,
+      0.483749589101259,
+      0.3529718027422632,
+      0.211056765671251,
+      0.4802187301204639,
+      -0.011005629601494742
+    ],
+    "poseDegrees": {},
+    "measurementDefinition": "Neutral-pose surface tape paths or named landmark distances on the model; not measurements of a photographed person.",
+    "source": "MakeHuman CC0 adult female mesh and anatomical rig",
+    "limitations": [
+      "Dimensions describe this model, not a recovered person.",
+      "Neutral-pose tape measurements; skeletal skinning is not physical tissue simulation."
+    ]
+  },
+  "savedState": {
+    "version": "makehuman-cm-rig-v1",
+    "asset": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "units": "cm",
+    "dimensions": {
+      "height": 180,
+      "bust": 96,
+      "waist": 76,
+      "hips": 102,
+      "shoulders": 37,
+      "upperArm": 27,
+      "thigh": 54,
+      "neck": 32,
+      "upperArmLength": 29,
+      "forearmLength": 23,
+      "thighLength": 40,
+      "calf": 36
+    },
+    "measuredNeutral": {
+      "height": 180.0000124290127,
+      "bust": 96.00417205842275,
+      "waist": 76.00003817415897,
+      "hips": 102.00012509827219,
+      "shoulders": 36.999422538873496,
+      "upperArm": 27.00003224581893,
+      "thigh": 54.00010766755662,
+      "neck": 32.000029189933116,
+      "upperArmLength": 29.00007869032487,
+      "forearmLength": 23.000009302177038,
+      "thighLength": 40.00009373540763,
+      "calf": 36.0000067849748
+    },
+    "maximumTargetErrorCm": 0.004172058422753366,
+    "morphWeights": [
+      0.27922395298107056,
+      0.36440338146561124,
+      -0.09211072831561978,
+      0.02534302690898265,
+      -0.025719524497481286,
+      0.026534800362919858,
+      -0.1720153203837024,
+      0.13279392515581825,
+      -0.0854620916912384,
+      -0.11646506003151073,
+      0.08274655989685535,
+      -0.20595466724249578
+    ],
+    "poseDegrees": {
+      "lowerarm01.L": [
+        65,
+        0,
+        0
+      ],
+      "lowerarm01.R": [
+        65,
+        0,
+        0
+      ],
+      "lowerleg01.L": [
+        -90,
+        0,
+        0
+      ],
+      "lowerleg01.R": [
+        -90,
+        0,
+        0
+      ],
+      "upperleg01.L": [
+        90,
+        0,
+        3
+      ],
+      "upperleg01.R": [
+        90,
+        0,
+        -3
+      ]
+    },
+    "measurementDefinition": "Neutral-pose surface tape paths or named landmark distances on the model; not measurements of a photographed person.",
+    "source": "MakeHuman CC0 adult female mesh and anatomical rig",
+    "limitations": [
+      "Dimensions describe this model, not a recovered person.",
+      "Neutral-pose tape measurements; skeletal skinning is not physical tissue simulation."
+    ]
+  },
+  "presets": [
+    {
+      "preset": "tpose",
+      "pose": {
+        "upperarm01.L": [
+          0,
+          0,
+          46.7
+        ],
+        "upperarm01.R": [
+          0,
+          0,
+          -46.7
+        ]
+      }
+    },
+    {
+      "preset": "walk",
+      "pose": {
+        "lowerarm01.L": [
+          18,
+          0,
+          0
+        ],
+        "lowerarm01.R": [
+          22,
+          0,
+          0
+        ],
+        "lowerleg01.L": [
+          -14,
+          0,
+          0
+        ],
+        "lowerleg01.R": [
+          -35,
+          0,
+          0
+        ],
+        "upperarm01.L": [
+          -22,
+          0,
+          5
+        ],
+        "upperarm01.R": [
+          25,
+          0,
+          -5
+        ],
+        "upperleg01.L": [
+          27,
+          0,
+          0
+        ],
+        "upperleg01.R": [
+          -24,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "sit",
+      "pose": {
+        "lowerarm01.L": [
+          65,
+          0,
+          0
+        ],
+        "lowerarm01.R": [
+          65,
+          0,
+          0
+        ],
+        "lowerleg01.L": [
+          -90,
+          0,
+          0
+        ],
+        "lowerleg01.R": [
+          -90,
+          0,
+          0
+        ],
+        "upperleg01.L": [
+          90,
+          0,
+          3
+        ],
+        "upperleg01.R": [
+          90,
+          0,
+          -3
+        ]
+      }
+    },
+    {
+      "preset": "reach",
+      "pose": {
+        "lowerarm01.L": [
+          12,
+          0,
+          0
+        ],
+        "lowerarm01.R": [
+          12,
+          0,
+          0
+        ],
+        "upperarm01.L": [
+          0,
+          0,
+          150
+        ],
+        "upperarm01.R": [
+          0,
+          0,
+          -150
+        ]
+      }
+    }
+  ],
+  "scope": "Actual anatomical mesh/cm calibration, rigid-bone skinning, persistence, responsive UI and downloads. No anatomical recovery or physical tissue claim."
+}

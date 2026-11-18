@@ -33,8 +33,14 @@
       <p id="model-source" class="model-source" role="status" hidden></p>
       <div class="tabs" role="tablist"><button id="tab-body" class="active" role="tab" aria-selected="true">Body dimensions</button><button id="tab-pose" role="tab" aria-selected="false">Pose & joints</button></div>
       <section id="body-panel" class="panel">
-        <div class="panel-heading"><h2>Dimensions</h2><span>cm</span></div>
-        <p class="hint">Measured on the neutral-pose mesh. Posing does not change these body dimensions.</p>
+        <section class="measurement-exports" aria-label="Measurements from the actual model">
+          <h2>Measured from this model</h2>
+          <p id="model-measured-summary" aria-live="polite">Measuring neutral geometry…</p>
+          <p class="hint">Actual neutral-mesh values in centimetres. Shape targets are listed separately below; these are model measurements, not verified person measurements.</p>
+          <div class="measurement-actions"><button id="export-measurements" class="primary" disabled>Export measurements</button><button id="export-measurements-csv" disabled>CSV</button><button id="export-neutral-obj" disabled>Neutral OBJ</button></div>
+        </section>
+        <div class="panel-heading"><h2>Shape targets</h2><span>cm</span></div>
+        <p class="hint">Edit the target values to change body shape. Each control also shows the size measured from the current neutral mesh. Posing does not change those measurements.</p>
         <div id="primary-dimensions"></div>
         <details id="advanced-dimensions"><summary>Arms, legs & neck</summary><div id="secondary-dimensions"></div></details>
         <div id="fit-result" class="fit-result">Calibrating mesh…</div>

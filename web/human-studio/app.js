@@ -2,13 +2,13 @@ import * as THREE from 'three';
 import {OrbitControls} from './vendor/OrbitControls.js';
 import {GLTFExporter} from './vendor/GLTFExporter.js';
 import {clone as cloneRig} from './vendor/SkeletonUtils.js';
-import {DEFAULT_DIMENSIONS,MODEL_VERSION,normalizeDimensions,fitDimensions,jointPosition} from './body-engine.js';
+import {DEFAULT_DIMENSIONS,MODEL_VERSION,normalizeDimensions,fitDimensions,jointPosition,measureRest} from './body-engine.js';
 import {validateModelState,resolveModelUrl} from './state-contract.js';
 
 const $=id=>document.getElementById(id),RAD=Math.PI/180,CACHE='pattern-agent:human-studio:v1';
 const MAIN_JOINTS=[['root','Whole body'],['spine04','Lower spine'],['spine02','Chest'],['neck01','Neck'],['head','Head'],['shoulder01.L','Left collar / shoulder'],['shoulder01.R','Right collar / shoulder'],['upperarm01.L','Left shoulder'],['upperarm01.R','Right shoulder'],['lowerarm01.L','Left elbow'],['lowerarm01.R','Right elbow'],['wrist.L','Left wrist'],['wrist.R','Right wrist'],['upperleg01.L','Left hip'],['upperleg01.R','Right hip'],['lowerleg01.L','Left knee'],['lowerleg01.R','Right knee'],['foot.L','Left ankle'],['foot.R','Right ankle']];
 let data,provenance,fit,mesh,skeleton,helper,restQuaternions=[],bones=[],eyeGeometry,rendered=false;
-let cachedMorphWeights=null;
+let cachedMorphWeights=null,bodyUpdatePending=false;
 let dimensions={...DEFAULT_DIMENSIONS},pose={},selectedJoint='upperarm01.L',activeMeasure='height',tab='body',timer;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#e4e9eb');
 const host=$('scene'),camera=new THREE.OrthographicCamera(-150,150,115,-115,.1,2000);
@@ -33,7 +33,7 @@ function normalizePose(value){const result={};if(!value||typeof value!=='object'
 function validWeights(values){return Array.isArray(values)&&values.length===data.controls.length&&values.every(v=>typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<=2)?values:null;}
 function saveCache(){try{localStorage.setItem(CACHE,JSON.stringify({version:MODEL_VERSION,asset:provenance?.human_sha256,dimensions,pose,morphWeights:fit?.weights}));}catch{}}
 function loadCache(){try{const state=JSON.parse(localStorage.getItem(CACHE));if(state?.version===MODEL_VERSION&&state.asset===provenance.human_sha256){dimensions=normalizeDimensions(data,state.dimensions);pose=normalizePose(state.pose);cachedMorphWeights=validWeights(state.morphWeights);}}catch{dimensions={...DEFAULT_DIMENSIONS};pose={};}}
-function setBusy(value){for(const id of ['export-state','export-png','export-obj','export-glb'])$(id).disabled=value;}
+function setBusy(value){for(const id of ['export-state','export-png','export-obj','export-glb','export-measurements','export-measurements-csv','export-neutral-obj'])$(id).disabled=value||bodyUpdatePending;}
 function restoreState(saved){
   const checked=validateModelState(saved,data,provenance.human_sha256);
   dimensions=checked.dimensions;pose=checked.pose;cachedMorphWeights=checked.weights;fit=null;
@@ -105,15 +105,15 @@ function applyPose(){
 
 function updateRuler(){
   if(!mesh)return;
-  let points=[];
-  if(activeMeasure==='height'){const x=-43;points=[new THREE.Vector3(x,0,0),new THREE.Vector3(x,fit.measurements.height,0)];}
+  let points=[];const actual=measureRest(data,mesh.geometry.attributes.position.array);
+  if(activeMeasure==='height'){const x=-43;points=[new THREE.Vector3(x,0,0),new THREE.Vector3(x,actual.height,0)];}
   else{const control=data.controls.find(c=>c.key===activeMeasure);points=control.path.map(index=>posedVertex(index));}
   ruler.geometry.dispose();ruler.geometry=new THREE.BufferGeometry().setFromPoints(points);ruler.visible=$('show-ruler').checked;
-  const control=data.controls.find(c=>c.key===activeMeasure);$('ruler-label').textContent=control.label+' · '+fit.measurements[activeMeasure].toFixed(1)+' cm · neutral-pose measurement';
+  const control=data.controls.find(c=>c.key===activeMeasure);$('ruler-label').textContent=control.label+' · '+actual[activeMeasure].toFixed(1)+' cm · neutral-pose measurement';
 }
 
 function updateBody(){
-  setBusy(true);$('status').textContent='Updating shape…';
+  bodyUpdatePending=true;clearTimeout(timer);setBusy(true);$('status').textContent='Updating shape…';
   dimensions=normalizeDimensions(data,dimensions);fit=fitDimensions(data,dimensions,fit?.weights||cachedMorphWeights);
   if(!mesh){
     const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(fit.positions,3));geometry.setIndex(data.indices);
@@ -124,9 +124,9 @@ function updateBody(){
   $('status').textContent=fit.maxError<=.15?'Dimensions matched':'Closest supported shape';
   $('fit-result').textContent=fit.maxError<=.15?'Mesh measurements match the entered dimensions (within 0.2 cm).':'Largest target difference: '+fit.maxError.toFixed(1)+' cm. Measured values are shown beside affected controls.';
   if(rendered)frameModel();
-  setBusy(false);
+  bodyUpdatePending=false;setBusy(false);
 }
-function requestBody(){setBusy(true);clearTimeout(timer);timer=setTimeout(updateBody,65);}
+function requestBody(){bodyUpdatePending=true;setBusy(true);clearTimeout(timer);timer=setTimeout(updateBody,65);}
 
 function dimensionControl(control){
   const wrapper=document.createElement('div');wrapper.className='dimension';wrapper.dataset.dimension=control.key;
@@ -142,7 +142,11 @@ function dimensionControl(control){
   for(const element of[input,range])element.addEventListener('focus',()=>{activeMeasure=control.key;updateRuler();});
   wrapper.append(head,range,measured);return wrapper;
 }
-function syncDimensionControls(){for(const control of data.controls){const value=dimensions[control.key];$('size-'+control.key).value=value;$('range-'+control.key).value=value;$('measured-'+control.key).textContent=Math.abs(fit.measurements[control.key]-value)>.15?'Measured '+fit.measurements[control.key].toFixed(1)+' cm':'';}}
+function syncDimensionControls(){
+  const actual=measureRest(data,mesh.geometry.attributes.position.array);
+  for(const control of data.controls){const value=dimensions[control.key];$('size-'+control.key).value=value;$('range-'+control.key).value=value;$('measured-'+control.key).textContent='Model measured '+actual[control.key].toFixed(3)+' cm';}
+  $('model-measured-summary').textContent=['height','bust','waist','hips'].map(key=>data.controls.find(c=>c.key===key).label+' '+actual[key].toFixed(3)+' cm').join(' · ');
+}
 
 function makeJointMenu(){
   const known=new Set(MAIN_JOINTS.map(row=>row[0]));$('joint-select').replaceChildren();
@@ -179,6 +183,49 @@ function exportSnapshot(){
   return {version:MODEL_VERSION,asset:provenance.human_sha256,units:'cm',dimensions:{...dimensions},measuredNeutral:{...fit.measurements},maximumTargetErrorCm:fit.maxError,morphWeights:[...fit.weights],poseDegrees:structuredClone(pose),measurementDefinition:data.measurementDefinition,source:'MakeHuman CC0 adult female mesh and anatomical rig',limitations:['Dimensions describe this model, not a recovered person.','Neutral-pose tape measurements; skeletal skinning is not physical tissue simulation.']};
 }
 function download(name,content,type){const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}
+function neutralObjText(positions){
+  const ids=data.bodyVertexIds,map=new Map(ids.map((id,i)=>[id,i+1]));
+  const lines=['# Human Studio: neutral surface, centimetres','# Actual current rest geometry; authored vertex mapping; not a posed height','o HumanNeutral'];
+  for(const id of ids)lines.push('v '+[0,1,2].map(axis=>positions[id*3+axis].toFixed(9)).join(' '));
+  for(let i=0;i<data.indices.length;i+=3)lines.push('f '+[0,1,2].map(j=>map.get(data.indices[i+j])).join(' '));
+  return lines.join('\n')+'\n';
+}
+async function shaText(text){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text))),v=>v.toString(16).padStart(2,'0')).join('');}
+async function measurementSnapshot(){
+  if(!mesh||bodyUpdatePending||$('export-state').disabled)throw Error('Wait for the current body update to finish.');
+  // Capture actual buffer and state together before asynchronous hashing. Targets
+  // and cached measuredNeutral never supply the measured output values.
+  const positions=Array.from(mesh.geometry.attributes.position.array),sourceState=exportSnapshot();
+  const actual=measureRest(data,positions),neutralObj=neutralObjText(positions),poseSnapshot=structuredClone(sourceState.poseDegrees);
+  const remap=new Map(data.bodyVertexIds.map((id,i)=>[id,i]));
+  const measurements=data.controls.map(control=>{
+    const isHeight=control.key==='height',path=control.path||[],closed=path.length>2&&path[0]===path[path.length-1];
+    const method=isHeight?'neutral_mesh_y_extent':control.kind==='circumference'?'closed_neutral_surface_tape_polyline':'neutral_surface_landmark_distance';
+    return {name:control.key,label:control.label,value_cm:actual[control.key],unit:'cm',method,
+      definition:isHeight?'Maximum minus minimum Y over neutral body surface vertices.':(closed?'Closed authored neutral surface tape path.':control.kind==='circumference'?'Authored neutral surface tape path; not a mesh-plane section.':'Distance along the authored neutral landmark path.'),
+      source_vertices:[...path],source_mesh_vertex_indices:path.map(id=>remap.get(id)),path_vertices_cm:path.map(id=>positions.slice(id*3,id*3+3)),extent_vertex_set:isHeight?{set:'bodyVertexIds',count:data.bodyVertexIds.length,axis:'Y'}:null,
+      basis:'mesh_measurement',mesh_checked:true,body_parameter_target_cm:sourceState.dimensions[control.key],input_target_delta_cm:actual[control.key]-sourceState.dimensions[control.key],
+      parameter_basis:'prior_or_fitted_parameter',person_accuracy_verified:false};
+  });
+  return {schema:'model-derived-measurements-v1',measurement_source:'neutral_mesh',unit:'cm',units:'cm',measured_values_cm:actual,
+    target_dimensions_cm:{...sourceState.dimensions},measurements,source_state:sourceState,
+    model_fingerprints:{state_sha256:await shaText(JSON.stringify(sourceState,null,2)),asset_sha256:provenance.human_sha256,neutral_mesh_sha256:await shaText(neutralObj),pose_sha256:await shaText(JSON.stringify(poseSnapshot))},
+    vertex_mapping:{obj_vertex_order:'bodyVertexIds order; OBJ indices are 1-based',body_vertex_ids:[...data.bodyVertexIds]},
+    neutral_mesh_file:'human-neutral-cm.obj',person_accuracy_verified:false,
+    limitations:['Values are recomputed from the current neutral mesh buffer, independent of input targets and cached measurement fields.','Posing does not alter neutral body dimensions; an articulated bounding-box height is not standing height.','Measurements describe this configured model, not verified measurements of the photographed person.']};
+}
+async function exportMeasurements(format){
+  try{
+    const result=await measurementSnapshot();
+    if(format==='csv'){
+      const quote=value=>'"'+String(value??'').replaceAll('"','""')+'"';
+      const header=['name','value_cm','unit','basis','mesh_checked','method','body_parameter_target_cm','input_target_delta_cm','definition','person_accuracy_verified'];
+      const rows=result.measurements.map(row=>header.map(key=>quote(row[key])).join(','));
+      download('human-measurements-cm.csv',header.join(',')+'\n'+rows.join('\n')+'\n','text/csv');
+    }else download('human-measurements-cm.json',JSON.stringify(result,null,2),'application/json');
+  }catch(error){toast('Could not export measurements: '+error.message);}
+}
+function exportNeutralObj(){if(!mesh||bodyUpdatePending||$('export-state').disabled)return;download('human-neutral-cm.obj',neutralObjText(mesh.geometry.attributes.position.array),'text/plain');}
 function exportObj(){const ids=data.bodyVertexIds,map=new Map(ids.map((id,i)=>[id,i+1]));const lines=['# Human Studio: posed surface, centimetres','# CC0 MakeHuman source; actual skinned vertices','o Human'];for(const id of ids){const p=posedVertex(id);lines.push('v '+p.toArray().map(v=>v.toFixed(6)).join(' '));}for(let i=0;i<data.indices.length;i+=3)lines.push('f '+[0,1,2].map(j=>map.get(data.indices[i+j])).join(' '));download('human-posed-cm.obj',lines.join('\n'),'text/plain');}
 async function exportGlb(){
   setBusy(true);
@@ -202,13 +249,14 @@ async function init(){
     $('reset-pose').onclick=()=>preset('neutral');$('reset-joint').onclick=()=>{pose[selectedJoint]=[0,0,0];if($('mirror-pose').checked&&/\.[LR]$/.test(selectedJoint))pose[selectedJoint.slice(0,-1)+(selectedJoint.endsWith('L')?'R':'L')]=[0,0,0];applyPose();syncPoseControls();};
     for(const b of document.querySelectorAll('[data-view]'))b.onclick=()=>view(b.dataset.view);
     for(const b of document.querySelectorAll('[data-preset]'))b.onclick=()=>preset(b.dataset.preset);$('frame-model').onclick=frameModel;
+    $('export-measurements').onclick=()=>exportMeasurements('json');$('export-measurements-csv').onclick=()=>exportMeasurements('csv');$('export-neutral-obj').onclick=exportNeutralObj;
     $('export-state').onclick=()=>download('human-model.json',JSON.stringify(exportSnapshot(),null,2),'application/json');$('export-obj').onclick=exportObj;$('export-glb').onclick=exportGlb;
     $('export-png').onclick=()=>{const ratio=renderer.getPixelRatio();try{renderer.setPixelRatio(ratio*2);renderer.render(scene,camera);const url=renderer.domElement.toDataURL('image/png'),a=document.createElement('a');a.href=url;a.download='human-view-2x.png';a.click();}finally{renderer.setPixelRatio(ratio);renderer.render(scene,camera);}};
     $('import-state').onclick=()=>$('state-file').click();$('state-file').onchange=async e=>{try{if(!e.target.files[0])return;restoreState(JSON.parse(await e.target.files[0].text()));toast('Dimensions and joint pose restored.');}catch(error){toast('Could not import: '+error.message);}finally{e.target.value='';}};
     const raycaster=new THREE.Raycaster();let down;
     renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);renderer.domElement.addEventListener('pointerup',e=>{if(tab!=='pose'||!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5)return;const rect=renderer.domElement.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);const hit=raycaster.intersectObjects(markers)[0];if(hit){selectedJoint=hit.object.userData.boneName;$('joint-select').value=selectedJoint;syncPoseControls();}});
     await loadLinkedModel();
-    window.humanStudio={getSnapshot:exportSnapshot,getViewBounds:viewBounds,getGeometry:()=>({unit:'cm',rest:Array.from(mesh.geometry.attributes.position.array),posed:data.bodyVertexIds.map(i=>posedVertex(i).toArray()),bodyVertexIds:data.bodyVertexIds,indices:data.indices,bones:bones.map(b=>({name:b.name,position:b.getWorldPosition(new THREE.Vector3()).toArray()}))}),getAsset:()=>data,setDimensions:values=>{dimensions=normalizeDimensions(data,{...dimensions,...values});updateBody();},setPose:values=>{pose=normalizePose(values);applyPose();syncPoseControls();},preset,ready:true};
+    window.humanStudio={getSnapshot:exportSnapshot,getMeasurements:measurementSnapshot,getViewBounds:viewBounds,getGeometry:()=>({unit:'cm',rest:Array.from(mesh.geometry.attributes.position.array),posed:data.bodyVertexIds.map(i=>posedVertex(i).toArray()),bodyVertexIds:data.bodyVertexIds,indices:data.indices,bones:bones.map(b=>({name:b.name,position:b.getWorldPosition(new THREE.Vector3()).toArray()}))}),getAsset:()=>data,setDimensions:values=>{dimensions=normalizeDimensions(data,{...dimensions,...values});updateBody();},setPose:values=>{pose=normalizePose(values);applyPose();syncPoseControls();},preset,ready:true};
     rendered=true;
   }catch(error){$('status').textContent='Could not load model';toast(error.message);console.error(error);}
 }

@@ -1,0 +1,86 @@
+{
+  "verdict": "FAIL",
+  "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#export-measurements')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"primary\" id=\"export-measurements\">Export measurements</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    35 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "checks": [
+    {
+      "name": "Actual linked case state loaded",
+      "passed": true
+    },
+    {
+      "name": "Explicit mesh-derived output schema",
+      "passed": true
+    },
+    {
+      "name": "All12 output sizes independently equal actual renderer rest-buffer measurements",
+      "passed": true,
+      "evidence": {
+        "max_difference_cm": 0
+      }
+    },
+    {
+      "name": "Every size has mesh basis, definition, vertex source and limited person claim",
+      "passed": true
+    },
+    {
+      "name": "Targets are retained separately from measured output",
+      "passed": true
+    },
+    {
+      "name": "All12 actual measured values shown separately below shape targets",
+      "passed": true
+    },
+    {
+      "name": "Actual downloaded neutral OBJ is hash-bound to measurement JSON",
+      "passed": true
+    },
+    {
+      "name": "Downloaded OBJ independently remeasures all12 primary sizes",
+      "passed": true,
+      "evidence": {
+        "max_difference_cm": 5.54742030089983e-10
+      }
+    },
+    {
+      "name": "Complete captured source state and pose hashes match downloaded JSON",
+      "passed": true
+    },
+    {
+      "name": "Actual CSV contains the same model-derived sizes",
+      "passed": true
+    },
+    {
+      "name": "False cached measuredNeutral cannot contaminate actual mesh measurements",
+      "passed": true
+    },
+    {
+      "name": "Pending65ms body rebuild blocks stale measurement exports and read API",
+      "passed": true,
+      "evidence": {
+        "disabled": true,
+        "rejected": true,
+        "message": "Wait for the current body update to finish."
+      }
+    },
+    {
+      "name": "Actual cm edit changes neutral mesh and exported measured waist",
+      "passed": true
+    },
+    {
+      "name": "Body size edit preserves the entire supplied target pose",
+      "passed": true
+    },
+    {
+      "name": "After size edit every measured value still comes from current geometry",
+      "passed": true
+    },
+    {
+      "name": "Actual joint UI edit changes posed vertices without changing neutral mesh",
+      "passed": true
+    },
+    {
+      "name": "Posed bounding-box changes do not alter primary neutral dimensions",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

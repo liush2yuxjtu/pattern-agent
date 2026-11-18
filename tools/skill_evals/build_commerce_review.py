@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Publish source-bound commerce functional runs in the pinned official viewer."""
-import argparse, hashlib, json, shutil, zipfile
+import argparse, hashlib, json, shutil, zipfile, sys
 from pathlib import Path
 from PIL import Image
 import cv2
 import numpy as np
 from build_functional_review import build as official_review
 ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/'.agents/skills/garment-body-six-view/scripts'))
+from export_body_measurements import export_report, write_report
 WORK=ROOT/'work/commerce-skill-evals-20261118'
 SITE=ROOT/'web/garment-body/commerce-evals'
 ROLES=('front','side','back','closeup','pose','depth')
@@ -218,9 +220,19 @@ def snapshot(workspace,site,iteration,allow_pending,include_holdout):
         for name,label in [('final-overlay.png','最终实际叠加'),('overlay.png','实际叠加'),('initial-overlay.png','初始实际叠加')]:
             image=own(name,label,'实际执行保存的 OpenCV 对比；保留偏差，不改成通过图。')
             if image:overlays.append(image)
-        downloads=[dict(label='原始商品来源与获取证据JSON',href='inputs/'+case+'/source.json')]
+        model_measurements=None
+        if all((output/name).exists() for name in ['final-state.json','neutral.obj','posed.obj']):
+            measured=export_report(output/'final-state.json',ROOT/'web/human-studio/assets/human.json',output/'neutral.obj',output/'posed.obj')
+            measured['evidence_role']='Post-run independent geometry remeasurement; original executor files and frozen grades are unchanged.'
+            measured['reference_sha256']=sha(source)
+            write_report(measured,target/'review/model-measurements.json',target/'review/model-measurements.csv')
+            model_measurements=dict(measured_values_cm=measured['measured_values_cm'],target_dimensions_cm=measured['target_dimensions_cm'],measurements=measured['measurements'],model_fingerprints=measured['model_fingerprints'],json_href=base+'/review/model-measurements.json',csv_href=base+'/review/model-measurements.csv',json_sha256=sha(target/'review/model-measurements.json'),csv_sha256=sha(target/'review/model-measurements.csv'))
+        downloads=[]
+        if model_measurements:
+            downloads.extend([dict(label='人体模型实测尺寸 JSON（主要输出）',href=model_measurements['json_href']),dict(label='人体模型实测尺寸 CSV（主要输出）',href=model_measurements['csv_href'])])
+        downloads.append(dict(label='原始商品来源与获取证据JSON',href='inputs/'+case+'/source.json'))
         for name in ['final-state.json','posed.obj','neutral.obj','camera.json','measurements.json','measurements.csv','input-provenance.json','report.md','TRACE.md']:
-            if (target/'outputs'/name).exists():downloads.append(dict(label=name,href=base+'/outputs/'+name))
+            if (target/'outputs'/name).exists():downloads.append(dict(label=('历史执行尺寸记录 '+name if name.startswith('measurements.') else name),href=base+'/outputs/'+name))
         if grade:
             zip_path=site/(base+'.zip');archive(run,zip_path);downloads.append(dict(label='完整执行ZIP（含原始深度/代码/失败尝试）',href=base+'.zip'))
         if iteration>1 and include_holdout and not allow_pending:downloads.append(dict(label='冻结技能/协议/独立评审复现ZIP',href='reproducibility.zip'))
@@ -228,7 +240,7 @@ def snapshot(workspace,site,iteration,allow_pending,include_holdout):
         consumer_verdict=read(consumer).get('verdict') if iteration==2 and consumer.exists() else 'NOT_RUN'
         labels=['来源与先验','厘米人体重建','同状态多视图','原图关键分区','可见腕与动作','三维动作','尺寸声明','六次独立生成','商品构造']
         failed=[labels[i] for i,e in enumerate(grade.get('expectations',[])) if not e['passed']] if grade else ['尚无完整独立评分']
-        galleries[key]=dict(title=title,overall=status,failed_gates=failed,editor_consumer=consumer_verdict,version=run.parent.name,source_fingerprints=fingerprints,legacy_feedback_key=None,
+        galleries[key]=dict(title=title,overall=status,failed_gates=failed,model_measurements=model_measurements,editor_consumer=consumer_verdict,version=run.parent.name,source_fingerprints=fingerprints,legacy_feedback_key=None,
             stages=[dict(title='1. 原始电商输入',status='原始文件',images=[x for x in inp if x]),dict(title='2. Image Gen 实际输出',status=f'最终六图 {final_count}/6；额外引导 {max(0,len(generated)-final_count)}' if int(meta['eval_id'])==1 else '本任务仅姿态引导；六图 NOT_REQUESTED',images=generated),dict(title='3. 实际人体与三维',status='真实执行' if renders else '尚未完成',images=renders),dict(title='4. OpenCV 比较',status='实际输出' if overlays else '尚未完成',images=overlays)],downloads=downloads,
             model='../../human-studio/?model=../garment-body/commerce-evals/'+base+'/outputs/final-state.json' if fingerprints['state_sha256'] else None)
         inventory.append(dict(id=key,case=case,configuration=run.parent.name,skill_version=skill_version,heldout=heldout,overall=status,source_fingerprints=fingerprints,artifact_sha256=hashes,graded=grade is not None))
@@ -250,14 +262,16 @@ def build(workspace,site,iteration=1,allow_pending=False,include_holdout=False):
     document=document.replace('Executed synthetic controls. Not native Claude triggering, real anatomical validation, or full six-image generation quality.','Executed paired e-commerce functional tasks with explicit skill injection; not native Claude triggering. Full six-image generation is tested only where requested. Critical fit failures remain separate from assertion counts.')
     css=(ROOT/'tools/skill_evals/assets/official-output-gallery.css').read_text()
     script=(ROOT/'tools/skill_evals/assets/official-output-gallery.js').read_text()
+    measure_script=(ROOT/'tools/skill_evals/assets/model-measurement-table.js').read_text()
+    css+=(ROOT/'tools/skill_evals/assets/model-measurement-table.css').read_text()
     script=script.replace("[{label:'打开此版本可调人体',href:data.model},...data.downloads,\n      {label:'同画幅交互详情（当前候选）',href:'../pose-guided-fit/details.html'},\n      {label:'历史六次技能执行及原始 Benchmark',href:'../single-state-evals/history.html'}]", "[...(data.model?[{label:'打开此执行可调人体',href:data.model}]:[]),...data.downloads,{label:'此前商品姿态案例',href:'../single-state-evals/eval.html'}]")
     script=script.replace("const data = OUTPUT_GALLERIES[run.id];\n    if (feedbackMap[run.id] || !data) continue;", "const data = OUTPUT_GALLERIES[run.id];\n    if (feedbackMap[run.id] || !data || !data.legacy_feedback_key) continue;")
     script=script.replace('该版本未使用 Image Gen 引导；没有用渲染图替代生成图。','该阶段尚无实际产物；没有用其他图像冒充输出。状态以上方执行标记为准。')
     if '同画幅交互详情（当前候选）' in script:raise ValueError('Shared artifact adapter changed; commerce-specific links were not applied')
     script=script.replace('这是保存候选的实际证据。功能断言计数不是姿态准确率；请查看官方 Formal Grades，并在下方 Feedback 留言。','这是本次独立执行的实际产物。未评分/未运行不会冒充通过；功能断言计数不是原图姿态或真人尺寸准确率。请查看 Formal Grades，并在官方 Feedback 留言。')
-    script=script.replace('content.append(grid,note,links);', "const issues=document.createElement('p');issues.style.color='#a53422';issues.textContent='未通过：'+(data.failed_gates?.join('、')||'见 Formal Grades')+'。额外真实编辑器载入/厘米编辑：'+(data.editor_consumer||'NOT_RUN')+'（独立复核，不改冻结分数）。生成图/模型动作一致性、引导是否实际参与优化及编辑器兼容另见流程审计；六图数量不代表这些通过。';content.append(grid,issues,note,links);")
+    script=script.replace('content.append(grid,note,links);', "const issues=document.createElement('p');issues.style.color='#a53422';issues.textContent='未通过：'+(data.failed_gates?.join('、')||'见 Formal Grades')+'。额外真实编辑器载入/厘米编辑：'+(data.editor_consumer||'NOT_RUN')+'（独立复核，不改冻结分数）。生成图/模型动作一致性、引导是否实际参与优化及编辑器兼容另见流程审计；六图数量不代表这些通过。';content.append(grid,issues);appendModelMeasurements(content,data);content.append(note,links);")
     payload=json.dumps(galleries,ensure_ascii=False).replace('<',r'\u003c')
-    document=document.replace('</head>','<style>'+css+'</style></head>',1).replace('</body>','<script>const OUTPUT_GALLERIES='+payload+';\n'+script+'</script></body>',1)
+    document=document.replace('</head>','<style>'+css+'</style></head>',1).replace('</body>','<script>const OUTPUT_GALLERIES='+payload+';\n'+measure_script+'\n'+script+'</script></body>',1)
     (site/f'iteration-{iteration}.html').write_text(document);(site/'eval.html').write_text(document);(site/'index.html').write_text(document)
     if benchmark.exists():shutil.copyfile(benchmark,site/f'benchmark-iteration-{iteration}.json')
     for name in ['evals.json','plan.json','skill-v0-manifest.json','skill-v1-manifest.json','skill-v2-manifest.json']:

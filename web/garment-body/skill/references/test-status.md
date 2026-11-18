@@ -116,3 +116,13 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 真实HumanStudio消费六份第二轮状态，五份保持原动作并允许厘米编辑；旧版完整六图例的连续角度在导入时被0.1°取整，精确动作载入FAIL。另实际UI改关节、网格响应、保存/重导入12项通过。额外检查不倒填为冻结评分。
 - 官方评阅保留两轮、Previous Output、Formal Grades、Benchmark、Feedback；四阶段真实图库只放在Output内。页面完整性/浏览器通过不是人体匹配通过。原图关键区域和三维动作仍有失败，未接受任一结果为完美匹配或真实人体测量。
 - 所有实际分数、留出结果、盲评/全文审计、原始文件、冻结技能和协议下载： https://liush2yuxjtu.github.io/pattern-agent/garment-body/commerce-evals/eval.html 。每例每配置n=1，不能证明通用因果优势。原生Claude触发BLOCKED，token/统一耗时null，物理试衣NOT_RUN。
+
+
+## 2026-11-18 模型实测尺寸作为主要输出
+
+- 尺寸导出改为直接读取最终 neutral OBJ 顶点，按资产定义的12条带尺/标志点和站立高度复量；主要 measured_values_cm/value_cm 与控制目标分开。单靠先验、dimensions 或缓存 measuredNeutral 不能产生实测值。
+- 新增标准库导出 helper。8项数值/破坏控制通过：已知几何与compact映射、伪目标/缓存不污染、真实形变响应、错误网格/拓扑/单位/资源拒绝及JSON/CSV读回；技能全部37项控制通过。
+- 现有两轮10份真实neutral OBJ均已实际复量，重建几何最大差约5.03e-9cm。历史输出、评分和原生生成图不改；评审页新增review-derived模型实测表与主要JSON/CSV下载，旧尺寸记录明确保留为历史。
+- 编辑器从真实Float32 rest buffer重新测量，提供JSON、CSV和匹配Neutral OBJ；输入框下持续显示模型实测值。修改厘米后重测，单独改关节保持中性尺寸，导出绑定一次捕获的完整状态/资源/网格/姿态。
+- 实际边界控制把所有目标设到各自上限：腰围目标108cm而可达网格实测约99.0831cm，导出实测值而非108。该控制验证模型输出来源，不是任一商品模特的尺寸。
+- 本次只改测量导出及展示，不新调用图像生成或重新拟合照片；旧配对成绩不解释为当前测量修正的新一轮技能表现。照片动作FAIL、真人准确性未验证、原生Claude触发BLOCKED保持原结论。

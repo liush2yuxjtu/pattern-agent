@@ -24,6 +24,14 @@ python scripts/verify_masks.py --reference reference-mask.png \
 IoU 包括所有前景，轮廓误差使用外轮廓；若需要衣服空隙、内部孔洞或局部躯干指标，
 另定义评价区域并明确报告。不同协议的分数不能混作同一个序列比较。
 
+## 主要人体尺寸导出
+
+使用 `scripts/export_body_measurements.py` 对最终保存的 `neutral.obj` 实际复量，
+生成 `measured_values_cm` 为主值的 JSON/CSV；详见 [模型实测合同](model-measurements.md)。
+它只需 Python 标准库，读取匹配 human.json 的定义/编号并独立核对 geometry，不调用目标拟合器。
+`dimensions` 和 `measuredNeutral` 缓存不提供实测数值；目标单独列出，原图真人准确性另行评价。
+Human Studio 的 Export measurements / CSV / Neutral OBJ 是同版本实际网格的消费入口。
+
 ## 真实网格截面
 
 sections.json 示例（Human Studio 的 Y-up 坐标）；以下数字只是调用格式示意，按当前人体标志点改写：

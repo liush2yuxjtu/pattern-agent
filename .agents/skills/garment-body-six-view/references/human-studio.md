@@ -193,3 +193,14 @@ https://liush2yuxjtu.github.io/pattern-agent/garment-body/eval.html
 
 Model verification and actual screenshots:
 https://github.com/liush2yuxjtu/pattern-agent/tree/main/docs/verification/human-studio-20261117
+
+
+## 模型实测尺寸是主要输出
+
+Body dimensions 输入框调整控制目标，其下 Model measured 始终显示实际 neutral mesh 数值。
+Export measurements 与 CSV 从当前真实顶点重新测量，Neutral OBJ 导出对应中性表面；
+Save model 仍保存可调状态，原有 Export OBJ 仍为摆姿后的 cm 网格。GLB 为 m。
+实测 JSON 使用 measured_values_cm，目标另存 target_dimensions_cm，附完整捕获状态、
+资源/网格/姿态指纹及测量路径。等待形体重建完成才导出，不用摆姿后包围盒替代站立身高。
+导出后可用包内 export_body_measurements.py 在中性 OBJ 独立重测；方法/字段见
+[模型实测合同](model-measurements.md)。模型实测不宣称原照片真人围度已验证。

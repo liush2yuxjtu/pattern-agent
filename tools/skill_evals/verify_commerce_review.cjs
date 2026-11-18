@@ -10,6 +10,8 @@ const base=new URL('./',args.url),historical=/^iteration-(\d+)\.html$/.exec(path
 if(!args['allow-pending'])check('All expected actual runs have strict independent grading',manifest.complete===true&&manifest.runs.every(r=>r.graded));
 check('Official native shell is primary, not hidden below a custom page',await page.locator('body>#app>.header').isVisible()&&await page.locator('#pose-review,#pr-history').count()===0);
 const data=await page.evaluate(()=>EMBEDDED_DATA),galleries=await page.evaluate(()=>OUTPUT_GALLERIES);
+const assetResponse=await page.request.get(new URL('../../human-studio/assets/human.json',base).href),assetBytes=await assetResponse.body(),asset=JSON.parse(assetBytes);check('Measurement definition asset is available',assetResponse.ok());
+const compact=new Map(asset.bodyVertexIds.map((id,i)=>[id,i]));
 check('Official Prompt/Output/Feedback remain unchanged components',await page.locator('#prompt-text').isVisible()&&await page.locator('#outputs-body>#official-case-gallery').count()===1&&await page.locator('#feedback').count()===1&&await page.locator('#done-btn').innerText()==='Submit All Reviews');
 check('Run count matches actual inventory',data.runs.length===manifest.runs.length&&data.runs.every(r=>galleries[r.id]));
 for(const [file,expected]of Object.entries(manifest.files)){const response=await page.request.get(new URL(file,base).href);check('Published bytes '+file,response.ok()&&sha(await response.body())===expected);}
@@ -18,6 +20,23 @@ for(let i=0;i<data.runs.length;i++){
  check('Four real-evidence stages '+data.runs[i].id,await page.locator('.og-grid>section').count()===4);
  check('Current run overall is visible '+data.runs[i].id,(await page.locator('#official-case-gallery .output-file-header').innerText()).includes(g.overall));
  for(const stage of g.stages)for(const image of stage.images){const response=await page.request.get(new URL(image.src,base).href);check('Gallery source hash '+data.runs[i].id+' '+image.label,response.ok()&&sha(await response.body())===image.sha256);}
+ const m=g.model_measurements;
+ if(!args['allow-pending'])check('Primary model measurements exist '+data.runs[i].id,!!m);
+ if(m){
+  const mr=await page.request.get(new URL(m.json_href,base).href),mb=await mr.body(),report=JSON.parse(mb);
+  const csv=await page.request.get(new URL(m.csv_href,base).href),cb=await csv.body();
+  check('Model JSON/CSV actual bytes '+data.runs[i].id,mr.ok()&&csv.ok()&&sha(mb)===m.json_sha256&&sha(cb)===m.csv_sha256);
+  const neutral=g.downloads.find(d=>d.label==='neutral.obj'),nr=await page.request.get(new URL(neutral.href,base).href),nb=await nr.body();
+  const vertices=nb.toString().split('\n').filter(l=>l.startsWith('v ')).map(l=>l.trim().split(/\s+/).slice(1).map(Number));
+  check('Actual neutral geometry identity '+data.runs[i].id,nr.ok()&&sha(nb)===report.model_fingerprints.neutral_mesh_sha256&&vertices.length===asset.bodyVertexIds.length&&sha(assetBytes)===report.model_fingerprints.asset_sha256&&report.model_fingerprints.state_sha256===g.source_fingerprints.state_sha256);
+  const actual={};for(const control of asset.controls){if(control.key==='height'){const ys=vertices.map(v=>v[1]);actual.height=Math.max(...ys)-Math.min(...ys);}else{let length=0;for(let j=1;j<control.path.length;j++){const a=vertices[compact.get(control.path[j-1])],b=vertices[compact.get(control.path[j])];length+=Math.hypot(...a.map((v,k)=>v-b[k]));}actual[control.key]=length;}}
+  check('Independent actual OBJ measurements match all12 primary output values '+data.runs[i].id,report.measurement_source==='neutral_mesh'&&Object.keys(actual).length===12&&Object.keys(actual).every(k=>Math.abs(actual[k]-report.measured_values_cm[k])<1e-9)&&report.measurements.every(r=>r.basis==='mesh_measurement'&&r.person_accuracy_verified===false));
+  check('All12 primary dimensions displayed separately from targets '+data.runs[i].id,await page.locator('.og-measurements tbody tr').count()===12);
+  for(const row of report.measurements)check('Displayed mesh value '+data.runs[i].id+' '+row.name,await page.locator('.og-measurements tr[data-measurement="'+row.name+'"]').locator('td').nth(1).innerText()===row.value_cm.toFixed(4));
+  if(i===0){for(const [index,name,expected]of [[0,'model-measurements.json',m.json_sha256],[1,'model-measurements.csv',m.csv_sha256]]){const waiting=page.waitForEvent('download');await page.locator('.og-measurements a').nth(index).click();const file=path.join(args.out,name);await(await waiting).saveAs(file);check('Actual primary measurement download '+name,sha(fs.readFileSync(file))===expected);}
+   await page.locator('.og-measurements').screenshot({path:path.join(args.out,'measurement-table.png')});
+  }
+ }
  if(data.runs[i].grading){await page.locator('#grades-section .grades-toggle').click();check('Native Formal Grades contain actual assertions '+data.runs[i].id,await page.locator('#grades-content .assertion-item').count()===data.runs[i].grading.expectations.length);await page.locator('#grades-section .grades-toggle').click();}
  else check('Ungraded run not displayed as a pass '+data.runs[i].id,g.overall.includes('NOT_GRADED')||g.overall.includes('RUNNING'));
 }

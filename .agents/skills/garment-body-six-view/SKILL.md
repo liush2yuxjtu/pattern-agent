@@ -135,10 +135,20 @@ setPose 替换整张表，局部编辑先合并；细节与当前 0.1 步长见 
 
 ## 6. 尺寸来源与交付
 
-每项尺寸给名称、值或 null、单位、定义、截面/标志点、来源和限制；用 basis：
-`observed_scaled`、`clothed_envelope_estimate`、`prior`、`mesh_parameter`、`unavailable`。
-另列 mesh_checked；网格可测不会把先验升级为真人实测。无法估计的胸点距、下胸围、肩斜、
-前后腰节长和裆弧保留 null。不编无统计依据的置信区间，解释尺度敏感性与实际误差来源。
+人体尺寸的主要输出来自最终保存的真实中性裸模网格，不能把 M 码先验、dimensions 控制目标
+或缓存 measuredNeutral 直接复制成结果。先读 [模型实测导出合同](references/model-measurements.md)，
+实际运行 `scripts/export_body_measurements.py`，从 neutral.obj 顶点及资源定义的带尺/标志点复量，
+绑定最终 state、asset、neutral/posed 网格指纹。姿态只影响摆姿，站立身高和围度从同版本 neutral 测量。
+
+主要 JSON/CSV 使用 `measured_values_cm` 和逐项 `value_cm`，`basis: mesh_measurement`；
+输入先验、拟合后的控制目标与实测值分列，目标仅存 `target_dimensions_cm`，报告残差和定义。
+查看器/评阅页默认展示与下载模型实测结果，历史先验记录明确标为历史。编辑尺寸后重新测量，
+单独改姿态不能改变中性尺寸；不能为了导出而重新拟合目标或修改已评分的历史网格。
+
+每项给名称、值或 null、单位、定义、截面/标志点、来源与限制。围度带尺路径不是截面围长，
+标志点直线长不是骨头段长；无对应可靠几何定义的胸点距、下胸围、肩斜、前后腰节长和裆弧保留 null。
+`mesh_checked` 说明模型测过，`parameter_basis` 另记形体的先验/拟合来源；模型实测不会自动成为
+照片真人实测。无可靠尺度使用归一化单位，不编造厘米或无统计依据的置信区间。
 
 按本轮范围交付六图、真实网格/参数/可调查看器、快照、叠加、初始/最终指标、CSV/JSON 与说明；
 直接链接可打开证据，区分已运行验证、目视检查与未运行项，指出最弱视角、先验尺寸及还需的真实证据。
@@ -150,7 +160,8 @@ Outputs / Benchmark、Formal Grades、Previous Output、案例导航与官方反
 
 计算与测量前读 [工具与证据实现](references/tools-and-evidence.md)：
 `scripts/verify_masks.py` 计算 OpenCV 指标/叠加；`measure_mesh.py` 测真实连通截面；
-`inspect_human_state.py` 有匹配 human.json 时独立重建中性网格，无资源时仅结构检查。
+`inspect_human_state.py` 有匹配 human.json 时独立重建中性网格，无资源时仅结构检查；
+`export_body_measurements.py` 直接复量保存的裸模 OBJ，导出主要人体尺寸 JSON/CSV。
 脚本不替代原图、拟合、生成服务或解剖判断；完整浏览器与导出验证入口见 Human Studio 参考。
 
 修改本技能或评分器时，按 [反馈与功能评测迭代](references/evaluation-workflow.md) 执行：

@@ -51,3 +51,32 @@ session. Never inspect unrelated remote processes or temporary files.
 
 Record a documentation-only SKIP gate if later committing already-verified live
 receipts. Close task browsers/servers; preserve historical cloth FAIL/NOT_RUN.
+
+
+## Actual model measurement export
+
+Run `node tools/human_fit/verify_measurement_export.cjs --url URL --out OUT`
+against an actual saved model link or the default editor. It independently
+remeasures all12 values from actual renderer vertices and the real downloaded
+neutral OBJ, reopens JSON/CSV, and checks source hashes. Exercise shape edits
+with full pose preservation, pose-only edits with neutral dimensions preserved,
+false cached measurements, wrong units, pending65ms shape updates and an
+unreachable target combination. Input targets must not replace achieved mesh
+values. Save screenshots and downloaded files; the report is model-size export
+verification, not photo or person accuracy. Run the existing full editor and
+independent OBJ/GLB validators to preserve the original export contract.
+
+Reopen neutral downloads with the packaged standard-library CLI:
+
+```sh
+python .agents/skills/garment-body-six-view/scripts/export_body_measurements.py \
+  --state OUT/edited-state.json --asset-json web/human-studio/assets/human.json \
+  --neutral-mesh OUT/edited-neutral.obj --out OUT/independent-measurements.json \
+  --csv OUT/independent-measurements.csv
+```
+
+Use the matching initial/edited/residual state and OBJ, never a posed OBJ.
+Original historical eval files/grades remain immutable; post-run remeasurement
+is published separately under each commerce case review/. The commerce browser
+verifier independently remeasures all displayed primary dimensions from the
+actual OBJ and checks real JSON/CSV download hashes.

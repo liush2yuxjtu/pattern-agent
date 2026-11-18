@@ -24,7 +24,7 @@
 ## 依赖与能力
 
 SKILL.md 是 agent 的操作指令。图像生成、模型权重、3D 模型资源和网页浏览能力由运行环境提供。
-包内提供掩膜叠加、网格截面及 Human Studio 状态核验脚本，不声称提供完整的一键人体重建引擎。
+包内提供掩膜叠加、网格截面、实际裸模尺寸导出及 Human Studio 状态核验脚本，不声称提供完整的一键人体重建引擎。
 需要辅助脚本时，在隔离 Python 环境安装 requirements.txt；使用方法见 references/tools-and-evidence.md。
 
 ## 验证范围
@@ -49,3 +49,8 @@ SKILL.md 是 agent 的操作指令。图像生成、模型权重、3D 模型资�
 编辑器没有照片重建、六图生成、深度估计或自动人体拟合服务；按 SKILL.md 调用实际可用工具。
 
 当前功能评测与精简记录见 references/test-status.md；本轮验证的是解剖模型组件与证据交付，不能等同于完整穿衣六图生成质量。
+
+
+主要人体尺寸请用编辑器 Export measurements / CSV，或包内 `export_body_measurements.py`
+复量最终 neutral OBJ。模型实测值是输出，尺寸目标只是对照；使用方法和路径定义见
+[模型实测导出合同](references/model-measurements.md)。该脚本仅需 Python 标准库。
