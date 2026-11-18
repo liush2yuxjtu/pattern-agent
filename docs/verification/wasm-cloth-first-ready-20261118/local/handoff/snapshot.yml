@@ -1,0 +1,125 @@
+- banner:
+  - link "pa Pattern Agent 布料实验室 / CLOTH LAB":
+    - /url: ../
+  - text: WASM 已加载 · 离线可运行
+- main:
+  - complementary:
+    - paragraph: 01 / PATTERN TO PHYSICS
+    - heading "一份纸样。 真实的几何约束。" [level=1]
+    - paragraph: 二维尺寸、三维网格与缝合关系，来自同一份服装数据。
+    - text: 下摆单片宽
+    - status: 650 mm
+    - slider "下摆单片宽": "650"
+    - text: 裙长
+    - status: 600 mm
+    - slider "裙长": "600"
+    - paragraph: 腰口单片 420 mm · 两片扇环 A 字测试纸样 10 mm 缝份 · 虚拟腰部固定点
+    - text: 材料模型
+    - combobox "材料模型":
+      - option "合成梭织 / Orthotropic StVK" [selected]
+      - option "合成柔软面料 / Orthotropic StVK"
+    - paragraph: E经 200 kPa · E纬 120 kPa · G 30 kPa · ν 0.2 厚 0.5 mm · 220 g/m²。合成参数，未经标定。
+    - text: 缝合构造 / 故障对照
+    - combobox "缝合构造 / 故障对照":
+      - option "正常：两条同向等长侧缝" [selected]
+      - option "故障：后片加长 40 mm"
+      - option "故障：漏缝右侧"
+      - option "故障：右侧反向缝合"
+    - checkbox "实际人体三角网格碰撞" [checked]
+    - text: 实际人体三角网格碰撞
+    - checkbox "微风载荷"
+    - text: 微风载荷 人体横向移动
+    - status: 0 mm
+    - slider "人体横向移动": "0"
+    - button "开始仿真"
+    - button "单步"
+    - button "运行 2 秒"
+    - button "重置"
+    - paragraph: 回放帧 1 / 11 · 4.500 s；未进行物理积分。
+    - group: 范围与限制
+  - paragraph: 02 / THE SAME SURFACE, DIFFERENT EVIDENCE
+  - heading "纸样，成为一件有约束的衣服。" [level=2]
+  - paragraph: MakeHuman 成人女性 · 159.0 cm · 26,756 个人体三角形 · CC0
+  - button "织物"
+  - button "应变 %" [pressed]
+  - button "应力 kPa"
+  - button "试衣压力 kPa"
+  - button "碰撞距离"
+  - text: 拖动旋转 · 滚轮缩放
+  - button "正面"
+  - button "侧面"
+  - button "背面"
+  - text: 0 % ≥ 12 %
+  - paragraph: 工程最大主应变：√λmax(FᵀF) − 1；未变形为 0%。
+  - strong: 4.50 s
+  - text: 模拟时间 · 固定 1/120 s
+  - strong: 59.9 / 17 ms
+  - text: 实测 FPS / 帧时间
+  - strong: 6.17 ms
+  - text: 每个 WASM 时间步
+  - region "物理回放":
+    - heading "07 / 物理回放" [level=3]
+    - status: 录制状态 · 11 帧 · 0.38 MiB
+    - button "重新录制"
+    - button "停止录制" [disabled]
+    - text: 逐步保存 · 120 Hz 录制时间轴
+    - status: 1 / 11 · 0.000 / 0.083 s · 物理步 540
+    - slider "录制时间轴": "0"
+    - button "回到首帧": "|◀"
+    - button "上一帧": ◀
+    - button "播放回放"
+    - button "下一帧": ▶
+    - button "前往末帧": ▶|
+    - text: 回放速度
+    - combobox "回放速度":
+      - option "0.25×"
+      - option "0.5×"
+      - option "1×" [selected]
+      - option "2×"
+    - button "完整录制 JSON ↓"
+    - text: 导入录制 JSON
+    - button "导入录制 JSON"
+    - paragraph: 导入失败：Selected replay frame differs from saved state
+    - paragraph: 回放读取已保存状态，不运行物理积分；可切换热图逐帧检查。回退后继续仿真会离开录制状态。修改纸样／材料或重置会清空录制。下载的单文件 HTML 包含完整录制。
+  - complementary:
+    - paragraph: 03 / MEASURE, THEN JUDGE
+    - heading "缝合与接触检查" [level=2]
+    - status: PASS · 缝合/覆盖/碰撞/压力数值
+    - term: 缝合长度差
+    - definition: 0.00 mm
+    - term: 方向 / 缺失
+    - definition: 同向 / 完整
+    - term: 最大接缝间隙
+    - definition: 0.000 mm
+    - term: 人体网格穿透
+    - definition: 0.000 mm
+    - term: 最小人体距离
+    - definition: 5.95 mm
+    - term: 最大主应变
+    - definition: 14.33 %
+    - term: 最大主柯西应力
+    - definition: 30.29 kPa
+    - term: 接触点 / 总顶点
+    - definition: 114 / 850
+    - term: 臀部外露采样
+    - definition: 0 / 4996
+    - term: 峰值试衣压力
+    - definition: 0.0467 kPa
+    - term: 法向接触力
+    - definition: 1.0569 N
+    - button "校验 1 kPa 载荷"
+    - status
+    - img: A 前片 · CUT 1 420 / 650 × 600 mm · 腰/摆弧长 B 后片 · CUT 1 420 / 650 × 600 mm · 腰/摆弧长 100 mm · 缝份 10 mm · 扇环测试纸样 / 无腰头开合结构
+    - paragraph: 实线裁剪 · 虚线缝合 · 100 mm 校验尺
+    - button "1:1 SVG ↓"
+    - button "场景 OBJ ↓"
+    - button "工程 JSON ↓"
+    - button "诊断记录 ↓"
+    - button "当前状态单文件 HTML ↓"
+    - group: 热图如何计算？
+    - paragraph: 实际渲染器：ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)。软件渲染性能不代表真实 GPU。人体深色区域仅为显示用颜色。
+    - paragraph: 缺少 WASM 或 WebGL 时会显示错误，不会伪装成已通过。
+- contentinfo:
+  - text: 本地数值验证 ≠ 材料标定或实体试穿批准。 MakeHuman CC0 · Three.js r180 MIT · 原创求解器 MIT ·
+  - link "实现与复现说明":
+    - /url: README.md

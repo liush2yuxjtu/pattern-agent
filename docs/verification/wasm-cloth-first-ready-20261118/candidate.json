@@ -1,0 +1,178 @@
+{
+  "verificationSkill": ".agents/skills/verify/SKILL.md",
+  "recipes": [
+    ".agents/skills/verify/references/cloth-lab.md",
+    ".agents/skills/verify/references/github-pages.md"
+  ],
+  "candidateParent": "82484b1ffe639321121bfe7ad8af251b02f2cce7",
+  "candidateBuild": {
+    "fingerprint": "ca0ba8e2dae9c62d6506da41c031767f785e6cdbbadd4f999670453a1d691acd",
+    "htmlSha256": "7af91417abb80a1f0563b1ed977bdc86c0b63135248168fa1654a1febda12234",
+    "htmlBytes": 2115207,
+    "wasmSha256": "9bf573ba1f2197ff073e3f81d7cd63983dab6440eddaf4d8e034a2d4369e7a5b",
+    "bodySourceSha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "vertices": 13380,
+    "triangles": 26756,
+    "tools": {
+      "zig": "0.14.1",
+      "esbuild": "0.25.12"
+    }
+  },
+  "changedSourceSha256": {
+    ".agents/skills/verify/references/cloth-lab.md": "22af244644646cbbb07ab4649ef7c2db2dc85ae51fd05f15b802a326d533809f",
+    "tools/cloth_lab/fit_oracle.py": "871336f0234f0c0a3f3c519e8d3d6ca58f94783250f65165b89460d7dd34449c",
+    "tools/cloth_lab/oracle.py": "a92b57411b3d0fb8edf1389a3c092690e5a1c31108600eeb795bf89d615bdb34",
+    "tools/cloth_lab/verify_browser.py": "c9a30025cc02891df121c4ad6fe7e48d4d5e279ff2c7528e81975caebb000fa3",
+    "tools/cloth_lab/verify_fit.py": "01adf155e91d9d9acb58e04e93d317174a40857925441137027a731fde134d33",
+    "tools/cloth_lab/verify_handoff.py": "8c1fae6d3758170bc8e1ef686a8a903107827bf462065edcbb8b72881e345581",
+    "tools/cloth_lab/verify_replay.py": "709aa699a66d0210327c4516daf2c1c0588cdef5c20247c4c34f428955334323",
+    "web/cloth-lab/README.md": "e6452b0ab5c2bc0f109574d8f455e0aa4d51b241329044c148ecd63e04cac3ff",
+    "web/cloth-lab/build.json": "3a85ce11d9b5b81d92b0d8d8dce378dfc33e35fb1e1ff374746c9df23d54dc44",
+    "web/cloth-lab/index.html": "7af91417abb80a1f0563b1ed977bdc86c0b63135248168fa1654a1febda12234",
+    "web/cloth-lab/src/PRESSURE_PROVENANCE.json": "09c841f7a8e3bdab7cdc3a1f4f5a1f087b5650eb3ca852bc3dcb9f3fd0931d5f",
+    "web/cloth-lab/src/app.js": "98524680433abccc28bda63627650dd2596b5f13fc9b67361a5642fc7110f308",
+    "web/cloth-lab/src/contact-state.js": "1fc7fa5fcb442670b85dc31d7eb3fcf709f2ce57ed9ba8688e53d3ce573938c5",
+    "web/cloth-lab/src/pattern.js": "c1f82adec5da7d5965b216689856cd8fd744f32c8b16728e3a89e9e4cffcc0e5",
+    "web/cloth-lab/src/pressure.js": "23bf4f6da56f482088624d412d866346b59c2f331e716db5f04941161550c40b",
+    "web/cloth-lab/src/solver.c": "a93fcf2d1ccac68bf3d513653edcdab1bd08722776e98a97fed6770f6a697c52",
+    "web/cloth-lab/src/template.html": "bc3de396dfa4f21bb7ce6a2b99cc133a3e16275f103b44b74a915bcd0604e207",
+    "web/cloth-lab/src/trajectory.js": "1a365fc8426ccd2f0df1cf45008fa042e019abeff2f9d825237dda695e5d1ad2"
+  },
+  "commands": [
+    {
+      "argv": [
+        "env",
+        "ZIG=/workspace/work/zig-x86_64-linux-0.14.1/zig",
+        "ESBUILD=/workspace/pattern-agent/work/cloth-lab/esbuild",
+        "python",
+        "scripts/build_cloth_lab.py"
+      ],
+      "exitCode": 0,
+      "evidence": "local/reproducible-build.log"
+    },
+    {
+      "argv": [
+        "python",
+        "tools/cloth_lab/test_kernel.py"
+      ],
+      "exitCode": 0,
+      "evidence": "local/kernel.log",
+      "tests": 3
+    },
+    {
+      "argv": [
+        "env",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "PYTHONPATH=/workspace/work/verifydeps",
+        "python",
+        "tools/cloth_lab/verify_fit.py",
+        "--output",
+        "work/cloth-coverage/release/fit"
+      ],
+      "exitCode": 0,
+      "checks": 14,
+      "evidence": "local/fit/receipt.json"
+    },
+    {
+      "argv": [
+        "env",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "PYTHONPATH=/workspace/work/verifydeps",
+        "python",
+        "tools/cloth_lab/verify_browser.py",
+        "--output",
+        "work/cloth-coverage/release/browser"
+      ],
+      "exitCode": 0,
+      "checks": 15,
+      "evidence": "local/browser/receipt.json"
+    },
+    {
+      "argv": [
+        "env",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "PYTHONPATH=/workspace/work/verifydeps",
+        "python",
+        "tools/cloth_lab/verify_replay.py",
+        "--output",
+        "work/cloth-coverage/release/replay"
+      ],
+      "exitCode": 0,
+      "checks": 15,
+      "evidence": "local/replay/receipt.json"
+    },
+    {
+      "argv": [
+        "env",
+        "OPENBLAS_NUM_THREADS=1",
+        "OMP_NUM_THREADS=1",
+        "PYTHONPATH=/workspace/work/verifydeps",
+        "python",
+        "tools/cloth_lab/verify_handoff.py",
+        "--output",
+        "work/cloth-coverage/release/handoff"
+      ],
+      "exitCode": 0,
+      "checks": 6,
+      "evidence": "local/handoff/receipt.json"
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/build_pages.py"
+      ],
+      "exitCode": 0,
+      "seconds": 3.0093376636505127
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_verify_artifacts.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "seconds": 7.274048566818237
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/verify_artifacts.py",
+        "--cli",
+        "work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli"
+      ],
+      "exitCode": 0,
+      "seconds": 1.309070110321045
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/verify_mcp.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.09120631217956543
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/verify_pages.py",
+        "--output",
+        "work/cloth-coverage/release/publisher/final-browser"
+      ],
+      "exitCode": 0,
+      "evidence": "local/publisher/browser/browser-report.json"
+    }
+  ],
+  "verdict": "PASS",
+  "scope": "Local first-ready/reset/edit coverage, actual MakeHuman collision, seam topology, synthetic constitutive and normal-pressure model, actual single-HTML handoff and bounded recorded-state replay. Hosted verification pending publication; self-collision/material calibration/physical fit NOT_RUN.",
+  "cleanup": "Each Playwright script closed owned browsers and its ephemeral HTTP server. Only immutable evidence and ignored work files retained.",
+  "recordedAtUTC": "2026-11-18T07:37:40.049367+00:00"
+}

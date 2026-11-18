@@ -16,6 +16,7 @@ changed file hashes and raw command exit statuses before each commit.
 ```sh
 python scripts/build_cloth_lab.py
 python tools/cloth_lab/test_kernel.py
+python tools/cloth_lab/verify_fit.py --output work/cloth-lab/fit
 python tools/cloth_lab/verify_browser.py --output work/cloth-lab/local
 python tools/cloth_lab/verify_replay.py --output work/cloth-lab/replay
 python tools/cloth_lab/verify_handoff.py --output work/cloth-lab/handoff
@@ -35,7 +36,7 @@ reopen with a screenshot when claiming that boundary.
   matches the independently calculated damped recurrence within 2 µm over 12
   steps; one elastic step reduces a stretched triangle's membrane energy.
 - Real Playwright clicks drive single-step, timed advance, run/pause, material
-  views, faults, downloads and resets. Preserve step 0/1/60/300 screenshots,
+  views, faults, downloads and resets. Preserve initial/1/60/300 user-step screenshots (initial actual frame is 240 after real pre-drape),
   front/side/back, desktop/mobile accessibility snapshots and shader color data.
 - Reopen the actual exported current/previous positions, UVs, seam pairs, body,
   OBJ, SVG and HTML. SVG has mm dimensions and a 100 mm bar; OBJ includes both
@@ -65,8 +66,7 @@ reopen with a screenshot when claiming that boundary.
   frame times (median/p95), fixed solver step cost, dropped wall time and resource
   counts. Do not infer hardware FPS from SwiftShader. There is no fabricated FPS
   target. Preserve performance regressions instead of hiding them.
-- High local strain remains a VISIBLE warning, not garment approval. Current
-  default synthetic example can exceed 20%; numerical heatmap correctness is
+- High local strain remains a VISIBLE warning, not garment approval. The 20% warning threshold remains unchanged; the corrected annular-sector default is about 14%. Numerical heatmap correctness is
   different from fit acceptance. Material calibration, cloth self-collision,
   continuous collision detection, finished construction and physical fit NOT_RUN.
 
@@ -92,7 +92,7 @@ Record actual injected penetration and all three sewing faults; their replayed
 frames must remain FAIL. Reject incompatible source, oversized/corrupt buffers,
 invalid parameters and selected-state disagreement BEFORE altering the scene.
 Run the solver beyond the actual 1,201-frame cap: recording stops, existing data
-remain seekable and state-buffer bytes stay <=40,834,000. Preserve raw per-frame
+remain seekable and base position/history state-buffer bytes stay <=40,834,000; sparse pressure multipliers/normals are counted separately, with total raw bound 98,145,720 bytes. Preserve raw per-frame
 oracle results and record/copy/seek/play timings; the cap excludes temporary
 serialization allocations. At 390 px the replay controls must not overflow.
 
@@ -149,3 +149,57 @@ that client and respects NO_PROXY; TLS verification remains enabled. No network
 policy, response data or assertions were changed. The live lab verifier and the
 existing Pages verifier both passed with this path. Keep the first BLOCKED logs
 and final receipts at `docs/verification/cloth-lab-20261117/live/`.
+
+## First-ready clothing coverage and provided normal pressure
+
+The previous initial pose exposed the buttocks before the user ran simulation.
+Do NOT approve a post-settle frame as evidence for first-ready/reset. The app now
+retains its actual 240-step initial drape clock and uses matching developable
+annular-sector material coordinates. Reopen actual SVG arcs/side lengths, exact
+10 mm offsets and page bounds at default and slider extremes.
+
+`verify_fit.py` must pass first READY without a user step, reset, dimensions, both
+materials, moved avatar, recorded/reopened pressure and offline HTML. Require
+zero exposed anatomical pelvis/upper-thigh ray samples, actual fabric skin-pixel
+checks at front/side/back, and unchanged complete opaque MakeHuman geometry, skin
+colors and normal depth testing. The independent ray oracle selects the region
+from original source skin weights and uses additional horizontal azimuths; it
+never imports the runtime coverage raster.
+
+Pressure is the supplied `pattern-pressure-bench.html` unilateral XPBD module,
+with force = multiplier/dt² and current cloth nodal areas. Independently reopen
+all vertex/centroid contacts, forces, directions and pressure: nonnegative, unit
+normals, area integral matches total force, geometric normal alignment >0.90,
+contact equation residual <0.25 mm. The original three final contact sweeps
+failed long/narrow at 0.469 mm; 16 sweeps must pass without widening tolerance.
+Run SAME embedded-WASM zero, gravity, 500/1000/2000 Pa, inclined, refined, detached
+and disabled coupons; 0.04 m² at 1 kPa must produce 40 N. A coherent fabricated
+contact far from the body and fabricated pressure values must both be rejected.
+
+Pressure multipliers/normals must survive every recorded frame, snapshot,
+recursive save and exact next-step continuation. Every one of the 61 replay
+frames now goes through independent pressure AND anatomical coverage checks in
+addition to the original tensors and BOTH intersection directions. Two spawned
+numeric worker processes may reopen immutable exported states, with at most six
+in flight; browser actions stay sequential and ALL results are required. These
+are numeric processes, not model subagents, and no solver is mocked.
+
+After publication also run:
+
+```sh
+python tools/cloth_lab/verify_fit.py \
+  --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ \
+  --expected-commit DEPLOYED_SHA --expected-html-sha HTML_SHA \
+  --output work/cloth-lab/fit-live
+```
+
+Preserve first exposure screenshots/rays and failed contact-convergence state.
+Synthetic normal-layer/material parameters are not measured physical-fit or
+comfort certification; do not relabel that boundary as approved manufacture.
+
+Run the software-rendered browser suites sequentially when collecting timing
+assertions. Four concurrent SwiftShader browsers caused an observed 0.657 s
+playback of a 0.5 s clip to fail the unchanged 0.15 s tolerance. An isolated
+eight-run probe and the complete isolated replay suite must pass; retain the
+first failure and actual timing log. Numerical worker processes may independently
+reopen immutable snapshots, but all frame results are required before PASS.

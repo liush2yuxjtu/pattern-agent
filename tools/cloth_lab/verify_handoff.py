@@ -58,7 +58,7 @@ def run(args,base):
             page.locator('#import-replay').set_input_files(str(out/'original.json'))
             page.wait_for_function("!document.querySelector('#import-replay').value")
             compare_frame(state(page),original['replay']['frames'][-1])
-            page.locator('#run').click();page.wait_for_function('clothLab.stats().frame>312')
+            running_start=state(page)['diagnostics']['frame'];page.locator('#run').click();page.wait_for_function('(n)=>clothLab.stats().frame>n',arg=running_start+2)
             page.evaluate('''() => {const original=File.prototype.text;
                 File.prototype.text=function(){File.prototype.text=original;const actual=original.call(this);
                     window.fileReadWaiting=true;return new Promise((resolve,reject)=>{

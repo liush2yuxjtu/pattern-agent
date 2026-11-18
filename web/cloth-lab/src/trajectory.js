@@ -3,10 +3,12 @@ export const MAX_FRAMES = 1201;
 export const VERTICES = 850;
 export const STATE_FLOATS = VERTICES * 10;
 const BYTES = STATE_FLOATS * 4;
-const SCHEMA = 'pattern-agent.cloth-trajectory.v1';
+const SCHEMA = 'pattern-agent.cloth-trajectory.v2';
+export const MAX_PRESSURE_CONTACTS=850+1536;
+export const MAX_TOTAL_RAW_BYTES=MAX_FRAMES*(STATE_FLOATS+MAX_PRESSURE_CONTACTS*5)*4;
 
 export function validateParameters(p) {
-  if (!p || ![550,575,600,625,650,675,700,725,750,775,800].includes(p.bottomMm) ||
+  if (!p || p.patternType!=='annular-sector' || ![550,575,600,625,650,675,700,725,750,775,800].includes(p.bottomMm) ||
       p.topMm !== 420 || !Array.isArray(p.lengthsMm) || p.lengthsMm.length !== 2 ||
       !Number.isInteger(p.lengthsMm[0]) || p.lengthsMm[0] < 400 || p.lengthsMm[0] > 700 || p.lengthsMm[0] % 25 ||
       !['good','mismatch','open','reverse'].includes(p.fault) ||
@@ -15,25 +17,37 @@ export function validateParameters(p) {
       Math.abs(p.bodyOffsetMm) > 60 || p.bodyOffsetMm % 10 ||
       typeof p.collision !== 'boolean' || typeof p.wind !== 'boolean') throw new Error('Invalid recording parameters');
   // Canonical semantic fields: JSON object key order is not physical state.
-  return {bottomMm:p.bottomMm,topMm:p.topMm,lengthsMm:[...p.lengthsMm],
+  return {patternType:p.patternType,bottomMm:p.bottomMm,topMm:p.topMm,lengthsMm:[...p.lengthsMm],
     fault:p.fault,material:p.material,bodyOffsetMm:p.bodyOffsetMm,
     collision:p.collision,wind:p.wind};
 }
 
 export function topologyKey(p) {
-  return JSON.stringify([p.bottomMm,p.topMm,p.lengthsMm,p.fault,p.material]);
+  return JSON.stringify([p.patternType,p.bottomMm,p.topMm,p.lengthsMm,p.fault,p.material]);
+}
+
+export function encodeFloats(state){
+  const bytes=new Uint8Array(state.buffer,state.byteOffset,state.byteLength);let binary='';
+  for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
+  return btoa(binary);
+}
+export function encodePressure(p){return {valid:p.valid,samples:encodeFloats(p.samples)};}
+export function decodePressure(p){
+  if(!p||typeof p.valid!=='boolean'||typeof p.samples!=='string'||p.samples.length>4*Math.ceil(MAX_PRESSURE_CONTACTS*20/3)||!/^([A-Za-z0-9+/]*={0,2})$/.test(p.samples))throw new Error('Invalid pressure state');
+  const raw=atob(p.samples);if(raw.length%20)throw new Error('Invalid pressure buffer');
+  const samples=new Float32Array(Uint8Array.from(raw,c=>c.charCodeAt(0)).buffer),seen=new Set();
+  if(!p.valid&&samples.length)throw new Error('Invalid stale pressure');
+  for(let j=0;j<samples.length;j+=5){const a=samples[j],l=samples[j+1],normal=samples.subarray(j+2,j+5);
+    if(!Number.isInteger(a)||!(a>=0&&a<850||a>=4096&&a<4096+1536)||seen.has(a)||!Number.isFinite(l)||l<=0||!normal.every(Number.isFinite)||Math.abs(Math.hypot(...normal)-1)>1e-4)throw new Error('Invalid pressure contact');seen.add(a);
+  }
+  return {valid:p.valid,samples};
 }
 
 export function encodeTrajectory(track, fingerprint) {
   return {schema:SCHEMA, fingerprint, fps:120, maxFrames:MAX_FRAMES,
     stateLayout:['positions:2550','previous:2550','pins:2550','contacts:850'],
     cursor:track.cursor, atRecordedState:track.atRecordedState,
-    frames:track.frames.map(({state,...meta}) => {
-      const bytes=new Uint8Array(state.buffer,state.byteOffset,state.byteLength);
-      let binary='';
-      for(let i=0;i<bytes.length;i+=8192) binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
-      return {...meta,state:btoa(binary)};
-    })};
+    frames:track.frames.map(({state,pressureState,...meta})=>({...meta,state:encodeFloats(state),pressureState:encodePressure(pressureState)}))};
 }
 
 export function decodeTrajectory(data, fingerprint, parameters) {
@@ -56,7 +70,7 @@ export function decodeTrajectory(data, fingerprint, parameters) {
     const state=new Float32Array(Uint8Array.from(raw,c=>c.charCodeAt(0)).buffer);
     if(!state.every((v,i)=>Number.isFinite(v)&&(i<VERTICES*9 ? Math.abs(v)<10 : v===0||v===1))) throw new Error('Invalid trajectory state');
     priorFrame=f.frame;priorTime=f.time;
-    return {frame:f.frame,time:f.time,stepMs:f.stepMs,kind:f.kind,parameters:p,state};
+    return {frame:f.frame,time:f.time,stepMs:f.stepMs,kind:f.kind,parameters:p,state,pressureState:decodePressure(f.pressureState)};
   });
   return {frames,cursor:data.cursor,atRecordedState:data.atRecordedState};
 }

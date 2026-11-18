@@ -59,13 +59,13 @@ def run(args,base):
             assert build['commit']==args.expected_commit,(build['commit'],args.expected_commit)
             report['deployedCommit']=build['commit']
         # One real button press must advance one actual 1/120 s physics step.
-        initial=page.evaluate('clothLab.project()');save_json(out/'step-000.json',initial)
+        initial=page.evaluate('clothLab.project()');initial_frame=initial['diagnostics']['frame'];initial_time=initial['diagnostics']['simulationSeconds'];save_json(out/'step-000.json',initial)
         page.screenshot(path=str(out/'step-000.png'),full_page=True)
-        page.locator('#single-step').click();page.wait_for_function('clothLab.stats().frame===1')
-        assert abs(page.evaluate('clothLab.stats().simulationSeconds')-1/120)<1e-6
+        page.locator('#single-step').click();page.wait_for_function('(n)=>clothLab.stats().frame===n',arg=initial_frame+1)
+        assert abs(page.evaluate('clothLab.stats().simulationSeconds')-initial_time-1/120)<1e-6
         page.screenshot(path=str(out/'step-001.png'),full_page=True)
         page.evaluate('clothLab.advance(59)');page.screenshot(path=str(out/'step-060.png'),full_page=True)
-        page.locator('#settle').click();page.wait_for_function('clothLab.stats().frame===300',timeout=60000)
+        page.locator('#settle').click();page.wait_for_function('(n)=>clothLab.stats().frame===n',arg=initial_frame+300,timeout=60000)
         settled=page.evaluate('clothLab.project()');save_json(out/'settled-project.json',settled)
         page.screenshot(path=str(out/'step-300-fabric.png'),full_page=True)
         (out/'desktop-snapshot.yml').write_text(page.locator('body').aria_snapshot())
@@ -150,7 +150,7 @@ def run(args,base):
         # Parameter propagation to the actual pattern and rest mesh.
         page.locator('#width').fill('750');page.locator('#width').dispatch_event('input');page.locator('#length').fill('500');page.locator('#length').dispatch_event('input')
         changed=page.evaluate('clothLab.project()');assert changed['parameters']['bottomMm']==750 and changed['parameters']['lengthsMm']==[500,500]
-        assert abs(np.ptp(np.array(changed['restUV']).reshape(-1,2)[:,1])-.75)<1e-6
+        alpha=(750-420)/500;outer=420/alpha+500;assert abs(np.ptp(np.array(changed['restUV']).reshape(-1,2)[:,1])-2*outer*np.sin(alpha/2)/1000)<1e-6
         assert '420 / 750 × 500' in page.locator('#patterns').inner_html()
         report['checks']['sameParametersDrivePatternAndRestMesh']=True
         # Memory/resource counters across repeated real reset clicks.

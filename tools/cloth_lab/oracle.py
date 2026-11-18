@@ -87,7 +87,11 @@ def verify(data, body_source=None, intersections=True):
         for j in range(m+1):
             w = params['topMm']+(params['bottomMm']-params['topMm'])*j/m
             for i in range(n+1):
-                expected.append([j/m*params['lengthsMm'][p]/1000, (i/n-.5)*w/1000])
+                if params.get('patternType')=='annular-sector':
+                    alpha=(params['bottomMm']-params['topMm'])/params['lengthsMm'][p]
+                    radius=params['topMm']/alpha;angle=(i/n-.5)*alpha;distance=radius+j/m*params['lengthsMm'][p]
+                    expected.append([(distance*np.cos(angle)-radius)/1000,distance*np.sin(angle)/1000])
+                else:expected.append([j/m*params['lengthsMm'][p]/1000, (i/n-.5)*w/1000])
     assert np.max(abs(uv-np.array(expected))) < 1e-7, 'Flat pattern does not match dimensions'
     seam = seam_audit(data, uv)
     assert seam['mismatchMm'] < 1, seam
@@ -133,7 +137,12 @@ def verify(data, body_source=None, intersections=True):
         keep = np.all(np.minimum(a, z) <= x.max(axis=0)+1e-5, axis=1) & np.all(np.maximum(a, z) >= x.min(axis=0)-1e-5, axis=1)
         reverse_hits = segment_hits(cloth, a[keep], z[keep])
         assert hits == 0 and reverse_hits == 0, f'Actual mesh intersections: cloth edges {hits}, body edges {reverse_hits}'
-    return dict(verdict='PASS', vertices=len(x), triangles=len(faces), bodyVertices=len(bv), bodyTriangles=len(bf),
+    fit={}
+    if params.get('patternType')=='annular-sector':
+        from fit_oracle import pressure,coverage
+        fit['pressure']=pressure(data)
+        if body_source:fit['coverage']=coverage(data,body_source,angles=8)
+    return dict(fit=fit,verdict='PASS', vertices=len(x), triangles=len(faces), bodyVertices=len(bv), bodyTriangles=len(bf),
                 seam=seam, maxSeamGapMm=float(max_gap), maxBodyPenetrationMm=float(max_penetration),
                 minBodyClearanceMm=float(-signed.max()*1000), sampledPoints=len(samples),
                 insideSamples=int(inside.sum()), clothEdgeBodyHits=hits, bodyEdgeClothHits=reverse_hits,

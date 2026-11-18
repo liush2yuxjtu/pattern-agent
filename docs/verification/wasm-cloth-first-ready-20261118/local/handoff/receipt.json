@@ -1,0 +1,345 @@
+{
+  "url": "http://127.0.0.1:35019/",
+  "checks": {
+    "sameParameterValuesIndependentOfJSONKeyOrder": true,
+    "pendingFileReadLocksMutatingControls": true,
+    "pendingFileReadPausesRealWASMIntegration": true,
+    "actualUploadedBytesRestoreAllRecordedState": true,
+    "semanticMismatchStillRejectedAtomicallyAndControlsRecovered": true,
+    "activityDescribesDisplayedReplayFrame": true
+  },
+  "observations": {
+    "reorderedImport": {
+      "accepted": true,
+      "message": "已恢复完整录制；拖动时间轴可离线检查各帧。"
+    },
+    "pendingRead": {
+      "locked": {
+        "width": true,
+        "length": true,
+        "material": true,
+        "fault": true,
+        "body-shift": true,
+        "collision": true,
+        "wind": true,
+        "record-start": true,
+        "run": true,
+        "single-step": true,
+        "reset": true,
+        "replay-timeline": true,
+        "import-replay": true
+      },
+      "before": {
+        "actual": 1038,
+        "reported": 1038
+      },
+      "after": {
+        "actual": 1038,
+        "reported": 1038
+      },
+      "activity": "正在读取录制文件；仿真已暂停。"
+    },
+    "replayActivity": "回放帧 1 / 11 · 4.500 s；未进行物理积分。"
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "htmlSha256": "7af91417abb80a1f0563b1ed977bdc86c0b63135248168fa1654a1febda12234",
+  "source": {
+    "fingerprint": "ca0ba8e2dae9c62d6506da41c031767f785e6cdbbadd4f999670453a1d691acd",
+    "wasmSha256": "9bf573ba1f2197ff073e3f81d7cd63983dab6440eddaf4d8e034a2d4369e7a5b",
+    "bodySourceSha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6"
+  },
+  "independentReopenedGeometry": {
+    "fit": {
+      "pressure": {
+        "verdict": "PASS",
+        "samples": 107,
+        "forceN": 1.0576361644185754,
+        "peakPa": 46.73655700683594,
+        "forceIntegralErrorN": 3.3713458913453564e-08,
+        "maxContactResidualMm": 1.756542649219157e-05,
+        "minNormalAlignment": 0.9999999141810817
+      },
+      "coverage": {
+        "verdict": "PASS",
+        "anatomicalSurfaceSamples": 1709,
+        "views": 8,
+        "totalRays": 13672,
+        "exposedRays": 0,
+        "byView": [
+          {
+            "angleDegrees": 0.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 45.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 90.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 135.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 180.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 225.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 270.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 315.0,
+            "exposed": 0,
+            "rays": 1709
+          }
+        ]
+      }
+    },
+    "verdict": "PASS",
+    "vertices": 850,
+    "triangles": 1536,
+    "bodyVertices": 13380,
+    "bodyTriangles": 26756,
+    "seam": {
+      "lengthsMm": [
+        600.0000024762172,
+        600.0000024762172
+      ],
+      "mismatchMm": 0.0,
+      "missing": false,
+      "reversed": false
+    },
+    "maxSeamGapMm": 0.0,
+    "maxBodyPenetrationMm": 0.0,
+    "minBodyClearanceMm": 2.9999851376980704,
+    "sampledPoints": 4770,
+    "insideSamples": 0,
+    "clothEdgeBodyHits": 0,
+    "bodyEdgeClothHits": 0,
+    "maxTensorFieldAbsoluteErrors": [
+      2.5905012357441137e-07,
+      2.3866368636937807e-07,
+      2.2288159096106597e-07,
+      0.04356795062267338,
+      0.03961336207066779,
+      2.052055380064033e-07,
+      2.0934500444269588e-07,
+      6.671494697310654e-08
+    ],
+    "maxPrincipalStrainPercent": 14.333701418130929,
+    "maxPrincipalCauchyKPa": 30.28723113867573,
+    "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+  },
+  "performance": {
+    "stats": {
+      "frame": 540,
+      "simulationSeconds": 4.500017166137695,
+      "maxSeamGapMm": 0,
+      "maxBodyPenetrationMm": 0,
+      "minBodyClearanceMm": 5.948944948613644,
+      "maxPrincipalStrainPercent": 14.334332942962646,
+      "maxPrincipalStressKPa": 30.294640625,
+      "contacts": 114,
+      "finite": true,
+      "membraneEnergyJ": 0.028707867488265038,
+      "collisionEnabled": true,
+      "pressure": {
+        "ready": true,
+        "frame": 540,
+        "normalForceN": 1.056937575340271,
+        "resultantOnClothN": [
+          0.005473501048982143,
+          0.17630693316459656,
+          -0.5000997185707092
+        ],
+        "maxPressurePa": 46.74418258666992,
+        "loadedAreaM2": 0.07684051990509033,
+        "clothAreaM2": 0.6565237045288086,
+        "contactSamples": 107,
+        "maxConstraintResidualMm": 2.104718532791594e-05,
+        "minNormalAlignment": 0.9999997615814209,
+        "finite": true,
+        "consistent": true
+      },
+      "coverage": {
+        "bodySamples": 4996,
+        "exposedSamples": 0,
+        "maxDepthDeficitMm": 0,
+        "byView": {
+          "front": 0,
+          "back": 0,
+          "right": 0,
+          "left": 0
+        },
+        "covered": true
+      },
+      "missingSeam": false,
+      "orientationValid": true,
+      "lengthMismatchMm": 0,
+      "stepMs": 6.1699999995529655,
+      "bodyOffsetMm": 0,
+      "droppedWallSeconds": 0
+    },
+    "frameTimesMs": [
+      16.700000000000728,
+      50
+    ],
+    "history": [
+      {
+        "frame": 550,
+        "simulationSeconds": 4.583349227905273,
+        "maxSeamGapMm": 0,
+        "maxBodyPenetrationMm": 0,
+        "minBodyClearanceMm": 5.94895938411355,
+        "maxPrincipalStrainPercent": 14.333701133728027,
+        "maxPrincipalStressKPa": 30.287265625,
+        "contacts": 114,
+        "finite": true,
+        "membraneEnergyJ": 0.028687462210655212,
+        "collisionEnabled": true,
+        "pressure": {
+          "ready": true,
+          "frame": 550,
+          "normalForceN": 1.0576362609863281,
+          "resultantOnClothN": [
+            0.005530091933906078,
+            0.17659427225589752,
+            -0.5000030398368835
+          ],
+          "maxPressurePa": 46.73655700683594,
+          "loadedAreaM2": 0.07725970447063446,
+          "clothAreaM2": 0.656527042388916,
+          "contactSamples": 107,
+          "maxConstraintResidualMm": 1.4193574315868318e-05,
+          "minNormalAlignment": 0.9999997615814209,
+          "finite": true,
+          "consistent": true
+        },
+        "coverage": {
+          "bodySamples": 4996,
+          "exposedSamples": 0,
+          "maxDepthDeficitMm": 0,
+          "byView": {
+            "front": 0,
+            "back": 0,
+            "right": 0,
+            "left": 0
+          },
+          "covered": true
+        },
+        "missingSeam": false,
+        "orientationValid": true,
+        "lengthMismatchMm": 0,
+        "stepMs": 16.14999999701977,
+        "bodyOffsetMm": 0,
+        "droppedWallSeconds": 0
+      },
+      {
+        "frame": 540,
+        "simulationSeconds": 4.500017166137695,
+        "maxSeamGapMm": 0,
+        "maxBodyPenetrationMm": 0,
+        "minBodyClearanceMm": 5.948944948613644,
+        "maxPrincipalStrainPercent": 14.334332942962646,
+        "maxPrincipalStressKPa": 30.294640625,
+        "contacts": 114,
+        "finite": true,
+        "membraneEnergyJ": 0.028707867488265038,
+        "collisionEnabled": true,
+        "pressure": {
+          "ready": true,
+          "frame": 540,
+          "normalForceN": 1.056937575340271,
+          "resultantOnClothN": [
+            0.005473501048982143,
+            0.17630693316459656,
+            -0.5000997185707092
+          ],
+          "maxPressurePa": 46.74418258666992,
+          "loadedAreaM2": 0.07684051990509033,
+          "clothAreaM2": 0.6565237045288086,
+          "contactSamples": 107,
+          "maxConstraintResidualMm": 2.104718532791594e-05,
+          "minNormalAlignment": 0.9999997615814209,
+          "finite": true,
+          "consistent": true
+        },
+        "coverage": {
+          "bodySamples": 4996,
+          "exposedSamples": 0,
+          "maxDepthDeficitMm": 0,
+          "byView": {
+            "front": 0,
+            "back": 0,
+            "right": 0,
+            "left": 0
+          },
+          "covered": true
+        },
+        "missingSeam": false,
+        "orientationValid": true,
+        "lengthMismatchMm": 0,
+        "stepMs": 6.1699999995529655,
+        "bodyOffsetMm": 0,
+        "droppedWallSeconds": 0
+      }
+    ],
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "rendererClass": "software",
+    "pixelRatio": 0.8,
+    "drawCalls": 5,
+    "geometries": 5,
+    "textures": 1,
+    "wasmBytes": 89828,
+    "wasmMemoryBytes": 16777216,
+    "fingerprint": "ca0ba8e2dae9c62d6506da41c031767f785e6cdbbadd4f999670453a1d691acd",
+    "droppedWallSeconds": 0,
+    "replay": {
+      "pressureBytes": 23540,
+      "totalBytes": 397540,
+      "maxTotalRawBytes": 98145720,
+      "frames": 11,
+      "cursor": 0,
+      "atRecordedState": true,
+      "recording": false,
+      "playing": false,
+      "speed": 1,
+      "maxFrames": 1201,
+      "bytes": 374000,
+      "integratedSteps": 1038,
+      "captureTimesMs": [
+        0.09999999403953552,
+        0.10000000894069672,
+        0.10000000894069672,
+        0.19999998807907104,
+        0.09999999403953552,
+        0.29999999701976776,
+        0.10000000894069672,
+        0.10000000894069672,
+        0.10000000894069672,
+        0.10000000894069672,
+        0.10000000894069672
+      ],
+      "seekTimesMs": [
+        66.90000000596046
+      ],
+      "playbackTimesMs": []
+    }
+  },
+  "verdict": "PASS"
+}

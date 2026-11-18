@@ -1,0 +1,43 @@
+[
+  {
+    "argv": [
+      "python",
+      "scripts/build_pages.py"
+    ],
+    "exitCode": 0,
+    "seconds": 3.0093376636505127
+  },
+  {
+    "argv": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_verify_artifacts.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "seconds": 7.274048566818237
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/verify_artifacts.py",
+      "--cli",
+      "work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli"
+    ],
+    "exitCode": 0,
+    "seconds": 1.309070110321045
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/verify_mcp.py"
+    ],
+    "exitCode": 0,
+    "seconds": 0.09120631217956543
+  }
+]

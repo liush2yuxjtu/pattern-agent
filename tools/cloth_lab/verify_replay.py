@@ -5,6 +5,8 @@ No simulation fixtures. Instrument the real WASM step export only to count calls
 The numerical oracle never imports the runtime or trajectory codec.
 """
 import argparse
+from concurrent.futures import ProcessPoolExecutor
+import multiprocessing
 import base64
 import colorsys
 import copy
@@ -49,6 +51,7 @@ def compare_frame(project, frame):
     for key,a,b in [('positions',0,2550),('previous',2550,5100),('pinPositions',5100,7650),('contactFlags',7650,8500)]:
         assert np.array_equal(values[a:b],project[key]),key
     assert project['parameters']==frame['parameters']
+    assert project['pressureState']==frame['pressureState']
     assert project['diagnostics']['frame']==frame['frame']
     assert project['diagnostics']['simulationSeconds']==frame['time']
     assert project['body']['offsetX']==frame['parameters']['bodyOffsetMm']/1000
@@ -101,9 +104,9 @@ def run(args,base):
         page.locator('#record-stop').click()
         after=counters(page)
         assert after['actual']-before['actual']==after['reported']-before['reported']==60
-        trajectory=page.evaluate('clothLab.replay.export()')
+        trajectory=page.evaluate('clothLab.replay.export()');start_frame=trajectory['frames'][0]['frame']
         assert len(trajectory['frames'])==61
-        assert [f['frame'] for f in trajectory['frames']]==list(range(300,361))
+        assert [f['frame'] for f in trajectory['frames']]==list(range(start_frame,start_frame+61))
         assert all(abs((b['time']-a['time'])-1/120)<3e-7 for a,b in zip(trajectory['frames'],trajectory['frames'][1:]))
         report['checks']['oneRecordedStatePerRealWASMStep']=True
         page.screenshot(path=str(out/'recorded.png'),full_page=True)
@@ -112,16 +115,25 @@ def run(args,base):
         # Every saved state must seek exactly, without a WASM integration call.
         all_frames=[];baseline=counters(page)
         page.locator('[data-mode=stress]').click()
-        for i,f in enumerate(trajectory['frames']):
-            page.locator('#replay-timeline').fill(str(i));page.locator('#replay-timeline').dispatch_event('input')
-            saved=state(page);compare_frame(saved,f)
-            result=verify(saved,args.body_source)
-            all_frames.append({'index':i,'physicsFrame':f['frame'],'time':f['time'],**result})
-            if i in (0,30,60):
+        # Pure numeric reopeners run independently; retain at most six snapshots
+        # in flight. Real browser seeking stays sequential and every result is required.
+        pending=[]
+        def collect_one():
+            index,meta,future=pending.pop(0);result=future.result()
+            all_frames.append({'index':index,'physicsFrame':meta['frame'],'time':meta['time'],**result})
+            if index in (0,30,60):
                 save_json(out/'frame-oracles.json',all_frames)
-                print(f'Independent recorded-frame oracles: {i+1}/61',flush=True)
-                colors(page,saved,3,15000)
-                page.screenshot(path=str(out/f'stress-frame-{i:03}.png'),full_page=True)
+                print(f'Independent recorded-frame oracles: {index+1}/61',flush=True)
+        with ProcessPoolExecutor(max_workers=2,mp_context=multiprocessing.get_context('spawn')) as pool:
+            for i,f in enumerate(trajectory['frames']):
+                page.locator('#replay-timeline').fill(str(i));page.locator('#replay-timeline').dispatch_event('input')
+                saved=state(page);compare_frame(saved,f)
+                pending.append((i,f,pool.submit(verify,saved,args.body_source)))
+                if i in (0,30,60):
+                    colors(page,saved,3,15000)
+                    page.screenshot(path=str(out/f'stress-frame-{i:03}.png'),full_page=True)
+                if len(pending)>=6:collect_one()
+            while pending:collect_one()
         assert counters(page)==baseline
         report['allFrames']=all_frames
         report['checks']['all61FramesIndependentSeamsBodyIntersectionsAndTensors']=True
@@ -157,6 +169,7 @@ def run(args,base):
             page.wait_for_function('!clothLab.replay.info().playing',timeout=10000)
             automation_durations[speed]=time.monotonic()-clock
             elapsed=page.evaluate('playbackProbe');durations[speed]=elapsed
+            save_json(out/'playback-timings.json',{'wallSeconds':durations,'includingAutomationSeconds':automation_durations})
             assert abs(elapsed-.5/float(speed))<.15,(speed,elapsed)
             assert page.evaluate('clothLab.replay.info().cursor')==60
             compare_frame(state(page),trajectory['frames'][-1])
@@ -185,7 +198,7 @@ def run(args,base):
         assert counters(op)=={'actual':0,'reported':0}
         op.screenshot(path=str(out/'offline-timeline.png'),full_page=True)
         op.evaluate('clothLab.replay.seek(20)');op.locator('#single-step').click()
-        op.wait_for_function('clothLab.stats().frame===321')
+        op.wait_for_function('(n)=>clothLab.stats().frame===n',arg=start_frame+21)
         compare_frame(state(op),trajectory['frames'][21])
         assert counters(op)=={'actual':1,'reported':1}
         assert not op.evaluate('clothLab.replay.info().atRecordedState')
@@ -267,6 +280,9 @@ def run(args,base):
         info=page.evaluate('clothLab.replay.info()');after=counters(page)
         assert info['frames']==1201 and not info['recording'] and not info['atRecordedState']
         assert info['bytes']==1201*8500*4
+        assert info['totalBytes']==info['bytes']+info['pressureBytes']
+        assert info['maxTotalRawBytes']==1201*(8500+(850+1536)*5)*4
+        assert info['bytes']<info['totalBytes']<=info['maxTotalRawBytes']
         assert after['actual']-before['actual']==1200
         assert '上限' in page.locator('#replay-note').inner_text()
         page.locator('#replay-first').click();page.locator('#replay-last').click()
