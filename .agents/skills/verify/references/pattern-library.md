@@ -1,4 +1,4 @@
-# Paper pattern library and 3D gallery
+# 2D paper pattern gallery and 3D cases
 
 Scope: `web/pattern-library/` and the homepage gallery link. Use
 [github-pages.md](github-pages.md) for the existing publication gate and link
@@ -7,6 +7,11 @@ regression. Generation commands and the sample scope are under
 
 ## Claims and exact commands
 
+- Verify the 26 preview hashes in the 2D manifest against Pages metadata.
+  Reopen the six actual SVG files and 20 raster previews, check raster ink and
+  margins, and match the 19 planar research exports to their 24 catalog records.
+  Check all thumbnail images in a browser, combined filters, empty recovery,
+  keyboard access, and a mobile permalink to the enlarged DXF preview.
 - Reopen both FreeSewing Sandy states against the existing independent geometry
   audit, check native SVG and state hashes, and compare source vertex arrays,
   face indices and per-corner UVs to published OBJ. Check each of the nine
@@ -18,7 +23,8 @@ regression. Generation commands and the sample scope are under
   into ignored work, compile the sample intent and apply the saved patch. Compare
   the results to the example output included in the ZIP.
 - Run the actual site at the Pages project prefix with the commands below.
-  Observe the source folder link, nine image changes, three 2D edit states,
+  Observe navigation from home to the 2D gallery, the three 3D cases, all nine
+  render changes, the three 2D edit states,
   keyboard zoom, focus restoration, deep links, invalid-query fallback, mobile
   overflow, and SHA-256 of actual browser downloads. Record the screenshots
   and the metadata commit in the receipt.
@@ -51,8 +57,9 @@ python web/pattern-library/source/verify_catalog.py --directory dist \
 
 The source option checks every published evidence span against its original
 review and product ID. The browser exercise enters the catalog from the gallery,
-filters by format, publisher, part and keyword, checks empty results and
-pagination, compares all four CSV downloads with the build hashes, and opens a
-filtered mobile permalink. Use the same verifier against the live Pages root
+filters CAD by format and publisher, opens a research preview link,
+checks feedback grouped by dataset or named publisher and style, and exercises
+part filtering, actual excerpts, style pagination, comment expansion, and
+mobile permalinks. It compares all four CSV downloads with their build hashes. Use the same verifier against the live Pages root
 with `--expected-commit` after publication. Keep CAD-byte deduplication and
 publisher-only entries distinct in the receipt.

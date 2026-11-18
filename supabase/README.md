@@ -32,6 +32,21 @@ limit 20;
 
 `curated_feedback` 保存人工整理的原始网页、观察和量法，`design_intents` 保存对应的候选改法及审核状态。批量评论每条可关联多项 `feedback_signals`。
 
+按实际来源和款式查询。两列 `source_key` 和 `style_key` 一起使用。批量数据的款式键是该来源的商品 ID，人工反馈的款式键是原款式名。计数区分评论和反馈线索。
+
+```sql
+select source_key, style_key, style_title, review_count, feedback_count
+from pattern_agent.feedback_style_counts
+where source_key = 'publisher:Zappos'
+order by review_count desc, style_title;
+
+select feedback_id, part, evidence, candidate, source_url, locator
+from pattern_agent.feedback_by_source_style
+where source_key = 'publisher:Zappos'
+  and style_key = 'Dickies Eisenhower 男式夹克'
+order by feedback_id;
+```
+
 ## 导入
 
 首次设置时通过 Supabase 连接器应用 `migrations/` 中的迁移，也可以用安全配置的 PostgreSQL 连接运行下方第一行。后两行准备并导入当前目录数据。Python 依赖 PyYAML，版本与 [编辑器依赖](../web/pattern-library/editor/requirements.txt) 相同。

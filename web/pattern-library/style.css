@@ -121,3 +121,36 @@ dialog p { margin: 10px 16px 15px; color: var(--muted); font-size: 13px; }
   .pattern-stage, .render-stage { height: 290px; }
   .edit-stage { height: 250px; }
 }
+
+.paper-filters { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+.paper-filters label { min-width: 0; display: grid; gap: 4px; color: var(--muted); font-size: 13px; }
+.paper-filters input, .paper-filters select { min-width: 0; width: 100%; min-height: 40px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); font: inherit; }
+.paper-status { margin: 13px 0 9px; font-size: 13px; font-weight: 680; color: var(--muted); }
+.paper-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.paper-grid li { min-width: 0; }
+.paper-card { display: grid; grid-template-rows: auto 1fr; min-height: 100%; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: var(--paper); color: var(--ink); text-decoration: none; }
+.paper-card:hover { border-color: #8ca99b; box-shadow: 0 4px 12px #193e2910; }
+.paper-thumb { display: block; aspect-ratio: 40 / 27; width: 100%; height: auto; padding: 6px; object-fit: contain; background: #f8faf5; border-bottom: 1px solid var(--line); }
+.paper-label { display: grid; align-content: start; gap: 3px; padding: 10px 12px 12px; line-height: 1.35; }
+.paper-label strong { font-size: 15px; }
+.paper-label > span, .paper-note { color: var(--muted); font-size: 12px; }
+.paper-note { margin-top: 12px; }
+.paper-dialog .paper-enlarged { background: #f8faf5; padding: 8px; }
+.paper-enlarged img { width: 100%; height: auto; max-height: min(66vh, 680px); object-fit: contain; }
+.paper-dialog p { overflow-wrap: anywhere; }
+
+@media (max-width: 980px) {
+  .paper-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .paper-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .paper-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .paper-filters label:first-child { grid-column: 1 / -1; }
+  .paper-label { padding: 8px; }
+  .paper-label strong { font-size: 14px; }
+}
+
+@media (max-width: 360px) {
+  .paper-grid { grid-template-columns: minmax(0, 1fr); }
+}

@@ -38,7 +38,7 @@ for (const button of editButtons) {
   button.addEventListener("click", () => selectEdit(button.dataset.edit));
 }
 
-$("zoom-pattern").addEventListener("click", () => {
+$("zoom-pattern")?.addEventListener("click", () => {
   const img = $("pattern-img");
   showImage($("enlarged-pattern"), img.src, img.alt);
   $("pattern-dialog").showModal();
@@ -103,7 +103,7 @@ async function initialize() {
   showSample();
 }
 
-initialize().catch(() => {
+if (sampleButtons.length) initialize().catch(() => {
   $("gallery-problem").textContent = "切换资料暂时无法加载，当前展示 Sandy 基础款。";
   $("gallery-problem").hidden = false;
   for (const button of [...sampleButtons, ...viewButtons]) button.disabled = true;

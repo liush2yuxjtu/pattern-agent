@@ -1,8 +1,14 @@
-# Pattern Agent 纸样与三维图册
+# Pattern Agent 二维纸样图册
 
-[打开公开图册](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/) · [浏览完整纸样与反馈资料库](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/)
+[打开二维图册](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/) · [按来源和款式看反馈](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/?view=feedback)
 
-图册提供可放大的二维纸样、三个三维视角，以及可以下载并独立检查的原始矢量、网格和验证记录。
+二维图册提供 26 张可放大的裁片预览。包括 6 张 SVG、1 张 Virtual Fashion Lab 卫衣 DXF 预览和 19 张浙江大学研究档案的二维 OBJ 轮廓。可按来源、服装类别和关键词查找，分享单张图卡链接。[预览和原始几何指纹](paper-gallery/manifest.json)
+
+归档的 ET PRJ 和 CLO ZPRJ 等原件仍可在 CAD 索引查找。图册只收录已有二维几何的样本，预览尺寸经过适屏缩放。浙大预览取自作者档案中的平面 OBJ，裁片间距沿用原文件。[CAD 索引](catalog/) · [作者研究档案](https://github.com/Dancingmader/3D-High-quality-Garment-Dataset) · [Virtual Fashion Lab](https://www.virtualfashionlab.com/clo3dfreeassets)
+
+## 三维渲染案例
+
+三维对照页提供同款裁片、三维视角和可下载网格。[打开三维案例](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/rendered.html)
 
 | 样本 | 二维来源 | 三维来源 |
 | --- | --- | --- |
@@ -10,7 +16,7 @@
 | Sandy 加长增摆 | FreeSewing Sandy 4.10.2，裙长 650 mm，圆摆比例 60% | 四片裙身，以合成亚麻参数求解 120 步 |
 | 贴身 T 恤袖口改版 | 项目原型的 M 码 DXF，袖口展开宽增加 10 U | 通过独立接缝检查的单层 GLB 静态外壳 |
 
-每款的展示图由 Blender 从对应网格渲染。Sandy 的原始 FreeSewing SVG 包含腰头，三维只保留裙身。图册的三维结果尚未经过实物试穿。T 恤的图形单位 U 尚未标定。
+每款的展示图由 Blender 从对应网格渲染。Sandy 的原始 FreeSewing SVG 包含腰头，三维只保留裙身。三维结果尚未经过实物试穿。T 恤的图形单位 U 尚未标定。
 
 ## 按改版意图生成和重放 YAML 补丁
 
@@ -29,13 +35,23 @@ python -m pattern_tool serve
 
 ## 纸样与需求样本
 
-[完整资料库](catalog/)收录 62 份 CAD 原件及可按部位逐条筛选的评论。新增的 24 份 ZPRJ 来自浙江大学服装皱褶研究档案。下方链接保留初版样本和回归输入。[扩充来源与复现说明](catalog/README.md)
+[完整资料库](catalog/)收录 62 份 CAD 原件及按原始来源和款式分组的评论，可在分组中筛选调整部位和关键词。24 份 ZPRJ 来自浙江大学服装皱褶研究档案。下方链接保留初版样本和回归输入。[扩充来源与复现说明](catalog/README.md)
 
 - [纸样索引](data/pattern-assets.csv)记录 38 个去重原件及另列验证样本，含发布页、哈希和核验状态。请从索引中的发布方获取第三方原件。源项目的 [T 恤 DXF](editor/samples/input.dxf)、[衣身 DXF](downloads/bodice-v001.dxf)和 [DXF 回归样本](downloads/dxf-regression-samples.zip)可直接下载。
 - [反馈索引](data/feedback-catalog.csv)收录 28 个公开页面的 36 条观察。[候选意图](data/feedback-derived-intents.yaml)按观察保存可调整部位、所需量法和要保留的部位。把用户意见转成生产指令前，需要确认尺码、量法和改动量。
 - ET 的 PRJ 和 CLO 的工程文件保留原始来源。要进入通用编辑流程，仍需相应原生软件导出，并核对裁片、缝线、标记和尺码。现有工具的执行范围已写入架构说明。
 
-## 重做图册
+## 重做二维预览
+
+以 Python 3.11 或更新版运行，需安装 ezdxf 1.4.x、NumPy、Pillow 和 Inkscape。从浙大作者档案提取名称以 `2D.obj` 结尾的平面文件并保留相对路径，再从 Virtual Fashion Lab 取得 `SWEATSHIRT PATTERN.dxf`。生成脚本读取原二维三角网格的外露边及原 DXF 线条，索引记录源文件和预览的 SHA-256。
+
+```sh
+python web/pattern-library/source/build_paper_gallery.py --flattened work/corpus/zju-2d --vfl-dxf work/corpus/SWEATSHIRT-PATTERN.dxf
+python scripts/build_pages.py
+python web/pattern-library/source/verify_gallery.py --directory dist --output work/pattern-library/verify
+```
+
+## 重做三维渲染案例
 
 在仓库根目录运行。需要 Python 3.11+、项目的 Playwright/Chromium、Pillow、PyYAML、NumPy、SciPy、Node.js，以及 Blender 4.3。命令中的 `work/` 是项目的临时目录。两个压缩求解快照可直接解压传入渲染器以复用已发布的精确网格。
 

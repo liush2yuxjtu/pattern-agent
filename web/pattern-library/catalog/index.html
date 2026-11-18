@@ -14,12 +14,12 @@
   <a class="skip" href="#catalog">跳到资料</a>
   <header class="top"><div class="wrap navigation">
     <a class="identity" href="../../"><span class="mark" aria-hidden="true">pa</span>Pattern Agent</a>
-    <nav aria-label="项目导航"><a href="../">二维与三维图册</a><a href="../#editor">改版工具</a></nav>
+    <nav aria-label="项目导航"><a href="../">二维纸样图册</a><a href="../#editor">改版工具</a></nav>
     <a class="source-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/web/pattern-library/catalog">GitHub ↗</a>
   </div></header>
   <main class="wrap catalog" id="catalog">
     <h1>纸样与版型反馈资料库</h1>
-    <p class="lead">按款式、文件类型、服装部位或关键词查找。纸样附来源和文件核验信息，反馈附原观察和候选改法。</p>
+    <p class="lead">纸样可按文件类型和来源查找。用户反馈按来源和具体款式分组，保留原观察与候选改法。</p>
     <dl class="totals">
       <div><dt>已归档 CAD 原件</dt><dd id="asset-total">—</dd></div>
       <div><dt>匹配到改版线索的评论</dt><dd id="review-total">—</dd></div>
@@ -39,7 +39,7 @@
         <label>来源<select id="source"></select></label>
       </div>
       <div class="results-bar">
-        <p id="results-count" role="status"></p>
+        <div class="result-counts"><p id="results-count" role="status"></p><button type="button" id="style-reset" class="quiet" hidden>清除款式筛选</button></div>
         <div><a id="download" href="cad-origins.csv" download>下载原件索引 CSV ↓</a> <a id="download-extra" href="cad-publisher-links.csv" download>下载发布方入口 CSV ↓</a> <a href="README.md">数据与来源说明</a></div>
       </div>
     </section>

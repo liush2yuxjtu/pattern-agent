@@ -1,6 +1,6 @@
 # Pattern Agent 纸样与版型反馈资料库
 
-[浏览全部纸样](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/) · [按部位筛选反馈](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/?view=feedback)
+[浏览全部纸样](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/) · [按来源和款式看反馈](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/?view=feedback)
 
 ## 纸样原件
 
@@ -15,6 +15,8 @@
 ## 评论和变体请求
 
 三套数据覆盖 298,820 条源记录，其中 291,248 条有正文。筛出 37,515 条含改版线索的评论，提取 40,438 条可筛选的部位或变体线索，另有 63 条附原网页的人工整理观察。
+
+网页按原始来源打开款式卡。三套批量数据提供 5,407 个来源内的匿名商品组，使用各自的商品 ID。人工观察按 17 个实际发布方归为 44 个款式组，保留款式名称。展开款式可以逐条查看评论或观察。款式链接可直接分享，同一条批量评论命中的不同调整项列在同一评论下。[款式示例](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/?view=feedback&q=C-05)
 
 批量记录用原数据文件的零基索引回找评论，保留命中的英文片段、产品 ID、部位、候选改法、量法和要保护的部位。同一商品下重复的原文合并，每条评论可以涉及多个部位。中文的改法、量法和保护项是候选操作，目标数值留待确认。
 

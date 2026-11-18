@@ -125,6 +125,7 @@ def run(base, output, expected_commit, executable, source, fit):
             page.locator("#entries summary").first.click()
             expect(page.locator('#entries details[open]')).to_contain_text("SHA-256")
             page.locator("#query").fill("")
+            expect(page.get_by_role("link", name="图册 · 男式连帽衫 01 ↗").first).to_have_attribute("href", "../?pattern=zju-male-2-1")
             page.screenshot(path=str(output / "cad.png"), animations="disabled")
 
             downloads = {}
@@ -142,26 +143,62 @@ def run(base, output, expected_commit, executable, source, fit):
                     digest = sha256(file.read_bytes()).hexdigest()
                     assert digest == build["files"][CATALOG+name]
                     downloads[name] = digest
-            total = len(notes) + len(feedback["entries"])
-            expect(page.locator("#results-count")).to_contain_text(f"{total:,} 项")
+            dataset_styles = {
+                code: {r["product_id"] for r in feedback["entries"] if r["source_id"] == code}
+                for code in feedback["sources"]
+            }
+            curated_styles = {(row["publisher"], row["garment"].strip()) for row in notes}
+            group_total = sum(map(len, dataset_styles.values())) + len(curated_styles)
+            expect(page.locator("#results-count")).to_contain_text(f"{group_total:,} 个来源内款式")
             assert page.locator("#entries article").count() == 24
             page.locator("#next").click()
             expect(page.locator("#results-count")).to_contain_text("25–48")
-            page.locator("#category").select_option("pockets")
-            page.locator("#source").select_option("manual")
-            expect(page.locator("#results-count")).to_contain_text(f"{sum(r['part']=='pockets' for r in notes)} 项")
-            expect(page.locator("#entries article").first).to_contain_text("候选改法")
+            page.locator("#source").select_option("RTR")
+            expect(page.locator("#results-count")).to_contain_text(f"{len(dataset_styles['RTR']):,} 个来源内款式")
+            expect(page.locator(".source-group h2")).to_have_text(feedback["sources"]["RTR"]["title"])
+            style = page.locator(".style-group").first
+            style_key = style.get_attribute("data-style")
+            matching = [r for r in feedback["entries"] if r["source_id"] == "RTR" and r["product_id"] == style_key]
+            assert len({row["review_id"] for row in matching}) > 8
+            style.locator("summary").click()
+            expect(style.locator("summary")).to_have_text(f"{len({r['review_id'] for r in matching})} 条评论")
+            expect(style.locator(".review")).to_have_count(8)
+            expect(style.get_by_text(matching[0]["evidence"], exact=True).first).to_be_visible()
+            style.locator(".more-reviews").click()
+            expect(style.locator(".review")).to_have_count(min(16, len({r["review_id"] for r in matching})))
+            assert style.locator(".review-header strong").first.inner_text() == matching[0]["review_id"]
+            style.get_by_role("link", name="款式链接").click()
+            expect(page.locator("#entries article")).to_have_count(1, timeout=45000)
+            expect(page.locator(".style-group details[open]")).to_have_count(1)
+            expect(page.locator(".style-group")).to_have_attribute("data-source", "RTR")
+            page.get_by_role("button", name="清除款式筛选").click()
+            expect(page.locator("#results-count")).to_contain_text(f"{len(dataset_styles['RTR']):,} 个来源内款式")
+
+            page.locator("#source").select_option("publisher:Zappos")
+            expect(page.locator(".source-group h2")).to_have_text("Zappos")
+            page.locator("#category").select_option("cuff")
+            zappos_styles = {r["garment"] for r in notes if r["publisher"] == "Zappos" and r["part"] == "cuff"}
+            expect(page.locator("#results-count")).to_contain_text(f"{len(zappos_styles)} 个来源内款式")
+            dickies = page.locator(".style-group").filter(has=page.get_by_role("heading", name="Dickies Eisenhower 男式夹克"))
+            dickies.locator("summary").click()
+            expect(dickies.get_by_role("link", name="原反馈页面").first).to_be_visible()
             page.screenshot(path=str(output / "feedback.png"), animations="disabled")
             page.set_viewport_size({"width": 360, "height": 860})
             assert page.goto(url+"?view=feedback&q=C-05", wait_until="networkidle", timeout=60000).ok
             expect(page.locator("#entries article")).to_have_count(1, timeout=45000)
+            expect(page.locator(".source-group h2")).to_have_text("Zappos")
             expect(page.locator("#entries")).to_contain_text("Dickies")
+            expect(page.get_by_text("C-05", exact=True)).to_be_visible()
+            expect(page.get_by_role("link", name="原反馈页面")).to_have_attribute("href", next(r["url"] for r in notes if r["id"] == "C-05"))
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
             page.screenshot(path=str(output / "mobile.png"), animations="disabled")
             assert not errors, errors
             report = {"verdict": "PASS", "base_url": base, "commit": build["commit"], "summary": summary,
                       "source_sha256": build["source_sha256"], "checked_asset_records": len(catalog["entries"]),
                       "all_normalized_review_spans_match_original_inputs": evidence_count,
+                      "feedback_styles": group_total,
+                      "dataset_styles": {code: len(styles) for code, styles in dataset_styles.items()},
+                      "curated_publisher_styles": len(curated_styles),
                       "browser_downloads_sha256": downloads, "browser_errors": errors}
             (output/"browser-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
             print(json.dumps(report, ensure_ascii=False))

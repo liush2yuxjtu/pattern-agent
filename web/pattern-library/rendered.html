@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="FreeSewing Sandy 和贴身 T 恤的二维裁片与 Blender 三维渲染。">
+  <meta name="theme-color" content="#f5f5ef">
+  <title>三维渲染案例 · Pattern Agent</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="gallery.js"></script>
+</head>
+<body>
+  <a class="skip" href="#gallery">跳到图册</a>
+  <header class="top">
+    <div class="wrap navigation">
+      <a class="identity" href="../"><span class="mark" aria-hidden="true">pa</span><span>Pattern Agent</span></a>
+      <nav aria-label="项目导航">
+        <a href="./">二维图册</a>
+        <a href="#gallery" aria-current="location">三维案例</a>
+        <a href="./#editor">改版工具</a>
+        <a href="catalog/">完整资料库</a>
+      </nav>
+      <a class="source-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/web/pattern-library">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="gallery" class="hero" aria-labelledby="gallery-title">
+      <div class="intro">
+        <div>
+          <h1 id="gallery-title">三维渲染案例</h1>
+          <p>从同一个样本查看二维裁片、三维渲染和可下载的复现文件。</p>
+        </div>
+        <div class="intro-actions">
+          <a class="button primary" href="./">浏览二维纸样图册 <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="./#editor">打开改版工具</a>
+        </div>
+      </div>
+
+      <div class="sample-picker" role="group" aria-label="选择纸样样本">
+        <button type="button" data-sample="sandy-standard" aria-pressed="true"><span class="dot teal"></span>Sandy 基础款</button>
+        <button type="button" data-sample="sandy-flared" aria-pressed="false"><span class="dot clay"></span>Sandy 加长增摆</button>
+        <button type="button" data-sample="shirt-cuff" aria-pressed="false"><span class="dot blue"></span>贴身 T 恤袖口改版</button>
+      </div>
+
+      <div class="visual-grid">
+        <figure class="sheet">
+          <figcaption class="panel-title"><h2>二维纸样</h2><button type="button" id="zoom-pattern" class="quiet">放大</button></figcaption>
+          <div class="pattern-stage"><img id="pattern-img" src="gallery/sandy-standard/preview.svg" alt="Sandy 基础款的四片裙身纸样" width="940" height="840"></div>
+          <div class="panel-foot">
+            <a id="pattern-download" href="gallery/sandy-standard/pattern.svg" download>下载纸样 SVG <span aria-hidden="true">↓</span></a>
+            <a id="source-download" href="gallery/sandy-standard/native.svg" download>FreeSewing 原始 SVG</a>
+          </div>
+        </figure>
+        <figure class="sheet">
+          <figcaption class="panel-title">
+            <h2>三维渲染</h2>
+            <div class="view-picker" role="group" aria-label="选择渲染视角">
+              <button type="button" data-view="angle" aria-pressed="true">斜前</button>
+              <button type="button" data-view="front" aria-pressed="false">正面</button>
+              <button type="button" data-view="back" aria-pressed="false">背面</button>
+            </div>
+          </figcaption>
+          <div class="render-stage"><img id="render-img" src="gallery/sandy-standard/angle.webp" alt="Sandy 基础款的三维斜前渲染" width="940" height="840"></div>
+          <div class="panel-foot">
+            <a id="model-download" href="gallery/sandy-standard/skirt.obj" download>下载三维 OBJ <span aria-hidden="true">↓</span></a>
+            <a id="evidence-link" href="gallery/sandy-standard/evidence.json">来源与验证</a>
+          </div>
+        </figure>
+      </div>
+
+      <div class="sample-facts" aria-live="polite" aria-atomic="true">
+        <div><h3 id="sample-name">Sandy 基础款</h3><p id="sample-scope">FreeSewing 4.10.2 生成纸样。裙身在固定人台上以合成面料参数求解 120 步，再交给 Blender 渲染。原始 SVG 包含腰头，三维模型展示裙身。</p></div>
+        <dl id="sample-measures"><div><dt>裙长</dt><dd>560 mm</dd></div><div><dt>圆摆比例</dt><dd>38.75%</dd></div><div><dt>裁片</dt><dd>4 片</dd></div></dl>
+      </div>
+      <p class="problem" id="gallery-problem" hidden role="status"></p>
+    </section>
+
+  </main>
+  <footer class="wrap footer"><span>Pattern Agent · 三维渲染案例</span><a href="https://freesewing.eu/designs/sandy/">FreeSewing Sandy</a><a href="../freesewing-cloth-lab.html">布料工作台</a><a href="source/FreeSewing-LICENSE.txt">FreeSewing 许可证</a></footer>
+
+  <dialog id="pattern-dialog" aria-labelledby="dialog-title">
+    <div class="panel-title"><h2 id="dialog-title">二维纸样大图</h2><form method="dialog"><button class="quiet" aria-label="关闭纸样大图">关闭</button></form></div>
+    <img id="enlarged-pattern" alt="当前样本二维纸样">
+    <p>实际尺寸请在排版或裁剪前用样本的 SVG 和标定数据核对。</p>
+  </dialog>
+</body>
+</html>
