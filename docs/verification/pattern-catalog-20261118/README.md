@@ -18,3 +18,9 @@ git diff --cached --check
 ```
 
 [复现与来源](../../../web/pattern-library/catalog/README.md) · [项目验证流程](../../../.agents/skills/verify/references/pattern-library.md)
+
+## 公开验收
+
+GitHub Pages 发布提交 `cfb9efdae96d0ccc24e45ef769ad49f75ec75061`。无登录浏览器在公开站完成目录筛选、分页、手机直达、四项实际下载和图册回归，下载哈希与本地候选相同。 [公开资料库](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/) · [发布运行](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44256818976)
+
+[发布回执](live/publication.json) · [目录验收](live/catalog-browser.json) · [图册回归](live/gallery-browser.json)
