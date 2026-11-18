@@ -13,3 +13,7 @@ Use a garment-only CLO GLB with metric pattern UVs. Add confirmed primitive IDs 
 
 The gate covers the offline exporter. It does not grade simulation, the material, or physical fit.
 [2026-11-18 receipt](../../../../docs/verification/clo-fit-export-20261118/README.md).
+
+## CLO Fit Review plugin
+
+For changes under `plugins/clo-fit`, register the repository as a local marketplace in an isolated Codex profile and run `codex plugin add clo-fit@pattern-agent --json`. Run the exporter checks above from the installed cache. Run its sibling `compare_poses.py` with a multi-pose manifest and compare the resulting CSV with the source report. For the bundled example, check the DXF digest and open every relative image in the Page snapshot. [Plugin verification receipt](../../../../docs/verification/clo-fit-plugin-20261118.md).

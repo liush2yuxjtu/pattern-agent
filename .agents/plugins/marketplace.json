@@ -1,0 +1,12 @@
+{
+  "name": "pattern-agent",
+  "interface": { "displayName": "Pattern Agent" },
+  "plugins": [
+    {
+      "name": "clo-fit",
+      "source": { "source": "local", "path": "./plugins/clo-fit" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

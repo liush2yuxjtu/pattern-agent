@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "clo-fit",
+  "version": "0.1.0",
+  "description": "Build a garment from DXF in CLO and compare posture-specific strain, folds and pressure evidence.",
+  "repository": "https://github.com/liush2yuxjtu/pattern-agent",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "CLO Fit Review",
+        "shortDescription": "DXF 多姿势试穿与改版评估"
+      }
+    }
+  }
+}
