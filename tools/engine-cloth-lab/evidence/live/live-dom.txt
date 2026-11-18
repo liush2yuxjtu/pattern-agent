@@ -1,0 +1,125 @@
+- banner:
+  - generic: P/
+  - text: Pattern Agent
+  - generic: GARMENT ARTIFACT / ENGINE LAB
+  - text: 本地计算
+  - generic: Canvas · 软件深度缓冲
+  - button "说明与来源" [active]
+- text: 服装数字工程 · 现成开源引擎
+- heading "Teagan · 原生引擎样衣" [level=1]
+- paragraph: FreeSewing → Rapier WASM · MakeHuman 真实人体网格
+- generic: 同一份数据 · 五个视图
+- strong: REV 01
+- generic: 计算结束 · 缝合 FAIL
+- main:
+  - complementary:
+    - generic: 数据来源
+    - combobox "数据来源":
+      - option "Golden YAML 1.1 · 原始设计"
+      - option "FreeSewing · 引擎样衣" [selected]
+    - strong: ENGINE_CONFORMANCE
+    - text: FreeSewing Teagan 4.10.2 · 短袖引擎样衣。独立于 Golden；尺寸、材料和初始装配含演示假设。
+    - generic: 设计参数
+    - text: 腰围调整
+    - status "腰围调整 0": 0 mm
+    - slider: "0"
+    - text: 袖长选项
+    - status "袖长选项 30": 30%
+    - slider: "30"
+    - text: 领深选项
+    - status "领深选项 25": 25%
+    - slider: "25"
+    - generic: 网格间距（mm）
+    - combobox "网格间距（mm）":
+      - option "40 · 粗网格实验" [selected]
+      - option "26 · 更细网格"
+    - generic: 初始装配
+    - combobox "初始装配":
+      - option "外置平片 · 缝边未闭合" [selected]
+      - option "贴体装配 · 已知失败候选"
+    - paragraph: 演示人体尺寸按胸部截面比例映射。原生引擎试片已通过，完整成衣仍未通过。
+    - button "生成引擎样衣"
+    - button "计算 30 步"
+    - button "停止计算" [disabled]
+    - generic: 交付
+    - button "导出工程 JSON"
+    - button "载入工程 JSON"
+    - button "导出二维 SVG"
+    - button "1:1 PDF · 引擎样衣"
+    - button "下载原始 YAML"
+    - paragraph: SVG / PDF 使用 mm；净样线无缝份。仅用于尺寸与引擎检查。
+  - navigation "工程视图":
+    - button "二维纸样"
+    - button "设计师 3D"
+    - button "物理检查"
+    - button "调试器"
+    - button "时间轴"
+  - generic: PHYSICS / 当前帧诊断
+  - generic: REV 01
+  - button "正面"
+  - button "背面"
+  - button "侧面"
+  - button "透视"
+  - generic: F30 · 原生 Rapier WASM · 最新记录
+  - text: 最大主应变 ε = λmax − 1
+  - text: 0% 25%+
+  - text: 无单位 · 非应力 Pa
+  - generic: 裁片
+  - strong: "4"
+  - generic: 当前帧步号
+  - strong: "30"
+  - generic: 最大缝隙
+  - strong: 467.9 mm
+  - generic: 人体严格面穿
+  - strong: "0"
+  - generic: 已呈现 13 · physics · front · REV 1 · F30
+  - generic: MakeHuman · CC0 · 4002 顶点 / 8000 面
+  - complementary:
+    - text: VERIFICATION
+    - heading "检查证据" [level=2]
+    - generic: 原始输入
+    - generic: DEMO_ASSUMED
+    - generic: 物理运行
+    - generic: COMPLETED
+    - generic: 缝合拓扑
+    - generic: 10 native
+    - generic: 缝隙 ≤2mm
+    - generic: FAIL
+    - generic: 应变
+    - generic: 几何量 · 无单位
+    - generic: 材料应力 / 压力
+    - generic: UNKNOWN
+    - generic: 人体面穿
+    - generic: PASS
+    - generic: 内部顶点
+    - generic: PASS
+    - generic: 布料自交
+    - generic: PASS
+    - generic: 真实合身
+    - generic: NOT_VALIDATED
+    - button "检查当前帧碰撞"
+    - generic: 物理显示
+    - combobox "物理显示":
+      - option "面料"
+      - option "最大主应变" [selected]
+      - option "褶皱夹角"
+      - option "碰撞位置"
+    - checkbox "显示三角网格"
+    - text: 显示三角网格
+    - strong: "485"
+    - text: 粒子 ·
+    - strong: "800"
+    - text: 三角形
+    - text: 接触半径：5mm（演示）
+    - text: dt：1/120s · 原生自接触
+    - text: 累计求解：30 步
+    - text: 肩部支撑：2 个
+    - text: λmax 1.370 / λmin 0.350
+    - text: 拉伸 >20% 面积 0.37%
+    - text: 内部顶点 0 · 最深 0.000mm
+    - text: 自交 0 · 退化 0
+    - text: 检查帧 F30 / REV 1
+    - text: 真实应力、压力和合身：未验证。
+    - generic: 运行记录
+    - generic: R1 · 切换来源：ENGINE_CONFORMANCE。结果不跨来源继承。 R1 · REV 1：4 裁片 / 485 粒子 / 10 道缝。 R1 · Rapier 原生约束已建立；二维 rest 保留。 R1 · 计算 REV 1，当前 F0，目标 +30 步。 R1 · 实际求解到 F30；542.4ms（本次求解 CPU，不含绘制）。计算完成不等于成衣通过。 R1 · 检查 REV 1 / F30 的顶点、人体面穿与自交。 R1 · F30：内部 0 / 人体面穿 0 / 自交 0。 R1 · 已导出 garment-engine_conformance-r1.json
+    - generic "性能日志"

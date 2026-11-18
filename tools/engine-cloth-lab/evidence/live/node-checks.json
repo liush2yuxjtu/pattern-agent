@@ -1,0 +1,204 @@
+{
+  "schema": "engine-cloth-node-verification-1",
+  "htmlSha256": "ce27a33438670d083a9f0776c65abb45d8005bf172c1273d268acc12ea9226f3",
+  "checks": [
+    {
+      "name": "canonical exact bytes",
+      "status": "PASS",
+      "detail": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e"
+    },
+    {
+      "name": "complete Golden geometry and text",
+      "status": "PASS",
+      "detail": {
+        "parts": 4,
+        "polylines": 126,
+        "lines": 78,
+        "texts": 27,
+        "vertices": 1487
+      }
+    },
+    {
+      "name": "Golden original placements",
+      "status": "PASS",
+      "detail": {
+        "前片": {
+          "x": 2737.0530200000003,
+          "y": 1316.5980869999999,
+          "width": 450.793862,
+          "height": 557.897091,
+          "sourcePlacement": {
+            "横": 2962.449951,
+            "高": -1854.488443
+          }
+        },
+        "后片": {
+          "x": 1656.325854,
+          "y": 1306.6271900000002,
+          "width": 451.276819,
+          "height": 546.3052,
+          "sourcePlacement": {
+            "横": 1881.964264,
+            "高": -1832.932434
+          }
+        },
+        "袖片": {
+          "x": 2271.240828,
+          "y": 1375.820387,
+          "width": 304.65596600000003,
+          "height": 631.145098,
+          "sourcePlacement": {
+            "横": 2430.361023,
+            "高": -1981.965485
+          }
+        },
+        "领条": {
+          "x": 2198.103088,
+          "y": 1159.865219,
+          "width": 453.199756,
+          "height": 66,
+          "sourcePlacement": {
+            "横": 2206.103088,
+            "高": -1212.865219
+          }
+        }
+      }
+    },
+    {
+      "name": "Golden scale remains unknown",
+      "status": "PASS"
+    },
+    {
+      "name": "MakeHuman mesh identity",
+      "status": "PASS",
+      "detail": {
+        "vertices": 4002,
+        "triangles": 8000
+      }
+    },
+    {
+      "name": "strain identity",
+      "status": "PASS",
+      "detail": {
+        "valid": true,
+        "max": 1,
+        "min": 1,
+        "areaRatio": 1,
+        "restAreaM2": 0.5
+      }
+    },
+    {
+      "name": "strain warp",
+      "status": "PASS",
+      "detail": {
+        "valid": true,
+        "max": 1.2,
+        "min": 1,
+        "areaRatio": 1.2,
+        "restAreaM2": 0.5
+      }
+    },
+    {
+      "name": "strain weft",
+      "status": "PASS",
+      "detail": {
+        "valid": true,
+        "max": 1,
+        "min": 0.8,
+        "areaRatio": 0.8,
+        "restAreaM2": 0.5
+      }
+    },
+    {
+      "name": "strain near-collapse",
+      "status": "PASS",
+      "detail": {
+        "valid": true,
+        "max": 1,
+        "min": 1e-9,
+        "areaRatio": 1e-9,
+        "restAreaM2": 0.5
+      }
+    },
+    {
+      "name": "edits invalidate all results",
+      "status": "PASS"
+    },
+    {
+      "name": "sources get distinct instance IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "complete supported import settings",
+      "status": "PASS"
+    },
+    {
+      "name": "missing settings rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "off-step settings rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "exact shipped script syntax",
+      "status": "PASS"
+    },
+    {
+      "name": "no runtime source URLs",
+      "status": "PASS"
+    },
+    {
+      "name": "native probe receipt matches current sources",
+      "status": "PASS",
+      "detail": {
+        "probes/rapier/engine.mjs": "9a72d89c7fa423b6d1f381f3cdb4ade1d469f984deebfcb44a0137b9ac4587bf",
+        "probes/rapier/native-seam.mjs": "004a7ee92f2bb48cf17b167c867cea16aff5d2714c8203c854c15f044a2a265d",
+        "reference/assets/makehuman.json": "405d3cc8d5ba299b241892d80782cd9faf194da66ce611748ccb8423ab82331d",
+        "node_modules/@dimforge/rapier3d-compat/dist/rapier_wasm3d_bg.wasm": "17cfa80eebd8de0291b948496dbffba724b98b489687f8272ca236a7bbf1dd4b"
+      }
+    },
+    {
+      "name": "actual native work and rest preservation",
+      "status": "PASS",
+      "detail": {
+        "stepCount": 30,
+        "version": "0.21.0",
+        "particles": 485,
+        "joints": 62
+      }
+    },
+    {
+      "name": "actual browser artifact is present",
+      "status": "PASS",
+      "detail": "evidence/live/live-run.json"
+    },
+    {
+      "name": "browser artifact source binding",
+      "status": "PASS",
+      "detail": {
+        "browser": "d6cc0761d6c1c20e9e7b4f5ea1b5b37af17bbaf990cfd24bacd2854784736951",
+        "manifest": "d6cc0761d6c1c20e9e7b4f5ea1b5b37af17bbaf990cfd24bacd2854784736951"
+      }
+    },
+    {
+      "name": "browser/Node full-array reproducibility",
+      "status": "PASS",
+      "detail": {
+        "nodeHash": "6550d3927254d5af821178b1343f72a15f36acec33805cab55d93b39b2d1005a",
+        "browserHash": "6550d3927254d5af821178b1343f72a15f36acec33805cab55d93b39b2d1005a",
+        "step": 30
+      }
+    },
+    {
+      "name": "open seam remains garment FAIL",
+      "status": "PASS",
+      "detail": {
+        "gapMM": 467.87700799215133,
+        "bodyCrossings": 0
+      }
+    }
+  ],
+  "verdict": "PASS",
+  "scope": "Data integrity, native-engine execution and diagnostic honesty; garment physics remains FAIL, Golden physics BLOCKED."
+}
