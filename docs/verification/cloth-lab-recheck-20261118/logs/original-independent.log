@@ -1,0 +1,215 @@
+{
+  "verdict": "PASS",
+  "body_triangle_intersections": 0,
+  "body_pairs": [],
+  "cloth_self_intersections": 0,
+  "self_pairs": [],
+  "inside_body_vertices": [],
+  "topology": {
+    "vertex_count": 1856,
+    "used_vertex_count": 1856,
+    "orphan_vertices": 0,
+    "triangle_count": 3584,
+    "edge_count": 5440,
+    "connected_components": 1,
+    "boundary_edges": 128,
+    "boundary_components": 2,
+    "boundary_cycles": 2,
+    "boundary_branch_vertices": 0,
+    "nonmanifold_edges": 0,
+    "winding_conflicts": 0,
+    "degenerate_triangles": 0,
+    "duplicate_faces": 0,
+    "euler_characteristic": 0,
+    "closed_oriented_edge_manifold": false,
+    "component_signed_volumes_m3": [
+      0.07477309495917434
+    ],
+    "outward_closed_components": false,
+    "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+  },
+  "body_topology": {
+    "vertex_count": 13380,
+    "used_vertex_count": 13380,
+    "orphan_vertices": 0,
+    "triangle_count": 26756,
+    "edge_count": 40134,
+    "connected_components": 1,
+    "boundary_edges": 0,
+    "boundary_components": 0,
+    "boundary_cycles": 0,
+    "boundary_branch_vertices": 0,
+    "nonmanifold_edges": 0,
+    "winding_conflicts": 0,
+    "degenerate_triangles": 0,
+    "duplicate_faces": 0,
+    "euler_characteristic": 2,
+    "closed_oriented_edge_manifold": true,
+    "component_signed_volumes_m3": [
+      0.05449708744764648
+    ],
+    "outward_closed_components": true,
+    "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+  },
+  "tensor": {
+    "peak_stretch_percent": 137.0650195980281,
+    "peak_stress_kPa": 46.234620564827885,
+    "max_stretch_error": 6.661338147750939e-16,
+    "max_stress_error_kPa": 5.0737192225369654e-14
+  },
+  "source_hash": "2cd7c641d2610148d715f0e33128e9d9d9c7f61283c982fb096a11086e2d3f8c",
+  "oracle_hash": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+  "analytic_controls": {
+    "test_count": 23,
+    "all_passed": true,
+    "tests": [
+      {
+        "name": "parallel_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_crossing",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_point_contact_with_plane_straddling",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_positive_area",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "coplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_point_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "sub_epsilon_parallel_gap",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "in_plane_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_noncoplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_coplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_disjoint_negative",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_vertex_crossing_beyond_common_point_detected",
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_fold_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_edge_positive_area_fold_detected",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "closed_cube_connectivity_orientation_volume",
+        "passed": true
+      },
+      {
+        "name": "open_square_tube_two_boundary_cycles",
+        "passed": true
+      },
+      {
+        "name": "independent_solid_angle_interior_exterior",
+        "passed": true
+      },
+      {
+        "name": "claimed_path_outside_armless_cube_rejected",
+        "passed": true
+      },
+      {
+        "name": "intersection_invariant_to_face_winding",
+        "passed": true
+      }
+    ],
+    "epsilon_m": 1e-06,
+    "phase": "analytic_before_legacy_comparison"
+  },
+  "physical_calibration": "NOT_RUN",
+  "manufacturing": "NOT_RUN",
+  "dynamic_self_collision_solver": false,
+  "negative_controls": {
+    "reverse-seam": true,
+    "swap-panel": true,
+    "gap": true,
+    "uv": true,
+    "body-penetration": true,
+    "overlapping-face": true
+  },
+  "downloaded_exports": {
+    "OBJ_vertices_and_faces": "exact match",
+    "SVG_panels": "exact match",
+    "SVG_cut_offset_mm": 10,
+    "DXF_panels": "match within 0.000002 mm"
+  },
+  "duration_s": 17.065359354019165,
+  "export_sha256": "c7317a502db42fb542f7789a7779649685afc966426350d8b5fa816c4ff4a022"
+}

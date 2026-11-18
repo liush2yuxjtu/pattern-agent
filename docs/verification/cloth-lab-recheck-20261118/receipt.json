@@ -1,0 +1,89 @@
+{
+  "verdict": "PASS",
+  "scope": "New self-contact HTML: exact tested discrete dynamics, geometry and real browser/download/offline boundaries only",
+  "baseCommit": "46430f5a02caeb7c413d765f6b8a38536b1b755a",
+  "htmlSHA256": "5e035050cf7a940c81928c98073bd412beb6114bfe8e37f7cb25ef3e6252cf83",
+  "originalExtendedDynamics": "FAIL: 11 cloth self intersections after 360 zero-wind + 120 steps at 5 m/s\u00b2",
+  "uiChecks": {
+    "total": 39,
+    "passed": 39
+  },
+  "dynamicChecks": {
+    "correctPage": true,
+    "actualWasmGravity": true,
+    "actualWasmPin": true,
+    "actualWasmElasticConstraint": true,
+    "step-120": true,
+    "step-120-pins": true,
+    "step-240": true,
+    "step-240-pins": true,
+    "step-360": true,
+    "step-360-pins": true,
+    "gravityChangesCloth": true,
+    "actualBodyContacts": true,
+    "windInputChangesActualPhysics": true,
+    "windCollisionAndGeometry": true,
+    "consoleHealthy": true
+  },
+  "states": {
+    "step-120": {
+      "verdict": "PASS",
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.005609461826232,
+      "peakStretch_percent": 154.6029467202502,
+      "peakEstimatedStress_kPa": 67.31580962281393
+    },
+    "step-240": {
+      "verdict": "PASS",
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.0173209917769,
+      "peakStretch_percent": 154.08567780111235,
+      "peakEstimatedStress_kPa": 66.25482026122
+    },
+    "step-360": {
+      "verdict": "PASS",
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.0265537391215585,
+      "peakStretch_percent": 153.48226078053676,
+      "peakEstimatedStress_kPa": 65.32249484379471
+    },
+    "wind-step-480": {
+      "verdict": "PASS",
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.005451894386019,
+      "peakStretch_percent": 273.3213496536519,
+      "peakEstimatedStress_kPa": 294.6633185869275
+    }
+  },
+  "actualWasmGravityMaxError_m": 2.220446049250313e-15,
+  "defaultSolver_ms_p50": 78.10000000149012,
+  "defaultSolver_ms_p95": 93.60000000149012,
+  "defaultFrame_ms_p95": 583.3000000000002,
+  "offlineExactNextStep": true,
+  "exportsReopened": {
+    "OBJ_vertices_and_faces": "exact match",
+    "SVG_panels": "exact match",
+    "SVG_cut_offset_mm": 10,
+    "DXF_panels": "match within 0.000002 mm"
+  },
+  "independentNegativeControls": {
+    "reverse-seam": true,
+    "swap-panel": true,
+    "gap": true,
+    "uv": true,
+    "body-penetration": true,
+    "overlapping-face": true
+  },
+  "materialCalibration": "NOT_RUN",
+  "manufacturing": "NOT_RUN",
+  "continuousCollisionCertification": "NOT_RUN",
+  "cleanup": "Temporary browser contexts closed by scripts; task server retained until live verification"
+}

@@ -1,0 +1,75 @@
+{
+  "verdict": "FAIL",
+  "checks": {
+    "correctPage": true,
+    "actualWasmGravity": true,
+    "actualWasmPin": true,
+    "actualWasmElasticConstraint": true,
+    "step-120": true,
+    "step-120-pins": true,
+    "step-240": true,
+    "step-240-pins": true,
+    "step-360": true,
+    "step-360-pins": true,
+    "gravityChangesCloth": true,
+    "actualBodyContacts": true,
+    "windInputChangesActualPhysics": true,
+    "windCollisionAndGeometry": false,
+    "consoleHealthy": true
+  },
+  "states": {
+    "step-120": {
+      "verdict": "PASS",
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "clearance_mm": 3.047697839388666
+    },
+    "step-240": {
+      "verdict": "PASS",
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "clearance_mm": 3.0788779999633387
+    },
+    "step-360": {
+      "verdict": "PASS",
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "clearance_mm": 3.0096222724690342
+    },
+    "wind-step-480": {
+      "verdict": "FAIL",
+      "bodyIntersections": 0,
+      "selfIntersections": 11,
+      "clearance_mm": 3.021117063702764
+    }
+  },
+  "kernel": {
+    "gravity": [
+      0,
+      0.9483904701553536,
+      0,
+      1,
+      2,
+      3
+    ],
+    "elastic": [
+      0.5,
+      1,
+      0,
+      1.5,
+      1,
+      0
+    ],
+    "memoryBytes": 4194304,
+    "expectedGravity": [
+      0.0,
+      0.9483904701553514,
+      0.0,
+      1.0,
+      2.0,
+      3.0
+    ],
+    "gravityMaxError_m": 2.220446049250313e-15,
+    "elasticDistanceAfter_m": 1.0
+  }
+}

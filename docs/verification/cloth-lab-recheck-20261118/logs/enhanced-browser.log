@@ -1,0 +1,62 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "stepwiseSimulationAndIndependentGeometry": true,
+    "materialRestRotationStretchShear": true,
+    "physicalFieldsReachRealRenderedColors": true,
+    "physicalScaleSVGAndActualSceneOBJ": true,
+    "runtimeBVHMatchesIndependentBodyQueries": true,
+    "actualPenetrationDetectedAndRecovered": true,
+    "movingActualBodyCollision": true,
+    "sameParametersDrivePatternAndRestMesh": true,
+    "resetGPUResourcesAndWASMMemoryStable": true,
+    "bothMaterialPresetsAndVerticalGrain": true,
+    "realRunPauseAndPerformanceSample": true,
+    "mobileWithoutOverflow": true,
+    "recursiveSaveAndMovedPinContinuation": true,
+    "offlineSnapshotExactStateAndContinuation": true,
+    "collisionBroadPhaseMatchesFullQueriesBitForBit": true
+  },
+  "settled": {
+    "verdict": "PASS",
+    "vertices": 850,
+    "triangles": 1536,
+    "bodyVertices": 13380,
+    "bodyTriangles": 26756,
+    "seam": {
+      "lengthsMm": [
+        610.9214576166881,
+        610.9214576166881
+      ],
+      "mismatchMm": 0.0,
+      "missing": false,
+      "reversed": false
+    },
+    "maxSeamGapMm": 0.0,
+    "maxBodyPenetrationMm": 0.0,
+    "minBodyClearanceMm": 5.677913563162001,
+    "sampledPoints": 4770,
+    "insideSamples": 0,
+    "clothEdgeBodyHits": 0,
+    "bodyEdgeClothHits": 0,
+    "maxTensorFieldAbsoluteErrors": [
+      2.4462592684848516e-07,
+      2.462011627901717e-07,
+      2.1968797936366968e-07,
+      0.052531414675286214,
+      0.045066230344673386,
+      2.3370079360596208e-07,
+      2.5117028601417957e-07,
+      5.0451859856526227e-08
+    ],
+    "maxPrincipalStrainPercent": 23.918708935860387,
+    "maxPrincipalCauchyKPa": 53.87602817721227,
+    "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+  },
+  "performance": {
+    "medianFrameMs": 66.60000000000582,
+    "p95FrameMs": 99.89999999999418,
+    "sampleFrames": 81,
+    "rendererClass": "software"
+  }
+}
