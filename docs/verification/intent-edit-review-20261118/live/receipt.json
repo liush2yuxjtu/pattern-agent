@@ -1,0 +1,22 @@
+{
+  "verdict": "SKIP",
+  "reason": "Documentation/evidence-only commit; runtime source is unchanged and full current live/file browser evidence is separately PASS.",
+  "recorded_at": "2026-11-18T10:16:18.996812+08:00",
+  "base_commit": "54c8d8280f5c732be109722bbe2d11037619c6bb",
+  "runtime_verdict": "PASS",
+  "html_sha256": "aa7328e3a176a90dc217270779f042c6bab77fd27f5440b0d5ae454a78f377d4",
+  "script_sha256": "df41b9a317c2c2dbcf98c6f47755f26a8a744062d76da0958c9b9f01d2e32fc4",
+  "live_browser_command": "PYTHONPATH=/tmp/pattern-intent-review/deps python3 /tmp/pattern-intent-review/repo/experiments/intent-edit-review/verify_browser.py --base-url https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/ --browser /usr/bin/google-chrome --output /tmp/pattern-intent-review/evidence",
+  "live_browser_exit_code": 0,
+  "live_exact_downloads": 18,
+  "true_offline_file_verdict": "PASS",
+  "current_source_sha_verified": true,
+  "relative_document_links": "PASS",
+  "zip_crc_and_sha256": "PASS",
+  "old_pages_unchanged": 3,
+  "initial_local_tls": "BLOCKED, retained without disabling certificate verification",
+  "cleanup": "Owned browser contexts/processes and HTTP services closed; Firecrawl interact stop success true.",
+  "local_tests": "SKIP: docs/evidence only; eight tests, six fault controls and actual local/remote runtime remain evidenced for unchanged source.",
+  "integrated_remote_commit": "85d14cc403ede1c561b2d4d5988cce38f0600a0a",
+  "reconciliation": "Rebased unpublished documentation/evidence commit onto parallel main; source DXF/YAML, benchmark, viewer runtime, verifier and Pages builder are unchanged."
+}

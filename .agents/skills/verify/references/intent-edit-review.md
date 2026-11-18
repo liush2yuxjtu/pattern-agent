@@ -41,3 +41,13 @@ git diff --check
 已发布路由可用同一浏览器脚本的 `--base-url https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/`
 核验；独立核对正常HTTPS返回的HTML摘要与本次候选。既有发布工作流仅作发布，不能
 替代本地测试或真实浏览器。证据：`docs/verification/intent-edit-review-20261118/`。
+
+本机线上出现ERR_CERT_AUTHORITY_INVALID时，保留BLOCKED，不关闭TLS校验。已验证的
+独立路径为Firecrawl interact的Bash环境：只从已公开的固定提交下载同一验证器及18份
+源文件，核对脚本和HTML摘要后，用临时目录安装的Playwright 1.62.0/Pillow与
+`/usr/bin/google-chrome`运行同一 `--base-url` 命令。随后对隔离HTML直接用
+`browser.new_context(offline=True)` + `page.goto(file_uri)`检查四案例、实际像素、
+交互、完整YAML和DXF保存。成功证据与公开源码固定SHA、命令、压缩包校验见该目录
+`live/README.md`。完整浏览器脚本的file-BLOCKED字段记录的是本机已知策略；独立
+真正file导航的结果单列 `file-offline-report.json`，不能把两台主机混成一次观察。
+返回的ZIP应校验SHA和CRC后再提取；最后停止Firecrawl interact session释放资源。

@@ -24,6 +24,8 @@ python experiments/intent-edit-review/verify_browser.py --output work/intent-edi
 
 本机受管 Chromium 禁止 `file://` 导航，保留此项 BLOCKED，不修改浏览器策略。独立单文件测试采用：复制唯一 HTML 到隔离目录，从本机 HTTP 读取这一个文档后停止服务器、禁用浏览器网络，再操作案例、三维视图、完整 YAML 和 DXF 下载。只观察到一次文档请求；不能将此证据写成已验证双击本地文件。
 
+后续独立 Chrome 156 从公开新页面运行同一完整 Playwright 验证器通过，并额外在断网 context 中直接打开隔离目录的唯一 `file://` HTML。四个案例、三维旋转、完整 YAML 与 DXF 保存均通过，没有任何网络资源请求。该项是另一个浏览器的实际证据，不覆盖或删除本机策略限制；见 `docs/verification/intent-edit-review-20261118/live/`。
+
 ## 三维与生产范围
 
 三维来自每一版各自的 DXF，而非旧 GLB 的缩放或图片替代；显示姿态、深度、镜像和领条折叠属于明确的示意假设。U 未标定，静态装配不是布料仿真、批准缝合或试穿结果。物理试穿和布料模拟均为 NOT_RUN，生产批准仍待确认。
