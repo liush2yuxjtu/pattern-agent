@@ -10,3 +10,9 @@
 - 本地浏览器截图：[桌面](sandy-standard.png) · [320 px 手机](mobile-320.png)。本地浏览器、HTTP 服务及渲染进程均已结束。
 
 [复现命令](../../../web/pattern-library/README.md) · [验收流程](../../../.agents/skills/verify/references/pattern-library.md)
+
+## 公开部署
+
+GitHub Pages 发布并实测通过，站点 `build.json` 与发布运行都指向 `9d85cb0413a4eab68836da00c49bdc522a73fa19`。匿名浏览器从首页进入图册，完成了九个视角与八个实际文件下载。旧首页及纸样工作台也通过公开站回归。 [公开图册](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/) · [GitHub 发布运行](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44241511842)
+
+[发布回执](live/publication.json) · [图册验收](live/gallery-browser.json) · [首页验收](live/home-browser.json) · [现场截图](live/sandy-flared.png)
