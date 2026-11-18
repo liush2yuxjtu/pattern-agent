@@ -108,3 +108,6 @@ SEWING_TEST_EVIDENCE=work/intent-edit-review/sewn-chain/tests PYTHONPATH=service
 
 三项缺配置使五项总体仍BLOCKED。发布审阅页用于交付两项已通过数字外壳与三项明确
 限制，不表示五项已全部生成或可以直接生产。后续线上读回记录另存 `live/`。
+
+线上复核现已完成：交付与实际下载后独立重开PASS，受限GLB均404。完整证据与环境
+恢复记录见 [live/README.md](live/README.md)。五项缝合总判定仍为BLOCKED。

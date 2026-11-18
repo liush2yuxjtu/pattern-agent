@@ -47,3 +47,14 @@ a PASS for accurate preview delivery cannot replace that total. Record each
 boundary separately and retain all rejected decisions, original source files,
 derived-line JSON/SVG, downloaded-file reports and historical FAILs. Evidence:
 `docs/verification/intent-sewn-chain-20261118/`.
+
+Live reopener dependencies include SciPy 1.17.0 (geometry.py imports cKDTree),
+NumPy 2.3.5, Pillow and Playwright 1.62.0. Missing SciPy is an environment BLOCKED,
+not a sewing failure. Retain the first raw error. Download source/artifacts only
+from a public pinned commit/site, check all hashes, run the exact same validator,
+retrieve the archive promptly and stop the remote session. If the temporary
+session expires before transfer, rerun the complete public check; never report an
+unretrieved old archive as verified. A concurrent Pages build may be a descendant
+of the component commit; prove ancestry, unchanged component files and actual
+response hashes instead of reverting unrelated updates. Successful evidence is
+under the same dated directory's `live/`.
