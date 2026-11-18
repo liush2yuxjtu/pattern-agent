@@ -1,0 +1,320 @@
+{
+  "name": "MakeHuman base mesh hm08",
+  "license": "CC0-1.0",
+  "sourceURL": "https://github.com/makehumancommunity/makehuman/blob/master/makehuman/data/3dobjs/base.obj",
+  "licenseURL": "https://static.makehumancommunity.org/about/license.html",
+  "unitsEvidenceURL": "https://github.com/makehumancommunity/makehuman/blob/master/makehuman/apps/gui/guiexport.py",
+  "gitBlobSHA": "d26635e9326e3cca30778fd7b9c00062b03cce09",
+  "sourceSHA256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+  "sourceBytes": 1749303,
+  "transform": "MakeHuman OBJ is Y-up, +Z forward. Decimetres to metres by 0.1, translate feet to Y=0. No body shape scaling.",
+  "sourceVertices": 19158,
+  "sourceGroups": 139,
+  "preprocessing": [
+    "select only g body; omit helpers/joint cages",
+    "recalculate outward normals",
+    "triangulate source quads",
+    "Blender quadric collapse decimation to about 8000 triangles",
+    "round coordinates to 1 micrometre"
+  ],
+  "holesFilled": 0,
+  "blenderVersion": "4.3.2",
+  "exportedMesh": {
+    "vertices": 4002,
+    "triangles": 8000,
+    "boundaryEdges": 0,
+    "nonManifoldEdges": 0,
+    "isWatertight": true,
+    "signedVolumeM3": 0.05486681221337103,
+    "minimumTriangleAreaM2": 1.3298849329564551e-06
+  },
+  "landmarks": {
+    "height": 1.6659270524978638,
+    "chestCM": 85.71134130593879,
+    "chestY": 1.261376945794764,
+    "shoulderY": 1.391206979751587,
+    "shoulderJointY": 1.3413769457947637,
+    "shoulderHalfWidth": 0.1677125096321106,
+    "torsoBottomY": 0.8894820068489935,
+    "frontZ": 0.16171156055538755,
+    "backZ": -0.060654234844496474,
+    "shoulderLeft": [
+      0.1677125096321106,
+      1.3413769457947637,
+      0.014605000615119934
+    ],
+    "shoulderRight": [
+      -0.1677125096321106,
+      1.3413769457947637,
+      0.014605000615119934
+    ],
+    "neck": [
+      0.0,
+      1.4058219645630743,
+      0.006804999895393848
+    ],
+    "chestSection": {
+      "y": 1.261376945794764,
+      "circumferenceM": 0.8571134130593879,
+      "minX": -0.15594996969383154,
+      "maxX": 0.15594996969383154,
+      "minZ": -0.05140100990019483,
+      "maxZ": 0.13312497655848854,
+      "closed": true,
+      "points": 83
+    },
+    "measurementMethod": "Maximum closed central torso section 50–170 mm below shoulder joints, 5 mm intervals; reject sections wider than shoulder-joint separation because they join the arms.",
+    "chestScan": [
+      {
+        "y": 1.1713769457947638,
+        "circumferenceM": 0.737854701891221,
+        "minX": -0.12853182132389854,
+        "maxX": 0.12853182132389854,
+        "minZ": -0.031176518168720947,
+        "maxZ": 0.15718640968194625,
+        "closed": true,
+        "points": 72
+      },
+      {
+        "y": 1.1763769457947637,
+        "circumferenceM": 0.7493753300565068,
+        "minX": -0.12972277481150443,
+        "maxX": 0.12972277481150443,
+        "minZ": -0.03247511866302161,
+        "maxZ": 0.1556166740832619,
+        "closed": true,
+        "points": 75
+      },
+      {
+        "y": 1.1813769457947638,
+        "circumferenceM": 0.7651366364062845,
+        "minX": -0.13091372829911035,
+        "maxX": 0.13091372829911035,
+        "minZ": -0.03377371915732232,
+        "maxZ": 0.15725358961182226,
+        "closed": true,
+        "points": 79
+      },
+      {
+        "y": 1.1863769457947637,
+        "circumferenceM": 0.7779073525048066,
+        "minX": -0.13210468178671622,
+        "maxX": 0.13210468178671622,
+        "minZ": -0.03507231965162298,
+        "maxZ": 0.15933304151175978,
+        "closed": true,
+        "points": 79
+      },
+      {
+        "y": 1.1913769457947638,
+        "circumferenceM": 0.7895932193208588,
+        "minX": -0.13329563527432217,
+        "maxX": 0.13329563527432217,
+        "minZ": -0.0363709201459237,
+        "maxZ": 0.15957156949676352,
+        "closed": true,
+        "points": 85
+      },
+      {
+        "y": 1.1963769457947637,
+        "circumferenceM": 0.7962816478785816,
+        "minX": -0.13448658876192804,
+        "maxX": 0.13448658876192804,
+        "minZ": -0.03762427826696643,
+        "maxZ": 0.15928004616244928,
+        "closed": true,
+        "points": 87
+      },
+      {
+        "y": 1.2013769457947638,
+        "circumferenceM": 0.8004335377219467,
+        "minX": -0.13567754224953396,
+        "maxX": 0.13567754224953396,
+        "minZ": -0.038870586233576546,
+        "maxZ": 0.15819554109410108,
+        "closed": true,
+        "points": 91
+      },
+      {
+        "y": 1.2063769457947637,
+        "circumferenceM": 0.8037490987211416,
+        "minX": -0.13686849573713986,
+        "maxX": 0.13686849573713986,
+        "minZ": -0.040116894200186604,
+        "maxZ": 0.15669730942024523,
+        "closed": true,
+        "points": 91
+      },
+      {
+        "y": 1.2113769457947638,
+        "circumferenceM": 0.807754154812482,
+        "minX": -0.13801637493855604,
+        "maxX": 0.13801637493855604,
+        "minZ": -0.04102637675153351,
+        "maxZ": 0.1551990777463893,
+        "closed": true,
+        "points": 85
+      },
+      {
+        "y": 1.2163769457947637,
+        "circumferenceM": 0.8118422733064119,
+        "minX": -0.139162148591841,
+        "maxX": 0.139162148591841,
+        "minZ": -0.04166092900081515,
+        "maxZ": 0.15370084607253345,
+        "closed": true,
+        "points": 85
+      },
+      {
+        "y": 1.2213769457947639,
+        "circumferenceM": 0.8157493927051931,
+        "minX": -0.14077688309123534,
+        "maxX": 0.14077688309123534,
+        "minZ": -0.04229548125009683,
+        "maxZ": 0.15152777891863684,
+        "closed": true,
+        "points": 83
+      },
+      {
+        "y": 1.2263769457947638,
+        "circumferenceM": 0.8190267880056508,
+        "minX": -0.14254521516565688,
+        "maxX": 0.14254521516565688,
+        "minZ": -0.04293003349937847,
+        "maxZ": 0.14911488352730518,
+        "closed": true,
+        "points": 89
+      },
+      {
+        "y": 1.2313769457947639,
+        "circumferenceM": 0.8223925222318819,
+        "minX": -0.14426380326519034,
+        "maxX": 0.14426380326519034,
+        "minZ": -0.04356458574866014,
+        "maxZ": 0.14670198813597338,
+        "closed": true,
+        "points": 91
+      },
+      {
+        "y": 1.2363769457947638,
+        "circumferenceM": 0.8269627933979304,
+        "minX": -0.14573247085485275,
+        "maxX": 0.14573247085485275,
+        "minZ": -0.044199137997941784,
+        "maxZ": 0.14428909274464172,
+        "closed": true,
+        "points": 86
+      },
+      {
+        "y": 1.2413769457947639,
+        "circumferenceM": 0.8313785490572305,
+        "minX": -0.14720113844451524,
+        "maxX": 0.14720113844451524,
+        "minZ": -0.04483369024722345,
+        "maxZ": 0.14187619735330992,
+        "closed": true,
+        "points": 82
+      },
+      {
+        "y": 1.2463769457947638,
+        "circumferenceM": 0.8366783756105306,
+        "minX": -0.14866980603417765,
+        "maxX": 0.14866980603417765,
+        "minZ": -0.0454682424965051,
+        "maxZ": 0.13946330196197826,
+        "closed": true,
+        "points": 77
+      },
+      {
+        "y": 1.2513769457947639,
+        "circumferenceM": 0.8420857061537484,
+        "minX": -0.15013847362384014,
+        "maxX": 0.15013847362384014,
+        "minZ": -0.04644848108051997,
+        "maxZ": 0.13705040657064646,
+        "closed": true,
+        "points": 75
+      },
+      {
+        "y": 1.2563769457947638,
+        "circumferenceM": 0.8491387163257996,
+        "minX": -0.15273471045929654,
+        "maxX": 0.15273471045929654,
+        "minZ": -0.049148591149209546,
+        "maxZ": 0.13508737287896055,
+        "closed": true,
+        "points": 81
+      },
+      {
+        "y": 1.261376945794764,
+        "circumferenceM": 0.8571134130593879,
+        "minX": -0.15594996969383154,
+        "maxX": 0.15594996969383154,
+        "minZ": -0.05140100990019483,
+        "maxZ": 0.13312497655848854,
+        "closed": true,
+        "points": 83
+      },
+      {
+        "y": 1.2663769457947638,
+        "circumferenceM": 1.4744629495178434,
+        "minX": -0.272749913420768,
+        "maxX": 0.27274939865831027,
+        "minZ": -0.05365342865118002,
+        "maxZ": 0.13116258023801664,
+        "closed": true,
+        "points": 161
+      },
+      {
+        "y": 1.271376945794764,
+        "circumferenceM": 1.3888223461683742,
+        "minX": -0.2692741031474141,
+        "maxX": 0.269273711533649,
+        "minZ": -0.05483831677149883,
+        "maxZ": 0.12920018391754462,
+        "closed": true,
+        "points": 155
+      },
+      {
+        "y": 1.2763769457947638,
+        "circumferenceM": 1.3365588212076953,
+        "minX": -0.2657982928740604,
+        "maxX": 0.26579802440898787,
+        "minZ": -0.055059624224202,
+        "maxZ": 0.1272377875970727,
+        "closed": true,
+        "points": 151
+      },
+      {
+        "y": 1.281376945794764,
+        "circumferenceM": 1.2864712905118996,
+        "minX": -0.2623224826007066,
+        "maxX": 0.2623223372843266,
+        "minZ": -0.05528093167690518,
+        "maxZ": 0.1252753912766007,
+        "closed": true,
+        "points": 143
+      },
+      {
+        "y": 1.2863769457947638,
+        "circumferenceM": 1.2413881638049296,
+        "minX": -0.2588466723273529,
+        "maxX": 0.25884665015966546,
+        "minZ": -0.05608997437731252,
+        "maxZ": 0.12315828649997418,
+        "closed": true,
+        "points": 135
+      },
+      {
+        "y": 1.291376945794764,
+        "circumferenceM": 1.208637491396353,
+        "minX": -0.25620516933798204,
+        "maxX": 0.25620516933798204,
+        "minZ": -0.05758348502102818,
+        "maxZ": 0.12086517496107968,
+        "closed": true,
+        "points": 131
+      }
+    ]
+  }
+}

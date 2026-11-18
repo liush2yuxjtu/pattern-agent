@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-design-review",
+  "verdict": "CONDITIONAL_GO_A",
+  "artifactVerification": "NOT_RUN",
+  "physicalGoldenVerdict": "BLOCKED",
+  "physicalGoldenReasons": ["U_to_mm_unknown", "cut_quantities_unapproved", "sewing_and_cut_contours_unapproved", "material_uncalibrated", "body_measurements_unknown", "sleeve_orientation_unapproved"],
+  "canonicalPath": "inputs/golden-garment-1.1.yaml",
+  "canonicalSha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+  "selectedArchitecture": "A_browser_freesewing_rapier",
+  "referenceArchitecture": "B_offline_garmentcode_warp",
+  "reviewWritesOnly": "review/",
+  "checklist": [
+    {"id":"G01","name":"canonical preservation","procedure":"Hash embedded original YAML bytes. Reconstruct the named geometry without replacing it with Teagan or testmodel. Compare line, vertex and text records with source.","expected":"Exact source hash and complete source-to-render mapping. Unknown values stay unknown.","status":"NOT_RUN"},
+    {"id":"G02","name":"unknown units","procedure":"Load golden with U-to-mm unset. Inspect measurements, exports, simulation status and reports.","expected":"U measurements remain U. Physical cutting and golden fit verdict are BLOCKED. No implicit scale of 1.","status":"NOT_RUN"},
+    {"id":"G03","name":"demo isolation","procedure":"Switch to official testmodel or normalized demo. Run it. Switch back to golden.","expected":"Distinct source ID and DEMO_ASSUMED label. Demo results cannot become golden results.","status":"NOT_RUN"},
+    {"id":"G04","name":"single revision","procedure":"Edit geometry while a solver job runs. Wait for the old job to finish. Inspect all five views and export.","expected":"All views agree on active revision. Old results remain STALE and cannot overwrite active results.","status":"NOT_RUN"},
+    {"id":"G05","name":"actual recomputation","procedure":"Record initial solver step and position hash. Run fixed steps. Reset and change a meaningful input, then rerun.","expected":"LIVE_SOLVE invokes the engine. Steps and output are traceable to current input. Replay is explicitly REPLAY and never increments solver work counters.","status":"NOT_RUN"},
+    {"id":"G06","name":"single HTML startup","procedure":"Open the exact delivered HTML in a fresh browser context without network. Start, stop and reset computation.","expected":"Embedded code, WASM and assets initialize without CDN. UI remains usable. Failure is visible rather than replaced by cached output.","status":"NOT_RUN"},
+    {"id":"G07","name":"seam semantics","procedure":"Inspect seam pair mapping, orientation, approvals, particle IDs and engine edge rest lengths. Perturb a minimal connected fixture and run it.","expected":"Measured behavior matches declared native constraint or welded connectivity. Shared-index zero gap is not reported as dynamic sewing proof.","status":"NOT_RUN"},
+    {"id":"G08","name":"rest metric preservation","procedure":"Compare every structural edge rest length and every triangle rest metric against panel-local 2D data. Inspect welded seam corner UVs.","expected":"No silent metric reset from preassembled 3D shape. Discrepancies and assumed metrics are explicit.","status":"NOT_RUN"},
+    {"id":"G09","name":"stress honesty","procedure":"Inspect heatmap legend, values, units and exported report. Read Rapier edgeStress and edgeImpulse usage.","expected":"Dimensionless strain and normalized tear load use correct labels. Physical stress remains UNKNOWN without calibrated constitutive data.","status":"NOT_RUN"},
+    {"id":"G10","name":"collision identity and audit","procedure":"Compare render and collider body vertex/index hashes and transforms. Audit output cloth against body and itself with the independent geometry checker.","expected":"Same body mesh and transform. Report intersections, penetrations, degeneracies and tolerance. No image-only PASS.","status":"NOT_RUN"},
+    {"id":"G11","name":"run reproducibility and bounds","procedure":"Export run parameters, source and mesh hashes, engine version, dt, steps and stop reason. Repeat bounded fixture and test cancellation.","expected":"Reproducible inputs and declared numerical tolerance. Cancellation works. Runtime limits do not silently reduce collision fidelity.","status":"NOT_RUN"},
+    {"id":"G12","name":"historical and production claims","procedure":"Read final UI, downloaded report and final delivery text. Compare historical status with repository rules.","expected":"Old garment FAIL persists. New probe PASS is scoped to its fixture. Missing production inputs cannot produce golden physics PASS.","status":"NOT_RUN"}
+  ],
+  "sources": [
+    "REPOSITORY-AGENTS.md",
+    "inputs/golden-garment-1.1.yaml",
+    "node_modules/@dimforge/rapier3d-compat/dist/dynamics/soft_body.d.ts",
+    "node_modules/@freesewing/teagan/src/index.mjs",
+    "reference/src/seam-analysis.js",
+    "reference/benchmarks/collision/surface-audit.mjs",
+    "https://www.rapier.rs/javascript3d/classes/SoftBodyDesc.html",
+    "https://github.com/maria-korosteleva/GarmentCode/blob/main/docs/Installation.md",
+    "https://nvidia.github.io/warp/stable/index.html"
+  ]
+}

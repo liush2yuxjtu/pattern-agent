@@ -1,0 +1,113 @@
+{
+  "claim": "Measure cold first-30-step native CPU cost for the declared 485-particle open-seam experiment. No comparison with the old PBD garment and no garment qualification.",
+  "environment": {
+    "node": "v24.22.1",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "cores": 9,
+    "load": [
+      0.95,
+      0.77,
+      0.61
+    ]
+  },
+  "method": {
+    "runs": 5,
+    "warmupSteps": 0,
+    "whyNoWarmup": "Measures actual first requested segment, including cold first physics step. WASM init and mesh generation are separately timed.",
+    "stepsPerRun": 30,
+    "dt": 0.008333333333333333,
+    "renderer": "NOT_INCLUDED",
+    "accuracy": "Open seam >2mm FAIL"
+  },
+  "runs": [
+    {
+      "repeat": 1,
+      "draftMeshMS": 338.083348,
+      "initMS": 64.61065499999995,
+      "solverMS": 583.5356789999996,
+      "endToEndMS": 995.0844890000001,
+      "steps": 30,
+      "particles": 485,
+      "triangles": 800,
+      "joints": 62,
+      "positionSha256": "6550d3927254d5af821178b1343f72a15f36acec33805cab55d93b39b2d1005a",
+      "finite": true,
+      "errors": 0,
+      "maxSeamGapMM": 467.87700799215133,
+      "garmentVerdict": "FAIL"
+    },
+    {
+      "repeat": 2,
+      "draftMeshMS": 330.7844399999999,
+      "initMS": 14.08054100000004,
+      "solverMS": 343.41510400000016,
+      "endToEndMS": 692.3465199999998,
+      "steps": 30,
+      "particles": 485,
+      "triangles": 800,
+      "joints": 62,
+      "positionSha256": "6550d3927254d5af821178b1343f72a15f36acec33805cab55d93b39b2d1005a",
+      "finite": true,
+      "errors": 0,
+      "maxSeamGapMM": 467.87700799215133,
+      "garmentVerdict": "FAIL"
+    },
+    {
+      "repeat": 3,
+      "draftMeshMS": 293.174755,
+      "initMS": 15.077718999999888,
+      "solverMS": 344.1101069999995,
+      "endToEndMS": 656.4164679999999,
+      "steps": 30,
+      "particles": 485,
+      "triangles": 800,
+      "joints": 62,
+      "positionSha256": "6550d3927254d5af821178b1343f72a15f36acec33805cab55d93b39b2d1005a",
+      "finite": true,
+      "errors": 0,
+      "maxSeamGapMM": 467.87700799215133,
+      "garmentVerdict": "FAIL"
+    },
+    {
+      "repeat": 4,
+      "draftMeshMS": 235.18603100000018,
+      "initMS": 13.546199000000342,
+      "solverMS": 326.0109619999989,
+      "endToEndMS": 577.3359150000001,
+      "steps": 30,
+      "particles": 485,
+      "triangles": 800,
+      "joints": 62,
+      "positionSha256": "6550d3927254d5af821178b1343f72a15f36acec33805cab55d93b39b2d1005a",
+      "finite": true,
+      "errors": 0,
+      "maxSeamGapMM": 467.87700799215133,
+      "garmentVerdict": "FAIL"
+    },
+    {
+      "repeat": 5,
+      "draftMeshMS": 238.28653200000008,
+      "initMS": 12.778096000000005,
+      "solverMS": 334.3267860000001,
+      "endToEndMS": 588.9574709999997,
+      "steps": 30,
+      "particles": 485,
+      "triangles": 800,
+      "joints": 62,
+      "positionSha256": "6550d3927254d5af821178b1343f72a15f36acec33805cab55d93b39b2d1005a",
+      "finite": true,
+      "errors": 0,
+      "maxSeamGapMM": 467.87700799215133,
+      "garmentVerdict": "FAIL"
+    }
+  ],
+  "summary": {
+    "medianSolverMS": 343.41510400000016,
+    "rangeSolverMS": [
+      326.0109619999989,
+      583.5356789999996
+    ],
+    "sameFinalPositions": true,
+    "errors": 0
+  }
+}

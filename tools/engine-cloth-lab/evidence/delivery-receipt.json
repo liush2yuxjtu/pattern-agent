@@ -1,0 +1,97 @@
+{
+  "schema": "engine-cloth-delivery-receipt-1",
+  "baseCommit": "292d1388f955541505d84d4b84edb016ee2c6aec",
+  "htmlSha256": "ce27a33438670d083a9f0776c65abb45d8005bf172c1273d268acc12ea9226f3",
+  "sourceSha256": "d6cc0761d6c1c20e9e7b4f5ea1b5b37af17bbaf990cfd24bacd2854784736951",
+  "verificationWorkflow": "root verify + package .agents/skills/verify/SKILL.md; no CI",
+  "commands": {
+    "npm ci": 0,
+    "npm run build": 0,
+    "npm run verify": 0,
+    "node review/advisor-checks.mjs": 0,
+    "python probes/pattern/output_oracle.py": 0,
+    "python scripts/build_pages.py": 0,
+    "git diff --check": 0
+  },
+  "claims": {
+    "nodeDataAndEngineChecks": {
+      "verdict": "PASS",
+      "checks": 22
+    },
+    "independentCodeChecks": {
+      "verdict": "PASS",
+      "checks": 12
+    },
+    "actualExportNumericsAndPrint": {
+      "verdict": "PASS",
+      "trianglesAcrossFrames": 4000
+    },
+    "browserObserved": {
+      "startup": true,
+      "liveNativeSteps": 30,
+      "seamGapMM": 467.87700799215133,
+      "bodyInsideVertices": 0,
+      "bodyStrictCrossings": 0,
+      "selfStrictCrossings": 0,
+      "sourceBuildMatches": true,
+      "renderer": "Canvas software depth buffer; WebGL unavailable",
+      "revisionInvalidation": "observed REV 2 / STALE / no current frame",
+      "replay": "same complete frame arrays, native step count stays 30"
+    },
+    "UIFileImport": {
+      "verdict": "BLOCKED",
+      "reason": "Filechooser lost its CDP tab; no successful import observation"
+    },
+    "literalFileProtocol": {
+      "verdict": "BLOCKED",
+      "reason": "Browser protocol policy rejects file://; no workaround attempted"
+    },
+    "stopDuringSolve": {
+      "verdict": "BLOCKED",
+      "reason": "The requested short run finished before the automated stop click interrupted it; no interruption PASS"
+    },
+    "fullGarment": {
+      "verdict": "FAIL",
+      "reason": "Native open seam gap exceeds project 2mm criterion"
+    },
+    "GoldenPhysical": {
+      "verdict": "BLOCKED",
+      "reason": "U-to-mm and construction/material/body approvals missing"
+    },
+    "materialStressPa": "UNKNOWN",
+    "contactPressurePa": "UNKNOWN",
+    "realFit": "NOT_VALIDATED"
+  },
+  "overallGarmentVerdict": "FAIL",
+  "scope": "Experimental source-preserving workbench; not a completed garment or CLO equivalent",
+  "performance": {
+    "medianSolverMS": 343.41510400000016,
+    "rangeSolverMS": [
+      326.0109619999989,
+      583.5356789999996
+    ],
+    "sameFinalPositions": true,
+    "errors": 0
+  },
+  "publication": "PENDING",
+  "evidenceFiles": {
+    "evidence/browser/browser-replay-f0.json": "84afb8e651c13ab7f4df3b788cdf0915544af402a1e6922c8efcdb937ec0d838",
+    "evidence/browser/browser-run-final.json": "8953d8c05a8a5d918c50ef3c7959da7eee4af58c3c497756a9b0e0ae31470bc4",
+    "evidence/browser/demo-pattern.pdf": "a64a7fd9c09dd6ac9f79cf7fadec56e1198c4a15c0d204b3ce4762372c77c75f",
+    "evidence/browser/demo-pattern.svg": "9f9aceb1e5c0c501599f53cf41ff04e61bc4b496534f2898b4741f525ea6805e",
+    "evidence/browser/f30-back-final.jpg": "1998cb8c1a983268b0dd39f689f2def9cde3634ebf8d5985816aefd90fe58faf",
+    "evidence/browser/f30-fold-final.jpg": "29abd8ad509d1c132eea67f63d3993619122d926b43cd4b6d499f2474083721a",
+    "evidence/browser/f30-front-final.jpg": "8adb24c10065b4622700565183b27a8ff63a50de13dac76c184b0afc640e58d0",
+    "evidence/browser/golden-garment-1.1.yaml": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "evidence/browser/golden-pattern-final.jpg": "c9e055c2e6a856c05128972ad0b25d8a4661a7ad64a44228985d7b91c9126910",
+    "evidence/browser/golden-pattern.svg": "4df486048839a1a070dcf5fedda80af946982e95126f6bc8ba1668a2830eda01"
+  },
+  "postReviewFormatting": {
+    "files": [
+      "REPOSITORY-AGENTS.md",
+      "probes/pattern/native-teagan.svg",
+      "probes/rapier/native-seam.mjs"
+    ],
+    "change": "Trailing whitespace and final blank lines only; native probe, build, exact browser run, 22 Node checks, 12 advisor checks and SVD/PDF oracle rerun."
+  }
+}

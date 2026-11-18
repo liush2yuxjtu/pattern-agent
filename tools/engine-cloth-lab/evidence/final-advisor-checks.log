@@ -1,0 +1,183 @@
+{
+  "sourceHashes": {
+    "src/app.mjs": "2eeef8e19b608d7114838290c27f90ad4cf60e0d9a7d916496aae85c429ede71",
+    "src/golden.mjs": "9378ef5f45a23ba476e6ed8cd8b157ea2b749916743db2e7a33fedeee127c769",
+    "src/domain.mjs": "2d0cd9cba5aa498ebd9ba493c3d65477594c04c959f71e15b6e9d22995f85d5c",
+    "src/metrics.mjs": "165baa58f4ed4a90d42ee0dbc6e661c6d4a8925b1e8aa5ef44a53ba223547bfd",
+    "dist/index.html": "ce27a33438670d083a9f0776c65abb45d8005bf172c1273d268acc12ea9226f3"
+  },
+  "checks": [
+    {
+      "id": "golden-relative-placement",
+      "status": "PASS",
+      "counts": {
+        "parts": 4,
+        "polylines": 126,
+        "lines": 78,
+        "texts": 27,
+        "vertices": 1487
+      },
+      "deltas": [
+        {
+          "expected": [
+            -1080.485687,
+            -21.556008999999904
+          ],
+          "actual": [
+            -1080.485687,
+            -21.556008999999904
+          ]
+        },
+        {
+          "expected": [
+            -532.0889280000001,
+            127.47704199999998
+          ],
+          "actual": [
+            -532.0889280000001,
+            127.47704199999998
+          ]
+        },
+        {
+          "expected": [
+            -756.3468630000002,
+            -641.6232239999999
+          ],
+          "actual": [
+            -756.3468630000002,
+            -641.6232239999999
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mm-to-m-dimensionless-stretch",
+      "status": "PASS",
+      "identity": {
+        "valid": true,
+        "max": 1,
+        "min": 1,
+        "areaRatio": 1,
+        "restAreaM2": 0.005
+      },
+      "stretched": {
+        "valid": true,
+        "max": 1.2,
+        "min": 0.8,
+        "areaRatio": 0.96,
+        "restAreaM2": 0.005
+      }
+    },
+    {
+      "id": "domain-stale-frame-rejection",
+      "status": "PASS"
+    },
+    {
+      "id": "audit-unchanged",
+      "status": "PASS",
+      "calls": 1,
+      "auditedMarker": 0,
+      "reportedStep": 0
+    },
+    {
+      "id": "audit-frame",
+      "status": "PASS",
+      "calls": 0,
+      "auditedMarker": null,
+      "reportedStep": null
+    },
+    {
+      "id": "audit-source",
+      "status": "PASS",
+      "calls": 0,
+      "auditedMarker": null,
+      "reportedStep": null
+    },
+    {
+      "id": "audit-job",
+      "status": "PASS",
+      "calls": 0,
+      "auditedMarker": null,
+      "reportedStep": null
+    },
+    {
+      "id": "audit-auditJob",
+      "status": "PASS",
+      "calls": 0,
+      "auditedMarker": null,
+      "reportedStep": null
+    },
+    {
+      "id": "current-native-probe-source-hashes",
+      "status": "PASS",
+      "matchingSources": [
+        {
+          "path": "probes/rapier/engine.mjs",
+          "matches": true
+        },
+        {
+          "path": "probes/rapier/native-seam.mjs",
+          "matches": true
+        },
+        {
+          "path": "reference/assets/makehuman.json",
+          "matches": true
+        },
+        {
+          "path": "node_modules/@dimforge/rapier3d-compat/dist/rapier_wasm3d_bg.wasm",
+          "matches": true
+        }
+      ],
+      "cases": [
+        {
+          "name": "engine-two-panel-seam-gravity-pin",
+          "status": "PASS"
+        },
+        {
+          "name": "engine-dispose",
+          "status": "PASS"
+        },
+        {
+          "name": "engine-makehuman-chest-contact-radius-0.003",
+          "status": "FAIL"
+        },
+        {
+          "name": "engine-makehuman-chest-contact-radius-0.005",
+          "status": "PASS"
+        },
+        {
+          "name": "invalid-rest",
+          "status": "PASS"
+        },
+        {
+          "name": "invalid-assembly",
+          "status": "PASS"
+        },
+        {
+          "name": "invalid-seam",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "import-incomplete-settings-rejected",
+      "status": "PASS",
+      "rejected": 8,
+      "total": 8
+    },
+    {
+      "id": "log-source-isolation",
+      "status": "PASS"
+    },
+    {
+      "id": "invalid-frame-rejection",
+      "status": "PASS",
+      "outcomes": [
+        true,
+        true,
+        true,
+        false
+      ]
+    }
+  ]
+}

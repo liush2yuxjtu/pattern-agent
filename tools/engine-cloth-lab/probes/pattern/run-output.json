@@ -1,0 +1,316 @@
+{
+  "status": "PASS",
+  "canonicalSha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+  "model": "cisFemaleAdult38",
+  "measurements": {
+    "ankle": 274,
+    "biceps": 302,
+    "bustFront": 508,
+    "bustPointToUnderbust": 106,
+    "bustSpan": 169,
+    "chest": 1034,
+    "crossSeam": 792,
+    "crossSeamFront": 396,
+    "crotchDepth": 291,
+    "heel": 324,
+    "head": 588,
+    "highBust": 967,
+    "highBustFront": 466,
+    "hips": 1006,
+    "hpsToBust": 296,
+    "hpsToWaistBack": 425,
+    "hpsToWaistFront": 431,
+    "inseam": 788,
+    "knee": 409,
+    "neck": 380,
+    "seat": 1081,
+    "seatBack": 557,
+    "shoulderSlope": 13,
+    "shoulderToElbow": 360,
+    "shoulderToShoulder": 447,
+    "shoulderToWrist": 611,
+    "underbust": 872,
+    "upperLeg": 600,
+    "waist": 825,
+    "waistBack": 418,
+    "waistToArmpit": 183,
+    "waistToFloor": 1099,
+    "waistToHips": 135,
+    "waistToKnee": 646,
+    "waistToSeat": 269,
+    "waistToUnderbust": 86,
+    "waistToUpperLeg": 307,
+    "wrist": 175
+  },
+  "baseOptions": {
+    "fitWaist": true
+  },
+  "checks": {
+    "panelCount": 4,
+    "sourceAreasMM2": [
+      {
+        "id": "front",
+        "areaMM2": 304774.2206935156,
+        "vertexCount": 818
+      },
+      {
+        "id": "back",
+        "areaMM2": 315865.64600491396,
+        "vertexCount": 798
+      },
+      {
+        "id": "sleeve-left",
+        "areaMM2": 53813.26192254322,
+        "vertexCount": 332
+      },
+      {
+        "id": "sleeve-right",
+        "areaMM2": 53813.26192254322,
+        "vertexCount": 332
+      }
+    ],
+    "waistChangeMM": 20,
+    "waistChangesBodyOnly": true,
+    "sleeveLengthChange": {
+      "from": 0.3,
+      "to": 0.4,
+      "changesSleeveOnly": true
+    },
+    "necklineDepthChange": {
+      "from": 0.25,
+      "to": 0.3,
+      "changesFrontOnly": true
+    },
+    "allSeamDirectionsExplicit": true,
+    "canonicalUnknownBlocked": true
+  },
+  "seams": [
+    {
+      "id": "shoulder.left",
+      "a": {
+        "panel": "front",
+        "edge": "left.shoulder",
+        "direction": 1
+      },
+      "b": {
+        "panel": "back",
+        "edge": "left.shoulder",
+        "direction": 1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 103.690925024059,
+      "lengthBMM": 103.690925024059,
+      "deltaMM": 0,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "neck",
+        "shoulder"
+      ]
+    },
+    {
+      "id": "side.left",
+      "a": {
+        "panel": "front",
+        "edge": "left.side",
+        "direction": 1
+      },
+      "b": {
+        "panel": "back",
+        "edge": "left.side",
+        "direction": 1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 401.8105507105603,
+      "lengthBMM": 401.8105507105603,
+      "deltaMM": 0,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "underarm",
+        "hem"
+      ]
+    },
+    {
+      "id": "armhole.left.front",
+      "a": {
+        "panel": "front",
+        "edge": "left.armhole",
+        "direction": 1
+      },
+      "b": {
+        "panel": "sleeve-left",
+        "edge": "cap.front",
+        "direction": -1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 257.1031214363067,
+      "lengthBMM": 257.16523552950736,
+      "deltaMM": 0.06211409320064831,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "shoulder",
+        "underarm"
+      ]
+    },
+    {
+      "id": "armhole.left.back",
+      "a": {
+        "panel": "back",
+        "edge": "left.armhole",
+        "direction": 1
+      },
+      "b": {
+        "panel": "sleeve-left",
+        "edge": "cap.back",
+        "direction": -1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 255.44556227534852,
+      "lengthBMM": 255.3911865388768,
+      "deltaMM": -0.054375736471712344,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "shoulder",
+        "underarm"
+      ]
+    },
+    {
+      "id": "underarm.left",
+      "a": {
+        "panel": "sleeve-left",
+        "edge": "underarm.front",
+        "direction": 1
+      },
+      "b": {
+        "panel": "sleeve-left",
+        "edge": "underarm.back",
+        "direction": 1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 54.70586351510223,
+      "lengthBMM": 54.70586351510223,
+      "deltaMM": 0,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "underarm",
+        "cuff"
+      ]
+    },
+    {
+      "id": "shoulder.right",
+      "a": {
+        "panel": "front",
+        "edge": "right.shoulder",
+        "direction": 1
+      },
+      "b": {
+        "panel": "back",
+        "edge": "right.shoulder",
+        "direction": 1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 103.690925024059,
+      "lengthBMM": 103.690925024059,
+      "deltaMM": 0,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "neck",
+        "shoulder"
+      ]
+    },
+    {
+      "id": "side.right",
+      "a": {
+        "panel": "front",
+        "edge": "right.side",
+        "direction": 1
+      },
+      "b": {
+        "panel": "back",
+        "edge": "right.side",
+        "direction": 1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 401.8105507105603,
+      "lengthBMM": 401.8105507105603,
+      "deltaMM": 0,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "underarm",
+        "hem"
+      ]
+    },
+    {
+      "id": "armhole.right.front",
+      "a": {
+        "panel": "front",
+        "edge": "right.armhole",
+        "direction": 1
+      },
+      "b": {
+        "panel": "sleeve-right",
+        "edge": "cap.front",
+        "direction": -1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 257.1031214363067,
+      "lengthBMM": 257.16523552950736,
+      "deltaMM": 0.06211409320064831,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "shoulder",
+        "underarm"
+      ]
+    },
+    {
+      "id": "armhole.right.back",
+      "a": {
+        "panel": "back",
+        "edge": "right.armhole",
+        "direction": 1
+      },
+      "b": {
+        "panel": "sleeve-right",
+        "edge": "cap.back",
+        "direction": -1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 255.44556227534852,
+      "lengthBMM": 255.3911865388768,
+      "deltaMM": -0.054375736471712344,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "shoulder",
+        "underarm"
+      ]
+    },
+    {
+      "id": "underarm.right",
+      "a": {
+        "panel": "sleeve-right",
+        "edge": "underarm.front",
+        "direction": 1
+      },
+      "b": {
+        "panel": "sleeve-right",
+        "edge": "underarm.back",
+        "direction": 1
+      },
+      "pairingDirection": "SAME_SEMANTIC_ENDPOINT_ORDER",
+      "lengthAMM": 54.70586351510223,
+      "lengthBMM": 54.70586351510223,
+      "deltaMM": 0,
+      "physicalApproval": "ENGINE_CONFORMANCE_ONLY",
+      "endpointRoles": [
+        "underarm",
+        "cuff"
+      ]
+    }
+  ],
+  "limitations": {
+    "sourceAreasNonZero": true,
+    "goldenCadEquivalence": false,
+    "neckbandMissing": true,
+    "longSleeveSupported": false,
+    "sleevecapResidualMM": 0.007738356729021234
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-artifact-review",
+  "baselineHashes": "review/advisor-checks-result.json",
+  "productVerdict": "FAIL_PRODUCT_GATES",
+  "architectureVerdict": "KEEP_A_EXPERIMENTAL_ADD_B_OFFLINE_REFERENCE",
+  "goldenPhysics": "BLOCKED",
+  "completeGarment": "NO_PASS",
+  "currentEngineProbe": "STALE_SOURCE_HASH",
+  "independentBrowserExecution": "NOT_RUN",
+  "checksRun": "node review/advisor-checks.mjs",
+  "findings": [
+    {"id":"R01","severity":"high","status":"OPEN","evidence":"MEASURED","file":"src/golden.mjs","problem":"Relative source layout is changed in display and SVG export.","test":"golden-relative-placement"},
+    {"id":"R02","severity":"high","status":"OPEN","evidence":"MEASURED","file":"src/app.mjs","problem":"audit reads frame after await but labels it with the step captured before await; source identity is not guarded.","test":"audit-frame-race"},
+    {"id":"R03","severity":"medium","status":"OPEN","evidence":"MEASURED","file":"probes/rapier/engine-report.json","problem":"Saved source hashes disagree with current engine and native-seam files."},
+    {"id":"R04","severity":"medium","status":"OPEN","evidence":"SOURCE_INSPECTION","file":"src/app.mjs","problem":"Partial imported settings inherit previous control values and do not reproduce a stable input."},
+    {"id":"R05","severity":"medium","status":"OPEN","evidence":"SOURCE_INSPECTION","file":"src/app.mjs","problem":"Logs and performance records mix sources without source or run identity."},
+    {"id":"R06","severity":"high","status":"OPEN","evidence":"SOURCE_INSPECTION","file":"src/app.mjs","problem":"Frames are accepted and final status becomes COMPLETED without rejecting nonfinite or incomplete coordinate arrays."},
+    {"id":"R07","severity":"medium","status":"OPEN","evidence":"SOURCE_AND_SCREENSHOT","file":"src/app.mjs","problem":"F0 assumed initial assembly caption uses native Rapier label without its frame mode."}
+  ],
+  "positiveChecks": [
+    "Canonical raw source retained separately from demo",
+    "Golden U-to-mm remains unknown and physical controls disabled",
+    "Correct geometry counts",
+    "Independent strain identity and 1.2/0.8 deformation tests pass",
+    "Stale revision frame rejection passes",
+    "Stress and pressure UNKNOWN",
+    "Replay does not request solver steps",
+    "Imported previous verdicts and frames are discarded",
+    "Worker termination and wall-clock limit present",
+    "Render and collider use identical human geometry arrays"
+  ],
+  "releaseConditions": [
+    "Resolve findings and rerun actual candidate tests",
+    "Rebuild HTML and record its hash",
+    "Verify real offline browser startup, edit, solve, stop, replay, import and export",
+    "Report product tests independently from physical garment verdicts",
+    "Preserve complete garment failures and golden production blockers"
+  ]
+}

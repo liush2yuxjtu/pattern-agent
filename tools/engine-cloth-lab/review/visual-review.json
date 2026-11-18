@@ -1,0 +1,74 @@
+{
+  "review_type": "independent_screenshot_only",
+  "language": "zh-CN",
+  "inputs": [
+    "/workspace/shared/engine-cloth-evidence/golden-pattern-final.jpg",
+    "/workspace/shared/engine-cloth-evidence/f30-front-strain.jpg",
+    "/workspace/shared/engine-cloth-evidence/f30-back-strain.jpg"
+  ],
+  "images_opened": true,
+  "product_source_read": false,
+  "numerical_reports_read": false,
+  "other_reviews_read": false,
+  "verdicts": {
+    "ui_visual": "basic_pass_with_legibility_and_status_semantics_issues",
+    "garment_appearance": "fail",
+    "original_vs_demo_distinction": "pass",
+    "numerical_correctness": "not_verifiable_from_images",
+    "collision_free": "not_verifiable_from_images"
+  },
+  "visible_content": {
+    "human_figure": true,
+    "human_provenance_verified": false,
+    "makehuman_label_visible": true,
+    "two_dimensional_patterns_visible": true,
+    "pattern_outline_count": 4,
+    "complete_garment": false,
+    "separated_panels": true
+  },
+  "localized_defects": [
+    {
+      "region": "shoulder_and_neck",
+      "front": "衣身顶部两侧尖角过高；局部橙红色；未形成清楚的圆领和连续袖窿。",
+      "back": "颈根两侧存在小块绿色及红色边角，灰色肩背大面积裸露。",
+      "cause": "不能从截图确定拓扑或求解原因。"
+    },
+    {
+      "region": "sleeves",
+      "front": "绿色片集中在前臂／腕部附近并向外伸出，与衣身之间有明显空隙。",
+      "back": "两侧可见横向薄片，上臂仍裸露。",
+      "appearance": "未形成与衣身连续的袖筒。"
+    },
+    {
+      "region": "back_bodice",
+      "appearance": "大片绿色面位于中下背至臀腿附近，肩胛和中央上背缺乏连续覆盖。"
+    }
+  ],
+  "legend_and_status": {
+    "strain_legend_visible": true,
+    "strain_formula_visible": "lambda_max - 1",
+    "strain_scale_visible": "0% to 25%+",
+    "dimensionless_and_not_stress_label_visible": true,
+    "original_units_unscaled_and_blocked_visible": true,
+    "demo_completed_visible": true,
+    "seam_fail_visible": true,
+    "seam_gap_displayed": "467.9 mm",
+    "material_unknown_visible": true,
+    "fit_not_validated_visible": true,
+    "collision_pass_and_zero_displayed": true,
+    "displayed_results_independently_verified": false,
+    "status_issue": "COMPLETED 容易被扫读为成衣通过，虽然 FAIL 与 NOT_VALIDATED 也同时可见。"
+  },
+  "wrinkles": {
+    "coarse_facets_and_folds_visible": true,
+    "physical_wrinkle_correctness_verified": false,
+    "stable_drape_verified": false
+  },
+  "limits": [
+    "只能确认截图外观与显示内容。",
+    "不能确认 MakeHuman 来源、真实人体尺寸或网格完整性。",
+    "不能核验应变数值、材料应力或压力。",
+    "不能由正背截图证明无穿插、无内部碰撞或全局无自交。"
+  ],
+  "product_modified": false
+}

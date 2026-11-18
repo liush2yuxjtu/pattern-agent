@@ -1,0 +1,198 @@
+{
+  "oracle": "Independent NumPy float64 SVD and XML/PDF file inspection",
+  "numpyVersion": "2.3.5",
+  "metricsSourceSha256": "165baa58f4ed4a90d42ee0dbc6e661c6d4a8925b1e8aa5ef44a53ba223547bfd",
+  "controls": [
+    {
+      "name": "IDENTITY",
+      "numpySVD": [
+        1.0,
+        1.0
+      ],
+      "exportFunction": {
+        "name": "IDENTITY",
+        "valid": true,
+        "max": 1,
+        "min": 1,
+        "areaRatio": 1,
+        "restAreaM2": 0.5
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "DIAG_1_1E_MINUS_9",
+      "numpySVD": [
+        1.0,
+        1e-09
+      ],
+      "exportFunction": {
+        "name": "DIAG_1_1E_MINUS_9",
+        "valid": true,
+        "max": 1,
+        "min": 1e-09,
+        "areaRatio": 1e-09,
+        "restAreaM2": 0.5
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "SHEAR_ROTATED_3D",
+      "numpySVD": [
+        1.3107994750909624,
+        0.7821794781897932
+      ],
+      "exportFunction": {
+        "name": "SHEAR_ROTATED_3D",
+        "valid": true,
+        "max": 1.3107994750909626,
+        "min": 0.7821794781897929,
+        "areaRatio": 1.0252804494381036,
+        "restAreaM2": 0.5
+      },
+      "status": "PASS"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "artifact",
+      "path": "evidence/browser/browser-run-final.json",
+      "sha256": "393001aaf42e8f206321345060700f3af73aed57863f20793486aad63556bade",
+      "framesChecked": 5,
+      "frameResults": [
+        {
+          "step": 0,
+          "triangles": 800,
+          "maxStretchNumpy": 1.0000049511114129,
+          "minStretchNumpy": 0.9976412032876849,
+          "maximumAbsoluteError": [
+            1.5543122344752192e-15,
+            4.3298697960381105e-15
+          ],
+          "status": "PASS"
+        },
+        {
+          "step": 1,
+          "triangles": 800,
+          "maxStretchNumpy": 1.012460638098288,
+          "minStretchNumpy": 0.9850432112449424,
+          "maximumAbsoluteError": [
+            4.218847493575595e-15,
+            4.218847493575595e-15
+          ],
+          "status": "PASS"
+        },
+        {
+          "step": 10,
+          "triangles": 800,
+          "maxStretchNumpy": 1.381949227502051,
+          "minStretchNumpy": 0.887760999169919,
+          "maximumAbsoluteError": [
+            4.218847493575595e-15,
+            4.218847493575595e-15
+          ],
+          "status": "PASS"
+        },
+        {
+          "step": 20,
+          "triangles": 800,
+          "maxStretchNumpy": 1.569270671511463,
+          "minStretchNumpy": 0.8278416191012006,
+          "maximumAbsoluteError": [
+            4.440892098500626e-15,
+            4.218847493575595e-15
+          ],
+          "status": "PASS"
+        },
+        {
+          "step": 30,
+          "triangles": 800,
+          "maxStretchNumpy": 1.370411807230692,
+          "minStretchNumpy": 0.3498475906566086,
+          "maximumAbsoluteError": [
+            3.9968028886505635e-15,
+            4.218847493575595e-15
+          ],
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS",
+      "garmentVerdict": "FAIL",
+      "collisionAuditSummary": {
+        "status": "LIMITED_DISCRETE_CHECKS_PASS"
+      },
+      "interpretation": "PASS validates metric computation only. It does not validate garment assembly, fit, or continuous collision freedom."
+    },
+    {
+      "kind": "golden-svg",
+      "path": "evidence/browser/golden-pattern.svg",
+      "sha256": "4df486048839a1a070dcf5fedda80af946982e95126f6bc8ba1668a2830eda01",
+      "canonicalSourcePath": "evidence/browser/golden-garment-1.1.yaml",
+      "canonicalSourceSha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "panels": [
+        {
+          "panel": "前片",
+          "placementPreserved": true,
+          "lineCount": 52,
+          "sourceTextCount": 7
+        },
+        {
+          "panel": "后片",
+          "placementPreserved": true,
+          "lineCount": 70,
+          "sourceTextCount": 7
+        },
+        {
+          "panel": "袖片",
+          "placementPreserved": true,
+          "lineCount": 38,
+          "sourceTextCount": 5
+        },
+        {
+          "panel": "领条",
+          "placementPreserved": true,
+          "lineCount": 44,
+          "sourceTextCount": 8
+        }
+      ],
+      "lineCount": 204,
+      "sourceTextCount": 27,
+      "polylineCount": 126,
+      "polylineVertices": 1487,
+      "status": "PASS"
+    },
+    {
+      "kind": "demo-svg",
+      "path": "evidence/browser/demo-pattern.svg",
+      "sha256": "9f9aceb1e5c0c501599f53cf41ff04e61bc4b496534f2898b4741f525ea6805e",
+      "physicalSizeMM": [
+        1668.6368848573875,
+        545.5443175464027
+      ],
+      "viewBoxMM": [
+        0.0,
+        0.0,
+        1668.6368848573875,
+        545.5443175464027
+      ],
+      "panelCount": 4,
+      "coordinatesMatchBrowserArtifact": true,
+      "status": "PASS"
+    },
+    {
+      "kind": "demo-pdf",
+      "path": "evidence/browser/demo-pattern.pdf",
+      "sha256": "a64a7fd9c09dd6ac9f79cf7fadec56e1198c4a15c0d204b3ce4762372c77c75f",
+      "pages": 1,
+      "pageSizeMM": [
+        1703.6369249131942,
+        590.5443155924479
+      ],
+      "rulerLengthMM": 100.00000076293945,
+      "vectorLineCount": 1901,
+      "status": "PASS",
+      "allPanelVectorsMatchMMLayout": true
+    }
+  ],
+  "pending": [],
+  "status": "PASS"
+}

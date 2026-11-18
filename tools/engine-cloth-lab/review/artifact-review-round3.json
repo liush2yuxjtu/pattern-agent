@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-artifact-review",
+  "baselineHashes": "review/advisor-checks-result.json",
+  "productVerdict": "PASS_INDEPENDENT_CODE_REVIEW",
+  "architectureVerdict": "KEEP_A_EXPERIMENTAL_ADD_B_OFFLINE_REFERENCE",
+  "goldenPhysics": "BLOCKED",
+  "completeGarment": "NO_PASS",
+  "currentEngineProbe": "CURRENT_HASH_MATCHED_SCOPED_RESULTS",
+  "independentBrowserExecution": "BLOCKED_ENVIRONMENT",
+  "checksRun": "node review/advisor-checks.mjs",
+  "findings": [
+    {
+      "id": "R01",
+      "severity": "high",
+      "status": "RESOLVED",
+      "evidence": "MEASURED",
+      "file": "src/golden.mjs",
+      "problem": "Relative source layout is changed in display and SVG export.",
+      "test": "golden-relative-placement",
+      "closureEvidence": "review/advisor-checks-result.json"
+    },
+    {
+      "id": "R02",
+      "severity": "high",
+      "status": "RESOLVED",
+      "evidence": "MEASURED",
+      "file": "src/app.mjs",
+      "problem": "audit reads frame after await but labels it with the step captured before await; source identity is not guarded.",
+      "test": "audit-frame-race",
+      "closureEvidence": "review/advisor-checks-result.json"
+    },
+    {
+      "id": "R03",
+      "severity": "medium",
+      "status": "RESOLVED",
+      "evidence": "MEASURED",
+      "file": "probes/rapier/engine-report.json",
+      "problem": "Saved source hashes disagree with current engine and native-seam files.",
+      "closureEvidence": "review/advisor-checks-result.json"
+    },
+    {
+      "id": "R04",
+      "severity": "medium",
+      "status": "RESOLVED",
+      "evidence": "SOURCE_INSPECTION",
+      "file": "src/app.mjs",
+      "problem": "Partial imported settings inherit previous control values and do not reproduce a stable input.",
+      "closureEvidence": "review/advisor-checks-result.json",
+      "closureNote": "Complete inputs and control step lattice validated; 8 invalid settings cases rejected."
+    },
+    {
+      "id": "R05",
+      "severity": "medium",
+      "status": "RESOLVED",
+      "evidence": "SOURCE_INSPECTION",
+      "file": "src/app.mjs",
+      "problem": "Logs and performance records mix sources without source or run identity.",
+      "closureEvidence": "review/advisor-checks-result.json"
+    },
+    {
+      "id": "R06",
+      "severity": "high",
+      "status": "RESOLVED",
+      "evidence": "SOURCE_INSPECTION",
+      "file": "src/app.mjs",
+      "problem": "Frames are accepted and final status becomes COMPLETED without rejecting nonfinite or incomplete coordinate arrays.",
+      "closureEvidence": "review/advisor-checks-result.json"
+    },
+    {
+      "id": "R07",
+      "severity": "medium",
+      "status": "RESOLVED",
+      "evidence": "SOURCE_AND_SCREENSHOT",
+      "file": "src/app.mjs",
+      "problem": "F0 assumed initial assembly caption uses native Rapier label without its frame mode.",
+      "closureEvidence": "src/app.mjs draw3D INITIAL_ASSEMBLY caption"
+    }
+  ],
+  "positiveChecks": [
+    "Canonical raw source retained separately from demo",
+    "Golden U-to-mm remains unknown and physical controls disabled",
+    "Correct geometry counts",
+    "Independent strain identity and 1.2/0.8 deformation tests pass",
+    "Stale revision frame rejection passes",
+    "Stress and pressure UNKNOWN",
+    "Replay does not request solver steps",
+    "Imported previous verdicts and frames are discarded",
+    "Worker termination and wall-clock limit present",
+    "Render and collider use identical human geometry arrays"
+  ],
+  "releaseConditions": [
+    "Run project verify and actual browser checks on the final HTML",
+    "Keep physical garment FAIL and Golden BLOCKED visible",
+    "Any further product code change requires relevant tests again"
+  ],
+  "reviewRound": 3,
+  "releaseScope": "EXPERIMENTAL_WORKBENCH_ONLY",
+  "candidateHtmlSha256": "394948a3d28fb5b5be1dadeae21afd1239782aee66207bf403364a21dd559fba",
+  "browserBlockReason": "Local Chromium socket creation denied; Playwright MCP unavailable. No independent browser PASS claimed.",
+  "independentCheckCount": 12,
+  "independentChecksPass": true,
+  "historicalFailureEvidence": [
+    "review/artifact-review-round1.md",
+    "review/artifact-review-round1.json",
+    "review/advisor-checks-result-round1.json",
+    "review/artifact-review-round2.md",
+    "review/artifact-review-round2.json",
+    "review/advisor-checks-result-round2.json"
+  ],
+  "remainingLimitations": [
+    "No complete garment PASS",
+    "Golden U-to-mm and production semantics remain unapproved",
+    "3mm contact probe FAIL is preserved; 5mm scope only",
+    "Independent browser operation unavailable in reviewer environment",
+    "Root must run project verify against delivered HTML hash"
+  ],
+  "candidateBuildSourceSha256": "a86e40a31cad6a40d0a3bbce5f4a5cd449415711b632433d9722eac8e89b4ceb",
+  "manifestSourceHashesMatch": true,
+  "finalCandidateChangesReviewed": [
+    "CSP prevents network connections and permits inline WASM and Blob worker",
+    "Execution complete and garment failure are separate labels",
+    "Body surface crossings and inside vertices are separate rows",
+    "DOM and JSON expose buildSourceSha256",
+    "Timeline displays current-frame step separately from cumulative solver steps"
+  ],
+  "fileProtocolVerification": "BLOCKED_BY_BROWSER_PROTOCOL_POLICY",
+  "parentReportedValidation": {
+    "browserSolveSteps": 30,
+    "independentNumericOracleTriangleEvaluations": 4000,
+    "pdfRuler": "PASS",
+    "garment": "FAIL",
+    "attribution": "Parent agent evidence, not reviewer browser execution"
+  }
+}
