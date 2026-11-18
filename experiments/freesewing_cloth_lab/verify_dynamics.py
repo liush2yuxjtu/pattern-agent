@@ -62,7 +62,7 @@ def run(args):
         }''')
         velocity=displacement=0.
         for _ in range(12):
-            velocity=.992*velocity-9.81/(120*120)
+            velocity=.98*velocity-9.81/(120*120)
             displacement+=velocity
         expected=np.array([0,1+displacement,0,1,2,3])
         gravity_error=float(np.max(np.abs(np.array(probe['gravity'])-expected)))
@@ -86,9 +86,9 @@ def run(args):
             with gzip.open(out/(key+'.json.gz'),'wt') as f:json.dump(state,f)
             page.screenshot(path=str(out/(key+'.png')),full_page=True)
             independent=audit(state,ROOT,negative=False)
-            result['states'][key]={'appVerdict':own['verdict'],'independent':independent,'sampledClearance_mm':own['collision']['minClearance_mm'],'bodyContacts':state['simulation']['contacts'],'rmsDisplacement_m':float(np.sqrt(np.mean((positions-p0)**2))),'maxPinDisplacement_m':float(np.max(np.abs(positions[:nc]-p0[:nc]))),'meanVerticalDisplacement_m':float(np.mean(positions[nc:,1]-p0[nc:,1]))}
+            result['states'][key]={'appVerdict':own['verdict'],'independent':independent,'sampledClearance_mm':own['collision']['minClearance_mm'],'bodyContacts':state['simulation']['contacts'],'rmsDisplacement_m':float(np.sqrt(np.mean((positions-p0)**2))),'maxWaistDisplacement_m':float(np.max(np.abs(positions[:nc]-p0[:nc]))),'meanVerticalDisplacement_m':float(np.mean(positions[nc:,1]-p0[nc:,1]))}
             result['checks'][key]=own['verdict']=='PASS' and independent['verdict']=='PASS'
-            result['checks'][key+'-pins']=result['states'][key]['maxPinDisplacement_m']<1e-12
+            result['checks'][key+'-free-waist']=bool(np.all(np.asarray(state['inverseMass'])>0) and result['states'][key]['maxWaistDisplacement_m']>.001)
             write(out/'progress.json',result)
         result['checks']['gravityChangesCloth']=result['states']['step-360']['meanVerticalDisplacement_m']<-.001
         result['checks']['actualBodyContacts']=result['states']['step-360']['bodyContacts']>0

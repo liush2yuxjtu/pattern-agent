@@ -23,5 +23,5 @@ const template=fs.readFileSync(here+'/source/template.html','utf8').replace('<sc
 const notices=['three','three-mesh-bvh'].map(p=>`${p}:\n${fs.readFileSync(path.resolve(path.dirname(require.resolve(p)),'../LICENSE'),'utf8')}`).join('\n\n')+'\n\nFreeSewing 4.10.2 components (MIT):\n'+fs.readFileSync(here+'/FreeSewing-LICENSE.txt','utf8')+'\n\n'+fs.readFileSync(here+'/Runtime-Dependency-LICENSES.txt','utf8');
 const html=template.replace('/*__APP__*/',()=>result.outputFiles[0].text).replace('</body>',`<!-- Embedded dependencies and MakeHuman CC0 core mesh.\n${notices.replaceAll('--','—')}\n--></body>`);
 const embedded=html.match(/<script type="module">([\s\S]*?)<\/script>/)[1];await transform(embedded,{loader:'js',target:'es2022'});
-const target=process.argv[2]||path.join(root,'web/freesewing-cloth-lab.html');const finalHTML=html.replace(/[ \t]+$/gm,'');fs.writeFileSync(target,finalHTML);
+const target=process.argv[2]||path.join(root,'web/freesewing-free-waist.html');const finalHTML=html.replace(/[ \t]+$/gm,'');fs.writeFileSync(target,finalHTML);
 console.log(JSON.stringify({target,bytes:Buffer.byteLength(finalHTML),wasmBytes:buffer.length,bodySHA256:hash,externalImports:result.outputFiles[0].text.match(/import\(/g)?.length||0}));

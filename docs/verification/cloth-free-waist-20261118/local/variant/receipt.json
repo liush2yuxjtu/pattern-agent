@@ -1,0 +1,317 @@
+{
+  "url": "http://127.0.0.1:8771/freesewing-free-waist.html",
+  "checks": {
+    "realEditedPattern": true,
+    "materialCoordinatesChange": true,
+    "editedPhysicalState": true,
+    "consoleHealthy": true
+  },
+  "errors": [],
+  "htmlSHA256": "c74e6c5d9330668648facbf3e90dfa241482523fa64f71daa7d2b0f7a05505ed",
+  "independent": {
+    "verdict": "PASS",
+    "body_triangle_intersections": 0,
+    "body_pairs": [],
+    "cloth_self_intersections": 0,
+    "self_pairs": [],
+    "inside_body_vertices": [],
+    "topology": {
+      "vertex_count": 1856,
+      "used_vertex_count": 1856,
+      "orphan_vertices": 0,
+      "triangle_count": 3584,
+      "edge_count": 5440,
+      "connected_components": 1,
+      "boundary_edges": 128,
+      "boundary_components": 2,
+      "boundary_cycles": 2,
+      "boundary_branch_vertices": 0,
+      "nonmanifold_edges": 0,
+      "winding_conflicts": 0,
+      "degenerate_triangles": 0,
+      "duplicate_faces": 0,
+      "euler_characteristic": 0,
+      "closed_oriented_edge_manifold": false,
+      "component_signed_volumes_m3": [
+        0.20527922298471163
+      ],
+      "outward_closed_components": false,
+      "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+    },
+    "body_topology": {
+      "vertex_count": 13380,
+      "used_vertex_count": 13380,
+      "orphan_vertices": 0,
+      "triangle_count": 26756,
+      "edge_count": 40134,
+      "connected_components": 1,
+      "boundary_edges": 0,
+      "boundary_components": 0,
+      "boundary_cycles": 0,
+      "boundary_branch_vertices": 0,
+      "nonmanifold_edges": 0,
+      "winding_conflicts": 0,
+      "degenerate_triangles": 0,
+      "duplicate_faces": 0,
+      "euler_characteristic": 2,
+      "closed_oriented_edge_manifold": true,
+      "component_signed_volumes_m3": [
+        0.05449708744764648
+      ],
+      "outward_closed_components": true,
+      "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+    },
+    "tensor": {
+      "peak_stretch_percent": 161.9260358752443,
+      "peak_stress_kPa": 142.18574868407808,
+      "max_stretch_error": 6.661338147750939e-16,
+      "max_stress_error_kPa": 1.0658141036401503e-13,
+      "freesewing": {
+        "upstream": "@freesewing/sandy@4.10.2",
+        "maxMaterialCoordinateError_m": 3.3306690738754696e-16,
+        "maxLumpedMassRelativeError": 4.440892098500626e-16,
+        "materialArea_m2": 1.234980536545,
+        "mass_kg": 0.2716957180399
+      }
+    },
+    "folds": {
+      "hinges": 5312,
+      "maxErrors": {
+        "angle_rad": 4.718447854656915e-16,
+        "curvature_per_m": 4.263256414560601e-14,
+        "currentDualLength_m": 1.734723475976807e-17
+      },
+      "wrinkleProxyFacePercent": 32.896205357142854,
+      "peakAngle_deg": 71.33523205550445,
+      "peakSpatialCurvature_per_m": 158.31834915447197,
+      "physicalCreaseCalibration": "NOT_RUN"
+    },
+    "source_hash": "2cd7c641d2610148d715f0e33128e9d9d9c7f61283c982fb096a11086e2d3f8c",
+    "oracle_hash": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+    "analytic_controls": {
+      "test_count": 23,
+      "all_passed": true,
+      "tests": [
+        {
+          "name": "parallel_disjoint",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "noncoplanar_crossing",
+          "expected_intersection": true,
+          "observed_intersection": true,
+          "passed": true
+        },
+        {
+          "name": "noncoplanar_edge_contact",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "noncoplanar_point_contact_with_plane_straddling",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "coplanar_positive_area",
+          "expected_intersection": true,
+          "observed_intersection": true,
+          "passed": true
+        },
+        {
+          "name": "coplanar_edge_contact",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "coplanar_point_contact",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "sub_epsilon_parallel_gap",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "in_plane_disjoint",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "cross_mesh_noncoplanar_positive",
+          "expected_intersection": true,
+          "observed_intersection": true,
+          "passed": true
+        },
+        {
+          "name": "cross_mesh_coplanar_positive",
+          "expected_intersection": true,
+          "observed_intersection": true,
+          "passed": true
+        },
+        {
+          "name": "cross_mesh_disjoint_negative",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "shared_vertex_crossing_beyond_common_point_detected",
+          "passed": true
+        },
+        {
+          "name": "valid_shared_point_coplanar",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "valid_shared_point_noncoplanar",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "valid_shared_edge_coplanar",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "valid_shared_edge_fold_noncoplanar",
+          "expected_intersection": false,
+          "observed_intersection": false,
+          "passed": true
+        },
+        {
+          "name": "shared_edge_positive_area_fold_detected",
+          "expected_intersection": true,
+          "observed_intersection": true,
+          "passed": true
+        },
+        {
+          "name": "closed_cube_connectivity_orientation_volume",
+          "passed": true
+        },
+        {
+          "name": "open_square_tube_two_boundary_cycles",
+          "passed": true
+        },
+        {
+          "name": "independent_solid_angle_interior_exterior",
+          "passed": true
+        },
+        {
+          "name": "claimed_path_outside_armless_cube_rejected",
+          "passed": true
+        },
+        {
+          "name": "intersection_invariant_to_face_winding",
+          "passed": true
+        }
+      ],
+      "epsilon_m": 1e-06,
+      "phase": "analytic_before_legacy_comparison"
+    },
+    "physical_calibration": "NOT_RUN",
+    "manufacturing": "NOT_RUN",
+    "dynamic_self_collision_solver": true,
+    "freeWaistSupport": {
+      "verdict": "PASS",
+      "fixedVertices": 0,
+      "mass_kg": 0.2716957180399,
+      "weight_N": 2.665334993971419,
+      "normal_N": [
+        0.018180012136862704,
+        1.0690990504019253,
+        -0.16739315520956968
+      ],
+      "friction_N": [
+        -0.03432381366228031,
+        1.564030263112401,
+        0.22684794781935932
+      ],
+      "upward_N": 2.6331293135143263,
+      "upwardToWeight": 0.9879168357711369,
+      "com_m": [
+        0.005578926983968152,
+        0.6960081075122173,
+        0.02425268987568504
+      ],
+      "comSpeed_m_s": 0.05442676211842365,
+      "equationResidual_N": 2.3261639641121685e-13,
+      "coulombExcess_m": 2.168404344971009e-19,
+      "waistLocalReferenceMaxError_m": 2.16986086882383e-16,
+      "calibration": "NOT_VALIDATED"
+    },
+    "coverageAndPressure": {
+      "coverage": {
+        "verdict": "PASS",
+        "bodyVertexSamples": 153,
+        "triangleCentroidSamples": 313,
+        "totalSamples": 466,
+        "exposed": 0,
+        "exposedSampleIndices": [],
+        "scope": "Posterior pelvic region, outward -Z visibility; sampled coverage, not universal camera/garment certification"
+      },
+      "pressure": {
+        "verdict": "PASS",
+        "maxErrors": {
+          "area_m2": 2.168404344971009e-19,
+          "force_N": 2.7755575615628914e-17,
+          "pressure_kPa": 2.220446049250313e-16
+        },
+        "peak_kPa": 0.730280919643831,
+        "contactVertices": 219,
+        "calibration": "NOT_VALIDATED",
+        "scope": "Independent UV-lumped area/mass and m*normalProjection/dt\u00b2/area; timestep-dependent contact-reaction estimate"
+      },
+      "verdict": "PASS"
+    }
+  },
+  "performance": {
+    "steps": 120,
+    "time_s": 1,
+    "peakStretch": 1.6192603587524432,
+    "peakPressure_kPa": 0.7302809196438309,
+    "peakStress_kPa": 142.18574868407808,
+    "peakFoldAngle_deg": 71.33523205550445,
+    "peakCurvature_per_m": 158.31834915447197,
+    "wrinkleProxyTrianglePercent": 32.896205357142854,
+    "seamGap_mm": 0,
+    "waist_mm": 675.8481085379501,
+    "contacts": 22,
+    "selfContacts": 0,
+    "selfContactTiming_ms": {
+      "pointMs": 23.19999998807907,
+      "edgeMs": 56
+    },
+    "stepTiming_ms": {
+      "coupledElasticContactMs": 130.1000000089407,
+      "bodyMs": 75.3999999910593,
+      "selfMs": 79.29999999701977,
+      "recheckMs": 0
+    },
+    "renderedFrames": 5,
+    "render_submit_ms_p95": 144.90000000596046,
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 122.5,
+    "solver_ms_p95": 269.59999999403954,
+    "frame_ms_p95": 450,
+    "jsHeap_bytes": 30356563
+  },
+  "verdict": "PASS"
+}

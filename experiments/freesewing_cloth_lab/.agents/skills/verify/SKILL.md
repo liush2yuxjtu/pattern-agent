@@ -14,16 +14,15 @@ do not replace the earlier self-contact page. No CI or PR.
    upstream Sandy dimension changes and flat/±60°/rotation/scale hinge controls,
    plus the existing proximity/swept/edge/edge and complete broad-phase controls.
    Preserve the first public performance FAIL and rejected-cache attempts. Run
-   `verify_allocation_ab.py` against the actual application-commit 2.0 HTML;
-   require exact current/previous/material coordinates at 120 steps. Also run
-   `test_prepared_solver.mjs` after building; five coupled frames must match
-   the original kernel bit for bit, and the dynamics probe must exercise the
-   actual prepared export. No
-   triangle-query skipping or mesh-resolution reduction is active in 2.2.
-   The A/B explicitly resets both pages to the raw diagnostic arrangement before
-   stepping; the normal page now already contains 120 steps at first display.
-2. Serve the exact final HTML on 127.0.0.1:8771. Run `verify_browser.py` and
-   `independent.py`. Require all 48 UI/download/mobile/offline checks, exact next
+   `test_prepared_solver.mjs`: five coupled frames must match the original
+   kernel bit for bit, including split iterations and the equal-mass division
+   reuse. `test_waist_ring.mjs` must preserve arbitrary rigid motion, mass center,
+   internal net impulse/torque and reject zero inverse masses. The historical
+   2.0 trajectory A/B is SKIP for 2.3: all particles are now dynamic, placement,
+   waist closure and drag differ intentionally; retain its prior evidence.
+   No mesh-resolution reduction or contact-query omission is allowed.
+2. Serve the exact final HTML (`web/freesewing-free-waist.html`) on 127.0.0.1:8771. Run `verify_browser.py` and
+   `independent.py`. Require all 50 UI/download/mobile/offline checks, exact next
    step, no external requests or console errors, actual A4 calibration and
    unchanged p95 solver budget <100 ms. The reopener independently re-drafts
    pinned Sandy without importing the app adapter. Every material coordinate,
@@ -52,7 +51,16 @@ do not replace the earlier self-contact page. No CI or PR.
    expanded toolbar does not cover the head in the default mobile framing.
    Run root `scripts/build_pages.py`, its six artifact regressions, and
    `git diff --check`. Log real software-rendering performance without FPS claims.
-7. Archive the byte-exact upstream native SVG as gzip: its generated CDATA has
+7. Run `run_check.py support --url URL --output DIR`. At 1440 and 1800
+   steps require zero fixed particles, independent geometry/source/field PASS,
+   contact/friction vertical force / weight in [0.9,1.1], COM speed <=0.012 m/s
+   and COM drift <10 mm over the additional three seconds. Independently
+   recompute every force and Coulomb bound from exported raw arrays. Reset,
+   remove the actual body collider and run 12 steps: require mass-COM fall to
+   match g=-9.81, drag=0.98 and dt=1/120 within 1e-10 m, >30 mm fall, zero
+   normal/friction forces and forged-pin rejection. Preserve failures. The waist
+   is an explicit reinforced shape-matching edge approximation, never anchors.
+8. Archive the byte-exact upstream native SVG as gzip: its generated CDATA has
    trailing whitespace, so do not trim the output or allow a failed whitespace
    gate to fall through into a commit. Use strict shell failure handling.
    Preserve source-bound receipts, real exports, state arrays, logs and visual
@@ -60,7 +68,7 @@ do not replace the earlier self-contact page. No CI or PR.
    commit directly and non-force push. Observe existing Pages publication only.
    Verify live HTML/build identity; repeat browser, independent, GPU, dynamics
    and edited-profile checks on the real public artifact. Commit live evidence.
-8. Close owned browser contexts and temporary servers; stop only the task's
+9. Close owned browser contexts and temporary servers; stop only the task's
    identified port-8771 server after live verification.
 
 Numerical stress uses an assumed plane-stress material model; bending remains

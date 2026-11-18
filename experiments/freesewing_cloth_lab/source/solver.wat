@@ -12,7 +12,7 @@
       (local.set $a (i32.add (local.get $p) (i32.mul (i32.add (i32.mul (local.get $i) (i32.const 3)) (local.get $k)) (i32.const 8))))
       (local.set $b (i32.add (local.get $old) (i32.sub (local.get $a) (local.get $p))))
       (local.set $x (f64.load (local.get $a)))
-      (local.set $v (f64.mul (f64.sub (local.get $x) (f64.load (local.get $b))) (f64.const 0.992)))
+      (local.set $v (f64.mul (f64.sub (local.get $x) (f64.load (local.get $b))) (f64.const 0.98)))
       (local.set $acc (f64.const 0))
       (if (i32.eq (local.get $k) (i32.const 1)) (then (local.set $acc (f64.const -9.81))))
       (if (i32.eq (local.get $k) (i32.const 2)) (then (local.set $acc (local.get $wind))))
@@ -72,7 +72,10 @@
      (local.set $delta (f64.div (f64.add (f64.sub (local.get $d) (f64.load offset=40 (local.get $e))) (f64.mul (local.get $alpha) (local.get $lambda))) (f64.load offset=32 (local.get $e))))
      (f64.store offset=48 (local.get $e) (f64.sub (local.get $lambda) (local.get $delta)))
      (local.set $ca (f64.div (f64.mul (local.get $wa) (local.get $delta)) (local.get $d)))
-     (local.set $cb (f64.div (f64.mul (local.get $wb) (local.get $delta)) (local.get $d)))
+     ;; Identical masses have bit-identical correction factors; reuse the division.
+     (local.set $cb (if (result f64) (f64.eq (local.get $wa) (local.get $wb))
+      (then (local.get $ca))
+      (else (f64.div (f64.mul (local.get $wb) (local.get $delta)) (local.get $d)))))
      (f64.store (local.get $a) (f64.add (f64.load (local.get $a)) (f64.mul (local.get $dx) (local.get $ca))))
      (f64.store offset=8 (local.get $a) (f64.add (f64.load offset=8 (local.get $a)) (f64.mul (local.get $dy) (local.get $ca))))
      (f64.store offset=16 (local.get $a) (f64.add (f64.load offset=16 (local.get $a)) (f64.mul (local.get $dz) (local.get $ca))))
@@ -110,5 +113,16 @@
    (br_if $done (i32.ge_u (local.get $it) (local.get $iterations)))
    (call $preparedCore (local.get $n) (local.get $rows))
    (local.set $it (i32.add (local.get $it) (i32.const 1))) (br $iterate))))
+
+ (func (export "reset_prepared") (param $n i32) (param $rows i32) (local $i i32)
+  (block $done (loop $reset
+   (br_if $done (i32.ge_u (local.get $i) (local.get $n)))
+   (f64.store offset=48 (i32.add (local.get $rows) (i32.mul (local.get $i) (i32.const 56))) (f64.const 0))
+   (local.set $i (i32.add (local.get $i) (i32.const 1))) (br $reset))))
+ (func (export "iterate_prepared") (param $n i32) (param $rows i32) (param $count i32) (local $i i32)
+  (block $done (loop $iterate
+   (br_if $done (i32.ge_u (local.get $i) (local.get $count)))
+   (call $preparedCore (local.get $n) (local.get $rows))
+   (local.set $i (i32.add (local.get $i) (i32.const 1))) (br $iterate))))
 
 )

@@ -3,19 +3,20 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {MeshBVH,SAH} from 'three-mesh-bvh';
 import BODY from './body.json';
 import WASM from './solver-bytes.json';
+import {WaistRing} from './waist-ring.js';
 import {SelfContact} from './self-contact.js';
 import {draftSandy} from './freesewing-pattern.js';
 import {buildHinges,foldFields} from './fold-fields.js';
 
 const $=id=>document.getElementById(id), TAU=Math.PI*2;
-const NC=64, NR=28, PER=NC/4, DT=1/120, THICK=.005, YWAIST=1.055;
+const NC=64, NR=28, PER=NC/4, DT=1/120, THICK=.005, YWAIST=1.09;
 const seamColors=['#b16a42','#398a83','#7687ac','#b08b34'];
 const materials={cotton:{E:80000,nu:.3,density:.160,thickness:.00035,bend:4e-5,color:0xbd7754},linen:{E:160000,nu:.28,density:.220,thickness:.00045,bend:8e-6,color:0xb4a585},silk:{E:30000,nu:.32,density:.080,thickness:.00018,bend:2e-4,color:0x657d79}};
 const SAVED=JSON.parse($('savedProject').textContent||'{}');
-let mat=materials[SAVED.materialKey]||materials.cotton,slant=SAVED.parameters?.slant_m||.56,hem=SAVED.parameters?.hem_m||2.1,wind=SAVED.wind||0,circleRatio=SAVED.parameters?.circle_ratio||.387547980686,mode=SAVED.view||'fabric',selectedSeam=-1,running=false,stepCount=0,lastReport=null;
+let mat=materials[SAVED.materialKey]||materials.cotton,slant=SAVED.parameters?.slant_m||.56,hem=SAVED.parameters?.hem_m||2.1,wind=SAVED.wind||0,circleRatio=SAVED.parameters?.circle_ratio||.6,mode=SAVED.view||'fabric',selectedSeam=-1,running=false,stepCount=0,lastReport=null;
 let p,old,inv,edges,edgeMeta,triangles,uvs,panels,seamMaps,seed,waistPoints,waistLength,cPtr=0,pPtr=0,oldPtr=0,massPtr=0,preparedPtr=0;
 let draft=null,hinges=[],folds=null;let drawDirty=true,framesDrawn=0;
-let pressureCorrection,contactPressure,contactForce,contactArea;
+let contactNormalCache,contactNormalDirty;let exactCache=null,cacheHits=0,cacheMisses=0;let previousAtStepStart,lastWind=0;let waistRing;let pressureCorrection,contactPressure,contactForce,contactArea,bodyCorrection,frictionCorrection;let collisionEnabled=true;
 let stepHistory,contactingScratch,freeIndices;const bodyDelta=new THREE.Vector3();
 let surfaceSamples=[],selfContact=null,selfContactsLast=0,lastStepProfile=null;
 let simMs=[],renderMs=[],frames=[],lastFrame=performance.now(),collisionsLast=0,revision=0;
@@ -23,7 +24,7 @@ const wasm=(await WebAssembly.instantiate(new Uint8Array(WASM),{})).instance.exp
 const dataView=new DataView(wasm.memory.buffer);
 const scene=new THREE.Scene();scene.background=new THREE.Color('#eef1ee');
 const renderer=new THREE.WebGLRenderer({canvas:$('scene'),antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.shadowMap.enabled=true;renderer.shadowMap.autoUpdate=false;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
 let narrowFrame=innerWidth<700;
 const camera=new THREE.PerspectiveCamera(32,1,.02,20);camera.position.set(1.65,1.30,narrowFrame?4.4:3.0);
@@ -50,13 +51,14 @@ clothMat.onBeforeCompile=shader=>{
 const mapMat=new THREE.MeshStandardMaterial({vertexColors:true,side:THREE.DoubleSide,roughness:.9});
 const cloth=new THREE.Mesh(clothGeo,clothMat);cloth.castShadow=true;cloth.receiveShadow=true;scene.add(cloth);
 let meshWire=null,seamLines=[];const v=new THREE.Vector3(),nearest={point:new THREE.Vector3()},a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3(),normal=new THREE.Vector3();
-function bodyDistance(x,y,z){
+function bodyDistance(x,y,z,slot=-1){
+ const key=slot*10;if(slot>=0&&exactCache&&exactCache[key]===x&&exactCache[key+1]===y&&exactCache[key+2]===z){cacheHits++;nearest.point.set(exactCache[key+4],exactCache[key+5],exactCache[key+6]);normal.set(exactCache[key+7],exactCache[key+8],exactCache[key+9]);return exactCache[key+3];}if(slot>=0)cacheMisses++;
  v.set(x,y,z);bvh.closestPointToPoint(v,nearest);
  const idx=bodyGeo.index.array,verts=bodyGeo.attributes.position.array,k=nearest.faceIndex*3;
  a.fromArray(verts,idx[k]*3);b.fromArray(verts,idx[k+1]*3);c.fromArray(verts,idx[k+2]*3);
  normal.subVectors(b,a).cross(c.sub(a)).normalize();
  const signed=v.sub(nearest.point).dot(normal);
- return signed;
+ const distance=(signed<0?-1:1)*v.length();if(slot>=0&&exactCache){exactCache[key]=x;exactCache[key+1]=y;exactCache[key+2]=z;exactCache[key+3]=distance;exactCache[key+4]=nearest.point.x;exactCache[key+5]=nearest.point.y;exactCache[key+6]=nearest.point.z;exactCache[key+7]=normal.x;exactCache[key+8]=normal.y;exactCache[key+9]=normal.z;}return distance;
 }
 function waistSection(){
  const vv=bodyGeo.attributes.position.array,ii=bodyGeo.index.array,points=[];
@@ -72,13 +74,14 @@ function waistSection(){
  const ring=[];for(let k=0;k<360;k++){if(bins[k]){const [r,ang]=bins[k];ring.push([(r+THICK+.003)*Math.sin(ang)+cx,(r+THICK+.003)*Math.cos(ang)+cz]);}}
  const lens=[0];for(let i=1;i<=ring.length;i++)lens.push(lens.at(-1)+Math.hypot(ring[i%ring.length][0]-ring[i-1][0],ring[i%ring.length][1]-ring[i-1][1]));
  const total=lens.at(-1),out=[];for(let i=0;i<NC;i++){const target=i*total/NC;let j=0;while(lens[j+1]<target)j++;const f=(target-lens[j])/(lens[j+1]-lens[j]);out.push([ring[j][0]*(1-f)+ring[(j+1)%ring.length][0]*f,ring[j][1]*(1-f)+ring[(j+1)%ring.length][1]*f]);}
- return {out,total,cx,cz};
+ const fitRing=ring.map(q=>{const r=Math.hypot(q[0]-cx,q[1]-cz),f=(r-.003)/r;return[cx+(q[0]-cx)*f,cz+(q[1]-cz)*f];});let fitTotal=0;for(let i=0;i<fitRing.length;i++)fitTotal+=Math.hypot(fitRing[i][0]-fitRing[(i+1)%fitRing.length][0],fitRing[i][1]-fitRing[(i+1)%fitRing.length][1]);return {out,total,fitTotal,cx,cz};
 }
 function flat(r,j){return draft.sample(r/NR,j/PER).map(x=>x/1000);}
 function flare(){return circleRatio;}
 function index(r,j){return r*NC+(j+NC)%NC;}
 function makePattern(settle=true){
- const section=waistSection();waistPoints=section.out;waistLength=section.total;
+ collisionEnabled=true;bodyMesh.visible=true;
+ const section=waistSection();waistPoints=section.out;waistLength=section.fitTotal;
  draft=draftSandy({waist_mm:waistLength*1000,length_mm:slant*1000,circleRatio});hem=waistLength+TAU*circleRatio*slant;
  const n=(NR+1)*NC;pPtr=0;oldPtr=n*24;massPtr=oldPtr+n*24;cPtr=massPtr+n*8;
  p=new Float64Array(wasm.memory.buffer,pPtr,n*3);old=new Float64Array(wasm.memory.buffer,oldPtr,n*3);inv=new Float64Array(wasm.memory.buffer,massPtr,n);
@@ -100,7 +103,7 @@ function makePattern(settle=true){
  hinges=buildHinges(triangles,uvs);
  const lumpedMass=new Float64Array(n);
  for(let t=0;t<triangles.length/3;t++){const k=t*6,u=uvs[k+2]-uvs[k],v=uvs[k+3]-uvs[k+1],w=uvs[k+4]-uvs[k],z=uvs[k+5]-uvs[k+1],m=Math.abs(u*z-v*w)*.5*mat.density/3;for(let j=0;j<3;j++)lumpedMass[triangles[t*3+j]]+=m;}
- for(let i=0;i<n;i++)inv[i]=i<NC?0:1/lumpedMass[i];
+ for(let i=0;i<n;i++)inv[i]=1/lumpedMass[i];
  const map=new Map();edgeMeta=[];const add=(ia,ib,rest,type)=>{const id=[Math.min(ia,ib),Math.max(ia,ib)].join(':');if(map.has(id))return;map.set(id,true);edgeMeta.push({a:ia,b:ib,rest,type});};
  for(let r=0;r<=NR;r++)for(let j=0;j<NC;j++){
   const fj=j%PER;
@@ -131,9 +134,9 @@ function makePattern(settle=true){
  preparedPtr=cPtr+edgeMeta.length*32;if(preparedPtr+edgeMeta.length*56>wasm.memory.buffer.byteLength)throw new Error("Prepared constraint buffer exceeds WASM memory");wasm.prepare(edgeMeta.length,pPtr,massPtr,cPtr,preparedPtr,DT*DT);
  surfaceSamples=[];const sampleEdges=new Set();
  for(let t=0;t<triangles.length;t+=3){const ids=triangles.slice(t,t+3);surfaceSamples.push({ids,weights:[1/3,1/3,1/3]});for(let j=0;j<3;j++){const edge=[ids[j],ids[(j+1)%3]].sort((a,b)=>a-b),key=edge.join(':');if(!sampleEdges.has(key)){sampleEdges.add(key);surfaceSamples.push({ids:edge,weights:[.5,.5]});}}}
- pressureCorrection=new Float64Array(n);contactPressure=new Float64Array(n);contactForce=new Float64Array(n);contactArea=new Float64Array(n);for(let i=0;i<n;i++)contactArea[i]=inv[i]>0?1/(inv[i]*mat.density):0;
- stepHistory=new Float64Array(p.length);contactingScratch=new Uint8Array(n);freeIndices=Array.from({length:n-NC},(_,i)=>i+NC);
- old.set(p);seed=Array.from(p);stepCount=0;revision++;lastReport=null;
+ surfaceSamples.forEach((sample,i)=>sample.slot=n+i);exactCache=new Float64Array((n+surfaceSamples.length)*10).fill(NaN);contactNormalCache=new Float64Array(n*3);contactNormalDirty=new Uint8Array(n);bodyCorrection=new Float64Array(n*3);frictionCorrection=new Float64Array(n*3);pressureCorrection=new Float64Array(n);contactPressure=new Float64Array(n);contactForce=new Float64Array(n);contactArea=new Float64Array(n);for(let i=0;i<n;i++)contactArea[i]=inv[i]>0?1/(inv[i]*mat.density):0;
+ previousAtStepStart=new Float64Array(p.length);stepHistory=new Float64Array(p.length);contactingScratch=new Uint8Array(n);freeIndices=Array.from({length:n},(_,i)=>i);
+ waistRing=new WaistRing(p,inv,NC,edgeMeta.filter(e=>e.type==='weft'&&e.a<NC&&e.b<NC).reduce((a,e)=>a+e.rest,0));old.set(p);stepHistory.set(p);previousAtStepStart.set(p);seed=Array.from(p);stepCount=0;revision++;lastReport=null;
  seamMaps=Array.from({length:4},(_,k)=>({id:'S'+(k+1),a:{panel:'P'+(k+1),edge:'right',direction:'waist-to-hem'},b:{panel:'P'+((k+1)%4+1),edge:'left',direction:'waist-to-hem'},lengthA_mm:slant*1000,lengthB_mm:slant*1000,notches:[.25,.5,.75],vertexPairs:Array.from({length:NR+1},(_,r)=>[index(r,(k+1)*PER),index(r,(k+1)*PER)])}));
  const count=triangles.length;clothGeo.setAttribute('position',new THREE.Float32BufferAttribute(new Float32Array(count*3),3));clothGeo.setAttribute('normal',new THREE.Float32BufferAttribute(new Float32Array(count*3),3));clothGeo.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));clothGeo.setAttribute('color',new THREE.Float32BufferAttribute(new Float32Array(count*3),3));
  seamLines.forEach(x=>{scene.remove(x);x.geometry.dispose();x.material.dispose();});seamLines=seamMaps.map((s,k)=>{const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(new Float32Array((NR+1)*3),3));const line=new THREE.Line(g,new THREE.LineBasicMaterial({color:seamColors[k],depthTest:false,transparent:true,opacity:.85}));line.renderOrder=4;scene.add(line);return line;});
@@ -141,37 +144,52 @@ function makePattern(settle=true){
  if(settle)for(let k=0;k<120;k++)substep();drawPatterns();updateGeometry();updateMetrics();$('lengthValue').textContent=Math.round(slant*1000)+' mm';$('hemValue').textContent=(circleRatio*100).toFixed(2)+'%';$('time').textContent=(stepCount*DT).toFixed(2)+' s';$('status').textContent=settle?'DRAPED':'ARRANGEMENT';$('verifyHint').textContent=settle?'Initial gravity/contact relaxation completed. Run verification.':'Unrelaxed diagnostic arrangement; not accepted.';
 }
 function substep(){
- lastReport=null;pressureCorrection.fill(0);
- const start=performance.now(),history=stepHistory;history.set(p);wasm.integrate(p.length/3,pPtr,oldPtr,massPtr,DT,wind*Math.sin(stepCount*DT*2));
- wasm.solve_prepared(edgeMeta.length,preparedPtr,120);
+ cacheHits=cacheMisses=0;lastReport=null;pressureCorrection.fill(0);bodyCorrection.fill(0);frictionCorrection.fill(0);
+ const start=performance.now(),history=stepHistory;history.set(p);previousAtStepStart.set(old);lastWind=wind*Math.sin(stepCount*DT*2);wasm.integrate(p.length/3,pPtr,oldPtr,massPtr,DT,lastWind);
+ wasm.reset_prepared(edgeMeta.length,preparedPtr);for(let k=0;k<120;k++){wasm.iterate_prepared(edgeMeta.length,preparedPtr,1);waistRing.solve(p);if(k%10===0)collideWithBody(Array.from({length:NC},(_,i)=>i),false);if(collisionEnabled)applyFriction(history);}
  const elasticEnd=performance.now();collideWithBody();const bodyEnd=performance.now();
  selfContactsLast=selfContact.solve(p,old,inv,1,history);
  const selfEnd=performance.now();if(selfContactsLast>0){const first=collisionsLast;collideWithBody(selfContact.changed);collisionsLast+=first;}
- lastStepProfile={elasticMs:elasticEnd-start,bodyMs:bodyEnd-elasticEnd,selfMs:selfEnd-bodyEnd,recheckMs:performance.now()-selfEnd};
+ lastStepProfile={coupledElasticContactMs:elasticEnd-start,bodyMs:bodyEnd-elasticEnd,selfMs:selfEnd-bodyEnd,recheckMs:performance.now()-selfEnd};
+ if(collisionEnabled){applyFriction(history);collideWithBody();}
  for(let i=0;i<contactPressure.length;i++){contactForce[i]=inv[i]>0?pressureCorrection[i]/inv[i]/(DT*DT):0;contactPressure[i]=contactArea[i]>0?contactForce[i]/contactArea[i]/1000:0;}
  stepCount++;simMs.push(performance.now()-start);if(simMs.length>240)simMs.shift();
 }
-function collideWithBody(changed=null){
- collisionsLast=0;const contacting=contactingScratch;contacting.fill(0);
+function applyFriction(history){
+ for(let i=0;i<inv.length;i++){
+  if(pressureCorrection[i]<=0)continue;const k=i*3;let nx,ny,nz;if(contactNormalDirty[i]){nx=bodyCorrection[k];ny=bodyCorrection[k+1];nz=bodyCorrection[k+2];const length=Math.hypot(nx,ny,nz);if(length<1e-12)continue;nx/=length;ny/=length;nz/=length;contactNormalCache[k]=nx;contactNormalCache[k+1]=ny;contactNormalCache[k+2]=nz;contactNormalDirty[i]=0;}else{nx=contactNormalCache[k];ny=contactNormalCache[k+1];nz=contactNormalCache[k+2];}
+  let dx=p[k]-history[k],dy=p[k+1]-history[k+1],dz=p[k+2]-history[k+2],normal=dx*nx+dy*ny+dz*nz;dx-=nx*normal;dy-=ny*normal;dz-=nz*normal;
+  let fx=frictionCorrection[k]-dx,fy=frictionCorrection[k+1]-dy,fz=frictionCorrection[k+2]-dz;const fn=fx*nx+fy*ny+fz*nz;fx-=fn*nx;fy-=fn*ny;fz-=fn*nz;const tangent=Math.hypot(fx,fy,fz),factor=Math.min(1,.6*pressureCorrection[i]/Math.max(tangent,1e-20));fx*=factor;fy*=factor;fz*=factor;
+  p[k]+=fx-frictionCorrection[k];p[k+1]+=fy-frictionCorrection[k+1];p[k+2]+=fz-frictionCorrection[k+2];frictionCorrection[k]=fx;frictionCorrection[k+1]=fy;frictionCorrection[k+2]=fz;
+ }
+}
+function supportStats(){
+ let mass=0,com=[0,0,0],speed=[0,0,0],normalN=[0,0,0],frictionN=[0,0,0],expectedN=[0,0,0];
+ for(let i=0;i<inv.length;i++){const m=1/inv[i];mass+=m;for(let k=0;k<3;k++){const j=i*3+k;com[k]+=m*p[j];speed[k]+=m*(p[j]-stepHistory[j])/DT;normalN[k]+=m*bodyCorrection[j]/(DT*DT);frictionN[k]+=m*frictionCorrection[j]/(DT*DT);expectedN[k]+=m*((p[j]-stepHistory[j]-.98*(stepHistory[j]-previousAtStepStart[j]))/(DT*DT)-(k===1?-9.81:k===2?lastWind:0));}}
+ const weight=mass*9.81,up=normalN[1]+frictionN[1];return{fixed:Array.from(inv).filter(x=>x===0).length,mass_kg:mass,weight_N:weight,up_N:up,ratio:up/weight,normal_N:normalN,friction_N:frictionN,expectedContact_N:expectedN,equationResidual_N:stepCount?Math.hypot(...expectedN.map((x,k)=>x-normalN[k]-frictionN[k])):0,com_m:com.map(x=>x/mass),speed_m_s:Math.hypot(...speed)/mass,waistY_m:Array.from({length:NC},(_,i)=>p[i*3+1]).reduce((a,b)=>a+b,0)/NC,cacheHits,cacheMisses};
+}
+function supportLedger(){return{...supportStats(),mode:'free-waist',bodyEnabled:collisionEnabled,gravity_m_s2:[0,-9.81,0],drag:.98,mu:.6,windAcceleration_m_s2:lastWind,dt_s:DT,model:'All particles dynamic. Closed reinforced waist edge, mass-weighted shape matching (stiff-belt approximation), body contact and Coulomb friction; no world/body anchors',normalCorrection_m:Array.from(bodyCorrection),frictionCorrection_m:Array.from(frictionCorrection),stepStart_m:Array.from(stepHistory),previousAtStart_m:Array.from(previousAtStepStart),waistLocalReference_m:Array.from(waistRing.rest),waistParticles:NC,calibration:'NOT_VALIDATED'};}
+function collideWithBody(changed=null,surfaceGuard=true){
+ if(!collisionEnabled){collisionsLast=0;return;}collisionsLast=0;const contacting=contactingScratch;contacting.fill(0);
  const candidates=changed||freeIndices;
  for(const i of candidates){
-  if(i<NC)continue;if(changed)contacting[i]=1;const o=i*3;
+  if(changed)contacting[i]=1;const o=i*3;
   for(let pass=0;pass<4;pass++){
-   const signed=bodyDistance(p[o],p[o+1],p[o+2]);
+   const signed=bodyDistance(p[o],p[o+1],p[o+2],i);
    if(signed>=THICK-.000001)break;
    const delta=bodyDelta.set(p[o],p[o+1],p[o+2]).sub(nearest.point);
    if(delta.lengthSq()<1e-16)delta.copy(normal);else delta.normalize().multiplyScalar(signed<0?-1:1);
-   for(let k=0;k<3;k++){const next=nearest.point.getComponent(k)+THICK*delta.getComponent(k),shift=next-p[o+k];p[o+k]=next;old[o+k]+=shift*.78;pressureCorrection[i]+=Math.max(0,shift*delta.getComponent(k));}
+   for(let k=0;k<3;k++){const next=nearest.point.getComponent(k)+THICK*delta.getComponent(k),shift=next-p[o+k];p[o+k]=next;bodyCorrection[o+k]+=shift;contactNormalDirty[i]=1;pressureCorrection[i]+=Math.max(0,shift*delta.getComponent(k));}
    if(pass===0){collisionsLast++;contacting[i]=1;}
   }
  }
- for(let pass=0;pass<2;pass++)for(const sample of surfaceSamples){
+ if(!surfaceGuard)return;for(let pass=0;pass<2;pass++)for(const sample of surfaceSamples){
   const {ids,weights}=sample;let touches=false;
   for(let j=0;j<ids.length;j++)if(contacting[ids[j]]){touches=true;break;}
   if(!touches)continue;
   let qx=0,qy=0,qz=0;
   for(let j=0;j<ids.length;j++){const i=ids[j]*3,w=weights[j];qx+=p[i]*w;qy+=p[i+1]*w;qz+=p[i+2]*w;}
-  const signed=bodyDistance(qx,qy,qz);if(signed>=THICK*.6)continue;
+  const signed=bodyDistance(qx,qy,qz,sample.slot);if(signed>=THICK*.6)continue;
   const delta=bodyDelta.set(qx,qy,qz).sub(nearest.point);
   if(delta.lengthSq()<1e-16)delta.copy(normal);else delta.normalize().multiplyScalar(signed<0?-1:1);
   const cx=nearest.point.x+THICK*delta.x-qx,cy=nearest.point.y+THICK*delta.y-qy,cz=nearest.point.z+THICK*delta.z-qz;
@@ -179,7 +197,7 @@ function collideWithBody(changed=null){
   if(denom===0)continue;
   for(let j=0;j<ids.length;j++){
    const id=ids[j],i=id*3,w=inv[id]*weights[j]/denom,sx=w*cx,sy=w*cy,sz=w*cz;pressureCorrection[id]+=Math.max(0,sx*delta.x+sy*delta.y+sz*delta.z);
-   p[i]+=sx;old[i]+=sx*.78;p[i+1]+=sy;old[i+1]+=sy*.78;p[i+2]+=sz;old[i+2]+=sz*.78;
+   p[i]+=sx;bodyCorrection[i]+=sx;p[i+1]+=sy;bodyCorrection[i+1]+=sy;p[i+2]+=sz;bodyCorrection[i+2]+=sz;contactNormalDirty[id]=1;
   }
  }
 }
@@ -220,7 +238,7 @@ function updateGeometry(){
 let wireOn=SAVED.wireOn||false;
 function stats(){return {steps:stepCount,time_s:stepCount*DT,peakStretch:Math.max(...currentMeasures.map(m=>m.stretch)),peakPressure_kPa:Math.max(...contactPressure),peakStress_kPa:Math.max(...currentMeasures.map(m=>m.stress)),peakFoldAngle_deg:Math.max(...Array.from(folds?.angle_rad||[],x=>Math.abs(x)*180/Math.PI)),peakCurvature_per_m:Math.max(...Array.from(folds?.curvature_per_m||[],Math.abs)),wrinkleProxyTrianglePercent:100*Array.from(folds?.triangleAngle_deg||[]).filter(x=>Math.abs(x)>=15).length/(triangles.length/3),seamGap_mm:Math.max(...seamMaps.flatMap(s=>s.vertexPairs.map(([a,b])=>Math.hypot(...[0,1,2].map(k=>p[a*3+k]-p[b*3+k]))*1000))),waist_mm:waistLength*1000,contacts:collisionsLast,selfContacts:selfContactsLast,selfContactTiming_ms:selfContact?.lastProfile,stepTiming_ms:lastStepProfile,renderedFrames:framesDrawn,render_submit_ms_p95:percentile(renderMs,.95),wasm:true,render:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles},solver_ms_p50:percentile(simMs,.5),solver_ms_p95:percentile(simMs,.95),frame_ms_p95:percentile(frames,.95),jsHeap_bytes:performance.memory?.usedJSHeapSize||null};}
 function percentile(arr,q){if(!arr.length)return 0;const a=[...arr].sort((a,b)=>a-b);return a[Math.min(a.length-1,Math.floor(a.length*q))];}
-function updateMetrics(){const s=stats();$('waistMetric').textContent=s.waist_mm.toFixed(1)+' mm';$('gapMetric').textContent=s.seamGap_mm.toFixed(3)+' mm';$('gapMetric').className='pass';$('strainMetric').textContent=(s.peakStretch*100).toFixed(1)+'%';$('stressMetric').textContent=s.peakStress_kPa.toFixed(2)+' kPa';$('pressureMetric').textContent=s.peakPressure_kPa.toFixed(4)+' kPa';$('foldMetric').textContent=s.peakFoldAngle_deg.toFixed(1)+'°';$('curvatureMetric').textContent=s.peakCurvature_per_m.toFixed(1)+' m⁻¹';$('wrinkleMetric').textContent=s.wrinkleProxyTrianglePercent.toFixed(1)+'% faces';$('time').textContent=s.time_s.toFixed(2)+' s';$('performance').textContent=`WASM ${s.solver_ms_p50.toFixed(1)} ms/step · ${s.render.triangles.toLocaleString()} tris · ${s.render.calls} draws`;
+function updateMetrics(){const s=stats();$('waistMetric').textContent=s.waist_mm.toFixed(1)+' mm';$('gapMetric').textContent=s.seamGap_mm.toFixed(3)+' mm';$('gapMetric').className='pass';$('strainMetric').textContent=(s.peakStretch*100).toFixed(1)+'%';$('stressMetric').textContent=s.peakStress_kPa.toFixed(2)+' kPa';$('pressureMetric').textContent=s.peakPressure_kPa.toFixed(4)+' kPa';const ss=supportStats();$('supportMetric').textContent=(ss.ratio*100).toFixed(1)+'% · '+ss.fixed+' pins';$('foldMetric').textContent=s.peakFoldAngle_deg.toFixed(1)+'°';$('curvatureMetric').textContent=s.peakCurvature_per_m.toFixed(1)+' m⁻¹';$('wrinkleMetric').textContent=s.wrinkleProxyTrianglePercent.toFixed(1)+'% faces';$('time').textContent=s.time_s.toFixed(2)+' s';$('performance').textContent=`WASM ${s.solver_ms_p50.toFixed(1)} ms/step · ${s.render.triangles.toLocaleString()} tris · ${s.render.calls} draws`;
  let min=Infinity;for(let i=0;i<p.length;i+=3)min=Math.min(min,bodyDistance(p[i],p[i+1],p[i+2]));if(lastReport&&lastReport.stats.steps===stepCount)min=lastReport.collision.minClearance_mm/1000;$('collisionMetric').textContent=(min*1000).toFixed(2)+' mm';$('collisionMetric').className=min>=-.0005?'pass':'fail';
  $('stepPattern').className='';$('stepSew').className=stepCount===0?'current':'';$('stepDrape').className=stepCount>0&&!lastReport?'current':'';$('stepVerify').className=lastReport?'current':'';
 }
@@ -257,13 +275,13 @@ function coverageCheck(){
  return {samples,exposed,exposedIds,verdict:samples>100&&exposed===0?'PASS':'FAIL',method:'Posterior pelvic body vertices, outward -Z visibility rays; cloth must occlude body before skin'};
 }
 function numericControls(){const E=80000,nu=.3,identity=deformation([1,0,0],[0,1,0],E,nu),rot=deformation([0,0,1],[0,1,0],E,nu),stretch=deformation([1.1,0,0],[0,1,0],E,nu),doubleE=deformation([1.1,0,0],[0,1,0],2*E,nu);return {identity,rotation:rot,extension10:stretch,doubleModulus:doubleE,pass:Math.abs(identity.stretch-1)<1e-10&&identity.stress===0&&Math.abs(rot.stretch-1)<1e-10&&Math.abs(stretch.stretch-1.1)<1e-10&&Math.abs(stretch.green[0]-.105)<1e-10&&Math.abs(doubleE.stress-2*stretch.stress)<1e-10};}
-function verify(){running=false;syncRun();updateGeometry();const tp=topology(),col=collisionSamples(),ctrl=numericControls(),s=stats();const finite=Array.from(p).every(Number.isFinite);const coverage=coverageCheck();const checks=[['Posterior pelvic coverage: zero exposed samples',coverage.verdict==='PASS'],['Finite nonnegative estimated contact pressure',Array.from(contactPressure).every(x=>Number.isFinite(x)&&x>=0)],['Finite solver state',finite],['Four correctly directed equal-length seam pairs',seamMaps.length===4&&seamMaps.every(s=>s.lengthA_mm===s.lengthB_mm&&s.a.direction===s.b.direction)],['Maximum seam gap ≤ 2 mm',s.seamGap_mm<=2],['One sewn shell, Euler 0, two intended boundary loops',tp.euler===0&&tp.boundaryLoops===2&&tp.nonmanifold===0&&tp.windingErrors===0],['Body clearance samples: penetration ≤ 0.5 mm',col.penetratingSamples===0],['Analytic strain and stress controls',ctrl.pass],['Actual FreeSewing Sandy draft and unfolded side lengths',draft.profile.engine==='FreeSewing'&&Math.abs(draft.profile.sideLength_mm-slant*1000)<1e-6],['Finite signed fold-angle and curvature fields',Array.from(folds.angle_rad).every(Number.isFinite)&&Array.from(folds.curvature_per_m).every(Number.isFinite)],['Gravity has been simulated (≥ 1 second)',stepCount>=120],['Cloth changed from the initial arrangement',Math.max(...Array.from(p).map((v,i)=>Math.abs(v-seed[i])))>.001]];
- lastReport={schema:'pattern-agent-cloth-lab-verification-1',time:new Date().toISOString(),scope:'Digital skirt demonstrator; sample tests do not certify exact triangle intersections, cloth self-collision, calibrated physics, print hardware, sewability or fit; self-contact is discrete',verdict:checks.every(x=>x[1])?'PASS':'FAIL',checks:checks.map(([claim,pass])=>({claim,verdict:pass?'PASS':'FAIL'})),stats:s,coverage,pressureCalibration:"NOT_VALIDATED",topology:tp,collision:col,numericControls:ctrl,revision,bodyProvenance:BODY.provenance,material:{...mat,calibrated:false},fitAssessment:{verdict:'NOT_VALIDATED',trianglesAbove120Percent:currentMeasures.filter(m=>m.stretch>1.2).length},physics:{solver:'XPBD distance constraints / Verlet, embedded WebAssembly',dt_s:DT,iterations:120,skinOffset_m:THICK,waistPinned:true,selfCollision:true,selfContactThickness_m:.003},notRun:['Calibrated fabric testing','Continuous collision detection and universal self-contact robustness','Manufacturing sample and wearer fit']};
+function verify(){running=false;syncRun();updateGeometry();const tp=topology(),col=collisionSamples(),ctrl=numericControls(),s=stats();const finite=Array.from(p).every(Number.isFinite);const coverage=coverageCheck();const support=supportStats();const checks=[['No fixed cloth vertices; gravity retained',support.fixed===0&&collisionEnabled],['Contact force / gravity / inertia ledger closes',support.equationResidual_N<1e-5],['Posterior pelvic coverage: zero exposed samples',coverage.verdict==='PASS'],['Finite nonnegative estimated contact pressure',Array.from(contactPressure).every(x=>Number.isFinite(x)&&x>=0)],['Finite solver state',finite],['Four correctly directed equal-length seam pairs',seamMaps.length===4&&seamMaps.every(s=>s.lengthA_mm===s.lengthB_mm&&s.a.direction===s.b.direction)],['Maximum seam gap ≤ 2 mm',s.seamGap_mm<=2],['One sewn shell, Euler 0, two intended boundary loops',tp.euler===0&&tp.boundaryLoops===2&&tp.nonmanifold===0&&tp.windingErrors===0],['Body clearance samples: penetration ≤ 0.5 mm',col.penetratingSamples===0],['Analytic strain and stress controls',ctrl.pass],['Actual FreeSewing Sandy draft and unfolded side lengths',draft.profile.engine==='FreeSewing'&&Math.abs(draft.profile.sideLength_mm-slant*1000)<1e-6],['Finite signed fold-angle and curvature fields',Array.from(folds.angle_rad).every(Number.isFinite)&&Array.from(folds.curvature_per_m).every(Number.isFinite)],['Gravity has been simulated (≥ 1 second)',stepCount>=120],['Cloth changed from the initial arrangement',Math.max(...Array.from(p).map((v,i)=>Math.abs(v-seed[i])))>.001]];
+ lastReport={schema:'pattern-agent-cloth-lab-verification-1',time:new Date().toISOString(),scope:'Digital skirt demonstrator; sample tests do not certify exact triangle intersections, cloth self-collision, calibrated physics, print hardware, sewability or fit; self-contact is discrete',verdict:checks.every(x=>x[1])?'PASS':'FAIL',checks:checks.map(([claim,pass])=>({claim,verdict:pass?'PASS':'FAIL'})),stats:s,coverage,support:supportLedger(),pressureCalibration:"NOT_VALIDATED",topology:tp,collision:col,numericControls:ctrl,revision,bodyProvenance:BODY.provenance,material:{...mat,calibrated:false},fitAssessment:{verdict:'NOT_VALIDATED',trianglesAbove120Percent:currentMeasures.filter(m=>m.stretch>1.2).length},physics:{solver:'XPBD distance constraints / Verlet, embedded WebAssembly',dt_s:DT,iterations:120,skinOffset_m:THICK,waistPinned:false,waistClosure:"shape-matching reinforced edge (stiff approximation)",frictionCoefficient:.6,gravity_m_s2:[0,-9.81,0],selfCollision:true,selfContactThickness_m:.003},notRun:['Calibrated fabric testing','Continuous collision detection and universal self-contact robustness','Manufacturing sample and wearer fit']};
  $('status').textContent=lastReport.verdict;$('status').style.color=lastReport.verdict==='PASS'?'#25714e':'#b34431';$('verifyHint').textContent=`${lastReport.verdict} · ${col.samples.toLocaleString()} samples · min ${col.minClearance_mm.toFixed(2)} mm. Read the scope before accepting.`;
  $('stepVerify').className='current';$('stepDrape').className='';$('reportSummary').textContent=`${lastReport.verdict} for current digital checks. ${s.steps} fixed steps, ${(s.time_s).toFixed(2)} seconds; ${col.samples.toLocaleString()} body samples.`;
  $('reportChecks').innerHTML=lastReport.checks.map(x=>`<div class="check-row"><span>${x.claim}</span><strong class="${x.verdict==='PASS'?'pass':'fail'}">${x.verdict}</strong></div>`).join('');updateMetrics();console.info('[ClothLab verification]',JSON.stringify(lastReport));return lastReport;
 }
-function project(){return {schema:'pattern-agent-cloth-lab-1',view:mode,wireOn,units:'metre',patternUnits:'mm',parameters:{slant_m:slant,hem_m:hem,circle_ratio:circleRatio,waist_m:waistLength,NC,NR,YWAIST},positions:Array.from(p),previous:Array.from(old),initialPositions:seed,inverseMass:Array.from(inv),triangles,materialCoordinates:uvs,panels:panels.map(x=>({...x,cutOutline:offsetPolygon(x.polygon,10),seamAllowance_mm:10})),seams:seamMaps,body:BODY,material:{...mat,calibrated:false},selfContact:{enabled:true,thickness_m:.003,method:'discrete vertex-triangle and edge-edge PBD contacts; no CCD'},contactPressure:{correction_m:Array.from(pressureCorrection),force_N:Array.from(contactForce),area_m2:Array.from(contactArea),pressure_kPa:Array.from(contactPressure),dt_s:DT,definition:'Sum of positive body-normal projection impulses / dt / lumped area; uncalibrated PBD reaction estimate, excluding pinned support reactions',calibration:'NOT_VALIDATED'},freesewing:draft.profile,folding:{hinges,angle_rad:Array.from(folds.angle_rad),curvature_per_m:Array.from(folds.curvature_per_m),currentDualLength_m:Array.from(folds.currentDualLength_m),triangleAngle_deg:Array.from(folds.triangleAngle_deg),triangleCurvature_per_m:Array.from(folds.triangleCurvature_per_m),definition:'Signed oriented dihedral, flat=0; curvature=theta/current centroid-dual spacing; per-face maximum absolute over incident hinges',wrinkleProxy:{threshold_deg:15,definition:'Fraction of faces with |dihedral| >= 15 degrees; mesh-dependent geometric indicator, not permanent crease prediction'}},constraints:edgeMeta,triangleMeasures:currentMeasures,simulation:stats(),report:lastReport};}
+function project(){return {support:supportLedger(),schema:'pattern-agent-cloth-lab-1',view:mode,wireOn,units:'metre',patternUnits:'mm',parameters:{slant_m:slant,hem_m:hem,circle_ratio:circleRatio,waist_m:waistLength,NC,NR,YWAIST},positions:Array.from(p),previous:Array.from(old),initialPositions:seed,inverseMass:Array.from(inv),triangles,materialCoordinates:uvs,panels:panels.map(x=>({...x,cutOutline:offsetPolygon(x.polygon,10),seamAllowance_mm:10})),seams:seamMaps,body:BODY,material:{...mat,calibrated:false},selfContact:{enabled:true,thickness_m:.003,method:'discrete vertex-triangle and edge-edge PBD contacts; no CCD'},contactPressure:{correction_m:Array.from(pressureCorrection),force_N:Array.from(contactForce),area_m2:Array.from(contactArea),pressure_kPa:Array.from(contactPressure),dt_s:DT,definition:'Sum of positive body-normal projection impulses / dt / lumped area; uncalibrated PBD reaction estimate, including dynamic waist contacts; not measured wearer pressure',calibration:'NOT_VALIDATED'},freesewing:draft.profile,folding:{hinges,angle_rad:Array.from(folds.angle_rad),curvature_per_m:Array.from(folds.curvature_per_m),currentDualLength_m:Array.from(folds.currentDualLength_m),triangleAngle_deg:Array.from(folds.triangleAngle_deg),triangleCurvature_per_m:Array.from(folds.triangleCurvature_per_m),definition:'Signed oriented dihedral, flat=0; curvature=theta/current centroid-dual spacing; per-face maximum absolute over incident hinges',wrinkleProxy:{threshold_deg:15,definition:'Fraction of faces with |dihedral| >= 15 degrees; mesh-dependent geometric indicator, not permanent crease prediction'}},constraints:edgeMeta,triangleMeasures:currentMeasures,simulation:stats(),report:lastReport};}
 function save(name,data,type='application/json'){const url=URL.createObjectURL(new Blob([data],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('Saved '+name);}
 let toastTimer;function toast(text){$('toast').textContent=text;$('toast').style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').style.display='none',3000);}
 function exportOBJ(){let out='# Pattern Agent. Units: metres. MakeHuman CC0; garment retains rest UVs.\no MakeHuman\n';for(let i=0;i<BODY.vertices.length;i+=3)out+=`v ${BODY.vertices.slice(i,i+3).join(' ')}\n`;for(let i=0;i<BODY.indices.length;i+=3)out+=`f ${BODY.indices.slice(i,i+3).map(x=>x+1).join(' ')}\n`;out+='o Simulated_skirt\n';for(let i=0;i<p.length;i+=3)out+=`v ${Array.from(p.subarray(i,i+3)).join(' ')}\n`;for(let i=0;i<uvs.length;i+=2)out+=`vt ${uvs[i]} ${uvs[i+1]}\n`;const off=BODY.vertices.length/3;for(let i=0;i<triangles.length;i+=3)out+=`f ${[0,1,2].map(k=>`${triangles[i+k]+off+1}/${i+k+1}`).join(' ')}\n`;return out;}
@@ -281,16 +299,17 @@ $('reportExport').onclick=()=>save('cloth-lab-verification.json',JSON.stringify(
 $('nativeExport').onclick=()=>save('freesewing-sandy-native.svg',draft.nativeSVG,'image/svg+xml');
 $('svgExport').onclick=()=>save('four-panel-skirt-mm.svg',patternSVG(),'image/svg+xml');$('dxfExport').onclick=()=>save('four-panel-skirt-mm.dxf',dxf(),'application/dxf');$('printExport').onclick=printA4;
 $('projectExport').onclick=()=>save('cloth-lab-simulation.json',JSON.stringify(project()));$('download3d').onclick=()=>save('makehuman-and-simulated-skirt.obj',exportOBJ(),'text/plain');
-$('saveHtml').onclick=()=>{const doc=document.documentElement.cloneNode(true);doc.querySelector('#savedProject').textContent=JSON.stringify({parameters:{slant_m:slant,hem_m:hem,circle_ratio:circleRatio},materialKey:$('material').value,wind,pressureCorrection:Array.from(pressureCorrection),contactForce:Array.from(contactForce),contactPressure:Array.from(contactPressure),view:mode,wireOn,steps:stepCount,positions:Array.from(p),previous:Array.from(old)});doc.querySelectorAll('dialog').forEach(x=>x.removeAttribute('open'));doc.querySelector('#boot').style.display='grid';doc.querySelector('#toast').style.display='none';save('pattern-agent-freesewing-cloth-lab.html','<!doctype html>\n'+doc.outerHTML,'text/html');};
-for(const id of ['front','side','back'])$(id).onclick=()=>{const d=innerWidth<700?4.6:3.5;camera.position.set(id==='side'?d:0,1.02,id==='front'?d:id==='back'?-d:.055);controls.target.set(0,.91,.055);controls.update();drawDirty=true;renderer.render(scene,camera);drawDirty=false;};
+$('saveHtml').onclick=()=>{const doc=document.documentElement.cloneNode(true);doc.querySelector('#savedProject').textContent=JSON.stringify({parameters:{slant_m:slant,hem_m:hem,circle_ratio:circleRatio},materialKey:$('material').value,wind,support:supportLedger(),pressureCorrection:Array.from(pressureCorrection),contactForce:Array.from(contactForce),contactPressure:Array.from(contactPressure),view:mode,wireOn,steps:stepCount,positions:Array.from(p),previous:Array.from(old)});doc.querySelectorAll('dialog').forEach(x=>x.removeAttribute('open'));doc.querySelector('#boot').style.display='grid';doc.querySelector('#toast').style.display='none';save('pattern-agent-freesewing-cloth-lab.html','<!doctype html>\n'+doc.outerHTML,'text/html');};
+for(const id of ['front','side','back'])$(id).onclick=()=>{const d=innerWidth<700?4.6:3.5;camera.position.set(id==='side'?d:0,1.02,id==='front'?d:id==='back'?-d:.055);controls.target.set(0,.91,.055);controls.update();drawDirty=true;renderScene();drawDirty=false;};
 $('wire').onclick=()=>{wireOn=!wireOn;$('wire').classList.toggle('primary',wireOn);updateGeometry();};
 const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let pointerDown;
 renderer.domElement.addEventListener('pointerdown',e=>pointerDown=[e.clientX,e.clientY]);renderer.domElement.addEventListener('pointerup',e=>{if(!pointerDown||Math.hypot(e.clientX-pointerDown[0],e.clientY-pointerDown[1])>4)return;const r=renderer.domElement.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObject(cloth);if(hits.length){const m=currentMeasures[hits[0].faceIndex];$('pick').textContent=`Triangle ${hits[0].faceIndex} · ${(m.stretch*100).toFixed(2)}% · ${m.stress.toFixed(2)} kPa (est.) · θ ${folds.triangleAngle_deg[hits[0].faceIndex].toFixed(1)}° · κ ${folds.triangleCurvature_per_m[hits[0].faceIndex].toFixed(1)} m⁻¹`;}});
 new ResizeObserver(()=>{const narrow=innerWidth<700;if(narrow!==narrowFrame){narrowFrame=narrow;camera.position.set(1.65,1.30,narrow?4.4:3.0);controls.target.set(0,.91,.055);controls.update();}drawDirty=true;const r=renderer.domElement.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}).observe(renderer.domElement.parentElement);
 $('length').value=slant*1000;$('hem').value=circleRatio*100;$('material').value=SAVED.materialKey||'cotton';$('wind').value=wind;$('windValue').textContent=wind.toFixed(1)+' m/s²';clothMat.color.setHex(mat.color);
-makePattern();if(SAVED.positions?.length===p.length){p.set(SAVED.positions);old.set(SAVED.previous||p);stepCount=SAVED.steps||0;if(SAVED.pressureCorrection){pressureCorrection.set(SAVED.pressureCorrection);contactForce.set(SAVED.contactForce);contactPressure.set(SAVED.contactPressure);}updateGeometry();updateMetrics();}setView(mode);$('wire').classList.toggle('primary',wireOn);$('boot').style.display='none';
+makePattern();if(SAVED.positions?.length===p.length){p.set(SAVED.positions);old.set(SAVED.previous||p);stepCount=SAVED.steps||0;if(SAVED.support){bodyCorrection.set(SAVED.support.normalCorrection_m);frictionCorrection.set(SAVED.support.frictionCorrection_m);stepHistory.set(SAVED.support.stepStart_m);previousAtStepStart.set(SAVED.support.previousAtStart_m);lastWind=SAVED.support.windAcceleration_m_s2;collisionEnabled=SAVED.support.bodyEnabled;bodyMesh.visible=collisionEnabled;}if(SAVED.pressureCorrection){pressureCorrection.set(SAVED.pressureCorrection);contactForce.set(SAVED.contactForce);contactPressure.set(SAVED.contactPressure);}updateGeometry();updateMetrics();}setView(mode);$('wire').classList.toggle('primary',wireOn);$('boot').style.display='none';
+let shadowRevision='';function renderScene(){const key=revision+':'+stepCount+':'+collisionEnabled;if(key!==shadowRevision)renderer.shadowMap.needsUpdate=true;const start=performance.now();renderer.render(scene,camera);shadowRevision=key;framesDrawn++;renderMs.push(performance.now()-start);if(renderMs.length>240)renderMs.shift();}
 let tick=0,accumulator=0;
-function animate(now){requestAnimationFrame(animate);const rawElapsed=(now-lastFrame)/1000,elapsed=Math.min(.05,rawElapsed);lastFrame=now;frames.push(rawElapsed*1000);if(frames.length>240)frames.shift();if(running){accumulator+=elapsed;let n=0;while(accumulator>=DT&&n<4){substep();accumulator-=DT;n++;}if(n===4)accumulator=0;updateGeometry();}controls.update();if(drawDirty){const start=performance.now();renderer.render(scene,camera);framesDrawn++;drawDirty=false;renderMs.push(performance.now()-start);if(renderMs.length>240)renderMs.shift();}if(running&&tick++%20===0)updateMetrics();}
+function animate(now){requestAnimationFrame(animate);const rawElapsed=(now-lastFrame)/1000,elapsed=Math.min(.05,rawElapsed);lastFrame=now;frames.push(rawElapsed*1000);if(frames.length>240)frames.shift();if(running){accumulator+=elapsed;let n=0;while(accumulator>=DT&&n<4){substep();accumulator-=DT;n++;}if(n===4)accumulator=0;updateGeometry();}controls.update();if(drawDirty){renderScene();drawDirty=false;}if(running&&tick++%20===0)updateMetrics();}
 requestAnimationFrame(animate);
-window.clothLab={ready:true,version:'2.2.0',coverageCheck,nativeSVG:()=>draft.nativeSVG,stats,project,verify,patternSVG,dxf,exportOBJ,deformation,bodyDistance,numericControls,setView,reset:()=>{running=false;makePattern(false);syncRun();},step:n=>{running=false;for(let i=0;i<n;i++)substep();updateGeometry();updateMetrics();syncRun();return stats();},snapshot:()=>({positions:Array.from(p),...stats()}),camera:()=>({position:camera.position.toArray(),target:controls.target.toArray()}),negativeControl:(type)=>{if(type==='seam'){const s=structuredClone(seamMaps);s[0].lengthB_mm+=10;return {detected:s[0].lengthA_mm!==s[0].lengthB_mm};}if(type==='body'){return {inside:bodyDistance(0,YWAIST,.05)<0};}if(type==='strain'){return {detected:Math.abs(deformation([1.1,0,0],[0,1,0],80000,.3).stretch-1)>.05};}}};
+window.clothLab={ready:true,supportStats,setBodyEnabled:v=>{collisionEnabled=!!v;bodyMesh.visible=!!v;drawDirty=true},version:'2.3.0',coverageCheck,nativeSVG:()=>draft.nativeSVG,stats,project,verify,patternSVG,dxf,exportOBJ,deformation,bodyDistance,numericControls,setView,reset:()=>{running=false;makePattern(false);syncRun();},step:n=>{running=false;for(let i=0;i<n;i++)substep();updateGeometry();updateMetrics();syncRun();return stats();},snapshot:()=>({positions:Array.from(p),...stats()}),camera:()=>({position:camera.position.toArray(),target:controls.target.toArray()}),negativeControl:(type)=>{if(type==='seam'){const s=structuredClone(seamMaps);s[0].lengthB_mm+=10;return {detected:s[0].lengthA_mm!==s[0].lengthB_mm};}if(type==='body'){return {inside:bodyDistance(0,YWAIST,.05)<0};}if(type==='strain'){return {detected:Math.abs(deformation([1.1,0,0],[0,1,0],80000,.3).stretch-1)>.05};}}};
 console.info('[ClothLab ready]',JSON.stringify({body:BODY.provenance,wasmBytes:WASM.length,vertices:p.length/3,constraints:edgeMeta.length,renderer:renderer.getContext().getParameter(renderer.getContext().VERSION)}));

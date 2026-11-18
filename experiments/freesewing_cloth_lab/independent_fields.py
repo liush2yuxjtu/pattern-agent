@@ -88,8 +88,12 @@ def freesewing_reopen(data):
     for j in range(3):
         np.add.at(masses, faces[:, j], areas * data['material']['density'] / 3)
     inverse = np.asarray(data['inverseMass'])
-    assert np.all(inverse[:nc] == 0)
-    relative = float(np.max(np.abs(inverse[nc:] * masses[nc:] - 1)))
+    if data.get('support',{}).get('mode')=='free-waist':
+        assert np.all(inverse>0)
+        relative = float(np.max(np.abs(inverse*masses-1)))
+    else:
+        assert np.all(inverse[:nc] == 0)
+        relative = float(np.max(np.abs(inverse[nc:] * masses[nc:] - 1)))
     assert relative < 1e-12
     return {'upstream': '@freesewing/sandy@4.10.2', 'maxMaterialCoordinateError_m': maximum,
             'maxLumpedMassRelativeError': relative, 'materialArea_m2': float(areas.sum()), 'mass_kg': float(areas.sum() * data['material']['density'])}

@@ -4,6 +4,7 @@ No rendering or application measurement code is imported here. Metres / mm.
 import argparse,copy,hashlib,importlib.util,json,sys,time,xml.etree.ElementTree as ET
 from pathlib import Path
 import numpy as np
+from independent_support import audit as support_audit
 from independent_contact import run as contact_audit
 from independent_fields import freesewing_reopen,folds_reopen,redraft
 
@@ -104,12 +105,14 @@ def run(data,root,negative=True):
     # Independent solid-angle membership, deliberately unrelated to the app BVH.
     inside=np.flatnonzero(oracle.point_inside_mesh(bv,bf,v)).tolist()
     result={'verdict':'PASS' if not body_pairs and not self_pairs and not inside else 'FAIL','body_triangle_intersections':len(body_pairs),'body_pairs':body_pairs[:40],'cloth_self_intersections':len(self_pairs),'self_pairs':self_pairs[:40],'inside_body_vertices':inside,'topology':topology,'body_topology':body_topology,'tensor':tensor,'folds':folds,'source_hash':hashlib.sha256(source.read_bytes()).hexdigest(),'oracle_hash':hashlib.sha256(path.read_bytes()).hexdigest(),'analytic_controls':analytic,'physical_calibration':'NOT_RUN','manufacturing':'NOT_RUN','dynamic_self_collision_solver':bool(data.get('selfContact',{}).get('enabled',False))}
+    if data.get('support',{}).get('mode')=='free-waist':
+        result['freeWaistSupport']=support_audit(data)
     if 'contactPressure' in data:
         result['coverageAndPressure']=contact_audit(data,negative)
         if result['coverageAndPressure']['verdict']!='PASS':result['verdict']='FAIL'
     if negative:
         controls={}
-        for fault in ['reverse-seam','swap-panel','gap','uv','fold-angle','curvature','freesewing-source']:
+        for fault in ['reverse-seam','swap-panel','gap','uv','fold-angle','curvature','freesewing-source']+(['support-pin','support-force'] if data.get('support',{}).get('mode')=='free-waist' else []):
             d=copy.deepcopy(data)
             if fault=='reverse-seam':d['seams'][0]['b']['direction']='hem-to-waist'
             if fault=='swap-panel':d['seams'][0]['b']['panel']='P4'
@@ -118,10 +121,13 @@ def run(data,root,negative=True):
             if fault=='uv':d['materialCoordinates'][4]+=.02
             if fault=='fold-angle':d['folding']['angle_rad'][0]+=.1
             if fault=='curvature':d['folding']['curvature_per_m'][0]+=.1
+            if fault=='support-pin':d['inverseMass'][0]=0
+            if fault=='support-force':d['support']['normalCorrection_m'][0]+=.001
             if fault=='freesewing-source':d['freesewing']['halfPanel']['inner'][0][0][0]+=1
             try:
                 if fault in ['uv','freesewing-source']:tensor_reopen(d)
                 elif fault in ['fold-angle','curvature']:folds_reopen(d)
+                elif fault in ['support-pin','support-force']:support_audit(d)
                 else:source_seams(d)
                 controls[fault]=False
             except (AssertionError,ValueError,IndexError):controls[fault]=True

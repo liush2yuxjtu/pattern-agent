@@ -31,10 +31,10 @@
     </section>
     <div class="status-strip"><div class="wrap"><span><i aria-hidden="true"></i>数字几何检查通过</span><span>前后侧缝差 0.00 mm · 省腿等长</span><span>实体试穿尚未完成</span></div></div>
     <section id="freesewing-lab" class="section wrap" aria-labelledby="freesewing-title">
-      <div class="section-heading"><div><p class="eyebrow">FREESewing / SINGLE HTML</p><h2 id="freesewing-title">四片裙，从制版到碰撞验证。</h2></div><p>FreeSewing Sandy · MakeHuman · WASM<br>单文件运行，支持离线保存</p></div>
-      <p>同一份参数化纸样连接二维裁片、三维布料、应力应变、接触压力估算和折角／曲率。首次打开、重置与改版先完成 120 步重力及碰撞求解，再显示服装。</p>
-      <p>指定的五个动态／变型状态中，后臀 466 个采样点零裸露，人体穿透与布料自交均为零；公网 Playwright 48/48 项通过。局部伸长率仍达 189.5%，面料和试衣压力尚未实测标定，真实合体性未通过验收。</p>
-      <p><a class="button primary" href="freesewing-cloth-lab.html?v=364ee5c">打开单文件试衣 <span aria-hidden="true">↗</span></a> <a class="inline-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/75207a2d8151e7e2ce50a4ddfc073ad56a5e8301/docs/verification/cloth-coverage-pressure-20261118">查看原始验证记录 ↗</a></p>
+      <div class="section-heading"><div><p class="eyebrow">FREESewing / SINGLE HTML</p><h2 id="freesewing-title">四片裙，零固定点也能承托。</h2></div><p>FreeSewing Sandy · MakeHuman · WASM<br>单文件运行，支持离线保存</p></div>
+      <p>移除腰部固定点，保留重力。加固闭合腰口通过人体接触和摩擦承托裙重；二维纸样、三维布料、应力应变、压力估算和折角／曲率共用数据。腰口为加固边近似，完整腰头尚未建模。</p>
+      <p>Playwright 50/50 项通过；独立检查后臀 466 个采样点、人体穿透、布料自交和缝合关系。另测长时间承托及移除人体后的实际重力下落。局部伸长率仍达 193.7%，面料和试衣压力尚未实测标定，真实合体性未通过验收。</p>
+      <p><a class="button primary" href="freesewing-free-waist.html?v=c74e6c5d">打开单文件试衣 <span aria-hidden="true">↗</span></a> <a class="inline-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/docs/verification/cloth-free-waist-20261118">查看原始验证记录 ↗</a></p>
     </section>
     <section id="downloads" class="section wrap" aria-labelledby="download-title">
       <div class="section-heading"><div><p class="eyebrow">YOUR PATTERN FILES</p><h2 id="download-title">把纸样带到裁剪台。</h2></div><p>选适合你的文件格式。<br>源文件与尺寸文件请保存在同一文件夹。</p></div>

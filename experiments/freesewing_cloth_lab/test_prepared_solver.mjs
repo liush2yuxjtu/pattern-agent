@@ -15,8 +15,8 @@ for(let frame=0;frame<5;frame++){
  const view=new DataView(kernels[0].memory.buffer);
  for(let i=0;i<edges;i++)view.setFloat64(records+i*32+24,0,true);
  for(let iteration=0;iteration<120;iteration++)kernels[0].solve(edges,0,mass,records,dt*dt);
- kernels[1].solve_prepared(edges,prepared,120);
+ kernels[1].reset_prepared(edges,prepared);for(let k=0;k<120;k++)kernels[1].iterate_prepared(edges,prepared,1);
  assert.deepEqual(new Uint8Array(kernels[1].memory.buffer,0,n*3*8),new Uint8Array(kernels[0].memory.buffer,0,n*3*8));
  assert.deepEqual(new Uint8Array(kernels[1].memory.buffer,old,n*3*8),new Uint8Array(kernels[0].memory.buffer,old,n*3*8));
 }
-console.log(JSON.stringify({verdict:'PASS',frames:5,constraints:edges,iterations:120,positionsAndPreviousBitExact:true,nonzeroCompliance:true,unequalMasses:true,pinnedPoints:true}));
+console.log(JSON.stringify({verdict:'PASS',frames:5,constraints:edges,iterations:120,positionsAndPreviousBitExact:true,splitIterations:120,nonzeroCompliance:true,unequalMasses:true,pinnedPoints:true}));

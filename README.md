@@ -261,7 +261,18 @@ StVK 应力应变、故障对照与状态化离线 HTML 导出均有独立数值
 材料是合成参数，局部高应变保留可见警告；没有布料自碰撞、实物标定或实体适体批准。
 这不改变历史 T 恤 FAIL，也不将几何/热图验证升级为生产批准。
 
-## FreeSewing Sandy 四片裙：覆盖、碰撞与压力估算
+## FreeSewing 四片裙 2.3：取消固定点，保留重力
+
+[在线打开零固定点单文件](https://liush2yuxjtu.github.io/pattern-agent/freesewing-free-waist.html?v=c74e6c5d) ·
+[实现与复现](experiments/freesewing_cloth_lab/README.md) ·
+[原始验证记录](docs/verification/cloth-free-waist-20261118/README.md)。
+
+全部 1,856 个布料顶点均有质量；g = 9.81 m/s² 持续作用。闭合加固腰口采用
+保留平移／旋转自由度的形状匹配，人体法向接触与库仑摩擦承托重量。无人体／世界坐标锚点。
+腰口是刚性加固边近似，完整 FreeSewing 腰头尚未建模。压力／材料仍未标定，真实合体性
+NOT_VALIDATED（360 步峰值伸长率 193.7%）。新版新增为独立 HTML，保留下面的历史版本。
+
+## 历史 FreeSewing Sandy 2.2：固定腰口、覆盖与压力估算
 
 [在线打开单文件 HTML](https://liush2yuxjtu.github.io/pattern-agent/freesewing-cloth-lab.html?v=364ee5c) ·
 [源码与复现](experiments/freesewing_cloth_lab/README.md) ·

@@ -102,11 +102,11 @@ export class SelfContact {
   const first=axis*2,other=(axis+1)%3*2,last=(axis+2)%3*2;
   this.order.sort((a,b)=>box[a*6+first]-box[b*6+first]||a-b);
   for(let ai=0;ai<n;ai++){
-   const i=this.order[ai],ia=i*6,[a,b]=this.edges[i];
+   const i=this.order[ai],ia=i*6,a=this.edges[i][0],b=this.edges[i][1];
    for(let bj=ai+1;bj<n;bj++){
     const j=this.order[bj],ib=j*6;if(box[ib+first]>box[ia+first+1])break;
-    const [c,d]=this.edges[j];if(a===c||a===d||b===c||b===d)continue;
     if(box[ia+other]>box[ib+other+1]||box[ia+other+1]<box[ib+other]||box[ia+last]>box[ib+last+1]||box[ia+last+1]<box[ib+last])continue;
+    const c=this.edges[j][0],d=this.edges[j][1];if(a===c||a===d||b===c||b===d)continue;
     callback(i,j);
    }
   }

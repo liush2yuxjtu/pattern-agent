@@ -3,7 +3,8 @@
 No runtime raycaster/BVH is imported. Pressure checks validate the declared
 projection-reaction estimate, not measured wearer pressure or a fabric law.
 """
-import copy
+import copy,gzip,json
+from pathlib import Path
 import numpy as np
 
 
@@ -52,7 +53,12 @@ def pressure(data):
 def run(data,negative=False):
     cov=coverage(data);pr=pressure(data);result={'coverage':cov,'pressure':pr,'verdict':cov['verdict']}
     if negative:
-        raw=coverage(data,data['initialPositions'])
+        raw_positions=data['initialPositions']
+        if data.get('support',{}).get('mode')=='free-waist':
+            # Keep the actual historical exposure fault even if a new fuller
+            # draft already covers the pelvis before gravity. Do not weaken it.
+            with gzip.open(Path(__file__).resolve().parents[2]/'docs/verification/cloth-coverage-pressure-20261118/local/dynamics/step-120.json.gz','rt') as f:raw_positions=json.load(f)['initialPositions']
+        raw=coverage(data,raw_positions)
         broken=copy.deepcopy(data);broken['contactPressure']['pressure_kPa'][100]+=.001
         detected=False
         try:pressure(broken)

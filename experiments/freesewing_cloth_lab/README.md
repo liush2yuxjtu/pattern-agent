@@ -1,6 +1,7 @@
 # FreeSewing → single-file cloth and wrinkle laboratory
 
-New artifact: `web/freesewing-cloth-lab.html`. Earlier HTML files and their
+Version 2.3 artifact: `web/freesewing-free-waist.html`. The historical pinned
+2.2 artifact remains `web/freesewing-cloth-lab.html`. Earlier HTML files and their
 historical failures are preserved. No runtime CDN, MCP or server dependency.
 
 The browser really instantiates `@freesewing/sandy@4.10.2`, using the pinned
@@ -18,6 +19,23 @@ uses rest-distance approximations, not a calibrated shell law. Rest lengths and
 lumped particle masses come from the actual material-coordinate triangles.
 The existing body contact queries the actual 13,380-vertex MakeHuman CC0 mesh;
 discrete vertex/triangle and edge/edge cloth contacts are retained.
+
+Version 2.3 removes all 64 waist pins: all 1,856 particles have finite positive
+mass and move under gravity (-9.81 m/s²). The reinforced closed waist edge uses
+mass-weighted rigid shape matching, preserving free translation/rotation and
+mass center. It is a stiff belt approximation, not a simulated native waistband.
+Body-normal projection and accumulated Coulomb friction (μ=0.6), coupled inside
+all 120 cloth iterations, carry the weight. No world/body anchors are stored.
+The initial waist is at 1.09 m; circle ratio defaults to 60%. The native waist
+perimeter follows the 5 mm body-offset section, with a 3 mm assembly gap.
+Velocity drag is 0.98 per 1/120 s (uncalibrated dissipative damping); the prior
+0.992 candidate oscillated above the unchanged 12-second settling threshold.
+Exported support arrays permit independent mass/force/COM and Coulomb audits.
+Removing the actual collider must cause the whole garment to fall under gravity.
+Exact-position body-query memoization reuses only bit-identical queries on the
+immutable body. Equal-mass WASM corrections reuse an identical division; the
+self-contact sweep tests other-axis bounds before loading edge endpoints, with
+the same candidate order/set. No cloth resolution or iteration count is reduced.
 
 Strain/stress diagnostics reconstruct F = Ds Dm⁻¹ and Green strain. Stress is an
 assumed isotropic plane-stress material estimate (maximum tensile principal second Piola–Kirchhoff stress S). It is not contact pressure or a calibrated Cauchy-stress result.
@@ -50,10 +68,11 @@ node experiments/freesewing_cloth_lab/test_pattern_fold.mjs
 node experiments/freesewing_cloth_lab/test_self_contact.mjs
 node experiments/freesewing_cloth_lab/build.mjs
 node experiments/freesewing_cloth_lab/test_prepared_solver.mjs
+node experiments/freesewing_cloth_lab/test_waist_ring.mjs
 python -m http.server 8771 --bind 127.0.0.1 --directory web
 ```
 
-Open <http://127.0.0.1:8771/freesewing-cloth-lab.html>.
+Open <http://127.0.0.1:8771/freesewing-free-waist.html>.
 
 ## Verify the actual artifact
 
@@ -63,15 +82,17 @@ oracle supplies independent triangle intersections and solid-angle membership.
 
 ```sh
 python experiments/freesewing_cloth_lab/run_check.py browser \
-  --url http://127.0.0.1:8771/freesewing-cloth-lab.html --out work/fs-browser
+  --url http://127.0.0.1:8771/freesewing-free-waist.html --out work/fs-browser
 python experiments/freesewing_cloth_lab/run_check.py independent \
   work/fs-browser/simulation.json --repo . --out work/fs-browser/independent.json
 python experiments/freesewing_cloth_lab/run_check.py gpu \
   --html work/fs-browser/downloaded.html --output work/fs-heatmap
 python experiments/freesewing_cloth_lab/run_check.py dynamics \
-  --url http://127.0.0.1:8771/freesewing-cloth-lab.html --output work/fs-dynamics
+  --url http://127.0.0.1:8771/freesewing-free-waist.html --output work/fs-dynamics
 python experiments/freesewing_cloth_lab/run_check.py variant \
-  --url http://127.0.0.1:8771/freesewing-cloth-lab.html --output work/fs-variant
+  --url http://127.0.0.1:8771/freesewing-free-waist.html --output work/fs-variant
+python experiments/freesewing_cloth_lab/run_check.py support \
+  --url http://127.0.0.1:8771/freesewing-free-waist.html --output work/fs-support
 ```
 
 The independent reopener imports no application drafter or solver. A separate
@@ -120,7 +141,8 @@ CPU submission time, and `frame_ms_p95` records rAF callback intervals. These
 are not interchangeable with hardware FPS or GPU frame time. Saved HTML now
 restores its selected heatmap and wire view as well as its physical state.
 
-To reproduce the A/B, save the actual 2.0 HTML from application commit
+Historical 2.1/2.2 A/B only (not applicable to changed 2.3 boundary conditions):
+save the actual 2.0 HTML from application commit
 `94d41253442400afb6d8a0bcee4c8a45f5d7e62b`, then run:
 
 ```sh
@@ -160,7 +182,8 @@ sampling check in the stated posterior pelvic region, not universal coverage.
 The Pressure view uses per-step accumulated positive body-normal projection
 corrections. For free vertices its estimated reaction is F = m Δn / Δt² and
 p = F / A (kPa after /1000), with area lumped from material triangles and mass
-from areal density. It excludes pinned waist reactions. The independent audit
+from areal density. In historical 2.2 it excludes pinned waist reactions; 2.3 has no pins and includes
+all waist reactions. The independent audit
 reconstructs A and m from upstream UV triangles and checks the exported forces,
 pressures and actual GPU colors. Saved HTML retains these fields exactly.
 This estimate depends on timestep/projection order and lacks calibrated fabric,
