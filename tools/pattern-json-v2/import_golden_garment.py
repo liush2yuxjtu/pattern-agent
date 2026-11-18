@@ -12,6 +12,13 @@ PATTERN_SCHEMA = "2.0.0"
 class Yaml11Loader(yaml.SafeLoader):
     pass
 
+# Copy the resolver table before changing it. Otherwise the subclass can
+# mutate SafeLoader's shared resolver map.
+Yaml11Loader.yaml_implicit_resolvers = {
+    first: list(resolvers)
+    for first, resolvers in yaml.SafeLoader.yaml_implicit_resolvers.items()
+}
+
 # Keep YAML 1.1 presentation strings such as yes/no/on/off as strings.
 # Explicit !!bool remains supported by the YAML constructor.
 for first, resolvers in list(Yaml11Loader.yaml_implicit_resolvers.items()):
