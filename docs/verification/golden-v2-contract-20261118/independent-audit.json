@@ -1,0 +1,110 @@
+{
+  "verdict": "PASS",
+  "scope": "Golden YAML/DXF preservation and JSON contract, not fit or production release",
+  "source_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+  "dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+  "manifest_sha256": "26682c9b913b4ff897b4e55c989dbc1bf1a8231fca5a61ee07954006b8fd438f",
+  "source_geometry": {
+    "entities": 231,
+    "counts": {
+      "POLYLINE": 126,
+      "LINE": 78,
+      "TEXT": 27
+    },
+    "polyline_vertices": 1487,
+    "raw_declared_INSUNITS": null,
+    "audit_coordinate_unit": "YAML U; physical scale uncalibrated"
+  },
+  "measurements_recomputed": 23,
+  "interfaces_recomputed": 25,
+  "seam_records": 11,
+  "max_interface_rounding_error_U": 4.398762314394844e-07,
+  "preserved_front_hem_gap_U": [
+    426.184448
+  ],
+  "fault_controls": {
+    "guessed_millimeters": {
+      "rejected": true,
+      "findings": [
+        "schema: /units/mm_per_unit violates type",
+        "uncalibrated units changed"
+      ]
+    },
+    "missing_seam": {
+      "rejected": true,
+      "findings": [
+        "schema: /seam_pairs violates minItems",
+        "seam inventory changed",
+        "seam source inventory changed",
+        "duplicate seam source path",
+        "sleeve assignment invented"
+      ]
+    },
+    "duplicate_edge_id": {
+      "rejected": true,
+      "findings": [
+        "duplicate edge_id",
+        "edge identity changed",
+        "allowance attached to wrong piece",
+        "per-edge allowance coverage"
+      ]
+    },
+    "dangling_edge": {
+      "rejected": true,
+      "findings": [
+        "edge chain changed"
+      ]
+    },
+    "changed_coordinate": {
+      "rejected": true,
+      "findings": [
+        "geometry projection changed"
+      ]
+    },
+    "lost_left_sleeve_role": {
+      "rejected": true,
+      "findings": [
+        "piece roles lost: 袖片"
+      ]
+    },
+    "source_digest": {
+      "rejected": true,
+      "findings": [
+        "source byte digest mismatch"
+      ]
+    },
+    "wrong_piece_cutting": {
+      "rejected": true,
+      "findings": [
+        "piece cutting projection changed"
+      ]
+    },
+    "wrong_stable_id": {
+      "rejected": true,
+      "findings": [
+        "record identity changed"
+      ]
+    },
+    "wrong_garment_name": {
+      "rejected": true,
+      "findings": [
+        "garment source fields changed"
+      ]
+    },
+    "unbound_result": {
+      "rejected": true,
+      "findings": [
+        "result and source revision must be present together"
+      ]
+    },
+    "false_current_result": {
+      "rejected": true,
+      "findings": [
+        "stale result labelled current"
+      ]
+    }
+  },
+  "findings": [],
+  "physical_fit": "NOT_RUN",
+  "production_release": false
+}

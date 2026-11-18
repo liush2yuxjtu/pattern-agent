@@ -1,23 +1,819 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "$id":"https://github.com/liush2yuxjtu/pattern-agent/blob/main/tools/pattern-json-v2/pattern-json-v2.schema.json",
-  "title":"Pattern JSON v2",
-  "type":"object",
-  "required":["schema","garment","revision","provenance","units","pieces","measurements","interfaces","seam_relations","geometry","status","source_document"],
-  "properties":{
-    "schema":{"type":"object","required":["name","version","dialect"],"properties":{"name":{"const":"pattern-json-v2"},"version":{"const":"2.0.0"},"dialect":{"const":"JSON"}},"additionalProperties":false},
-    "garment":{"type":"object","required":["garment_id","name","size","production_ready"],"properties":{"garment_id":{"type":"string"},"name":{"type":["string","null"]},"category":{"type":["string","null"]},"size":{"type":["string","null"]},"state":{"type":"string"},"production_ready":{"const":false}},"additionalProperties":false},
-    "revision":{"type":"object","required":["revision_id","source_spec_version","parent_revision","status","stale_propagation"],"properties":{"revision_id":{"type":"string"},"source_spec_version":{"const":"1.1"},"parent_revision":{"type":["string","null"]},"status":{"type":"string"},"stale_propagation":{"type":"array","items":{"type":"string"}}},"additionalProperties":false},
-    "provenance":{"type":"object","required":["source_path","source_sha256","source_format","source_yaml_version","source_document_is_authoritative","dxf_is_reference_only"],"properties":{"source_path":{"type":"string"},"source_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"source_format":{"const":"YAML"},"source_yaml_version":{"const":"1.1"},"source_document_is_authoritative":{"const":true},"dxf_is_reference_only":{"const":true}},"additionalProperties":false},
-    "units":{"type":"object","required":["coordinate_unit","mm_per_unit","reference_size_unit","angle_unit","scale_status"],"properties":{"coordinate_unit":{"const":"U"},"mm_per_unit":{"type":["number","null"]},"reference_size_unit":{"type":["string","null"]},"angle_unit":{"type":["string","null"]},"scale_status":{"type":["string","null"]}},"additionalProperties":false},
-    "pieces":{"type":"array","minItems":4,"items":{"type":"object","required":["piece_id","name","source_path","geometry"],"properties":{"piece_id":{"type":"string"},"name":{"type":"string"},"source_path":{"type":"string"},"role":{"type":["string","null"]},"role_quantity":{},"cutting":{},"geometry":{"type":"object"}},"additionalProperties":true}},
-    "measurements":{"type":"array","minItems":23,"items":{"type":"object","required":["measurement_id","name","source_path"],"properties":{"measurement_id":{"type":"string"},"name":{"type":"string"},"source_path":{"type":"string"}},"additionalProperties":true}},
-    "interfaces":{"type":"array","minItems":25,"items":{"type":"object","required":["interface_id","piece_id","piece","name","source_path"],"properties":{"interface_id":{"type":"string"},"piece_id":{"type":"string"},"piece":{"type":"string"},"name":{"type":"string"},"source_path":{"type":"string"}},"additionalProperties":true}},
-    "seam_relations":{"type":"array","items":{"type":"object","required":["relation_id","name","source_path","value"],"properties":{"relation_id":{"type":"string"},"name":{"type":"string"},"source_path":{"type":"string"},"value":{}},"additionalProperties":false}},
-    "cutting":{},"component_roles":{},"materials":{},"reference_size_table":{},"workflow":{},
-    "construction":{"type":"object"},"validation":{"type":"object"},"geometry":{"type":"object","minProperties":1},
-    "status":{"type":"object","required":["delivery","unknowns_are_preserved","null_is_not_zero","unit_conversion_guessed","production_release"],"properties":{"delivery":{},"unknowns_are_preserved":{"const":true},"null_is_not_zero":{"const":true},"unit_conversion_guessed":{"const":false},"production_release":{"const":false}},"additionalProperties":false},
-    "source_document":{"type":"object"}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/liush2yuxjtu/pattern-agent/blob/main/tools/pattern-json-v2/pattern-json-v2.schema.json",
+  "title": "Pattern JSON v2 Golden Garment 2.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "garment",
+    "revision",
+    "provenance",
+    "units",
+    "pieces",
+    "edges",
+    "interfaces",
+    "measurements",
+    "seam_relations",
+    "seam_pairs",
+    "manufacturing",
+    "construction",
+    "derived_artifacts",
+    "status",
+    "source_document",
+    "geometry",
+    "cutting",
+    "component_roles",
+    "materials",
+    "reference_size_table",
+    "workflow",
+    "validation",
+    "review_events"
+  ],
+  "properties": {
+    "schema": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "dialect"
+      ],
+      "properties": {
+        "name": {
+          "const": "pattern-json-v2"
+        },
+        "version": {
+          "const": "2.1.0"
+        },
+        "dialect": {
+          "const": "JSON"
+        }
+      },
+      "additionalProperties": false
+    },
+    "garment": {
+      "type": "object",
+      "required": [
+        "garment_id",
+        "name",
+        "category",
+        "size",
+        "state",
+        "production_ready"
+      ],
+      "properties": {
+        "garment_id": {
+          "const": "golden-garment:fitted-tshirt-m"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "size": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "const": "baseline"
+        },
+        "production_ready": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "revision": {
+      "type": "object",
+      "required": [
+        "revision_id",
+        "source_spec_version",
+        "parent_revision",
+        "status",
+        "stale_propagation",
+        "spec_patch",
+        "geometry_patch"
+      ],
+      "properties": {
+        "revision_id": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "source_spec_version": {
+          "const": "1.1"
+        },
+        "parent_revision": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          ]
+        },
+        "status": {
+          "const": "frozen-input"
+        },
+        "stale_propagation": {
+          "const": [
+            "geometry",
+            "mesh",
+            "physics",
+            "debugger",
+            "timeline",
+            "validation"
+          ]
+        },
+        "spec_patch": {
+          "type": "null"
+        },
+        "geometry_patch": {
+          "type": "null"
+        }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source_path",
+        "source_sha256",
+        "semantic_sha256",
+        "source_format",
+        "source_yaml_version",
+        "source_document_is_authoritative",
+        "dxf_is_reference_only",
+        "reference_assets"
+      ],
+      "properties": {
+        "source_path": {
+          "const": "patterns/fitted-tshirt/input-spec.yaml"
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "semantic_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_format": {
+          "const": "YAML"
+        },
+        "source_yaml_version": {
+          "const": "1.1"
+        },
+        "source_document_is_authoritative": {
+          "const": true
+        },
+        "dxf_is_reference_only": {
+          "const": true
+        },
+        "reference_assets": {
+          "type": "array",
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "source_path",
+              "sha256",
+              "role"
+            ],
+            "properties": {
+              "source_path": {
+                "const": "patterns/fitted-tshirt/input.dxf"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "role": {
+                "const": "reference-only"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "units": {
+      "type": "object",
+      "required": [
+        "coordinate_unit",
+        "mm_per_unit",
+        "reference_size_unit",
+        "angle_unit",
+        "scale_status"
+      ],
+      "properties": {
+        "coordinate_unit": {
+          "const": "U"
+        },
+        "mm_per_unit": {
+          "type": "null"
+        },
+        "reference_size_unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "angle_unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scale_status": {
+          "const": "未标定"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pieces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "piece_id",
+          "name",
+          "source_path",
+          "roles",
+          "cutting",
+          "geometry"
+        ],
+        "properties": {
+          "piece_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "source_path",
+                "source_record"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_record": {
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "cutting": {
+            "type": "object"
+          },
+          "geometry": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "edge_id",
+          "piece_id",
+          "name",
+          "source_path"
+        ],
+        "properties": {
+          "edge_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "piece_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 204,
+      "maxItems": 204
+    },
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "interface_id",
+          "piece_id",
+          "piece",
+          "name",
+          "source_path",
+          "edge_chain"
+        ],
+        "properties": {
+          "interface_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "piece_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "piece": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "edge_chain": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "edge_id",
+                "direction"
+              ],
+              "properties": {
+                "edge_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "direction": {
+                  "enum": [
+                    "正向",
+                    "反向"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": true
+      },
+      "minItems": 25,
+      "maxItems": 25
+    },
+    "measurements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "measurement_id",
+          "name",
+          "source_path"
+        ],
+        "properties": {
+          "measurement_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": true
+      },
+      "minItems": 23,
+      "maxItems": 23
+    },
+    "seam_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "relation_id",
+          "name",
+          "source_path",
+          "value"
+        ],
+        "properties": {
+          "relation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {}
+        },
+        "additionalProperties": false
+      },
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "seam_pairs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "seam_id",
+          "name",
+          "source_path",
+          "source_record",
+          "side_a",
+          "side_b"
+        ],
+        "properties": {
+          "seam_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_record": {
+            "type": "object"
+          },
+          "side_a": {
+            "$ref": "#/$defs/seam_side"
+          },
+          "side_b": {
+            "$ref": "#/$defs/seam_side"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 11,
+      "maxItems": 11
+    },
+    "manufacturing": {
+      "type": "object",
+      "required": [
+        "pieces"
+      ],
+      "properties": {
+        "pieces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "piece_id",
+              "cut_quantity",
+              "grainline",
+              "seam_line",
+              "cut_line",
+              "notches",
+              "grading",
+              "edge_allowances"
+            ],
+            "properties": {
+              "piece_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "cut_quantity": {
+                "$ref": "#/$defs/unknown"
+              },
+              "grainline": {
+                "$ref": "#/$defs/unknown"
+              },
+              "seam_line": {
+                "$ref": "#/$defs/unknown"
+              },
+              "cut_line": {
+                "$ref": "#/$defs/unknown"
+              },
+              "notches": {
+                "$ref": "#/$defs/unknown"
+              },
+              "grading": {
+                "$ref": "#/$defs/unknown"
+              },
+              "edge_allowances": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "edge_id",
+                    "status",
+                    "value",
+                    "source_path"
+                  ],
+                  "properties": {
+                    "edge_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "const": "UNKNOWN"
+                    },
+                    "value": {
+                      "type": "null"
+                    },
+                    "source_path": {
+                      "const": "/工艺参数/缝份"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "additionalProperties": false
+    },
+    "construction": {
+      "type": "object",
+      "required": [
+        "style_sheet",
+        "block_layers",
+        "derivations",
+        "decisions",
+        "execution"
+      ],
+      "properties": {
+        "style_sheet": {
+          "type": "object"
+        },
+        "block_layers": {
+          "type": "object"
+        },
+        "derivations": {
+          "type": "object"
+        },
+        "decisions": {
+          "type": "object"
+        },
+        "execution": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "derived_artifacts": {
+      "type": "object",
+      "required": [
+        "geometry",
+        "mesh",
+        "physics",
+        "debugger",
+        "timeline",
+        "validation"
+      ],
+      "properties": {
+        "geometry": {
+          "$ref": "#/$defs/artifact"
+        },
+        "mesh": {
+          "$ref": "#/$defs/artifact"
+        },
+        "physics": {
+          "$ref": "#/$defs/artifact"
+        },
+        "debugger": {
+          "$ref": "#/$defs/artifact"
+        },
+        "timeline": {
+          "$ref": "#/$defs/artifact"
+        },
+        "validation": {
+          "$ref": "#/$defs/artifact"
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "delivery",
+        "unknowns_are_preserved",
+        "null_is_not_zero",
+        "unit_conversion_guessed",
+        "production_release"
+      ],
+      "properties": {
+        "delivery": {
+          "type": "object"
+        },
+        "unknowns_are_preserved": {
+          "const": true
+        },
+        "null_is_not_zero": {
+          "const": true
+        },
+        "unit_conversion_guessed": {
+          "const": false
+        },
+        "production_release": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_document": {
+      "type": "object"
+    },
+    "geometry": {
+      "type": "object",
+      "minProperties": 4,
+      "maxProperties": 4
+    },
+    "cutting": {
+      "type": "object"
+    },
+    "component_roles": {
+      "type": "object"
+    },
+    "materials": {
+      "type": "object"
+    },
+    "reference_size_table": {
+      "type": "object"
+    },
+    "workflow": {
+      "type": "object"
+    },
+    "validation": {
+      "type": "object"
+    },
+    "review_events": {
+      "type": "array",
+      "maxItems": 0
+    }
   },
-  "additionalProperties":false
+  "additionalProperties": false,
+  "$defs": {
+    "unknown": {
+      "type": "object",
+      "required": [
+        "status",
+        "value",
+        "source_path",
+        "source_record"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "UNKNOWN",
+            "MISSING"
+          ]
+        },
+        "value": {
+          "type": "null"
+        },
+        "source_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_record": {}
+      },
+      "additionalProperties": false
+    },
+    "seam_side": {
+      "type": "object",
+      "required": [
+        "status",
+        "interface_ids",
+        "candidate_interface_ids"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "RESOLVED",
+            "UNRESOLVED"
+          ]
+        },
+        "interface_ids": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          ]
+        },
+        "candidate_interface_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "UNRESOLVED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "interface_ids": {
+                "type": "null"
+              },
+              "candidate_interface_ids": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "interface_ids": {
+                "type": "array",
+                "minItems": 1
+              },
+              "candidate_interface_ids": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "required": [
+        "status",
+        "source_revision_id",
+        "result"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "CURRENT",
+            "STALE"
+          ]
+        },
+        "source_revision_id": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          ]
+        },
+        "result": {}
+      },
+      "additionalProperties": false
+    }
+  }
 }

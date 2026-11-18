@@ -19,6 +19,7 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | pattern-roundtrip | physical-size PDF, independent verifier, replay | [pattern-roundtrip.md](pattern-roundtrip.md) |
 | fitted-tshirt | original DXF reconstruction, browser and source downloads | [fitted-tshirt.md](fitted-tshirt.md) |
 | prototype-package | source-bound prototype package, two workflows and reference intent examples | [prototype-package.md](prototype-package.md) |
+| pattern-json-v2 | exact Golden Garment YAML, source-bound JSON CLI and independent raw-DXF audit | [pattern-json-v2.md](pattern-json-v2.md) |
 | intent-edit-benchmark | declared natural-language edit cases, new spec/diff/DXF and independent reciprocal audit | [intent-edit-benchmark.md](intent-edit-benchmark.md) |
 | intent-edit-review | one HTML with actual prototype/output YAML, DXF, SVG and source-bound interactive 3D | [intent-edit-review.md](intent-edit-review.md) |
 | intent-sewn-chain | ordered generation, independent sewing gate and actual downloaded GLB preview for intent inputs | [intent-sewn-chain.md](intent-sewn-chain.md) |

@@ -1,0 +1,24 @@
+{
+  "review_scope": "isolated CLI and independent JSON audit",
+  "initial_verdict": "FAIL",
+  "findings": [
+    {
+      "severity": "P2",
+      "problem": "summary interface reference not validated",
+      "reproduction": "connection summary left shoulder -> DOES_NOT_EXIST accepted by CLI",
+      "resolution": "validate every structured interface reference in connection summaries"
+    },
+    {
+      "severity": "P2",
+      "problem": "measurement dependency cycles accepted",
+      "reproduction": "measurement depends on itself accepted by CLI",
+      "resolution": "DFS rejects self and multi-node cycles"
+    },
+    {
+      "severity": "P2",
+      "problem": "independent auditor missed inconsistent cutting, identity and result binding",
+      "reproduction": "modified piece cutting / arbitrary unique ID / result without source revision accepted",
+      "resolution": "source equality, independently computed IDs and paired result/revision checks; corruption controls extended"
+    }
+  ]
+}

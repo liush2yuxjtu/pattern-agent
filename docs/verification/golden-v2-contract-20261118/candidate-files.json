@@ -1,0 +1,62 @@
+{
+  "initial_base_commit": "4e79c79fbf0022f48099a782b20c4c9c193e6469",
+  "reconciled_base_commit": "d8bf6518485b12a7d8f3c0ac72f13dace7c79d81",
+  "claim": "Golden YAML 1.1 to complete source-bound Pattern JSON v2.1 contract, independent reference audit and freshness invalidation",
+  "source_revision": "sha256:8b2723eb0d4f9fa8fca9c3c696db9db814ab180a7b62aaaaf03dc76aa63397c1",
+  "files": {
+    "tools/pattern-json-v2/import_golden_garment.py": "301ec6cdf1533fabdddbdcf7f98b69a872fcbd094b146fe772b7c21f5c855302",
+    "tools/pattern-json-v2/pattern-json-v2.schema.json": "559e66b538df9a0cc7faff214f04f40e422802cd68d5db3651080178f3468bcf",
+    "tools/pattern-json-v2/test_import_golden_garment.py": "3d523340f90b8e42d24aabe4e84a3e8d96bde4756ffa5777a455f375590ca4b6",
+    "tools/pattern-json-v2/requirements.txt": "0b0709dc3105d98b29f4fc6a870c15c0cf42191498384ef8a2a32d3fcf5f34ed",
+    "tools/pattern-json-v2/README.md": "a2440381163becebb6cb371ffdf1f6b184e73ac7ab138f557e178ce84f97f6ce",
+    "scripts/audit_pattern_json_v2.py": "6bcc789c9b2be03d903ff357fd98bf6fb86d789f953d9c00e846d5dde8630a91",
+    "experiments/intent-edit-benchmark/audit_benchmark.py": "0a8768a8be2f991175ae0b4eb7e2132872ce8776028a984bd32154bab6b55252",
+    "patterns/fitted-tshirt/input-spec.yaml": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "patterns/fitted-tshirt/input.dxf": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+    "patterns/fitted-tshirt/pattern-json-v2.json": "26682c9b913b4ff897b4e55c989dbc1bf1a8231fca5a61ee07954006b8fd438f",
+    ".agents/skills/verify/SKILL.md": "ef64698272bf02c2af0f25e2108eb465f29e542b01ba40e48b848f9f16c8f490",
+    ".agents/skills/verify/references/verification-surfaces.md": "5ebadaebad818fe9a0e9c9171f4c8aead1252630f6d0de1386d5ab6e309f8fb8",
+    ".agents/skills/verify/references/pattern-json-v2.md": "d4b59d1cf0112d94a5fd1b7e8163e83a59300fb9e22daa95332c15fab7c9b4f1",
+    "docs/pattern-json-v2-contract.md": "bcc2dc0fce0c298e9c258493371b6443235fea38fe210dcf86701d124709d4c4"
+  },
+  "tests": {
+    "unittest_count": 25,
+    "unittest_exit_code": 0,
+    "independent_audit": "PASS",
+    "negative_controls": 12,
+    "all_corruption_controls_rejected": true
+  },
+  "runtime": {
+    "method": "public CLI in PTY, subprocess CLI tests, saved JSON independently reopened",
+    "import_check": {
+      "status": "PASS",
+      "schema": "2.1.0",
+      "pieces": 4,
+      "edges": 204,
+      "measurements": 23,
+      "interfaces": 25,
+      "seam_pairs": 11,
+      "seam_summaries": 9,
+      "coordinate_unit": "U",
+      "mm_per_unit": null,
+      "production_release": false
+    },
+    "edge_observations": [
+      "Bad checksum and duplicate keys preserve existing output.",
+      "CLI refuses to overwrite source YAML or reference DXF.",
+      "Changed content invalidates six prior result bindings; repeating the changed import preserves state.",
+      "Both sleeve roles retained; four sleeve mappings remain unresolved."
+    ],
+    "commands": [
+      "python -m unittest discover -s tools/pattern-json-v2 -p test_*.py -v",
+      "python tools/pattern-json-v2/import_golden_garment.py patterns/fitted-tshirt/input-spec.yaml patterns/fitted-tshirt/pattern-json-v2.json --reference-dxf patterns/fitted-tshirt/input.dxf --expected-sha256 88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e --check",
+      "python scripts/audit_pattern_json_v2.py patterns/fitted-tshirt/pattern-json-v2.json --report docs/verification/golden-v2-contract-20261118/independent-audit.json",
+      "git diff --check"
+    ]
+  },
+  "physical_fit": "NOT_RUN",
+  "production_release": false,
+  "cleanup": "Tests remove owned temporary files; no servers or browsers launched.",
+  "verdict": "PASS",
+  "independent_review": "review-recheck.json"
+}

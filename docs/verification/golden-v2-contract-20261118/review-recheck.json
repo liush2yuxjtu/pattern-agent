@@ -1,0 +1,354 @@
+{
+  "path": "/tmp/contract-recheck-hnwteu0b",
+  "candidate_digests": {
+    "tools/pattern-json-v2/import_golden_garment.py": "301ec6cdf1533fabdddbdcf7f98b69a872fcbd094b146fe772b7c21f5c855302",
+    "tools/pattern-json-v2/pattern-json-v2.schema.json": "559e66b538df9a0cc7faff214f04f40e422802cd68d5db3651080178f3468bcf",
+    "scripts/audit_pattern_json_v2.py": "6bcc789c9b2be03d903ff357fd98bf6fb86d789f953d9c00e846d5dde8630a91",
+    "patterns/fitted-tshirt/pattern-json-v2.json": "26682c9b913b4ff897b4e55c989dbc1bf1a8231fca5a61ee07954006b8fd438f",
+    "patterns/fitted-tshirt/input-spec.yaml": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "patterns/fitted-tshirt/input.dxf": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4"
+  },
+  "checks": {
+    "candidate_bytes_equal": true,
+    "cwd_bytes_equal": true,
+    "counts": [
+      4,
+      204,
+      23,
+      25,
+      9,
+      11
+    ],
+    "units": {
+      "angle_unit": "度",
+      "coordinate_unit": "U",
+      "mm_per_unit": null,
+      "reference_size_unit": "厘米",
+      "scale_status": "未标定"
+    },
+    "artifact_states": [
+      "NOT_RUN",
+      "NOT_RUN",
+      "NOT_RUN",
+      "NOT_RUN",
+      "NOT_RUN",
+      "NOT_RUN"
+    ],
+    "dangling-summary_preserved": true,
+    "cyclic-measurement_preserved": true,
+    "wrong-cutting_findings": [
+      "piece cutting projection changed"
+    ],
+    "wrong-garment-name_findings": [
+      "garment source fields changed"
+    ],
+    "wrong-measurement-id_findings": [
+      "record identity changed"
+    ],
+    "dangling-result-revision_findings": [
+      "result and source revision must be present together"
+    ],
+    "self-cycle_preserved": true,
+    "two-cycle_preserved": true,
+    "source-overwrite_preserved": true,
+    "dxf-overwrite_preserved": true,
+    "wrong-hash-preserved": true,
+    "noop_states": [
+      "CURRENT",
+      "CURRENT",
+      "CURRENT",
+      "CURRENT",
+      "CURRENT",
+      "CURRENT"
+    ],
+    "changed_states": [
+      "STALE",
+      "STALE",
+      "STALE",
+      "STALE",
+      "STALE",
+      "STALE"
+    ],
+    "revision_changed": true,
+    "parent_revision_matches": true,
+    "results_preserved": true,
+    "repeat_bytes_equal": true,
+    "candidate_unchanged": true
+  },
+  "commands": [
+    {
+      "name": "baseline",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/input-spec.yaml",
+        "/tmp/contract-recheck-hnwteu0b/baseline.json",
+        "--reference-dxf",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/input.dxf",
+        "--expected-sha256",
+        "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 0,
+      "stdout": "{\"coordinate_unit\": \"U\", \"edges\": 204, \"entities\": 231, \"interfaces\": 25, \"measurements\": 23, \"mm_per_unit\": null, \"pieces\": 4, \"polyline_vertices\": 1487, \"production_release\": false, \"schema\": \"2.1.0\", \"seam_pairs\": 11, \"seam_summaries\": 9, \"source_sha256\": \"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\", \"status\": \"PASS\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "independent-baseline-audit",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/scripts/audit_pattern_json_v2.py",
+        "/tmp/contract-recheck-hnwteu0b/baseline.json",
+        "--report",
+        "/tmp/contract-recheck-hnwteu0b/baseline-audit.json"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 0,
+      "stdout": "{\"verdict\":\"PASS\",\"scope\":\"Golden YAML/DXF preservation and JSON contract, not fit or production release\",\"source_sha256\":\"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\",\"dxf_sha256\":\"1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4\",\"manifest_sha256\":\"26682c9b913b4ff897b4e55c989dbc1bf1a8231fca5a61ee07954006b8fd438f\",\"source_geometry\":{\"entities\":231,\"counts\":{\"POLYLINE\":126,\"LINE\":78,\"TEXT\":27},\"polyline_vertices\":1487,\"raw_declared_INSUNITS\":null,\"audit_coordinate_unit\":\"YAML U; physical scale uncalibrated\"},\"measurements_recomputed\":23,\"interfaces_recomputed\":25,\"seam_records\":11,\"max_interface_rounding_error_U\":4.398762314394844e-07,\"preserved_front_hem_gap_U\":[426.184448],\"fault_controls\":{\"guessed_millimeters\":{\"rejected\":true,\"findings\":[\"schema: /units/mm_per_unit violates type\",\"uncalibrated units changed\"]},\"missing_seam\":{\"rejected\":true,\"findings\":[\"schema: /seam_pairs violates minItems\",\"seam inventory changed\",\"seam source inventory changed\",\"duplicate seam source path\",\"sleeve assignment invented\"]},\"duplicate_edge_id\":{\"rejected\":true,\"findings\":[\"duplicate edge_id\",\"edge identity changed\",\"allowance attached to wrong piece\",\"per-e",
+      "stderr": ""
+    },
+    {
+      "name": "independent-candidate-audit",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/scripts/audit_pattern_json_v2.py",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/pattern-json-v2.json",
+        "--report",
+        "/tmp/contract-recheck-hnwteu0b/candidate-audit.json"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 0,
+      "stdout": "{\"verdict\":\"PASS\",\"scope\":\"Golden YAML/DXF preservation and JSON contract, not fit or production release\",\"source_sha256\":\"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\",\"dxf_sha256\":\"1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4\",\"manifest_sha256\":\"26682c9b913b4ff897b4e55c989dbc1bf1a8231fca5a61ee07954006b8fd438f\",\"source_geometry\":{\"entities\":231,\"counts\":{\"POLYLINE\":126,\"LINE\":78,\"TEXT\":27},\"polyline_vertices\":1487,\"raw_declared_INSUNITS\":null,\"audit_coordinate_unit\":\"YAML U; physical scale uncalibrated\"},\"measurements_recomputed\":23,\"interfaces_recomputed\":25,\"seam_records\":11,\"max_interface_rounding_error_U\":4.398762314394844e-07,\"preserved_front_hem_gap_U\":[426.184448],\"fault_controls\":{\"guessed_millimeters\":{\"rejected\":true,\"findings\":[\"schema: /units/mm_per_unit violates type\",\"uncalibrated units changed\"]},\"missing_seam\":{\"rejected\":true,\"findings\":[\"schema: /seam_pairs violates minItems\",\"seam inventory changed\",\"seam source inventory changed\",\"duplicate seam source path\",\"sleeve assignment invented\"]},\"duplicate_edge_id\":{\"rejected\":true,\"findings\":[\"duplicate edge_id\",\"edge identity changed\",\"allowance attached to wrong piece\",\"per-e",
+      "stderr": ""
+    },
+    {
+      "name": "different-cwd",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/contract-recheck-hnwteu0b/moved-input.yaml",
+        "/tmp/contract-recheck-hnwteu0b/different-cwd.json",
+        "--reference-dxf",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/input.dxf",
+        "--check"
+      ],
+      "cwd": "/tmp/contract-recheck-hnwteu0b",
+      "exit": 0,
+      "stdout": "{\"coordinate_unit\": \"U\", \"edges\": 204, \"entities\": 231, \"interfaces\": 25, \"measurements\": 23, \"mm_per_unit\": null, \"pieces\": 4, \"polyline_vertices\": 1487, \"production_release\": false, \"schema\": \"2.1.0\", \"seam_pairs\": 11, \"seam_summaries\": 9, \"source_sha256\": \"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\", \"status\": \"PASS\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "dangling-summary",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/pattern-final-review-min5up4f/dangling-summary.yaml",
+        "/tmp/contract-recheck-hnwteu0b/dangling-summary.json",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 2,
+      "stdout": "",
+      "stderr": "ERROR: Missing interface: {'裁片': '前片', '接口': 'DOES_NOT_EXIST'}\n"
+    },
+    {
+      "name": "cyclic-measurement",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/pattern-final-review-min5up4f/cyclic-measurement.yaml",
+        "/tmp/contract-recheck-hnwteu0b/cyclic-measurement.json",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 2,
+      "stdout": "",
+      "stderr": "ERROR: Cyclic measurement dependency: 前中纵线\n"
+    },
+    {
+      "name": "wrong-cutting",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/scripts/audit_pattern_json_v2.py",
+        "/tmp/pattern-final-review-min5up4f/wrong-cutting.json",
+        "--report",
+        "/tmp/contract-recheck-hnwteu0b/wrong-cutting-audit.json"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 1,
+      "stdout": "{\"verdict\":\"FAIL\",\"scope\":\"Golden YAML/DXF preservation and JSON contract, not fit or production release\",\"source_sha256\":\"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\",\"dxf_sha256\":\"1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4\",\"manifest_sha256\":\"508b4b1b203e4f8a2b4cef2adadde217d1c490e09baff72f78d676db07a3340e\",\"source_geometry\":{\"entities\":231,\"counts\":{\"POLYLINE\":126,\"LINE\":78,\"TEXT\":27},\"polyline_vertices\":1487,\"raw_declared_INSUNITS\":null,\"audit_coordinate_unit\":\"YAML U; physical scale uncalibrated\"},\"measurements_recomputed\":23,\"interfaces_recomputed\":25,\"seam_records\":11,\"max_interface_rounding_error_U\":4.398762314394844e-07,\"preserved_front_hem_gap_U\":[426.184448],\"fault_controls\":{},\"findings\":[\"piece cutting projection changed\"],\"physical_fit\":\"NOT_RUN\",\"production_release\":false}\n",
+      "stderr": ""
+    },
+    {
+      "name": "wrong-garment-name",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/scripts/audit_pattern_json_v2.py",
+        "/tmp/pattern-final-review-min5up4f/wrong-garment-name.json",
+        "--report",
+        "/tmp/contract-recheck-hnwteu0b/wrong-garment-name-audit.json"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 1,
+      "stdout": "{\"verdict\":\"FAIL\",\"scope\":\"Golden YAML/DXF preservation and JSON contract, not fit or production release\",\"source_sha256\":\"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\",\"dxf_sha256\":\"1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4\",\"manifest_sha256\":\"1ed87ca5601f99f94bc094a37dc53330af6bd15c0067fd49f6978d9798270797\",\"source_geometry\":{\"entities\":231,\"counts\":{\"POLYLINE\":126,\"LINE\":78,\"TEXT\":27},\"polyline_vertices\":1487,\"raw_declared_INSUNITS\":null,\"audit_coordinate_unit\":\"YAML U; physical scale uncalibrated\"},\"measurements_recomputed\":23,\"interfaces_recomputed\":25,\"seam_records\":11,\"max_interface_rounding_error_U\":4.398762314394844e-07,\"preserved_front_hem_gap_U\":[426.184448],\"fault_controls\":{},\"findings\":[\"garment source fields changed\"],\"physical_fit\":\"NOT_RUN\",\"production_release\":false}\n",
+      "stderr": ""
+    },
+    {
+      "name": "wrong-measurement-id",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/scripts/audit_pattern_json_v2.py",
+        "/tmp/pattern-final-review-min5up4f/wrong-measurement-id.json",
+        "--report",
+        "/tmp/contract-recheck-hnwteu0b/wrong-measurement-id-audit.json"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 1,
+      "stdout": "{\"verdict\":\"FAIL\",\"scope\":\"Golden YAML/DXF preservation and JSON contract, not fit or production release\",\"source_sha256\":\"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\",\"dxf_sha256\":\"1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4\",\"manifest_sha256\":\"dacbd1b97f411f9ab42bcaff93e96daca4844d7a9b2240caf83b580706a3728c\",\"source_geometry\":{\"entities\":231,\"counts\":{\"POLYLINE\":126,\"LINE\":78,\"TEXT\":27},\"polyline_vertices\":1487,\"raw_declared_INSUNITS\":null,\"audit_coordinate_unit\":\"YAML U; physical scale uncalibrated\"},\"measurements_recomputed\":23,\"interfaces_recomputed\":25,\"seam_records\":11,\"max_interface_rounding_error_U\":4.398762314394844e-07,\"preserved_front_hem_gap_U\":[426.184448],\"fault_controls\":{},\"findings\":[\"record identity changed\"],\"physical_fit\":\"NOT_RUN\",\"production_release\":false}\n",
+      "stderr": ""
+    },
+    {
+      "name": "dangling-result-revision",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/scripts/audit_pattern_json_v2.py",
+        "/tmp/pattern-final-review-min5up4f/dangling-result-revision.json",
+        "--report",
+        "/tmp/contract-recheck-hnwteu0b/dangling-result-revision-audit.json"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 1,
+      "stdout": "{\"verdict\":\"FAIL\",\"scope\":\"Golden YAML/DXF preservation and JSON contract, not fit or production release\",\"source_sha256\":\"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\",\"dxf_sha256\":\"1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4\",\"manifest_sha256\":\"2afb2b86f81f54f4a877e40cfc460aab3c53a33774eb4a9b7e2b57af9fd812ec\",\"source_geometry\":{\"entities\":231,\"counts\":{\"POLYLINE\":126,\"LINE\":78,\"TEXT\":27},\"polyline_vertices\":1487,\"raw_declared_INSUNITS\":null,\"audit_coordinate_unit\":\"YAML U; physical scale uncalibrated\"},\"measurements_recomputed\":23,\"interfaces_recomputed\":25,\"seam_records\":11,\"max_interface_rounding_error_U\":4.398762314394844e-07,\"preserved_front_hem_gap_U\":[426.184448],\"fault_controls\":{},\"findings\":[\"result and source revision must be present together\"],\"physical_fit\":\"NOT_RUN\",\"production_release\":false}\n",
+      "stderr": ""
+    },
+    {
+      "name": "self-cycle",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/contract-recheck-hnwteu0b/self-cycle.yaml",
+        "/tmp/contract-recheck-hnwteu0b/self-cycle.json",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 2,
+      "stdout": "",
+      "stderr": "ERROR: Cyclic measurement dependency: 前中纵线\n"
+    },
+    {
+      "name": "two-cycle",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/contract-recheck-hnwteu0b/two-cycle.yaml",
+        "/tmp/contract-recheck-hnwteu0b/two-cycle.json",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 2,
+      "stdout": "",
+      "stderr": "ERROR: Cyclic measurement dependency: 前中纵线\n"
+    },
+    {
+      "name": "source-overwrite",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/contract-recheck-hnwteu0b/moved-input.yaml",
+        "/tmp/contract-recheck-hnwteu0b/moved-input.yaml",
+        "--reference-dxf",
+        "/tmp/contract-recheck-hnwteu0b/copy.dxf"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 2,
+      "stdout": "",
+      "stderr": "ERROR: Output must not overwrite the source YAML or reference DXF\n"
+    },
+    {
+      "name": "dxf-overwrite",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/contract-recheck-hnwteu0b/moved-input.yaml",
+        "/tmp/contract-recheck-hnwteu0b/copy.dxf",
+        "--reference-dxf",
+        "/tmp/contract-recheck-hnwteu0b/copy.dxf"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 2,
+      "stdout": "",
+      "stderr": "ERROR: Output must not overwrite the source YAML or reference DXF\n"
+    },
+    {
+      "name": "wrong-hash",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/input-spec.yaml",
+        "/tmp/contract-recheck-hnwteu0b/wrong-hash.json",
+        "--expected-sha256",
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 2,
+      "stdout": "",
+      "stderr": "ERROR: Source SHA-256 mismatch\n"
+    },
+    {
+      "name": "noop-current",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/input-spec.yaml",
+        "/tmp/contract-recheck-hnwteu0b/noop-current.json",
+        "--previous",
+        "/tmp/contract-recheck-hnwteu0b/previous.json",
+        "--reference-dxf",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/input.dxf",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 0,
+      "stdout": "{\"coordinate_unit\": \"U\", \"edges\": 204, \"entities\": 231, \"interfaces\": 25, \"measurements\": 23, \"mm_per_unit\": null, \"pieces\": 4, \"polyline_vertices\": 1487, \"production_release\": false, \"schema\": \"2.1.0\", \"seam_pairs\": 11, \"seam_summaries\": 9, \"source_sha256\": \"88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e\", \"status\": \"PASS\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "changed-stale",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/contract-recheck-hnwteu0b/changed.yaml",
+        "/tmp/contract-recheck-hnwteu0b/changed.json",
+        "--previous",
+        "/tmp/contract-recheck-hnwteu0b/noop-current.json",
+        "--reference-dxf",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/input.dxf",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 0,
+      "stdout": "{\"coordinate_unit\": \"U\", \"edges\": 204, \"entities\": 231, \"interfaces\": 25, \"measurements\": 23, \"mm_per_unit\": null, \"pieces\": 4, \"polyline_vertices\": 1487, \"production_release\": false, \"schema\": \"2.1.0\", \"seam_pairs\": 11, \"seam_summaries\": 9, \"source_sha256\": \"a2d1bc487879114226d174c803dddc5ae3dcfb0d96dc898589f8a0e2decdc7b7\", \"status\": \"PASS\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "repeat-stale",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/tools/pattern-json-v2/import_golden_garment.py",
+        "/tmp/contract-recheck-hnwteu0b/changed.yaml",
+        "/tmp/contract-recheck-hnwteu0b/repeat-stale.json",
+        "--previous",
+        "/tmp/contract-recheck-hnwteu0b/changed.json",
+        "--reference-dxf",
+        "/workspace/scratch/e6ee90c0777f/pattern-agent/patterns/fitted-tshirt/input.dxf",
+        "--check"
+      ],
+      "cwd": "/workspace/scratch/e6ee90c0777f/pattern-agent",
+      "exit": 0,
+      "stdout": "{\"coordinate_unit\": \"U\", \"edges\": 204, \"entities\": 231, \"interfaces\": 25, \"measurements\": 23, \"mm_per_unit\": null, \"pieces\": 4, \"polyline_vertices\": 1487, \"production_release\": false, \"schema\": \"2.1.0\", \"seam_pairs\": 11, \"seam_summaries\": 9, \"source_sha256\": \"a2d1bc487879114226d174c803dddc5ae3dcfb0d96dc898589f8a0e2decdc7b7\", \"status\": \"PASS\"}\n",
+      "stderr": ""
+    }
+  ]
+}
