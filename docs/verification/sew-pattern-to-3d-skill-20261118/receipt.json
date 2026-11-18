@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "claim": "Persist the project-level sew-pattern-to-3d skill and execute its exact documented construction, offline export and independent verification workflow",
+  "verdict": "PASS",
+  "candidate": {
+    "base_commit": "fead586085788df29d25801c98cf0613980a473b",
+    "files": "candidate-files.json",
+    "identity": "base commit plus working-tree source digests; no pre-commit SHA invented"
+  },
+  "verification_skill": ".agents/skills/verify/SKILL.md",
+  "applicable_recipes": ["dxf-service", "dxf-seams"],
+  "new_skill": ".agents/skills/sew-pattern-to-3d/SKILL.md",
+  "reused_skills": ["verify-seaming", "garmentcode-preview", "garment-body-six-view"],
+  "python": "3.12.14",
+  "commands": [
+    {
+      "command": "python tools/skill_evals/upstream/scripts/quick_validate.py .agents/skills/sew-pattern-to-3d",
+      "exit_code": 0,
+      "evidence": "sew-pattern-to-3d-format.log"
+    },
+    {
+      "command": "python tools/skill_evals/upstream/scripts/quick_validate.py .agents/skills/verify-seaming",
+      "exit_code": 0,
+      "evidence": "verify-seaming-format.log"
+    },
+    {
+      "command": "bash work/sew-pattern-to-3d-skill/documented-command.sh",
+      "source": "verbatim unique sh fence from the new SKILL.md",
+      "exit_code": 0,
+      "evidence": ["documented-command.sh", "generation.log", "generation-exit.json", "generated-artifacts.json", "independent.json"]
+    },
+    {
+      "command": "PYTHONPATH=services/dxf-preview:services/dxf-preview/tests python -m unittest test_conversion.ConversionTests.test_actual_mesh_and_repeatability test_conversion.ConversionTests.test_open_source_contour_is_rejected test_conversion.ConversionTests.test_invalid_units_size_and_coordinate -v",
+      "exit_code": 0,
+      "cases": 3,
+      "evidence": "consumer-controls.log"
+    },
+    {"command": "git diff --check", "exit_code": 0}
+  ],
+  "artifact_checks": {
+    "archive_crc_and_members_match": true,
+    "archive_files": 8,
+    "original_source_bytes_preserved": true,
+    "input_and_actual_GLB_hashes_match_report": true,
+    "independent_report_equals_exported_report": true,
+    "new_model_verdict": "PASS",
+    "seam_pairs": 15,
+    "max_gap_mm": 0.0,
+    "max_3d_seam_length_error_mm": 0.0737491202355045,
+    "proper_intersections": 0
+  },
+  "local_markdown_links": 26,
+  "claude_alias_matches_canonical": true,
+  "native_skill_auto_trigger": "NOT_RUN",
+  "product_browser_retest": {"verdict": "SKIP", "reason": "Only project skills and documentation changed; runtime, rendering and existing independent validators are unchanged."},
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "cloth_body_collision": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "cleanup": "No browser/server started; no deployment, sharing, paid compute, CI, PR or Issue. Fresh generated artifacts retained in the recorded ignored work directory."
+}

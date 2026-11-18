@@ -9,6 +9,9 @@ description: "验证服装纸样的裁片连接、走缝和三维接缝；用户
 `.claude/skills/verify-seaming` 读取同一份源文件。显式请求可写为
 `$verify-seaming`；文件存在不代表原生客户端已自动加载或已验证触发率。
 
+需要从 DXF 新建接缝装配与三维形状时，先执行
+[sew-pattern-to-3d](../sew-pattern-to-3d/SKILL.md)，再回到本技能检查实际新产物。
+
 先读根目录 `AGENTS.md` 与 [项目 verify](../verify/SKILL.md)。本技能负责接缝
 任务的组织，复用现有独立检查器与下面的规范配方，不复制生成算法、放宽阈值或
 以图片替代断言。提交前仍执行项目 `/verify`，随后直接提交 main，再以非强制方式推送。

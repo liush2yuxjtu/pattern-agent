@@ -205,6 +205,11 @@ are retained separately from the analytic rectangular controls.
 
 ## Verification and history
 
+项目级 [sew-pattern-to-3d 技能](.agents/skills/sew-pattern-to-3d/SKILL.md)保存从 DXF
+裁片、走缝配对、二维剖分、三维形状映射到实际焊接与离线预览的可运行流程。
+显式请求 `$sew-pattern-to-3d`，生成后交给下方接缝验收技能；形状中的前后深度与袖姿
+假定、片内非等距限制及当前仅支持本款配置的范围均保留。Claude 通过同名符号链接共用源文件。
+
 项目级 [verify-seaming 技能](.agents/skills/verify-seaming/SKILL.md)保存裁片连接的
 验收流程：独立重读源 DXF 与最终 GLB，再按任务核对交互视图、生产 Site 和 Pages
 保存。可显式请求 `$verify-seaming`；Claude 路径通过同名符号链接共用源文件。
