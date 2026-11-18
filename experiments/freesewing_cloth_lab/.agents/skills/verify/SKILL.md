@@ -52,7 +52,10 @@ do not replace the earlier self-contact page. No CI or PR.
    expanded toolbar does not cover the head in the default mobile framing.
    Run root `scripts/build_pages.py`, its six artifact regressions, and
    `git diff --check`. Log real software-rendering performance without FPS claims.
-7. Preserve source-bound receipts, real exports, state arrays, logs and visual
+7. Archive the byte-exact upstream native SVG as gzip: its generated CDATA has
+   trailing whitespace, so do not trim the output or allow a failed whitespace
+   gate to fall through into a commit. Use strict shell failure handling.
+   Preserve source-bound receipts, real exports, state arrays, logs and visual
    failures under a new `docs/verification/` directory. Fresh-fetch/reconcile main,
    commit directly and non-force push. Observe existing Pages publication only.
    Verify live HTML/build identity; repeat browser, independent, GPU, dynamics
