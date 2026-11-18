@@ -1,0 +1,82 @@
+{
+  "verdict": "PASS",
+  "base_commit": "985520598f95ef5cab7ead788d181408aefdc837",
+  "recorded_at": "2026-11-18T10:33:50.066440+08:00",
+  "claim": "Independent project folder with detailed source and online docs; existing standalone demo preserved; new route deployed through existing main Pages workflow.",
+  "docs_sha256": "398bd45a7e273360e00afcf63282b42c099790c734113c5c49176e79275e2201",
+  "demo_sha256": "aa7328e3a176a90dc217270779f042c6bab77fd27f5440b0d5ae454a78f377d4",
+  "anchors": 32,
+  "viewports": [
+    {
+      "width": 1448,
+      "height": 1000,
+      "overflow": false,
+      "toc_navigation": "PASS"
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "overflow": false,
+      "toc_navigation": "PASS"
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "overflow": false,
+      "toc_navigation": "PASS"
+    }
+  ],
+  "demo_link": {
+    "url": "http://127.0.0.1:34279/intent-edit-review/",
+    "sha256": "aa7328e3a176a90dc217270779f042c6bab77fd27f5440b0d5ae454a78f377d4",
+    "real_viewer_ready": true
+  },
+  "page_errors": [],
+  "bad_responses": [],
+  "commands": [
+    {
+      "command": "python experiments/intent-edit-review/build_docs.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/build_docs.py --output work/intent-edit-review/deploy-docs/docs-rebuilt.html",
+      "exit_code": 0
+    },
+    {
+      "command": "cmp web/intent-edit-review/docs/index.html work/intent-edit-review/deploy-docs/docs-rebuilt.html",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/verify_docs.py --output work/intent-edit-review/deploy-docs/browser",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/build.py --output work/intent-edit-review/deploy-docs/demo-rebuilt.html",
+      "exit_code": 0
+    },
+    {
+      "command": "cmp web/intent-edit-review/index.html work/intent-edit-review/deploy-docs/demo-rebuilt.html",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/build_pages.py --output work/intent-edit-review/deploy-docs/site",
+      "exit_code": 0
+    },
+    {
+      "command": "cmp web/intent-edit-review/docs/index.html work/intent-edit-review/deploy-docs/site/intent-edit-review/docs/index.html",
+      "exit_code": 0
+    },
+    {
+      "command": "cmp web/intent-edit-review/index.html work/intent-edit-review/deploy-docs/site/intent-edit-review/index.html",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "visual_review": "view_image: desktop, mobile, data/audit chapter and release chapter; no pending visible issue in checked viewports",
+  "cleanup": "owned Chromium/context and HTTP service closed",
+  "physical_fit": "NOT_RUN",
+  "cloth_simulation": "NOT_RUN"
+}

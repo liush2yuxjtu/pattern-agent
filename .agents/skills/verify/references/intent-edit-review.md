@@ -51,3 +51,16 @@ git diff --check
 `live/README.md`。完整浏览器脚本的file-BLOCKED字段记录的是本机已知策略；独立
 真正file导航的结果单列 `file-offline-report.json`，不能把两台主机混成一次观察。
 返回的ZIP应校验SHA和CRC后再提取；最后停止Firecrawl interact session释放资源。
+
+## 独立项目文档
+
+源稿 `experiments/intent-edit-review/docs/`，由本机Pandoc 3.1.11.1生成
+`web/intent-edit-review/docs/index.html`。运行 `python experiments/intent-edit-review/build_docs.py`；
+用 `--output work/intent-edit-review/docs-rebuilt.html`另写一份并cmp，确认确定性。
+`python experiments/intent-edit-review/verify_docs.py --output work/intent-edit-review/docs-browser`
+实际检查32个目录目标、1448/375/320布局、目录点击、来源链接、文档返回演示的真实导航
+及演示四案例/两个canvas就绪。它自行关闭浏览器与HTTP服务；无需新增CI或浏览器策略变更。
+用视图工具检查桌面、手机、数据章和发布章的分屏截图；超长fullPage截图在本环境可能
+出现GPU拼接伪影，因此直接保存各章节的真实视口，不将该伪影误报为DOM重复。
+只改文档时，演示HTML应仍逐字节等于已验收版本。正常站点构建后核对两个新子路由，
+不修改现有主页面或导航。线上可用同一脚本的 `--base-url` 指向公开docs路由再验收。

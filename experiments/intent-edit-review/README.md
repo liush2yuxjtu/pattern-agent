@@ -1,6 +1,13 @@
 # 原型与改版：单文件对照页
 
-直接打开新的[在线页面](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/)。发布文件只有 `web/intent-edit-review/index.html`，所有数据、样式、脚本与五套模型内嵌，不加载外部资源。
+直接打开新的[在线页面](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/)。演示主文件为 `web/intent-edit-review/index.html`，所有数据、样式、脚本与五套模型内嵌，不加载外部资源。
+
+[在线详细文档](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/docs/) 与演示分开发布，演示仍可独立保存。文档源稿和生成模板均在本项目目录内：
+
+- [使用指南](docs/01-user-guide.md)：两条流程、四项案例、文件阅读与交接、离线使用。
+- [项目结构与重建](docs/02-architecture.md)：目录、依赖、真实二维/三维来源和浏览器状态。
+- [文件格式与互校](docs/03-data-and-audit.md)：完整中文YAML、两个受保护补丁、模型格式和独立验证。
+- [本地运行、验证与发布](docs/04-build-and-deploy.md)：完整命令、正确的GitHub Pages路径、发布顺序与排错。
 
 1. 左侧：完整输入 YAML、原始 DXF、真实二维图和可旋转的三维几何示意。
 2. 右侧：选择一个已经运行的设计意图，查看对应的新 YAML、规格差异、DXF 坐标补丁、新 DXF、二维图和三维示意。
@@ -13,11 +20,15 @@
 
 实际使用的环境：Python 3.12、PyYAML 6.0.3、ezdxf 1.4.4、NumPy 2.3.5、SciPy 1.17.0、Pillow 13.0.0、Playwright 1.62.0、`/usr/bin/chromium`。页面运行本身不依赖这些 Python 包。
 
+在线文档构建另外使用本地 Pandoc 3.1.11.1；发布时只复制已生成的 HTML，不给现有 Pages 流程增加依赖或测试任务。
+
 ```sh
 python experiments/intent-edit-review/build.py
+python experiments/intent-edit-review/build_docs.py
 python -m unittest discover -s experiments/intent-edit-review/verification -p 'test_*.py' -v
 python experiments/intent-edit-review/verification/audit_embedded_review.py --html web/intent-edit-review/index.html --output work/intent-edit-review/data-audit.json --adversarial
 python experiments/intent-edit-review/verify_browser.py --output work/intent-edit-review/browser
+python experiments/intent-edit-review/verify_docs.py --output work/intent-edit-review/docs-browser
 ```
 
 三维构造与独立来源核对见 [geometry/README.md](geometry/README.md)。验证器除检查摘要，还会读取实际 SVG、DXF 顶点、三维边界UV、构造公式和内部点，拒绝只改来源标签的旧图或旧模型。浏览器验证实际点击、渲染像素、18次文件保存、完整中文文档、窄屏和 WebGL 不可用时的真实软件绘制。
