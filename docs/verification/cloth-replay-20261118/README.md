@@ -1,14 +1,15 @@
 # 第七项：完整物理回放验收
 
-2026-11-18，北京时间。本地 `/verify`：**PASS**。本次新增逐步录制、时间轴查帧、
+2026-11-18，北京时间。本地与公开网址 `/verify`：**PASS**。本次新增逐步录制、时间轴查帧、
 前后单帧、首尾定位、暂停与四档调速，以及 JSON / 单 HTML 的完整轨迹保存。
 源码入口是 `web/cloth-lab/`，线上路径为 `/pattern-agent/cloth-lab/`；仓库里另一个
-`cloth-lab.html` 是不同实验，不是本次修改目标。发布后的线上结果另存于 `live/`。
+`cloth-lab.html` 是不同实验，不是本次修改目标。功能提交为 [`9b24405`](https://github.com/liush2yuxjtu/pattern-agent/commit/9b244052ed3951692f94248f583ebc2396f9bc55)；[线上完整验收](live/README.md) 已通过。
 
 ## 可审查的版本与操作
 
 精确候选见 [candidate.json](candidate.json)：源代码基线
-`2ef738b636f5656790109fc51a547b6e412d3eb2`；HTML SHA-256 为
+`2ef738b636f5656790109fc51a547b6e412d3eb2`，提交前快进合入
+`96df90edf99e13526f01eba51d424df94bb755c9`，已逐文件确认验收源码未改变；HTML SHA-256 为
 `61465c3613fdaecb6e98c52da9481e2c23e9043e42f0cbdd41cf5598263964f5`。
 MakeHuman CC0 来源指纹没有改变。WASM 只新增两个只读时钟导出，物理求解算法及
 缝合、碰撞、材料参数、验收阈值不变。完整命令、原始日志、结果见

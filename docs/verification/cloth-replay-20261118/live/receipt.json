@@ -1,0 +1,88 @@
+{
+  "verdict": "PASS",
+  "workflow": "/verify",
+  "recipe": ".agents/skills/verify/references/cloth-lab.md",
+  "sourceCommit": "9b244052ed3951692f94248f583ebc2396f9bc55",
+  "htmlSha256": "61465c3613fdaecb6e98c52da9481e2c23e9043e42f0cbdd41cf5598263964f5",
+  "publication": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44230757495",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+  "checks": {
+    "oneRecordedStatePerRealWASMStep": true,
+    "all61FramesIndependentSeamsBodyIntersectionsAndTensors": true,
+    "seekExactPositionsHistoryPinsContactsClockAndNoIntegration": true,
+    "recordedStressDrivesActualGPUColors": true,
+    "keyboardTimelinePreviousNextAndStrainColors": true,
+    "quarterAndDoubleSpeedPlaybackWithoutIntegration": true,
+    "pauseFreezesRecordedFrame": true,
+    "offlineTimelineRecursiveHTMLAndExactResumption": true,
+    "actualJSONImportAndAtomicMalformedRecordingRejection": true,
+    "bodyTransformPinsCollisionSwitchAndRealFailedFrameReplayed": true,
+    "movedBodyExactNextStepContinuation": true,
+    "sewingFaultsRemainFailuresAndTopologyEditsClearRecording": true,
+    "actual1201FrameCapPreservesDataWithoutUnboundedGrowth": true,
+    "mobileReplayControlsWithoutOverflow": true,
+    "identityMeaningfulPageAndHealthyConsoleNetwork": true
+  },
+  "originalRegressionChecks": {
+    "stepwiseSimulationAndIndependentGeometry": true,
+    "materialRestRotationStretchShear": true,
+    "physicalFieldsReachRealRenderedColors": true,
+    "physicalScaleSVGAndActualSceneOBJ": true,
+    "runtimeBVHMatchesIndependentBodyQueries": true,
+    "actualPenetrationDetectedAndRecovered": true,
+    "movingActualBodyCollision": true,
+    "sameParametersDrivePatternAndRestMesh": true,
+    "resetGPUResourcesAndWASMMemoryStable": true,
+    "bothMaterialPresetsAndVerticalGrain": true,
+    "realRunPauseAndPerformanceSample": true,
+    "mobileWithoutOverflow": true,
+    "recursiveSaveAndMovedPinContinuation": true,
+    "offlineSnapshotExactStateAndContinuation": true,
+    "collisionBroadPhaseMatchesFullQueriesBitForBit": true
+  },
+  "allFrames": 61,
+  "maxSeamGapMm": 0.0,
+  "maxBodyPenetrationMm": 0.0,
+  "maxStrainPercent": 24.226073634014035,
+  "timings": {
+    "playbackWallSeconds": {
+      "0.25": 2.08410000000149,
+      "0.5": 1.05910000000149,
+      "1": 0.5293999999985098,
+      "2": 0.303
+    },
+    "captureTimesMs": {
+      "samples": 1201,
+      "median": 0.09999999403953552,
+      "p95": 0.29999999701976776
+    },
+    "seekTimesMs": {
+      "samples": 197,
+      "median": 3.9000000059604645,
+      "p95": 9.340000003576277
+    },
+    "playbackTimesMs": {
+      "samples": 58,
+      "median": 3.7999999970197678,
+      "p95": 4.4150000050663945
+    }
+  },
+  "commands": [
+    {
+      "command": "PYTHONPATH=/workspace/work/verifydeps python -u tools/cloth_lab/verify_replay.py --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ --expected-commit 9b244052ed3951692f94248f583ebc2396f9bc55 --expected-html-sha 61465c3613fdaecb6e98c52da9481e2c23e9043e42f0cbdd41cf5598263964f5 --output work/cloth-replay/live/replay",
+      "exitStatus": 0
+    },
+    {
+      "command": "PYTHONPATH=/workspace/work/verifydeps python tools/cloth_lab/verify_browser.py --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ --expected-commit 9b244052ed3951692f94248f583ebc2396f9bc55 --expected-html-sha 61465c3613fdaecb6e98c52da9481e2c23e9043e42f0cbdd41cf5598263964f5 --output work/cloth-replay/live/regression",
+      "exitStatus": 0
+    },
+    {
+      "command": "python scripts/verify_pages.py --base-url https://liush2yuxjtu.github.io/pattern-agent/ --expected-commit 9b244052ed3951692f94248f583ebc2396f9bc55 --output work/cloth-replay/live/pages",
+      "exitStatus": 0
+    }
+  ],
+  "visualReview": "Read actual public screenshots: rewind strain frame, deliberate penetration FAIL, desktop/mobile controls; coherent mesh and UI with no clipping or overlay.",
+  "sameHostLocalAndLiveAll61StateBuffersBitIdentical": true,
+  "cleanup": "All verification browsers and temporary servers closed. Existing publisher observed only; no CI verification added or used.",
+  "remaining": "Synthetic material, rigid generic body, no cloth self-collision or CCD, physical fit NOT_RUN."
+}
