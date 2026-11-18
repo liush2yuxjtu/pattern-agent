@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const bytes=new Uint8Array(JSON.parse(fs.readFileSync(new URL('./source/solver-bytes.json',import.meta.url),'utf8')));
+for (const profile of ['unequal','mixed-equal']) {
 const instances=await Promise.all([WebAssembly.instantiate(bytes,{}),WebAssembly.instantiate(bytes,{})]);
 const kernels=instances.map(x=>x.instance.exports),n=32,edges=31,old=768,mass=1536,records=1792,prepared=records+edges*32,dt=1/120;
 for(const w of kernels){
  const x=new Float64Array(w.memory.buffer,0,n*3),previous=new Float64Array(w.memory.buffer,old,n*3),inv=new Float64Array(w.memory.buffer,mass,n),view=new DataView(w.memory.buffer);
- for(let i=0;i<n;i++){x.set([i*.03,1+Math.sin(i)*.005,Math.cos(i)*.01],i*3);inv[i]=i<2?0:(i%5+1)*.7;}
+ for(let i=0;i<n;i++){x.set([i*.03,1+Math.sin(i)*.005,Math.cos(i)*.01],i*3);inv[i]=i<2?0:profile==='mixed-equal'&&i<8?2.1:(i%5+1)*.7;}
  previous.set(x);
  for(let i=0;i<edges;i++){const r=records+i*32;view.setInt32(r,i,true);view.setInt32(r+4,i+1,true);view.setFloat64(r+8,.025,true);view.setFloat64(r+16,i%3?1e-7:0,true);view.setFloat64(r+24,0,true);}
 }
@@ -19,4 +20,5 @@ for(let frame=0;frame<5;frame++){
  assert.deepEqual(new Uint8Array(kernels[1].memory.buffer,0,n*3*8),new Uint8Array(kernels[0].memory.buffer,0,n*3*8));
  assert.deepEqual(new Uint8Array(kernels[1].memory.buffer,old,n*3*8),new Uint8Array(kernels[0].memory.buffer,old,n*3*8));
 }
-console.log(JSON.stringify({verdict:'PASS',frames:5,constraints:edges,iterations:120,positionsAndPreviousBitExact:true,splitIterations:120,nonzeroCompliance:true,unequalMasses:true,pinnedPoints:true}));
+}
+console.log(JSON.stringify({profiles:['unequal','mixed-equal'],equalNonzeroMassEdges:true,verdict:'PASS',framesPerProfile:5,constraintsPerProfile:31,iterations:120,positionsAndPreviousBitExact:true,splitIterations:120,nonzeroCompliance:true,unequalMasses:true,pinnedPoints:true}));

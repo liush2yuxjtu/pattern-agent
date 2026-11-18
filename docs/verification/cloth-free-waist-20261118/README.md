@@ -99,3 +99,26 @@ The pre-commit whitespace gate caught the small native SVG CDATA trailing
 space: it had escaped a size-based archive rule. All original SVG bytes are
 now gzip archived, without trimming or changing the upstream export. The strict
 gate was rerun before committing; no failed check fell through into a commit.
+
+
+## Public acceptance
+
+Application commit `255581100bab299eea9e73bbb07bdabfa1e6c374` was published by
+[the existing Pages workflow](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44275114881).
+Actual anonymous readback matches the candidate's exact SHA-256 and 1,654,054
+bytes. All public browser (50), independent, dynamics, edited-profile, support,
+five GPU map, homepage entry (6) and root browser checks pass. Canonical public
+p95 is 91.1 ms, below the unchanged 100 ms gate. Eight exported local/public
+states have bit-identical positions, previous positions, UVs, inverse masses and
+pressure arrays (including body-removed free fall). Receipts, raw state arrays,
+snapshots, screenshots, console/network and performance logs are under `live/`.
+
+Visual review here was by the primary agent using actual screenshots; independent
+video review and a full per-frame timeline/debugger in this specific lab remain
+NOT_RUN. The existing project-wide timeline surfaces are separate. This page is
+a bounded cloth demonstration, not a completed unified manufacturing artifact.
+The final evidence change also extends the prepared-kernel control to both the
+original unequal-mass profile and a mixed profile with equal nonzero masses;
+both five-frame runs are bit-exact against the original solver. Its initial
+report-only scope error (`edges` outside the new loop) was corrected before
+acceptance; no solver or delivered HTML changed for this test extension.
