@@ -1,0 +1,134 @@
+{
+  "verified_on": "2026-11-18",
+  "upstream_commit": "3f69ad8213bf1a53ae995c04364cb1f4439f4638",
+  "candidate_result": "PASS",
+  "test_suite": "10 local editor tests passed",
+  "upstream_tests": "17 passed, plus four generated cases and three decision controls audited",
+  "cli": [
+    "compile",
+    "apply with a separately saved patch",
+    "run",
+    "split",
+    "uncalibrated units yields NEEDS_REVIEW without CAD output"
+  ],
+  "browser": {
+    "loads_sample": true,
+    "compile_download": true,
+    "replay_uploaded_patch_and_dxf": "6fee5cbfa5c7e802dbe37854c202a8413a18d5df7f33a18902497cca11d34b0c",
+    "measurement_and_vector_render": true,
+    "mobile_no_overflow": [
+      390,
+      360
+    ],
+    "unit_hold_and_no_stale_output": true,
+    "second_intent_after_hold": true,
+    "browser_errors": []
+  },
+  "edit_report": {
+    "result": "PASS",
+    "scope": "2D geometric candidate",
+    "measured_targets": [
+      {
+        "name": "袖片纵线",
+        "before": 593.272857,
+        "after": 616.272857,
+        "delta": 23.0,
+        "unit": "U"
+      }
+    ],
+    "changed_interface_lengths": [
+      {
+        "piece": "袖片",
+        "interface": "左袖底边",
+        "change_U": 22.705796
+      },
+      {
+        "piece": "袖片",
+        "interface": "右袖底边",
+        "change_U": 22.841609
+      }
+    ],
+    "max_existing_contour_gap_U": 0.084212,
+    "inventory": {
+      "entities": 231,
+      "counts": {
+        "POLYLINE": 126,
+        "LINE": 78,
+        "TEXT": 27
+      },
+      "polyline_vertices": 1487,
+      "raw_declared_INSUNITS": null,
+      "audit_coordinate_unit": "YAML U; physical scale uncalibrated"
+    },
+    "protected_geometry_checks": {
+      "sleeve_length_delta_U": 23.0
+    },
+    "production": "BLOCKED",
+    "physical_fit": "NOT_RUN",
+    "production_holds": [
+      {
+        "项目": "实际比例",
+        "影响": "不能转换成实际毫米。"
+      },
+      {
+        "项目": "前片裁数",
+        "影响": "裁剪张数未批准。"
+      },
+      {
+        "项目": "前片裁剪轮廓",
+        "影响": "净样与裁剪角色未确认。"
+      },
+      {
+        "项目": "后片裁数",
+        "影响": "裁剪张数未批准。"
+      },
+      {
+        "项目": "后片裁剪轮廓",
+        "影响": "净样与裁剪角色未确认。"
+      },
+      {
+        "项目": "袖片裁数",
+        "影响": "裁剪张数未批准。"
+      },
+      {
+        "项目": "袖片裁剪轮廓",
+        "影响": "净样与裁剪角色未确认。"
+      },
+      {
+        "项目": "领条裁数",
+        "影响": "裁剪张数未批准。"
+      },
+      {
+        "项目": "领条裁剪轮廓",
+        "影响": "净样与裁剪角色未确认。"
+      },
+      {
+        "项目": "材料选择",
+        "影响": "衣身与领条物料未批准。"
+      },
+      {
+        "项目": "缝份与工艺",
+        "影响": "缝份、折边、领边或针迹参数未批准。"
+      },
+      {
+        "项目": "袖山前后与对位",
+        "影响": "装袖前后关系尚未确认。"
+      },
+      {
+        "项目": "成衣目标与纸样净尺寸",
+        "影响": "三层尺寸推导尚未完成和批准。"
+      }
+    ]
+  },
+  "browser_cli_dxf_byte_match": true,
+  "independent_dxf_reader": "ezdxf 1.4.4: 231 entities, zero audit errors / fixes on sleeve and cuff output",
+  "physical_fit": "NOT_RUN",
+  "native_prj_and_clo_project_edit": "NOT_RUN",
+  "files": {
+    "workstation.html": "0e68f4c9bf8917688a65c45864108fb39faa9ddf6133cc47bc9ced316068314e",
+    "samples/input.dxf": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+    "samples/input-spec.yaml": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "example-output/edit.patch.yaml": "1320d683d0cab356ef1be5c53c87445cdc93c520e2a490445bbe4af69f5f0c33",
+    "example-output/edited.dxf": "6fee5cbfa5c7e802dbe37854c202a8413a18d5df7f33a18902497cca11d34b0c"
+  }
+}

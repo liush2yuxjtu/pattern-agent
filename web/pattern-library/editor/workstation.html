@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pattern Agent · 纸样改版</title>
+<style>
+:root{color-scheme:light;--navy:#172d3c;--ink:#233945;--muted:#576973;--line:#dbe3e5;--panel:#fff;--bg:#f1f5f4;--accent:#176b97;--warning:#873723}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,"Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+header{background:var(--navy);color:#eff7f6;border-bottom:4px solid #6faeab}
+.wrap{width:min(1360px,calc(100% - 48px));margin:auto}
+header .wrap{padding:24px 0 23px;display:flex;align-items:center;gap:18px}
+header svg{width:42px;height:42px;flex-shrink:0}
+h1,h2,p{margin:0}
+h1{font-size:clamp(1.3rem,3vw,1.85rem);line-height:1.18;letter-spacing:.02em}
+header p{font-size:.8rem;color:#c3d5d8;margin-top:5px}
+main.wrap{display:grid;grid-template-columns:minmax(310px,380px) minmax(0,1fr);gap:22px;padding:26px 0}
+section{border:1px solid var(--line);border-radius:13px;background:var(--panel)}
+.inputs{padding:22px;align-self:start}
+h2{font-size:1.03rem;line-height:1.4;color:var(--navy)}
+label{display:block;font-weight:650;font-size:.82rem;margin:17px 0 5px}
+input,textarea,button{font:inherit}
+input[type=file]{width:100%;color:var(--muted);font-size:.76rem}
+input::file-selector-button{background:#edf3f4;border:1px solid #c8d6da;border-radius:5px;padding:5px 9px;margin-right:8px;cursor:pointer;color:var(--navy)}
+.file-name{margin-top:4px;display:block;font-size:.73rem;color:var(--muted);overflow-wrap:anywhere}
+textarea{display:block;resize:vertical;width:100%;padding:10px 11px;border:1px solid #b9cdd6;border-radius:7px;background:#f7fafb;color:#172d3c;font: .83rem/1.45 ui-monospace,monospace}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+button,.downloads a{border:1px solid #b5cbd4;background:white;border-radius:7px;color:var(--navy);font-size:.8rem;padding:8px 11px;font-weight:650;cursor:pointer}
+button.primary{color:white;background:#14648c;border-color:#14648c}
+button:hover,.downloads a:hover{filter:brightness(.94)}
+button:disabled{opacity:.6;cursor:wait}
+:focus-visible{outline:3px solid #bd6b34;outline-offset:2px}
+summary{font-size:.81rem;font-weight:650;cursor:pointer}
+details{border-top:1px solid var(--line);margin-top:20px;padding-top:14px}
+.status{font-size:.84rem;line-height:1.45;margin-top:15px;overflow-wrap:anywhere}
+.status[data-error=true]{color:var(--warning)}
+.review{min-width:0}
+.review-top{display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center;gap:8px;padding:19px 20px;border-bottom:1px solid var(--line)}
+.keys{display:flex;gap:16px;color:var(--muted);font-size:.78rem}
+.keys span::before{content:"";display:inline-block;width:15px;height:0;margin-right:5px;vertical-align:middle;border-top:2px solid #176b97}
+.keys span:first-child::before{border-top:2px dashed #697b83}
+#preview-box{display:grid;min-height:445px;place-items:center;background-color:#f8fbfb;background-image:radial-gradient(#d9e2e4 .9px,transparent .9px);background-size:17px 17px;padding:18px}
+#preview{width:100%;height:470px;object-fit:contain}
+#preview[hidden], [hidden]{display:none!important}
+#placeholder{font-size:.9rem;color:var(--muted)}
+.report{padding:18px 20px}
+#scope{font-size:.81rem;margin-top:7px;color:var(--muted);line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.83rem;font-variant-numeric:tabular-nums}
+th,td{padding:8px 5px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+.downloads{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+.downloads a{text-decoration:none;white-space:nowrap}
+@media(max-width:850px){.wrap{width:calc(100% - 28px)}main.wrap{grid-template-columns:1fr;gap:16px;padding:16px 0}.inputs{padding:17px}#preview-box{min-height:260px;padding:9px}#preview{height:280px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M15 7c3 6 11 6 14 0l10 5-4 10-6-3v17H15V19l-6 3-4-10 10-5Z" stroke="#e2f6f0" stroke-width="1.6" stroke-linejoin="round"/><path d="M23 16v19M15 29h14" stroke="#93bdb5" stroke-dasharray="2 3"/></svg>
+<div><h1>Pattern Agent · 纸样改版</h1><p>女式贴身长袖上衣 · 图形单位 U</p></div>
+</div></header>
+<main class="wrap">
+<section class="inputs" aria-labelledby="controls-heading">
+<h2 id="controls-heading">原型和改款要求</h2>
+<label for="pattern">二维纸样 YAML</label><input id="pattern" type="file" accept=".yaml,.yml"><span id="pattern-name" class="file-name"></span>
+<label for="spec">一维规格 YAML</label><input id="spec" type="file" accept=".yaml,.yml"><span id="spec-name" class="file-name"></span>
+<label for="dxf">原始 DXF</label><input id="dxf" type="file" accept=".dxf"><span id="dxf-name" class="file-name"></span>
+<label for="intent">设计意图 YAML</label><textarea id="intent" rows="7" spellcheck="false"></textarea>
+<div class="actions"><button class="primary" id="run">生成并应用</button><button id="compile">仅生成补丁</button><button id="sample">载入样例</button></div>
+<details><summary>重放已保存的补丁</summary><label for="patch">补丁 YAML</label><input id="patch" type="file" accept=".yaml,.yml"><div class="actions"><button id="replay">应用补丁</button></div></details>
+<p class="status" id="status" role="status" aria-live="polite"></p>
+</section>
+<section class="review" aria-labelledby="review-heading">
+<div class="review-top"><h2 id="review-heading">二维纸样叠加</h2><div class="keys"><span>原版</span><span>改版</span></div></div>
+<div id="preview-box"><p id="placeholder">生成改版后可查看叠加。</p><img id="preview" alt="灰色虚线为原版，蓝色实线为改版" hidden></div>
+<div class="report"><h2>尺寸与下载</h2><p id="scope">样例图形比例尚未标定。</p>
+<table id="measurements" hidden><thead><tr><th scope="col">尺寸</th><th scope="col">原版 U</th><th scope="col">改版 U</th><th scope="col">变化 U</th></tr></thead><tbody></tbody></table>
+<div id="downloads" class="downloads"></div></div>
+</section>
+</main>
+<script>
+const byId=id=>document.getElementById(id)
+const filenames={pattern:"pattern-2d.yaml",spec:"pattern-spec.yaml",dxf:"input.dxf"}
+const inputs={}
+const urls=[]
+const controls=[...document.querySelectorAll("button,input,textarea")]
+function busy(value){controls.forEach(control=>control.disabled=value)}
+const downloads={"edit.patch.yaml":"补丁 YAML","edited-pattern.yaml":"二维 YAML","edited-spec.yaml":"一维 YAML","edited.dxf":"改版 DXF","edited.svg":"改版 SVG","before-after.svg":"叠加 SVG","report.json":"测量报告"}
+function fileBytes(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader()
+    reader.onload=()=>resolve(reader.result.split(",",2)[1])
+    reader.onerror=()=>reject(new Error("读取文件失败"))
+    reader.readAsDataURL(file)
+  })
+}
+function status(text,error=false){
+  byId("status").textContent=text
+  byId("status").dataset.error=error
+}
+function clearResult(){
+  for(const url of urls)URL.revokeObjectURL(url)
+  urls.length=0
+  byId("downloads").replaceChildren()
+  byId("preview").hidden=true
+  byId("preview").removeAttribute("src")
+  byId("placeholder").hidden=false
+  byId("measurements").hidden=true
+  byId("measurements").tBodies[0].replaceChildren()
+  byId("scope").textContent="样例图形比例尚未标定。"
+}
+async function loadSample(){
+  clearResult()
+  busy(true)
+  try{
+    const r=await fetch("/api/samples")
+    if(!r.ok)throw new Error("样例读取失败")
+    const {files}=await r.json()
+    for(const [key,name] of Object.entries(filenames)){
+      inputs[key]=files[name]
+      byId(key).value=""
+      byId(key+"-name").textContent=name
+    }
+    byId("intent").value=new TextDecoder().decode(Uint8Array.from(atob(files["intent.yaml"]),c=>c.charCodeAt(0)))
+    status("已载入 M 码样例。")
+  }catch(e){status(e.message,true)}
+  finally{busy(false)}
+}
+function typeFor(name){
+  if(name.endsWith(".svg"))return "image/svg+xml"
+  if(name.endsWith(".yaml"))return "application/yaml"
+  if(name.endsWith(".json"))return "application/json"
+  return "application/octet-stream"
+}
+function setOutput(result){
+  for(const [name,data] of Object.entries(result.files)){
+    const bytes=Uint8Array.from(atob(data),c=>c.charCodeAt(0))
+    const url=URL.createObjectURL(new Blob([bytes],{type:typeFor(name)}))
+    urls.push(url)
+    const link=document.createElement("a")
+    link.href=url
+    link.download=name
+    link.textContent=downloads[name]
+    byId("downloads").append(link)
+    if(name==="before-after.svg"){
+      byId("preview").src=url
+      byId("preview").hidden=false
+      byId("placeholder").hidden=true
+    }
+  }
+  if(result.report.measured_targets){
+    for(const row of result.report.measured_targets){
+      const tr=byId("measurements").tBodies[0].insertRow()
+      for(const value of [row.name,row.before,row.after,row.delta])tr.insertCell().textContent=value
+    }
+    byId("measurements").hidden=false
+    byId("scope").textContent="二维几何检查通过。生产放行待确认，实体合身未测试。"
+  }
+}
+async function submit(mode){
+  clearResult()
+  busy(true)
+  status("正在计算和校验纸样…")
+  try{
+    if(Object.keys(inputs).length!==3)throw new Error("请载入原型样例或选择全部三个原型文件。")
+    const body={...inputs,intent:byId("intent").value}
+    if(mode==="replay"){
+      const file=byId("patch").files[0]
+      if(!file)throw new Error("请选择补丁 YAML 文件。")
+      body.patch=await fileBytes(file)
+    }
+    const r=await fetch("/api/"+mode,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})
+    const result=await r.json()
+    if(!r.ok)throw new Error(result.message||"请求失败")
+    setOutput(result)
+    status(mode==="compile"?"补丁已生成，可下载后重放。":"改版已校验，可下载。")
+  }catch(e){status(e.message,true)}
+  finally{busy(false)}
+}
+for(const key of Object.keys(filenames)){
+  byId(key).addEventListener("change",async()=>{
+    clearResult()
+    const file=byId(key).files[0]
+    delete inputs[key]
+    byId(key+"-name").textContent=""
+    if(!file)return
+    try{
+      const data=await fileBytes(file)
+      if(byId(key).files[0]===file)inputs[key]=data
+    }catch(e){status(e.message,true)}
+  })
+}
+byId("intent").addEventListener("input",clearResult)
+byId("sample").addEventListener("click",loadSample)
+for(const mode of ["run","compile","replay"])byId(mode).addEventListener("click",()=>submit(mode))
+loadSample()
+</script>
+</body>
+</html>

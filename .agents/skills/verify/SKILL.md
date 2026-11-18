@@ -20,6 +20,7 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Aster usable review and pattern files | [aster-pattern-export](references/aster-pattern-export.md) — download, reopen, measured SVG/HTML/review | 16 pieces, units/calibration, restored review |
 | Aster Vercel publication | [vercel-live-deploy](references/vercel-live-deploy.md) — exact deployment and anonymous live URL | project/build identity, content, live browser evidence |
 | Printable skirt and download workbench | [github-pages](references/github-pages.md) — OpenSloper CLI/MCP, PDFs, live Pages browser | native reopen, calibration, real downloads |
+| Paper pattern gallery and editor handoff | [pattern-library](references/pattern-library.md) — exact FreeSewing drafts, rendered views, locally replayed ZIP and live Pages browser | source meshes, image bounds, mobile, controls and download hashes |
 | GarmentCode preview | [garmentcode-preview](references/garmentcode-preview.md) — GLB/downloaded HTML and live browser | mesh pixels, rotation, hashes; garment FAIL separate |
 | CLO stress, strain and fold export | [clo-fit-export](references/clo-fit-export.md) — local CLI on a saved garment GLB | numeric controls, JSON/CSV readback, both fold previews |
 | Full-arm simulation | [full-arm](references/full-arm.md) — pipeline CLI and independently reopened Blender | saved frames, negative controls, renders |

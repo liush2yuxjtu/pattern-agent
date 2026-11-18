@@ -10,6 +10,7 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | aster-pattern-export | download, reopen, measured SVG/HTML/review | [aster-pattern-export.md](aster-pattern-export.md) |
 | vercel-live-deploy | exact deployment and anonymous live URL | [vercel-live-deploy.md](vercel-live-deploy.md) |
 | github-pages | OpenSloper CLI/MCP, PDFs, live Pages browser | [github-pages.md](github-pages.md) |
+| pattern-library | Native FreeSewing vectors, linked render meshes, the downloadable YAML editor and live Pages interactions | [pattern-library.md](pattern-library.md) |
 | garmentcode-preview | GLB/downloaded HTML and live browser | [garmentcode-preview.md](garmentcode-preview.md) |
 | clo-fit-export | local CLI on a saved CLO garment GLB | [clo-fit-export.md](clo-fit-export.md) |
 | full-arm | pipeline CLI and independently reopened Blender | [full-arm.md](full-arm.md) |

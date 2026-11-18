@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "pattern-spec",
+  "type": "object",
+  "required": [
+    "schema",
+    "profile",
+    "pattern_id",
+    "size",
+    "measurements",
+    "interfaces",
+    "seam_groups",
+    "seam_graph",
+    "cutting",
+    "fabric",
+    "workmanship",
+    "source_specification"
+  ],
+  "properties": {
+    "schema": {
+      "const": "pattern-spec/v1"
+    },
+    "profile": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "pattern_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "size": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "measurements": {
+      "type": "object"
+    },
+    "interfaces": {
+      "type": "object"
+    },
+    "seam_groups": {
+      "type": "object"
+    },
+    "seam_graph": {
+      "type": "object"
+    },
+    "cutting": {
+      "type": "object"
+    },
+    "fabric": {
+      "type": "object"
+    },
+    "workmanship": {
+      "type": "object"
+    },
+    "source_specification": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

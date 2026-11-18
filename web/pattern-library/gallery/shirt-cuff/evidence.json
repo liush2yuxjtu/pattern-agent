@@ -1,0 +1,64 @@
+{
+  "decision": {
+    "id": "03_cuff_width",
+    "label": "袖口展开宽增加10U",
+    "verdict": "PASS",
+    "source_dxf": "experiments/intent-edit-benchmark/results/03_cuff_width/output.dxf",
+    "source_yaml": "experiments/intent-edit-benchmark/results/03_cuff_width/new-spec.yaml",
+    "source_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163",
+    "source_yaml_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+    "units_assumption": "mm",
+    "profile": "fitted-tshirt-v1",
+    "model_sha256": "ffb75cedd87eac81ef39250715e5ae1cf3d1c9230304c6ed01b60afa2bc42835",
+    "mode": "verified_static_sewn_outer_shell",
+    "seaming": "PASS",
+    "measurements": {
+      "max_seam_gap_mm": 0.0,
+      "max_3d_seam_length_error_mm": 0.0738314412558907,
+      "proper_self_intersections": 0,
+      "topology": {
+        "vertex_count": 25958,
+        "used_vertex_count": 25958,
+        "orphan_vertices": 0,
+        "triangle_count": 51546,
+        "edge_count": 77506,
+        "connected_components": 1,
+        "boundary_edges": 374,
+        "boundary_components": 4,
+        "boundary_cycles": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "degenerate_triangles": 0,
+        "duplicate_faces": 0,
+        "euler_characteristic": -2,
+        "closed_oriented_edge_manifold": false,
+        "component_signed_volumes_m3": [
+          0.04445930142095817
+        ],
+        "outward_closed_components": false,
+        "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+      }
+    },
+    "seams": 15
+  },
+  "render": {
+    "geometry_sha256": "ffb75cedd87eac81ef39250715e5ae1cf3d1c9230304c6ed01b60afa2bc42835",
+    "vertices": 25958,
+    "faces": 51546,
+    "dimensions_m": [
+      0.9687908887863159,
+      0.28815436363220215,
+      0.5171374678611755
+    ],
+    "renderer": "Blender 4.3.2 Cycles CPU",
+    "views": [
+      "angle",
+      "front",
+      "back"
+    ],
+    "scope": "Rendered source geometry, studio lighting and display material. No physical fit claim."
+  },
+  "verification": "../../../intent-edit-review/sewn/03_cuff_width/independent.json",
+  "physical_fit": "NOT_RUN"
+}

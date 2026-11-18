@@ -1,0 +1,8 @@
+schema: design-intent/v1
+pattern_id: fitted-tshirt
+size: M
+id: shorter-sleeve
+text: 缩短袖子，保留衣身和领条。演示目标为 12.5 U。
+operation: {type: sleeve_length, delta: -12.5, unit: U}
+preserve_pieces: [front, back, neckband]
+evidence_ids: [E01, E07]

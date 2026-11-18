@@ -1,0 +1,96 @@
+{
+  "result": "PASS",
+  "scope": "2D geometric candidate",
+  "measured_targets": [
+    {
+      "name": "袖片纵线",
+      "before": 593.272857,
+      "after": 616.272857,
+      "delta": 23.0,
+      "unit": "U"
+    }
+  ],
+  "changed_interface_lengths": [
+    {
+      "piece": "袖片",
+      "interface": "左袖底边",
+      "change_U": 22.705796
+    },
+    {
+      "piece": "袖片",
+      "interface": "右袖底边",
+      "change_U": 22.841609
+    }
+  ],
+  "max_existing_contour_gap_U": 0.084212,
+  "inventory": {
+    "entities": 231,
+    "counts": {
+      "POLYLINE": 126,
+      "LINE": 78,
+      "TEXT": 27
+    },
+    "polyline_vertices": 1487,
+    "raw_declared_INSUNITS": null,
+    "audit_coordinate_unit": "YAML U; physical scale uncalibrated"
+  },
+  "protected_geometry_checks": {
+    "sleeve_length_delta_U": 23.0
+  },
+  "production": "BLOCKED",
+  "physical_fit": "NOT_RUN",
+  "production_holds": [
+    {
+      "项目": "实际比例",
+      "影响": "不能转换成实际毫米。"
+    },
+    {
+      "项目": "前片裁数",
+      "影响": "裁剪张数未批准。"
+    },
+    {
+      "项目": "前片裁剪轮廓",
+      "影响": "净样与裁剪角色未确认。"
+    },
+    {
+      "项目": "后片裁数",
+      "影响": "裁剪张数未批准。"
+    },
+    {
+      "项目": "后片裁剪轮廓",
+      "影响": "净样与裁剪角色未确认。"
+    },
+    {
+      "项目": "袖片裁数",
+      "影响": "裁剪张数未批准。"
+    },
+    {
+      "项目": "袖片裁剪轮廓",
+      "影响": "净样与裁剪角色未确认。"
+    },
+    {
+      "项目": "领条裁数",
+      "影响": "裁剪张数未批准。"
+    },
+    {
+      "项目": "领条裁剪轮廓",
+      "影响": "净样与裁剪角色未确认。"
+    },
+    {
+      "项目": "材料选择",
+      "影响": "衣身与领条物料未批准。"
+    },
+    {
+      "项目": "缝份与工艺",
+      "影响": "缝份、折边、领边或针迹参数未批准。"
+    },
+    {
+      "项目": "袖山前后与对位",
+      "影响": "装袖前后关系尚未确认。"
+    },
+    {
+      "项目": "成衣目标与纸样净尺寸",
+      "影响": "三层尺寸推导尚未完成和批准。"
+    }
+  ]
+}

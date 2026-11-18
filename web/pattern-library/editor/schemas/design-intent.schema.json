@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "design-intent",
+  "type": "object",
+  "required": [
+    "schema",
+    "pattern_id",
+    "size",
+    "id",
+    "text"
+  ],
+  "properties": {
+    "schema": {
+      "const": "design-intent/v1"
+    },
+    "pattern_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "size": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "operation": {
+      "type": "object",
+      "required": [
+        "type",
+        "delta",
+        "unit"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "sleeve_length",
+            "body_length",
+            "cuff_width",
+            "front_neck_depth"
+          ]
+        },
+        "delta": {
+          "type": "number",
+          "minimum": -100000,
+          "maximum": 100000
+        },
+        "unit": {
+          "enum": [
+            "U",
+            "mm",
+            "cm",
+            "in"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "preserve_pieces": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "front",
+          "back",
+          "sleeve",
+          "neckband"
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "minItems": 0,
+      "maxItems": 20,
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

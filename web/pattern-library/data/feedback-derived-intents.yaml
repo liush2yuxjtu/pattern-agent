@@ -1,0 +1,500 @@
+schema: intent-corpus/v1
+interpretation: Candidate requests are hypotheses from source observations. Null targets require confirmation.
+  Public amounts belong to their source garment and measurement context.
+cases:
+- id: intent-e01
+  evidence:
+    feedback_id: E01
+    url: https://www.uniqlo.com/us/en/products/E451096-000/00/reviews
+    locator: Too loose, wide, and long sleeves · 2023-01-12
+    source_observation: Petite XS buyer found the body and sleeves too wide and the sleeves too long, and explicitly
+      asked for a petite XS.
+  garment: Cotton Volume Long-Sleeve Blouse
+  region: sleeve and body
+  candidate_request: Draft a petite variant with separate sleeve length and body-width targets.
+  measurement_inputs: Finished sleeve length, flat chest and hem widths, shoulder position, and petite size
+    block.
+  preserve: Retain regular XS and sleeve volume as separate choices.
+  target: null
+  state: needs_confirmation
+- id: intent-e02
+  evidence:
+    feedback_id: E02
+    url: https://www.uniqlo.com/us/en/products/E457373-000/00/reviews
+    locator: Cute with slightly short sleeves · 2023-04-06
+    source_observation: Buyer returned an otherwise well-fitting parka because the sleeves were a little short.
+  garment: Reversible Parka
+  region: sleeve
+  candidate_request: Lengthen the lower sleeve with a tall option.
+  measurement_inputs: Shoulder-to-cuff measurement, underarm length, cuff and lining construction.
+  preserve: Keep sleeve cap and body size.
+  target: null
+  state: needs_confirmation
+- id: intent-e03
+  evidence:
+    feedback_id: E03
+    url: https://www.uniqlo.com/us/en/products/E437349-000/00/reviews
+    locator: Size up · 2021-04-11
+    source_observation: Usual size fit overall, but the hem exposed the stomach when the buyer lifted an arm.
+  garment: U Fine-Gauge Boat Neck Short-Sleeve Sweater
+  region: body hem
+  candidate_request: Add finished torso length or test a tall version under the stated reach pose.
+  measurement_inputs: Finished front/back hem drop and required coverage at a named pose.
+  preserve: Keep boat neck, shoulder and upper fit.
+  target: null
+  state: needs_confirmation
+- id: intent-e04
+  evidence:
+    feedback_id: E04
+    url: https://www.uniqlo.com/us/en/products/E448710-000/00/reviews
+    locator: Horrible Fabric, Misleading Name · 2022-04-26
+    source_observation: Buyer reported tight arm openings.
+  garment: U Cotton Gathered Sleeveless Shirt
+  region: armhole
+  candidate_request: Evaluate a roomier sleeveless arm opening and redraw its facing or binding.
+  measurement_inputs: Underarm clearance, vertical depth, front/back curve lengths and bra coverage.
+  preserve: Keep shoulder position and upper chest where fit is acceptable.
+  target: null
+  state: needs_confirmation
+- id: intent-e05
+  evidence:
+    feedback_id: E05
+    url: https://www.uniqlo.com/us/en/products/E448710-000/00/reviews
+    locator: Horrible Fabric, Misleading Name · 2022-04-26
+    source_observation: Buyer expected pure cotton, found the blend stiff and asked for the product title to
+      identify the blend.
+  garment: U Cotton Gathered Sleeveless Shirt
+  region: fabric
+  candidate_request: Correct the fiber listing for each color and compare drape if changing the fabric.
+  measurement_inputs: Supplier composition by colorway, bending, stretch and recovery.
+  preserve: Keep verified CAD revision during the listing correction.
+  target: null
+  state: material_or_listing
+- id: intent-e06
+  evidence:
+    feedback_id: E06
+    url: https://www.uniqlo.com/us/en/products/E457012-000/00/reviews
+    locator: Review describing underarm alteration
+    source_observation: Buyer liked the shape but sewed the underarm closer because the arm opening gaped.
+  garment: Ultra Stretch AIRism Sleeveless Dress
+  region: armhole
+  candidate_request: Reduce underarm gaping and remeasure the facing or binding.
+  measurement_inputs: Front/back gaping location, armhole depth, ease and range of motion.
+  preserve: Keep dress silhouette and drape.
+  target: null
+  state: needs_confirmation
+- id: intent-e07
+  evidence:
+    feedback_id: E07
+    url: https://www.uniqlo.com/us/en/products/E461514-000/00/reviews
+    locator: Review describing rolled sleeves and raised waist
+    source_observation: Short buyer liked the longer skirt and higher waist placement, and rolled up sleeves
+      that were a little long.
+  garment: Soft Brushed Long-Sleeve Shirt Dress
+  region: sleeve
+  candidate_request: Shorten sleeves only for a petite option.
+  measurement_inputs: Cuff endpoint delta, placket/hem depth and wearer reach.
+  preserve: Keep raised waist, skirt length and existing pockets.
+  target: null
+  state: needs_confirmation
+- id: intent-e08
+  evidence:
+    feedback_id: E08
+    url: https://www.uniqlo.com/us/en/products/E437834-000/00/reviews
+    locator: Review reporting large armholes and small bust
+    source_observation: Buyer sized up for bust room and still found the armholes oversized, with stretched-looking
+      trim.
+  garment: +J Stretch Supima Cotton Sleeveless T-Shirt
+  region: bust and armhole
+  candidate_request: Increase bust room while reducing armhole gaping. Recheck trim recovery.
+  measurement_inputs: Bust and high bust, armhole height, binding ratio and fabric recovery.
+  preserve: Keep neckline style and local arm mobility.
+  target: null
+  state: needs_confirmation
+- id: intent-e09
+  evidence:
+    feedback_id: E09
+    url: https://www.uniqlo.com/us/en/products/E457373-000/00/reviews
+    locator: Cute jacket, nice quality! · 2023-04-06
+    source_observation: Buyer observed pockets on the solid face only.
+  garment: Reversible Parka
+  region: pockets
+  candidate_request: Evaluate a reversible pocket-access variant with an opening reachable from both faces.
+  measurement_inputs: Pocket construction, opening and bag dimensions, closures, and reversibility test.
+  preserve: Keep both exterior finishes.
+  target: null
+  state: needs_confirmation
+- id: intent-e10
+  evidence:
+    feedback_id: E10
+    url: https://www.uniqlo.com/us/en/products/E451096-000/00/reviews
+    locator: Favorite · 2025-09-15
+    source_observation: Buyer liked the billowy sleeves and requested a restock of the same blouse.
+  garment: Cotton Volume Long-Sleeve Blouse
+  region: restock
+  candidate_request: Retain the existing variant as an assortment task.
+  measurement_inputs: Stock and style identity.
+  preserve: Original pattern.
+  target: null
+  state: assortment
+- id: intent-e11
+  evidence:
+    feedback_id: E11
+    url: https://www.kuhl.com/kuhl/womens/pants/ws-rydr-pant/customer-reviews/
+    locator: Best women's work pant · 2025-04-29
+    source_observation: Buyer wanted the phone pocket on the right, as on the men's pair.
+  garment: Rydr Pant
+  region: pocket placement
+  candidate_request: Move pocket opening, bag, marks and seam reinforcement to the right leg.
+  measurement_inputs: Wearer-side coordinates and phone clearance.
+  preserve: Keep fit, inseam and overall pockets.
+  target: null
+  state: needs_confirmation
+- id: intent-e12
+  evidence:
+    feedback_id: E12
+    url: https://www.kuhl.com/kuhl/womens/pants/ws-rydr-pant/customer-reviews/
+    locator: Best women's work pant · 2025-04-29
+    source_observation: Same buyer asked for the waist to sit roughly one to two inches lower.
+  garment: Rydr Pant
+  region: rise
+  candidate_request: Create a lower-rise variant and redraft waistband and fly reach.
+  measurement_inputs: Choose a final rise delta in the reported range, identify front/back POMs.
+  preserve: Keep thigh fit, draw of pockets, and inseam options.
+  target: null
+  state: needs_confirmation
+- id: intent-e13
+  evidence:
+    feedback_id: E13
+    url: https://www.kuhl.com/kuhl/womens/pants/renegade-outsider-pant/customer-reviews/
+    locator: My New Favorite Outdoor Pants · 2026-06-07
+    source_observation: Buyer asked for a petite length and shortened the legs themselves while liking the
+      waistband and pockets.
+  garment: Renegade Outsider Pant
+  region: inseam
+  candidate_request: Add a short inseam grade with a knee/hem placement check.
+  measurement_inputs: Finished inseam, outseam, knee position and selected size.
+  preserve: Keep rise, waist fit and pocket placement.
+  target: null
+  state: needs_confirmation
+- id: intent-e14
+  evidence:
+    feedback_id: E14
+    url: https://www.kuhl.com/kuhl/womens/pants/freeflex-roll-up-pant/?color=Sage
+    locator: Great pants · 2026-10-09
+    source_observation: Buyer enlarged the side leg pocket to fit a phone and expected to do the same on a
+      second pair.
+  garment: Freeflex Roll-Up Pant
+  region: pocket capacity
+  candidate_request: Increase usable pocket opening and depth around an agreed phone envelope.
+  measurement_inputs: Phone and case dimensions, opening and closed storage, roll-up snap clearance.
+  preserve: Keep leg fit and roll-up function.
+  target: null
+  state: needs_confirmation
+- id: intent-e15
+  evidence:
+    feedback_id: E15
+    url: https://factory.jcrew.com/p/womens/categories/clothing/jeans/wide-leg-denim/wide-leg-patch-pocket-full-length-jean/BY904
+    locator: Review dated 2025-10-10
+    source_observation: Buyer found the regular inseam borderline short and wanted enough length to wear heels.
+  garment: Wide-Leg Patch-Pocket Full-Length Jean
+  region: inseam
+  candidate_request: Offer or test an alternate longer inseam and measure the hem in footwear.
+  measurement_inputs: Target inseam, knee location and hem clearance.
+  preserve: Keep leg silhouette and patch pockets.
+  target: null
+  state: needs_confirmation
+- id: intent-e16
+  evidence:
+    feedback_id: E16
+    url: https://oldnavy.gap.com/browse/product.do?pid=8057670021602
+    locator: Favorite jeans but quality varies
+    source_observation: Repeat buyer reported differing waist fit and slightly different leg lengths between
+      pairs.
+  garment: Extra High-Waisted Wide-Leg Jean
+  region: manufacturing QC
+  candidate_request: Measure same-size garments and compare each leg to the approved specification.
+  measurement_inputs: Same size/wash/lot, waist POM, left and right inseam and tolerance.
+  preserve: Keep the approved block until lot or measurement cause is found.
+  target: null
+  state: qa
+- id: intent-e17
+  evidence:
+    feedback_id: E17
+    url: https://oldnavy.gap.com/browse/product.do?pid=6116470025432
+    locator: It is not the same size as previous order
+    source_observation: Repeat buyer reported tighter waist and shorter crotch length on a reordered pair.
+  garment: Straight Jeans
+  region: waist and rise
+  candidate_request: Audit same-SKU waist and front/back rise before altering the block.
+  measurement_inputs: Item variant, lot, pre/post-wash state and matching measurement method.
+  preserve: Original approved grade pending lot comparison.
+  target: null
+  state: qa
+- id: intent-e18
+  evidence:
+    feedback_id: E18
+    url: https://www.zappos.com/product/review/9619257
+    locator: Review on length, thigh fit and tools
+    source_observation: Reviewer had found other work pants long enough but too skinny or the right width but
+      too short, and needed working tool pockets.
+  garment: Dx Bootcut Workwear Jean
+  region: thigh and inseam
+  candidate_request: Specify independent thigh-width and inseam options rather than moving to another waist
+    size.
+  measurement_inputs: Thigh, seat, inseam, movement results and pocket load.
+  preserve: Retain waistband and functional storage where fit passes.
+  target: null
+  state: needs_confirmation
+- id: intent-p01
+  evidence:
+    feedback_id: P01
+    url: https://forum.freesewing.eu/t/simon-help-with-sleeve-sizing/752/1
+    locator: Opening post · 2025-10-23
+    source_observation: Maker could barely pull the short sleeve above the elbow and reported small armholes,
+      while collar and yoke felt right.
+  garment: Simon shirt
+  region: armhole and biceps
+  candidate_request: Check body landmarks and biceps ease before redrawing the front/back armhole and matching
+    sleeve cap.
+  measurement_inputs: Measured shoulder-to-shoulder, HPS-to-waist, biceps and seam-length matching targets.
+  preserve: Keep collar and yoke unless root cause is found there.
+  target: null
+  state: needs_confirmation
+- id: intent-p02
+  evidence:
+    feedback_id: P02
+    url: https://forum.freesewing.eu/t/the-simon-pattern-is-very-small-especially-around-the-armpits/1114/1
+    locator: Opening post · 2026-06-01
+    source_observation: First mockup was especially tight at the armpits.
+  garment: Simon shirt
+  region: mobility
+  candidate_request: Specify reach and seat-of-sleeve fit. Compare shoulder position, chest ease and cap shape
+    separately.
+  measurement_inputs: Arm pose, pinned alterations, body measurements, material stretch and corresponding notches.
+  preserve: Retain shirt style and verified dimensions.
+  target: null
+  state: needs_confirmation
+- id: intent-p03
+  evidence:
+    feedback_id: P03
+    url: https://github.com/freesewing/freesewing/issues/5999
+    locator: Issue 5999 · 2024-02-09
+    source_observation: Increasing the biceps ease setting reportedly reduced both sleeve panel widths. The
+      project linked a fix.
+  garment: Jaeger jacket
+  region: sleeve ease
+  candidate_request: Test the sleeve-width response over multiple biceps input/ease settings.
+  measurement_inputs: Version, size and expected signed relationship between ease and circumference.
+  preserve: Seam lengths matched to the intended armscye and sleeve division.
+  target: null
+  state: qa
+- id: intent-p04
+  evidence:
+    feedback_id: P04
+    url: https://github.com/freesewing/freesewing/issues/253
+    locator: Issue 253 · 2020-01-03
+    source_observation: Maker found sleeve wrist opening and cuff length relationship inconsistent when switching
+      cuff style.
+  garment: Simon shirt
+  region: cuff and placket
+  candidate_request: Model separate barrel and French cuff overlap and take-up, then walk sleeve opening against
+    cuff.
+  measurement_inputs: Wrist, ease, placket overlap, pleat uptake and seam attachment points.
+  preserve: Keep forearm shape and fastening type for the selected variant.
+  target: null
+  state: qa
+- id: intent-p05
+  evidence:
+    feedback_id: P05
+    url: https://forum.freesewing.eu/t/pants-fitting-time-any-help-is-appreciated/259/1
+    locator: Opening post · 2025-05-26
+    source_observation: Maker asked about tummy room, a forward pocket seam and inseam wrinkles.
+  garment: Charlie shorts
+  region: lower-body balance
+  candidate_request: Fit the block first, then record tummy/seat distribution, crotch balance and pocket placement.
+  measurement_inputs: Front/back rise and crotch curve, side-seam hang, fabric and fitting photos.
+  preserve: Treat the intentionally forward pocket opening as a separate design choice.
+  target: null
+  state: needs_confirmation
+- id: intent-p06
+  evidence:
+    feedback_id: P06
+    url: https://forum.freesewing.eu/t/pants-fitting-time-any-help-is-appreciated/259/1
+    locator: Design notes in opening post · 2025-05-26
+    source_observation: Maker considered changing the back dart to a yoke and replacing internal pockets with
+      denim-style patch pockets.
+  garment: Charlie shorts
+  region: back yoke and pockets
+  candidate_request: Convert dart suppression to a yoke seam and prototype a patch-pocket variant.
+  measurement_inputs: Dart intake, exact yoke path, signed seam lengths, pocket dimensions and sew order.
+  preserve: Keep waist and seat fit, closures and grain.
+  target: null
+  state: needs_confirmation
+- id: intent-p07
+  evidence:
+    feedback_id: P07
+    url: https://kristinsews.com/zadie-jumpsuit-pattern-review/
+    locator: Sizing and Pattern Adjustments · 2019-07-04
+    source_observation: Maker removed 1 inch at the bodice, 2 inches at the rise and 3.5 inches at the leg
+      bottom for their own fit.
+  garment: Zadie Jumpsuit
+  region: bodice, rise and inseam
+  candidate_request: Use three independent alterations as a multi-step test. Record these amounts as one maker's
+    changes.
+  measurement_inputs: Shoulder-to-waist, crotch target and inseam, each with measurement method.
+  preserve: Keep wrap alignment and pocket notch matching.
+  target: null
+  state: needs_confirmation
+- id: intent-p08
+  evidence:
+    feedback_id: P08
+    url: https://kristinsews.com/zadie-jumpsuit-pattern-review/
+    locator: The Pockets · 2019-07-04
+    source_observation: Maker reported pocket notches did not line up and was unsure whether pattern, fabric
+      or their edits caused it.
+  garment: Zadie Jumpsuit
+  region: pocket notches
+  candidate_request: Walk original and edited pocket seams and check matched notch station distances.
+  measurement_inputs: Original revision, chosen size, effect of prior alterations and both seam directions.
+  preserve: Keep visible pocket shape if notch relocation resolves the issue.
+  target: null
+  state: qa
+- id: intent-p09
+  evidence:
+    feedback_id: P09
+    url: https://www.mingmakes.com/post/fitting-the-zadie-jumpsuit
+    locator: Pattern adjustments · 2023-06-23
+    source_observation: Fitting found back waist length 1 cm longer and front waist length 2 cm shorter than
+      the pattern, pointing to front/back balance.
+  garment: Zadie Jumpsuit
+  region: front/back balance
+  candidate_request: Test a shoulder-balance operation rather than applying one torso delta to both pieces.
+  measurement_inputs: Nape-to-waist and front waist POM definitions, shoulder position and seam walking.
+  preserve: Keep waist and wrap attachment alignment.
+  target: null
+  state: needs_confirmation
+- id: intent-p10
+  evidence:
+    feedback_id: P10
+    url: https://www.mingmakes.com/post/fitting-the-zadie-jumpsuit
+    locator: Floor-length option · 2023-06-23
+    source_observation: Maker considered adding 19 cm to go from cropped to floor length, with an accompanying
+      wider hem for shoes.
+  garment: Zadie Jumpsuit
+  region: leg length and opening
+  candidate_request: Create floor-length option with separate inseam and hem opening targets.
+  measurement_inputs: Footwear and intended floor clearance, inseam and hem-width method.
+  preserve: Keep rise and knee fit.
+  target: null
+  state: needs_confirmation
+- id: intent-p11
+  evidence:
+    feedback_id: P11
+    url: https://sewpippa.com/2020/07/22/bhl-hannah-part-deux/
+    locator: BHL Hannah, part deux · 2020-07-22
+    source_observation: Initial neckline gaped. Maker ended up refining bust adjustment, narrowing shoulder
+      and moving darts to their actual apex.
+  garment: Hannah wrap dress
+  region: neckline, shoulder and bust dart
+  candidate_request: Draft separate shoulder, bust and apex edits with an explicit dart transfer.
+  measurement_inputs: Bust/high-bust, shoulder width, neckline fit, apex position and dart intake.
+  preserve: Keep chosen neckline style and preferred back fit.
+  target: null
+  state: needs_confirmation
+- id: intent-p12
+  evidence:
+    feedback_id: P12
+    url: https://sewing.patternreview.com/SewingDiscussions/topic/123085
+    locator: Zadie wrap gaping thread
+    source_observation: Maker worried a gap at the crotch wrap made it unwearable in public.
+  garment: Zadie Jumpsuit
+  region: wrap overlap and closure
+  candidate_request: Test wrap coverage in sitting and reaching. Adjust overlap, rise or closure only after
+    pinning checks.
+  measurement_inputs: Garment posture, overlap and attachment landmarks.
+  preserve: Keep wrap appearance and ease.
+  target: null
+  state: needs_confirmation
+- id: intent-p13
+  evidence:
+    feedback_id: P13
+    url: https://curvysewingcollective.com/pattern-review-cashmerette-harrison-shirt-dress-and-minor-hack-pockets/
+    locator: Pocket hack review · 2018-10-22
+    source_observation: Reviewer made a pocket variant of the shirt-dress and graded fit through multiple sizes.
+  garment: Harrison Shirt-dress
+  region: side seam pocket
+  candidate_request: Add pocket bag and matching seam opening with independent grade rules.
+  measurement_inputs: Bag dimensions, side seam position and support, pocket depth and access.
+  preserve: Retain tested bodice and selected hip grading.
+  target: null
+  state: needs_confirmation
+- id: intent-p14
+  evidence:
+    feedback_id: P14
+    url: https://thefoldline.com/products/the-modern-sewing-co-worker-trousers
+    locator: Mixed feelings review
+    source_observation: Buyer made a shorts version using a blog reference and noted a shorts view was missing
+      from the purchased pattern.
+  garment: Worker Trousers
+  region: shorts length
+  candidate_request: Offer a dedicated shorts view with marked hem, seam balance and instructions.
+  measurement_inputs: Shorts inseam, thigh/hem opening and production allowance.
+  preserve: Keep rise, waist and functional pockets.
+  target: null
+  state: needs_confirmation
+- id: intent-p15
+  evidence:
+    feedback_id: P15
+    url: https://thefoldline.com/products/the-modern-sewing-co-worker-trousers
+    locator: Review describing confusing fly and waistband directions
+    source_observation: Experienced maker found the fly and waistband instructions harder to follow than expected.
+  garment: Worker Trousers
+  region: fly and waistband docs
+  candidate_request: Provide step-by-step diagrams, left/right labels and closure-specific assembly branches.
+  measurement_inputs: Chosen closure and matching piece ids.
+  preserve: Keep geometry unless a fit-checked discrepancy is found.
+  target: null
+  state: documentation
+- id: intent-p16
+  evidence:
+    feedback_id: P16
+    url: https://sewing.patternreview.com/SewingDiscussions/topic/127551
+    locator: Bad ETSY PDF thread
+    source_observation: Buyer reported back tile misalignment despite a correct test square, plus absent page
+      numbering for the size used.
+  garment: Miranda Hoodie PDF
+  region: paper print package
+  candidate_request: Validate tile trim boxes and adjacency after scale check, and add row/column IDs to every
+    page.
+  measurement_inputs: PDF revision, page format, print scale, selected grade and page tiling.
+  preserve: Preserve full-size CAD and compare against it.
+  target: null
+  state: qa
+- id: intent-p17
+  evidence:
+    feedback_id: P17
+    url: https://www.etsy.com/listing/1046232485/jacqueline-classic-trousers-sewing
+    locator: Review describing leg narrowing and hemming
+    source_observation: Buyer narrowed the legs about one inch on each side and intentionally hemmed them shorter.
+  garment: Jacqueline Classic Trousers
+  region: leg width and inseam
+  candidate_request: Test leg taper with explicit per-edge changes and a separate length operation.
+  measurement_inputs: Confirm whether amount is per edge, finished opening target and taper start.
+  preserve: Keep waist and rise.
+  target: null
+  state: needs_confirmation
+- id: intent-p18
+  evidence:
+    feedback_id: P18
+    url: https://sewing.patternreview.com/SewingDiscussions/topic/117642
+    locator: How to alter a jacket for petite figure
+    source_observation: Wearer described long sleeves and low armscyes while liking fit below bust, and reported
+      improvement from pinching across the upper chest.
+  garment: Bob Mackie jacket
+  region: petite upper-body balance
+  candidate_request: Prototype a petite shoulder-to-bust adjustment and re-walk sleeve and lining.
+  measurement_inputs: Vertical balance line, retained bust room, sleeve cap shape and movement.
+  preserve: Keep below-bust fit and collar design.
+  target: null
+  state: needs_confirmation

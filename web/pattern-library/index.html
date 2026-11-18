@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Pattern Agent 的纸样与三维图册、用户反馈样本和可复现的 YAML 改版工具。">
+  <meta name="theme-color" content="#f5f5ef">
+  <title>纸样与三维图册 · Pattern Agent</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="gallery.js"></script>
+</head>
+<body>
+  <a class="skip" href="#gallery">跳到图册</a>
+  <header class="top">
+    <div class="wrap navigation">
+      <a class="identity" href="../"><span class="mark" aria-hidden="true">pa</span><span>Pattern Agent</span></a>
+      <nav aria-label="项目导航">
+        <a href="#gallery" aria-current="location">图册</a>
+        <a href="#editor">改版工具</a>
+        <a href="#data">资料下载</a>
+      </nav>
+      <a class="source-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/web/pattern-library">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="gallery" class="hero" aria-labelledby="gallery-title">
+      <div class="intro">
+        <div>
+          <h1 id="gallery-title">纸样与三维图册</h1>
+          <p>从同一个样本查看二维裁片、三维渲染和可下载的复现文件。</p>
+        </div>
+        <a class="button primary" href="downloads/pattern-agent-editor.zip" download>下载改版工具 <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <div class="sample-picker" role="group" aria-label="选择纸样样本">
+        <button type="button" data-sample="sandy-standard" aria-pressed="true"><span class="dot teal"></span>Sandy 基础款</button>
+        <button type="button" data-sample="sandy-flared" aria-pressed="false"><span class="dot clay"></span>Sandy 加长增摆</button>
+        <button type="button" data-sample="shirt-cuff" aria-pressed="false"><span class="dot blue"></span>贴身 T 恤袖口改版</button>
+      </div>
+
+      <div class="visual-grid">
+        <figure class="sheet">
+          <figcaption class="panel-title"><h2>二维纸样</h2><button type="button" id="zoom-pattern" class="quiet">放大</button></figcaption>
+          <div class="pattern-stage"><img id="pattern-img" src="gallery/sandy-standard/preview.svg" alt="Sandy 基础款的四片裙身纸样" width="940" height="840"></div>
+          <div class="panel-foot">
+            <a id="pattern-download" href="gallery/sandy-standard/pattern.svg" download>下载纸样 SVG <span aria-hidden="true">↓</span></a>
+            <a id="source-download" href="gallery/sandy-standard/native.svg" download>FreeSewing 原始 SVG</a>
+          </div>
+        </figure>
+        <figure class="sheet">
+          <figcaption class="panel-title">
+            <h2>三维渲染</h2>
+            <div class="view-picker" role="group" aria-label="选择渲染视角">
+              <button type="button" data-view="angle" aria-pressed="true">斜前</button>
+              <button type="button" data-view="front" aria-pressed="false">正面</button>
+              <button type="button" data-view="back" aria-pressed="false">背面</button>
+            </div>
+          </figcaption>
+          <div class="render-stage"><img id="render-img" src="gallery/sandy-standard/angle.webp" alt="Sandy 基础款的三维斜前渲染" width="940" height="840"></div>
+          <div class="panel-foot">
+            <a id="model-download" href="gallery/sandy-standard/skirt.obj" download>下载三维 OBJ <span aria-hidden="true">↓</span></a>
+            <a id="evidence-link" href="gallery/sandy-standard/evidence.json">来源与验证</a>
+          </div>
+        </figure>
+      </div>
+
+      <div class="sample-facts" aria-live="polite" aria-atomic="true">
+        <div><h3 id="sample-name">Sandy 基础款</h3><p id="sample-scope">FreeSewing 4.10.2 生成纸样。裙身在固定人台上以合成面料参数求解 120 步，再交给 Blender 渲染。原始 SVG 包含腰头，三维模型展示裙身。</p></div>
+        <dl id="sample-measures"><div><dt>裙长</dt><dd>560 mm</dd></div><div><dt>圆摆比例</dt><dd>38.75%</dd></div><div><dt>裁片</dt><dd>4 片</dd></div></dl>
+      </div>
+      <p class="problem" id="gallery-problem" hidden role="status"></p>
+    </section>
+
+    <section id="editor" class="section" aria-labelledby="editor-title">
+      <div class="section-lead">
+        <div><h2 id="editor-title">从 YAML 意图到改版 DXF</h2><p>以原始 DXF、二维纸样 YAML 和一维规格 YAML 为输入，生成可重放的改版补丁。</p></div>
+        <a class="button secondary" href="editor/SCHEMA.md">查看数据结构</a>
+      </div>
+      <div class="editor-layout">
+        <figure class="sheet edit-sheet">
+          <figcaption class="panel-title">
+            <h3>贴身长袖 T 恤 · 袖长加 23 U</h3>
+            <div class="view-picker" role="group" aria-label="选择改版状态">
+              <button type="button" data-edit="overlay" aria-pressed="true">叠加</button>
+              <button type="button" data-edit="before" aria-pressed="false">改前</button>
+              <button type="button" data-edit="after" aria-pressed="false">改后</button>
+            </div>
+          </figcaption>
+          <div class="edit-stage"><img id="edit-img" src="editor/example-output/before-after.svg" alt="原版灰色虚线与改版蓝色纸样叠加" width="940" height="600"></div>
+          <div class="panel-foot">
+            <a href="editor/example-output/edit.patch.yaml" download>YAML 补丁</a>
+            <a href="editor/example-output/edited.dxf" download>改版 DXF</a>
+            <a href="editor/example-output/report.json" download>量测报告</a>
+          </div>
+        </figure>
+        <div class="handoff">
+          <h3>本地复跑</h3>
+          <p class="measurement"><strong>593.273 → 616.273</strong> <span>U</span></p>
+          <p>用 Python 3.11 或更新版，解压工具包，进入 <code>pattern-agent-editor</code>。</p>
+          <pre><code>python -m pip install -r requirements.txt
+python -m pattern_tool serve</code></pre>
+          <p>打开 <code>http://127.0.0.1:8765</code>，载入 M 码样例后选择「生成并应用」。工具提供袖长、衣长、袖口展开宽和前领深修改。</p>
+          <p class="scope">U 是原 CAD 图形单位。物理量需标定。袖长样例通过二维核对，三维图册里的袖口是独立案例。</p>
+          <a class="button primary" href="downloads/pattern-agent-editor.zip" download>下载工具 ZIP <span aria-hidden="true">↓</span></a>
+          <p><a href="edits/editor-example.png">查看本地工作台截图</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="data" class="section data-section" aria-labelledby="data-title">
+      <div class="section-lead">
+        <div><h2 id="data-title">纸样清单与用户反馈</h2><p>清单保留来源、文件类型和 SHA-256。公开反馈可用来编写带量法、目标和保护部位的改版请求。</p></div>
+      </div>
+      <div class="data-grid">
+        <article>
+          <h3>CAD 纸样清单</h3>
+          <p>38 份按内容去重的原件。17 份 PRJ、15 份 ZPRJ、4 份 DXF、2 份 ZPAC。</p>
+          <div class="data-links"><a href="data/pattern-assets.csv" download>下载原件索引 CSV</a><a href="downloads/dxf-regression-samples.zip" download>DXF 验证样本 ZIP</a></div>
+        </article>
+        <article>
+          <h3>真实反馈样本</h3>
+          <p>36 条观察来自 28 个公开页面，涉及袖长、袖窿、袖口、裤长和口袋等部位。</p>
+          <div class="data-links"><a href="data/feedback-catalog.csv" download>下载反馈 CSV</a><a href="data/feedback-derived-intents.yaml" download>下载候选意图 YAML</a></div>
+        </article>
+        <article>
+          <h3>原型与复现</h3>
+          <p>可用原始纸样、样例补丁和报告检查同一版输入。第三方案例的下载入口来自索引中的发布方。</p>
+          <div class="data-links"><a href="editor/samples/input.dxf" download>T 恤原型 DXF</a><a href="downloads/bodice-v001.dxf" download>无袖衣身 DXF</a><a href="README.md">中文复现说明</a></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap footer"><span>Pattern Agent · 纸样与三维图册</span><a href="https://freesewing.eu/designs/sandy/">FreeSewing Sandy</a><a href="../freesewing-cloth-lab.html">布料工作台</a><a href="source/FreeSewing-LICENSE.txt">FreeSewing 许可证</a></footer>
+
+  <dialog id="pattern-dialog" aria-labelledby="dialog-title">
+    <div class="panel-title"><h2 id="dialog-title">二维纸样大图</h2><form method="dialog"><button class="quiet" aria-label="关闭纸样大图">关闭</button></form></div>
+    <img id="enlarged-pattern" alt="当前样本二维纸样">
+    <p>实际尺寸请在排版或裁剪前用样本的 SVG 和标定数据核对。</p>
+  </dialog>
+</body>
+</html>

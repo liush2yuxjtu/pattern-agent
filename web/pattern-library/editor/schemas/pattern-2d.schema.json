@@ -1,0 +1,267 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "pattern-2d",
+  "type": "object",
+  "required": [
+    "schema",
+    "profile",
+    "pattern_id",
+    "size",
+    "source",
+    "coordinates",
+    "pieces"
+  ],
+  "properties": {
+    "schema": {
+      "const": "pattern-2d/v1"
+    },
+    "profile": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "pattern_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "size": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "format",
+        "sha256"
+      ],
+      "properties": {
+        "format": {
+          "const": "DXF"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "coordinates": {
+      "type": "object",
+      "required": [
+        "units",
+        "x_positive",
+        "y_positive",
+        "mm_per_unit",
+        "source_metadata"
+      ],
+      "properties": {
+        "units": {
+          "const": "U"
+        },
+        "x_positive": {
+          "const": "right"
+        },
+        "y_positive": {
+          "const": "up"
+        },
+        "mm_per_unit": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "maximum": 1000
+        },
+        "source_metadata": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pieces": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "source_name",
+          "layout_origin",
+          "origin_note",
+          "contours",
+          "edges",
+          "edge_order",
+          "landmarks",
+          "annotations"
+        ],
+        "properties": {
+          "source_name": {
+            "type": "string"
+          },
+          "layout_origin": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": -100000000.0,
+              "maximum": 100000000.0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "origin_note": {
+            "type": "string"
+          },
+          "contours": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "object",
+              "required": [
+                "source_name",
+                "role",
+                "semantic_status",
+                "note",
+                "edges"
+              ],
+              "properties": {
+                "source_name": {
+                  "type": "string"
+                },
+                "role": {
+                  "const": "unconfirmed"
+                },
+                "semantic_status": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                },
+                "edges": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "edge",
+                      "reverse"
+                    ],
+                    "properties": {
+                      "edge": {
+                        "type": "string",
+                        "pattern": "^e-[0-9a-f]{16}$"
+                      },
+                      "reverse": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 200
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "edges": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "object",
+              "required": [
+                "source_name",
+                "kind",
+                "closed",
+                "points"
+              ],
+              "properties": {
+                "source_name": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "line",
+                    "polyline"
+                  ]
+                },
+                "closed": {
+                  "type": "boolean"
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "number",
+                      "minimum": -100000000.0,
+                      "maximum": 100000000.0
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "minItems": 2,
+                  "maxItems": 10000
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "edge_order": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^e-[0-9a-f]{16}$"
+            },
+            "minItems": 1,
+            "maxItems": 400,
+            "uniqueItems": true
+          },
+          "landmarks": {
+            "type": "object",
+            "minProperties": 0,
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": -100000000.0,
+                "maximum": 100000000.0
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "annotations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "text",
+                "position"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": -100000000.0,
+                    "maximum": 100000000.0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 400
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

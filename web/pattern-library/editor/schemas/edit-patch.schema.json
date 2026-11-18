@@ -1,0 +1,382 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "edit-patch",
+  "type": "object",
+  "required": [
+    "schema",
+    "profile",
+    "intent",
+    "resolved_operation",
+    "base",
+    "target",
+    "pattern_operations",
+    "spec_operations",
+    "dxf_operations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "pattern-edit-patch/v1"
+    },
+    "profile": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "intent": {
+      "type": "object",
+      "required": [
+        "schema",
+        "pattern_id",
+        "size",
+        "id",
+        "text"
+      ],
+      "properties": {
+        "schema": {
+          "const": "design-intent/v1"
+        },
+        "pattern_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "size": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "operation": {
+          "type": "object",
+          "required": [
+            "type",
+            "delta",
+            "unit"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "sleeve_length",
+                "body_length",
+                "cuff_width",
+                "front_neck_depth"
+              ]
+            },
+            "delta": {
+              "type": "number",
+              "minimum": -100000,
+              "maximum": 100000
+            },
+            "unit": {
+              "enum": [
+                "U",
+                "mm",
+                "cm",
+                "in"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "preserve_pieces": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "front",
+              "back",
+              "sleeve",
+              "neckband"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "minItems": 0,
+          "maxItems": 20,
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "resolved_operation": {
+      "type": "object",
+      "required": [
+        "type",
+        "delta",
+        "unit"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "sleeve_length",
+            "body_length",
+            "cuff_width",
+            "front_neck_depth"
+          ]
+        },
+        "delta": {
+          "type": "number",
+          "minimum": -100000,
+          "maximum": 100000
+        },
+        "unit": {
+          "enum": [
+            "U",
+            "mm",
+            "cm",
+            "in"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "base": {
+      "type": "object",
+      "required": [
+        "pattern",
+        "spec",
+        "dxf"
+      ],
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "spec": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "dxf": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "target": {
+      "type": "object",
+      "required": [
+        "pattern",
+        "spec",
+        "dxf"
+      ],
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "spec": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "dxf": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pattern_operations": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "op",
+              "path",
+              "old",
+              "value"
+            ],
+            "properties": {
+              "op": {
+                "const": "replace"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^/"
+              },
+              "old": {},
+              "value": {}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "op",
+              "path",
+              "value"
+            ],
+            "properties": {
+              "op": {
+                "const": "add"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^/"
+              },
+              "value": {}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "op",
+              "path",
+              "old"
+            ],
+            "properties": {
+              "op": {
+                "const": "remove"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^/"
+              },
+              "old": {}
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 30000
+    },
+    "spec_operations": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "op",
+              "path",
+              "old",
+              "value"
+            ],
+            "properties": {
+              "op": {
+                "const": "replace"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^/"
+              },
+              "old": {},
+              "value": {}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "op",
+              "path",
+              "value"
+            ],
+            "properties": {
+              "op": {
+                "const": "add"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^/"
+              },
+              "value": {}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "op",
+              "path",
+              "old"
+            ],
+            "properties": {
+              "op": {
+                "const": "remove"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^/"
+              },
+              "old": {}
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 30000
+    },
+    "dxf_operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "pair_index",
+          "code",
+          "old",
+          "value",
+          "裁片",
+          "线名",
+          "实体顺序"
+        ],
+        "properties": {
+          "pair_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "code": {
+            "enum": [
+              10,
+              11,
+              20,
+              21
+            ]
+          },
+          "old": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "裁片": {
+            "type": "string"
+          },
+          "线名": {
+            "type": "string"
+          },
+          "实体顺序": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 30000
+    }
+  },
+  "additionalProperties": false
+}
