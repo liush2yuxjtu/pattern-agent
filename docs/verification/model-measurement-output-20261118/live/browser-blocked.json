@@ -1,0 +1,67 @@
+{
+  "verdict": "BLOCKED",
+  "scope": "Actual public Pages browser measurement export, commerce review and skill-download verification; no live browser PASS is established.",
+  "expected_commit": "7c7df4127f5a0369a048b769e63de968fefe7bf4",
+  "actual_pages_build_commit": null,
+  "measurement_url": "https://liush2yuxjtu.github.io/pattern-agent/human-studio/?model=../garment-body/commerce-evals/artifacts/iteration-2/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/final-state.json",
+  "live_measurement_checks_executed": null,
+  "live_measurement_downloads": [],
+  "live_independent_initial_edited_residual_remeasurement": "NOT_RUN: no live download could be obtained",
+  "blockers": [
+    {
+      "path": "Managed VM public HTTP",
+      "action": "curl -I --max-time 20 https://liush2yuxjtu.github.io/pattern-agent/build.json",
+      "result": "curl exit56; CONNECT tunnel failed, response403; HTTP/1.1 403 Forbidden",
+      "website_reached": false
+    },
+    {
+      "path": "Existing Firecrawl public-only standalone runner",
+      "action": "First interact call, public fixed GitHub source preparation only",
+      "result": "Insufficient credits for this connected-app request. Request was not run.",
+      "error_code": "INVALID_ARGUMENT",
+      "session_created": false,
+      "retried": false,
+      "required_final_line": "Your Firecrawl credits ran out. Daily MCP credits refresh in 16h 55m. Add credits or upgrade to keep going: https://www.firecrawl.dev/billing/ [account-specific link redacted]"
+    },
+    {
+      "path": "Existing Playwright connector",
+      "action": "browser_navigate public build.json once",
+      "result": "McpServerError: Connection failed.",
+      "error_code": "UNAVAILABLE",
+      "endpoint": "https://grokbot.tail6a877d.ts.net/playwright/mcp",
+      "page_created": false
+    },
+    {
+      "path": "Existing Grok sandbox providers",
+      "action": "Read-only curl/runtime probe on both existing links",
+      "result": "Both calls: McpServerError: Connection failed.",
+      "error_code": "UNAVAILABLE",
+      "endpoint": "https://grokbot.tail6a877d.ts.net/mcp",
+      "commands_executed": false
+    },
+    {
+      "path": "Cloud browser bootstrap",
+      "reported_by": "root agent, actual firstcall; independent result communicated to this agent",
+      "action": "cua_repl getBrowser on public site",
+      "result": "the gaas-browser node_repl sandbox cannot be disabled",
+      "completion_summary_submitted": true
+    }
+  ],
+  "additional_prerequisite": {
+    "ego_browser": "ego-browser skill: /bin/bash: ego-browser: command not found (exit127); no installation/onboarding or security change",
+    "environment_policy": "restricted/enforced; Pages not in this VM's allowed hosts; policy not modified"
+  },
+  "separate_evidence": {
+    "local_implementation_verification": "PASS already documented by parent; not substituted for LIVE",
+    "github_public_fixed_source_readback": "PASS; exact raw source/report bytes match local files",
+    "pages_publisher": "completed/success at expected head SHA; not browser acceptance"
+  },
+  "cleanup": {
+    "owned_remote_sessions_created": 0,
+    "firecrawl_session_created": false,
+    "playwright_page_created": false,
+    "network_tls_auth_changes": false,
+    "paid_services_opened": false,
+    "source_or_web_changes": false
+  }
+}

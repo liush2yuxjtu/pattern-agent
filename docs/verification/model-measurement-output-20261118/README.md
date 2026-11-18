@@ -64,3 +64,21 @@ This is measurement-export verification, not a fresh six-image/pose-fit skill
 benchmark. No new ImageGen calls or photo refits were run. Existing photo/pose
 FAIL results remain; model measurements do not establish real-person accuracy.
 Native Claude triggering remains BLOCKED and physical garment fit NOT_RUN.
+
+## Publication and live boundary
+
+The existing Pages publisher completed commit
+7c7df4127f5a0369a048b769e63de968fefe7bf4. GitHub independently read back the
+fixed public helper/verifier sources and primary model-measurement report,
+byte-identical with local files. This is SOURCE_READBACK PASS, not a Pages
+interactive runtime result.
+
+Live browser verification remains BLOCKED: the VM's Pages HTTPS proxy returns
+CONNECT403; Firecrawl has insufficient credits and created no session; the
+Playwright and separate sandbox MCP providers are unavailable; Ego CLI is absent;
+root's cloud-browser bootstrap reports that its sandbox cannot be disabled.
+No subscriptions, network/security changes or replacement screenshots were used.
+The live22/587/308 suites, live screenshots and live measurement downloads were
+NOT_RUN. Local actual browser/file tests above remain PASS. Full errors and
+publication/source receipts are under live/. Account-specific billing links
+are redacted from public evidence; raw responses are retained in ignored work.
