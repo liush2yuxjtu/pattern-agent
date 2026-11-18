@@ -116,30 +116,34 @@ def aggregate_actual_grade(origin, run, grade):
     return origin / 'benchmark.json'
 
 
-def build(workspace, site, allow_pending=False):
-    origin = workspace / 'iteration-1'
-    run = origin / 'eval-1-original-product/with_skill/run-1'
-    output = run / 'outputs'
-    metadata = read(run / 'eval_metadata.json')
-    current_hashes = {str(p.relative_to(output)): sha(p) for p in files(output)}
-    grade = read(run / 'grading.json') if (run / 'grading.json').exists() else None
-    complete = grade is not None
-    if complete:
-        assert grade.get('artifact_sha256') == current_hashes, 'Independent grade is stale or lacks full output hash binding'
-        assert [x['text'] for x in grade['expectations']] == metadata['assertions'], 'Independent grade must evaluate frozen end-to-end assertions'
-        assert grade['summary']['total'] == len(metadata['assertions'])
-        assert sum(x['passed'] is True for x in grade['expectations']) == grade['summary']['passed'], 'Grade summary disagrees with actual assertions'
-    elif not allow_pending:
-        raise ValueError('NOT_GRADED: independent grading required; use --allow-pending only for visible preview')
 
-    receipt_path = output / 'generation-receipts.json'
-    receipts = read(receipt_path) if receipt_path.exists() else {}
-    receipts = receipts if isinstance(receipts, list) else receipts.get('images', [])
+def normalize_generation_receipt(source):
+    """Lossless display adapter for the actual native-tool receipt schemas."""
+    receipt = dict(source)
+    if 'sha256' in receipt or 'output_sha256' not in receipt:
+        return receipt
+    assert receipt.get('native_sha256') == receipt['output_sha256'], 'Native and copied SHA must explicitly agree'
+    assert isinstance(receipt.get('transforms'), str) and receipt['transforms'], 'Actual copy-transform provenance missing'
+    native_file = Path(receipt.get('native_path', ''))
+    assert native_file.is_file() and sha(native_file) == receipt['native_sha256'], 'New-schema receipt must match actual original native tool bytes'
+    assert receipt.get('native_path') and receipt.get('native_pixels'), 'Native file/pixel provenance missing'
+    references = receipt.get('references', [])
+    declared = receipt.get('actual_referenced_image_paths', [])
+    assert declared == [item['path'] for item in references], 'Actual reference order and hashed references disagree'
+    receipt.update(sha256=receipt['output_sha256'], original_tool_path=receipt['native_path'], width=receipt['native_pixels'][0], height=receipt['native_pixels'][1], native=True, collage_cropped=False, upscaled=False, referenced_image_paths=declared, reference_sha256={item['path']:item['sha256'] for item in references}, source_status=receipt.get('status'), status='GENERATED', receipt_adapter='Native SHA/output SHA/pixels/actual refs mapped from executor schema; original fields/status retained')
+    return receipt
+
+def validate_generation(output, receipts, allow_pending=False):
+    receipts = [normalize_generation_receipt(row) for row in receipts]
     receipt_map = {r['view']: r for r in receipts}
     generation = []
     missing = []
     for view in VIEWS:
-        p = output / 'images' / (view + '.png')
+        receipt = receipt_map.get(view)
+        relative = Path(receipt.get('path', 'images/' + view + '.png')) if receipt else Path('images') / (view + '.png')
+        if relative.is_absolute() or not (output / relative).resolve().is_relative_to(output.resolve()):
+            raise ValueError(view + ': selected generation path must remain inside actual outputs')
+        p = output / relative
         if not p.exists():
             missing.append(view)
             continue
@@ -161,9 +165,63 @@ def build(workspace, site, allow_pending=False):
             assert receipt.get('reference_sha256'), f'{view}: referenced input fingerprints missing'
             for reference, fingerprint in receipt['reference_sha256'].items():
                 assert Path(reference).is_file() and sha(Path(reference)) == fingerprint, f'{view}: referenced input has changed: {reference}'
-        generation.append(dict(view=view, path=p, width=dimensions[0], height=dimensions[1], receipt=receipt, sha256=sha(p)))
+        generation.append(dict(view=view, path=p, relative_path=str(relative), width=dimensions[0], height=dimensions[1], receipt=receipt, sha256=sha(p)))
     if not allow_pending:
         assert len(generation) == 6 and len({g['sha256'] for g in generation}) == 6, 'Six distinct actual generated images required'
+
+    return generation, missing
+
+
+
+def normalize_model_gallery(model, model_root):
+    """Normalize declared gallery schemas without rewriting executor evidence."""
+    if model.get('schema') != 'actual-model-gallery-v1':
+        return model
+    result = dict(model)
+    items = model.get('items', [])
+    result['simulation'] = [dict(item) for item in items if item.get('kind') == 'actual_mesh_render']
+    result['simulation'].sort(key=lambda item: 0 if item['path'] == 'final/photo-render.png' else 1)
+    result['overlay'] = [dict(item) for item in items if item.get('kind') == 'fixed_final_camera_overlay']
+    result['overlay'].sort(key=lambda item: 0 if '/final/' in item['path'] else 1)
+    for item in result['simulation'] + result['overlay']:
+        relative = Path(item['path'])
+        assert not relative.is_absolute() and (model_root / relative).resolve().is_relative_to(model_root.resolve()), 'Actual gallery path escapes model output'
+    for item in items:
+        if item.get('kind') == 'mesh_measurements':
+            result['measurement_json' if Path(item['path']).suffix == '.json' else 'measurement_csv'] = item['path']
+        elif item.get('kind') == 'state':
+            result['state'] = item['path']
+    if (model_root / 'editor-probe/edited-pose.png').exists():
+        result['simulation'].append(dict(path='editor-probe/edited-pose.png', label='本轮实际 cm/pose 编辑与下载重开', caption='真实导入本轮 final state 后编辑独立副本；不替换最终模型。'))
+    if (model_root / 'guide-registration/source-marker-preview.png').exists():
+        result['overlay'].append(dict(path='guide-registration/source-marker-preview.png', label='本轮示意姿态注册与语义审查', caption='原图未warp；服装表面/关节/未观测点分列，不把示意图当检测真值。'))
+    result['model_files'] = [name for name in ['final/neutral.obj', 'final/posed.obj', 'final/neutral.glb', 'final/posed.glb'] if (model_root / name).is_file()]
+    result['required_files'] = [name for name in ['final/camera.json', 'final/views/camera.json', 'final/views/view-provenance.json', 'final/views/joint-projections.json', 'final/views/depth-valid.png', 'comparison/provenance.json', 'editor-probe/report.json', 'execution.json'] if (model_root / name).is_file()]
+    result['verdict'] = model.get('status', 'ACTUALLY_EXECUTED; independent final acceptance pending')
+    result['notes'] = ['画廊从执行者 actual-model-gallery-v1/items 只作显示协议转换，未改原始索引、模型或输出。初始为旧失败输入，前后均按本轮最终相机投影；不是中性零姿态。', '同一最终真实网格与完整pose驱动多视角，仅相机改变；厘米尺寸由本轮最终neutral实际复量，真人准确度仍未验证。']
+    return result
+
+def build(workspace, site, allow_pending=False):
+    origin = workspace / 'iteration-1'
+    run = origin / 'eval-1-original-product/with_skill/run-1'
+    output = run / 'outputs'
+    metadata = read(run / 'eval_metadata.json')
+    current_hashes = {str(p.relative_to(output)): sha(p) for p in files(output)}
+    grade = read(run / 'grading.json') if (run / 'grading.json').exists() else None
+    complete = grade is not None
+    if complete:
+        assert grade.get('artifact_sha256') == current_hashes, 'Independent grade is stale or lacks full output hash binding'
+        assert [x['text'] for x in grade['expectations']] == metadata['assertions'], 'Independent grade must evaluate frozen end-to-end assertions'
+        assert grade['summary']['total'] == len(metadata['assertions'])
+        assert sum(x['passed'] is True for x in grade['expectations']) == grade['summary']['passed'], 'Grade summary disagrees with actual assertions'
+    elif not allow_pending:
+        raise ValueError('NOT_GRADED: independent grading required; use --allow-pending only for visible preview')
+
+    receipt_path = output / 'generation-receipts.json'
+    receipts = read(receipt_path) if receipt_path.exists() else {}
+    receipts = receipts if isinstance(receipts, list) else receipts.get('images', [])
+    receipts = [normalize_generation_receipt(row) for row in receipts]
+    generation, missing = validate_generation(output, receipts, allow_pending)
 
     # Build in a clean staging directory so rejected builds never overwrite the last review.
     stage = site.with_name(site.name + '-staging')
@@ -187,7 +245,7 @@ def build(workspace, site, allow_pending=False):
     original = ROOT / 'web/garment-body/product-case/reference/original-product.jpg'
     raw = copy(original, 'inputs/original-product.jpg')
     model_index_path = output / 'model-fit/gallery-index.json'
-    model = read(model_index_path) if model_index_path.exists() else {}
+    model = normalize_model_gallery(read(model_index_path), output / 'model-fit') if model_index_path.exists() else {}
     selected = set()
     for key in ['simulation', 'overlay']:
         selected.update('model-fit/' + entry['path'] for entry in model.get(key, []))
@@ -230,7 +288,7 @@ def build(workspace, site, allow_pending=False):
     copy(Path(__file__), 'source/build_full_imagegen_review.py')
     def image_item(relative, label, caption):
         return dict(src=relative, label=label, caption=caption, sha256=sha(stage / relative))
-    gen_images = [image_item('artifacts/images/' + g['view'] + '.png', g['view'], f"本轮实际 Image Gen · {g['width']}×{g['height']} 原生像素；" + ('illustrative：生成示意，非检测器/厘米真值。' if g['view'] in ('pose', 'depth') else '原图与人体引导条件生成；背面未见结构属推断。')) for g in generation]
+    gen_images = [image_item('artifacts/' + g['relative_path'], g['view'], f"本轮实际 Image Gen · {g['width']}×{g['height']} 原生像素；" + ('illustrative：生成示意，非检测器/厘米真值。' if g['view'] in ('pose', 'depth') else '原图与人体引导条件生成；背面未见结构属推断。')) for g in generation]
     def model_items(key):
         result = []
         entries = list(model.get(key, []))

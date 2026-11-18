@@ -1,0 +1,901 @@
+{
+  "title": "Eval Review",
+  "nativePromptVisible": true,
+  "headerFirst": "header",
+  "stages": [
+    {
+      "key": "input",
+      "images": 3,
+      "distinctSources": [
+        "inputs/original-product.jpg",
+        "inputs/current-raw-pose-guide.png"
+      ]
+    },
+    {
+      "key": "imagegen",
+      "images": 7,
+      "distinctSources": [
+        "artifacts/images/attempt-2/front.png",
+        "artifacts/images/attempt-3/side.png",
+        "artifacts/images/back.png",
+        "artifacts/images/attempt-6/closeup.png",
+        "artifacts/images/attempt-2/pose.png",
+        "artifacts/images/attempt-2/depth.png"
+      ]
+    },
+    {
+      "key": "simulation",
+      "images": 9,
+      "distinctSources": [
+        "artifacts/model-fit/final/photo-render.png",
+        "artifacts/model-fit/final/views/front.png",
+        "artifacts/model-fit/final/views/side.png",
+        "artifacts/model-fit/final/views/back.png",
+        "artifacts/model-fit/final/views/closeup.png",
+        "artifacts/model-fit/final/views/pose.png",
+        "artifacts/model-fit/final/views/depth.png",
+        "artifacts/model-fit/editor-probe/edited-pose.png"
+      ]
+    },
+    {
+      "key": "overlay",
+      "images": 4,
+      "distinctSources": [
+        "artifacts/model-fit/comparison/final/overlay-thin.png",
+        "artifacts/model-fit/comparison/initial/overlay-thin.png",
+        "artifacts/model-fit/guide-registration/source-marker-preview.png"
+      ]
+    }
+  ],
+  "allInsideOutput": true,
+  "images": [
+    {
+      "src": "inputs/original-product.jpg",
+      "loaded": true,
+      "native": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "src": "inputs/original-product.jpg",
+      "loaded": true,
+      "native": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "src": "inputs/current-raw-pose-guide.png",
+      "loaded": true,
+      "native": [
+        1110,
+        1417
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/front.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/front.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-3/side.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/back.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-6/closeup.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/pose.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/depth.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/final/photo-render.png",
+      "loaded": true,
+      "native": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/final/photo-render.png",
+      "loaded": true,
+      "native": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/final/views/front.png",
+      "loaded": true,
+      "native": [
+        768,
+        1152
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/final/views/side.png",
+      "loaded": true,
+      "native": [
+        768,
+        1152
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/final/views/back.png",
+      "loaded": true,
+      "native": [
+        768,
+        1152
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/final/views/closeup.png",
+      "loaded": true,
+      "native": [
+        768,
+        1152
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/final/views/pose.png",
+      "loaded": true,
+      "native": [
+        768,
+        1152
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/final/views/depth.png",
+      "loaded": true,
+      "native": [
+        768,
+        1152
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/editor-probe/edited-pose.png",
+      "loaded": true,
+      "native": [
+        1440,
+        1050
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/comparison/final/overlay-thin.png",
+      "loaded": true,
+      "native": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/comparison/final/overlay-thin.png",
+      "loaded": true,
+      "native": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/comparison/initial/overlay-thin.png",
+      "loaded": true,
+      "native": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "src": "artifacts/model-fit/guide-registration/source-marker-preview.png",
+      "loaded": true,
+      "native": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "src": "artifacts/images/front.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/side.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/back.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/closeup.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/pose.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/depth.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/front.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/side.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/pose.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/depth.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-3/side.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-2/closeup.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-4/closeup.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-5/closeup.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "artifacts/images/attempt-6/closeup.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "source/development/merged3-frame-mismatch/side.png",
+      "loaded": true,
+      "native": [
+        768,
+        1152
+      ]
+    },
+    {
+      "src": "source/development/merged5-helper-skin/closeup.png",
+      "loaded": true,
+      "native": [
+        768,
+        1152
+      ]
+    },
+    {
+      "src": "source/visible-projection/generated-back-preflight/fixed-guide-overlay.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "source/visible-projection/generated-front-attempt2/fixed-guide-overlay.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "src": "source/visible-projection/generated-side-attempt3/fixed-guide-overlay.png",
+      "loaded": true,
+      "native": [
+        1024,
+        1536
+      ]
+    }
+  ],
+  "links": [
+    {
+      "text": "本轮前置可见一致性/动作数值协议",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/protocol/acceptance-v1.json"
+    },
+    {
+      "text": "冻结指纹",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/protocol/freeze.json"
+    },
+    {
+      "text": "measurement_json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/model-fit/measurements.model.json"
+    },
+    {
+      "text": "measurement_csv",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/model-fit/measurements.model.csv"
+    },
+    {
+      "text": "state",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/model-fit/final/final-state.json"
+    },
+    {
+      "text": "在 Human Studio 打开本轮最终人体，继续调整厘米尺寸与姿态",
+      "href": "http://127.0.0.1:8967/human-studio/?model=../garment-body/hillclimb-evals/artifacts/model-fit/final/final-state.json"
+    },
+    {
+      "text": "完整本轮 run ZIP · full-run.zip",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/full-run.zip"
+    },
+    {
+      "text": "文件指纹 manifest",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/manifest.json"
+    },
+    {
+      "text": "冻结断言",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/protocol/assertions.json"
+    },
+    {
+      "text": "本轮执行时的完整技能快照",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/skill-executed.zip"
+    },
+    {
+      "text": "快照指纹",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/skill-executed-manifest.json"
+    },
+    {
+      "text": "独立 grader 源码与真实证据",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/independent-grader.zip"
+    },
+    {
+      "text": "实际拟合底层运行时与编辑器源码",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/fit-runtime.zip"
+    },
+    {
+      "text": "运行时逐文件SHA、固定来源提交与复现方法",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/fit-runtime-manifest.json"
+    },
+    {
+      "text": "真实解剖模型资源 human.json",
+      "href": "http://127.0.0.1:8967/human-studio/assets/human.json"
+    },
+    {
+      "text": "body-camera-torso2/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/body-camera-torso2/diagnostic.json"
+    },
+    {
+      "text": "body-merged3/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/body-merged3/diagnostic.json"
+    },
+    {
+      "text": "body-merged5/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/body-merged5/diagnostic.json"
+    },
+    {
+      "text": "body-merged5/terminal-finger-contacts.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/body-merged5/terminal-finger-contacts.json"
+    },
+    {
+      "text": "body-merged6/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/body-merged6/diagnostic.json"
+    },
+    {
+      "text": "body-merged6/manual-preflight.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/body-merged6/manual-preflight.json"
+    },
+    {
+      "text": "body-merged6-terminal.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/body-merged6-terminal.json"
+    },
+    {
+      "text": "fresh-editor-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/fresh-editor-audit.json"
+    },
+    {
+      "text": "fresh-model/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/fresh-model/diagnostic.json"
+    },
+    {
+      "text": "fresh-model/geometry-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/fresh-model/geometry-audit.json"
+    },
+    {
+      "text": "fresh-model/source-wrist-residuals.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/fresh-model/source-wrist-residuals.json"
+    },
+    {
+      "text": "fresh-model-terminal.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/fresh-model-terminal.json"
+    },
+    {
+      "text": "generated-back-preflight/anchor-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-back-preflight/anchor-audit.json"
+    },
+    {
+      "text": "generated-back-preflight/anchors.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-back-preflight/anchors.json"
+    },
+    {
+      "text": "generated-back-preflight/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-back-preflight/mask-audit.json"
+    },
+    {
+      "text": "generated-closeup-attempt2/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-closeup-attempt2/mask-audit.json"
+    },
+    {
+      "text": "generated-closeup-attempt4/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-closeup-attempt4/mask-audit.json"
+    },
+    {
+      "text": "generated-closeup-attempt6/crop-anchor-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-closeup-attempt6/crop-anchor-audit.json"
+    },
+    {
+      "text": "generated-closeup-attempt6/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-closeup-attempt6/mask-audit.json"
+    },
+    {
+      "text": "generated-closeup-preflight/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-closeup-preflight/mask-audit.json"
+    },
+    {
+      "text": "generated-front-attempt2/anchor-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-front-attempt2/anchor-audit.json"
+    },
+    {
+      "text": "generated-front-attempt2/anchors.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-front-attempt2/anchors.json"
+    },
+    {
+      "text": "generated-front-attempt2/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-front-attempt2/mask-audit.json"
+    },
+    {
+      "text": "generated-front-preflight/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-front-preflight/mask-audit.json"
+    },
+    {
+      "text": "generated-pose-attempt2/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-pose-attempt2/mask-audit.json"
+    },
+    {
+      "text": "generated-side-attempt2/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-side-attempt2/mask-audit.json"
+    },
+    {
+      "text": "generated-side-attempt3/anchor-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-side-attempt3/anchor-audit.json"
+    },
+    {
+      "text": "generated-side-attempt3/anchors-initial-manual-feet.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-side-attempt3/anchors-initial-manual-feet.json"
+    },
+    {
+      "text": "generated-side-attempt3/anchors.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-side-attempt3/anchors.json"
+    },
+    {
+      "text": "generated-side-attempt3/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-side-attempt3/mask-audit.json"
+    },
+    {
+      "text": "generated-side-preflight/mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-side-preflight/mask-audit.json"
+    },
+    {
+      "text": "generated-visible/anchors.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-visible/anchors.json"
+    },
+    {
+      "text": "generated-visible/audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-visible/audit.json"
+    },
+    {
+      "text": "grasp-controls/actual-hand-vertices-plus15cm/audit/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/audit/diagnostic.json"
+    },
+    {
+      "text": "grasp-controls/actual-hand-vertices-plus15cm/camera.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/camera.json"
+    },
+    {
+      "text": "grasp-controls/actual-hand-vertices-plus15cm/final-state.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/final-state.json"
+    },
+    {
+      "text": "grasp-controls/actual-thumb-joint-open/audit/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-thumb-joint-open/audit/diagnostic.json"
+    },
+    {
+      "text": "grasp-controls/actual-thumb-joint-open/camera.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-thumb-joint-open/camera.json"
+    },
+    {
+      "text": "grasp-controls/actual-thumb-joint-open/final-state.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-thumb-joint-open/final-state.json"
+    },
+    {
+      "text": "grasp-controls/actual-wrist-supination/audit/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-wrist-supination/audit/diagnostic.json"
+    },
+    {
+      "text": "grasp-controls/actual-wrist-supination/camera.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-wrist-supination/camera.json"
+    },
+    {
+      "text": "grasp-controls/actual-wrist-supination/final-state.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-wrist-supination/final-state.json"
+    },
+    {
+      "text": "grasp-controls/results.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/results.json"
+    },
+    {
+      "text": "grip-round2/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grip-round2/diagnostic.json"
+    },
+    {
+      "text": "native-image-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/native-image-audit.json"
+    },
+    {
+      "text": "negative-controls/narrow-pelvis-x20percent/audit/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/narrow-pelvis-x20percent/audit/diagnostic.json"
+    },
+    {
+      "text": "negative-controls/narrow-pelvis-x20percent/camera.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/narrow-pelvis-x20percent/camera.json"
+    },
+    {
+      "text": "negative-controls/narrow-pelvis-x20percent/final-state.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/narrow-pelvis-x20percent/final-state.json"
+    },
+    {
+      "text": "negative-controls/pelvis-plus10cm/audit/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/pelvis-plus10cm/audit/diagnostic.json"
+    },
+    {
+      "text": "negative-controls/pelvis-plus10cm/camera.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/pelvis-plus10cm/camera.json"
+    },
+    {
+      "text": "negative-controls/pelvis-plus10cm/final-state.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/pelvis-plus10cm/final-state.json"
+    },
+    {
+      "text": "negative-controls/results.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/results.json"
+    },
+    {
+      "text": "pose-depth-attempt2/alignment-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/pose-depth-attempt2/alignment-audit.json"
+    },
+    {
+      "text": "raw-guide/registration-audit-initial-semantics.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/raw-guide/registration-audit-initial-semantics.json"
+    },
+    {
+      "text": "raw-guide/registration-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/raw-guide/registration-audit.json"
+    },
+    {
+      "text": "wrapper-probe2/diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/wrapper-probe2/diagnostic.json"
+    },
+    {
+      "text": "wrapper-probe2/geometry-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/wrapper-probe2/geometry-audit.json"
+    },
+    {
+      "text": "wrapper-probe2-terminal.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/wrapper-probe2-terminal.json"
+    },
+    {
+      "text": "实际arm审查代码、原图、独立报告及通用CLI真实验证证据",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/arm-surface-audit.zip"
+    },
+    {
+      "text": "后续通用语义渲染CLI源码",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/render_semantic_view.py"
+    },
+    {
+      "text": "本轮 fresh case 输入包（旧失败初态、原图、新姿态引导/receipt、手工标记与协议）",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/case-inputs.zip"
+    },
+    {
+      "text": "输入指纹",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/case-inputs-manifest.json"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/front.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/side.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/back.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/closeup.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/pose.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/depth.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-2/front.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-2/side.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-2/pose.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-2/depth.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-3/side.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-2/closeup.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-4/closeup.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-5/closeup.png"
+    },
+    {
+      "text": "原生文件",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-6/closeup.png"
+    },
+    {
+      "text": "真实工具receipt",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/images/attempt-3/closeup.blocked-receipt.json"
+    },
+    {
+      "text": "diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/development/merged3-frame-mismatch/diagnostic.json"
+    },
+    {
+      "text": "view-provenance.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/development/merged3-frame-mismatch/view-provenance.json"
+    },
+    {
+      "text": "diagnostic.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/development/merged5-helper-skin/diagnostic.json"
+    },
+    {
+      "text": "terminal-finger-contacts.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/development/merged5-helper-skin/terminal-finger-contacts.json"
+    },
+    {
+      "text": "view-provenance.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/development/merged5-helper-skin/view-provenance.json"
+    },
+    {
+      "text": "mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-back-preflight/mask-audit.json"
+    },
+    {
+      "text": "anchor-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-back-preflight/anchor-audit.json"
+    },
+    {
+      "text": "anchors.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-back-preflight/anchors.json"
+    },
+    {
+      "text": "mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-front-attempt2/mask-audit.json"
+    },
+    {
+      "text": "anchor-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-front-attempt2/anchor-audit.json"
+    },
+    {
+      "text": "anchors.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-front-attempt2/anchors.json"
+    },
+    {
+      "text": "mask-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-side-attempt3/mask-audit.json"
+    },
+    {
+      "text": "anchor-audit.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-side-attempt3/anchor-audit.json"
+    },
+    {
+      "text": "anchors.json",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/visible-projection/generated-side-attempt3/anchors.json"
+    },
+    {
+      "text": "当前 selected 正/侧/背锚点联合审计",
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/generated-visible/audit.json"
+    },
+    {
+      "text": "Download",
+      "href": "data:text/plain;charset=utf-8,Full%20end-to-end%20candidate%20acceptance.%20See%20source-bound%20image%20gallery%20in%20this%20Output.%20N%3D1%3B%20no%20old%2Fnew%20performance%20comparison.%0A"
+    }
+  ],
+  "feedback": true,
+  "grades": true,
+  "benchmark": true,
+  "errors": [],
+  "http": 200,
+  "downloadReadbacks": [
+    {
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/model-fit/measurements.model.json",
+      "status": 200,
+      "bytes": 38342,
+      "sha256": "dca7635d60c6884da6fad63ca1f43ca934e1ffad26d85cb00202350026b68e04",
+      "actual_waist_cm": 71.00000241615076,
+      "primary_count": 12
+    },
+    {
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/model-fit/measurements.model.csv",
+      "status": 200,
+      "bytes": 1744,
+      "sha256": "1f92857e920bfc62a26dd6bd3cad21d9e3484d7f798ac90adb44c08256370171",
+      "csv_header": "name,label,value_cm,unit,basis,method,body_parameter_target_cm,input_target_delta_cm,mesh_checked,person_accuracy_verified",
+      "csv_rows": 12
+    },
+    {
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/artifacts/model-fit/final/final-state.json",
+      "status": 200,
+      "bytes": 11190,
+      "sha256": "cc78d1e35f89bbef015e0cb3c401964ab2f964c3aebe59d0db0156dbef38e825"
+    },
+    {
+      "href": "http://127.0.0.1:8967/human-studio/?model=../garment-body/hillclimb-evals/artifacts/model-fit/final/final-state.json",
+      "status": 200,
+      "bytes": 5592,
+      "sha256": "7d478a56d2614949438ed8401d3fb1e5e76769a30e5aa6478c3aa1018708f112"
+    },
+    {
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/final-state.json",
+      "status": 200,
+      "bytes": 11190,
+      "sha256": "a59da8a5021e6bbe9221c1dcfb649b5d11d455e8a2e5dbf834d7ba4e8718fcb4"
+    },
+    {
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-thumb-joint-open/final-state.json",
+      "status": 200,
+      "bytes": 11191,
+      "sha256": "4ed4c12459bc83f8c356684c63348198b11fb1fa0af8add19e8cb4b18914d46f"
+    },
+    {
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/grasp-controls/actual-wrist-supination/final-state.json",
+      "status": 200,
+      "bytes": 11191,
+      "sha256": "30c3e1cf0e9294c6dc1c63844c9ed3b3a05a4a7bb2d4d402cd542fc071033cc8"
+    },
+    {
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/narrow-pelvis-x20percent/final-state.json",
+      "status": 200,
+      "bytes": 11169,
+      "sha256": "2e9ab0c9625a6d2c26755eb25c33271d82a973bbd62733a24309571935f2d7d9"
+    },
+    {
+      "href": "http://127.0.0.1:8967/garment-body/hillclimb-evals/source/grader-evidence/negative-controls/pelvis-plus10cm/final-state.json",
+      "status": 200,
+      "bytes": 11169,
+      "sha256": "2e9ab0c9625a6d2c26755eb25c33271d82a973bbd62733a24309571935f2d7d9"
+    }
+  ],
+  "functionalContractPass": true
+}

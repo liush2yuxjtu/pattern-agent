@@ -1,0 +1,186 @@
+{
+  "scope": "Closeup fixed crop/gesture consistency against same clothed photographed front2, independently passed against avatar in its fullbody view; not exact face mesh identity or latent3D proof",
+  "image_sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+  "source_front2_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+  "camera_reference_sha256": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527",
+  "camera_reference_pixel_reproduction_exact": true,
+  "source_to_closeup_matrix_frozen_before_generation": [
+    [
+      2.5,
+      0.0,
+      -768.0
+    ],
+    [
+      0.0,
+      2.5,
+      -332.0
+    ]
+  ],
+  "not_posthoc_image_registration": true,
+  "points": [
+    {
+      "id": "eye_image_left",
+      "source_front2_xy": [
+        461,
+        186
+      ],
+      "expected_closeup_xy": [
+        384.5,
+        133.0
+      ],
+      "observed_native_closeup_xy": [
+        372,
+        158
+      ],
+      "error_px": 27.95084971874737,
+      "error_fraction_height": 0.01819716778564282,
+      "semantic": "visible eye centre, same photographed identity not generic-avatar eye anatomy",
+      "observations": "Independently digitized actual images/crops;approx4\u20138px. No uncertainty subtracted or image refit."
+    },
+    {
+      "id": "eye_image_right",
+      "source_front2_xy": [
+        512,
+        180
+      ],
+      "expected_closeup_xy": [
+        512.0,
+        118.0
+      ],
+      "observed_native_closeup_xy": [
+        493,
+        141
+      ],
+      "error_px": 29.832867780352597,
+      "error_fraction_height": 0.019422439961167055,
+      "semantic": "visible eye centre",
+      "observations": "Independently digitized actual images/crops;approx4\u20138px. No uncertainty subtracted or image refit."
+    },
+    {
+      "id": "wrist_image_left",
+      "source_front2_xy": [
+        479,
+        554
+      ],
+      "expected_closeup_xy": [
+        429.5,
+        1053.0
+      ],
+      "observed_native_closeup_xy": [
+        440,
+        1070
+      ],
+      "error_px": 19.981241202688086,
+      "error_fraction_height": 0.013008620574666722,
+      "semantic": "visible skin wrist/hand transition, approximate",
+      "observations": "Independently digitized actual images/crops;approx4\u20138px. No uncertainty subtracted or image refit."
+    },
+    {
+      "id": "wrist_image_right",
+      "source_front2_xy": [
+        681,
+        542
+      ],
+      "expected_closeup_xy": [
+        934.5,
+        1023.0
+      ],
+      "observed_native_closeup_xy": [
+        947,
+        1039
+      ],
+      "error_px": 20.303940504246953,
+      "error_fraction_height": 0.013218711265785776,
+      "semantic": "visible skin wrist/hand transition, approximate",
+      "observations": "Independently digitized actual images/crops;approx4\u20138px. No uncertainty subtracted or image refit."
+    },
+    {
+      "id": "left_low_elbow",
+      "source_front2_xy": [
+        388,
+        568
+      ],
+      "expected_closeup_xy": [
+        202.0,
+        1088.0
+      ],
+      "observed_native_closeup_xy": [
+        212,
+        1100
+      ],
+      "error_px": 15.620499351813308,
+      "error_fraction_height": 0.010169595932170122,
+      "semantic": "visible low sleeve elbow-bend shape centre, approximate; high elbow outside crop remainsNOT_OBSERVED",
+      "observations": "Independently digitized actual images/crops;approx4\u20138px. No uncertainty subtracted or image refit."
+    },
+    {
+      "id": "held_hem_image_left",
+      "source_front2_xy": [
+        569,
+        539
+      ],
+      "expected_closeup_xy": [
+        654.5,
+        1015.5
+      ],
+      "observed_native_closeup_xy": [
+        650,
+        1014
+      ],
+      "error_px": 4.743416490252569,
+      "error_fraction_height": 0.003088161777508183,
+      "semantic": "visible held lower-hem fold location proxy, not hidden anatomical fingertip contact truth",
+      "observations": "Independently digitized actual images/crops;approx4\u20138px. No uncertainty subtracted or image refit."
+    },
+    {
+      "id": "held_hem_image_right",
+      "source_front2_xy": [
+        596,
+        545
+      ],
+      "expected_closeup_xy": [
+        722.0,
+        1030.5
+      ],
+      "observed_native_closeup_xy": [
+        708,
+        1024
+      ],
+      "error_px": 15.435349040433131,
+      "error_fraction_height": 0.01004905536486532,
+      "semantic": "visible held lower-hem fold location proxy, not hidden anatomical fingertip contact truth",
+      "observations": "Independently digitized actual images/crops;approx4\u20138px. No uncertainty subtracted or image refit."
+    },
+    {
+      "id": "front_neckline_trim",
+      "source_front2_xy": [
+        533,
+        321
+      ],
+      "expected_closeup_xy": [
+        564.5,
+        470.5
+      ],
+      "observed_native_closeup_xy": [
+        574,
+        471
+      ],
+      "error_px": 9.513148795220223,
+      "error_fraction_height": 0.006193456246888166,
+      "semantic": "visible same garment red/green front neckline trim centre",
+      "observations": "Independently digitized actual images/crops;approx4\u20138px. No uncertainty subtracted or image refit."
+    }
+  ],
+  "mean_error_fraction_height": 0.01166840111358677,
+  "max_error_fraction_height": 0.019422439961167055,
+  "inherited_normalized_point_tolerances": {
+    "mean": 0.015,
+    "max": 0.025
+  },
+  "point_consistency_pass": true,
+  "manual_product_action": {
+    "passed": true,
+    "evidence": "Actually viewed nativecloseup6: both hands hold actual lifted lower shirt edge, no wrong extra panel down to trouserwaist asattempt4/5; same opaque red pointelle top/necktrim and trousers. Normal original commercial clothing state restored. Real detail imagegen native output, analytical crop served input only.",
+    "limits": "Hidden rear garment/true body sizes not observed; knit microstructure is generative. This is not physical cloth contact simulation."
+  }
+}

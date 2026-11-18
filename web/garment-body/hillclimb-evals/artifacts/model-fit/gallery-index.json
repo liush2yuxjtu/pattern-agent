@@ -1,0 +1,78 @@
+{
+  "schema": "actual-model-gallery-v1",
+  "items": [
+    {
+      "label": "Original source photo",
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "kind": "reference"
+    },
+    {
+      "label": "Final same-state real front",
+      "path": "final/views/front.png",
+      "kind": "actual_mesh_render"
+    },
+    {
+      "label": "Final same-state real side",
+      "path": "final/views/side.png",
+      "kind": "actual_mesh_render"
+    },
+    {
+      "label": "Final same-state real back",
+      "path": "final/views/back.png",
+      "kind": "actual_mesh_render"
+    },
+    {
+      "label": "Final same-state real closeup",
+      "path": "final/views/closeup.png",
+      "kind": "actual_mesh_render"
+    },
+    {
+      "label": "Final same-state real pose",
+      "path": "final/views/pose.png",
+      "kind": "actual_mesh_render"
+    },
+    {
+      "label": "Final same-state real depth",
+      "path": "final/views/depth.png",
+      "kind": "actual_mesh_render"
+    },
+    {
+      "label": "initial old failed input vs final camera overlay",
+      "path": "comparison/initial/overlay-thin.png",
+      "kind": "fixed_final_camera_overlay"
+    },
+    {
+      "label": "final old failed input vs final camera overlay",
+      "path": "comparison/final/overlay-thin.png",
+      "kind": "fixed_final_camera_overlay"
+    },
+    {
+      "label": "Original camera final mesh",
+      "path": "final/photo-render.png",
+      "kind": "actual_mesh_render"
+    },
+    {
+      "label": "12 actual neutral mesh measurements",
+      "path": "measurements.model.json",
+      "kind": "mesh_measurements"
+    },
+    {
+      "label": "Model measurements CSV",
+      "path": "measurements.model.csv",
+      "kind": "mesh_measurements"
+    },
+    {
+      "label": "Adjustable state",
+      "path": "final/final-state.json",
+      "kind": "state"
+    },
+    {
+      "label": "Independent actual editor probe",
+      "path": "editor-probe",
+      "kind": "independent_probe",
+      "status": "Owned by hc_skill_review; not overwritten"
+    }
+  ],
+  "fixed_camera_comparison": "comparison/provenance.json",
+  "status": "ACTUALLY_EXECUTED; independent final acceptance not inferred"
+}

@@ -1,0 +1,24 @@
+{
+  "verdict": "FAIL",
+  "error": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-stage=\"overlay\"] .evidence-image img')\u001b[22m\n\n    at /workspace/work/pattern-agent/tools/skill_evals/verify_hillclimb_review.cjs:41:401",
+  "checks": [
+    "Actual review HTTP200",
+    "Single actual candidate acceptance, no fabricated paired comparison",
+    "Official header remains primary first element",
+    "Native Prompt visible",
+    "Gallery only inside native Output",
+    "No custom shell or case navigation",
+    "Native grades and feedback section parents preserved",
+    "Historical Previous Output is genuinely loaded by pinned upstream",
+    "Previous context is explicitly reused, not fabricated new baseline",
+    "Four exact full-workflow stages",
+    "Actual raw image visible",
+    "All actual gallery images decode",
+    "Pending explicitly visible",
+    "Scope truth and native trigger limitation visible",
+    "Four-stage screenshot actually contains gallery top"
+  ],
+  "errors": [],
+  "broken": [],
+  "writes": []
+}

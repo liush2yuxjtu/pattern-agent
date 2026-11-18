@@ -1,0 +1,128 @@
+{
+  "same_validator_controls": [
+    {
+      "id": "pelvis-actual-vertices-shift-plus10cm",
+      "positive_region_gate": true,
+      "mutant_region_gate": false,
+      "rejected": true,
+      "affected_regions": {
+        "waist_hip_right": {
+          "body_pixels": 106431,
+          "outside_fraction": 0.37981415189183604,
+          "p95_px": 120.54853057861328,
+          "passed": false
+        }
+      },
+      "note": "Geometry-correspondence also fails, but target regional gate is independently evaluated and rejects; original pose source untouched."
+    },
+    {
+      "id": "pelvis-actual-vertices-narrow20percent",
+      "positive_region_gate": true,
+      "mutant_region_gate": false,
+      "rejected": true,
+      "scanline_failures": {
+        "950": {
+          "body_span": [
+            218,
+            404
+          ],
+          "reference_span": [
+            102,
+            502
+          ],
+          "center_error_px": 9.0,
+          "width_ratio": 0.465,
+          "passed": false
+        },
+        "1000": {
+          "body_span": [
+            213,
+            403
+          ],
+          "reference_span": [
+            92,
+            507
+          ],
+          "center_error_px": 8.5,
+          "width_ratio": 0.4578313253012048,
+          "passed": false
+        },
+        "1100": {
+          "body_span": [
+            200,
+            385
+          ],
+          "reference_span": [
+            81,
+            524
+          ],
+          "center_error_px": 10.0,
+          "width_ratio": 0.417607223476298,
+          "passed": false
+        },
+        "1200": {
+          "body_span": [
+            190,
+            376
+          ],
+          "reference_span": [
+            77,
+            565
+          ],
+          "center_error_px": 38.0,
+          "width_ratio": 0.38114754098360654,
+          "passed": false
+        }
+      },
+      "note": "Inherited scanline width gate detects shrink-to-containment; not credited from unrelated wholemesh failure."
+    },
+    {
+      "id": "side-only-anchor-plus6percentH",
+      "positive_pass": true,
+      "mutant_pass": false,
+      "rejected": true,
+      "affected": {
+        "observed_anchors": 10,
+        "mean_error_fraction_height": 0.006,
+        "max_error_fraction_height": 0.06,
+        "limb_angles": [
+          {
+            "pair": [
+              "0",
+              "1"
+            ],
+            "angle_deg": 0.0
+          },
+          {
+            "pair": [
+              "2",
+              "3"
+            ],
+            "angle_deg": 25.34617594194669
+          },
+          {
+            "pair": [
+              "4",
+              "5"
+            ],
+            "angle_deg": 0.0
+          },
+          {
+            "pair": [
+              "6",
+              "7"
+            ],
+            "angle_deg": 0.0
+          }
+        ],
+        "passed": false,
+        "reasons": [
+          "One observed anchor drift exceeds2.5% imageheight",
+          "Observed limb direction exceeds12deg"
+        ]
+      },
+      "note": "Analytic annotation control, not a generated photo or detector result."
+    }
+  ],
+  "all_controls_reject": true
+}

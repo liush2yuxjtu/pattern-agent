@@ -1,0 +1,28 @@
+{
+  "same_final_state_all_fields": true,
+  "same_actual_posed_obj_bytes": true,
+  "all_views_same_pose_mesh": true,
+  "view_names": [
+    "front",
+    "side",
+    "back",
+    "closeup",
+    "pose",
+    "depth"
+  ],
+  "finalmask_exact_pixels": true,
+  "initialmask_exact_pixels": true,
+  "initialposed_reconstruction_max_cm": 5.0181834741803525e-09,
+  "camera": "Same fixed final source-camera matrix for independently rasterized initial/final; no imagewarp. Real front/side/back/closeup vary camera only. Side u+Z/depth+X is horizontal reflection of physical+X view; nearL visibility preserved, disclosed by independent arm audit.",
+  "initial": {
+    "iou": 0.7556332813309177,
+    "outside_fraction": 0.08284068857344828
+  },
+  "final": {
+    "iou": 0.8469810679022579,
+    "outside_fraction": 0.015012502136692678
+  },
+  "posed_mesh_sha256": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+  "state_sha256": "cc78d1e35f89bbef015e0cb3c401964ab2f964c3aebe59d0db0156dbef38e825",
+  "actual_source_photo_sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+}

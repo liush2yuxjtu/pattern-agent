@@ -1,0 +1,25 @@
+{
+  "schema": "fresh-executor-trace-v1",
+  "started_from": "case-inputs/initial-failed-state.json",
+  "actual_wrapper_command": "python work/full-imagegen-hillclimb-20261118/skill-executed/scripts/run_model_fit.py --case work/full-imagegen-hillclimb-20261118/case-inputs/case.json --repo-root /workspace/work/pattern-agent --out work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit",
+  "tool_session": 11933,
+  "wrapper_exit_code": 0,
+  "wrapper_sha256": "af476854146450dcce2f8db7cc5a588e694b19df7696b375d85294d83f3b6a83",
+  "execution_manifest": "model-fit/execution.json",
+  "actually_viewed": [
+    "case-inputs/original-product.jpg",
+    "model-fit/guide-registration/source-marker-preview.png",
+    "model-fit/final/photo-render.png",
+    "model-fit/final/views/front.png",
+    "model-fit/final/views/side.png",
+    "model-fit/final/views/back.png",
+    "model-fit/final/views/closeup.png"
+  ],
+  "generation": "EXECUTION_COMPLETE:16 actual executor image_gen.imagegen calls;15native outputs+1closeup3 output moderation rejection. Selectedfront2/side3/back1/closeup6/pose2/depth2 independently preflight accepted per messages. All history retained. Root rawguide separate current call.",
+  "visual_notes": "Five final renders actually inspected: original-camera torso and hand placement, front fullbody lean with flexed arms and pinching hands; side shows hands anterior to torso, back preserves tilt and asymmetric elbows. Finger contact geometry and hidden3D remain subject to independent preflight. Lower legs and feet completion is prior. No cloth simulation was run.",
+  "verdict": "EXECUTED; independent acceptance pending; not automatic PASS",
+  "timestamp": "2026-11-18T08:56:59.402199+00:00",
+  "comparison": "ACTUALLY_EXECUTED original case failed posed state reconstructed and final saved OBJ projected at same final photo camera1000x1276; comparison provenance+OpenCV metrics/overlays.",
+  "formal_grading": "../grading.json; independent13-semantic verdict external, not executor allPASS",
+  "frozen_utc": "2026-11-18T09:46:57.722214+00:00"
+}

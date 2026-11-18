@@ -1,0 +1,37 @@
+{
+  "source_commit": "cf2c367ba3f138d9ab71c9356a48a8570130d624",
+  "files": {
+    "tools/human_fit/pose_guided/README.md": "89d633f8db3c5035667792c49e3731a12cb4472afe3c50f2b6bb6090467855f6",
+    "tools/human_fit/pose_guided/calibrate-worker.mjs": "1f9e3d197cf952a163f2cc22269bb81f4aeb016f746b7d849454b1a7eaae6994",
+    "tools/human_fit/pose_guided/check_hand_surface.py": "204f78d4846a61ea7f62c8832ba4607ab8faa3bf4bc27636e42e32746f6219e7",
+    "tools/human_fit/pose_guided/export_evidence.py": "91bce769331c08eaebd79e76627276363ab865f907df8eb01dd432ccd861a76e",
+    "tools/human_fit/pose_guided/fit.py": "0f6a395a9461318020a17279f646821555121968989bdfb68e20f1fe26f7784c",
+    "tools/human_fit/pose_guided/fit_grip.py": "58d733f5b13b3bad22946ceb1237761f706a77ef60925aa19af8c571d6303a04",
+    "tools/human_fit/pose_guided/refine_body_envelope.py": "ccbf3b71d42bc1bb3894f01aa875fded5f8b1abf990f13f0c2d9391ffe436d46",
+    "tools/human_fit/pose_guided/render_mesh.py": "fda6173c981a713b903a58f1e2104425241b370091eaa48dc94d6e87a0c23f4d",
+    "tools/human_fit/pose_guided/render_semantic_view.py": "13eb5ca57269b7db6e5c1fa215e31069eacb4c6c3cb396c8705f5d4d6067e776",
+    "tools/human_fit/pose_guided/requirements.txt": "08ed9f1e2132f749083564649f13824f7a8d5ce5b7caa12ff87659b9c2ca8993",
+    "tools/human_fit/pose_guided/runtime.py": "a11548669084698fb573765a2fd039662d015e7966c475554c2b8c079739d8bf",
+    "tools/human_fit/verify_measurement_export.cjs": "e8b691d464652b77861abc1b0a63477a72a78f342782716969b723e059ede0d7",
+    "web/human-studio/README.md": "778a941257f9a1903acc98a3eb67ae99e6c6afe14a3b56b6e9020f40161c6816",
+    "web/human-studio/app.js": "c1ab4953f311d1ce62ca786a805fccd52570a05ef32174521d8357798a3b867a",
+    "web/human-studio/body-engine.js": "311de96371b2eefb795ab013f4e79ee4cc0d2b3ac271f6121c18ebb7589b12a3",
+    "web/human-studio/index.html": "7d478a56d2614949438ed8401d3fb1e5e76769a30e5aa6478c3aa1018708f112",
+    "web/human-studio/state-contract.js": "32974da0859d9aa03a837d9fd385b3438f02bd8b572b2ce57f594e69ea667c9e",
+    "web/human-studio/style.css": "7a4650c257fe2a401e35ad1b47bff335488656283044ef18a50bab1db1c607bd",
+    "web/human-studio/vendor/GLTFExporter.js": "e7c29444454eb321b39e4c8b3062944f4fd5299a0e7483e9cb8c0594cdec829f",
+    "web/human-studio/vendor/OrbitControls.js": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c",
+    "web/human-studio/vendor/SkeletonUtils.js": "0761b1e003917b215d25dd81439d854b36034b5a57ce84c2cfe3b02428d7b253",
+    "web/human-studio/vendor/THREE-LICENSE.txt": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+    "web/human-studio/vendor/provenance.json": "48f11c56712b1beb41691d39a2edfeb93d63147cbefca0583f11c4299845bda4",
+    "web/human-studio/vendor/three.core.js": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
+    "web/human-studio/vendor/three.module.js": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+  },
+  "external_asset": {
+    "href": "../../human-studio/assets/human.json",
+    "repo_path": "web/human-studio/assets/human.json",
+    "sha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "bytes": 3924497
+  },
+  "replay": "Restore full-run ZIP at its original workspace relative path, extract fit-runtime.zip at repository root, restore executed skill from skill-executed.zip, obtain human.json and verify SHA, then follow model-fit/REPORT.md. Python requirements are in tools/human_fit/pose_guided/requirements.txt; editor probe needs Playwright and Chromium."
+}

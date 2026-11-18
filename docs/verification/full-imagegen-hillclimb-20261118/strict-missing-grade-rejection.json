@@ -1,0 +1,7 @@
+{
+  "command": "python tools/skill_evals/build_hillclimb_review.py",
+  "exit": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"/workspace/work/pattern-agent/tools/skill_evals/build_hillclimb_review.py\", line 144, in <module>\n    print(json.dumps(build(args.workspace, args.site, args.allow_pending)))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/work/pattern-agent/tools/skill_evals/build_hillclimb_review.py\", line 74, in build\n    result = full.build(workspace, site, allow_pending=allow_pending)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/work/pattern-agent/tools/skill_evals/build_full_imagegen_review.py\", line 133, in build\n    raise ValueError('NOT_GRADED: independent grading required; use --allow-pending only for visible preview')\nValueError: NOT_GRADED: independent grading required; use --allow-pending only for visible preview\n",
+  "published_manifest_unchanged": true,
+  "sha256": "e1f3865ad8809ea20e5a981ad85c0699966f07026305d86fd804a53f01b745b9"
+}

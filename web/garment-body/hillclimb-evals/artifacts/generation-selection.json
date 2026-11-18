@@ -1,0 +1,113 @@
+{
+  "schema": "generation-selection-v1",
+  "selected": {
+    "front": "images/attempt-2/front.png",
+    "side": "images/attempt-3/side.png",
+    "back": "images/back.png",
+    "closeup": "images/attempt-6/closeup.png",
+    "pose": "images/attempt-2/pose.png",
+    "depth": "images/attempt-2/depth.png"
+  },
+  "attempts": [
+    {
+      "view": "front",
+      "path": "images/front.png",
+      "status": "REJECTED",
+      "reason": "Independent grader reported fixed4/3 bodyoutside10.586% >8%; P9519.77px within limit."
+    },
+    {
+      "view": "side",
+      "path": "images/side.png",
+      "status": "REJECTED",
+      "reason": "Independent grader reported bodyoutside25.702% >8%; P9546.13px=3.0%height >2%height."
+    },
+    {
+      "view": "back",
+      "path": "images/back.png",
+      "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+      "reason": "Independent grader:8 visible approximate anchors passed; unseen structure remains prior."
+    },
+    {
+      "view": "closeup",
+      "path": "images/closeup.png",
+      "status": "REJECTED",
+      "reason": "Independent grader message:fixed-guide→native outside12.865%,P9571.36px=4.646%H; left wrist approx(300,1060)vsrig(455,1050),eyes60px lower; samecrop camera not retained."
+    },
+    {
+      "view": "pose",
+      "path": "images/pose.png",
+      "status": "SUPERSEDED",
+      "reason": "Depends on rejected first front; preserved unchanged as history."
+    },
+    {
+      "view": "depth",
+      "path": "images/depth.png",
+      "status": "SUPERSEDED",
+      "reason": "Depends on rejected first front; preserved unchanged as history."
+    },
+    {
+      "view": "front",
+      "path": "images/attempt-2/front.png",
+      "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+      "reason": "Independent grader:10 visible approximate anchors mean.598%H/max.908%H; directions6.05/1.78deg; outside2.235%,P957px."
+    },
+    {
+      "view": "side",
+      "path": "images/attempt-2/side.png",
+      "status": "REJECTED",
+      "reason": "Independent actual visible nearL sleeve-elbow bend approx(541,481),86px5.6%H from actual surface(621,449), exceeds2.5%H; generated diagonal forearm instead of near-vertical."
+    },
+    {
+      "view": "pose",
+      "path": "images/attempt-2/pose.png",
+      "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+      "reason": "Root and independent grader message:front2 silhouette/frame and illustrative node semantics preflight through."
+    },
+    {
+      "view": "depth",
+      "path": "images/attempt-2/depth.png",
+      "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+      "reason": "Root and independent grader message:front2 silhouette/frame illustrative depth preflight through."
+    },
+    {
+      "view": "side",
+      "path": "images/attempt-3/side.png",
+      "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+      "reason": "Independent grader:9visibleanchors mean1.309%H/max2.007%H; armangles0.6/3.91deg; outside7.9543%,P9524.18px."
+    },
+    {
+      "view": "closeup",
+      "path": "images/attempt-2/closeup.png",
+      "status": "REJECTED",
+      "reason": "Independent grader message:fullmaskP95.02513H>frozen.02H,body/arms43.59px and lowtorso41.11px. Eyes31/35px,wrists22/18px deviations. Head regionP950 so error not hair."
+    },
+    {
+      "view": "closeup",
+      "path": null,
+      "receipt": "images/attempt-3/closeup.blocked-receipt.json",
+      "status": "BLOCKED_NO_OUTPUT",
+      "reason": "Actual ImageGen output moderation_blocked sexual; request76529cb7-6a9b-414d-b85b-23e1ef9f0d27; no native file produced."
+    },
+    {
+      "view": "closeup",
+      "path": "images/attempt-4/closeup.png",
+      "status": "REJECTED",
+      "reason": "Root independently reports geometry pass outside2.2315%,P9525.78px, but original hem-lifting action fails: fabric panel still reaches waistband."
+    },
+    {
+      "view": "closeup",
+      "path": "images/attempt-5/closeup.png",
+      "status": "REJECTED",
+      "reason": "Executor/root visual observation: lower long panel still reaches waistband, original held lower hem action not restored; file retained."
+    },
+    {
+      "view": "closeup",
+      "path": "images/attempt-6/closeup.png",
+      "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+      "reason": "Independent grader:held lowerhem restored; outside1.539%,P9518px=.01172H; knowncamera crop8visibleanchors mean1.167%H/max1.942%H; independent crop reference exact, final native not crop."
+    }
+  ],
+  "status": "EXECUTION_COMPLETE; selected6 independently preflight accepted by grader messages; formal13-semantic grading external, not self all-PASS",
+  "frozen_utc": "2026-11-18T09:46:57.722214+00:00",
+  "formal_grading": "../grading.json (outside outputs; independent grader owns final verdict)"
+}

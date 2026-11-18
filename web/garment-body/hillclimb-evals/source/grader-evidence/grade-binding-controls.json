@@ -1,0 +1,28 @@
+{
+  "same_assembler_controls": [
+    {
+      "control": "stale-trace",
+      "rejected": true,
+      "returncode": 1,
+      "stderr_tail": [
+        "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "AssertionError: Fixed independent manual review stale: executor artifacts changed"
+      ],
+      "published_grading_created": false,
+      "manual_auto_generated": false
+    },
+    {
+      "control": "missing-manual",
+      "rejected": true,
+      "returncode": 1,
+      "stderr_tail": [
+        "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/independent-grade-binding-gpde5h9b/grader/manual-final-review.json'"
+      ],
+      "published_grading_created": false,
+      "manual_auto_generated": false
+    }
+  ],
+  "original_executor_outputs_unchanged": true,
+  "all_rejected": true
+}

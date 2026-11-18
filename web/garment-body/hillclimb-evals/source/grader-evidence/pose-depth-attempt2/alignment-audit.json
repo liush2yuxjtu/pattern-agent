@@ -1,0 +1,15 @@
+{
+  "scope": "Illustrative pose/depth image foreground alignment to actual accepted generated front2, no metric-depth/detector truth",
+  "front_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+  "pose_sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+  "depth_sha256": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+  "method": "front/pose independent HSV-seededGrabCut; black-background generateddepth gray>6+5pxclosing/largestcomponent. Fixed same1024x1536 canvas, no transform/refit.",
+  "pose_front_iou": 0.9921580112907902,
+  "depth_front_iou": 0.9799698559752713,
+  "threshold": 0.93,
+  "manual": {
+    "pose": "Actually viewed. Neckdot(520,283) in exposed neck rather than collar; inferred hip/knee/ankle nodes hollow/dashed, not falsely visible. Shoulder/elbow/wrist points approximate actual gesture, not detector truth.",
+    "depth": "Actually viewed. Hands are brighter/in front of torso, coherent coarse silhouette and pose. Surface shading/necktrim still exist; illustrative only, no actual DepthAnything/model inference claim."
+  },
+  "passed": true
+}

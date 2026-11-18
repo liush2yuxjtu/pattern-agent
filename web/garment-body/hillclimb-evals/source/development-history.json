@@ -1,0 +1,37 @@
+{
+  "scope": "DEVELOPMENT_ONLY_NOT_FRESH_EXECUTION; excluded from benchmark and new candidate grades",
+  "examples": [
+    {
+      "id": "merged3-frame-mismatch",
+      "title": "开发 merged3 · FK/LBS 坐标框架失配",
+      "image": "solver-grip/body-merged-3/views/side.png",
+      "evidence": [
+        "grader/body-merged3/diagnostic.json",
+        "solver-grip/body-merged-3/views/view-provenance.json"
+      ],
+      "reason": "实际独立检查：左/右臂外溢 0.13654449674960772/0.10586387098842615；右手 44/1421 覆盖射线位于躯干后，最小间距 -0.7706808532405613 cm。排查发现 standing floor 改变后快速FK与最终LBS未同框架，后续修复并重新运行；本图仍是原失败候选。",
+      "sha256": {
+        "solver-grip/body-merged-3/views/side.png": "5a00cc2100fbeea443baf9952f90e67b010877585d6de1446dfa3075bd9af14a",
+        "grader/body-merged3/diagnostic.json": "04f1cac449f6248dfd6dea1d2dc9e2fa755ed9117d6ec16648c044e55e49b06e",
+        "solver-grip/body-merged-3/views/view-provenance.json": "d4efc7faf52a4ca769da5b584d5a1485cfa4a72d991c48137875419a804e1609"
+      }
+    },
+    {
+      "id": "merged5-helper-skin",
+      "title": "开发 merged5 · helper 接近不代表真实指腹接触",
+      "image": "solver-grip/body-merged-5/views/closeup.png",
+      "evidence": [
+        "grader/body-merged5/diagnostic.json",
+        "grader/body-merged5/terminal-finger-contacts.json",
+        "solver-grip/body-merged-5/views/view-provenance.json"
+      ],
+      "reason": "helper 尾点距离 L=0.034754974929520455 cm，R=0.020003465823640276 cm；这些helper索引不是body皮肤。实际拇指/食指终节三角表面相交配对 L=42、R=43，因此失败。必须加入实际蒙皮表面约束并独立交检，不能靠helper距离宣称捏合成功。",
+      "sha256": {
+        "solver-grip/body-merged-5/views/closeup.png": "6b69c68e985ef53784a80c95d724c22a2ece5d336c94ea4e926e0f551b23db22",
+        "grader/body-merged5/diagnostic.json": "b4293f6269734cade440e4a1a0c59129b9a379c0550a69ac1c23f1a7db155609",
+        "grader/body-merged5/terminal-finger-contacts.json": "8676d01d20c64467ee0c3448aabd78e7c054e75a5dd9ae010bda68701b523850",
+        "solver-grip/body-merged-5/views/view-provenance.json": "3160b539d52c74cf1b90340f9c29bdc51d0f1578b32105612eddf98141a8aa19"
+      }
+    }
+  ]
+}

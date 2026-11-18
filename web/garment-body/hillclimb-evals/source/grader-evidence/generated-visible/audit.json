@@ -1,0 +1,76 @@
+{
+  "scope": "Visible fixed-guide projection consistency only; not exact latent3D/person truth",
+  "views": {
+    "front": {
+      "observed_anchors": 10,
+      "mean_error_fraction_height": 0.0059773498440502575,
+      "max_error_fraction_height": 0.009079573469646824,
+      "limb_angles": [
+        {
+          "pair": [
+            "elbow_image_left",
+            "wrist_image_left"
+          ],
+          "angle_deg": 6.053124543028083
+        },
+        {
+          "pair": [
+            "elbow_image_right",
+            "wrist_image_right"
+          ],
+          "angle_deg": 1.7800556196184414
+        }
+      ],
+      "passed": true,
+      "reasons": []
+    },
+    "side": {
+      "observed_anchors": 9,
+      "mean_error_fraction_height": 0.01309444053609057,
+      "max_error_fraction_height": 0.02006859233779764,
+      "limb_angles": [
+        {
+          "pair": [
+            "near_shoulder",
+            "near_elbow_surface"
+          ],
+          "angle_deg": 0.6016735763856816
+        },
+        {
+          "pair": [
+            "near_elbow_surface",
+            "near_wrist"
+          ],
+          "angle_deg": 3.907898814092431
+        }
+      ],
+      "passed": true,
+      "reasons": []
+    },
+    "back": {
+      "observed_anchors": 8,
+      "mean_error_fraction_height": 0.008586132997357152,
+      "max_error_fraction_height": 0.017578125,
+      "limb_angles": [
+        {
+          "pair": [
+            "shoulder_image_left",
+            "elbow_image_left"
+          ],
+          "angle_deg": 4.678741698351045
+        },
+        {
+          "pair": [
+            "shoulder_image_right",
+            "elbow_image_right"
+          ],
+          "angle_deg": 2.290327671651261
+        }
+      ],
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "total_observed_anchors": 27,
+  "passed": true
+}

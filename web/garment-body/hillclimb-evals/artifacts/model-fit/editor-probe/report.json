@@ -1,0 +1,139 @@
+{
+  "verdict": "PASS",
+  "scope": "Actual model-derived dimension exports and edit/import lifecycle; no photograph/person accuracy or physical fit claim",
+  "url": "http://127.0.0.1:35969/web/human-studio/?model=%2Fwork%2Ffull-imagegen-hillclimb-20261118%2Fiteration-1%2Feval-1-original-product%2Fwith_skill%2Frun-1%2Foutputs%2Fmodel-fit%2Ffinal%2Ffinal-state.json",
+  "checks": [
+    {
+      "name": "Actual linked case state loaded",
+      "passed": true
+    },
+    {
+      "name": "Explicit mesh-derived output schema",
+      "passed": true
+    },
+    {
+      "name": "All12 output sizes independently equal actual renderer rest-buffer measurements",
+      "passed": true,
+      "evidence": {
+        "max_difference_cm": 0
+      }
+    },
+    {
+      "name": "Every size has mesh basis, definition, vertex source and limited person claim",
+      "passed": true
+    },
+    {
+      "name": "Targets are retained separately from measured output",
+      "passed": true
+    },
+    {
+      "name": "All12 actual measured values shown separately below shape targets",
+      "passed": true
+    },
+    {
+      "name": "Actual downloaded neutral OBJ is hash-bound to measurement JSON",
+      "passed": true
+    },
+    {
+      "name": "Downloaded OBJ independently remeasures all12 primary sizes",
+      "passed": true,
+      "evidence": {
+        "max_difference_cm": 5.750351306232915e-10
+      }
+    },
+    {
+      "name": "Complete captured source state and pose hashes match downloaded JSON",
+      "passed": true
+    },
+    {
+      "name": "Actual CSV contains the same model-derived sizes",
+      "passed": true
+    },
+    {
+      "name": "False cached measuredNeutral cannot contaminate actual mesh measurements",
+      "passed": true
+    },
+    {
+      "name": "Pending65ms body rebuild blocks stale measurement exports and read API",
+      "passed": true,
+      "evidence": {
+        "disabled": true,
+        "rejected": true,
+        "message": "Wait for the current body update to finish."
+      }
+    },
+    {
+      "name": "Actual cm edit changes neutral mesh and exported measured waist",
+      "passed": true
+    },
+    {
+      "name": "Body size edit preserves the entire supplied target pose",
+      "passed": true
+    },
+    {
+      "name": "After size edit every measured value still comes from current geometry",
+      "passed": true
+    },
+    {
+      "name": "Actual joint UI edit changes posed vertices without changing neutral mesh",
+      "passed": true
+    },
+    {
+      "name": "Posed bounding-box changes do not alter primary neutral dimensions",
+      "passed": true
+    },
+    {
+      "name": "Saved edited state reimport restores measured body and full pose",
+      "passed": true
+    },
+    {
+      "name": "Wrong-unit import rejected without changing measured geometry",
+      "passed": true
+    },
+    {
+      "name": "Unreachable target combination exports actual mesh residuals instead of target labels",
+      "passed": true,
+      "evidence": {
+        "maximum_target_difference_cm": 8.916900485219486
+      }
+    },
+    {
+      "name": "Actual375px mobile viewport has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "No browser runtime errors",
+      "passed": true,
+      "evidence": []
+    }
+  ],
+  "errors": [],
+  "initial_measured_values_cm": {
+    "height": 169.99998474121094,
+    "bust": 90.00003491631153,
+    "waist": 71.00000051177126,
+    "hips": 96.00004131095795,
+    "shoulders": 36.400001525878906,
+    "upperArm": 27.000003842342988,
+    "thigh": 54.000008141089786,
+    "neck": 32.00001186064753,
+    "upperArmLength": 28.99999721457327,
+    "forearmLength": 23.00000025770226,
+    "thighLength": 40.00003277877504,
+    "calf": 36.000000576559295
+  },
+  "edited_measured_values_cm": {
+    "height": 170.0001220703125,
+    "bust": 90.00015004445571,
+    "waist": 73.00864085671572,
+    "hips": 96.0000054677252,
+    "shoulders": 36.400001525878906,
+    "upperArm": 26.999997382340144,
+    "thigh": 54.00000008693813,
+    "neck": 31.999999473925243,
+    "upperArmLength": 28.999993126127357,
+    "forearmLength": 22.999997634325794,
+    "thighLength": 39.99988417600859,
+    "calf": 36.0000008096898
+  }
+}

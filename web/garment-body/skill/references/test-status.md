@@ -149,3 +149,16 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 独立标量几何/FK重建neutral/posed误差约5e-9cm，12项尺寸JSON/CSV与独立路径复量差<4e-15cm，独立相机三角投影mask逐像素一致，独立射线复现手部问题。Human Studio实际导入/厘米+2/关节+7°/下载重开22项通过。
 - 六图生成输入为原图及明确历史人体引导/new front，先于新final拟合，不能反称本批生成已使用最终模型。生成姿态/深度仅illustrative；真实几何图另列。身高170cm及体形仍为条件人体先验，模型实测不证明真人尺寸准确。
 - 官方评阅页 https://liush2yuxjtu.github.io/pattern-agent/garment-body/full-imagegen-evals/eval.html ：原图、六生成图、最终模拟、最终叠加默认并列，初始/失败候选与完整复现ZIP保留，关键FAIL醒目。原生Claude触发BLOCKED、物理试衣NOT_RUN保持。
+
+
+## 2026-11-18 同姿态与接触动作的实际 hill climb
+
+- 原完整流程11/13及其原始文件保持历史不变。本轮沿用原13语义和已有region-v1的8%外溢/25pxP95/最小面积/腰臀扫描线防缩形门槛；另在生成前冻结可见投影及捏合操作化指标，不把隐藏精确3D改成可证真值。
+- 真正修复：加入root/spine/髋腿及相机优化而不缩小人体；快速FK与最终LBS共用floor/坐标变换；掌面/腕指真实姿态及完整手/臂皮肤约束；同手拇食指表面交检查，而非把不在bodyVertexIds里的bone helper端距当指腹接触。实际手部穿躯干、双手及终节互穿失败候选均保留。
+- 冻结61文件技能及11份运行源码后，新子代理只从旧失败输入实际跑注册、三body阶段、grip和neutral网格实测；不是复制开发成功final。独立grader从真实OBJ/相机/源资源重算，再实际浏览最新官方图库评分。
+- 当前条件avatar任务原13项13/13、前置量化18/18，绑定204输出SHA。仍N=1，执行者收到独立反馈并真实重生成；不是无干预一次成功或新旧技能泛化优势实验。
+- 全部最终六图均1024×1536独立ImageGen原生字节。执行者16次调用产生15原生输出及1工具拒绝无图，root另有当前rawguide调用；所有失败/退役图保留。最终选择front2/side3/back1/closeup6/pose2/depth2，未裁拼或外部放大。服务拒绝后不再提交原anatomical近景，改用普通着装参考及真实binarymask；相机分析crop仅作input，交付仍新native图。改变衣长/只捏中段的safe版本也未被放过。
+- 三全身图27个独立可见/近似表面锚点，在固定画布转换下front/side/back均值误差为0.598/1.309/0.859%H，最大0.908/2.007/1.758%H；无后验warp。side包络外溢7.9543%接近8%界线，不称零误差或稳健泛化。pose/depth同front前景IoU0.992158/0.979970；closeup6包络P9518px及8个固定crop锚点通过。
+- HumanStudio重新实际导入/厘米+2/关节+7/下载重开22项通过，最终模型状态未改；JSON/CSV独立模型实测误差约3.55e-15cm。当前尺寸仍基于假设M170人体，非照片真人尺量。
+- 额外独立arm审计确认远端上/前臂未穿胸，近端腋窝8条4-hop局部折叠明确披露，不能声称全身物理无碰撞。侧视projection的水平镜像约定显式记录；语义着色用于区分近L与远R，不按视图改模型。
+- 正式证据及官方PreviousOutput历史对照：https://liush2yuxjtu.github.io/pattern-agent/garment-body/hillclimb-evals/eval.html 。人身真值与隐藏数学3D未验证，nativeClaude触发仍BLOCKED，物理试衣NOT_RUN/历史clothFAIL不变。后续新增语义render工具与文档教训不倒填进原执行快照。

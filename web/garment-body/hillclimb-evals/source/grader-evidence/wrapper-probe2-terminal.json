@@ -1,0 +1,32 @@
+{
+  "posed_sha256": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+  "hands": {
+    "L": {
+      "contact_bbox_cm": null,
+      "method": "Independent VTK actual same-hand terminal thumb/index triangle-surface intersections",
+      "vtk_version": "9.3.1",
+      "triangles_L_R": [
+        194,
+        221
+      ],
+      "contact_pairs": 0,
+      "limits": "Actual terminal body surfaces, not helper bone-tip anchors. A contact curve/overlap requires closeup review; not a claim about every finger/whole-hand collision.",
+      "nearest_vertex_to_opposite_terminal_triangle_cm": 0.33673060371913716,
+      "distance_method": "Actual terminal vertex samples to opposite actual terminal triangles, both directions; upper bound on exact minimum surface distance, not helper point."
+    },
+    "R": {
+      "contact_bbox_cm": null,
+      "method": "Independent VTK actual same-hand terminal thumb/index triangle-surface intersections",
+      "vtk_version": "9.3.1",
+      "triangles_L_R": [
+        194,
+        221
+      ],
+      "contact_pairs": 0,
+      "limits": "Actual terminal body surfaces, not helper bone-tip anchors. A contact curve/overlap requires closeup review; not a claim about every finger/whole-hand collision.",
+      "nearest_vertex_to_opposite_terminal_triangle_cm": 0.5679146990250129,
+      "distance_method": "Actual terminal vertex samples to opposite actual terminal triangles, both directions; upper bound on exact minimum surface distance, not helper point."
+    }
+  },
+  "actual_terminal_surfaces_no_crossings": true
+}

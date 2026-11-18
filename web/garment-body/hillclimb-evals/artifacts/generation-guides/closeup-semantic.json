@@ -1,0 +1,70 @@
+{
+  "role": "supplemental generation control; not grading oracle",
+  "view": "closeup",
+  "axis": "front",
+  "canvas": [
+    768,
+    1152
+  ],
+  "camera_spec": {
+    "axis": "front",
+    "px_per_cm": 15,
+    "center_cm": [
+      0,
+      126
+    ]
+  },
+  "world_xyz1_to_pixel_xy": [
+    [
+      15.0,
+      0.0,
+      0.0,
+      384.0
+    ],
+    [
+      0.0,
+      -15.0,
+      0.0,
+      2466.0
+    ]
+  ],
+  "depth_nearer_axis_xyz": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "screen_right_axis": "+X",
+  "screen_up_axis": "+Y",
+  "side_parity": null,
+  "pixel_sampling": "pixel centers x+0.5,y+0.5; opaque maximum-depth triangle z-buffer",
+  "vertex_mapping": "compact OBJ vertex order equals bodyVertexIds order",
+  "topology_verified": true,
+  "vertex_count": 13380,
+  "face_count": 26756,
+  "labels": {
+    "0": "background",
+    "1": "torso/other body",
+    "2": "L upper/lower arm orange",
+    "3": "R upper/lower arm blue"
+  },
+  "face_label_rule": "mean vertex upperarm/lowerarm weight >=0.25; strongest side wins; hands excluded",
+  "visible_pixel_counts": {
+    "0": 360399,
+    "1": 396559,
+    "2": 38329,
+    "3": 89449
+  },
+  "sources": {
+    "web/human-studio/assets/human.json": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/posed.obj": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+    "work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/camera.json": "2ddea2e182531dfd514dfcc2f07a7bc8bd23e030c3f9ff3c6c08c69dad23cd14"
+  },
+  "script_sha256": "13eb5ca57269b7db6e5c1fa215e31069eacb4c6c3cb396c8705f5d4d6067e776",
+  "image_sha256": "bdf27bd5c2d145bbb5dd3203b70c7f47090b5c53075d3ed1b911b75c27121d41",
+  "limitations": [
+    "Requires exact source/compact topology and centimetres, Y up.",
+    "Face semantics use skin weights, not anatomical segmentation.",
+    "Visibility is triangle depth, not bone visibility; no cloth/collision inference.",
+    "Lighting differs from other renderers; camera is never auto-fit."
+  ]
+}

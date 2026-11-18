@@ -1,0 +1,50 @@
+{
+  "tool": "image_gen.imagegen",
+  "view": "pose",
+  "attempt": 2,
+  "actual_referenced_image_paths": [
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+  ],
+  "prompt": "EDIT FIRST IMAGE with a thin illustrative skeletal overlay ONLY. First is the accepted 1024x1536 front photograph: freeze exactly every photo pixel, silhouette, head/feet/body position, garment, hands and background. Second is the same-state REAL front pose render (768x1152), anatomy/topology guidance only, uniform4/3 corresponding frame. Third original product is appearance context. Output ONE independent native maximum resolution 2:3 portrait. Keep foreground and camera unchanged; no new person/pose/crop. Add thin orange links and small yellow nodes. ANATOMICAL NECK01 NODE MUST BE at approx native(530,283) INSIDE EXPOSED NECK, NOT neckline/collar(518,343); no joint node on red collar. Shoulder nodes approx(674,324),(414,363); elbows(818,439),(398,577); wrists(673,554),(489,553). Hip joint nodes inside pants at(601,721),(450,713), NEVER at waistband; knees(676,1062),(510,1060), ankles(727,1365),(577,1362). Hip/knee/ankle joints hidden by clothes are illustrative INFERRED: use hollow nodes and dashed connecting lines. Thin solid links for approximate visible upper-arm proxies; no claims of detector truth. Preserve same asymmetric elbows/lean/hand pinching lifted top hem exactly. No extra dot on hem or belt, no clothing anchor masquerading as bone. No text, labels, legend, collage. This is an illustrative overlay not actual observed skeleton; real projection retained separately. Highest native1024x1536 or higher same2:3, no rescale/crop/upscale.",
+  "transparent_background": false,
+  "native_path": "/workspace/generated_images/exec-9b9dcb6a-a19d-4f70-96dc-265c13427f6f.png",
+  "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-9b9dcb6a-a19d-4f70-96dc-265c13427f6f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "semantic": "illustrative; not detector or calibrated depth",
+  "native_pixels": [
+    1024,
+    1536
+  ],
+  "output_sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+  "native_sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+  "references": [
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+      "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+      "pixels": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png",
+      "sha256": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    }
+  ],
+  "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/pose.png",
+  "transforms": "byte-for-byte native copy; no crop, montage, upscale or edit",
+  "independent_acceptance": "PENDING"
+}

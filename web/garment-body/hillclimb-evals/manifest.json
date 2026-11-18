@@ -1,0 +1,2306 @@
+{
+  "scope": "full workflow single-candidate acceptance",
+  "complete": true,
+  "status": "GRADED",
+  "imagegen_count": 6,
+  "missing_imagegen_views": [],
+  "generation": [
+    {
+      "view": "front",
+      "relative_path": "images/attempt-2/front.png",
+      "width": 1024,
+      "height": 1536,
+      "receipt": {
+        "tool": "image_gen.imagegen",
+        "view": "front",
+        "attempt": 2,
+        "actual_referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/front.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+        ],
+        "prompt": "EDIT FIRST IMAGE ONLY. This is an exact pixel-position-preserving wardrobe/identity replacement of the existing grey anatomical body render, not a new photograph composition. Preserve ALL geometry of FIRST image and its camera, silhouette, body thickness, lean, asymmetric elbows, hand pinch positions, leg angles and framing. Put the original SECOND reference adult woman's identity and clothing onto that existing body. SECOND reference is APPEARANCE ONLY; NEVER use its different crop or pose. Output maximum native 1024x1536 or highest native 2:3 portrait. FIRST guide 768x1152 scaled uniformly4/3 to1024x1536. Fixed underlying anatomical joint pixel anchors at that native size: head joint(483,207); shoulders L(674,324) R(414,363); elbows L(818,439) R(398,577); wrists L(673,554) R(489,553); hips L(601,721) R(450,713); knees L(676,1062) R(510,1060); ankles L(727,1365) R(577,1362). Do not draw anchors or text. Keep head top and foot bottom precisely FIRST positions. Do NOT move body horizontally/vertically, rotate, straighten, slim, beautify proportions, narrow chest/belly, slim hips/thighs/calves, close legs, or make a standard fashion stance. Clothing must ENCLOSE the entire current body, never shrink it. Preserve the forward chest/abdomen contour and full thickness; preserve hands in front pinching garment. Strict front as FIRST: retain image-right elbow/hip/leg position, no contraction toward center. Replace grey skin with realistic skin and same adult brunette face/hair from SECOND. Dress in red fine vertical pointelle knit shallow wide BOAT neckline, tiny green/red neckline embellishment, THREE-QUARTER forearm sleeves gently flared at cuff; matching red gathered elastic waist pointelle pants. Both bent hands pinch/lift front top hem, lower abdomen exposed as SECOND; keep existing finger grip geometry. Bare feet where guide shows. Light grey studio, soft realistic light, no hard shadow enlargement. No mannequin, no skeleton, no text. This is an edit of first body's exact pixels/camera, not a new pose; native output only, no crop or upscaling.",
+        "transparent_background": false,
+        "native_path": "/workspace/generated_images/exec-34190dc2-7709-49b5-a5da-01368dd640bf.png",
+        "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-34190dc2-7709-49b5-a5da-01368dd640bf.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "native_pixels": [
+          1024,
+          1536
+        ],
+        "output_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+        "native_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+        "references": [
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/front.png",
+            "sha256": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+            "pixels": [
+              768,
+              1152
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+            "pixels": [
+              1000,
+              1276
+            ]
+          }
+        ],
+        "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+        "transforms": "byte-for-byte native copy; no crop, montage, upscale or edit",
+        "independent_acceptance": "PENDING",
+        "path": "images/attempt-2/front.png",
+        "status": "GENERATED",
+        "independent_preflight_message": "Independent grader:10 visible approximate anchors mean.598%H/max.908%H; directions6.05/1.78deg; outside2.235%,P957px.",
+        "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+        "original_tool_path": "/workspace/generated_images/exec-34190dc2-7709-49b5-a5da-01368dd640bf.png",
+        "width": 1024,
+        "height": 1536,
+        "native": true,
+        "collage_cropped": false,
+        "upscaled": false,
+        "referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/front.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+        ],
+        "reference_sha256": {
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/front.png": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+        },
+        "source_status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "receipt_adapter": "Native SHA/output SHA/pixels/actual refs mapped from executor schema; original fields/status retained"
+      },
+      "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7"
+    },
+    {
+      "view": "side",
+      "relative_path": "images/attempt-3/side.png",
+      "width": 1024,
+      "height": 1536,
+      "receipt": {
+        "tool": "image_gen.imagegen",
+        "view": "side",
+        "attempt": 3,
+        "actual_referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+        ],
+        "prompt": "EDIT FIRST anatomically color-coded body render into the same adult woman's dressed side photograph, preserving exact geometry and camera. FIRST768x1152 image is authoritative framing; SECOND grey render same camera confirms shape; THIRD original woman supplies identity/red clothing ONLY. Exact highest-native portrait2:3,1024x1536 or higher. No front-photo reference; don't standardize pose. CRITICAL ORANGE AREA IS THE ENTIRE NEAR LEFT ARM, NOT BREAST/CHEST/TORSO. Put a red sleeve around this entire orange upperarm and elbow. Its shoulder descends diagonally FORWARD to an ELBOW AT CHEST HEIGHT: at native1024x1536 elbow surface(621,449); then the FOREARM RUNS NEARLY VERTICALLY DOWN at x621..631 to wrist(631,554). The wrist is BELOW this high elbow. Do not drag elbow backward/left to(541,481), do not lower it to waist, do not make forearm diagonally forward like ordinary waist-level pose. Red sleeve must bend at that chest-high orange elbow, then travel near vertically down to forearm cuff. Hand stays at belly front pinching/lifting top hem. Far right arm is behind near arm as real grey view; don't invent symmetric waist-level elbows. Preserve original first shoulder, torso thickness/chest contour/belly/hips/thighs/bent knees/ankles/feet positions and all body margins. No slimming, no straightening, no shift backward or recenter. Replace grey/orange body with realistic skin of original adult brunette; same face/hair. Fit clothing around existing mesh, never shrink body: red fitted pointelle fine vertical tiny openwork/rib top, shallow wide boat neckline tiny green/red center detail, THREE-QUARTER sleeves ending forearm with gently flared cuffs, red elastic-waist matching pointelle knit pants. Hands remain anterior holding lifted hem exposing lower abdomen. Strict90degree right-facing side, bare feet, light grey studio. Remove guide colors but retain orange arm geometry exactly. No text/nodes/diagram/collage. Native image only no crop/upscale.",
+        "transparent_background": false,
+        "native_path": "/workspace/generated_images/exec-d0adf3bb-ac6c-41e8-aaef-ec22152438ce.png",
+        "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-d0adf3bb-ac6c-41e8-aaef-ec22152438ce.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "native_pixels": [
+          1024,
+          1536
+        ],
+        "output_sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+        "native_sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+        "references": [
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.png",
+            "sha256": "6cee59cef05d1217d58fc1eed06f1c171c3beb506add3bce795e098e83bef40d",
+            "pixels": [
+              768,
+              1152
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png",
+            "sha256": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+            "pixels": [
+              768,
+              1152
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+            "pixels": [
+              1000,
+              1276
+            ]
+          }
+        ],
+        "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-3/side.png",
+        "transforms": "byte-for-byte native copy; no crop, montage, upscale or edit",
+        "independent_acceptance": "PENDING",
+        "semantic_guide_provenance": {
+          "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.json",
+          "sha256": "fed6a07613ce83080909b6f7a39d008fb8fc4a6872ca04d49b19f9729b592c75",
+          "metadata": {
+            "role": "Supplemental generation control for corresponding actual posed model; not grading oracle",
+            "canvas": [
+              768,
+              1152
+            ],
+            "pixels_per_cm": 6,
+            "center_horizontal_Z_vertical_Y": [
+              0,
+              85
+            ],
+            "horizontal": "+Z",
+            "depth_nearer": "+X",
+            "projection_pixel_matrix_worldXYZ1": [
+              [
+                0,
+                0,
+                6,
+                384
+              ],
+              [
+                0,
+                -6,
+                0,
+                1086
+              ]
+            ],
+            "vtk_projection_matrix": [
+              [
+                -0.015625,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.010416666666666666,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                -0.01392778448404112,
+                -5.531481009728294
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "anchor_world_cm": [
+              39.93133135266667,
+              124.82256625333333,
+              13.644826057666668
+            ],
+            "anchor_projected_pixel_xy": [
+              465.868956346,
+              337.06460247999996
+            ],
+            "anchor_vtk_display_converted_top_left_xy": [
+              465.868956346,
+              337.06460247999996
+            ],
+            "expected_pixel_xy": [
+              465.87,
+              337.06
+            ],
+            "expected_error_px": 0.004719325780421171,
+            "vtk_vs_analytic_error_px": 0.0,
+            "source_posed_obj_sha256": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+            "source_asset_sha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+            "render_script_sha256": "e49bfcaf7b714fd026b2da9f8450e98b94a424124e407a1a8559bd4fc6298aae",
+            "image_sha256": "6cee59cef05d1217d58fc1eed06f1c171c3beb506add3bce795e098e83bef40d"
+          }
+        },
+        "path": "images/attempt-3/side.png",
+        "status": "GENERATED",
+        "independent_preflight_message": "Independent grader:9visibleanchors mean1.309%H/max2.007%H; armangles0.6/3.91deg; outside7.9543%,P9524.18px.",
+        "sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+        "original_tool_path": "/workspace/generated_images/exec-d0adf3bb-ac6c-41e8-aaef-ec22152438ce.png",
+        "width": 1024,
+        "height": 1536,
+        "native": true,
+        "collage_cropped": false,
+        "upscaled": false,
+        "referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+        ],
+        "reference_sha256": {
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.png": "6cee59cef05d1217d58fc1eed06f1c171c3beb506add3bce795e098e83bef40d",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+        },
+        "source_status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "receipt_adapter": "Native SHA/output SHA/pixels/actual refs mapped from executor schema; original fields/status retained"
+      },
+      "sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef"
+    },
+    {
+      "view": "back",
+      "relative_path": "images/back.png",
+      "width": 1024,
+      "height": 1536,
+      "receipt": {
+        "tool": "image_gen.imagegen",
+        "view": "back",
+        "actual_referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/back.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png"
+        ],
+        "prompt": "Create ONE independent maximum native resolution portrait 2:3 ecommerce photograph, exact BACK view. Reference order: 1 grey actual back mannequin render is FIRST AUTHORITY for camera, body position, proportions, pose and framing; 2 original product woman/photo gives adult identity and garment details; 3 new front is same outfit/identity only. Preserve FIRST guide exact leaned torso, head tilt, shoulder/elbow/wrist/hip/leg positions, hand pinch gesture at front hem, asymmetrical bent elbows, camera and body margins. Change camera only relative to new front; do NOT straighten pose, lower hands or move hands behind the back. Hands remain in front of abdomen and are hidden naturally from back, elbows bent as grey guide. Rear garment construction is conservative inference. Same adult brunette woman, natural hair and face. Red fitted fine pointelle knit top with vertical tiny openwork/rib texture, shallow wide BOAT neckline and narrow binding, tiny green/red center neckline detail, THREE-QUARTER sleeves ending forearm with gently flared cuffs. Red matching fine knit pants with gathered elastic waist and tiny green/red center detail. Lifted front hem exposes small abdomen as original. Bare feet if in frame. Light grey studio soft ecommerce light. Identity/clothing from original and new front but geometric framing from first grey guide. Preserve 2:3 guide canvas and exact positions; no recenter, no straightening, no collage, no text, no diagram or mannequin. Highest native resolution, no cropping/upscaling.",
+        "transparent_background": false,
+        "native_path": "/workspace/generated_images/exec-d647abbc-1718-4221-afe7-a2f621180315.png",
+        "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-d647abbc-1718-4221-afe7-a2f621180315.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "native_pixels": [
+          1024,
+          1536
+        ],
+        "output_sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+        "native_sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+        "references": [
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/back.png",
+            "sha256": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+            "pixels": [
+              768,
+              1152
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+            "pixels": [
+              1000,
+              1276
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png",
+            "sha256": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6",
+            "pixels": [
+              1024,
+              1536
+            ]
+          }
+        ],
+        "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/back.png",
+        "transforms": "byte-for-byte native copy; no crop, montage, upscale, or other edit",
+        "path": "images/back.png",
+        "status": "GENERATED",
+        "independent_preflight_message": "Independent grader:8 visible approximate anchors passed; unseen structure remains prior.",
+        "sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+        "original_tool_path": "/workspace/generated_images/exec-d647abbc-1718-4221-afe7-a2f621180315.png",
+        "width": 1024,
+        "height": 1536,
+        "native": true,
+        "collage_cropped": false,
+        "upscaled": false,
+        "referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/back.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png"
+        ],
+        "reference_sha256": {
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/back.png": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6"
+        },
+        "source_status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "receipt_adapter": "Native SHA/output SHA/pixels/actual refs mapped from executor schema; original fields/status retained"
+      },
+      "sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8"
+    },
+    {
+      "view": "closeup",
+      "relative_path": "images/attempt-6/closeup.png",
+      "width": 1024,
+      "height": 1536,
+      "receipt": {
+        "tool": "image_gen.imagegen",
+        "view": "closeup",
+        "attempt": 6,
+        "actual_referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/clothed-closeup-camera-reference.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup-mask.png"
+        ],
+        "prompt": "Redraw FIRST dressed ecommerce reference as ONE new independent native high-resolution product-detail photograph with crisper fine knit texture. FIRST is an analytical camera-correspondence input reference; final must be genuinely newly generated native output, not an enlarged crop. Precisely replicate FIRST composition, adult brunette identity, eyes, shoulders, elbows, wrist positions, both hands' gesture, original garment hem fold and garment edge positions. SECOND original dressed ecommerce photo clarifies pointelle textile, neckline, sleeves and trim. THIRD binary silhouette is same frozen camera geometry guidance. Same2:3 portrait native1024x1536 or highest native. Original opaque RED fine vertical pointelle/rib knit top, shallow wide boat neckline tiny green/red center detail, THREE-QUARTER sleeves with gently flared cuffs, matching red gathered elastic-waist knit trousers with original center green/red trim. Keep exactly the ORIGINAL LOWER HEM folded upward and held in both hands as FIRST, same edge ending at the hand-held fold; do not add any hanging long panel below this hem, do not lengthen top or add an inner layer, do not change waistband position. Replicate original normal clothing arrangement exactly, only enhance fine knit sharpness and photographic detail. Keep same tilted torso, asymmetrical arms, original crop with hair top/right elbow outside frame. No zoom, recenter, body-shape edits or wrist/face movements; no added text/diagrams. Normal nonsexual ecommerce apparel detail, natural soft light grey studio. Native new independent image output only, no postgeneration crop/upscale.",
+        "transparent_background": false,
+        "native_path": "/workspace/generated_images/exec-c4486ff0-235b-4852-9425-1036754cc931.png",
+        "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-c4486ff0-235b-4852-9425-1036754cc931.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "safe_alternative": "clothed camera reference FIRST + original dressed product SECOND + actual binary silhouette THIRD; no anatomical images",
+        "native_pixels": [
+          1024,
+          1536
+        ],
+        "output_sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+        "native_sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+        "references": [
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/clothed-closeup-camera-reference.png",
+            "sha256": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527",
+            "pixels": [
+              1024,
+              1536
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+            "pixels": [
+              1000,
+              1276
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup-mask.png",
+            "sha256": "191a4953b47b8a3befc40dd3837cde5299e9056c7e1fbf9d8ee58dfa464799dd",
+            "pixels": [
+              768,
+              1152
+            ]
+          }
+        ],
+        "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-6/closeup.png",
+        "transforms": "Final byte-for-byte native copy, no crop/upscale/edit. First analytical camera reference explicit input only, not final.",
+        "analytical_reference_provenance": {
+          "role": "OpenCV camera-correspondence ANALYTICAL INPUT REFERENCE ONLY; not independent generated output, not final deliverable",
+          "source": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+          "source_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+          "source_pixels": [
+            1024,
+            1536
+          ],
+          "target_pixels": [
+            1024,
+            1536
+          ],
+          "matrix_source_to_reference": [
+            [
+              2.5,
+              0.0,
+              -768.0
+            ],
+            [
+              0.0,
+              2.5,
+              -332.0
+            ]
+          ],
+          "transform_origin": "Exact frozen model front-to-closeup camera ratio2.5, sameworldcenterX0; yscale shift-332; no image fit/warp search",
+          "camera_mapping": "xprime=512+2.5*(x-512);yprime=2.5*y-332",
+          "interpolation": "OpenCV INTER_LINEAR for analytical input only",
+          "output_sha256": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527"
+        },
+        "independent_acceptance": "PENDING",
+        "executor_visual_observation": "Original held lower hem fold visually restored; independent geometry/action/product review required, no self PASS.",
+        "path": "images/attempt-6/closeup.png",
+        "status": "GENERATED",
+        "independent_preflight_message": "Independent grader:held lowerhem restored; outside1.539%,P9518px=.01172H; knowncamera crop8visibleanchors mean1.167%H/max1.942%H; independent crop reference exact, final native not crop.",
+        "sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+        "original_tool_path": "/workspace/generated_images/exec-c4486ff0-235b-4852-9425-1036754cc931.png",
+        "width": 1024,
+        "height": 1536,
+        "native": true,
+        "collage_cropped": false,
+        "upscaled": false,
+        "referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/clothed-closeup-camera-reference.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup-mask.png"
+        ],
+        "reference_sha256": {
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/clothed-closeup-camera-reference.png": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup-mask.png": "191a4953b47b8a3befc40dd3837cde5299e9056c7e1fbf9d8ee58dfa464799dd"
+        },
+        "source_status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "receipt_adapter": "Native SHA/output SHA/pixels/actual refs mapped from executor schema; original fields/status retained"
+      },
+      "sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82"
+    },
+    {
+      "view": "pose",
+      "relative_path": "images/attempt-2/pose.png",
+      "width": 1024,
+      "height": 1536,
+      "receipt": {
+        "tool": "image_gen.imagegen",
+        "view": "pose",
+        "attempt": 2,
+        "actual_referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+        ],
+        "prompt": "EDIT FIRST IMAGE with a thin illustrative skeletal overlay ONLY. First is the accepted 1024x1536 front photograph: freeze exactly every photo pixel, silhouette, head/feet/body position, garment, hands and background. Second is the same-state REAL front pose render (768x1152), anatomy/topology guidance only, uniform4/3 corresponding frame. Third original product is appearance context. Output ONE independent native maximum resolution 2:3 portrait. Keep foreground and camera unchanged; no new person/pose/crop. Add thin orange links and small yellow nodes. ANATOMICAL NECK01 NODE MUST BE at approx native(530,283) INSIDE EXPOSED NECK, NOT neckline/collar(518,343); no joint node on red collar. Shoulder nodes approx(674,324),(414,363); elbows(818,439),(398,577); wrists(673,554),(489,553). Hip joint nodes inside pants at(601,721),(450,713), NEVER at waistband; knees(676,1062),(510,1060), ankles(727,1365),(577,1362). Hip/knee/ankle joints hidden by clothes are illustrative INFERRED: use hollow nodes and dashed connecting lines. Thin solid links for approximate visible upper-arm proxies; no claims of detector truth. Preserve same asymmetric elbows/lean/hand pinching lifted top hem exactly. No extra dot on hem or belt, no clothing anchor masquerading as bone. No text, labels, legend, collage. This is an illustrative overlay not actual observed skeleton; real projection retained separately. Highest native1024x1536 or higher same2:3, no rescale/crop/upscale.",
+        "transparent_background": false,
+        "native_path": "/workspace/generated_images/exec-9b9dcb6a-a19d-4f70-96dc-265c13427f6f.png",
+        "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-9b9dcb6a-a19d-4f70-96dc-265c13427f6f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "semantic": "illustrative; not detector or calibrated depth",
+        "native_pixels": [
+          1024,
+          1536
+        ],
+        "output_sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+        "native_sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+        "references": [
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+            "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+            "pixels": [
+              1024,
+              1536
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png",
+            "sha256": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13",
+            "pixels": [
+              768,
+              1152
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+            "pixels": [
+              1000,
+              1276
+            ]
+          }
+        ],
+        "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/pose.png",
+        "transforms": "byte-for-byte native copy; no crop, montage, upscale or edit",
+        "independent_acceptance": "PENDING",
+        "path": "images/attempt-2/pose.png",
+        "status": "GENERATED",
+        "independent_preflight_message": "Root and independent grader message:front2 silhouette/frame and illustrative node semantics preflight through.",
+        "sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+        "original_tool_path": "/workspace/generated_images/exec-9b9dcb6a-a19d-4f70-96dc-265c13427f6f.png",
+        "width": 1024,
+        "height": 1536,
+        "native": true,
+        "collage_cropped": false,
+        "upscaled": false,
+        "referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+        ],
+        "reference_sha256": {
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+        },
+        "source_status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "receipt_adapter": "Native SHA/output SHA/pixels/actual refs mapped from executor schema; original fields/status retained"
+      },
+      "sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc"
+    },
+    {
+      "view": "depth",
+      "relative_path": "images/attempt-2/depth.png",
+      "width": 1024,
+      "height": 1536,
+      "receipt": {
+        "tool": "image_gen.imagegen",
+        "view": "depth",
+        "attempt": 2,
+        "actual_referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/depth.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+        ],
+        "prompt": "EDIT FIRST IMAGE into a smooth grayscale ILLUSTRATIVE RELATIVE DEPTH rendering ONLY. Freeze first accepted front photo exact1024x1536 canvas, head/hair/feet/body edges, garment silhouette and all internal arm gaps, leaned pose, asymmetric elbows, bent hands pinching lifted hem. Do not move or reshape any foreground contour at all. Second actual same-state front real depth render is relative3D guidance ONLY, never substitute its unclothed silhouette. Third original product appearance context. Keep FIRST clothed body proportions exactly: full chest/abdomen/hips/legs, no slimming/straightening/centering. Convert complete first-photo foreground including hair/clothes/feet into smooth grayscale pseudo-depth on pure black background; nearer hands/face lighter, recessed body darker. No fabric texture, no ordinary grayscale photo shading, no skeleton/text/legend. Preserve silhouette pixel for pixel and same framing; subtle depth gradients, no new cast shadow. This is illustrative, not calibrated Zbuffer/centimetres. Highest native resolution 2:3 portrait; independent native image output only, no crop or upscale.",
+        "transparent_background": false,
+        "native_path": "/workspace/generated_images/exec-e1415fa7-7f1f-4e70-8c9b-d6e8c519c75b.png",
+        "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-e1415fa7-7f1f-4e70-8c9b-d6e8c519c75b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "semantic": "illustrative; not detector or calibrated depth",
+        "native_pixels": [
+          1024,
+          1536
+        ],
+        "output_sha256": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+        "native_sha256": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+        "references": [
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+            "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+            "pixels": [
+              1024,
+              1536
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/depth.png",
+            "sha256": "667b3b31ca0cd812b2769d7f8ad27386fff78e9bdf254410c1fd248d044cd28b",
+            "pixels": [
+              768,
+              1152
+            ]
+          },
+          {
+            "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+            "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+            "pixels": [
+              1000,
+              1276
+            ]
+          }
+        ],
+        "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/depth.png",
+        "transforms": "byte-for-byte native copy; no crop, montage, upscale or edit",
+        "independent_acceptance": "PENDING",
+        "path": "images/attempt-2/depth.png",
+        "status": "GENERATED",
+        "independent_preflight_message": "Root and independent grader message:front2 silhouette/frame illustrative depth preflight through.",
+        "sha256": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+        "original_tool_path": "/workspace/generated_images/exec-e1415fa7-7f1f-4e70-8c9b-d6e8c519c75b.png",
+        "width": 1024,
+        "height": 1536,
+        "native": true,
+        "collage_cropped": false,
+        "upscaled": false,
+        "referenced_image_paths": [
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/depth.png",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+        ],
+        "reference_sha256": {
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/depth.png": "667b3b31ca0cd812b2769d7f8ad27386fff78e9bdf254410c1fd248d044cd28b",
+          "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+        },
+        "source_status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "receipt_adapter": "Native SHA/output SHA/pixels/actual refs mapped from executor schema; original fields/status retained"
+      },
+      "sha256": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b"
+    }
+  ],
+  "generation_input_references": {
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/front.png": {
+      "href": "artifacts/model-fit/final/views/front.png",
+      "sha256": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg": {
+      "href": "inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.png": {
+      "href": "inputs/generation-reference-6cee59cef05d1217.png",
+      "sha256": "6cee59cef05d1217d58fc1eed06f1c171c3beb506add3bce795e098e83bef40d"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png": {
+      "href": "artifacts/model-fit/final/views/side.png",
+      "sha256": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/back.png": {
+      "href": "artifacts/model-fit/final/views/back.png",
+      "sha256": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png": {
+      "href": "artifacts/images/front.png",
+      "sha256": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/clothed-closeup-camera-reference.png": {
+      "href": "inputs/generation-reference-7b251ade15c1ee33.png",
+      "sha256": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup-mask.png": {
+      "href": "inputs/generation-reference-191a4953b47b8a3b.png",
+      "sha256": "191a4953b47b8a3befc40dd3837cde5299e9056c7e1fbf9d8ee58dfa464799dd"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png": {
+      "href": "artifacts/images/attempt-2/front.png",
+      "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png": {
+      "href": "artifacts/model-fit/final/views/pose.png",
+      "sha256": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13"
+    },
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/depth.png": {
+      "href": "artifacts/model-fit/final/views/depth.png",
+      "sha256": "667b3b31ca0cd812b2769d7f8ad27386fff78e9bdf254410c1fd248d044cd28b"
+    }
+  },
+  "native_claude_trigger": "BLOCKED",
+  "real_person_accuracy": "NOT_VALIDATED",
+  "physical_fit": "NOT_RUN",
+  "tokens": null,
+  "duration": null,
+  "input_sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+  "grading": {
+    "passed": 13,
+    "failed": 0,
+    "total": 13,
+    "pass_rate": 1.0
+  },
+  "model_verdict": "ACTUALLY_EXECUTED; independent final acceptance not inferred",
+  "upstream": {
+    "runs": 1,
+    "storage_key": "pattern-agent:eval-review:326c4c6f84b14890efb00679",
+    "benchmark_tokens": "unknown values omitted/null; no zero placeholders",
+    "upstream": "Anthropic pinned generate_review.py and viewer.html; generated document adapted only",
+    "previous_workspace": "work/full-imagegen-hillclimb-20261118/official-previous-inputs"
+  },
+  "artifact_sha256": {
+    "STATUS.md": "7a3114222da8ae7665f96784c70e8f952a6e7788618e0f66b9e3fbca5960bb77",
+    "TRACE.json": "bea8d66910c857ac0a41a30de97ddda41f18427ad3f0a2f38f5a4bac0c6b7d56",
+    "execution-report.md": "b81de38ac0f26f7034978014aca9d36e8b0d4d2ce5d852f1fcfed6eef8603784",
+    "executor-artifact-freeze.json": "612089f7eb5233c1c81208df866f9526e658e39c486bb87c0d98421779bc8220",
+    "generation-guides/closeup-semantic.json": "017dc286a0c491fa3fd60d249726fcc9acd5eeccb18922391f58abc98b85d9ef",
+    "generation-guides/closeup-semantic.labels.png": "1a68ec894a76b3ddeaba30d1c30f5a87f8001733060596d266d042efd17fe06d",
+    "generation-guides/closeup-semantic.mask.png": "2dea45faa98b12e2cc18ae33f3e852c786f6d020eaa62f9150b8928864734c8b",
+    "generation-guides/closeup-semantic.png": "bdf27bd5c2d145bbb5dd3203b70c7f47090b5c53075d3ed1b911b75c27121d41",
+    "generation-guides/clothed-closeup-camera-reference.json": "fb390019d9309ba61cf4f1137a67de8409ec9476708f1271371d71766a2894a8",
+    "generation-guides/clothed-closeup-camera-reference.png": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527",
+    "generation-observation.json": "ddaa8d28f9a4b69f57a36aa66ed0b88111ac99ec6f8d6fe648f1a694c3cacb5d",
+    "generation-receipts.json": "62632f281fcdb95df17e92194974195f1a084384167572d4fa098f7376da215c",
+    "generation-selection.json": "b209202abc1ae9370e069da716578fc4a40ae79ce15657a35e5e3069abcdf40a",
+    "images/attempt-2/closeup.png": "914e594886c9a6d2d3092c4aac290ceaf018ab2bef27dc1718d0c84fcbebc7fb",
+    "images/attempt-2/closeup.prompt.txt": "5e991cce09d5486891c4fefb7eef7330726a3499f193cae71ac3b8dabf92c5be",
+    "images/attempt-2/closeup.receipt.json": "310d2c1ddf902193e88acfefbd1b436e3117a3ddcce760ed0c79bbcad2937d97",
+    "images/attempt-2/depth.png": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+    "images/attempt-2/depth.prompt.txt": "1d49751693d9a1b2214abde0a27e77e59b9a183ba5537544f69ca64eaee61530",
+    "images/attempt-2/depth.receipt.json": "764a3ee1b74520f02f5e9f97090a2889b999f9d237f1cbc0e4742fe2e797fe62",
+    "images/attempt-2/front.png": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+    "images/attempt-2/front.prompt.txt": "879ed1dac5b1fc8f5e0d5571072d19a19db890959457d4fd4ece0f44c2c64bd1",
+    "images/attempt-2/front.receipt.json": "526e5c435dde7c8219d06c4fbfe23184f198b4357a4651177882e5c201517931",
+    "images/attempt-2/pose.png": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+    "images/attempt-2/pose.prompt.txt": "337c80381f845c8e25b72968d6b01d5553f7d72a9c5096fbcdee5a6f7d7001c6",
+    "images/attempt-2/pose.receipt.json": "c6b396bbb931b90cec3b9838d4c70606b477e62b2654d0bc7da2fc755b4b4575",
+    "images/attempt-2/side.png": "ae633b6eb23384bc62343a92e76e7ffb3a4f8b68d51b9647915994f487ff844f",
+    "images/attempt-2/side.prompt.txt": "72a2a74ad99750a97a1f888ee15abf262f06e8370a6ee49a433f5fab3527f111",
+    "images/attempt-2/side.receipt.json": "8edb12b38f71d05ef29f1b91f1199b87d2b52af0d2c446045764abaeffcaa52d",
+    "images/attempt-3/closeup.blocked-receipt.json": "04e6b1097d7a9707933716870ebb8b8f548e0099b9ad41c9f3085cdaa5ecf4f1",
+    "images/attempt-3/side.png": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+    "images/attempt-3/side.prompt.txt": "b4be9b3248a57a973f345b53034d05775133a918ab8a9c1075ab14a39d728fe9",
+    "images/attempt-3/side.receipt.json": "9d522256ee3a544ce0d17a4b8f04290d1a11057779c5889c3a8fa7a895f910ba",
+    "images/attempt-4/closeup.png": "3340e93aa67e4c09184386c1a80dd56645e9abab363ce575088bedfb4c4ee4c8",
+    "images/attempt-4/closeup.prompt.txt": "c2658e6c6bddb218f22a7e3d267d1851bb1a8d64bafda2b4ac26625daa1b23aa",
+    "images/attempt-4/closeup.receipt.json": "1c8dd3e481e08631b62f261243c49a8fe3bd3b49a492c405b8eef4e80b661bf4",
+    "images/attempt-5/closeup.png": "19fc9c94fc281399ec96e9cf6a493727e6a45b9fc3dbad4fb6aa81a5bf684b9d",
+    "images/attempt-5/closeup.prompt.txt": "25bca438b94975a953419a93ff31b3f859f1a02787d9c453abdb0a30dbad839a",
+    "images/attempt-5/closeup.receipt.json": "c11d23cdaa2b8409a31557389d6a7138da1b200024db9577e496344b7c63b42e",
+    "images/attempt-6/closeup.png": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+    "images/attempt-6/closeup.prompt.txt": "e0f8443f8228c8c2e4083cf3c8c7966b88e09084f61593c57507297d54c47f4d",
+    "images/attempt-6/closeup.receipt.json": "ad1b7c43eb0e4a3ad2b1f8192e8ef49d8646e670063725e1f0fa52780f9b66ef",
+    "images/back.png": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+    "images/back.prompt.txt": "b5c7921067e701055cf7c06154729628738c49aff5fe417a5d40c44d7b6bf487",
+    "images/back.receipt.json": "8abcc9cea77154326609c6bb8b594b959faf87d2f63253742372a10beeb12346",
+    "images/closeup.png": "096c3a2be3e5502f76e29bf28f6d2c6b43efbe9df82a1f94c46503733cadfa7f",
+    "images/closeup.prompt.txt": "73b7a7482c2145c4ac86b75b2b609cb6b03a078f73a9dd208bf21540af2389c7",
+    "images/closeup.receipt.json": "19c38c6974bdb5eadc90e7b806ec9bf27d247cc527036296abc58d67af6b8d61",
+    "images/depth.png": "faf6d25723b83e2f5b259d96094f32f01aa926d154edc993399a7d8668e9b667",
+    "images/depth.prompt.txt": "91294a8e2fdc8229275b1f27af5495b1e310173d6f04fee412b763e9bb6b93e9",
+    "images/depth.receipt.json": "5ea9e331ed7e74b5b69e5d3593f243b8ada5f1dbeac434bf4e0bf92a1a9b749e",
+    "images/front.png": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6",
+    "images/front.prompt.txt": "d8283b36dbe777692b1362879fd6085a7d5d904bbdf8a6729e2dbf3c1528b5cb",
+    "images/front.receipt.json": "c02b21f9d47177f95c1b54ee5f4a3b967e15cc31fca9885faf4d43d1657aaa9d",
+    "images/generation-manifest.json": "edceedfc2ac5d76de8f240d2ed179c4f5b2c23b18e8306616f417c7d79f1de0a",
+    "images/pose.png": "c5af101106742c1dd7c0346ba06935bed7a8efd1e5d2c209ba778f40b878d26b",
+    "images/pose.prompt.txt": "258ec42b15e751df4b81753e965c7655e223a0daaefc650aeac03e774772b5b0",
+    "images/pose.receipt.json": "889cafc752c4ca85fd83756ed76aa352ace5254024c540cc1139bf4b752198f6",
+    "images/side.png": "91dd537ca5d3707c1351b1f453837bee9fa0b52f4488403e63c71daadf9954bc",
+    "images/side.prompt.txt": "18a2ebb3bd196ebb0752b0c404ee6402158cc94886d453f79298c83afbde3450",
+    "images/side.receipt.json": "10fa2c33b104206a8646e5a8a58425030c9f1fdeab54acbae9165a8558edf386",
+    "model-fit/body/stage-1/camera.json": "ebeb8ec6a32fa305f2f02119432e661b53a6ae9125b700b3f6f13133723202cf",
+    "model-fit/body/stage-1/final-mask.png": "609a87f9d4d2b433553d191063e2eaf5a3f933f02ce1ec2e2d91e6d4454ba0c9",
+    "model-fit/body/stage-1/final-state.json": "2a782a7ad5378d5dcce5359862da020a6594c47b7b493f91151ab8e45660837e",
+    "model-fit/body/stage-1/initial-mask.png": "d06fbdc7744c7a5ae70a321ef430b2539b22e36ac884a5989e4a31e47d3a1e28",
+    "model-fit/body/stage-1/initial-metrics.json": "bf678b9ea782339e0d5fa1160340abaf4b02cf9931e05903479860bc4c7f0288",
+    "model-fit/body/stage-1/metrics.json": "5aebbb35751bda6bbb89757487d96e9b6c90c31caefc7325994174d7db262a8a",
+    "model-fit/body/stage-1/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/body/stage-1/optimization.json": "f978107be83135c3a6d425af4bdf3761915bd8661bbd4024776c0e7ae9d720f6",
+    "model-fit/body/stage-1/overlay.png": "4266ef39f04cb4609b7ce0c465dbecc4d8b9766c5c8e57a46860e2d6ee51072d",
+    "model-fit/body/stage-1/posed.obj": "2b879e52d38f7f73fc2daf301de118c99cf915a1fdca9f4b64b63c55332163f3",
+    "model-fit/body/stage-1/views/back-mask.png": "3c2d5d0f7df5d2f18b04d4f6fc9126f6a44af14417573f9eecd8907bc7841730",
+    "model-fit/body/stage-1/views/back.png": "f021b6803972f9df17a9fa8e3fbab0ad38bd8a990e3ea918579dfd810effa3fe",
+    "model-fit/body/stage-1/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "model-fit/body/stage-1/views/front-mask.png": "84023378630f25e1e3f28302a4d3bf703ccb87f3096ec48d434d3baaa743e610",
+    "model-fit/body/stage-1/views/front.png": "6d55957278e52e5c7ea53db31ec146593fac9b59d6a562d582d4bcead91a98bb",
+    "model-fit/body/stage-1/views/joints.json": "0a27a2344f4927f87b6c43c3b22cdb6f550c16ae62e8dcb1d69ba813e9a8533f",
+    "model-fit/body/stage-1/views/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/body/stage-1/views/posed.obj": "2b879e52d38f7f73fc2daf301de118c99cf915a1fdca9f4b64b63c55332163f3",
+    "model-fit/body/stage-1/views/side-mask.png": "75164ce33e2083d082a0bb3bfb1a9d5da81241eaf756a918063394d327a8fb1e",
+    "model-fit/body/stage-1/views/side.png": "4be8fa4ffdded6a3d00e3e3143a25890cecb71dfdb94072f47242372c96b38bb",
+    "model-fit/body/stage-1/views/state.json": "2a782a7ad5378d5dcce5359862da020a6594c47b7b493f91151ab8e45660837e",
+    "model-fit/body/stage-1/views/view-provenance.json": "1ca7619eb8dd20d25ef96ad159a8f84f5858ae7a220f9017129be950cedd2196",
+    "model-fit/body/stage-2/camera.json": "03f95d68023cd9aa37d00df85bf60285aad8fa4afcd367ea97ef9ee5edacc1b4",
+    "model-fit/body/stage-2/final-mask.png": "7f7dbc89d67bd7cb5a67c28ae4b6f4093664114823a44a336400a5338ae493d8",
+    "model-fit/body/stage-2/final-state.json": "c074f8f13bb5df808c8bdb44e903b145867f2f8c26d4a5626028a3f9921ed11d",
+    "model-fit/body/stage-2/initial-mask.png": "609a87f9d4d2b433553d191063e2eaf5a3f933f02ce1ec2e2d91e6d4454ba0c9",
+    "model-fit/body/stage-2/initial-metrics.json": "5aebbb35751bda6bbb89757487d96e9b6c90c31caefc7325994174d7db262a8a",
+    "model-fit/body/stage-2/metrics.json": "901eb5b7a7067c9e3f181284a077ddb67a0e01c5cc9a6a93064fdb0c5d3dc982",
+    "model-fit/body/stage-2/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/body/stage-2/optimization.json": "c894c8e143cdb11f5431e710d7d9d36e394b765d3818b6816adc900815ce938a",
+    "model-fit/body/stage-2/overlay.png": "0898a71f871d1d0d1dc1ba98cd2955b4112cd764aae17c7f377a25f1bb4796ec",
+    "model-fit/body/stage-2/posed.obj": "d240dba38fd1b64b335209b0f19a112cb8a254a2b1630d91f2db28cb5ab18837",
+    "model-fit/body/stage-2/views/back-mask.png": "aa9deb05cb5be48595acfc760e184e6a98ba3d2b71ef02e347337e31c462604c",
+    "model-fit/body/stage-2/views/back.png": "b0c242759bf017706621fde2e0eae4965508acac0ed178b13eecb2d1867fb69b",
+    "model-fit/body/stage-2/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "model-fit/body/stage-2/views/front-mask.png": "2b1aa54a3ed1cb4964b0b3fca1a34068c10c4b39dc1e7471d19853a00377c05a",
+    "model-fit/body/stage-2/views/front.png": "3489e172f6833a77cdff6c03a74ebf81e58da810b5f489369d037f9481b004a0",
+    "model-fit/body/stage-2/views/joints.json": "ade73b8e5d570e08b1473624c592c877b84f53ac2dba2442affd7f1f85d517d2",
+    "model-fit/body/stage-2/views/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/body/stage-2/views/posed.obj": "d240dba38fd1b64b335209b0f19a112cb8a254a2b1630d91f2db28cb5ab18837",
+    "model-fit/body/stage-2/views/side-mask.png": "44ee3a5a1d66adf66f8acb4af1d060533387132b825011779c6770997711dd21",
+    "model-fit/body/stage-2/views/side.png": "b44aaab5634e4212b60afea7c2ff9711461ff25d50887e9a3c0b0f3b3a015375",
+    "model-fit/body/stage-2/views/state.json": "c074f8f13bb5df808c8bdb44e903b145867f2f8c26d4a5626028a3f9921ed11d",
+    "model-fit/body/stage-2/views/view-provenance.json": "6dc023fe48ff7bbc793779a12a22359e012db022b5c7e23f844edff3bb6ecedb",
+    "model-fit/body/stage-3/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "model-fit/body/stage-3/final-mask.png": "9da5ed31a6831a85541ab809fa73c084e0de2a3b1a7d4e41552c187ae2556d10",
+    "model-fit/body/stage-3/final-state.json": "9ed163e05b841d5f1683b9cb6d9f8e9e70076b68b0a050e99dab07b716295be7",
+    "model-fit/body/stage-3/initial-mask.png": "7f7dbc89d67bd7cb5a67c28ae4b6f4093664114823a44a336400a5338ae493d8",
+    "model-fit/body/stage-3/initial-metrics.json": "901eb5b7a7067c9e3f181284a077ddb67a0e01c5cc9a6a93064fdb0c5d3dc982",
+    "model-fit/body/stage-3/metrics.json": "3064ba38e30e2dacddfa589a82189692c2f12bea7c9cef09b36f501833d71824",
+    "model-fit/body/stage-3/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/body/stage-3/optimization.json": "ccc83c8d7ecd0e77e42707c4825b6a8d886805435071caac4738248febeaf999",
+    "model-fit/body/stage-3/overlay.png": "d300ba3903ff0eacbe8ac48ed1ee66c9cebf29350ff5d2bb2a03e47f581add0b",
+    "model-fit/body/stage-3/posed.obj": "63203d7382d7da5fe6e7346812c858de67d33012224a0bee455af750f2c03887",
+    "model-fit/body/stage-3/views/back-mask.png": "f5a24a6ff777c4084530969a1321acbb3467015f46a11e2ab19c88af82056e2b",
+    "model-fit/body/stage-3/views/back.png": "20c35634ea09652048a9048f54035fbaeefb99fc081efdadfe5fa2a6fef68e1c",
+    "model-fit/body/stage-3/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "model-fit/body/stage-3/views/front-mask.png": "adf49db6f6e2ef3ed4460662f5a21d802a895ac22c80ce7f14e32dfdaab3d6ef",
+    "model-fit/body/stage-3/views/front.png": "314221b448e069b6973120f79d73f3e60f6d1c74823b082aedf4d43b50a204ac",
+    "model-fit/body/stage-3/views/joints.json": "7294d5e6e8b7eb759ce972a6cf6840d50a54fbf1af01d482f027632f9ffe05bc",
+    "model-fit/body/stage-3/views/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/body/stage-3/views/posed.obj": "63203d7382d7da5fe6e7346812c858de67d33012224a0bee455af750f2c03887",
+    "model-fit/body/stage-3/views/side-mask.png": "83d6942c166a871df387d9c349ed78df05a9ad5285f0e481224d4b47d862f985",
+    "model-fit/body/stage-3/views/side.png": "7fa9730a551c4bf43dcc4c011fce5d9afa8b54efad509d58d6996d6dbd1f5db3",
+    "model-fit/body/stage-3/views/state.json": "9ed163e05b841d5f1683b9cb6d9f8e9e70076b68b0a050e99dab07b716295be7",
+    "model-fit/body/stage-3/views/view-provenance.json": "e374879e44dca36fec9a5c95343e13173cdc18404b31528d3e1734fb92e247d5",
+    "model-fit/body-fit-1.stderr.log": "828a283463eacc56ce04828cd689aa0c85c8c0074ab9e49aa6100ce0e437e754",
+    "model-fit/body-fit-1.stdout.log": "2b2c9f32d0786e10979442a53c9dd13cf5999695edf1ff88e5723c7eea8ddc90",
+    "model-fit/body-fit-2.stderr.log": "b94a9c426e02d20b9d967d3b3e65afadc5d28ebb65472f2c2b517781eb7ed154",
+    "model-fit/body-fit-2.stdout.log": "eedc86503d4b2c2a1d1f2fbadfd71490e6d6ceef4155961b4aea4caaa54bb822",
+    "model-fit/body-fit-3.stderr.log": "f1d546fe7882ab7e6a318f95d9b418198ee448e638c9451f26500cbc282195c2",
+    "model-fit/body-fit-3.stdout.log": "3a3bfa24fd6110cb1d48dc1506b1ff469a0e0a4966768146d65b26a6ef4929b1",
+    "model-fit/comparison/camera.json": "b4dc8fe0b2b2e47d36f5de6ed630f49609d45d158d00ddb8d3ee09f481107ea5",
+    "model-fit/comparison/final/metrics.json": "e3127fbb69e20a2c95f309740b2c557759eafca155a6ab9416eb399ca9b60566",
+    "model-fit/comparison/final/overlay-thin.png": "6e5a23e8ebba5672ee46f3cb580939f0e8305d7e678c1b4dd0bca6d10b8452c1",
+    "model-fit/comparison/final/overlay.png": "e1bbbd7fd9e3b54b0cff417de235cd215067b0a0f7f0b5b5e6ac10382d0efff6",
+    "model-fit/comparison/final-mask.png": "be3bb1740336b722809c7bd68716b50c42856ae8bf315a56c5b64c8be3415132",
+    "model-fit/comparison/initial/metrics.json": "0a31253f523385edd560c176c33c5d6d03d35a7fd23cc1c554fea6e6c0fe4f47",
+    "model-fit/comparison/initial/overlay-thin.png": "505663ab202334cbffa025bb5e7a9d5cb304fdbce0a4bb6325e2933b60ed93b3",
+    "model-fit/comparison/initial/overlay.png": "cc1464d5af5ac94d77a919d6879bf03a69a802ceeae75c313653e13abe91b566",
+    "model-fit/comparison/initial-mask.png": "d6deffb52b25b066b49e745444fd592bf10bc7c9edf7fdc683d4ad61c343210c",
+    "model-fit/comparison/initial-neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/comparison/initial-posed.obj": "5974ac69e64c5a327be0b131d80d1be67d1d290957866d2bdb98c7b4961218a8",
+    "model-fit/comparison/provenance.json": "45a8ab7152cc8f67683cb9b8b451f7813f856ef7290d4e6c1309257721842d76",
+    "model-fit/editor-probe/desktop.png": "8539d3e734bcb3399a81cfc7ac99887e9480d776f43847502cca0ea3e031690d",
+    "model-fit/editor-probe/edited-measurements.json": "348e03d47d3ba6924930d83bb9edb608aacd9e457ec1b8d9e5da74ededd53486",
+    "model-fit/editor-probe/edited-neutral.obj": "3cd34e836d7e70f4f0685b92cc751201772f70271dc69c189fb427a375de2b48",
+    "model-fit/editor-probe/edited-pose.png": "e94e44909e3638135b5fac2b889a4ab35bb0b99071a5cf7aff1741a5ac237cf2",
+    "model-fit/editor-probe/edited-state.json": "3fcafc7c4b5c79e72d70cbd11a35b7dfeb9a9d7cfcf7ab60c9adf38ccea9d167",
+    "model-fit/editor-probe/initial-measurements.csv": "18c2cdf24ed255b645c9bf950729036678f7f0cb9e4a23df1a46fb77f465b8a6",
+    "model-fit/editor-probe/initial-measurements.json": "ca057611cade66b3507199303afcd4bef22e38709aa88f280f9aab85e0428ff3",
+    "model-fit/editor-probe/initial-neutral.obj": "851f046b5bca5a6d04fb239c5075281a54352b6b01ef90b83950611c7c1f1f69",
+    "model-fit/editor-probe/mobile.png": "10aae531a2bf0dd988408c375e5fc708d22b4108dfd58206ff4254c5a89447e8",
+    "model-fit/editor-probe/report.json": "68731095e24841ae5f6042973466f110e4bf7ff1921a5e8560fb666f3832f1c0",
+    "model-fit/editor-probe/residual-measurements.json": "4b598de939f5e5c965a6d25fbc96358bfe13fc90f55c9fbfa47ffdfbfecccedf",
+    "model-fit/editor-probe/residual-neutral.obj": "c275a43b605ee6f88b414057827b4b2eb9ce727e888011caadbc91c7022cc17a",
+    "model-fit/editor-probe/source-provenance.json": "3dc93552f58da588e0cdc2da3b53ca9c75411195c9dea4c1f91e8bde0340f0e2",
+    "model-fit/execution.json": "92edebf60050f89b5ed1f7c73923b471868bf6b3e302d4c7793cbe5282c6b83b",
+    "model-fit/final/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "model-fit/final/diagnostics.json": "9df506a6287ff9788c90ddf81987e1166c8196c6f797925c344be8d088a16f0d",
+    "model-fit/final/final-state.json": "cc78d1e35f89bbef015e0cb3c401964ab2f964c3aebe59d0db0156dbef38e825",
+    "model-fit/final/history.json": "5897ff4db452dd36765d54da7a947f4cd913755cd6a9407c4511958dd22a4af0",
+    "model-fit/final/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/final/photo-mask.png": "be3bb1740336b722809c7bd68716b50c42856ae8bf315a56c5b64c8be3415132",
+    "model-fit/final/photo-render.png": "2ef224dfae308aa3f15261378c096beea5c96f8398fdf3fad1a3161a72afd860",
+    "model-fit/final/posed.obj": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+    "model-fit/final/provenance.json": "1fd5ccc13ee99dc6af4bdee96f801a7c05fbefd127e722b86252da3279c563a5",
+    "model-fit/final/views/back-mask.png": "ed5caea9bdcb6df5f4df1977b60e266a18fac51f5149bcf91d145b0df0e1717f",
+    "model-fit/final/views/back.png": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+    "model-fit/final/views/camera.json": "2ddea2e182531dfd514dfcc2f07a7bc8bd23e030c3f9ff3c6c08c69dad23cd14",
+    "model-fit/final/views/closeup-mask.png": "191a4953b47b8a3befc40dd3837cde5299e9056c7e1fbf9d8ee58dfa464799dd",
+    "model-fit/final/views/closeup.png": "fd36a168844572a0f13696e5583484bbfb321cd1b4773bb70587afb9c07427ef",
+    "model-fit/final/views/depth-mask.png": "dee3ba64e29b1c92e130e7f0c8d6dce59eb9de104a1711b01991c52ab41abb9d",
+    "model-fit/final/views/depth-valid.png": "6c75d5bf14eab70333e16aa4980b466475dba273fa6dfa7e21e020ae6231c191",
+    "model-fit/final/views/depth.png": "667b3b31ca0cd812b2769d7f8ad27386fff78e9bdf254410c1fd248d044cd28b",
+    "model-fit/final/views/front-mask.png": "dee3ba64e29b1c92e130e7f0c8d6dce59eb9de104a1711b01991c52ab41abb9d",
+    "model-fit/final/views/front.png": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+    "model-fit/final/views/joint-projections.json": "d93c5ec87273cbad4bdb38653f39e77892dec8e6d24c15a7e1af98028c04fd6a",
+    "model-fit/final/views/joints.json": "5be3af88dcf0c53970312a7a8a9e0dfb227699ea5da91af340fceabd7190b210",
+    "model-fit/final/views/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/final/views/pose-mask.png": "dee3ba64e29b1c92e130e7f0c8d6dce59eb9de104a1711b01991c52ab41abb9d",
+    "model-fit/final/views/pose.png": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13",
+    "model-fit/final/views/posed.obj": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+    "model-fit/final/views/rawdepth.npy": "80de6eaaf1985e317fb0571106d10a4bc0fbb51fb10b0220eeb48b0ba735de3b",
+    "model-fit/final/views/side-mask.png": "99bf6269f7685da02759d8f12f6622928a1f5d6bf9bc1025d4a5d83420c410ab",
+    "model-fit/final/views/side.png": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+    "model-fit/final/views/state.json": "cc78d1e35f89bbef015e0cb3c401964ab2f964c3aebe59d0db0156dbef38e825",
+    "model-fit/final/views/view-provenance.json": "67b6d28494b8b1c3b1263f7711a9f5982196d5aaa0d100ac005ee2bff58e3a4c",
+    "model-fit/gallery-index.json": "f75f47722c37146aca6f89c199e4c2cb4e8c01d82281230a910f2645d10ba595",
+    "model-fit/grip-fit.stderr.log": "7542159ac7b473de8fffa4821292b38fc5639bf5af064ec287117faea622c234",
+    "model-fit/grip-fit.stdout.log": "20ac296e5f1238a8d3b3af0cb90065529362aa32d15d3ced63382b3955e2a266",
+    "model-fit/guide-registration/guide-registered.png": "2b6f6b441310d234cd7427859e0ffdca59ac46df1f4de9908267a26a14d669da",
+    "model-fit/guide-registration/registration.json": "6b5fb4566d54c38f69233b051eb69a34fb25f330de0ada2de83035ff98f13ac8",
+    "model-fit/guide-registration/source-marker-preview.png": "952650f95c8295a1bf98fdb8d6046c8df64445d4ca106d99846b85a0e27f88d5",
+    "model-fit/measure-final-mesh.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-fit/measure-final-mesh.stdout.log": "542ae5b0dae3fdfeef2edf9afe5be1b21aa632db92af709b1c51f90503acfdc2",
+    "model-fit/measurements.model.csv": "1f92857e920bfc62a26dd6bd3cad21d9e3484d7f798ac90adb44c08256370171",
+    "model-fit/measurements.model.json": "dca7635d60c6884da6fad63ca1f43ca934e1ffad26d85cb00202350026b68e04",
+    "model-fit/register-pose-guide.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-fit/register-pose-guide.stdout.log": "1f06390c1561a4f4319943c20a19761acc1d7f9166803d33640fe63ba42c8a9d",
+    "model-stage-report.md": "fc10a254f3e2603ca5f4d3128baf7c375251d97ecc90c52f35845f57e2e5c8cd",
+    "product-audit.json": "0d3d89780fbd0138a5483288239b7ee32e7a7df05c80e5d2eb74a21f9b930769",
+    "registration-semantics-review.json": "cbf0644c2404ead9525faf46245732c3e24f1fc6c2535398715888990ed014b0",
+    "run.json": "0155c8d919d34d1dd91e091c5ed4f7989ce97dc26f1deba611c86c66b851de9d"
+  },
+  "published_artifact_sha256": {
+    "STATUS.md": "7a3114222da8ae7665f96784c70e8f952a6e7788618e0f66b9e3fbca5960bb77",
+    "TRACE.json": "bea8d66910c857ac0a41a30de97ddda41f18427ad3f0a2f38f5a4bac0c6b7d56",
+    "execution-report.md": "b81de38ac0f26f7034978014aca9d36e8b0d4d2ce5d852f1fcfed6eef8603784",
+    "executor-artifact-freeze.json": "612089f7eb5233c1c81208df866f9526e658e39c486bb87c0d98421779bc8220",
+    "generation-guides/closeup-semantic.json": "017dc286a0c491fa3fd60d249726fcc9acd5eeccb18922391f58abc98b85d9ef",
+    "generation-guides/clothed-closeup-camera-reference.json": "fb390019d9309ba61cf4f1137a67de8409ec9476708f1271371d71766a2894a8",
+    "generation-observation.json": "ddaa8d28f9a4b69f57a36aa66ed0b88111ac99ec6f8d6fe648f1a694c3cacb5d",
+    "generation-receipts.json": "62632f281fcdb95df17e92194974195f1a084384167572d4fa098f7376da215c",
+    "generation-selection.json": "b209202abc1ae9370e069da716578fc4a40ae79ce15657a35e5e3069abcdf40a",
+    "images/attempt-2/closeup.png": "914e594886c9a6d2d3092c4aac290ceaf018ab2bef27dc1718d0c84fcbebc7fb",
+    "images/attempt-2/closeup.prompt.txt": "5e991cce09d5486891c4fefb7eef7330726a3499f193cae71ac3b8dabf92c5be",
+    "images/attempt-2/closeup.receipt.json": "310d2c1ddf902193e88acfefbd1b436e3117a3ddcce760ed0c79bbcad2937d97",
+    "images/attempt-2/depth.png": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+    "images/attempt-2/depth.prompt.txt": "1d49751693d9a1b2214abde0a27e77e59b9a183ba5537544f69ca64eaee61530",
+    "images/attempt-2/depth.receipt.json": "764a3ee1b74520f02f5e9f97090a2889b999f9d237f1cbc0e4742fe2e797fe62",
+    "images/attempt-2/front.png": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+    "images/attempt-2/front.prompt.txt": "879ed1dac5b1fc8f5e0d5571072d19a19db890959457d4fd4ece0f44c2c64bd1",
+    "images/attempt-2/front.receipt.json": "526e5c435dde7c8219d06c4fbfe23184f198b4357a4651177882e5c201517931",
+    "images/attempt-2/pose.png": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+    "images/attempt-2/pose.prompt.txt": "337c80381f845c8e25b72968d6b01d5553f7d72a9c5096fbcdee5a6f7d7001c6",
+    "images/attempt-2/pose.receipt.json": "c6b396bbb931b90cec3b9838d4c70606b477e62b2654d0bc7da2fc755b4b4575",
+    "images/attempt-2/side.png": "ae633b6eb23384bc62343a92e76e7ffb3a4f8b68d51b9647915994f487ff844f",
+    "images/attempt-2/side.prompt.txt": "72a2a74ad99750a97a1f888ee15abf262f06e8370a6ee49a433f5fab3527f111",
+    "images/attempt-2/side.receipt.json": "8edb12b38f71d05ef29f1b91f1199b87d2b52af0d2c446045764abaeffcaa52d",
+    "images/attempt-3/closeup.blocked-receipt.json": "04e6b1097d7a9707933716870ebb8b8f548e0099b9ad41c9f3085cdaa5ecf4f1",
+    "images/attempt-3/side.png": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+    "images/attempt-3/side.prompt.txt": "b4be9b3248a57a973f345b53034d05775133a918ab8a9c1075ab14a39d728fe9",
+    "images/attempt-3/side.receipt.json": "9d522256ee3a544ce0d17a4b8f04290d1a11057779c5889c3a8fa7a895f910ba",
+    "images/attempt-4/closeup.png": "3340e93aa67e4c09184386c1a80dd56645e9abab363ce575088bedfb4c4ee4c8",
+    "images/attempt-4/closeup.prompt.txt": "c2658e6c6bddb218f22a7e3d267d1851bb1a8d64bafda2b4ac26625daa1b23aa",
+    "images/attempt-4/closeup.receipt.json": "1c8dd3e481e08631b62f261243c49a8fe3bd3b49a492c405b8eef4e80b661bf4",
+    "images/attempt-5/closeup.png": "19fc9c94fc281399ec96e9cf6a493727e6a45b9fc3dbad4fb6aa81a5bf684b9d",
+    "images/attempt-5/closeup.prompt.txt": "25bca438b94975a953419a93ff31b3f859f1a02787d9c453abdb0a30dbad839a",
+    "images/attempt-5/closeup.receipt.json": "c11d23cdaa2b8409a31557389d6a7138da1b200024db9577e496344b7c63b42e",
+    "images/attempt-6/closeup.png": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+    "images/attempt-6/closeup.prompt.txt": "e0f8443f8228c8c2e4083cf3c8c7966b88e09084f61593c57507297d54c47f4d",
+    "images/attempt-6/closeup.receipt.json": "ad1b7c43eb0e4a3ad2b1f8192e8ef49d8646e670063725e1f0fa52780f9b66ef",
+    "images/back.png": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+    "images/back.prompt.txt": "b5c7921067e701055cf7c06154729628738c49aff5fe417a5d40c44d7b6bf487",
+    "images/back.receipt.json": "8abcc9cea77154326609c6bb8b594b959faf87d2f63253742372a10beeb12346",
+    "images/closeup.png": "096c3a2be3e5502f76e29bf28f6d2c6b43efbe9df82a1f94c46503733cadfa7f",
+    "images/closeup.prompt.txt": "73b7a7482c2145c4ac86b75b2b609cb6b03a078f73a9dd208bf21540af2389c7",
+    "images/closeup.receipt.json": "19c38c6974bdb5eadc90e7b806ec9bf27d247cc527036296abc58d67af6b8d61",
+    "images/depth.png": "faf6d25723b83e2f5b259d96094f32f01aa926d154edc993399a7d8668e9b667",
+    "images/depth.prompt.txt": "91294a8e2fdc8229275b1f27af5495b1e310173d6f04fee412b763e9bb6b93e9",
+    "images/depth.receipt.json": "5ea9e331ed7e74b5b69e5d3593f243b8ada5f1dbeac434bf4e0bf92a1a9b749e",
+    "images/front.png": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6",
+    "images/front.prompt.txt": "d8283b36dbe777692b1362879fd6085a7d5d904bbdf8a6729e2dbf3c1528b5cb",
+    "images/front.receipt.json": "c02b21f9d47177f95c1b54ee5f4a3b967e15cc31fca9885faf4d43d1657aaa9d",
+    "images/generation-manifest.json": "edceedfc2ac5d76de8f240d2ed179c4f5b2c23b18e8306616f417c7d79f1de0a",
+    "images/pose.png": "c5af101106742c1dd7c0346ba06935bed7a8efd1e5d2c209ba778f40b878d26b",
+    "images/pose.prompt.txt": "258ec42b15e751df4b81753e965c7655e223a0daaefc650aeac03e774772b5b0",
+    "images/pose.receipt.json": "889cafc752c4ca85fd83756ed76aa352ace5254024c540cc1139bf4b752198f6",
+    "images/side.png": "91dd537ca5d3707c1351b1f453837bee9fa0b52f4488403e63c71daadf9954bc",
+    "images/side.prompt.txt": "18a2ebb3bd196ebb0752b0c404ee6402158cc94886d453f79298c83afbde3450",
+    "images/side.receipt.json": "10fa2c33b104206a8646e5a8a58425030c9f1fdeab54acbae9165a8558edf386",
+    "model-fit/body/stage-1/camera.json": "ebeb8ec6a32fa305f2f02119432e661b53a6ae9125b700b3f6f13133723202cf",
+    "model-fit/body/stage-1/final-state.json": "2a782a7ad5378d5dcce5359862da020a6594c47b7b493f91151ab8e45660837e",
+    "model-fit/body/stage-1/initial-metrics.json": "bf678b9ea782339e0d5fa1160340abaf4b02cf9931e05903479860bc4c7f0288",
+    "model-fit/body/stage-1/metrics.json": "5aebbb35751bda6bbb89757487d96e9b6c90c31caefc7325994174d7db262a8a",
+    "model-fit/body/stage-1/optimization.json": "f978107be83135c3a6d425af4bdf3761915bd8661bbd4024776c0e7ae9d720f6",
+    "model-fit/body/stage-1/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "model-fit/body/stage-1/views/joints.json": "0a27a2344f4927f87b6c43c3b22cdb6f550c16ae62e8dcb1d69ba813e9a8533f",
+    "model-fit/body/stage-1/views/state.json": "2a782a7ad5378d5dcce5359862da020a6594c47b7b493f91151ab8e45660837e",
+    "model-fit/body/stage-1/views/view-provenance.json": "1ca7619eb8dd20d25ef96ad159a8f84f5858ae7a220f9017129be950cedd2196",
+    "model-fit/body/stage-2/camera.json": "03f95d68023cd9aa37d00df85bf60285aad8fa4afcd367ea97ef9ee5edacc1b4",
+    "model-fit/body/stage-2/final-state.json": "c074f8f13bb5df808c8bdb44e903b145867f2f8c26d4a5626028a3f9921ed11d",
+    "model-fit/body/stage-2/initial-metrics.json": "5aebbb35751bda6bbb89757487d96e9b6c90c31caefc7325994174d7db262a8a",
+    "model-fit/body/stage-2/metrics.json": "901eb5b7a7067c9e3f181284a077ddb67a0e01c5cc9a6a93064fdb0c5d3dc982",
+    "model-fit/body/stage-2/optimization.json": "c894c8e143cdb11f5431e710d7d9d36e394b765d3818b6816adc900815ce938a",
+    "model-fit/body/stage-2/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "model-fit/body/stage-2/views/joints.json": "ade73b8e5d570e08b1473624c592c877b84f53ac2dba2442affd7f1f85d517d2",
+    "model-fit/body/stage-2/views/state.json": "c074f8f13bb5df808c8bdb44e903b145867f2f8c26d4a5626028a3f9921ed11d",
+    "model-fit/body/stage-2/views/view-provenance.json": "6dc023fe48ff7bbc793779a12a22359e012db022b5c7e23f844edff3bb6ecedb",
+    "model-fit/body/stage-3/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "model-fit/body/stage-3/final-state.json": "9ed163e05b841d5f1683b9cb6d9f8e9e70076b68b0a050e99dab07b716295be7",
+    "model-fit/body/stage-3/initial-metrics.json": "901eb5b7a7067c9e3f181284a077ddb67a0e01c5cc9a6a93064fdb0c5d3dc982",
+    "model-fit/body/stage-3/metrics.json": "3064ba38e30e2dacddfa589a82189692c2f12bea7c9cef09b36f501833d71824",
+    "model-fit/body/stage-3/optimization.json": "ccc83c8d7ecd0e77e42707c4825b6a8d886805435071caac4738248febeaf999",
+    "model-fit/body/stage-3/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "model-fit/body/stage-3/views/joints.json": "7294d5e6e8b7eb759ce972a6cf6840d50a54fbf1af01d482f027632f9ffe05bc",
+    "model-fit/body/stage-3/views/state.json": "9ed163e05b841d5f1683b9cb6d9f8e9e70076b68b0a050e99dab07b716295be7",
+    "model-fit/body/stage-3/views/view-provenance.json": "e374879e44dca36fec9a5c95343e13173cdc18404b31528d3e1734fb92e247d5",
+    "model-fit/body-fit-1.stderr.log": "828a283463eacc56ce04828cd689aa0c85c8c0074ab9e49aa6100ce0e437e754",
+    "model-fit/body-fit-1.stdout.log": "2b2c9f32d0786e10979442a53c9dd13cf5999695edf1ff88e5723c7eea8ddc90",
+    "model-fit/body-fit-2.stderr.log": "b94a9c426e02d20b9d967d3b3e65afadc5d28ebb65472f2c2b517781eb7ed154",
+    "model-fit/body-fit-2.stdout.log": "eedc86503d4b2c2a1d1f2fbadfd71490e6d6ceef4155961b4aea4caaa54bb822",
+    "model-fit/body-fit-3.stderr.log": "f1d546fe7882ab7e6a318f95d9b418198ee448e638c9451f26500cbc282195c2",
+    "model-fit/body-fit-3.stdout.log": "3a3bfa24fd6110cb1d48dc1506b1ff469a0e0a4966768146d65b26a6ef4929b1",
+    "model-fit/comparison/camera.json": "b4dc8fe0b2b2e47d36f5de6ed630f49609d45d158d00ddb8d3ee09f481107ea5",
+    "model-fit/comparison/final/metrics.json": "e3127fbb69e20a2c95f309740b2c557759eafca155a6ab9416eb399ca9b60566",
+    "model-fit/comparison/final/overlay-thin.png": "6e5a23e8ebba5672ee46f3cb580939f0e8305d7e678c1b4dd0bca6d10b8452c1",
+    "model-fit/comparison/initial/metrics.json": "0a31253f523385edd560c176c33c5d6d03d35a7fd23cc1c554fea6e6c0fe4f47",
+    "model-fit/comparison/initial/overlay-thin.png": "505663ab202334cbffa025bb5e7a9d5cb304fdbce0a4bb6325e2933b60ed93b3",
+    "model-fit/comparison/provenance.json": "45a8ab7152cc8f67683cb9b8b451f7813f856ef7290d4e6c1309257721842d76",
+    "model-fit/editor-probe/edited-measurements.json": "348e03d47d3ba6924930d83bb9edb608aacd9e457ec1b8d9e5da74ededd53486",
+    "model-fit/editor-probe/edited-pose.png": "e94e44909e3638135b5fac2b889a4ab35bb0b99071a5cf7aff1741a5ac237cf2",
+    "model-fit/editor-probe/edited-state.json": "3fcafc7c4b5c79e72d70cbd11a35b7dfeb9a9d7cfcf7ab60c9adf38ccea9d167",
+    "model-fit/editor-probe/initial-measurements.csv": "18c2cdf24ed255b645c9bf950729036678f7f0cb9e4a23df1a46fb77f465b8a6",
+    "model-fit/editor-probe/initial-measurements.json": "ca057611cade66b3507199303afcd4bef22e38709aa88f280f9aab85e0428ff3",
+    "model-fit/editor-probe/report.json": "68731095e24841ae5f6042973466f110e4bf7ff1921a5e8560fb666f3832f1c0",
+    "model-fit/editor-probe/residual-measurements.json": "4b598de939f5e5c965a6d25fbc96358bfe13fc90f55c9fbfa47ffdfbfecccedf",
+    "model-fit/editor-probe/source-provenance.json": "3dc93552f58da588e0cdc2da3b53ca9c75411195c9dea4c1f91e8bde0340f0e2",
+    "model-fit/execution.json": "92edebf60050f89b5ed1f7c73923b471868bf6b3e302d4c7793cbe5282c6b83b",
+    "model-fit/final/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "model-fit/final/diagnostics.json": "9df506a6287ff9788c90ddf81987e1166c8196c6f797925c344be8d088a16f0d",
+    "model-fit/final/final-state.json": "cc78d1e35f89bbef015e0cb3c401964ab2f964c3aebe59d0db0156dbef38e825",
+    "model-fit/final/history.json": "5897ff4db452dd36765d54da7a947f4cd913755cd6a9407c4511958dd22a4af0",
+    "model-fit/final/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "model-fit/final/photo-render.png": "2ef224dfae308aa3f15261378c096beea5c96f8398fdf3fad1a3161a72afd860",
+    "model-fit/final/posed.obj": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+    "model-fit/final/provenance.json": "1fd5ccc13ee99dc6af4bdee96f801a7c05fbefd127e722b86252da3279c563a5",
+    "model-fit/final/views/back.png": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+    "model-fit/final/views/camera.json": "2ddea2e182531dfd514dfcc2f07a7bc8bd23e030c3f9ff3c6c08c69dad23cd14",
+    "model-fit/final/views/closeup.png": "fd36a168844572a0f13696e5583484bbfb321cd1b4773bb70587afb9c07427ef",
+    "model-fit/final/views/depth-valid.png": "6c75d5bf14eab70333e16aa4980b466475dba273fa6dfa7e21e020ae6231c191",
+    "model-fit/final/views/depth.png": "667b3b31ca0cd812b2769d7f8ad27386fff78e9bdf254410c1fd248d044cd28b",
+    "model-fit/final/views/front.png": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+    "model-fit/final/views/joint-projections.json": "d93c5ec87273cbad4bdb38653f39e77892dec8e6d24c15a7e1af98028c04fd6a",
+    "model-fit/final/views/joints.json": "5be3af88dcf0c53970312a7a8a9e0dfb227699ea5da91af340fceabd7190b210",
+    "model-fit/final/views/pose.png": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13",
+    "model-fit/final/views/side.png": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+    "model-fit/final/views/state.json": "cc78d1e35f89bbef015e0cb3c401964ab2f964c3aebe59d0db0156dbef38e825",
+    "model-fit/final/views/view-provenance.json": "67b6d28494b8b1c3b1263f7711a9f5982196d5aaa0d100ac005ee2bff58e3a4c",
+    "model-fit/gallery-index.json": "f75f47722c37146aca6f89c199e4c2cb4e8c01d82281230a910f2645d10ba595",
+    "model-fit/grip-fit.stderr.log": "7542159ac7b473de8fffa4821292b38fc5639bf5af064ec287117faea622c234",
+    "model-fit/grip-fit.stdout.log": "20ac296e5f1238a8d3b3af0cb90065529362aa32d15d3ced63382b3955e2a266",
+    "model-fit/guide-registration/registration.json": "6b5fb4566d54c38f69233b051eb69a34fb25f330de0ada2de83035ff98f13ac8",
+    "model-fit/guide-registration/source-marker-preview.png": "952650f95c8295a1bf98fdb8d6046c8df64445d4ca106d99846b85a0e27f88d5",
+    "model-fit/measure-final-mesh.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-fit/measure-final-mesh.stdout.log": "542ae5b0dae3fdfeef2edf9afe5be1b21aa632db92af709b1c51f90503acfdc2",
+    "model-fit/measurements.model.csv": "1f92857e920bfc62a26dd6bd3cad21d9e3484d7f798ac90adb44c08256370171",
+    "model-fit/measurements.model.json": "dca7635d60c6884da6fad63ca1f43ca934e1ffad26d85cb00202350026b68e04",
+    "model-fit/register-pose-guide.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model-fit/register-pose-guide.stdout.log": "1f06390c1561a4f4319943c20a19761acc1d7f9166803d33640fe63ba42c8a9d",
+    "model-stage-report.md": "fc10a254f3e2603ca5f4d3128baf7c375251d97ecc90c52f35845f57e2e5c8cd",
+    "product-audit.json": "0d3d89780fbd0138a5483288239b7ee32e7a7df05c80e5d2eb74a21f9b930769",
+    "registration-semantics-review.json": "cbf0644c2404ead9525faf46245732c3e24f1fc6c2535398715888990ed014b0",
+    "run.json": "0155c8d919d34d1dd91e091c5ed4f7989ce97dc26f1deba611c86c66b851de9d"
+  },
+  "reproduction_archives": [
+    {
+      "href": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/2cf8e4f898f5cfc7-full-run.zip",
+      "sha256": "2cf8e4f898f5cfc7116acd399d702fd5082e74e8eccd118d65b8e4108352e06a",
+      "bytes": 48660332
+    }
+  ],
+  "overall_acceptance": "PASS",
+  "runtime_source": {
+    "source_commit": "cf2c367ba3f138d9ab71c9356a48a8570130d624",
+    "files": {
+      "tools/human_fit/pose_guided/README.md": "89d633f8db3c5035667792c49e3731a12cb4472afe3c50f2b6bb6090467855f6",
+      "tools/human_fit/pose_guided/calibrate-worker.mjs": "1f9e3d197cf952a163f2cc22269bb81f4aeb016f746b7d849454b1a7eaae6994",
+      "tools/human_fit/pose_guided/check_hand_surface.py": "204f78d4846a61ea7f62c8832ba4607ab8faa3bf4bc27636e42e32746f6219e7",
+      "tools/human_fit/pose_guided/export_evidence.py": "91bce769331c08eaebd79e76627276363ab865f907df8eb01dd432ccd861a76e",
+      "tools/human_fit/pose_guided/fit.py": "0f6a395a9461318020a17279f646821555121968989bdfb68e20f1fe26f7784c",
+      "tools/human_fit/pose_guided/fit_grip.py": "58d733f5b13b3bad22946ceb1237761f706a77ef60925aa19af8c571d6303a04",
+      "tools/human_fit/pose_guided/refine_body_envelope.py": "ccbf3b71d42bc1bb3894f01aa875fded5f8b1abf990f13f0c2d9391ffe436d46",
+      "tools/human_fit/pose_guided/render_mesh.py": "fda6173c981a713b903a58f1e2104425241b370091eaa48dc94d6e87a0c23f4d",
+      "tools/human_fit/pose_guided/render_semantic_view.py": "13eb5ca57269b7db6e5c1fa215e31069eacb4c6c3cb396c8705f5d4d6067e776",
+      "tools/human_fit/pose_guided/requirements.txt": "08ed9f1e2132f749083564649f13824f7a8d5ce5b7caa12ff87659b9c2ca8993",
+      "tools/human_fit/pose_guided/runtime.py": "a11548669084698fb573765a2fd039662d015e7966c475554c2b8c079739d8bf",
+      "tools/human_fit/verify_measurement_export.cjs": "e8b691d464652b77861abc1b0a63477a72a78f342782716969b723e059ede0d7",
+      "web/human-studio/README.md": "778a941257f9a1903acc98a3eb67ae99e6c6afe14a3b56b6e9020f40161c6816",
+      "web/human-studio/app.js": "c1ab4953f311d1ce62ca786a805fccd52570a05ef32174521d8357798a3b867a",
+      "web/human-studio/body-engine.js": "311de96371b2eefb795ab013f4e79ee4cc0d2b3ac271f6121c18ebb7589b12a3",
+      "web/human-studio/index.html": "7d478a56d2614949438ed8401d3fb1e5e76769a30e5aa6478c3aa1018708f112",
+      "web/human-studio/state-contract.js": "32974da0859d9aa03a837d9fd385b3438f02bd8b572b2ce57f594e69ea667c9e",
+      "web/human-studio/style.css": "7a4650c257fe2a401e35ad1b47bff335488656283044ef18a50bab1db1c607bd",
+      "web/human-studio/vendor/GLTFExporter.js": "e7c29444454eb321b39e4c8b3062944f4fd5299a0e7483e9cb8c0594cdec829f",
+      "web/human-studio/vendor/OrbitControls.js": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c",
+      "web/human-studio/vendor/SkeletonUtils.js": "0761b1e003917b215d25dd81439d854b36034b5a57ce84c2cfe3b02428d7b253",
+      "web/human-studio/vendor/THREE-LICENSE.txt": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+      "web/human-studio/vendor/provenance.json": "48f11c56712b1beb41691d39a2edfeb93d63147cbefca0583f11c4299845bda4",
+      "web/human-studio/vendor/three.core.js": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
+      "web/human-studio/vendor/three.module.js": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    "external_asset": {
+      "href": "../../human-studio/assets/human.json",
+      "repo_path": "web/human-studio/assets/human.json",
+      "sha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+      "bytes": 3924497
+    },
+    "replay": "Restore full-run ZIP at its original workspace relative path, extract fit-runtime.zip at repository root, restore executed skill from skill-executed.zip, obtain human.json and verify SHA, then follow model-fit/REPORT.md. Python requirements are in tools/human_fit/pose_guided/requirements.txt; editor probe needs Playwright and Chromium."
+  },
+  "files": {
+    "artifacts/STATUS.md": "7a3114222da8ae7665f96784c70e8f952a6e7788618e0f66b9e3fbca5960bb77",
+    "artifacts/TRACE.json": "bea8d66910c857ac0a41a30de97ddda41f18427ad3f0a2f38f5a4bac0c6b7d56",
+    "artifacts/execution-report.md": "b81de38ac0f26f7034978014aca9d36e8b0d4d2ce5d852f1fcfed6eef8603784",
+    "artifacts/executor-artifact-freeze.json": "612089f7eb5233c1c81208df866f9526e658e39c486bb87c0d98421779bc8220",
+    "artifacts/generation-guides/closeup-semantic.json": "017dc286a0c491fa3fd60d249726fcc9acd5eeccb18922391f58abc98b85d9ef",
+    "artifacts/generation-guides/clothed-closeup-camera-reference.json": "fb390019d9309ba61cf4f1137a67de8409ec9476708f1271371d71766a2894a8",
+    "artifacts/generation-observation.json": "ddaa8d28f9a4b69f57a36aa66ed0b88111ac99ec6f8d6fe648f1a694c3cacb5d",
+    "artifacts/generation-receipts.json": "62632f281fcdb95df17e92194974195f1a084384167572d4fa098f7376da215c",
+    "artifacts/generation-selection.json": "b209202abc1ae9370e069da716578fc4a40ae79ce15657a35e5e3069abcdf40a",
+    "artifacts/images/attempt-2/closeup.prompt.txt": "5e991cce09d5486891c4fefb7eef7330726a3499f193cae71ac3b8dabf92c5be",
+    "artifacts/images/attempt-2/closeup.receipt.json": "310d2c1ddf902193e88acfefbd1b436e3117a3ddcce760ed0c79bbcad2937d97",
+    "artifacts/images/attempt-2/depth.png": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+    "artifacts/images/attempt-2/depth.prompt.txt": "1d49751693d9a1b2214abde0a27e77e59b9a183ba5537544f69ca64eaee61530",
+    "artifacts/images/attempt-2/depth.receipt.json": "764a3ee1b74520f02f5e9f97090a2889b999f9d237f1cbc0e4742fe2e797fe62",
+    "artifacts/images/attempt-2/front.png": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+    "artifacts/images/attempt-2/front.prompt.txt": "879ed1dac5b1fc8f5e0d5571072d19a19db890959457d4fd4ece0f44c2c64bd1",
+    "artifacts/images/attempt-2/front.receipt.json": "526e5c435dde7c8219d06c4fbfe23184f198b4357a4651177882e5c201517931",
+    "artifacts/images/attempt-2/pose.png": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+    "artifacts/images/attempt-2/pose.prompt.txt": "337c80381f845c8e25b72968d6b01d5553f7d72a9c5096fbcdee5a6f7d7001c6",
+    "artifacts/images/attempt-2/pose.receipt.json": "c6b396bbb931b90cec3b9838d4c70606b477e62b2654d0bc7da2fc755b4b4575",
+    "artifacts/images/attempt-2/side.png": "ae633b6eb23384bc62343a92e76e7ffb3a4f8b68d51b9647915994f487ff844f",
+    "artifacts/images/attempt-2/side.prompt.txt": "72a2a74ad99750a97a1f888ee15abf262f06e8370a6ee49a433f5fab3527f111",
+    "artifacts/images/attempt-2/side.receipt.json": "8edb12b38f71d05ef29f1b91f1199b87d2b52af0d2c446045764abaeffcaa52d",
+    "artifacts/images/attempt-3/closeup.blocked-receipt.json": "04e6b1097d7a9707933716870ebb8b8f548e0099b9ad41c9f3085cdaa5ecf4f1",
+    "artifacts/images/attempt-3/side.png": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+    "artifacts/images/attempt-3/side.prompt.txt": "b4be9b3248a57a973f345b53034d05775133a918ab8a9c1075ab14a39d728fe9",
+    "artifacts/images/attempt-3/side.receipt.json": "9d522256ee3a544ce0d17a4b8f04290d1a11057779c5889c3a8fa7a895f910ba",
+    "artifacts/images/attempt-4/closeup.prompt.txt": "c2658e6c6bddb218f22a7e3d267d1851bb1a8d64bafda2b4ac26625daa1b23aa",
+    "artifacts/images/attempt-4/closeup.receipt.json": "1c8dd3e481e08631b62f261243c49a8fe3bd3b49a492c405b8eef4e80b661bf4",
+    "artifacts/images/attempt-5/closeup.prompt.txt": "25bca438b94975a953419a93ff31b3f859f1a02787d9c453abdb0a30dbad839a",
+    "artifacts/images/attempt-5/closeup.receipt.json": "c11d23cdaa2b8409a31557389d6a7138da1b200024db9577e496344b7c63b42e",
+    "artifacts/images/attempt-6/closeup.png": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+    "artifacts/images/attempt-6/closeup.prompt.txt": "e0f8443f8228c8c2e4083cf3c8c7966b88e09084f61593c57507297d54c47f4d",
+    "artifacts/images/attempt-6/closeup.receipt.json": "ad1b7c43eb0e4a3ad2b1f8192e8ef49d8646e670063725e1f0fa52780f9b66ef",
+    "artifacts/images/back.png": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+    "artifacts/images/back.prompt.txt": "b5c7921067e701055cf7c06154729628738c49aff5fe417a5d40c44d7b6bf487",
+    "artifacts/images/back.receipt.json": "8abcc9cea77154326609c6bb8b594b959faf87d2f63253742372a10beeb12346",
+    "artifacts/images/closeup.prompt.txt": "73b7a7482c2145c4ac86b75b2b609cb6b03a078f73a9dd208bf21540af2389c7",
+    "artifacts/images/closeup.receipt.json": "19c38c6974bdb5eadc90e7b806ec9bf27d247cc527036296abc58d67af6b8d61",
+    "artifacts/images/depth.png": "faf6d25723b83e2f5b259d96094f32f01aa926d154edc993399a7d8668e9b667",
+    "artifacts/images/depth.prompt.txt": "91294a8e2fdc8229275b1f27af5495b1e310173d6f04fee412b763e9bb6b93e9",
+    "artifacts/images/depth.receipt.json": "5ea9e331ed7e74b5b69e5d3593f243b8ada5f1dbeac434bf4e0bf92a1a9b749e",
+    "artifacts/images/front.png": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6",
+    "artifacts/images/front.prompt.txt": "d8283b36dbe777692b1362879fd6085a7d5d904bbdf8a6729e2dbf3c1528b5cb",
+    "artifacts/images/front.receipt.json": "c02b21f9d47177f95c1b54ee5f4a3b967e15cc31fca9885faf4d43d1657aaa9d",
+    "artifacts/images/generation-manifest.json": "edceedfc2ac5d76de8f240d2ed179c4f5b2c23b18e8306616f417c7d79f1de0a",
+    "artifacts/images/pose.png": "c5af101106742c1dd7c0346ba06935bed7a8efd1e5d2c209ba778f40b878d26b",
+    "artifacts/images/pose.prompt.txt": "258ec42b15e751df4b81753e965c7655e223a0daaefc650aeac03e774772b5b0",
+    "artifacts/images/pose.receipt.json": "889cafc752c4ca85fd83756ed76aa352ace5254024c540cc1139bf4b752198f6",
+    "artifacts/images/side.png": "91dd537ca5d3707c1351b1f453837bee9fa0b52f4488403e63c71daadf9954bc",
+    "artifacts/images/side.prompt.txt": "18a2ebb3bd196ebb0752b0c404ee6402158cc94886d453f79298c83afbde3450",
+    "artifacts/images/side.receipt.json": "10fa2c33b104206a8646e5a8a58425030c9f1fdeab54acbae9165a8558edf386",
+    "artifacts/model-fit/body/stage-1/camera.json": "ebeb8ec6a32fa305f2f02119432e661b53a6ae9125b700b3f6f13133723202cf",
+    "artifacts/model-fit/body/stage-1/final-state.json": "2a782a7ad5378d5dcce5359862da020a6594c47b7b493f91151ab8e45660837e",
+    "artifacts/model-fit/body/stage-1/initial-metrics.json": "bf678b9ea782339e0d5fa1160340abaf4b02cf9931e05903479860bc4c7f0288",
+    "artifacts/model-fit/body/stage-1/metrics.json": "5aebbb35751bda6bbb89757487d96e9b6c90c31caefc7325994174d7db262a8a",
+    "artifacts/model-fit/body/stage-1/optimization.json": "f978107be83135c3a6d425af4bdf3761915bd8661bbd4024776c0e7ae9d720f6",
+    "artifacts/model-fit/body/stage-1/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "artifacts/model-fit/body/stage-1/views/joints.json": "0a27a2344f4927f87b6c43c3b22cdb6f550c16ae62e8dcb1d69ba813e9a8533f",
+    "artifacts/model-fit/body/stage-1/views/state.json": "2a782a7ad5378d5dcce5359862da020a6594c47b7b493f91151ab8e45660837e",
+    "artifacts/model-fit/body/stage-1/views/view-provenance.json": "1ca7619eb8dd20d25ef96ad159a8f84f5858ae7a220f9017129be950cedd2196",
+    "artifacts/model-fit/body/stage-2/camera.json": "03f95d68023cd9aa37d00df85bf60285aad8fa4afcd367ea97ef9ee5edacc1b4",
+    "artifacts/model-fit/body/stage-2/final-state.json": "c074f8f13bb5df808c8bdb44e903b145867f2f8c26d4a5626028a3f9921ed11d",
+    "artifacts/model-fit/body/stage-2/initial-metrics.json": "5aebbb35751bda6bbb89757487d96e9b6c90c31caefc7325994174d7db262a8a",
+    "artifacts/model-fit/body/stage-2/metrics.json": "901eb5b7a7067c9e3f181284a077ddb67a0e01c5cc9a6a93064fdb0c5d3dc982",
+    "artifacts/model-fit/body/stage-2/optimization.json": "c894c8e143cdb11f5431e710d7d9d36e394b765d3818b6816adc900815ce938a",
+    "artifacts/model-fit/body/stage-2/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "artifacts/model-fit/body/stage-2/views/joints.json": "ade73b8e5d570e08b1473624c592c877b84f53ac2dba2442affd7f1f85d517d2",
+    "artifacts/model-fit/body/stage-2/views/state.json": "c074f8f13bb5df808c8bdb44e903b145867f2f8c26d4a5626028a3f9921ed11d",
+    "artifacts/model-fit/body/stage-2/views/view-provenance.json": "6dc023fe48ff7bbc793779a12a22359e012db022b5c7e23f844edff3bb6ecedb",
+    "artifacts/model-fit/body/stage-3/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "artifacts/model-fit/body/stage-3/final-state.json": "9ed163e05b841d5f1683b9cb6d9f8e9e70076b68b0a050e99dab07b716295be7",
+    "artifacts/model-fit/body/stage-3/initial-metrics.json": "901eb5b7a7067c9e3f181284a077ddb67a0e01c5cc9a6a93064fdb0c5d3dc982",
+    "artifacts/model-fit/body/stage-3/metrics.json": "3064ba38e30e2dacddfa589a82189692c2f12bea7c9cef09b36f501833d71824",
+    "artifacts/model-fit/body/stage-3/optimization.json": "ccc83c8d7ecd0e77e42707c4825b6a8d886805435071caac4738248febeaf999",
+    "artifacts/model-fit/body/stage-3/views/camera.json": "9b5b94055507bddaab5de4ed6e7747422d249f050291a83becc3b4d18aa0d3ab",
+    "artifacts/model-fit/body/stage-3/views/joints.json": "7294d5e6e8b7eb759ce972a6cf6840d50a54fbf1af01d482f027632f9ffe05bc",
+    "artifacts/model-fit/body/stage-3/views/state.json": "9ed163e05b841d5f1683b9cb6d9f8e9e70076b68b0a050e99dab07b716295be7",
+    "artifacts/model-fit/body/stage-3/views/view-provenance.json": "e374879e44dca36fec9a5c95343e13173cdc18404b31528d3e1734fb92e247d5",
+    "artifacts/model-fit/body-fit-1.stderr.log": "828a283463eacc56ce04828cd689aa0c85c8c0074ab9e49aa6100ce0e437e754",
+    "artifacts/model-fit/body-fit-1.stdout.log": "2b2c9f32d0786e10979442a53c9dd13cf5999695edf1ff88e5723c7eea8ddc90",
+    "artifacts/model-fit/body-fit-2.stderr.log": "b94a9c426e02d20b9d967d3b3e65afadc5d28ebb65472f2c2b517781eb7ed154",
+    "artifacts/model-fit/body-fit-2.stdout.log": "eedc86503d4b2c2a1d1f2fbadfd71490e6d6ceef4155961b4aea4caaa54bb822",
+    "artifacts/model-fit/body-fit-3.stderr.log": "f1d546fe7882ab7e6a318f95d9b418198ee448e638c9451f26500cbc282195c2",
+    "artifacts/model-fit/body-fit-3.stdout.log": "3a3bfa24fd6110cb1d48dc1506b1ff469a0e0a4966768146d65b26a6ef4929b1",
+    "artifacts/model-fit/comparison/camera.json": "b4dc8fe0b2b2e47d36f5de6ed630f49609d45d158d00ddb8d3ee09f481107ea5",
+    "artifacts/model-fit/comparison/final/metrics.json": "e3127fbb69e20a2c95f309740b2c557759eafca155a6ab9416eb399ca9b60566",
+    "artifacts/model-fit/comparison/final/overlay-thin.png": "6e5a23e8ebba5672ee46f3cb580939f0e8305d7e678c1b4dd0bca6d10b8452c1",
+    "artifacts/model-fit/comparison/initial/metrics.json": "0a31253f523385edd560c176c33c5d6d03d35a7fd23cc1c554fea6e6c0fe4f47",
+    "artifacts/model-fit/comparison/initial/overlay-thin.png": "505663ab202334cbffa025bb5e7a9d5cb304fdbce0a4bb6325e2933b60ed93b3",
+    "artifacts/model-fit/comparison/provenance.json": "45a8ab7152cc8f67683cb9b8b451f7813f856ef7290d4e6c1309257721842d76",
+    "artifacts/model-fit/editor-probe/edited-measurements.json": "348e03d47d3ba6924930d83bb9edb608aacd9e457ec1b8d9e5da74ededd53486",
+    "artifacts/model-fit/editor-probe/edited-pose.png": "e94e44909e3638135b5fac2b889a4ab35bb0b99071a5cf7aff1741a5ac237cf2",
+    "artifacts/model-fit/editor-probe/edited-state.json": "3fcafc7c4b5c79e72d70cbd11a35b7dfeb9a9d7cfcf7ab60c9adf38ccea9d167",
+    "artifacts/model-fit/editor-probe/initial-measurements.csv": "18c2cdf24ed255b645c9bf950729036678f7f0cb9e4a23df1a46fb77f465b8a6",
+    "artifacts/model-fit/editor-probe/initial-measurements.json": "ca057611cade66b3507199303afcd4bef22e38709aa88f280f9aab85e0428ff3",
+    "artifacts/model-fit/editor-probe/report.json": "68731095e24841ae5f6042973466f110e4bf7ff1921a5e8560fb666f3832f1c0",
+    "artifacts/model-fit/editor-probe/residual-measurements.json": "4b598de939f5e5c965a6d25fbc96358bfe13fc90f55c9fbfa47ffdfbfecccedf",
+    "artifacts/model-fit/editor-probe/source-provenance.json": "3dc93552f58da588e0cdc2da3b53ca9c75411195c9dea4c1f91e8bde0340f0e2",
+    "artifacts/model-fit/execution.json": "92edebf60050f89b5ed1f7c73923b471868bf6b3e302d4c7793cbe5282c6b83b",
+    "artifacts/model-fit/final/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "artifacts/model-fit/final/diagnostics.json": "9df506a6287ff9788c90ddf81987e1166c8196c6f797925c344be8d088a16f0d",
+    "artifacts/model-fit/final/final-state.json": "cc78d1e35f89bbef015e0cb3c401964ab2f964c3aebe59d0db0156dbef38e825",
+    "artifacts/model-fit/final/history.json": "5897ff4db452dd36765d54da7a947f4cd913755cd6a9407c4511958dd22a4af0",
+    "artifacts/model-fit/final/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "artifacts/model-fit/final/photo-render.png": "2ef224dfae308aa3f15261378c096beea5c96f8398fdf3fad1a3161a72afd860",
+    "artifacts/model-fit/final/posed.obj": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+    "artifacts/model-fit/final/provenance.json": "1fd5ccc13ee99dc6af4bdee96f801a7c05fbefd127e722b86252da3279c563a5",
+    "artifacts/model-fit/final/views/back.png": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+    "artifacts/model-fit/final/views/camera.json": "2ddea2e182531dfd514dfcc2f07a7bc8bd23e030c3f9ff3c6c08c69dad23cd14",
+    "artifacts/model-fit/final/views/closeup.png": "fd36a168844572a0f13696e5583484bbfb321cd1b4773bb70587afb9c07427ef",
+    "artifacts/model-fit/final/views/depth-valid.png": "6c75d5bf14eab70333e16aa4980b466475dba273fa6dfa7e21e020ae6231c191",
+    "artifacts/model-fit/final/views/depth.png": "667b3b31ca0cd812b2769d7f8ad27386fff78e9bdf254410c1fd248d044cd28b",
+    "artifacts/model-fit/final/views/front.png": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+    "artifacts/model-fit/final/views/joint-projections.json": "d93c5ec87273cbad4bdb38653f39e77892dec8e6d24c15a7e1af98028c04fd6a",
+    "artifacts/model-fit/final/views/joints.json": "5be3af88dcf0c53970312a7a8a9e0dfb227699ea5da91af340fceabd7190b210",
+    "artifacts/model-fit/final/views/pose.png": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13",
+    "artifacts/model-fit/final/views/side.png": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+    "artifacts/model-fit/final/views/state.json": "cc78d1e35f89bbef015e0cb3c401964ab2f964c3aebe59d0db0156dbef38e825",
+    "artifacts/model-fit/final/views/view-provenance.json": "67b6d28494b8b1c3b1263f7711a9f5982196d5aaa0d100ac005ee2bff58e3a4c",
+    "artifacts/model-fit/gallery-index.json": "f75f47722c37146aca6f89c199e4c2cb4e8c01d82281230a910f2645d10ba595",
+    "artifacts/model-fit/grip-fit.stderr.log": "7542159ac7b473de8fffa4821292b38fc5639bf5af064ec287117faea622c234",
+    "artifacts/model-fit/grip-fit.stdout.log": "20ac296e5f1238a8d3b3af0cb90065529362aa32d15d3ced63382b3955e2a266",
+    "artifacts/model-fit/guide-registration/registration.json": "6b5fb4566d54c38f69233b051eb69a34fb25f330de0ada2de83035ff98f13ac8",
+    "artifacts/model-fit/guide-registration/source-marker-preview.png": "952650f95c8295a1bf98fdb8d6046c8df64445d4ca106d99846b85a0e27f88d5",
+    "artifacts/model-fit/measure-final-mesh.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/model-fit/measure-final-mesh.stdout.log": "542ae5b0dae3fdfeef2edf9afe5be1b21aa632db92af709b1c51f90503acfdc2",
+    "artifacts/model-fit/measurements.model.csv": "1f92857e920bfc62a26dd6bd3cad21d9e3484d7f798ac90adb44c08256370171",
+    "artifacts/model-fit/measurements.model.json": "dca7635d60c6884da6fad63ca1f43ca934e1ffad26d85cb00202350026b68e04",
+    "artifacts/model-fit/register-pose-guide.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/model-fit/register-pose-guide.stdout.log": "1f06390c1561a4f4319943c20a19761acc1d7f9166803d33640fe63ba42c8a9d",
+    "artifacts/model-stage-report.md": "fc10a254f3e2603ca5f4d3128baf7c375251d97ecc90c52f35845f57e2e5c8cd",
+    "artifacts/product-audit.json": "0d3d89780fbd0138a5483288239b7ee32e7a7df05c80e5d2eb74a21f9b930769",
+    "artifacts/registration-semantics-review.json": "cbf0644c2404ead9525faf46245732c3e24f1fc6c2535398715888990ed014b0",
+    "artifacts/run.json": "0155c8d919d34d1dd91e091c5ed4f7989ce97dc26f1deba611c86c66b851de9d",
+    "benchmark.json": "beb7ff3d38fbaa1fd1cc45fc846b37a10f7341a595739142f7dcb12580624ba6",
+    "derived-input-aliases.json": "6c30db30dc2edcb870dbad639814c727994c507a3381b3fcb0fc07be5bb683fc",
+    "eval.html": "2c15926659c352d5482beab13fbd553b0f0411c97e12f18e1300ddb2b8076b94",
+    "external-archives.json": "da9743e7551382c79b9772941d0182210f18fd621e2814ce2cc8e45ac067a428",
+    "external-images.json": "7e0f0dbf95279a0534944f6d754f5f684c2560121431b4ae3106ee806884994e",
+    "inputs/current-raw-pose-guide.png": "e3fa38a0f4d0d8043bdce43b4b4c0916cc411b5cf875639dd3e1f30fdfba4189",
+    "inputs/generation-reference-191a4953b47b8a3b.png": "191a4953b47b8a3befc40dd3837cde5299e9056c7e1fbf9d8ee58dfa464799dd",
+    "inputs/generation-reference-6cee59cef05d1217.png": "6cee59cef05d1217d58fc1eed06f1c171c3beb506add3bce795e098e83bef40d",
+    "inputs/generation-reference-7b251ade15c1ee33.png": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527",
+    "inputs/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+    "source/benchmark-upstream-raw.json": "df69002c3dc4bb47bcfc17587989b57e3490da736a96a321bc11a9fd2d98340f",
+    "source/build_full_imagegen_review.py": "929f1ec08cb00f1b562a44736091f682a40c25fb1b31dc66b16bf41526fbba0a",
+    "source/build_hillclimb_review.py": "e6327b6b1559c5fd856a3009a3469cec296a03c7fa61398996532e4fb85e3da7",
+    "source/case-inputs-manifest.json": "a38734e08fad1f628b3040e0b27ac60d701a7e8de3e46f4bc12cf30b39cdad36",
+    "source/development/merged3-frame-mismatch/diagnostic.json": "04f1cac449f6248dfd6dea1d2dc9e2fa755ed9117d6ec16648c044e55e49b06e",
+    "source/development/merged3-frame-mismatch/side.png": "5a00cc2100fbeea443baf9952f90e67b010877585d6de1446dfa3075bd9af14a",
+    "source/development/merged3-frame-mismatch/view-provenance.json": "d4efc7faf52a4ca769da5b584d5a1485cfa4a72d991c48137875419a804e1609",
+    "source/development/merged5-helper-skin/closeup.png": "6b69c68e985ef53784a80c95d724c22a2ece5d336c94ea4e926e0f551b23db22",
+    "source/development/merged5-helper-skin/diagnostic.json": "b4293f6269734cade440e4a1a0c59129b9a379c0550a69ac1c23f1a7db155609",
+    "source/development/merged5-helper-skin/terminal-finger-contacts.json": "8676d01d20c64467ee0c3448aabd78e7c054e75a5dd9ae010bda68701b523850",
+    "source/development/merged5-helper-skin/view-provenance.json": "3160b539d52c74cf1b90340f9c29bdc51d0f1578b32105612eddf98141a8aa19",
+    "source/development-history.json": "c91cc4ec773278e10bc81465e20a20c6d85afb8d2f9c3c99d21d472ce77eba55",
+    "source/eval_metadata.json": "da55e0c751bca59b939ef327c678223ba9aa01a5d0b614c838d74d4eb3791cfa",
+    "source/fit-runtime-manifest.json": "cb6d42c30229fee7b0cca219ea09afd98230948145f5cde6f5f89a87f044e11d",
+    "source/grader-evidence/assembly-revision-note.json": "ff0a84c6d0be395dbfcecdd830874e30b3e6d743b0aaff4ac6951e8072839305",
+    "source/grader-evidence/body-camera-torso2/diagnostic.json": "c0889d824cb3e9ba65a5ac77c0b705e8754e0413366515fe3352a6de67bc4bca",
+    "source/grader-evidence/body-merged3/diagnostic.json": "04f1cac449f6248dfd6dea1d2dc9e2fa755ed9117d6ec16648c044e55e49b06e",
+    "source/grader-evidence/body-merged5/diagnostic.json": "b4293f6269734cade440e4a1a0c59129b9a379c0550a69ac1c23f1a7db155609",
+    "source/grader-evidence/body-merged5/terminal-finger-contacts.json": "8676d01d20c64467ee0c3448aabd78e7c054e75a5dd9ae010bda68701b523850",
+    "source/grader-evidence/body-merged6/diagnostic.json": "1b91fe6fbc07a098c582b1c0f0344f8b75ee1c6252630f0e8e8a8c877aa25140",
+    "source/grader-evidence/body-merged6/manual-preflight.json": "ea49527ef3efefdbc067eba5551416bdcedb9c127e4d1d989fb32d3d54482f56",
+    "source/grader-evidence/body-merged6-terminal.json": "b847e748240730a813bef78e89604735ac87767b3ac83fffe99063f234bdbfe4",
+    "source/grader-evidence/freeze-initial-draft.json": "d4f627b306f33e0faa612e721d70222ab0dc7e137d3178b6be928f8741e9080c",
+    "source/grader-evidence/freeze.json": "8fc30eb73922f0af24128faa349c266091238bb2fb7150c99c133c147620c13e",
+    "source/grader-evidence/fresh-editor-audit.json": "ee51e81edd6c222bece98338f4629ca4ab9e716c60bdd29ca6e4c1fe5d3bce57",
+    "source/grader-evidence/fresh-model/diagnostic.json": "dac4545f4a07afda988f7c28c0366bb51d804d5c6b41460fa58951cd8e304b88",
+    "source/grader-evidence/fresh-model/geometry-audit.json": "eef0a2506b3fe7d971a8f0c6ecd89119213c027e59d95d1f5bf46b313c643125",
+    "source/grader-evidence/fresh-model/source-wrist-residuals.json": "81287008de69e2c92024d75bdea9044b8b1621e80dac480ae0d9642fa050c190",
+    "source/grader-evidence/fresh-model-terminal.json": "b847e748240730a813bef78e89604735ac87767b3ac83fffe99063f234bdbfe4",
+    "source/grader-evidence/fresh-scene-audit.json": "472862ec0750fbdbaa53a80fddce0387fb946c6d0dc4fe2e8b02c11d415c011b",
+    "source/grader-evidence/generated-back-preflight/anchor-audit.json": "4e25b6f3cd3e5c7b8ddd66da4140362950785ba8bfd6c9a0922678033812c12c",
+    "source/grader-evidence/generated-back-preflight/anchors.json": "d56c599e9fea045c5f9b098b532c8f55e9f8955696868514d953447a9cfab6bd",
+    "source/grader-evidence/generated-back-preflight/mask-audit.json": "a33093fd3b82c90b491dfe50e26cfca28a2a549faf1dc956c109a2ec07c4bd17",
+    "source/grader-evidence/generated-closeup-attempt2/mask-audit.json": "c19b17db46685e588a5ba27233ff13ce861557a9864b0b55588759f26b4acb2a",
+    "source/grader-evidence/generated-closeup-attempt4/mask-audit.json": "4f2f1a9a804b6a36af53eb80b382bf77289849208de608a542b7caa7f638c8c2",
+    "source/grader-evidence/generated-closeup-attempt6/crop-anchor-audit.json": "15da7b875966a98288ac4bee325d0997bef09605a680e762e34ee03e404e6b30",
+    "source/grader-evidence/generated-closeup-attempt6/mask-audit.json": "6df720c9440b7cea6b1d6b0b772d13d11adf8e84f15dc2dab2b48fc04674b678",
+    "source/grader-evidence/generated-closeup-preflight/mask-audit.json": "754b768599cbaeb582217d52ccf074d33a8ec8d957569139259fe733407b37bb",
+    "source/grader-evidence/generated-front-attempt2/anchor-audit.json": "6a39bb1b964e4d9622dec034c375f45b445adfcc0979c2d2cefcdd7ae1c406e9",
+    "source/grader-evidence/generated-front-attempt2/anchors.json": "4a54e64faba1e0f62df04c197929db8195761c19297d80390d486368ebfe3d30",
+    "source/grader-evidence/generated-front-attempt2/mask-audit.json": "45584ee905e059e4cccbbfa317b9998e74d41d6750c00f78a4bed48a99507b61",
+    "source/grader-evidence/generated-front-preflight/mask-audit.json": "1e9157c993e84bf02df72d69f8e07a2e5a59fee8c9a9a302e252a1bee474ec4a",
+    "source/grader-evidence/generated-pose-attempt2/mask-audit.json": "5cfbd7330fdd0b058662281c99f4f3d22d06435bcefd804ec436a7cd82688cfd",
+    "source/grader-evidence/generated-side-attempt2/mask-audit.json": "17d891d8d15b2d4f4d2c0542dc0f518e5aac576255a94b411d4daaf95ac4579e",
+    "source/grader-evidence/generated-side-attempt3/anchor-audit.json": "a0e8f73af553f7d92a513d81b9f3fee0630424a984955af8d8425bfdff3065ff",
+    "source/grader-evidence/generated-side-attempt3/anchors-initial-manual-feet.json": "41ab5f8fa707577c5d318b9b7885ba19db3fb5ef157b3559021189fb699f0312",
+    "source/grader-evidence/generated-side-attempt3/anchors.json": "90c4f611b73a0ce042436b9ee8ab6617aa5b14b1fa43aee9aa48a9aacb2fef14",
+    "source/grader-evidence/generated-side-attempt3/mask-audit.json": "5a9c8838e5a46469e9a7248cbe70a4939e9b77df12cfdcfd3dfa1e032092b7c0",
+    "source/grader-evidence/generated-side-preflight/mask-audit.json": "de3097c3619995baf677c4489a352c027804b31eb55ebe1c9f978897d6b1db2b",
+    "source/grader-evidence/generated-visible/anchors.json": "1b7ee81f326e3c99e2d77b3ff1ad8371b7dd403a1b2c3bdb18bf4efeff18163e",
+    "source/grader-evidence/generated-visible/audit.json": "4828a46edaaf49d29c6549d017199ace0104be683aeeeaa40ac210399c25ca9e",
+    "source/grader-evidence/grade-binding-controls.json": "17d496326001c6178eac94087a9aa861b989bc67804f1446fa06b16499a4b8b3",
+    "source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/audit/diagnostic.json": "4878074fb9ba9a7bbad1e0fa65ef047f81ea24e22a73c913b8b894bb5ba0f62a",
+    "source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/final-state.json": "a59da8a5021e6bbe9221c1dcfb649b5d11d455e8a2e5dbf834d7ba4e8718fcb4",
+    "source/grader-evidence/grasp-controls/actual-thumb-joint-open/audit/diagnostic.json": "d5ddcfe8349e9e590f7fe48bcc43db66acf041483778ab2187e1815b05e488e2",
+    "source/grader-evidence/grasp-controls/actual-thumb-joint-open/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "source/grader-evidence/grasp-controls/actual-thumb-joint-open/final-state.json": "4ed4c12459bc83f8c356684c63348198b11fb1fa0af8add19e8cb4b18914d46f",
+    "source/grader-evidence/grasp-controls/actual-wrist-supination/audit/diagnostic.json": "53f36605acee4d20a79e6627da061bc8c6b5953a396aa741234e4aa6ddfb8f60",
+    "source/grader-evidence/grasp-controls/actual-wrist-supination/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "source/grader-evidence/grasp-controls/actual-wrist-supination/final-state.json": "30c3e1cf0e9294c6dc1c63844c9ed3b3a05a4a7bb2d4d402cd542fc071033cc8",
+    "source/grader-evidence/grasp-controls/results.json": "8c67029dad2dbcbe1dde0f01b99982fdcf8b6c378077f1c02e71d092db67ec68",
+    "source/grader-evidence/grip-round2/diagnostic.json": "94b585767ff59e901b02770de92ab00320dc664391d88de919704e08bb5366df",
+    "source/grader-evidence/initial-grading-assembly-draft.json": "9d51ab4e04f9b61c4e685e19691911311c919fa94e6f3e52cb4a8afa47b78a21",
+    "source/grader-evidence/manual-final-review.json": "642929bdb482e311cfa3a5cbb460e9b8ea46846d1544f833d13e088fb9bcd153",
+    "source/grader-evidence/native-image-audit.json": "71f18b9431b4e0dc4aee23a48bd15835a6958b0683cd7635849466f803a4dd19",
+    "source/grader-evidence/negative-controls/narrow-pelvis-x20percent/audit/diagnostic.json": "6711de6ad5431e624fc081473125cff8b2642d77af6ebb3171f7c8455cb7a3a8",
+    "source/grader-evidence/negative-controls/narrow-pelvis-x20percent/camera.json": "03f95d68023cd9aa37d00df85bf60285aad8fa4afcd367ea97ef9ee5edacc1b4",
+    "source/grader-evidence/negative-controls/narrow-pelvis-x20percent/final-state.json": "2e9ab0c9625a6d2c26755eb25c33271d82a973bbd62733a24309571935f2d7d9",
+    "source/grader-evidence/negative-controls/pelvis-plus10cm/audit/diagnostic.json": "b1b27c676cad17fbc413060e521a9231990727dda028259562b00a6d40039f75",
+    "source/grader-evidence/negative-controls/pelvis-plus10cm/camera.json": "03f95d68023cd9aa37d00df85bf60285aad8fa4afcd367ea97ef9ee5edacc1b4",
+    "source/grader-evidence/negative-controls/pelvis-plus10cm/final-state.json": "2e9ab0c9625a6d2c26755eb25c33271d82a973bbd62733a24309571935f2d7d9",
+    "source/grader-evidence/negative-controls/results.json": "de3c7ace493e5c89e7b85862eebeaae958d31e24b01499fa945b4392339ff4ea",
+    "source/grader-evidence/pose-depth-attempt2/alignment-audit.json": "a9bd2c3534d6f2b73eedec3119e57c626fa9795cf6adb8ba1689f180d98eda76",
+    "source/grader-evidence/raw-guide/registration-audit-initial-semantics.json": "730d03ece532f9c1b4dccbe087d33cec9d279a3656e1dfb187d8927f7eb1815d",
+    "source/grader-evidence/raw-guide/registration-audit.json": "af74585a433f98ca7f9e3c692508cb6e74a433abe311fd8f1264395cd6308713",
+    "source/grader-evidence/source-provenance-audit.json": "d88ff23dd962770f4fba5c1ab8601b3ba069f7de18ffc3607c986206be6803c2",
+    "source/grader-evidence/viewer/viewer-check.json": "98e13e832b50e08437bc138681fcb8d1fdd6f0ced8f6204a70d48ab3cc8cc9f3",
+    "source/grader-evidence/wrapper-probe2/diagnostic.json": "b3db1f000c44d76921f5d9718fea56c998882187bc2dc5764ed606bd758a8125",
+    "source/grader-evidence/wrapper-probe2/geometry-audit.json": "d1d8b3d7a323646f7f7a7a247fc5a48839d1bdc14df5762af949df70b6a73936",
+    "source/grader-evidence/wrapper-probe2-terminal.json": "b847e748240730a813bef78e89604735ac87767b3ac83fffe99063f234bdbfe4",
+    "source/history/assertions-original13.json": "f57451bbf15c1040360a9a6222d92495acd1ee961a281288282f5346d7f156ee",
+    "source/history/baseline-freeze.json": "a3e01b3873bac18a8a6e37da65836c6e135805fae73e6d24679e70d390ce4724",
+    "source/history/grading.json": "f065a100ef784f8c8fc7b04fa507ac48dd0a463ed94fd144742117f8d4ea3a6a",
+    "source/protocol/acceptance-v1.json": "1b8bad7f0aae6abc147729c3a6b1e28cab24c6a714747cec19dc541b0dce5238",
+    "source/protocol/assertions.json": "f57451bbf15c1040360a9a6222d92495acd1ee961a281288282f5346d7f156ee",
+    "source/protocol/freeze.json": "69767068002d011512ba346b199e7f83d87a4407c64705f66d410af40a33fe64",
+    "source/protocol/regional-v1-original.json": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+    "source/protocol/source-reference-mask.png": "f7d65536950f3094934b5f5bb4054ae69f99d5190728aa5639a47b2a8a30216c",
+    "source/render_semantic_view.py": "13eb5ca57269b7db6e5c1fa215e31069eacb4c6c3cb396c8705f5d4d6067e776",
+    "source/runtime-executed-manifest.json": "3c92d78997ad514ebbad435c7e3d90bd93352db21208f7fd372db37c7c697dcf",
+    "source/skill-executed-manifest.json": "521465a2fcf767cedbb22bb25beca59ed2d1df8186e841da34c1b69f27711b0e",
+    "source/verify_hillclimb_review.cjs": "e171d27d8b7970dc9c4a8b37fddd247a865fa5256225f700c7611e694359f935",
+    "source/visible-projection/generated-back-preflight/anchor-audit.json": "4e25b6f3cd3e5c7b8ddd66da4140362950785ba8bfd6c9a0922678033812c12c",
+    "source/visible-projection/generated-back-preflight/anchors.json": "d56c599e9fea045c5f9b098b532c8f55e9f8955696868514d953447a9cfab6bd",
+    "source/visible-projection/generated-back-preflight/fixed-guide-overlay.png": "8daa1c1a31ca59d5a6d7e7350a354fc6e793732feeb4be1c92150159b76be259",
+    "source/visible-projection/generated-back-preflight/mask-audit.json": "a33093fd3b82c90b491dfe50e26cfca28a2a549faf1dc956c109a2ec07c4bd17",
+    "source/visible-projection/generated-front-attempt2/anchor-audit.json": "6a39bb1b964e4d9622dec034c375f45b445adfcc0979c2d2cefcdd7ae1c406e9",
+    "source/visible-projection/generated-front-attempt2/anchors.json": "4a54e64faba1e0f62df04c197929db8195761c19297d80390d486368ebfe3d30",
+    "source/visible-projection/generated-front-attempt2/fixed-guide-overlay.png": "f2be6479b8c50e887292dbe4c3c0cfcce64dcaf0f7dc3ed2ba7dbbb470fcd3dd",
+    "source/visible-projection/generated-front-attempt2/mask-audit.json": "45584ee905e059e4cccbbfa317b9998e74d41d6750c00f78a4bed48a99507b61",
+    "source/visible-projection/generated-side-attempt3/anchor-audit.json": "a0e8f73af553f7d92a513d81b9f3fee0630424a984955af8d8425bfdff3065ff",
+    "source/visible-projection/generated-side-attempt3/anchors.json": "90c4f611b73a0ce042436b9ee8ab6617aa5b14b1fa43aee9aa48a9aacb2fef14",
+    "source/visible-projection/generated-side-attempt3/fixed-guide-overlay.png": "fb1cc2715813d30a94b8070d8595f4dd72130d207dfc54835185419dbb5dcec7",
+    "source/visible-projection/generated-side-attempt3/mask-audit.json": "5a9c8838e5a46469e9a7248cbe70a4939e9b77df12cfdcfd3dfa1e032092b7c0"
+  },
+  "generation_selection": {
+    "path": "generation-selection.json",
+    "sha256": "b209202abc1ae9370e069da716578fc4a40ae79ce15657a35e5e3069abcdf40a",
+    "selected": {
+      "front": "images/attempt-2/front.png",
+      "side": "images/attempt-3/side.png",
+      "back": "images/back.png",
+      "closeup": "images/attempt-6/closeup.png",
+      "pose": "images/attempt-2/pose.png",
+      "depth": "images/attempt-2/depth.png"
+    },
+    "attempts": [
+      {
+        "view": "front",
+        "src": "artifacts/images/front.png",
+        "sha256": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6",
+        "selected": false,
+        "status": "REJECTED",
+        "reason": "Independent grader reported fixed4/3 bodyoutside10.586% >8%; P9519.77px within limit."
+      },
+      {
+        "view": "side",
+        "src": "artifacts/images/side.png",
+        "sha256": "91dd537ca5d3707c1351b1f453837bee9fa0b52f4488403e63c71daadf9954bc",
+        "selected": false,
+        "status": "REJECTED",
+        "reason": "Independent grader reported bodyoutside25.702% >8%; P9546.13px=3.0%height >2%height."
+      },
+      {
+        "view": "back",
+        "src": "artifacts/images/back.png",
+        "sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+        "selected": true,
+        "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "reason": "Independent grader:8 visible approximate anchors passed; unseen structure remains prior."
+      },
+      {
+        "view": "closeup",
+        "src": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/096c3a2be3e5502f-rejected-closeup.png",
+        "sha256": "096c3a2be3e5502f76e29bf28f6d2c6b43efbe9df82a1f94c46503733cadfa7f",
+        "selected": false,
+        "status": "REJECTED",
+        "reason": "Independent grader message:fixed-guide→native outside12.865%,P9571.36px=4.646%H; left wrist approx(300,1060)vsrig(455,1050),eyes60px lower; samecrop camera not retained."
+      },
+      {
+        "view": "pose",
+        "src": "artifacts/images/pose.png",
+        "sha256": "c5af101106742c1dd7c0346ba06935bed7a8efd1e5d2c209ba778f40b878d26b",
+        "selected": false,
+        "status": "SUPERSEDED",
+        "reason": "Depends on rejected first front; preserved unchanged as history."
+      },
+      {
+        "view": "depth",
+        "src": "artifacts/images/depth.png",
+        "sha256": "faf6d25723b83e2f5b259d96094f32f01aa926d154edc993399a7d8668e9b667",
+        "selected": false,
+        "status": "SUPERSEDED",
+        "reason": "Depends on rejected first front; preserved unchanged as history."
+      },
+      {
+        "view": "front",
+        "src": "artifacts/images/attempt-2/front.png",
+        "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+        "selected": true,
+        "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "reason": "Independent grader:10 visible approximate anchors mean.598%H/max.908%H; directions6.05/1.78deg; outside2.235%,P957px."
+      },
+      {
+        "view": "side",
+        "src": "artifacts/images/attempt-2/side.png",
+        "sha256": "ae633b6eb23384bc62343a92e76e7ffb3a4f8b68d51b9647915994f487ff844f",
+        "selected": false,
+        "status": "REJECTED",
+        "reason": "Independent actual visible nearL sleeve-elbow bend approx(541,481),86px5.6%H from actual surface(621,449), exceeds2.5%H; generated diagonal forearm instead of near-vertical."
+      },
+      {
+        "view": "pose",
+        "src": "artifacts/images/attempt-2/pose.png",
+        "sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+        "selected": true,
+        "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "reason": "Root and independent grader message:front2 silhouette/frame and illustrative node semantics preflight through."
+      },
+      {
+        "view": "depth",
+        "src": "artifacts/images/attempt-2/depth.png",
+        "sha256": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+        "selected": true,
+        "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "reason": "Root and independent grader message:front2 silhouette/frame illustrative depth preflight through."
+      },
+      {
+        "view": "side",
+        "src": "artifacts/images/attempt-3/side.png",
+        "sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+        "selected": true,
+        "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "reason": "Independent grader:9visibleanchors mean1.309%H/max2.007%H; armangles0.6/3.91deg; outside7.9543%,P9524.18px."
+      },
+      {
+        "view": "closeup",
+        "src": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/914e594886c9a6d2-rejected-attempt-2-closeup.png",
+        "sha256": "914e594886c9a6d2d3092c4aac290ceaf018ab2bef27dc1718d0c84fcbebc7fb",
+        "selected": false,
+        "status": "REJECTED",
+        "reason": "Independent grader message:fullmaskP95.02513H>frozen.02H,body/arms43.59px and lowtorso41.11px. Eyes31/35px,wrists22/18px deviations. Head regionP950 so error not hair."
+      },
+      {
+        "view": "closeup",
+        "src": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/3340e93aa67e4c09-rejected-attempt-4-closeup.png",
+        "sha256": "3340e93aa67e4c09184386c1a80dd56645e9abab363ce575088bedfb4c4ee4c8",
+        "selected": false,
+        "status": "REJECTED",
+        "reason": "Root independently reports geometry pass outside2.2315%,P9525.78px, but original hem-lifting action fails: fabric panel still reaches waistband."
+      },
+      {
+        "view": "closeup",
+        "src": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/19fc9c94fc281399-rejected-attempt-5-closeup.png",
+        "sha256": "19fc9c94fc281399ec96e9cf6a493727e6a45b9fc3dbad4fb6aa81a5bf684b9d",
+        "selected": false,
+        "status": "REJECTED",
+        "reason": "Executor/root visual observation: lower long panel still reaches waistband, original held lower hem action not restored; file retained."
+      },
+      {
+        "view": "closeup",
+        "src": "artifacts/images/attempt-6/closeup.png",
+        "sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+        "selected": true,
+        "status": "INDEPENDENT_PREFLIGHT_ACCEPTED",
+        "reason": "Independent grader:held lowerhem restored; outside1.539%,P9518px=.01172H; knowncamera crop8visibleanchors mean1.167%H/max1.942%H; independent crop reference exact, final native not crop."
+      }
+    ],
+    "no_output_events": [
+      {
+        "view": "closeup",
+        "status": "BLOCKED_NO_OUTPUT",
+        "reason": "Actual ImageGen output moderation_blocked sexual; request76529cb7-6a9b-414d-b85b-23e1ef9f0d27; no native file produced.",
+        "receipt": "artifacts/images/attempt-3/closeup.blocked-receipt.json",
+        "sha256": "04e6b1097d7a9707933716870ebb8b8f548e0099b9ad41c9f3085cdaa5ecf4f1"
+      }
+    ]
+  },
+  "selected_six_archive": {
+    "href": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/025765568c617e61-selected-six.zip",
+    "sha256": "025765568c617e61b1159227cfef576d194f3f6bec380e19beccec2e4f2cfe20",
+    "bytes": 9294835,
+    "derived_packaging_only": true,
+    "source_selection": {
+      "schema": "selected-six-native-archive-v1",
+      "scope": "Review-derived delivery package; no collage, crop, resampling, image rewrite or new generation. Failed attempts stay in complete run/history, not this package.",
+      "overall_acceptance": "PASS",
+      "images": {
+        "front": {
+          "archive_file": "front.png",
+          "source_output_path": "images/attempt-2/front.png",
+          "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+          "native_pixels": [
+            1024,
+            1536
+          ],
+          "original_tool_path": "/workspace/generated_images/exec-34190dc2-7709-49b5-a5da-01368dd640bf.png"
+        },
+        "side": {
+          "archive_file": "side.png",
+          "source_output_path": "images/attempt-3/side.png",
+          "sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+          "native_pixels": [
+            1024,
+            1536
+          ],
+          "original_tool_path": "/workspace/generated_images/exec-d0adf3bb-ac6c-41e8-aaef-ec22152438ce.png"
+        },
+        "back": {
+          "archive_file": "back.png",
+          "source_output_path": "images/back.png",
+          "sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+          "native_pixels": [
+            1024,
+            1536
+          ],
+          "original_tool_path": "/workspace/generated_images/exec-d647abbc-1718-4221-afe7-a2f621180315.png"
+        },
+        "closeup": {
+          "archive_file": "closeup.png",
+          "source_output_path": "images/attempt-6/closeup.png",
+          "sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+          "native_pixels": [
+            1024,
+            1536
+          ],
+          "original_tool_path": "/workspace/generated_images/exec-c4486ff0-235b-4852-9425-1036754cc931.png"
+        },
+        "pose": {
+          "archive_file": "pose.png",
+          "source_output_path": "images/attempt-2/pose.png",
+          "sha256": "178756b5f1d98e7bf153c585b6ed0828e8c2a57745213633f915dd038c8a58dc",
+          "native_pixels": [
+            1024,
+            1536
+          ],
+          "original_tool_path": "/workspace/generated_images/exec-9b9dcb6a-a19d-4f70-96dc-265c13427f6f.png"
+        },
+        "depth": {
+          "archive_file": "depth.png",
+          "source_output_path": "images/attempt-2/depth.png",
+          "sha256": "23763fe38fe5fd77dc35125f12b79b59aa245f29e3e62ec66827956a7613dc0b",
+          "native_pixels": [
+            1024,
+            1536
+          ],
+          "original_tool_path": "/workspace/generated_images/exec-e1415fa7-7f1f-4e70-8c9b-d6e8c519c75b.png"
+        }
+      }
+    },
+    "entries_crc_sha_verified": true
+  },
+  "development_history": {
+    "scope": "DEVELOPMENT_ONLY_NOT_FRESH_EXECUTION; excluded from benchmark and new candidate grades",
+    "source": "source/development-history.json",
+    "sha256": "c91cc4ec773278e10bc81465e20a20c6d85afb8d2f9c3c99d21d472ce77eba55"
+  },
+  "visible_projection_evidence": [
+    {
+      "view": "back",
+      "selected_image_sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+      "guide_sha256": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+      "uniform_scale": 1.3333333333333333,
+      "registration_refit": false,
+      "mask_metrics": {
+        "phase": "INDEPENDENT_PREFLIGHT, not finalgrade",
+        "image_sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+        "guide_sha256": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+        "native_size": [
+          1024,
+          1536
+        ],
+        "guide_size": [
+          768,
+          1152
+        ],
+        "fixed_uniform_scale": 1.3333333333333333,
+        "registration_refit": false,
+        "segmentation": "Actual HSV-seeded GrabCut5 iterations, independent from model silhouette, no refit/warp",
+        "body_outside_fraction": 0.061188781776274834,
+        "body_contour_p95_px": 16.196897506713867,
+        "body_contour_p95_fraction_height": 0.010544855147600174,
+        "containment_gate_pass": true,
+        "limits": "Garment/hair envelope only; anchors/manual samepose must separately pass."
+      },
+      "anchor_metrics": {
+        "observed_anchors": 8,
+        "mean_error_fraction_height": 0.008586132997357152,
+        "max_error_fraction_height": 0.017578125,
+        "limb_angles": [
+          {
+            "pair": [
+              "shoulder_image_left",
+              "elbow_image_left"
+            ],
+            "angle_deg": 4.678741698351045
+          },
+          {
+            "pair": [
+              "shoulder_image_right",
+              "elbow_image_right"
+            ],
+            "angle_deg": 2.290327671651261
+          }
+        ],
+        "passed": true,
+        "reasons": []
+      },
+      "files": {
+        "fixed-guide-overlay.png": {
+          "href": "source/visible-projection/generated-back-preflight/fixed-guide-overlay.png",
+          "sha256": "8daa1c1a31ca59d5a6d7e7350a354fc6e793732feeb4be1c92150159b76be259"
+        },
+        "mask-audit.json": {
+          "href": "source/visible-projection/generated-back-preflight/mask-audit.json",
+          "sha256": "a33093fd3b82c90b491dfe50e26cfca28a2a549faf1dc956c109a2ec07c4bd17"
+        },
+        "anchor-audit.json": {
+          "href": "source/visible-projection/generated-back-preflight/anchor-audit.json",
+          "sha256": "4e25b6f3cd3e5c7b8ddd66da4140362950785ba8bfd6c9a0922678033812c12c"
+        },
+        "anchors.json": {
+          "href": "source/visible-projection/generated-back-preflight/anchors.json",
+          "sha256": "d56c599e9fea045c5f9b098b532c8f55e9f8955696868514d953447a9cfab6bd"
+        }
+      }
+    },
+    {
+      "view": "front",
+      "selected_image_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+      "guide_sha256": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+      "uniform_scale": 1.3333333333333333,
+      "registration_refit": false,
+      "mask_metrics": {
+        "phase": "INDEPENDENT_PREFLIGHT, not finalgrade",
+        "image_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+        "guide_sha256": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+        "native_size": [
+          1024,
+          1536
+        ],
+        "guide_size": [
+          768,
+          1152
+        ],
+        "fixed_uniform_scale": 1.3333333333333333,
+        "registration_refit": false,
+        "segmentation": "Actual HSV-seeded GrabCut5 iterations, independent from model silhouette, no refit/warp",
+        "body_outside_fraction": 0.022351801131890094,
+        "body_contour_p95_px": 7.0,
+        "body_contour_p95_fraction_height": 0.004557291666666667,
+        "containment_gate_pass": true,
+        "limits": "Garment/hair envelope only; anchors/manual samepose must separately pass."
+      },
+      "anchor_metrics": {
+        "observed_anchors": 10,
+        "mean_error_fraction_height": 0.0059773498440502575,
+        "max_error_fraction_height": 0.009079573469646824,
+        "limb_angles": [
+          {
+            "pair": [
+              "elbow_image_left",
+              "wrist_image_left"
+            ],
+            "angle_deg": 6.053124543028083
+          },
+          {
+            "pair": [
+              "elbow_image_right",
+              "wrist_image_right"
+            ],
+            "angle_deg": 1.7800556196184414
+          }
+        ],
+        "passed": true,
+        "reasons": []
+      },
+      "files": {
+        "fixed-guide-overlay.png": {
+          "href": "source/visible-projection/generated-front-attempt2/fixed-guide-overlay.png",
+          "sha256": "f2be6479b8c50e887292dbe4c3c0cfcce64dcaf0f7dc3ed2ba7dbbb470fcd3dd"
+        },
+        "mask-audit.json": {
+          "href": "source/visible-projection/generated-front-attempt2/mask-audit.json",
+          "sha256": "45584ee905e059e4cccbbfa317b9998e74d41d6750c00f78a4bed48a99507b61"
+        },
+        "anchor-audit.json": {
+          "href": "source/visible-projection/generated-front-attempt2/anchor-audit.json",
+          "sha256": "6a39bb1b964e4d9622dec034c375f45b445adfcc0979c2d2cefcdd7ae1c406e9"
+        },
+        "anchors.json": {
+          "href": "source/visible-projection/generated-front-attempt2/anchors.json",
+          "sha256": "4a54e64faba1e0f62df04c197929db8195761c19297d80390d486368ebfe3d30"
+        }
+      }
+    },
+    {
+      "view": "side",
+      "selected_image_sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+      "guide_sha256": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+      "uniform_scale": 1.3333333333333333,
+      "registration_refit": false,
+      "mask_metrics": {
+        "phase": "INDEPENDENT_PREFLIGHT, not finalgrade",
+        "image_sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+        "guide_sha256": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+        "native_size": [
+          1024,
+          1536
+        ],
+        "guide_size": [
+          768,
+          1152
+        ],
+        "fixed_uniform_scale": 1.3333333333333333,
+        "registration_refit": false,
+        "segmentation": "Actual HSV-seeded GrabCut5 iterations, independent from model silhouette, no refit/warp",
+        "body_outside_fraction": 0.07954303136441797,
+        "body_contour_p95_px": 24.18061637878418,
+        "body_contour_p95_fraction_height": 0.01574258878827095,
+        "containment_gate_pass": true,
+        "limits": "Garment/hair envelope only; anchors/manual samepose must separately pass."
+      },
+      "anchor_metrics": {
+        "observed_anchors": 9,
+        "mean_error_fraction_height": 0.01309444053609057,
+        "max_error_fraction_height": 0.02006859233779764,
+        "limb_angles": [
+          {
+            "pair": [
+              "near_shoulder",
+              "near_elbow_surface"
+            ],
+            "angle_deg": 0.6016735763856816
+          },
+          {
+            "pair": [
+              "near_elbow_surface",
+              "near_wrist"
+            ],
+            "angle_deg": 3.907898814092431
+          }
+        ],
+        "passed": true,
+        "reasons": []
+      },
+      "files": {
+        "fixed-guide-overlay.png": {
+          "href": "source/visible-projection/generated-side-attempt3/fixed-guide-overlay.png",
+          "sha256": "fb1cc2715813d30a94b8070d8595f4dd72130d207dfc54835185419dbb5dcec7"
+        },
+        "mask-audit.json": {
+          "href": "source/visible-projection/generated-side-attempt3/mask-audit.json",
+          "sha256": "5a9c8838e5a46469e9a7248cbe70a4939e9b77df12cfdcfd3dfa1e032092b7c0"
+        },
+        "anchor-audit.json": {
+          "href": "source/visible-projection/generated-side-attempt3/anchor-audit.json",
+          "sha256": "a0e8f73af553f7d92a513d81b9f3fee0630424a984955af8d8425bfdff3065ff"
+        },
+        "anchors.json": {
+          "href": "source/visible-projection/generated-side-attempt3/anchors.json",
+          "sha256": "90c4f611b73a0ce042436b9ee8ab6617aa5b14b1fa43aee9aa48a9aacb2fef14"
+        }
+      }
+    }
+  ],
+  "independent_numeric_evidence": {
+    "assembly-revision-note.json": {
+      "href": "source/grader-evidence/assembly-revision-note.json",
+      "sha256": "ff0a84c6d0be395dbfcecdd830874e30b3e6d743b0aaff4ac6951e8072839305"
+    },
+    "body-camera-torso2/diagnostic.json": {
+      "href": "source/grader-evidence/body-camera-torso2/diagnostic.json",
+      "sha256": "c0889d824cb3e9ba65a5ac77c0b705e8754e0413366515fe3352a6de67bc4bca"
+    },
+    "body-merged3/diagnostic.json": {
+      "href": "source/grader-evidence/body-merged3/diagnostic.json",
+      "sha256": "04f1cac449f6248dfd6dea1d2dc9e2fa755ed9117d6ec16648c044e55e49b06e"
+    },
+    "body-merged5/diagnostic.json": {
+      "href": "source/grader-evidence/body-merged5/diagnostic.json",
+      "sha256": "b4293f6269734cade440e4a1a0c59129b9a379c0550a69ac1c23f1a7db155609"
+    },
+    "body-merged5/terminal-finger-contacts.json": {
+      "href": "source/grader-evidence/body-merged5/terminal-finger-contacts.json",
+      "sha256": "8676d01d20c64467ee0c3448aabd78e7c054e75a5dd9ae010bda68701b523850"
+    },
+    "body-merged6/diagnostic.json": {
+      "href": "source/grader-evidence/body-merged6/diagnostic.json",
+      "sha256": "1b91fe6fbc07a098c582b1c0f0344f8b75ee1c6252630f0e8e8a8c877aa25140"
+    },
+    "body-merged6/manual-preflight.json": {
+      "href": "source/grader-evidence/body-merged6/manual-preflight.json",
+      "sha256": "ea49527ef3efefdbc067eba5551416bdcedb9c127e4d1d989fb32d3d54482f56"
+    },
+    "body-merged6-terminal.json": {
+      "href": "source/grader-evidence/body-merged6-terminal.json",
+      "sha256": "b847e748240730a813bef78e89604735ac87767b3ac83fffe99063f234bdbfe4"
+    },
+    "freeze-initial-draft.json": {
+      "href": "source/grader-evidence/freeze-initial-draft.json",
+      "sha256": "d4f627b306f33e0faa612e721d70222ab0dc7e137d3178b6be928f8741e9080c"
+    },
+    "freeze.json": {
+      "href": "source/grader-evidence/freeze.json",
+      "sha256": "8fc30eb73922f0af24128faa349c266091238bb2fb7150c99c133c147620c13e"
+    },
+    "fresh-editor-audit.json": {
+      "href": "source/grader-evidence/fresh-editor-audit.json",
+      "sha256": "ee51e81edd6c222bece98338f4629ca4ab9e716c60bdd29ca6e4c1fe5d3bce57"
+    },
+    "fresh-model/diagnostic.json": {
+      "href": "source/grader-evidence/fresh-model/diagnostic.json",
+      "sha256": "dac4545f4a07afda988f7c28c0366bb51d804d5c6b41460fa58951cd8e304b88"
+    },
+    "fresh-model/geometry-audit.json": {
+      "href": "source/grader-evidence/fresh-model/geometry-audit.json",
+      "sha256": "eef0a2506b3fe7d971a8f0c6ecd89119213c027e59d95d1f5bf46b313c643125"
+    },
+    "fresh-model/source-wrist-residuals.json": {
+      "href": "source/grader-evidence/fresh-model/source-wrist-residuals.json",
+      "sha256": "81287008de69e2c92024d75bdea9044b8b1621e80dac480ae0d9642fa050c190"
+    },
+    "fresh-model-terminal.json": {
+      "href": "source/grader-evidence/fresh-model-terminal.json",
+      "sha256": "b847e748240730a813bef78e89604735ac87767b3ac83fffe99063f234bdbfe4"
+    },
+    "fresh-scene-audit.json": {
+      "href": "source/grader-evidence/fresh-scene-audit.json",
+      "sha256": "472862ec0750fbdbaa53a80fddce0387fb946c6d0dc4fe2e8b02c11d415c011b"
+    },
+    "generated-back-preflight/anchor-audit.json": {
+      "href": "source/grader-evidence/generated-back-preflight/anchor-audit.json",
+      "sha256": "4e25b6f3cd3e5c7b8ddd66da4140362950785ba8bfd6c9a0922678033812c12c"
+    },
+    "generated-back-preflight/anchors.json": {
+      "href": "source/grader-evidence/generated-back-preflight/anchors.json",
+      "sha256": "d56c599e9fea045c5f9b098b532c8f55e9f8955696868514d953447a9cfab6bd"
+    },
+    "generated-back-preflight/mask-audit.json": {
+      "href": "source/grader-evidence/generated-back-preflight/mask-audit.json",
+      "sha256": "a33093fd3b82c90b491dfe50e26cfca28a2a549faf1dc956c109a2ec07c4bd17"
+    },
+    "generated-closeup-attempt2/mask-audit.json": {
+      "href": "source/grader-evidence/generated-closeup-attempt2/mask-audit.json",
+      "sha256": "c19b17db46685e588a5ba27233ff13ce861557a9864b0b55588759f26b4acb2a"
+    },
+    "generated-closeup-attempt4/mask-audit.json": {
+      "href": "source/grader-evidence/generated-closeup-attempt4/mask-audit.json",
+      "sha256": "4f2f1a9a804b6a36af53eb80b382bf77289849208de608a542b7caa7f638c8c2"
+    },
+    "generated-closeup-attempt6/crop-anchor-audit.json": {
+      "href": "source/grader-evidence/generated-closeup-attempt6/crop-anchor-audit.json",
+      "sha256": "15da7b875966a98288ac4bee325d0997bef09605a680e762e34ee03e404e6b30"
+    },
+    "generated-closeup-attempt6/mask-audit.json": {
+      "href": "source/grader-evidence/generated-closeup-attempt6/mask-audit.json",
+      "sha256": "6df720c9440b7cea6b1d6b0b772d13d11adf8e84f15dc2dab2b48fc04674b678"
+    },
+    "generated-closeup-preflight/mask-audit.json": {
+      "href": "source/grader-evidence/generated-closeup-preflight/mask-audit.json",
+      "sha256": "754b768599cbaeb582217d52ccf074d33a8ec8d957569139259fe733407b37bb"
+    },
+    "generated-front-attempt2/anchor-audit.json": {
+      "href": "source/grader-evidence/generated-front-attempt2/anchor-audit.json",
+      "sha256": "6a39bb1b964e4d9622dec034c375f45b445adfcc0979c2d2cefcdd7ae1c406e9"
+    },
+    "generated-front-attempt2/anchors.json": {
+      "href": "source/grader-evidence/generated-front-attempt2/anchors.json",
+      "sha256": "4a54e64faba1e0f62df04c197929db8195761c19297d80390d486368ebfe3d30"
+    },
+    "generated-front-attempt2/mask-audit.json": {
+      "href": "source/grader-evidence/generated-front-attempt2/mask-audit.json",
+      "sha256": "45584ee905e059e4cccbbfa317b9998e74d41d6750c00f78a4bed48a99507b61"
+    },
+    "generated-front-preflight/mask-audit.json": {
+      "href": "source/grader-evidence/generated-front-preflight/mask-audit.json",
+      "sha256": "1e9157c993e84bf02df72d69f8e07a2e5a59fee8c9a9a302e252a1bee474ec4a"
+    },
+    "generated-pose-attempt2/mask-audit.json": {
+      "href": "source/grader-evidence/generated-pose-attempt2/mask-audit.json",
+      "sha256": "5cfbd7330fdd0b058662281c99f4f3d22d06435bcefd804ec436a7cd82688cfd"
+    },
+    "generated-side-attempt2/mask-audit.json": {
+      "href": "source/grader-evidence/generated-side-attempt2/mask-audit.json",
+      "sha256": "17d891d8d15b2d4f4d2c0542dc0f518e5aac576255a94b411d4daaf95ac4579e"
+    },
+    "generated-side-attempt3/anchor-audit.json": {
+      "href": "source/grader-evidence/generated-side-attempt3/anchor-audit.json",
+      "sha256": "a0e8f73af553f7d92a513d81b9f3fee0630424a984955af8d8425bfdff3065ff"
+    },
+    "generated-side-attempt3/anchors-initial-manual-feet.json": {
+      "href": "source/grader-evidence/generated-side-attempt3/anchors-initial-manual-feet.json",
+      "sha256": "41ab5f8fa707577c5d318b9b7885ba19db3fb5ef157b3559021189fb699f0312"
+    },
+    "generated-side-attempt3/anchors.json": {
+      "href": "source/grader-evidence/generated-side-attempt3/anchors.json",
+      "sha256": "90c4f611b73a0ce042436b9ee8ab6617aa5b14b1fa43aee9aa48a9aacb2fef14"
+    },
+    "generated-side-attempt3/mask-audit.json": {
+      "href": "source/grader-evidence/generated-side-attempt3/mask-audit.json",
+      "sha256": "5a9c8838e5a46469e9a7248cbe70a4939e9b77df12cfdcfd3dfa1e032092b7c0"
+    },
+    "generated-side-preflight/mask-audit.json": {
+      "href": "source/grader-evidence/generated-side-preflight/mask-audit.json",
+      "sha256": "de3097c3619995baf677c4489a352c027804b31eb55ebe1c9f978897d6b1db2b"
+    },
+    "generated-visible/anchors.json": {
+      "href": "source/grader-evidence/generated-visible/anchors.json",
+      "sha256": "1b7ee81f326e3c99e2d77b3ff1ad8371b7dd403a1b2c3bdb18bf4efeff18163e"
+    },
+    "generated-visible/audit.json": {
+      "href": "source/grader-evidence/generated-visible/audit.json",
+      "sha256": "4828a46edaaf49d29c6549d017199ace0104be683aeeeaa40ac210399c25ca9e"
+    },
+    "grade-binding-controls.json": {
+      "href": "source/grader-evidence/grade-binding-controls.json",
+      "sha256": "17d496326001c6178eac94087a9aa861b989bc67804f1446fa06b16499a4b8b3"
+    },
+    "grasp-controls/actual-hand-vertices-plus15cm/audit/diagnostic.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/audit/diagnostic.json",
+      "sha256": "4878074fb9ba9a7bbad1e0fa65ef047f81ea24e22a73c913b8b894bb5ba0f62a"
+    },
+    "grasp-controls/actual-hand-vertices-plus15cm/camera.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/camera.json",
+      "sha256": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c"
+    },
+    "grasp-controls/actual-hand-vertices-plus15cm/final-state.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-hand-vertices-plus15cm/final-state.json",
+      "sha256": "a59da8a5021e6bbe9221c1dcfb649b5d11d455e8a2e5dbf834d7ba4e8718fcb4"
+    },
+    "grasp-controls/actual-thumb-joint-open/audit/diagnostic.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-thumb-joint-open/audit/diagnostic.json",
+      "sha256": "d5ddcfe8349e9e590f7fe48bcc43db66acf041483778ab2187e1815b05e488e2"
+    },
+    "grasp-controls/actual-thumb-joint-open/camera.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-thumb-joint-open/camera.json",
+      "sha256": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c"
+    },
+    "grasp-controls/actual-thumb-joint-open/final-state.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-thumb-joint-open/final-state.json",
+      "sha256": "4ed4c12459bc83f8c356684c63348198b11fb1fa0af8add19e8cb4b18914d46f"
+    },
+    "grasp-controls/actual-wrist-supination/audit/diagnostic.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-wrist-supination/audit/diagnostic.json",
+      "sha256": "53f36605acee4d20a79e6627da061bc8c6b5953a396aa741234e4aa6ddfb8f60"
+    },
+    "grasp-controls/actual-wrist-supination/camera.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-wrist-supination/camera.json",
+      "sha256": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c"
+    },
+    "grasp-controls/actual-wrist-supination/final-state.json": {
+      "href": "source/grader-evidence/grasp-controls/actual-wrist-supination/final-state.json",
+      "sha256": "30c3e1cf0e9294c6dc1c63844c9ed3b3a05a4a7bb2d4d402cd542fc071033cc8"
+    },
+    "grasp-controls/results.json": {
+      "href": "source/grader-evidence/grasp-controls/results.json",
+      "sha256": "8c67029dad2dbcbe1dde0f01b99982fdcf8b6c378077f1c02e71d092db67ec68"
+    },
+    "grip-round2/diagnostic.json": {
+      "href": "source/grader-evidence/grip-round2/diagnostic.json",
+      "sha256": "94b585767ff59e901b02770de92ab00320dc664391d88de919704e08bb5366df"
+    },
+    "initial-grading-assembly-draft.json": {
+      "href": "source/grader-evidence/initial-grading-assembly-draft.json",
+      "sha256": "9d51ab4e04f9b61c4e685e19691911311c919fa94e6f3e52cb4a8afa47b78a21"
+    },
+    "manual-final-review.json": {
+      "href": "source/grader-evidence/manual-final-review.json",
+      "sha256": "642929bdb482e311cfa3a5cbb460e9b8ea46846d1544f833d13e088fb9bcd153"
+    },
+    "native-image-audit.json": {
+      "href": "source/grader-evidence/native-image-audit.json",
+      "sha256": "71f18b9431b4e0dc4aee23a48bd15835a6958b0683cd7635849466f803a4dd19"
+    },
+    "negative-controls/narrow-pelvis-x20percent/audit/diagnostic.json": {
+      "href": "source/grader-evidence/negative-controls/narrow-pelvis-x20percent/audit/diagnostic.json",
+      "sha256": "6711de6ad5431e624fc081473125cff8b2642d77af6ebb3171f7c8455cb7a3a8"
+    },
+    "negative-controls/narrow-pelvis-x20percent/camera.json": {
+      "href": "source/grader-evidence/negative-controls/narrow-pelvis-x20percent/camera.json",
+      "sha256": "03f95d68023cd9aa37d00df85bf60285aad8fa4afcd367ea97ef9ee5edacc1b4"
+    },
+    "negative-controls/narrow-pelvis-x20percent/final-state.json": {
+      "href": "source/grader-evidence/negative-controls/narrow-pelvis-x20percent/final-state.json",
+      "sha256": "2e9ab0c9625a6d2c26755eb25c33271d82a973bbd62733a24309571935f2d7d9"
+    },
+    "negative-controls/pelvis-plus10cm/audit/diagnostic.json": {
+      "href": "source/grader-evidence/negative-controls/pelvis-plus10cm/audit/diagnostic.json",
+      "sha256": "b1b27c676cad17fbc413060e521a9231990727dda028259562b00a6d40039f75"
+    },
+    "negative-controls/pelvis-plus10cm/camera.json": {
+      "href": "source/grader-evidence/negative-controls/pelvis-plus10cm/camera.json",
+      "sha256": "03f95d68023cd9aa37d00df85bf60285aad8fa4afcd367ea97ef9ee5edacc1b4"
+    },
+    "negative-controls/pelvis-plus10cm/final-state.json": {
+      "href": "source/grader-evidence/negative-controls/pelvis-plus10cm/final-state.json",
+      "sha256": "2e9ab0c9625a6d2c26755eb25c33271d82a973bbd62733a24309571935f2d7d9"
+    },
+    "negative-controls/results.json": {
+      "href": "source/grader-evidence/negative-controls/results.json",
+      "sha256": "de3c7ace493e5c89e7b85862eebeaae958d31e24b01499fa945b4392339ff4ea"
+    },
+    "pose-depth-attempt2/alignment-audit.json": {
+      "href": "source/grader-evidence/pose-depth-attempt2/alignment-audit.json",
+      "sha256": "a9bd2c3534d6f2b73eedec3119e57c626fa9795cf6adb8ba1689f180d98eda76"
+    },
+    "raw-guide/registration-audit-initial-semantics.json": {
+      "href": "source/grader-evidence/raw-guide/registration-audit-initial-semantics.json",
+      "sha256": "730d03ece532f9c1b4dccbe087d33cec9d279a3656e1dfb187d8927f7eb1815d"
+    },
+    "raw-guide/registration-audit.json": {
+      "href": "source/grader-evidence/raw-guide/registration-audit.json",
+      "sha256": "af74585a433f98ca7f9e3c692508cb6e74a433abe311fd8f1264395cd6308713"
+    },
+    "source-provenance-audit.json": {
+      "href": "source/grader-evidence/source-provenance-audit.json",
+      "sha256": "d88ff23dd962770f4fba5c1ab8601b3ba069f7de18ffc3607c986206be6803c2"
+    },
+    "viewer/viewer-check.json": {
+      "href": "source/grader-evidence/viewer/viewer-check.json",
+      "sha256": "98e13e832b50e08437bc138681fcb8d1fdd6f0ced8f6204a70d48ab3cc8cc9f3"
+    },
+    "wrapper-probe2/diagnostic.json": {
+      "href": "source/grader-evidence/wrapper-probe2/diagnostic.json",
+      "sha256": "b3db1f000c44d76921f5d9718fea56c998882187bc2dc5764ed606bd758a8125"
+    },
+    "wrapper-probe2/geometry-audit.json": {
+      "href": "source/grader-evidence/wrapper-probe2/geometry-audit.json",
+      "sha256": "d1d8b3d7a323646f7f7a7a247fc5a48839d1bdc14df5762af949df70b6a73936"
+    },
+    "wrapper-probe2-terminal.json": {
+      "href": "source/grader-evidence/wrapper-probe2-terminal.json",
+      "sha256": "b847e748240730a813bef78e89604735ac87767b3ac83fffe99063f234bdbfe4"
+    }
+  },
+  "executed_runtime_freeze": {
+    "frozen_utc": "2026-11-18T08:54:22.015534+00:00",
+    "source_commit": "45656a545ae9ce0f8bb2b736ab5e4fd18aebe4f0",
+    "files": {
+      "tools/human_fit/pose_guided/README.md": "89d633f8db3c5035667792c49e3731a12cb4472afe3c50f2b6bb6090467855f6",
+      "tools/human_fit/pose_guided/calibrate-worker.mjs": "1f9e3d197cf952a163f2cc22269bb81f4aeb016f746b7d849454b1a7eaae6994",
+      "tools/human_fit/pose_guided/check_hand_surface.py": "204f78d4846a61ea7f62c8832ba4607ab8faa3bf4bc27636e42e32746f6219e7",
+      "tools/human_fit/pose_guided/export_evidence.py": "91bce769331c08eaebd79e76627276363ab865f907df8eb01dd432ccd861a76e",
+      "tools/human_fit/pose_guided/fit.py": "0f6a395a9461318020a17279f646821555121968989bdfb68e20f1fe26f7784c",
+      "tools/human_fit/pose_guided/fit_grip.py": "58d733f5b13b3bad22946ceb1237761f706a77ef60925aa19af8c571d6303a04",
+      "tools/human_fit/pose_guided/refine_body_envelope.py": "ccbf3b71d42bc1bb3894f01aa875fded5f8b1abf990f13f0c2d9391ffe436d46",
+      "tools/human_fit/pose_guided/render_mesh.py": "fda6173c981a713b903a58f1e2104425241b370091eaa48dc94d6e87a0c23f4d",
+      "tools/human_fit/pose_guided/requirements.txt": "08ed9f1e2132f749083564649f13824f7a8d5ce5b7caa12ff87659b9c2ca8993",
+      "tools/human_fit/pose_guided/runtime.py": "a11548669084698fb573765a2fd039662d015e7966c475554c2b8c079739d8bf",
+      "web/human-studio/body-engine.js": "311de96371b2eefb795ab013f4e79ee4cc0d2b3ac271f6121c18ebb7589b12a3"
+    },
+    "asset": {
+      "path": "web/human-studio/assets/human.json",
+      "sha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6"
+    },
+    "case_inputs": "case-inputs/input-manifest.json"
+  },
+  "post_execution_tools": [
+    {
+      "path": "tools/human_fit/pose_guided/render_semantic_view.py",
+      "role": "Feedback-time supplemental control/reproduction, not retroactively in executed snapshot",
+      "sha256": "13eb5ca57269b7db6e5c1fa215e31069eacb4c6c3cb396c8705f5d4d6067e776"
+    }
+  ],
+  "previous_output": {
+    "status": "REUSED_HISTORY",
+    "source_workspace": "work/full-imagegen-skill-evals-20261118",
+    "grading": {
+      "passed": 11,
+      "failed": 2,
+      "total": 13,
+      "pass_rate": 0.8461538461538461
+    },
+    "frozen_manifest": "source/history/baseline-freeze.json"
+  },
+  "iteration_scope": "current actual candidate with frozen prior outputs, not a new paired experiment",
+  "quantitative_gates": [
+    {
+      "id": "actual-neutral-posed-state-correspondence",
+      "passed": true,
+      "evidence": "Independent OBJ/sparsemorph/FK maxneutral5.023e-9cm/posed5.026e-9cm <=.002cm."
+    },
+    {
+      "id": "all-seven-inherited-original-source-regions",
+      "passed": true,
+      "evidence": "Inherited8%/25px/min1000all7pass, not invented5%; source arm_right7.722% is near8% boundary. See fresh-model/diagnostic.json."
+    },
+    {
+      "id": "all-four-inherited-waist-hip-scanlines",
+      "passed": true,
+      "evidence": "Original omitted scanline checks now actually run: center<=45px andwidth[.55,1.15]at950/1000/1100/1200."
+    },
+    {
+      "id": "palm-plane-not-upturned",
+      "passed": true,
+      "evidence": "Actual independent FK normalabsY L.12367/R.12466 <=.65; real front/side hand surfaces also inspected."
+    },
+    {
+      "id": "thumb-index-helper-gap-bounded",
+      "passed": true,
+      "evidence": "Helper gaps1.0067/1.01565cm <=2; explicitlynot actual fingertip skincontact. Actual terminal surfaces separately checked."
+    },
+    {
+      "id": "two-pinch-location-proxies-together",
+      "passed": true,
+      "evidence": "Centres4.18965cm <=8, not18cm detached."
+    },
+    {
+      "id": "each-hand-ray-coverage",
+      "passed": true,
+      "evidence": "Actual skin hand rays cover1409/1424 and1423/1424,98.95/99.93%; remaining raysUNKNOWN."
+    },
+    {
+      "id": "each-hand-no-classified-torso-penetration",
+      "passed": true,
+      "evidence": "0inside each covered set <=.5%; minanterior+1.7456/+0.5160cm. Partialcoverage not globalcollisionproof."
+    },
+    {
+      "id": "each-hand-anterior-proximity",
+      "passed": true,
+      "evidence": "Actualtriangle-rayp05 L2.851/R1.635cm <=10; not physicalclothcontact verification."
+    },
+    {
+      "id": "interhand-surface-no-crossings",
+      "passed": true,
+      "evidence": "Actual2747vs2747triangle surfaces: independentVTK0contactpairs."
+    },
+    {
+      "id": "samehand-thumb-index-terminal-surfaces-no-crossings",
+      "passed": true,
+      "evidence": "Actual194vs221terminaltriangle surfaces0crossings both; prior merged5was42/43 and rejected. Actual sample-to-surface minupperbounds.337/.568cm, not bonegap."
+    },
+    {
+      "id": "remote-upperarm-forearm-torso-check",
+      "passed": true,
+      "evidence": "Independent arm-audit: distalupperarm/elbow361faces/side andforearm655/side vs broad3390/strict2668torso surfaces0remoteintersections; proximalR8fourhopaxillaryfold contacts disclosed separately, not counted as remote or wholebodycollisionfree."
+    },
+    {
+      "id": "actual-twelve-neutral-measurements-json-csv",
+      "passed": true,
+      "evidence": "Actualsavedneutral independent12path remeasure errors<=3.55e-15cm versus .01cm limit, all definitions cm/source hashes."
+    },
+    {
+      "id": "all-three-visible-fullbody-anchor-and-direction-consistency",
+      "passed": true,
+      "evidence": "27observable anchors; frontmean.598%/max.908, sidemean1.309/max2.007, backmean.859/max1.758; allmean<=1.5/max<=2.5%H andangles<=12deg. No hiddenpointfill or perviewwarp."
+    },
+    {
+      "id": "all-four-generated-clothing-envelope-consistency",
+      "passed": true,
+      "evidence": "Front2outside2.235%,side3 7.9543%,back1 6.119%,closeup6 1.539%; all<=8%;P95 fractions.00456/.01574/.01054/.01172 <=.02H. Side margin is thin;N1/not robustness proof."
+    },
+    {
+      "id": "known-closeup-camera-crop-and-action-consistency",
+      "passed": true,
+      "evidence": "Analyticalclothedreference2.5fixedcamera crop reproducedpixel-exact; actualcloseup6freshnative;8visiblecroppointsmean1.167%H/max1.942%H, originalheldhemrestored. No posthocfit."
+    },
+    {
+      "id": "illustrative-pose-depth-front-foreground-alignment",
+      "passed": true,
+      "evidence": "Actualpose2/front2IoU.992158 anddepth2/front2 .979970 >=.93; neckpointonexposedneck, inferredlowerjoints hollow/dashed. Styleonly, not detector/calibrateddepth."
+    },
+    {
+      "id": "seven-discriminating-same-validator-fault-controls",
+      "passed": true,
+      "evidence": "Actualpelvis+10cm, shrink20%,sideanchor+6%H, actualwristY+90°, actualhandvertices+15cm, realthumbjoint-open, predecessorfinger-skin-crossing all rejected by their specific gates from appropriate positivecontrols; not creditedfrom unrelated failures."
+    }
+  ],
+  "hidden_structure_accuracy": "NOT_VERIFIED",
+  "external_archives": [
+    {
+      "original_href": "source/arm-surface-audit.zip",
+      "sha256": "5947c13b37fef7cea50809226c108fdd5ab5a31c2984b4b2375487f406202353",
+      "bytes": 1406909,
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/5947c13b37fef7ce-arm-surface-audit.zip",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/5947c13b37fef7ce-arm-surface-audit.zip",
+      "zip_entries": 41,
+      "local_crc_verified": true
+    },
+    {
+      "original_href": "source/case-inputs.zip",
+      "sha256": "fbfb9373c6ae135689e4a070243f74f6b85f62a6eddeb533d188140527538268",
+      "bytes": 1930987,
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/fbfb9373c6ae1356-case-inputs.zip",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/fbfb9373c6ae1356-case-inputs.zip",
+      "zip_entries": 11,
+      "local_crc_verified": true
+    },
+    {
+      "original_href": "source/fit-runtime.zip",
+      "sha256": "fcbf74a3812442eac8b834bd2da4e67db5630446da79932fb5fa0ed7878e5d14",
+      "bytes": 485332,
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/fcbf74a3812442ea-fit-runtime.zip",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/fcbf74a3812442ea-fit-runtime.zip",
+      "zip_entries": 25,
+      "local_crc_verified": true
+    },
+    {
+      "original_href": "source/full-run.zip",
+      "sha256": "2cf8e4f898f5cfc7116acd399d702fd5082e74e8eccd118d65b8e4108352e06a",
+      "bytes": 48660332,
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/2cf8e4f898f5cfc7-full-run.zip",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/2cf8e4f898f5cfc7-full-run.zip",
+      "zip_entries": 206,
+      "local_crc_verified": true
+    },
+    {
+      "original_href": "source/history/skill-baseline.zip",
+      "sha256": "2b1321e59c4c40f0e93e7372c787e0e462dfa4251d003251f2a1c49f1f7170ba",
+      "bytes": 248024,
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/2b1321e59c4c40f0-skill-baseline.zip",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/2b1321e59c4c40f0-skill-baseline.zip",
+      "zip_entries": 58,
+      "local_crc_verified": true
+    },
+    {
+      "original_href": "source/independent-grader.zip",
+      "sha256": "9bd55abe0e753701d44516d5219dbf4cfeb5213ee74b6da74fdf1df83e9d2116",
+      "bytes": 28217598,
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/9bd55abe0e753701-independent-grader.zip",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/9bd55abe0e753701-independent-grader.zip",
+      "zip_entries": 163,
+      "local_crc_verified": true
+    },
+    {
+      "original_href": "source/selected-six.zip",
+      "sha256": "025765568c617e61b1159227cfef576d194f3f6bec380e19beccec2e4f2cfe20",
+      "bytes": 9294835,
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/025765568c617e61-selected-six.zip",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/025765568c617e61-selected-six.zip",
+      "zip_entries": 8,
+      "local_crc_verified": true
+    },
+    {
+      "original_href": "source/skill-executed.zip",
+      "sha256": "4a9dbd767803c6cd34215db9f06ddec4b756883bd7a6344b34cbc5cc9a68ae2f",
+      "bytes": 258137,
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/4a9dbd767803c6cd-skill-executed.zip",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/4a9dbd767803c6cd-skill-executed.zip",
+      "zip_entries": 61,
+      "local_crc_verified": true
+    }
+  ],
+  "archive_delivery": "ZIP originals remain byte-identical in this repository under content-addressed eval-artifacts paths, served by raw.githubusercontent.com; only current new site ZIP copies removed, historical sites untouched.",
+  "external_images": [
+    {
+      "original_logical_path": "artifacts/images/closeup.png",
+      "sha256": "096c3a2be3e5502f76e29bf28f6d2c6b43efbe9df82a1f94c46503733cadfa7f",
+      "bytes": 2522111,
+      "native_pixels": [
+        1024,
+        1536
+      ],
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/096c3a2be3e5502f-rejected-closeup.png",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/096c3a2be3e5502f-rejected-closeup.png",
+      "role": "Rejected closeup history only; original native bytes, not selected output"
+    },
+    {
+      "original_logical_path": "artifacts/images/attempt-2/closeup.png",
+      "sha256": "914e594886c9a6d2d3092c4aac290ceaf018ab2bef27dc1718d0c84fcbebc7fb",
+      "bytes": 2597063,
+      "native_pixels": [
+        1024,
+        1536
+      ],
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/914e594886c9a6d2-rejected-attempt-2-closeup.png",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/914e594886c9a6d2-rejected-attempt-2-closeup.png",
+      "role": "Rejected closeup history only; original native bytes, not selected output"
+    },
+    {
+      "original_logical_path": "artifacts/images/attempt-4/closeup.png",
+      "sha256": "3340e93aa67e4c09184386c1a80dd56645e9abab363ce575088bedfb4c4ee4c8",
+      "bytes": 2788353,
+      "native_pixels": [
+        1024,
+        1536
+      ],
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/3340e93aa67e4c09-rejected-attempt-4-closeup.png",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/3340e93aa67e4c09-rejected-attempt-4-closeup.png",
+      "role": "Rejected closeup history only; original native bytes, not selected output"
+    },
+    {
+      "original_logical_path": "artifacts/images/attempt-5/closeup.png",
+      "sha256": "19fc9c94fc281399ec96e9cf6a493727e6a45b9fc3dbad4fb6aa81a5bf684b9d",
+      "bytes": 2689749,
+      "native_pixels": [
+        1024,
+        1536
+      ],
+      "repo_path": "eval-artifacts/full-imagegen-hillclimb-20261118/19fc9c94fc281399-rejected-attempt-5-closeup.png",
+      "url": "https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/main/eval-artifacts/full-imagegen-hillclimb-20261118/19fc9c94fc281399-rejected-attempt-5-closeup.png",
+      "role": "Rejected closeup history only; original native bytes, not selected output"
+    }
+  ],
+  "derived_input_aliases": [
+    {
+      "removed_duplicate_path": "inputs/generation-reference-0982c0fed4d51f19.png",
+      "canonical_original_href": "artifacts/model-fit/final/views/back.png",
+      "canonical_href": "artifacts/model-fit/final/views/back.png",
+      "sha256": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+      "bytes": 164099
+    },
+    {
+      "removed_duplicate_path": "inputs/generation-reference-258b8ba45ff28f1e.png",
+      "canonical_original_href": "artifacts/model-fit/final/views/pose.png",
+      "canonical_href": "artifacts/model-fit/final/views/pose.png",
+      "sha256": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13",
+      "bytes": 192738
+    },
+    {
+      "removed_duplicate_path": "inputs/generation-reference-5383c98618ad62fc.png",
+      "canonical_original_href": "artifacts/images/attempt-2/front.png",
+      "canonical_href": "artifacts/images/attempt-2/front.png",
+      "sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+      "bytes": 1725529
+    },
+    {
+      "removed_duplicate_path": "inputs/generation-reference-55706448bc488e94.png",
+      "canonical_original_href": "artifacts/model-fit/final/views/side.png",
+      "canonical_href": "artifacts/model-fit/final/views/side.png",
+      "sha256": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+      "bytes": 139803
+    },
+    {
+      "removed_duplicate_path": "inputs/generation-reference-667b3b31ca0cd812.png",
+      "canonical_original_href": "artifacts/model-fit/final/views/depth.png",
+      "canonical_href": "artifacts/model-fit/final/views/depth.png",
+      "sha256": "667b3b31ca0cd812b2769d7f8ad27386fff78e9bdf254410c1fd248d044cd28b",
+      "bytes": 38068
+    },
+    {
+      "removed_duplicate_path": "inputs/generation-reference-6fd6310bc225b6ba.jpg",
+      "canonical_original_href": "inputs/original-product.jpg",
+      "canonical_href": "inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "bytes": 70413
+    },
+    {
+      "removed_duplicate_path": "inputs/generation-reference-bc727345e901b1bf.png",
+      "canonical_original_href": "artifacts/images/front.png",
+      "canonical_href": "artifacts/images/front.png",
+      "sha256": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6",
+      "bytes": 1776305
+    },
+    {
+      "removed_duplicate_path": "inputs/generation-reference-eccf9fd70baadf87.png",
+      "canonical_original_href": "artifacts/model-fit/final/views/front.png",
+      "canonical_href": "artifacts/model-fit/final/views/front.png",
+      "sha256": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+      "bytes": 183393
+    }
+  ]
+}

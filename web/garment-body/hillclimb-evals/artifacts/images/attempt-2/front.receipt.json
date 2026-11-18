@@ -1,0 +1,40 @@
+{
+  "tool": "image_gen.imagegen",
+  "view": "front",
+  "attempt": 2,
+  "actual_referenced_image_paths": [
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/front.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+  ],
+  "prompt": "EDIT FIRST IMAGE ONLY. This is an exact pixel-position-preserving wardrobe/identity replacement of the existing grey anatomical body render, not a new photograph composition. Preserve ALL geometry of FIRST image and its camera, silhouette, body thickness, lean, asymmetric elbows, hand pinch positions, leg angles and framing. Put the original SECOND reference adult woman's identity and clothing onto that existing body. SECOND reference is APPEARANCE ONLY; NEVER use its different crop or pose. Output maximum native 1024x1536 or highest native 2:3 portrait. FIRST guide 768x1152 scaled uniformly4/3 to1024x1536. Fixed underlying anatomical joint pixel anchors at that native size: head joint(483,207); shoulders L(674,324) R(414,363); elbows L(818,439) R(398,577); wrists L(673,554) R(489,553); hips L(601,721) R(450,713); knees L(676,1062) R(510,1060); ankles L(727,1365) R(577,1362). Do not draw anchors or text. Keep head top and foot bottom precisely FIRST positions. Do NOT move body horizontally/vertically, rotate, straighten, slim, beautify proportions, narrow chest/belly, slim hips/thighs/calves, close legs, or make a standard fashion stance. Clothing must ENCLOSE the entire current body, never shrink it. Preserve the forward chest/abdomen contour and full thickness; preserve hands in front pinching garment. Strict front as FIRST: retain image-right elbow/hip/leg position, no contraction toward center. Replace grey skin with realistic skin and same adult brunette face/hair from SECOND. Dress in red fine vertical pointelle knit shallow wide BOAT neckline, tiny green/red neckline embellishment, THREE-QUARTER forearm sleeves gently flared at cuff; matching red gathered elastic waist pointelle pants. Both bent hands pinch/lift front top hem, lower abdomen exposed as SECOND; keep existing finger grip geometry. Bare feet where guide shows. Light grey studio, soft realistic light, no hard shadow enlargement. No mannequin, no skeleton, no text. This is an edit of first body's exact pixels/camera, not a new pose; native output only, no crop or upscaling.",
+  "transparent_background": false,
+  "native_path": "/workspace/generated_images/exec-34190dc2-7709-49b5-a5da-01368dd640bf.png",
+  "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-34190dc2-7709-49b5-a5da-01368dd640bf.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "native_pixels": [
+    1024,
+    1536
+  ],
+  "output_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+  "native_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+  "references": [
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/front.png",
+      "sha256": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    }
+  ],
+  "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+  "transforms": "byte-for-byte native copy; no crop, montage, upscale or edit",
+  "independent_acceptance": "PENDING"
+}

@@ -341,3 +341,50 @@ Large intermediate OBJ/GLB/depth arrays are preserved in compressed reproduction
 archives; public gallery files and complete executor hash inventory are separate.
 Single-case execution is functional acceptance, not general skill improvement.
 Evidence: `docs/verification/full-imagegen-skill-evals-20261118/`.
+
+
+## Pose/contact skill hill climb
+
+Freeze baseline and candidate skills plus exact runtime file hashes. Development
+preflight is not fresh skill execution. Use a fresh agent to run the bundled
+`run_model_fit.py --case ... --repo-root ... --out NEW_MODEL`, including real
+raw-guide registration/semantics, body stages, grip and actual mesh measurement.
+Do not copy a developer successful state as the fresh result. Validate independent
+actual-OBJ photo projection/region+scanline/palm/coverage/hand surface/terminal
+finger contacts before paying for new six Image Gen outputs. Shared floor/axis/
+camera must apply to both FK and final LBS; helper bone tails are not skin pads.
+
+Each new native Image Gen view uses that same final state's own camera/render.
+Independent visible-geometry annotation uses only frozen canvas normalization,
+no fitted warp; show unknown hidden geometry separately. Preserve historical11/13
+and all failed trials; current operational thresholds do not rewrite old grades.
+
+```sh
+python tools/skill_evals/build_hillclimb_review.py --workspace work/full-imagegen-hillclimb-20261118
+python scripts/build_pages.py
+node tools/skill_evals/verify_hillclimb_review.cjs --url http://127.0.0.1:PORT/garment-body/hillclimb-evals/eval.html --out OUT
+```
+
+Keep the original Anthropic Previous Output/Feedback/Benchmark and galleries only
+inside Output. Verify actual download/reopen, fixed final-overlay default, native
+feedback persistence/download, mobile and same-final Human Studio handoff. Bind
+final independent grades to all recursive executor outputs after every writer
+finishes. Reopen source/run ZIP entries against the frozen inventories. Browser
+PASS is not a substitute for the original13 semantic and geometry acceptance.
+Evidence: `docs/verification/full-imagegen-hillclimb-20261118/`.
+
+
+For the final hillclimb publication, `build_hillclimb_review.py --external-archives`
+keeps originals under content-addressed repository `eval-artifacts/` paths and
+uses actual raw GitHub downloads. It externalizes only this new site's ZIPs and
+four rejected-closeup presentation copies, and aliases byte-identical derived
+inputs; selected six native images stay in Pages. Validate CRC/SHA and full-run
+entries, publish evidence-only data first, then actually HTTP-download/reopen
+before the final browser run and code/page commit. Do not rebuild addressed ZIPs
+merely because HEAD changed. No old history/grade/source byte edits are needed.
+
+The public site must remain below1GiB after `build_pages.py`; record actual final
+bytes, not just new-directory size. Existing HTTPS_PROXY must be explicitly
+passed to Playwright APIRequest for real external SHA checks in this environment;
+Chrome/curl already use that configured route. Do not mock external downloads or
+disable TLS. Preserve the initial direct-DNS failure and actual corrected run.

@@ -1,0 +1,17 @@
+{
+  "verdict": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Previous context is explicitly reused, not fabricated new baseline\n    at check (/workspace/work/pattern-agent/tools/skill_evals/verify_hillclimb_review.cjs:12:36)\n    at /workspace/work/pattern-agent/tools/skill_evals/verify_hillclimb_review.cjs:24:3",
+  "checks": [
+    "Actual review HTTP200",
+    "Single actual candidate acceptance, no fabricated paired comparison",
+    "Official header remains primary first element",
+    "Native Prompt visible",
+    "Gallery only inside native Output",
+    "No custom shell or case navigation",
+    "Native grades and feedback section parents preserved",
+    "Historical Previous Output is genuinely loaded by pinned upstream"
+  ],
+  "errors": [],
+  "broken": [],
+  "writes": []
+}

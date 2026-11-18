@@ -1,0 +1,154 @@
+{
+  "schema": "illustrative-pose-registration-v1",
+  "method": "SIFT Lowe0.72 + similarity RANSAC4px; exclude neon overlay19px",
+  "matrix_native_to_raw": [
+    [
+      0.900860629546037,
+      -0.0008978224739113743,
+      0.06804589968781571
+    ],
+    [
+      0.0008978224739113743,
+      0.900860629546037,
+      -0.10148207986535253
+    ]
+  ],
+  "matches": 188,
+  "inliers": 156,
+  "inlier_mean_error_px": 1.2789208187283587,
+  "inlier_p95_error_px": 2.6944522325033455,
+  "inputs": {
+    "reference": {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    },
+    "guide": {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/raw-pose-guide.png",
+      "sha256": "e3fa38a0f4d0d8043bdce43b4b4c0916cc411b5cf875639dd3e1f30fdfba4189",
+      "pixels": [
+        1110,
+        1417
+      ]
+    }
+  },
+  "markers": [
+    {
+      "id": "neck_base_illustrative",
+      "kind": "joint",
+      "native_xy": [
+        406,
+        398
+      ],
+      "visibility": "manual approximate neck-base guide, occlusion and exact joint center unverified",
+      "use_for_fit": false,
+      "raw_xy": [
+        365.4601281507621,
+        358.80556440386533
+      ]
+    },
+    {
+      "id": "shoulder_image_left_surface",
+      "kind": "surface",
+      "native_xy": [
+        184,
+        450
+      ],
+      "visibility": "visible clothing shoulder surface, not proven glenohumeral joint",
+      "use_for_fit": false,
+      "raw_xy": [
+        165.42238162289848,
+        405.451000551051
+      ]
+    },
+    {
+      "id": "shoulder_image_right_surface",
+      "kind": "surface",
+      "native_xy": [
+        665,
+        421
+      ],
+      "visibility": "visible clothing shoulder surface, not proven glenohumeral joint",
+      "use_for_fit": false,
+      "raw_xy": [
+        598.7623812862857,
+        379.75789490416724
+      ]
+    },
+    {
+      "id": "elbow_image_left_surface",
+      "kind": "surface",
+      "native_xy": [
+        132,
+        758
+      ],
+      "visibility": "visible sleeve bend proxy, uncertainty from cloth",
+      "use_for_fit": false,
+      "raw_xy": [
+        118.30109956453987,
+        682.869387682587
+      ]
+    },
+    {
+      "id": "elbow_image_right_surface",
+      "kind": "surface",
+      "native_xy": [
+        762,
+        775
+      ],
+      "visibility": "visible sleeve bend proxy, uncertainty from cloth",
+      "use_for_fit": false,
+      "raw_xy": [
+        685.8280331964867,
+        698.7496465434336
+      ]
+    },
+    {
+      "id": "wrist_image_left",
+      "kind": "joint",
+      "native_xy": [
+        205,
+        858
+      ],
+      "visibility": "visible approximate wrist/cuff, manually reviewed illustrative node",
+      "use_for_fit": false,
+      "raw_xy": [
+        183.97414327400944,
+        773.0209916777861
+      ]
+    },
+    {
+      "id": "wrist_image_right",
+      "kind": "joint",
+      "native_xy": [
+        490,
+        901
+      ],
+      "visibility": "visible approximate wrist/cuff, manually reviewed illustrative node",
+      "use_for_fit": false,
+      "raw_xy": [
+        440.6808163282518,
+        812.0138781533304
+      ]
+    },
+    {
+      "id": "pelvis_dashed_inferred",
+      "kind": "joint",
+      "native_xy": [
+        354,
+        1070
+      ],
+      "visibility": "NOT_OBSERVED: dashed inferred symbol, not visible anatomical pelvis center",
+      "use_for_fit": false,
+      "raw_xy": [
+        318.0120387118997,
+        964.1372206901588
+      ]
+    }
+  ],
+  "anatomical_truth": false,
+  "limitations": "Similarity image alignment does not verify anatomy, occlusion, hidden3D or centimetres. Original photo pixels are not warped. Markers are manually reviewed illustrative constraints, not detector output."
+}

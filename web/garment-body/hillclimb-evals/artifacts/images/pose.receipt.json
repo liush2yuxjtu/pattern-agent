@@ -1,0 +1,48 @@
+{
+  "tool": "image_gen.imagegen",
+  "view": "pose",
+  "actual_referenced_image_paths": [
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+  ],
+  "prompt": "Create ONE independent native maximum-resolution 2:3 portrait illustrative POSE image. Reference1 is the exact newly generated front photo and fixes EVERY foreground edge and pixel composition. Reference2 is actual same-state front skeleton render, anatomical guide only. Reference3 original product confirms outfit. KEEP Reference1 unchanged in body placement/head/feet/lean/bent elbows/wrists/hand hem-pinching gesture/garment and background. Overlay thin clean orange joint-link lines and small yellow anatomical joint nodes aligned to this photographed figure, using reference2 topology. Place shoulder nodes at shoulder joint centers, elbows at sleeve bend centers, wrists at actual wrists, pelvis joints inside hip region not on elastic waistband, neck-base inside body not at neckline. Respect visible occlusion; hidden portions dashed, no invented observation claim. Show same adult brunette in red pointelle shallow-boat-neck THREE-QUARTER sleeve top, red elastic pants, barefoot, lifting hem. This is an ILLUSTRATIVE visualization, not detector output or measurements. No text, labels, legend, borders, panels. Exact 2:3 fullbody first-photo framing; do not straighten/recenter/change pose; highest native resolution, never crop or upscale.",
+  "transparent_background": false,
+  "native_path": "/workspace/generated_images/exec-12200795-227c-4bf8-98da-e12269126bbd.png",
+  "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-12200795-227c-4bf8-98da-e12269126bbd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "semantic": "illustrative; not detector or measured depth",
+  "native_pixels": [
+    1024,
+    1536
+  ],
+  "output_sha256": "c5af101106742c1dd7c0346ba06935bed7a8efd1e5d2c209ba778f40b878d26b",
+  "native_sha256": "c5af101106742c1dd7c0346ba06935bed7a8efd1e5d2c209ba778f40b878d26b",
+  "references": [
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png",
+      "sha256": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6",
+      "pixels": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/pose.png",
+      "sha256": "258b8ba45ff28f1e4ab180a10b5980a65735e596b0afc37bb4483e1542c47b13",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    }
+  ],
+  "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/pose.png",
+  "transforms": "byte-for-byte native copy; no crop, montage, upscale, or other edit"
+}

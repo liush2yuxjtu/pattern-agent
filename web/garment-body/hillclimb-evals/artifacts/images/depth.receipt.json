@@ -1,0 +1,48 @@
+{
+  "tool": "image_gen.imagegen",
+  "view": "depth",
+  "actual_referenced_image_paths": [
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/depth.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+  ],
+  "prompt": "Create ONE independent native maximum-resolution 2:3 portrait illustrative RELATIVE DEPTH visualization. Reference1 newly generated front photograph fixes exact silhouette, all foreground edges, body proportions, head/feet positions, torso lean, bent arms, hand hem-pinching gesture and clothing silhouette. Reference2 actual same-state FRONT rendered depth is geometry guidance. Reference3 original product is apparel context only. Preserve FIRST reference exact canvas and pose, including long hair, red pointelle three-quarter-sleeve top and pants silhouette; convert its foreground to smooth grayscale relative depth on pure black background. Nearer surfaces lighter, farther darker; subtle clear separation hands in front of abdomen, elbows and thighs; no texture/color, no xray, no skeleton, no text/scales/legend. Retain exact first-photo head-foot margins, all silhouette and arm gaps. Do NOT adopt naked mannequin silhouette instead of clothed photo, do not straighten/recenter or change pose. This is illustrative relative depth, not calibrated Zbuffer or centimetres; real Zbuffer is retained separately. Highest native resolution portrait2:3, no crop or upscale.",
+  "transparent_background": false,
+  "native_path": "/workspace/generated_images/exec-8958483a-7f35-4bcb-a9a5-ccf10445c4f0.png",
+  "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-8958483a-7f35-4bcb-a9a5-ccf10445c4f0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "semantic": "illustrative; not detector or measured depth",
+  "native_pixels": [
+    1024,
+    1536
+  ],
+  "output_sha256": "faf6d25723b83e2f5b259d96094f32f01aa926d154edc993399a7d8668e9b667",
+  "native_sha256": "faf6d25723b83e2f5b259d96094f32f01aa926d154edc993399a7d8668e9b667",
+  "references": [
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/front.png",
+      "sha256": "bc727345e901b1bf8c9d5505f8455f39462ada924cda7d34825ac4f8c89162f6",
+      "pixels": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/depth.png",
+      "sha256": "667b3b31ca0cd812b2769d7f8ad27386fff78e9bdf254410c1fd248d044cd28b",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    }
+  ],
+  "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/depth.png",
+  "transforms": "byte-for-byte native copy; no crop, montage, upscale, or other edit"
+}

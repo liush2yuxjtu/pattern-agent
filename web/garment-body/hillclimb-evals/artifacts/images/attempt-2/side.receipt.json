@@ -1,0 +1,40 @@
+{
+  "tool": "image_gen.imagegen",
+  "view": "side",
+  "attempt": 2,
+  "actual_referenced_image_paths": [
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+  ],
+  "prompt": "EDIT FIRST IMAGE ONLY. This is an exact pixel-position-preserving wardrobe/identity replacement of the existing grey anatomical body render, not a new photograph composition. Preserve ALL geometry of FIRST image and its camera, silhouette, body thickness, lean, asymmetric elbows, hand pinch positions, leg angles and framing. Put the original SECOND reference adult woman's identity and clothing onto that existing body. SECOND reference is APPEARANCE ONLY; NEVER use its different crop or pose. Output maximum native 1024x1536 or highest native 2:3 portrait. FIRST guide 768x1152 scaled uniformly4/3 to1024x1536. Fixed underlying anatomical joint pixel anchors at that native size: head joint(535,207); shoulders L(503,324) R(558,363); elbows L(613,439) R(548,577); wrists L(631,554) R(708,553); hips L(506,721) R(541,713); knees L(459,1062) R(512,1060); ankles L(380,1365) R(449,1362). Do not draw anchors or text. Keep head top and foot bottom precisely FIRST positions. Do NOT move body horizontally/vertically, rotate, straighten, slim, beautify proportions, narrow chest/belly, slim hips/thighs/calves, close legs, or make a standard fashion stance. Clothing must ENCLOSE the entire current body, never shrink it. Preserve the forward chest/abdomen contour and full thickness; preserve hands in front pinching garment. Strict 90-degree side facing image right exactly as FIRST: retain the current forward torso placement, bent leg shape and hand position, no shift backward. Replace grey skin with realistic skin and same adult brunette face/hair from SECOND. Dress in red fine vertical pointelle knit shallow wide BOAT neckline, tiny green/red neckline embellishment, THREE-QUARTER forearm sleeves gently flared at cuff; matching red gathered elastic waist pointelle pants. Both bent hands pinch/lift front top hem, lower abdomen exposed as SECOND; keep existing finger grip geometry. Bare feet where guide shows. Light grey studio, soft realistic light, no hard shadow enlargement. No mannequin, no skeleton, no text. This is an edit of first body's exact pixels/camera, not a new pose; native output only, no crop or upscaling.",
+  "transparent_background": false,
+  "native_path": "/workspace/generated_images/exec-be968c9a-ee45-4829-93cd-894cfbcea47b.png",
+  "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-be968c9a-ee45-4829-93cd-894cfbcea47b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "native_pixels": [
+    1024,
+    1536
+  ],
+  "output_sha256": "ae633b6eb23384bc62343a92e76e7ffb3a4f8b68d51b9647915994f487ff844f",
+  "native_sha256": "ae633b6eb23384bc62343a92e76e7ffb3a4f8b68d51b9647915994f487ff844f",
+  "references": [
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png",
+      "sha256": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    }
+  ],
+  "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/side.png",
+  "transforms": "byte-for-byte native copy; no crop, montage, upscale or edit",
+  "independent_acceptance": "PENDING"
+}

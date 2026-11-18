@@ -1,0 +1,187 @@
+{
+  "schema": "hillclimb-acceptance-v1",
+  "frozen_at_utc": "2026-11-18T08:37:50.397666+00:00",
+  "scope": "current source-product conditional-avatar workflow; one case; not native triggering, real-person reconstruction, hidden-3D proof or physical cloth acceptance",
+  "assertions_original13": [
+    "原始电商商品照片实际读取并保存来源、尺寸、SHA，生成内容可追溯到本次原图。",
+    "本轮实际调用Image Gen生成正面、侧面、背面、特写、姿态、相对深度六张独立原生图；非历史复用、拼图裁块或插值放大。",
+    "逐图核对红色商品领口、袖长、材质、上下装结构，差异与推断结构明确记录；严重错款不得通过。",
+    "六图对应同一人体与同一指定提衣动作；点线和深度图明确illustrative而非检测器/厘米真值，实际像素与receipt完整。",
+    "从本轮Image Gen姿态引导与未改动原图建立对应，保存注册变换、语义关键点、可见性和误差；遮挡不编造检测真值。",
+    "真实解剖人体支持厘米体形和骨骼/关节姿态调整，至少一次实际shape与pose变更引起真实顶点变化且可保存重开。",
+    "本轮实际执行体形、姿态、骨骼/相机拟合；初始最终参数/损失可复算，原始动作固定目标，不以A-pose替代。",
+    "前侧背真实渲染共享同一最终dimensions/morphWeights/完整pose及网格，仅相机变化；相机与网格指纹保存。",
+    "OpenCV初始最终叠加来自实际照片与真实网格投影；保留未warp画幅及肩臂、躯干、腰臀、腕部局部误差与掩膜。",
+    "独立几何和目视检查确认关键肩臂/躯干/腰臀无明显偏移，真实侧视腕手方向与双手空间关系符合提衣动作；局部失败否决整体匹配。",
+    "最终尺寸JSON/CSV从同版本真实neutral网格实际复量，12项来源/单位/定义/输入目标残差分列；不读缓存当主值。",
+    "官方评审Output展示原图、六张实际ImageGen、真实模拟、初始最终OpenCV叠加图库及下载，保留原生Prompt/Grades/Feedback/Benchmark。",
+    "证据结论区分功能、生成质量、二维匹配、三维合理性、真人准确度；无可靠真实尺度时仅条件人体，native触发与物理试衣不虚称完成。"
+  ],
+  "historical_result": {
+    "assertions_sha256": "f57451bbf15c1040360a9a6222d92495acd1ee961a281288282f5346d7f156ee",
+    "grade_sha256": "f065a100ef784f8c8fc7b04fa507ac48dd0a463ed94fd144742117f8d4ea3a6a",
+    "passed": 11,
+    "total": 13,
+    "overall": "FAIL",
+    "immutable": true
+  },
+  "interpretation": {
+    "original13_remain_verbatim": true,
+    "new_quantification": "Prospectively operationalizes observable consistency and grasp plausibility for this hillclimb; not silently the same historical metric. New numeric limits were chosen after seeing only historical failed outputs, before inspecting any new solver or generated candidate.",
+    "all_pass_claim": "Requires all original13 semantic checks, inherited regional-v1 checks and current observable gates. If a new numerical gate alone passes, do not call original semantic assertion PASS without actual visual evidence.",
+    "hidden_geometry": "Generated visible projections can be consistent with a saved avatar within tolerance; this does not prove exact latent3D identity or observed unseen anatomy. Claims of that strength remain NOT_VERIFIED.",
+    "unknown": "Unobserved annotations remain null/NOT_OBSERVED; required visible tests missing or ambiguous fail acceptance, not silently pass."
+  },
+  "inputs": {
+    "original_photo": "work/full-imagegen-skill-evals-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/reference/original-product.jpg",
+    "original_photo_sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+    "pixels": [
+      1000,
+      1276
+    ],
+    "mask": "source-reference-mask.png",
+    "mask_sha256": "f7d65536950f3094934b5f5bb4054ae69f99d5190728aa5639a47b2a8a30216c",
+    "regional_protocol_source": "work/pose-guided-fit-20261118/review/acceptance.json",
+    "regional_protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3"
+  },
+  "inherited_region_gate": {
+    "version": "frozen-regional-v1",
+    "frozen_before_candidate_review": true,
+    "image_size": [
+      1000,
+      1276
+    ],
+    "reference_mask": "work/single-state-skill-evals-20261117/fixtures/real-photo/reference-mask.png",
+    "interpretation": "Clothing contains body with ease; no symmetric IoU threshold. Exposed body well outside garment cannot be explained by ease. Hair excluded by regional crops. ImageGen is weak illustrative cue, not ground truth.",
+    "regions": {
+      "shoulder_left": [
+        80,
+        330,
+        310,
+        570
+      ],
+      "shoulder_right": [
+        500,
+        330,
+        740,
+        570
+      ],
+      "arm_left": [
+        30,
+        530,
+        240,
+        820
+      ],
+      "arm_right": [
+        550,
+        530,
+        800,
+        860
+      ],
+      "torso": [
+        190,
+        520,
+        610,
+        925
+      ],
+      "waist_hip_left": [
+        40,
+        900,
+        355,
+        1276
+      ],
+      "waist_hip_right": [
+        355,
+        900,
+        800,
+        1276
+      ]
+    },
+    "thresholds": {
+      "maximum_outside_fraction": 0.08,
+      "maximum_exterior_contour_p95_px": 25,
+      "minimum_region_body_pixels": 1000,
+      "waist_hip_scanline_center_error_px": 45,
+      "waist_hip_scanline_width_ratio_min": 0.55,
+      "waist_hip_scanline_width_ratio_max": 1.15
+    },
+    "scanlines": [
+      950,
+      1000,
+      1100,
+      1200
+    ],
+    "veto": "Any critical region failure vetoes 2D visual PASS; functional integrity and 3D plausibility are separate, never averaged.",
+    "pose_cues": {
+      "shoulder_elbow_wrist": "Report individual left/right errors and limb direction angles; illustrative marker errors cannot independently prove anatomical match. Hidden joints NOT_OBSERVED.",
+      "waist_marker": "waistband surface cue, NOT a femoral hip joint",
+      "centerline": "waist/hip silhouette center scanlines tested independently of face and wrists"
+    },
+    "anti_cheat": "OBJ is independently projected from camera matrix, ignoring submitted metrics and final-mask. Minimum projected width prevents shrinking to satisfy containment; state/mesh consistency needs separate runtime verification.",
+    "three_d_plausibility": "Requires independent side/back visual review and genuine runtime/state/OBJ agreement; not inferable from 2D silhouette."
+  },
+  "source_2d": {
+    "camera": "Independently rasterize actual OBJ through frozen final world_to_pixel camera. Compare initial/final at same final camera, no image warp. Refit camera contribution separately.",
+    "mask": "Same frozen source mask for all candidate comparisons; garment envelope is not bare-person contour truth. A segmentation correction needs explicit new protocol/mask version and independent inspection.",
+    "required": "All7 regions pass inherited outside<=0.08 and P95<=25px, bodypixels>=1000; each four lower-body scanline center<=45px and width ratio[0.55,1.15]. Region or scanline fail vetoes.",
+    "semantic": "Visible actual wrist/pinch gesture and torso/hip alignment manually reviewed; neckline/waistband cannot be treated as cervical/femoral joint truth."
+  },
+  "grasp_observable_gate": {
+    "status": "New prospective operation for original13 assertion10, not historical numeric claim",
+    "coordinates": "OBJ cm, world+Y up, world+Z anterior. L/R are anatomical asset bone suffixes; do not equate worldX or image side with suffix after camera rotation.",
+    "palm_plane": "Independent FK joint heads: u=index MCP(finger2-1)-wrist; v=little MCP(finger5-1)-wrist; normal=normalize(cross(u,v)). Mirror sign differs by hand; absolute vertical component is sign independent. Use actual side/front images to determine palm/dorsum direction; formula alone is insufficient.",
+    "maximum_abs_palm_normal_y": 0.65,
+    "maximum_thumb_index_tail_gap_cm": 2.0,
+    "maximum_between_pinch_centers_cm": 8.0,
+    "pinch_definition": "Thumb(finger1-3) and index(finger2-3) terminal points independently reconstructed from final asset+pose; report both rigid-FK tail and actual skinned helper-joint centroid if they differ. Centre=mean(tips). Independently verify saved body mesh corresponds to that state.",
+    "ray_test": "Actual posed body vertices selected by hand/wrist skin membership>0.5, anterior +Z rays through actual torso triangles whose neutral vertices abs(X)<22cm,95<Y<140cm. Two-sided intersection depth interval required; uncovered=UNKNOWN.",
+    "minimum_ray_coverage_fraction_each_hand": 0.8,
+    "maximum_ray_p05_front_clearance_cm_each_hand": 10.0,
+    "maximum_inside_fraction_of_covered_each_hand": 0.005,
+    "maximum_depth_tolerance_for_inside_cm": 0.05,
+    "manual_veto": "No cupped/upturned palms or forearms pointing contrary to photo; thumb/index visibly pinch and other fingers plausibly flex, hands spatially together in front of upper waist rather than18cm detached. No visible torso penetration. These remain manual independently audited semantic checks; metrics not sufficient.",
+    "limits": "Not cloth-contact/physical-fit proof. Hand may lie above a lifted cloth hem without touching naked torso;10cm is an avatar plausibility cap, not real-person distance estimate."
+  },
+  "generated_observable_consistency_gate": {
+    "status": "New prospective observable operation for original13 assertion4; no exact hidden3D proof",
+    "lineage": "Freeze final state, actual neutral/posed mesh, each exact camera and target guide images before generation; supply raw product and that camera/render as actual generator refs. Prompt equality does not count. No per-view body/pose changes; only camera changes. Save native receipts and reference hashes.",
+    "normalization": "Use only the predefined uniform guide-canvas to native-image pixel conversion. Freeze transform from guide/output dimensions. No per-view best-fit2D warp or pose refit after generation. If generator changes framing, measure the drift and fail/revise the generation.",
+    "anchors": "Independently annotate visible head/neck-base, shoulders, elbows, wrists, pelvis/hip silhouette, knees, ankles, fingertips with anatomical/surface semantics and uncertainty. At least8 visible anchors spanning torso/arm/leg in each fullbody view; side occluded limb/hand anchors markedNOT_OBSERVED, never invented.",
+    "maximum_anchor_mean_error_fraction_image_height": 0.015,
+    "maximum_any_visible_anchor_error_fraction_image_height": 0.025,
+    "maximum_limb_projected_direction_difference_degrees": 12.0,
+    "same_pose_manual_veto": "No changed elbow height, torso lean, foot stance, leg crossing, wrist rotation or different pinch action. Identity/product consistency separately audited. Occluded hands in back remain occluded rather than moved behind back.",
+    "body_inside_generated_clothing_fraction_min": 0.92,
+    "maximum_exterior_body_contour_p95_fraction_image_height": 0.02,
+    "clothing_envelope_limit": "Envelope containment alone cannot establish body consistency; anchor/relative limb lengths and manual silhouette alignment required. Hair/loose-cloth uncertainty regions disclosed, not optimized into skeleton.",
+    "pose_depth_front_alignment": "Pose/depth generated from same frozen front geometry guide; each must have foreground silhouette IoU>=0.93 with generated front after fixed canvas normalization. Markers can be separated by their known colored pixels; do not erase body drift. Pose anatomical nodes must be at joint locations, not collar/waistband.",
+    "closeup": "Same garment/hand action and body; known crop-only camera/projection mapping, no new pose. It is an independent native generation, not a crop masquerading as original output.",
+    "depth": "Illustrative relative depth style only. Check foreground geometry and ordinal hands-in-front-of-torso consistency; no calibrated depth or actual Depth Anything inference claim.",
+    "interpretation": "PASS supports observable multi-view consistency with the saved conditional avatar within these tolerances, not exact mathematical sameness of unknown generated latent geometry."
+  },
+  "geometry_measurement_gate": {
+    "neutral_state_max_vertex_delta_cm": 0.002,
+    "posed_state_max_vertex_delta_cm": 0.002,
+    "measurement_json_csv_absolute_tolerance_cm": 0.01,
+    "all12_definitions_and_paths": true,
+    "targets_and_cache_not_primary": true,
+    "same_state_all_real_views": true
+  },
+  "negative_controls_required": [
+    "Same exact raster/region validator rejects actual candidate posed pelvis translated +10cm horizontally while other upper regions unchanged, using same frozen camera.",
+    "Inherited minwidth scanline rejects artificial narrow/shrunk torso when containment alone improves.",
+    "Same generation-anchor validator rejects a synthetic side-only wrist/elbow shift>=0.06 imageheight while other views unchanged; source state unchanged.",
+    "Same palm/clearance gate rejects actual-state forearm/wrist supination to visiblyupturned palms or hand vertex block translated anterior+15cm, with genuine recomputed geometry.",
+    "Same pinch gate rejects thumb/index tips separated+5cm, not a fake reportedgap.",
+    "Same geometry/measurement gate rejects shifted meshes, forged cached primary measures and stale source/artifact hashes."
+  ],
+  "reporting": {
+    "original_semantic_pass_count_separate_from_new_quantitative_gate_count": true,
+    "no_new_old_statistical_skill_superiority_without_fresh_paired_runs": true,
+    "best_case_tuning_is_not_generalized_skill_success": true,
+    "all_artifacts_recursive_sha_bound": true,
+    "native_claude_trigger": "BLOCKED unless actually run",
+    "real_person_size_accuracy": "NOT_VERIFIED",
+    "physical_fit": "NOT_RUN"
+  }
+}

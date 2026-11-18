@@ -1,0 +1,24 @@
+{
+  "schema": "manual-registration-semantics-review-v1",
+  "basis": "actual original photo and registered source-marker-preview viewed",
+  "registration": "model-fit/guide-registration/registration.json",
+  "review": "Neck approximate; shoulder/sleeve-bend markers are clothing surfaces, pelvis NOT_OBSERVED. Image-left wrist marker corrected post-execution to uncertain hand-back/cuff proxy, not reliable wrist joint; image-right remains approximate wrist/cuff. All use_for_fit:false preserved. Registration is image alignment only, not anatomy or cm.",
+  "anatomical_truth": false,
+  "all_use_for_fit_false": true,
+  "post_execution_correction": {
+    "marker_id": "wrist_image_left",
+    "raw_marker_xy": [
+      183.97414327400944,
+      773.0209916777861
+    ],
+    "reviewed_semantic": "hand-back / cuff-proxy / uncertain; not a reliable anatomical wrist joint",
+    "reason": "Actual original photo visually reviewed again: visible wrist/cuff skin transition nearer raw(145,760), guide blue node falls distal on hand-back. Original frozen marker/input retained; all use_for_fit:false unchanged.",
+    "visible_wrist_cuff_approx_xy": [
+      145,
+      760
+    ],
+    "source_marker_changed": false,
+    "anatomical_truth": false,
+    "comparison_limitation": "Do not call approx44px marker displacement a model wrist residual. Actual model wrist-skinband near(142,765) is a separate surface comparison; independently reviewed uncertainty applies."
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "implementation": "Independent actual OpenCV SIFT/BF Lowe.72/PartialAffine RANSAC3px; generated guide→unaltered raw frame",
+  "raw_sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+  "guide_sha256": "e3fa38a0f4d0d8043bdce43b4b4c0916cc411b5cf875639dd3e1f30fdfba4189",
+  "raw_pixels": [
+    1000,
+    1276
+  ],
+  "native_guide_pixels": [
+    1110,
+    1417
+  ],
+  "matches": 205,
+  "inliers": 155,
+  "guide_to_raw_affine": [
+    [
+      0.9006969694567518,
+      -0.00033705452089924034,
+      -0.2568160308755015
+    ],
+    [
+      0.00033705452089924034,
+      0.9006969694567518,
+      0.030880677632690597
+    ]
+  ],
+  "inlier_mean_px": 1.1919245239279044,
+  "inlier_p95_px": 2.265764587993852,
+  "points": [
+    {
+      "id": "neck_base_surface",
+      "native_xy": [
+        406,
+        398
+      ],
+      "raw_xy": [
+        365.2920058692479,
+        358.645118656905
+      ],
+      "projection_of_uncertainty_mark_only": null,
+      "semantic": "base-neck/clavicle surface approximate; not a measured cervical joint",
+      "visibility": "visible surface, skeleton approximate",
+      "digitization": "Independent reviewer manually seeded visible native dot centre from viewed actual image; roughly2px precision, not detector output"
+    },
+    {
+      "id": "shoulder_image_left",
+      "native_xy": [
+        184,
+        450
+      ],
+      "raw_xy": [
+        165.31975181476216,
+        405.4065349650165
+      ],
+      "projection_of_uncertainty_mark_only": null,
+      "semantic": "garment shoulder surface; true shoulder joint occluded",
+      "visibility": "joint hidden by garment",
+      "digitization": "Independent reviewer manually seeded visible native dot centre from viewed actual image; roughly2px precision, not detector output"
+    },
+    {
+      "id": "shoulder_image_right",
+      "native_xy": [
+        664,
+        421
+      ],
+      "raw_xy": [
+        597.6640717351091,
+        379.4481090208023
+      ],
+      "projection_of_uncertainty_mark_only": null,
+      "semantic": "garment shoulder surface; true shoulder joint occluded",
+      "visibility": "joint hidden by garment",
+      "digitization": "Independent reviewer manually seeded visible native dot centre from viewed actual image; roughly2px precision, not detector output"
+    },
+    {
+      "id": "elbow_image_left",
+      "native_xy": [
+        132,
+        758
+      ],
+      "raw_xy": [
+        118.37969661057411,
+        682.8036747226092
+      ],
+      "projection_of_uncertainty_mark_only": null,
+      "semantic": "bent elbow garment silhouette approximate",
+      "visibility": "joint hidden by garment",
+      "digitization": "Independent reviewer manually seeded visible native dot centre from viewed actual image; roughly2px precision, not detector output"
+    },
+    {
+      "id": "elbow_image_right",
+      "native_xy": [
+        763,
+        776
+      ],
+      "raw_xy": [
+        686.7134173564083,
+        699.2289015755182
+      ],
+      "projection_of_uncertainty_mark_only": null,
+      "semantic": "bent elbow garment silhouette approximate",
+      "visibility": "joint hidden by garment",
+      "digitization": "Independent reviewer manually seeded visible native dot centre from viewed actual image; roughly2px precision, not detector output"
+    },
+    {
+      "id": "wrist_image_left",
+      "native_xy": [
+        205,
+        857
+      ],
+      "raw_xy": [
+        184.09720698334797,
+        771.9972796788534
+      ],
+      "projection_of_uncertainty_mark_only": null,
+      "semantic": "Visible generated hand-back/distal cuff proxy, NOT reliable anatomical wrist. Original source wrist is around145,760 whereas marker projects184,773.",
+      "visibility": "visible generated marker; anatomical wrist inference rejected",
+      "digitization": "Independent reviewer manually seeded visible native dot centre from viewed actual image; roughly2px precision, not detector output"
+    },
+    {
+      "id": "wrist_image_right",
+      "native_xy": [
+        490,
+        901
+      ],
+      "raw_xy": [
+        440.7810128796027,
+        811.7240068734068
+      ],
+      "projection_of_uncertainty_mark_only": null,
+      "semantic": "visible cuff/wrist boundary approximate",
+      "visibility": "visible cuff/skin boundary",
+      "digitization": "Independent reviewer manually seeded visible native dot centre from viewed actual image; roughly2px precision, not detector output"
+    },
+    {
+      "id": "pelvis_not_observed",
+      "native_xy": [
+        354,
+        1070
+      ],
+      "raw_xy": null,
+      "projection_of_uncertainty_mark_only": [
+        318.22926281945246,
+        963.8959552967555
+      ],
+      "semantic": "dotted uncertainty marker; not femoral hip joint truth",
+      "visibility": "NOT_OBSERVED",
+      "digitization": "Independent reviewer manually seeded visible native dot centre from viewed actual image; roughly2px precision, not detector output"
+    }
+  ],
+  "limits": "Image registration checks image correspondence only. Redrawn hair/knit/face differs; dots are illustrative, hidden joints not truth. Original image remains unwarped. Independent audit only, not executor-registration output.",
+  "semantic_followup": "Independent original-image coordinate crop reveals leftblue dot is distal handback, not wrist. Map retained as illustrative marker; reject it as anatomical fitting truth."
+}

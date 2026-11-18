@@ -1,0 +1,130 @@
+{
+  "tool": "image_gen.imagegen",
+  "view": "side",
+  "attempt": 3,
+  "actual_referenced_image_paths": [
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+  ],
+  "prompt": "EDIT FIRST anatomically color-coded body render into the same adult woman's dressed side photograph, preserving exact geometry and camera. FIRST768x1152 image is authoritative framing; SECOND grey render same camera confirms shape; THIRD original woman supplies identity/red clothing ONLY. Exact highest-native portrait2:3,1024x1536 or higher. No front-photo reference; don't standardize pose. CRITICAL ORANGE AREA IS THE ENTIRE NEAR LEFT ARM, NOT BREAST/CHEST/TORSO. Put a red sleeve around this entire orange upperarm and elbow. Its shoulder descends diagonally FORWARD to an ELBOW AT CHEST HEIGHT: at native1024x1536 elbow surface(621,449); then the FOREARM RUNS NEARLY VERTICALLY DOWN at x621..631 to wrist(631,554). The wrist is BELOW this high elbow. Do not drag elbow backward/left to(541,481), do not lower it to waist, do not make forearm diagonally forward like ordinary waist-level pose. Red sleeve must bend at that chest-high orange elbow, then travel near vertically down to forearm cuff. Hand stays at belly front pinching/lifting top hem. Far right arm is behind near arm as real grey view; don't invent symmetric waist-level elbows. Preserve original first shoulder, torso thickness/chest contour/belly/hips/thighs/bent knees/ankles/feet positions and all body margins. No slimming, no straightening, no shift backward or recenter. Replace grey/orange body with realistic skin of original adult brunette; same face/hair. Fit clothing around existing mesh, never shrink body: red fitted pointelle fine vertical tiny openwork/rib top, shallow wide boat neckline tiny green/red center detail, THREE-QUARTER sleeves ending forearm with gently flared cuffs, red elastic-waist matching pointelle knit pants. Hands remain anterior holding lifted hem exposing lower abdomen. Strict90degree right-facing side, bare feet, light grey studio. Remove guide colors but retain orange arm geometry exactly. No text/nodes/diagram/collage. Native image only no crop/upscale.",
+  "transparent_background": false,
+  "native_path": "/workspace/generated_images/exec-d0adf3bb-ac6c-41e8-aaef-ec22152438ce.png",
+  "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-d0adf3bb-ac6c-41e8-aaef-ec22152438ce.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "native_pixels": [
+    1024,
+    1536
+  ],
+  "output_sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+  "native_sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+  "references": [
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.png",
+      "sha256": "6cee59cef05d1217d58fc1eed06f1c171c3beb506add3bce795e098e83bef40d",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png",
+      "sha256": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    }
+  ],
+  "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-3/side.png",
+  "transforms": "byte-for-byte native copy; no crop, montage, upscale or edit",
+  "independent_acceptance": "PENDING",
+  "semantic_guide_provenance": {
+    "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/arm-audit/native_side_semantic.json",
+    "sha256": "fed6a07613ce83080909b6f7a39d008fb8fc4a6872ca04d49b19f9729b592c75",
+    "metadata": {
+      "role": "Supplemental generation control for corresponding actual posed model; not grading oracle",
+      "canvas": [
+        768,
+        1152
+      ],
+      "pixels_per_cm": 6,
+      "center_horizontal_Z_vertical_Y": [
+        0,
+        85
+      ],
+      "horizontal": "+Z",
+      "depth_nearer": "+X",
+      "projection_pixel_matrix_worldXYZ1": [
+        [
+          0,
+          0,
+          6,
+          384
+        ],
+        [
+          0,
+          -6,
+          0,
+          1086
+        ]
+      ],
+      "vtk_projection_matrix": [
+        [
+          -0.015625,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.010416666666666666,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.01392778448404112,
+          -5.531481009728294
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "anchor_world_cm": [
+        39.93133135266667,
+        124.82256625333333,
+        13.644826057666668
+      ],
+      "anchor_projected_pixel_xy": [
+        465.868956346,
+        337.06460247999996
+      ],
+      "anchor_vtk_display_converted_top_left_xy": [
+        465.868956346,
+        337.06460247999996
+      ],
+      "expected_pixel_xy": [
+        465.87,
+        337.06
+      ],
+      "expected_error_px": 0.004719325780421171,
+      "vtk_vs_analytic_error_px": 0.0,
+      "source_posed_obj_sha256": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+      "source_asset_sha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+      "render_script_sha256": "e49bfcaf7b714fd026b2da9f8450e98b94a424124e407a1a8559bd4fc6298aae",
+      "image_sha256": "6cee59cef05d1217d58fc1eed06f1c171c3beb506add3bce795e098e83bef40d"
+    }
+  }
+}

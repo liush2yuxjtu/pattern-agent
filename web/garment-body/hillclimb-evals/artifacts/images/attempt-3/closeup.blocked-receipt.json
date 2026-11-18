@@ -1,0 +1,112 @@
+{
+  "tool": "image_gen.imagegen",
+  "view": "closeup",
+  "attempt": 3,
+  "prompt": "EDIT THE FIRST IMAGE, retaining its EXACT 2:3 CLOSEUP CAMERA and all anatomical volumes and silhouette coordinates. FIRST is actual colored anatomical mesh, SECOND same exact grey closeup, THIRD original adult woman's identity/red apparel ONLY. This is an edit with clothes wrapping this existing exact body, NOT drawing a slimmer woman or recomposing. Native1024x1536 highest resolution. Uniform4/3 from first768x1152; keep full original body mask INSIDE the new dressed foreground. Blue is R arm on image-left; orange is L arm on image-right, both become RED sleeves. Color is semantic only. CRITICAL: preserve image-R full chest/breast outer volume and lower torso right edge; do not shrink these inward. Preserve entire BLUE lowerarm outer/bottom contour and its thickness, never thin it. Red fabric must cover/wrap the original whole surface, allowed slight thickness outside, never move existing contours inward. Forearm and lower torso cannot be thinned to fashion ideal. Preserve exact asymmetric elbows (right high elbow outside frame), shoulder positions, torso tilt, abdomen/hip width. Fixed native projected anchors: eyes image-left(402,134), image-right(515,117)\u2014NOT(373,145)/(483,132); wrists image-left(455,1050),image-right(915,1052), NOT(433,1052)/(902,1040). Keep eye centers and wrist/cuff junctions at these original positions with no shift. Neck(557,375); shoulders(267,575)/(916,478); image-left elbow(228,1110); image-right elbow(1278,766) MUST stay cut outside frame. Top skull is cut at top edge: never zoom out/recenter/complete head. Both bent hands preserve first pose, pinch and lift shirt hem at current image positions. Do not confuse knuckles or garment folds with fingertip truth. Dress original existing body with THIRD adult brunette identity, realistic skin/face/hair. Red fine pointelle fitted top with vertical tiny openwork/rib texture, shallow wide BOAT neckline narrow binding+tiny green/red center decoration, THREE-QUARTER forearm sleeves gently flared cuff. Red matching gathered elastic waistband pants. Small exposed lower abdomen as hem lifted. Preserve original FIRST full body volume under cloth without slimming chest/abdomen/hips/arms. Detail-rich knit/seams, light grey studio, soft light. No guide colors/mannequin/skeleton/text. Highest native portrait2:3 independent new image; no cropping, no resizing, no upscaling, no front-reference substitution.",
+  "actual_referenced_image_paths": [
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/closeup-semantic.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg"
+  ],
+  "status": "BLOCKED_NO_OUTPUT",
+  "error": "http400 moderation_blocked; safety_violations=[sexual]; moderation_stage=output",
+  "request_id": "76529cb7-6a9b-414d-b85b-23e1ef9f0d27",
+  "native_path": null,
+  "output_sha256": null,
+  "references": [
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/closeup-semantic.png",
+      "sha256": "bdf27bd5c2d145bbb5dd3203b70c7f47090b5c53075d3ed1b911b75c27121d41",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup.png",
+      "sha256": "fd36a168844572a0f13696e5583484bbfb321cd1b4773bb70587afb9c07427ef",
+      "pixels": [
+        768,
+        1152
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    }
+  ],
+  "post_freeze_guide_metadata": {
+    "role": "supplemental generation control; not grading oracle",
+    "view": "closeup",
+    "axis": "front",
+    "canvas": [
+      768,
+      1152
+    ],
+    "camera_spec": {
+      "axis": "front",
+      "px_per_cm": 15,
+      "center_cm": [
+        0,
+        126
+      ]
+    },
+    "world_xyz1_to_pixel_xy": [
+      [
+        15.0,
+        0.0,
+        0.0,
+        384.0
+      ],
+      [
+        0.0,
+        -15.0,
+        0.0,
+        2466.0
+      ]
+    ],
+    "depth_nearer_axis_xyz": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "screen_right_axis": "+X",
+    "screen_up_axis": "+Y",
+    "side_parity": null,
+    "pixel_sampling": "pixel centers x+0.5,y+0.5; opaque maximum-depth triangle z-buffer",
+    "vertex_mapping": "compact OBJ vertex order equals bodyVertexIds order",
+    "topology_verified": true,
+    "vertex_count": 13380,
+    "face_count": 26756,
+    "labels": {
+      "0": "background",
+      "1": "torso/other body",
+      "2": "L upper/lower arm orange",
+      "3": "R upper/lower arm blue"
+    },
+    "face_label_rule": "mean vertex upperarm/lowerarm weight >=0.25; strongest side wins; hands excluded",
+    "visible_pixel_counts": {
+      "0": 360399,
+      "1": 396559,
+      "2": 38329,
+      "3": 89449
+    },
+    "sources": {
+      "web/human-studio/assets/human.json": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+      "work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/posed.obj": "580640c1e3a90fb0e38a7077a3f3aa85b136ca023c23702a35202d834a40f812",
+      "work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/camera.json": "2ddea2e182531dfd514dfcc2f07a7bc8bd23e030c3f9ff3c6c08c69dad23cd14"
+    },
+    "script_sha256": "13eb5ca57269b7db6e5c1fa215e31069eacb4c6c3cb396c8705f5d4d6067e776",
+    "image_sha256": "bdf27bd5c2d145bbb5dd3203b70c7f47090b5c53075d3ed1b911b75c27121d41",
+    "limitations": [
+      "Requires exact source/compact topology and centimetres, Y up.",
+      "Face semantics use skin weights, not anatomical segmentation.",
+      "Visibility is triangle depth, not bone visibility; no cloth/collision inference.",
+      "Lighting differs from other renderers; camera is never auto-fit."
+    ]
+  }
+}

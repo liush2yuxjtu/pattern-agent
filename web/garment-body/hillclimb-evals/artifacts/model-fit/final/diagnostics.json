@@ -1,0 +1,144 @@
+{
+  "hands": {
+    "R": {
+      "thumb_tip_cm": [
+        6.655647291979122,
+        111.75470459198995,
+        21.107105652739904
+      ],
+      "index_tip_cm": [
+        6.363069373832685,
+        112.67484748507772,
+        20.792026206620655
+      ],
+      "tip_gap_cm": 1.0156474975372356,
+      "palm_cross_world": [
+        -0.6003670415205993,
+        -0.12465617277624316,
+        -0.7899495262639141
+      ],
+      "palm_cross_camera": [
+        -0.11812734505123577,
+        0.050062800805751415,
+        -0.9917356736180412
+      ],
+      "wrist_cm": [
+        -2.8618061874655805,
+        111.9202437804432,
+        24.466077923437886
+      ]
+    },
+    "L": {
+      "thumb_tip_cm": [
+        10.200708110651492,
+        111.36814572560263,
+        19.64278537649775
+      ],
+      "index_tip_cm": [
+        10.850398296792218,
+        111.95098341888098,
+        20.144430976611325
+      ],
+      "tip_gap_cm": 1.0067002646204624,
+      "palm_cross_world": [
+        0.41615709999060996,
+        0.12367128662641062,
+        0.9008433165604182
+      ],
+      "palm_cross_camera": [
+        -0.09561436431027952,
+        -0.02692895543222769,
+        0.9950541315410284
+      ],
+      "wrist_cm": [
+        20.135148732703808,
+        111.81500417279655,
+        14.92862432081061
+      ]
+    }
+  },
+  "pinch_centers_distance_cm": 4.189645305876965,
+  "frame": {
+    "units": "cm",
+    "axes": "X lateral,Y up,Z front",
+    "source_floor_cm": -1.8146323982873531,
+    "final_floor_cm": -1.8146323982873531,
+    "fast_fk_and_lbs_apply_same_floor": true,
+    "floor_definition": "subtract actual posed body minimumY; constant lower-body frame during arm-only solve"
+  },
+  "fingertip_definition": "Mean of skinned helper tail groups, not visible finger surface; terminal skin repulsion and independent triangle audit are separate",
+  "surface_depth_targets": {
+    "R": {
+      "surface_camera_depth_cm": 30.287198269458834,
+      "actual_triangle_hit": true
+    },
+    "L": {
+      "surface_camera_depth_cm": 34.86313846060408,
+      "actual_triangle_hit": true
+    }
+  },
+  "world_targets_cm": {
+    "wrist.R": [
+      0.36709977752205664,
+      110.9764373377112,
+      22.913491369111362
+    ],
+    "finger2-1.R": [
+      3.6302740512958462,
+      112.32723401735576,
+      19.476862097369178
+    ],
+    "finger3-1.R": [
+      3.635407389018232,
+      110.44206894534449,
+      19.830950024017184
+    ],
+    "finger5-1.R": [
+      3.2210184485288083,
+      107.87241028434045,
+      20.55795974895509
+    ],
+    "wrist.L": [
+      20.201741010254622,
+      111.5938123445192,
+      15.366459057083176
+    ],
+    "finger2-1.L": [
+      10.659070553120893,
+      112.18188780852995,
+      19.500175960578858
+    ],
+    "finger3-1.L": [
+      12.449758813354983,
+      110.22023756565441,
+      18.8333393102323
+    ],
+    "finger5-1.L": [
+      14.125336971091974,
+      107.77179329339754,
+      18.325455460989215
+    ]
+  },
+  "pinch_targets_cm": {
+    "R": [
+      6.48009044864658,
+      112.17490582398575,
+      20.958588437149402
+    ],
+    "L": [
+      10.485503966872887,
+      111.62043270033313,
+      19.850311943625645
+    ]
+  },
+  "dimensions_unchanged": true,
+  "camera_unchanged": true,
+  "assumptions": [
+    "Manually reviewed original-photo surface anchors, not detector truth.",
+    "Hidden hand depth set to actual trunk surface plus declared 1.7\u20132.8cm clothing/pinch allowance.",
+    "Camera-space palm cross signs derive from this mirrored asset hand ordering, not handedness truth.",
+    "Stage2 whole-hand triangle audit found 2.8cm torso penetration despite safe joints. All surface-depth targets moved camera-forward3.5cm, preserving source pixels; this is a declared bare-body clearance allowance, not cloth thickness or measured contact.",
+    "Whole-arm LBS containment and interhand sampled-surface repulsion are added after independent mesh failures; right-hand targets add another1.1cm forward and pinch hypotheses separated50px to avoid interhand crossing. Actual triangle checks still required.",
+    "Rendered terminal finger skin has thickness: helper tails are NOT surface contact. Set helper-tail separation1cm and add actual terminal skin vertex repulsion0.25cm; still require independent whole-terminal triangle check."
+  ]
+}

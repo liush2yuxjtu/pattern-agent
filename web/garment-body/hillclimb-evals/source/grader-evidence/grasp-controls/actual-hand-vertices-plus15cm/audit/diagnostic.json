@@ -1,0 +1,189 @@
+{
+  "scope": "Independent candidate diagnostic, not final13 semantic grade; manual original-action/3D review still required",
+  "fingerprints": {
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/grader/grasp-controls/actual-hand-vertices-plus15cm/final-state.json": "a59da8a5021e6bbe9221c1dcfb649b5d11d455e8a2e5dbf834d7ba4e8718fcb4",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/grader/grasp-controls/actual-hand-vertices-plus15cm/neutral.obj": "fbb0109912077801abc02afc322687499b9a1ce3f5f6113c94313816c7dd6090",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/grader/grasp-controls/actual-hand-vertices-plus15cm/posed.obj": "7227d7a85bbc3558dd6524f9115627dcc3dd57548671449517f8369f61b6c9c1",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/grader/grasp-controls/actual-hand-vertices-plus15cm/camera.json": "c833c11078785fba51f0e34bf57a7074ab16cf4cef2a66c737c1886ca2ea178c",
+    "web/human-studio/assets/human.json": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/protocol/acceptance-v1.json": "1b8bad7f0aae6abc147729c3a6b1e28cab24c6a714747cec19dc541b0dce5238"
+  },
+  "geometry": {
+    "neutral_max_delta_cm": 5.02261698288836e-09,
+    "posed_max_delta_cm": 15.000000000499398,
+    "passed": false
+  },
+  "regions": {
+    "shoulder_left": {
+      "body_pixels": 39101,
+      "outside_fraction": 0.02391243190711235,
+      "p95_px": 10.787599563598633,
+      "passed": true
+    },
+    "shoulder_right": {
+      "body_pixels": 38982,
+      "outside_fraction": 0.003822276948335129,
+      "p95_px": 2.839996337890625,
+      "passed": true
+    },
+    "arm_left": {
+      "body_pixels": 32516,
+      "outside_fraction": 0.03459835158076024,
+      "p95_px": 12.993799209594727,
+      "passed": true
+    },
+    "arm_right": {
+      "body_pixels": 33230,
+      "outside_fraction": 0.07721938007824256,
+      "p95_px": 11.275651931762695,
+      "passed": true
+    },
+    "torso": {
+      "body_pixels": 152168,
+      "outside_fraction": 0.022468587350822775,
+      "p95_px": 18.488372802734375,
+      "passed": true
+    },
+    "waist_hip_left": {
+      "body_pixels": 95640,
+      "outside_fraction": 0.0001150146382266834,
+      "p95_px": 0.0,
+      "passed": true
+    },
+    "waist_hip_right": {
+      "body_pixels": 66020,
+      "outside_fraction": 0.03405028779157831,
+      "p95_px": 19.575197219848633,
+      "passed": true
+    }
+  },
+  "scanlines": {
+    "950": {
+      "body_span": [
+        105,
+        515
+      ],
+      "reference_span": [
+        102,
+        502
+      ],
+      "center_error_px": 8.0,
+      "width_ratio": 1.025,
+      "passed": true
+    },
+    "1000": {
+      "body_span": [
+        93,
+        511
+      ],
+      "reference_span": [
+        92,
+        507
+      ],
+      "center_error_px": 2.5,
+      "width_ratio": 1.0072289156626506,
+      "passed": true
+    },
+    "1100": {
+      "body_span": [
+        88,
+        532
+      ],
+      "reference_span": [
+        81,
+        524
+      ],
+      "center_error_px": 7.5,
+      "width_ratio": 1.002257336343115,
+      "passed": true
+    },
+    "1200": {
+      "body_span": [
+        97,
+        541
+      ],
+      "reference_span": [
+        77,
+        565
+      ],
+      "center_error_px": 2.0,
+      "width_ratio": 0.9098360655737705,
+      "passed": true
+    }
+  },
+  "region_gate_pass": true,
+  "hands": {
+    "L": {
+      "hand_vertices": 1424,
+      "covered": 1409,
+      "coverage_fraction": 0.9894662921348315,
+      "inside": 0,
+      "inside_fraction_covered": 0.0,
+      "min_clearance_cm": 16.745631189450293,
+      "p05_clearance_cm": 17.851282423627914,
+      "palm_normal": [
+        0.41615709999061007,
+        0.12367128662641111,
+        0.900843316560418
+      ],
+      "abs_normal_y": 0.12367128662641111,
+      "thumb_index_tip_gap_cm": 1.0067002646204428,
+      "pinch_center_cm": [
+        10.525553203721849,
+        111.65956457224179,
+        19.89360817655455
+      ],
+      "passed_numeric": false
+    },
+    "R": {
+      "hand_vertices": 1424,
+      "covered": 1423,
+      "coverage_fraction": 0.9992977528089888,
+      "inside": 0,
+      "inside_fraction_covered": 0.0,
+      "min_clearance_cm": 0.5160435541616053,
+      "p05_clearance_cm": 1.63531685887316,
+      "palm_normal": [
+        -0.6003670415205997,
+        -0.12465617277624305,
+        -0.7899495262639139
+      ],
+      "abs_normal_y": 0.12465617277624305,
+      "thumb_index_tip_gap_cm": 1.0156474975372132,
+      "pinch_center_cm": [
+        6.509358332905908,
+        112.21477603853381,
+        20.949565929680283
+      ],
+      "passed_numeric": true
+    }
+  },
+  "pinch_center_distance_cm": 4.189645305876949,
+  "grasp_numeric_gate_pass": false,
+  "model_measurements_cm": {
+    "height": 169.99997868,
+    "bust": 90.00003182383915,
+    "waist": 71.00000241615076,
+    "hips": 96.00004043020975,
+    "shoulders": 36.399999828,
+    "upperArm": 27.0000023438217,
+    "thigh": 54.00000799195501,
+    "neck": 32.00001193615609,
+    "upperArmLength": 29.000000844501166,
+    "forearmLength": 23.00000205386328,
+    "thighLength": 40.00003246205453,
+    "calf": 36.000000821793805
+  },
+  "interhand_surface_contacts": {
+    "contact_bbox_cm": null,
+    "method": "VTK independent triangle surface-intersection query on actual two hand meshes; zero tolerance",
+    "vtk_version": "9.3.1",
+    "triangles_L_R": [
+      2747,
+      2747
+    ],
+    "contact_pairs": 0,
+    "limits": "Reported contacts need anatomical/visual interpretation; this checks interhand surfaces only, not every self-intersection or cloth contact."
+  },
+  "manual_review": "PENDING; numeric pass does not imply grasp/semantic PASS"
+}

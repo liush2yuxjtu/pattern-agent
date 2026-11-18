@@ -1,0 +1,38 @@
+{
+  "schema": "garment-body-run-v1",
+  "mode": "prior_avatar",
+  "source_photo": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+  "model": {
+    "state": "model-fit/final/final-state.json",
+    "mesh": "model-fit/final/posed.obj",
+    "neutral": "model-fit/final/neutral.obj",
+    "measured": "model-fit/measurements.model.json"
+  },
+  "generation": {
+    "selection": "generation-selection.json",
+    "receipts": "generation-receipts.json",
+    "lineage": "Fresh frozen wrapper actually executed from case old failed state through body1/2/3 and grip. All photographic generations condition on own fresh final corresponding camera render plus original product. First batch six native calls kept immutable. Attempt2 front/side use rig FIRST + original SECOND only. Attempt2 pose/depth use independently accepted immutable images/attempt-2/front.png FIRST + same-state corresponding real pose/depthguide SECOND + original THIRD. Back/closeup currently selected first batch, independently awaiting review. No pixel warp/crop/upscale. Side3 uses actual native samecamera semantic arm render FIRST + own same-state grey side SECOND + original product THIRD; orange is anatomical guide only; no front photo reference. Earlier side1/2 both preserved rejected. Closeup2 independently EDITs own actual closeup render FIRST + original product SECOND, no front reference, fixed native4/3 crop camera anchors. Closeup1 remains immutable rejected history. Closeup3 actual tool call output-blocked no image. Closeup4 uses safe fully-clothed camera-correspondence reference derived analytically from acceptedfront2 (explicit fixed2.5 affine matrix, input only) FIRST + original dressed product SECOND + actual samecamera binary closeupmask THIRD, no anatomical mesh imagery. Final is new independent nativeImageGen output, not crop/upscale. Closeup5 actual localized clothing edit conditions on closeup4 clothed image + analytical clothed camera reference + original product + binarymask. It still visually retains lower panel; action pending, no acceptance inferred. Closeup6 safely redraws only clothed camera reference FIRST + original dressed product SECOND + actual samecamera binary silhouette THIRD, not failed closeup4/5 as base. Final independently native generated, held lower hem visually restored, pending independent acceptance.",
+    "status": "EXECUTION_COMPLETE; selected6 independently preflight accepted; formal grading external ../grading.json",
+    "selected": {
+      "front": "images/attempt-2/front.png",
+      "side": "images/attempt-3/side.png",
+      "back": "images/back.png",
+      "closeup": "images/attempt-6/closeup.png",
+      "pose": "images/attempt-2/pose.png",
+      "depth": "images/attempt-2/depth.png"
+    },
+    "executor_actual_calls": 16,
+    "native_outputs": 15,
+    "blocked_no_output": 1,
+    "root_rawguide_call": "Separate actual root current call supplied as input, not counted"
+  },
+  "comparison": {
+    "initial_basis": "Actual case original failed initial state reconstructed by Runtime; not old historical neutral fixture",
+    "camera": "Fixed final photo camera applied to both saved initial posed OBJ and fresh final posed OBJ",
+    "provenance": "model-fit/comparison/provenance.json"
+  },
+  "person_accuracy_verified": false,
+  "cloth_simulation": "NOT_RUN",
+  "formal_grading": "../grading.json",
+  "frozen_utc": "2026-11-18T09:46:57.722214+00:00"
+}

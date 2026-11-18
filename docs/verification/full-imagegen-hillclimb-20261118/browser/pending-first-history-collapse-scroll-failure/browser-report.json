@@ -1,0 +1,26 @@
+{
+  "verdict": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Four-stage screenshot actually contains gallery top\n    at check (/workspace/work/pattern-agent/tools/skill_evals/verify_hillclimb_review.cjs:12:36)\n    at /workspace/work/pattern-agent/tools/skill_evals/verify_hillclimb_review.cjs:49:177",
+  "checks": [
+    "Actual review HTTP200",
+    "Single actual candidate acceptance, no fabricated paired comparison",
+    "Official header remains primary first element",
+    "Native Prompt visible",
+    "Gallery only inside native Output",
+    "No custom shell or case navigation",
+    "Native grades and feedback section parents preserved",
+    "Historical Previous Output is genuinely loaded by pinned upstream",
+    "Previous context is explicitly reused, not fabricated new baseline",
+    "Native Previous Output opens historical evidence",
+    "Three frozen historical visual artifacts actually render",
+    "Native Previous Output collapses without replacing current Output",
+    "Four exact full-workflow stages",
+    "Actual raw image visible",
+    "All actual gallery images decode",
+    "Pending explicitly visible",
+    "Scope truth and native trigger limitation visible"
+  ],
+  "errors": [],
+  "broken": [],
+  "writes": []
+}

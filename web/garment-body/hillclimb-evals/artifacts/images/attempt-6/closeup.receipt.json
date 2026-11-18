@@ -1,0 +1,80 @@
+{
+  "tool": "image_gen.imagegen",
+  "view": "closeup",
+  "attempt": 6,
+  "actual_referenced_image_paths": [
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/clothed-closeup-camera-reference.png",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+    "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup-mask.png"
+  ],
+  "prompt": "Redraw FIRST dressed ecommerce reference as ONE new independent native high-resolution product-detail photograph with crisper fine knit texture. FIRST is an analytical camera-correspondence input reference; final must be genuinely newly generated native output, not an enlarged crop. Precisely replicate FIRST composition, adult brunette identity, eyes, shoulders, elbows, wrist positions, both hands' gesture, original garment hem fold and garment edge positions. SECOND original dressed ecommerce photo clarifies pointelle textile, neckline, sleeves and trim. THIRD binary silhouette is same frozen camera geometry guidance. Same2:3 portrait native1024x1536 or highest native. Original opaque RED fine vertical pointelle/rib knit top, shallow wide boat neckline tiny green/red center detail, THREE-QUARTER sleeves with gently flared cuffs, matching red gathered elastic-waist knit trousers with original center green/red trim. Keep exactly the ORIGINAL LOWER HEM folded upward and held in both hands as FIRST, same edge ending at the hand-held fold; do not add any hanging long panel below this hem, do not lengthen top or add an inner layer, do not change waistband position. Replicate original normal clothing arrangement exactly, only enhance fine knit sharpness and photographic detail. Keep same tilted torso, asymmetrical arms, original crop with hair top/right elbow outside frame. No zoom, recenter, body-shape edits or wrist/face movements; no added text/diagrams. Normal nonsexual ecommerce apparel detail, natural soft light grey studio. Native new independent image output only, no postgeneration crop/upscale.",
+  "transparent_background": false,
+  "native_path": "/workspace/generated_images/exec-c4486ff0-235b-4852-9425-1036754cc931.png",
+  "actual_tool_output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-c4486ff0-235b-4852-9425-1036754cc931.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "safe_alternative": "clothed camera reference FIRST + original dressed product SECOND + actual binary silhouette THIRD; no anatomical images",
+  "native_pixels": [
+    1024,
+    1536
+  ],
+  "output_sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+  "native_sha256": "dd04950f11afc8743702060da7cd55a14cb9db07daa63946c7046d6303190e82",
+  "references": [
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/generation-guides/clothed-closeup-camera-reference.png",
+      "sha256": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527",
+      "pixels": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/case-inputs/original-product.jpg",
+      "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+      "pixels": [
+        1000,
+        1276
+      ]
+    },
+    {
+      "path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/closeup-mask.png",
+      "sha256": "191a4953b47b8a3befc40dd3837cde5299e9056c7e1fbf9d8ee58dfa464799dd",
+      "pixels": [
+        768,
+        1152
+      ]
+    }
+  ],
+  "output_path": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-6/closeup.png",
+  "transforms": "Final byte-for-byte native copy, no crop/upscale/edit. First analytical camera reference explicit input only, not final.",
+  "analytical_reference_provenance": {
+    "role": "OpenCV camera-correspondence ANALYTICAL INPUT REFERENCE ONLY; not independent generated output, not final deliverable",
+    "source": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+    "source_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+    "source_pixels": [
+      1024,
+      1536
+    ],
+    "target_pixels": [
+      1024,
+      1536
+    ],
+    "matrix_source_to_reference": [
+      [
+        2.5,
+        0.0,
+        -768.0
+      ],
+      [
+        0.0,
+        2.5,
+        -332.0
+      ]
+    ],
+    "transform_origin": "Exact frozen model front-to-closeup camera ratio2.5, sameworldcenterX0; yscale shift-332; no image fit/warp search",
+    "camera_mapping": "xprime=512+2.5*(x-512);yprime=2.5*y-332",
+    "interpolation": "OpenCV INTER_LINEAR for analytical input only",
+    "output_sha256": "7b251ade15c1ee337efcc955b84f345b4047a64aba2d617db1e174d56155c527"
+  },
+  "independent_acceptance": "PENDING",
+  "executor_visual_observation": "Original held lower hem fold visually restored; independent geometry/action/product review required, no self PASS."
+}

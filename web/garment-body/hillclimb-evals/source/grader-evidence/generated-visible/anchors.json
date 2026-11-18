@@ -1,0 +1,475 @@
+{
+  "scope": "Prospectively frozen observable projection consistency; not exact hidden3D/person identity proof",
+  "views": {
+    "front": {
+      "image": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-2/front.png",
+      "guide": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/front.png",
+      "image_sha256": "5383c98618ad62fc29ad143df5d3c0ce785cd47267c182c3360fbf5274a730a7",
+      "guide_sha256": "eccf9fd70baadf87ff912b3247b68925ab12a2bb808057d148e5b1791728d854",
+      "posthoc_registration": false,
+      "anchors": [
+        {
+          "id": "eye_image_left",
+          "guide_xy": [
+            351.0238158921787,
+            139.80741585068654
+          ],
+          "generated_xy": [
+            461,
+            186
+          ],
+          "visibility": "visible",
+          "semantic": "visible iris/eye centre, approximate head landmark",
+          "digitization": "Independent actual photo and coordinate crops; approximate4\u20138px observation, no fit/warp. Error gate does not subtract uncertainty."
+        },
+        {
+          "id": "eye_image_right",
+          "guide_xy": [
+            385.00694229038817,
+            134.74774511385976
+          ],
+          "generated_xy": [
+            512,
+            180
+          ],
+          "visibility": "visible",
+          "semantic": "visible iris/eye centre, approximate head landmark",
+          "digitization": "Independent actual photo and coordinate crops; approximate4\u20138px observation, no fit/warp. Error gate does not subtract uncertainty."
+        },
+        {
+          "id": "elbow_image_left",
+          "guide_xy": [
+            298.6585996079365,
+            432.48906926474626
+          ],
+          "generated_xy": [
+            388,
+            568
+          ],
+          "visibility": "visible",
+          "semantic": "visible sleeve-bend surface centre, approximate elbow under cloth; not detector/anatomical truth",
+          "digitization": "Independent actual photo and coordinate crops; approximate4\u20138px observation, no fit/warp. Error gate does not subtract uncertainty."
+        },
+        {
+          "id": "elbow_image_right",
+          "guide_xy": [
+            613.6504148347094,
+            329.34703074820806
+          ],
+          "generated_xy": [
+            815,
+            443
+          ],
+          "visibility": "visible",
+          "semantic": "visible sleeve-bend surface centre, approximate elbow under cloth; not detector/anatomical truth",
+          "digitization": "Independent actual photo and coordinate crops; approximate4\u20138px observation, no fit/warp. Error gate does not subtract uncertainty."
+        },
+        {
+          "id": "wrist_image_left",
+          "guide_xy": [
+            366.8291628752066,
+            414.47853731734097
+          ],
+          "generated_xy": [
+            479,
+            554
+          ],
+          "visibility": "visible",
+          "semantic": "visible skin wrist/hand transition centre, approximate",
+          "digitization": "Independent actual photo and coordinate crops; approximate4\u20138px observation, no fit/warp. Error gate does not subtract uncertainty."
+        },
+        {
+          "id": "wrist_image_right",
+          "guide_xy": [
+            504.8108923962228,
+            415.1099749632209
+          ],
+          "generated_xy": [
+            681,
+            542
+          ],
+          "visibility": "visible",
+          "semantic": "visible skin wrist/hand transition centre, approximate",
+          "digitization": "Independent actual photo and coordinate crops; approximate4\u20138px observation, no fit/warp. Error gate does not subtract uncertainty."
+        },
+        {
+          "id": "ankle_image_left",
+          "guide_xy": [
+            432.51464264833874,
+            1021.8101883727144
+          ],
+          "generated_xy": [
+            577,
+            1370
+          ],
+          "visibility": "visible",
+          "semantic": "visible skin ankle centre at trouser hem, approximate",
+          "digitization": "Independent actual photo and coordinate crops; approximate4\u20138px observation, no fit/warp. Error gate does not subtract uncertainty."
+        },
+        {
+          "id": "ankle_image_right",
+          "guide_xy": [
+            545.0357813891198,
+            1023.3641028803972
+          ],
+          "generated_xy": [
+            734,
+            1373
+          ],
+          "visibility": "visible",
+          "semantic": "visible skin ankle centre at trouser hem, approximate",
+          "digitization": "Independent actual photo and coordinate crops; approximate4\u20138px observation, no fit/warp. Error gate does not subtract uncertainty."
+        },
+        {
+          "id": "pinch_R",
+          "guide_xy": [
+            423.05614999743545,
+            412.7113437687971
+          ],
+          "generated_xy": [
+            569,
+            539
+          ],
+          "visibility": "visible",
+          "semantic": "visible pinched shirt-hem/thumb-index gap centre; guide helper centre used as contact-location proxy, not actual skin contact",
+          "digitization": "Independent actual photograph observed garment grip, about5px precision; no cloth-contact physics claim"
+        },
+        {
+          "id": "pinch_L",
+          "guide_xy": [
+            447.1533192223311,
+            416.0426125665492
+          ],
+          "generated_xy": [
+            596,
+            545
+          ],
+          "visibility": "visible",
+          "semantic": "visible pinched shirt-hem/thumb-index gap centre; guide helper centre used as contact-location proxy, not actual skin contact",
+          "digitization": "Independent actual photograph observed garment grip, about5px precision; no cloth-contact physics claim"
+        }
+      ],
+      "limb_pairs": [
+        [
+          "elbow_image_left",
+          "wrist_image_left"
+        ],
+        [
+          "elbow_image_right",
+          "wrist_image_right"
+        ]
+      ]
+    },
+    "side": {
+      "image": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/attempt-3/side.png",
+      "guide": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/side.png",
+      "image_sha256": "ac4918a991135db4280153dd1af248c69c632395513f43e9da7ab13d0d78f1ef",
+      "guide_sha256": "55706448bc488e940ecb02b062d905282166e8485050f99e7cb04dca5584965d",
+      "posthoc_registration": false,
+      "anchors": [
+        {
+          "id": "visible_eye",
+          "guide_xy": [
+            442.33164590660715,
+            134.74774511385976
+          ],
+          "generated_xy": [
+            591,
+            190
+          ],
+          "visibility": "visible",
+          "semantic": "visible near-side eye centre, approximate",
+          "digitization": "Independent actual side3 photograph and coordinate crop; approximate6\u20138px, no uncertainty subtraction"
+        },
+        {
+          "id": "near_shoulder",
+          "guide_xy": [
+            377.21707947512124,
+            242.90347836546135
+          ],
+          "generated_xy": [
+            495,
+            337
+          ],
+          "visibility": "visible",
+          "semantic": "visible near sleeve shoulder-shape centre, approximate underlying shoulder not detector truth",
+          "digitization": "Independent actual side3 photograph and coordinate crop; approximate6\u20138px, no uncertainty subtraction"
+        },
+        {
+          "id": "near_wrist",
+          "guide_xy": [
+            473.5717459248637,
+            415.1099749632209
+          ],
+          "generated_xy": [
+            632,
+            578
+          ],
+          "visibility": "visible",
+          "semantic": "visible near-hand skin wrist/hand transition centre, approximate",
+          "digitization": "Independent actual side3 photograph and coordinate crop; approximate6\u20138px, no uncertainty subtraction"
+        },
+        {
+          "id": "near_elbow_surface",
+          "guide_xy": [
+            465.868956348,
+            337.06460248199994
+          ],
+          "generated_xy": [
+            613,
+            465
+          ],
+          "visibility": "visible",
+          "semantic": "centre of visible near sleeve elbow-cap/bend surface, NOT posterior crease or hidden far-R elbow; actual guide surface face19100 independently visibility-audited",
+          "digitization": "Observed sleeve elbow-cap centre between posterior fold and anterior vertical forearm edge; approximate8px. Side2 corresponding cap was absent at target."
+        },
+        {
+          "id": "near_pinch",
+          "guide_xy": [
+            503.3616490593273,
+            416.0426125665492
+          ],
+          "generated_xy": [
+            657,
+            565
+          ],
+          "visibility": "visible",
+          "semantic": "visible cloth grip/thumb-index gap centre; guide helper centre is positional proxy, not physical cloth/surface contact",
+          "digitization": "Independent hand crop observed, about6px"
+        },
+        {
+          "id": "hip_silhouette_posterior",
+          "guide_xy": [
+            323.25,
+            576.0
+          ],
+          "generated_xy": [
+            404,
+            768
+          ],
+          "visibility": "visible",
+          "semantic": "visible silhouette at frozen nativeY768 hip-height scanline, NOT hidden femoral joint; clothing ease disclosed",
+          "digitization": "Deterministic actual silhouette extrema, fixed canvas, no fitted transform"
+        },
+        {
+          "id": "hip_silhouette_anterior",
+          "guide_xy": [
+            466.5,
+            576.0
+          ],
+          "generated_xy": [
+            614,
+            768
+          ],
+          "visibility": "visible",
+          "semantic": "visible silhouette at frozen nativeY768 hip-height scanline, NOT hidden femoral joint; clothing ease disclosed",
+          "digitization": "Deterministic actual silhouette extrema, fixed canvas, no fitted transform"
+        },
+        {
+          "id": "near_heel_posterior",
+          "guide_xy": [
+            252.51530902023933,
+            1053.0656738256127
+          ],
+          "generated_xy": [
+            317,
+            1426.5
+          ],
+          "visibility": "visible",
+          "semantic": "visible bare-foot posterior heel / anterior toe silhouette extremum, actual body surface vertex; NOT hidden ankle joint/support force",
+          "digitization": "Actual photo foreground extremum: heel minX317 at Y1419..1434 median1426.5; toe maxX559 at Y1455..1460 median1457.5. Fixed anatomy-specific foot windows, no image warp. Guide extremal vertex chosen by foot skin group+neutralsoleY<4cm and fixedcamera silhouette direction",
+          "guide_body_vertex_id": 12910
+        },
+        {
+          "id": "far_toe_anterior",
+          "guide_xy": [
+            432.4734550112966,
+            1074.161106726151
+          ],
+          "generated_xy": [
+            559,
+            1457.5
+          ],
+          "visibility": "visible",
+          "semantic": "visible bare-foot posterior heel / anterior toe silhouette extremum, actual body surface vertex; NOT hidden ankle joint/support force",
+          "digitization": "Actual photo foreground extremum: heel minX317 at Y1419..1434 median1426.5; toe maxX559 at Y1455..1460 median1457.5. Fixed anatomy-specific foot windows, no image warp. Guide extremal vertex chosen by foot skin group+neutralsoleY<4cm and fixedcamera silhouette direction",
+          "guide_body_vertex_id": 4951
+        },
+        {
+          "id": "far_elbow_hidden",
+          "guide_xy": [
+            410.6628764614651,
+            432.48906926474626
+          ],
+          "generated_xy": null,
+          "visibility": "NOT_OBSERVED",
+          "reason": "Independent first-hit surface audit sees nearL arm628faces, farR15faces; far elbow occluded, never substitute it for near elbow",
+          "semantic": "unobserved far-R elbow joint"
+        }
+      ],
+      "limb_pairs": [
+        [
+          "near_shoulder",
+          "near_elbow_surface"
+        ],
+        [
+          "near_elbow_surface",
+          "near_wrist"
+        ]
+      ]
+    },
+    "back": {
+      "image": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/images/back.png",
+      "guide": "/workspace/work/pattern-agent/work/full-imagegen-hillclimb-20261118/iteration-1/eval-1-original-product/with_skill/run-1/outputs/model-fit/final/views/back.png",
+      "image_sha256": "a7b739300890d6cd92f25b5a044a5009b46a636a272b82f9030738c641d718a8",
+      "guide_sha256": "0982c0fed4d51f19f2573513784ec5829efa089ff0186083389358b4c55a8e1c",
+      "posthoc_registration": false,
+      "anchors": [
+        {
+          "id": "shoulder_image_left",
+          "guide_xy": [
+            262.69156760530757,
+            242.90347836546135
+          ],
+          "generated_xy": [
+            352,
+            324
+          ],
+          "visibility": "visible",
+          "semantic": "visible clothing shoulder shape centre, approximate underlying shoulder; not detector truth",
+          "digitization": "Independent actual back photograph viewed; approximate8px. Uncertainty is not subtracted from errors."
+        },
+        {
+          "id": "shoulder_image_right",
+          "guide_xy": [
+            457.656582573826,
+            271.97836301719946
+          ],
+          "generated_xy": [
+            616,
+            354
+          ],
+          "visibility": "visible",
+          "semantic": "visible clothing shoulder shape centre, approximate underlying shoulder; not detector truth",
+          "digitization": "Independent actual back photograph viewed; approximate8px. Uncertainty is not subtracted from errors."
+        },
+        {
+          "id": "elbow_image_left",
+          "guide_xy": [
+            154.34958516529053,
+            329.34703074820806
+          ],
+          "generated_xy": [
+            216,
+            452
+          ],
+          "visibility": "visible",
+          "semantic": "visible sleeve elbow-bend shape centre, approximate; not detector truth",
+          "digitization": "Independent actual back photograph viewed; approximate8px. Uncertainty is not subtracted from errors."
+        },
+        {
+          "id": "elbow_image_right",
+          "guide_xy": [
+            469.3414003920635,
+            432.48906926474626
+          ],
+          "generated_xy": [
+            641,
+            575
+          ],
+          "visibility": "visible",
+          "semantic": "visible sleeve elbow-bend shape centre, approximate; not detector truth",
+          "digitization": "Independent actual back photograph viewed; approximate8px. Uncertainty is not subtracted from errors."
+        },
+        {
+          "id": "hip_silhouette_left",
+          "guide_xy": [
+            259.5,
+            576.0
+          ],
+          "generated_xy": [
+            356,
+            768
+          ],
+          "visibility": "visible",
+          "semantic": "outer clothing/body silhouette at predeclared nativeY768 hip-height scanline, NOT femoral joint; surfacewidth constraint",
+          "digitization": "Deterministic actual silhouettes, frozen uniform mapping, no best-fit position"
+        },
+        {
+          "id": "hip_silhouette_right",
+          "guide_xy": [
+            474.75,
+            576.0
+          ],
+          "generated_xy": [
+            660,
+            768
+          ],
+          "visibility": "visible",
+          "semantic": "outer clothing/body silhouette at predeclared nativeY768 hip-height scanline, NOT femoral joint; surfacewidth constraint",
+          "digitization": "Deterministic actual silhouettes, frozen uniform mapping, no best-fit position"
+        },
+        {
+          "id": "foot_lowest_boundary_left",
+          "guide_xy": [
+            225.75,
+            1086.75
+          ],
+          "generated_xy": [
+            292.0,
+            1459.0
+          ],
+          "visibility": "visible",
+          "semantic": "lowest visible bare-foot silhouette boundary centre; not hidden ankle/toe bone or physical support proof",
+          "digitization": "Deterministic lowerfoot silhouette extrema in frozen side ranges"
+        },
+        {
+          "id": "foot_lowest_boundary_right",
+          "guide_xy": [
+            338.25,
+            1086.75
+          ],
+          "generated_xy": [
+            449.0,
+            1460.0
+          ],
+          "visibility": "visible",
+          "semantic": "lowest visible bare-foot silhouette boundary centre; not hidden ankle/toe bone or physical support proof",
+          "digitization": "Deterministic lowerfoot silhouette extrema in frozen side ranges"
+        },
+        {
+          "id": "hidden_wrist_L",
+          "guide_xy": [
+            263.1891076037772,
+            415.1099749632209
+          ],
+          "generated_xy": null,
+          "visibility": "NOT_OBSERVED",
+          "reason": "Hands/wrists occluded in front of torso in this back view",
+          "semantic": "unobserved anatomical wrist"
+        },
+        {
+          "id": "hidden_wrist_R",
+          "guide_xy": [
+            401.1708371247934,
+            414.47853731734097
+          ],
+          "generated_xy": null,
+          "visibility": "NOT_OBSERVED",
+          "reason": "Hands/wrists occluded in front of torso in this back view",
+          "semantic": "unobserved anatomical wrist"
+        }
+      ],
+      "limb_pairs": [
+        [
+          "shoulder_image_left",
+          "elbow_image_left"
+        ],
+        [
+          "shoulder_image_right",
+          "elbow_image_right"
+        ]
+      ]
+    }
+  }
+}
