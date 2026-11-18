@@ -21,8 +21,8 @@ do not replace the earlier self-contact page. No CI or PR.
    2.0 trajectory A/B is SKIP for 2.3: all particles are now dynamic, placement,
    waist closure and drag differ intentionally; retain its prior evidence.
    No mesh-resolution reduction or contact-query omission is allowed.
-2. Serve the exact final HTML (`web/freesewing-free-waist.html`) on 127.0.0.1:8771. Run `verify_browser.py` and
-   `independent.py`. Require all 50 UI/download/mobile/offline checks, exact next
+2. Serve the exact final HTML (`web/freesewing-webgpu.html`) on 127.0.0.1:8771. Run `verify_browser.py` and
+   `independent.py`. Require all 52 UI/download/mobile/offline checks, exact next
    step, no external requests or console errors, actual A4 calibration and
    unchanged p95 solver budget <100 ms. The reopener independently re-drafts
    pinned Sandy without importing the app adapter. Every material coordinate,
@@ -76,3 +76,23 @@ an XPBD distance approximation. Dihedral/centroid-dual curvature and the 15°
 face fraction are mesh-dependent geometric wrinkle indicators. Permanent-crease
 behavior, material calibration, universal CCD, native waistband/closure/hem
 construction, print hardware and wearer fit remain NOT_RUN.
+
+
+For 2.4 run `CLOTH_WEBGPU=1 run_check.py webgpu --url BASE_URL --output DIR`.
+Require all native draw/buffer, distinct-canvas, body/collider, offline, loss and
+adapter fallback checks. BASE_URL must omit renderer selection; the test forces
+WebGPU internally and separately checks automatic software compatibility.
+Run the same command with `--timing-only` in isolation for a fenced comparison.
+Use `CLOTH_WEBGPU=1` and `?renderer=webgpu` on dynamics/variant/support to exercise
+actual native WebGPU. Default browser QA must pass all 52 and p95 <100 ms.
+The optional forced-software full UI diagnostic retains that same threshold:
+if it fails, archive FAIL, never call it 52/52, and distinguish the unsupported
+software override from the production automatic compatibility path. Actual
+hardware acceleration remains NOT_RUN on this software-only host.
+
+No precompile shadow pass is used: it invalidated live shadow textures in the
+pinned Three.js build. The first real render is fenced before readiness. Keep
+native GPU validation errors at zero and reject blank mobile/canvas images.
+GPU uploaded body data must equal the collision asset despite different index
+representations. The immutable normal cache and math isolation must preserve
+positions, previous positions, UV, mass and pressure at every archived state.

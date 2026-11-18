@@ -18,10 +18,11 @@ const body={vertices,indices,provenance:{source:'Pattern Agent authored-morph ne
 fs.writeFileSync(here+'/source/body.json',JSON.stringify(body));
 const wabt=await wabtFactory(),mod=wabt.parseWat('solver.wat',fs.readFileSync(here+'/source/solver.wat','utf8'));mod.resolveNames();mod.validate();
 const {buffer}=mod.toBinary({write_debug_names:true});fs.writeFileSync(here+'/source/solver-bytes.json',JSON.stringify([...buffer]));
-const result=await build({entryPoints:[here+'/source/app.js'],bundle:true,format:'esm',minify:true,write:false,target:'es2022',legalComments:'inline'});
+const physicsMath={name:'isolate-physics-math',setup(b){b.onResolve({filter:/^three$/},args=>args.importer.includes('/three-mesh-bvh/')?{path:require.resolve('three/src/Three.Core.js')}:undefined);}};
+const result=await build({plugins:[physicsMath],entryPoints:[here+'/source/app.js'],bundle:true,format:'esm',minify:true,write:false,target:'es2022',legalComments:'inline'});
 const template=fs.readFileSync(here+'/source/template.html','utf8').replace('<script>/*__APP__*/</script>','<script type="module">/*__APP__*/</script>');
 const notices=['three','three-mesh-bvh'].map(p=>`${p}:\n${fs.readFileSync(path.resolve(path.dirname(require.resolve(p)),'../LICENSE'),'utf8')}`).join('\n\n')+'\n\nFreeSewing 4.10.2 components (MIT):\n'+fs.readFileSync(here+'/FreeSewing-LICENSE.txt','utf8')+'\n\n'+fs.readFileSync(here+'/Runtime-Dependency-LICENSES.txt','utf8');
 const html=template.replace('/*__APP__*/',()=>result.outputFiles[0].text).replace('</body>',`<!-- Embedded dependencies and MakeHuman CC0 core mesh.\n${notices.replaceAll('--','—')}\n--></body>`);
 const embedded=html.match(/<script type="module">([\s\S]*?)<\/script>/)[1];await transform(embedded,{loader:'js',target:'es2022'});
-const target=process.argv[2]||path.join(root,'web/freesewing-free-waist.html');const finalHTML=html.replace(/[ \t]+$/gm,'');fs.writeFileSync(target,finalHTML);
+const target=process.argv[2]||path.join(root,'web/freesewing-webgpu.html');const finalHTML=html.replace(/[ \t]+$/gm,'');fs.writeFileSync(target,finalHTML);
 console.log(JSON.stringify({target,bytes:Buffer.byteLength(finalHTML),wasmBytes:buffer.length,bodySHA256:hash,externalImports:result.outputFiles[0].text.match(/import\(/g)?.length||0}));

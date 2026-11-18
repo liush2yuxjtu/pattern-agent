@@ -2,6 +2,7 @@
 import argparse,gzip,hashlib,json,time
 from pathlib import Path
 import numpy as np
+from browser_launch import chromium_args
 from playwright.sync_api import sync_playwright
 from independent import run as independent
 from independent_support import audit
@@ -10,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[2]
 def run(args):
  out=args.output;out.mkdir(parents=True,exist_ok=True);r={'url':args.url,'checks':{},'states':{},'errors':[]}
  with sync_playwright() as pw:
-  b=pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--enable-unsafe-swiftshader']);p=b.new_page(viewport={'width':1440,'height':1100});p.on('pageerror',lambda e:r['errors'].append(str(e)));response=p.goto(args.url,wait_until='networkidle',timeout=60000);p.wait_for_function('clothLab?.ready',timeout=60000);r['htmlSHA256']=hashlib.sha256(response.body()).hexdigest()
+  b=pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=chromium_args());p=b.new_page(viewport={'width':1440,'height':1100});p.on('pageerror',lambda e:r['errors'].append(str(e)));response=p.goto(args.url,wait_until='networkidle',timeout=60000);p.wait_for_function('window.clothLab?.ready',timeout=60000);r['htmlSHA256']=hashlib.sha256(response.body()).hexdigest()
   r['checks']['noPinsAtStartup']=p.evaluate('clothLab.supportStats().fixed')==0
   centers=[]
   for target in [1440,1800]:

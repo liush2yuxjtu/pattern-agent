@@ -1,6 +1,7 @@
 # FreeSewing → single-file cloth and wrinkle laboratory
 
-Version 2.3 artifact: `web/freesewing-free-waist.html`. The historical pinned
+Version 2.4 artifact: `web/freesewing-webgpu.html`.
+The 2.3 zero-pin reference remains `web/freesewing-free-waist.html`. The historical pinned
 2.2 artifact remains `web/freesewing-cloth-lab.html`. Earlier HTML files and their
 historical failures are preserved. No runtime CDN, MCP or server dependency.
 
@@ -55,6 +56,40 @@ upstream drafting settings and sewing relationships are exported in JSON.
 SVG/DXF/A4 use millimetres; OBJ uses metres. Saved HTML retains exact state and
 next-step continuation. Body geometry, WASM, libraries and licenses are embedded.
 
+## Hardware WebGPU rendering and compatibility
+
+The new default artifact requests a high-performance WebGPU adapter. Hardware
+adapters use Three.js WebGPURenderer and TSL-generated WGSL, including the
+procedural weave and all five diagnostic maps. Software/fallback adapters,
+unavailable WebGPU and initialization denial select the WebGL2 compatibility
+renderer. The UI/export identify the actual renderer, adapter and fallback
+reason. `?renderer=webgpu` forces the diagnostic software path;
+`?renderer=webgl` selects compatibility explicitly. Both engines are embedded.
+
+Physics is still **WASM Float64 on the CPU**, not a WebGPU cloth solver. Its
+120 iterations, gravity, contacts and reinforced waist model are retained.
+Three's GPU upload widens indices in place: a value-identical body render clone
+protects the collision BVH's immutable indices. Pinned Three math for collision
+is isolated from renderer math, while both collision geometries share the same
+BufferAttribute implementation. Immutable face normals and frozen broad-phase
+bounds are cached without changing arithmetic or candidate order. Actual state
+arrays are checked bit for bit against the accepted 2.3 trajectory.
+
+One GPU node material switches between weave and diagnostic colors using a
+uniform. Shadow resources are created by the actual first render (not a separate
+precompile pass); readiness waits for that frame. Resize ignores zero dimensions.
+The frame queue applies backpressure. An actual device-loss pauses physics and
+lets the reader recover to WebGL2 with exact state retained. Saved HTML selects
+its renderer again for the next reader's capabilities.
+
+`render.triangles` records submitted passes, including shadows (and GPU output
+presentation); `sceneTriangles` counts the unchanged scene geometry once.
+The original 50,000-scene-triangle budget applies to the latter; the 100 ms p95
+solver threshold is unchanged. CPU submit time, fenced completed-frame latency
+and hardware GPU-only time are different metrics. This host has only software
+GPU support; actual hardware speedup remains NOT_RUN. Forced software WebGPU
+performance failures are retained and never labeled as a full UI PASS.
+
 ## Build and run
 
 Node 24 was used. FreeSewing 4.10.2 additionally needs its `config` and
@@ -72,7 +107,7 @@ node experiments/freesewing_cloth_lab/test_waist_ring.mjs
 python -m http.server 8771 --bind 127.0.0.1 --directory web
 ```
 
-Open <http://127.0.0.1:8771/freesewing-free-waist.html>.
+Open <http://127.0.0.1:8771/freesewing-webgpu.html>.
 
 ## Verify the actual artifact
 
@@ -82,17 +117,17 @@ oracle supplies independent triangle intersections and solid-angle membership.
 
 ```sh
 python experiments/freesewing_cloth_lab/run_check.py browser \
-  --url http://127.0.0.1:8771/freesewing-free-waist.html --out work/fs-browser
+  --url http://127.0.0.1:8771/freesewing-webgpu.html --out work/fs-browser
 python experiments/freesewing_cloth_lab/run_check.py independent \
   work/fs-browser/simulation.json --repo . --out work/fs-browser/independent.json
 python experiments/freesewing_cloth_lab/run_check.py gpu \
   --html work/fs-browser/downloaded.html --output work/fs-heatmap
 python experiments/freesewing_cloth_lab/run_check.py dynamics \
-  --url http://127.0.0.1:8771/freesewing-free-waist.html --output work/fs-dynamics
+  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-dynamics
 python experiments/freesewing_cloth_lab/run_check.py variant \
-  --url http://127.0.0.1:8771/freesewing-free-waist.html --output work/fs-variant
+  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-variant
 python experiments/freesewing_cloth_lab/run_check.py support \
-  --url http://127.0.0.1:8771/freesewing-free-waist.html --output work/fs-support
+  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-support
 ```
 
 The independent reopener imports no application drafter or solver. A separate
@@ -194,3 +229,23 @@ Stress/strain/fold calculations and geometry acceptance do not establish garment
 fit: e.g. the default 360-step state still has a peak principal stretch of 189.5%
 and uses uncalibrated material parameters. Real material/fit acceptance remains
 NOT_VALIDATED.
+
+
+WebGPU acceptance adds native WGSL/queue/draw proof, readback of the exact color
+buffer bound by the cloth draw (32,256 components per view), five distinct canvas
+images, GPU body buffer/collider identity, saved-file reopening, actual device
+destruction and exact recovery, and missing/null/denied adapter fallbacks:
+
+```sh
+CLOTH_WEBGPU=1 python experiments/freesewing_cloth_lab/run_check.py webgpu \
+  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-webgpu
+CLOTH_WEBGPU=1 python experiments/freesewing_cloth_lab/run_check.py webgpu \
+  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-webgpu --timing-only
+```
+
+Run timing alone, after other browsers finish. This test-only environment uses
+SwiftShader/Vulkan with its surface enabled; readers need no Chromium flags.
+The normal UI suite now has 52 checks, including actual backend and nonblank
+mobile canvas. Forced software WebGPU is a separate diagnostic: preserve a FAIL
+when its p95 exceeds 100 ms. Do not silently omit that check or describe it as
+hardware acceleration. See `docs/verification/cloth-webgpu-20261118/`.

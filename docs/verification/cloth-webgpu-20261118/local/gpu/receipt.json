@@ -1,0 +1,77 @@
+{
+  "url": "http://127.0.0.1:8771/freesewing-webgpu.html?renderer=webgpu",
+  "checks": {
+    "nativeWebGPU": true,
+    "physicsClearlyCPU": true,
+    "fiveDistinctActualCanvasImages": true,
+    "allFiveActualGPUColorBuffers": true,
+    "canvasNotBlank": true,
+    "savedHTMLReopensOnGPU": true,
+    "GPUAndColliderUseIdenticalHuman": true,
+    "noGPUValidationErrors": true,
+    "deviceLossPausesAndOffersRecovery": true,
+    "lossRecoveryPreservesExactState": true,
+    "softwareAdapterAutoCompatibility": true,
+    "fallback-missing": true,
+    "fallback-no-adapter": true,
+    "fallback-denied": true,
+    "pageExceptions": true
+  },
+  "errors": [],
+  "views": {
+    "strain": {
+      "components": 32256,
+      "maxLinearRGBError": 2.9790780287086704e-08,
+      "sameBufferBoundByClothDrawAndReadBack": true,
+      "verdict": "PASS",
+      "canvasSHA256": "9b952db1452e1fc8201a1b768d1c6f3c51bed8e5245601cb43bd125972fba946"
+    },
+    "stress": {
+      "components": 32256,
+      "maxLinearRGBError": 2.9795675482446882e-08,
+      "sameBufferBoundByClothDrawAndReadBack": true,
+      "verdict": "PASS",
+      "canvasSHA256": "ad95b68249ac9fe2254d5d52643e6824803bd3fd9b6d7a275bc3c4795c4c46f8"
+    },
+    "fold": {
+      "components": 32256,
+      "maxLinearRGBError": 2.9810485191461567e-08,
+      "sameBufferBoundByClothDrawAndReadBack": true,
+      "verdict": "PASS",
+      "canvasSHA256": "cb8652363da496e1d6637b3176b2e23e039610ec126602cc915094370390a21f"
+    },
+    "curvature": {
+      "components": 32256,
+      "maxLinearRGBError": 2.9664836587173227e-08,
+      "sameBufferBoundByClothDrawAndReadBack": true,
+      "verdict": "PASS",
+      "canvasSHA256": "bedbd22bf801e8c7376108136de51bd4cbf3f48c400421290c7fcf5858a9e054"
+    },
+    "pressure": {
+      "components": 32256,
+      "maxLinearRGBError": 2.9646705312913468e-08,
+      "sameBufferBoundByClothDrawAndReadBack": true,
+      "verdict": "PASS",
+      "canvasSHA256": "f67f73e42366012697e24164d132b7084365a43faf29d40d567f14625536c35a"
+    }
+  },
+  "htmlSHA256": "a7c9b78f0344c4d8886847279284c074b1f2993790fc8508413cb63373eeceae",
+  "backend": {
+    "requested": "webgpu",
+    "api": "WebGPU",
+    "physics": "WASM Float64 / CPU",
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true,
+      "software": true
+    },
+    "fallbackReason": null,
+    "deviceLost": null,
+    "errors": []
+  },
+  "canvasPixelStd": 40.961705752467395,
+  "verdict": "PASS"
+}

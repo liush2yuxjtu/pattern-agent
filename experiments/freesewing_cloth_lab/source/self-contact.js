@@ -1,4 +1,5 @@
-import * as THREE from 'three';
+import * as THREE from 'three/src/Three.Core.js';
+import {BufferGeometry,BufferAttribute} from 'three';
 import {MeshBVH} from 'three-mesh-bvh';
 
 // Discrete two-sided cloth contact. The original rest mesh and shared seam IDs
@@ -7,9 +8,9 @@ import {MeshBVH} from 'three-mesh-bvh';
 export class SelfContact {
  constructor(positions,triangles,thickness=.003){
   this.faces=triangles;this.thickness=thickness;this.faceIndices=Array.from({length:triangles.length/3},(_,i)=>triangles.slice(i*3,i*3+3));
-  this.geometry=new THREE.BufferGeometry();
+  this.geometry=new BufferGeometry();
   this.vertices=new Float32Array(positions);
-  this.geometry.setAttribute('position',new THREE.BufferAttribute(this.vertices,3));
+  this.geometry.setAttribute('position',new BufferAttribute(this.vertices,3));
   this.geometry.setIndex(triangles);
   this.tree=new MeshBVH(this.geometry,{indirect:true,maxLeafSize:8});
   const seen=new Set();this.edges=[];
@@ -102,10 +103,10 @@ export class SelfContact {
   const first=axis*2,other=(axis+1)%3*2,last=(axis+2)%3*2;
   this.order.sort((a,b)=>box[a*6+first]-box[b*6+first]||a-b);
   for(let ai=0;ai<n;ai++){
-   const i=this.order[ai],ia=i*6,a=this.edges[i][0],b=this.edges[i][1];
+   const i=this.order[ai],ia=i*6,a=this.edges[i][0],b=this.edges[i][1],limit=box[ia+first+1],otherLo=box[ia+other],otherHi=box[ia+other+1],lastLo=box[ia+last],lastHi=box[ia+last+1];
    for(let bj=ai+1;bj<n;bj++){
-    const j=this.order[bj],ib=j*6;if(box[ib+first]>box[ia+first+1])break;
-    if(box[ia+other]>box[ib+other+1]||box[ia+other+1]<box[ib+other]||box[ia+last]>box[ib+last+1]||box[ia+last+1]<box[ib+last])continue;
+    const j=this.order[bj],ib=j*6;if(box[ib+first]>limit)break;
+    if(otherLo>box[ib+other+1]||otherHi<box[ib+other]||lastLo>box[ib+last+1]||lastHi<box[ib+last])continue;
     const c=this.edges[j][0],d=this.edges[j][1];if(a===c||a===d||b===c||b===d)continue;
     callback(i,j);
    }

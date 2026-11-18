@@ -13,6 +13,7 @@ from pathlib import Path
 import time
 
 import numpy as np
+from browser_launch import chromium_args
 from playwright.sync_api import sync_playwright
 from independent import run as audit
 
@@ -27,7 +28,7 @@ def run(args):
     out=args.output;out.mkdir(parents=True,exist_ok=True)
     result={'url':args.url,'startedAtUnix':time.time(),'scope':'Actual target HTML, analytic WASM controls and four discrete dynamic states; not CCD, calibrated fabric or manufacturing certification','checks':{},'states':{},'exceptions':[],'console':[]}
     with sync_playwright() as pw:
-        browser=pw.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--enable-unsafe-swiftshader'])
+        browser=pw.chromium.launch(executable_path=args.browser,headless=True,args=chromium_args())
         context=browser.new_context(viewport={'width':1440,'height':1100},device_scale_factor=1)
         context.add_init_script('''(() => {
           const original = WebAssembly.instantiate;

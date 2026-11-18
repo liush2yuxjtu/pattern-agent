@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from browser_launch import chromium_args
 from playwright.sync_api import sync_playwright
 from independent import run as audit
 
@@ -15,7 +16,7 @@ def run(args):
     args.output.mkdir(parents=True, exist_ok=True)
     result = {'url': args.url, 'checks': {}, 'errors': []}
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=['--no-sandbox', '--enable-unsafe-swiftshader'])
+        browser = pw.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=chromium_args())
         page = browser.new_page(viewport={'width': 1440, 'height': 1150})
         page.on('pageerror', lambda error: result['errors'].append(str(error)))
         response = page.goto(args.url, wait_until='networkidle')

@@ -265,6 +265,22 @@ StVK 应力应变、故障对照与状态化离线 HTML 导出均有独立数值
 材料是合成参数，局部高应变保留可见警告；没有布料自碰撞、实物标定或实体适体批准。
 这不改变历史 T 恤 FAIL，也不将几何/热图验证升级为生产批准。
 
+## FreeSewing 四片裙 2.4 硬件 WebGPU 优先
+
+[打开单文件](https://liush2yuxjtu.github.io/pattern-agent/freesewing-webgpu.html?v=293e34af) ·
+[源码与复现](experiments/freesewing_cloth_lab/README.md) ·
+[验证证据](docs/verification/cloth-webgpu-20261118/README.md)。
+
+硬件适配器使用 WebGPU 渲染，软件／不可用／拒绝访问时选择 WebGL2。
+**物理仍是 CPU 上的 WASM Float64**；全部零固定点、重力、碰撞、应力应变和承托模型保留。
+默认兼容模式 52/52 浏览器检查通过，WebGPU 专项 15 项通过，包括实际绘制缓冲、
+五张不同热图、GPU 人体与碰撞资产逐项相等、离线保存、真实设备销毁及状态精确恢复。
+八组轨迹的坐标、旧坐标、材料坐标、质量与压力和 2.3 版本逐项完全一致。
+
+软件 GPU 的强制 WebGPU 全套检查为 **FAIL（性能门槛）**，记录保留；默认策略会回退。
+真实硬件提速仍为 NOT_RUN，不能将 API 支持或软件适配器结果当作显卡性能证明。
+当前面料、压力与真实合体仍 NOT_VALIDATED。旧 HTML 文件继续保留。
+
 ## FreeSewing 四片裙 2.3：取消固定点，保留重力
 
 [在线打开零固定点单文件](https://liush2yuxjtu.github.io/pattern-agent/freesewing-free-waist.html?v=c74e6c5d) ·
