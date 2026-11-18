@@ -1,0 +1,35 @@
+{
+  "scope": "public evidence only; source unchanged from 5dd61ba8de963dd1a6966da423c2ede49f91390f",
+  "baseHEAD": "649cde5b6cb93480f0f500aae0ec2b30cb03d23d",
+  "verdict": "PASS within recorded production and native functional scope",
+  "acceptance": {
+    "url": "https://liush2yuxjtu.github.io/pattern-agent/freesewing-webgpu.html?v=293e34af",
+    "htmlSHA256": "293e34afab07c2ad4b504f8463b8255fd1908aa9dab8866cf71e289dba6ec263",
+    "bytes": 2331900,
+    "http": 200,
+    "applicationCommit": "5dd61ba8de963dd1a6966da423c2ede49f91390f",
+    "verdict": "PASS",
+    "scope": "Published production default and native GPU functional/physics checks; not hardware speedup or forced software performance",
+    "checks": {
+      "browser/browser-report.json": "PASS",
+      "gpu/receipt.json": "PASS",
+      "dynamics/receipt.json": "PASS",
+      "support/receipt.json": "PASS",
+      "variant/receipt.json": "PASS",
+      "independent.json": "PASS",
+      "webgl-colors/receipt.json": "PASS",
+      "entry/receipt.json": "PASS",
+      "root-browser/browser-report.json": "PASS"
+    },
+    "publicSolverP95_ms": 85.90000000596046,
+    "actualDefaultBackend": "WebGL2 compatibility",
+    "nativeGPUChecks": 15,
+    "trajectory": "8 states Float64 bytes equal to local; local equals accepted 2.3",
+    "forcedSoftwareFullUI": "FAIL, local 135.8 ms; diagnostic preserved",
+    "hardwareSpeedup": "NOT_RUN",
+    "calibration": "NOT_VALIDATED"
+  },
+  "hardwareSpeedup": "NOT_RUN",
+  "forcedSoftwarePerformance": "FAIL retained; 135.8ms vs unchanged 100ms limit",
+  "physicalCalibration": "NOT_VALIDATED"
+}

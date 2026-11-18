@@ -120,3 +120,17 @@ CLOTH_WEBGPU=1 python experiments/freesewing_cloth_lab/run_check.py support --ur
 Run timing without other tests. Keep forced software performance failures.
 Observe existing publication, check the exact public hash/build identity, and
 repeat actual public UI, native GPU, edited-profile and dynamic/support probes.
+
+
+## Public acceptance
+
+Application commit `5dd61ba8de963dd1a6966da423c2ede49f91390f` was published by
+[the existing Pages workflow](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44292141107).
+Anonymous readback matches the exact 293e34af artifact hash. Default public UI
+is PASS 52/52, solver p95 **85.9 ms**. Native WebGPU 15-check acceptance, both
+APIs' actual five color buffers, full independent bad-input audit, edited profile,
+dynamics, long support/free-fall, six homepage entry checks and root 11 checks
+all PASS. Eight public/local exported Float64 arrays and pressures are exact;
+local trajectories equal 2.3. Raw evidence is under `live/`. This does not
+promote the separate forced software performance FAIL or untested hardware
+speedup to PASS. Source and live-evidence commits are distinct.

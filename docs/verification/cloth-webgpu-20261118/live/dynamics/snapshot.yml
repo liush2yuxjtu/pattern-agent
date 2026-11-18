@@ -1,0 +1,86 @@
+- banner:
+  - text: Pattern Agent FreeSewing · Cloth Lab
+  - button "Research & method"
+  - button "Save single HTML"
+  - button "Export 3D"
+- main:
+  - heading "FreeSewing → 布料 → 褶皱" [level=1]
+  - paragraph: 真实参数化制版 · 人体与布料碰撞 · 应力／应变／折角热图
+  - text: MAKEHUMAN · 170 CM · CC0 WebGPU render · WASM physics
+  - complementary:
+    - heading "2D pattern" [level=2]
+    - text: SANDY / 4.10.2
+    - img "Four printable skirt panels with colored paired seams, sewing direction and notches": P1 CUT 1 · GRAIN ↓ SEW 560 mm P2 CUT 1 · GRAIN ↓ SEW 560 mm P3 CUT 1 · GRAIN ↓ SEW 560 mm P4 CUT 1 · GRAIN ↓ SEW 560 mm 100 × 100 mm calibration Print at 100% · All dimensions in mm 10 mm cut allowance · Solid = stitch · Dashed = cut Waist support only; add waistband, closure and hem finish.
+    - text: Sewing line 10 mm allowance Skirt length
+    - status "Skirt length 560": 560 mm
+    - slider "Skirt length in millimetres": "560"
+    - text: FreeSewing circle ratio
+    - status "FreeSewing circle ratio 38.75": 60.00%
+    - slider "FreeSewing circle ratio percent": "60"
+    - text: Material assumption
+    - combobox "Material assumption":
+      - option "Cotton · 160 g/m²" [selected]
+      - option "Linen · 220 g/m²"
+      - option "Silk · 80 g/m²"
+    - button "SVG 1:1"
+    - button "DXF · mm"
+    - button "Print A4"
+    - button "FreeSewing source SVG"
+    - paragraph: FreeSewing Sandy is drafted in this browser. Its half-panel is unfolded into four full skirt panels. Native SVG also includes an unsimulated waistband.
+    - paragraph: Four cut panels, no cut-on-fold. Waist and hem stay open. All vertices move under gravity. A reinforced closed waist edge and body contact/friction support the skirt; full waistband construction requires a separate pattern.
+  - region "Interactive 3D garment and MakeHuman mannequin":
+    - navigation "Garment diagnostic view":
+      - button "Fabric"
+      - button "Strain"
+      - button "Stress"
+      - button "Seams"
+      - button "Contact"
+      - button "Pressure · 试衣压力"
+      - button "Fold · 折角"
+      - button "Curvature · 曲率"
+    - text: Drag to orbit · click fabric to probe Actual MakeHuman surface · 13,380 vertices 4 sewn panels · 2 intended openings
+    - button "Front"
+    - button "Side"
+    - button "Back"
+    - button "Mesh"
+  - complementary:
+    - heading "Digital garment checks" [level=2]
+    - text: PASS Waist sewing length
+    - strong: 675.8 mm
+    - text: Maximum seam gap
+    - strong: 0.000 mm
+    - text: Min. sampled clearance
+    - strong: 3.01 mm
+    - text: Peak principal stretch
+    - strong: 189.2%
+    - text: Peak estimated stress
+    - strong: 110.25 kPa
+    - text: Peak fold angle |θ|
+    - strong: 130.0°
+    - text: Peak curvature |κ|
+    - strong: 303.9 m⁻¹
+    - text: Wrinkle proxy ≥ 15°
+    - strong: 26.2% faces
+    - text: Peak contact pressure estimate
+    - strong: 0.5058 kPa
+    - paragraph: Pressure is an uncalibrated constraint-reaction estimate, not measured wearer pressure. Initial geometry is relaxed before display.
+    - text: Contact support / weight · gravity on
+    - strong: 100.5% · 0 pins
+    - paragraph: 0 fixed vertices. Reinforced closed waist edge uses a stiff shape-matching approximation; position and rotation remain free. Body-normal contact and Coulomb friction carry weight.
+    - heading "Sewing relationships" [level=2]
+    - button "Trace seam S1": P1 R ↔ P2 L 560 = 560
+    - button "Trace seam S2": P2 R ↔ P3 L 560 = 560
+    - button "Trace seam S3": P3 R ↔ P4 L 560 = 560
+    - button "Trace seam S4": P4 R ↔ P1 L 560 = 560
+    - paragraph: Matching endpoints and notches, equal lengths, shared solver vertices. Select a row to trace the seam in 2D and 3D.
+    - heading "Verification scope" [level=2]
+    - paragraph: Digital seam, topology, body-clearance and deformation checks. Stress uses an uncalibrated plane-stress model. Discrete self-contact enabled. Continuous collision and manufacturing fit are not certified.
+    - button "Run verification"
+    - button "Export simulation + sewing JSON"
+    - paragraph: PASS · 16,192 samples · min 3.01 mm. Read the scope before accepting.
+    - text: Wind acceleration
+    - status "Wind acceleration 0": 5.0 m/s²
+    - slider "Wind acceleration": "5"
+  - button "Run drape"
+  - button "Reset"
+  - text: 4.00 s 01Pattern 02Sewn shell 03Gravity 04Verify WebGPU · WASM 78.0 ms/step · 61,067 tris · 7 draws One HTML · embedded human + solver + renderer · no network requests required FreeSewing + WASM + MakeHuman · fold proxy is geometric; fabric calibration remains required
