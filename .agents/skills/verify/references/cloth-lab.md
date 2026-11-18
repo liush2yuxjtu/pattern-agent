@@ -177,6 +177,10 @@ environment uses `PYTHONPATH=/workspace/work/verifydeps`,
 through `ZIG` and `ESBUILD`. Preserve command stdout/stderr and receipts under
 `work/cloth-modular/` before copying the final evidence to `docs/verification/`.
 
+The exact modular build, original assertions, native backend events, all-frame
+comparisons and preserved renderer/build failures are retained in the
+[modular WASM/WebGPU record](../../../../docs/verification/cloth-modular-webgpu-20261118/README.md).
+
 ## Full physical replay
 
 `verify_replay.py` drives the visible record/stop/timeline/step/transport/speed/file

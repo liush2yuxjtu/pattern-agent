@@ -1,0 +1,2050 @@
+{
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/?v=e9b466a98a5dba48553cf76f54d838012d95cdae&renderer=webgpu",
+  "checks": {
+    "firstReadyAnatomyCoveredWithRealInitializedPhysics": true,
+    "completeOpaqueNeutralAvatarAndNormalDepthTesting": true,
+    "defaultStrainBelowUnchanged20PercentWarning": true,
+    "actualWaistLevelClearanceAndSeparateFrontBackPatternLengths": true,
+    "realMultiplierPressureDrivesGPUColors": true,
+    "coveringNonpenetratingButFloatingOrWrongHeightWaistsRejected": true,
+    "sameWASMKnownLoadsInclineRefinementAndDetachedControls": true,
+    "realCalibrationButtonPreservesMainAvatarAndGarment": true,
+    "resetCoveredBeforeAnyUserStep": true,
+    "changedPatternExtremesRemainCoveredWithRecomputedPhysics": true,
+    "trueScaleSectorArcsExact10mmAllowanceAndNoPageClipping": true,
+    "materialAndMovingAvatarPressureCoverageCollisionRecomputed": true,
+    "recordedPressureAndCoverageRestoreWithoutIntegration": true,
+    "offlineSingleHTMLRetainsRealPressureAndCoveredGeometry": true,
+    "fabricatedPressureRejectedByForceLedgerAndContactGeometry": true,
+    "healthyRuntimeAndMobileWithoutOverflow": true
+  },
+  "cases": {
+    "firstReady": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 251,
+          "forceN": 3.688368847363021,
+          "peakPa": 59.94184875488281,
+          "forceIntegralErrorN": 1.0444664066966425e-07,
+          "maxContactResidualMm": 0.0019470327866661977,
+          "minNormalAlignment": 0.9999998893968255
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840051894257,
+            300.23699994444615
+          ],
+          "garmentWaistMm": 706.9210051338719,
+          "minWaistGapMm": 6.996127162765317,
+          "maxWaistGapMm": 7.000010747540357,
+          "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+          "patternMismatchMm": 3.478364135389711e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.7545450334032004,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.4903896878036846e-07,
+        2.637015711348667e-07,
+        2.1705978081598687e-07,
+        0.0521534242634516,
+        0.04739272442566289,
+        2.5254466434754264e-07,
+        2.0488100649362906e-07,
+        8.006209677863252e-08
+      ],
+      "maxPrincipalStrainPercent": 17.53858895290572,
+      "maxPrincipalCauchyKPa": 43.918890991373644,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "reset": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 251,
+          "forceN": 3.688368847363021,
+          "peakPa": 59.94184875488281,
+          "forceIntegralErrorN": 1.0444664066966425e-07,
+          "maxContactResidualMm": 0.0019470327866661977,
+          "minNormalAlignment": 0.9999998893968255
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840051894257,
+            300.23699994444615
+          ],
+          "garmentWaistMm": 706.9210051338719,
+          "minWaistGapMm": 6.996127162765317,
+          "maxWaistGapMm": 7.000010747540357,
+          "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+          "patternMismatchMm": 3.478364135389711e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.7545450334032004,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.4903896878036846e-07,
+        2.637015711348667e-07,
+        2.1705978081598687e-07,
+        0.0521534242634516,
+        0.04739272442566289,
+        2.5254466434754264e-07,
+        2.0488100649362906e-07,
+        8.006209677863252e-08
+      ],
+      "maxPrincipalStrainPercent": 17.53858895290572,
+      "maxPrincipalCauchyKPa": 43.918890991373644,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "short-wide": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 86,
+          "forceN": 0.14668466520084902,
+          "peakPa": 22.29840087890625,
+          "forceIntegralErrorN": 9.649452625826171e-10,
+          "maxContactResidualMm": 1.2854232977660898e-05,
+          "minNormalAlignment": 0.9999999158697759
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840051894257,
+            300.23699994444615
+          ],
+          "garmentWaistMm": 706.9210051338719,
+          "minWaistGapMm": 6.996127162765317,
+          "maxWaistGapMm": 7.000010747540357,
+          "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+          "patternMismatchMm": 3.478364135389711e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          399.9999946559907,
+          400.0000076771573
+        ],
+        "mismatchMm": 1.3021166637372517e-05,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.999987435528294,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.815365351960253e-07,
+        1.9851273092008626e-07,
+        2.0958218138744655e-07,
+        0.0502699198841583,
+        0.04795254946293426,
+        2.0866254857310196e-07,
+        1.834362801655942e-07,
+        8.30845325941465e-08
+      ],
+      "maxPrincipalStrainPercent": 30.65403162741751,
+      "maxPrincipalCauchyKPa": 95.77606475210956,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "long-narrow": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 317,
+          "forceN": 11.78260844639673,
+          "peakPa": 133.87045288085938,
+          "forceIntegralErrorN": 2.0166901570917162e-07,
+          "maxContactResidualMm": 0.2057030357474728,
+          "minNormalAlignment": 0.9996842927451419
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840051894257,
+            300.23699994444615
+          ],
+          "garmentWaistMm": 706.9210051338719,
+          "minWaistGapMm": 6.996127162765317,
+          "maxWaistGapMm": 7.000010747540357,
+          "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+          "patternMismatchMm": 3.478364135389711e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          700.000020108134,
+          700.0000250901592
+        ],
+        "mismatchMm": 4.982025188837724e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.0063039595406233,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.5843885187448734e-07,
+        2.5822800342467644e-07,
+        2.3805900184470374e-07,
+        0.05810126994856546,
+        0.05045228143262648,
+        2.6377655437670455e-07,
+        2.3729135512073896e-07,
+        9.637226263672569e-08
+      ],
+      "maxPrincipalStrainPercent": 39.84189991405849,
+      "maxPrincipalCauchyKPa": 81.12835995715213,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "soft": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 239,
+          "forceN": 1.6423539747395772,
+          "peakPa": 31.182239532470703,
+          "forceIntegralErrorN": 4.965647248944549e-08,
+          "maxContactResidualMm": 0.0004170510906323648,
+          "minNormalAlignment": 0.9999998893968255
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840051894257,
+            300.23699994444615
+          ],
+          "garmentWaistMm": 706.9210051338719,
+          "minWaistGapMm": 6.996127162765317,
+          "maxWaistGapMm": 7.000010747540357,
+          "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+          "patternMismatchMm": 3.478364135389711e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.5464891989437826,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.427985774655639e-07,
+        2.550134374779134e-07,
+        2.490692683210227e-07,
+        0.03476472972215561,
+        0.009664916930887557,
+        2.2971737734245323e-07,
+        2.3084706490816842e-07,
+        9.033119105494869e-08
+      ],
+      "maxPrincipalStrainPercent": 16.192601453269482,
+      "maxPrincipalCauchyKPa": 7.514974486544189,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "moved": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 256,
+          "forceN": 3.690470207669419,
+          "peakPa": 59.26972961425781,
+          "forceIntegralErrorN": 9.631168040868943e-08,
+          "maxContactResidualMm": 0.00010908616125823115,
+          "minNormalAlignment": 0.9999998893968255
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840026118944,
+            300.23700713347336
+          ],
+          "garmentWaistMm": 706.9210097453678,
+          "minWaistGapMm": 6.99612719076882,
+          "maxWaistGapMm": 7.0000115972871395,
+          "maxSkinWaistHeightErrorMm": 0.0006045708633717339,
+          "patternMismatchMm": 3.7106630657035566e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.7634912468608257,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.3437666896164444e-07,
+        2.1524596904853865e-07,
+        2.5952558435626827e-07,
+        0.0625497305263707,
+        0.04965359757989063,
+        2.741249737203688e-07,
+        2.213591376865054e-07,
+        8.792377546168462e-08
+      ],
+      "maxPrincipalStrainPercent": 17.432573496504155,
+      "maxPrincipalCauchyKPa": 43.59321327799636,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "replay-0": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 256,
+          "forceN": 3.690470207669419,
+          "peakPa": 59.26972961425781,
+          "forceIntegralErrorN": 9.631168040868943e-08,
+          "maxContactResidualMm": 0.00010908616125823115,
+          "minNormalAlignment": 0.9999998893968255
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840026118944,
+            300.23700713347336
+          ],
+          "garmentWaistMm": 706.9210097453678,
+          "minWaistGapMm": 6.99612719076882,
+          "maxWaistGapMm": 7.0000115972871395,
+          "maxSkinWaistHeightErrorMm": 0.0006045708633717339,
+          "patternMismatchMm": 3.7106630657035566e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.7634912468608257,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.3437666896164444e-07,
+        2.1524596904853865e-07,
+        2.5952558435626827e-07,
+        0.0625497305263707,
+        0.04965359757989063,
+        2.741249737203688e-07,
+        2.213591376865054e-07,
+        8.792377546168462e-08
+      ],
+      "maxPrincipalStrainPercent": 17.432573496504155,
+      "maxPrincipalCauchyKPa": 43.59321327799636,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "replay-6": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 256,
+          "forceN": 3.6904986598446627,
+          "peakPa": 59.26941680908203,
+          "forceIntegralErrorN": 1.174072390419667e-07,
+          "maxContactResidualMm": 0.00015252178230235714,
+          "minNormalAlignment": 0.9999989278517567
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840026118944,
+            300.23700713347336
+          ],
+          "garmentWaistMm": 706.9210097453678,
+          "minWaistGapMm": 6.99612719076882,
+          "maxWaistGapMm": 7.0000115972871395,
+          "maxSkinWaistHeightErrorMm": 0.0006045708633717339,
+          "patternMismatchMm": 3.7106630657035566e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.7636641677023595,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.543618216055421e-07,
+        2.7822694481649535e-07,
+        2.399149012788371e-07,
+        0.04691803501918912,
+        0.043667585945513565,
+        2.1959458995635117e-07,
+        2.398390885893775e-07,
+        7.611239256216651e-08
+      ],
+      "maxPrincipalStrainPercent": 17.432426473100058,
+      "maxPrincipalCauchyKPa": 43.59287454294653,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "replay-12": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 256,
+          "forceN": 3.690534352304324,
+          "peakPa": 59.26801681518555,
+          "forceIntegralErrorN": 1.5321187829542282e-07,
+          "maxContactResidualMm": 0.0001597570682102152,
+          "minNormalAlignment": 0.9999998893968255
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840026118944,
+            300.23700713347336
+          ],
+          "garmentWaistMm": 706.9210097453678,
+          "minWaistGapMm": 6.99612719076882,
+          "maxWaistGapMm": 7.0000115972871395,
+          "maxSkinWaistHeightErrorMm": 0.0006045708633717339,
+          "patternMismatchMm": 3.7106630657035566e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.763874254775328,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        2.4543902399365436e-07,
+        2.4411789101286274e-07,
+        2.2124086784813812e-07,
+        0.06099531531071989,
+        0.04220230757528043,
+        2.1763083557502227e-07,
+        2.1569351227324063e-07,
+        8.982142672177285e-08
+      ],
+      "maxPrincipalStrainPercent": 17.432423946532083,
+      "maxPrincipalCauchyKPa": 43.5930187805458,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "replay-24": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 255,
+          "forceN": 3.690578883862122,
+          "peakPa": 59.265689849853516,
+          "forceIntegralErrorN": 1.2104834778980944e-07,
+          "maxContactResidualMm": 0.0001958612636514148,
+          "minNormalAlignment": 0.9999992302161831
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840026118944,
+            300.23700713347336
+          ],
+          "garmentWaistMm": 706.9210097453678,
+          "minWaistGapMm": 6.99612719076882,
+          "maxWaistGapMm": 7.0000115972871395,
+          "maxSkinWaistHeightErrorMm": 0.0006045708633717339,
+          "patternMismatchMm": 3.7106630657035566e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.764204350408737,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        3.017894394385934e-07,
+        2.598233905803937e-07,
+        2.206983151786801e-07,
+        0.05151492138611502,
+        0.038962399362162614,
+        2.1129984340007013e-07,
+        2.2336698302094504e-07,
+        9.308328571822067e-08
+      ],
+      "maxPrincipalStrainPercent": 17.4319784641678,
+      "maxPrincipalCauchyKPa": 43.59163790647637,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    },
+    "offline": {
+      "fit": {
+        "pressure": {
+          "verdict": "PASS",
+          "samples": 255,
+          "forceN": 3.690578883862122,
+          "peakPa": 59.265689849853516,
+          "forceIntegralErrorN": 1.2104834778980944e-07,
+          "maxContactResidualMm": 0.0001958612636514148,
+          "minNormalAlignment": 0.9999992302161831
+        },
+        "coverage": {
+          "verdict": "PASS",
+          "anatomicalSurfaceSamples": 1709,
+          "views": 8,
+          "totalRays": 13672,
+          "exposedRays": 0,
+          "byView": [
+            {
+              "angleDegrees": 0.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 45.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 90.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 135.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 180.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 225.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 270.0,
+              "exposed": 0,
+              "rays": 1709
+            },
+            {
+              "angleDegrees": 315.0,
+              "exposed": 0,
+              "rays": 1709
+            }
+          ]
+        },
+        "wear": {
+          "verdict": "PASS",
+          "bodySectionGirthMm": 666.0588056425474,
+          "waistEdgeLengthsMm": [
+            406.6840026118944,
+            300.23700713347336
+          ],
+          "garmentWaistMm": 706.9210097453678,
+          "minWaistGapMm": 6.99612719076882,
+          "maxWaistGapMm": 7.0000115972871395,
+          "maxSkinWaistHeightErrorMm": 0.0006045708633717339,
+          "patternMismatchMm": 3.7106630657035566e-06,
+          "sectionHeightM": 1.0
+        }
+      },
+      "verdict": "PASS",
+      "vertices": 850,
+      "triangles": 1536,
+      "bodyVertices": 13380,
+      "bodyTriangles": 26756,
+      "seam": {
+        "lengthsMm": [
+          600.0000163688787,
+          600.0000210626071
+        ],
+        "mismatchMm": 4.693728328675206e-06,
+        "missing": false,
+        "reversed": false
+      },
+      "maxSeamGapMm": 0.0,
+      "maxBodyPenetrationMm": 0.0,
+      "minBodyClearanceMm": 2.764204350408737,
+      "sampledPoints": 4770,
+      "insideSamples": 0,
+      "clothEdgeBodyHits": 0,
+      "bodyEdgeClothHits": 0,
+      "maxTensorFieldAbsoluteErrors": [
+        3.017894394385934e-07,
+        2.598233905803937e-07,
+        2.206983151786801e-07,
+        0.05151492138611502,
+        0.038962399362162614,
+        2.1129984340007013e-07,
+        2.2336698302094504e-07,
+        9.308328571822067e-08
+      ],
+      "maxPrincipalStrainPercent": 17.4319784641678,
+      "maxPrincipalCauchyKPa": 43.59163790647637,
+      "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+    }
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "rootCommit": "e9b466a98a5dba48553cf76f54d838012d95cdae",
+  "rendering": {
+    "diagnostics": {
+      "requested": "webgpu",
+      "api": "WebGPU",
+      "backend": "WebGPUBackend",
+      "isWebGPURenderer": true,
+      "isWebGPUBackend": true,
+      "isWebGLRenderer": false,
+      "initialized": true,
+      "firstRenderComplete": true,
+      "renderedFrames": 1,
+      "blocked": false,
+      "pending": false,
+      "fallbackReason": null,
+      "antialias": {
+        "enabled": false,
+        "samples": 0,
+        "method": "none",
+        "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+      },
+      "gpuString": "google · swiftshader",
+      "rendererClass": "software",
+      "viewport": {
+        "renderable": true,
+        "cssWidth": 880,
+        "cssHeight": 530,
+        "drawingBufferWidth": 704,
+        "drawingBufferHeight": 424,
+        "skippedDraws": 0
+      },
+      "device": {
+        "label": "Cloth Lab WebGPU device",
+        "features": [
+          "core-features-and-limits"
+        ],
+        "limits": {
+          "maxTextureDimension2D": 8192,
+          "maxBufferSize": 268435456,
+          "maxStorageBufferBindingSize": 134217728,
+          "maxBindGroups": 4
+        },
+        "adapterInfo": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "subgroupMinSize": 4,
+          "subgroupMaxSize": 4,
+          "isFallbackAdapter": true
+        }
+      },
+      "deviceErrors": []
+    },
+    "native": {
+      "adapterRequests": 1,
+      "adapters": 1,
+      "deviceRequests": 1,
+      "devices": 1,
+      "canvasContexts": [
+        {
+          "type": "webgpu",
+          "nativeClass": "GPUCanvasContext"
+        },
+        {
+          "type": "2d",
+          "nativeClass": "CanvasRenderingContext2D"
+        }
+      ],
+      "configurations": 1,
+      "configurationUsesRequestedDevice": true,
+      "queueSubmits": 3,
+      "commandBuffers": 3,
+      "deviceErrors": [],
+      "deviceLosses": [],
+      "adapterInfo": [
+        {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        }
+      ],
+      "deviceDetails": [
+        {
+          "label": "Cloth Lab WebGPU device",
+          "features": [
+            "core-features-and-limits"
+          ],
+          "limits": {
+            "maxTextureDimension2D": 8192,
+            "maxBufferSize": 268435456,
+            "maxStorageBufferBindingSize": 134217728,
+            "maxBindGroups": 4
+          }
+        }
+      ],
+      "textureCreations": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            300,
+            150,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "colorBuffer",
+          "size": [
+            240,
+            120,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "colorBuffer",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "",
+          "size": [
+            128,
+            128,
+            1
+          ],
+          "format": "rgba8unorm-srgb"
+        },
+        {
+          "label": "",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "rgba16float"
+        },
+        {
+          "label": "",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "depth24plus"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "invalidTextureSizes": [],
+      "viewportSamples": [
+        {
+          "reason": "DOMContentLoaded",
+          "time": 259.70000000298023,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 351.79999999701977,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        }
+      ]
+    }
+  },
+  "patternSVG": {
+    "default": {
+      "verdict": "PASS",
+      "widthMm": 1420.0,
+      "heightMm": 705.0,
+      "pieces": [
+        {
+          "waistArcMm": 406.68400604671046,
+          "hemArcMm": 649.9999999999998,
+          "seamLengthMm": 600,
+          "allowanceMm": 10,
+          "cutBoundsMm": [
+            15.419715348926388,
+            22.59714571718166,
+            684.5802846510736,
+            664.9999999999999
+          ]
+        },
+        {
+          "waistArcMm": 300.2370034228103,
+          "hemArcMm": 650.0,
+          "seamLengthMm": 600,
+          "allowanceMm": 10,
+          "cutBoundsMm": [
+            722.1431293347312,
+            20.73032672565563,
+            1387.8568706652688,
+            664.9999999999999
+          ]
+        }
+      ]
+    },
+    "short-wide": {
+      "verdict": "PASS",
+      "widthMm": 1720.0,
+      "heightMm": 527.6328240925751,
+      "pieces": [
+        {
+          "waistArcMm": 406.6840060467105,
+          "hemArcMm": 800.0,
+          "seamLengthMm": 400,
+          "allowanceMm": 10,
+          "cutBoundsMm": [
+            27.413002358709036,
+            15.0,
+            822.586997641291,
+            487.6328240925751
+          ]
+        },
+        {
+          "waistArcMm": 300.2370034228103,
+          "hemArcMm": 800.0,
+          "seamLengthMm": 400,
+          "allowanceMm": 10,
+          "cutBoundsMm": [
+            891.5990501420406,
+            15.0,
+            1668.4009498579594,
+            484.52069937532315
+          ]
+        }
+      ]
+    },
+    "long-narrow": {
+      "verdict": "PASS",
+      "widthMm": 1220.0,
+      "heightMm": 805.0,
+      "pieces": [
+        {
+          "waistArcMm": 406.6840060467105,
+          "hemArcMm": 550.0,
+          "seamLengthMm": 700,
+          "allowanceMm": 10,
+          "cutBoundsMm": [
+            14.51239787869497,
+            33.60645666125379,
+            585.487602121305,
+            764.9999999999998
+          ]
+        },
+        {
+          "waistArcMm": 300.23700342281035,
+          "hemArcMm": 550.0,
+          "seamLengthMm": 700,
+          "allowanceMm": 10,
+          "cutBoundsMm": [
+            619.846293759206,
+            29.969706442030088,
+            1190.153706240794,
+            765.0000000000001
+          ]
+        }
+      ]
+    }
+  },
+  "initialPixels": {
+    "front": {
+      "hipROI": [
+        410,
+        225,
+        470,
+        276
+      ],
+      "skinPixels": 0,
+      "pixels": 3060
+    },
+    "back": {
+      "hipROI": [
+        409,
+        226,
+        471,
+        278
+      ],
+      "skinPixels": 0,
+      "pixels": 3224
+    },
+    "side": {
+      "hipROI": [
+        428,
+        227,
+        468,
+        280
+      ],
+      "skinPixels": 0,
+      "pixels": 2120
+    }
+  },
+  "waistFaults": {
+    "floating-waist": {
+      "rejection": "Waist detachment 36.61132644662165 mm > 10 mm",
+      "wear": {
+        "maxWaistGapMm": 36.61133348941803,
+        "minWaistGapMm": 33.51878002285957,
+        "maxWaistPlacementErrorMm": 30.000009344512776,
+        "waistEdgeLengthsMm": [
+          514.7249229934883,
+          373.674166425501
+        ],
+        "waistPatternMismatchMm": 108.04091694677783,
+        "bodySectionGirthMm": 666.0588056425474,
+        "garmentWaistMm": 706.9210094695209,
+        "sectionHeightM": 1,
+        "fitted": false
+      }
+    },
+    "wrong-waist-height": {
+      "rejection": "Waist detachment 17.70428177428216 mm > 10 mm",
+      "wear": {
+        "maxWaistGapMm": 17.704293131828308,
+        "minWaistGapMm": 2.3324573412537575,
+        "maxWaistPlacementErrorMm": 30.000040273039197,
+        "waistEdgeLengthsMm": [
+          406.68400404540506,
+          300.2369999444461
+        ],
+        "waistPatternMismatchMm": 3.47836419223313e-06,
+        "bodySectionGirthMm": 666.0588056425474,
+        "garmentWaistMm": 706.9210094695209,
+        "sectionHeightM": 1,
+        "fitted": false
+      }
+    }
+  },
+  "coupons": {
+    "zero": {
+      "inputPa": 0,
+      "expectedN": 0.0,
+      "outputN": 0.0,
+      "actualPa": 0.0,
+      "cells": 3,
+      "tiltDeg": 0,
+      "maxCompressionErrorMm": 0
+    },
+    "gravity": {
+      "inputPa": 2.1582000000000003,
+      "expectedN": 0.08632800257277493,
+      "outputN": 0.08632857106854189,
+      "actualPa": 2.158214212393751,
+      "cells": 3,
+      "tiltDeg": 0,
+      "maxCompressionErrorMm": 1.400666718026633e-07
+    },
+    "500Pa": {
+      "inputPa": 500,
+      "expectedN": 20.00000059604645,
+      "outputN": 19.99999787425639,
+      "actualPa": 499.9999319552505,
+      "cells": 3,
+      "tiltDeg": 0,
+      "maxCompressionErrorMm": 3.643333912339841e-06
+    },
+    "1000Pa": {
+      "inputPa": 1000,
+      "expectedN": 40.0000011920929,
+      "outputN": 39.99999574851278,
+      "actualPa": 999.9998639104982,
+      "cells": 3,
+      "tiltDeg": 0,
+      "maxCompressionErrorMm": 4.8205256461889e-06
+    },
+    "2000Pa": {
+      "inputPa": 2000,
+      "expectedN": 80.0000023841858,
+      "outputN": 79.99999149702556,
+      "actualPa": 1999.999727821002,
+      "cells": 3,
+      "tiltDeg": 0,
+      "maxCompressionErrorMm": 8.054077625316292e-06
+    },
+    "inclined": {
+      "inputPa": 1000,
+      "expectedN": 40.0000011920929,
+      "outputN": 39.999997110571904,
+      "actualPa": 999.9998759283802,
+      "cells": 3,
+      "tiltDeg": 30,
+      "maxCompressionErrorMm": 7.084604528809907e-05
+    },
+    "refined": {
+      "inputPa": 1000,
+      "expectedN": 40.0000011920929,
+      "outputN": 40.0000015634575,
+      "actualPa": 1000.0000092841119,
+      "cells": 6,
+      "tiltDeg": 0,
+      "maxCompressionErrorMm": 4.8205256461889e-06
+    },
+    "detachedGravity": {
+      "inputPa": 2.1582000000000003,
+      "expectedN": 0,
+      "outputN": 0.0,
+      "actualPa": 0.0,
+      "cells": 3,
+      "tiltDeg": 0,
+      "maxCompressionErrorMm": 0
+    },
+    "disabled": {
+      "inputPa": 1000,
+      "expectedN": 0,
+      "outputN": 0.0,
+      "actualPa": 0.0,
+      "cells": 3,
+      "tiltDeg": 0,
+      "maxCompressionErrorMm": 0
+    }
+  },
+  "resetPixels": {
+    "front": {
+      "hipROI": [
+        410,
+        225,
+        470,
+        276
+      ],
+      "skinPixels": 0,
+      "pixels": 3060
+    },
+    "back": {
+      "hipROI": [
+        409,
+        226,
+        471,
+        278
+      ],
+      "skinPixels": 0,
+      "pixels": 3224
+    },
+    "side": {
+      "hipROI": [
+        428,
+        227,
+        468,
+        280
+      ],
+      "skinPixels": 0,
+      "pixels": 2120
+    }
+  },
+  "short-widePixels": {
+    "front": {
+      "hipROI": [
+        410,
+        225,
+        470,
+        276
+      ],
+      "skinPixels": 0,
+      "pixels": 3060
+    },
+    "back": {
+      "hipROI": [
+        409,
+        226,
+        471,
+        278
+      ],
+      "skinPixels": 0,
+      "pixels": 3224
+    },
+    "side": {
+      "hipROI": [
+        428,
+        227,
+        468,
+        280
+      ],
+      "skinPixels": 0,
+      "pixels": 2120
+    }
+  },
+  "parameterWarnings": {
+    "short-wide": "几何通过 · 局部应变偏大",
+    "long-narrow": "几何通过 · 局部应变偏大"
+  },
+  "long-narrowPixels": {
+    "front": {
+      "hipROI": [
+        410,
+        225,
+        470,
+        276
+      ],
+      "skinPixels": 0,
+      "pixels": 3060
+    },
+    "back": {
+      "hipROI": [
+        409,
+        226,
+        471,
+        278
+      ],
+      "skinPixels": 0,
+      "pixels": 3224
+    },
+    "side": {
+      "hipROI": [
+        428,
+        227,
+        468,
+        280
+      ],
+      "skinPixels": 0,
+      "pixels": 2120
+    }
+  },
+  "softPixels": {
+    "front": {
+      "hipROI": [
+        410,
+        225,
+        470,
+        276
+      ],
+      "skinPixels": 0,
+      "pixels": 3060
+    },
+    "back": {
+      "hipROI": [
+        409,
+        226,
+        471,
+        278
+      ],
+      "skinPixels": 0,
+      "pixels": 3224
+    },
+    "side": {
+      "hipROI": [
+        428,
+        227,
+        468,
+        280
+      ],
+      "skinPixels": 0,
+      "pixels": 2120
+    }
+  },
+  "forgedPressureRejected": "-0.4037501835001693",
+  "forgedPressureFieldRejected": "",
+  "performance": {
+    "stats": {
+      "wear": {
+        "maxWaistGapMm": 7.000022102147341,
+        "minWaistGapMm": 6.996131036430597,
+        "maxWaistPlacementErrorMm": 5.290129617023889e-05,
+        "waistEdgeLengthsMm": [
+          406.68400261189447,
+          300.2370071334733
+        ],
+        "waistPatternMismatchMm": 3.7106630088601378e-06,
+        "bodySectionGirthMm": 666.0588056425474,
+        "garmentWaistMm": 706.9210094695209,
+        "sectionHeightM": 1,
+        "fitted": true
+      },
+      "frame": 984,
+      "simulationSeconds": 8.199960708618164,
+      "maxSeamGapMm": 0,
+      "maxBodyPenetrationMm": 0,
+      "minBodyClearanceMm": 5.930757150053978,
+      "maxPrincipalStrainPercent": 17.431986331939697,
+      "maxPrincipalStressKPa": 43.5916484375,
+      "contacts": 275,
+      "finite": true,
+      "membraneEnergyJ": 0.04762079194188118,
+      "collisionEnabled": true,
+      "pressure": {
+        "ready": true,
+        "frame": 984,
+        "normalForceN": 3.6905786991119385,
+        "resultantOnClothN": [
+          -0.007143290247768164,
+          0.6658483147621155,
+          -0.3480331301689148
+        ],
+        "maxPressurePa": 59.265689849853516,
+        "loadedAreaM2": 0.18055163323879242,
+        "clothAreaM2": 0.6211627125740051,
+        "contactSamples": 255,
+        "maxConstraintResidualMm": 0.00020863444660790265,
+        "minNormalAlignment": 0.9999997615814209,
+        "finite": true,
+        "consistent": true
+      },
+      "coverage": {
+        "bodySamples": 4996,
+        "exposedSamples": 0,
+        "maxDepthDeficitMm": 0,
+        "byView": {
+          "front": 0,
+          "back": 0,
+          "right": 0,
+          "left": 0
+        },
+        "covered": true
+      },
+      "missingSeam": false,
+      "orientationValid": true,
+      "lengthMismatchMm": 0,
+      "stepMs": 9.5,
+      "bodyOffsetMm": 40,
+      "droppedWallSeconds": 0
+    },
+    "frameTimesMs": [],
+    "history": [
+      {
+        "wear": {
+          "maxWaistGapMm": 7.000022102147341,
+          "minWaistGapMm": 6.996131036430597,
+          "maxWaistPlacementErrorMm": 5.290129617023889e-05,
+          "waistEdgeLengthsMm": [
+            406.68400261189447,
+            300.2370071334733
+          ],
+          "waistPatternMismatchMm": 3.7106630088601378e-06,
+          "bodySectionGirthMm": 666.0588056425474,
+          "garmentWaistMm": 706.9210094695209,
+          "sectionHeightM": 1,
+          "fitted": true
+        },
+        "frame": 984,
+        "simulationSeconds": 8.199960708618164,
+        "maxSeamGapMm": 0,
+        "maxBodyPenetrationMm": 0,
+        "minBodyClearanceMm": 5.930757150053978,
+        "maxPrincipalStrainPercent": 17.431986331939697,
+        "maxPrincipalStressKPa": 43.5916484375,
+        "contacts": 275,
+        "finite": true,
+        "membraneEnergyJ": 0.04762079194188118,
+        "collisionEnabled": true,
+        "pressure": {
+          "ready": true,
+          "frame": 984,
+          "normalForceN": 3.6905786991119385,
+          "resultantOnClothN": [
+            -0.007143290247768164,
+            0.6658483147621155,
+            -0.3480331301689148
+          ],
+          "maxPressurePa": 59.265689849853516,
+          "loadedAreaM2": 0.18055163323879242,
+          "clothAreaM2": 0.6211627125740051,
+          "contactSamples": 255,
+          "maxConstraintResidualMm": 0.00020863444660790265,
+          "minNormalAlignment": 0.9999997615814209,
+          "finite": true,
+          "consistent": true
+        },
+        "coverage": {
+          "bodySamples": 4996,
+          "exposedSamples": 0,
+          "maxDepthDeficitMm": 0,
+          "byView": {
+            "front": 0,
+            "back": 0,
+            "right": 0,
+            "left": 0
+          },
+          "covered": true
+        },
+        "missingSeam": false,
+        "orientationValid": true,
+        "lengthMismatchMm": 0,
+        "stepMs": 9.5,
+        "bodyOffsetMm": 40,
+        "droppedWallSeconds": 0
+      }
+    ],
+    "renderer": "google · swiftshader",
+    "gpuString": "google · swiftshader",
+    "rendererClass": "software",
+    "pixelRatio": 0.8,
+    "drawCalls": 6,
+    "geometries": 6,
+    "textures": 3,
+    "rendererApi": "WebGPU",
+    "rendererBackend": "WebGPUBackend",
+    "rendererRequested": "webgpu",
+    "rendererDiagnostics": {
+      "requested": "webgpu",
+      "api": "WebGPU",
+      "backend": "WebGPUBackend",
+      "isWebGPURenderer": true,
+      "isWebGPUBackend": true,
+      "isWebGLRenderer": false,
+      "initialized": true,
+      "firstRenderComplete": true,
+      "renderedFrames": 89,
+      "blocked": false,
+      "pending": false,
+      "fallbackReason": null,
+      "antialias": {
+        "enabled": false,
+        "samples": 0,
+        "method": "none",
+        "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+      },
+      "gpuString": "google · swiftshader",
+      "rendererClass": "software",
+      "viewport": {
+        "renderable": true,
+        "cssWidth": 390,
+        "cssHeight": 490,
+        "drawingBufferWidth": 312,
+        "drawingBufferHeight": 392,
+        "skippedDraws": 2
+      },
+      "device": {
+        "label": "Cloth Lab WebGPU device",
+        "features": [
+          "core-features-and-limits"
+        ],
+        "limits": {
+          "maxTextureDimension2D": 8192,
+          "maxBufferSize": 268435456,
+          "maxStorageBufferBindingSize": 134217728,
+          "maxBindGroups": 4
+        },
+        "adapterInfo": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "subgroupMinSize": 4,
+          "subgroupMaxSize": 4,
+          "isFallbackAdapter": true
+        }
+      },
+      "deviceErrors": []
+    },
+    "wasmBytes": 20919,
+    "wasmMemoryBytes": 16777216,
+    "fingerprint": "0f2afe8f6957102a7ae925f675d0dfc8f2ddbfef350d87b420ab53631ec69fc1",
+    "droppedWallSeconds": 0,
+    "replay": {
+      "pressureBytes": 127960,
+      "totalBytes": 977960,
+      "maxTotalRawBytes": 98145720,
+      "frames": 25,
+      "cursor": 24,
+      "atRecordedState": true,
+      "recording": false,
+      "playing": false,
+      "speed": 1,
+      "maxFrames": 1201,
+      "bytes": 850000,
+      "integratedSteps": 4584,
+      "captureTimesMs": [
+        0.29999999701976776,
+        0.20000000298023224,
+        0.09999999403953552,
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224,
+        0.10000000894069672,
+        0.10000000894069672,
+        0.10000000894069672,
+        0.20000000298023224,
+        0.09999999403953552,
+        0.09999999403953552,
+        0.20000000298023224,
+        0.09999999403953552,
+        0,
+        0,
+        0,
+        0.09999999403953552,
+        0.09999999403953552,
+        0.10000000894069672,
+        0.09999999403953552,
+        0.20000000298023224,
+        0.10000000894069672,
+        0.20000000298023224
+      ],
+      "seekTimesMs": [
+        10.700000002980232,
+        11.599999994039536,
+        13.299999997019768,
+        13.599999994039536
+      ],
+      "playbackTimesMs": []
+    }
+  },
+  "verdict": "PASS"
+}

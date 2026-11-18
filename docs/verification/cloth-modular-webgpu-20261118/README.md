@@ -1,7 +1,7 @@
 # Modular cloth source → one WASM/WebGPU HTML
 
-Local `/verify`: **PASS** on the exact candidate below. Hosted publication is
-pending and will be recorded separately after actual public-browser verification.
+Local and public `/verify`: **PASS** on the exact HTML below. Actual Pages
+publication and the complete public-browser run are recorded in `live/`.
 This verifies the refactor, numerical preservation and actual rendering boundary;
 it does not approve physical fit or manufacture.
 
@@ -169,3 +169,53 @@ sampling and distance-based bending remain the previous model. Cloth self-collis
 CCD, measured friction, finished waistband/zipper, material calibration, physical fit
 and production approval are NOT_RUN. The historical T-shirt FAIL (7.6455 mm seam
 gap and 20 nonadjacent intersections) remains unchanged.
+
+
+## Actual hosted publication and complete public run
+
+Source commit: `e9b466a98a5dba48553cf76f54d838012d95cdae`, after reconciling the
+unrelated Brian input-contract update. The earlier local commit `65d88c3…` was
+rebased before its first push; every cloth/runtime/verifier byte remained exact:
+[rebase receipt](live/prepush-rebase.json). The full adjacent local gate was rerun
+on the rebased commit before non-force push:
+[commands and exit statuses](live/postrebase-pages-commands.json).
+
+Observed actual Pages publication run
+[44282430334](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44282430334)
+and its deployment job finish successfully for the full source SHA:
+[run](live/publication-run.json), [job](live/publication-jobs.json).
+This is publication evidence, not a CI verification gate.
+The [remote committed-file readback](live/committed-file-readback.json) and
+[public HTTP identity](live/identity.json) independently match all 2,550,975 HTML
+bytes, its build manifest and the root deployment commit.
+
+The actual [public app](https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/?v=e9b466a98a5dba48553cf76f54d838012d95cdae)
+then passed the complete unchanged **52-check** Playwright flow using forced real
+WebGPU: [fit16](live/fit.json), [browser15](live/browser.json),
+[replay15](live/replay.json), [handoff6](live/handoff.json).
+All **61** public recorded frames passed the independent geometry/tensor oracle:
+[reports](live/frame-oracles.json). Their raw Float32 state and contact pressure
+are bit-identical to both the original app and local candidate:
+[comparison](live/physical-equivalence.json), [actual recording](live/actual-recording.json.gz).
+Commands, times and exit statuses are [retained](live/commands.json).
+The independent adjacent download/native-handoff Pages flow also
+[passed publicly](live/existing-pages.json).
+
+Visually reviewed the actual public [untouched first-ready view](live/untouched-first-ready.png),
+[front](live/first-ready-front.png), [back](live/first-ready-back.png),
+[side](live/first-ready-side.png), [pressure](live/first-ready-pressure.png),
+[stress](live/stress.png), [strain](live/strain.png), [mobile](live/mobile.png) and
+[offline replay](live/offline-timeline.png). Native adapter/device/configuration/
+queue evidence confirms actual software WebGPU; no page/console/HTTP errors were
+reported. Complete real performance samples are in the browser/replay receipts,
+with an actual [performance screenshot](live/performance.png).
+The four original suites use `about:blank` for their offline windows, where this
+browser actually falls back to WebGL2, as the offline screenshot states. The
+separate 14-check renderer gate uses an empty secure localhost origin, then turns
+off networking, and requires actual WebGPU offline continuation. These are two
+different observed boundaries; the fallback image is not WebGPU evidence.
+The actual public [single-HTML download](live/actual-downloaded.html.gz) and
+[first-ready export](live/first-ready.json.gz) are retained. A
+[live verdict](live/verify.json) and [raw hash inventory](live/inventory.json)
+bind this evidence to the deployed source. Later documentation commits are not
+represented as newly deployed application revisions.

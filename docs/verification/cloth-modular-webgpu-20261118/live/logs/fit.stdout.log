@@ -1,0 +1,131 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "firstReadyAnatomyCoveredWithRealInitializedPhysics": true,
+    "completeOpaqueNeutralAvatarAndNormalDepthTesting": true,
+    "defaultStrainBelowUnchanged20PercentWarning": true,
+    "actualWaistLevelClearanceAndSeparateFrontBackPatternLengths": true,
+    "realMultiplierPressureDrivesGPUColors": true,
+    "coveringNonpenetratingButFloatingOrWrongHeightWaistsRejected": true,
+    "sameWASMKnownLoadsInclineRefinementAndDetachedControls": true,
+    "realCalibrationButtonPreservesMainAvatarAndGarment": true,
+    "resetCoveredBeforeAnyUserStep": true,
+    "changedPatternExtremesRemainCoveredWithRecomputedPhysics": true,
+    "trueScaleSectorArcsExact10mmAllowanceAndNoPageClipping": true,
+    "materialAndMovingAvatarPressureCoverageCollisionRecomputed": true,
+    "recordedPressureAndCoverageRestoreWithoutIntegration": true,
+    "offlineSingleHTMLRetainsRealPressureAndCoveredGeometry": true,
+    "fabricatedPressureRejectedByForceLedgerAndContactGeometry": true,
+    "healthyRuntimeAndMobileWithoutOverflow": true
+  },
+  "firstReady": {
+    "fit": {
+      "pressure": {
+        "verdict": "PASS",
+        "samples": 251,
+        "forceN": 3.688368847363021,
+        "peakPa": 59.94184875488281,
+        "forceIntegralErrorN": 1.0444664066966425e-07,
+        "maxContactResidualMm": 0.0019470327866661977,
+        "minNormalAlignment": 0.9999998893968255
+      },
+      "coverage": {
+        "verdict": "PASS",
+        "anatomicalSurfaceSamples": 1709,
+        "views": 8,
+        "totalRays": 13672,
+        "exposedRays": 0,
+        "byView": [
+          {
+            "angleDegrees": 0.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 45.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 90.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 135.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 180.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 225.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 270.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 315.0,
+            "exposed": 0,
+            "rays": 1709
+          }
+        ]
+      },
+      "wear": {
+        "verdict": "PASS",
+        "bodySectionGirthMm": 666.0588056425474,
+        "waistEdgeLengthsMm": [
+          406.6840051894257,
+          300.23699994444615
+        ],
+        "garmentWaistMm": 706.9210051338719,
+        "minWaistGapMm": 6.996127162765317,
+        "maxWaistGapMm": 7.000010747540357,
+        "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+        "patternMismatchMm": 3.478364135389711e-06,
+        "sectionHeightM": 1.0
+      }
+    },
+    "verdict": "PASS",
+    "vertices": 850,
+    "triangles": 1536,
+    "bodyVertices": 13380,
+    "bodyTriangles": 26756,
+    "seam": {
+      "lengthsMm": [
+        600.0000163688787,
+        600.0000210626071
+      ],
+      "mismatchMm": 4.693728328675206e-06,
+      "missing": false,
+      "reversed": false
+    },
+    "maxSeamGapMm": 0.0,
+    "maxBodyPenetrationMm": 0.0,
+    "minBodyClearanceMm": 2.7545450334032004,
+    "sampledPoints": 4770,
+    "insideSamples": 0,
+    "clothEdgeBodyHits": 0,
+    "bodyEdgeClothHits": 0,
+    "maxTensorFieldAbsoluteErrors": [
+      2.4903896878036846e-07,
+      2.637015711348667e-07,
+      2.1705978081598687e-07,
+      0.0521534242634516,
+      0.04739272442566289,
+      2.5254466434754264e-07,
+      2.0488100649362906e-07,
+      8.006209677863252e-08
+    ],
+    "maxPrincipalStrainPercent": 17.53858895290572,
+    "maxPrincipalCauchyKPa": 43.918890991373644,
+    "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+  }
+}
