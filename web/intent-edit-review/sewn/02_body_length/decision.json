@@ -1,0 +1,17 @@
+{
+  "id": "02_body_length",
+  "label": "前后衣身缩短15U",
+  "verdict": "BLOCKED",
+  "source_dxf": "experiments/intent-edit-benchmark/results/02_body_length/output.dxf",
+  "source_yaml": "experiments/intent-edit-benchmark/results/02_body_length/new-spec.yaml",
+  "source_dxf_sha256": "aab08855b2b91d90408593d717d94aec5159ddb149b77c24c1937e11b08112b6",
+  "source_yaml_sha256": "63312382be180c2a7670e85b64b993f174e7548c6b108f7d75b0bf5291d094fb",
+  "units_assumption": "mm",
+  "profile": "fitted-tshirt-v1",
+  "generation": "REJECTED",
+  "reason": "线段形状偏离已验证模板，不能可靠确认裁片和缝合关系。",
+  "error_code": "PROFILE_REQUIRED",
+  "action": "Needs an explicit supported profile and independently checked sewing contract; thresholds were not changed.",
+  "generation_seconds": 0.0218,
+  "seaming": "NOT_RUN_NO_ACCEPTED_MODEL"
+}

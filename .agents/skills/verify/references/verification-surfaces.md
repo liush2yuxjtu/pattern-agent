@@ -19,6 +19,7 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | prototype-package | source-bound prototype package, two workflows and reference intent examples | [prototype-package.md](prototype-package.md) |
 | intent-edit-benchmark | declared natural-language edit cases, new spec/diff/DXF and independent reciprocal audit | [intent-edit-benchmark.md](intent-edit-benchmark.md) |
 | intent-edit-review | one HTML with actual prototype/output YAML, DXF, SVG and source-bound interactive 3D | [intent-edit-review.md](intent-edit-review.md) |
+| intent-sewn-chain | ordered generation, independent sewing gate and actual downloaded GLB preview for intent inputs | [intent-sewn-chain.md](intent-sewn-chain.md) |
 | dxf-service | raw DXF upload, generated GLB and Vercel browser/API | [dxf-service.md](dxf-service.md) |
 | style3d | read-only MCP CLI, actual Studio GUI and licensed garment operations | [style3d.md](style3d.md) |
 | dxf-seams | corrected source sewing lines, exact exported GLB and independent adversarial geometry gate | [dxf-seams.md](dxf-seams.md) |

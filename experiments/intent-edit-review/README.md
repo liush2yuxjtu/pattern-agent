@@ -4,6 +4,8 @@
 
 [在线详细文档](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/docs/) 与演示分开发布，演示仍可独立保存。文档源稿和生成模板均在本项目目录内：
 
+[三个技能的真实缝合结果](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/sewn/)：原型与袖口加宽的本次新GLB经过独立接缝验收；另外三项明确记录模板限制。过程、单位假定和复跑命令见 [sewn/README.md](sewn/README.md)。它是新的独立子页面，不把原有五项静态示意升级成全部缝合通过。
+
 - [使用指南](docs/01-user-guide.md)：两条流程、四项案例、文件阅读与交接、离线使用。
 - [项目结构与重建](docs/02-architecture.md)：目录、依赖、真实二维/三维来源和浏览器状态。
 - [文件格式与互校](docs/03-data-and-audit.md)：完整中文YAML、两个受保护补丁、模型格式和独立验证。

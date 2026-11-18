@@ -1,0 +1,17 @@
+{
+  "id": "04_front_neck",
+  "label": "前领加深10U并联动领条",
+  "verdict": "BLOCKED",
+  "source_dxf": "experiments/intent-edit-benchmark/results/04_front_neck/output.dxf",
+  "source_yaml": "experiments/intent-edit-benchmark/results/04_front_neck/new-spec.yaml",
+  "source_dxf_sha256": "1f1e5f6c5204afb8b34c8691f6330b2f01c1754146603ef17cd4b518363d573b",
+  "source_yaml_sha256": "1f99d8ebd863e83d7b70b7c3aa21993d8cca3dc14e78e09a02de4d3422f59c67",
+  "units_assumption": "mm",
+  "profile": "fitted-tshirt-v1",
+  "generation": "REJECTED",
+  "reason": "线段形状偏离已验证模板，不能可靠确认裁片和缝合关系。",
+  "error_code": "PROFILE_REQUIRED",
+  "action": "Needs an explicit supported profile and independently checked sewing contract; thresholds were not changed.",
+  "generation_seconds": 0.025,
+  "seaming": "NOT_RUN_NO_ACCEPTED_MODEL"
+}

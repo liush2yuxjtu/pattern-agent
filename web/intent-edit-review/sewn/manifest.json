@@ -1,0 +1,240 @@
+{
+  "format": "intent-sewn-chain/1",
+  "verdict": "BLOCKED",
+  "phases": [
+    {
+      "phase": "sew-pattern-to-3d",
+      "state": "STARTED",
+      "at": "2026-11-18T10:48:03.595811+08:00"
+    },
+    {
+      "phase": "sew-pattern-to-3d",
+      "state": "COMPLETED",
+      "at": "2026-11-18T10:48:17.336717+08:00"
+    },
+    {
+      "phase": "verify-seaming",
+      "state": "STARTED",
+      "at": "2026-11-18T10:48:17.337160+08:00"
+    },
+    {
+      "phase": "verify-seaming",
+      "state": "COMPLETED",
+      "at": "2026-11-18T10:48:26.609168+08:00"
+    },
+    {
+      "phase": "verify",
+      "state": "COMPLETED",
+      "recorded_at": "2026-11-18T11:02:00.016937+08:00",
+      "preview_delivery_verdict": "PASS",
+      "whole_workflow_verdict": "BLOCKED"
+    }
+  ],
+  "cases": [
+    {
+      "id": "baseline",
+      "label": "原型",
+      "verdict": "PASS",
+      "source_dxf": "patterns/fitted-tshirt/input.dxf",
+      "source_yaml": "patterns/fitted-tshirt/input-spec.yaml",
+      "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+      "source_yaml_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "units_assumption": "mm",
+      "profile": "fitted-tshirt-v1",
+      "generation": "GENERATED",
+      "model_sha256": "dd4742ab120cb8e8abc2621ae42070657a3f07da885bd71d9ffc12fb65d15031",
+      "model_bytes": 2477900,
+      "vertices": 25758,
+      "triangles": 51150,
+      "mode": "verified_static_sewn_outer_shell",
+      "max_vertex_edit_mm": 4.407215287511254,
+      "generation_seconds": 7.0752,
+      "independent_command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/work/pattern-agent-publish/services/dxf-preview/verify_connections.py",
+        "--dxf",
+        "/workspace/work/pattern-agent-publish/patterns/fitted-tshirt/input.dxf",
+        "--glb",
+        "/workspace/work/pattern-agent-publish/work/intent-edit-review/sewn-chain/run-01/baseline/files/model.glb",
+        "--units",
+        "mm",
+        "--out",
+        "/workspace/work/pattern-agent-publish/work/intent-edit-review/sewn-chain/run-01/baseline/independent.json"
+      ],
+      "independent_exit_code": 0,
+      "verification_seconds": 4.6646,
+      "seaming": "PASS",
+      "measurements": {
+        "max_seam_gap_mm": 0.0,
+        "max_3d_seam_length_error_mm": 0.0737491202355045,
+        "proper_self_intersections": 0,
+        "topology": {
+          "vertex_count": 25758,
+          "used_vertex_count": 25758,
+          "orphan_vertices": 0,
+          "triangle_count": 51150,
+          "edge_count": 76910,
+          "connected_components": 1,
+          "boundary_edges": 370,
+          "boundary_components": 4,
+          "boundary_cycles": 4,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": -2,
+          "closed_oriented_edge_manifold": false,
+          "component_signed_volumes_m3": [
+            0.04418638633103158
+          ],
+          "outward_closed_components": false,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        }
+      },
+      "seams": 15,
+      "failures": []
+    },
+    {
+      "id": "01_sleeve_length",
+      "label": "袖子加长20U",
+      "verdict": "BLOCKED",
+      "source_dxf": "experiments/intent-edit-benchmark/results/01_sleeve_length/output.dxf",
+      "source_yaml": "experiments/intent-edit-benchmark/results/01_sleeve_length/new-spec.yaml",
+      "source_dxf_sha256": "830b5eb46cdd4e6eb80b58b86f94f153e85d47ae605ae265e676d43cfcd6bc40",
+      "source_yaml_sha256": "990e2d32160413f1d2bb41ef9714d065e23e42a7adf274bc7f30188ca8e5505c",
+      "units_assumption": "mm",
+      "profile": "fitted-tshirt-v1",
+      "generation": "REJECTED",
+      "reason": "线段形状偏离已验证模板，不能可靠确认裁片和缝合关系。",
+      "error_code": "PROFILE_REQUIRED",
+      "action": "Needs an explicit supported profile and independently checked sewing contract; thresholds were not changed.",
+      "generation_seconds": 0.0241,
+      "seaming": "NOT_RUN_NO_ACCEPTED_MODEL"
+    },
+    {
+      "id": "02_body_length",
+      "label": "前后衣身缩短15U",
+      "verdict": "BLOCKED",
+      "source_dxf": "experiments/intent-edit-benchmark/results/02_body_length/output.dxf",
+      "source_yaml": "experiments/intent-edit-benchmark/results/02_body_length/new-spec.yaml",
+      "source_dxf_sha256": "aab08855b2b91d90408593d717d94aec5159ddb149b77c24c1937e11b08112b6",
+      "source_yaml_sha256": "63312382be180c2a7670e85b64b993f174e7548c6b108f7d75b0bf5291d094fb",
+      "units_assumption": "mm",
+      "profile": "fitted-tshirt-v1",
+      "generation": "REJECTED",
+      "reason": "线段形状偏离已验证模板，不能可靠确认裁片和缝合关系。",
+      "error_code": "PROFILE_REQUIRED",
+      "action": "Needs an explicit supported profile and independently checked sewing contract; thresholds were not changed.",
+      "generation_seconds": 0.0218,
+      "seaming": "NOT_RUN_NO_ACCEPTED_MODEL"
+    },
+    {
+      "id": "03_cuff_width",
+      "label": "袖口展开宽增加10U",
+      "verdict": "PASS",
+      "source_dxf": "experiments/intent-edit-benchmark/results/03_cuff_width/output.dxf",
+      "source_yaml": "experiments/intent-edit-benchmark/results/03_cuff_width/new-spec.yaml",
+      "source_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163",
+      "source_yaml_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+      "units_assumption": "mm",
+      "profile": "fitted-tshirt-v1",
+      "generation": "GENERATED",
+      "model_sha256": "ffb75cedd87eac81ef39250715e5ae1cf3d1c9230304c6ed01b60afa2bc42835",
+      "model_bytes": 2495408,
+      "vertices": 25958,
+      "triangles": 51546,
+      "mode": "verified_static_sewn_outer_shell",
+      "max_vertex_edit_mm": 4.407215287511254,
+      "generation_seconds": 6.5849,
+      "independent_command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/work/pattern-agent-publish/services/dxf-preview/verify_connections.py",
+        "--dxf",
+        "/workspace/work/pattern-agent-publish/experiments/intent-edit-benchmark/results/03_cuff_width/output.dxf",
+        "--glb",
+        "/workspace/work/pattern-agent-publish/work/intent-edit-review/sewn-chain/run-01/03_cuff_width/files/model.glb",
+        "--units",
+        "mm",
+        "--out",
+        "/workspace/work/pattern-agent-publish/work/intent-edit-review/sewn-chain/run-01/03_cuff_width/independent.json"
+      ],
+      "independent_exit_code": 0,
+      "verification_seconds": 4.5998,
+      "seaming": "PASS",
+      "measurements": {
+        "max_seam_gap_mm": 0.0,
+        "max_3d_seam_length_error_mm": 0.0738314412558907,
+        "proper_self_intersections": 0,
+        "topology": {
+          "vertex_count": 25958,
+          "used_vertex_count": 25958,
+          "orphan_vertices": 0,
+          "triangle_count": 51546,
+          "edge_count": 77506,
+          "connected_components": 1,
+          "boundary_edges": 374,
+          "boundary_components": 4,
+          "boundary_cycles": 4,
+          "boundary_branch_vertices": 0,
+          "nonmanifold_edges": 0,
+          "winding_conflicts": 0,
+          "degenerate_triangles": 0,
+          "duplicate_faces": 0,
+          "euler_characteristic": -2,
+          "closed_oriented_edge_manifold": false,
+          "component_signed_volumes_m3": [
+            0.04445930142095817
+          ],
+          "outward_closed_components": false,
+          "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+        }
+      },
+      "seams": 15,
+      "failures": []
+    },
+    {
+      "id": "04_front_neck",
+      "label": "前领加深10U并联动领条",
+      "verdict": "BLOCKED",
+      "source_dxf": "experiments/intent-edit-benchmark/results/04_front_neck/output.dxf",
+      "source_yaml": "experiments/intent-edit-benchmark/results/04_front_neck/new-spec.yaml",
+      "source_dxf_sha256": "1f1e5f6c5204afb8b34c8691f6330b2f01c1754146603ef17cd4b518363d573b",
+      "source_yaml_sha256": "1f99d8ebd863e83d7b70b7c3aa21993d8cca3dc14e78e09a02de4d3422f59c67",
+      "units_assumption": "mm",
+      "profile": "fitted-tshirt-v1",
+      "generation": "REJECTED",
+      "reason": "线段形状偏离已验证模板，不能可靠确认裁片和缝合关系。",
+      "error_code": "PROFILE_REQUIRED",
+      "action": "Needs an explicit supported profile and independently checked sewing contract; thresholds were not changed.",
+      "generation_seconds": 0.025,
+      "seaming": "NOT_RUN_NO_ACCEPTED_MODEL"
+    }
+  ],
+  "base_commit": "46430f5a02caeb7c413d765f6b8a38536b1b755a",
+  "units_assumption": "mm",
+  "source_spec_units": "U, uncalibrated",
+  "unit_note": "Explicit numerical sewing assumption only; original YAML U and original DXF bytes remain unchanged. Not physical calibration.",
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "source_files": {
+    "experiments/intent-edit-review/sewn/run_chain.py": "244b259a88e4876f27487268a27e06f7fa0a24d70ddc1c9d24ccf361c11b1c87",
+    "services/dxf-preview/converter/core.py": "490348f119bf87c08e61058ca3d7ace1a768ebfc89298c78343f21711a8b1bcc",
+    "services/dxf-preview/converter/sewn.py": "9d932c32b5afc3bc7adece506ccb5587c1a35b08022058c9e630d92b8a6d2489",
+    "services/dxf-preview/converter/profile.json": "ed4bf3e045ab3248c5c8ba474f00efe5b6d4d179f39aeee1cd8040311f4d9f5b",
+    "services/dxf-preview/converter/sewing_contract.json": "ffb13fbdb046edf48b7e008a892312fa5df5ecb12c3632ea4656e4cf2121ba45",
+    "services/dxf-preview/verification/seams.py": "9eb147a69f0473fd1a2facdc3cad08ef9ef949995200f6ed31df3397fa9498e2",
+    "services/dxf-preview/verification/geometry.py": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+    "services/dxf-preview/verify_connections.py": "c27716f4299d3c465114a261dd78d16a427672c57d883317ea7bceedfd2b3517",
+    ".agents/skills/sew-pattern-to-3d/SKILL.md": "fa21140a0921fd6e8bae98e5e02038349fe466928b7c8c2c89ca5c5e946f2a76",
+    ".agents/skills/verify-seaming/SKILL.md": "f4b195c12b7fe5feeef6a348036162495f0b230e5bb7d9bb4418138aa8a10576",
+    ".agents/skills/verify/SKILL.md": "c5296d409be971426d8ca042fd1443a87a35e0fb7bf13964672529b8dc8f37b6"
+  },
+  "summary": {
+    "PASS": 2,
+    "FAIL": 0,
+    "BLOCKED": 3
+  },
+  "preview_verification_sha256": "dfab86f8da83ffeafd9eb95826cb1e924fa68d5aece7dae8fcd11592d117dad9"
+}

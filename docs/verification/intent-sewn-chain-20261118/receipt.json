@@ -1,0 +1,42 @@
+{
+  "verdict": "BLOCKED",
+  "scope": "All five actual inputs through the requested sewing chain",
+  "reason": "Three actual contour edits require profiles/contracts not supported by fitted-tshirt-v1; no threshold relaxation or stale model fallback.",
+  "base_commit": "46430f5a02caeb7c413d765f6b8a38536b1b755a",
+  "recorded_at": "2026-11-18T11:13:57.400586+08:00",
+  "generation_command": "python experiments/intent-edit-review/sewn/run_chain.py --output work/intent-edit-review/sewn-chain/run-01 --units-assumption mm",
+  "generation_exit_code": 3,
+  "case_summary": {
+    "PASS": 2,
+    "FAIL": 0,
+    "BLOCKED": 3
+  },
+  "accepted_case_independent_exit_codes": {
+    "baseline": 0,
+    "03_cuff_width": 0
+  },
+  "preview_delivery_verdict": "PASS",
+  "preview_command": "python experiments/intent-edit-review/sewn/verify_preview.py --output work/intent-edit-review/sewn-chain/preview-final",
+  "preview_exit_code": 0,
+  "service_tests": {
+    "command": "SEWING_TEST_EVIDENCE=work/intent-edit-review/sewn-chain/tests PYTHONPATH=services/dxf-preview python -m unittest discover -s services/dxf-preview/tests -v",
+    "count": 27,
+    "analytic_controls": 23,
+    "exit_code": 0
+  },
+  "wrong_source_control": {
+    "actual_cli_exit_code": 2,
+    "expected_rejection": true
+  },
+  "catalog_sha256": "aeaa185e62ada358a653892926749246638d2667387148f905102c9ae00b77be",
+  "source_converter_and_contract_changed": false,
+  "old_comparison_and_docs_changed": false,
+  "units": "explicit mm numerical assumption, original U still uncalibrated",
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "cleanup": "Owned browsers, contexts and HTTP services closed.",
+  "candidate_parent": "2217a8a3cdb4cd6db24ba74015b1a408fdba0ecc",
+  "candidate_manifest_sha256": "50219f5cb7f3f8c461b8cc2d8c3295a1d222d5dd447733961c8910ca86734b5e",
+  "concurrent_changes": "Fast-forward retained unrelated remote work; converter/contracts/inputs and this viewer remained unchanged."
+}
