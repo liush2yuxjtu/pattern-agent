@@ -123,6 +123,9 @@ __attribute__((export_name("analyze"))) void analyze(){float maxGap=0,maxPen=0,m
 }
 
 __attribute__((export_name("set_clock"))) void set_clock(int n,float t){frame=n;simTime=t;}
+/* Read-only clock access lets recording capture every substep without running analysis. */
+__attribute__((export_name("get_frame"))) int get_frame(){return frame;}
+__attribute__((export_name("get_time"))) float get_time(){return simTime;}
 
 /* Ideal sewn joints share positional degrees of freedom. Material coordinates
  * remain per-panel, so unequal lengths and reversed sewing remain detectable. */

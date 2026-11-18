@@ -1,4 +1,5 @@
 import * as T from '../../human-studio/vendor/three.module.js';
+import {MAX_FRAMES,STATE_FLOATS,validateParameters,topologyKey,encodeTrajectory,decodeTrajectory} from './trajectory.js';
 
 const $ = id => document.getElementById(id);
 const payload = JSON.parse($('payload').textContent);
@@ -16,6 +17,8 @@ let cameraAngle=.36,cameraElevation=.1,cameraDistance=2.8,drag=null;
 let seamMap=[],parameters,mode='fabric',running=false,busy=false,stepMs=0;
 let frameTimes=[],history=[],lastStats={},lastDraw=0,droppedSeconds=0,accumulator=0,lastAnalyze=0;
 let gpuString='',rendererClass='unknown',allocationBaseline;
+let track={frames:[],cursor:-1,atRecordedState:false},recording=false,playing=false,replayElapsed=0;
+let integratedSteps=0,captureTimes=[],seekTimes=[],playbackTimes=[],recordingNote='尚未录制。';
 
 function getParameters(){return {bottomMm:+$('width').value,topMm:420,lengthsMm:[+$('length').value,+$('length').value+($('fault').value==='mismatch'?40:0)],fault:$('fault').value,material:$('material').value,bodyOffsetMm:+$('body-shift').value,collision:$('collision').checked,wind:$('wind').checked};}
 function material(){return materials[parameters.material];}
@@ -23,7 +26,7 @@ function copyTo(ptr,bytes){new Uint8Array(wasm.memory.buffer,ptr,bytes.length).s
 function floatView(ptr,n){return new Float32Array(wasm.memory.buffer,ptr,n);}
 function intView(ptr,n){return new Int32Array(wasm.memory.buffer,ptr,n);}
 function updateCamera(){camera.position.set(Math.sin(cameraAngle)*cameraDistance,.8+cameraElevation*cameraDistance,Math.cos(cameraAngle)*cameraDistance+.055);camera.lookAt(0,.8,.055);}
-function setRunning(value){running=value;$('run').textContent=running?'暂停仿真':'开始仿真';accumulator=0;}
+function setRunning(value){if(value)playing=false;running=value;$('run').textContent=running?'暂停仿真':'开始仿真';accumulator=0;updateReplayUI();}
 function download(name,text,type='application/json'){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function sideLength(p){return Math.hypot(parameters.lengthsMm[p],(parameters.bottomMm-parameters.topMm)/2);}
 function topologyAudit(){
@@ -65,6 +68,7 @@ function setupScene(){
 // Uniform arc-length samples on a fixed ellipse, scaled to the pattern waist.
 function waistRing(){const pts=[],cumulative=[0];for(let j=0;j<=2048;j++){const a=2*Math.PI*j/2048;pts.push([.158*Math.cos(a),.108*Math.sin(a)]);if(j)cumulative.push(cumulative[j-1]+Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]));}const total=cumulative.at(-1),scale=parameters.topMm*2/1000/total,result=[];let k=0;for(let i=0;i<=2*N;i++){const d=i/(2*N)*total;while(k<2047&&cumulative[k+1]<d)k++;const t=(d-cumulative[k])/(cumulative[k+1]-cumulative[k]||1);result.push([(pts[k][0]*(1-t)+pts[k+1][0]*t)*scale,(pts[k][1]*(1-t)+pts[k+1][1]*t)*scale]);}return result;}
 function setupCloth(){
+  recording=false;playing=false;track={frames:[],cursor:-1,atRecordedState:false};recordingNote='重置或修改纸样／材料会清空旧录制。';
   parameters=getParameters();setRunning(false);history=[];droppedSeconds=0;
   const mat=material();wasm.configure_material(mat.Eu,mat.Ev,mat.G,mat.nu,mat.thickness,mat.density);
   positions=floatView(wasm.position_ptr(),NV*3);previous=floatView(wasm.previous_ptr(),NV*3);restUV=floatView(wasm.uv_ptr(),NV*2);triangles=intView(wasm.face_ptr(),NT*3);fields=floatView(wasm.field_ptr(),NT*8);invMass=floatView(wasm.invmass_ptr(),NV);bodyDistances=floatView(wasm.body_distance_ptr(),NV);
@@ -117,16 +121,114 @@ function updateSurface(){if(!cloth)return;clothGeometry.attributes.position.arra
   seamLines.geometry.attributes.position.needsUpdate=true;seamLines.geometry.attributes.color.needsUpdate=true;seamLines.geometry.computeBoundingSphere();clothGeometry.computeBoundingSphere();
 }
 function draw(){if(!renderer||!cloth)return;updateSurface();renderer.render(scene,camera);}
-function takeSteps(n){const t=performance.now();wasm.step(n,parameters.wind?.8:0);stepMs=(performance.now()-t)/Math.max(n,1);}
-async function advance(n){if(busy)throw new Error('A simulation operation is already running');setRunning(false);busy=true;$('activity').textContent='正在推进固定时间步…';try{for(let k=0;k<n;k+=20){takeSteps(Math.min(20,n-k));await new Promise(requestAnimationFrame);}analyze();draw();$('activity').textContent=`已完成 ${n} 步；检查结果见右侧。`;return {...lastStats};}finally{busy=false;}}
-function project(){analyze();return {schema:'pattern-agent.cloth-lab.v1',fingerprint:payload.buildFingerprint,units:{pattern:'mm',geometry:'m',stress:'Pa'},parameters:{...parameters},material:{...material(),calibration:'synthetic-not-measured'},grid:[N,M],positions:Array.from(positions),previous:Array.from(previous),pinPositions:Array.from(floatView(wasm.pin_ptr(),NV*3)),restUV:Array.from(restUV),triangles:Array.from(triangles),seams:seamMap,triangleFields:Array.from(fields),fieldOrder:['principalEngineeringStrain','warpEngineeringStrain','weftEngineeringStrain','maxPrincipalCauchyPa','vonMisesPa','GreenE11','GreenE22','GreenE12'],body:{positions:Array.from(floatView(wasm.body_ptr(),payload.body.vertices*3)),triangles:Array.from(intView(wasm.body_face_ptr(),payload.body.triangles*3)),offsetX:parameters.bodyOffsetMm/1000,sourceSha256:payload.body.sourceSha256,license:'CC0-1.0'},mode,diagnostics:{...lastStats},limitations:['synthetic material','rigid body','no cloth self collision','no CCD','approximate distance bending','not manufacturing approval']};}
-function restore(data){if(data.schema!=='pattern-agent.cloth-lab.v1'||data.fingerprint!==payload.buildFingerprint)throw new Error('Incompatible project or source fingerprint');for(const key of ['positions','previous','pinPositions'])if(data[key]?.length!==NV*3||!data[key].every(v=>Number.isFinite(v)&&Math.abs(v)<10))throw new Error('Invalid saved vertex array');const p=data.parameters;$('width').value=p.bottomMm;$('length').value=p.lengthsMm[0];$('fault').value=p.fault;$('material').value=p.material;$('collision').checked=p.collision;$('wind').checked=p.wind;$('body-shift').value=p.bodyOffsetMm;setupCloth();positions.set(data.positions);previous.set(data.previous);floatView(wasm.pin_ptr(),NV*3).set(data.pinPositions);wasm.set_clock(data.diagnostics.frame,data.diagnostics.simulationSeconds);applyMode(data.mode||'fabric');analyze();draw();}
+function takeSteps(n){
+  track.atRecordedState=false;
+  if(recording){let kernelMs=0;for(let i=0;i<n;i++){track.atRecordedState=false;const t=performance.now();wasm.step(1,parameters.wind?.8:0);integratedSteps++;stepMs=performance.now()-t;kernelMs+=stepMs;captureFrame('step');}stepMs=kernelMs/n;}
+  else{const t=performance.now();wasm.step(n,parameters.wind?.8:0);integratedSteps+=n;stepMs=(performance.now()-t)/Math.max(n,1);}
+}
+async function advance(n){if(busy)throw new Error('A simulation operation is already running');if(!Number.isInteger(n)||n<0||n>12000)throw new Error('Invalid step count');playing=false;setRunning(false);busy=true;updateReplayUI();$('activity').textContent='正在推进固定时间步…';try{for(let k=0;k<n;k+=20){takeSteps(Math.min(20,n-k));await new Promise(requestAnimationFrame);}analyze();draw();$('activity').textContent=`已完成 ${n} 步；检查结果见右侧。`;return {...lastStats};}finally{busy=false;updateReplayUI();}}
+
+function updateReplayUI(){
+  if(!$('replay-status'))return;
+  const count=track.frames.length,f=track.frames[track.cursor],first=track.frames[0],last=track.frames.at(-1);
+  $('replay-status').textContent=`${recording?'● 录制中':playing?'▶ 回放中':track.atRecordedState?'录制状态':'实时状态'} · ${count} 帧 · ${(count*STATE_FLOATS*4/1048576).toFixed(2)} MiB`;
+  $('replay-time').value=f?`${track.cursor+1} / ${count} · ${(f.time-first.time).toFixed(3)} / ${(last.time-first.time).toFixed(3)} s · 物理步 ${f.frame}`:'0 / 0';
+  $('replay-note').textContent=recordingNote;
+  const slider=$('replay-timeline');slider.max=Math.max(0,count-1);slider.value=Math.max(0,track.cursor);slider.disabled=!count||busy;
+  $('record-start').textContent=count?'重新录制':'开始录制';$('record-start').disabled=busy||recording;
+  $('record-stop').disabled=busy||!recording;
+  $('replay-play').textContent=playing?'暂停回放':'播放回放';$('replay-play').disabled=busy||recording||count<2;
+  for(const id of ['replay-first','replay-prev','replay-next','replay-last'])$(id).disabled=busy||!count;
+  $('export-replay').disabled=busy||!count;$('import-replay').disabled=busy||recording||playing;
+  for(const id of ['width','length','material','fault','body-shift','collision','wind','single-step','settle','reset','run'])$(id).disabled=busy||playing;
+}
+function captureFrame(kind){
+  if(!recording)return;
+  const start=performance.now(),state=new Float32Array(STATE_FLOATS);
+  state.set(positions);state.set(previous,NV*3);state.set(floatView(wasm.pin_ptr(),NV*3),NV*6);state.set(floatView(wasm.contacts_ptr(),NV),NV*9);
+  track.frames.push({state,frame:wasm.get_frame(),time:wasm.get_time(),parameters:{...parameters,lengthsMm:[...parameters.lengthsMm]},stepMs,kind});
+  track.cursor=track.frames.length-1;track.atRecordedState=true;
+  captureTimes.push(performance.now()-start);if(captureTimes.length>MAX_FRAMES)captureTimes.shift();
+  if(track.frames.length===MAX_FRAMES){recording=false;recordingNote='已达 1,201 帧上限，自动停止录制；已有轨迹完整保留。';}
+}
+function startRecording(){
+  if(busy)throw new Error('Simulation busy');playing=false;setRunning(false);
+  track={frames:[],cursor:-1,atRecordedState:false};captureTimes=[];recording=true;
+  recordingNote='每个 1/120 s 物理步保存一次；人体移动、碰撞／风开关另存事件帧。上限约 39 MiB。';
+  captureFrame('start');updateReplayUI();
+}
+function stopRecording(){recording=false;updateReplayUI();}
+function applyFrame(f){
+  parameters={...f.parameters,lengthsMm:[...f.parameters.lengthsMm]};
+  $('body-shift').value=parameters.bodyOffsetMm;$('shift-value').value=parameters.bodyOffsetMm+' mm';
+  $('collision').checked=parameters.collision;$('wind').checked=parameters.wind;
+  wasm.set_body_offset(parameters.bodyOffsetMm/1000);bodyMesh.position.x=parameters.bodyOffsetMm/1000;
+  wasm.set_collision(+parameters.collision);
+  positions.set(f.state.subarray(0,NV*3));previous.set(f.state.subarray(NV*3,NV*6));
+  floatView(wasm.pin_ptr(),NV*3).set(f.state.subarray(NV*6,NV*9));
+  floatView(wasm.contacts_ptr(),NV).set(f.state.subarray(NV*9));
+  wasm.set_clock(f.frame,f.time);stepMs=f.stepMs;
+  analyze();draw();
+}
+function seekFrame(index,keepPlaying=false){
+  if(busy)throw new Error('Simulation busy');
+  if(!Number.isInteger(index)||index<0||index>=track.frames.length)throw new Error('Invalid replay index');
+  const start=performance.now();recording=false;if(!keepPlaying)playing=false;setRunning(false);
+  applyFrame(track.frames[index]);track.cursor=index;track.atRecordedState=true;
+  seekTimes.push(performance.now()-start);if(seekTimes.length>600)seekTimes.shift();updateReplayUI();
+  return {...lastStats};
+}
+function playReplay(){
+  if(busy||recording||track.frames.length<2)return;
+  if(playing){playing=false;updateReplayUI();return;}
+  if(!track.atRecordedState||track.cursor===track.frames.length-1)seekFrame(0);
+  setRunning(false);playing=true;replayElapsed=track.frames[track.cursor].time-track.frames[0].time;updateReplayUI();
+}
+function replayTick(elapsed){
+  const start=performance.now(),frames=track.frames,origin=frames[0].time;
+  replayElapsed+=elapsed*Number($('replay-speed').value);
+  let next=track.cursor;while(next+1<frames.length&&frames[next+1].time-origin<=replayElapsed+1e-7)next++;
+  if(next!==track.cursor)seekFrame(next,true);
+  if(next===frames.length-1){playing=false;updateReplayUI();}
+  playbackTimes.push(performance.now()-start);if(playbackTimes.length>600)playbackTimes.shift();
+}
+function project(includeReplay=true){analyze();return {schema:'pattern-agent.cloth-lab.v1',fingerprint:payload.buildFingerprint,units:{pattern:'mm',geometry:'m',stress:'Pa'},parameters:{...parameters},material:{...material(),calibration:'synthetic-not-measured'},grid:[N,M],positions:Array.from(positions),previous:Array.from(previous),pinPositions:Array.from(floatView(wasm.pin_ptr(),NV*3)),contactFlags:Array.from(floatView(wasm.contacts_ptr(),NV)),replay:includeReplay&&track.frames.length?encodeTrajectory(track,payload.buildFingerprint):undefined,restUV:Array.from(restUV),triangles:Array.from(triangles),seams:seamMap,triangleFields:Array.from(fields),fieldOrder:['principalEngineeringStrain','warpEngineeringStrain','weftEngineeringStrain','maxPrincipalCauchyPa','vonMisesPa','GreenE11','GreenE22','GreenE12'],body:{positions:Array.from(floatView(wasm.body_ptr(),payload.body.vertices*3)),triangles:Array.from(intView(wasm.body_face_ptr(),payload.body.triangles*3)),offsetX:parameters.bodyOffsetMm/1000,sourceSha256:payload.body.sourceSha256,license:'CC0-1.0'},mode,diagnostics:{...lastStats},limitations:['synthetic material','rigid body','no cloth self collision','no CCD','approximate distance bending','not manufacturing approval']};}
+function restore(data){
+  if(busy)throw new Error('Simulation busy');
+  if(data.schema!=='pattern-agent.cloth-lab.v1'||data.fingerprint!==payload.buildFingerprint)throw new Error('Incompatible project or source fingerprint');
+  const p=validateParameters(data.parameters);
+  for(const key of ['positions','previous','pinPositions'])if(data[key]?.length!==NV*3||!data[key].every(v=>Number.isFinite(v)&&Math.abs(v)<10))throw new Error('Invalid saved vertex array');
+  if(data.contactFlags&&(data.contactFlags.length!==NV||!data.contactFlags.every(v=>v===0||v===1)))throw new Error('Invalid saved contact array');
+  if(!Number.isInteger(data.diagnostics?.frame)||data.diagnostics.frame<0||data.diagnostics.frame>1e7||!Number.isFinite(data.diagnostics.simulationSeconds)||data.diagnostics.simulationSeconds<0||data.diagnostics.simulationSeconds>1e6)throw new Error('Invalid saved clock');
+  if(data.mode&&!['fabric','strain','stress','contact'].includes(data.mode))throw new Error('Invalid saved view');
+  const decoded=data.replay?decodeTrajectory(data.replay,payload.buildFingerprint,p):{frames:[],cursor:-1,atRecordedState:false};
+  if(decoded.atRecordedState){const f=decoded.frames[decoded.cursor];
+    if(!f||f.frame!==data.diagnostics.frame||f.time!==data.diagnostics.simulationSeconds||JSON.stringify(f.parameters)!==JSON.stringify(p)||
+       !f.state.subarray(0,NV*3).every((v,i)=>v===data.positions[i])||!f.state.subarray(NV*3,NV*6).every((v,i)=>v===data.previous[i])||
+       !f.state.subarray(NV*6,NV*9).every((v,i)=>v===data.pinPositions[i])||!f.state.subarray(NV*9).every((v,i)=>v===(data.contactFlags?.[i]||0)))throw new Error('Selected replay frame differs from saved state');
+  }
+  $('width').value=p.bottomMm;$('length').value=p.lengthsMm[0];$('fault').value=p.fault;$('material').value=p.material;
+  $('collision').checked=p.collision;$('wind').checked=p.wind;$('body-shift').value=p.bodyOffsetMm;setupCloth();
+  const state=new Float32Array(STATE_FLOATS);state.set(data.positions);state.set(data.previous,NV*3);state.set(data.pinPositions,NV*6);if(data.contactFlags)state.set(data.contactFlags,NV*9);
+  applyFrame({state,parameters:p,frame:data.diagnostics.frame,time:data.diagnostics.simulationSeconds,stepMs:Math.max(0,data.diagnostics.stepMs||0)});
+  track=decoded;recordingNote=track.frames.length?'已恢复完整录制；拖动时间轴可离线检查各帧。':'已恢复单帧状态。';applyMode(data.mode||'fabric');updateReplayUI();
+}
+function replayInfo(){return {frames:track.frames.length,cursor:track.cursor,atRecordedState:track.atRecordedState,recording,playing,speed:Number($('replay-speed').value),maxFrames:MAX_FRAMES,bytes:track.frames.length*STATE_FLOATS*4,integratedSteps,captureTimesMs:[...captureTimes],seekTimesMs:[...seekTimes],playbackTimesMs:[...playbackTimes]};}
+function stateChanged(kind='settings'){playing=false;track.atRecordedState=false;captureFrame(kind);updateReplayUI();}
+
 function sceneOBJ(){const lines=['# Pattern Agent scene snapshot; units metres. Surface meshes, not 3D-print solids.','o cloth'];for(let i=0;i<NV;i++)lines.push(`v ${positions[3*i]} ${positions[3*i+1]} ${positions[3*i+2]}`);for(let t=0;t<NT;t++)lines.push('f '+[0,1,2].map(j=>triangles[t*3+j]+1).join(' '));lines.push('o MakeHuman_CC0');const bv=floatView(wasm.body_ptr(),payload.body.vertices*3),bf=intView(wasm.body_face_ptr(),payload.body.triangles*3);for(let i=0;i<payload.body.vertices;i++)lines.push(`v ${bv[3*i]+parameters.bodyOffsetMm/1000} ${bv[3*i+1]} ${bv[3*i+2]}`);for(let t=0;t<payload.body.triangles;t++)lines.push('f '+[0,1,2].map(j=>bf[3*t+j]+NV+1).join(' '));return lines.join('\n');}
-function performanceLog(){return {stats:{...lastStats},frameTimesMs:[...frameTimes],history:[...history],renderer:gpuString,rendererClass,pixelRatio:renderer.getPixelRatio(),drawCalls:renderer.info.render.calls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,wasmBytes:decode(payload.wasm).length,wasmMemoryBytes:wasm.memory.buffer.byteLength,fingerprint:payload.buildFingerprint,droppedWallSeconds:droppedSeconds};}
-function wireUI(){for(const id of ['width','length','material','fault'])$(id).addEventListener('input',()=>{if(!busy)setupCloth();});$('body-shift').addEventListener('input',()=>{parameters.bodyOffsetMm=+$('body-shift').value;$('shift-value').value=parameters.bodyOffsetMm+' mm';wasm.set_body_offset(parameters.bodyOffsetMm/1000);bodyMesh.position.x=parameters.bodyOffsetMm/1000;analyze();draw();});$('collision').onchange=()=>{parameters.collision=$('collision').checked;wasm.set_collision(+parameters.collision);analyze();};$('wind').onchange=()=>parameters.wind=$('wind').checked;$('run').onclick=()=>{if(!busy)setRunning(!running);};$('single-step').onclick=()=>advance(1);$('settle').onclick=()=>advance(240);$('reset').onclick=()=>{if(!busy)setupCloth();};
+function performanceLog(){return {stats:{...lastStats},frameTimesMs:[...frameTimes],history:[...history],renderer:gpuString,rendererClass,pixelRatio:renderer.getPixelRatio(),drawCalls:renderer.info.render.calls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,wasmBytes:decode(payload.wasm).length,wasmMemoryBytes:wasm.memory.buffer.byteLength,fingerprint:payload.buildFingerprint,droppedWallSeconds:droppedSeconds,replay:replayInfo()};}
+function wireUI(){
+  $('record-start').onclick=startRecording;$('record-stop').onclick=stopRecording;
+  $('replay-timeline').oninput=e=>seekFrame(+e.target.value);$('replay-first').onclick=()=>seekFrame(0);$('replay-last').onclick=()=>seekFrame(track.frames.length-1);
+  $('replay-prev').onclick=()=>seekFrame(Math.max(0,track.cursor-1));$('replay-next').onclick=()=>seekFrame(Math.min(track.frames.length-1,track.cursor+1));
+  $('replay-play').onclick=playReplay;$('export-replay').onclick=()=>download('cloth-replay.json',JSON.stringify(project()));
+  $('import-replay').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>64*1048576)throw new Error('Recording file exceeds 64 MiB');restore(JSON.parse(await file.text()));}catch(error){$('replay-note').textContent='导入失败：'+error.message;}finally{e.target.value='';}};
+  updateReplayUI();
+  for(const id of ['width','length','material','fault'])$(id).addEventListener('input',()=>{if(!busy)setupCloth();});$('body-shift').addEventListener('input',()=>{parameters.bodyOffsetMm=+$('body-shift').value;$('shift-value').value=parameters.bodyOffsetMm+' mm';wasm.set_body_offset(parameters.bodyOffsetMm/1000);bodyMesh.position.x=parameters.bodyOffsetMm/1000;stateChanged();analyze();draw();});$('collision').onchange=()=>{parameters.collision=$('collision').checked;wasm.set_collision(+parameters.collision);stateChanged();analyze();draw();};$('wind').onchange=()=>{parameters.wind=$('wind').checked;stateChanged();};$('run').onclick=()=>{if(!busy)setRunning(!running);};$('single-step').onclick=()=>advance(1);$('settle').onclick=()=>advance(240);$('reset').onclick=()=>{if(!busy)setupCloth();};
   for(const b of document.querySelectorAll('[data-mode]'))b.onclick=()=>applyMode(b.dataset.mode);for(const b of document.querySelectorAll('[data-camera]'))b.onclick=()=>{cameraAngle={front:0,side:Math.PI/2,back:Math.PI}[b.dataset.camera];updateCamera();draw();};$('export-svg').onclick=()=>download('cloth-patterns.svg',patternSVG(),'image/svg+xml');$('export-obj').onclick=()=>download('cloth-body-scene.obj',sceneOBJ(),'text/plain');$('export-json').onclick=()=>download('cloth-project.json',JSON.stringify(project()));$('export-log').onclick=()=>download('cloth-diagnostics.json',JSON.stringify(performanceLog(),null,2));$('save-html')?.remove();const button=document.createElement('button');button.id='save-html';button.textContent='当前状态单文件 HTML ↓';button.style.gridColumn='1 / -1';button.onclick=()=>{const html=originalHTML.replace(/<script id="initial-state" type="application\/json">[\s\S]*?<\/script>/,()=>`<script id="initial-state" type="application/json">${JSON.stringify(project()).replaceAll('<','\\u003c')}</script>`);download('cloth-lab-snapshot.html',html,'text/html');};document.querySelector('.export-grid').appendChild(button);
 }
-function animate(now){const elapsed=lastDraw?(now-lastDraw)/1000:0;lastDraw=now;if(running&&!busy){frameTimes.push(elapsed*1000);if(frameTimes.length>600)frameTimes.shift();const use=Math.min(elapsed,.05);droppedSeconds+=Math.max(0,elapsed-use);accumulator+=use;let steps=Math.min(6,Math.floor(accumulator*120));if(steps){takeSteps(steps);accumulator-=steps/120;}if(now-lastAnalyze>150){analyze();lastAnalyze=now;const samples=frameTimes.slice(-90),avg=samples.reduce((a,b)=>a+b,0)/(samples.length||1);$('fps').textContent=`${(1000/avg).toFixed(1)} / ${avg.toFixed(0)} ms`;}draw();}requestAnimationFrame(animate);}
+function animate(now){const elapsed=lastDraw?(now-lastDraw)/1000:0;lastDraw=now;if(playing&&!busy)replayTick(elapsed);else if(running&&!busy){frameTimes.push(elapsed*1000);if(frameTimes.length>600)frameTimes.shift();const use=Math.min(elapsed,.05);droppedSeconds+=Math.max(0,elapsed-use);accumulator+=use;let steps=Math.min(6,Math.floor(accumulator*120));if(steps){takeSteps(steps);accumulator-=steps/120;}if(now-lastAnalyze>150){analyze();lastAnalyze=now;const samples=frameTimes.slice(-90),avg=samples.reduce((a,b)=>a+b,0)/(samples.length||1);$('fps').textContent=`${(1000/avg).toFixed(1)} / ${avg.toFixed(0)} ms`;}draw();updateReplayUI();}requestAnimationFrame(animate);}
 
 async function boot(){
   const result=await WebAssembly.instantiate(decode(payload.wasm),{});wasm=result.instance.exports;
@@ -134,11 +236,11 @@ async function boot(){
   wasm.configure_body(payload.body.vertices,payload.body.triangles,payload.body.nodeCount);setupScene();setupCloth();wireUI();
   const saved=JSON.parse($('initial-state').textContent);if(saved)restore(saved);
   document.querySelector('.chip')?.remove();const badge=document.createElement('span');badge.className='chip';badge.textContent='WASM 已加载 · 离线可运行';document.querySelector('.header-right').prepend(badge);
-  window.clothLab={ready:true,advance,setCollisionCache:enabled=>wasm.set_cache(+enabled),stats:()=>analyze(),project,restore,performanceLog,patternSVG,setRunning,setMode:applyMode,reset:setupCloth,
+  window.clothLab={ready:true,advance,replay:{start:startRecording,stop:stopRecording,seek:seekFrame,play:playReplay,info:replayInfo,export:()=>encodeTrajectory(track,payload.buildFingerprint)},setCollisionCache:enabled=>wasm.set_cache(+enabled),stats:()=>analyze(),project,restore,performanceLog,patternSVG,setRunning,setMode:applyMode,reset:setupCloth,
     clearPerformance:()=>{frameTimes=[];history=[];droppedSeconds=0;},
     materialProbe:(u,v)=>{wasm.material_probe(...u,...v);return Array.from(floatView(wasm.probe_ptr(),8));},
     collisionProbe:p=>{wasm.collision_probe(...p);return Array.from(floatView(wasm.probe_ptr(),7));},
-    injectVertex:(index,point)=>{wasm.inject_vertex(index,...point);analyze();draw();return {...lastStats};},
+    injectVertex:(index,point)=>{wasm.inject_vertex(index,...point);stateChanged('injection');analyze();draw();return {...lastStats};},
     surface:()=>({mode,colors:Array.from(clothGeometry.attributes.color.array),positions:Array.from(clothGeometry.attributes.position.array)}),
     source:{fingerprint:payload.buildFingerprint,wasmSha256:payload.wasmSha256,bodySourceSha256:payload.body.sourceSha256},
     allocationBaseline:()=>allocationBaseline};

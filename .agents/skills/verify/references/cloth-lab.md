@@ -17,6 +17,7 @@ changed file hashes and raw command exit statuses before each commit.
 python scripts/build_cloth_lab.py
 python tools/cloth_lab/test_kernel.py
 python tools/cloth_lab/verify_browser.py --output work/cloth-lab/local
+python tools/cloth_lab/verify_replay.py --output work/cloth-lab/replay
 python scripts/build_pages.py
 python -m unittest discover -s scripts -p test_verify_artifacts.py -v
 python scripts/verify_pages.py --output work/cloth-lab/pages
@@ -72,6 +73,28 @@ reopen with a screenshot when claiming that boundary.
 It tests the exact HTML. Raw evidence belongs in ignored `work/cloth-lab/`;
 copy selected receipts, actual exports and images to `docs/verification/`.
 
+## Full physical replay
+
+`verify_replay.py` drives the visible record/stop/timeline/step/transport/speed/file
+controls. It wraps the actual WASM integration export only to count invocations;
+the solver is never replaced. A 60-step recording must have 61 exact states and
+the actual solver clock. Independently decode the raw Float32 buffers and reopen
+EVERY frame with `oracle.py`: full sewing, 4,770 body samples, BOTH intersection
+directions, and all 1,536 triangle tensors. Seek/play must make zero integration
+calls and restore current/previous/pins/contacts/clock/parameters exactly. Check
+actual stress and strain GPU buffers, keyboard scrubbing, previous/next, pause,
+all four playback speeds (browser click-to-completion time, excluding automation
+waiting), JSON import/export, offline HTML with the timeline,
+recursive saving, and bit-exact continuation including moved-body pins.
+
+Record actual injected penetration and all three sewing faults; their replayed
+frames must remain FAIL. Reject incompatible source, oversized/corrupt buffers,
+invalid parameters and selected-state disagreement BEFORE altering the scene.
+Run the solver beyond the actual 1,201-frame cap: recording stops, existing data
+remain seekable and state-buffer bytes stay <=40,834,000. Preserve raw per-frame
+oracle results and record/copy/seek/play timings; the cap excludes temporary
+serialization allocations. At 390 px the replay controls must not overflow.
+
 ## Published surface
 
 Push a verified direct-to-main commit without force; observe the EXISTING Pages
@@ -82,6 +105,10 @@ python tools/cloth_lab/verify_browser.py \
   --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ \
   --expected-commit DEPLOYED_SHA --expected-html-sha HTML_SHA \
   --output work/cloth-lab/live
+python tools/cloth_lab/verify_replay.py \
+  --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ \
+  --expected-commit DEPLOYED_SHA --expected-html-sha HTML_SHA \
+  --output work/cloth-lab/replay-live
 python scripts/verify_pages.py \
   --base-url https://liush2yuxjtu.github.io/pattern-agent/ \
   --expected-commit DEPLOYED_SHA --output work/cloth-lab/pages-live
