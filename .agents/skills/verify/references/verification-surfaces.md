@@ -36,3 +36,4 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | cloth-lab | inline WASM, actual-body collision, synthetic material tensors and stateful HTML | [cloth-lab.md](cloth-lab.md) |
 | product-case | original garment photo, six native generated images, adjustable body handoff and OpenCV evidence gallery | [product-case.md](product-case.md) |
 | sleeve-creases | real sleeve triangle positions, source-UV correspondence, diagnostic UI and live-solver logging | [sleeve-creases.md](sleeve-creases.md) |
+| teagan-sites-archive | complete source restoration, local Chromium, immutable evidence and native Pages/Git persistence | [teagan-sites-archive.md](teagan-sites-archive.md) |

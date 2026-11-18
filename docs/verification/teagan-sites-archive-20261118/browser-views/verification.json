@@ -1,0 +1,246 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Default is only 2D and plain 3D",
+    "Both optional renderers and fold scan are initially absent",
+    "Real pattern, body, WASM and static wearing checks are ready",
+    "Independent UI combination: paper",
+    "Independent UI combination: model",
+    "Independent UI combination: heat",
+    "Independent UI combination: crease",
+    "Independent UI combination: paper,model",
+    "Independent UI combination: paper,heat",
+    "Independent UI combination: paper,crease",
+    "Independent UI combination: model,heat",
+    "Independent UI combination: model,crease",
+    "Independent UI combination: heat,crease",
+    "Independent UI combination: paper,model,heat",
+    "Independent UI combination: paper,model,crease",
+    "Independent UI combination: paper,heat,crease",
+    "Independent UI combination: model,heat,crease",
+    "Independent UI combination: paper,model,heat,crease",
+    "All combinations leave exact source pattern and fitted vertices unchanged",
+    "Fold pane derives its values from the actual fitted sleeves",
+    "Fold legend names degrees and the full garment / angle coverage",
+    "Three simultaneously live renderers display distinct measured fields",
+    "Default fold view covers all four panels and all six seam groups",
+    "Full 0–180 degree scale and all regions are selected by default",
+    "Full maximum and historical sleeve quality maximum are separately reported",
+    "Previously excluded underarm edges remain measured and exported",
+    "Open hems and neckline are explicitly non-applicable boundaries",
+    "Color legend renders the explicit fixed full-range ticks",
+    "Detail scale changes actual colors while preserving exact measured angles and geometry",
+    "Historical sleeve-only scope stays optional and explicitly omits seam neighborhoods",
+    "Returning to full range restores the original measured values and exact garment",
+    "Back panel has actual fold colors and only the fold camera moves",
+    "Camera rotates independently: model",
+    "Camera rotates independently: heat",
+    "Camera rotates independently: crease",
+    "Peak location moves only the fold camera and reports a real edge",
+    "Peak closeup selects a ray-tested view clear of the body and garment",
+    "Real pointer raycast returns a garment face and measured adjacent edge or seam",
+    "Fold unfold control shares geometry with both other sliders and pauses fold colors",
+    "Unfold never displays stale assembled-pose fold colors",
+    "Reassembly restores fold colors and the identical fitted mesh",
+    "Context loss recovers without stopping sibling renderers: model",
+    "Context loss recovers without stopping sibling renderers: heat",
+    "Context loss recovers without stopping sibling renderers: crease",
+    "Recovered fold canvas retains its measured colors",
+    "Changing the source rebuilds fold diagnostics in the selected fourth pane",
+    "Undo restores exact pattern, vertices and recomputed fold result",
+    "Export includes measured edges, actual body and timed scan plus picked edge events",
+    "Last fold pane cannot be disabled into an empty workspace",
+    "Side checkbox also preserves and resynchronizes the last pane",
+    "Side checkbox closes only the fold pane",
+    "Wrapped view buttons stay clear of the panes at 1440",
+    "Live nonblank-sized model viewport at 1440",
+    "Live nonblank-sized heat viewport at 1440",
+    "Live nonblank-sized crease viewport at 1440",
+    "Wrapped view buttons stay clear of the panes at 1399",
+    "Live nonblank-sized model viewport at 1399",
+    "Live nonblank-sized heat viewport at 1399",
+    "Live nonblank-sized crease viewport at 1399",
+    "Wrapped view buttons stay clear of the panes at 1024",
+    "Live nonblank-sized model viewport at 1024",
+    "Live nonblank-sized heat viewport at 1024",
+    "Live nonblank-sized crease viewport at 1024",
+    "Wrapped view buttons stay clear of the panes at 820",
+    "Live nonblank-sized model viewport at 820",
+    "Live nonblank-sized heat viewport at 820",
+    "Live nonblank-sized crease viewport at 820",
+    "Wrapped view buttons stay clear of the panes at 761",
+    "Live nonblank-sized model viewport at 761",
+    "Live nonblank-sized heat viewport at 761",
+    "Live nonblank-sized crease viewport at 761",
+    "Wrapped view buttons stay clear of the panes at 390",
+    "Live nonblank-sized model viewport at 390",
+    "Live nonblank-sized heat viewport at 390",
+    "Live nonblank-sized crease viewport at 390",
+    "Mobile independently renders fold color and numeric legend",
+    "Mobile stretch and plain views retain distinct garment pixels",
+    "Reload starts with only 2D plus plain 3D and neither optional renderer",
+    "No JavaScript errors or WebGL warnings"
+  ],
+  "count": 79,
+  "origin": "https://pattern-studio.test",
+  "errors": [],
+  "warnings": [],
+  "pixels": {
+    "plain": {
+      "red": 0,
+      "teal": 717,
+      "green": 20408,
+      "pink": 0,
+      "blue": 0,
+      "size": [
+        339,
+        697
+      ]
+    },
+    "stretch": {
+      "red": 3190,
+      "teal": 0,
+      "green": 11,
+      "pink": 0,
+      "blue": 0,
+      "size": [
+        339,
+        575
+      ]
+    },
+    "fold": {
+      "red": 0,
+      "teal": 3936,
+      "green": 765,
+      "pink": 4,
+      "blue": 18685,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "detail-scale": {
+      "red": 58,
+      "teal": 3787,
+      "green": 697,
+      "pink": 11,
+      "blue": 18592,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "quality-scope": {
+      "red": 43,
+      "teal": 1381,
+      "green": 385,
+      "pink": 0,
+      "blue": 1806,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "full-back": {
+      "red": 3,
+      "teal": 3705,
+      "green": 595,
+      "pink": 6,
+      "blue": 20290,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "peak-closeup": {
+      "red": 49,
+      "teal": 12543,
+      "green": 3461,
+      "pink": 32,
+      "blue": 59023,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "fold-picked-edge": {
+      "red": 49,
+      "teal": 36339,
+      "green": 3399,
+      "pink": 32,
+      "blue": 58690,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "fold-unfolded": {
+      "red": 0,
+      "teal": 0,
+      "green": 33838,
+      "pink": 0,
+      "blue": 0,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "fold-reassembled": {
+      "red": 0,
+      "teal": 3936,
+      "green": 765,
+      "pink": 5,
+      "blue": 18691,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "fold-context-restored": {
+      "red": 0,
+      "teal": 3936,
+      "green": 765,
+      "pink": 5,
+      "blue": 18691,
+      "size": [
+        340,
+        462
+      ]
+    },
+    "mobile-fold": {
+      "red": 1,
+      "teal": 2517,
+      "green": 465,
+      "pink": 3,
+      "blue": 11711,
+      "size": [
+        364,
+        302
+      ]
+    },
+    "mobile-stretch": {
+      "red": 2102,
+      "teal": 0,
+      "green": 9,
+      "pink": 0,
+      "blue": 0,
+      "size": [
+        364,
+        313
+      ]
+    },
+    "mobile-plain": {
+      "red": 0,
+      "teal": 637,
+      "green": 19229,
+      "pink": 0,
+      "blue": 0,
+      "size": [
+        364,
+        376
+      ]
+    }
+  },
+  "productionAssetSha256": {},
+  "runner": "Installed Chromium + Playwright; exact dist bytes"
+}

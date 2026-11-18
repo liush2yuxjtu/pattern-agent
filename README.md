@@ -3,6 +3,14 @@
 Runnable Blender garment experiments and independent geometry checks. This is a
 research repository; physical garment fit has not been verified.
 
+## Teagan Sites 二维与三维工作室归档
+
+[第 14 版完整源码、运行说明与中文交接](experiments/teagan_sites_studio/README.md)
+保存真实 Teagan 原型、二维编辑、人体叠加、四种独立视图、形变及全衣折角热图、
+诊断日志和状态机修复。原始 93 个文件逐项绑定 SHA-256，附开源许可、历史负例、
+已有线上证据与新目录本地复跑记录。[本次归档验证](docs/verification/teagan-sites-archive-20261118/README.md)
+区分软件/几何检查与仍未运行的物理合体，不覆盖仓库历史 T-shirt 的 FAIL。
+
 ## 纸样设计意图实验统一入口
 
 [从实验目录的README开始](experiments/intent-edit-review/README.md)：集中查找原型DXF/YAML、设计意图与差异补丁、二维/三维产物、严格缝合及全部验证证据。[在线实验总览](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/)由同一README生成。

@@ -1,0 +1,80 @@
+PASS: Default is only 2D and plain 3D
+PASS: Both optional renderers and fold scan are initially absent
+PASS: Real pattern, body, WASM and static wearing checks are ready
+PASS: Independent UI combination: paper
+PASS: Independent UI combination: model
+PASS: Independent UI combination: heat
+PASS: Independent UI combination: crease
+PASS: Independent UI combination: paper,model
+PASS: Independent UI combination: paper,heat
+PASS: Independent UI combination: paper,crease
+PASS: Independent UI combination: model,heat
+PASS: Independent UI combination: model,crease
+PASS: Independent UI combination: heat,crease
+PASS: Independent UI combination: paper,model,heat
+PASS: Independent UI combination: paper,model,crease
+PASS: Independent UI combination: paper,heat,crease
+PASS: Independent UI combination: model,heat,crease
+PASS: Independent UI combination: paper,model,heat,crease
+PASS: All combinations leave exact source pattern and fitted vertices unchanged
+PASS: Fold pane derives its values from the actual fitted sleeves
+PASS: Fold legend names degrees and the full garment / angle coverage
+PASS: Three simultaneously live renderers display distinct measured fields
+PASS: Default fold view covers all four panels and all six seam groups
+PASS: Full 0–180 degree scale and all regions are selected by default
+PASS: Full maximum and historical sleeve quality maximum are separately reported
+PASS: Previously excluded underarm edges remain measured and exported
+PASS: Open hems and neckline are explicitly non-applicable boundaries
+PASS: Color legend renders the explicit fixed full-range ticks
+PASS: Detail scale changes actual colors while preserving exact measured angles and geometry
+PASS: Historical sleeve-only scope stays optional and explicitly omits seam neighborhoods
+PASS: Returning to full range restores the original measured values and exact garment
+PASS: Back panel has actual fold colors and only the fold camera moves
+PASS: Camera rotates independently: model
+PASS: Camera rotates independently: heat
+PASS: Camera rotates independently: crease
+PASS: Peak location moves only the fold camera and reports a real edge
+PASS: Peak closeup selects a ray-tested view clear of the body and garment
+PASS: Real pointer raycast returns a garment face and measured adjacent edge or seam
+PASS: Fold unfold control shares geometry with both other sliders and pauses fold colors
+PASS: Unfold never displays stale assembled-pose fold colors
+PASS: Reassembly restores fold colors and the identical fitted mesh
+PASS: Context loss recovers without stopping sibling renderers: model
+PASS: Context loss recovers without stopping sibling renderers: heat
+PASS: Context loss recovers without stopping sibling renderers: crease
+PASS: Recovered fold canvas retains its measured colors
+PASS: Changing the source rebuilds fold diagnostics in the selected fourth pane
+PASS: Undo restores exact pattern, vertices and recomputed fold result
+PASS: Export includes measured edges, actual body and timed scan plus picked edge events
+PASS: Last fold pane cannot be disabled into an empty workspace
+PASS: Side checkbox also preserves and resynchronizes the last pane
+PASS: Side checkbox closes only the fold pane
+PASS: Wrapped view buttons stay clear of the panes at 1440
+PASS: Live nonblank-sized model viewport at 1440
+PASS: Live nonblank-sized heat viewport at 1440
+PASS: Live nonblank-sized crease viewport at 1440
+PASS: Wrapped view buttons stay clear of the panes at 1399
+PASS: Live nonblank-sized model viewport at 1399
+PASS: Live nonblank-sized heat viewport at 1399
+PASS: Live nonblank-sized crease viewport at 1399
+PASS: Wrapped view buttons stay clear of the panes at 1024
+PASS: Live nonblank-sized model viewport at 1024
+PASS: Live nonblank-sized heat viewport at 1024
+PASS: Live nonblank-sized crease viewport at 1024
+PASS: Wrapped view buttons stay clear of the panes at 820
+PASS: Live nonblank-sized model viewport at 820
+PASS: Live nonblank-sized heat viewport at 820
+PASS: Live nonblank-sized crease viewport at 820
+PASS: Wrapped view buttons stay clear of the panes at 761
+PASS: Live nonblank-sized model viewport at 761
+PASS: Live nonblank-sized heat viewport at 761
+PASS: Live nonblank-sized crease viewport at 761
+PASS: Wrapped view buttons stay clear of the panes at 390
+PASS: Live nonblank-sized model viewport at 390
+PASS: Live nonblank-sized heat viewport at 390
+PASS: Live nonblank-sized crease viewport at 390
+PASS: Mobile independently renders fold color and numeric legend
+PASS: Mobile stretch and plain views retain distinct garment pixels
+PASS: Reload starts with only 2D plus plain 3D and neither optional renderer
+PASS: No JavaScript errors or WebGL warnings
+{"status": "PASS", "count": 79, "errors": [], "warnings": []}

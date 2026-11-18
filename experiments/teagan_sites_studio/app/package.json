@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@freesewing/config": "^4.10.2",
+    "@freesewing/plugin-transform": "^4.10.2",
+    "@freesewing/teagan": "^4.10.2",
+    "clipper-lib": "6.4.2",
+    "esbuild": "^0.25.12",
+    "three": "^0.180.0",
+    "wabt": "^1.0.37"
+  },
+  "name": "pattern-atelier",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs",
+    "verify:expert": "node scripts/verify-expert.mjs",
+    "verify:curves": "node scripts/export-curve-audit.mjs && python3 scripts/verify-curves.py",
+    "verify:deformation": "node scripts/verify-deformation.mjs /tmp/pattern-deformation-cases.json.gz && python3 scripts/verify-deformation.py /tmp/pattern-deformation-cases.json.gz",
+    "verify:heat-values": "node scripts/verify-heat-values.mjs /tmp/pattern-high-value-audit.json && python3 scripts/verify-heat-values.py /tmp/pattern-high-value-audit.json",
+    "verify:wear": "node scripts/export-wear-audit.mjs /tmp/pattern-wear-audit && python3 scripts/verify-wear.py /tmp/pattern-wear-audit && python3 scripts/verify-sleeve-quality.py /tmp/pattern-wear-audit",
+    "bake:fits": "node scripts/bake-static-fits.mjs",
+    "verify:fold-angles": "node scripts/verify-crease-angles.mjs",
+    "verify:state": "node scripts/verify-studio-state.mjs",
+    "verify:state-browser": "python3 scripts/verify-studio-state-browser.py"
+  }
+}

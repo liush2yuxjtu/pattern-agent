@@ -1,0 +1,984 @@
+{
+  "schema": "independent-curve-audit/1",
+  "status": "PASS",
+  "scopeZh": "Teagan原始母版、配缝优化样例与精确拆分的二维数字曲线复核",
+  "methodsZh": [
+    "与Teagan 4.10.2原始制版控制点逐项对照",
+    "Python幂基形式求值与SciPy自适应积分，独立于应用的Bernstein形式和Gauss积分",
+    "按接点切线方向验证G1连续；用导数多项式求根排查曲线内部退化",
+    "每条拆分曲线抽查2001个参数点，核对形状不变",
+    "从实际SVG路径重新读取坐标，复核量化误差、弧长与接点夹角"
+  ],
+  "beforeFixZh": "旧优化器只约束弧长，可产生接点折角；旧工程按原算法保留，新检查会标记该问题。",
+  "limitsZh": [
+    "G1切线连续不代表G2曲率连续；本轮未声明G2要求已通过",
+    "反弯检查是每段2001点的采样检查，不是对任意曲线的完备证明",
+    "未验证真实面料、人体合身与缝制效果；三维仍为裁片组装预览"
+  ],
+  "inputSha256": "a92e3db6ff7849cec9b542785c97dced21ee635b94a7c7c96d3a628a22b80f64",
+  "variants": [
+    {
+      "variant": "basic",
+      "sourceControlPointMaxErrorMm": 0,
+      "baseline": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 511.1555054634321,
+        "seamDifferenceMm": 0.3395082832869889,
+        "applicationArcLengthErrorMm": 1.72144609678071e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.000418546820948e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 1.8030355337094773e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 1.30832510382547e-14,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 5.512486147686085e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 6.925508081325565e-07,
+        "svgSeamDifferenceMm": 0.3395086324790668,
+        "svgMaxTangentMismatchDeg": 6.9273513807297275e-06
+      },
+      "legacyOptimized": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 510.8159971818793,
+        "seamDifferenceMm": 1.734179022605531e-09,
+        "applicationArcLengthErrorMm": 1.72144609678071e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.2750992849892216,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.8989185917131816,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 0.8707531771995152,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 0.3553012534455954,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 0.8989185917131816,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 0.00651106269812674,
+        "svgSeamDifferenceMm": -0.008060911806012427,
+        "svgMaxTangentMismatchDeg": 0.8943418537898331
+      },
+      "legacyFixed": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 510.8159971818685,
+        "seamDifferenceMm": 1.7233787730219774e-09,
+        "applicationArcLengthErrorMm": 1.72144609678071e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.7722365530343716,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.2426188489242345,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 17.533122270350333,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 5.825674441498566,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 17.533122270350333,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 0.006046204783980764,
+        "svgSeamDifferenceMm": -0.010478413816713328,
+        "svgMaxTangentMismatchDeg": 17.52449287400163
+      },
+      "smoothOptimized": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 510.81599718188863,
+        "seamDifferenceMm": 1.7435013432987034e-09,
+        "applicationArcLengthErrorMm": 1.72144609678071e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 1.2032709474696504e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 1.2032709474696509e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 7.52044342168532e-15,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 4.0927583247267026e-14,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 5.512486147686085e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 6.925508081325565e-07,
+        "svgSeamDifferenceMm": 1.7919001038535498e-07,
+        "svgMaxTangentMismatchDeg": 6.9273513807297275e-06
+      },
+      "smoothFixed": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 510.81599718594686,
+        "seamDifferenceMm": 5.80172354602837e-09,
+        "applicationArcLengthErrorMm": 4.080050075572217e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 1.283602525263454e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 1.0369739938064584e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 2.0056289457241493e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 5.512486147686085e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 6.925508081325565e-07,
+        "svgSeamDifferenceMm": 1.9290513364467188e-07,
+        "svgMaxTangentMismatchDeg": 6.9273513807297275e-06
+      },
+      "splitShapeSamples": 2001,
+      "splitMaxShapeErrorMm": 1.2710574864626038e-13
+    },
+    {
+      "variant": "relaxed",
+      "sourceControlPointMaxErrorMm": 0,
+      "baseline": {
+        "armholeLengthMm": 551.3547007651481,
+        "sleeveCapLengthMm": 551.5883662629172,
+        "seamDifferenceMm": 0.23366549776915235,
+        "applicationArcLengthErrorMm": 8.560618880437687e-11,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 1.1539427415740654e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 5.000418546820949e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 3.2454639606770586e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 2.289568931694571e-14,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 5.000418546820949e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 6.378471269165257e-07,
+        "svgSeamDifferenceMm": 0.23366410644848656,
+        "svgMaxTangentMismatchDeg": 2.050811095421488e-06
+      },
+      "legacyOptimized": {
+        "armholeLengthMm": 551.3547007651481,
+        "sleeveCapLengthMm": 551.3547007652097,
+        "seamDifferenceMm": 6.161826604511589e-11,
+        "applicationArcLengthErrorMm": 7.059952622512355e-11,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.18360302748214719,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.6106363348757999,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 0.5957302141753794,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 0.23763373136495808,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 0.6106363348757999,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 0.0070257150577669346,
+        "svgSeamDifferenceMm": 0.01589744776754287,
+        "svgMaxTangentMismatchDeg": 0.616569448031254
+      },
+      "legacyFixed": {
+        "armholeLengthMm": 551.3547007651481,
+        "sleeveCapLengthMm": 551.3547007651383,
+        "seamDifferenceMm": -9.777068044058979e-12,
+        "applicationArcLengthErrorMm": 7.844391802791506e-12,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.597226036281561,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.6295864972099617,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 18.000221061700316,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 5.607528927187843,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 18.000221061700316,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 0.0070257150577669346,
+        "svgSeamDifferenceMm": 0.016162706246745984,
+        "svgMaxTangentMismatchDeg": 18.019429355377042
+      },
+      "smoothOptimized": {
+        "armholeLengthMm": 551.3547007651481,
+        "sleeveCapLengthMm": 551.3547007652439,
+        "seamDifferenceMm": 9.583800419932231e-11,
+        "applicationArcLengthErrorMm": 1.0390976967755705e-10,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 1.1856487297677097e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 2.37129745953542e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 4.7049552768559826e-14,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 4.7049552768559826e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 5.159490148283472e-07,
+        "svgSeamDifferenceMm": -1.2256754189365893e-06,
+        "svgMaxTangentMismatchDeg": 2.076905319885011e-06
+      },
+      "smoothFixed": {
+        "armholeLengthMm": 551.3547007651481,
+        "sleeveCapLengthMm": 551.354700774196,
+        "seamDifferenceMm": 9.047880666912533e-09,
+        "applicationArcLengthErrorMm": 9.055838745553046e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 2.0818812782922994e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 4.684232876157671e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 1.0621843256593346e-14,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 4.684232876157671e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 5.87572491234265e-07,
+        "svgSeamDifferenceMm": -1.3421202993413317e-06,
+        "svgMaxTangentMismatchDeg": 1.9007069944372257e-06
+      },
+      "splitShapeSamples": 2001,
+      "splitMaxShapeErrorMm": 2.0495186137532011e-13
+    },
+    {
+      "variant": "cropped",
+      "sourceControlPointMaxErrorMm": 0,
+      "baseline": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 511.1555054634321,
+        "seamDifferenceMm": 0.3395082832869889,
+        "applicationArcLengthErrorMm": 1.72144609678071e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.000418546820948e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 1.8030355337094773e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 1.30832510382547e-14,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 5.512486147686085e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 6.925508081325565e-07,
+        "svgSeamDifferenceMm": 0.3395086324790668,
+        "svgMaxTangentMismatchDeg": 6.9273513807297275e-06
+      },
+      "legacyOptimized": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 510.8159971818793,
+        "seamDifferenceMm": 1.734179022605531e-09,
+        "applicationArcLengthErrorMm": 1.72144609678071e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 0.2750992849892216,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.8989185917131816,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 0.8707531771995152,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 0.3553012534455954,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 0.8989185917131816,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 0.00651106269812674,
+        "svgSeamDifferenceMm": -0.008060911806012427,
+        "svgMaxTangentMismatchDeg": 0.8943418537898331
+      },
+      "legacyFixed": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 510.8159971818685,
+        "seamDifferenceMm": 1.7233787730219774e-09,
+        "applicationArcLengthErrorMm": 1.72144609678071e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.7722365530343716,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 0.2426188489242345,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 17.533122270350333,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 5.825674441498566,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 17.533122270350333,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 0.006046204783980764,
+        "svgSeamDifferenceMm": -0.010478413816713328,
+        "svgMaxTangentMismatchDeg": 17.52449287400163
+      },
+      "smoothOptimized": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 510.81599718188863,
+        "seamDifferenceMm": 1.7435013432987034e-09,
+        "applicationArcLengthErrorMm": 1.72144609678071e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 1.2032709474696504e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 1.2032709474696509e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 7.52044342168532e-15,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 4.0927583247267026e-14,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 5.512486147686085e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 6.925508081325565e-07,
+        "svgSeamDifferenceMm": 1.7919001038535498e-07,
+        "svgMaxTangentMismatchDeg": 6.9273513807297275e-06
+      },
+      "smoothFixed": {
+        "armholeLengthMm": 510.81599718014513,
+        "sleeveCapLengthMm": 510.81599718594686,
+        "seamDifferenceMm": 5.80172354602837e-09,
+        "applicationArcLengthErrorMm": 4.080050075572217e-09,
+        "joins": [
+          {
+            "edge": "armhole",
+            "from": "front.op3",
+            "to": "front.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "front"
+          },
+          {
+            "edge": "armhole",
+            "from": "back.op3",
+            "to": "back.op4",
+            "gapMm": 0.0,
+            "angleDeg": 5.512486147686085e-14,
+            "part": "back"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op3",
+            "to": "sleeve.op4",
+            "gapMm": 0.0,
+            "angleDeg": 1.283602525263454e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op4",
+            "to": "sleeve.op5",
+            "gapMm": 0.0,
+            "angleDeg": 1.0369739938064584e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op5",
+            "to": "sleeve.op6",
+            "gapMm": 0.0,
+            "angleDeg": 2.0056289457241493e-14,
+            "part": "sleeve"
+          },
+          {
+            "edge": "cap",
+            "from": "sleeve.op6",
+            "to": "sleeve.op7",
+            "gapMm": 0.0,
+            "angleDeg": 0.0,
+            "part": "sleeve"
+          }
+        ],
+        "maxTangentMismatchDeg": 5.512486147686085e-14,
+        "maxJoinGapMm": 0.0,
+        "interiorStationaryPoints": [],
+        "capCurvatureSignChangesSampled": 2,
+        "svgControlRoundingMaxMm": 6.925508081325565e-07,
+        "svgSeamDifferenceMm": 1.9290513364467188e-07,
+        "svgMaxTangentMismatchDeg": 6.9273513807297275e-06
+      },
+      "splitShapeSamples": 2001,
+      "splitMaxShapeErrorMm": 1.2710574864626038e-13
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+import fs from'node:fs';import*as THREE from'three';import{makeAssembly}from'../src/assembly.mjs';import{draftPrototype,initialSpec}from'../src/pattern.mjs';import{newProject,buildDocument}from'../src/expert.mjs';import{makeHuman}from'../src/human.mjs';import{fitGarment}from'../src/garment-fit.mjs';import{packPanels,auditWear,fitSignature}from'../src/wear-audit.mjs';
+const raw=JSON.parse(fs.readFileSync('dist/models/makehuman-body.json')),kernel=(await WebAssembly.instantiate(fs.readFileSync('dist/pattern-kernel.wasm'))).instance.exports,variants=[];
+for(const profile of['original','refined'])for(const key of['basic','relaxed','cropped']){
+ const pattern=profile==='refined'?buildDocument(newProject(key)):draftPrototype(key,initialSpec(key)),a=makeAssembly(pattern,kernel,new THREE.MeshStandardMaterial()),h=makeHuman(raw,pattern,a.sleevePose.angleDegrees),solver=fitGarment(a.meshes,pattern,h.body,{iterations:240}),panels=packPanels(a.meshes),report=auditWear(panels,h.body,{solver,pattern});
+ if(report.status!=='PASS')throw Error(key+' '+profile+' failed geometric wear: '+JSON.stringify(report));
+ variants.push({variant:key,profile,signature:fitSignature(pattern,a.sleevePose.angleDegrees,raw.revision),result:{panels:panels.map(({points2d,triangles,...p})=>p),report}});a.dispose();h.dispose();console.log(key,profile,report.status,report.seamMaxMm.toFixed(3)+' mm seam gap','upper sleeve p95',Math.max(...report.sleeveQuality.sides.map(s=>s.planeAngleDeg.p95)).toFixed(2));
+}
+fs.writeFileSync('dist/models/teagan-static-fits.json',JSON.stringify({schema:4,variants}));console.log('Rebuilt source-matched original/refined fits. Run npm run verify:wear for independent verification.');

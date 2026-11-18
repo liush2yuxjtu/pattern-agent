@@ -1,0 +1,909 @@
+{
+  "schema": "expert-tools-verification/1",
+  "status": "PASS",
+  "scope": "2D expert tools, explicit zero-ease sleeve refinement, static contact/bending/fold/symmetry preview",
+  "toolTests": [
+    {
+      "name": "basic / original geometry and seam validation",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / smooth source curves have G1 continuity and no interior stationary points",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / legacy curve is preserved, flagged and explicitly repairable",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / explicit sleeve refinement preserves source anchors and zero ease",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / exact Bezier split and stable semantic edge",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / numeric point edit and anchor handle follow",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / allowance is derived; net pattern preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / seam error detected, fixed endpoints optimized to 0.01mm",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / declared ease is separate from tolerance",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / arc-length walk and paired notches",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / reversed B walk places matching reversed notch",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / layout does not alter paper dimensions",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / grain and quantities persist",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / scale is a real metric operation",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / saved JSON replay exactly reproduces curves",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / 1:1 SVG and A4 exact-size tiled print",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / DXF mm geometry and notch layers",
+      "status": "PASS"
+    },
+    {
+      "name": "basic / edited split geometry drives same-source 3D mesh",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / original geometry and seam validation",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / smooth source curves have G1 continuity and no interior stationary points",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / legacy curve is preserved, flagged and explicitly repairable",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / explicit sleeve refinement preserves source anchors and zero ease",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / exact Bezier split and stable semantic edge",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / numeric point edit and anchor handle follow",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / allowance is derived; net pattern preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / seam error detected, fixed endpoints optimized to 0.01mm",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / declared ease is separate from tolerance",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / arc-length walk and paired notches",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / reversed B walk places matching reversed notch",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / layout does not alter paper dimensions",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / grain and quantities persist",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / scale is a real metric operation",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / saved JSON replay exactly reproduces curves",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / 1:1 SVG and A4 exact-size tiled print",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / DXF mm geometry and notch layers",
+      "status": "PASS"
+    },
+    {
+      "name": "relaxed / edited split geometry drives same-source 3D mesh",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / original geometry and seam validation",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / smooth source curves have G1 continuity and no interior stationary points",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / legacy curve is preserved, flagged and explicitly repairable",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / explicit sleeve refinement preserves source anchors and zero ease",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / exact Bezier split and stable semantic edge",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / numeric point edit and anchor handle follow",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / allowance is derived; net pattern preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / seam error detected, fixed endpoints optimized to 0.01mm",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / declared ease is separate from tolerance",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / arc-length walk and paired notches",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / reversed B walk places matching reversed notch",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / layout does not alter paper dimensions",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / grain and quantities persist",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / scale is a real metric operation",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / saved JSON replay exactly reproduces curves",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / 1:1 SVG and A4 exact-size tiled print",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / DXF mm geometry and notch layers",
+      "status": "PASS"
+    },
+    {
+      "name": "cropped / edited split geometry drives same-source 3D mesh",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative / moved fold axis is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative / crossing outline is detected",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative / impossible curve match refuses rather than moving endpoints",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative / invalid project schema, edit, specification rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative / illegal allowance and notch rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative / imported prototype keys cannot mutate objects",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative / internal derivative-zero turnarounds are detected",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative / unknown optimization and project engine versions are refused",
+      "status": "PASS"
+    }
+  ],
+  "toolTestCount": 62,
+  "physicalFit": "NOT_CALIBRATED",
+  "clothSimulation": "STATIC_POSITION_CONSTRAINTS",
+  "industrialCadRoundtrip": "NOT_RUN",
+  "source": "@freesewing/teagan@4.10.2",
+  "browser": {
+    "status": "PASS",
+    "runner": "installed Chromium + Playwright; file-backed routes use the exact dist bytes",
+    "reason": "native browser connector unavailable; managed preview relay timeout; user explicitly requested actual verification",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 960
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "tests": [
+      {
+        "name": "Page identity, nonblank SVG and WebGL, WASM, original Teagan baseline",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Actual specification slider: +50 mm; undo, redo and restore",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Numeric Bezier handle edit; real seam FAIL and repaired non-crossing cutting contour",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Optimize sleeve cap with G1 continuity, fixed endpoints and unchanged length tolerance",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Arc-length walking, reverse B direction, paired notches in actual SVG",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Regenerate 12 mm seam allowance and 35 mm hem; actual grainline and cut quantities",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Exact Bezier split preserves arc length and sewing semantics",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Actual line/curve conversion",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Real pointer drag of Bezier handle with 1 mm snap and X-only axis constraint; undo",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Two-point ruler selects actual named endpoints",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Invalid fold edit rejected with unchanged document and restored inspector values",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Version save and portable JSON retain edit history and seam requirements",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Real SVG and DXF downloads with mm units, cut notches and production metadata",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Actual OBJ download retains four same-source panels and meter units",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Actual A4 tiled print window and generated PDF",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Import after reset restores exact cutting curves and verification status",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Browser reload restores actual working geometry and saved version",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Same-source 3D unfold/return, wireframe, prototype comparison and camera controls",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Validation panel shows all checks passed and no hidden failed gate",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Legacy project keeps original algorithm and is flagged; explicit smooth repair appends a versioned operation",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Curve-specific independent audit report and before/after overlay load correctly",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "390px mobile: no horizontal overflow; both SVG and WebGL visible",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Console and runtime health",
+        "status": "PASS",
+        "detail": "0 page errors and 0 console errors"
+      }
+    ],
+    "consoleErrors": [],
+    "failure": null
+  },
+  "artifactSha256": {
+    "index.html": "9c2236242705e235f8671bdb4c5a412adc43ee40d9ba84666fd3b3c4af858830",
+    "studio.js": "b02d5c095655b8d0f28b13aa6df639953e4076753792196651e6b8ff756d5bd3",
+    "wear-worker.js": "8056ee4540e494ff23e4a773c793cece4b07a203be6e377335610f7d952351ec",
+    "models/teagan-static-fits.json": "d410c129b9a4a4b751addaf4c1361de8008862335dcae3c5f8c63537fa186c05",
+    "pattern-kernel.wasm": "fc71fbceffae87934aed6f0a5152768187f94d001d97a95441d63265a58a73b0"
+  },
+  "bodyCollision": "RUN",
+  "curveAuditAssetSha256": {
+    "curve-audit.html": "1e38fcc7e27424c5b641070c9a3838128f932abc0ef2ff1b40f4064184ac452d",
+    "curve-audit.json": "5a3a91c54bddf2465543e180ee7f15f7394d7ab57a88b0da20633cdb0e49f57c",
+    "curve-cases.json": "a92e3db6ff7849cec9b542785c97dced21ee635b94a7c7c96d3a628a22b80f64",
+    "curve-comparison.png": "f0a9a1f98f2e9b7a262e87be576eef4fce3c07fb8c87bbe7e67fc7357a8fa274"
+  },
+  "multiViewVerification": {
+    "status": "PASS",
+    "tests": [
+      "Initial static geometric wear is PASS",
+      "Page identity and nonblank source SVG / WebGL / WASM",
+      "Default is 2D plus plain 3D, with no heat renderer or field",
+      "No default 2D heat coloring, legend, or heat controls",
+      "Actual multiselect combination: paper",
+      "Visibility paper / paper",
+      "Visibility paper / model",
+      "Visibility paper / heat",
+      "Actual multiselect combination: model",
+      "Visibility model / paper",
+      "Visibility model / model",
+      "Visibility model / heat",
+      "Actual multiselect combination: paper,model",
+      "Visibility paper,model / paper",
+      "Visibility paper,model / model",
+      "Visibility paper,model / heat",
+      "Actual multiselect combination: heat",
+      "Visibility heat / paper",
+      "Visibility heat / model",
+      "Visibility heat / heat",
+      "Actual multiselect combination: paper,heat",
+      "Visibility paper,heat / paper",
+      "Visibility paper,heat / model",
+      "Visibility paper,heat / heat",
+      "Actual multiselect combination: model,heat",
+      "Visibility model,heat / paper",
+      "Visibility model,heat / model",
+      "Visibility model,heat / heat",
+      "Actual multiselect combination: paper,model,heat",
+      "Visibility paper,model,heat / paper",
+      "Visibility paper,model,heat / model",
+      "Visibility paper,model,heat / heat",
+      "Plain and heat 3D are separate live canvases",
+      "Rendered heat stays separate from plain material pixels",
+      "2D remains plain when 3D heat is opened",
+      "2D heat is independently opt-in",
+      "Heat overlay strength can be zero without changing data",
+      "Heat overlay strength updates independently",
+      "Heat view rotates independently",
+      "Plain view rotates independently",
+      "2D selection links both 3D views and the heat summary",
+      "Heat unfold control updates the shared geometry and both sliders",
+      "Plain unfold control updates heat view",
+      "Heat metric changes without switching plain 3D mode",
+      "Extreme probe appears only in the heat pane",
+      "Plain wireframe does not replace heat overlay",
+      "Edited garment also passes body and seam checks",
+      "Source edits rebuild both selected 3D views",
+      "Undo preserves the selected views",
+      "Real export retains the verified source and numeric field",
+      "Last view cannot be deselected into a blank workspace",
+      "Closing heat removes its legend and 2D coloring",
+      "Reload always starts without automatically restoring heat",
+      "Mobile supports all three vertically stacked views",
+      "Mobile independent canvases have usable dimensions",
+      "Mobile plain 3D is framed with the garment fully visible",
+      "Mobile heat-only view keeps controls and numeric legend",
+      "Zero page and console errors"
+    ],
+    "testCount": 58,
+    "consoleErrors": [],
+    "viewports": [
+      {
+        "width": 1600,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "defaultViews": [
+      "paper",
+      "model"
+    ],
+    "defaultHeat": false,
+    "runner": "Installed Chromium + Playwright, exact dist bytes via file-backed routes",
+    "fallbackReason": "Native browser connector UNAVAILABLE / Connection failed; managed browser runtime absent"
+  },
+  "sleeveVerification": {
+    "status": "PASS",
+    "report": "wear-report.json",
+    "sourceRefinement": "g1-zero-ease-v1",
+    "solver": "static-strain-bend-seam-contact-symmetry/4",
+    "independent": {
+      "schema": "independent-sleeve-surface-quality/1",
+      "status": "PASS",
+      "limits": {
+        "upperCapPlaneP95Deg": 30,
+        "upperCapInwardTurnMaxDeg": 45,
+        "sleeveMirrorMaxMm": 0.5,
+        "interiorFoldP95Deg": 25,
+        "interiorFoldMaxDeg": 45
+      },
+      "meaningZh": "本次无结构装袖三维预览平顺性目标，非工业合体标准",
+      "methodsZh": [
+        "独立NumPy按源弧长每5mm采样最高35%袖山",
+        "使用真实相邻三角面法平面与向内余切方向；不使用渲染平滑法线",
+        "左右袖同源顶点镜像距离",
+        "SciPy自适应积分复核零吃势配缝与曲线切向连续"
+      ],
+      "variants": [
+        {
+          "status": "PASS",
+          "sides": [
+            {
+              "part": "sleeve-right",
+              "planeAngleDeg": {
+                "count": 44,
+                "mean": 8.184922151958956,
+                "p95": 14.093350107659557,
+                "max": 16.00796898490926
+              },
+              "inwardTurnDeg": {
+                "count": 44,
+                "mean": 7.930807822643491,
+                "p95": 14.091182779747442,
+                "max": 16.006743202499194
+              },
+              "interiorFoldDeg": {
+                "count": 1956,
+                "mean": 5.5464312181426365,
+                "p95": 18.172293864043446,
+                "max": 31.902069243381185,
+                "excludedNearUnderarmEdges": 73,
+                "underarmExclusionMm": 15
+              }
+            },
+            {
+              "part": "sleeve-left",
+              "planeAngleDeg": {
+                "count": 44,
+                "mean": 7.985268972042104,
+                "p95": 15.14792365716739,
+                "max": 16.71215328647305
+              },
+              "inwardTurnDeg": {
+                "count": 44,
+                "mean": 7.751241017384775,
+                "p95": 15.143807848448915,
+                "max": 16.71247374669386
+              },
+              "interiorFoldDeg": {
+                "count": 1956,
+                "mean": 5.546431218142655,
+                "p95": 18.172293864043446,
+                "max": 31.902069243381185,
+                "excludedNearUnderarmEdges": 73,
+                "underarmExclusionMm": 15
+              }
+            }
+          ],
+          "sleeveMirrorMaxMm": 6.359601310784502e-14,
+          "source": {
+            "armholeLengthMm": 510.81599718014525,
+            "capLengthMm": 510.81599718188886,
+            "capEaseMm": 1.743615030136425e-09,
+            "maxJoinAngleDeg": 5.512486147686085e-14
+          },
+          "maxRuntimeDifference": 6.174047939566663e-10,
+          "variant": "basic"
+        },
+        {
+          "status": "PASS",
+          "sides": [
+            {
+              "part": "sleeve-right",
+              "planeAngleDeg": {
+                "count": 47,
+                "mean": 9.187342924331839,
+                "p95": 19.560959534892802,
+                "max": 26.56249000115367
+              },
+              "inwardTurnDeg": {
+                "count": 47,
+                "mean": 9.103953589380374,
+                "p95": 19.562143814795434,
+                "max": 26.323308708287698
+              },
+              "interiorFoldDeg": {
+                "count": 2562,
+                "mean": 5.516661030673941,
+                "p95": 17.35102652275983,
+                "max": 31.257386105844244,
+                "excludedNearUnderarmEdges": 122,
+                "underarmExclusionMm": 15
+              }
+            },
+            {
+              "part": "sleeve-left",
+              "planeAngleDeg": {
+                "count": 47,
+                "mean": 9.26185381741183,
+                "p95": 20.30791828373744,
+                "max": 26.562490001153286
+              },
+              "inwardTurnDeg": {
+                "count": 47,
+                "mean": 9.177365357236287,
+                "p95": 20.305629371236904,
+                "max": 26.323308708287442
+              },
+              "interiorFoldDeg": {
+                "count": 2562,
+                "mean": 5.516661031145238,
+                "p95": 17.351026522759895,
+                "max": 31.257386105844244,
+                "excludedNearUnderarmEdges": 122,
+                "underarmExclusionMm": 15
+              }
+            }
+          ],
+          "sleeveMirrorMaxMm": 6.359601310784502e-14,
+          "source": {
+            "armholeLengthMm": 551.354700765148,
+            "capLengthMm": 551.354700765244,
+            "capEaseMm": 9.606537787476555e-11,
+            "maxJoinAngleDeg": 4.7049552768559826e-14
+          },
+          "maxRuntimeDifference": 6.093889837188726e-10,
+          "variant": "relaxed"
+        },
+        {
+          "status": "PASS",
+          "sides": [
+            {
+              "part": "sleeve-right",
+              "planeAngleDeg": {
+                "count": 44,
+                "mean": 7.615765413200588,
+                "p95": 18.69580272658608,
+                "max": 21.363575428906415
+              },
+              "inwardTurnDeg": {
+                "count": 44,
+                "mean": 7.47503287819977,
+                "p95": 18.645342369890983,
+                "max": 21.35703963925809
+              },
+              "interiorFoldDeg": {
+                "count": 1841,
+                "mean": 5.751839663753435,
+                "p95": 17.737965593566738,
+                "max": 32.590727537951125,
+                "excludedNearUnderarmEdges": 63,
+                "underarmExclusionMm": 15
+              }
+            },
+            {
+              "part": "sleeve-left",
+              "planeAngleDeg": {
+                "count": 44,
+                "mean": 7.6619363575767725,
+                "p95": 18.695802726586063,
+                "max": 21.363575428906415
+              },
+              "inwardTurnDeg": {
+                "count": 44,
+                "mean": 7.520540615231092,
+                "p95": 18.645342369890983,
+                "max": 21.35703963925809
+              },
+              "interiorFoldDeg": {
+                "count": 1841,
+                "mean": 5.7518396637533105,
+                "p95": 17.737965593566738,
+                "max": 32.590727537951196,
+                "excludedNearUnderarmEdges": 63,
+                "underarmExclusionMm": 15
+              }
+            }
+          ],
+          "sleeveMirrorMaxMm": 6.49305861584907e-14,
+          "source": {
+            "armholeLengthMm": 510.81599718014525,
+            "capLengthMm": 510.81599718188886,
+            "capEaseMm": 1.743615030136425e-09,
+            "maxJoinAngleDeg": 5.512486147686085e-14
+          },
+          "maxRuntimeDifference": 2.3803181647963356e-13,
+          "variant": "cropped"
+        }
+      ],
+      "negativeControl": {
+        "status": "FAIL",
+        "sides": [
+          {
+            "part": "sleeve-right",
+            "planeAngleDeg": {
+              "count": 44,
+              "mean": 26.502356854277995,
+              "p95": 87.42959300670255,
+              "max": 89.98831077172605
+            },
+            "inwardTurnDeg": {
+              "count": 44,
+              "mean": 29.570110281205086,
+              "p95": 101.47513608898996,
+              "max": 102.75219319859679
+            },
+            "interiorFoldDeg": {
+              "count": 1957,
+              "mean": 9.776790994106392,
+              "p95": 39.9468794462227,
+              "max": 176.58794125995558,
+              "excludedNearUnderarmEdges": 73,
+              "underarmExclusionMm": 15
+            }
+          },
+          {
+            "part": "sleeve-left",
+            "planeAngleDeg": {
+              "count": 44,
+              "mean": 9.811328059914482,
+              "p95": 19.98062944714023,
+              "max": 28.281842451865284
+            },
+            "inwardTurnDeg": {
+              "count": 44,
+              "mean": 9.521816002802728,
+              "p95": 19.98061454115799,
+              "max": 28.25477002065324
+            },
+            "interiorFoldDeg": {
+              "count": 1957,
+              "mean": 10.21967221892418,
+              "p95": 35.757585382659826,
+              "max": 179.6579125166815,
+              "excludedNearUnderarmEdges": 73,
+              "underarmExclusionMm": 15
+            }
+          }
+        ],
+        "sleeveMirrorMaxMm": 11.912452389592243,
+        "source": {
+          "armholeLengthMm": 510.81599718014525,
+          "capLengthMm": 511.15550546343206,
+          "capEaseMm": 0.33950828328681837,
+          "maxJoinAngleDeg": 5.512486147686085e-14
+        },
+        "maxRuntimeDifference": 4.3639225566494133e-10
+      }
+    },
+    "browser": {
+      "status": "PASS",
+      "testCount": 19,
+      "tests": [
+        "Default source carries explicit zero-ease refinement",
+        "Default is 2D plus ordinary 3D without heat",
+        "Patch contains replayable refinement operation",
+        "basic default source and geometric sleeve quality PASS",
+        "basic source zero ease",
+        "relaxed default source and geometric sleeve quality PASS",
+        "relaxed source zero ease",
+        "cropped default source and geometric sleeve quality PASS",
+        "cropped source zero ease",
+        "Original source comparison changes actual 2D curve",
+        "Original comparison still uses new bending solver",
+        "Undo restores exact refined curve and toggle",
+        "Explicit original choice survives reload",
+        "Refined choice survives reload",
+        "Old unedited draft upgrades once with undo",
+        "Old manually edited draft is preserved",
+        "Export includes source refinement and actual sleeve quality",
+        "Mobile ordinary 3D is rendered without horizontal overflow",
+        "No page errors or WebGL warnings"
+      ],
+      "consoleErrors": [],
+      "warnings": [],
+      "runner": "Installed Chromium/Playwright; Browser connector failed with UNAVAILABLE, ego-browser and managed CUA runtime absent",
+      "artifactSha256": {
+        "index.html": "9c2236242705e235f8671bdb4c5a412adc43ee40d9ba84666fd3b3c4af858830",
+        "studio.js": "b02d5c095655b8d0f28b13aa6df639953e4076753792196651e6b8ff756d5bd3",
+        "wear-worker.js": "8056ee4540e494ff23e4a773c793cece4b07a203be6e377335610f7d952351ec",
+        "models/teagan-static-fits.json": "d410c129b9a4a4b751addaf4c1361de8008862335dcae3c5f8c63537fa186c05",
+        "pattern-kernel.wasm": "fc71fbceffae87934aed6f0a5152768187f94d001d97a95441d63265a58a73b0"
+      }
+    }
+  },
+  "wearBrowser": {
+    "status": "PASS",
+    "testCount": 11,
+    "tests": [
+      "Opaque human defaults to 100%",
+      "basic runtime geometry PASS",
+      "relaxed runtime geometry PASS",
+      "cropped runtime geometry PASS",
+      "Wear download records actual checks and material limits",
+      "Edits revoke PASS while solver runs",
+      "2D is usable while worker solves",
+      "Latest edit passes after cancelling stale workers",
+      "Renderer never clears depth between body and cloth",
+      "Independent verification report is accessible",
+      "No console errors or buffer warnings"
+    ],
+    "consoleErrors": [],
+    "warnings": [],
+    "depthOnlyClears": 0,
+    "runner": "Installed Chromium + Playwright; actual dist artifacts with WebGL SwiftShader",
+    "artifactSha256": {
+      "index.html": "98a0f8dc1b44b586f40c38741c899f9457443223a871f0a4401c262f77ad864d",
+      "studio.js": "b02d5c095655b8d0f28b13aa6df639953e4076753792196651e6b8ff756d5bd3",
+      "wear-worker.js": "8056ee4540e494ff23e4a773c793cece4b07a203be6e377335610f7d952351ec",
+      "style.css": "cb4bc3c975d716d62ff0170fc1a877044b56b58798d5fbd8f7f38e24f6ab1562",
+      "pattern-kernel.wasm": "fc71fbceffae87934aed6f0a5152768187f94d001d97a95441d63265a58a73b0",
+      "models/teagan-static-fits.json": "d410c129b9a4a4b751addaf4c1361de8008862335dcae3c5f8c63537fa186c05"
+    }
+  },
+  "humanDeformation": {
+    "status": "PASS",
+    "method": "Independent NumPy inverse + 3x2 SVD and rotated-axis arccos; no app geometry calls",
+    "caseCount": 173609,
+    "maxAbsoluteErrors": {
+      "maxStrain": 1.1368683772161603e-13,
+      "minStrain": 1.9895196601282805e-13,
+      "area": 4.689582056016661e-13,
+      "shear": 1.7053025658242404e-13
+    },
+    "checks": [
+      "identity",
+      "rigid-3d-rotation",
+      "20-percent-isotropic-stretch",
+      "20-percent-compression",
+      "anisotropic-stretch",
+      "simple-shear",
+      "reflection-is-isometric",
+      "100 deterministic general affine cases; WASM / JavaScript parity",
+      "Degenerate reference and collapsed current geometry are flagged",
+      "Fixed color clamping and reference-area weighted statistics",
+      "basic: grid has no interior cracks or non-manifold edges; boundary within declared 0.01mm remeshing tolerance",
+      "basic: all current faces finite; mirror, selection, unfold zero, roundtrip, stale-field refresh",
+      "relaxed: grid has no interior cracks or non-manifold edges; boundary within declared 0.01mm remeshing tolerance",
+      "relaxed: all current faces finite; mirror, selection, unfold zero, roundtrip, stale-field refresh",
+      "cropped: grid has no interior cracks or non-manifold edges; boundary within declared 0.01mm remeshing tolerance",
+      "cropped: all current faces finite; mirror, selection, unfold zero, roundtrip, stale-field refresh",
+      "CC0 asset identity; finite posed vertices; 175cm height; legs not posed as arms; chest-section 96cm"
+    ],
+    "summaries": [
+      {
+        "variant": "basic",
+        "faces": 18498,
+        "invalidFaces": 0,
+        "maxStrainMeanPercent": 4.968451873019406,
+        "topology": {
+          "nonManifoldEdges": 0,
+          "interiorCracks": 0,
+          "maxBoundaryGapMm": 0.006266088700409896
+        }
+      },
+      {
+        "variant": "relaxed",
+        "faces": 22728,
+        "invalidFaces": 0,
+        "maxStrainMeanPercent": 5.328293717198175,
+        "topology": {
+          "nonManifoldEdges": 0,
+          "interiorCracks": 0,
+          "maxBoundaryGapMm": 0.007421348686929909
+        }
+      },
+      {
+        "variant": "cropped",
+        "faces": 16608,
+        "invalidFaces": 0,
+        "maxStrainMeanPercent": 5.400879445542722,
+        "topology": {
+          "nonManifoldEdges": 0,
+          "interiorCracks": 0,
+          "maxBoundaryGapMm": 0.006266088700409896
+        }
+      }
+    ],
+    "human": {
+      "revision": "3c701a8e52f09e69922e8b598d23be2d7dfc49e3",
+      "sourceSha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+      "chestCircumferenceM": 0.9600000000000001
+    },
+    "limits": [
+      "This suite verifies the initializer and numeric kernel; solved body-contact geometry is verified separately in wear-report.json. Material stress is not calibrated."
+    ]
+  },
+  "defaultViews": {
+    "paper": true,
+    "model": true,
+    "heat": false,
+    "plainMode": "solid",
+    "paperHeat": false
+  },
+  "geometrySourceSha256": {
+    "src/cloth-bending.mjs": "11b7f37b7ed32ed4550d7bf55fc0e91ed5d142e00b1b6d7ce3ec7720e469b593",
+    "src/sleeve-quality.mjs": "df1783780dc50aeb24abf746ee0fc21133830b7dce18497edd9fc2b420d3b1e2",
+    "src/garment-fit.mjs": "347e533327d7bf2efc1f95842c612bfa5e560e8244c2e177b7b405dfd971be10",
+    "src/expert.mjs": "6394774d525fa504217a842e174b0cef49e615e326e16cb7d7939e958c934ee5",
+    "src/main.js": "2a692db8a5ec1c7b0ecbe7bf7709fe2d0c2751d0ef5da8ba9897df1bd0a9d33e",
+    "src/assembly.mjs": "d604f0ba47613f67cf74e331be93320efcf2ec4a986cea9e5aa18dfa85d36e71",
+    "src/human.mjs": "08213d70c6a8486ac750dfc37dd6d34ba9d4255fbaac1607b125f9452c97d465",
+    "scripts/verify-sleeve-quality.py": "75c3b6cca8d0bb3f9d6e2e3b6587d036baf32856a4cbbbd2210bd65e27ca4a1e"
+  }
+}

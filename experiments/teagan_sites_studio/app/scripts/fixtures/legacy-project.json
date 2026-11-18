@@ -1,0 +1,67 @@
+{
+  "schema": "pattern-expert-project/1",
+  "key": "basic",
+  "spec": {
+    "lengthDelta": 0,
+    "chestEase": 12,
+    "sleeveDelta": 0,
+    "necklineWidth": 30
+  },
+  "edits": [
+    {
+      "kind": "movePoint",
+      "part": "sleeve",
+      "name": "capQ2Cp2",
+      "dx": 0.00039822444293946546,
+      "dy": -24.999740152206556,
+      "follow": true
+    },
+    {
+      "kind": "matchSeam",
+      "pair": "armhole",
+      "ease": 0
+    },
+    {
+      "kind": "pairNotches",
+      "pair": "armhole",
+      "fraction": 0.35,
+      "reverseB": true
+    },
+    {
+      "kind": "allowance",
+      "part": "sleeve",
+      "seam": 12,
+      "hem": 35
+    },
+    {
+      "kind": "metadata",
+      "part": "sleeve",
+      "grain": 15,
+      "cut": 4
+    },
+    {
+      "kind": "split",
+      "part": "front",
+      "segment": "front.op3",
+      "t": 0.5
+    },
+    {
+      "kind": "setCurve",
+      "part": "front",
+      "segment": "front.op1",
+      "curved": true
+    },
+    {
+      "kind": "setCurve",
+      "part": "front",
+      "segment": "front.op1",
+      "curved": false
+    }
+  ],
+  "seamSettings": {
+    "armhole": {
+      "ease": 0,
+      "tolerance": 0.05
+    }
+  }
+}

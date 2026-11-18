@@ -1,0 +1,45 @@
+PASS: Page identity and default view state are correct
+PASS: Initial verified geometry has an explicit READY owner
+PASS: Read APIs and debug data return isolated snapshots instead of writable internal geometry
+PASS: Unfold-preview report also isolates its underlying assembled result
+PASS: Native browser debounce commits both fields automatically without an explicit save
+PASS: Rapid two-field input and immediate saving preserve both values
+PASS: A committed specification invalidates old geometry and owns one worker
+PASS: Undo of a pending draft cancels that draft without undoing another document
+PASS: Immediate project export flushes current input rather than exporting the old specification
+PASS: Invalid selection is rejected without corrupting the editor context
+PASS: Rejected import preserves the draft, selection and current document
+PASS: Ruler can reference a newly split point
+PASS: Undo removes dangling ruler references and redraws the actual source SVG
+PASS: Pointer cancellation clears the drag without an accidental geometry commit
+PASS: Document replacement invalidates any drag started against older coordinates
+PASS: A late file read cannot overwrite a newer document edit
+PASS: The latest file selection wins over an older delayed read
+PASS: Cancelling a draft restores derived fold geometry after changing the color range
+PASS: Restored fold state is actually rendered, rather than a numeric-only restoration
+PASS: Display mode does not restart or cancel a solve: wire
+PASS: Display mode does not restart or cancel a solve: seams
+PASS: Display mode does not restart or cancel a solve: compare
+PASS: Display mode does not restart or cancel a solve: solid
+PASS: Changing heat units and fold scope cannot expose old values while solving
+PASS: Analysis exports and peak-location commands are disabled until their data is current
+PASS: Late error and result events cannot detach or overwrite the new worker
+PASS: Ignored late events appear in the actual transition trace
+PASS: Explicit diagnostic solve starts a job that records checkpoints
+PASS: Replacing a diagnostic job does not make the next normal job diagnostic or cache-bypassing
+PASS: Computation failure is explicit and cannot retain a prior PASS report
+PASS: Failed solve clears stale heat numbers and exposes retry while 2D stays usable
+PASS: Malformed worker result is rejected before it can become valid geometry
+PASS: Malformed results cannot poison the verified reference cache
+PASS: Retry can recover to READY and release its worker
+PASS: Real retry starts without claiming old data is current
+PASS: Real native-worker solve returns PASS and leaves no active worker
+PASS: State-management fixes preserve the actual fitted garment coordinates
+PASS: Corrupted saved-version entries are filtered without breaking startup or history
+PASS: Malformed human asset reaches UNAVAILABLE without a false wearing result
+PASS: Asset retry re-enables the human and starts a fresh current fit job
+PASS: 80 deterministic mixed UI transitions preserve DOM, specification, worker and geometry ownership invariants
+PASS: Renderer recovery stays independent of the source and fit lifecycle
+PASS: Mobile renders the resulting four-view state without horizontal overflow
+PASS: No unhandled JavaScript errors or WebGL warnings through successful and injected-failure paths
+{"status": "PASS", "count": 44, "maxDifferenceM": 2.1510571102112408e-15, "errors": [], "warnings": []}

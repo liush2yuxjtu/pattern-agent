@@ -1,0 +1,872 @@
+{
+  "schema": "garment-body-geometric-wear/2",
+  "status": "PASS",
+  "scopeZh": "演示人体的静态几何穿着；非面料力学或个人合体认证",
+  "tolerances": {
+    "bodyIntersectionM": 1e-09,
+    "seamGapMm": 1
+  },
+  "methodsZh": [
+    "使用实际渲染人体顶点与求解后衣片，不读取示意映射坐标",
+    "独立 Python 三个斜射线方向对所有顶点、边中点、面中心作包含检查",
+    "空间网格宽相位与三角形分离轴检测，检查全部衣片与人体三角面交叉",
+    "指定配缝作双向点到线段距离采样，每段 9 点",
+    "领口、下摆和双袖口投影包含测试；腰部 36 个方向包围检查"
+  ],
+  "limitsZh": [
+    "穿着通过仅限静态几何与当前演示人体",
+    "真实面料力学、压力与个人合体未校准",
+    "未作连续运动、自碰撞或制造工艺认证",
+    "袖片内部折角的工程目标排除袖底缝15mm邻域；不用于否定有意的箱形落肩设计",
+    "弯曲与镜像约束针对本页严格对称人体与无结构装袖预览，材料力学未校准"
+  ],
+  "variants": [
+    {
+      "variant": "basic",
+      "status": "PASS",
+      "inputSha256": "f19f9e5122c6ca5cf991155d300fdd7b4878636d2d46f203afaf84a2b21ba12c",
+      "bodyClosedManifold": true,
+      "parts": [
+        {
+          "part": "front",
+          "vertices": 4019,
+          "triangles": 7682,
+          "samplePoints": 34747,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 120.18187061672072
+        },
+        {
+          "part": "back",
+          "vertices": 4174,
+          "triangles": 7998,
+          "samplePoints": 36166,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 100.91972802482294
+        },
+        {
+          "part": "sleeve-right",
+          "vertices": 788,
+          "triangles": 1408,
+          "samplePoints": 6420,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 97.34975233863719
+        },
+        {
+          "part": "sleeve-left",
+          "vertices": 788,
+          "triangles": 1408,
+          "samplePoints": 6420,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 97.34975233863719
+        }
+      ],
+      "seamGapsMm": {
+        "shoulder": 5.594315114139762e-14,
+        "side": 4.705297710451287e-07,
+        "2-underarm": 1.5515838457795457e-14,
+        "2-cap": 0.45787328989719994,
+        "3-underarm": 1.5515838457795457e-14,
+        "3-cap": 0.45787328989719994
+      },
+      "enclosure": {
+        "torsoDirections": 36,
+        "torsoEnclosed": true,
+        "openings": {
+          "neck": true,
+          "hem": true,
+          "lCuff": true,
+          "rCuff": true
+        }
+      },
+      "boundaryDeviationMm": {
+        "front": 0.004978049777382925,
+        "back": 0.0039582087086109064,
+        "sleeve-right": 0.00623236551020679,
+        "sleeve-left": 0.00623236551020679
+      },
+      "solver": {
+        "solver": "static-strain-bend-seam-contact-symmetry/4",
+        "bendingConstraints": 27227,
+        "foldConstraints": 3912,
+        "foldLimitTargetDeg": 30,
+        "seamBendingConstraints": 269,
+        "symmetryConstraints": 4877,
+        "nodeCount": 9692,
+        "weldedDuplicates": 77,
+        "edgeConstraints": 28213,
+        "stitchConstraints": 580,
+        "fixedStitchResidualMm": 1.564701793941106,
+        "minimumVertexSignedMm": 3.999999999999938,
+        "clearanceMm": 4,
+        "iterations": 240,
+        "elapsedMs": 24021.632088,
+        "queries": 2610095
+      },
+      "durationSeconds": 12.51
+    },
+    {
+      "variant": "relaxed",
+      "status": "PASS",
+      "inputSha256": "18fbb08d18efee0df772e1c8f2217f8619e8d11d84ceb5b274a3dbbc6ff1e52c",
+      "bodyClosedManifold": true,
+      "parts": [
+        {
+          "part": "front",
+          "vertices": 4875,
+          "triangles": 9370,
+          "samplePoints": 42355,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 130.7243747728207
+        },
+        {
+          "part": "back",
+          "vertices": 5018,
+          "triangles": 9664,
+          "samplePoints": 43674,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 117.14962599652074
+        },
+        {
+          "part": "sleeve-right",
+          "vertices": 1011,
+          "triangles": 1847,
+          "samplePoints": 8399,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 51.996560314729855
+        },
+        {
+          "part": "sleeve-left",
+          "vertices": 1011,
+          "triangles": 1847,
+          "samplePoints": 8399,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 51.996560314729855
+        }
+      ],
+      "seamGapsMm": {
+        "shoulder": 0.00032258072306660783,
+        "side": 5.109322194155437e-07,
+        "2-underarm": 2.7755575615628914e-14,
+        "2-cap": 0.3433058399210567,
+        "3-underarm": 2.7755575615628914e-14,
+        "3-cap": 0.3433058399210567
+      },
+      "enclosure": {
+        "torsoDirections": 36,
+        "torsoEnclosed": true,
+        "openings": {
+          "neck": true,
+          "hem": true,
+          "lCuff": true,
+          "rCuff": true
+        }
+      },
+      "boundaryDeviationMm": {
+        "front": 0.006119180214387792,
+        "back": 0.006119180214387792,
+        "sleeve-right": 0.007572970512499467,
+        "sleeve-left": 0.007572970512499467
+      },
+      "solver": {
+        "solver": "static-strain-bend-seam-contact-symmetry/4",
+        "bendingConstraints": 33545,
+        "foldConstraints": 5124,
+        "foldLimitTargetDeg": 30,
+        "seamBendingConstraints": 327,
+        "symmetryConstraints": 5950,
+        "nodeCount": 11841,
+        "weldedDuplicates": 74,
+        "edgeConstraints": 34589,
+        "stitchConstraints": 631,
+        "fixedStitchResidualMm": 1.4716404782548798,
+        "minimumVertexSignedMm": 3.9999999999999445,
+        "clearanceMm": 4,
+        "iterations": 240,
+        "elapsedMs": 26039.346252000003,
+        "queries": 2064686
+      },
+      "durationSeconds": 13.55
+    },
+    {
+      "variant": "cropped",
+      "status": "PASS",
+      "inputSha256": "c51d18b09b84d2a99d8800fc0e6310829246294526933d16be3e2857eeca92cf",
+      "bodyClosedManifold": true,
+      "parts": [
+        {
+          "part": "front",
+          "vertices": 3581,
+          "triangles": 6821,
+          "samplePoints": 30865,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 132.86835537273706
+        },
+        {
+          "part": "back",
+          "vertices": 3736,
+          "triangles": 7137,
+          "samplePoints": 32284,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 114.88995609401744
+        },
+        {
+          "part": "sleeve-right",
+          "vertices": 745,
+          "triangles": 1324,
+          "samplePoints": 6041,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 92.94490270316285
+        },
+        {
+          "part": "sleeve-left",
+          "vertices": 745,
+          "triangles": 1324,
+          "samplePoints": 6041,
+          "insideSamples": 0,
+          "insideVertices": 0,
+          "ambiguousSamples": 0,
+          "surfaceBoundarySamples": 0,
+          "intersectingTriangles": 0,
+          "maxPrincipalStrainPercent": 92.94490270316285
+        }
+      ],
+      "seamGapsMm": {
+        "shoulder": 6.245004513516506e-14,
+        "side": 0.002391775698933919,
+        "2-underarm": 1.5515838457795457e-14,
+        "2-cap": 0.4201121634913275,
+        "3-underarm": 1.5515838457795457e-14,
+        "3-cap": 0.4201121634913275
+      },
+      "enclosure": {
+        "torsoDirections": 36,
+        "torsoEnclosed": true,
+        "openings": {
+          "neck": true,
+          "hem": true,
+          "lCuff": true,
+          "rCuff": true
+        }
+      },
+      "boundaryDeviationMm": {
+        "front": 0.005454042585635284,
+        "back": 0.005454042585635284,
+        "sleeve-right": 0.00623236551020679,
+        "sleeve-left": 0.00623236551020679
+      },
+      "solver": {
+        "solver": "static-strain-bend-seam-contact-symmetry/4",
+        "bendingConstraints": 24409,
+        "foldConstraints": 3682,
+        "foldLimitTargetDeg": 30,
+        "seamBendingConstraints": 241,
+        "symmetryConstraints": 4391,
+        "nodeCount": 8730,
+        "weldedDuplicates": 77,
+        "edgeConstraints": 25358,
+        "stitchConstraints": 546,
+        "fixedStitchResidualMm": 1.5614400164203845,
+        "minimumVertexSignedMm": 3.9999999999999427,
+        "clearanceMm": 4,
+        "iterations": 240,
+        "elapsedMs": 21710.063276000015,
+        "queries": 2242769
+      },
+      "durationSeconds": 11.11
+    }
+  ],
+  "sleeveSurfaceQuality": {
+    "schema": "independent-sleeve-surface-quality/1",
+    "status": "PASS",
+    "limits": {
+      "upperCapPlaneP95Deg": 30,
+      "upperCapInwardTurnMaxDeg": 45,
+      "sleeveMirrorMaxMm": 0.5,
+      "interiorFoldP95Deg": 25,
+      "interiorFoldMaxDeg": 45
+    },
+    "meaningZh": "本次无结构装袖三维预览平顺性目标，非工业合体标准",
+    "methodsZh": [
+      "独立NumPy按源弧长每5mm采样最高35%袖山",
+      "使用真实相邻三角面法平面与向内余切方向；不使用渲染平滑法线",
+      "左右袖同源顶点镜像距离",
+      "SciPy自适应积分复核零吃势配缝与曲线切向连续"
+    ],
+    "variants": [
+      {
+        "status": "PASS",
+        "sides": [
+          {
+            "part": "sleeve-right",
+            "planeAngleDeg": {
+              "count": 44,
+              "mean": 8.184922151958956,
+              "p95": 14.093350107659557,
+              "max": 16.00796898490926
+            },
+            "inwardTurnDeg": {
+              "count": 44,
+              "mean": 7.930807822643491,
+              "p95": 14.091182779747442,
+              "max": 16.006743202499194
+            },
+            "interiorFoldDeg": {
+              "count": 1956,
+              "mean": 5.5464312181426365,
+              "p95": 18.172293864043446,
+              "max": 31.902069243381185,
+              "excludedNearUnderarmEdges": 73,
+              "underarmExclusionMm": 15
+            }
+          },
+          {
+            "part": "sleeve-left",
+            "planeAngleDeg": {
+              "count": 44,
+              "mean": 7.985268972042104,
+              "p95": 15.14792365716739,
+              "max": 16.71215328647305
+            },
+            "inwardTurnDeg": {
+              "count": 44,
+              "mean": 7.751241017384775,
+              "p95": 15.143807848448915,
+              "max": 16.71247374669386
+            },
+            "interiorFoldDeg": {
+              "count": 1956,
+              "mean": 5.546431218142655,
+              "p95": 18.172293864043446,
+              "max": 31.902069243381185,
+              "excludedNearUnderarmEdges": 73,
+              "underarmExclusionMm": 15
+            }
+          }
+        ],
+        "sleeveMirrorMaxMm": 6.359601310784502e-14,
+        "source": {
+          "armholeLengthMm": 510.81599718014525,
+          "capLengthMm": 510.81599718188886,
+          "capEaseMm": 1.743615030136425e-09,
+          "maxJoinAngleDeg": 5.512486147686085e-14
+        },
+        "maxRuntimeDifference": 6.174047939566663e-10,
+        "variant": "basic"
+      },
+      {
+        "status": "PASS",
+        "sides": [
+          {
+            "part": "sleeve-right",
+            "planeAngleDeg": {
+              "count": 47,
+              "mean": 9.187342924331839,
+              "p95": 19.560959534892802,
+              "max": 26.56249000115367
+            },
+            "inwardTurnDeg": {
+              "count": 47,
+              "mean": 9.103953589380374,
+              "p95": 19.562143814795434,
+              "max": 26.323308708287698
+            },
+            "interiorFoldDeg": {
+              "count": 2562,
+              "mean": 5.516661030673941,
+              "p95": 17.35102652275983,
+              "max": 31.257386105844244,
+              "excludedNearUnderarmEdges": 122,
+              "underarmExclusionMm": 15
+            }
+          },
+          {
+            "part": "sleeve-left",
+            "planeAngleDeg": {
+              "count": 47,
+              "mean": 9.26185381741183,
+              "p95": 20.30791828373744,
+              "max": 26.562490001153286
+            },
+            "inwardTurnDeg": {
+              "count": 47,
+              "mean": 9.177365357236287,
+              "p95": 20.305629371236904,
+              "max": 26.323308708287442
+            },
+            "interiorFoldDeg": {
+              "count": 2562,
+              "mean": 5.516661031145238,
+              "p95": 17.351026522759895,
+              "max": 31.257386105844244,
+              "excludedNearUnderarmEdges": 122,
+              "underarmExclusionMm": 15
+            }
+          }
+        ],
+        "sleeveMirrorMaxMm": 6.359601310784502e-14,
+        "source": {
+          "armholeLengthMm": 551.354700765148,
+          "capLengthMm": 551.354700765244,
+          "capEaseMm": 9.606537787476555e-11,
+          "maxJoinAngleDeg": 4.7049552768559826e-14
+        },
+        "maxRuntimeDifference": 6.093889837188726e-10,
+        "variant": "relaxed"
+      },
+      {
+        "status": "PASS",
+        "sides": [
+          {
+            "part": "sleeve-right",
+            "planeAngleDeg": {
+              "count": 44,
+              "mean": 7.615765413200588,
+              "p95": 18.69580272658608,
+              "max": 21.363575428906415
+            },
+            "inwardTurnDeg": {
+              "count": 44,
+              "mean": 7.47503287819977,
+              "p95": 18.645342369890983,
+              "max": 21.35703963925809
+            },
+            "interiorFoldDeg": {
+              "count": 1841,
+              "mean": 5.751839663753435,
+              "p95": 17.737965593566738,
+              "max": 32.590727537951125,
+              "excludedNearUnderarmEdges": 63,
+              "underarmExclusionMm": 15
+            }
+          },
+          {
+            "part": "sleeve-left",
+            "planeAngleDeg": {
+              "count": 44,
+              "mean": 7.6619363575767725,
+              "p95": 18.695802726586063,
+              "max": 21.363575428906415
+            },
+            "inwardTurnDeg": {
+              "count": 44,
+              "mean": 7.520540615231092,
+              "p95": 18.645342369890983,
+              "max": 21.35703963925809
+            },
+            "interiorFoldDeg": {
+              "count": 1841,
+              "mean": 5.7518396637533105,
+              "p95": 17.737965593566738,
+              "max": 32.590727537951196,
+              "excludedNearUnderarmEdges": 63,
+              "underarmExclusionMm": 15
+            }
+          }
+        ],
+        "sleeveMirrorMaxMm": 6.49305861584907e-14,
+        "source": {
+          "armholeLengthMm": 510.81599718014525,
+          "capLengthMm": 510.81599718188886,
+          "capEaseMm": 1.743615030136425e-09,
+          "maxJoinAngleDeg": 5.512486147686085e-14
+        },
+        "maxRuntimeDifference": 2.3803181647963356e-13,
+        "variant": "cropped"
+      }
+    ],
+    "negativeControl": {
+      "status": "FAIL",
+      "sides": [
+        {
+          "part": "sleeve-right",
+          "planeAngleDeg": {
+            "count": 44,
+            "mean": 26.502356854277995,
+            "p95": 87.42959300670255,
+            "max": 89.98831077172605
+          },
+          "inwardTurnDeg": {
+            "count": 44,
+            "mean": 29.570110281205086,
+            "p95": 101.47513608898996,
+            "max": 102.75219319859679
+          },
+          "interiorFoldDeg": {
+            "count": 1957,
+            "mean": 9.776790994106392,
+            "p95": 39.9468794462227,
+            "max": 176.58794125995558,
+            "excludedNearUnderarmEdges": 73,
+            "underarmExclusionMm": 15
+          }
+        },
+        {
+          "part": "sleeve-left",
+          "planeAngleDeg": {
+            "count": 44,
+            "mean": 9.811328059914482,
+            "p95": 19.98062944714023,
+            "max": 28.281842451865284
+          },
+          "inwardTurnDeg": {
+            "count": 44,
+            "mean": 9.521816002802728,
+            "p95": 19.98061454115799,
+            "max": 28.25477002065324
+          },
+          "interiorFoldDeg": {
+            "count": 1957,
+            "mean": 10.21967221892418,
+            "p95": 35.757585382659826,
+            "max": 179.6579125166815,
+            "excludedNearUnderarmEdges": 73,
+            "underarmExclusionMm": 15
+          }
+        }
+      ],
+      "sleeveMirrorMaxMm": 11.912452389592243,
+      "source": {
+        "armholeLengthMm": 510.81599718014525,
+        "capLengthMm": 511.15550546343206,
+        "capEaseMm": 0.33950828328681837,
+        "maxJoinAngleDeg": 5.512486147686085e-14
+      },
+      "maxRuntimeDifference": 4.3639225566494133e-10
+    }
+  },
+  "sourceBaselineCommit": "7ed2e1e1404bdb3cc60864f68822f24198eccb82",
+  "references": [
+    {
+      "title": "Teagan 官方设计定位",
+      "url": "https://freesewing.eu/designs/teagan/"
+    },
+    {
+      "title": "Teagan 袖山吃势选项",
+      "url": "https://freesewing.eu/docs/designs/teagan/options/#sleevecapease"
+    },
+    {
+      "title": "Brian 五段袖山构造",
+      "url": "https://freesewing.eu/docs/designs/brian/#understanding-the-sleevecap"
+    },
+    {
+      "title": "In the Folds：落肩与装袖对照",
+      "url": "https://inthefolds.com/q-a-series/2024/how-to-alter-dropped-shoulder-to-set-in-sleeve"
+    }
+  ],
+  "sleeveBrowser": {
+    "status": "PASS",
+    "testCount": 19,
+    "tests": [
+      "Default source carries explicit zero-ease refinement",
+      "Default is 2D plus ordinary 3D without heat",
+      "Patch contains replayable refinement operation",
+      "basic default source and geometric sleeve quality PASS",
+      "basic source zero ease",
+      "relaxed default source and geometric sleeve quality PASS",
+      "relaxed source zero ease",
+      "cropped default source and geometric sleeve quality PASS",
+      "cropped source zero ease",
+      "Original source comparison changes actual 2D curve",
+      "Original comparison still uses new bending solver",
+      "Undo restores exact refined curve and toggle",
+      "Explicit original choice survives reload",
+      "Refined choice survives reload",
+      "Old unedited draft upgrades once with undo",
+      "Old manually edited draft is preserved",
+      "Export includes source refinement and actual sleeve quality",
+      "Mobile ordinary 3D is rendered without horizontal overflow",
+      "No page errors or WebGL warnings"
+    ],
+    "consoleErrors": [],
+    "warnings": [],
+    "runner": "Installed Chromium/Playwright; Browser connector failed with UNAVAILABLE, ego-browser and managed CUA runtime absent",
+    "artifactSha256": {
+      "index.html": "9c2236242705e235f8671bdb4c5a412adc43ee40d9ba84666fd3b3c4af858830",
+      "studio.js": "b02d5c095655b8d0f28b13aa6df639953e4076753792196651e6b8ff756d5bd3",
+      "wear-worker.js": "8056ee4540e494ff23e4a773c793cece4b07a203be6e377335610f7d952351ec",
+      "models/teagan-static-fits.json": "d410c129b9a4a4b751addaf4c1361de8008862335dcae3c5f8c63537fa186c05",
+      "pattern-kernel.wasm": "fc71fbceffae87934aed6f0a5152768187f94d001d97a95441d63265a58a73b0"
+    }
+  },
+  "wearBrowser": {
+    "status": "PASS",
+    "testCount": 11,
+    "tests": [
+      "Opaque human defaults to 100%",
+      "basic runtime geometry PASS",
+      "relaxed runtime geometry PASS",
+      "cropped runtime geometry PASS",
+      "Wear download records actual checks and material limits",
+      "Edits revoke PASS while solver runs",
+      "2D is usable while worker solves",
+      "Latest edit passes after cancelling stale workers",
+      "Renderer never clears depth between body and cloth",
+      "Independent verification report is accessible",
+      "No console errors or buffer warnings"
+    ],
+    "consoleErrors": [],
+    "warnings": [],
+    "depthOnlyClears": 0,
+    "runner": "Installed Chromium + Playwright; actual dist artifacts with WebGL SwiftShader",
+    "artifactSha256": {
+      "index.html": "98a0f8dc1b44b586f40c38741c899f9457443223a871f0a4401c262f77ad864d",
+      "studio.js": "b02d5c095655b8d0f28b13aa6df639953e4076753792196651e6b8ff756d5bd3",
+      "wear-worker.js": "8056ee4540e494ff23e4a773c793cece4b07a203be6e377335610f7d952351ec",
+      "style.css": "cb4bc3c975d716d62ff0170fc1a877044b56b58798d5fbd8f7f38e24f6ab1562",
+      "pattern-kernel.wasm": "fc71fbceffae87934aed6f0a5152768187f94d001d97a95441d63265a58a73b0",
+      "models/teagan-static-fits.json": "d410c129b9a4a4b751addaf4c1361de8008862335dcae3c5f8c63537fa186c05"
+    }
+  },
+  "editedGeometryIndependent": {
+    "schema": "garment-body-geometric-wear/2",
+    "status": "PASS",
+    "scopeZh": "演示人体的静态几何穿着；非面料力学或个人合体认证",
+    "tolerances": {
+      "bodyIntersectionM": 1e-09,
+      "seamGapMm": 1
+    },
+    "methodsZh": [
+      "使用实际渲染人体顶点与求解后衣片，不读取示意映射坐标",
+      "独立 Python 三个斜射线方向对所有顶点、边中点、面中心作包含检查",
+      "空间网格宽相位与三角形分离轴检测，检查全部衣片与人体三角面交叉",
+      "指定配缝作双向点到线段距离采样，每段 9 点",
+      "领口、下摆和双袖口投影包含测试；腰部 36 个方向包围检查"
+    ],
+    "limitsZh": [
+      "穿着通过仅限静态几何与当前演示人体",
+      "真实面料力学、压力与个人合体未校准",
+      "未作连续运动、自碰撞或制造工艺认证"
+    ],
+    "variants": [
+      {
+        "variant": "edited",
+        "status": "PASS",
+        "inputSha256": "351d7e7b954c1feded224f74daf38c66debec684b8db6198c48b46726beb5343",
+        "bodyClosedManifold": true,
+        "parts": [
+          {
+            "part": "front",
+            "vertices": 4274,
+            "triangles": 8178,
+            "samplePoints": 36986,
+            "insideSamples": 0,
+            "insideVertices": 0,
+            "ambiguousSamples": 0,
+            "surfaceBoundarySamples": 0,
+            "intersectingTriangles": 0,
+            "maxPrincipalStrainPercent": 116.7240974144832
+          },
+          {
+            "part": "back",
+            "vertices": 4429,
+            "triangles": 8494,
+            "samplePoints": 38405,
+            "insideSamples": 0,
+            "insideVertices": 0,
+            "ambiguousSamples": 0,
+            "surfaceBoundarySamples": 0,
+            "intersectingTriangles": 0,
+            "maxPrincipalStrainPercent": 98.10429363020303
+          },
+          {
+            "part": "sleeve-right",
+            "vertices": 788,
+            "triangles": 1408,
+            "samplePoints": 6420,
+            "insideSamples": 0,
+            "insideVertices": 0,
+            "ambiguousSamples": 0,
+            "surfaceBoundarySamples": 0,
+            "intersectingTriangles": 0,
+            "maxPrincipalStrainPercent": 97.31262626816863
+          },
+          {
+            "part": "sleeve-left",
+            "vertices": 788,
+            "triangles": 1408,
+            "samplePoints": 6420,
+            "insideSamples": 0,
+            "insideVertices": 0,
+            "ambiguousSamples": 0,
+            "surfaceBoundarySamples": 0,
+            "intersectingTriangles": 0,
+            "maxPrincipalStrainPercent": 97.31262626816863
+          }
+        ],
+        "seamGapsMm": {
+          "shoulder": 5.594315114139762e-14,
+          "side": 6.015477228688331e-07,
+          "2-underarm": 2.7755575615628914e-14,
+          "2-cap": 0.44787214829318106,
+          "3-underarm": 2.7755575615628914e-14,
+          "3-cap": 0.4478721482931805
+        },
+        "enclosure": {
+          "torsoDirections": 36,
+          "torsoEnclosed": true,
+          "openings": {
+            "neck": true,
+            "hem": true,
+            "lCuff": true,
+            "rCuff": true
+          }
+        },
+        "boundaryDeviationMm": null,
+        "solver": {
+          "solver": "static-strain-bend-seam-contact-symmetry/4",
+          "bendingConstraints": 28701,
+          "foldConstraints": 3912,
+          "foldLimitTargetDeg": 30,
+          "seamBendingConstraints": 301,
+          "symmetryConstraints": 5142,
+          "nodeCount": 10207,
+          "weldedDuplicates": 72,
+          "edgeConstraints": 29717,
+          "stitchConstraints": 618,
+          "fixedStitchResidualMm": 1.5695659408610274,
+          "minimumVertexSignedMm": 3.9999999999999307,
+          "clearanceMm": 4,
+          "iterations": 240,
+          "elapsedMs": 61819.89999999851,
+          "queries": 2827333
+        },
+        "durationSeconds": 14.03
+      }
+    ],
+    "sleeveSurfaceQuality": {
+      "schema": "independent-sleeve-surface-quality/1",
+      "status": "PASS",
+      "limits": {
+        "upperCapPlaneP95Deg": 30,
+        "upperCapInwardTurnMaxDeg": 45,
+        "sleeveMirrorMaxMm": 0.5,
+        "interiorFoldP95Deg": 25,
+        "interiorFoldMaxDeg": 45
+      },
+      "meaningZh": "本次无结构装袖三维预览平顺性目标，非工业合体标准",
+      "methodsZh": [
+        "独立NumPy按源弧长每5mm采样最高35%袖山",
+        "使用真实相邻三角面法平面与向内余切方向；不使用渲染平滑法线",
+        "左右袖同源顶点镜像距离",
+        "SciPy自适应积分复核零吃势配缝与曲线切向连续"
+      ],
+      "variants": [
+        {
+          "status": "PASS",
+          "sides": [
+            {
+              "part": "sleeve-right",
+              "planeAngleDeg": {
+                "count": 44,
+                "mean": 10.621479108405095,
+                "p95": 20.85243145373357,
+                "max": 21.237155445063404
+              },
+              "inwardTurnDeg": {
+                "count": 44,
+                "mean": 10.47379716383868,
+                "p95": 20.852804770203136,
+                "max": 20.95873411265663
+              },
+              "interiorFoldDeg": {
+                "count": 1956,
+                "mean": 5.474272151543723,
+                "p95": 17.81786403585427,
+                "max": 32.120167333268434,
+                "excludedNearUnderarmEdges": 73,
+                "underarmExclusionMm": 15
+              }
+            },
+            {
+              "part": "sleeve-left",
+              "planeAngleDeg": {
+                "count": 44,
+                "mean": 9.922859200789103,
+                "p95": 20.85243145373357,
+                "max": 21.237155445063404
+              },
+              "inwardTurnDeg": {
+                "count": 44,
+                "mean": 9.79588389379569,
+                "p95": 20.852804770203136,
+                "max": 20.95873411265663
+              },
+              "interiorFoldDeg": {
+                "count": 1956,
+                "mean": 5.474272151543715,
+                "p95": 17.81786403585427,
+                "max": 32.120167333268384,
+                "excludedNearUnderarmEdges": 73,
+                "underarmExclusionMm": 15
+              }
+            }
+          ],
+          "sleeveMirrorMaxMm": 7.88106850030428e-14,
+          "source": {
+            "armholeLengthMm": 510.81599718014525,
+            "capLengthMm": 510.81599718188886,
+            "capEaseMm": 1.743615030136425e-09,
+            "maxJoinAngleDeg": 5.512486147686085e-14
+          },
+          "maxRuntimeDifference": 3.730349362740526e-13,
+          "variant": "edited"
+        }
+      ],
+      "negativeControl": null
+    }
+  },
+  "sourceSha256": {
+    "src/cloth-bending.mjs": "11b7f37b7ed32ed4550d7bf55fc0e91ed5d142e00b1b6d7ce3ec7720e469b593",
+    "src/sleeve-quality.mjs": "df1783780dc50aeb24abf746ee0fc21133830b7dce18497edd9fc2b420d3b1e2",
+    "src/garment-fit.mjs": "347e533327d7bf2efc1f95842c612bfa5e560e8244c2e177b7b405dfd971be10",
+    "src/expert.mjs": "6394774d525fa504217a842e174b0cef49e615e326e16cb7d7939e958c934ee5",
+    "src/main.js": "2a692db8a5ec1c7b0ecbe7bf7709fe2d0c2751d0ef5da8ba9897df1bd0a9d33e",
+    "src/assembly.mjs": "d604f0ba47613f67cf74e331be93320efcf2ec4a986cea9e5aa18dfa85d36e71",
+    "src/human.mjs": "08213d70c6a8486ac750dfc37dd6d34ba9d4255fbaac1607b125f9452c97d465",
+    "scripts/verify-sleeve-quality.py": "75c3b6cca8d0bb3f9d6e2e3b6587d036baf32856a4cbbbd2210bd65e27ca4a1e"
+  }
+}

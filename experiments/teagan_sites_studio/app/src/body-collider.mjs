@@ -1,0 +1,29 @@
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],norm=a=>{const l=Math.hypot(...a)||1;return a.map(x=>x/l);};
+export class BodyCollider{
+ constructor(vertices,faces){this.vertices=vertices;this.faces=faces;this.normals=[];this.vn=vertices.map(()=>[0,0,0]);const edge=new Map();this.tris=faces.map((f,id)=>{const p=f.map(i=>vertices[i]),n=norm(cross(sub(p[1],p[0]),sub(p[2],p[0])));this.normals.push(n);for(let k=0;k<3;k++){const u=sub(p[(k+1)%3],p[k]),v=sub(p[(k+2)%3],p[k]),angle=Math.atan2(Math.hypot(...cross(u,v)),dot(u,v));for(let d=0;d<3;d++)this.vn[f[k]][d]+=n[d]*angle;const a=f[k],b=f[(k+1)%3],key=a<b?a+':'+b:b+':'+a;if(!edge.has(key))edge.set(key,[0,0,0]);const e=edge.get(key);for(let d=0;d<3;d++)e[d]+=n[d];}return{id,p,min:[0,1,2].map(d=>Math.min(...p.map(v=>v[d]))),max:[0,1,2].map(d=>Math.max(...p.map(v=>v[d]))),center:[0,1,2].map(d=>p.reduce((s,v)=>s+v[d],0)/3)};});this.vn=this.vn.map(norm);this.en=faces.map(f=>f.map((a,k)=>{const b=f[(k+1)%3];return norm(edge.get(a<b?a+':'+b:b+':'+a));}));
+ const build=ids=>{const min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];for(const i of ids)for(let d=0;d<3;d++){min[d]=Math.min(min[d],this.tris[i].min[d]);max[d]=Math.max(max[d],this.tris[i].max[d]);}if(ids.length<=12)return{min,max,ids};let axis=0;for(let d=1;d<3;d++)if(max[d]-min[d]>max[axis]-min[axis])axis=d;ids.sort((a,b)=>this.tris[a].center[axis]-this.tris[b].center[axis]);const mid=ids.length>>1;return{min,max,left:build(ids.slice(0,mid)),right:build(ids.slice(mid))};};this.root=build(faces.map((_,i)=>i));this.queries=0;
+ }
+ closest(p){this.queries++;let best=Infinity,result=null;const boxDist=n=>{let v=0;for(let d=0;d<3;d++){const e=Math.max(n.min[d]-p[d],0,p[d]-n.max[d]);v+=e*e;}return v;};
+ const triangle=id=>{const[a,b,c]=this.tris[id].p,ab=sub(b,a),ac=sub(c,a),ap=sub(p,a),d1=dot(ab,ap),d2=dot(ac,ap);let q,normal;const vertex=k=>{q=this.vertices[this.faces[id][k]];normal=this.vn[this.faces[id][k]];},edge=(k,t)=>{const v=this.tris[id].p[k],w=this.tris[id].p[(k+1)%3];q=v.map((x,d)=>x+t*(w[d]-x));normal=this.en[id][k];};
+ if(d1<=0&&d2<=0)vertex(0);else{const bp=sub(p,b),d3=dot(ab,bp),d4=dot(ac,bp);if(d3>=0&&d4<=d3)vertex(1);else{const vc=d1*d4-d3*d2;if(vc<=0&&d1>=0&&d3<=0)edge(0,d1/(d1-d3));else{const cp=sub(p,c),d5=dot(ab,cp),d6=dot(ac,cp);if(d6>=0&&d5<=d6)vertex(2);else{const vb=d5*d2-d1*d6;if(vb<=0&&d2>=0&&d6<=0){const t=d2/(d2-d6);q=a.map((x,d)=>x+t*ac[d]);normal=this.en[id][2];}else{const va=d3*d6-d5*d4;if(va<=0&&d4-d3>=0&&d5-d6>=0)edge(1,(d4-d3)/((d4-d3)+(d5-d6)));else{const inv=1/(va+vb+vc),v=vb*inv,w=vc*inv;q=a.map((x,d)=>x+ab[d]*v+ac[d]*w);normal=this.normals[id];}}}}}}
+ const delta=sub(p,q),d2v=dot(delta,delta);if(d2v<best){best=d2v;const distance=Math.sqrt(best),signed=dot(delta,normal)>=0?distance:-distance;result={point:q.slice(),normal:normal.slice(),distance,signed,face:id};}};
+ const visit=n=>{if(boxDist(n)>best)return;if(n.ids){for(const id of n.ids)if(boxDist(this.tris[id])<=best)triangle(id);}else{const a=boxDist(n.left),b=boxDist(n.right);if(a<b){visit(n.left);visit(n.right);}else{visit(n.right);visit(n.left);}}};visit(this.root);return result;
+ }
+ ray(p,dir){const d=norm(dir),hits=[];const box=n=>{let lo=0,hi=Infinity;for(let k=0;k<3;k++){if(Math.abs(d[k])<1e-13){if(p[k]<n.min[k]||p[k]>n.max[k])return false;}else{let a=(n.min[k]-p[k])/d[k],b=(n.max[k]-p[k])/d[k];if(a>b)[a,b]=[b,a];lo=Math.max(lo,a);hi=Math.min(hi,b);if(hi<lo)return false;}}return true;};const visit=n=>{if(!box(n))return;if(n.ids){for(const id of n.ids){const[a,b,c]=this.tris[id].p,e1=sub(b,a),e2=sub(c,a),h=cross(d,e2),det=dot(e1,h);if(Math.abs(det)<1e-12)continue;const inv=1/det,s=sub(p,a),u=dot(s,h)*inv;if(u< -1e-9||u>1+1e-9)continue;const q=cross(s,e1),v=dot(d,q)*inv;if(v< -1e-9||u+v>1+1e-9)continue;const t=dot(e2,q)*inv;if(t>1e-8)hits.push(t);}}else{visit(n.left);visit(n.right);}};visit(this.root);hits.sort((a,b)=>a-b);return hits.filter((v,i)=>!i||Math.abs(v-hits[i-1])>1e-7);
+ }
+ project(p,margin=.004,preferred=null){let hit=this.closest(p);if(hit.signed>=margin)return{point:p,changed:false,signed:hit.signed};let q;if(hit.signed<0&&preferred){const dir=norm(preferred),hits=this.ray(p,dir);if(hits.length)q=p.map((v,k)=>v+dir[k]*(hits[0]+margin));}
+ if(!q){const dir=hit.distance>1e-10?sub(p,hit.point).map(v=>v/hit.distance*(hit.signed<0?-1:1)):hit.normal;q=hit.point.map((v,k)=>v+dir[k]*margin);}
+ for(let i=0;i<3;i++){hit=this.closest(q);if(hit.signed>=margin-1e-7)break;const dir=hit.distance>1e-10?sub(q,hit.point).map(v=>v/hit.distance*(hit.signed<0?-1:1)):hit.normal;q=hit.point.map((v,k)=>v+dir[k]*(margin+1e-5));}
+ return{point:q,changed:true,signed:hit.signed};
+ }
+}
+// Triangle/triangle separating axes, including coplanar triangles.
+function overlapTriangles(a,b,tolerance){
+ const ae=a.map((p,i)=>sub(a[(i+1)%3],p)),be=b.map((p,i)=>sub(b[(i+1)%3],p)),an=cross(ae[0],ae[1]),bn=cross(be[0],be[1]);
+ const axes=[an,bn,...ae.flatMap(x=>be.map(y=>cross(x,y))),...ae.map(x=>cross(an,x)),...be.map(x=>cross(bn,x))];
+ for(const v of axes){const length=Math.hypot(...v);if(length<1e-17)continue;const n=v.map(x=>x/length),ap=a.map(p=>dot(p,n)),bp=b.map(p=>dot(p,n));if(Math.max(...ap)<Math.min(...bp)-tolerance||Math.max(...bp)<Math.min(...ap)-tolerance)return false;}return true;
+}
+BodyCollider.prototype.intersections=function(triangle,tolerance=1e-9){
+ const min=[0,1,2].map(k=>Math.min(...triangle.map(p=>p[k]))),max=[0,1,2].map(k=>Math.max(...triangle.map(p=>p[k]))),overlap=n=>min.every((v,k)=>v<=n.max[k]+tolerance&&max[k]>=n.min[k]-tolerance),hits=[];
+ const visit=n=>{if(!overlap(n))return;if(n.ids){for(const i of n.ids)if(overlap(this.tris[i])&&overlapTriangles(triangle,this.tris[i].p,tolerance))hits.push(i);}else{visit(n.left);visit(n.right);}};visit(this.root);return hits;
+};

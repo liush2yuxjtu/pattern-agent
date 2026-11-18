@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "sourceCommit": "5fd4986222886d1e4aaa5944122eaaec397c9a2a",
+  "scope": "Restored local source, build, existing assertions and optional actual Chromium interactions",
+  "browserTransport": "LOCAL exact-byte route.fulfill; not a fresh production deployment test",
+  "browserFallback": "ego-browser not installed; use repository Playwright scripts and installed Chromium",
+  "physicalFit": "NOT_RUN",
+  "materialCalibration": "NOT_CALIBRATED",
+  "steps": [
+    {
+      "name": "source",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/work/pattern-agent-archive/experiments/teagan_sites_studio/tools/verify-source.py"
+      ],
+      "cwd": "/workspace/work/pattern-agent-archive/experiments/teagan_sites_studio",
+      "exitCode": 0,
+      "seconds": 0.05,
+      "log": "source.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/tmp/teagan-archive-5nk9e0f4/app",
+      "exitCode": 0,
+      "seconds": 0.7,
+      "log": "build.log"
+    },
+    {
+      "name": "core",
+      "command": [
+        "npm",
+        "run",
+        "verify"
+      ],
+      "cwd": "/tmp/teagan-archive-5nk9e0f4/app",
+      "exitCode": 0,
+      "seconds": 3.34,
+      "log": "core.log"
+    },
+    {
+      "name": "expert",
+      "command": [
+        "npm",
+        "run",
+        "verify:expert"
+      ],
+      "cwd": "/tmp/teagan-archive-5nk9e0f4/app",
+      "exitCode": 0,
+      "seconds": 3.22,
+      "log": "expert.log"
+    },
+    {
+      "name": "state-model",
+      "command": [
+        "node",
+        "scripts/verify-studio-state.mjs",
+        "/workspace/work/teagan-archive-check/state-model.json"
+      ],
+      "cwd": "/tmp/teagan-archive-5nk9e0f4/app",
+      "exitCode": 0,
+      "seconds": 0.06,
+      "log": "state-model.log"
+    },
+    {
+      "name": "fold-angles",
+      "command": [
+        "node",
+        "scripts/verify-crease-angles.mjs",
+        "/tmp/teagan-archive-5nk9e0f4/angle-fixtures.json"
+      ],
+      "cwd": "/tmp/teagan-archive-5nk9e0f4/app",
+      "exitCode": 0,
+      "seconds": 1.16,
+      "log": "fold-angles.log"
+    },
+    {
+      "name": "fold-independent",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/work/pattern-agent-archive/experiments/teagan_sites_studio/tools/verify-fold-independent.py",
+        "--app",
+        "/tmp/teagan-archive-5nk9e0f4/app",
+        "--fixtures",
+        "/tmp/teagan-archive-5nk9e0f4/angle-fixtures.json",
+        "--out",
+        "/workspace/work/teagan-archive-check/fold-independent.json"
+      ],
+      "cwd": "/tmp/teagan-archive-5nk9e0f4/app",
+      "exitCode": 0,
+      "seconds": 5.0,
+      "log": "fold-independent.log"
+    },
+    {
+      "name": "browser-state",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/work/pattern-agent-archive/experiments/teagan_sites_studio/tools/run-browser.py",
+        "--app",
+        "/tmp/teagan-archive-5nk9e0f4/app",
+        "--suite",
+        "state",
+        "--out",
+        "/workspace/work/teagan-archive-check/browser-state"
+      ],
+      "cwd": "/tmp/teagan-archive-5nk9e0f4/app",
+      "exitCode": 0,
+      "seconds": 122.53,
+      "log": "browser-state.log"
+    },
+    {
+      "name": "browser-views",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/work/pattern-agent-archive/experiments/teagan_sites_studio/tools/run-browser.py",
+        "--app",
+        "/tmp/teagan-archive-5nk9e0f4/app",
+        "--suite",
+        "views",
+        "--out",
+        "/workspace/work/teagan-archive-check/browser-views"
+      ],
+      "cwd": "/tmp/teagan-archive-5nk9e0f4/app",
+      "exitCode": 0,
+      "seconds": 88.94,
+      "log": "browser-views.log"
+    }
+  ],
+  "rebuildAllSourceHashesMatch": true
+}
