@@ -1,0 +1,24 @@
+{
+  "skill": ".agents/skills/verify/SKILL.md",
+  "candidateParent": "22ccea21d9801f6663c130d0c62595f9f732d5a3",
+  "verdict": "SKIP",
+  "reason": "Evidence-only commit; no executable runtime change. The actual archived public product claim is PASS.",
+  "archivedRuntimeVerdict": "PASS",
+  "sourceCommit": "aa3f4970ec072beb311a7655db72dd1eff5bf150",
+  "htmlSha256": "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+  "checks": {
+    "52LiveBrowserChecks": true,
+    "fourIsolatedWaistGeometryProbes": true,
+    "all61WaistCollisionSeamTensorPressureCoverageChecks": true,
+    "all61LocalPublicPhysicalStatesExact": true,
+    "concurrentSourceAndClosingRootFlow": true
+  },
+  "archiveReadbackCounts": {
+    "json": 43,
+    "gzip": 43,
+    "png": 39
+  },
+  "commands": "candidate.json, postcommit/pushed.json, live/commands.json and live/publisher-closing-command.json retain real argv and exit statuses.",
+  "cleanup": "All scripts exited 0, closed owned browser/server/numeric worker resources. Immutable evidence retained.",
+  "recordedAtUTC": "2026-11-18T08:57:45.172176+00:00"
+}

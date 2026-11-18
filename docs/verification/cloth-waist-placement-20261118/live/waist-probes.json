@@ -1,0 +1,36 @@
+{
+  "verdict": "PASS",
+  "project": "work/cloth-wear/live/fit/first-ready.json",
+  "projectSha256": "95a37e3d3399a4edab32ee6f864990e3694d4a973645f255f467be5e1e0862a9",
+  "bodySourceSha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+  "sourceFingerprint": "042ed8f8fefa1882c40aa88a6fc174b773123c035a6de1f12fa1793fa00ff2f1",
+  "probes": {
+    "actualExport": {
+      "verdict": "PASS",
+      "bodySectionGirthMm": 666.0588056425474,
+      "waistEdgeLengthsMm": [
+        406.6840051894257,
+        300.23699994444615
+      ],
+      "garmentWaistMm": 706.9210051338719,
+      "minWaistGapMm": 6.996127162765317,
+      "maxWaistGapMm": 7.000010747540357,
+      "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+      "patternMismatchMm": 3.478364135389711e-06,
+      "sectionHeightM": 1.0
+    },
+    "detached": {
+      "verdict": "REJECTED",
+      "reason": "Waist detachment 36.61132828058987 mm > 10 mm"
+    },
+    "wrong-level-following-skin": {
+      "verdict": "REJECTED",
+      "reason": "Wrong anatomical waist level 31.805935167382728 mm"
+    },
+    "wrong-pattern-length": {
+      "verdict": "REJECTED",
+      "reason": "Waist edge/pattern discrepancy 20.000000857284817 mm"
+    }
+  },
+  "scope": "Actual exported mesh, independent anatomical section/skin queries; no solver substitution."
+}

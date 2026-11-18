@@ -1,0 +1,15 @@
+{
+  "verdict": "PASS",
+  "method": "Original actual-public Playwright PNGs inspected with view_image. No image edits. Same viewport and camera/wheel controls as before.",
+  "observations": {
+    "visual/waist-closeup.png": "Actual skirt upper edge follows the torso contour; old front circular-rim protrusion has been removed. Complete gray body remains visible outside the skirt.",
+    "visual/front.png": "High-waist skirt attached at measured waist level; fitted hip and flared hem, no gray skin patches through skirt.",
+    "visual/back.png": "Covered buttocks and fitted waist; no clipping/masking layer.",
+    "fit/first-ready-pressure.png": "Normal pressure selected, separate Pa/kPa scale and real hip load; new waist diagnostics show 7 mm gap.",
+    "browser/strain.png": "Actual strain map, distinct units and visible upper/hip concentration.",
+    "browser/stress.png": "Actual Cauchy-stress map, its own kPa legend and waist/hip concentrations.",
+    "browser/contact.png": "Actual skin-distance map with millimetre legend; distinct from pressure.",
+    "fit/mobile.png": "390 px layout contains full clothed side view, timeline, fitted-waist metrics and controls without horizontal clipping."
+  },
+  "scope": "Visual evidence supports independent exported-state geometry/force/tensor checks; no physical-material calibration or manufacturing approval."
+}

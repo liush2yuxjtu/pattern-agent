@@ -1,0 +1,100 @@
+[
+  {
+    "name": "publisher",
+    "argv": [
+      "python",
+      "scripts/verify_pages.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/",
+      "--expected-commit",
+      "aa3f4970ec072beb311a7655db72dd1eff5bf150",
+      "--output",
+      "work/cloth-wear/live/publisher"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794991312.2070808,
+    "finishedAtUnix": 1794991317.7841692
+  },
+  {
+    "name": "fit",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_fit.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+      "--expected-html-sha",
+      "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+      "--output",
+      "work/cloth-wear/live/fit"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794991317.7845774,
+    "finishedAtUnix": 1794991446.371205
+  },
+  {
+    "name": "waist-probes",
+    "argv": [
+      "python",
+      "tools/cloth_lab/verify_waist.py",
+      "--project",
+      "work/cloth-wear/live/fit/first-ready.json",
+      "--output",
+      "work/cloth-wear/live/waist-probes.json"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794991446.3719194,
+    "finishedAtUnix": 1794991447.9910676
+  },
+  {
+    "name": "browser",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_browser.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+      "--expected-html-sha",
+      "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+      "--output",
+      "work/cloth-wear/live/browser"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794991447.991921,
+    "finishedAtUnix": 1794991584.0301726
+  },
+  {
+    "name": "replay",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_replay.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+      "--expected-html-sha",
+      "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+      "--output",
+      "work/cloth-wear/live/replay"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794991584.030878,
+    "finishedAtUnix": 1794991819.2623806
+  },
+  {
+    "name": "handoff",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_handoff.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+      "--expected-html-sha",
+      "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+      "--output",
+      "work/cloth-wear/live/handoff"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794991819.2637715,
+    "finishedAtUnix": 1794991845.647933
+  }
+]

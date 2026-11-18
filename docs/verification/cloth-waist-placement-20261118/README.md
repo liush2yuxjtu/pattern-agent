@@ -1,6 +1,16 @@
 # 高腰裙实际装配修复
 
-本地 `/verify`：**PASS**。52 项真实 Playwright 检查、3 项实际 WASM 内核测试、4 项独立腰口正反例探针通过；61 个回放帧全部经独立几何、本构、压力、腰位与覆盖复验。公开页面结果待本代码发布后记录。
+本地及公开页面 `/verify`：**PASS**。本地、线上各 52 项真实 Playwright 检查与 4 项独立腰口正反例探针通过；另有 3 项实际 WASM 内核测试。61 个回放帧全部经独立几何、本构、压力、腰位与覆盖复验。修复提交为 `aa3f4970ec072beb311a7655db72dd1eff5bf150`；[原有 Pages 发布 44268813085](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44268813085) 成功。验证全部本地执行，发布流程仅负责上传静态文件。
+
+## 公开页面结果
+
+[最终读回](live/closing-readback.json)：腰口专项 16 项、常规物理／热图 15 项、回放 15 项、文件交付 6 项全部通过；独立腰口 4 项探针同样通过。所有公开页面 HTML 摘要均与本地候选完全一致。默认、尺寸极端及移动人体四种工况的 12 组物理字段逐值相同；全部 61 帧的 Float32 状态、压力乘子／法向、时钟和物理参数也与本地完全相同。
+
+61 帧的腰口最大间隙为约 7.00001 mm，最近皮肤点腰位误差约 0.000605 mm，纸样腰口差约 0.0000035 mm；接缝间隙、检测穿透和臀部外露均为 0。压力接触方程残差最大约 0.000421 mm，压力积分与法向力差最大约 1.56 × 10⁻⁷ N。所有页面／控制台错误数组为空；实际命令、退出码、DOM 快照和性能日志均在 [live/](live/)。回放查帧中位约 10.3 ms，p95 约 16.11 ms；0.25× / 0.5× / 1× / 2× 分别约 2.036 / 1.051 / 0.543 / 0.267 秒，没有物理积分。
+
+公开页面的[放大侧面](live/visual/waist-closeup.png)、[正面](live/visual/front.png)、[背面](live/visual/back.png)、[试衣压力](live/fit/first-ready-pressure.png)、[应变](live/browser/strain.png)、[应力](live/browser/stress.png)和[碰撞距离](live/browser/contact.png)均直接截图并已目视复核；[复核记录](live/visual-review.json)保留。实际公开页面下载的完整回放[单 HTML](live/replay/downloaded-replay.html.gz)和[JSON](live/replay/downloaded-replay.json.gz)以 gzip 保留原字节，离线重开、从过去帧继续和实际文件再导入均通过。
+
+验证期间其他已授权发布把根站点版本推进至 `22ccea21d9801f6663c130d0c62595f9f732d5a3`。已独立检出该提交的本页文件，确认仍是同一个完整 HTML 摘要，再以该根提交重跑[整站真实下载及交互](live/publisher-closing/browser-report.json)，结果 PASS；该次原有发布的成功记录也已读回。[源码一致性证据](live/concurrent-source-proof.json)保留，没有仅修改预期提交值来制造通过。
 
 入口：<https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/>。此记录只针对 `web/cloth-lab/`，不替其他实验页面或历史 T 恤结果背书。
 
