@@ -1,0 +1,85 @@
+{
+  "workflow": "/verify",
+  "recipe": ".agents/skills/verify/references/cloth-lab.md",
+  "runtimeVerdict": "PASS",
+  "literalFileVerdict": "BLOCKED",
+  "productionFit": "NOT_RUN",
+  "appCodeCommit": "b4bdf9801f5022cbac9241059c669d890d8a04b0",
+  "latestRootCommit": "27789580081307a900de0ac5ada6b765e654f7bd",
+  "appHtmlSha256": "e8ec81825d1a65b0f5e058caeaa70c3aeed0f058fbb8ea65f17a270dde6f3474",
+  "fullAppBytesIdenticalAfterConcurrentPublication": true,
+  "checks": {
+    "handoff": {
+      "sameParameterValuesIndependentOfJSONKeyOrder": true,
+      "pendingFileReadLocksMutatingControls": true,
+      "pendingFileReadPausesRealWASMIntegration": true,
+      "actualUploadedBytesRestoreAllRecordedState": true,
+      "semanticMismatchStillRejectedAtomicallyAndControlsRecovered": true,
+      "activityDescribesDisplayedReplayFrame": true
+    },
+    "replay": {
+      "oneRecordedStatePerRealWASMStep": true,
+      "all61FramesIndependentSeamsBodyIntersectionsAndTensors": true,
+      "seekExactPositionsHistoryPinsContactsClockAndNoIntegration": true,
+      "recordedStressDrivesActualGPUColors": true,
+      "keyboardTimelinePreviousNextAndStrainColors": true,
+      "quarterAndDoubleSpeedPlaybackWithoutIntegration": true,
+      "pauseFreezesRecordedFrame": true,
+      "offlineTimelineRecursiveHTMLAndExactResumption": true,
+      "actualJSONImportAndAtomicMalformedRecordingRejection": true,
+      "bodyTransformPinsCollisionSwitchAndRealFailedFrameReplayed": true,
+      "movedBodyExactNextStepContinuation": true,
+      "sewingFaultsRemainFailuresAndTopologyEditsClearRecording": true,
+      "actual1201FrameCapPreservesDataWithoutUnboundedGrowth": true,
+      "mobileReplayControlsWithoutOverflow": true,
+      "identityMeaningfulPageAndHealthyConsoleNetwork": true
+    },
+    "browser": {
+      "stepwiseSimulationAndIndependentGeometry": true,
+      "materialRestRotationStretchShear": true,
+      "physicalFieldsReachRealRenderedColors": true,
+      "physicalScaleSVGAndActualSceneOBJ": true,
+      "runtimeBVHMatchesIndependentBodyQueries": true,
+      "actualPenetrationDetectedAndRecovered": true,
+      "movingActualBodyCollision": true,
+      "sameParametersDrivePatternAndRestMesh": true,
+      "resetGPUResourcesAndWASMMemoryStable": true,
+      "bothMaterialPresetsAndVerticalGrain": true,
+      "realRunPauseAndPerformanceSample": true,
+      "mobileWithoutOverflow": true,
+      "recursiveSaveAndMovedPinContinuation": true,
+      "offlineSnapshotExactStateAndContinuation": true,
+      "collisionBroadPhaseMatchesFullQueriesBitForBit": true
+    }
+  },
+  "browserCheckCount": 36,
+  "frames": 61,
+  "maxSeamGapMm": 0.0,
+  "maxBodyPenetrationMm": 0.0,
+  "maxStrainPercent": 24.226073634014035,
+  "missingDownloadHTTPStatus": 404,
+  "initialFailuresPreserved": [
+    "pages-first-fail.log.gz: assertion failed; independent read then returned 503 GitHub Unicorn page",
+    "pages-concurrent-version.log.gz: expected root commit advanced during another publication"
+  ],
+  "commands": [
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=/workspace/work/verifydeps python tools/cloth_lab/verify_handoff.py --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ --expected-commit b4bdf9801f5022cbac9241059c669d890d8a04b0 --expected-html-sha e8ec81825d1a65b0f5e058caeaa70c3aeed0f058fbb8ea65f17a270dde6f3474 --output work/cloth-reverify/live/handoff",
+      "exitStatus": 0
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=/workspace/work/verifydeps python tools/cloth_lab/verify_replay.py --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ --expected-commit b4bdf9801f5022cbac9241059c669d890d8a04b0 --expected-html-sha e8ec81825d1a65b0f5e058caeaa70c3aeed0f058fbb8ea65f17a270dde6f3474 --output work/cloth-reverify/live/replay",
+      "exitStatus": 0
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=/workspace/work/verifydeps python tools/cloth_lab/verify_browser.py --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ --expected-commit b4bdf9801f5022cbac9241059c669d890d8a04b0 --expected-html-sha e8ec81825d1a65b0f5e058caeaa70c3aeed0f058fbb8ea65f17a270dde6f3474 --output work/cloth-reverify/live/browser",
+      "exitStatus": 0
+    },
+    {
+      "command": "python scripts/verify_pages.py --base-url https://liush2yuxjtu.github.io/pattern-agent/ --expected-commit 27789580081307a900de0ac5ada6b765e654f7bd --output work/cloth-reverify/live/pages-current",
+      "exitStatus": 0
+    }
+  ],
+  "cleanup": "All verification browsers and temporary servers closed. No CI used for verification.",
+  "limits": "Synthetic material; rigid generic MakeHuman; no self collision/CCD; high strain warning retained."
+}

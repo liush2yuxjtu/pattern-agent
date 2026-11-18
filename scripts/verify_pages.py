@@ -127,11 +127,12 @@ def verify(base,output,expected_commit=None,executable='/usr/bin/chromium'):
             page.screenshot(path=str(output/'existing-workbench.png'),full_page=True)
             # Nearby edge case: a nonexistent download returns 404, not an HTML SPA fallback.
             missing=api.get(urljoin(base,'patterns/no-such-pattern.pdf'))
-            assert missing.status==404
+            assert missing.status==404, {'url':missing.url,'status':missing.status,'content_type':missing.headers.get('content-type')}
             assert not errors,{'console':errors,'http':bad_responses,'failed':failed}
             assert not failed,failed
             assert not bad_responses,bad_responses
             report={'verdict':'PASS','base_url':base,'commit':metadata['commit'],
+                    'missing_download':{'url':missing.url,'status':missing.status,'content_type':missing.headers.get('content-type')},
                     'source_sha256':metadata['source_sha256'],'downloads':downloads,
                     'checks':['desktop render','modal open and Escape close','print details toggle',
                               'four real downloads match deployed hashes','375 px mobile without overflow',

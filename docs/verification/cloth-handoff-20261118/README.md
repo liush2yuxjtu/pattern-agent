@@ -64,3 +64,10 @@
 ![修复后同值异序参数正常恢复](reordered-import.png)
 ![读取真实文件期间暂停并锁定编辑](pending-import.png)
 ![当前帧与查帧状态提示一致](replay-status.png)
+
+## 线上复验
+
+[公开网址的完整复验](live/README.md) 已通过：36 项功能／数值检查，以及当前站点的
+真实下载回归。修复提交 `b4bdf9801f5022cbac9241059c669d890d8a04b0` 已上线。
+另行保留 GitHub 临时 503 和并行发布导致的版本不匹配记录，没有将其改写为 PASS。
+直接文件 URL 的宿主 BLOCKED 状态没有变化。

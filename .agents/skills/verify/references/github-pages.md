@@ -87,6 +87,21 @@ the favicon in the served site so an otherwise working page does not hide a 404.
 Physical printed dimensions, fabric calibration, a sewn sample and human fit are
 NOT_RUN. Never promote numerical geometry checks to manufacturing approval.
 
+## Observed upstream error and concurrent publication — 2026-11-18
+
+A missing-PDF assertion failed; an immediate independent read returned a GitHub
+Unicorn 503 page. Preserve that FAIL and response. The exact same URL later
+returned 404 in both API and real Chromium navigation; rerunning the complete
+flow passed. Do not accept 503 or silently retry away the first failure. The
+verifier now records the actual missing URL/status/content type on failure and
+in the successful report.
+
+If another authorized publication advances root build.json during verification,
+preserve the revision-mismatch FAIL. Independently verify the affected app's
+full HTML hash against the tested candidate before pinning the new root commit
+and rerunning the download flow. A changed expected SHA alone is not proof.
+Evidence: `docs/verification/cloth-handoff-20261118/live/`.
+
 ## Verified public-only fallback — 2026-11-16
 
 Pages run `43819293093`, attempt 2, successfully deployed commit

@@ -1,0 +1,24 @@
+{
+  "workflow": "/verify",
+  "candidateParent": "a564373322f821e5b0d7e689186a57f83710135f",
+  "scope": "Verification diagnostics and evidence; published app bytes unchanged.",
+  "runtimeVerdict": "PASS",
+  "literalFileVerdict": "BLOCKED",
+  "sourceCandidateHashesMatch": true,
+  "liveArchiveReopenedAndHashesMatch": true,
+  "markdownLinksExist": true,
+  "localRootGate": "PASS",
+  "liveRootGate": "PASS; missing download strictly 404",
+  "modifiedVerifierSha256": "b68a8c4d9d51ee22d72d509de63b955fbfdc45d4070c8568fb9921983f285fce",
+  "skill": ".agents/skills/verify/SKILL.md",
+  "commands": [
+    "python scripts/build_pages.py",
+    "python -m unittest discover -s scripts -p test_verify_artifacts.py -v",
+    "python scripts/verify_artifacts.py --cli work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli",
+    "python scripts/verify_mcp.py",
+    "python scripts/verify_pages.py --output work/cloth-reverify/live/evidence-pages"
+  ],
+  "allCommandExitStatuses": 0,
+  "earlierVerificationBase": "27789580081307a900de0ac5ada6b765e654f7bd",
+  "reconciliation": "Rebased unpublished evidence commit onto latest remote main; all verified candidate source bytes unchanged."
+}
