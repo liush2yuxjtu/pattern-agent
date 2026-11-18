@@ -18,6 +18,7 @@ python scripts/build_cloth_lab.py
 python tools/cloth_lab/test_kernel.py
 python tools/cloth_lab/verify_browser.py --output work/cloth-lab/local
 python tools/cloth_lab/verify_replay.py --output work/cloth-lab/replay
+python tools/cloth_lab/verify_handoff.py --output work/cloth-lab/handoff
 python scripts/build_pages.py
 python -m unittest discover -s scripts -p test_verify_artifacts.py -v
 python scripts/verify_pages.py --output work/cloth-lab/pages
@@ -95,6 +96,22 @@ remain seekable and state-buffer bytes stay <=40,834,000. Preserve raw per-frame
 oracle results and record/copy/seek/play timings; the cap excludes temporary
 serialization allocations. At 390 px the replay controls must not overflow.
 
+`verify_handoff.py` reopens a real downloaded recording with only the root JSON
+parameter key order reversed: semantic equality must be accepted and all saved
+arrays restored. It delays completion of the actual uploaded File.text promise
+(never substitutes file bytes), starts from real running physics, and requires
+all mutating controls locked plus zero additional actual WASM integration calls
+until reading finishes. Successful import stays paused. A real selected-frame
+parameter mismatch must still be rejected atomically; controls recover after
+failure. The activity message must describe the frame displayed after seeking.
+Preserve the first FAIL and corrected PASS receipts/screenshots.
+
+Direct `file://` navigation on this managed host returned
+`ERR_BLOCKED_BY_ADMINISTRATOR` on 2026-11-18. Keep this boundary BLOCKED; do not
+change browser policy or claim a literal local-file open passed. The independent
+offline test still executes the actual downloaded HTML bytes via set_content
+with networking disabled, reopens the timeline and checks exact continuation.
+
 ## Published surface
 
 Push a verified direct-to-main commit without force; observe the EXISTING Pages
@@ -109,6 +126,10 @@ python tools/cloth_lab/verify_replay.py \
   --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ \
   --expected-commit DEPLOYED_SHA --expected-html-sha HTML_SHA \
   --output work/cloth-lab/replay-live
+python tools/cloth_lab/verify_handoff.py \
+  --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/ \
+  --expected-commit DEPLOYED_SHA --expected-html-sha HTML_SHA \
+  --output work/cloth-lab/handoff-live
 python scripts/verify_pages.py \
   --base-url https://liush2yuxjtu.github.io/pattern-agent/ \
   --expected-commit DEPLOYED_SHA --output work/cloth-lab/pages-live

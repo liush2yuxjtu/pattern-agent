@@ -175,6 +175,7 @@ function seekFrame(index,keepPlaying=false){
   if(!Number.isInteger(index)||index<0||index>=track.frames.length)throw new Error('Invalid replay index');
   const start=performance.now();recording=false;if(!keepPlaying)playing=false;setRunning(false);
   applyFrame(track.frames[index]);track.cursor=index;track.atRecordedState=true;
+  $('activity').textContent=`回放帧 ${index+1} / ${track.frames.length} · ${lastStats.simulationSeconds.toFixed(3)} s；未进行物理积分。`;
   seekTimes.push(performance.now()-start);if(seekTimes.length>600)seekTimes.shift();updateReplayUI();
   return {...lastStats};
 }
@@ -223,7 +224,21 @@ function wireUI(){
   $('replay-timeline').oninput=e=>seekFrame(+e.target.value);$('replay-first').onclick=()=>seekFrame(0);$('replay-last').onclick=()=>seekFrame(track.frames.length-1);
   $('replay-prev').onclick=()=>seekFrame(Math.max(0,track.cursor-1));$('replay-next').onclick=()=>seekFrame(Math.min(track.frames.length-1,track.cursor+1));
   $('replay-play').onclick=playReplay;$('export-replay').onclick=()=>download('cloth-replay.json',JSON.stringify(project()));
-  $('import-replay').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>64*1048576)throw new Error('Recording file exceeds 64 MiB');restore(JSON.parse(await file.text()));}catch(error){$('replay-note').textContent='导入失败：'+error.message;}finally{e.target.value='';}};
+  $('import-replay').onchange=async e=>{
+    const file=e.target.files[0];if(!file||busy||recording||playing)return;
+    setRunning(false);busy=true;updateReplayUI();
+    $('activity').textContent='正在读取录制文件；仿真已暂停。';
+    try{
+      if(file.size>64*1048576)throw new Error('Recording file exceeds 64 MiB');
+      const saved=JSON.parse(await file.text());
+      // No event can interleave validation/restore in this synchronous section.
+      busy=false;restore(saved);
+      $('activity').textContent=`已导入 ${track.frames.length} 帧录制；仿真保持暂停。`;
+    }catch(error){
+      recordingNote='导入失败：'+error.message;
+      $('activity').textContent='导入失败；原工程已保留，仿真保持暂停。';
+    }finally{busy=false;e.target.value='';updateReplayUI();}
+  };
   updateReplayUI();
   for(const id of ['width','length','material','fault'])$(id).addEventListener('input',()=>{if(!busy)setupCloth();});$('body-shift').addEventListener('input',()=>{parameters.bodyOffsetMm=+$('body-shift').value;$('shift-value').value=parameters.bodyOffsetMm+' mm';wasm.set_body_offset(parameters.bodyOffsetMm/1000);bodyMesh.position.x=parameters.bodyOffsetMm/1000;stateChanged();analyze();draw();});$('collision').onchange=()=>{parameters.collision=$('collision').checked;wasm.set_collision(+parameters.collision);stateChanged();analyze();draw();};$('wind').onchange=()=>{parameters.wind=$('wind').checked;stateChanged();};$('run').onclick=()=>{if(!busy)setRunning(!running);};$('single-step').onclick=()=>advance(1);$('settle').onclick=()=>advance(240);$('reset').onclick=()=>{if(!busy)setupCloth();};
   for(const b of document.querySelectorAll('[data-mode]'))b.onclick=()=>applyMode(b.dataset.mode);for(const b of document.querySelectorAll('[data-camera]'))b.onclick=()=>{cameraAngle={front:0,side:Math.PI/2,back:Math.PI}[b.dataset.camera];updateCamera();draw();};$('export-svg').onclick=()=>download('cloth-patterns.svg',patternSVG(),'image/svg+xml');$('export-obj').onclick=()=>download('cloth-body-scene.obj',sceneOBJ(),'text/plain');$('export-json').onclick=()=>download('cloth-project.json',JSON.stringify(project()));$('export-log').onclick=()=>download('cloth-diagnostics.json',JSON.stringify(performanceLog(),null,2));$('save-html')?.remove();const button=document.createElement('button');button.id='save-html';button.textContent='当前状态单文件 HTML ↓';button.style.gridColumn='1 / -1';button.onclick=()=>{const html=originalHTML.replace(/<script id="initial-state" type="application\/json">[\s\S]*?<\/script>/,()=>`<script id="initial-state" type="application/json">${JSON.stringify(project()).replaceAll('<','\\u003c')}</script>`);download('cloth-lab-snapshot.html',html,'text/html');};document.querySelector('.export-grid').appendChild(button);

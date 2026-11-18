@@ -14,7 +14,10 @@ export function validateParameters(p) {
       !['woven','soft'].includes(p.material) || !Number.isInteger(p.bodyOffsetMm) ||
       Math.abs(p.bodyOffsetMm) > 60 || p.bodyOffsetMm % 10 ||
       typeof p.collision !== 'boolean' || typeof p.wind !== 'boolean') throw new Error('Invalid recording parameters');
-  return {...p, lengthsMm:[...p.lengthsMm]};
+  // Canonical semantic fields: JSON object key order is not physical state.
+  return {bottomMm:p.bottomMm,topMm:p.topMm,lengthsMm:[...p.lengthsMm],
+    fault:p.fault,material:p.material,bodyOffsetMm:p.bodyOffsetMm,
+    collision:p.collision,wind:p.wind};
 }
 
 export function topologyKey(p) {

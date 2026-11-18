@@ -22,6 +22,9 @@
 全部状态数组，拒绝不兼容或损坏的录制。最多 1,201 帧（无事件时约 10 秒），轨迹
 状态缓冲区上限 40,834,000 字节（约 38.94 MiB）；达到上限自动停止录制，保留数据。
 JSON/Base64 编码、下载和导入时会有额外临时内存，不代表浏览器总内存仅为此数。
+JSON 对象的字段顺序不影响参数相等判断。读取录制文件期间会暂停仿真并锁定编辑
+控件，避免异步读取与新的物理／纸样操作交错；导入失败保留原工程并恢复控件。
+导入完成后保持暂停。查帧时状态提示会显示当前帧与时间。
 
 诊断记录包含实际积分步数、轨迹大小、录制复制开销、查帧和回放耗时。物理结果的
 原有阈值与局部高应变警告保留；回放本身不能批准面料或实体适体。
@@ -91,6 +94,7 @@ python -m pip install -r tools/cloth_lab/requirements.txt
 python tools/cloth_lab/test_kernel.py
 python tools/cloth_lab/verify_browser.py --output work/cloth-lab/local
 python tools/cloth_lab/verify_replay.py --output work/cloth-lab/replay
+python tools/cloth_lab/verify_handoff.py --output work/cloth-lab/handoff
 ```
 
 Playwright 真正操作单步、定时运行、故障选择、移动人体、下载和恢复；保存逐步

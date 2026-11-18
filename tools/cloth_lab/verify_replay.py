@@ -199,6 +199,7 @@ def run(args,base):
         report['checks']['offlineTimelineRecursiveHTMLAndExactResumption']=True
         # Reopen the actual JSON through the file input, then reject malformed imports atomically.
         page.locator('#import-replay').set_input_files(str(out/'downloaded-replay.json'))
+        page.wait_for_function("!document.querySelector('#import-replay').value")
         page.wait_for_function('clothLab.replay.info().cursor===30')
         compare_frame(state(page),trajectory['frames'][30])
         for name,edit in [
@@ -211,6 +212,7 @@ def run(args,base):
             path=out/(name+'.json');save_json(path,invalid)
             previous=state(page);prior=counters(page)
             page.locator('#import-replay').set_input_files(str(path))
+            page.wait_for_function("!document.querySelector('#import-replay').value")
             page.wait_for_function("document.querySelector('#replay-note').textContent.startsWith('导入失败')")
             assert state(page)['positions']==previous['positions'] and counters(page)==prior
         report['checks']['actualJSONImportAndAtomicMalformedRecordingRejection']=True
