@@ -3,7 +3,8 @@
   const $=id=>document.getElementById(id),data=JSON.parse($('app-data').textContent),entries=[data.baseline,...data.cases],decoded=new Map();
   const bytes=encoded=>Uint8Array.from(atob(encoded),c=>c.charCodeAt(0));
   const text=record=>new TextDecoder('utf-8',{fatal:true}).decode(bytes(record.base64));
-  const camera={yaw:-.40,pitch:.03,zoom:1};let selected=data.cases[0],viewers=[];
+  const requestedCase=new URLSearchParams(location.search).get('case');
+  const camera={yaw:-.40,pitch:.03,zoom:1};let selected=data.cases.find(entry=>entry.id===requestedCase)||data.cases[0],viewers=[];
   async function hash(raw){if(!crypto.subtle)return null;return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',raw))).map(v=>v.toString(16).padStart(2,'0')).join('');}
   async function check(record,encoded='base64',expected='sha256'){
     const raw=bytes(record[encoded]);if(raw.length!==record.byte_length)throw Error('内嵌文件长度不符');

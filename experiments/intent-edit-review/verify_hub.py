@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import threading
 import traceback
@@ -10,6 +11,7 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote, urlsplit
 from playwright.sync_api import sync_playwright
+from gallery_checks import canvas_pixels, drive_gallery
 
 REPO = Path(__file__).resolve().parents[2]
 PROJECT = REPO / 'experiments/intent-edit-review'
@@ -47,7 +49,12 @@ def run(args):
             response = page.goto(url, wait_until='load')
             assert response.status == 200 and sha(response.body()) == report['hub_sha256']
             assert page.locator('meta[name="experiment-readme-sha256"]').get_attribute('content') == report['readme_sha256']
-            assert page.locator('h1').inner_text() == '纸样设计意图实验'
+            source_data = json.loads(re.search(r'<script[^>]*id="app-data"[^>]*>(.*?)</script>',
+                (REPO / 'web/intent-edit-review/index.html').read_text(), re.S)[1])
+            assert json.loads(page.locator('#gallery-data').text_content()) == source_data
+            report['gallery'] = drive_gallery(page, out / 'gallery', source_data)
+            page.locator('[data-view="readme"]').click()
+            assert page.locator('#readme-title').inner_text() == '实验说明'
             assert page.locator('[data-readme]').get_attribute('href') == README_URL
             assert 'BLOCKED' in page.locator('#experiment-content').inner_text()
             repo_links = []
@@ -64,7 +71,7 @@ def run(args):
                         'docs/verification/intent-sewn-chain-20261118/README.md'}
             assert required <= set(repo_links)
             report['repo_links_checked'] = len(repo_links)
-            anchors = page.locator('nav a').evaluate_all('(as)=>as.map(a=>a.getAttribute("href"))')
+            anchors = page.locator('nav[aria-label="实验总览目录"] a').evaluate_all('(as)=>as.map(a=>a.getAttribute("href"))')
             for href in anchors:
                 assert href.startswith('#') and page.locator('[id="' + unquote(href[1:]) + '"]').count() == 1
             report['toc_links_checked'] = len(anchors)
@@ -75,11 +82,12 @@ def run(args):
                 heading = page.get_by_role('heading', name='四个改版案例', exact=True)
                 heading.evaluate('(el)=>scrollTo(0,el.getBoundingClientRect().top+scrollY-20)')
                 page.screenshot(path=str(out / f'hub-cases-{width}.png'))
-                page.locator('nav a').last.click(); assert page.evaluate('Boolean(location.hash)')
+                page.locator('nav[aria-label="实验总览目录"] a').last.click(); assert page.evaluate('Boolean(location.hash)')
                 report['viewports'].append({'width': width, 'overflow': False, 'toc_click': True})
             page.set_viewport_size({'width': 1448, 'height': 1000})
             for route in ['demo', 'docs', 'sewn']:
                 page.goto(url, wait_until='load')
+                page.locator('[data-view="readme"]').click()
                 with page.expect_navigation(wait_until='load') as entered:
                     page.locator(f'[data-route="{route}"]').click()
                 target_url = page.url
@@ -106,9 +114,41 @@ def run(args):
                     page.locator('[data-experiment-center]').click(); page.wait_for_load_state('load')
                     assert page.locator('meta[name="experiment-readme-sha256"]').get_attribute('content') == report['readme_sha256']
                     returned = 'actual return-to-center link'
-                assert page.title() == '纸样设计意图实验｜统一入口'
+                assert page.title() == '纸样设计意图实验｜案例库'
                 report['round_trips'].append({'route': route, 'target_url': target_url, 'return': returned,
                     'target_sha256': target_sha})
+            assert not report['errors'] and not report['bad_responses']
+            software = browser.new_context(viewport={'width': 1280, 'height': 900})
+            software.add_init_script("""const original=HTMLCanvasElement.prototype.getContext;
+                HTMLCanvasElement.prototype.getContext=function(kind,...args){
+                    return /webgl/i.test(kind)?null:original.call(this,kind,...args);
+                };""")
+            fallback = software.new_page(); fallback.goto(url, wait_until='load')
+            fallback.on('pageerror', lambda error: report['errors'].append(str(error)))
+            fallback.locator('body[data-gallery-ready="true"]').wait_for(timeout=30000)
+            assert fallback.locator('.case-media canvas[data-mode="software"]').count() == 5
+            canvas = fallback.locator('.case-card[data-case-id="baseline"] canvas')
+            before = canvas_pixels(canvas); canvas.focus(); fallback.keyboard.press('ArrowRight')
+            after = canvas_pixels(canvas); assert before['sha256'] != after['sha256']
+            fallback.screenshot(path=str(out / 'gallery-software.png'))
+            report['software_gallery'] = {'models': 5, 'before': before, 'after': after}
+            software.close()
+            offline = browser.new_context(offline=True, viewport={'width': 375, 'height': 850})
+            isolated = offline.new_page(); requests = []
+            isolated.on('pageerror', lambda error: report['errors'].append(str(error)))
+            isolated.on('request', lambda request: requests.append(request.url))
+            isolated.set_content((REPO / 'web/intent-edit-review/experiment/index.html').read_text(), wait_until='load')
+            isolated.locator('body[data-gallery-ready="true"]').wait_for(timeout=30000)
+            isolated.locator('[data-filter="sewn"]').click(); assert isolated.locator('.case-card:visible').count() == 2
+            isolated.locator('[data-open-case="03_cuff_width"]').click()
+            with isolated.expect_download() as saved:
+                isolated.locator('[data-case-file="dxf"]').click()
+            saved.value.save_as(out / 'offline-cuff.dxf')
+            expected = next(e for e in source_data['cases'] if e['id'] == '03_cuff_width')['files']['dxf']['sha256']
+            assert sha((out / 'offline-cuff.dxf').read_bytes()) == expected and not requests
+            report['offline_gallery'] = {'requests': requests, 'actual_dxf_sha256': expected,
+                'scope': 'Exact self-contained HTML loaded with networking disabled; direct file URL policy not bypassed.'}
+            offline.close()
             assert not report['errors'] and not report['bad_responses']
             browser.close()
         report['verdict'] = 'PASS'

@@ -2,6 +2,8 @@
 
 **本目录及本 README 是整个实验的统一入口。** 原型、编辑代码、案例产物、三维预览、缝合流程和验证证据都从这里查找。相关网页的“实验总入口”也返回同一份内容。
 
+在线入口默认打开可操作的案例库：五个真实预览、设计意图搜索、缝合状态筛选、二维/三维切换和案例文件下载。完整实验说明由本 README 生成，放在“实验说明”中；不再用长文档作为首页。界面来源与交互约定见 [画廊设计说明](GALLERY-DESIGN.md)。
+
 [在线实验总览](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/) · [原型与改版对照](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/) · [详细文档](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/docs/) · [真实缝合结果](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/sewn/)
 
 ## 从这里开始
@@ -76,6 +78,7 @@
 | 本轮新GLB、独立15缝/拓扑/UV/穿插、27项服务测试 | [三技能缝合验收](../../docs/verification/intent-sewn-chain-20261118/README.md) |
 | 实际线上下载后重开、触摸、窄屏和原始证据包 | [缝合线上验收](../../docs/verification/intent-sewn-chain-20261118/live/README.md) |
 | README中心、页面往返与导航更新 | [实验中心验收](../../docs/verification/experiment-center-20261118/README.md) |
+| 可操作案例库、筛选、完整文件与视觉复核 | [画廊应用验收](../../docs/verification/gallery-app-20261118/README.md) |
 
 每个结论必须对应具体文件与检查边界。二维互校、预览交付和数字缝合的 PASS 不能替代生产或试穿批准。历史 FAIL 与环境限制仍保留在原记录中。
 
@@ -101,7 +104,7 @@ python experiments/intent-edit-review/verify_browser.py --output work/experiment
 
 独立数据审计、三维重建和严格缝合的完整命令分别在 [数据说明](docs/03-data-and-audit.md)、[三维说明](geometry/README.md) 与 [缝合说明](sewn/README.md)。
 
-在线总览由本 README 生成，数据和链接只有这一份维护入口。改文档或页面导航后须重建对应的 `web/intent-edit-review/` 产物并执行适用的本地 `/verify`。按根 [AGENTS.md](../../AGENTS.md) 直接提交main、非强制推送，沿用既有Pages发布流程，再检查实际线上文件；不新增CI或覆盖无关页面。
+在线案例库从已验收对照页读取同一份原型、案例和完整文件，缝合状态核对实际交付清单；“实验说明”由本 README 生成。改文档或页面导航后须重建对应的 `web/intent-edit-review/` 产物并执行适用的本地 `/verify`。按根 [AGENTS.md](../../AGENTS.md) 直接提交main、非强制推送，沿用既有Pages发布流程，再检查实际线上文件；不新增CI或覆盖无关页面。
 
 ## 范围和待确认项
 

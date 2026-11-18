@@ -1,0 +1,111 @@
+{
+  "verdict": "PASS",
+  "recorded_at": "2026-11-18T14:29:09.572613+08:00",
+  "candidate_parent": "292d1388f955541505d84d4b84edb016ee2c6aec",
+  "candidate_identity": "source files below, committed after local verify",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/intent-edit-review.md",
+  "source_sha256": {
+    ".agents/skills/verify/SKILL.md": "7d399565d5b16f68542c78dc432c157de14c7877b1cf7e21cccd0f7bbdc57e09",
+    ".agents/skills/verify/references/intent-edit-review.md": "0a0dab21396d583de823a1e5439553b5422e69d47bcf0aed711d05d63b2a5bde",
+    ".agents/skills/verify/references/verification-surfaces.md": "7e30a1101f913686e56b9abbda23a7950a1c7afb52e356185eb2c70540bdfa70",
+    "experiments/intent-edit-review/GALLERY-DESIGN.md": "ffaaae6517fbc3445febb0c28904b97a1d055ce2cec4bf9299b6aa6242fcb9b8",
+    "experiments/intent-edit-review/README.md": "b6e9e7557a803f05cb51f3aa9cd02f406b4702b28438c90078e1aabad50922e2",
+    "experiments/intent-edit-review/app.js": "3998a4669fab00f4fd3f6a398235a37fc68df98ca0c60fd5183377a6a671fcba",
+    "experiments/intent-edit-review/build_hub.py": "c1a577e9bd08d4806815312cb104b8606a5abc7e284471b53503a5c9fecb8c15",
+    "experiments/intent-edit-review/docs/01-user-guide.md": "6ee70add9e10648dd90a9badcc2a3b724084c0439b4996e34f03a49e1edb5df0",
+    "experiments/intent-edit-review/gallery.css": "ee1247d2d24324af7fa726b04627d90c4b774917abfef6c120ef0c9f09d18982",
+    "experiments/intent-edit-review/gallery.js": "de4dda229cef35bc73a8bebcb2d888c41d83652c4b7bed67c5eca2fcb3692c3a",
+    "experiments/intent-edit-review/gallery_checks.py": "2cfc5c0abed48dab9377b60ec9f18f22714c1f84cbc2cb3c79ab56a1d6a540cd",
+    "experiments/intent-edit-review/hub-template.html": "26a2bedf6c6c53f59746d5713f859881b751356f4e3387cf625566ed0f737a7f",
+    "experiments/intent-edit-review/verify_hub.py": "1eb1d01c0b8f107ac4958594d1bf52da67b8f578283052d3c29d426bee88e02e",
+    "experiments/intent-edit-review/verify_public_hub.py": "81e9a979377e82684848d71caccbd53248dfe2c11040a63fe0a4c9aa88829384",
+    "web/intent-edit-review/docs/index.html": "235f9f8d7dd1fc533b22fc2b4ede0f9a7b9812734287b34e58d6999e7c77edf8",
+    "web/intent-edit-review/experiment/index.html": "03ecc659f159e550bdf6fcefec89b1029e654d2b97d482a6681b2feefee5a72d",
+    "web/intent-edit-review/index.html": "011c6b734e813ecb9d0857dd8d625e12e1db04cb21b4206cf0a7af01a0c5fc78"
+  },
+  "commands": [
+    {
+      "command": "python experiments/intent-edit-review/build.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/build_docs.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/build_hub.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/build_hub.py --output work/gallery-app/rebuilt.html",
+      "exit_code": 0
+    },
+    {
+      "command": "cmp web/intent-edit-review/experiment/index.html work/gallery-app/rebuilt.html",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/verify_hub.py --output work/gallery-app/browser",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/verify_browser.py --output work/gallery-app/comparison",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/verify_docs.py --output work/gallery-app/docs",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s experiments/intent-edit-review/verification -p 'test_*.py' -v",
+      "exit_code": 0
+    },
+    {
+      "command": "python experiments/intent-edit-review/verification/audit_embedded_review.py --html web/intent-edit-review/index.html --output work/gallery-app/data-audit.json --adversarial",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/build_pages.py --output work/gallery-app/site",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "ui_result": {
+    "actual_models": 5,
+    "selected_case_navigations": 5,
+    "unknown_case_fallback": true,
+    "gallery_downloads": 18,
+    "comparison_downloads": 18,
+    "resource_links": 42,
+    "readme_toc_targets": 9,
+    "docs_toc_targets": 32,
+    "desktop_native": [
+      1487,
+      1058
+    ],
+    "widths": [
+      1487,
+      1280,
+      768,
+      375,
+      320
+    ],
+    "software_models": 5,
+    "offline_download": true,
+    "main_page_errors": [],
+    "bad_responses": []
+  },
+  "preserved": {
+    "payload_sha256": "a8e14641775a09f20c0819aeb8e5990f6d4d4a8b888985b6e4aab771b9d58e2c",
+    "original_data_meshes_sewn_delivery_unchanged": true,
+    "strict_sewing_workflow": "BLOCKED: 2 PASS / 3 PROFILE_REQUIRED",
+    "material_production_fit": "NOT_RUN",
+    "unrelated_web_pages_changed": false
+  },
+  "browser_fallback": "Remote Playwright MCP returned Connection failed / UNAVAILABLE; existing authorized local Python Playwright with /usr/bin/chromium used.",
+  "cleanup": "All local browser contexts and temporary HTTP servers closed. Live publication is verified separately."
+}

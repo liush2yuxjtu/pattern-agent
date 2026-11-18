@@ -1,6 +1,6 @@
 # 使用指南 {#guide}
 
-整个实验从 [统一README入口](https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/README.md) 查找；[在线实验总览](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/) 由同一README生成，集中连接输入、代码、产物及证据。
+整个实验从 [统一README入口](https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/README.md) 查找；[在线案例库](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/) 默认展示五个真实案例，可搜索设计意图、筛选缝合状态、切换二维/三维、打开完整规格并下载文件。“实验说明”由同一README生成，集中连接输入、代码、产物及证据。
 
 ## 这个项目交付什么
 

@@ -12,6 +12,7 @@ import re
 import traceback
 from urllib.request import urlopen
 from playwright.sync_api import sync_playwright
+from gallery_checks import drive_gallery
 
 SITE = 'https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/'
 RAW = 'https://raw.githubusercontent.com/liush2yuxjtu/pattern-agent/'
@@ -33,9 +34,10 @@ def verify(args):
         def source(path):
             with urlopen(RAW + args.source_revision + '/' + path, timeout=30) as response:
                 return response.read()
-        expected = {route: sha(source('web/intent-edit-review/' + suffix)) for route, suffix in
+        source_html = {route: source('web/intent-edit-review/' + suffix) for route, suffix in
                     [('hub', 'experiment/index.html'), ('demo', 'index.html'),
                      ('docs', 'docs/index.html'), ('sewn', 'sewn/index.html')]}
+        expected = {route: sha(raw) for route, raw in source_html.items()}
         readme_sha = sha(source(README_PATH))
         report.update({'expected_html_sha256': expected, 'readme_sha256': readme_sha})
         with sync_playwright() as p:
@@ -51,23 +53,28 @@ def verify(args):
                         {'url': response.url, 'status': response.status}) if response.status >= 400 else None)
                 observe(page)
                 def is_hub(target):
-                    assert target.url == SITE + 'experiment/'
+                    assert target.url.split('#')[0] == SITE + 'experiment/'
                     assert target.locator('meta[name="experiment-readme-sha256"]').get_attribute('content') == readme_sha
                     assert target.locator('[data-readme]').get_attribute('href') == README_URL
                 response = page.goto(SITE + 'experiment/', wait_until='load')
                 assert response.status == 200 and sha(response.body()) == expected['hub']
                 is_hub(page)
+                source_data = json.loads(re.search(rb'<script[^>]*id="app-data"[^>]*>(.*?)</script>', source_html['demo'], re.S)[1])
+                assert json.loads(page.locator('#gallery-data').text_content()) == source_data
+                report['gallery'] = drive_gallery(page, out / 'gallery', source_data)
+                page.locator('[data-view="readme"]').click()
                 for width in [1448, 768, 375, 320]:
                     page.set_viewport_size({'width': width, 'height': 900})
                     page.evaluate('scrollTo(0,0)')
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
                     page.screenshot(path=str(out / f'public-hub-{width}.png'))
-                    page.locator('nav a').last.click()
+                    page.locator('nav[aria-label="实验总览目录"] a').last.click()
                     assert page.evaluate('Boolean(location.hash)')
                     report['viewports'].append({'width': width, 'overflow': False, 'toc_clicked': True})
                 page.set_viewport_size({'width': 1448, 'height': 1000})
                 for route in ['demo', 'docs', 'sewn']:
                     page.goto(SITE + 'experiment/', wait_until='load')
+                    page.locator('[data-view="readme"]').click()
                     with page.expect_navigation(wait_until='load') as navigation:
                         page.locator(f'[data-route="{route}"]').click()
                     response = navigation.value

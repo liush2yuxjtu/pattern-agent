@@ -1,0 +1,328 @@
+{
+  "verdict": "PASS",
+  "readme_sha256": "b6e9e7557a803f05cb51f3aa9cd02f406b4702b28438c90078e1aabad50922e2",
+  "hub_sha256": "03ecc659f159e550bdf6fcefec89b1029e654d2b97d482a6681b2feefee5a72d",
+  "errors": [],
+  "bad_responses": [],
+  "round_trips": [
+    {
+      "route": "demo",
+      "target_url": "http://127.0.0.1:36571/intent-edit-review/",
+      "return": "online footer URL checked; local browser Back verified",
+      "target_sha256": "011c6b734e813ecb9d0857dd8d625e12e1db04cb21b4206cf0a7af01a0c5fc78"
+    },
+    {
+      "route": "docs",
+      "target_url": "http://127.0.0.1:36571/intent-edit-review/docs/",
+      "return": "actual return-to-center link",
+      "target_sha256": "235f9f8d7dd1fc533b22fc2b4ede0f9a7b9812734287b34e58d6999e7c77edf8"
+    },
+    {
+      "route": "sewn",
+      "target_url": "http://127.0.0.1:36571/intent-edit-review/sewn/",
+      "return": "actual return-to-center link",
+      "target_sha256": "5a27a39a1ee1ebfcee1979f0d5b10cb86b4455c20d4ab2678b92a10eab0110a7"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1448,
+      "overflow": false,
+      "toc_click": true
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "toc_click": true
+    },
+    {
+      "width": 375,
+      "overflow": false,
+      "toc_click": true
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "toc_click": true
+    }
+  ],
+  "url": "http://127.0.0.1:36571/intent-edit-review/experiment/",
+  "gallery": {
+    "downloads": [
+      {
+        "id": "baseline",
+        "kind": "yaml",
+        "bytes": 194100,
+        "sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e"
+      },
+      {
+        "id": "baseline",
+        "kind": "dxf",
+        "bytes": 108836,
+        "sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4"
+      },
+      {
+        "id": "01_sleeve_length",
+        "kind": "yaml",
+        "bytes": 197469,
+        "sha256": "990e2d32160413f1d2bb41ef9714d065e23e42a7adf274bc7f30188ca8e5505c"
+      },
+      {
+        "id": "01_sleeve_length",
+        "kind": "dxf",
+        "bytes": 108836,
+        "sha256": "830b5eb46cdd4e6eb80b58b86f94f153e85d47ae605ae265e676d43cfcd6bc40"
+      },
+      {
+        "id": "01_sleeve_length",
+        "kind": "spec_diff",
+        "bytes": 34499,
+        "sha256": "f3ae34e17f4beecb79aa42360363f5fc975ceb288fad5687242541e3251447d6"
+      },
+      {
+        "id": "01_sleeve_length",
+        "kind": "geometry_patch",
+        "bytes": 35095,
+        "sha256": "464196a2a8f0b0e3b06ca94f35baa021c7ac2dc837df0de36b426973d795e4bf"
+      },
+      {
+        "id": "02_body_length",
+        "kind": "yaml",
+        "bytes": 198299,
+        "sha256": "63312382be180c2a7670e85b64b993f174e7548c6b108f7d75b0bf5291d094fb"
+      },
+      {
+        "id": "02_body_length",
+        "kind": "dxf",
+        "bytes": 108836,
+        "sha256": "aab08855b2b91d90408593d717d94aec5159ddb149b77c24c1937e11b08112b6"
+      },
+      {
+        "id": "02_body_length",
+        "kind": "spec_diff",
+        "bytes": 64230,
+        "sha256": "6679afb1e89f126313b015a47726f7456e1863935a82688811399dc49c34ed8b"
+      },
+      {
+        "id": "02_body_length",
+        "kind": "geometry_patch",
+        "bytes": 74407,
+        "sha256": "c9de5bb8cd56776638839a2161c1942b1ba28f15aaedd3891c611d511d985fcc"
+      },
+      {
+        "id": "03_cuff_width",
+        "kind": "yaml",
+        "bytes": 196859,
+        "sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3"
+      },
+      {
+        "id": "03_cuff_width",
+        "kind": "dxf",
+        "bytes": 108836,
+        "sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163"
+      },
+      {
+        "id": "03_cuff_width",
+        "kind": "spec_diff",
+        "bytes": 30728,
+        "sha256": "889a1f2705a9a16ce510327c20445971db4bedc0e56b7c50fa7fe89d2af11320"
+      },
+      {
+        "id": "03_cuff_width",
+        "kind": "geometry_patch",
+        "bytes": 29872,
+        "sha256": "a7c14e3ecada9df73cfb787ec84a59f719295b1774f765c900ae2f69c1cc17ae"
+      },
+      {
+        "id": "04_front_neck",
+        "kind": "yaml",
+        "bytes": 198097,
+        "sha256": "1f99d8ebd863e83d7b70b7c3aa21993d8cca3dc14e78e09a02de4d3422f59c67"
+      },
+      {
+        "id": "04_front_neck",
+        "kind": "dxf",
+        "bytes": 108836,
+        "sha256": "1f1e5f6c5204afb8b34c8691f6330b2f01c1754146603ef17cd4b518363d573b"
+      },
+      {
+        "id": "04_front_neck",
+        "kind": "spec_diff",
+        "bytes": 43779,
+        "sha256": "37731a20abe07efe2e1dc155ac7618d40789517b3604d1ef47fdcba4bcbf6791"
+      },
+      {
+        "id": "04_front_neck",
+        "kind": "geometry_patch",
+        "bytes": 45904,
+        "sha256": "f40d4f81095c1e2d90fc81300d3bbc3111eece7341655d2859b20b739cd94492"
+      }
+    ],
+    "models": [
+      {
+        "id": "baseline",
+        "sha256": "37915d4e2f8ecef303efc967b7a0f69f1a5289c4e72ecaef47cc82cc0b951570",
+        "foreground_pixels": 30464,
+        "size": [
+          385,
+          245
+        ]
+      },
+      {
+        "id": "01_sleeve_length",
+        "sha256": "78a714a1027e6622eae60cfac7453c1141a393c8bb1d01e56b99ad840f1e55a5",
+        "foreground_pixels": 31079,
+        "size": [
+          385,
+          245
+        ]
+      },
+      {
+        "id": "02_body_length",
+        "sha256": "9b62e20da0d7d23ee9dc1924ff506c5b81c3321344343f54fb32187ca6e0a355",
+        "foreground_pixels": 30213,
+        "size": [
+          385,
+          245
+        ]
+      },
+      {
+        "id": "03_cuff_width",
+        "sha256": "52f8313ba63031e01122dd62cd94c96401366436475b22faf42f7cbda2084130",
+        "foreground_pixels": 30558,
+        "size": [
+          385,
+          245
+        ]
+      },
+      {
+        "id": "04_front_neck",
+        "sha256": "7312b1412a3541bf9f1331edbaa4455092f14399eada16a85c100ba3db655762",
+        "foreground_pixels": 30385,
+        "size": [
+          385,
+          245
+        ]
+      }
+    ],
+    "cases": [
+      {
+        "id": "baseline",
+        "complete_yaml": true,
+        "actual_comparison_case": "01_sleeve_length",
+        "sewn_link_available": true
+      },
+      {
+        "id": "01_sleeve_length",
+        "complete_yaml": true,
+        "actual_comparison_case": "01_sleeve_length",
+        "sewn_link_available": false
+      },
+      {
+        "id": "02_body_length",
+        "complete_yaml": true,
+        "actual_comparison_case": "02_body_length",
+        "sewn_link_available": false
+      },
+      {
+        "id": "03_cuff_width",
+        "complete_yaml": true,
+        "actual_comparison_case": "03_cuff_width",
+        "sewn_link_available": true
+      },
+      {
+        "id": "04_front_neck",
+        "complete_yaml": true,
+        "actual_comparison_case": "04_front_neck",
+        "sewn_link_available": false
+      }
+    ],
+    "viewports": [
+      {
+        "width": 1487,
+        "overflow": false
+      },
+      {
+        "width": 1280,
+        "overflow": false
+      },
+      {
+        "width": 768,
+        "overflow": false
+      },
+      {
+        "width": 375,
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "overflow": false
+      }
+    ],
+    "combined_filters_and_empty_recovery": true,
+    "detail_camera": {
+      "initial": {
+        "sha256": "6ded69970b8bda726cc3b21b135782c11ba437d96750ad2c84fae634662d8e21",
+        "foreground_pixels": 45099,
+        "size": [
+          464,
+          301
+        ]
+      },
+      "drag": {
+        "sha256": "224415a773f975b4c4959cc7744636cb377e73562badd10fe6570cf13e163f68",
+        "foreground_pixels": 43857,
+        "size": [
+          464,
+          301
+        ]
+      },
+      "keyboard": {
+        "sha256": "271f6addd2f39a633a8edeb2e037e8e631ada7a83cfa16c635a38e3492ac21c8",
+        "foreground_pixels": 42084,
+        "size": [
+          464,
+          301
+        ]
+      },
+      "zoom": {
+        "sha256": "1806962646885659be3b7e527384d9a8d38a394dbb45ccd7b79125af8175f1ff",
+        "foreground_pixels": 57253,
+        "size": [
+          464,
+          301
+        ]
+      },
+      "reset_exact": true
+    },
+    "unknown_comparison_case_falls_back": true,
+    "mobile_dialog_escape_focus_scroll_restored": true,
+    "verdict": "PASS"
+  },
+  "repo_links_checked": 42,
+  "toc_links_checked": 9,
+  "software_gallery": {
+    "models": 5,
+    "before": {
+      "sha256": "e28c40c62fd3f6222a0ea7790cb48fa7d646f075ccf12f0161ccd26bff6165c7",
+      "foreground_pixels": 31836,
+      "size": [
+        520,
+        251
+      ]
+    },
+    "after": {
+      "sha256": "2f3ca1becd20d6d61c7c446b66e040686d5ee67c7ad26656dbafd7f27d0d4aa8",
+      "foreground_pixels": 32718,
+      "size": [
+        520,
+        251
+      ]
+    }
+  },
+  "offline_gallery": {
+    "requests": [],
+    "actual_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163",
+    "scope": "Exact self-contained HTML loaded with networking disabled; direct file URL policy not bypassed."
+  }
+}

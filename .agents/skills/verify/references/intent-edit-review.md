@@ -65,10 +65,11 @@ git diff --check
 只改文档时，演示HTML应仍逐字节等于已验收版本。正常站点构建后核对两个新子路由，
 不修改现有主页面或导航。线上可用同一脚本的 `--base-url` 指向公开docs路由再验收。
 
-## README 统一入口与关联导航
+## README 统一入口、案例库与关联导航
 
 中心为 `experiments/intent-edit-review/README.md`；`build_hub.py` 用现有 Pandoc
-从该文件生成 `web/intent-edit-review/experiment/index.html`，不维护第二份正文。
+从该文件生成“实验说明”，从实际对照页及缝合清单读取同一份五案例和状态，生成
+`web/intent-edit-review/experiment/index.html`。默认首屏为案例库，不是说明正文。
 
 ```sh
 python experiments/intent-edit-review/build_hub.py
@@ -78,8 +79,14 @@ python experiments/intent-edit-review/verify_hub.py --output work/experiment-cen
 python experiments/intent-edit-review/verify_docs.py --output work/experiment-center/docs
 ```
 
-`verify_hub.py` 自行启动真实HTTP服务并关闭，核对README摘要、全部仓库链接和目录
-类型、九个目录目标、1448/768/375/320布局，以及总览到对照/文档/缝合页的往返。
+`verify_hub.py` 自行启动真实HTTP服务并关闭。`body[data-gallery-ready="true"]` 就绪后，
+`gallery_checks.py` 在1487×1058设计原尺寸及1280/768/375/320宽度检查实际五模型像素、
+全部二维SVG、组合筛选/空结果恢复、二维/三维切换、完整YAML、18次真实下载、
+五个案例进入正确对照的真实导航及未知参数回退、三维拖动/键盘/滚轮/复位、
+手机详情的Escape/焦点/页面滚动恢复。另验五视口CPU绘制及断网HTML内的筛选和DXF下载。
+
+随后切换“实验说明”，继续核对README摘要、全部仓库链接和目录类型、九个目录目标、
+1448/768/375/320布局，以及说明到对照/文档/缝合页的往返。不能删去原目录和资源断言。
 对照页的返回链接为绝对线上地址，方便独立HTML访问；本地只核对该地址并实际后退，
 线上须再点击它、检查新标签确实回到总览。其他两页本地与线上都实际点击返回链接。
 用图像工具检查桌面、手机和表格区域；已有对照与缝合浏览器验收仍须适用地运行。
@@ -98,5 +105,10 @@ python experiments/intent-edit-review/sewn/publish_review.py --refresh-existing 
 它从该固定提交取README及四个HTML摘要，核对真实线上响应，再实际点击三个往返
 （包括对照页新标签）并检查四种宽度；不替代本地40个资源路径审计。
 本机线上TLS环境受限时，沿用上文独立Firecrawl Bash浏览器路径、现有Google Chrome，
-公开固定源码和Playwright 1.62.0，无需下载模型或关闭TLS。返回ZIP先验SHA/CRC，
+公开固定源码（`verify_public_hub.py`及`gallery_checks.py`）、Playwright 1.62.0和Pillow，
+无需关闭TLS。新线上脚本实测同一案例库操作及18次下载；返回ZIP只需保留报告与截图。
+返回ZIP先验SHA/CRC，
 再保存报告与截图并停止会话。实际成功命令和环境见本轮 `live/README.md`。
+
+画廊应用改版的原图/前后截图、文案与样式比较、源载荷不变及本轮运行见
+`docs/verification/gallery-app-20261118/README.md`；保留旧中心验收作为历史记录。
