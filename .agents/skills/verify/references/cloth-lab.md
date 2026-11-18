@@ -203,3 +203,7 @@ playback of a 0.5 s clip to fail the unchanged 0.15 s tolerance. An isolated
 eight-run probe and the complete isolated replay suite must pass; retain the
 first failure and actual timing log. Numerical worker processes may independently
 reopen immutable snapshots, but all frame results are required before PASS.
+
+The first-ready exposure, pressure-convergence failure, original PNGs, exact
+local/public buffer comparisons and final public receipts are retained in
+[the dated verification record](../../../../docs/verification/wasm-cloth-first-ready-20261118/README.md).

@@ -2,7 +2,17 @@
 
 页面：<https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/>。本证据只对应 `web/cloth-lab/`，不代表其他实验页面通过。
 
-本地 `/verify`：**PASS**。候选源码、父提交、HTML/WASM/人体摘要、命令和退出码见 [candidate.json](candidate.json)。50 项真实 Playwright 检查、3 项实际 WASM 内核测试通过；61 个保存帧均经独立 NumPy/trimesh 重开。公开页面结果待本提交发布后另行记录。
+本地及公开页面 `/verify`：**PASS**。候选源码、父提交、HTML/WASM/人体摘要、命令和退出码见 [candidate.json](candidate.json)。本地及线上分别通过 50 项真实 Playwright 检查；另有 3 项实际 WASM 内核测试。61 个保存帧均经独立 NumPy/trimesh 重开。代码提交 `6af2cd271ff1323f5ee25e46a1d8d2dabf354fb8`，原有发布流程 [44260517629](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44260517629) 成功；它只负责发布，验证全部在本地执行。
+
+## 公开页面验收
+
+[线上最终结果](live/closing-readback.json)：首次打开、重置、尺寸／材料、移动人体、真实压力与离线 HTML 14 项；常规物理与热图 15 项；回放 15 项；文件交付 6 项，全部通过。实际公开 HTML 与本地完整 SHA-256 一致。默认、短宽、长窄、移动人体四种工况的 12 组物理字段，以及全部 61 个记录帧的物理缓冲、压力乘子、法向、时钟和参数，均与本地逐值完全相同。
+
+线上 61 帧：接缝间隙最大 0 mm，检测到的人体交叉为 0，臀部覆盖射线外露为 0；最大压力接触方程残差约 0.00002746 mm，压力积分误差约 5.15 × 10⁻⁸ N。查帧中位约 10 ms、p95 约 15.53 ms；软件渲染帧间隔中位约 66.7 ms、p95 约 116.6 ms。所有页面／控制台错误数组为空。每项实际命令、退出码、原始日志、DOM 快照与截图在 [live/](live/)；[原始截图目视复核](live/visual-review.json)也已记录。
+
+验收期间另一个已授权发布将根 `build.json` 推进至 `e835ae7fbedd9426b159bfed17d6eae43a7cf23a`。该发布 [44260595146](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44260595146) 同样成功。已独立检出该提交的本页 HTML，确认仍与本次候选完整摘要一致，并重新对该根提交运行全部根站点交互／下载流程，[结果 PASS](live/publisher-closing/browser-report.json)。没有仅修改期望提交值来获得通过。[源码核对](live/concurrent-publication-source-proof.json)保留。
+
+新版真实背面：[线上截图](live/fit/first-ready-back.png)；[压力](live/fit/first-ready-pressure.png)、[应变](live/browser/strain.png)、[应力](live/browser/stress.png)、[碰撞距离](live/browser/contact.png)。真实公开页面下载的完整回放 [单 HTML](live/replay/downloaded-replay.html.gz) 和 [JSON](live/replay/downloaded-replay.json.gz) 以 gzip 保留原字节；物理回放和离线恢复均已通过。
 
 ## 用户看见的问题与修复
 

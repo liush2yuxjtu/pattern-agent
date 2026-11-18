@@ -1,0 +1,41 @@
+{
+  "commit": "6af2cd271ff1323f5ee25e46a1d8d2dabf354fb8",
+  "htmlSha256": "7af91417abb80a1f0563b1ed977bdc86c0b63135248168fa1654a1febda12234",
+  "postCommitGate": "PASS",
+  "pushed": true,
+  "commands": [
+    [
+      "python",
+      "scripts/build_pages.py"
+    ],
+    [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_verify_artifacts.py",
+      "-v"
+    ],
+    [
+      "python",
+      "scripts/verify_artifacts.py",
+      "--cli",
+      "work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli"
+    ],
+    [
+      "python",
+      "scripts/verify_mcp.py"
+    ],
+    [
+      "python",
+      "scripts/verify_pages.py",
+      "--expected-commit",
+      "6af2cd271ff1323f5ee25e46a1d8d2dabf354fb8",
+      "--output",
+      "work/cloth-coverage/postcommit/publisher"
+    ]
+  ]
+}

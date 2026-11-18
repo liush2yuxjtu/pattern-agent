@@ -1,0 +1,86 @@
+[
+  {
+    "name": "publisher",
+    "argv": [
+      "python",
+      "scripts/verify_pages.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/",
+      "--expected-commit",
+      "6af2cd271ff1323f5ee25e46a1d8d2dabf354fb8",
+      "--output",
+      "work/cloth-coverage/live/publisher"
+    ],
+    "startedAtUnix": 1794987704.8210528,
+    "finishedAtUnix": 1794987710.6808476,
+    "exitCode": 0
+  },
+  {
+    "name": "fit",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_fit.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+      "--expected-html-sha",
+      "7af91417abb80a1f0563b1ed977bdc86c0b63135248168fa1654a1febda12234",
+      "--output",
+      "work/cloth-coverage/live/fit"
+    ],
+    "startedAtUnix": 1794987710.6811452,
+    "finishedAtUnix": 1794987811.932068,
+    "exitCode": 0
+  },
+  {
+    "name": "browser",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_browser.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+      "--expected-html-sha",
+      "7af91417abb80a1f0563b1ed977bdc86c0b63135248168fa1654a1febda12234",
+      "--output",
+      "work/cloth-coverage/live/browser"
+    ],
+    "startedAtUnix": 1794987811.9331157,
+    "finishedAtUnix": 1794987918.8062122,
+    "exitCode": 0
+  },
+  {
+    "name": "replay",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_replay.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+      "--expected-html-sha",
+      "7af91417abb80a1f0563b1ed977bdc86c0b63135248168fa1654a1febda12234",
+      "--output",
+      "work/cloth-coverage/live/replay"
+    ],
+    "startedAtUnix": 1794987918.8068602,
+    "finishedAtUnix": 1794988132.6697783,
+    "exitCode": 0
+  },
+  {
+    "name": "handoff",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_handoff.py",
+      "--base-url",
+      "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/",
+      "--expected-html-sha",
+      "7af91417abb80a1f0563b1ed977bdc86c0b63135248168fa1654a1febda12234",
+      "--output",
+      "work/cloth-coverage/live/handoff"
+    ],
+    "startedAtUnix": 1794988132.6701705,
+    "finishedAtUnix": 1794988154.6591847,
+    "exitCode": 0
+  }
+]
