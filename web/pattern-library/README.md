@@ -20,6 +20,8 @@
 
 ## 按改版意图生成和重放 YAML 补丁
 
+在线示例在同一张 SVG 画布上对齐改前的橙色虚线和改后的蓝色实线。切换「改前」「改后」「叠加」时，裁片位置和缩放比例固定。[打开在线叠加画布](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/#editor) · [下载叠加 SVG](editor/example-output/before-after.svg)
+
 下载并解压 [编辑器 ZIP](downloads/pattern-agent-editor.zip)，在其中的 `pattern-agent-editor` 目录运行以下命令，然后打开 `http://127.0.0.1:8765`。也可从仓库的 [editor](editor/) 目录直接运行。
 
 ```sh

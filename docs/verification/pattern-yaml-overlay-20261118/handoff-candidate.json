@@ -1,0 +1,21 @@
+{
+  "verdict": "PASS",
+  "commit": "b32a62cf2147299e68525b45b0a604c2f12a38c1",
+  "source_sha256": "7f1b6cf406f09c30fe04f27a5284c5b01644d8b6f0ffd72963f9af0f61e19912",
+  "guide_sha256": "9644ebf53912f8c613b5df19fa48a15ad4e0f0da44c93b026ddc76a15970361e",
+  "download_sha256": {
+    "pattern-library/editor/example-output/before-after.svg": "90ec9c5c198dc900845ab751c22a93b3581d0bae5627bced05379f6a8d041085",
+    "pattern-library/downloads/pattern-agent-editor.zip": "ca46c96abdcfd1b626ab4ebc1860e7320d522dce1eb50d3d1f2c5103c3c93472"
+  },
+  "mobile_direct_link_and_svg_download": true,
+  "base_url": "http://127.0.0.1:44639/pattern-agent/",
+  "candidate_tree_before_receipt": "9e9c2da73b1209b9f93788e76b09663c0e27b5fe",
+  "team_page_updated_blocks_read_back": 3,
+  "commands": [
+    "git diff --cached --check",
+    "python scripts/build_pages.py",
+    "python web/pattern-library/source/verify_gallery.py --directory dist",
+    "python scripts/verify_pages.py",
+    "Reopen the guide, verify SVG and ZIP SHA-256, and drive the editor deep link and download in mobile Chromium."
+  ]
+}
