@@ -71,3 +71,16 @@ first network-byte mismatch and unchanged-script successful rerun are retained.
 The root's earlier local404s overlapped a dist rebuild; stable rerun passed.
 No CI, PR, Issue, spending or security changes. Physical cloth fit NOT_RUN;
 historical cloth seam/intersection FAIL is not superseded. Token/time null.
+
+## Final live publication
+
+Verified the actual public a564373322f821e5b0d7e689186a57f83710135f build.
+Latest official reviewer462 checks PASS; retained first round229 PASS; public
+skill/download21 PASS including exact commit. Actual downloaded package reopens
+with17 exact canonical members. All6 model links bind exact archive state/OBJ;
+three revised models load exact cm/163pose, and the old A rounding failure is
+still explicitly recorded. See live-i2/receipt.json, actual screenshots, feedback
+downloads and model-link reports. These are delivery/interaction checks, not
+original-photo matching. Every actual fitting outcome remains FAIL. The remote
+session was stopped. Later unrelated pressure-lab main additions do not change
+the tested skill, Human Studio, generic runtime or commerce site subtree.
