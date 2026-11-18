@@ -1,0 +1,17 @@
+{
+  "verdict": "FAIL",
+  "source_revision": "0f589e5cbde64a43531a36fa73011fc464d749a3",
+  "errors": [],
+  "bad_responses": [],
+  "round_trips": [],
+  "viewports": [],
+  "expected_html_sha256": {
+    "hub": "03ecc659f159e550bdf6fcefec89b1029e654d2b97d482a6681b2feefee5a72d",
+    "demo": "011c6b734e813ecb9d0857dd8d625e12e1db04cb21b4206cf0a7af01a0c5fc78",
+    "docs": "235f9f8d7dd1fc533b22fc2b4ede0f9a7b9812734287b34e58d6999e7c77edf8",
+    "sewn": "5a27a39a1ee1ebfcee1979f0d5b10cb86b4455c20d4ab2678b92a10eab0110a7"
+  },
+  "readme_sha256": "b6e9e7557a803f05cb51f3aa9cd02f406b4702b28438c90078e1aabad50922e2",
+  "failure": "Page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/\nCall log:\n  - navigating to \"https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/\", waiting until \"load\"\n",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/work/pattern-agent-publish/experiments/intent-edit-review/verify_public_hub.py\", line 59, in verify\n    response = page.goto(SITE + 'experiment/', wait_until='load')\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py\", line 9875, in goto\n    self._sync(\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py\", line 115, in _sync\n    return task.result()\n           ^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_page.py\", line 560, in goto\n    return await self._main_frame.goto(**locals_to_params(locals()))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_frame.py\", line 156, in goto\n    await self._channel.send(\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py\", line 76, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py\", line 632, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.Error: Page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/\nCall log:\n  - navigating to \"https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/\", waiting until \"load\"\n\n"
+}

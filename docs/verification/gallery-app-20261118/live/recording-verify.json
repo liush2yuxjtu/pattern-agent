@@ -1,0 +1,18 @@
+{
+  "verdict": "SKIP",
+  "reason": "Documentation and captured evidence only; no application bytes changed after local full PASS and actual live core-flow PASS.",
+  "recorded_at": "2026-11-18T14:45:48.908976+08:00",
+  "candidate_parent": "655d85ae01e5e8e3ca2dc38a02e0a08aca6f8772",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "active_application_source": "0f589e5cbde64a43531a36fa73011fc464d749a3",
+  "public_build_commit": "cf4d50ae2135204d445858f2b02695e6e5e0527e",
+  "checks": {
+    "four_published_html_files_still_exact": true,
+    "real_download_matches_source": true,
+    "live_core_flow": "PASS",
+    "local_full_suite": "PASS",
+    "public_build_descends_from_source": true,
+    "local_markdown_links_exist": true
+  },
+  "evidence_scope": "Preserved blocked automatic live methods and extension-only noise; no tests weakened or security settings changed."
+}

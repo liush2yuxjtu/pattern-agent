@@ -1,0 +1,52 @@
+{
+  "verdict": "PASS",
+  "recorded_at": "2026-11-18T14:43:36.599616+08:00",
+  "source_commit": "0f589e5cbde64a43531a36fa73011fc464d749a3",
+  "original_verified_commit_before_rebase": "84074a1",
+  "published_build_commit": "cf4d50ae2135204d445858f2b02695e6e5e0527e",
+  "publication_run": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44251885202",
+  "source_files_verified": 17,
+  "files": {
+    "intent-edit-review/experiment/index.html": {
+      "status": 200,
+      "bytes": 5961761,
+      "sha256": "03ecc659f159e550bdf6fcefec89b1029e654d2b97d482a6681b2feefee5a72d"
+    },
+    "intent-edit-review/index.html": {
+      "status": 200,
+      "bytes": 5938933,
+      "sha256": "011c6b734e813ecb9d0857dd8d625e12e1db04cb21b4206cf0a7af01a0c5fc78"
+    },
+    "intent-edit-review/docs/index.html": {
+      "status": 200,
+      "bytes": 34773,
+      "sha256": "235f9f8d7dd1fc533b22fc2b4ede0f9a7b9812734287b34e58d6999e7c77edf8"
+    },
+    "intent-edit-review/sewn/index.html": {
+      "status": 200,
+      "bytes": 11272,
+      "sha256": "5a27a39a1ee1ebfcee1979f0d5b10cb86b4455c20d4ab2678b92a10eab0110a7"
+    }
+  },
+  "live_ui_method": "Cloud Chrome through cua_repl; visible UI actions, native download, exact completed path and actual DOM-selected case.",
+  "live_ui_scope": "Core flow PASS: 5 cases, 2/3 filters, query+filter, empty recovery, 2D view, cuff detail, full YAML, actual DXF, correct comparison deep link, docs/sewn return.",
+  "local_complete_suite": "PASS separately: all 18 gallery downloads, five-case deep links, five widths, CPU fallback and offline.",
+  "blocked_methods": {
+    "remote_playwright_plugin": "Connection failed / UNAVAILABLE",
+    "local_public_full_driver": "ERR_CERT_AUTHORITY_INVALID; raw report retained, no TLS bypass",
+    "firecrawl": "First session destroyed while waiting for publication; new request rejected for exhausted credits. No retry after quota error and no paid upgrade."
+  },
+  "console_observation": {
+    "application_errors": 0,
+    "external_extension_metadata_errors_retained": 50,
+    "source": "chrome-extension content-script; raw records in report.json",
+    "initial_combined_zero_error_assertion": "Failed on extension-only errors; source diagnosis separated them without deleting logs."
+  },
+  "invariants": {
+    "verified_source_files_unchanged_after_rebase": 17,
+    "original_input_case_payload_sha256": "a8e14641775a09f20c0819aeb8e5990f6d4d4a8b888985b6e4aab771b9d58e2c",
+    "sewn_workflow": "BLOCKED: 2 PASS / 3 PROFILE_REQUIRED",
+    "physical_fit": "NOT_RUN"
+  },
+  "cleanup": "Local browsers/servers closed. Failed Firecrawl session was already destroyed; no replacement session was created after quota error. Verified cloud gallery tab marked for user review."
+}

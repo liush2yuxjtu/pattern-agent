@@ -112,3 +112,12 @@ python experiments/intent-edit-review/sewn/publish_review.py --refresh-existing 
 
 画廊应用改版的原图/前后截图、文案与样式比较、源载荷不变及本轮运行见
 `docs/verification/gallery-app-20261118/README.md`；保留旧中心验收作为历史记录。
+
+2026-11-18本轮Firecrawl会话失效且额度耗尽后，正常公开站点可通过已有云Chrome的
+`cua_repl`完成核心界面观察：5案例、2/3筛选、组合搜索/空状态恢复、2D切换、
+袖口详情/完整YAML、原生DXF下载、所选改版跳转、文档与缝合页返回。
+遵守浏览器文档，下载先等待事件并采用返回的确切完成路径；文件和截图放到
+`/workspace/shared`，再由执行环境核对摘要并保存。结束标记实际画廊为deliverable，
+随后发送一次浏览器completion_summary。不要把该核心检查说成全套线上18次下载。
+应用日志与明确来源的浏览器扩展metadata错误分开判断并保留原记录，不清日志来获得PASS。
+这一路径没有关闭TLS、安装浏览器插件或改变信任设置，实际证据见本轮`live/README.md`。
