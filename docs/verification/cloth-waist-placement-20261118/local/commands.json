@@ -1,0 +1,64 @@
+[
+  {
+    "name": "kernel",
+    "argv": [
+      "python",
+      "tools/cloth_lab/test_kernel.py"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794990081.8448427,
+    "finishedAtUnix": 1794990082.688132
+  },
+  {
+    "name": "fit",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_fit.py",
+      "--output",
+      "work/cloth-wear/release/fit"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794990082.688434,
+    "finishedAtUnix": 1794990214.249222
+  },
+  {
+    "name": "browser",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_browser.py",
+      "--output",
+      "work/cloth-wear/release/browser"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794990214.2496257,
+    "finishedAtUnix": 1794990351.6692781
+  },
+  {
+    "name": "replay",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_replay.py",
+      "--output",
+      "work/cloth-wear/release/replay"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794990351.6699924,
+    "finishedAtUnix": 1794990578.9296906
+  },
+  {
+    "name": "handoff",
+    "argv": [
+      "python",
+      "-u",
+      "tools/cloth_lab/verify_handoff.py",
+      "--output",
+      "work/cloth-wear/release/handoff"
+    ],
+    "exitCode": 0,
+    "startedAtUnix": 1794990578.9311411,
+    "finishedAtUnix": 1794990604.6805906
+  }
+]

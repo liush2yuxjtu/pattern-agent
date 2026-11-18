@@ -1,0 +1,191 @@
+{
+  "verdict": "PASS",
+  "skill": ".agents/skills/verify/SKILL.md",
+  "recipes": [
+    ".agents/skills/verify/references/cloth-lab.md",
+    ".agents/skills/verify/references/github-pages.md"
+  ],
+  "candidateParent": "45656a545ae9ce0f8bb2b736ab5e4fd18aebe4f0",
+  "build": {
+    "fingerprint": "042ed8f8fefa1882c40aa88a6fc174b773123c035a6de1f12fa1793fa00ff2f1",
+    "htmlSha256": "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+    "htmlBytes": 2120088,
+    "wasmSha256": "9bf573ba1f2197ff073e3f81d7cd63983dab6440eddaf4d8e034a2d4369e7a5b",
+    "bodySourceSha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "vertices": 13380,
+    "triangles": 26756,
+    "tools": {
+      "zig": "0.14.1",
+      "esbuild": "0.25.12"
+    }
+  },
+  "changedSourceSha256": {
+    ".agents/skills/verify/references/cloth-lab.md": "80b7e78887df2ba7cf98ee66b12aa2395226394166860ca3bc5d67f05f54e248",
+    "scripts/build_cloth_lab.py": "e12d773eff639d3ad67d252a65a443836f4edb21ba5c6c9e927d7a5499065c67",
+    "tools/cloth_lab/build_avatar_fit.py": "12213c0434b609338ea8255d61962f7b423d5ec06f1c3aba0e4190aaee1040ea",
+    "tools/cloth_lab/fit_oracle.py": "e6dff62269c0bc9800a93864d78a9c19bc325e481a73a2527246b9a7dbea9037",
+    "tools/cloth_lab/oracle.py": "c99289464c9165ad48aa9dd9a54ae1979f30acdaa0c3af26d2bb2bd7e06a31e3",
+    "tools/cloth_lab/verify_browser.py": "1ee6a12ec89c74d7b12f869797fef12446becd4efeb368b5fc524a84ef53c5f8",
+    "tools/cloth_lab/verify_fit.py": "3a9805619a4345f3ee29a9fea38199a29c8983d1e5779c5c998bb038d7b1de4d",
+    "tools/cloth_lab/verify_waist.py": "4ae6d0bf49f725cd74a6e9454e06fb7ff6d103ed95e74f09af8e3bad1d3f0adc",
+    "web/cloth-lab/README.md": "2a85c55a7cc571b1b06f85614af2f22b7b21efbaf7980610b57987d9c837d414",
+    "web/cloth-lab/build.json": "b8f444ef7a2e61d8c0487ba930649b445f542238a1dd8a1472ee9745b7a09a66",
+    "web/cloth-lab/index.html": "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+    "web/cloth-lab/src/app.js": "3b6d3c763842a482721a38baf6c7530674c27e35e825f2c2dfc6786ca4403f6f",
+    "web/cloth-lab/src/avatar-fit.json": "33d96baeb5a7fba1fb0198bb0e7e9c94568496cd79929c4093b46597b8ce1389",
+    "web/cloth-lab/src/pattern.js": "7727927d91a02a8cecef8ea13da0c05f69998d91c1477eb9ef2a0eef33febb8e",
+    "web/cloth-lab/src/template.html": "f620e88ae73973a4df4473916218ca002c65f3c88f007b8df201b8f65825cff1",
+    "web/cloth-lab/src/trajectory.js": "6a2efb00d80d0c2f2886a60410aed853769f9bb67c6a213acb45a9b74b2f2b5c",
+    "web/cloth-lab/src/wear.js": "d7a83963e4dfdfea8b4742500331dfbba2221dfc8483aae95674bcd5d3182b94"
+  },
+  "commands": [
+    {
+      "name": "kernel",
+      "argv": [
+        "python",
+        "tools/cloth_lab/test_kernel.py"
+      ],
+      "exitCode": 0,
+      "startedAtUnix": 1794990081.8448427,
+      "finishedAtUnix": 1794990082.688132
+    },
+    {
+      "name": "fit",
+      "argv": [
+        "python",
+        "-u",
+        "tools/cloth_lab/verify_fit.py",
+        "--output",
+        "work/cloth-wear/release/fit"
+      ],
+      "exitCode": 0,
+      "startedAtUnix": 1794990082.688434,
+      "finishedAtUnix": 1794990214.249222
+    },
+    {
+      "name": "browser",
+      "argv": [
+        "python",
+        "-u",
+        "tools/cloth_lab/verify_browser.py",
+        "--output",
+        "work/cloth-wear/release/browser"
+      ],
+      "exitCode": 0,
+      "startedAtUnix": 1794990214.2496257,
+      "finishedAtUnix": 1794990351.6692781
+    },
+    {
+      "name": "replay",
+      "argv": [
+        "python",
+        "-u",
+        "tools/cloth_lab/verify_replay.py",
+        "--output",
+        "work/cloth-wear/release/replay"
+      ],
+      "exitCode": 0,
+      "startedAtUnix": 1794990351.6699924,
+      "finishedAtUnix": 1794990578.9296906
+    },
+    {
+      "name": "handoff",
+      "argv": [
+        "python",
+        "-u",
+        "tools/cloth_lab/verify_handoff.py",
+        "--output",
+        "work/cloth-wear/release/handoff"
+      ],
+      "exitCode": 0,
+      "startedAtUnix": 1794990578.9311411,
+      "finishedAtUnix": 1794990604.6805906
+    },
+    {
+      "argv": [
+        "python",
+        "tools/cloth_lab/build_avatar_fit.py"
+      ],
+      "exitCode": 0,
+      "seconds": 1.0333929061889648
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/build_cloth_lab.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.8022754192352295
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/build_pages.py"
+      ],
+      "exitCode": 0,
+      "seconds": 6.717670679092407
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_verify_artifacts.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "seconds": 8.164779663085938
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/verify_artifacts.py",
+        "--cli",
+        "work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli"
+      ],
+      "exitCode": 0,
+      "seconds": 1.0488502979278564
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/verify_mcp.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.04415535926818848
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/verify_pages.py",
+        "--output",
+        "work/cloth-wear/publisher/browser"
+      ],
+      "exitCode": 0,
+      "seconds": 4.2775537967681885
+    },
+    {
+      "argv": [
+        "python",
+        "tools/cloth_lab/verify_waist.py",
+        "--project",
+        "work/cloth-wear/release/fit/first-ready.json",
+        "--output",
+        "work/cloth-wear/release/waist-probes.json"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "browserChecks": 52,
+  "kernelTests": 3,
+  "waistProbes": 4,
+  "independentRecordedFrames": 61,
+  "sourceBodyGeometryExactlyUnchanged": true,
+  "scope": "Local actual high-waist placement, separate front/back pattern lengths, existing seam/body/tensor/normal-pressure and replay contracts. Live verification pending publication. Physical fit/material calibration/manufacturing approval NOT_RUN.",
+  "cleanup": "Each script exited 0 and closed owned ephemeral HTTP server/browser/numeric workers. Immutable evidence retained.",
+  "recordedAtUTC": "2026-11-18T08:37:35.377340+00:00"
+}

@@ -3,6 +3,8 @@ import {MAX_FRAMES,STATE_FLOATS,MAX_TOTAL_RAW_BYTES,validateParameters,encodeTra
 import {sector,patternSVG as sectorSVG} from './pattern.js';
 import {capturePressure,restorePressure,pressureData} from './contact-state.js';
 import {solvePressureCoupon} from './pressure.js';
+import avatarFit from './avatar-fit.json';
+import {wearDiagnostics} from './wear.js';
 
 const $ = id => document.getElementById(id);
 const payload = JSON.parse($('payload').textContent);
@@ -24,7 +26,7 @@ let track={frames:[],cursor:-1,atRecordedState:false},recording=false,playing=fa
 const REFERENCE_STEPS=240;
 let integratedSteps=0,captureTimes=[],seekTimes=[],playbackTimes=[],recordingNote='尚未录制。';
 
-function getParameters(){return {patternType:'annular-sector',bottomMm:+$('width').value,topMm:420,lengthsMm:[+$('length').value,+$('length').value+($('fault').value==='mismatch'?40:0)],fault:$('fault').value,material:$('material').value,bodyOffsetMm:+$('body-shift').value,collision:$('collision').checked,wind:$('wind').checked};}
+function getParameters(){return {patternType:'anatomical-sector',bottomMm:+$('width').value,topMm:avatarFit.topsMm[0],topsMm:[...avatarFit.topsMm],lengthsMm:[+$('length').value,+$('length').value+($('fault').value==='mismatch'?40:0)],fault:$('fault').value,material:$('material').value,bodyOffsetMm:+$('body-shift').value,collision:$('collision').checked,wind:$('wind').checked};}
 function material(){return materials[parameters.material];}
 function copyTo(ptr,bytes){new Uint8Array(wasm.memory.buffer,ptr,bytes.length).set(bytes);}
 function floatView(ptr,n){return new Float32Array(wasm.memory.buffer,ptr,n);}
@@ -56,7 +58,7 @@ function setupScene(){
   const bodyPos=new Float32Array(decode(payload.body.positions).buffer),bodyFaces=new Int32Array(decode(payload.body.indices).buffer);
   const geom=new T.BufferGeometry();geom.setAttribute('position',new T.Float32BufferAttribute(bodyPos,3));geom.setIndex(Array.from(bodyFaces));geom.computeVertexNormals();
   const colors=new Float32Array(bodyPos.length),color=new T.Color();
-  for(let i=0;i<bodyPos.length/3;i++){color.set(bodyPos[3*i+1]>1.02&&bodyPos[3*i+1]<1.32?0x53675d:0xc6c6b9);color.toArray(colors,3*i);}
+  for(let i=0;i<bodyPos.length/3;i++){color.set(0xc6c6b9);color.toArray(colors,3*i);}
   geom.setAttribute('color',new T.Float32BufferAttribute(colors,3));
   bodyMesh=new T.Mesh(geom,new T.MeshStandardMaterial({vertexColors:true,roughness:.93}));scene.add(bodyMesh);
   const floor=new T.Mesh(new T.CircleGeometry(.68,64),new T.MeshStandardMaterial({color:0xd8ddce,roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.y=-.005;scene.add(floor);
@@ -67,18 +69,19 @@ function setupScene(){
   updateCamera();new ResizeObserver(()=>{const r=$('viewport').getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();draw();}).observe($('viewport'));
   const target=renderer.domElement;target.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];target.setPointerCapture(e.pointerId);});target.addEventListener('pointerup',()=>drag=null);target.addEventListener('pointermove',e=>{if(!drag)return;cameraAngle-=(e.clientX-drag[0])*.008;cameraElevation=Math.max(-.12,Math.min(.6,cameraElevation+(e.clientY-drag[1])*.003));drag=[e.clientX,e.clientY];updateCamera();draw();});target.addEventListener('wheel',e=>{e.preventDefault();cameraDistance=Math.max(1.65,Math.min(4.5,cameraDistance+e.deltaY*.002));updateCamera();draw();},{passive:false});
   $('asset-info').textContent=`MakeHuman 成人女性 · ${(payload.body.heightMeters*100).toFixed(1)} cm · ${payload.body.triangles.toLocaleString()} 个人体三角形 · CC0`;
-  $('renderer-info').textContent=`实际渲染器：${gpuString}。${rendererClass==='software'?'软件渲染性能不代表真实 GPU。':''}人体深色区域仅为显示用颜色。`;
+  $('renderer-info').textContent=`实际渲染器：${gpuString}。${rendererClass==='software'?'软件渲染性能不代表真实 GPU。':''}灰色为完整人体；棕色或热图区域为实际布料。`;
 }
 function setupCloth(drape=true){
   recording=false;playing=false;track={frames:[],cursor:-1,atRecordedState:false};recordingNote='重置或修改纸样／材料会清空旧录制。';
   parameters=getParameters();setRunning(false);history=[];droppedSeconds=0;
   const mat=material();wasm.configure_material(mat.Eu,mat.Ev,mat.G,mat.nu,mat.thickness,mat.density);
   positions=floatView(wasm.position_ptr(),NV*3);previous=floatView(wasm.previous_ptr(),NV*3);restUV=floatView(wasm.uv_ptr(),NV*2);triangles=intView(wasm.face_ptr(),NT*3);fields=floatView(wasm.field_ptr(),NT*8);invMass=floatView(wasm.invmass_ptr(),NV);bodyDistances=floatView(wasm.body_distance_ptr(),NV);
-  const rTop=parameters.topMm/1000/Math.PI,rBottom=parameters.bottomMm/1000/Math.PI;let faceIndex=0;
+  const rTop=(parameters.topsMm[0]+parameters.topsMm[1])/1000/(2*Math.PI),rBottom=parameters.bottomMm/1000/Math.PI;let faceIndex=0;
   for(let p=0;p<2;p++)for(let j=0;j<=M;j++)for(let i=0;i<=N;i++){
-    const k=idx(p,i,j),ratio=j/M,L=parameters.lengthsMm[p]/1000,a=(p*N+i)/(2*N)*2*Math.PI,r=rTop+(rBottom-rTop)*ratio;
-    const height=Math.sqrt(L*L-(rBottom-rTop)**2),flat=sector(parameters.topMm,parameters.bottomMm,parameters.lengthsMm[p]).at(i/N,ratio);
-    positions.set([r*Math.cos(a),1-ratio*height,.06+r*Math.sin(a)],3*k);
+    const k=idx(p,i,j),ratio=j/M,L=parameters.lengthsMm[p]/1000,a=(p*N+i)/(2*N)*2*Math.PI;
+    const height=Math.sqrt(L*L-(rBottom-rTop)**2),flat=sector(parameters.topsMm[p],parameters.bottomMm,parameters.lengthsMm[p]).at(i/N,ratio);
+    const waist=avatarFit.waistPanelsM[p][i],hemY=avatarFit.waistHeightM-height;
+    positions.set([(1-ratio)*waist[0]+ratio*(avatarFit.hemCenterM[0]+rBottom*Math.cos(a)),(1-ratio)*waist[1]+ratio*hemY,(1-ratio)*waist[2]+ratio*(avatarFit.hemCenterM[1]+rBottom*Math.sin(a))],3*k);
     restUV.set(flat.map(v=>v/1000),2*k);
     if(i<N&&j<M){const a=k,b=k+1,c=k+N+1,d=c+1;triangles.set([a,b,c,b,d,c],faceIndex);faceIndex+=6;}
   }
@@ -98,7 +101,7 @@ function setupCloth(drape=true){
   const lineGeom=new T.BufferGeometry();lineGeom.setAttribute('position',new T.Float32BufferAttribute(new Float32Array(M*2*2*3),3));lineGeom.setAttribute('color',new T.Float32BufferAttribute(new Float32Array(M*2*2*3),3));seamLines=new T.LineSegments(lineGeom,new T.LineBasicMaterial({vertexColors:true,depthTest:false}));seamLines.renderOrder=2;scene.add(seamLines);
   $('width-value').value=parameters.bottomMm+' mm';$('length-value').value=parameters.lengthsMm[0]+' mm';$('shift-value').value=parameters.bodyOffsetMm+' mm';
   $('material-values').textContent=`E经 ${mat.Eu/1000} kPa · E纬 ${mat.Ev/1000} kPa · G ${mat.G/1000} kPa · ν ${mat.nu}\n厚 ${mat.thickness*1000} mm · ${mat.density*1000} g/m²。合成参数，未经标定。`;
-  $('patterns').innerHTML=patternSVG();
+  $('patterns').innerHTML=patternSVG();$('waist-fit-info').textContent=`真实高腰截面 ${avatarFit.bodySectionGirthMm.toFixed(1)} mm · 裙腰 ${(parameters.topsMm[0]+parameters.topsMm[1]).toFixed(1)} mm\n前腰 ${parameters.topsMm[0].toFixed(1)} / 后腰 ${parameters.topsMm[1].toFixed(1)} mm · 7 mm 装配间隙`;
   if(drape){
     if(parameters.collision&&parameters.fault==='good'){const t=performance.now();wasm.step(REFERENCE_STEPS,parameters.wind?.8:0);integratedSteps+=REFERENCE_STEPS;stepMs=(performance.now()-t)/REFERENCE_STEPS;}
     $('activity').textContent=parameters.fault==='good'?'已完成初始物理试衣；可单步、录制或运行。':'故障对照：请查看缝合、覆盖与碰撞检查。';
@@ -107,12 +110,12 @@ function setupCloth(drape=true){
 }
 function patternSVG(){return sectorSVG(parameters);}
 
-function analyze(){wasm.analyze();const s=floatView(wasm.stats_ptr(),16),topo=topologyAudit(),p=pressureData(wasm,NV,NT).summary,c=floatView(wasm.coverage_ptr(),16);const coverage={bodySamples:c[0],exposedSamples:c[1],maxDepthDeficitMm:c[2]*1000,byView:{front:c[3],back:c[4],right:c[5],left:c[6]},covered:!!c[11]};lastStats={frame:s[0],simulationSeconds:s[1],maxSeamGapMm:s[2]*1000,maxBodyPenetrationMm:s[3]*1000,minBodyClearanceMm:s[4]*1000,maxPrincipalStrainPercent:s[5]*100,maxPrincipalStressKPa:s[6]/1000,contacts:s[7],finite:!!s[8]&&positions.every(Number.isFinite),membraneEnergyJ:s[9],collisionEnabled:!!s[10],pressure:p,coverage,...topo,stepMs,bodyOffsetMm:parameters.bodyOffsetMm,droppedWallSeconds:droppedSeconds};
-  const fail=!lastStats.finite||topo.missingSeam||!topo.orientationValid||topo.lengthMismatchMm>1||lastStats.maxSeamGapMm>2||lastStats.maxBodyPenetrationMm>.2||!coverage.covered||p.ready&&(!p.consistent||!Number.isFinite(p.maxPressurePa)||p.maxPressurePa<0);
-  const settled=s[0]>=240;let text=fail?'FAIL · 覆盖、缝合或碰撞未通过':!parameters.collision?'未验证 · 已关闭碰撞':settled&&p.ready?'PASS · 缝合/覆盖/碰撞/压力数值':'待验证 · 请推进试衣求解';
+function analyze(){wasm.analyze();const s=floatView(wasm.stats_ptr(),16),topo=topologyAudit(),p=pressureData(wasm,NV,NT).summary,c=floatView(wasm.coverage_ptr(),16);const coverage={bodySamples:c[0],exposedSamples:c[1],maxDepthDeficitMm:c[2]*1000,byView:{front:c[3],back:c[4],right:c[5],left:c[6]},covered:!!c[11]};lastStats={wear:wearDiagnostics(positions,bodyDistances,parameters,avatarFit),frame:s[0],simulationSeconds:s[1],maxSeamGapMm:s[2]*1000,maxBodyPenetrationMm:s[3]*1000,minBodyClearanceMm:s[4]*1000,maxPrincipalStrainPercent:s[5]*100,maxPrincipalStressKPa:s[6]/1000,contacts:s[7],finite:!!s[8]&&positions.every(Number.isFinite),membraneEnergyJ:s[9],collisionEnabled:!!s[10],pressure:p,coverage,...topo,stepMs,bodyOffsetMm:parameters.bodyOffsetMm,droppedWallSeconds:droppedSeconds};
+  const fail=!lastStats.wear.fitted||!lastStats.finite||topo.missingSeam||!topo.orientationValid||topo.lengthMismatchMm>1||lastStats.maxSeamGapMm>2||lastStats.maxBodyPenetrationMm>.2||!coverage.covered||p.ready&&(!p.consistent||!Number.isFinite(p.maxPressurePa)||p.maxPressurePa<0);
+  const settled=s[0]>=240;let text=fail?'FAIL · 腰口、覆盖、缝合或碰撞未通过':!parameters.collision?'未验证 · 已关闭碰撞':settled&&p.ready?'PASS · 腰口/缝合/覆盖/碰撞/压力':'待验证 · 请推进试衣求解';
   const strainWarning=!fail&&settled&&lastStats.maxPrincipalStrainPercent>20;if(strainWarning)text='几何通过 · 局部应变偏大';
   $('verdict').textContent=text;$('verdict').className=fail?'fail':!settled||!parameters.collision||strainWarning?'pending':'';
-  const rows=[['缝合长度差',topo.lengthMismatchMm.toFixed(2)+' mm'],['方向 / 缺失',`${topo.orientationValid?'同向':'反向'} / ${topo.missingSeam?'漏缝':'完整'}`],['最大接缝间隙',lastStats.maxSeamGapMm.toFixed(3)+' mm'],['人体网格穿透',lastStats.maxBodyPenetrationMm.toFixed(3)+' mm'],['最小人体距离',lastStats.minBodyClearanceMm.toFixed(2)+' mm'],['最大主应变',lastStats.maxPrincipalStrainPercent.toFixed(2)+' %'],['最大主柯西应力',lastStats.maxPrincipalStressKPa.toFixed(2)+' kPa'],['接触点 / 总顶点',`${s[7]} / ${NV}`],['臀部外露采样',`${coverage.exposedSamples} / ${coverage.bodySamples}`],['峰值试衣压力',p.ready?(p.maxPressurePa/1000).toFixed(4)+' kPa':'待求解'],['法向接触力',p.ready?p.normalForceN.toFixed(4)+' N':'待求解']];
+  const rows=[['腰口最大离体间隙',lastStats.wear.maxWaistGapMm.toFixed(2)+' mm'],['腰线定位偏差',lastStats.wear.maxWaistPlacementErrorMm.toFixed(3)+' mm'],['前/后腰纸样差',lastStats.wear.waistPatternMismatchMm.toFixed(3)+' mm'],['缝合长度差',topo.lengthMismatchMm.toFixed(2)+' mm'],['方向 / 缺失',`${topo.orientationValid?'同向':'反向'} / ${topo.missingSeam?'漏缝':'完整'}`],['最大接缝间隙',lastStats.maxSeamGapMm.toFixed(3)+' mm'],['人体网格穿透',lastStats.maxBodyPenetrationMm.toFixed(3)+' mm'],['最小人体距离',lastStats.minBodyClearanceMm.toFixed(2)+' mm'],['最大主应变',lastStats.maxPrincipalStrainPercent.toFixed(2)+' %'],['最大主柯西应力',lastStats.maxPrincipalStressKPa.toFixed(2)+' kPa'],['接触点 / 总顶点',`${s[7]} / ${NV}`],['臀部外露采样',`${coverage.exposedSamples} / ${coverage.bodySamples}`],['峰值试衣压力',p.ready?(p.maxPressurePa/1000).toFixed(4)+' kPa':'待求解'],['法向接触力',p.ready?p.normalForceN.toFixed(4)+' N':'待求解']];
   $('metrics').innerHTML=rows.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('');$('time').textContent=s[1].toFixed(2)+' s';$('solver-time').textContent=stepMs.toFixed(2)+' ms';
   if(history.at(-1)?.frame!==lastStats.frame){history.push({...lastStats});if(history.length>120)history.shift();}
   return {...lastStats};
@@ -202,7 +205,7 @@ function replayTick(elapsed){
   playbackTimes.push(performance.now()-start);if(playbackTimes.length>600)playbackTimes.shift();
 }
 function project(includeReplay=true){analyze();const pressure=pressureData(wasm,NV,NT);return {
-  schema:'pattern-agent.cloth-lab.v2',fingerprint:payload.buildFingerprint,units:{pattern:'mm',geometry:'m',stress:'Pa',pressure:'Pa'},parameters:{...parameters},material:{...material(),calibration:'synthetic-not-measured'},grid:[N,M],
+  schema:'pattern-agent.cloth-lab.v3',fingerprint:payload.buildFingerprint,units:{pattern:'mm',geometry:'m',stress:'Pa',pressure:'Pa'},parameters:{...parameters},material:{...material(),calibration:'synthetic-not-measured'},grid:[N,M],
   positions:Array.from(positions),previous:Array.from(previous),pinPositions:Array.from(floatView(wasm.pin_ptr(),NV*3)),contactFlags:Array.from(floatView(wasm.contacts_ptr(),NV)),
   pressureState:encodePressure(pressure.packet),fitPressure:pressure.fields,pressureContacts:pressure.contacts,
   replay:includeReplay&&track.frames.length?encodeTrajectory(track,payload.buildFingerprint):undefined,
@@ -212,7 +215,7 @@ function project(includeReplay=true){analyze();const pressure=pressureData(wasm,
 }
 function restore(data){
   if(busy)throw new Error('Simulation busy');
-  if(data.schema!=='pattern-agent.cloth-lab.v2'||data.fingerprint!==payload.buildFingerprint)throw new Error('Incompatible project or source fingerprint');
+  if(data.schema!=='pattern-agent.cloth-lab.v3'||data.fingerprint!==payload.buildFingerprint)throw new Error('Incompatible project or source fingerprint');
   const p=validateParameters(data.parameters),savedPressure=decodePressure(data.pressureState);
   for(const key of ['positions','previous','pinPositions'])if(data[key]?.length!==NV*3||!data[key].every(v=>Number.isFinite(v)&&Math.abs(v)<10))throw new Error('Invalid saved vertex array');
   if(data.contactFlags&&(data.contactFlags.length!==NV||!data.contactFlags.every(v=>v===0||v===1)))throw new Error('Invalid saved contact array');

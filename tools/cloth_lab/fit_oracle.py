@@ -8,6 +8,58 @@ import numpy as np
 import trimesh
 
 
+def wear(data,source):
+    """Independent actual-skin fitting test; no renderer profile/anchors imported.
+
+    Rebuild the selected high-waist plane from original MakeHuman tape IDs and
+    intersect raw triangles with that plane in float64. Then measure the exported
+    upper cloth edge against the unchanged actual skin, not a circular proxy.
+    """
+    raw=json.loads(Path(source).read_text());original=np.array(raw['vertices']).reshape(-1,3)/100
+    source_faces=np.array(raw['indices']).reshape(-1,3);original[:,1]-=original[np.unique(source_faces),1].min()
+    ids=next(c['path'] for c in raw['controls'] if c['key']=='waist')
+    height=round((float(original[ids[:-1],1].mean())+.035)/.005)*.005
+    tri=original[source_faces];intersections=[]
+    for a,b in [(0,1),(1,2),(2,0)]:
+        p,q=tri[:,a],tri[:,b];cross=((p[:,1]<=height)&(q[:,1]>height))|((q[:,1]<=height)&(p[:,1]>height))
+        part=np.full_like(p,np.nan);part[cross]=p[cross]+(q[cross]-p[cross])*((height-p[cross,1])/(q[cross,1]-p[cross,1]))[:,None];intersections.append(part)
+    intersections=np.stack(intersections,axis=1);segments=[]
+    for points in intersections:
+        points=points[np.isfinite(points[:,0])]
+        if len(points)==2 and np.all(abs(points[:,0])<.24):segments.append(points)
+    segments=np.array(segments);assert len(segments)>=3
+    # Resolution is an asset property; require a single closed contour instead
+    # of inventing a minimum number of intersected triangles.
+    vertices,inverse,degree=np.unique(np.round(segments.reshape(-1,3),7),axis=0,return_inverse=True,return_counts=True)
+    assert np.all(degree==2),'Open anatomical section'
+    adjacency={i:set() for i in range(len(vertices))}
+    for a,b in inverse.reshape(-1,2):adjacency[a].add(b);adjacency[b].add(a)
+    seen=set();todo=[0]
+    while todo:
+        a=todo.pop()
+        if a not in seen:seen.add(a);todo.extend(adjacency[a]-seen)
+    assert len(seen)==len(vertices),'Multiple anatomical section components'
+    circumference=np.linalg.norm(segments[:,1]-segments[:,0],axis=1).sum()*1000
+    x=np.array(data['positions']).reshape(-1,3);n,m=data['grid'];k=(n+1)*(m+1)
+    edges=[x[p*k+np.arange(n+1)] for p in range(2)];points=np.vstack(edges)
+    bv=np.array(data['body']['positions']).reshape(-1,3);bv[:,0]+=data['body']['offsetX']
+    body=trimesh.Trimesh(bv,np.array(data['body']['triangles']).reshape(-1,3),process=False)
+    closest,distance,_=body.nearest.on_surface(points);gap=distance*1000
+    assert gap.max()<=10,f'Waist detachment {gap.max()} mm > 10 mm'
+    assert gap.min()>=3,f'Waist skin clearance {gap.min()} mm < 3 mm'
+    height_error=np.max(abs(closest[:,1]-height))*1000
+    assert height_error<=2,f'Wrong anatomical waist level {height_error} mm'
+    lengths=np.array([np.linalg.norm(np.diff(e,axis=0),axis=1).sum()*1000 for e in edges])
+    mismatch=float(np.max(abs(lengths-data['parameters']['topsMm'])))
+    assert mismatch<=1,f'Waist edge/pattern discrepancy {mismatch} mm'
+    center=(segments.min((0,1))+segments.max((0,1)))/2;loop=np.r_[edges[0][:-1],edges[1]];loop[:,0]-=data['body']['offsetX']
+    angles=np.unwrap(np.arctan2(loop[:,2]-center[2],loop[:,0]-center[0]));assert np.all(np.diff(angles)>0) and abs(angles[-1]-angles[0]-2*np.pi)<1e-7,'Waist does not wind once around torso'
+    reported=data['diagnostics']['wear'];assert abs(reported['bodySectionGirthMm']-circumference)<1e-4
+    assert abs(reported['maxWaistGapMm']-gap.max())<.005
+    assert abs(reported['waistPatternMismatchMm']-mismatch)<.001
+    return {'verdict':'PASS','bodySectionGirthMm':float(circumference),'waistEdgeLengthsMm':lengths.tolist(),'garmentWaistMm':float(lengths.sum()),'minWaistGapMm':float(gap.min()),'maxWaistGapMm':float(gap.max()),'maxSkinWaistHeightErrorMm':float(height_error),'patternMismatchMm':mismatch,'sectionHeightM':height}
+
+
 def pressure(data):
     x=np.array(data['positions']).reshape(-1,3);faces=np.array(data['triangles']).reshape(-1,3)
     uv=np.array(data['restUV']).reshape(-1,2);p=data['fitPressure'];d=data['diagnostics']['pressure']
@@ -146,7 +198,8 @@ def pattern_svg(svg,parameters):
         paths=g.findall('{http://www.w3.org/2000/svg}path');cut=np.array([float(x) for x in re.findall(number,paths[0].attrib['d'])]);seam=np.array([float(x) for x in re.findall(number,paths[1].attrib['d'])]);assert len(cut)==len(seam)==18
         r=seam[2];outer=seam[11];points=seam[[0,1,7,8,9,10,16,17]].reshape(4,2);cutpoints=cut[[0,1,7,8,9,10,16,17]].reshape(4,2)
         angles=np.arctan2(points[:,0],points[:,1]+r);top=r*(angles[1]-angles[0]);bottom=outer*(angles[2]-angles[3])
-        assert abs(top-parameters['topMm'])<1e-6 and abs(bottom-parameters['bottomMm'])<1e-6
+        expected_top=parameters.get('topsMm',[parameters['topMm']]*2)[i]
+        assert abs(top-expected_top)<1e-6 and abs(bottom-parameters['bottomMm'])<1e-6
         L=parameters['lengthsMm'][i];assert abs(outer-r-L)<1e-6 and abs(np.linalg.norm(points[2]-points[1])-L)<1e-6
         assert abs((r-cut[2])-10)<1e-7 and abs((cut[11]-outer)-10)<1e-7
         v=points[2]-points[1]

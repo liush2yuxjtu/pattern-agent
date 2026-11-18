@@ -89,6 +89,9 @@ def build():
     subprocess.run([esbuild, str(APP/'src/app.js'), '--bundle', '--minify', '--format=iife',
                     '--legal-comments=inline', '--outfile='+str(WORK/'app.js')], check=True)
     body = make_body()
+    fit = json.loads((APP/'src/avatar-fit.json').read_text())
+    if fit['sourceBodySha256'] != body['sourceSha256']:
+        raise ValueError('Stale waist arrangement: run tools/cloth_lab/build_avatar_fit.py')
     wasm = (WORK/'solver.wasm').read_bytes()
     payload = dict(body=body, wasm=base64.b64encode(wasm).decode(),
                    wasmSha256=hashlib.sha256(wasm).hexdigest(),

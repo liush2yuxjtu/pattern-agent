@@ -66,7 +66,7 @@ reopen with a screenshot when claiming that boundary.
   frame times (median/p95), fixed solver step cost, dropped wall time and resource
   counts. Do not infer hardware FPS from SwiftShader. There is no fabricated FPS
   target. Preserve performance regressions instead of hiding them.
-- High local strain remains a VISIBLE warning, not garment approval. The 20% warning threshold remains unchanged; the corrected annular-sector default is about 14%. Numerical heatmap correctness is
+- High local strain remains a VISIBLE warning, not garment approval. The 20% warning threshold remains unchanged; the measured high-waist default is about 17.5%. Numerical heatmap correctness is
   different from fit acceptance. Material calibration, cloth self-collision,
   continuous collision detection, finished construction and physical fit NOT_RUN.
 
@@ -207,3 +207,39 @@ reopen immutable snapshots, but all frame results are required before PASS.
 The first-ready exposure, pressure-convergence failure, original PNGs, exact
 local/public buffer comparisons and final public receipts are retained in
 [the dated verification record](../../../../docs/verification/wasm-cloth-first-ready-20261118/README.md).
+
+## Actual waist placement, beyond coverage
+
+The old 840 mm circular fixture passed coverage but detached up to 56.55 mm from
+the avatar. `anatomical-sector` uses separate front/back waist arcs from the real
+MakeHuman high-waist section. The source-body-bound `src/avatar-fit.json` is
+rebuilt by `python tools/cloth_lab/build_avatar_fit.py` (same verification deps).
+The main builder rejects a stale source-body hash. It does not scale or cut the
+body. The complete mannequin is gray; the independent mesh is the actual skirt.
+
+`verify_fit.py` now requires actual upper-edge clearances 3–10 mm, skin-projected
+waist height within 2 mm of the independently reconstructed anatomical plane,
+and each panel's current waist edge within 1 mm of its printed arc. The independent
+oracle cuts raw source triangles in float64 and requires one closed torso loop;
+do not assume an arbitrary minimum mesh resolution (the current cut has 84
+segments). It never imports renderer profile/anchor code. Every one of the 61
+saved states must also pass this waist test.
+
+Record two explicit negative controls: move only the waist radially outward, or
+move it 30 mm upward, including saved pins/history. Require zero sewn gap and
+zero exposed hip raster samples while BOTH UI and independent waist checks
+reject the states. Keep unchanged 20% warnings for extreme parameter choices;
+a covered waist and correct tensor calculation do not approve an overstretched
+garment. Save same-camera side closeups and all three original viewport images
+before/after, plus actual SVG, numeric source/skin measurements, offline replay
+and console/performance logs. Current project/trajectory schema is v3; old HTML
+continues with its own embedded code, old JSON fingerprints remain rejected.
+
+Run `tools/cloth_lab/verify_waist.py --project ACTUAL_EXPORT.json --output REPORT.json`
+on a real browser export. Its four probes include an incorrect waist level that
+still follows the real skin within 3–10 mm, so the independent height boundary
+must reject it, as well as an isolated 20 mm paper/waist mismatch. Retain the
+command and raw report with the browser suite.
+
+Same-camera closeups and full local/public results are retained in
+[the waist placement record](../../../../docs/verification/cloth-waist-placement-20261118/README.md).

@@ -13,7 +13,7 @@ from playwright.sync_api import sync_playwright
 from verify_browser import ROOT,new_api_context,save_json,expect_rejection
 from verify_replay import INSTRUMENT,state,counters
 from oracle import verify
-from fit_oracle import pressure,coverage,verify_coupon,pattern_svg
+from fit_oracle import pressure,coverage,wear,verify_coupon,pattern_svg
 
 
 def pixels(page,out,name):
@@ -41,8 +41,7 @@ def guard_avatar(page,project):
     assert np.array_equal(audit['bodyIndices'],project['body']['triangles'])
     v=np.array(audit['bodyPositions']).reshape(-1,3);rgb=np.array(audit['bodyColors']).reshape(-1,3)
     c=np.array([198,198,185])/255;expected=np.where(c<=.04045,c/12.92,((c+.055)/1.055)**2.4)
-    roi=(v[:,1]>.70)&(v[:,1]<.985)
-    assert np.max(abs(rgb[roi]-expected))<1e-6,'Avatar skin recolored to hide exposure'
+    assert np.max(abs(rgb-expected))<1e-6,'The whole actual avatar must remain a neutral opaque mannequin'
 
 
 def pressure_colors(page,project):
@@ -68,7 +67,7 @@ def run(args,base):
                 build=api.get(urljoin(base,'../build.json')).json();assert build['commit']==args.expected_commit;report['rootCommit']=build['commit']
             assert page.goto(base,wait_until='networkidle').status==200;page.wait_for_function('window.clothLab?.ready',timeout=60000)
             initial=state(page);save_json(out/'first-ready.json',initial);guard_avatar(page,initial)
-            assert initial['parameters']['patternType']=='annular-sector' and initial['diagnostics']['frame']==240
+            assert initial['parameters']['patternType']=='anatomical-sector' and initial['diagnostics']['frame']==240
             assert counters(page)=={'actual':240,'reported':240},'Initial drape must be real physics, with its clock retained'
             assert initial['diagnostics']['maxPrincipalStrainPercent']<20
             assert initial['diagnostics']['coverage']['exposedSamples']==0
@@ -77,10 +76,31 @@ def run(args,base):
             report['patternSVG']={'default':pattern_svg(page.evaluate('clothLab.patternSVG()'),initial['parameters'])}
             report['initialPixels']=pixels(page,out,'first-ready')
             report['checks']['firstReadyAnatomyCoveredWithRealInitializedPhysics']=True
-            report['checks']['unchangedOpaqueAvatarAndNormalDepthTesting']=True
+            report['checks']['completeOpaqueNeutralAvatarAndNormalDepthTesting']=True
             report['checks']['defaultStrainBelowUnchanged20PercentWarning']=True
+            assert initial['diagnostics']['wear']['fitted']
+            report['checks']['actualWaistLevelClearanceAndSeparateFrontBackPatternLengths']=True
             pressure_colors(page,initial);page.screenshot(path=str(out/'first-ready-pressure.png'),full_page=True)
             report['checks']['realMultiplierPressureDrivesGPUColors']=True
+            # A closed, fully covering garment can still be worn incorrectly.
+            # Move only the upper edge and its pins; keep seam pairs coincident.
+            report['waistFaults']={}
+            for name,kind in [('floating-waist','radial'),('wrong-waist-height','vertical')]:
+                fake=copy.deepcopy(initial)
+                for index in list(range(17))+list(range(425,442)):
+                    point=np.array(initial['positions'][3*index:3*index+3]);delta=np.array([0.,.03,0.])
+                    if kind=='radial':
+                        direction=point-np.array([0.,point[1],.06]);delta=direction/np.linalg.norm(direction)*.03
+                    for field in ['positions','previous','pinPositions']:
+                        fake[field][3*index:3*index+3]=(point+delta).tolist()
+                page.evaluate('(s)=>clothLab.restore(s)',fake);bad=state(page)
+                assert bad['diagnostics']['maxSeamGapMm']<.001 and bad['diagnostics']['coverage']['exposedSamples']==0
+                assert not bad['diagnostics']['wear']['fitted'] and 'FAIL' in page.locator('#verdict').inner_text()
+                rejected=expect_rejection(lambda:wear(bad,args.body_source))
+                report['waistFaults'][name]={'rejection':rejected,'wear':bad['diagnostics']['wear']}
+                save_json(out/(name+'.json'),bad);page.locator('[data-camera=side]').click();page.screenshot(path=str(out/(name+'.png')),full_page=True)
+            page.evaluate('(s)=>clothLab.restore(s)',initial)
+            report['checks']['coveringNonpenetratingButFloatingOrWrongHeightWaistsRejected']=True
             # Load calibration is a new instance of the SAME embedded WASM.
             coupons={}
             for name,spec in {'zero':{'loadPa':0},'gravity':{'loadPa':.22*9.81},'500Pa':{'loadPa':500},'1000Pa':{'loadPa':1000},'2000Pa':{'loadPa':2000},'inclined':{'loadPa':1000,'tilt':30},'refined':{'loadPa':1000,'cells':6},'detachedGravity':{'loadPa':.22*9.81,'detached':True,'steps':4},'disabled':{'loadPa':1000,'collision':False,'steps':1}}.items():
@@ -101,6 +121,9 @@ def run(args,base):
                 report['patternSVG'][name]=pattern_svg(page.evaluate('clothLab.patternSVG()'),snapshot['parameters'])
                 assert snapshot['diagnostics']['coverage']['exposedSamples']==0
                 guard_avatar(page,snapshot);report[name+'Pixels']=pixels(page,out,name)
+                verdict=page.locator('#verdict').inner_text()
+                if snapshot['diagnostics']['maxPrincipalStrainPercent']>20:assert '应变偏大' in verdict
+                report.setdefault('parameterWarnings',{})[name]=verdict
             report['checks']['changedPatternExtremesRemainCoveredWithRecomputedPhysics']=True
             report['checks']['trueScaleSectorArcsExact10mmAllowanceAndNoPageClipping']=True
             page.locator('#width').fill('650');page.locator('#width').dispatch_event('input');page.locator('#length').fill('600');page.locator('#length').dispatch_event('input')

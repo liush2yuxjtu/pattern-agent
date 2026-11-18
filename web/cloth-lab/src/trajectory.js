@@ -1,15 +1,16 @@
+import avatarFit from './avatar-fit.json';
 // Bounded Float32 trajectory storage. Playback restores data; it never integrates.
 export const MAX_FRAMES = 1201;
 export const VERTICES = 850;
 export const STATE_FLOATS = VERTICES * 10;
 const BYTES = STATE_FLOATS * 4;
-const SCHEMA = 'pattern-agent.cloth-trajectory.v2';
+const SCHEMA = 'pattern-agent.cloth-trajectory.v3';
 export const MAX_PRESSURE_CONTACTS=850+1536;
 export const MAX_TOTAL_RAW_BYTES=MAX_FRAMES*(STATE_FLOATS+MAX_PRESSURE_CONTACTS*5)*4;
 
 export function validateParameters(p) {
-  if (!p || p.patternType!=='annular-sector' || ![550,575,600,625,650,675,700,725,750,775,800].includes(p.bottomMm) ||
-      p.topMm !== 420 || !Array.isArray(p.lengthsMm) || p.lengthsMm.length !== 2 ||
+  if (!p || p.patternType!=='anatomical-sector' || ![550,575,600,625,650,675,700,725,750,775,800].includes(p.bottomMm) ||
+      p.topMm !== avatarFit.topsMm[0] || !Array.isArray(p.topsMm) || p.topsMm.length!==2 || !p.topsMm.every((v,i)=>v===avatarFit.topsMm[i]) || !Array.isArray(p.lengthsMm) || p.lengthsMm.length !== 2 ||
       !Number.isInteger(p.lengthsMm[0]) || p.lengthsMm[0] < 400 || p.lengthsMm[0] > 700 || p.lengthsMm[0] % 25 ||
       !['good','mismatch','open','reverse'].includes(p.fault) ||
       p.lengthsMm[1] !== p.lengthsMm[0] + (p.fault === 'mismatch' ? 40 : 0) ||
@@ -17,13 +18,13 @@ export function validateParameters(p) {
       Math.abs(p.bodyOffsetMm) > 60 || p.bodyOffsetMm % 10 ||
       typeof p.collision !== 'boolean' || typeof p.wind !== 'boolean') throw new Error('Invalid recording parameters');
   // Canonical semantic fields: JSON object key order is not physical state.
-  return {patternType:p.patternType,bottomMm:p.bottomMm,topMm:p.topMm,lengthsMm:[...p.lengthsMm],
+  return {patternType:p.patternType,bottomMm:p.bottomMm,topMm:p.topMm,topsMm:[...p.topsMm],lengthsMm:[...p.lengthsMm],
     fault:p.fault,material:p.material,bodyOffsetMm:p.bodyOffsetMm,
     collision:p.collision,wind:p.wind};
 }
 
 export function topologyKey(p) {
-  return JSON.stringify([p.patternType,p.bottomMm,p.topMm,p.lengthsMm,p.fault,p.material]);
+  return JSON.stringify([p.patternType,p.bottomMm,p.topsMm,p.lengthsMm,p.fault,p.material]);
 }
 
 export function encodeFloats(state){

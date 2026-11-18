@@ -150,8 +150,8 @@ def run(args,base):
         # Parameter propagation to the actual pattern and rest mesh.
         page.locator('#width').fill('750');page.locator('#width').dispatch_event('input');page.locator('#length').fill('500');page.locator('#length').dispatch_event('input')
         changed=page.evaluate('clothLab.project()');assert changed['parameters']['bottomMm']==750 and changed['parameters']['lengthsMm']==[500,500]
-        alpha=(750-420)/500;outer=420/alpha+500;assert abs(np.ptp(np.array(changed['restUV']).reshape(-1,2)[:,1])-2*outer*np.sin(alpha/2)/1000)<1e-6
-        assert '420 / 750 × 500' in page.locator('#patterns').inner_html()
+        panel=changed['parameters']['topsMm'][0];alpha=(750-panel)/500;outer=panel/alpha+500;assert abs(np.ptp(np.array(changed['restUV']).reshape(-1,2)[:425,1])-2*outer*np.sin(alpha/2)/1000)<1e-6
+        assert f"{changed['parameters']['topsMm'][0]:.1f} / 750 × 500" in page.locator('#patterns').inner_html()
         report['checks']['sameParametersDrivePatternAndRestMesh']=True
         # Memory/resource counters across repeated real reset clicks.
         logs=[]

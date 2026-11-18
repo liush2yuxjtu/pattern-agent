@@ -1,0 +1,69 @@
+[
+  {
+    "argv": [
+      "python",
+      "tools/cloth_lab/build_avatar_fit.py"
+    ],
+    "exitCode": 0,
+    "seconds": 1.0333929061889648
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/build_cloth_lab.py"
+    ],
+    "exitCode": 0,
+    "seconds": 0.8022754192352295
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/build_pages.py"
+    ],
+    "exitCode": 0,
+    "seconds": 6.717670679092407
+  },
+  {
+    "argv": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_verify_artifacts.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "seconds": 8.164779663085938
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/verify_artifacts.py",
+      "--cli",
+      "work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli"
+    ],
+    "exitCode": 0,
+    "seconds": 1.0488502979278564
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/verify_mcp.py"
+    ],
+    "exitCode": 0,
+    "seconds": 0.04415535926818848
+  },
+  {
+    "argv": [
+      "python",
+      "scripts/verify_pages.py",
+      "--output",
+      "work/cloth-wear/publisher/browser"
+    ],
+    "exitCode": 0,
+    "seconds": 4.2775537967681885
+  }
+]
