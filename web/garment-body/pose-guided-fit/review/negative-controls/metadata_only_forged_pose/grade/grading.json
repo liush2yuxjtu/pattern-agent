@@ -1,0 +1,319 @@
+{
+  "protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+  "posed_obj_sha256": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+  "state_sha256": "51fea23aaca6cd968ddcab45eefacf5c4fb717a996ec2b87e6362aa7421e48d7",
+  "camera_sha256": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f",
+  "functional_integrity": {
+    "verdict": "FAIL",
+    "independent_pose_cues": {
+      "shoulder_image_left": {
+        "target_xy": [
+          171.1686432866435,
+          412.5927465968696
+        ],
+        "projected_xy": [
+          184.80432566745327,
+          427.9537069249866
+        ],
+        "error_px": 20.539983841091775,
+        "confidence": 0.45,
+        "visibility": "joint hidden by garment",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "elbow_image_left": {
+        "target_xy": [
+          114.95680847827688,
+          702.1241678252306
+        ],
+        "projected_xy": [
+          132.92668628096249,
+          782.6703363229044
+        ],
+        "error_px": 82.5263701364546,
+        "confidence": 0.5,
+        "visibility": "joint hidden by garment",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "wrist_image_left": {
+        "target_xy": [
+          168.45265191065027,
+          790.3180058532392
+        ],
+        "projected_xy": [
+          197.4371080623808,
+          593.4638775164867
+        ],
+        "error_px": 198.9764974604645,
+        "confidence": 0.8,
+        "visibility": "visible surface",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "shoulder_image_right": {
+        "target_xy": [
+          582.8751794799581,
+          370.70652814667596
+        ],
+        "projected_xy": [
+          596.6177382741123,
+          453.9691985095094
+        ],
+        "error_px": 84.38915924548986,
+        "confidence": 0.45,
+        "visibility": "joint hidden by garment",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "elbow_image_right": {
+        "target_xy": [
+          675.1573073205569,
+          712.162209927069
+        ],
+        "projected_xy": [
+          703.0154868261267,
+          675.01583258656
+        ],
+        "error_px": 46.43200959346927,
+        "confidence": 0.5,
+        "visibility": "joint hidden by garment",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "wrist_image_right": {
+        "target_xy": [
+          440.72604238951203,
+          807.5238104503824
+        ],
+        "projected_xy": [
+          415.6991236261156,
+          816.7467127003542
+        ],
+        "error_px": 26.67224378829388,
+        "confidence": 0.8,
+        "visibility": "visible surface",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      }
+    },
+    "limb_directions": {
+      "image_left_shoulder_elbow": {
+        "angle_error_degrees": 2.666580209481129,
+        "interpretation": "2D direction only; depth unobserved"
+      },
+      "image_left_elbow_wrist": {
+        "angle_error_degrees": 129.93326554386744,
+        "interpretation": "2D direction only; depth unobserved"
+      },
+      "image_right_shoulder_elbow": {
+        "angle_error_degrees": 10.579688057832884,
+        "interpretation": "2D direction only; depth unobserved"
+      },
+      "image_right_elbow_wrist": {
+        "angle_error_degrees": 4.121322260517914,
+        "interpretation": "2D direction only; depth unobserved"
+      }
+    },
+    "independent_source_state_mesh_max_error_cm": 26.099402706635377,
+    "vertices": 13380,
+    "reason": "Fresh source dimension calibration + 163-bone FK/LBS compared vertexwise; no saved metrics trusted."
+  },
+  "visual_alignment_2d": {
+    "verdict": "FAIL",
+    "regions": {
+      "shoulder_left": {
+        "body_pixels": 41256,
+        "outside_fraction": 0.08216986620127982,
+        "exterior_contour_p95_px": 17.393798828125,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing"
+        ]
+      },
+      "shoulder_right": {
+        "body_pixels": 37781,
+        "outside_fraction": 0.02495963579577036,
+        "exterior_contour_p95_px": 11.984498977661133,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "arm_left": {
+        "body_pixels": 42364,
+        "outside_fraction": 0.1287649891417241,
+        "exterior_contour_p95_px": 33.06573486328125,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      },
+      "arm_right": {
+        "body_pixels": 39129,
+        "outside_fraction": 0.1190165861637149,
+        "exterior_contour_p95_px": 14.986048698425293,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing"
+        ]
+      },
+      "torso": {
+        "body_pixels": 156901,
+        "outside_fraction": 0.028495675617108876,
+        "exterior_contour_p95_px": 18.938920974731445,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "waist_hip_left": {
+        "body_pixels": 92825,
+        "outside_fraction": 0.005763533530837597,
+        "exterior_contour_p95_px": 10.75,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "waist_hip_right": {
+        "body_pixels": 73266,
+        "outside_fraction": 0.10838588158218,
+        "exterior_contour_p95_px": 35.5596923828125,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      }
+    },
+    "waist_hip_scanlines": [
+      {
+        "y": 950,
+        "center_error_px": 33.0,
+        "width_ratio": 0.975,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1000,
+        "center_error_px": 35.0,
+        "width_ratio": 0.9710843373493976,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1100,
+        "center_error_px": 30.5,
+        "width_ratio": 1.020316027088036,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1200,
+        "center_error_px": 1.0,
+        "width_ratio": 0.9918032786885246,
+        "verdict": "PASS"
+      }
+    ],
+    "worst_region": "waist_hip_right",
+    "regional_gate_verdict": "FAIL"
+  },
+  "pose_plausibility_3d": {
+    "verdict": "NOT_RUN",
+    "reason": "Side/back independent human review required"
+  },
+  "claims": [
+    {
+      "claim": "These outputs are an accurately recovered original 3D grasp and real-person body dimensions.",
+      "type": "quality",
+      "verified": false,
+      "evidence": "Single photo has ambiguous depth and garment ease; actual grasp needs manual/geometry/contact evidence. M dimensions are conditional avatar parameters."
+    },
+    {
+      "claim": "Actual output mesh comes from the real adjustable cm/FK body engine.",
+      "type": "process",
+      "verified": false,
+      "evidence": "Fresh source reconstruction and vertexwise comparison recorded."
+    },
+    {
+      "claim": "The native Anthropic Claude skill execution benchmark ran.",
+      "type": "process",
+      "verified": false,
+      "evidence": "NOT_RUN: current checks are local executed functional/geometry and artifact reviews, not native Claude runs."
+    }
+  ],
+  "action_alignment_2d": {
+    "verdict": "FAIL",
+    "failures": [
+      "wrist_image_left original visible wrist too far",
+      "wrist_image_right original visible wrist too far",
+      "image_left_elbow_wrist gross direction reversal"
+    ],
+    "protocol": "pose-sanity-supplement-v2",
+    "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+    "original_visible_wrist_errors_px": {
+      "wrist_image_left": 193.00444122886532,
+      "wrist_image_right": 39.47906710922058
+    },
+    "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."
+  },
+  "expectations": [
+    {
+      "text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.",
+      "passed": false,
+      "evidence": "26.099402706635377 cm maximum vertex error; see functional_integrity."
+    },
+    {
+      "text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.",
+      "passed": false,
+      "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: NOT_RUN"
+    },
+    {
+      "text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.",
+      "passed": false,
+      "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."
+    },
+    {
+      "text": "Original visible wrists and coarse limb directions do not contradict the reference action.",
+      "passed": false,
+      "evidence": "{\"verdict\": \"FAIL\", \"failures\": [\"wrist_image_left original visible wrist too far\", \"wrist_image_right original visible wrist too far\", \"image_left_elbow_wrist gross direction reversal\"], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 193.00444122886532, \"wrist_image_right\": 39.47906710922058}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"
+    },
+    {
+      "text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.",
+      "passed": false,
+      "evidence": "No affirmative manual grasp/contact evidence; burden of proof not met."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 5,
+    "total": 5,
+    "pass_rate": 0.0,
+    "interpretation": "Descriptive count only; NEVER overall acceptance. Any critical expectation failure vetoes acceptance."
+  },
+  "overall_verdict": "FAIL",
+  "claim_limits": "Projection evidence only; photo cannot determine true 3D pose or true cm girths.",
+  "execution_metrics": {
+    "native_claude_execution": "NOT_RUN",
+    "unknown_tool_counts_and_timing": "Not invented; no complete native execution metrics/timing transcript supplied."
+  },
+  "user_notes_summary": {
+    "uncertainties": [
+      "Hidden joint depth and true photographed body girths unidentified."
+    ],
+    "needs_review": [
+      "All critical FAIL or UNKNOWN findings remain visible."
+    ],
+    "workarounds": [
+      "ImageGen is illustrative weak cue; original visible wrist points and regional source-image evidence are separate."
+    ]
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "Historical20/20 file/editor/controlled-fixture checks imply original-photo pose accuracy.",
+        "reason": "Baseline independently fails both arm contours and right waist/hip by213.56pxP95; functional capabilities cannot establish raw-photo alignment."
+      },
+      {
+        "assertion": "Body lies inside clothing silhouette implies the original action.",
+        "reason": "Actual changed arm moved inside garment and regional left-arm gate passed; wrist182.46px and forearm reversal157degrees required explicitv2 coarse action veto."
+      },
+      {
+        "assertion": "Low2D wrist error implies correct3D grasp.",
+        "reason": "Round9 has low wrist errors but one arm extends far forward, and round13 has cupped palms/collapsed reversed forearm; direct canonical views and actual geometry checks are required."
+      },
+      {
+        "assertion": "Zero detected torso intersections means both hands are collision-free.",
+        "reason": "Round13 left hand has zero classified rays; coverage0 is UNKNOWN, not PASS. Skin ray checks do not prove fabric contact."
+      }
+    ],
+    "overall": "Discriminating regional gates, coarse action gates, actual mesh/PNG replay and independent manual3D review are separate vetoes. Descriptive pass_rate never overrides criticalFAIL. Thev2 addition was explicitly made after a real negative control exposed a gap; regional-v1 thresholds remain frozen."
+  }
+}

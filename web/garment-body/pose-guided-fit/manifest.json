@@ -1,0 +1,3474 @@
+{
+  "complete": true,
+  "scope": "Actual pose-guided candidate; historical functional scores are not photo-fit acceptance",
+  "grades": {
+    "baseline": {
+      "protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+      "posed_obj_sha256": "721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580",
+      "state_sha256": "594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15",
+      "camera_sha256": "73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd",
+      "functional_integrity": {
+        "verdict": "PASS",
+        "independent_pose_cues": {
+          "shoulder_image_left": {
+            "target_xy": [
+              171.1686432866435,
+              412.5927465968696
+            ],
+            "projected_xy": [
+              213.53587717939388,
+              462.5766540518148
+            ],
+            "error_px": 65.52383926623611,
+            "confidence": 0.45,
+            "visibility": "joint hidden by garment",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "elbow_image_left": {
+            "target_xy": [
+              114.95680847827688,
+              702.1241678252306
+            ],
+            "projected_xy": [
+              96.64184079158065,
+              711.6611980375174
+            ],
+            "error_px": 20.64928537830781,
+            "confidence": 0.5,
+            "visibility": "joint hidden by garment",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "wrist_image_left": {
+            "target_xy": [
+              168.45265191065027,
+              790.3180058532392
+            ],
+            "projected_xy": [
+              183.5817150649384,
+              785.8842137468232
+            ],
+            "error_px": 15.765375490909056,
+            "confidence": 0.8,
+            "visibility": "visible surface",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "shoulder_image_right": {
+            "target_xy": [
+              582.8751794799581,
+              370.70652814667596
+            ],
+            "projected_xy": [
+              593.0005053807387,
+              418.9028222233592
+            ],
+            "error_px": 49.24840086056752,
+            "confidence": 0.45,
+            "visibility": "joint hidden by garment",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "elbow_image_right": {
+            "target_xy": [
+              675.1573073205569,
+              712.162209927069
+            ],
+            "projected_xy": [
+              713.9133837249406,
+              697.9016032446784
+            ],
+            "error_px": 41.296469113136816,
+            "confidence": 0.5,
+            "visibility": "joint hidden by garment",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "wrist_image_right": {
+            "target_xy": [
+              440.72604238951203,
+              807.5238104503824
+            ],
+            "projected_xy": [
+              454.0101508894327,
+              813.270868616461
+            ],
+            "error_px": 14.473984116405386,
+            "confidence": 0.8,
+            "visibility": "visible surface",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          }
+        },
+        "limb_directions": {
+          "image_left_shoulder_elbow": {
+            "angle_error_degrees": 14.153260221159139,
+            "interpretation": "2D direction only; depth unobserved"
+          },
+          "image_left_elbow_wrist": {
+            "angle_error_degrees": 18.27188773825349,
+            "interpretation": "2D direction only; depth unobserved"
+          },
+          "image_right_shoulder_elbow": {
+            "angle_error_degrees": 8.307502487120269,
+            "interpretation": "2D direction only; depth unobserved"
+          },
+          "image_right_elbow_wrist": {
+            "angle_error_degrees": 1.800671788093416,
+            "interpretation": "2D direction only; depth unobserved"
+          }
+        },
+        "independent_source_state_mesh_max_error_cm": 5.0167446729095024e-09,
+        "vertices": 13380,
+        "reason": "Fresh source dimension calibration + 163-bone FK/LBS compared vertexwise; no saved metrics trusted."
+      },
+      "visual_alignment_2d": {
+        "verdict": "FAIL",
+        "regions": {
+          "shoulder_left": {
+            "body_pixels": 34382,
+            "outside_fraction": 0.006544121924262696,
+            "exterior_contour_p95_px": 6.0,
+            "verdict": "PASS",
+            "failures": []
+          },
+          "shoulder_right": {
+            "body_pixels": 44350,
+            "outside_fraction": 0.06574971815107103,
+            "exterior_contour_p95_px": 17.9844970703125,
+            "verdict": "PASS",
+            "failures": []
+          },
+          "arm_left": {
+            "body_pixels": 38733,
+            "outside_fraction": 0.16828027779929258,
+            "exterior_contour_p95_px": 32.05232238769531,
+            "verdict": "FAIL",
+            "failures": [
+              "body outside clothing",
+              "exterior contour distance"
+            ]
+          },
+          "arm_right": {
+            "body_pixels": 48188,
+            "outside_fraction": 0.1720760355275172,
+            "exterior_contour_p95_px": 29.772869110107422,
+            "verdict": "FAIL",
+            "failures": [
+              "body outside clothing",
+              "exterior contour distance"
+            ]
+          },
+          "torso": {
+            "body_pixels": 155000,
+            "outside_fraction": 0.058303225806451614,
+            "exterior_contour_p95_px": 16.342004776000977,
+            "verdict": "PASS",
+            "failures": []
+          },
+          "waist_hip_left": {
+            "body_pixels": 18203,
+            "outside_fraction": 0.0,
+            "exterior_contour_p95_px": 0.0,
+            "verdict": "PASS",
+            "failures": []
+          },
+          "waist_hip_right": {
+            "body_pixels": 139331,
+            "outside_fraction": 0.5236594871205977,
+            "exterior_contour_p95_px": 213.55699157714844,
+            "verdict": "FAIL",
+            "failures": [
+              "body outside clothing",
+              "exterior contour distance"
+            ]
+          }
+        },
+        "waist_hip_scanlines": [
+          {
+            "y": 950,
+            "center_error_px": 189.0,
+            "width_ratio": 0.94,
+            "verdict": "FAIL"
+          },
+          {
+            "y": 1000,
+            "center_error_px": 210.5,
+            "width_ratio": 0.983132530120482,
+            "verdict": "FAIL"
+          },
+          {
+            "y": 1100,
+            "center_error_px": 223.5,
+            "width_ratio": 0.9796839729119639,
+            "verdict": "FAIL"
+          },
+          {
+            "y": 1200,
+            "center_error_px": 205.5,
+            "width_ratio": 0.8995901639344263,
+            "verdict": "FAIL"
+          }
+        ],
+        "worst_region": "waist_hip_right",
+        "regional_gate_verdict": "FAIL"
+      },
+      "pose_plausibility_3d": {
+        "verdict": "FAIL",
+        "method": "Actual baseline photo-render/front/side/back direct visual review.",
+        "observations": [
+          {
+            "id": "standing_balance",
+            "verdict": "PASS",
+            "evidence": "Baseline side feet lie on ground, torso roughly upright."
+          },
+          {
+            "id": "connected_limbs",
+            "verdict": "PASS",
+            "evidence": "Side/back show connected limbs."
+          },
+          {
+            "id": "shirt_grasp_action",
+            "verdict": "FAIL",
+            "evidence": "Photo-render curled/open hands do not recreate source two-hand grasp; body pelvis misalignment remains severe in overlay."
+          },
+          {
+            "id": "true_depth",
+            "verdict": "UNKNOWN",
+            "evidence": "No reference side/back/depth observations."
+          }
+        ],
+        "limits": "Saved baseline state/mesh individually source-verified, but copied legacy view PNG provenance has not been replayed in this bundle.",
+        "input_hashes": {
+          "final-state.json": "594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15",
+          "posed.obj": "721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580",
+          "camera.json": "73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd"
+        },
+        "recorded_review_path": "work/pose-guided-fit-20261118/review/baseline/manual-review.json"
+      },
+      "claims": [
+        {
+          "claim": "These outputs are an accurately recovered original 3D grasp and real-person body dimensions.",
+          "type": "quality",
+          "verified": false,
+          "evidence": "Single photo has ambiguous depth and garment ease; actual grasp needs manual/geometry/contact evidence. M dimensions are conditional avatar parameters."
+        },
+        {
+          "claim": "Actual output mesh comes from the real adjustable cm/FK body engine.",
+          "type": "process",
+          "verified": true,
+          "evidence": "Fresh source reconstruction and vertexwise comparison recorded."
+        },
+        {
+          "claim": "The native Anthropic Claude skill execution benchmark ran.",
+          "type": "process",
+          "verified": false,
+          "evidence": "NOT_RUN: current checks are local executed functional/geometry and artifact reviews, not native Claude runs."
+        }
+      ],
+      "action_alignment_2d": {
+        "verdict": "PASS",
+        "failures": [],
+        "protocol": "pose-sanity-supplement-v2",
+        "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+        "original_visible_wrist_errors_px": {
+          "wrist_image_left": 0.43401468100077106,
+          "wrist_image_right": 1.026241233372752
+        },
+        "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."
+      },
+      "expectations": [
+        {
+          "text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.",
+          "passed": true,
+          "evidence": "5.0167446729095024e-09 cm maximum vertex error; see functional_integrity."
+        },
+        {
+          "text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.",
+          "passed": false,
+          "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: NOT_RUN"
+        },
+        {
+          "text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.",
+          "passed": false,
+          "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."
+        },
+        {
+          "text": "Original visible wrists and coarse limb directions do not contradict the reference action.",
+          "passed": true,
+          "evidence": "{\"verdict\": \"PASS\", \"failures\": [], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 0.43401468100077106, \"wrist_image_right\": 1.026241233372752}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"
+        },
+        {
+          "text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.",
+          "passed": false,
+          "evidence": "Photo-render curled/open hands do not recreate source two-hand grasp; body pelvis misalignment remains severe in overlay."
+        }
+      ],
+      "summary": {
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "pass_rate": 0.4,
+        "interpretation": "Descriptive count only; NEVER overall acceptance. Any critical expectation failure vetoes acceptance."
+      },
+      "overall_verdict": "FAIL",
+      "claim_limits": "Projection evidence only; photo cannot determine true 3D pose or true cm girths.",
+      "execution_metrics": {
+        "native_claude_execution": "NOT_RUN",
+        "unknown_tool_counts_and_timing": "Not invented; no complete native execution metrics/timing transcript supplied."
+      },
+      "user_notes_summary": {
+        "uncertainties": [
+          "Hidden joint depth and true photographed body girths unidentified."
+        ],
+        "needs_review": [
+          "All critical FAIL or UNKNOWN findings remain visible."
+        ],
+        "workarounds": [
+          "ImageGen is illustrative weak cue; original visible wrist points and regional source-image evidence are separate."
+        ]
+      },
+      "eval_feedback": {
+        "suggestions": [
+          {
+            "assertion": "Historical20/20 file/editor/controlled-fixture checks imply original-photo pose accuracy.",
+            "reason": "Baseline independently fails both arm contours and right waist/hip by213.56pxP95; functional capabilities cannot establish raw-photo alignment."
+          },
+          {
+            "assertion": "Body lies inside clothing silhouette implies the original action.",
+            "reason": "Actual changed arm moved inside garment and regional left-arm gate passed; wrist182.46px and forearm reversal157degrees required explicitv2 coarse action veto."
+          },
+          {
+            "assertion": "Low2D wrist error implies correct3D grasp.",
+            "reason": "Round9 has low wrist errors but one arm extends far forward, and round13 has cupped palms/collapsed reversed forearm; direct canonical views and actual geometry checks are required."
+          },
+          {
+            "assertion": "Zero detected torso intersections means both hands are collision-free.",
+            "reason": "Round13 left hand has zero classified rays; coverage0 is UNKNOWN, not PASS. Skin ray checks do not prove fabric contact."
+          }
+        ],
+        "overall": "Discriminating regional gates, coarse action gates, actual mesh/PNG replay and independent manual3D review are separate vetoes. Descriptive pass_rate never overrides criticalFAIL. Thev2 addition was explicitly made after a real negative control exposed a gap; regional-v1 thresholds remain frozen."
+      }
+    },
+    "final": {
+      "protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+      "posed_obj_sha256": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+      "state_sha256": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db",
+      "camera_sha256": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f",
+      "functional_integrity": {
+        "verdict": "PASS",
+        "independent_pose_cues": {
+          "shoulder_image_left": {
+            "target_xy": [
+              171.1686432866435,
+              412.5927465968696
+            ],
+            "projected_xy": [
+              184.80432566745327,
+              427.9537069249866
+            ],
+            "error_px": 20.539983841091775,
+            "confidence": 0.45,
+            "visibility": "joint hidden by garment",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "elbow_image_left": {
+            "target_xy": [
+              114.95680847827688,
+              702.1241678252306
+            ],
+            "projected_xy": [
+              122.01811975813723,
+              747.8365492540627
+            ],
+            "error_px": 46.25455580681876,
+            "confidence": 0.5,
+            "visibility": "joint hidden by garment",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "wrist_image_left": {
+            "target_xy": [
+              168.45265191065027,
+              790.3180058532392
+            ],
+            "projected_xy": [
+              160.42717456530943,
+              795.4034116332471
+            ],
+            "error_px": 9.501033552615004,
+            "confidence": 0.8,
+            "visibility": "visible surface",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "shoulder_image_right": {
+            "target_xy": [
+              582.8751794799581,
+              370.70652814667596
+            ],
+            "projected_xy": [
+              596.6177382741123,
+              453.9691985095094
+            ],
+            "error_px": 84.38915924548986,
+            "confidence": 0.45,
+            "visibility": "joint hidden by garment",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "elbow_image_right": {
+            "target_xy": [
+              675.1573073205569,
+              712.162209927069
+            ],
+            "projected_xy": [
+              703.0154868261267,
+              675.01583258656
+            ],
+            "error_px": 46.43200959346927,
+            "confidence": 0.5,
+            "visibility": "joint hidden by garment",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          },
+          "wrist_image_right": {
+            "target_xy": [
+              440.72604238951203,
+              807.5238104503824
+            ],
+            "projected_xy": [
+              415.6991236261156,
+              816.7467127003542
+            ],
+            "error_px": 26.67224378829388,
+            "confidence": 0.8,
+            "visibility": "visible surface",
+            "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+          }
+        },
+        "limb_directions": {
+          "image_left_shoulder_elbow": {
+            "angle_error_degrees": 0.11762288931222716,
+            "interpretation": "2D direction only; depth unobserved"
+          },
+          "image_left_elbow_wrist": {
+            "angle_error_degrees": 7.680215086075306,
+            "interpretation": "2D direction only; depth unobserved"
+          },
+          "image_right_shoulder_elbow": {
+            "angle_error_degrees": 10.579688057832884,
+            "interpretation": "2D direction only; depth unobserved"
+          },
+          "image_right_elbow_wrist": {
+            "angle_error_degrees": 4.121322260517914,
+            "interpretation": "2D direction only; depth unobserved"
+          }
+        },
+        "independent_source_state_mesh_max_error_cm": 5.0152641286948735e-09,
+        "vertices": 13380,
+        "reason": "Fresh source dimension calibration + 163-bone FK/LBS compared vertexwise; no saved metrics trusted."
+      },
+      "visual_alignment_2d": {
+        "verdict": "FAIL",
+        "regions": {
+          "shoulder_left": {
+            "body_pixels": 41256,
+            "outside_fraction": 0.08216986620127982,
+            "exterior_contour_p95_px": 17.393798828125,
+            "verdict": "FAIL",
+            "failures": [
+              "body outside clothing"
+            ]
+          },
+          "shoulder_right": {
+            "body_pixels": 37781,
+            "outside_fraction": 0.02495963579577036,
+            "exterior_contour_p95_px": 11.984498977661133,
+            "verdict": "PASS",
+            "failures": []
+          },
+          "arm_left": {
+            "body_pixels": 42364,
+            "outside_fraction": 0.1287649891417241,
+            "exterior_contour_p95_px": 33.06573486328125,
+            "verdict": "FAIL",
+            "failures": [
+              "body outside clothing",
+              "exterior contour distance"
+            ]
+          },
+          "arm_right": {
+            "body_pixels": 39129,
+            "outside_fraction": 0.1190165861637149,
+            "exterior_contour_p95_px": 14.986048698425293,
+            "verdict": "FAIL",
+            "failures": [
+              "body outside clothing"
+            ]
+          },
+          "torso": {
+            "body_pixels": 156901,
+            "outside_fraction": 0.028495675617108876,
+            "exterior_contour_p95_px": 18.938920974731445,
+            "verdict": "PASS",
+            "failures": []
+          },
+          "waist_hip_left": {
+            "body_pixels": 92825,
+            "outside_fraction": 0.005763533530837597,
+            "exterior_contour_p95_px": 10.75,
+            "verdict": "PASS",
+            "failures": []
+          },
+          "waist_hip_right": {
+            "body_pixels": 73266,
+            "outside_fraction": 0.10838588158218,
+            "exterior_contour_p95_px": 35.5596923828125,
+            "verdict": "FAIL",
+            "failures": [
+              "body outside clothing",
+              "exterior contour distance"
+            ]
+          }
+        },
+        "waist_hip_scanlines": [
+          {
+            "y": 950,
+            "center_error_px": 33.0,
+            "width_ratio": 0.975,
+            "verdict": "PASS"
+          },
+          {
+            "y": 1000,
+            "center_error_px": 35.0,
+            "width_ratio": 0.9710843373493976,
+            "verdict": "PASS"
+          },
+          {
+            "y": 1100,
+            "center_error_px": 30.5,
+            "width_ratio": 1.020316027088036,
+            "verdict": "PASS"
+          },
+          {
+            "y": 1200,
+            "center_error_px": 1.0,
+            "width_ratio": 0.9918032786885246,
+            "verdict": "PASS"
+          }
+        ],
+        "worst_region": "waist_hip_right",
+        "regional_gate_verdict": "FAIL"
+      },
+      "pose_plausibility_3d": {
+        "verdict": "FAIL",
+        "selected_candidate": "round-14",
+        "method": "Independent actual original photo vs photo-render plus front/side/back direct review, fresh source FK/LBS + matrix raster + PNG replay + actual torso-triangle hand rays.",
+        "observations": [
+          {
+            "id": "standing_balance_connected_limbs",
+            "verdict": "PASS",
+            "evidence": "Actual canonical side/front/back show upright supported feet and connected limbs; no round2 global lean or round9 extended-arm regression."
+          },
+          {
+            "id": "hand_torso_ray_intervals",
+            "verdict": "PASS",
+            "evidence": "Fresh triangle test: L1402/1424 and R1424/1424 hand vertices have classified rays; zero inside on covered rays; min front clearance L3.182cm/R1.438cm.22L vertices remain unclassified, no whole-body collision claim."
+          },
+          {
+            "id": "left_image_forearm_direction",
+            "verdict": "PASS",
+            "evidence": "Projected elbow above wrist again; direction no longer round13 inverted/collapsed. Exact elbow location still about46px off illustrative cue."
+          },
+          {
+            "id": "shirt_grasp_action",
+            "verdict": "FAIL",
+            "evidence": "Photo-render still shows cupped/upward palms with fingers gathered below original horizontal hem grasp; canonical views show separated hand orientation. Actual cloth contact is not simulated; this is not accepted replication of original two-hand shirt holding."
+          },
+          {
+            "id": "true_hidden_depth_body_measurements",
+            "verdict": "UNKNOWN",
+            "evidence": "Original single crop cannot establish true3D depth or actual real-person girths; source M prior is conditional avatar."
+          }
+        ],
+        "hand_check_summary": {
+          "L": {
+            "hand_vertices": 1424,
+            "rays_with_two_torso_surfaces": 1402,
+            "inside_torso_count": 0,
+            "maximum_inside_depth_cm": 0.0,
+            "minimum_front_clearance_cm": 3.1823126549660774,
+            "front_clearance_p05_cm": 5.094448563104421
+          },
+          "R": {
+            "hand_vertices": 1424,
+            "rays_with_two_torso_surfaces": 1424,
+            "inside_torso_count": 0,
+            "maximum_inside_depth_cm": 0.0,
+            "minimum_front_clearance_cm": 1.4382715436010507,
+            "front_clearance_p05_cm": 2.565744886507927
+          }
+        },
+        "input_hashes": {
+          "final-state.json": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db",
+          "posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+          "camera.json": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f"
+        },
+        "recommendation": "Latest explainable improvement candidate, overallFAIL. Retain7 comparison, reject13 reversed forearm. Correcting penetration does not override wrong grasp or regional failures.",
+        "recorded_review_path": "work/pose-guided-fit-20261118/review/round-14/manual-review.json"
+      },
+      "claims": [
+        {
+          "claim": "These outputs are an accurately recovered original 3D grasp and real-person body dimensions.",
+          "type": "quality",
+          "verified": false,
+          "evidence": "Single photo has ambiguous depth and garment ease; actual grasp needs manual/geometry/contact evidence. M dimensions are conditional avatar parameters."
+        },
+        {
+          "claim": "Actual output mesh comes from the real adjustable cm/FK body engine.",
+          "type": "process",
+          "verified": true,
+          "evidence": "Fresh source reconstruction and vertexwise comparison recorded."
+        },
+        {
+          "claim": "The native Anthropic Claude skill execution benchmark ran.",
+          "type": "process",
+          "verified": false,
+          "evidence": "NOT_RUN: current checks are local executed functional/geometry and artifact reviews, not native Claude runs."
+        }
+      ],
+      "action_alignment_2d": {
+        "verdict": "FAIL",
+        "failures": [
+          "wrist_image_right original visible wrist too far"
+        ],
+        "protocol": "pose-sanity-supplement-v2",
+        "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+        "original_visible_wrist_errors_px": {
+          "wrist_image_left": 25.37916959474208,
+          "wrist_image_right": 39.47906710922058
+        },
+        "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."
+      },
+      "view_integrity": {
+        "verdict": "PASS",
+        "checks": {
+          "same_pose_dimensions": true,
+          "main_mesh_vs_view_state_error_cm": 5.0152641286948735e-09,
+          "front": {
+            "verdict": "PASS",
+            "hashes_match": true,
+            "joint_reprojection_max_px": 0.0,
+            "independent_mask_iou": 1.0,
+            "replay_png_mean_abs_channel_error": 0.0
+          },
+          "side": {
+            "verdict": "PASS",
+            "hashes_match": true,
+            "joint_reprojection_max_px": 0.0,
+            "independent_mask_iou": 1.0,
+            "replay_png_mean_abs_channel_error": 0.0
+          },
+          "back": {
+            "verdict": "PASS",
+            "hashes_match": true,
+            "joint_reprojection_max_px": 0.0,
+            "independent_mask_iou": 1.0,
+            "replay_png_mean_abs_channel_error": 0.0
+          },
+          "photo": {
+            "verdict": "PASS",
+            "camera_formula_matrix_max_abs_error": 0.0,
+            "replay_png_mean_abs_channel_error": 0.0
+          }
+        },
+        "failures": [],
+        "method": "One fresh FK/LBS state: independent silhouette raster, joint reprojection, hash contract and deterministic saved RGB renderer replay per front/side/back; excludes only differing cameras."
+      },
+      "expectations": [
+        {
+          "text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.",
+          "passed": true,
+          "evidence": "5.0152641286948735e-09 cm maximum vertex error; see functional_integrity."
+        },
+        {
+          "text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.",
+          "passed": true,
+          "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: PASS"
+        },
+        {
+          "text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.",
+          "passed": false,
+          "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."
+        },
+        {
+          "text": "Original visible wrists and coarse limb directions do not contradict the reference action.",
+          "passed": false,
+          "evidence": "{\"verdict\": \"FAIL\", \"failures\": [\"wrist_image_right original visible wrist too far\"], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 25.37916959474208, \"wrist_image_right\": 39.47906710922058}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"
+        },
+        {
+          "text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.",
+          "passed": false,
+          "evidence": "Photo-render still shows cupped/upward palms with fingers gathered below original horizontal hem grasp; canonical views show separated hand orientation. Actual cloth contact is not simulated; this is not accepted replication of original two-hand shirt holding."
+        }
+      ],
+      "summary": {
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "pass_rate": 0.4,
+        "interpretation": "Descriptive count only; NEVER overall acceptance. Any critical expectation failure vetoes acceptance."
+      },
+      "overall_verdict": "FAIL",
+      "claim_limits": "Projection evidence only; photo cannot determine true 3D pose or true cm girths.",
+      "execution_metrics": {
+        "native_claude_execution": "NOT_RUN",
+        "unknown_tool_counts_and_timing": "Not invented; no complete native execution metrics/timing transcript supplied."
+      },
+      "user_notes_summary": {
+        "uncertainties": [
+          "Hidden joint depth and true photographed body girths unidentified."
+        ],
+        "needs_review": [
+          "All critical FAIL or UNKNOWN findings remain visible."
+        ],
+        "workarounds": [
+          "ImageGen is illustrative weak cue; original visible wrist points and regional source-image evidence are separate."
+        ]
+      },
+      "eval_feedback": {
+        "suggestions": [
+          {
+            "assertion": "Historical20/20 file/editor/controlled-fixture checks imply original-photo pose accuracy.",
+            "reason": "Baseline independently fails both arm contours and right waist/hip by213.56pxP95; functional capabilities cannot establish raw-photo alignment."
+          },
+          {
+            "assertion": "Body lies inside clothing silhouette implies the original action.",
+            "reason": "Actual changed arm moved inside garment and regional left-arm gate passed; wrist182.46px and forearm reversal157degrees required explicitv2 coarse action veto."
+          },
+          {
+            "assertion": "Low2D wrist error implies correct3D grasp.",
+            "reason": "Round9 has low wrist errors but one arm extends far forward, and round13 has cupped palms/collapsed reversed forearm; direct canonical views and actual geometry checks are required."
+          },
+          {
+            "assertion": "Zero detected torso intersections means both hands are collision-free.",
+            "reason": "Round13 left hand has zero classified rays; coverage0 is UNKNOWN, not PASS. Skin ray checks do not prove fabric contact."
+          }
+        ],
+        "overall": "Discriminating regional gates, coarse action gates, actual mesh/PNG replay and independent manual3D review are separate vetoes. Descriptive pass_rate never overrides criticalFAIL. Thev2 addition was explicitly made after a real negative control exposed a gap; regional-v1 thresholds remain frozen."
+      }
+    }
+  },
+  "rejected": [
+    {
+      "id": "round-2",
+      "reason": "全身明显前倾、足部支撑不合理；二维对齐不能抵消站姿问题。",
+      "images": [
+        "rejected/round-2/photo-render.png",
+        "rejected/round-2/views/front.png",
+        "rejected/round-2/views/side.png",
+        "rejected/round-2/views/back.png"
+      ],
+      "grade": {
+        "protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+        "posed_obj_sha256": "146218724ab242bc19d281841e1fb75266f33e591398729f39a6cacbe46a54fb",
+        "state_sha256": "b874debfeecc3937fa824d18f5616976fd5eefb685acdd23261dcb79067f1dfc",
+        "camera_sha256": "bbb5c9ba154640106653dbda63a09741ce0b8db59e43e7fe160e6fa7b9c7a8f4",
+        "functional_integrity": {
+          "verdict": "PASS",
+          "independent_pose_cues": {
+            "shoulder_image_left": {
+              "target_xy": [
+                171.1686432866435,
+                412.5927465968696
+              ],
+              "projected_xy": [
+                165.57256951091512,
+                432.7627911965071
+              ],
+              "error_px": 20.931955017502847,
+              "confidence": 0.45,
+              "visibility": "joint hidden by garment",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "elbow_image_left": {
+              "target_xy": [
+                114.95680847827688,
+                702.1241678252306
+              ],
+              "projected_xy": [
+                120.56698604225618,
+                714.2864266274244
+              ],
+              "error_px": 13.393828111145641,
+              "confidence": 0.5,
+              "visibility": "joint hidden by garment",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "wrist_image_left": {
+              "target_xy": [
+                168.45265191065027,
+                790.3180058532392
+              ],
+              "projected_xy": [
+                167.03866724104063,
+                790.236309771137
+              ],
+              "error_px": 1.4163427889186833,
+              "confidence": 0.8,
+              "visibility": "visible surface",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "shoulder_image_right": {
+              "target_xy": [
+                582.8751794799581,
+                370.70652814667596
+              ],
+              "projected_xy": [
+                597.7036336981669,
+                407.0455750618121
+              ],
+              "error_px": 39.24804944455173,
+              "confidence": 0.45,
+              "visibility": "joint hidden by garment",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "elbow_image_right": {
+              "target_xy": [
+                675.1573073205569,
+                712.162209927069
+              ],
+              "projected_xy": [
+                680.361530853276,
+                707.1073891646149
+              ],
+              "error_px": 7.255008995104239,
+              "confidence": 0.5,
+              "visibility": "joint hidden by garment",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "wrist_image_right": {
+              "target_xy": [
+                440.72604238951203,
+                807.5238104503824
+              ],
+              "projected_xy": [
+                438.5611179920411,
+                808.1858285504929
+              ],
+              "error_px": 2.263882861730908,
+              "confidence": 0.8,
+              "visibility": "visible surface",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            }
+          },
+          "limb_directions": {
+            "image_left_shoulder_elbow": {
+              "angle_error_degrees": 1.9044557375333095,
+              "interpretation": "2D direction only; depth unobserved"
+            },
+            "image_left_elbow_wrist": {
+              "angle_error_degrees": 0.22154278716707848,
+              "interpretation": "2D direction only; depth unobserved"
+            },
+            "image_right_shoulder_elbow": {
+              "angle_error_degrees": 0.2777524974438981,
+              "interpretation": "2D direction only; depth unobserved"
+            },
+            "image_right_elbow_wrist": {
+              "angle_error_degrees": 0.5506756744414494,
+              "interpretation": "2D direction only; depth unobserved"
+            }
+          },
+          "independent_source_state_mesh_max_error_cm": 5.017680379452855e-09,
+          "vertices": 13380,
+          "reason": "Fresh source dimension calibration + 163-bone FK/LBS compared vertexwise; no saved metrics trusted."
+        },
+        "visual_alignment_2d": {
+          "verdict": "FAIL",
+          "regions": {
+            "shoulder_left": {
+              "body_pixels": 46506,
+              "outside_fraction": 0.16709671870296305,
+              "exterior_contour_p95_px": 35.150394439697266,
+              "verdict": "FAIL",
+              "failures": [
+                "body outside clothing",
+                "exterior contour distance"
+              ]
+            },
+            "shoulder_right": {
+              "body_pixels": 43590,
+              "outside_fraction": 0.0571920165175499,
+              "exterior_contour_p95_px": 21.486589431762695,
+              "verdict": "PASS",
+              "failures": []
+            },
+            "arm_left": {
+              "body_pixels": 44214,
+              "outside_fraction": 0.14952277559144161,
+              "exterior_contour_p95_px": 32.5906982421875,
+              "verdict": "FAIL",
+              "failures": [
+                "body outside clothing",
+                "exterior contour distance"
+              ]
+            },
+            "arm_right": {
+              "body_pixels": 37121,
+              "outside_fraction": 0.07354327739015651,
+              "exterior_contour_p95_px": 14.0,
+              "verdict": "PASS",
+              "failures": []
+            },
+            "torso": {
+              "body_pixels": 156868,
+              "outside_fraction": 0.02491266542570824,
+              "exterior_contour_p95_px": 18.511707305908203,
+              "verdict": "PASS",
+              "failures": []
+            },
+            "waist_hip_left": {
+              "body_pixels": 91358,
+              "outside_fraction": 0.0,
+              "exterior_contour_p95_px": 0.0,
+              "verdict": "PASS",
+              "failures": []
+            },
+            "waist_hip_right": {
+              "body_pixels": 78116,
+              "outside_fraction": 0.1503789236520047,
+              "exterior_contour_p95_px": 47.13566589355469,
+              "verdict": "FAIL",
+              "failures": [
+                "body outside clothing",
+                "exterior contour distance"
+              ]
+            }
+          },
+          "waist_hip_scanlines": [
+            {
+              "y": 950,
+              "center_error_px": 28.5,
+              "width_ratio": 1.0225,
+              "verdict": "PASS"
+            },
+            {
+              "y": 1000,
+              "center_error_px": 34.0,
+              "width_ratio": 1.0144578313253012,
+              "verdict": "PASS"
+            },
+            {
+              "y": 1100,
+              "center_error_px": 39.0,
+              "width_ratio": 1.0451467268623025,
+              "verdict": "PASS"
+            },
+            {
+              "y": 1200,
+              "center_error_px": 18.0,
+              "width_ratio": 0.9877049180327869,
+              "verdict": "PASS"
+            }
+          ],
+          "worst_region": "waist_hip_right"
+        },
+        "pose_plausibility_3d": {
+          "verdict": "FAIL",
+          "method": "Independent direct inspection of actual saved front/side/back renders at fixed canonical cameras; not source-photo recovered depth.",
+          "observations": [
+            {
+              "id": "left_hand_torso_penetration",
+              "verdict": "FAIL",
+              "evidence": "views/front.png shows image-right distal forearm ending in waist/abdomen with hand not visible in front; views/side.png reinforces the hand/body overlap. Exact triangle penetration NOT_RUN; visible geometry is unacceptable and requires correction."
+            },
+            {
+              "id": "standing_balance",
+              "verdict": "FAIL",
+              "evidence": "views/side.png shows global feet-to-head forward lean and markedly sloped feet; root X=-16.3 degrees is being used to solve torso projection. Original crop has no legs and cannot justify this full-body stance."
+            },
+            {
+              "id": "connected_limbs",
+              "verdict": "PASS",
+              "evidence": "Both arms/legs remain attached; no detached limb observed."
+            },
+            {
+              "id": "true_depth",
+              "verdict": "UNKNOWN",
+              "evidence": "One product photograph cannot determine true hidden pose/depth."
+            }
+          ],
+          "limits": "Visual review is not collision simulation. No claim of perfect grip contact, measured true anatomy or unique recovered 3D pose."
+        },
+        "claims": "Projection evidence only; photo cannot determine true 3D pose or true cm girths."
+      }
+    },
+    {
+      "id": "round-9",
+      "reason": "双手在真实三维中分离，一臂伸向侧前方；原相机腕部点误差小也不能证明握衣动作正确。",
+      "images": [
+        "rejected/round-9/photo-render.png",
+        "rejected/round-9/views/front.png",
+        "rejected/round-9/views/side.png",
+        "rejected/round-9/views/back.png"
+      ],
+      "grade": {
+        "protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+        "posed_obj_sha256": "9e7cb51103cc83db2c1b3e1f3a91c0a6f49c8bf9113501a28594025087b38b51",
+        "state_sha256": "8cfcdccb03edefaad78da75c2b56b2fed063272bb5bb34c66c23f2ec032528c2",
+        "camera_sha256": "0fb50b648ea90f7ccbae8a1484773f74e88e39a90fb9354296d4fe3d1ec6c3ad",
+        "functional_integrity": {
+          "verdict": "PASS",
+          "independent_pose_cues": {
+            "shoulder_image_left": {
+              "target_xy": [
+                171.1686432866435,
+                412.5927465968696
+              ],
+              "projected_xy": [
+                208.68658447627965,
+                406.5335585803682
+              ],
+              "error_px": 38.00407439378456,
+              "confidence": 0.45,
+              "visibility": "joint hidden by garment",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "elbow_image_left": {
+              "target_xy": [
+                114.95680847827688,
+                702.1241678252306
+              ],
+              "projected_xy": [
+                147.02024439594783,
+                773.7950343809202
+              ],
+              "error_px": 78.51609411891333,
+              "confidence": 0.5,
+              "visibility": "joint hidden by garment",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "wrist_image_left": {
+              "target_xy": [
+                168.45265191065027,
+                790.3180058532392
+              ],
+              "projected_xy": [
+                174.67355462967788,
+                791.1831663094777
+              ],
+              "error_px": 6.280774892849108,
+              "confidence": 0.8,
+              "visibility": "visible surface",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "shoulder_image_right": {
+              "target_xy": [
+                582.8751794799581,
+                370.70652814667596
+              ],
+              "projected_xy": [
+                598.334298693853,
+                465.3339082431844
+              ],
+              "error_px": 95.88183055615123,
+              "confidence": 0.45,
+              "visibility": "joint hidden by garment",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "elbow_image_right": {
+              "target_xy": [
+                675.1573073205569,
+                712.162209927069
+              ],
+              "projected_xy": [
+                692.5847076013376,
+                744.7402488065218
+              ],
+              "error_px": 36.946486947715286,
+              "confidence": 0.5,
+              "visibility": "joint hidden by garment",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            },
+            "wrist_image_right": {
+              "target_xy": [
+                440.72604238951203,
+                807.5238104503824
+              ],
+              "projected_xy": [
+                445.5001565907425,
+                818.1031100418577
+              ],
+              "error_px": 11.606625101750309,
+              "confidence": 0.8,
+              "visibility": "visible surface",
+              "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+            }
+          },
+          "limb_directions": {
+            "image_left_shoulder_elbow": {
+              "angle_error_degrees": 1.4556129003739804,
+              "interpretation": "2D direction only; depth unobserved"
+            },
+            "image_left_elbow_wrist": {
+              "angle_error_degrees": 26.598924337452797,
+              "interpretation": "2D direction only; depth unobserved"
+            },
+            "image_right_shoulder_elbow": {
+              "angle_error_degrees": 3.516966948173147,
+              "interpretation": "2D direction only; depth unobserved"
+            },
+            "image_right_elbow_wrist": {
+              "angle_error_degrees": 5.598544128683318,
+              "interpretation": "2D direction only; depth unobserved"
+            }
+          },
+          "independent_source_state_mesh_max_error_cm": 5.0199297151964026e-09,
+          "vertices": 13380,
+          "reason": "Fresh source dimension calibration + 163-bone FK/LBS compared vertexwise; no saved metrics trusted."
+        },
+        "visual_alignment_2d": {
+          "verdict": "FAIL",
+          "regions": {
+            "shoulder_left": {
+              "body_pixels": 40665,
+              "outside_fraction": 0.04018197467109308,
+              "exterior_contour_p95_px": 22.573335647583008,
+              "verdict": "PASS",
+              "failures": []
+            },
+            "shoulder_right": {
+              "body_pixels": 38992,
+              "outside_fraction": 0.022645670906852686,
+              "exterior_contour_p95_px": 12.391473770141602,
+              "verdict": "PASS",
+              "failures": []
+            },
+            "arm_left": {
+              "body_pixels": 36891,
+              "outside_fraction": 0.06562576238106856,
+              "exterior_contour_p95_px": 28.85062026977539,
+              "verdict": "FAIL",
+              "failures": [
+                "exterior contour distance"
+              ]
+            },
+            "arm_right": {
+              "body_pixels": 46989,
+              "outside_fraction": 0.10310923833237566,
+              "exterior_contour_p95_px": 19.384496688842773,
+              "verdict": "FAIL",
+              "failures": [
+                "body outside clothing"
+              ]
+            },
+            "torso": {
+              "body_pixels": 160890,
+              "outside_fraction": 0.0304120827894835,
+              "exterior_contour_p95_px": 22.959148406982422,
+              "verdict": "PASS",
+              "failures": []
+            },
+            "waist_hip_left": {
+              "body_pixels": 86586,
+              "outside_fraction": 0.0016053403552537362,
+              "exterior_contour_p95_px": 3.0,
+              "verdict": "PASS",
+              "failures": []
+            },
+            "waist_hip_right": {
+              "body_pixels": 76281,
+              "outside_fraction": 0.13846174014499024,
+              "exterior_contour_p95_px": 44.54140090942383,
+              "verdict": "FAIL",
+              "failures": [
+                "body outside clothing",
+                "exterior contour distance"
+              ]
+            }
+          },
+          "waist_hip_scanlines": [
+            {
+              "y": 950,
+              "center_error_px": 44.5,
+              "width_ratio": 0.9525,
+              "verdict": "PASS"
+            },
+            {
+              "y": 1000,
+              "center_error_px": 48.0,
+              "width_ratio": 0.946987951807229,
+              "verdict": "FAIL"
+            },
+            {
+              "y": 1100,
+              "center_error_px": 46.0,
+              "width_ratio": 1.0,
+              "verdict": "FAIL"
+            },
+            {
+              "y": 1200,
+              "center_error_px": 10.5,
+              "width_ratio": 0.985655737704918,
+              "verdict": "PASS"
+            }
+          ],
+          "worst_region": "waist_hip_right",
+          "regional_gate_verdict": "FAIL"
+        },
+        "pose_plausibility_3d": {
+          "verdict": "FAIL",
+          "method": "Actual photo-render and canonical front/side/back inspected.",
+          "observations": [
+            {
+              "id": "standing_balance",
+              "verdict": "PASS",
+              "evidence": "Feet supported, torso near upright."
+            },
+            {
+              "id": "grasp_action_depth_consistency",
+              "verdict": "FAIL",
+              "evidence": "Side view one forearm projects far forward while opposite hand stays near abdomen; photo-render palms supinate instead of opposing garment grasp. Projected wrist accuracy hides substantial 3D action error.",
+              "wrist_positions_cm": {
+                "L": [
+                  43.223689317413154,
+                  120.00991591350538,
+                  31.62202599301684
+                ],
+                "R": [
+                  -0.8835692198316067,
+                  113.05216730944467,
+                  20.51126592967906
+                ]
+              }
+            },
+            {
+              "id": "true_source_depth",
+              "verdict": "UNKNOWN",
+              "evidence": "No true source 3D/side/back; the rejection is task plausibility/action mismatch, not a claim of measured true depth."
+            }
+          ],
+          "input_hashes": {
+            "final-state.json": "8cfcdccb03edefaad78da75c2b56b2fed063272bb5bb34c66c23f2ec032528c2",
+            "posed.obj": "9e7cb51103cc83db2c1b3e1f3a91c0a6f49c8bf9113501a28594025087b38b51",
+            "camera.json": "0fb50b648ea90f7ccbae8a1484773f74e88e39a90fb9354296d4fe3d1ec6c3ad"
+          }
+        },
+        "claims": "Projection evidence only; photo cannot determine true 3D pose or true cm girths.",
+        "action_alignment_2d": {
+          "verdict": "PASS",
+          "failures": [],
+          "protocol": "pose-sanity-supplement-v2",
+          "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+          "original_visible_wrist_errors_px": {
+            "wrist_image_left": 10.669948277161756,
+            "wrist_image_right": 10.783726484834537
+          },
+          "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."
+        },
+        "view_integrity": {
+          "verdict": "PASS",
+          "checks": {
+            "same_pose_dimensions": true,
+            "main_mesh_vs_view_state_error_cm": 5.0199297151964026e-09,
+            "front": {
+              "verdict": "PASS",
+              "hashes_match": true,
+              "joint_reprojection_max_px": 0.0,
+              "independent_mask_iou": 1.0,
+              "replay_png_mean_abs_channel_error": 0.0
+            },
+            "side": {
+              "verdict": "PASS",
+              "hashes_match": true,
+              "joint_reprojection_max_px": 0.0,
+              "independent_mask_iou": 1.0,
+              "replay_png_mean_abs_channel_error": 0.0
+            },
+            "back": {
+              "verdict": "PASS",
+              "hashes_match": true,
+              "joint_reprojection_max_px": 0.0,
+              "independent_mask_iou": 1.0,
+              "replay_png_mean_abs_channel_error": 0.0
+            }
+          },
+          "failures": [],
+          "method": "One fresh FK/LBS state: independent silhouette raster, joint reprojection, hash contract and deterministic saved RGB renderer replay per front/side/back; excludes only differing cameras."
+        }
+      }
+    }
+  ],
+  "registration": {
+    "method": "SIFT + Lowe ratio 0.72 + partial-affine RANSAC (4 raw px); neon exclusion dilated 19px; caption excluded",
+    "direction": "imagegen_native_to_original_raw",
+    "matrix_2x3": [
+      [
+        0.9018803593344484,
+        -0.0009149015630999907,
+        -0.5301899454303376
+      ],
+      [
+        0.0009149015630999907,
+        0.9018803593344484,
+        -1.009450119470354
+      ]
+    ],
+    "raw_size_wh": [
+      1000,
+      1276
+    ],
+    "imagegen_size_wh": [
+      1110,
+      1417
+    ],
+    "keypoints": [
+      522,
+      790
+    ],
+    "ratio_matches": 155,
+    "inliers": 123,
+    "inlier_mean_error_px": 1.3779730373501455,
+    "inlier_median_error_px": 1.210722978287468,
+    "inlier_p95_error_px": 3.124944378745615,
+    "inlier_max_error_px": 4.815469377614683,
+    "inlier_source_bbox_xyxy": [
+      93.53382873535156,
+      5.119601249694824,
+      831.364501953125,
+      1164.8516845703125
+    ],
+    "matches": [
+      {
+        "native_xy": [
+          93.53382873535156,
+          775.4890747070312
+        ],
+        "raw_xy": [
+          83.88414001464844,
+          698.8255615234375
+        ],
+        "inlier": true,
+        "error_px": 0.8439860897677107
+      },
+      {
+        "native_xy": [
+          96.93785858154297,
+          745.3583374023438
+        ],
+        "raw_xy": [
+          86.7518310546875,
+          671.7772827148438
+        ],
+        "inlier": true,
+        "error_px": 0.7167207516632226
+      },
+      {
+        "native_xy": [
+          100.18193054199219,
+          767.8235473632812
+        ],
+        "raw_xy": [
+          88.92240905761719,
+          691.8120727539062
+        ],
+        "inlier": true,
+        "error_px": 0.31431365010721596
+      },
+      {
+        "native_xy": [
+          110.46471405029297,
+          1113.1739501953125
+        ],
+        "raw_xy": [
+          99.85391998291016,
+          998.8489379882812
+        ],
+        "inlier": false,
+        "error_px": 4.553296270098766
+      },
+      {
+        "native_xy": [
+          111.13516235351562,
+          1107.167724609375
+        ],
+        "raw_xy": [
+          99.85391998291016,
+          998.8489379882812
+        ],
+        "inlier": true,
+        "error_px": 1.690702566528325
+      },
+      {
+        "native_xy": [
+          135.38119506835938,
+          962.3762817382812
+        ],
+        "raw_xy": [
+          119.1260986328125,
+          866.5711059570312
+        ],
+        "inlier": true,
+        "error_px": 1.6364491589310708
+      },
+      {
+        "native_xy": [
+          143.83233642578125,
+          876.6422119140625
+        ],
+        "raw_xy": [
+          130.3018035888672,
+          789.7252197265625
+        ],
+        "inlier": true,
+        "error_px": 1.9146175757599535
+      },
+      {
+        "native_xy": [
+          145.7818603515625,
+          989.0789794921875
+        ],
+        "raw_xy": [
+          131.01780700683594,
+          891.1144409179688
+        ],
+        "inlier": true,
+        "error_px": 0.9759464146441527
+      },
+      {
+        "native_xy": [
+          150.28717041015625,
+          994.4442138671875
+        ],
+        "raw_xy": [
+          135.15785217285156,
+          895.6216430664062
+        ],
+        "inlier": true,
+        "error_px": 1.1217455821229194
+      },
+      {
+        "native_xy": [
+          150.7953643798828,
+          865.9768676757812
+        ],
+        "raw_xy": [
+          135.02679443359375,
+          779.847900390625
+        ],
+        "inlier": true,
+        "error_px": 0.4532644223845835
+      },
+      {
+        "native_xy": [
+          154.71067810058594,
+          947.154052734375
+        ],
+        "raw_xy": [
+          139.21908569335938,
+          853.0127563476562
+        ],
+        "inlier": true,
+        "error_px": 1.1370113097135925
+      },
+      {
+        "native_xy": [
+          156.80593872070312,
+          934.3366088867188
+        ],
+        "raw_xy": [
+          140.2498321533203,
+          841.407958984375
+        ],
+        "inlier": true,
+        "error_px": 0.44157225041856757
+      },
+      {
+        "native_xy": [
+          167.0916290283203,
+          744.6289672851562
+        ],
+        "raw_xy": [
+          140.8745880126953,
+          678.0415649414062
+        ],
+        "inlier": false,
+        "error_px": 11.309267662448537
+      },
+      {
+        "native_xy": [
+          168.50926208496094,
+          935.2001953125
+        ],
+        "raw_xy": [
+          148.9309539794922,
+          844.7197265625
+        ],
+        "inlier": true,
+        "error_px": 2.7044892188245035
+      },
+      {
+        "native_xy": [
+          168.8021240234375,
+          951.8795776367188
+        ],
+        "raw_xy": [
+          150.65792846679688,
+          857.2481079101562
+        ],
+        "inlier": true,
+        "error_px": 0.4191478002211483
+      },
+      {
+        "native_xy": [
+          171.41476440429688,
+          901.565673828125
+        ],
+        "raw_xy": [
+          155.6201171875,
+          810.6911010742188
+        ],
+        "inlier": true,
+        "error_px": 2.845671789074161
+      },
+      {
+        "native_xy": [
+          176.77529907226562,
+          924.7496948242188
+        ],
+        "raw_xy": [
+          158.16629028320312,
+          830.0423583984375
+        ],
+        "inlier": true,
+        "error_px": 3.125530991945039
+      },
+      {
+        "native_xy": [
+          186.7903594970703,
+          179.38133239746094
+        ],
+        "raw_xy": [
+          167.22068786621094,
+          160.1153564453125
+        ],
+        "inlier": true,
+        "error_px": 0.9915006891807798
+      },
+      {
+        "native_xy": [
+          187.55238342285156,
+          972.1874389648438
+        ],
+        "raw_xy": [
+          161.18829345703125,
+          869.4185791015625
+        ],
+        "inlier": false,
+        "error_px": 9.250506237080282
+      },
+      {
+        "native_xy": [
+          188.06976318359375,
+          213.75291442871094
+        ],
+        "raw_xy": [
+          167.93954467773438,
+          191.8363800048828
+        ],
+        "inlier": true,
+        "error_px": 0.9569933586545718
+      },
+      {
+        "native_xy": [
+          194.3812255859375,
+          835.96337890625
+        ],
+        "raw_xy": [
+          171.98257446289062,
+          755.8170776367188
+        ],
+        "inlier": true,
+        "error_px": 3.386401144869607
+      },
+      {
+        "native_xy": [
+          195.5702667236328,
+          225.09347534179688
+        ],
+        "raw_xy": [
+          175.6828155517578,
+          202.52793884277344
+        ],
+        "inlier": true,
+        "error_px": 0.3531233878899646
+      },
+      {
+        "native_xy": [
+          197.18594360351562,
+          187.8354034423828
+        ],
+        "raw_xy": [
+          177.06936645507812,
+          170.23695373535156
+        ],
+        "inlier": true,
+        "error_px": 1.6622766037888175
+      },
+      {
+        "native_xy": [
+          197.22344970703125,
+          172.68589782714844
+        ],
+        "raw_xy": [
+          177.22763061523438,
+          153.5178680419922
+        ],
+        "inlier": true,
+        "error_px": 1.3958305807724678
+      },
+      {
+        "native_xy": [
+          198.59500122070312,
+          200.61660766601562
+        ],
+        "raw_xy": [
+          178.14581298828125,
+          179.9769744873047
+        ],
+        "inlier": true,
+        "error_px": 0.28006309234732746
+      },
+      {
+        "native_xy": [
+          199.30484008789062,
+          313.5306396484375
+        ],
+        "raw_xy": [
+          179.7902069091797,
+          282.7122802734375
+        ],
+        "inlier": true,
+        "error_px": 1.154454627266498
+      },
+      {
+        "native_xy": [
+          200.59791564941406,
+          294.0402526855469
+        ],
+        "raw_xy": [
+          178.8383026123047,
+          263.0601806640625
+        ],
+        "inlier": true,
+        "error_px": 1.8250131126997655
+      },
+      {
+        "native_xy": [
+          208.606689453125,
+          325.96624755859375
+        ],
+        "raw_xy": [
+          186.98048400878906,
+          293.3863220214844
+        ],
+        "inlier": true,
+        "error_px": 0.39740706846657486
+      },
+      {
+        "native_xy": [
+          210.22314453125,
+          335.2591552734375
+        ],
+        "raw_xy": [
+          187.6228485107422,
+          303.4798278808594
+        ],
+        "inlier": true,
+        "error_px": 2.2425311841315363
+      },
+      {
+        "native_xy": [
+          210.48202514648438,
+          281.2672424316406
+        ],
+        "raw_xy": [
+          189.55072021484375,
+          250.45529174804688
+        ],
+        "inlier": true,
+        "error_px": 2.4505967592248497
+      },
+      {
+        "native_xy": [
+          210.48202514648438,
+          281.2672424316406
+        ],
+        "raw_xy": [
+          189.55072021484375,
+          250.45529174804688
+        ],
+        "inlier": true,
+        "error_px": 2.4505967592248497
+      },
+      {
+        "native_xy": [
+          210.9090576171875,
+          276.30084228515625
+        ],
+        "raw_xy": [
+          189.55072021484375,
+          250.45529174804688
+        ],
+        "inlier": true,
+        "error_px": 2.0848746173485413
+      },
+      {
+        "native_xy": [
+          212.2948760986328,
+          261.9129638671875
+        ],
+        "raw_xy": [
+          190.4346160888672,
+          240.999755859375
+        ],
+        "inlier": false,
+        "error_px": 5.606857571225688
+      },
+      {
+        "native_xy": [
+          213.1575164794922,
+          304.7524108886719
+        ],
+        "raw_xy": [
+          190.04847717285156,
+          275.7605285644531
+        ],
+        "inlier": true,
+        "error_px": 2.2120648663446847
+      },
+      {
+        "native_xy": [
+          216.503173828125,
+          252.9312286376953
+        ],
+        "raw_xy": [
+          194.60227966308594,
+          227.96678161621094
+        ],
+        "inlier": true,
+        "error_px": 0.6725222489652815
+      },
+      {
+        "native_xy": [
+          216.79290771484375,
+          821.5396728515625
+        ],
+        "raw_xy": [
+          192.660888671875,
+          738.9808349609375
+        ],
+        "inlier": true,
+        "error_px": 1.9463182246773936
+      },
+      {
+        "native_xy": [
+          217.55007934570312,
+          788.71435546875
+        ],
+        "raw_xy": [
+          195.0596466064453,
+          710.2073364257812
+        ],
+        "inlier": true,
+        "error_px": 0.32637515786583077
+      },
+      {
+        "native_xy": [
+          218.83975219726562,
+          772.7433471679688
+        ],
+        "raw_xy": [
+          195.8480224609375,
+          696.339111328125
+        ],
+        "inlier": true,
+        "error_px": 0.3616327458460328
+      },
+      {
+        "native_xy": [
+          219.80165100097656,
+          701.265625
+        ],
+        "raw_xy": [
+          195.5538330078125,
+          633.7640991210938
+        ],
+        "inlier": true,
+        "error_px": 2.5980430806863217
+      },
+      {
+        "native_xy": [
+          220.02569580078125,
+          350.64569091796875
+        ],
+        "raw_xy": [
+          196.21633911132812,
+          317.35491943359375
+        ],
+        "inlier": true,
+        "error_px": 2.3605071403284765
+      },
+      {
+        "native_xy": [
+          220.1609649658203,
+          256.41729736328125
+        ],
+        "raw_xy": [
+          198.5523681640625,
+          231.6454315185547
+        ],
+        "inlier": true,
+        "error_px": 1.4159096417542383
+      },
+      {
+        "native_xy": [
+          220.26348876953125,
+          384.3580017089844
+        ],
+        "raw_xy": [
+          193.41497802734375,
+          344.4790344238281
+        ],
+        "inlier": false,
+        "error_px": 4.561328460443729
+      },
+      {
+        "native_xy": [
+          220.26348876953125,
+          384.3580017089844
+        ],
+        "raw_xy": [
+          193.41497802734375,
+          344.4790344238281
+        ],
+        "inlier": false,
+        "error_px": 4.561328460443729
+      },
+      {
+        "native_xy": [
+          222.9140625,
+          831.76611328125
+        ],
+        "raw_xy": [
+          199.17176818847656,
+          749.649169921875
+        ],
+        "inlier": true,
+        "error_px": 0.6525239002257469
+      },
+      {
+        "native_xy": [
+          224.04470825195312,
+          777.685791015625
+        ],
+        "raw_xy": [
+          200.71725463867188,
+          700.7974853515625
+        ],
+        "inlier": true,
+        "error_px": 0.24492808277587258
+      },
+      {
+        "native_xy": [
+          224.04470825195312,
+          777.685791015625
+        ],
+        "raw_xy": [
+          200.71725463867188,
+          700.7974853515625
+        ],
+        "inlier": true,
+        "error_px": 0.24492808277587258
+      },
+      {
+        "native_xy": [
+          231.75534057617188,
+          823.76318359375
+        ],
+        "raw_xy": [
+          207.470703125,
+          742.467041015625
+        ],
+        "inlier": true,
+        "error_px": 0.4196800091272467
+      },
+      {
+        "native_xy": [
+          232.0635528564453,
+          739.8847045898438
+        ],
+        "raw_xy": [
+          207.70741271972656,
+          666.5579833984375
+        ],
+        "inlier": true,
+        "error_px": 0.3850231871981355
+      },
+      {
+        "native_xy": [
+          238.47885131835938,
+          307.1658935546875
+        ],
+        "raw_xy": [
+          214.7155303955078,
+          274.5540771484375
+        ],
+        "inlier": true,
+        "error_px": 1.740033347425827
+      },
+      {
+        "native_xy": [
+          239.16448974609375,
+          158.9901123046875
+        ],
+        "raw_xy": [
+          215.20277404785156,
+          152.9786376953125
+        ],
+        "inlier": false,
+        "error_px": 10.38078853786525
+      },
+      {
+        "native_xy": [
+          245.14393615722656,
+          398.83367919921875
+        ],
+        "raw_xy": [
+          219.26161193847656,
+          359.92578125
+        ],
+        "inlier": true,
+        "error_px": 1.3760382403617244
+      },
+      {
+        "native_xy": [
+          245.44033813476562,
+          744.7865600585938
+        ],
+        "raw_xy": [
+          220.52450561523438,
+          668.5996704101562
+        ],
+        "inlier": true,
+        "error_px": 2.3543917024633902
+      },
+      {
+        "native_xy": [
+          250.28089904785156,
+          393.03857421875
+        ],
+        "raw_xy": [
+          224.58590698242188,
+          354.4597473144531
+        ],
+        "inlier": true,
+        "error_px": 0.80548842422894
+      },
+      {
+        "native_xy": [
+          250.42481994628906,
+          374.4641418457031
+        ],
+        "raw_xy": [
+          224.38002014160156,
+          336.14495849609375
+        ],
+        "inlier": true,
+        "error_px": 0.997502293988036
+      },
+      {
+        "native_xy": [
+          254.2577667236328,
+          45.4768180847168
+        ],
+        "raw_xy": [
+          214.1370849609375,
+          316.44891357421875
+        ],
+        "inlier": false,
+        "error_px": 276.5967525507739
+      },
+      {
+        "native_xy": [
+          254.99386596679688,
+          390.98101806640625
+        ],
+        "raw_xy": [
+          228.96852111816406,
+          352.2908935546875
+        ],
+        "inlier": true,
+        "error_px": 0.4640798121488207
+      },
+      {
+        "native_xy": [
+          255.44090270996094,
+          380.8282470703125
+        ],
+        "raw_xy": [
+          229.40771484375,
+          342.89764404296875
+        ],
+        "inlier": true,
+        "error_px": 0.2305144715636963
+      },
+      {
+        "native_xy": [
+          257.16015625,
+          86.3487548828125
+        ],
+        "raw_xy": [
+          231.60162353515625,
+          75.87577819824219
+        ],
+        "inlier": true,
+        "error_px": 1.258552292318937
+      },
+      {
+        "native_xy": [
+          263.61053466796875,
+          845.9202270507812
+        ],
+        "raw_xy": [
+          234.810546875,
+          760.8976440429688
+        ],
+        "inlier": true,
+        "error_px": 2.0562882078383162
+      },
+      {
+        "native_xy": [
+          264.99444580078125,
+          356.1428527832031
+        ],
+        "raw_xy": [
+          238.28579711914062,
+          319.69781494140625
+        ],
+        "inlier": true,
+        "error_px": 0.748312889636816
+      },
+      {
+        "native_xy": [
+          275.8329162597656,
+          380.2726135253906
+        ],
+        "raw_xy": [
+          249.78182983398438,
+          343.3800354003906
+        ],
+        "inlier": true,
+        "error_px": 2.227776905136959
+      },
+      {
+        "native_xy": [
+          276.1575012207031,
+          387.7072448730469
+        ],
+        "raw_xy": [
+          249.6409454345703,
+          349.5308532714844
+        ],
+        "inlier": true,
+        "error_px": 1.5914493423468963
+      },
+      {
+        "native_xy": [
+          277.0888366699219,
+          28.047494888305664
+        ],
+        "raw_xy": [
+          249.1781768798828,
+          24.667896270751953
+        ],
+        "inlier": true,
+        "error_px": 0.21058818529032156
+      },
+      {
+        "native_xy": [
+          283.20452880859375,
+          391.7166442871094
+        ],
+        "raw_xy": [
+          255.40487670898438,
+          352.6875305175781
+        ],
+        "inlier": true,
+        "error_px": 0.8906731046422222
+      },
+      {
+        "native_xy": [
+          283.565673828125,
+          5.119601249694824
+        ],
+        "raw_xy": [
+          254.68016052246094,
+          5.068511009216309
+        ],
+        "inlier": true,
+        "error_px": 1.3118855799427889
+      },
+      {
+        "native_xy": [
+          287.8151550292969,
+          260.8619384765625
+        ],
+        "raw_xy": [
+          259.7978210449219,
+          232.8841552734375
+        ],
+        "inlier": true,
+        "error_px": 1.9131547290839084
+      },
+      {
+        "native_xy": [
+          289.2820129394531,
+          771.8206787109375
+        ],
+        "raw_xy": [
+          259.3511047363281,
+          695.0846557617188
+        ],
+        "inlier": true,
+        "error_px": 0.40515418090959476
+      },
+      {
+        "native_xy": [
+          289.7558288574219,
+          385.84149169921875
+        ],
+        "raw_xy": [
+          261.6412658691406,
+          347.9441223144531
+        ],
+        "inlier": true,
+        "error_px": 1.3915386265179728
+      },
+      {
+        "native_xy": [
+          301.2698669433594,
+          266.8327941894531
+        ],
+        "raw_xy": [
+          270.9994812011719,
+          239.83709716796875
+        ],
+        "inlier": true,
+        "error_px": 0.10297957212424805
+      },
+      {
+        "native_xy": [
+          301.4271240234375,
+          277.9062194824219
+        ],
+        "raw_xy": [
+          271.0636901855469,
+          250.65802001953125
+        ],
+        "inlier": true,
+        "error_px": 0.7535391413278849
+      },
+      {
+        "native_xy": [
+          304.21435546875,
+          274.32562255859375
+        ],
+        "raw_xy": [
+          272.8074645996094,
+          246.85455322265625
+        ],
+        "inlier": true,
+        "error_px": 0.7961915636797183
+      },
+      {
+        "native_xy": [
+          304.21435546875,
+          274.32562255859375
+        ],
+        "raw_xy": [
+          272.8074645996094,
+          246.85455322265625
+        ],
+        "inlier": true,
+        "error_px": 0.7961915636797183
+      },
+      {
+        "native_xy": [
+          307.05718994140625,
+          285.0836486816406
+        ],
+        "raw_xy": [
+          274.977783203125,
+          255.60574340820312
+        ],
+        "inlier": true,
+        "error_px": 1.3962699787024622
+      },
+      {
+        "native_xy": [
+          308.967529296875,
+          749.0795288085938
+        ],
+        "raw_xy": [
+          290.3375244140625,
+          668.5996704101562
+        ],
+        "inlier": false,
+        "error_px": 14.33708373154541
+      },
+      {
+        "native_xy": [
+          310.21148681640625,
+          265.8431701660156
+        ],
+        "raw_xy": [
+          278.9910583496094,
+          239.29627990722656
+        ],
+        "inlier": true,
+        "error_px": 0.2633432203171949
+      },
+      {
+        "native_xy": [
+          328.6884765625,
+          185.3754425048828
+        ],
+        "raw_xy": [
+          296.2364807128906,
+          166.19192504882812
+        ],
+        "inlier": true,
+        "error_px": 0.5747005517024036
+      },
+      {
+        "native_xy": [
+          334.0062561035156,
+          33.960201263427734
+        ],
+        "raw_xy": [
+          304.04681396484375,
+          28.1727294921875
+        ],
+        "inlier": true,
+        "error_px": 3.8018507008926554
+      },
+      {
+        "native_xy": [
+          334.89654541015625,
+          13.531684875488281
+        ],
+        "raw_xy": [
+          300.10223388671875,
+          11.800251007080078
+        ],
+        "inlier": true,
+        "error_px": 1.4236392969933158
+      },
+      {
+        "native_xy": [
+          335.7232360839844,
+          831.861328125
+        ],
+        "raw_xy": [
+          297.73858642578125,
+          746.51904296875
+        ],
+        "inlier": true,
+        "error_px": 4.815469377614683
+      },
+      {
+        "native_xy": [
+          336.6663513183594,
+          118.9383544921875
+        ],
+        "raw_xy": [
+          302.3977355957031,
+          107.68395233154297
+        ],
+        "inlier": true,
+        "error_px": 1.266265873157432
+      },
+      {
+        "native_xy": [
+          339.9365539550781,
+          1114.406494140625
+        ],
+        "raw_xy": [
+          305.6987609863281,
+          1003.9450073242188
+        ],
+        "inlier": true,
+        "error_px": 0.7866015422041478
+      },
+      {
+        "native_xy": [
+          340.9822082519531,
+          52.48047637939453
+        ],
+        "raw_xy": [
+          307.4402770996094,
+          47.6712646484375
+        ],
+        "inlier": true,
+        "error_px": 1.148940239319574
+      },
+      {
+        "native_xy": [
+          349.59698486328125,
+          879.6399536132812
+        ],
+        "raw_xy": [
+          314.8374938964844,
+          793.8326416015625
+        ],
+        "inlier": true,
+        "error_px": 1.4805439782550844
+      },
+      {
+        "native_xy": [
+          358.1847839355469,
+          34.97481155395508
+        ],
+        "raw_xy": [
+          321.8638916015625,
+          31.64204978942871
+        ],
+        "inlier": true,
+        "error_px": 0.9930619177981274
+      },
+      {
+        "native_xy": [
+          364.9969177246094,
+          64.07593536376953
+        ],
+        "raw_xy": [
+          328.1773681640625,
+          57.22819900512695
+        ],
+        "inlier": true,
+        "error_px": 0.43289301928145335
+      },
+      {
+        "native_xy": [
+          365.4737854003906,
+          866.9562377929688
+        ],
+        "raw_xy": [
+          331.5784606933594,
+          780.6659545898438
+        ],
+        "inlier": false,
+        "error_px": 3.3338440856257368
+      },
+      {
+        "native_xy": [
+          367.6740417480469,
+          174.47120666503906
+        ],
+        "raw_xy": [
+          336.4658508300781,
+          158.73326110839844
+        ],
+        "inlier": false,
+        "error_px": 5.925140594109609
+      },
+      {
+        "native_xy": [
+          373.1043395996094,
+          135.04144287109375
+        ],
+        "raw_xy": [
+          335.7482604980469,
+          121.0564193725586
+        ],
+        "inlier": true,
+        "error_px": 0.11483837200382327
+      },
+      {
+        "native_xy": [
+          373.41455078125,
+          230.76043701171875
+        ],
+        "raw_xy": [
+          336.57684326171875,
+          207.68443298339844
+        ],
+        "inlier": true,
+        "error_px": 0.5911648231355057
+      },
+      {
+        "native_xy": [
+          380.8025207519531,
+          31.369962692260742
+        ],
+        "raw_xy": [
+          341.3866271972656,
+          27.909862518310547
+        ],
+        "inlier": true,
+        "error_px": 1.5186382245159225
+      },
+      {
+        "native_xy": [
+          381.89727783203125,
+          16.026649475097656
+        ],
+        "raw_xy": [
+          343.496826171875,
+          14.579970359802246
+        ],
+        "inlier": true,
+        "error_px": 0.8746876157516789
+      },
+      {
+        "native_xy": [
+          382.0611572265625,
+          44.09869384765625
+        ],
+        "raw_xy": [
+          342.8177185058594,
+          39.318031311035156
+        ],
+        "inlier": true,
+        "error_px": 1.203000696839195
+      },
+      {
+        "native_xy": [
+          412.2835693359375,
+          1088.232177734375
+        ],
+        "raw_xy": [
+          278.27764892578125,
+          308.7586975097656
+        ],
+        "inlier": false,
+        "error_px": 678.3357292363752
+      },
+      {
+        "native_xy": [
+          422.9169616699219,
+          894.3097534179688
+        ],
+        "raw_xy": [
+          382.5225524902344,
+          800.94287109375
+        ],
+        "inlier": false,
+        "error_px": 5.563703106765049
+      },
+      {
+        "native_xy": [
+          454.9234924316406,
+          408.0536193847656
+        ],
+        "raw_xy": [
+          406.3578796386719,
+          367.4309387207031
+        ],
+        "inlier": true,
+        "error_px": 3.025176665854601
+      },
+      {
+        "native_xy": [
+          479.25372314453125,
+          598.1320190429688
+        ],
+        "raw_xy": [
+          423.8311767578125,
+          520.38037109375
+        ],
+        "inlier": false,
+        "error_px": 19.888594870094774
+      },
+      {
+        "native_xy": [
+          487.5899658203125,
+          1164.8516845703125
+        ],
+        "raw_xy": [
+          437.8870849609375,
+          1049.76123046875
+        ],
+        "inlier": true,
+        "error_px": 0.352245371718844
+      },
+      {
+        "native_xy": [
+          496.091796875,
+          846.40869140625
+        ],
+        "raw_xy": [
+          447.1781005859375,
+          762.4193115234375
+        ],
+        "inlier": true,
+        "error_px": 1.134370509504983
+      },
+      {
+        "native_xy": [
+          509.51068115234375,
+          182.60708618164062
+        ],
+        "raw_xy": [
+          457.6034240722656,
+          170.0633544921875
+        ],
+        "inlier": false,
+        "error_px": 6.040767849394282
+      },
+      {
+        "native_xy": [
+          514.0280151367188,
+          985.5216064453125
+        ],
+        "raw_xy": [
+          466.7619323730469,
+          883.637939453125
+        ],
+        "inlier": false,
+        "error_px": 6.539029892860273
+      },
+      {
+        "native_xy": [
+          525.3529052734375,
+          106.84136199951172
+        ],
+        "raw_xy": [
+          473.84039306640625,
+          95.8851318359375
+        ],
+        "inlier": true,
+        "error_px": 0.6652106541347463
+      },
+      {
+        "native_xy": [
+          530.7286987304688,
+          1054.0810546875
+        ],
+        "raw_xy": [
+          475.735107421875,
+          946.5260620117188
+        ],
+        "inlier": false,
+        "error_px": 3.8761449445413665
+      },
+      {
+        "native_xy": [
+          532.273681640625,
+          113.14610290527344
+        ],
+        "raw_xy": [
+          479.44805908203125,
+          100.08829498291016
+        ],
+        "inlier": true,
+        "error_px": 1.4338980705051951
+      },
+      {
+        "native_xy": [
+          534.9073486328125,
+          108.34797668457031
+        ],
+        "raw_xy": [
+          482.738525390625,
+          96.93946838378906
+        ],
+        "inlier": true,
+        "error_px": 0.9798201694565273
+      },
+      {
+        "native_xy": [
+          542.450439453125,
+          115.39922332763672
+        ],
+        "raw_xy": [
+          489.7887878417969,
+          102.96014404296875
+        ],
+        "inlier": true,
+        "error_px": 1.3422285400861123
+      },
+      {
+        "native_xy": [
+          544.158447265625,
+          128.45663452148438
+        ],
+        "raw_xy": [
+          491.8728942871094,
+          115.951171875
+        ],
+        "inlier": true,
+        "error_px": 1.8578781128158024
+      },
+      {
+        "native_xy": [
+          546.7842407226562,
+          1063.584716796875
+        ],
+        "raw_xy": [
+          493.383544921875,
+          958.9024047851562
+        ],
+        "inlier": true,
+        "error_px": 1.7626240282576686
+      },
+      {
+        "native_xy": [
+          549.5501708984375,
+          1098.9283447265625
+        ],
+        "raw_xy": [
+          488.9919128417969,
+          984.60107421875
+        ],
+        "inlier": false,
+        "error_px": 7.870829296942944
+      },
+      {
+        "native_xy": [
+          551.4751586914062,
+          259.3287658691406
+        ],
+        "raw_xy": [
+          349.472900390625,
+          41.93009567260742
+        ],
+        "inlier": false,
+        "error_px": 241.44996346732907
+      },
+      {
+        "native_xy": [
+          552.7933959960938,
+          255.2218780517578
+        ],
+        "raw_xy": [
+          496.9290771484375,
+          228.10675048828125
+        ],
+        "inlier": true,
+        "error_px": 1.7897204630978056
+      },
+      {
+        "native_xy": [
+          554.5390014648438,
+          913.3040771484375
+        ],
+        "raw_xy": [
+          495.1025695800781,
+          827.1329345703125
+        ],
+        "inlier": false,
+        "error_px": 5.380262284113198
+      },
+      {
+        "native_xy": [
+          556.1257934570312,
+          248.6587677001953
+        ],
+        "raw_xy": [
+          187.04103088378906,
+          229.71876525878906
+        ],
+        "inlier": false,
+        "error_px": 313.8167926725428
+      },
+      {
+        "native_xy": [
+          556.2862548828125,
+          1215.7210693359375
+        ],
+        "raw_xy": [
+          501.59320068359375,
+          1093.0137939453125
+        ],
+        "inlier": false,
+        "error_px": 3.298074033711908
+      },
+      {
+        "native_xy": [
+          556.2919921875,
+          184.17660522460938
+        ],
+        "raw_xy": [
+          501.0372314453125,
+          165.30819702148438
+        ],
+        "inlier": true,
+        "error_px": 0.29780405714436475
+      },
+      {
+        "native_xy": [
+          556.8543701171875,
+          270.8064880371094
+        ],
+        "raw_xy": [
+          502.5626220703125,
+          244.18365478515625
+        ],
+        "inlier": true,
+        "error_px": 1.210722978287468
+      },
+      {
+        "native_xy": [
+          557.7266235351562,
+          180.23129272460938
+        ],
+        "raw_xy": [
+          500.8532409667969,
+          160.15713500976562
+        ],
+        "inlier": true,
+        "error_px": 2.3853888354037167
+      },
+      {
+        "native_xy": [
+          558.6673583984375,
+          253.95947265625
+        ],
+        "raw_xy": [
+          502.1410827636719,
+          227.31973266601562
+        ],
+        "inlier": true,
+        "error_px": 1.547090253916645
+      },
+      {
+        "native_xy": [
+          559.8082885742188,
+          197.02305603027344
+        ],
+        "raw_xy": [
+          504.9537048339844,
+          177.3795928955078
+        ],
+        "inlier": true,
+        "error_px": 0.805730442880345
+      },
+      {
+        "native_xy": [
+          560.4628295898438,
+          611.85205078125
+        ],
+        "raw_xy": [
+          482.3751220703125,
+          541.2509155273438
+        ],
+        "inlier": false,
+        "error_px": 24.199877093691196
+      },
+      {
+        "native_xy": [
+          562.6065673828125,
+          266.82098388671875
+        ],
+        "raw_xy": [
+          507.2310791015625,
+          240.1913299560547
+        ],
+        "inlier": true,
+        "error_px": 0.6032849778930132
+      },
+      {
+        "native_xy": [
+          566.6407470703125,
+          1224.902587890625
+        ],
+        "raw_xy": [
+          719.0072631835938,
+          652.0161743164062
+        ],
+        "inlier": false,
+        "error_px": 498.4288020372724
+      },
+      {
+        "native_xy": [
+          567.9873046875,
+          973.48828125
+        ],
+        "raw_xy": [
+          509.3358459472656,
+          876.5783081054688
+        ],
+        "inlier": true,
+        "error_px": 1.7501658597754484
+      },
+      {
+        "native_xy": [
+          569.4137573242188,
+          974.0018310546875
+        ],
+        "raw_xy": [
+          562.8543701171875,
+          742.3515014648438
+        ],
+        "inlier": false,
+        "error_px": 144.77324356060848
+      },
+      {
+        "native_xy": [
+          576.0353393554688,
+          966.1010131835938
+        ],
+        "raw_xy": [
+          519.1882934570312,
+          871.302490234375
+        ],
+        "inlier": true,
+        "error_px": 1.1875905648633807
+      },
+      {
+        "native_xy": [
+          593.9725341796875,
+          975.0089721679688
+        ],
+        "raw_xy": [
+          535.3037719726562,
+          877.5576782226562
+        ],
+        "inlier": true,
+        "error_px": 1.674890268398692
+      },
+      {
+        "native_xy": [
+          594.065673828125,
+          273.8011474609375
+        ],
+        "raw_xy": [
+          537.5392456054688,
+          246.86988830566406
+        ],
+        "inlier": true,
+        "error_px": 2.575022735008002
+      },
+      {
+        "native_xy": [
+          605.296142578125,
+          330.8341979980469
+        ],
+        "raw_xy": [
+          544.5803833007812,
+          296.6459655761719
+        ],
+        "inlier": true,
+        "error_px": 1.3629243752453748
+      },
+      {
+        "native_xy": [
+          612.6004028320312,
+          381.05389404296875
+        ],
+        "raw_xy": [
+          553.1079711914062,
+          344.10650634765625
+        ],
+        "inlier": true,
+        "error_px": 1.7396857874793952
+      },
+      {
+        "native_xy": [
+          613.9482421875,
+          250.81170654296875
+        ],
+        "raw_xy": [
+          561.6000366210938,
+          224.92222595214844
+        ],
+        "inlier": false,
+        "error_px": 8.691762775463918
+      },
+      {
+        "native_xy": [
+          617.2484130859375,
+          823.0526123046875
+        ],
+        "raw_xy": [
+          519.1882934570312,
+          871.302490234375
+        ],
+        "inlier": false,
+        "error_px": 134.42188105413675
+      },
+      {
+        "native_xy": [
+          623.9057006835938,
+          328.1045227050781
+        ],
+        "raw_xy": [
+          563.6080932617188,
+          296.6263427734375
+        ],
+        "inlier": true,
+        "error_px": 2.0963552896003366
+      },
+      {
+        "native_xy": [
+          625.5435180664062,
+          336.7364501953125
+        ],
+        "raw_xy": [
+          563.9574584960938,
+          303.3529357910156
+        ],
+        "inlier": true,
+        "error_px": 0.6372993926483445
+      },
+      {
+        "native_xy": [
+          630.9810180664062,
+          332.0702819824219
+        ],
+        "raw_xy": [
+          568.1138305664062,
+          298.9872741699219
+        ],
+        "inlier": true,
+        "error_px": 0.13939337016733538
+      },
+      {
+        "native_xy": [
+          645.8788452148438,
+          1067.53076171875
+        ],
+        "raw_xy": [
+          587.6401977539062,
+          967.727294921875
+        ],
+        "inlier": false,
+        "error_px": 8.53518771093369
+      },
+      {
+        "native_xy": [
+          651.4761352539062,
+          765.827880859375
+        ],
+        "raw_xy": [
+          586.129150390625,
+          690.5804443359375
+        ],
+        "inlier": true,
+        "error_px": 0.36437839674385186
+      },
+      {
+        "native_xy": [
+          652.5010986328125,
+          666.7197265625
+        ],
+        "raw_xy": [
+          587.496826171875,
+          601.5750732421875
+        ],
+        "inlier": true,
+        "error_px": 0.7043213504400312
+      },
+      {
+        "native_xy": [
+          687.1248168945312,
+          767.9251098632812
+        ],
+        "raw_xy": [
+          618.3344116210938,
+          691.1594848632812
+        ],
+        "inlier": true,
+        "error_px": 1.0453333845906585
+      },
+      {
+        "native_xy": [
+          690.6862182617188,
+          770.1819458007812
+        ],
+        "raw_xy": [
+          622.3048706054688,
+          693.2518310546875
+        ],
+        "inlier": true,
+        "error_px": 1.1636520604225393
+      },
+      {
+        "native_xy": [
+          699.9794311523438,
+          770.269287109375
+        ],
+        "raw_xy": [
+          634.9202270507812,
+          693.7449951171875
+        ],
+        "inlier": false,
+        "error_px": 4.891552283255785
+      },
+      {
+        "native_xy": [
+          703.2785034179688,
+          756.6712036132812
+        ],
+        "raw_xy": [
+          629.0017700195312,
+          682.8684692382812
+        ],
+        "inlier": true,
+        "error_px": 4.128586526902679
+      },
+      {
+        "native_xy": [
+          703.2785034179688,
+          756.6712036132812
+        ],
+        "raw_xy": [
+          629.0017700195312,
+          682.8684692382812
+        ],
+        "inlier": true,
+        "error_px": 4.128586526902679
+      },
+      {
+        "native_xy": [
+          706.0436401367188,
+          401.20440673828125
+        ],
+        "raw_xy": [
+          636.220947265625,
+          361.8642883300781
+        ],
+        "inlier": true,
+        "error_px": 0.5244543008687927
+      },
+      {
+        "native_xy": [
+          712.4825439453125,
+          407.1793518066406
+        ],
+        "raw_xy": [
+          639.47900390625,
+          365.1445617675781
+        ],
+        "inlier": true,
+        "error_px": 2.7895185288693463
+      },
+      {
+        "native_xy": [
+          713.7633666992188,
+          769.65771484375
+        ],
+        "raw_xy": [
+          647.2109985351562,
+          694.0538940429688
+        ],
+        "inlier": false,
+        "error_px": 4.72397581994645
+      },
+      {
+        "native_xy": [
+          716.1160888671875,
+          390.13037109375
+        ],
+        "raw_xy": [
+          647.9596557617188,
+          352.3671875
+        ],
+        "inlier": true,
+        "error_px": 3.119664859950802
+      },
+      {
+        "native_xy": [
+          720.2249755859375,
+          770.6367797851562
+        ],
+        "raw_xy": [
+          647.2109985351562,
+          694.0538940429688
+        ],
+        "inlier": true,
+        "error_px": 1.2707785495397375
+      },
+      {
+        "native_xy": [
+          780.1378173828125,
+          704.5725708007812
+        ],
+        "raw_xy": [
+          703.5501708984375,
+          634.950927734375
+        ],
+        "inlier": true,
+        "error_px": 1.1503966428517929
+      },
+      {
+        "native_xy": [
+          782.6281127929688,
+          798.139892578125
+        ],
+        "raw_xy": [
+          706.5701904296875,
+          719.9912719726562
+        ],
+        "inlier": true,
+        "error_px": 2.0456075015605615
+      },
+      {
+        "native_xy": [
+          798.8502807617188,
+          824.9973754882812
+        ],
+        "raw_xy": [
+          720.4270629882812,
+          743.6217041015625
+        ],
+        "inlier": true,
+        "error_px": 1.2535105924048133
+      },
+      {
+        "native_xy": [
+          800.4214477539062,
+          758.22607421875
+        ],
+        "raw_xy": [
+          722.6553344726562,
+          683.4058837890625
+        ],
+        "inlier": true,
+        "error_px": 2.00019230016943
+      },
+      {
+        "native_xy": [
+          801.5737915039062,
+          728.5205078125
+        ],
+        "raw_xy": [
+          492.83477783203125,
+          997.0957641601562
+        ],
+        "inlier": false,
+        "error_px": 410.1445184203157
+      },
+      {
+        "native_xy": [
+          810.0751342773438,
+          803.3229370117188
+        ],
+        "raw_xy": [
+          730.5818481445312,
+          723.593505859375
+        ],
+        "inlier": true,
+        "error_px": 1.4094990161014913
+      },
+      {
+        "native_xy": [
+          821.170654296875,
+          730.2348022460938
+        ],
+        "raw_xy": [
+          741.8952026367188,
+          654.6664428710938
+        ],
+        "inlier": false,
+        "error_px": 4.429822473866669
+      },
+      {
+        "native_xy": [
+          824.6768188476562,
+          724.712646484375
+        ],
+        "raw_xy": [
+          741.8952026367188,
+          654.6664428710938
+        ],
+        "inlier": true,
+        "error_px": 1.4785223101400107
+      },
+      {
+        "native_xy": [
+          831.364501953125,
+          712.619384765625
+        ],
+        "raw_xy": [
+          746.6368408203125,
+          645.5027465820312
+        ],
+        "inlier": true,
+        "error_px": 3.635636439779697
+      }
+    ],
+    "sha256": {
+      "imagegen-pose.png": "cb69b41525e09b07020c4017e0260e654469e225f171d4d74ce05d9def8f1cb4",
+      "original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+    },
+    "software": {
+      "opencv": "5.0.0",
+      "numpy": "2.3.5",
+      "python": "3.12.14"
+    },
+    "limitations": "Similarity registration only; generated underlay has local redrawing. Residual feature error is not anatomical-joint accuracy. Raw photo pixels are unmodified."
+  },
+  "files": {
+    "baseline/back.png": "fb2b70f1cdc2e5b30aaa3f9ddb9503bd4014dc4ff8ab610ba58e11ad063f4e94",
+    "baseline/camera.json": "73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd",
+    "baseline/contour.png": "5adaeef8d5e8d2083139cccbb62accaf75e47acf16b22b9decb1ed033fbfd6f7",
+    "baseline/final-mask.png": "68230a57ca627c7716e62aff2652854f5cc2a634d1cb5ff91be867912a8d20e9",
+    "baseline/final-overlay.png": "e1fb729232c61a6ff3d9a9594a2a51125fd69b1dec9547e2e2a738bbb65bd721",
+    "baseline/final-state.json": "594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15",
+    "baseline/front.png": "509fcffcddd233fa78d837a90db8993df1a3676907ab3008cf93e4abaa8a6874",
+    "baseline/joints.json": "3eb6dd7e107e893673540399825a5bdd8de1b7d0c218c777204c6987e303be7c",
+    "baseline/metrics.json": "d3b873bd6c615d6e67b8e08927287d93226f80329b9fd5d8a2452e83726199b6",
+    "baseline/neutral.obj": "3d6525c3c2958d2ffe6041339704733519f594a0f720a6cdbc266dfcb818dd70",
+    "baseline/objective.json": "9d2c27ef6cee2f318dc10d287442bc3bd8c97dee595b226ae40b1904f9e946bb",
+    "baseline/parameter-block-history.json": "161585692569a24a540935231add9771ad1add120bffb4c98beb566e45b3677a",
+    "baseline/photo-render-overlay.png": "a683fae44eca2935a6335a05cb923a670fde82834f2774b7b269b917ff1592a8",
+    "baseline/photo-render.png": "3e0fc4ca970c1cd9f53d6966dfd4c589f822ecf8e366c5c294901a78dee0eff0",
+    "baseline/posed.obj": "721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580",
+    "baseline/render-camera.json": "8756597dd10403866891a1a6b5203ef5815ad1ec7efc20cb1566a5a41d99b26c",
+    "baseline/side.png": "79372bfa7d9327038957c2253db913da0aa4306a2f1669b2caa785f2cb38eaff",
+    "baseline/skeleton-projection.json": "73f4ac94182c571b256f0757291fdb15bec5041dcdeb35220b1375e57c2561ea",
+    "baseline/transparent-render.png": "2003a9b2b0345582e1392f7dc293d365903b97878f398a4335d60e92d460fce0",
+    "baseline/transparent-skeleton.png": "c6f7996d15c54063533c30319712568d784afbbecd84c698194202c3e60257f8",
+    "eval.html": "f7159705b7afafe4f9f3107ac1de0819668b193eff160150e6373f039d996398",
+    "index.html": "f7159705b7afafe4f9f3107ac1de0819668b193eff160150e6373f039d996398",
+    "model/README.md": "89d633f8db3c5035667792c49e3731a12cb4472afe3c50f2b6bb6090467855f6",
+    "model/back.png": "73f8ede71b9ac680467a5c72dc2236f6258d12cb089702a20635cd663d1c554d",
+    "model/baseline-cue-residual.json": "e3b17a58726b2becf5dea7b25ac078e0ce25ba723bec6408200035f0b8be9825",
+    "model/baseline-mask.png": "45759f3828ab8dc2e436b7e871cd3a6ad4aab38cfdd7c2fe652b9fcad37ebbc1",
+    "model/baseline-overlay.png": "df5fd9b68944fab7f682fd6cb80eec4e6a71ea4bb32bad530a72485f75383dbe",
+    "model/bundle-documentation-verification.json": "d881a25f0ee5557f52365819d21342ab3d26f1162d1d35f6fcde094ef477819e",
+    "model/bundle-verification.json": "8fc4450b9ff27ef2c0a33937568725d39f549a04d834aed22052491fcd32d1c8",
+    "model/camera-only-cue-residual.json": "cab7bd63d8785b22590ec5a16f9a5356c1256ed8fb99c68be338f6d4fee0404a",
+    "model/camera-only-mask.png": "d3ed12125ef7b5eb9f63f0251863bca1e659dc4c1003cbc55434489c2891ce26",
+    "model/camera-only-overlay.png": "c0db3c342c301c79ab80cc938ea96689952b84e38acbd44316602c9e186a6e8f",
+    "model/camera.json": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f",
+    "model/contour.png": "ae7c8d63adabc1e0010faf87883e5c5e526d8e04fbdc4646fd064fe77e965c07",
+    "model/depth-valid.png": "3719b22853d6f76384607611d4fe97b2a64497af94d16b3e3e717fdf13f051c5",
+    "model/depth.png": "ff3dabae92eaa5d6a4214a8cbaacdd05f636946b9b1157b0bd78f2f61d64ba57",
+    "model/evidence-manifest.json": "f01dbc112dda0f29caa4b3e3dfaa2a3b446ec07768297fd66b1ca6be4fc8a647",
+    "model/final-cue-residual.json": "126550726ee17ced5a1a1ae6609b12824ef0374e4836ad926800db85188a7b89",
+    "model/final-mask.png": "1dbef302abc442d07049468f0206b3444b698422de6c8c60f3de68b667eb42c1",
+    "model/final-overlay.png": "7a257bb4222fd614c14a758535d2896ba785fe900a43a26727cf09179f5398ce",
+    "model/final-state.json": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db",
+    "model/front.png": "0305cde7653b7091833c237fd2144ce2ae14a79357a45ede1bdbb3823f1a8b65",
+    "model/grasp-geometry.json": "4c200040a0753ff48aa3c4161b83e26d359e9ed59c4d4f67f3c36abacd187659",
+    "model/hand-surface-check.json": "7e5ad70d163bde72a86af2c23253822a01bac346a27f1a693119f2ec6e51f344",
+    "model/history.json": "84e02ae530c7df8a4b9481a7dcc5f148cc913f1c3d804062d9b7049b390e4494",
+    "model/independent-grade/grading.json": "684d9b0179e323554fb021e227fbaf078e83bd9e89a7d904ec62197ad4f31427",
+    "model/independent-grade/independently-projected-mask.png": "1dbef302abc442d07049468f0206b3444b698422de6c8c60f3de68b667eb42c1",
+    "model/independent-grade/region-mask-definition.png": "606fe01ee1f15897a7357000fd6697b16713c143acf5f05309141d0f374f58c3",
+    "model/independent-grade/regional-exterior-overlay.png": "70d6e6a8c5e49b6adb0f99d4d63bb98fd2ea4e6d09a4c66cc592e0fa025036de",
+    "model/iteration-history.json": "2eef2feaf20c9231b0b86e15f028ae1c1280cbbb4be683bf17d314358d374e36",
+    "model/joints.json": "21164fb2f30786a331773a24f79f0c984f57edacde62302db8308d8c5f9f81ba",
+    "model/measurements.json": "b94d5ab049a7715aacea94ed737b50d2f7818d8879474e0dff273ce4e9b39d8c",
+    "model/neutral.glb": "73d1c0d875ae7d6e4508be5a302ddf7817b74b05f9c53a65427cebae43d56821",
+    "model/neutral.obj": "cc4598e12c9c162688ecded334e6d98a12381739bcc9cbbe8a994418b4f868fb",
+    "model/photo-contour.png": "bf002b80e3135b7e40dbb4836ac377f88c6b92ac284e81802c058ce069c043a0",
+    "model/photo-depth-valid.png": "8f274fbaf8dfafb1ea91dea46625432c110134281cc0a9de1e11bc4bcd514259",
+    "model/photo-depth.png": "5fedeb4c619360c01c823ee47b27456de2b52c76ac84d410b5b030937e3d796a",
+    "model/photo-render-alpha.png": "fed0e3b1076dcfec85de667b13f472bb26a71127a0db45edb88b9a2853000922",
+    "model/photo-render.png": "50ec56753ad1560e8aad5d3d7fc96ef240021562c4831da5738d429fee08991b",
+    "model/photo-skeleton.png": "4b140d66e1e35375d1ac279dff7866cd04eaaf03ad0d9ecb9a01b660b4d11e8a",
+    "model/pose-guided-reproduction.zip": "d756054a437f20f0bc2f14c41d1bb6c4537b370fc5ab3b17d11591875a33e3ad",
+    "model/pose.png": "67475c2d7f812ceb9bfcbaab98e33f306454d27aa3115ebf52bc68e8d4f3bd2c",
+    "model/posed.glb": "83f4e0d579557009d109f210bc9c3ff631c1ebe8c0b5c3f05c358e84ee397a14",
+    "model/posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+    "model/provenance.json": "53b8743003fff358a4ab1b8fe9a91a8bc51b444860a4ea560119e349f3cb4f4e",
+    "model/render-camera.json": "615354a4198a3e1b0237cd4538fe49dada13ef090e9a6f816321c62be691d222",
+    "model/selection.json": "4b834bef832b78934948c622a2a5ec50956ea1f80950bf10e44bbc3466bcd125",
+    "model/side.png": "f536ff837674afd3c85a7524d132dc5b22555407877b72b480bf4f0251cbdffd",
+    "model/skeleton-projection.json": "b2216f21330aa8481d44ac9f0dd7a51ab4be5877080d119ed8eca34984f48ef5",
+    "model/surface-proxies.json": "52f17a3a8fee942b18dcff439a8987b0a1702a6d0cc1ac2cdb6e13ee7950f633",
+    "model/transparent-render.png": "fed0e3b1076dcfec85de667b13f472bb26a71127a0db45edb88b9a2853000922",
+    "model/transparent-skeleton.png": "60980f4a0a35706c57fe336368f5a28540655a2ce1d3fb1329aef96c9c9998a5",
+    "model/views/back-mask.png": "79663f96d6a32b6efbc805565e299c74bf277ac320309126ca17a1ab93cc2ade",
+    "model/views/back.png": "73f8ede71b9ac680467a5c72dc2236f6258d12cb089702a20635cd663d1c554d",
+    "model/views/camera.json": "615354a4198a3e1b0237cd4538fe49dada13ef090e9a6f816321c62be691d222",
+    "model/views/depth-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "model/views/depth-valid.png": "3719b22853d6f76384607611d4fe97b2a64497af94d16b3e3e717fdf13f051c5",
+    "model/views/depth.png": "ff3dabae92eaa5d6a4214a8cbaacdd05f636946b9b1157b0bd78f2f61d64ba57",
+    "model/views/front-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "model/views/front.png": "0305cde7653b7091833c237fd2144ce2ae14a79357a45ede1bdbb3823f1a8b65",
+    "model/views/joints.json": "ba48685377a4f9266bc1a53047e85824ac4dbd70310dbb0d34b14c025eb75c95",
+    "model/views/neutral.obj": "cc4598e12c9c162688ecded334e6d98a12381739bcc9cbbe8a994418b4f868fb",
+    "model/views/pose-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "model/views/pose.png": "67475c2d7f812ceb9bfcbaab98e33f306454d27aa3115ebf52bc68e8d4f3bd2c",
+    "model/views/posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+    "model/views/side-mask.png": "3b7d7f6ed0a29af2af4c293ba3519a1cfdbe717c61f63fb5fda0dfb2b939578f",
+    "model/views/side.png": "f536ff837674afd3c85a7524d132dc5b22555407877b72b480bf4f0251cbdffd",
+    "model/views/state.json": "cd034786ecf47884ffc25e751ea58f6dbc03d213cba898d3fbfb7a077a3a5403",
+    "model/views/view-provenance.json": "951d91d410695343917b621e7f721a8b9ccebd4c934d5dd11b3e5ad3482207e3",
+    "model/zip-replay-verification.json": "57a1d95a65292c7e9f30c6fd2e35a07c1c7085029cb0d5ebe89f4928c4a3854e",
+    "protocol.json": "7cd4a839677e0447e00ac21aa51133360dbe0f0661e38393e6b7cee6cc05306d",
+    "reference/imagegen-pose.png": "cb69b41525e09b07020c4017e0260e654469e225f171d4d74ce05d9def8f1cb4",
+    "reference/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+    "reference/source-verification.json": "7d892f86723773736c81465b6e94e4656661102e3581d1994e15bf5a0daed4a5",
+    "rejected/round-2/photo-render.png": "91db3f99c2fa21ce2cee1a810654c12c11aabebc8b4adc71b8ca221d665a2451",
+    "rejected/round-2/views/back.png": "882a347c92fa522d8d50f0c2a9885201f661f5c6fd91700d7d61e71b3d4e226e",
+    "rejected/round-2/views/front.png": "46a8c7968f19d539ee5e045391681068c7b52e491aadc12c38d1a7fede8aa1b2",
+    "rejected/round-2/views/side.png": "4ab56a478d99ffd5a6e0c61563743434c25883127b1d7a50bcbe8875183ce822",
+    "rejected/round-9/photo-render.png": "66a4e5e363db38a6f6151c67ba2e22f51514a32256769963d2f310ef3d4c34d5",
+    "rejected/round-9/views/back.png": "426e4f479b1cc74707114606ea3c55bfff2b185df3d9e59371502c2e5bdae68d",
+    "rejected/round-9/views/front.png": "25865b336c45e18701e0c67052e8ca4256861c8f8bbb3d310438c1ee891b4d1d",
+    "rejected/round-9/views/side.png": "6952327c717e787ccd72563c07082e9a4c5c1317a2a906f8c1639b4f134d91e4",
+    "reproduce/check_pose_guided_views.py": "376673313e77c6cd4c3043b59cdbbe9886999093120a43cbd1fbd3eaa3767684",
+    "reproduce/grade_pose_guided_fit.py": "4fea4ff5c476e51b1f289950da2393b772b678f520554394155a1e10ffc2cd0d",
+    "review/README.md": "9b704e399e30d3b7e9244b5029144d2ce724b60b93e58dfbcb72b6d8bd50097a",
+    "review/acceptance.json": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+    "review/baseline/grading.json": "0bc3d597d5755cfd8d3b7c4c237634cfe83fc995da5dd84790625a4a10fadfd0",
+    "review/baseline/independently-projected-mask.png": "68230a57ca627c7716e62aff2652854f5cc2a634d1cb5ff91be867912a8d20e9",
+    "review/baseline/manual-review.json": "7ccd9bf73b7f4aa4fc8825cb29873c849ed277bf90f451bc9d5cb00cfc2aff5e",
+    "review/baseline/region-mask-definition.png": "6837986028ee7d4a61f39859a591426560c16ad82a83b9024a8af387a70f1d27",
+    "review/baseline/regional-exterior-overlay.png": "0d6231531d328f8c2cec63712c48536065108418102ff6c8a6224d739629d23e",
+    "review/baseline-failures.json": "ba3a6089f26310857ff524768d01ecde1832c979853e99326dc8f9cf4e0cbc78",
+    "review/baseline-failures.md": "502f3bf32a36bd20de847dd8a5d0aaec68ca0a067c50c9bb4242c7fda3ee320b",
+    "review/comparison.json": "e7bac527c02d561ee117192b6b0082f6713308ec0a563049c63ef6e384db0f3d",
+    "review/final/grading.json": "968ff26c4d2b927d755fa7a7f9a7090daa1d132ce7e2c45568bed81eb59de557",
+    "review/final/hand-check/final-state.json": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db",
+    "review/final/hand-check/hand-surface-check.json": "7e5ad70d163bde72a86af2c23253822a01bac346a27f1a693119f2ec6e51f344",
+    "review/final/independent-review.md": "617c3dca69cb891686ccc0d31a6e4ff5008897c2eb132a18f377512ffd71877c",
+    "review/final/independently-projected-mask.png": "1dbef302abc442d07049468f0206b3444b698422de6c8c60f3de68b667eb42c1",
+    "review/final/manual-review.json": "bcf1a9ad5f37d7192e00e0c30c177f603397927413908aebe8b0dca123844d01",
+    "review/final/region-mask-definition.png": "606fe01ee1f15897a7357000fd6697b16713c143acf5f05309141d0f374f58c3",
+    "review/final/regional-exterior-overlay.png": "70d6e6a8c5e49b6adb0f99d4d63bb98fd2ea4e6d09a4c66cc592e0fa025036de",
+    "review/grader-hill-climb.md": "5fd4ef1b8647b8f8699e04981e69f257c5102869709ea54d8dbb8eb4ed6ff2b1",
+    "review/hillclimb-regression-v2/camera.json": "12d80db563b1d0d52f2d225a358f2d8236aa8180fb32426e94f60de01b5e9adb",
+    "review/hillclimb-regression-v2/final-state.json": "259cd84d23dcbaea51704930984cb6d23c2cd9f1cc85837a304601678278998a",
+    "review/hillclimb-regression-v2/grade/grading.json": "0258bd3ef82d55c50bb7efdb7bedff60a751354ef7b9e10aaf12c215083ca794",
+    "review/hillclimb-regression-v2/grade/independently-projected-mask.png": "d0eeaf6a60bacea3390b4ece98953881e361248f93b294106a95fd3d3e4ff508",
+    "review/hillclimb-regression-v2/grade/region-mask-definition.png": "5f89e6973f126e5d151b0c9e16bec388eab5d66bcf92c54c8c4e5ae85043aac0",
+    "review/hillclimb-regression-v2/grade/regional-exterior-overlay.png": "95ff7b54e6a3cbdd9771293f91e92c2026f89eb1c902cbc9db3c180e03f22350",
+    "review/hillclimb-regression-v2/posed.obj": "69556ed2caa248594615eb4c1857852fcd7d81f3cac0e56addd3f56c6be75037",
+    "review/negative-controls/metadata_only_forged_pose/camera.json": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f",
+    "review/negative-controls/metadata_only_forged_pose/final-state.json": "51fea23aaca6cd968ddcab45eefacf5c4fb717a996ec2b87e6362aa7421e48d7",
+    "review/negative-controls/metadata_only_forged_pose/grade/grading.json": "e6482d0daa3a3093c38e92f0ba9df28a16dc4e7646882c7fa52806beb18c23d6",
+    "review/negative-controls/metadata_only_forged_pose/grade/independently-projected-mask.png": "1dbef302abc442d07049468f0206b3444b698422de6c8c60f3de68b667eb42c1",
+    "review/negative-controls/metadata_only_forged_pose/grade/region-mask-definition.png": "606fe01ee1f15897a7357000fd6697b16713c143acf5f05309141d0f374f58c3",
+    "review/negative-controls/metadata_only_forged_pose/grade/regional-exterior-overlay.png": "70d6e6a8c5e49b6adb0f99d4d63bb98fd2ea4e6d09a4c66cc592e0fa025036de",
+    "review/negative-controls/metadata_only_forged_pose/posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+    "review/negative-controls/real_changed_pelvis_spine/camera.json": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f",
+    "review/negative-controls/real_changed_pelvis_spine/final-state.json": "c7a22bfc68ed4b0224c1f2208dcdc0b48b748dba87b16317471daa7477bc97cd",
+    "review/negative-controls/real_changed_pelvis_spine/grade/grading.json": "09a1a4fc188ad3814f81698109ca5779b1456bfb9be15150a3541de9fc6482f1",
+    "review/negative-controls/real_changed_pelvis_spine/grade/independently-projected-mask.png": "32cf7016b254266cb4561252a5b4e09dbd31534c501a4393ac5565464f3a4991",
+    "review/negative-controls/real_changed_pelvis_spine/grade/region-mask-definition.png": "6a56cd615e89ec3affc7c5384ea47cfe47d6e08a3f98a2eb4d9ae8955efb3402",
+    "review/negative-controls/real_changed_pelvis_spine/grade/regional-exterior-overlay.png": "66b0c9f8f39cbe3d323d1831ccb594b0fa8c75c3547159c9e2e854568857906c",
+    "review/negative-controls/real_changed_pelvis_spine/posed.obj": "70e9ecb6ced9fb610c67828c35ff142829758b408c86b8366bbcbb19d1518a94",
+    "review/negative-controls/real_changed_right_arm/camera.json": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f",
+    "review/negative-controls/real_changed_right_arm/final-state.json": "51fea23aaca6cd968ddcab45eefacf5c4fb717a996ec2b87e6362aa7421e48d7",
+    "review/negative-controls/real_changed_right_arm/grade/grading.json": "ffbb64115b17564e85fb3a4f842892bcbccceb5f4c51348c6d64466bfcaa2fb9",
+    "review/negative-controls/real_changed_right_arm/grade/independently-projected-mask.png": "d5834595cbbd8136d25d6736005b0d5688092993e05ba1797eab05fe61a71264",
+    "review/negative-controls/real_changed_right_arm/grade/region-mask-definition.png": "6837986028ee7d4a61f39859a591426560c16ad82a83b9024a8af387a70f1d27",
+    "review/negative-controls/real_changed_right_arm/grade/regional-exterior-overlay.png": "ab93308c1106dff5b6a382431a8fe5bdeccfa6090738c9d168cc29a94b3bc166",
+    "review/negative-controls/real_changed_right_arm/posed.obj": "8cca2730c34b22a17c41d8400898f85e3701458866960dfeb42148b33e50d3f8",
+    "review/negative-controls/summary.json": "ceb3969bbd395bbc9aafe893cd26a8b188f404ac93a37ec56410dab3905ad289",
+    "review/negative-controls/tiny_body_containment_cheat/camera.json": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f",
+    "review/negative-controls/tiny_body_containment_cheat/final-state.json": "88f50d728926d74e7a386b72d98bc9be8918152c4c84640fc9a1d6a15a59d8dc",
+    "review/negative-controls/tiny_body_containment_cheat/grade/grading.json": "9fdb28d88a135f3aeb193e60d5a2215021fecd0f31ba3ece0f39bb447520b660",
+    "review/negative-controls/tiny_body_containment_cheat/grade/independently-projected-mask.png": "616f99a7a335cd5546c5fffb202c319e9e5835b9a3c86bf9d4510b0b9cd0b027",
+    "review/negative-controls/tiny_body_containment_cheat/grade/region-mask-definition.png": "99812ccbb9697fa6ebb004598129c3385e95645ad49cc12594e6dd9c908df4e9",
+    "review/negative-controls/tiny_body_containment_cheat/grade/regional-exterior-overlay.png": "42b61f0faff6aaa6275efecece48e78d1532695fe6884981952049b933df4c93",
+    "review/negative-controls/tiny_body_containment_cheat/posed.obj": "e4702e2b9128330e19beece56431bdd9825c6f5208c43e1c7a2dfb9ce812cdf4",
+    "review/negative-controls/view_provenance_mesh_fraud/final-state.json": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db",
+    "review/negative-controls/view_provenance_mesh_fraud/posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+    "review/negative-controls/view_provenance_mesh_fraud/view-integrity.json": "fd3441c130324a4492ad79bbe792c2fad8379662b3a5bbddd3f5790aa36e3518",
+    "review/negative-controls/view_provenance_mesh_fraud/views/back-mask.png": "79663f96d6a32b6efbc805565e299c74bf277ac320309126ca17a1ab93cc2ade",
+    "review/negative-controls/view_provenance_mesh_fraud/views/back.png": "73f8ede71b9ac680467a5c72dc2236f6258d12cb089702a20635cd663d1c554d",
+    "review/negative-controls/view_provenance_mesh_fraud/views/camera.json": "615354a4198a3e1b0237cd4538fe49dada13ef090e9a6f816321c62be691d222",
+    "review/negative-controls/view_provenance_mesh_fraud/views/depth-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "review/negative-controls/view_provenance_mesh_fraud/views/depth-valid.png": "3719b22853d6f76384607611d4fe97b2a64497af94d16b3e3e717fdf13f051c5",
+    "review/negative-controls/view_provenance_mesh_fraud/views/depth.png": "ff3dabae92eaa5d6a4214a8cbaacdd05f636946b9b1157b0bd78f2f61d64ba57",
+    "review/negative-controls/view_provenance_mesh_fraud/views/front-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "review/negative-controls/view_provenance_mesh_fraud/views/front.png": "0305cde7653b7091833c237fd2144ce2ae14a79357a45ede1bdbb3823f1a8b65",
+    "review/negative-controls/view_provenance_mesh_fraud/views/joints.json": "ba48685377a4f9266bc1a53047e85824ac4dbd70310dbb0d34b14c025eb75c95",
+    "review/negative-controls/view_provenance_mesh_fraud/views/neutral.obj": "cc4598e12c9c162688ecded334e6d98a12381739bcc9cbbe8a994418b4f868fb",
+    "review/negative-controls/view_provenance_mesh_fraud/views/pose-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "review/negative-controls/view_provenance_mesh_fraud/views/pose.png": "67475c2d7f812ceb9bfcbaab98e33f306454d27aa3115ebf52bc68e8d4f3bd2c",
+    "review/negative-controls/view_provenance_mesh_fraud/views/posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+    "review/negative-controls/view_provenance_mesh_fraud/views/side-mask.png": "3b7d7f6ed0a29af2af4c293ba3519a1cfdbe717c61f63fb5fda0dfb2b939578f",
+    "review/negative-controls/view_provenance_mesh_fraud/views/side.png": "f536ff837674afd3c85a7524d132dc5b22555407877b72b480bf4f0251cbdffd",
+    "review/negative-controls/view_provenance_mesh_fraud/views/state.json": "cd034786ecf47884ffc25e751ea58f6dbc03d213cba898d3fbfb7a077a3a5403",
+    "review/negative-controls/view_provenance_mesh_fraud/views/view-provenance.json": "a03574f69dd83898abcd1497d35e15f7e756633139007549ab1fd46209772fc4",
+    "review/negative-controls/view_specific_pose_swap/final-state.json": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db",
+    "review/negative-controls/view_specific_pose_swap/posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+    "review/negative-controls/view_specific_pose_swap/view-integrity.json": "46ac896d8e23eeca108fcde0dabdb8e24f7f3287a49bb692b28c2cefc36e3247",
+    "review/negative-controls/view_specific_pose_swap/views/back-mask.png": "79663f96d6a32b6efbc805565e299c74bf277ac320309126ca17a1ab93cc2ade",
+    "review/negative-controls/view_specific_pose_swap/views/back.png": "73f8ede71b9ac680467a5c72dc2236f6258d12cb089702a20635cd663d1c554d",
+    "review/negative-controls/view_specific_pose_swap/views/camera.json": "615354a4198a3e1b0237cd4538fe49dada13ef090e9a6f816321c62be691d222",
+    "review/negative-controls/view_specific_pose_swap/views/depth-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "review/negative-controls/view_specific_pose_swap/views/depth-valid.png": "3719b22853d6f76384607611d4fe97b2a64497af94d16b3e3e717fdf13f051c5",
+    "review/negative-controls/view_specific_pose_swap/views/depth.png": "ff3dabae92eaa5d6a4214a8cbaacdd05f636946b9b1157b0bd78f2f61d64ba57",
+    "review/negative-controls/view_specific_pose_swap/views/front-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "review/negative-controls/view_specific_pose_swap/views/front.png": "0305cde7653b7091833c237fd2144ce2ae14a79357a45ede1bdbb3823f1a8b65",
+    "review/negative-controls/view_specific_pose_swap/views/joints.json": "ba48685377a4f9266bc1a53047e85824ac4dbd70310dbb0d34b14c025eb75c95",
+    "review/negative-controls/view_specific_pose_swap/views/neutral.obj": "cc4598e12c9c162688ecded334e6d98a12381739bcc9cbbe8a994418b4f868fb",
+    "review/negative-controls/view_specific_pose_swap/views/pose-mask.png": "f856e958e644abf46ff32419bd28ec660a718a1b2da40e3bb21a031a54140ad7",
+    "review/negative-controls/view_specific_pose_swap/views/pose.png": "67475c2d7f812ceb9bfcbaab98e33f306454d27aa3115ebf52bc68e8d4f3bd2c",
+    "review/negative-controls/view_specific_pose_swap/views/posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+    "review/negative-controls/view_specific_pose_swap/views/side-mask.png": "3b7d7f6ed0a29af2af4c293ba3519a1cfdbe717c61f63fb5fda0dfb2b939578f",
+    "review/negative-controls/view_specific_pose_swap/views/side.png": "79372bfa7d9327038957c2253db913da0aa4306a2f1669b2caa785f2cb38eaff",
+    "review/negative-controls/view_specific_pose_swap/views/state.json": "cd034786ecf47884ffc25e751ea58f6dbc03d213cba898d3fbfb7a077a3a5403",
+    "review/negative-controls/view_specific_pose_swap/views/view-provenance.json": "951d91d410695343917b621e7f721a8b9ccebd4c934d5dd11b3e5ad3482207e3",
+    "review/negative_controls.py": "d203f6ee9a20db847d8ed93874e6010152e1c61521b4df765c9da54a8a45dd8b",
+    "review/pose-sanity-contract.json": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+    "review/provenance-contract.json": "a3bac2bf197af1fd2d0a796e1deea7c8abf724da0f20b1e44b3e1511e8c37764",
+    "review/publication-replay/grading.json": "23fdcb01d2ea3aec89fca44644e5374b549c94927407d7467e83c75df4cd3998",
+    "review/publication-replay/independently-projected-mask.png": "1dbef302abc442d07049468f0206b3444b698422de6c8c60f3de68b667eb42c1",
+    "review/publication-replay/region-mask-definition.png": "606fe01ee1f15897a7357000fd6697b16713c143acf5f05309141d0f374f58c3",
+    "review/publication-replay/regional-exterior-overlay.png": "70d6e6a8c5e49b6adb0f99d4d63bb98fd2ea4e6d09a4c66cc592e0fa025036de",
+    "review/region-masks/arm_left.png": "4b49029bb7531c50c345ddb2bc295b89138f374136ba6d2c1378f0bf0705831a",
+    "review/region-masks/arm_right.png": "a6c715af419d96b1e8598e45cb6f7fab28f463ce8c3fa0c3a6359077f4fc9fc8",
+    "review/region-masks/shoulder_left.png": "30be8cc0a24826b6735f4c9201fb4f3846d09f058f832020387b2d2c6a2bb7f9",
+    "review/region-masks/shoulder_right.png": "d799b2cc7855ba3254627146b80eecac381057f67ab58b826a1e8fd04a55bd3e",
+    "review/region-masks/torso.png": "1b34aa033f2a8ce7aa3858ff1e555cc0dd4de65076fa6647fc3e6ccd538871ec",
+    "review/region-masks/waist_hip_left.png": "a8cc1fa66cc6a87ff870b77ef4d1659dce8e4b37d53f0817432e745ac0ce0aba",
+    "review/region-masks/waist_hip_right.png": "acce87447d58ff601424cc8ba19d47301ff606b63f34a90998fa1ee4da851f8b",
+    "review/round-13/grading.json": "a309ebb68b74ffaa10685231da29a1b2de54256d8bf7f7a4acd672dcd9006861",
+    "review/round-13/hand-check/final-state.json": "a85194977f818cfcd1efe3ac3e380ebeed506f8aa93950b9d1449bcce326cd7d",
+    "review/round-13/hand-check/hand-surface-check.json": "0d80e6dbdce7f400dfdf0d3312971165c8301e91a038c1b6e069480c12bc77e3",
+    "review/round-13/independently-projected-mask.png": "0b02b6fa678d6f0c289861ab1c4c1af836ef5aee806761df83898f25334d1d7a",
+    "review/round-13/manual-review.json": "e66ad6d80a6e3b6c50113b9c53cdb24a8afb9e673b458d2a6786b343254619dd",
+    "review/round-13/region-mask-definition.png": "5f89e6973f126e5d151b0c9e16bec388eab5d66bcf92c54c8c4e5ae85043aac0",
+    "review/round-13/regional-exterior-overlay.png": "44a241fb9b788518d1e7680b3b0e7503312a3ef56e2e3a7d144846c84976c580",
+    "review/round-14/grading.json": "968ff26c4d2b927d755fa7a7f9a7090daa1d132ce7e2c45568bed81eb59de557",
+    "review/round-14/hand-check/final-state.json": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db",
+    "review/round-14/hand-check/hand-surface-check.json": "7e5ad70d163bde72a86af2c23253822a01bac346a27f1a693119f2ec6e51f344",
+    "review/round-14/independently-projected-mask.png": "1dbef302abc442d07049468f0206b3444b698422de6c8c60f3de68b667eb42c1",
+    "review/round-14/manual-review.json": "bcf1a9ad5f37d7192e00e0c30c177f603397927413908aebe8b0dca123844d01",
+    "review/round-14/region-mask-definition.png": "606fe01ee1f15897a7357000fd6697b16713c143acf5f05309141d0f374f58c3",
+    "review/round-14/regional-exterior-overlay.png": "70d6e6a8c5e49b6adb0f99d4d63bb98fd2ea4e6d09a4c66cc592e0fa025036de",
+    "review/round-2/grading.json": "8f7089c39f83f448acbc2004ef83ebef56c51b707f398ef8e9fca742837a5d23",
+    "review/round-2/independently-projected-mask.png": "4a66580e1379f115d8e5c5c42f47198a91fa0e977015905447665e57510b9db8",
+    "review/round-2/manual-review.json": "bfdea81601c84db585a6d681922eefb2de6c99de73ecd30f57aebed3660edadd",
+    "review/round-2/region-mask-definition.png": "7c05aee3c7de2a54ab48ae47aa88359aba27986bbb484fab85889136e93b5c78",
+    "review/round-2/regional-exterior-overlay.png": "e5c608467e37a9706f1a6decb69be820d6afc101f137253f67288e1df1e922fe",
+    "review/round-4/grading.json": "35b2c5352b0ba83b07907dee3716f3cf074724c38ee170dbd93b84c696a16c81",
+    "review/round-4/independently-projected-mask.png": "d0177faa8cec9f1df0568684afcc429868a71f9686a5702a6e4555227141f26b",
+    "review/round-4/region-mask-definition.png": "5f89e6973f126e5d151b0c9e16bec388eab5d66bcf92c54c8c4e5ae85043aac0",
+    "review/round-4/regional-exterior-overlay.png": "ce0b11aa41dbc7224f4b3d58004cbbea7ee978fd253f4c46b0d71de4fcf0f275",
+    "review/round-4/view-integrity.json": "38f40721e25703fd84dee34c0f98353fcd4154cb27f997afeba6b17d829467bb",
+    "review/round-7/grading.json": "96d3e668b584c08c25ed678363e8c6c7c32a2a0a7b8209c4cd30d590b20c9990",
+    "review/round-7/hand-check/final-state.json": "d9c7297d5b1626274f8588d0a19fef4ec08130c3305897435f3ba98e64799bdb",
+    "review/round-7/hand-check/hand-surface-check.json": "c10322686e4e00783dac26c4cfe880f2acd18f812e271465ff55ee1535694f99",
+    "review/round-7/independently-projected-mask.png": "6855e506faff1e4aefc3be8b6ae0bbf55f6ba8ed931cd38dc46cff5fd523ce82",
+    "review/round-7/manual-review.json": "3ff830df746019103185111ce33065f68d0b7ba35a5744cd3fc1f1f555ac1878",
+    "review/round-7/region-mask-definition.png": "6837986028ee7d4a61f39859a591426560c16ad82a83b9024a8af387a70f1d27",
+    "review/round-7/regional-exterior-overlay.png": "f08e82f4427cb9abfb2b44024c70f2522e6fce3b4ccdadfb86166620ce175253",
+    "review/round-8/grading.json": "9691ebb5ba3a478e7b329e3cb7d8b2c64f3ee72c1d2e5dfae5220d0ce2b1a357",
+    "review/round-8/independently-projected-mask.png": "127b461590ff61a1d69f9eb59afbdcb25011416607fdf107b1761379cb7c54fa",
+    "review/round-8/manual-review.json": "5e7e521232e05766baf6fc181c38d4e33f22b9078e7c1423549459b063aed4a8",
+    "review/round-8/region-mask-definition.png": "1d946a7e8d2014bcdc81e675452649104910029bd1bdb418824329893c3e654c",
+    "review/round-8/regional-exterior-overlay.png": "82df4dbbafd85e77888247f0e896114574417dfd6ece8e07dd482ba57a61e808",
+    "review/round-9/grading.json": "1ff704d619da2b612fbb31771df0a9e0cb51355d7476d27c7f9da70004c4511a",
+    "review/round-9/independently-projected-mask.png": "1333876c49fde630331226a2b3e0a02d99f9a89611e19e3f19b214ffe43cc99a",
+    "review/round-9/manual-review.json": "a17a3500955e23bf4cdc8a7635f8373daf957d14b6cf4e382b37dd0d86be3925",
+    "review/round-9/region-mask-definition.png": "6837986028ee7d4a61f39859a591426560c16ad82a83b9024a8af387a70f1d27",
+    "review/round-9/regional-exterior-overlay.png": "3479d012290e93f21628540181a99ea0032adfaceb559766bbacc1ccc846b658",
+    "review/user-feedback.json": "a4ebe74fa55b370cd56a0d211db9ce303c636ed4047f9cc5ca1b2a502bfaf2dd",
+    "review.css": "87909443da6587f5d6302b4ae8512ba2ab5534b93860f8a223203d83ec4ee202",
+    "review.js": "843058a5807a7d453eda4c66683213054a308d96aa78c8223d2eb16fdec7c271",
+    "targets/README.md": "90632174e9f863ada5f7d6d693c00e75580c15ea52a5a7c6da5031229d2d1e5f",
+    "targets/extract_pose_targets.py": "f1979f8279a58339c191fff6be3d50e433e624a96d0c458bc1021ffc640459f4",
+    "targets/native-marker-review.png": "2c12871184fd8fa63cad0fe270806ae852e0a48fc1c53084eccf455d8c6f4cc4",
+    "targets/pose-targets.json": "172f455d0ac239e77b43ea83756589ca9e161d0843913b5cc1dca7d87d8485c2",
+    "targets/raw-target-overlay.png": "0a286fd7b1918521889f28db7488c3b05eb10f05f22d03105f24b996de3772bc",
+    "targets/registration-feature-matches.jpg": "f12b0d14592d13680e43fdf84fc1ce5fc5fc9ce2e8db074bf87440c96a3bfbce",
+    "targets/registration.json": "1064395f264ee5443b61b58efc7cf17f74e448981aacde64eb69685763bbbcde",
+    "targets/transparent-targets.png": "ca743dbd652384b46841f0b2b06ddc072c34bddce0b2c7c9f8e5d87165398615"
+  }
+}

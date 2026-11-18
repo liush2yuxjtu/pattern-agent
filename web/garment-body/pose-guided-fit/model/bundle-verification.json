@@ -1,0 +1,29 @@
+{
+  "status": "PASS_BUNDLE_REPLAY",
+  "fit": "Previously independently replayed with byte-identical posed OBJ; solver/assets/state/OBJ unchanged in this packaging fix.",
+  "executed_from": "/tmp/pose-guided-final-replay",
+  "commands_executed": [
+    "check_hand_surface.py --candidate .../model",
+    "export_evidence.py --candidate .../model",
+    "grade_pose_guided_fit.py --candidate .../model --out .../review/replayed-final"
+  ],
+  "source_bytes_unchanged": {
+    "tools/human_fit/pose_guided/fit.py": true,
+    "tools/human_fit/pose_guided/runtime.py": true,
+    "tools/human_fit/pose_guided/calibrate-worker.mjs": true,
+    "web/human-studio/assets/human.json": true,
+    "web/human-studio/body-engine.js": true,
+    "work/pose-guided-fit-20261118/model/final-state.json": true,
+    "work/pose-guided-fit-20261118/model/posed.obj": true,
+    "work/pose-guided-fit-20261118/model/camera.json": true
+  },
+  "verdicts": {
+    "functional_integrity": "PASS",
+    "view_integrity": "PASS",
+    "action_alignment_2d": "FAIL",
+    "pose_plausibility_3d": "FAIL",
+    "overall_verdict": "FAIL"
+  },
+  "hash_bound_manual_review_loaded": "/tmp/pose-guided-final-replay/work/pose-guided-fit-20261118/review/final/manual-review.json",
+  "fix": "Included latest grader, imported check_pose_guided_views.py and hash-bound final/manual-review.json+grading.json. No solver/asset/pose/mesh edits."
+}

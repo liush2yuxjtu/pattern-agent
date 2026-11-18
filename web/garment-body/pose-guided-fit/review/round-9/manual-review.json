@@ -1,0 +1,38 @@
+{
+  "verdict": "FAIL",
+  "method": "Actual photo-render and canonical front/side/back inspected.",
+  "observations": [
+    {
+      "id": "standing_balance",
+      "verdict": "PASS",
+      "evidence": "Feet supported, torso near upright."
+    },
+    {
+      "id": "grasp_action_depth_consistency",
+      "verdict": "FAIL",
+      "evidence": "Side view one forearm projects far forward while opposite hand stays near abdomen; photo-render palms supinate instead of opposing garment grasp. Projected wrist accuracy hides substantial 3D action error.",
+      "wrist_positions_cm": {
+        "L": [
+          43.223689317413154,
+          120.00991591350538,
+          31.62202599301684
+        ],
+        "R": [
+          -0.8835692198316067,
+          113.05216730944467,
+          20.51126592967906
+        ]
+      }
+    },
+    {
+      "id": "true_source_depth",
+      "verdict": "UNKNOWN",
+      "evidence": "No true source 3D/side/back; the rejection is task plausibility/action mismatch, not a claim of measured true depth."
+    }
+  ],
+  "input_hashes": {
+    "final-state.json": "8cfcdccb03edefaad78da75c2b56b2fed063272bb5bb34c66c23f2ec032528c2",
+    "posed.obj": "9e7cb51103cc83db2c1b3e1f3a91c0a6f49c8bf9113501a28594025087b38b51",
+    "camera.json": "0fb50b648ea90f7ccbae8a1484773f74e88e39a90fb9354296d4fe3d1ec6c3ad"
+  }
+}

@@ -73,3 +73,14 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 独立 Three.js 源蒙皮、实际 OBJ、中性尺寸、3×4投影、深度射线和另一次浏览器消费复核；按视图偷换姿态、错位网格、虚假指标和更改参考的故障控制被拒绝。所有最终图片与原始文件绑定评分时的哈希。
 - 使用固定版本 Anthropic 官方评阅器生成 eval.html，再加四阶段图库、放大浏览、模型载入与原始执行包下载。已有 Image Gen 图片仅标记复用上下文，本轮未调用生成器。原生 Claude 触发仍 BLOCKED；通知未给出 token/统一耗时，保留 null。
 - 完整评阅：https://liush2yuxjtu.github.io/pattern-agent/garment-body/single-state-evals/eval.html 。每任务每配置只有一次执行，人工反馈尚待用户审阅。
+
+
+## 2026-11-18 用户视觉反馈后的原图姿态修正
+
+- 用户指出旧 eval.html 的不透明叠加和 20/20 功能分没有暴露明显躯干/腰臀偏移。旧成绩原样保留为历史；按新的区域标准，旧模型明确 FAIL，不能再解释为照片姿态匹配成功。
+- 使用前一轮实际 Image Gen 姿态图，经 OpenCV 全局相似配准将示意点映回未改动的原图：123 个内点，平均配准误差约 1.38 px。配准误差不等于关节精度；领口、腰带与隐藏肩肘的语义分别处理。
+- 实际调整同一个 MakeHuman 人体的相机、躯干/骨骼、前臂长度候选和手部姿态；保留失败轮次。所有正侧背由同一完整状态产生，不改各视图姿势。
+- 评分器独立重建 FK/LBS 并投影 OBJ：肩、双臂、躯干与腰臀各自有否决项；另有负例驱动追加的可见手腕/粗方向检查，不倒填为预先冻结的区域协议。反例检出移错身体、手臂反转、缩身、状态造假与按视图换姿势；实际侧背与手部表面检查继续揭露二维指标无法判定的错误。
+- 新评阅页在同画幅中显示原图、实际 Image Gen 引导、真实相机渲染和可调透明度前后叠加；区分黄色示意目标与真实 FK 骨架，直接显示三维动作失败，不以功能分平均。
+- 这是单一原图案例的拟合与评分器迭代，不是新旧技能随机配对 benchmark。仍不支持原真人厘米准确率、唯一三维深度或通用技能优势结论；原生 Claude 触发 BLOCKED，物理试衣 NOT_RUN。
+- 最新实际结论和原始产物： https://liush2yuxjtu.github.io/pattern-agent/garment-body/pose-guided-fit/eval.html 。完整运行及失败记录见仓库 docs/verification/pose-guided-fit-20261118/。

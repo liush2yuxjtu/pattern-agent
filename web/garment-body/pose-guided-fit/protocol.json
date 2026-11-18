@@ -1,0 +1,14 @@
+{
+  "purpose": "Repair visible pose and torso alignment using the user-selected Image Gen pose annotation plus the unchanged raw image; same body and full pose for every view.",
+  "reference_files": {
+    "reference/imagegen-pose.png": "cb69b41525e09b07020c4017e0260e654469e225f171d4d74ce05d9def8f1cb4",
+    "reference/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"
+  },
+  "baseline": "Previously published single-state eval real-photo with_skill result; preserve it, do not relabel historical 20/20 as visual fit success.",
+  "imagegen_semantics": "Illustrative point-line drawing digitized as a user-selected fitting cue, not detector truth or real measured anatomy.",
+  "evaluation": "Separate infrastructure execution, original-photo visual alignment, and 3D pose plausibility. Body-region failures must not be hidden by mean face/wrist errors.",
+  "uniform_state": "Every front/side/back/pose/depth projection uses the same final state and mesh; cameras only differ.",
+  "source_page": "https://www.asos.com/us/asos-design/asos-design-lounge-pointelle-boatneck-3-4-sleeve-top-in-red/prd/211010805",
+  "scale_basis": "User-authorized generic M avatar height 170 cm; conditional body parameters, not the photographed person measured.",
+  "generation": "Reuses the actual Image Gen pose output from the preceding turn, file SHA above. No new generation in this fitting iteration; not pose-detector inference."
+}

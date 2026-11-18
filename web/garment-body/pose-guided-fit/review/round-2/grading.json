@@ -1,0 +1,234 @@
+{
+  "protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+  "posed_obj_sha256": "146218724ab242bc19d281841e1fb75266f33e591398729f39a6cacbe46a54fb",
+  "state_sha256": "b874debfeecc3937fa824d18f5616976fd5eefb685acdd23261dcb79067f1dfc",
+  "camera_sha256": "bbb5c9ba154640106653dbda63a09741ce0b8db59e43e7fe160e6fa7b9c7a8f4",
+  "functional_integrity": {
+    "verdict": "PASS",
+    "independent_pose_cues": {
+      "shoulder_image_left": {
+        "target_xy": [
+          171.1686432866435,
+          412.5927465968696
+        ],
+        "projected_xy": [
+          165.57256951091512,
+          432.7627911965071
+        ],
+        "error_px": 20.931955017502847,
+        "confidence": 0.45,
+        "visibility": "joint hidden by garment",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "elbow_image_left": {
+        "target_xy": [
+          114.95680847827688,
+          702.1241678252306
+        ],
+        "projected_xy": [
+          120.56698604225618,
+          714.2864266274244
+        ],
+        "error_px": 13.393828111145641,
+        "confidence": 0.5,
+        "visibility": "joint hidden by garment",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "wrist_image_left": {
+        "target_xy": [
+          168.45265191065027,
+          790.3180058532392
+        ],
+        "projected_xy": [
+          167.03866724104063,
+          790.236309771137
+        ],
+        "error_px": 1.4163427889186833,
+        "confidence": 0.8,
+        "visibility": "visible surface",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "shoulder_image_right": {
+        "target_xy": [
+          582.8751794799581,
+          370.70652814667596
+        ],
+        "projected_xy": [
+          597.7036336981669,
+          407.0455750618121
+        ],
+        "error_px": 39.24804944455173,
+        "confidence": 0.45,
+        "visibility": "joint hidden by garment",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "elbow_image_right": {
+        "target_xy": [
+          675.1573073205569,
+          712.162209927069
+        ],
+        "projected_xy": [
+          680.361530853276,
+          707.1073891646149
+        ],
+        "error_px": 7.255008995104239,
+        "confidence": 0.5,
+        "visibility": "joint hidden by garment",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      },
+      "wrist_image_right": {
+        "target_xy": [
+          440.72604238951203,
+          807.5238104503824
+        ],
+        "projected_xy": [
+          438.5611179920411,
+          808.1858285504929
+        ],
+        "error_px": 2.263882861730908,
+        "confidence": 0.8,
+        "visibility": "visible surface",
+        "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"
+      }
+    },
+    "limb_directions": {
+      "image_left_shoulder_elbow": {
+        "angle_error_degrees": 1.9044557375333095,
+        "interpretation": "2D direction only; depth unobserved"
+      },
+      "image_left_elbow_wrist": {
+        "angle_error_degrees": 0.22154278716707848,
+        "interpretation": "2D direction only; depth unobserved"
+      },
+      "image_right_shoulder_elbow": {
+        "angle_error_degrees": 0.2777524974438981,
+        "interpretation": "2D direction only; depth unobserved"
+      },
+      "image_right_elbow_wrist": {
+        "angle_error_degrees": 0.5506756744414494,
+        "interpretation": "2D direction only; depth unobserved"
+      }
+    },
+    "independent_source_state_mesh_max_error_cm": 5.017680379452855e-09,
+    "vertices": 13380,
+    "reason": "Fresh source dimension calibration + 163-bone FK/LBS compared vertexwise; no saved metrics trusted."
+  },
+  "visual_alignment_2d": {
+    "verdict": "FAIL",
+    "regions": {
+      "shoulder_left": {
+        "body_pixels": 46506,
+        "outside_fraction": 0.16709671870296305,
+        "exterior_contour_p95_px": 35.150394439697266,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      },
+      "shoulder_right": {
+        "body_pixels": 43590,
+        "outside_fraction": 0.0571920165175499,
+        "exterior_contour_p95_px": 21.486589431762695,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "arm_left": {
+        "body_pixels": 44214,
+        "outside_fraction": 0.14952277559144161,
+        "exterior_contour_p95_px": 32.5906982421875,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      },
+      "arm_right": {
+        "body_pixels": 37121,
+        "outside_fraction": 0.07354327739015651,
+        "exterior_contour_p95_px": 14.0,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "torso": {
+        "body_pixels": 156868,
+        "outside_fraction": 0.02491266542570824,
+        "exterior_contour_p95_px": 18.511707305908203,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "waist_hip_left": {
+        "body_pixels": 91358,
+        "outside_fraction": 0.0,
+        "exterior_contour_p95_px": 0.0,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "waist_hip_right": {
+        "body_pixels": 78116,
+        "outside_fraction": 0.1503789236520047,
+        "exterior_contour_p95_px": 47.13566589355469,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      }
+    },
+    "waist_hip_scanlines": [
+      {
+        "y": 950,
+        "center_error_px": 28.5,
+        "width_ratio": 1.0225,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1000,
+        "center_error_px": 34.0,
+        "width_ratio": 1.0144578313253012,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1100,
+        "center_error_px": 39.0,
+        "width_ratio": 1.0451467268623025,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1200,
+        "center_error_px": 18.0,
+        "width_ratio": 0.9877049180327869,
+        "verdict": "PASS"
+      }
+    ],
+    "worst_region": "waist_hip_right"
+  },
+  "pose_plausibility_3d": {
+    "verdict": "FAIL",
+    "method": "Independent direct inspection of actual saved front/side/back renders at fixed canonical cameras; not source-photo recovered depth.",
+    "observations": [
+      {
+        "id": "left_hand_torso_penetration",
+        "verdict": "FAIL",
+        "evidence": "views/front.png shows image-right distal forearm ending in waist/abdomen with hand not visible in front; views/side.png reinforces the hand/body overlap. Exact triangle penetration NOT_RUN; visible geometry is unacceptable and requires correction."
+      },
+      {
+        "id": "standing_balance",
+        "verdict": "FAIL",
+        "evidence": "views/side.png shows global feet-to-head forward lean and markedly sloped feet; root X=-16.3 degrees is being used to solve torso projection. Original crop has no legs and cannot justify this full-body stance."
+      },
+      {
+        "id": "connected_limbs",
+        "verdict": "PASS",
+        "evidence": "Both arms/legs remain attached; no detached limb observed."
+      },
+      {
+        "id": "true_depth",
+        "verdict": "UNKNOWN",
+        "evidence": "One product photograph cannot determine true hidden pose/depth."
+      }
+    ],
+    "limits": "Visual review is not collision simulation. No claim of perfect grip contact, measured true anatomy or unique recovered 3D pose."
+  },
+  "claims": "Projection evidence only; photo cannot determine true 3D pose or true cm girths."
+}

@@ -1,0 +1,19 @@
+{
+  "version": "pose-sanity-supplement-v2",
+  "reason": "Negative arm control revealed containment-only blind spot; regional-v1 unchanged. Do not present this supplement as frozen before the negative control.",
+  "visible_wrist_max_error_px": 35,
+  "gross_limb_direction_reversal_degrees": 75,
+  "interpretation": "Visible wrists are surface cues with uncertainty; 35px is permissive. Hidden shoulder/elbow points not subject to hard position thresholds. Limb angle only vetoes gross reversal, not exact anatomical match.",
+  "targets_path": "work/pose-guided-fit-20261118/targets/pose-targets.json",
+  "visible_original_wrist_targets": {
+    "wrist_image_left": [
+      184,
+      786
+    ],
+    "wrist_image_right": [
+      455,
+      813
+    ]
+  },
+  "visible_original_wrist_provenance": "Original raw-photo manual cuff/hand boundary points from unchanged real-photo/manual-landmarks.json; uncertain surface centers, +/-15px. Confirmed by direct original-photo review. Never use hidden shoulders/elbows as hard positional truth."
+}

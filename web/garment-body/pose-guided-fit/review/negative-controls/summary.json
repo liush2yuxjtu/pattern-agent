@@ -1,0 +1,112 @@
+{
+  "source": "work/pose-guided-fit-20261118/iterations/round-14",
+  "controls": [
+    {
+      "name": "metadata_only_forged_pose",
+      "fault": "metadata",
+      "functional_integrity": "FAIL",
+      "visual_alignment_2d": "FAIL",
+      "action_alignment_2d": {
+        "verdict": "FAIL",
+        "failures": [
+          "wrist_image_left original visible wrist too far",
+          "wrist_image_right original visible wrist too far",
+          "image_left_elbow_wrist gross direction reversal"
+        ],
+        "protocol": "pose-sanity-supplement-v2",
+        "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+        "original_visible_wrist_errors_px": {
+          "wrist_image_left": 193.00444122886532,
+          "wrist_image_right": 39.47906710922058
+        },
+        "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."
+      },
+      "left_arm_regional_verdict": "FAIL",
+      "rejected": true,
+      "max_state_mesh_error_cm": 26.099402706635377
+    },
+    {
+      "name": "real_changed_right_arm",
+      "fault": "arm",
+      "functional_integrity": "PASS",
+      "visual_alignment_2d": "FAIL",
+      "action_alignment_2d": {
+        "verdict": "FAIL",
+        "failures": [
+          "wrist_image_left original visible wrist too far",
+          "wrist_image_right original visible wrist too far",
+          "image_left_elbow_wrist gross direction reversal"
+        ],
+        "protocol": "pose-sanity-supplement-v2",
+        "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+        "original_visible_wrist_errors_px": {
+          "wrist_image_left": 193.00444122886532,
+          "wrist_image_right": 39.47906710922058
+        },
+        "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."
+      },
+      "left_arm_regional_verdict": "FAIL",
+      "rejected": true,
+      "max_state_mesh_error_cm": 8.451209992836513e-10
+    },
+    {
+      "name": "real_changed_pelvis_spine",
+      "fault": "hip",
+      "functional_integrity": "PASS",
+      "visual_alignment_2d": "FAIL",
+      "action_alignment_2d": {
+        "verdict": "FAIL",
+        "failures": [
+          "wrist_image_left original visible wrist too far",
+          "wrist_image_right original visible wrist too far",
+          "image_left_elbow_wrist gross direction reversal"
+        ],
+        "protocol": "pose-sanity-supplement-v2",
+        "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+        "original_visible_wrist_errors_px": {
+          "wrist_image_left": 162.2278942953789,
+          "wrist_image_right": 174.1318582386746
+        },
+        "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."
+      },
+      "left_arm_regional_verdict": "FAIL",
+      "rejected": true,
+      "max_state_mesh_error_cm": 8.462516100423657e-10
+    },
+    {
+      "name": "tiny_body_containment_cheat",
+      "fault": "shrink",
+      "functional_integrity": "FAIL",
+      "visual_alignment_2d": "FAIL",
+      "action_alignment_2d": {
+        "verdict": "FAIL",
+        "failures": [
+          "wrist_image_right original visible wrist too far"
+        ],
+        "protocol": "pose-sanity-supplement-v2",
+        "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+        "original_visible_wrist_errors_px": {
+          "wrist_image_left": 25.37916959474208,
+          "wrist_image_right": 39.47906710922058
+        },
+        "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."
+      },
+      "left_arm_regional_verdict": "FAIL",
+      "rejected": true,
+      "max_state_mesh_error_cm": 27.590260010494184
+    },
+    {
+      "name": "view_specific_pose_swap",
+      "fault": "swap",
+      "view_integrity": "FAIL",
+      "rejected": true
+    },
+    {
+      "name": "view_provenance_mesh_fraud",
+      "fault": "metadata",
+      "view_integrity": "FAIL",
+      "rejected": true
+    }
+  ],
+  "all_rejected": true
+}

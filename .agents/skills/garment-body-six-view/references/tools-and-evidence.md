@@ -76,3 +76,16 @@ IoU = 交集面积 / 并集面积；Dice = 2 × 交集面积 / 两掩膜面积�
 查看器缓存检查同时覆盖同版本越界值、非法类型与非步长倍数；统一规范化状态用于控件、标签、
 几何和导出。默认顶点应与最终导出一致，旧版本缓存不能覆盖新拟合默认值。生成请求使用
 当前参数和原图引用；新的网格/姿态版本需重新计算叠加，不能沿用旧分数。
+
+## Pattern Agent 原图姿态案例复算
+
+仓库另提供 [实际拟合源码](https://github.com/liush2yuxjtu/pattern-agent/tree/main/tools/human_fit/pose_guided)
+与 [同画幅评阅](https://liush2yuxjtu.github.io/pattern-agent/garment-body/pose-guided-fit/eval.html)。
+这是原商品图与既有标注的案例入口，包含真实厘米校准、163 骨骼 FK/LBS、姿态/相机求解、
+真实手部表面重叠检查及导出；输入与依赖按该目录 README 准备。新商品需要重新建立标注、
+语义映射与冻结协议，不能套用该案例的坐标或成绩。
+
+独立核验入口为 `tools/skill_evals/grade_pose_guided_fit.py` 和
+`check_pose_guided_views.py`：从 OBJ 与相机重投影，分区域揭示偏差，并重新渲染正侧背检查
+同一状态。实际三维渲染应同时展示，避免仅用包含性轮廓掩盖错误手势。
+这些源码和完整人体资源属于 Pattern Agent 仓库；安装 `.skill` 不会自动安装整个运行时。

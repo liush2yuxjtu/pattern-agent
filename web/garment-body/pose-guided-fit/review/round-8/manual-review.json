@@ -1,0 +1,37 @@
+{
+  "verdict": "FAIL",
+  "method": "Direct observation of photo-render plus canonical front/side/back; hashes bind to this candidate.",
+  "observations": [
+    {
+      "id": "standing_balance",
+      "verdict": "PASS",
+      "evidence": "Side feet supported, torso near upright."
+    },
+    {
+      "id": "connected_limbs",
+      "verdict": "PASS",
+      "evidence": "Front/back show connected shoulders, elbows, limbs."
+    },
+    {
+      "id": "gross_hand_body_overlap",
+      "verdict": "PASS",
+      "evidence": "Both hands visible ahead of abdomen in photo-render; exact triangle collision NOT_RUN."
+    },
+    {
+      "id": "shirt_grasp_action",
+      "verdict": "FAIL",
+      "evidence": "Image-left palm remains partly supinated/open and fingers curled upward from a low base; image-right fingers point downward. Source shows opposing horizontal half-fists at garment fold, not two cupped palms. Grasp/contact not established."
+    },
+    {
+      "id": "true_3d_depth",
+      "verdict": "UNKNOWN",
+      "evidence": "No source side/back/depth observation."
+    }
+  ],
+  "limits": "Standing and connected geometry are plausible; action fidelity still fails. Do not convert illustrative cues or cm prior to actual photographed anatomy.",
+  "input_hashes": {
+    "final-state.json": "4b9f0b7b8a7c2d11ea7a12803feb112bf6334c3637bd444dd79371c37e921933",
+    "posed.obj": "ea5916acbf8720a9c196f9edbcf5cf4319cc79b32d5979ebaa364b2b9cfcd23f",
+    "camera.json": "12d80db563b1d0d52f2d225a358f2d8236aa8180fb32426e94f60de01b5e9adb"
+  }
+}

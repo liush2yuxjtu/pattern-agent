@@ -1,0 +1,30 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "same_pose_dimensions": true,
+    "main_mesh_vs_view_state_error_cm": 5.02170508121281e-09,
+    "front": {
+      "verdict": "PASS",
+      "hashes_match": true,
+      "joint_reprojection_max_px": 0.0,
+      "independent_mask_iou": 1.0,
+      "replay_png_mean_abs_channel_error": 0.0
+    },
+    "side": {
+      "verdict": "PASS",
+      "hashes_match": true,
+      "joint_reprojection_max_px": 0.0,
+      "independent_mask_iou": 1.0,
+      "replay_png_mean_abs_channel_error": 0.0
+    },
+    "back": {
+      "verdict": "PASS",
+      "hashes_match": true,
+      "joint_reprojection_max_px": 0.0,
+      "independent_mask_iou": 1.0,
+      "replay_png_mean_abs_channel_error": 0.0
+    }
+  },
+  "failures": [],
+  "method": "One fresh FK/LBS state: independent silhouette raster, joint reprojection, hash contract and deterministic saved RGB renderer replay per front/side/back; excludes only differing cameras."
+}

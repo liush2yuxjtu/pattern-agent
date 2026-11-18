@@ -1,0 +1,76 @@
+{
+  "version": "frozen-regional-v1",
+  "frozen_before_candidate_review": true,
+  "image_size": [
+    1000,
+    1276
+  ],
+  "reference_mask": "work/single-state-skill-evals-20261117/fixtures/real-photo/reference-mask.png",
+  "interpretation": "Clothing contains body with ease; no symmetric IoU threshold. Exposed body well outside garment cannot be explained by ease. Hair excluded by regional crops. ImageGen is weak illustrative cue, not ground truth.",
+  "regions": {
+    "shoulder_left": [
+      80,
+      330,
+      310,
+      570
+    ],
+    "shoulder_right": [
+      500,
+      330,
+      740,
+      570
+    ],
+    "arm_left": [
+      30,
+      530,
+      240,
+      820
+    ],
+    "arm_right": [
+      550,
+      530,
+      800,
+      860
+    ],
+    "torso": [
+      190,
+      520,
+      610,
+      925
+    ],
+    "waist_hip_left": [
+      40,
+      900,
+      355,
+      1276
+    ],
+    "waist_hip_right": [
+      355,
+      900,
+      800,
+      1276
+    ]
+  },
+  "thresholds": {
+    "maximum_outside_fraction": 0.08,
+    "maximum_exterior_contour_p95_px": 25,
+    "minimum_region_body_pixels": 1000,
+    "waist_hip_scanline_center_error_px": 45,
+    "waist_hip_scanline_width_ratio_min": 0.55,
+    "waist_hip_scanline_width_ratio_max": 1.15
+  },
+  "scanlines": [
+    950,
+    1000,
+    1100,
+    1200
+  ],
+  "veto": "Any critical region failure vetoes 2D visual PASS; functional integrity and 3D plausibility are separate, never averaged.",
+  "pose_cues": {
+    "shoulder_elbow_wrist": "Report individual left/right errors and limb direction angles; illustrative marker errors cannot independently prove anatomical match. Hidden joints NOT_OBSERVED.",
+    "waist_marker": "waistband surface cue, NOT a femoral hip joint",
+    "centerline": "waist/hip silhouette center scanlines tested independently of face and wrists"
+  },
+  "anti_cheat": "OBJ is independently projected from camera matrix, ignoring submitted metrics and final-mask. Minimum projected width prevents shrinking to satisfy containment; state/mesh consistency needs separate runtime verification.",
+  "three_d_plausibility": "Requires independent side/back visual review and genuine runtime/state/OBJ agreement; not inferable from 2D silhouette."
+}

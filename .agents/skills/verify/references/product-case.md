@@ -52,3 +52,33 @@ If the local network blocks Pages, use the public-only pinned-verifier fallback
 in [github-pages.md](github-pages.md). Record local and live receipts separately;
 close owned servers/browsers/sessions. Native Claude routing remains BLOCKED
 when its runtime is unavailable; physical cloth fit remains NOT_RUN.
+
+## Pose-guided original-photo review
+
+The newer case uses `tools/human_fit/pose_guided/` and
+`web/garment-body/pose-guided-fit/`; preserve the original product case as history.
+The downloadable reproduction ZIP contains the actual asset, cm/FK solver,
+reference/targets, frozen protocols and final artifacts. Extract to a disposable
+folder for its README replay. Do not regenerate the illustrative Image Gen cue
+or treat its shoulder/waistband points as internal anatomical truth.
+
+```sh
+python tools/skill_evals/grade_pose_guided_fit.py --artifact-root web/garment-body/pose-guided-fit --candidate web/garment-body/pose-guided-fit/model --out work/pose-guided-independent-replay
+python tools/skill_evals/build_pose_guided_review.py
+python tools/skill_evals/build_single_state_review.py
+python scripts/build_pages.py
+node tools/skill_evals/verify_pose_guided_review.cjs --url http://127.0.0.1:PORT/garment-body/pose-guided-fit/eval.html --out work/pose-guided-focused-browser
+node tools/skill_evals/verify_pose_guided_review.cjs --url http://127.0.0.1:PORT/garment-body/single-state-evals/eval.html --out work/pose-guided-existing-browser
+node scripts/verify_human_studio_handoff.cjs --url http://127.0.0.1:PORT/human-studio/ --model-url ../garment-body/pose-guided-fit/model/final-state.json --output work/pose-guided-handoff
+```
+
+The builder must reject pending/stale grades and changed references, clear stale
+managed candidate files, and preserve old embedded run data/feedback keys.
+Inspect desktop/mobile and enlarged-overlay screenshots. Drive before/after,
+alpha, true FK vs illustrative cue layers, gallery keyboard/mouse, real downloads,
+and the editable Human Studio handoff. Check changed cm/angles, import and reload.
+Source and unit checks are separate from photo/action acceptance: a correctly
+exported model can still FAIL the requested pose. Critical regional failures,
+visible-wrist/coarse-direction contradictions and 3D grasp failure cannot be
+averaged into a functional pass score. Keep negative controls and rejected real
+renders. See `docs/verification/pose-guided-fit-20261118/` for observed boundaries.

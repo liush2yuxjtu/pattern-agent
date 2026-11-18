@@ -1,0 +1,184 @@
+{
+  "candidate": "round-14",
+  "alternate": "round-7",
+  "rejected_action_candidate": "round-13",
+  "overall_verdict": "FAIL",
+  "frozen_protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3",
+  "pose_sanity_protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad",
+  "baseline_visual": "FAIL",
+  "candidate_regional_gate": "FAIL",
+  "candidate_action_sanity": "FAIL",
+  "candidate_visual": "FAIL",
+  "candidate_functional": "PASS",
+  "candidate_view_integrity": "PASS",
+  "candidate_pose_action": "FAIL",
+  "regions": {
+    "shoulder_left": {
+      "baseline": {
+        "body_pixels": 34382,
+        "outside_fraction": 0.006544121924262696,
+        "exterior_contour_p95_px": 6.0,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "candidate": {
+        "body_pixels": 41256,
+        "outside_fraction": 0.08216986620127982,
+        "exterior_contour_p95_px": 17.393798828125,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing"
+        ]
+      },
+      "outside_fraction_delta": 0.07562574427701713,
+      "exterior_p95_delta_px": 11.393798828125
+    },
+    "shoulder_right": {
+      "baseline": {
+        "body_pixels": 44350,
+        "outside_fraction": 0.06574971815107103,
+        "exterior_contour_p95_px": 17.9844970703125,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "candidate": {
+        "body_pixels": 37781,
+        "outside_fraction": 0.02495963579577036,
+        "exterior_contour_p95_px": 11.984498977661133,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "outside_fraction_delta": -0.04079008235530067,
+      "exterior_p95_delta_px": -5.999998092651367
+    },
+    "arm_left": {
+      "baseline": {
+        "body_pixels": 38733,
+        "outside_fraction": 0.16828027779929258,
+        "exterior_contour_p95_px": 32.05232238769531,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      },
+      "candidate": {
+        "body_pixels": 42364,
+        "outside_fraction": 0.1287649891417241,
+        "exterior_contour_p95_px": 33.06573486328125,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      },
+      "outside_fraction_delta": -0.03951528865756848,
+      "exterior_p95_delta_px": 1.0134124755859375
+    },
+    "arm_right": {
+      "baseline": {
+        "body_pixels": 48188,
+        "outside_fraction": 0.1720760355275172,
+        "exterior_contour_p95_px": 29.772869110107422,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      },
+      "candidate": {
+        "body_pixels": 39129,
+        "outside_fraction": 0.1190165861637149,
+        "exterior_contour_p95_px": 14.986048698425293,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing"
+        ]
+      },
+      "outside_fraction_delta": -0.053059449363802316,
+      "exterior_p95_delta_px": -14.786820411682129
+    },
+    "torso": {
+      "baseline": {
+        "body_pixels": 155000,
+        "outside_fraction": 0.058303225806451614,
+        "exterior_contour_p95_px": 16.342004776000977,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "candidate": {
+        "body_pixels": 156901,
+        "outside_fraction": 0.028495675617108876,
+        "exterior_contour_p95_px": 18.938920974731445,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "outside_fraction_delta": -0.029807550189342738,
+      "exterior_p95_delta_px": 2.5969161987304688
+    },
+    "waist_hip_left": {
+      "baseline": {
+        "body_pixels": 18203,
+        "outside_fraction": 0.0,
+        "exterior_contour_p95_px": 0.0,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "candidate": {
+        "body_pixels": 92825,
+        "outside_fraction": 0.005763533530837597,
+        "exterior_contour_p95_px": 10.75,
+        "verdict": "PASS",
+        "failures": []
+      },
+      "outside_fraction_delta": 0.005763533530837597,
+      "exterior_p95_delta_px": 10.75
+    },
+    "waist_hip_right": {
+      "baseline": {
+        "body_pixels": 139331,
+        "outside_fraction": 0.5236594871205977,
+        "exterior_contour_p95_px": 213.55699157714844,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      },
+      "candidate": {
+        "body_pixels": 73266,
+        "outside_fraction": 0.10838588158218,
+        "exterior_contour_p95_px": 35.5596923828125,
+        "verdict": "FAIL",
+        "failures": [
+          "body outside clothing",
+          "exterior contour distance"
+        ]
+      },
+      "outside_fraction_delta": -0.41527360553841774,
+      "exterior_p95_delta_px": -177.99729919433594
+    }
+  },
+  "selection_reason": "Round7-based targeted bone-length/IK correction removes covered hand-torso ray penetration while retaining forward forearm action.14 does not reward13 reversed forearm. Cup palms and regional failures remain.",
+  "hand_check_summary": {
+    "L": {
+      "hand_vertices": 1424,
+      "rays_with_two_torso_surfaces": 1402,
+      "inside_torso_count": 0,
+      "maximum_inside_depth_cm": 0.0,
+      "minimum_front_clearance_cm": 3.1823126549660774,
+      "front_clearance_p05_cm": 5.094448563104421
+    },
+    "R": {
+      "hand_vertices": 1424,
+      "rays_with_two_torso_surfaces": 1424,
+      "inside_torso_count": 0,
+      "maximum_inside_depth_cm": 0.0,
+      "minimum_front_clearance_cm": 1.4382715436010507,
+      "front_clearance_p05_cm": 2.565744886507927
+    }
+  },
+  "baseline_max_waist_hip_center_error_px": 223.5,
+  "candidate_max_waist_hip_center_error_px": 35.0,
+  "limitation": "Improved silhouette and repaired covered hand overlap are not perfect original-photo pose, whole-body collision/contact proof or true-person dimensions."
+}

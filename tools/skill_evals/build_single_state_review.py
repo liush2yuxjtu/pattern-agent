@@ -193,6 +193,11 @@ def build(workspace, site, allow_pending=False):
     extra='<section id="model-handoffs" style="margin:20px 0;padding:16px;background:#e5ede5;border-radius:10px"><h3>当前执行的实际模型与文件</h3>'+''.join(panels)+'</section>'
     script="""<script>(()=>{const handoff=document.createElement('div');handoff.innerHTML=HANDOFF;document.getElementById('quick-review').append(handoff);function sync(){const id=EMBEDDED_DATA.runs[currentIndex].id;document.querySelectorAll('[data-model-id]').forEach(p=>p.hidden=p.dataset.modelId!==id);}const previous=showRun;showRun=function(i){previous(i);sync();};let remembered=null;try{remembered=localStorage.getItem(STATIC_REVIEW_KEY+':visual-case');}catch{}if(remembered===null){const first=EMBEDDED_DATA.runs.findIndex(r=>VISUAL_EVIDENCE[r.id].title.includes('原始商品图')&&VISUAL_EVIDENCE[r.id].title.includes('修订技能'));if(first>=0)showRun(first);}sync();})();</script>""".replace('HANDOFF',json.dumps(extra,ensure_ascii=False).replace('<',r'\u003c'))
     document=document.replace('</body>',script+'\n</body>',1)
+    # Keep the immutable six-run review below the current failure-sensitive fit.
+    # The optional public manifest is produced only from actual new artifacts.
+    if (site.parent/'pose-guided-fit/manifest.json').exists():
+        from build_pose_guided_review import inject_history
+        document=inject_history(document)
     (site/'eval.html').write_text(document)
     copied.add('eval.html')
     write(site/'gallery.json',gallery);copied.add('gallery.json')

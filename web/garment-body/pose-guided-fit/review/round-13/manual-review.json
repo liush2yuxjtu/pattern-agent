@@ -1,0 +1,60 @@
+{
+  "verdict": "FAIL",
+  "method": "Direct independent inspection of actual photo/front/side/back PNG; fresh source FK/LBS, matrix projection, deterministic PNG replay and torso triangle ray check performed separately.",
+  "observations": [
+    {
+      "id": "standing_balance_and_connected_limbs",
+      "verdict": "PASS",
+      "evidence": "Side feet support body without round2 global lean; front/back limbs remain attached."
+    },
+    {
+      "id": "right_hand_torso_ray_penetration",
+      "verdict": "PASS",
+      "evidence": "All1424 right-hand vertices ray-classified; no inside torso interval, min anterior clearance5.77cm. Round7 had83 inside, max0.676cm. This verifies overlap repair only."
+    },
+    {
+      "id": "left_hand_torso_ray_penetration",
+      "verdict": "UNKNOWN",
+      "evidence": "No left-hand ray intersects two torso surfaces. Zero detected inside is coverage0, not collision-free proof."
+    },
+    {
+      "id": "shirt_grasp_action",
+      "verdict": "FAIL",
+      "evidence": "Both palms remain cupped/upward and arms reach forward; original has opposing horizontal half-fists grasping hem. No cloth/contact simulation."
+    },
+    {
+      "id": "left_image_forearm_direction",
+      "verdict": "FAIL",
+      "evidence": "Projected elbow170.82,808.83 is below wrist175.37,791.98, while source sleeve elbow is well above wrist. Illustrative cue direction discrepancy133.65degrees; gross pose contradiction remains despite good wrist endpoints."
+    },
+    {
+      "id": "true_hidden_depth",
+      "verdict": "UNKNOWN",
+      "evidence": "Source has no actual side/back/depth measurements; no true-person body girths proven."
+    }
+  ],
+  "hand_check_summary": {
+    "L": {
+      "hand_vertices": 1424,
+      "rays_with_two_torso_surfaces": 0,
+      "inside_torso_count": 0,
+      "maximum_inside_depth_cm": 0.0,
+      "minimum_front_clearance_cm": null,
+      "front_clearance_p05_cm": null
+    },
+    "R": {
+      "hand_vertices": 1424,
+      "rays_with_two_torso_surfaces": 1424,
+      "inside_torso_count": 0,
+      "maximum_inside_depth_cm": 0.0,
+      "minimum_front_clearance_cm": 5.767051858612511,
+      "front_clearance_p05_cm": 10.227409678372124
+    }
+  },
+  "input_hashes": {
+    "final-state.json": "a85194977f818cfcd1efe3ac3e380ebeed506f8aa93950b9d1449bcce326cd7d",
+    "posed.obj": "4fc0a93520f5989bc59d7f24b0c5a99fdb5afeea74d36d0bdba214901eaa9993",
+    "camera.json": "aad79264c0e19d12a31c86e87ca82bbbdd906ee95a9b84be51075371c5fe8bee"
+  },
+  "recommendation": "REJECT as original-pose match: projected forearm reverses133degrees and elbow-wrist separation collapses. Repairing penetration does not compensate wrong action. Retain as negative iteration, not preferred candidate."
+}

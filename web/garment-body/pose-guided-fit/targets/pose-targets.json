@@ -1,0 +1,609 @@
+{
+  "schema": "illustrative-pose-targets-v1",
+  "provenance": "OpenCV digitization of human-seeded colored markers in ImageGen illustration. NOT pose-detector truth. NOT measured anatomy.",
+  "coordinate_system": "raw original 1000x1276 top-left pixels; ids image_left/image_right refer viewer image sides",
+  "registration": "registration.json",
+  "raw_source": "../reference/original-product.jpg",
+  "imagegen_source": "../reference/imagegen-pose.png",
+  "points": [
+    {
+      "id": "eye_image_left",
+      "native_xy": [
+        289.7647058823529,
+        177.47058823529412
+      ],
+      "raw_xy": [
+        260.6405389996062,
+        159.31289395181562
+      ],
+      "semantic": "right eye center",
+      "confidence": 0.85,
+      "visibility": "visible surface",
+      "weight": 0.85,
+      "uncertainty_px": 4,
+      "digitization": {
+        "human_seed_xy": [
+          290,
+          178
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 4.996899604797363
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "eye_image_right",
+      "native_xy": [
+        386.8181818181818,
+        183.1818181818182
+      ],
+      "raw_xy": [
+        348.1659375380635,
+        164.55253444506636
+      ],
+      "semantic": "left eye center",
+      "confidence": 0.85,
+      "visibility": "visible surface",
+      "weight": 0.85,
+      "uncertainty_px": 4,
+      "digitization": {
+        "human_seed_xy": [
+          387,
+          183
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 5.393799781799316
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "ear_image_left",
+      "native_xy": [
+        250.61111111111111,
+        190.22222222222223
+      ],
+      "raw_xy": [
+        225.31701438821645,
+        170.7775205089905
+      ],
+      "semantic": "right ear proxy",
+      "confidence": 0.35,
+      "visibility": "occluded/inferred",
+      "weight": 0.35,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          251,
+          191
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 6.396899700164795
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "ear_image_right",
+      "native_xy": [
+        470.57894736842104,
+        204.05263157894737
+      ],
+      "raw_xy": [
+        423.6890321308415,
+        183.45214398659982
+      ],
+      "semantic": "left ear proxy",
+      "confidence": 0.35,
+      "visibility": "occluded/inferred",
+      "weight": 0.35,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          470,
+          204
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 6.590699672698975
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "nose",
+      "native_xy": [
+        326.77777777777777,
+        242.5
+      ],
+      "raw_xy": [
+        293.9624060702527,
+        217.9955065188086
+      ],
+      "semantic": "nose tip",
+      "confidence": 0.85,
+      "visibility": "visible surface",
+      "weight": 0.85,
+      "uncertainty_px": 4,
+      "digitization": {
+        "human_seed_xy": [
+          327,
+          243
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 5.793799877166748
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "neckline_center",
+      "native_xy": [
+        410.22727272727275,
+        440.6136363636364
+      ],
+      "raw_xy": [
+        369.04261208600093,
+        396.74665214486845
+      ],
+      "semantic": "upper chest/neckline surface proxy; NOT cervical joint",
+      "confidence": 0.65,
+      "visibility": "visible garment surface",
+      "weight": 0.65,
+      "uncertainty_px": 9,
+      "digitization": {
+        "human_seed_xy": [
+          410,
+          441
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.993799209594727
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "shoulder_image_left",
+      "native_xy": [
+        190.84375,
+        458.40625
+      ],
+      "raw_xy": [
+        171.1686432866435,
+        412.5927465968696
+      ],
+      "semantic": "right shoulder joint approximate; garment surface marker",
+      "confidence": 0.45,
+      "visibility": "joint hidden by garment",
+      "weight": 0.45,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          191,
+          458
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.590700149536133
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "shoulder_image_right",
+      "native_xy": [
+        647.2941176470588,
+        411.5
+      ],
+      "raw_xy": [
+        582.8751794799581,
+        370.70652814667596
+      ],
+      "semantic": "left shoulder joint approximate; garment surface marker",
+      "confidence": 0.45,
+      "visibility": "joint hidden by garment",
+      "weight": 0.45,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          647,
+          412
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.1968994140625
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "elbow_image_left",
+      "native_xy": [
+        128.8421052631579,
+        779.5
+      ],
+      "raw_xy": [
+        114.95680847827688,
+        702.1241678252306
+      ],
+      "semantic": "right elbow approximate",
+      "confidence": 0.5,
+      "visibility": "joint hidden by garment",
+      "weight": 0.5,
+      "uncertainty_px": 9,
+      "digitization": {
+        "human_seed_xy": [
+          129,
+          779
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.39069938659668
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "elbow_image_right",
+      "native_xy": [
+        750.0,
+        790.0
+      ],
+      "raw_xy": [
+        675.1573073205569,
+        712.162209927069
+      ],
+      "semantic": "left elbow approximate",
+      "confidence": 0.5,
+      "visibility": "joint hidden by garment",
+      "weight": 0.5,
+      "uncertainty_px": 9,
+      "digitization": {
+        "human_seed_xy": [
+          750,
+          790
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 0.0
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "wrist_image_left",
+      "native_xy": [
+        188.25714285714287,
+        877.2285714285714
+      ],
+      "raw_xy": [
+        168.45265191065027,
+        790.3180058532392
+      ],
+      "semantic": "right wrist surface center",
+      "confidence": 0.8,
+      "visibility": "visible surface",
+      "weight": 0.8,
+      "uncertainty_px": 4,
+      "digitization": {
+        "human_seed_xy": [
+          189,
+          878
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.1968994140625
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "wrist_image_right",
+      "native_xy": [
+        490.1714285714286,
+        896.0
+      ],
+      "raw_xy": [
+        440.72604238951203,
+        807.5238104503824
+      ],
+      "semantic": "left wrist surface center",
+      "confidence": 0.8,
+      "visibility": "visible surface",
+      "weight": 0.8,
+      "uncertainty_px": 4,
+      "digitization": {
+        "human_seed_xy": [
+          490,
+          897
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.787599563598633
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "torso_midline",
+      "native_xy": [
+        394.2,
+        715.075
+      ],
+      "raw_xy": [
+        354.3368244689755,
+        644.2633020277844
+      ],
+      "semantic": "front torso surface midline near lower sternum; NOT spine head",
+      "confidence": 0.5,
+      "visibility": "surface beneath garment",
+      "weight": 0.5,
+      "uncertainty_px": 9,
+      "digitization": {
+        "human_seed_xy": [
+          394,
+          715
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 10.187599182128906
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "waist_image_left",
+      "native_xy": [
+        187.48648648648648,
+        1048.8648648648648
+      ],
+      "raw_xy": [
+        167.60058175300978,
+        945.1127027776782
+      ],
+      "semantic": "right waistband/iliac surface proxy; NOT femoral hip joint",
+      "confidence": 0.6,
+      "visibility": "visible waistband surface",
+      "weight": 0.6,
+      "uncertainty_px": 9,
+      "digitization": {
+        "human_seed_xy": [
+          187,
+          1049
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.39069938659668
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "waist_image_right",
+      "native_xy": [
+        526.8285714285714,
+        1083.0
+      ],
+      "raw_xy": [
+        473.61531296938654,
+        976.2089753232231
+      ],
+      "semantic": "left waistband/iliac surface proxy; NOT femoral hip joint",
+      "confidence": 0.6,
+      "visibility": "visible waistband surface",
+      "weight": 0.6,
+      "uncertainty_px": 9,
+      "digitization": {
+        "human_seed_xy": [
+          527,
+          1083
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.39069938659668
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "waist_midline",
+      "native_xy": [
+        358.0,
+        1089.5897435897436
+      ],
+      "raw_xy": [
+        321.34611133675423,
+        981.9976741159669
+      ],
+      "semantic": "front waistband center; NOT pelvis bone head",
+      "confidence": 0.65,
+      "visibility": "visible waistband surface",
+      "weight": 0.65,
+      "uncertainty_px": 9,
+      "digitization": {
+        "human_seed_xy": [
+          357,
+          1090
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 9.39069938659668
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "hand_left_index_direction_a",
+      "native_xy": [
+        270.0,
+        826.0
+      ],
+      "raw_xy": [
+        242.22179838375013,
+        744.1907501128211
+      ],
+      "semantic": "subject right hand upper contour knuckle proxy; topology uncertain",
+      "confidence": 0.35,
+      "visibility": "illustrative hand nodes",
+      "weight": 0.35,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          270,
+          827
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 4.0
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "hand_left_index_direction_b",
+      "native_xy": [
+        316.875,
+        832.125
+      ],
+      "raw_xy": [
+        284.49183645547845,
+        749.7576533245149
+      ],
+      "semantic": "subject right hand upper contour direction proxy",
+      "confidence": 0.35,
+      "visibility": "illustrative hand nodes",
+      "weight": 0.35,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          317,
+          832
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 3.59689998626709
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "hand_left_palm",
+      "native_xy": [
+        243.3846153846154,
+        897.3846153846154
+      ],
+      "raw_xy": [
+        218.15259584680584,
+        808.5467822298623
+      ],
+      "semantic": "subject right palm/knuckle proxy; not verified MCP",
+      "confidence": 0.45,
+      "visibility": "illustrative hand nodes",
+      "weight": 0.45,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          244,
+          898
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 4.0
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "hand_right_upper_direction",
+      "native_xy": [
+        404.0,
+        849.0
+      ],
+      "raw_xy": [
+        363.052723798615,
+        765.0565951869688
+      ],
+      "semantic": "subject left upper finger direction proxy; not verified MCP",
+      "confidence": 0.35,
+      "visibility": "illustrative hand nodes",
+      "weight": 0.35,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          404,
+          849
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 4.0
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "hand_right_palm",
+      "native_xy": [
+        387.5,
+        898.2
+      ],
+      "raw_xy": [
+        348.12668471269205,
+        809.4140129904326
+      ],
+      "semantic": "subject left palm/knuckle proxy; not verified MCP",
+      "confidence": 0.45,
+      "visibility": "illustrative hand nodes",
+      "weight": 0.45,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          388,
+          899
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 3.59689998626709
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "hand_right_lower_direction",
+      "native_xy": [
+        396.8333333333333,
+        963.8333333333334
+      ],
+      "raw_xy": [
+        356.4841866938887,
+        868.6159663226724
+      ],
+      "semantic": "subject left lower palm contour proxy",
+      "confidence": 0.35,
+      "visibility": "illustrative hand nodes",
+      "weight": 0.35,
+      "uncertainty_px": 15,
+      "digitization": {
+        "human_seed_xy": [
+          397,
+          965
+        ],
+        "opencv_method": "HSV hue disk-core distance transform; human seed selects identity",
+        "disk_peak_radius_px": 3.59689998626709
+      },
+      "anatomical_side": null
+    }
+  ],
+  "links": [
+    [
+      "neckline_center",
+      "torso_midline"
+    ],
+    [
+      "torso_midline",
+      "waist_midline"
+    ],
+    [
+      "neckline_center",
+      "shoulder_image_left"
+    ],
+    [
+      "neckline_center",
+      "shoulder_image_right"
+    ],
+    [
+      "shoulder_image_left",
+      "elbow_image_left"
+    ],
+    [
+      "elbow_image_left",
+      "wrist_image_left"
+    ],
+    [
+      "shoulder_image_right",
+      "elbow_image_right"
+    ],
+    [
+      "elbow_image_right",
+      "wrist_image_right"
+    ],
+    [
+      "waist_image_left",
+      "waist_midline"
+    ],
+    [
+      "waist_midline",
+      "waist_image_right"
+    ]
+  ],
+  "fitting_guidance": [
+    "Use neutral M-size cm priors only as assumed scale, never recovered measurements.",
+    "Map neckline/torso/waist markers to front surface proxies at appropriate model heights; do not equate them with bone heads.",
+    "ImageGen hip points mark waistband, not femoral joints. Fit pelvis/waist position and torso rotation using surface landmarks plus raw contours.",
+    "Use eyes/nose/wrists relatively more; elbows/shoulders are garment-occluded and uncertain. Hand points are contour/direction proxies, not validated MCP joints.",
+    "A low point residual does not prove photo match. Inspect raw-photo overlays, torso/waist alignment, garment-vs-body contour semantics, hand direction, and shared 3D state."
+  ]
+}

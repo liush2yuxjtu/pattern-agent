@@ -1,0 +1,37 @@
+{
+  "verdict": "FAIL",
+  "method": "Independent direct observation of saved photo-render, canonical front/side/back; no inference of source hidden depth.",
+  "observations": [
+    {
+      "id": "standing_balance",
+      "verdict": "PASS",
+      "evidence": "Side view shows near upright supported feet, unlike round2 global forward lean."
+    },
+    {
+      "id": "connected_limbs",
+      "verdict": "PASS",
+      "evidence": "Front/back show connected limbs with recognizable shoulders and elbows."
+    },
+    {
+      "id": "gross_hand_body_overlap",
+      "verdict": "PASS",
+      "evidence": "Both hand surfaces now visible in photo/front; round2 visually disappearing hand corrected. Exact triangle collision NOT_RUN."
+    },
+    {
+      "id": "shirt_grasp_action",
+      "verdict": "FAIL",
+      "evidence": "Photo-render fingers point downward and meet near y850\u2013900, while source hands grasp garment with fingers more horizontal near y760\u2013850; current fingers/hand orientation still not the original grip."
+    },
+    {
+      "id": "true_3d_depth",
+      "verdict": "UNKNOWN",
+      "evidence": "Original single photo cannot determine hidden depth or unique true skeleton; no source side/back images."
+    }
+  ],
+  "limits": "No collision-free/contact proof. This FAIL concerns task action fidelity; generic mannequin connectivity/stance improved.",
+  "input_hashes": {
+    "final-state.json": "d9c7297d5b1626274f8588d0a19fef4ec08130c3305897435f3ba98e64799bdb",
+    "posed.obj": "473cb19fb6834d5f15bee15b024824e673cdc4200cb2f1a0974ab94332eb0da4",
+    "camera.json": "969f19c67ae0347483e360a8e5b57cd67eb20f9209a1a9487f36055b87641907"
+  }
+}

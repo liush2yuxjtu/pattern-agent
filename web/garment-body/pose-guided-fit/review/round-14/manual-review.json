@@ -1,0 +1,56 @@
+{
+  "verdict": "FAIL",
+  "selected_candidate": "round-14",
+  "method": "Independent actual original photo vs photo-render plus front/side/back direct review, fresh source FK/LBS + matrix raster + PNG replay + actual torso-triangle hand rays.",
+  "observations": [
+    {
+      "id": "standing_balance_connected_limbs",
+      "verdict": "PASS",
+      "evidence": "Actual canonical side/front/back show upright supported feet and connected limbs; no round2 global lean or round9 extended-arm regression."
+    },
+    {
+      "id": "hand_torso_ray_intervals",
+      "verdict": "PASS",
+      "evidence": "Fresh triangle test: L1402/1424 and R1424/1424 hand vertices have classified rays; zero inside on covered rays; min front clearance L3.182cm/R1.438cm.22L vertices remain unclassified, no whole-body collision claim."
+    },
+    {
+      "id": "left_image_forearm_direction",
+      "verdict": "PASS",
+      "evidence": "Projected elbow above wrist again; direction no longer round13 inverted/collapsed. Exact elbow location still about46px off illustrative cue."
+    },
+    {
+      "id": "shirt_grasp_action",
+      "verdict": "FAIL",
+      "evidence": "Photo-render still shows cupped/upward palms with fingers gathered below original horizontal hem grasp; canonical views show separated hand orientation. Actual cloth contact is not simulated; this is not accepted replication of original two-hand shirt holding."
+    },
+    {
+      "id": "true_hidden_depth_body_measurements",
+      "verdict": "UNKNOWN",
+      "evidence": "Original single crop cannot establish true3D depth or actual real-person girths; source M prior is conditional avatar."
+    }
+  ],
+  "hand_check_summary": {
+    "L": {
+      "hand_vertices": 1424,
+      "rays_with_two_torso_surfaces": 1402,
+      "inside_torso_count": 0,
+      "maximum_inside_depth_cm": 0.0,
+      "minimum_front_clearance_cm": 3.1823126549660774,
+      "front_clearance_p05_cm": 5.094448563104421
+    },
+    "R": {
+      "hand_vertices": 1424,
+      "rays_with_two_torso_surfaces": 1424,
+      "inside_torso_count": 0,
+      "maximum_inside_depth_cm": 0.0,
+      "minimum_front_clearance_cm": 1.4382715436010507,
+      "front_clearance_p05_cm": 2.565744886507927
+    }
+  },
+  "input_hashes": {
+    "final-state.json": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db",
+    "posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca",
+    "camera.json": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f"
+  },
+  "recommendation": "Latest explainable improvement candidate, overallFAIL. Retain7 comparison, reject13 reversed forearm. Correcting penetration does not override wrong grasp or regional failures."
+}
