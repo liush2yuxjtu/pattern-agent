@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://github.com/liush2yuxjtu/pattern-agent/blob/main/tools/pattern-json-v2/pattern-json-v2.schema.json",
+  "title":"Pattern JSON v2",
+  "type":"object",
+  "required":["schema","garment","revision","provenance","units","pieces","measurements","interfaces","seam_relations","geometry","status","source_document"],
+  "properties":{
+    "schema":{"type":"object","required":["name","version","dialect"],"properties":{"name":{"const":"pattern-json-v2"},"version":{"const":"2.0.0"},"dialect":{"const":"JSON"}},"additionalProperties":false},
+    "garment":{"type":"object","required":["garment_id","name","size","production_ready"],"properties":{"garment_id":{"type":"string"},"name":{"type":["string","null"]},"category":{"type":["string","null"]},"size":{"type":["string","null"]},"state":{"type":"string"},"production_ready":{"const":false}},"additionalProperties":false},
+    "revision":{"type":"object","required":["revision_id","source_spec_version","parent_revision","status","stale_propagation"],"properties":{"revision_id":{"type":"string"},"source_spec_version":{"const":"1.1"},"parent_revision":{"type":["string","null"]},"status":{"type":"string"},"stale_propagation":{"type":"array","items":{"type":"string"}}},"additionalProperties":false},
+    "provenance":{"type":"object","required":["source_path","source_sha256","source_format","source_yaml_version","source_document_is_authoritative","dxf_is_reference_only"],"properties":{"source_path":{"type":"string"},"source_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"source_format":{"const":"YAML"},"source_yaml_version":{"const":"1.1"},"source_document_is_authoritative":{"const":true},"dxf_is_reference_only":{"const":true}},"additionalProperties":false},
+    "units":{"type":"object","required":["coordinate_unit","mm_per_unit","reference_size_unit","angle_unit","scale_status"],"properties":{"coordinate_unit":{"const":"U"},"mm_per_unit":{"type":["number","null"]},"reference_size_unit":{"type":["string","null"]},"angle_unit":{"type":["string","null"]},"scale_status":{"type":["string","null"]}},"additionalProperties":false},
+    "pieces":{"type":"array","minItems":4,"items":{"type":"object","required":["piece_id","name","source_path","geometry"],"properties":{"piece_id":{"type":"string"},"name":{"type":"string"},"source_path":{"type":"string"},"role":{"type":["string","null"]},"role_quantity":{},"cutting":{},"geometry":{"type":"object"}},"additionalProperties":true}},
+    "measurements":{"type":"array","minItems":23,"items":{"type":"object","required":["measurement_id","name","source_path"],"properties":{"measurement_id":{"type":"string"},"name":{"type":"string"},"source_path":{"type":"string"}},"additionalProperties":true}},
+    "interfaces":{"type":"array","minItems":25,"items":{"type":"object","required":["interface_id","piece_id","piece","name","source_path"],"properties":{"interface_id":{"type":"string"},"piece_id":{"type":"string"},"piece":{"type":"string"},"name":{"type":"string"},"source_path":{"type":"string"}},"additionalProperties":true}},
+    "seam_relations":{"type":"array","items":{"type":"object","required":["relation_id","name","source_path","value"],"properties":{"relation_id":{"type":"string"},"name":{"type":"string"},"source_path":{"type":"string"},"value":{}},"additionalProperties":false}},
+    "cutting":{},"component_roles":{},"materials":{},"reference_size_table":{},"workflow":{},
+    "construction":{"type":"object"},"validation":{"type":"object"},"geometry":{"type":"object","minProperties":1},
+    "status":{"type":"object","required":["delivery","unknowns_are_preserved","null_is_not_zero","unit_conversion_guessed","production_release"],"properties":{"delivery":{},"unknowns_are_preserved":{"const":true},"null_is_not_zero":{"const":true},"unit_conversion_guessed":{"const":false},"production_release":{"const":false}},"additionalProperties":false},
+    "source_document":{"type":"object"}
+  },
+  "additionalProperties":false
+}
