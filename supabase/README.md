@@ -37,7 +37,7 @@ limit 20;
 首次设置时通过 Supabase 连接器应用 `migrations/` 中的迁移，也可以用安全配置的 PostgreSQL 连接运行下方第一行。后两行准备并导入当前目录数据。Python 依赖 PyYAML，版本与 [编辑器依赖](../web/pattern-library/editor/requirements.txt) 相同。
 
 ```sh
-psql -X -v ON_ERROR_STOP=1 -f supabase/migrations/20261118072849_pattern_agent_catalog.sql
+cat supabase/migrations/*.sql | psql -X -v ON_ERROR_STOP=1 --single-transaction -f -
 python supabase/prepare_catalog.py --output work/pattern-supabase/catalog.sql
 psql -X -v ON_ERROR_STOP=1 -f work/pattern-supabase/catalog.sql
 ```

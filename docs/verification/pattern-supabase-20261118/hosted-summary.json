@@ -1,0 +1,89 @@
+{
+  "verdict": "PASS",
+  "region": "ap-northeast-1",
+  "organization_plan": "free",
+  "postgres_version": "17.12",
+  "source_commit": "fc78146952f7d48bd9212e7466aedef7bdf29f1b",
+  "migrations": [
+    {
+      "name": "pattern_agent_catalog",
+      "version": "20261118080507"
+    },
+    {
+      "name": "pattern_agent_feedback_action_index",
+      "version": "20261118082639"
+    }
+  ],
+  "hosted_readback": {
+    "sql_role": "postgres",
+    "archived_cad": 62,
+    "publisher_leads": 31,
+    "archive_members": 49,
+    "cuff_signals": 46,
+    "pending_intents": 63,
+    "rls_tables": 9,
+    "anon_usage": false,
+    "authenticated_usage": false,
+    "invoker_view": true
+  },
+  "source_comparison": [
+    {
+      "table": "cad_assets",
+      "rows": 93,
+      "content_matches": true
+    },
+    {
+      "table": "cad_drive_locations",
+      "rows": 62,
+      "content_matches": true
+    },
+    {
+      "table": "feedback_sources",
+      "rows": 3,
+      "content_matches": true
+    },
+    {
+      "table": "feedback_parts",
+      "rows": 25,
+      "content_matches": true
+    },
+    {
+      "table": "feedback_actions",
+      "rows": 16,
+      "content_matches": true
+    },
+    {
+      "table": "feedback_reviews",
+      "rows": 37515,
+      "content_matches": true
+    },
+    {
+      "table": "feedback_signals",
+      "rows": 40438,
+      "content_matches": true
+    },
+    {
+      "table": "curated_feedback",
+      "rows": 63,
+      "content_matches": true
+    },
+    {
+      "table": "design_intents",
+      "rows": 63,
+      "content_matches": true
+    }
+  ],
+  "drive_lookup": {
+    "sample_dxf_bytes": 108836,
+    "raw_file_reference_returned": true,
+    "research_archive_bytes": 1208878562
+  },
+  "index_query_plan": [
+    "Index Scan using feedback_signals_action_code on feedback_signals",
+    "  Index Cond: (action_code = 'raise'::text)"
+  ],
+  "page_readback": {
+    "added_handoff": true,
+    "prior_blocks_preserved": true
+  }
+}
