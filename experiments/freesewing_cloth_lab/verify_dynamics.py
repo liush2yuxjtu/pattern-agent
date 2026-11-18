@@ -72,7 +72,7 @@ def run(args):
         result['checks']['actualWasmPin']=probe['gravity'][3:]==[1,2,3]
         result['checks']['actualWasmElasticConstraint']=abs(result['kernel']['elasticDistanceAfter_m']-1)<1e-10
         prepared=np.array(probe['preparedElastic']).reshape(-1,3);result['kernel']['preparedElasticDistanceAfter_m']=float(np.linalg.norm(prepared[1]-prepared[0]));result['checks']['actualPreparedWasmConstraint']=abs(result['kernel']['preparedElasticDistanceAfter_m']-1)<1e-10
-        initial=page.evaluate('clothLab.project()')
+        page.evaluate('clothLab.reset()');initial=page.evaluate('clothLab.project()')
         p0=np.array(initial['positions']).reshape(-1,3);nc=initial['parameters']['NC']
         initial_report=page.evaluate('clothLab.verify()')
         result['initialArrangement']={'appVerdict':initial_report['verdict'],'collision':initial_report['collision'],'note':'Pre-gravity arrangement is deliberately recorded separately from post-simulation acceptance.'}
@@ -100,7 +100,7 @@ def run(args):
         own=page.evaluate('clothLab.verify()');wind=page.evaluate('clothLab.project()')
         with gzip.open(out/'wind-step-480.json.gz','wt') as f:json.dump(wind,f)
         independent=audit(wind,ROOT,negative=False)
-        reference=context.new_page();reference.goto(args.url,wait_until='networkidle');reference.wait_for_function('window.clothLab?.ready');reference.evaluate('clothLab.step(480)')
+        reference=context.new_page();reference.goto(args.url,wait_until='networkidle');reference.wait_for_function('window.clothLab?.ready');reference.evaluate('clothLab.reset();clothLab.step(480)')
         reference_positions=np.array(reference.evaluate('clothLab.project().positions')).reshape(-1,3)
         wind_positions=np.array(wind['positions']).reshape(-1,3)
         difference=float(np.sqrt(np.mean((wind_positions-reference_positions)**2)))
@@ -109,8 +109,9 @@ def run(args):
         result['checks']['windCollisionAndGeometry']=own['verdict']=='PASS' and independent['verdict']=='PASS'
         reference.close()
         page.get_by_role('button',name='Front',exact=True).click();page.screenshot(path=str(out/'wind-fabric.png'),full_page=True)
-        for view in ['strain','stress','contact','fold','curvature']:
-            page.get_by_role('button',name={'fold':'Fold · 折角','curvature':'Curvature · 曲率'}.get(view,view.capitalize()),exact=True).click();page.screenshot(path=str(out/(view+'.png')),full_page=True)
+        for view in ['strain','stress','contact','fold','curvature','pressure']:
+            page.get_by_role('button',name={'fold':'Fold · 折角','curvature':'Curvature · 曲率','pressure':'Pressure · 试衣压力'}.get(view,view.capitalize()),exact=True).click();page.screenshot(path=str(out/(view+'.png')),full_page=True)
+        page.get_by_role('button',name='Fabric',exact=True).click()
         for angle in ['Side','Back']:
             page.get_by_role('button',name=angle,exact=True).click();page.screenshot(path=str(out/(angle.lower()+'.png')),full_page=True)
         result['performance']=page.evaluate('clothLab.stats()')

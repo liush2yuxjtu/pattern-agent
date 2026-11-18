@@ -19,9 +19,11 @@ do not replace the earlier self-contact page. No CI or PR.
    `test_prepared_solver.mjs` after building; five coupled frames must match
    the original kernel bit for bit, and the dynamics probe must exercise the
    actual prepared export. No
-   triangle-query skipping or mesh-resolution reduction is active in 2.1.
+   triangle-query skipping or mesh-resolution reduction is active in 2.2.
+   The A/B explicitly resets both pages to the raw diagnostic arrangement before
+   stepping; the normal page now already contains 120 steps at first display.
 2. Serve the exact final HTML on 127.0.0.1:8771. Run `verify_browser.py` and
-   `independent.py`. Require all 45 UI/download/mobile/offline checks, exact next
+   `independent.py`. Require all 48 UI/download/mobile/offline checks, exact next
    step, no external requests or console errors, actual A4 calibration and
    unchanged p95 solver budget <100 ms. The reopener independently re-drafts
    pinned Sandy without importing the app adapter. Every material coordinate,
@@ -31,14 +33,22 @@ do not replace the earlier self-contact page. No CI or PR.
    Require zero proper body and cloth intersections, no interior vertices and
    correct sewing at each exported state, using the independent geometry oracle.
    Initial unsimulated penetration is recorded separately, never a physical PASS.
+   Require zero exposed posterior samples at every accepted state: the independent
+   XY barycentric ray test covers 153 body vertices and 313 body-face centroids.
+   Its raw arrangement and deleted-cloth controls must fail. Pressure must agree
+   with independently UV-lumped area/mass and m*normalProjection/dt²/area; forged
+   pressure must fail. This validates reaction arithmetic, not wearer-pressure calibration.
 4. Run `verify_variants.py`: actual UI changes to 650 mm, circle ratio 60% and
    linen, followed by 120 physical steps and the same independent source/field/
    geometry checks. Preserve failures; do not substitute a static preview.
 5. Run `verify_heatmap_gpu.py` on the real downloaded HTML. Read back the enabled
    color attribute from the actual WebGL draw and require <2e-6 error for every
-   component of strain/stress/fold/curvature, 32,256 components per view. Keep
+   component of strain/stress/fold/curvature/pressure, 32,256 components per view. Keep
    raw arrays and screenshots. This validates display, not measured fabric laws.
-6. Inspect actual desktop/mobile/fold/curvature/fabric screenshots. Ensure the
+6. Inspect actual desktop/mobile/fold/curvature/pressure/fabric screenshots.
+   Camera presets must synchronously render the requested view; inspect a real
+   rear fabric image. Normal boot, UI reset and design edits must auto-relax
+   120 steps before display, while API reset remains an explicit raw diagnostic. Ensure the
    expanded toolbar does not cover the head in the default mobile framing.
    Run root `scripts/build_pages.py`, its six artifact regressions, and
    `git diff --check`. Log real software-rendering performance without FPS claims.

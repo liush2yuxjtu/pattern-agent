@@ -30,7 +30,7 @@ def run(args):
         profile = page.evaluate('clothLab.project().freesewing')
         result['checks']['realEditedPattern'] = profile['length_mm'] == 650 and profile['settings']['options']['circleRatio'] == .6
         result['checks']['materialCoordinatesChange'] = page.evaluate('clothLab.project().materialCoordinates') != baseline
-        page.evaluate('clothLab.step(120)')
+        assert page.evaluate('clothLab.stats().steps')==120
         own = page.evaluate('clothLab.verify()')
         state = page.evaluate('clothLab.project()')
         with gzip.open(args.output / 'edited-state.json.gz', 'wt') as file:

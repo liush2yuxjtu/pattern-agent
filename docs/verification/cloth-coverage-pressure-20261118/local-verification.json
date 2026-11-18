@@ -1,0 +1,35 @@
+{
+  "verdict": "PASS",
+  "scope": "Digital posterior coverage repair, collision/seam geometry, field/export arithmetic and actual rendered UI; not calibrated physical-fit acceptance",
+  "base": "655d85ae01e5e8e3ca2dc38a02e0a08aca6f8772",
+  "htmlSHA256": "de26a1069750fbabc7abeedac7d7040de3aff96e6f40bcec51267a017dc0316a",
+  "browserChecks": 48,
+  "solver_p95_ms": 93.59999999403954,
+  "earlierSameArtifactPerformanceFAIL_ms": 106.7,
+  "calibratedFit": "NOT_VALIDATED",
+  "tests": {
+    "browser": "PASS",
+    "independent": "PASS",
+    "gpu": "PASS",
+    "dynamics": "PASS",
+    "variant": "PASS",
+    "ab": "PASS"
+  },
+  "rootArtifactRegressions": 6,
+  "nodeTests": "pattern/fold, self-contact, five coupled prepared-WASM frames PASS",
+  "geometryCases": [
+    "120",
+    "240",
+    "360",
+    "wind480",
+    "650mm/60percent/linen120"
+  ],
+  "initialUnrelaxedCoverage": {
+    "vertexExposed": 52,
+    "allSamplesExposed": 150,
+    "samples": 466
+  },
+  "acceptedCoverageExposed": 0,
+  "allAcceptedBodyAndSelfIntersections": 0,
+  "allAcceptedInsideBodyVertices": 0
+}

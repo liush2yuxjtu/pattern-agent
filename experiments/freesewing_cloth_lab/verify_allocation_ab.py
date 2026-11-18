@@ -30,6 +30,7 @@ def run(args):
                 page = browser.new_page(viewport={'width': 1440, 'height': 1100})
                 response = page.goto(url, wait_until='networkidle')
                 page.wait_for_function('window.clothLab?.ready')
+                page.evaluate('clothLab.reset()')
                 start = time.perf_counter()
                 page.evaluate('(n)=>clothLab.step(n)', args.steps)
                 state = page.evaluate('clothLab.project()')

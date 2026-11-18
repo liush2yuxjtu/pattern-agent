@@ -63,7 +63,9 @@ def expected_colors(state, view):
     sigma[:, 1, 1] = e / (1 - nu ** 2) * (green[:, 1, 1] + nu * green[:, 0, 0])
     sigma[:, 0, 1] = sigma[:, 1, 0] = e / (1 + nu) * green[:, 0, 1]
     stress = np.maximum(0, np.linalg.eigvalsh(sigma)[:, 1]) / 1000
-    if view in ['fold','curvature']:
+    if view=='pressure':
+        cp=state['contactPressure'];corr=np.asarray(cp['correction_m']);inv=np.asarray(state['inverseMass']);area=np.asarray(cp['area_m2']);force=np.divide(corr,inv*cp['dt_s']**2,out=np.zeros_like(corr),where=inv>0);pressure=np.divide(force,area*1000,out=np.zeros_like(force),where=area>0);assert np.max(abs(pressure-np.asarray(cp['pressure_kPa'])))<1e-9;scalar=pressure[t].mean(axis=1)/.1
+    elif view in ['fold','curvature']:
         folds_reopen(state)
         field='triangleAngle_deg' if view=='fold' else 'triangleCurvature_per_m'
         scalar=np.abs(np.asarray(state['folding'][field]))/(60 if view=='fold' else 100)
@@ -98,14 +100,14 @@ def run(args):
             context.set_offline(True)
             state = page.evaluate('clothLab.project()')
             assert state['simulation']['steps'] == 360
-            for view in ['strain', 'stress', 'fold', 'curvature']:
+            for view in ['strain', 'stress', 'fold', 'curvature', 'pressure']:
                 page.evaluate("""view=>{
                     window.__heatmapCapture=null;
                     window.__captureHeatmap=false;
                     document.querySelector(`[data-view="${view}"]`).addEventListener('click',
                       ()=>{window.__captureHeatmap=true;}, {capture:true,once:true});
                 }""", view)
-                page.get_by_role('button', name={'fold':'Fold · 折角','curvature':'Curvature · 曲率'}.get(view,view.capitalize()), exact=True).click()
+                page.get_by_role('button', name={'fold':'Fold · 折角','curvature':'Curvature · 曲率','pressure':'Pressure · 试衣压力'}.get(view,view.capitalize()), exact=True).click()
                 page.wait_for_function('window.__heatmapCapture !== null')
                 gpu = page.evaluate('window.__heatmapCapture')
                 actual = np.asarray(gpu.pop('values'), dtype=np.float32)
@@ -117,6 +119,10 @@ def run(args):
                 np.savez_compressed(args.output / (view + '-gpu-colors.npz'), actual=actual, expected=expected)
                 page.screenshot(path=str(args.output / (view + '-gpu.png')), full_page=True)
                 receipt['views'][view] = {**gpu, 'componentsCompared': len(actual), 'maxLinearRGBError': error, 'verdict': 'PASS'}
+            page.get_by_role('button',name='Back',exact=True).click()
+            for view in ['pressure','stress','strain']:
+                page.get_by_role('button',name={'pressure':'Pressure · 试衣压力'}.get(view,view.capitalize()),exact=True).click()
+                page.screenshot(path=str(args.output / ('back-'+view+'.png')),full_page=True)
             browser.close()
         assert not receipt['errors']
         receipt['verdict'] = 'PASS'

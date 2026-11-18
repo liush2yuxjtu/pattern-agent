@@ -141,3 +141,33 @@ process and children to the allocated CPU count; it grants no extra resources.
 It logs the exact affinity/quota and leaves all geometry, render quality and
 performance gates unchanged. Report these software-rendering conditions with
 results; they are not a hardware frame-rate measurement.
+
+## Coverage and contact pressure (2.2)
+
+Previously the first screen showed an unrelaxed arrangement: 52 of 153 posterior
+body vertices were visible through the skirt. Normal startup, UI reset and
+pattern changes now complete 120 actual gravity/body/self-contact steps before
+showing the mesh. The explicit API `reset()` still exposes the raw diagnostic
+state for regression tests. Camera presets render immediately so a saved Back
+screenshot cannot silently contain the previous Front frame.
+
+`independent_contact.py` projects actual cloth triangles into XY and checks -Z
+visibility against 153 posterior body vertices plus 313 body-triangle centroids.
+It uses no runtime BVH/raycaster. The raw arrangement has 150 exposed samples;
+accepted states require zero. Removing cloth must also fail. This is a bounded
+sampling check in the stated posterior pelvic region, not universal coverage.
+
+The Pressure view uses per-step accumulated positive body-normal projection
+corrections. For free vertices its estimated reaction is F = m Δn / Δt² and
+p = F / A (kPa after /1000), with area lumped from material triangles and mass
+from areal density. It excludes pinned waist reactions. The independent audit
+reconstructs A and m from upstream UV triangles and checks the exported forces,
+pressures and actual GPU colors. Saved HTML retains these fields exactly.
+This estimate depends on timestep/projection order and lacks calibrated fabric,
+contact compliance and wearer measurements. It must never be presented as
+validated medical/comfort pressure or confused with material stress.
+
+Stress/strain/fold calculations and geometry acceptance do not establish garment
+fit: e.g. the default 360-step state still has a peak principal stretch of 189.5%
+and uses uncalibrated material parameters. Real material/fit acceptance remains
+NOT_VALIDATED.

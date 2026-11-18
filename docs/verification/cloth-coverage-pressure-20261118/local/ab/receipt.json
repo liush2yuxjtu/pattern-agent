@@ -1,0 +1,86 @@
+{
+  "cases": {
+    "baseline": {
+      "htmlSHA256": "d684ec0289a8f04648a2e38a8ca8310d7259d9b109286130343dea06d4f17e3f",
+      "wallSeconds": 20.538506069002324,
+      "stats": {
+        "steps": 120,
+        "time_s": 1,
+        "peakStretch": 1.8739619043768443,
+        "peakStress_kPa": 122.61000569149364,
+        "peakFoldAngle_deg": 140.27949832139217,
+        "peakCurvature_per_m": 352.4069465647899,
+        "wrinkleProxyTrianglePercent": 42.885044642857146,
+        "seamGap_mm": 0,
+        "waist_mm": 736.3414168681662,
+        "contacts": 223,
+        "selfContacts": 1,
+        "selfContactTiming_ms": {
+          "pointMs": 6.5,
+          "edgeMs": 13
+        },
+        "stepTiming_ms": {
+          "elasticMs": 34.30000001192093,
+          "bodyMs": 16.799999997019768,
+          "selfMs": 19.5,
+          "recheckMs": 0.5
+        },
+        "wasm": true,
+        "render": {
+          "calls": 4,
+          "triangles": 30726
+        },
+        "solver_ms_p50": 79.09999999403954,
+        "solver_ms_p95": 169.19999998807907,
+        "frame_ms_p95": 983.3,
+        "jsHeap_bytes": 32934761
+      }
+    },
+    "optimized": {
+      "htmlSHA256": "de26a1069750fbabc7abeedac7d7040de3aff96e6f40bcec51267a017dc0316a",
+      "wallSeconds": 14.534502237991546,
+      "stats": {
+        "steps": 120,
+        "time_s": 1,
+        "peakStretch": 1.8739619043768443,
+        "peakPressure_kPa": 0.09184632655655985,
+        "peakStress_kPa": 122.61000569149364,
+        "peakFoldAngle_deg": 140.27949832139217,
+        "peakCurvature_per_m": 352.4069465647899,
+        "wrinkleProxyTrianglePercent": 42.885044642857146,
+        "seamGap_mm": 0,
+        "waist_mm": 736.3414168681662,
+        "contacts": 223,
+        "selfContacts": 1,
+        "selfContactTiming_ms": {
+          "pointMs": 4.5999999940395355,
+          "edgeMs": 11.200000002980232
+        },
+        "stepTiming_ms": {
+          "elasticMs": 35.30000001192093,
+          "bodyMs": 14.599999994039536,
+          "selfMs": 15.799999997019768,
+          "recheckMs": 0.29999999701976776
+        },
+        "renderedFrames": 4,
+        "render_submit_ms_p95": 64.59999999403954,
+        "wasm": true,
+        "render": {
+          "calls": 4,
+          "triangles": 30726
+        },
+        "solver_ms_p50": 67.5,
+        "solver_ms_p95": 87.59999999403954,
+        "frame_ms_p95": 9099.7,
+        "jsHeap_bytes": 29589482
+      }
+    }
+  },
+  "equal": {
+    "positions": true,
+    "previous": true,
+    "materialCoordinates": true
+  },
+  "maxCoordinateDifference_m": 0.0,
+  "verdict": "PASS"
+}
