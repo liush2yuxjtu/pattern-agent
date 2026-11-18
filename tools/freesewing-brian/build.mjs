@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
+import {inputContract} from './sliders-engine.mjs';
 const result=await build({entryPoints:['sliders-ui.mjs'],bundle:true,write:false,platform:'browser',format:'iife',target:'es2022',minify:true,legalComments:'inline',metafile:true});
 const code=result.outputFiles[0].text.replaceAll('</script','<\\/script');
 const notices=new Map();
@@ -18,6 +19,8 @@ for(const input of Object.keys(result.metafile.inputs)){
 notices.set('freesewing',fs.readFileSync('LICENSE.FreeSewing','utf8'));
 const html=fs.readFileSync('sliders-template.html','utf8').replace('/*BUNDLE*/',code).replace('<!--LICENSES-->','<!-- Bundled source licenses\n'+[...notices.values()].join('\n\n').replaceAll('-->','-- >')+'\n-->');
 fs.writeFileSync('../../web/freesewing/brian/index.html',html);
+fs.writeFileSync('../../web/freesewing/brian/input-contract.json',JSON.stringify(inputContract,null,2)+'\n');
+fs.writeFileSync('../../web/freesewing/brian/input-contract.json',JSON.stringify(inputContract,null,2)+'\n');
 fs.mkdirSync('work',{recursive:true});
 fs.writeFileSync('work/sliders-metafile.json',JSON.stringify(result.metafile));
 console.log(JSON.stringify({file:'web/freesewing/brian/index.html',bytes:Buffer.byteLength(html),bundledInputs:Object.keys(result.metafile.inputs).length,licenseNotices:notices.size}));

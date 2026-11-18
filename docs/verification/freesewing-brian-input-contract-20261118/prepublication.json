@@ -1,0 +1,29 @@
+{
+  "scope": "Brian 4.10.2 input-contract alignment",
+  "checked_at": "2026-11-18T18:01:58.137500+08:00",
+  "base_commit": "b32a62cf2147299e68525b45b0a604c2f12a38c1",
+  "local_sdk_and_dom_verdict": "PASS",
+  "prepublication_browser_verdict": "BLOCKED",
+  "prepublication_browser_reason": "Managed Chromium URL policy rejected data: navigation. No workaround or security change attempted; only the requested normal HTTPS Pages deployment will be used for real-surface acceptance.",
+  "hosted_browser_verdict": "PENDING",
+  "html_sha256": "00fe666cc62e86ee0975da0956111257ffb1a104077176bdd6135d6e36975b28",
+  "input_contract_sha256": "4befb7c009f8a734a8f94894b89614eb66dae6ba4c460158dae1281e21d4139c",
+  "commands": [
+    {
+      "command": "npm ci --prefix tools/freesewing-brian --no-audit --no-fund",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run build --prefix tools/freesewing-brian",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test --prefix tools/freesewing-brian",
+      "exit_code": 0
+    },
+    {
+      "command": "Standalone HTML checker",
+      "exit_code": 0
+    }
+  ]
+}

@@ -5,7 +5,7 @@ research repository; physical garment fit has not been verified.
 
 ## FreeSewing Brian：拖动尺寸，实时生成 SVG
 
-[打开 Brian 实时纸样](https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/) · [全部图解](https://liush2yuxjtu.github.io/pattern-agent/freesewing/) · [源码与复现](tools/freesewing-brian/README.md)。11 项必填尺寸和可选上胸围驱动真实 Brian 4.10.2；附原包摘要及 27 组独立轮廓对照。演示固定胸围松量 10%，不加缝份。
+[打开 Brian 实时纸样](https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/) · [全部图解](https://liush2yuxjtu.github.io/pattern-agent/freesewing/) · [源码与复现](tools/freesewing-brian/README.md)。原生 mm/° 输入直接遵循 Brian 4.10.2 的 11 项必填尺寸与可选上胸围；保留小数、使用官方默认松量 15%，附输入 JSON 和零容差源码对照。
 
 ## Teagan Sites 二维与三维工作室归档
 

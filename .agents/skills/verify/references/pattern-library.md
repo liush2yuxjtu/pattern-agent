@@ -66,11 +66,10 @@ mobile permalinks. It compares all four CSV downloads with their build hashes. U
 with `--expected-commit` after publication. Keep CAD-byte deduplication and
 publisher-only entries distinct in the receipt.
 
-## Brian standalone SVG tool
+## Brian native-input SVG tool
 
-Scope: `web/freesewing/` and `tools/freesewing-brian/`. This is a separate
-Brian body-block demonstration; it does not certify the gallery, garment
-physics, grading rules, or human fit.
+Scope: `web/freesewing/` and `tools/freesewing-brian/`. This does not certify
+other galleries, factory grading, garment physics or human fit.
 
 ```sh
 (cd tools/freesewing-brian && npm ci && npm run build && npm test)
@@ -78,28 +77,36 @@ python3 scripts/build_pages.py
 git diff --check
 ```
 
-The fresh dependency install needs Node 24+. `npm test` checks all 11 required
-measurements, optional high bust, 22 boundary drafts, the master slider and
-SVG export. Its independent reference calls published Brian directly for
-27 inputs and compares all 81 back/front/sleeve outlines and downloaded SVG
-paths. `upstream-manifest.json` pins all ten original Brian package files.
-The expected single-HTML SHA-256 is
-`3214641c9b044ec844f2926717a882bf21c4d12d75be3c53f6b3f62f8e4ffe9f`.
+The input schema and its units come from Brian 4.10.2 and `@freesewing/config`.
+The SDK adapter must not convert, round, clamp or fill measurements, or couple
+highBust presence to draftForHighBust. Default options must match the native
+library (chestEase 0.15). Numerical inputs have no invented measurement bounds;
+slider extents are display windows that expand around entered numbers.
 
-Drive the exact artifact in a real browser before shipping: reset, change
-chest from 100 to 110 cm, require quarter width 302.5 mm, enable high bust,
-then reset and change the master slider. Check the ready status, all three
-rendered pattern pieces and the SVG button. The user-facing labels use cm;
-Brian receives mm, except shoulder slope in degrees.
+The local gate checks all 11 required and one optional field, retained old
+boundary vectors, decimals, missing inputs, outside-old-range bodies and both
+high-bust settings. It compares 47 inputs and 141 parts, 13,066 coordinates
+with zero tolerance, and full original native SVG bytes. It pins all ten files
+of the official Brian npm archive. Missing/invalid GUI inputs must clear stale
+paper and disable exports, never substitute example dimensions.
 
-After publication, open `/pattern-agent/freesewing/`, follow its Brian entry,
-repeat the controls, then check guide links. Compare the live HTML hash and
-root `build.json` file entry with the committed candidate. Keep publication
-workflow success separate from actual browser verification.
+Use actual browser number-entry events: inspect the mm/degree units and
+absent overall field; enter chest 1000.123456, inspect exact native JSON and
+quarter width 287.5354936; clear chest and require export disabled; restore;
+provide highBust and confirm the shape still uses chest until the independent
+draft checkbox is enabled. Download both JSON and SVG and reopen them against
+a direct Brian call. Check an input outside the old bounds and the reset.
 
-On the 2026-11-18 host, local Chromium launch was BLOCKED and the connected
-Grok browser was unavailable. The working fallback was the managed Chrome
-Playwright/AX surface: a source-bound standalone preview before commit, then
-the actual GitHub Pages URL after publication. Do not treat DOM-only JSDOM
-checks as a rendered-browser result. Retain these environment limitations.
-Receipts: `docs/verification/freesewing-brian-20261118/`.
+After publication, open `/pattern-agent/freesewing/brian/` over HTTPS, repeat
+the actual UI flow, and compare HTML and `input-contract.json` SHA-256 with the
+committed candidate and deployed `build.json`. Publication success alone is
+not browser verification. Retain the original 10% demo evidence as history.
+
+This host's native Chromium launch and Grok browser were unavailable; the
+managed Chrome HTTPS surface works. Its URL policy blocks data/file protocols.
+Do not bypass that gate or claim a local browser PASS. If prepublication pixels
+are blocked, record the blocker separately from the local SDK/DOM test PASS,
+then use the user-authorized normal HTTPS Pages publication for runtime review.
+
+Receipts: `docs/verification/freesewing-brian-input-contract-20261118/`;
+historical receipts: `docs/verification/freesewing-brian-20261118/`.
