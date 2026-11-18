@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src data:; font-src data:; media-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FreeSewing · 从人体尺寸到 SVG 纸样</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{background:#f4f6f9;color:#172439;font:16px/1.6 system-ui,sans-serif;margin:0}main{max-width:880px;padding:55px 24px;margin:auto}small{color:#195ee8;font-weight:650}h1{font-size:clamp(30px,6vw,49px);line-height:1.2;margin:10px 0 26px}h2{font-size:24px}a{color:#195ee8;text-underline-offset:4px}a:focus-visible{outline:3px solid #f1a635;outline-offset:5px}.hero{display:block;padding:32px;border:1px solid #dce3ed;background:#fff;border-radius:16px;text-decoration:none;color:#172439}.flow{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:clamp(17px,4vw,29px);font-weight:650}.flow b{color:#195ee8;font-size:35px}.open{display:inline-block;margin-top:25px;background:#195ee8;color:white;padding:11px 22px;border-radius:9px;font-weight:650}.guides{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.guides a{padding:18px 22px;border:1px solid #dce3ed;border-radius:12px;background:#fff;text-decoration:none}.guides a:hover,.hero:hover{border-color:#195ee8}p,footer{color:#667387;font-size:13px}footer{margin-top:30px}@media(max-width:520px){main{padding:30px 18px}.hero{padding:24px 18px}.guides{grid-template-columns:1fr}.flow{gap:6px}.flow b{font-size:25px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style></head><body><main>
+<small>Pattern Agent / FreeSewing</small>
+<h1>从人体尺寸，到纸样。</h1>
+<a class="hero" href="brian/" aria-label="打开 Brian 实时纸样工具">
+<div class="flow"><span>拖动尺寸</span><b>→</b><span>重画纸样</span><b>→</b><span>下载 SVG</span></div>
+<span class="open">打开 Brian</span></a>
+<p>11 项人体尺寸＋可选上胸围 · 单文件 · 离线可用</p>
+<h2>看图认识它</h2>
+<nav class="guides" aria-label="FreeSewing 图解">
+<a href="guides/eli5-freesewing.html">第一次认识 FreeSewing</a>
+<a href="guides/brian-explained.html">Brian 是什么？</a>
+<a href="guides/freesewing-blocks-explained.html">认识各类基础原型</a>
+<a href="guides/freesewing-visual-guide.html">完整工具链图解</a>
+</nav>
+<footer><a href="guides/freesewing-source-walkthrough.md">源码解读</a> · <a href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/tools/freesewing-brian">源码与复现</a><br>Brian 4.10.2 / MIT · 本演示胸围松量 10%，官方默认 15%。</footer>
+</main></body></html>

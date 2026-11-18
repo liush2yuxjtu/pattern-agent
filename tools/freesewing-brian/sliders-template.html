@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src data:; font-src data:; media-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brian · 拖动尺寸，实时生成 SVG</title>
+<style>
+:root{color-scheme:light;--ink:#172439;--muted:#667387;--blue:#195ee8;--line:#dce3ed;--paper:#fff}
+*{box-sizing:border-box}body{margin:0;background:#f4f6f9;color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer;border-radius:9px;padding:10px 17px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:650}button:hover{background:#edf2ff}button:disabled{opacity:.45;cursor:wait}button:focus-visible,input:focus-visible{outline:3px solid #f1a635;outline-offset:4px}main{max-width:1440px;margin:auto;padding:26px 30px}header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.eyebrow{font-size:13px;font-weight:650;color:var(--blue);margin:0 0 6px}h1{font-size:clamp(25px,3vw,37px);letter-spacing:-.04em;line-height:1.18;margin:0}h2{font-size:17px;margin:0}.layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:17px;overflow:hidden}.controls-panel{padding:18px 21px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.unit{font-size:12px;color:var(--muted)}.master{background:#edf3ff;margin:0 -6px 10px;padding:12px 12px 7px;border-radius:10px}.field{padding:5px 0 2px}.field-title{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;min-height:21px}.field-title label{font-weight:550}.field-title output{color:var(--blue);font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}input[type=range]{display:block;width:100%;height:21px;margin:3px 0 1px;accent-color:var(--blue);cursor:ew-resize;touch-action:pan-y}input:disabled{opacity:.35;cursor:default}.optional{padding-top:7px}.optional input:disabled{opacity:.35}.toggle{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);padding-top:10px;border-top:1px solid var(--line);margin-top:9px}.toggle input{accent-color:var(--blue);width:16px;height:16px;margin:0}.preview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}#status{font-size:12px;color:#327257}#status:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:currentColor}#status[data-state=error]{color:#b53232}#status[data-state=warning]{color:#946914}.paper{min-height:535px;display:flex;align-items:center;padding:14px;background-color:#fff;background-image:linear-gradient(#f0f3f8 1px,transparent 1px),linear-gradient(90deg,#f0f3f8 1px,transparent 1px);background-size:22px 22px}#preview{width:100%;min-width:0}#preview>svg{display:block;width:100%;height:auto;min-height:410px;max-height:650px}#preview svg text{fill:#25364b}#preview svg path.fabric{stroke:#195ee8!important;stroke-width:1.1!important;fill:#eaf1ff!important;fill-opacity:.5}#preview svg path.help{stroke:#8a9db7!important}#preview svg .note{display:none}.preview-foot{padding:17px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--line)}.hint{color:var(--muted);font-size:12px;margin:0}.primary{background:var(--blue);border-color:var(--blue);color:white;padding:12px 23px;white-space:nowrap}.primary:hover{background:#124bbd}.legend{display:flex;gap:20px;font-size:12px;color:var(--muted);margin:14px 4px}.legend span:before{content:"";display:inline-block;width:18px;height:2px;margin-right:6px;vertical-align:middle;background:#195ee8}.legend span:last-child:before{background:#8a9db7}footer{font-size:11px;color:var(--muted);padding:15px 4px 0}.controls-panel button{padding:5px 9px;font-size:12px;font-weight:500}
+.field{padding:3px 0 0}.field-title{min-height:19px}input[type=range]{height:20px;margin:1px 0 0}
+@media(min-width:1500px){.paper{min-height:630px}}@media(max-width:850px){main{padding:18px 16px}.layout{grid-template-columns:260px minmax(0,1fr);gap:14px}.controls-panel{padding:15px}.paper{min-height:430px;padding:5px}.preview-head,.preview-foot{padding:15px}#preview>svg{min-height:300px}.preview-foot{flex-wrap:wrap}.hint{font-size:11px}h1{font-size:27px}}@media(max-width:620px){header{margin-bottom:17px}.layout{display:flex;flex-direction:column}.controls-panel,.viewer{width:100%}.viewer{order:-1}.paper{min-height:260px}#preview>svg{min-height:245px}.preview-head{padding:13px 15px}.preview-foot{padding:13px 15px;gap:8px}.primary{padding:10px 14px}.legend{margin-bottom:0}#controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px 18px}.field-title{font-size:12px}.field{padding:6px 0 3px}.master{margin-top:12px}.toggle{margin-top:11px}.controls-panel{padding:16px 18px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body><main>
+<header><div><p class="eyebrow">FreeSewing / Brian</p><h1>拖动尺寸，纸样就变。</h1></div></header>
+<div class="layout">
+<section class="panel controls-panel" aria-label="人体尺寸控制">
+<div class="section-head"><h2>人体尺寸</h2><button id="reset" type="button">重置</button></div>
+<div class="master"><div class="field-title"><label for="overall">整体大小</label><output id="overall-value" for="overall">100%</output></div><input type="range" id="overall" min="75" max="125" step="1" value="100" aria-describedby="units"></div>
+<div id="controls"></div>
+<label class="toggle"><input type="checkbox" id="use-high-bust">启用上胸围</label>
+<p id="units" class="hint">长度 cm · 肩斜 °</p>
+</section>
+<div class="viewer">
+<section class="panel" aria-label="实时纸样预览">
+<div class="preview-head"><h2>SVG 纸样</h2><span id="status" role="status" aria-live="polite">准备中…</span></div>
+<div class="paper"><div id="preview" aria-busy="true"></div></div>
+<div class="preview-foot"><p class="hint">后片 · 前片 · 袖片</p><button type="button" class="primary" id="download-svg" disabled>下载 SVG</button></div>
+</section>
+<div class="legend"><span>裁片</span><span>辅助线</span></div>
+<footer>示例尺寸 · 胸围松量 10% · 无缝份 · 离线可用<br>Brian 4.10.2 / MIT</footer>
+</div>
+</div>
+<noscript>请启用 JavaScript。</noscript>
+</main><script>/*BUNDLE*/</script>
+<!--LICENSES-->
+</body></html>

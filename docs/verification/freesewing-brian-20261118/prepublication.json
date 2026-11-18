@@ -1,0 +1,56 @@
+{
+  "verdict": "PASS",
+  "scope": "Prepublication source, standalone generation and real browser interaction",
+  "base_commit": "255581100bab299eea9e73bbb07bdabfa1e6c374",
+  "checked_at": "2026-11-18T17:20:25.032140+08:00",
+  "html_sha256": "3214641c9b044ec844f2926717a882bf21c4d12d75be3c53f6b3f62f8e4ffe9f",
+  "commands": [
+    {
+      "command": "npm ci --prefix tools/freesewing-brian --no-audit --no-fund",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run build --prefix tools/freesewing-brian",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test --prefix tools/freesewing-brian",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/build_pages.py",
+      "exit_code": 0
+    },
+    {
+      "command": "Standalone HTML checks: FreeSewing entry and Brian generator",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "real_browser": {
+    "surface": "Managed Chromium, source-bound standalone HTML preview",
+    "chest_110cm": {
+      "input_mm": 1100,
+      "quarter_width_mm": 302.5
+    },
+    "high_bust_94cm": {
+      "quarter_width_mm": 258.5
+    },
+    "master_115pct": {
+      "chest_mm": 1150,
+      "quarter_width_mm": 316.25
+    },
+    "svg_ready": true
+  },
+  "blocked_alternatives": {
+    "local_chromium": "TargetClosedError at launch on the managed host",
+    "grok_browser": "UNAVAILABLE: Connection failed"
+  },
+  "hosted_verification": "PENDING_DEPLOYMENT",
+  "cleanup": "JSDOM windows closed; unsuccessful local Chromium process ended",
+  "initial_base_commit": "36a964a5c919b6ee6339752dd242dd4d76437d73",
+  "concurrent_changes_preserved": true
+}

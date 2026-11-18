@@ -63,3 +63,41 @@ part filtering, actual excerpts, style pagination, comment expansion, and
 mobile permalinks. It compares all four CSV downloads with their build hashes. Use the same verifier against the live Pages root
 with `--expected-commit` after publication. Keep CAD-byte deduplication and
 publisher-only entries distinct in the receipt.
+
+## Brian standalone SVG tool
+
+Scope: `web/freesewing/` and `tools/freesewing-brian/`. This is a separate
+Brian body-block demonstration; it does not certify the gallery, garment
+physics, grading rules, or human fit.
+
+```sh
+(cd tools/freesewing-brian && npm ci && npm run build && npm test)
+python3 scripts/build_pages.py
+git diff --check
+```
+
+The fresh dependency install needs Node 24+. `npm test` checks all 11 required
+measurements, optional high bust, 22 boundary drafts, the master slider and
+SVG export. Its independent reference calls published Brian directly for
+27 inputs and compares all 81 back/front/sleeve outlines and downloaded SVG
+paths. `upstream-manifest.json` pins all ten original Brian package files.
+The expected single-HTML SHA-256 is
+`3214641c9b044ec844f2926717a882bf21c4d12d75be3c53f6b3f62f8e4ffe9f`.
+
+Drive the exact artifact in a real browser before shipping: reset, change
+chest from 100 to 110 cm, require quarter width 302.5 mm, enable high bust,
+then reset and change the master slider. Check the ready status, all three
+rendered pattern pieces and the SVG button. The user-facing labels use cm;
+Brian receives mm, except shoulder slope in degrees.
+
+After publication, open `/pattern-agent/freesewing/`, follow its Brian entry,
+repeat the controls, then check guide links. Compare the live HTML hash and
+root `build.json` file entry with the committed candidate. Keep publication
+workflow success separate from actual browser verification.
+
+On the 2026-11-18 host, local Chromium launch was BLOCKED and the connected
+Grok browser was unavailable. The working fallback was the managed Chrome
+Playwright/AX surface: a source-bound standalone preview before commit, then
+the actual GitHub Pages URL after publication. Do not treat DOM-only JSDOM
+checks as a rendered-browser result. Retain these environment limitations.
+Receipts: `docs/verification/freesewing-brian-20261118/`.

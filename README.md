@@ -3,6 +3,10 @@
 Runnable Blender garment experiments and independent geometry checks. This is a
 research repository; physical garment fit has not been verified.
 
+## FreeSewing Brian：拖动尺寸，实时生成 SVG
+
+[打开 Brian 实时纸样](https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/) · [全部图解](https://liush2yuxjtu.github.io/pattern-agent/freesewing/) · [源码与复现](tools/freesewing-brian/README.md)。11 项必填尺寸和可选上胸围驱动真实 Brian 4.10.2；附原包摘要及 27 组独立轮廓对照。演示固定胸围松量 10%，不加缝份。
+
 ## Teagan Sites 二维与三维工作室归档
 
 [第 14 版完整源码、运行说明与中文交接](experiments/teagan_sites_studio/README.md)

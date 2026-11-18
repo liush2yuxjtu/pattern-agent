@@ -1,0 +1,26 @@
+{
+  "name": "pattern-agent-freesewing-brian",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node verify.mjs && node verify-fidelity.mjs"
+  },
+  "dependencies": {
+    "@freesewing/brian": "4.10.2",
+    "@freesewing/core": "4.10.2",
+    "@freesewing/library": "4.10.2",
+    "@freesewing/config": "4.10.2",
+    "@freesewing/plugin-bust": "4.10.2",
+    "@freesewing/plugin-theme": "4.10.2",
+    "@freesewing/plugin-transform": "4.10.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "jsdom": "27.2.0"
+  }
+}
