@@ -4,6 +4,10 @@
 在线入口为 <https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/>。
 本页记录的是入口组织和导航验收；五项严格缝合流程仍为 **BLOCKED：2 PASS、3 BLOCKED**。
 
+**线上导航验收 PASS。** 固定源提交 `f9b59a94b4f1e87f70a82acdd792fbc7c6b25141`；
+发布后实际点击三个入口及返回链接，四个 HTML 与该提交字节一致。
+见 [线上报告](live/report.json)、[发布回读](live/publication.json) 和 [线上验收说明](live/README.md)。
+
 ## 改动与来源
 
 README 集中连接原型 YAML/DXF、四个设计意图与全部输出、编辑代码、五套三维示意、

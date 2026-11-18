@@ -93,3 +93,10 @@ python experiments/intent-edit-review/sewn/publish_review.py --refresh-existing 
 该模式要求新报告匹配实际目录HTML、完整通过案例及实际模型摘要，并拒绝任意模型、
 源文件或交付包变化；只刷新目录导航证明与文件清单。不能借此重新宣告几何或生产PASS。
 本轮结果见 `docs/verification/experiment-center-20261118/README.md`。
+
+发布后可运行 `verify_public_hub.py --source-revision <公开完整提交SHA> --output <证据目录>`。
+它从该固定提交取README及四个HTML摘要，核对真实线上响应，再实际点击三个往返
+（包括对照页新标签）并检查四种宽度；不替代本地40个资源路径审计。
+本机线上TLS环境受限时，沿用上文独立Firecrawl Bash浏览器路径、现有Google Chrome，
+公开固定源码和Playwright 1.62.0，无需下载模型或关闭TLS。返回ZIP先验SHA/CRC，
+再保存报告与截图并停止会话。实际成功命令和环境见本轮 `live/README.md`。

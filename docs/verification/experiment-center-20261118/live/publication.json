@@ -1,0 +1,59 @@
+{
+  "verdict": "PASS",
+  "recorded_at": "2026-11-18T12:34:39.181322+08:00",
+  "source_commit": "f9b59a94b4f1e87f70a82acdd792fbc7c6b25141",
+  "public_build_commit": "f9b59a94b4f1e87f70a82acdd792fbc7c6b25141",
+  "publication_run": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44237954970",
+  "files": {
+    "intent-edit-review/experiment/index.html": {
+      "status": 200,
+      "bytes": 19819,
+      "sha256": "6464a30fd78aaab4e2dc83ed014b96ef6f7b29668df8f19286d128ec74de0a32"
+    },
+    "intent-edit-review/index.html": {
+      "status": 200,
+      "bytes": 5938811,
+      "sha256": "45971ab064b09318662c96bfc55b0dfe80b103fb0a73b9837c699c9c6c677d36"
+    },
+    "intent-edit-review/docs/index.html": {
+      "status": 200,
+      "bytes": 34622,
+      "sha256": "07cca46840872b7bb44ab6272f0ffd03fe6a4f35382c3f24ea4d34bffcfcdd56"
+    },
+    "intent-edit-review/sewn/index.html": {
+      "status": 200,
+      "bytes": 11272,
+      "sha256": "5a27a39a1ee1ebfcee1979f0d5b10cb86b4455c20d4ab2678b92a10eab0110a7"
+    },
+    "intent-edit-review/sewn/manifest.json": {
+      "status": 200,
+      "bytes": 11158,
+      "sha256": "4dfbb551d2f1fc80ef06bdf5710e2bda693de161c5957a4fb56b247c0d4bf65d"
+    },
+    "intent-edit-review/sewn/files-manifest.json": {
+      "status": 200,
+      "bytes": 5474,
+      "sha256": "acddb70cb53b58f02755d3568f08ca5637a13df8f8ea79ded91f82ae7401dd2d"
+    },
+    "intent-edit-review/sewn/preview-verification.json": {
+      "status": 200,
+      "bytes": 5237,
+      "sha256": "0ca88887da6131b451c293b5d9a9dbd8e21f787a85beb44e8b1389b649d2cd99"
+    }
+  },
+  "canonical_readme_sha256": "83b0750464f032753d5983211ab21e7a2c2f68dea12420d110fe864320e6495b",
+  "browser_script_sha256": "6d6a578938966e426a33022bac925d66e23ea3361ab7594fb765db67326798b1",
+  "browser_command": "python verify_public_hub.py --source-revision f9b59a94b4f1e87f70a82acdd792fbc7c6b25141 --browser /usr/bin/google-chrome --output evidence",
+  "browser_environment": {
+    "python": "3.11.2",
+    "playwright": "1.62.0",
+    "source": "public pinned source; independent Firecrawl interact Bash host"
+  },
+  "archive": {
+    "bytes": 551354,
+    "sha256": "b9394a9b0b11dcdb0261f397d9cab48d2619bb8186148bb13577a09bb7620dc9",
+    "crc_checked": true,
+    "extracted_files": 6
+  },
+  "cleanup": "Independent browser closed by verifier; Firecrawl session stopped; no TLS validation disabled."
+}

@@ -1,0 +1,52 @@
+{
+  "verdict": "PASS",
+  "source_revision": "f9b59a94b4f1e87f70a82acdd792fbc7c6b25141",
+  "errors": [],
+  "bad_responses": [],
+  "round_trips": [
+    {
+      "route": "demo",
+      "actual_html_sha256": "45971ab064b09318662c96bfc55b0dfe80b103fb0a73b9837c699c9c6c677d36",
+      "return": "clicked actual footer; new tab returned to hub"
+    },
+    {
+      "route": "docs",
+      "actual_html_sha256": "07cca46840872b7bb44ab6272f0ffd03fe6a4f35382c3f24ea4d34bffcfcdd56",
+      "return": "clicked actual header return link"
+    },
+    {
+      "route": "sewn",
+      "actual_html_sha256": "5a27a39a1ee1ebfcee1979f0d5b10cb86b4455c20d4ab2678b92a10eab0110a7",
+      "return": "clicked actual header return link"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1448,
+      "overflow": false,
+      "toc_clicked": true
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "toc_clicked": true
+    },
+    {
+      "width": 375,
+      "overflow": false,
+      "toc_clicked": true
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "toc_clicked": true
+    }
+  ],
+  "expected_html_sha256": {
+    "hub": "6464a30fd78aaab4e2dc83ed014b96ef6f7b29668df8f19286d128ec74de0a32",
+    "demo": "45971ab064b09318662c96bfc55b0dfe80b103fb0a73b9837c699c9c6c677d36",
+    "docs": "07cca46840872b7bb44ab6272f0ffd03fe6a4f35382c3f24ea4d34bffcfcdd56",
+    "sewn": "5a27a39a1ee1ebfcee1979f0d5b10cb86b4455c20d4ab2678b92a10eab0110a7"
+  },
+  "readme_sha256": "83b0750464f032753d5983211ab21e7a2c2f68dea12420d110fe864320e6495b"
+}
