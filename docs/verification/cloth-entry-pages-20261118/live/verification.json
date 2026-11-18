@@ -1,0 +1,42 @@
+{
+  "verdict": "PASS",
+  "scope": "README and homepage entry, actual desktop/mobile navigation to unchanged source-bound lab, and public missing-file recovery; calibrated physics acceptance unchanged",
+  "sourceEntryCommit": "7b9bd79f3781e77302759e7e2469966d4257feb2",
+  "errorPageCommit": "82484b1ffe639321121bfe7ad8af251b02f2cce7",
+  "publishedBuildCommit": "82484b1ffe639321121bfe7ad8af251b02f2cce7",
+  "homepageChecks": [
+    "desktop render",
+    "modal open and Escape close",
+    "print details toggle",
+    "four real downloads match deployed hashes",
+    "375 px mobile without overflow",
+    "mobile modal close",
+    "existing workbench zoom and native export",
+    "native edit/import hides invalidated cutlines",
+    "review export stays unapproved",
+    "unsupported parametric import is explicitly rejected",
+    "missing download returns 404"
+  ],
+  "entryChecks": {
+    "scopeAndMetrics": true,
+    "sourceBoundEvidenceLink": true,
+    "unchangedPhysicsArtifact": true,
+    "actualNavigation": true,
+    "mobileNoOverflow": true,
+    "consoleHealthy": true
+  },
+  "indexSHA256": "2857e9bb151d254471a4efa8472150b7b3e3a0d77bf44b75e815f0754369927f",
+  "clothArtifactSHA256": "de26a1069750fbabc7abeedac7d7040de3aff96e6f40bcec51267a017dc0316a",
+  "missingFileHTTPStatus": 404,
+  "missingBodySHA256": "98b01b7ac3a8f84e0f4633235497d3831505e89755fd14702a9585acbc2c0d17",
+  "failurePreserved": "../missing-file-recovery/",
+  "calibratedFabricAndFit": "NOT_VALIDATED",
+  "evidenceCommitRuntime": "SKIP: evidence-only, no runtime source edits",
+  "commands": [
+    "python scripts/verify_pages.py --base-url https://liush2yuxjtu.github.io/pattern-agent/ --expected-commit 82484b1ffe639321121bfe7ad8af251b02f2cce7 --output /workspace/work/related-pages-20261118/live/final-homepage",
+    "python scripts/verify_cloth_entry.py --url https://liush2yuxjtu.github.io/pattern-agent/ --out /workspace/work/related-pages-20261118/live/entry",
+    "Python Playwright public missing PDF: HTTP404, actual Chinese recovery page, mobile screenshot and real click back home",
+    "git diff --check"
+  ],
+  "cleanup": "Successful browser verifiers close their own contexts; all local temporary HTTP servers were context-managed and stopped."
+}
