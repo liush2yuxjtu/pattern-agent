@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="experiment-readme-sha256" content="b6e9e7557a803f05cb51f3aa9cd02f406b4702b28438c90078e1aabad50922e2"><link rel="icon" href="data:,"><title>纸样设计意图实验｜案例库</title>
+<meta name="experiment-readme-sha256" content="5adede2d2540275a11565c7c7bd8a5aa753c058b52f9d4c9d22fb7c37331f5b4"><link rel="icon" href="data:,"><title>纸样设计意图实验｜案例库</title>
 <style>:root{color-scheme:light;--green:#285347;--ink:#1f2925;--muted:#66716b;--line:#d3dbd7;--preview:#eef1f3}
 *{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Noto Sans CJK SC",sans-serif}button,input,a{font:inherit}button,a,input,summary{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:wait;opacity:.6}a{color:var(--green);text-underline-offset:3px}svg{display:block}button svg,a svg,.search svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible,canvas:focus-visible{outline:3px solid #80ad9b;outline-offset:3px}[hidden]{display:none!important}
 .app-rail{position:fixed;inset:0 auto 0 0;width:205px;padding:22px 14px;border-right:1px solid var(--line);display:flex;flex-direction:column;background:#fff;z-index:2}.brand{font-size:23px;font-weight:700;letter-spacing:-.6px;text-decoration:none;white-space:nowrap;margin:0 9px 32px}.app-nav{display:flex;flex-direction:column;gap:6px}.app-nav button,.app-nav a,.rail-docs{display:flex;align-items:center;gap:13px;min-height:46px;padding:10px 12px;border:0;border-radius:6px;background:none;color:var(--ink);text-decoration:none;text-align:left;font-size:16px;white-space:nowrap}.app-nav button[aria-pressed=true]{background:var(--green);color:white;font-weight:600}.app-nav button:hover:not([aria-pressed=true]),.app-nav a:hover,.rail-docs:hover{background:#f0f4f2}.rail-docs{margin-top:auto;border-top:1px solid var(--line);border-radius:0;padding-top:20px}
@@ -43,6 +43,8 @@ dialog{padding:0;border:1px solid var(--line);border-radius:9px;width:min(1000px
     <div class="readme-layout"><nav aria-label="实验总览目录"><ul>
 <li><a href="#从这里开始" id="toc-从这里开始">从这里开始</a></li>
 <li><a href="#当前结果" id="toc-当前结果">当前结果</a></li>
+<li><a href="#独立物理实验台"
+id="toc-独立物理实验台">独立物理实验台</a></li>
 <li><a href="#原型与原始输入"
 id="toc-原型与原始输入">原型与原始输入</a></li>
 <li><a href="#四个改版案例" id="toc-四个改版案例">四个改版案例</a></li>
@@ -64,6 +66,8 @@ href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent
 href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/">在线实验总览</a>
 · <a
 href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/">原型与改版对照</a>
+· <a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/physics/">独立物理实验台</a>
 · <a
 href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/docs/">详细文档</a>
 · <a
@@ -108,11 +112,18 @@ href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent
 href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/sewn/">打开缝合结果页</a></td>
 </tr>
 <tr class="odd">
+<td>检查实际物理记录、应力应变、折角、接触与完整规格</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/README.md">物理实验台及复现方法</a>
+· <a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/physics/">打开物理实验台</a></td>
+</tr>
+<tr class="even">
 <td>在本机复现或继续开发</td>
 <td><a
 href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/docs/04-build-and-deploy.md">构建、验证与部署手册</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>审阅完整证据</td>
 <td><a
 href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/docs/verification/intent-edit-benchmark-20261117">二维改版</a>
@@ -138,9 +149,87 @@ PASS；袖长、衣长、前领三个输入缺少当前支持的配置，五项�
 <li>已通过的两个外壳分别含15条缝、1个连通组件和4个正常开口，严格穿插为0。原始缝线在当前合同下仍为
 FAIL，修正记录与原文件均保留。</li>
 <li>原规格的 U
-未标定；缝合实验只采用明确的毫米数值假定。材料力学、生产批准和真实试穿均为
+未标定；缝合实验只采用明确的毫米数值假定。材料实测与标定、生产批准和真人试穿均为
 NOT_RUN。</li>
+<li>独立物理实验台保存真实求解器记录、完整中文 YAML、二维
+SVG、每帧张量与折角。<strong>本轮原型与袖口两个案例各61/61帧离散数值验收
+PASS</strong>；其余三例因 <code>PROFILE_REQUIRED</code> 仍
+BLOCKED。七项机制/界面检查与整衣轨迹分别判定，材料标定及真人合身仍未验证。</li>
 </ul>
+</section>
+<section id="独立物理实验台" class="level2">
+<h2>独立物理实验台</h2>
+<p><a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/physics/">打开
+<code>/intent-edit-review/physics/</code></a>，或查看 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/README.md">代码、条件与复跑方法</a>。该页面使用独立发布路径，旧对照页、静态缝合页和历史
+FAIL 均保留。</p>
+<ul>
+<li>“二维纸样”显示当前文件的完整 SVG，可平移、缩放和复位；“完整规格
+YAML”显示原始中文全文，可滚动阅读并下载。</li>
+<li>展开“本款设计意图与变化”核对自然语言要求。可下载实际
+YAML、DXF；袖口案例另有实际 <code>spec-diff.json</code> 与
+<code>geometry-patch.json</code>。独立 <code>intent.txt</code>
+在对应案例结果目录中。</li>
+<li>“三维物理”读取实际保存状态，提供布料、应变、应力、折角、接触、接缝六种显示，检查15条缝及所选面片的二维材料坐标；记录
+JSON、当前网格 OBJ 和完整 HTML 可保存。</li>
+<li>原型 <code>baseline</code> 与袖口加宽 <code>03_cuff_width</code>
+有本次支持的来源配置。袖长、衣长、前领三个案例仍为
+<code>PROFILE_REQUIRED</code>，不能借用原型的模型或结果。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>本轮实际案例</th>
+<th>已独立验收的保存帧</th>
+<th>离散数值结论</th>
+<th>全程最大主应变</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原型 <code>baseline</code></td>
+<td>61/61</td>
+<td>PASS</td>
+<td>185.61%（第29帧；末帧139.51%）</td>
+</tr>
+<tr class="even">
+<td>袖口加宽 <code>03_cuff_width</code></td>
+<td>61/61</td>
+<td>PASS</td>
+<td>138.88%（第60帧）</td>
+</tr>
+</tbody>
+</table>
+<p>两个案例的全程最大接缝间隙、离散人体穿入、双向边面穿越及严格自交均为0，张量、折角与数值穿袖检查逐帧通过。来源检查各含15条缝、4个预期开口；两份实际二进制各有10组机制对照通过，从0/30/59帧在新进程继续的六项状态逐字节一致。上述高应变来自估计材料模型，<strong>不证明面料耐受、舒适或真人合身</strong>；结论限定于本轮记录的离散状态。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>检查边界</th>
+<th>如何读结论</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>七项机制对照与界面验收</td>
+<td>分别核对缝合、人体碰撞、应力应变、折角、回放、调试视图和布料连接约束的本次证据；未执行项保持
+NOT_RUN</td>
+</tr>
+<tr class="even">
+<td>穿着准备与整衣轨迹</td>
+<td>本轮两个案例的初始状态及各61帧离散数值验收
+PASS；仅覆盖实际来源、条件与保存状态，不能由机制或界面 PASS 代替</td>
+</tr>
+<tr class="odd">
+<td>材料标定、生产批准与真人试穿</td>
+<td>仍为 NOT_RUN；1U=1mm 只是本次数值假设，未改写原规格的单位状态</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="原型与原始输入" class="level2">
 <h2>原型与原始输入</h2>
@@ -181,6 +270,10 @@ SHA-256 为
 <code>1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4</code>。</p>
 <p>完整 YAML
 的几何不依赖原照片才能重建；网页中的几行摘要不能代替全文。两份文件是本次二维改版的几何起点，生产仍需批准单位、材料与工艺。</p>
+<p>补充上传的领子、袖子分别保存在 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/patterns/fitted-tshirt/components/20261118/README.md">独立部件原型包</a>：原始
+DXF/EMF/PRJ、完整中文 YAML、重建 DXF
+和双向核对报告均在该目录。新旧尺码表的冲突保留，没有悄悄改写原型规格。</p>
 </section>
 <section id="四个改版案例" class="level2">
 <h2>四个改版案例</h2>
@@ -283,6 +376,26 @@ href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent
 href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/sewn/README.md">sewn</a></td>
 </tr>
 <tr class="even">
+<td>实际物理输入、求解、接触、独立逐帧审计与恢复</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/README.md">physics</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/run_native.mjs">run_native.mjs</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/audit_experiment.py">audit_experiment.py</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/verify_resume.py">verify_resume.py</a></td>
+</tr>
+<tr class="odd">
+<td>单文件物理实验台、完整规格/二维入口与界面验收</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/build_viewer.py">build_viewer.py</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/viewer.mjs">viewer.mjs</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/verify_viewer.py">verify_viewer.py</a></td>
+</tr>
+<tr class="even">
 <td>共享DXF到GLB转换器与独立检查器</td>
 <td><a
 href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/services/dxf-preview/README.md">services/dxf-preview</a></td>
@@ -355,6 +468,11 @@ href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/
 <td><a
 href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/gallery-app-20261118/README.md">画廊应用验收</a></td>
 </tr>
+<tr class="even">
+<td>物理机制、初始几何、完整记录、单文件界面与历史失败</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/intent-physics-20261118/README.md">物理实验验收</a></td>
+</tr>
 </tbody>
 </table>
 <p>每个结论必须对应具体文件与检查边界。二维互校、预览交付和数字缝合的
@@ -367,6 +485,10 @@ PASS 不能替代生产或试穿批准。历史 FAIL 与环境限制仍保留在
 <p><strong>以意图改版：</strong> 原型YAML + 原型DXF + 明确设计意图 →
 新YAML与规格差异 → DXF补丁和新DXF → 二维互校 → 三维示意 →
 支持范围内的新缝合外壳与独立验收。</p>
+<p>物理实验从来源已核对的实际文件继续：完整材料坐标与缝合网格 → 穿着准备
+→ 独立几何门 → 真实物理记录 →
+逐帧审计与回放。准备失败时保留失败原因；明确保存的负例回放也不变为整衣
+PASS。</p>
 <p>原型包的早期流程和参考示例还可在 <a
 href="https://liush2yuxjtu.github.io/pattern-agent/prototype-package/">prototype-package参考页</a>
 查看。当前统一入口以本 README 为准。</p>
@@ -381,11 +503,13 @@ python experiments/intent-edit-review/build_docs.py
 python experiments/intent-edit-review/build_hub.py
 python experiments/intent-edit-review/verify_hub.py --output work/experiment-center/browser
 python experiments/intent-edit-review/verify_browser.py --output work/experiment-center/comparison</code></pre>
-<p>独立数据审计、三维重建和严格缝合的完整命令分别在 <a
+<p>独立数据审计、三维重建、严格缝合和物理实验的完整命令分别在 <a
 href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/docs/03-data-and-audit.md">数据说明</a>、<a
-href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/geometry/README.md">三维说明</a>
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/geometry/README.md">三维说明</a>、<a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/sewn/README.md">缝合说明</a>
 与 <a
-href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/sewn/README.md">缝合说明</a>。</p>
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/README.md">物理实验说明</a>。只更新文档和导航时只重建
+docs/hub，核对旧对照页与缝合文件的摘要不变。</p>
 <p>在线案例库从已验收对照页读取同一份原型、案例和完整文件，缝合状态核对实际交付清单；“实验说明”由本
 README 生成。改文档或页面导航后须重建对应的
 <code>web/intent-edit-review/</code> 产物并执行适用的本地
@@ -397,7 +521,9 @@ href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/AGENTS.md">AGENTS.
 <h2>范围和待确认项</h2>
 <p>对照页是约5.9MB的自包含HTML，完整规格、DXF、补丁、SVG、五套示意模型与脚本内嵌。单独保存后不需要旁边的资源；“实验总入口”是用户选择访问的在线文档链接。</p>
 <p>严格缝合是另一个检查边界。三项超出当前模板的输入需要新的配置与缝合合同，不能通过放宽阈值、改来源标签或沿用旧模型来变成PASS。原型及袖口模型只证明明确修正线的静态单层外壳连接。</p>
-<p>原文件没有物理单位声明；U尚未标定。后身数量2与完整单片装配假定、领条隐藏内层、缝份叠层、材料力学、人体碰撞和真实试穿均待确认。完整中文规格、原始文件、修正对照和所有历史失败保持可查。</p>
+<p>原文件没有物理单位声明；U尚未标定。后身数量2与完整单片装配假定、领条隐藏内层、缝份叠层、面料实测、实际人体条件和真人试穿均待确认。完整中文规格、原始文件、修正对照和所有历史失败保持可查。</p>
+<p>物理实验已实际计算标准人体接触及数值材料响应，本轮仅原型和袖口两个案例通过各61帧离散数值验收。高应变不能据此认定面料耐受、舒适或合身；估计参数下的计算也不等于实测材料、已批准人体条件或生产工艺。此前准备失败和旧
+T 恤的7.6455mm接缝间隙、20处穿插 FAIL 均保留。</p>
 </section></article></div>
   </section>
   <footer>U 未标定 · 三维为静态几何示意，未验证物理试穿</footer>

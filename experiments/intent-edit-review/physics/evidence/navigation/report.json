@@ -1,0 +1,53 @@
+{
+  "verdict": "PASS",
+  "scope": "Documentation and navigation; does not grant garment acceptance.",
+  "files": {
+    "experiments/intent-edit-review/README.md": {
+      "bytes": 14162,
+      "sha256": "fb238d6571360d5868a9e1508c85ff349bc3aa38f92acad5e3a38b1c4028e7cd"
+    },
+    "experiments/intent-edit-review/docs/01-user-guide.md": {
+      "bytes": 8215,
+      "sha256": "2d7220cc28638a0339f5ea381f53fdad81cf7a2e55d54403b4db08d01d3a7a0a"
+    },
+    "experiments/intent-edit-review/docs/02-architecture.md": {
+      "bytes": 8172,
+      "sha256": "02e0a622b7129a2776505f8ff9e9b0a2b131d9523b33ce72e38c5904a8d700df"
+    },
+    "experiments/intent-edit-review/docs/03-data-and-audit.md": {
+      "bytes": 8270,
+      "sha256": "d0947709fe33504e1faad6bd5c81f44131ef803c23c7c25d1ff0aabc58b4ce9e"
+    },
+    "experiments/intent-edit-review/docs/04-build-and-deploy.md": {
+      "bytes": 9116,
+      "sha256": "06bc49038d5f8e4c28aba9c609ffd0f8b3a020ece2c02f4aec79cce58ac8a733"
+    },
+    "web/intent-edit-review/docs/index.html": {
+      "bytes": 50194,
+      "sha256": "d96f679d47605379743aa30027d42626314bc4c2069f23bdd8ad456ffb3cbb15"
+    },
+    "web/intent-edit-review/experiment/index.html": {
+      "bytes": 5967747,
+      "sha256": "516ee846931a2c5602b41fd4c399c7d089220178a91a3aa3ca1ff30e1b8279f6"
+    }
+  },
+  "checks": {
+    "docs": {
+      "verdict": "PASS",
+      "report": "docs-browser/report.json"
+    },
+    "hub": {
+      "verdict": "PASS",
+      "report": "hub-browser/report.json"
+    },
+    "integrity": {
+      "verdict": "PASS",
+      "report": "local-integrity.json"
+    },
+    "readability": {
+      "verdict": "PASS",
+      "report": "navigation-readability.json"
+    }
+  },
+  "current_physics_status": "baseline-run36 and cuff-run36 initial geometry PASS; complete trajectory audit PENDING; no garment PASS inferred. Other three PROFILE_REQUIRED. Historical FAIL retained."
+}

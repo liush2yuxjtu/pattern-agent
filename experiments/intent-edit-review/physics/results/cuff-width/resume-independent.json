@@ -1,0 +1,47 @@
+{
+  "verdict": "PASS",
+  "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+  "recording_sha256": "f4209204bc0caacc86edbdcf00baf38fb600093308a0f64cdea1b7ad92fd76c3",
+  "wasm_sha256": "846bc4d954c4b3031c8f9c616aa063fc589df1dc10985708e65cd09344c56e3f",
+  "runtime_sha256": "85f108b674d231aefdf44f521ac321c295ed174d988182e8d537cb163c40aa28",
+  "checks": [
+    {
+      "restored_frame": 0,
+      "next_frame": 1,
+      "exact": {
+        "positions": true,
+        "previous": true,
+        "fields": true,
+        "contacts": true,
+        "step": true,
+        "time": true
+      }
+    },
+    {
+      "restored_frame": 30,
+      "next_frame": 31,
+      "exact": {
+        "positions": true,
+        "previous": true,
+        "fields": true,
+        "contacts": true,
+        "step": true,
+        "time": true
+      }
+    },
+    {
+      "restored_frame": 59,
+      "next_frame": 60,
+      "exact": {
+        "positions": true,
+        "previous": true,
+        "fields": true,
+        "contacts": true,
+        "step": true,
+        "time": true
+      }
+    }
+  ],
+  "failures": [],
+  "scope": "Fresh native WASM and contact BVH next-step continuation; no garment/fit acceptance claim."
+}

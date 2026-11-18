@@ -1,0 +1,91 @@
+{
+  "verdict": "PASS",
+  "scope": "Arithmetic/mechanism controls, portable negative witness controls, and arm code/source contracts only. Final run37 trajectory/geometry/browser acceptance are separate.",
+  "recorded_utc": "2026-11-18T12:51:39.539707+00:00",
+  "runs": {
+    "baseline": {
+      "main_controls_verdict": "PASS",
+      "mechanism_groups": {
+        "kernel": "PASS",
+        "implicit": "PASS",
+        "hinges": "PASS",
+        "self-contact": "PASS",
+        "swept-edge": "PASS",
+        "swept-vertex": "PASS",
+        "typed-contact": "PASS",
+        "swept-bounds": "PASS",
+        "self-step-guard": "PASS",
+        "body-feature": "PASS"
+      },
+      "controls_directory": "work/intent-physics/baseline-run37/controls",
+      "binary_input_C_equivalence": "work/intent-physics/baseline-run37/component-input-binary-equivalence.json",
+      "portable_body_control": "work/intent-physics/baseline-run37/controls/body-feature-portable.json",
+      "portable_body_verdict": "PASS",
+      "main_receipts_preserved": true,
+      "portable_result_comparison": {
+        "report_identical_except_witness_container_sha": true,
+        "portable_body_cases": 12,
+        "independently_checked_exit_rays": 125
+      }
+    },
+    "cuff": {
+      "main_controls_verdict": "PASS",
+      "mechanism_groups": {
+        "kernel": "PASS",
+        "implicit": "PASS",
+        "hinges": "PASS",
+        "self-contact": "PASS",
+        "swept-edge": "PASS",
+        "swept-vertex": "PASS",
+        "typed-contact": "PASS",
+        "swept-bounds": "PASS",
+        "self-step-guard": "PASS",
+        "body-feature": "PASS"
+      },
+      "controls_directory": "work/intent-physics/cuff-run37/controls",
+      "binary_input_C_equivalence": "work/intent-physics/cuff-run37/component-input-binary-equivalence.json",
+      "portable_body_control": "work/intent-physics/cuff-run37/controls/body-feature-portable.json",
+      "portable_body_verdict": "PASS",
+      "main_receipts_preserved": true,
+      "portable_result_comparison": {
+        "report_identical_except_witness_container_sha": true,
+        "portable_body_cases": 12,
+        "independently_checked_exit_rays": 125
+      }
+    }
+  },
+  "engine_mechanism_groups_total": 20,
+  "portable_body_component_runs": 2,
+  "arm_placement_contract_tests": 5,
+  "arm_placement_actual_npy_max_delta_m": 0.0,
+  "arm_wear_contract_tests": 8,
+  "arm_wear_actual_and_synthetic_readbacks": 5,
+  "command_records": {
+    "baseline": "work/intent-physics/final-extra-controls/baseline.command.json",
+    "cuff": "work/intent-physics/final-extra-controls/cuff.command.json",
+    "placement": "work/intent-physics/final-extra-controls/placement.command.json",
+    "wear": "work/intent-physics/final-extra-controls/wear.command.json"
+  },
+  "portable_fixture_equivalence": "work/intent-physics/final-extra-controls/body-contact-fixture-equivalence.json",
+  "saved_fixture_bindings_unchanged": {
+    "work/intent-physics/baseline-run27/input.json": true,
+    "work/intent-physics/baseline-run27/trajectory.json": true,
+    "work/intent-physics/baseline-run33/input.json": true,
+    "work/intent-physics/baseline-run33/solver.wasm": true,
+    "work/intent-physics/baseline-run30/input.json": true,
+    "work/intent-physics/arm-placement-research/actual-rig-seed.positions.npy": true,
+    "work/intent-physics/baseline-run31/input.json": true,
+    "work/intent-physics/baseline-run31/preparation-final.bin": true,
+    "work/intent-physics/final-extra-controls/run-check.py": true
+  },
+  "self_guard_saved_fixture_bindings": "work/intent-physics/final-extra-controls/self-guard-fixture-bindings.json",
+  "drivers": {
+    "run-check.py": "47b4493840ec18affde70a39875ebb03b2c7d05dd690c17e1e86b33b0c436425",
+    "run-portable-body.py": "3d9ffde899020b759061805366afdc28b94f11648ca0696a375ee1cc1c7984b1"
+  },
+  "production_sources_modified_by_this_task": false,
+  "committed": false,
+  "physical_fit": "NOT_RUN",
+  "physical_trajectory_acceptance": "NOT_EVALUATED_HERE",
+  "historical_initial_seed_readiness": "FAIL"
+}

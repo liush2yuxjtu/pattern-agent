@@ -1,0 +1,21 @@
+PASS Closest closed triangle includes face, edge and vertex regions
+PASS Moving point crossing survives disjoint final separation
+PASS Stationary query and translating moving face use relative motion
+PASS Rotating plane linear-root false positive is rejected geometrically
+PASS A plane crossing outside the actual triangle remains clear
+PASS Actual run31 old accepted VF root is a reproducible false constraint
+PASS Finite-thickness edge and vertex approaches retain true barycentrics
+PASS Tangent finite-thickness contact is retained as unresolved or contact
+PASS Degenerate triangles and zero-distance normal fallbacks stay finite
+PASS Face collapse during the interval cannot authorize false clearance
+PASS Iteration/time exhaustion is explicit, never a silent miss
+PASS Stationary near/far geometry and common rigid translation are distinguished
+PASS Narrow crossing is retained without endpoint distance gating
+PASS Rigid frame transforms and consistent length scales preserve geometry
+PASS Triangle permutations and split linear intervals preserve candidates
+PASS Near-degenerate feature conditioning remains explicit uncertainty
+PASS Huge finite distances stay finite and invalid input is rejected
+PASS Prepared queries own immutable snapshots and independent result records
+PASS Closest kernel agrees with independent region oracle on static geometry
+PASS Independent dense-time sampling observes no false-negative CCD result
+{"verdict":"PASS","checks":20,"independentTimeSamples":432180,"sampledContactCases":21,"certifiedClearCases":159,"explicitUncertainCases":17,"rotatingFalsePlaneMinimum_m":0.012150276494450796,"actual31FalsePlaneMinimum_m":0.007568126691824923,"scope":"Pure floating-point linear vertex/triangle CCD controls. Dense sampling is not a general proof; conservative/uncertain results are not exact impact certification. No solver/material/body/acceptance threshold changed."}

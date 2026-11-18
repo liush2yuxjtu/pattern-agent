@@ -1,0 +1,196 @@
+{
+  "verdict": "PASS",
+  "actual33": "PASS",
+  "checks": [
+    {
+      "pureInputsAndBVHUnchanged": true,
+      "alpha": 0.5,
+      "globalRollbackNorm": 0.05196152306563575,
+      "maxVertexRollback": 0.029999999329447746,
+      "allFacesRetained": 2
+    },
+    {
+      "globalInterpolationIncludingUnrelatedFace": true
+    },
+    {
+      "indexType": "Array",
+      "actualBVHFaces": 40,
+      "rejectedCrossings": 20
+    },
+    {
+      "indexType": "Uint8Array",
+      "actualBVHFaces": 40,
+      "rejectedCrossings": 20
+    },
+    {
+      "indexType": "Uint16Array",
+      "actualBVHFaces": 40,
+      "rejectedCrossings": 20
+    },
+    {
+      "indexType": "Uint32Array",
+      "actualBVHFaces": 40,
+      "rejectedCrossings": 20
+    },
+    {
+      "indexType": "Int32Array",
+      "actualBVHFaces": 40,
+      "rejectedCrossings": 20
+    },
+    {
+      "explicitInPlacePreviousSynchronization": true,
+      "fixedSignedZeroPreserved": true
+    },
+    {
+      "invalidReferenceThrowsWithoutMutation": true,
+      "fixedMismatchRejected": true,
+      "overlappingOutputBuffersRejected": true
+    },
+    {
+      "sharedTwoPositiveAreaRejected": true,
+      "sharedThreeReferenceRejected": true,
+      "degenerateCandidateAndReferenceRejected": true
+    },
+    {
+      "budgetFallbackAccepted": false,
+      "status": "stalled",
+      "alpha": 0
+    },
+    {
+      "positiveAlphaFloat32StallDetected": true,
+      "alpha": 0.25
+    },
+    {
+      "unchangedProposalAccepted": true,
+      "thresholdCannotBeWeakened": true
+    },
+    {
+      "newProcessReplay": "bit-exact including state and geometry diagnostics"
+    },
+    {
+      "actual33CompleteMesh": true,
+      "referencePairs": 0,
+      "proposedPairs": 6,
+      "returnedPairs": 0,
+      "triangleCount": 7186,
+      "alpha": 0.5,
+      "globalRollbackNorm": 1.1386497254606878,
+      "proposedDisplacementNorm": 2.2772995044969435,
+      "acceptedDisplacementNorm": 1.1386497790415104,
+      "fallbackToReference": false,
+      "zeroStoredProgress": false,
+      "newProcessReplay": "bit-exact"
+    }
+  ],
+  "independentOracle": [
+    {
+      "name": "analytic-reference",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 2
+    },
+    {
+      "name": "analytic-proposed-crossing",
+      "strictPairs": 1,
+      "degenerate": 0,
+      "triangleCount": 2
+    },
+    {
+      "name": "analytic-accepted",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 2
+    },
+    {
+      "name": "whole-movable-mesh-accepted",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 3
+    },
+    {
+      "name": "multi-leaf-Array",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 40
+    },
+    {
+      "name": "multi-leaf-Uint8Array",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 40
+    },
+    {
+      "name": "multi-leaf-Uint16Array",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 40
+    },
+    {
+      "name": "multi-leaf-Uint32Array",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 40
+    },
+    {
+      "name": "multi-leaf-Int32Array",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 40
+    },
+    {
+      "name": "shared2-proposed-overlap",
+      "strictPairs": 1,
+      "degenerate": 0,
+      "triangleCount": 2
+    },
+    {
+      "name": "shared2-accepted",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 2
+    },
+    {
+      "name": "degenerate-proposal-rejected",
+      "strictPairs": 0,
+      "degenerate": 1,
+      "triangleCount": 1
+    },
+    {
+      "name": "nondegenerate-accepted",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 1
+    },
+    {
+      "name": "budget-reference-fallback",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 2
+    },
+    {
+      "name": "f32-stalled-reference",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 1
+    },
+    {
+      "name": "actual33-complete-reference",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 7186
+    },
+    {
+      "name": "actual33-complete-candidate",
+      "strictPairs": 6,
+      "degenerate": 0,
+      "triangleCount": 7186
+    },
+    {
+      "name": "actual33-complete-guarded",
+      "strictPairs": 0,
+      "degenerate": 0,
+      "triangleCount": 7186
+    }
+  ],
+  "scope": "Discrete full-mesh Float32 accepted-step controls only. Body/arm/material/physical accuracy and continuous collisions are not approved; alpha0 or zero stored progress is an explicit rejected/stalled physical-step boundary."
+}

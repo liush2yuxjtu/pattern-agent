@@ -1,0 +1,227 @@
+{
+  "verdict": "PASS for the corrected acceptance policy only",
+  "scope": "Actual guard plus unchanged extracted runtime contacts; synthetic external phase proposals, not native cloth physics or garment acceptance.",
+  "runtime_sha256": "85f108b674d231aefdf44f521ac321c295ed174d988182e8d537cb163c40aa28",
+  "guard_sha256": "65f8ea8885ebb291c8b6a51acb0c790d83e2a45141521796a4e516c4bdc051d6",
+  "cases": [
+    {
+      "name": "rejected_native_phase_masked_by_later_body_progress",
+      "reference": [
+        1,
+        1,
+        0,
+        1.0199999809265137,
+        1,
+        0,
+        1,
+        1.0199999809265137,
+        0,
+        1.0099999904632568,
+        0.9800000190734863,
+        0,
+        1.0199999809265137,
+        1,
+        0
+      ],
+      "proposal": [
+        1,
+        1,
+        0,
+        1.0199999809265137,
+        1,
+        0,
+        1,
+        1.0199999809265137,
+        0,
+        1.0099999904632568,
+        0.9800000190734863,
+        0,
+        1.0199999809265137,
+        1.0000001192092896,
+        0
+      ],
+      "bodyProposal": [
+        1,
+        1,
+        0.00009999999747378752,
+        1.0199999809265137,
+        1,
+        0.00009999999747378752,
+        1,
+        1.0199999809265137,
+        0.00009999999747378752,
+        1.0099999904632568,
+        0.9800000190734863,
+        0.00009999999747378752,
+        1.0199999809265137,
+        1,
+        0.00009999999747378752
+      ],
+      "triangles": [
+        0,
+        1,
+        2,
+        0,
+        3,
+        4
+      ],
+      "firstGuard": {
+        "accepted": false,
+        "status": "stalled",
+        "alpha": 0.5,
+        "proposedDisplacementNorm": 1.1920928955078125e-7,
+        "acceptedDisplacementNorm": 0
+      },
+      "bodyGuard": {
+        "accepted": true,
+        "status": "accepted",
+        "alpha": 1,
+        "proposedDisplacementNorm": 0.00022360679210119613,
+        "acceptedDisplacementNorm": 0.00022360679210119613
+      },
+      "oldWholeStepPredicateStalled": false,
+      "currentRuntime": {
+        "result": {
+          "stalled": true,
+          "netPositionUnchanged": false
+        },
+        "positions": [
+          1,
+          1,
+          0.00009999999747378752,
+          1.0199999809265137,
+          1,
+          0.00009999999747378752,
+          1,
+          1.0199999809265137,
+          0.00009999999747378752,
+          1.0099999904632568,
+          0.9800000190734863,
+          0.00009999999747378752,
+          1.0199999809265137,
+          1,
+          0.00009999999747378752
+        ],
+        "previous": [
+          1,
+          1,
+          0,
+          1.0199999809265137,
+          1,
+          0,
+          1,
+          1.0199999809265137,
+          0,
+          1.0099999904632568,
+          0.9800000190734863,
+          0,
+          1.0199999809265137,
+          0.9999998807907104,
+          0
+        ],
+        "diagnostics": {
+          "calls": 3,
+          "backtracked": 1,
+          "stalledPhases": 1,
+          "rejectedCandidates": 1,
+          "minAlpha": 0.5,
+          "maxVertexRollback": 1.1920928955078125e-7,
+          "globalRollbackNormSum": 1.1920928955078125e-7
+        }
+      }
+    },
+    {
+      "name": "valid_supported_equilibrium_wrongly_rejected",
+      "reference": [
+        0,
+        0.0010000000474974513,
+        0,
+        0.019999999552965164,
+        0.0010000000474974513,
+        0,
+        0,
+        0.0010000000474974513,
+        0.019999999552965164
+      ],
+      "proposal": [
+        0,
+        0.0009900000877678394,
+        0,
+        0.019999999552965164,
+        0.0009900000877678394,
+        0,
+        0,
+        0.0009900000877678394,
+        0.019999999552965164
+      ],
+      "bodyProposal": [
+        0,
+        0.0010000000474974513,
+        0,
+        0.019999999552965164,
+        0.0010000000474974513,
+        0,
+        0,
+        0.0010000000474974513,
+        0.019999999552965164
+      ],
+      "triangles": [
+        0,
+        1,
+        2
+      ],
+      "firstGuard": {
+        "accepted": true,
+        "status": "accepted",
+        "alpha": 1,
+        "proposedDisplacementNorm": 0.000017320438325330496,
+        "acceptedDisplacementNorm": 0.000017320438325330496
+      },
+      "bodyGuard": {
+        "accepted": true,
+        "status": "accepted",
+        "alpha": 1,
+        "proposedDisplacementNorm": 0.000017320438325330496,
+        "acceptedDisplacementNorm": 0.000017320438325330496
+      },
+      "oldWholeStepPredicateStalled": true,
+      "currentRuntime": {
+        "result": {
+          "stalled": false,
+          "netPositionUnchanged": true
+        },
+        "positions": [
+          0,
+          0.0010000000474974513,
+          0,
+          0.019999999552965164,
+          0.0010000000474974513,
+          0,
+          0,
+          0.0010000000474974513,
+          0.019999999552965164
+        ],
+        "previous": [
+          0,
+          0.0010000000474974513,
+          0,
+          0.019999999552965164,
+          0.0010000000474974513,
+          0,
+          0,
+          0.0010000000474974513,
+          0.019999999552965164
+        ],
+        "diagnostics": {
+          "calls": 3,
+          "backtracked": 0,
+          "stalledPhases": 0,
+          "rejectedCandidates": 0,
+          "minAlpha": 1,
+          "maxVertexRollback": 0,
+          "globalRollbackNormSum": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "verdict": "PASS",
+  "scope": "Narrow actual navigation and source-reading regression; numerical acceptance comes from independent run37 audits.",
+  "html_sha256": {
+    "docs": "cf4a7339b371c103dbe28ddb5eb022e6cc86ac0a3bea2e3e7059a14e561de6c3",
+    "hub": "045d25fa4fce6feb9d0e4ea15fa051c5306135478217e6df1d5d74581caf0c4e",
+    "physics": "571fd1460f037ba1d498cc8147f175d7508ce9f484616834d579ec141163ac05"
+  },
+  "page_errors": [],
+  "bad_responses": [],
+  "cases": [
+    {
+      "id": "baseline",
+      "frames": 61,
+      "discrete_verdict": "PASS",
+      "yaml_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "yaml_bytes": 194100,
+      "actual_download_exact": true,
+      "svg_lines": 204,
+      "svg_texts": 27,
+      "source_file_keys": [
+        "dxf",
+        "yaml"
+      ]
+    },
+    {
+      "id": "03_cuff_width",
+      "frames": 61,
+      "discrete_verdict": "PASS",
+      "yaml_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+      "yaml_bytes": 196859,
+      "actual_download_exact": true,
+      "svg_lines": 204,
+      "svg_texts": 27,
+      "source_file_keys": [
+        "dxf",
+        "geometry_patch",
+        "spec_diff",
+        "yaml"
+      ]
+    }
+  ],
+  "screenshots": [
+    "baseline-3d-desktop.png",
+    "baseline-2d-desktop.png",
+    "baseline-yaml-desktop.png",
+    "03_cuff_width-3d-desktop.png",
+    "03_cuff_width-2d-desktop.png",
+    "03_cuff_width-yaml-desktop.png",
+    "cuff-header-375.png",
+    "cuff-yaml-375.png",
+    "cuff-header-320.png",
+    "cuff-yaml-320.png",
+    "hub-physics-1448.png",
+    "hub-physics-375.png",
+    "hub-physics-320.png"
+  ],
+  "round_trip": [
+    "docs",
+    "physics",
+    "experiment/readme",
+    "docs"
+  ],
+  "hub_toc_links": 10
+}

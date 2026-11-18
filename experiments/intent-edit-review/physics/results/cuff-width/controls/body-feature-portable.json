@@ -1,0 +1,333 @@
+{
+  "format": "portable-body-feature-component-control/1",
+  "command": [
+    "/workspace/work/pattern-agent-publish/work/intent-physics/venv/bin/python",
+    "/workspace/work/pattern-agent-publish/experiments/intent-edit-review/physics/test_body_feature_contact.py",
+    "--wasm",
+    "/workspace/work/pattern-agent-publish/work/intent-physics/cuff-run37/solver.wasm",
+    "--input",
+    "/workspace/work/pattern-agent-publish/experiments/intent-edit-review/physics/fixtures/body-contact-negative/input.json",
+    "--trajectory",
+    "/workspace/work/pattern-agent-publish/experiments/intent-edit-review/physics/fixtures/body-contact-negative/trajectory.json"
+  ],
+  "cwd": "/workspace/work/pattern-agent-publish",
+  "explicit_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "SELF_GUARD_REAL_FIXTURE": "/workspace/work/pattern-agent-publish/work/intent-physics/baseline-run33",
+    "PATTERN_ORACLE_PYTHON": "/workspace/work/pattern-agent-publish/work/intent-physics/venv/bin/python"
+  },
+  "started_utc": "2026-11-18T12:48:37.400650+00:00",
+  "source_hashes_before": {
+    "experiments/intent-edit-review/physics/body-feature-contact.c": "3cc1ae80f5a319e8c6cf64f8d3ff2a4e23b1b315fbbffecadc5183fe5422f0ea",
+    "experiments/intent-edit-review/physics/fixtures/body-contact-negative/input.json": "2d1a753896020729bc836b174c507a5ecdb130404b37590cdc8e983d2738a6a0",
+    "experiments/intent-edit-review/physics/fixtures/body-contact-negative/trajectory.json": "1185becadd9dd0a362c944c415eaa3b11d53b4be621b7084fdc44a41e3df270e",
+    "experiments/intent-edit-review/physics/test_body_feature_contact.py": "7b7a96177f29312553073c6c576a82c9b1ac02d778cb237b1c6efb5dd2d016b0",
+    "work/intent-physics/cuff-run37/input.json": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+    "work/intent-physics/cuff-run37/solver-capacity.c": "5888251fc1727570e9bc5bb29acb561b0992162292faf3bdb3eabddbdb37db74",
+    "work/intent-physics/cuff-run37/solver.wasm": "846bc4d954c4b3031c8f9c616aa063fc589df1dc10985708e65cd09344c56e3f"
+  },
+  "main_receipts_before": {
+    "work/intent-physics/cuff-run37/controls/body-feature.json": "4ec046e5f01dd518c22e47ef378b7248a2e70556e9a9352f481608e2a27e06fd",
+    "work/intent-physics/cuff-run37/controls/body-feature.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/body-feature.stdout.log": "abc8a3feca5e42523934fc416de968c1bf922b7d9876fe32c60c0f84fb3c6ff9",
+    "work/intent-physics/cuff-run37/controls/hinges.json": "a9a87bd74e95fde4bc79519e1a5b86f90ce0d9ba67f4dcff4329a6070a9b5d14",
+    "work/intent-physics/cuff-run37/controls/hinges.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/hinges.stdout.log": "3e55fdfab9f5613d1316e6d030d75546571cdd0fdf395338098fc35ac4d873a1",
+    "work/intent-physics/cuff-run37/controls/implicit.json": "8dd6037938923472392cb71c502f7812c7bab9a2bd1ca7d170f97c640a24a235",
+    "work/intent-physics/cuff-run37/controls/implicit.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/implicit.stdout.log": "136c2adcb363058f0d16bf3da968d5d59bf199cdd9cd1abf15887bab92bc671c",
+    "work/intent-physics/cuff-run37/controls/kernel-raw.json": "0e0c7912509044e06d4c746b6b9ed43962a2f4cc58268807389a6181b6733811",
+    "work/intent-physics/cuff-run37/controls/kernel.json": "651253a3aeec4e42ed32015fc9b15d40a5a3df5bfee98876c25a4f8aa39dee4d",
+    "work/intent-physics/cuff-run37/controls/kernel.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/kernel.stdout.log": "130808e5891cce1e37a45dfe44bafb50412451eddf711fd10a685cd82e4fa8a0",
+    "work/intent-physics/cuff-run37/controls/manifest.json": "3c6ef343f679eea32e8789e648b5314ef636e050321cfcb07d9851a460c30f5f",
+    "work/intent-physics/cuff-run37/controls/self-contact.json": "00b18067799c389e854908f702149e924eacf4842630c3ecc16a2f4d80309bc9",
+    "work/intent-physics/cuff-run37/controls/self-contact.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/self-contact.stdout.log": "40226dea0c93cea665df3cbf21de29b394dd2d4eda8cf45f8883750185011bab",
+    "work/intent-physics/cuff-run37/controls/self-step-guard.json": "f390aa801f6cb74523df026d2456bb31121854a9c20faf9ab18fb258b17acba4",
+    "work/intent-physics/cuff-run37/controls/self-step-guard.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/self-step-guard.stdout.log": "342eb70ae731167484ff7701a8e5d3a10dc0d1753693adfb505b0103093d027b",
+    "work/intent-physics/cuff-run37/controls/swept-bounds.json": "681032d29b1b7d00e9aa337cbc26f71bef65bbd754ec84f26b536a3d6da11ab8",
+    "work/intent-physics/cuff-run37/controls/swept-bounds.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/swept-bounds.stdout.log": "a09dcbc0140e07f3d8de388751e2a16a57be72a0aeb42076913988ad11c1dbd6",
+    "work/intent-physics/cuff-run37/controls/swept-edge.json": "fa60bc4d490621be5acfb76c0dc76fbcf6c8b08a4902aed5b183039dfddbac54",
+    "work/intent-physics/cuff-run37/controls/swept-edge.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/swept-edge.stdout.log": "56b1cd12d7446b1e4af9617f4db3506401eb424e9011bcfdce5c0628a8070832",
+    "work/intent-physics/cuff-run37/controls/swept-vertex.json": "ebf88be7acb73869113b94f8eac7145033161076b35953b9c28c199a90e85480",
+    "work/intent-physics/cuff-run37/controls/swept-vertex.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/swept-vertex.stdout.log": "75b92f8ce3fc4d434bf04f5d215f008a29534dfab3a13c2384634476d804c5cc",
+    "work/intent-physics/cuff-run37/controls/typed-contact.json": "1c5d4e9c02cb5d2ee2a6450e76b06acb98ca21403071204fd5e94b275f688feb",
+    "work/intent-physics/cuff-run37/controls/typed-contact.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/typed-contact.stdout.log": "df8506b3704da58e291234b8dd66f33afcc50bace3b6fbbebc74d9079e4594ae"
+  },
+  "fixture_equivalence_receipt": "work/intent-physics/final-extra-controls/body-contact-fixture-equivalence.json",
+  "fixture_equivalence_receipt_sha256": "abf3ffb9eb699a754c3e96536c9bb793f2783b7514be9eddd9892eead08bb771",
+  "scope": "Portable saved negative component control only. Main ten-group controls receipts are preserved; no final trajectory or fit verdict.",
+  "exit_code": 0,
+  "ended_utc": "2026-11-18T12:49:20.655668+00:00",
+  "wall_seconds": 43.23441671299224,
+  "stdout_log": "work/intent-physics/cuff-run37/controls/body-feature-portable.stdout.log",
+  "stderr_log": "work/intent-physics/cuff-run37/controls/body-feature-portable.stderr.log",
+  "source_hashes_after": {
+    "experiments/intent-edit-review/physics/body-feature-contact.c": "3cc1ae80f5a319e8c6cf64f8d3ff2a4e23b1b315fbbffecadc5183fe5422f0ea",
+    "experiments/intent-edit-review/physics/fixtures/body-contact-negative/input.json": "2d1a753896020729bc836b174c507a5ecdb130404b37590cdc8e983d2738a6a0",
+    "experiments/intent-edit-review/physics/fixtures/body-contact-negative/trajectory.json": "1185becadd9dd0a362c944c415eaa3b11d53b4be621b7084fdc44a41e3df270e",
+    "experiments/intent-edit-review/physics/test_body_feature_contact.py": "7b7a96177f29312553073c6c576a82c9b1ac02d778cb237b1c6efb5dd2d016b0",
+    "work/intent-physics/cuff-run37/input.json": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+    "work/intent-physics/cuff-run37/solver-capacity.c": "5888251fc1727570e9bc5bb29acb561b0992162292faf3bdb3eabddbdb37db74",
+    "work/intent-physics/cuff-run37/solver.wasm": "846bc4d954c4b3031c8f9c616aa063fc589df1dc10985708e65cd09344c56e3f"
+  },
+  "main_receipts_after": {
+    "work/intent-physics/cuff-run37/controls/body-feature.json": "4ec046e5f01dd518c22e47ef378b7248a2e70556e9a9352f481608e2a27e06fd",
+    "work/intent-physics/cuff-run37/controls/body-feature.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/body-feature.stdout.log": "abc8a3feca5e42523934fc416de968c1bf922b7d9876fe32c60c0f84fb3c6ff9",
+    "work/intent-physics/cuff-run37/controls/hinges.json": "a9a87bd74e95fde4bc79519e1a5b86f90ce0d9ba67f4dcff4329a6070a9b5d14",
+    "work/intent-physics/cuff-run37/controls/hinges.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/hinges.stdout.log": "3e55fdfab9f5613d1316e6d030d75546571cdd0fdf395338098fc35ac4d873a1",
+    "work/intent-physics/cuff-run37/controls/implicit.json": "8dd6037938923472392cb71c502f7812c7bab9a2bd1ca7d170f97c640a24a235",
+    "work/intent-physics/cuff-run37/controls/implicit.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/implicit.stdout.log": "136c2adcb363058f0d16bf3da968d5d59bf199cdd9cd1abf15887bab92bc671c",
+    "work/intent-physics/cuff-run37/controls/kernel-raw.json": "0e0c7912509044e06d4c746b6b9ed43962a2f4cc58268807389a6181b6733811",
+    "work/intent-physics/cuff-run37/controls/kernel.json": "651253a3aeec4e42ed32015fc9b15d40a5a3df5bfee98876c25a4f8aa39dee4d",
+    "work/intent-physics/cuff-run37/controls/kernel.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/kernel.stdout.log": "130808e5891cce1e37a45dfe44bafb50412451eddf711fd10a685cd82e4fa8a0",
+    "work/intent-physics/cuff-run37/controls/manifest.json": "3c6ef343f679eea32e8789e648b5314ef636e050321cfcb07d9851a460c30f5f",
+    "work/intent-physics/cuff-run37/controls/self-contact.json": "00b18067799c389e854908f702149e924eacf4842630c3ecc16a2f4d80309bc9",
+    "work/intent-physics/cuff-run37/controls/self-contact.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/self-contact.stdout.log": "40226dea0c93cea665df3cbf21de29b394dd2d4eda8cf45f8883750185011bab",
+    "work/intent-physics/cuff-run37/controls/self-step-guard.json": "f390aa801f6cb74523df026d2456bb31121854a9c20faf9ab18fb258b17acba4",
+    "work/intent-physics/cuff-run37/controls/self-step-guard.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/self-step-guard.stdout.log": "342eb70ae731167484ff7701a8e5d3a10dc0d1753693adfb505b0103093d027b",
+    "work/intent-physics/cuff-run37/controls/swept-bounds.json": "681032d29b1b7d00e9aa337cbc26f71bef65bbd754ec84f26b536a3d6da11ab8",
+    "work/intent-physics/cuff-run37/controls/swept-bounds.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/swept-bounds.stdout.log": "a09dcbc0140e07f3d8de388751e2a16a57be72a0aeb42076913988ad11c1dbd6",
+    "work/intent-physics/cuff-run37/controls/swept-edge.json": "fa60bc4d490621be5acfb76c0dc76fbcf6c8b08a4902aed5b183039dfddbac54",
+    "work/intent-physics/cuff-run37/controls/swept-edge.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/swept-edge.stdout.log": "56b1cd12d7446b1e4af9617f4db3506401eb424e9011bcfdce5c0628a8070832",
+    "work/intent-physics/cuff-run37/controls/swept-vertex.json": "ebf88be7acb73869113b94f8eac7145033161076b35953b9c28c199a90e85480",
+    "work/intent-physics/cuff-run37/controls/swept-vertex.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/swept-vertex.stdout.log": "75b92f8ce3fc4d434bf04f5d215f008a29534dfab3a13c2384634476d804c5cc",
+    "work/intent-physics/cuff-run37/controls/typed-contact.json": "1c5d4e9c02cb5d2ee2a6450e76b06acb98ca21403071204fd5e94b275f688feb",
+    "work/intent-physics/cuff-run37/controls/typed-contact.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "work/intent-physics/cuff-run37/controls/typed-contact.stdout.log": "df8506b3704da58e291234b8dd66f33afcc50bace3b6fbbebc74d9079e4594ae"
+  },
+  "report": {
+    "verdict": "PASS",
+    "cases": [
+      {
+        "name": "analytic.interior_box",
+        "before": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 8
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 12,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 2.0000000949949026
+      },
+      {
+        "name": "analytic.off_midpoint_edge_box",
+        "before": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 2,
+          "body_edge_cloth_hits": 3
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 12,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 1.9999966025352478
+      },
+      {
+        "name": "analytic.connected_U",
+        "before": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 16
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 12,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 3.3211384434252977
+      },
+      {
+        "name": "analytic.previous_crosses_other_U_arm",
+        "before": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 8
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 12,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 3.217055229470134
+      },
+      {
+        "name": "analytic.history_outside_below_margin",
+        "before": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 8
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 12,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 2.0000000367872417
+      },
+      {
+        "name": "analytic.winding_response_reverse",
+        "before": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 8
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 12,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 2.0000000949949026
+      },
+      {
+        "name": "analytic.fixed_root",
+        "before": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 8
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 12,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 2.0000000949949026
+      },
+      {
+        "name": "scope.swept_only_not_supported",
+        "endpoint": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "midpath": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 8
+        },
+        "continuous_collision_detection": "NOT_SUPPORTED"
+      },
+      {
+        "name": "real.forearm.face6257",
+        "before": {
+          "inside_samples": 3,
+          "cloth_edge_body_hits": 4,
+          "body_edge_cloth_hits": 8
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 64,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 73.08977306844983
+      },
+      {
+        "name": "real.forearm.face6592",
+        "before": {
+          "inside_samples": 2,
+          "cloth_edge_body_hits": 4,
+          "body_edge_cloth_hits": 12
+        },
+        "after": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 0,
+          "body_edge_cloth_hits": 0
+        },
+        "rounds": 64,
+        "initial_intersecting_faces": 1,
+        "final_intersecting_faces": 0,
+        "maximum_total_vertex_displacement_mm": 36.06897648015498
+      },
+      {
+        "name": "real.full_frame60",
+        "before": {
+          "inside_samples": 12,
+          "cloth_edge_body_hits": 18,
+          "body_edge_cloth_hits": 85
+        },
+        "after": {
+          "inside_samples": 12,
+          "cloth_edge_body_hits": 13,
+          "body_edge_cloth_hits": 72
+        },
+        "rounds": 24,
+        "initial_intersecting_faces": 13,
+        "final_intersecting_faces": 12,
+        "maximum_total_vertex_displacement_mm": 44.43931481335157
+      },
+      {
+        "name": "real.legacy_sample_miss",
+        "before": {
+          "inside_samples": 0,
+          "cloth_edge_body_hits": 14,
+          "body_edge_cloth_hits": 87
+        },
+        "after": {
+          "inside_samples": 2,
+          "cloth_edge_body_hits": 6,
+          "body_edge_cloth_hits": 67
+        },
+        "rounds": 24,
+        "initial_intersecting_faces": 11,
+        "final_intersecting_faces": 5,
+        "maximum_total_vertex_displacement_mm": 41.16371920828006
+      }
+    ],
+    "maximum_previous_sync_error_m": 1.9073486328118495e-07,
+    "independently_checked_exit_rays": 125,
+    "maximum_first_exit_distance_error_m": 7.632783294297951e-17,
+    "scope": "Requires outward cloth winding. Discrete component controls only; swept-only CCD is NOT_SUPPORTED. Full coupled trajectory, cloth self-contact and real-person fit remain unverified.",
+    "wasm_sha256": "846bc4d954c4b3031c8f9c616aa063fc589df1dc10985708e65cd09344c56e3f",
+    "input_sha256": "2d1a753896020729bc836b174c507a5ecdb130404b37590cdc8e983d2738a6a0",
+    "trajectory_sha256": "1185becadd9dd0a362c944c415eaa3b11d53b4be621b7084fdc44a41e3df270e",
+    "test_source_sha256": "7b7a96177f29312553073c6c576a82c9b1ac02d778cb237b1c6efb5dd2d016b0",
+    "component_source_sha256": "3cc1ae80f5a319e8c6cf64f8d3ff2a4e23b1b315fbbffecadc5183fe5422f0ea"
+  },
+  "source_files_unchanged": true,
+  "main_receipts_unchanged": true,
+  "verdict": "PASS"
+}

@@ -6,7 +6,10 @@ import {MeshBVH} from 'three-mesh-bvh';
 // stay unchanged. Contacts use inverse-mass weighted barycentric corrections.
 // This is a finite-thickness contact approximation, not a CCD guarantee.
 export class SelfContact {
- constructor(positions,triangles,thickness=.003){
+ constructor(positions,triangles,thickness=.003,options={}){
+  this.excludeVertexFace=options.excludeVertexFace;this.excludeEdgePair=options.excludeEdgePair;
+  this.useSweptBounds=Boolean(options.sweptBounds);
+  this.maxVertexCorrection=options.maxVertexCorrection??.0005;
   this.faces=triangles;this.thickness=thickness;this.faceIndices=Array.from({length:triangles.length/3},(_,i)=>triangles.slice(i*3,i*3+3));
   this.geometry=new BufferGeometry();
   this.vertices=new Float32Array(positions);
@@ -26,13 +29,18 @@ export class SelfContact {
   for(let pass=0;pass<passes;pass++){
    const pointStart=performance.now();
    this.vertices.set(p);this.tree.refit();
+   if(this.useSweptBounds)this.buildSweptBounds(history);
    const point=new THREE.Vector3(),closest=new THREE.Vector3(),bary=new THREE.Vector3();
    const hit=new THREE.Vector3(),normal=new THREE.Vector3(),swept=new THREE.Box3(),startPoint=new THREE.Vector3(),n0=new THREE.Vector3(),n1=new THREE.Vector3(),a0=new THREE.Vector3(),b0=new THREE.Vector3(),c0=new THREE.Vector3(),rootPoint=new THREE.Vector3(),rootTri=new THREE.Triangle(),hitNormal=new THREE.Vector3(),scratch0=new THREE.Vector3(),scratch1=new THREE.Vector3(),scratch2=new THREE.Vector3();
    let queryId,best,bestFace,bestWeights,crossing,firstTime;
    const callbacks={
-     intersectsBounds:box=>box.intersectsBox(swept),
+     intersectsBounds:(box,isLeaf,score,depth,node)=>{
+      if(!this.useSweptBounds)return box.intersectsBox(swept);
+      const b=this.sweptNodes.get(node);if(!b)throw Error('Missing swept BVH node');
+      return swept.min.x<=b[3]&&swept.max.x>=b[0]&&swept.min.y<=b[4]&&swept.max.y>=b[1]&&swept.min.z<=b[5]&&swept.max.z>=b[2];
+     },
      intersectsTriangle:(triangle,face)=>{
-      const ids=this.faceIndices[face];if(ids.includes(queryId))return false;
+      const ids=this.faceIndices[face];if(ids.includes(queryId)||this.excludeVertexFace?.(queryId,face))return false;
       triangle.closestPointToPoint(point,closest);const d=point.distanceTo(closest);
       // Both a vertex and a triangle move by at most maxMotion. A feature
       // farther than h + 2*maxMotion cannot enter the contact band this step.
@@ -47,15 +55,16 @@ export class SelfContact {
         crossing=true;firstTime=f;bestFace=face;bestWeights=bary.toArray();hit.set(0,0,0).addScaledVector(triangle.a,bary.x).addScaledVector(triangle.b,bary.y).addScaledVector(triangle.c,bary.z);hitNormal.copy(n1).multiplyScalar(Math.sign(d0));
        }
       }
-      if(!crossing&&d<best&&d>1e-10){
+      if(!crossing&&d<best&&(d>1e-10||this.useSweptBounds)){
        THREE.Triangle.getBarycoord(closest,triangle.a,triangle.b,triangle.c,bary);
        best=d;bestFace=face;bestWeights=bary.toArray();hit.copy(closest);
+       if(d<=1e-10){crossing=true;firstTime=1;hitNormal.copy(n1).multiplyScalar(Math.sign(d0)||1);}
       }
       return false;
      }
    };
    for(let id=0;id<p.length/3;id++){
-    queryId=id;point.fromArray(p,id*3);startPoint.fromArray(history,id*3);swept.min.copy(startPoint).min(point);swept.max.copy(startPoint).max(point);swept.expandByScalar(this.thickness+maxMotion);best=this.thickness;bestFace=-1;bestWeights=undefined;crossing=false;firstTime=2;
+    queryId=id;point.fromArray(p,id*3);startPoint.fromArray(history,id*3);swept.min.copy(startPoint).min(point);swept.max.copy(startPoint).max(point);swept.expandByScalar(this.thickness+(this.useSweptBounds?0:maxMotion));best=this.thickness;bestFace=-1;bestWeights=undefined;crossing=false;firstTime=2;
     this.tree.shapecast(callbacks);
     if(bestFace<0)continue;
     const ids=this.faceIndices[bestFace],weights=bestWeights;
@@ -65,7 +74,8 @@ export class SelfContact {
     const signed=normal.dot(scratch0.subVectors(point,hit));
     const denom=inverseMass[id]+ids.reduce((s,v,j)=>s+inverseMass[v]*weights[j]**2,0);
     if(denom<1e-12)continue;
-    const correction=Math.min(.02,this.thickness-signed)/denom;
+    let correction=Math.min(.02,this.thickness-signed)/denom;
+    if(this.useSweptBounds){const largest=Math.max(inverseMass[id],...ids.map((v,j)=>inverseMass[v]*Math.abs(weights[j])));correction=Math.min(correction,this.maxVertexCorrection/Math.max(largest,1e-20));}
     const move=(v,w)=>{if(w!==0)this.changed.add(v);for(let k=0;k<3;k++){const d=normal.getComponent(k)*correction*w;p[v*3+k]+=d;previous[v*3+k]+=.8*d;}maxMotion=Math.max(maxMotion,Math.hypot(p[v*3]-history[v*3],p[v*3+1]-history[v*3+1],p[v*3+2]-history[v*3+2]));};
     move(id,inverseMass[id]);ids.forEach((v,j)=>move(v,-inverseMass[v]*weights[j]));contacts++;
    }
@@ -74,18 +84,45 @@ export class SelfContact {
   }
   return contacts;
  }
+ buildSweptBounds(history){
+  // Every linearly moving face lies inside the union AABB of its six endpoint
+  // vertices. Parent unions are conservative as well. No triangle is skipped.
+  // This geometry has one root and no material groups (MeshBVH 0.9.2 layout).
+  const records=[],stack=[];this.sweptNodes=new Map();
+  this.tree.traverse((depth,isLeaf,bounds,offset,count)=>{
+   const row={key:bounds.byteOffset/4,bounds:new Float64Array([Infinity,Infinity,Infinity,-Infinity,-Infinity,-Infinity]),children:[]};
+   if(depth)stack[depth-1].children.push(row);stack[depth]=row;records.push(row);
+   if(isLeaf)for(let i=offset;i<offset+count;i++)for(const id of this.faceIndices[this.tree.resolveTriangleIndex(i)])for(let k=0;k<3;k++){
+    const a=history[id*3+k],b=this.vertices[id*3+k];row.bounds[k]=Math.min(row.bounds[k],a,b);row.bounds[k+3]=Math.max(row.bounds[k+3],a,b);
+   }
+  });
+  for(let i=records.length-1;i>=0;i--){const row=records[i];for(const child of row.children)for(let k=0;k<3;k++){
+   row.bounds[k]=Math.min(row.bounds[k],child.bounds[k]);row.bounds[k+3]=Math.max(row.bounds[k+3],child.bounds[k+3]);
+  }this.sweptNodes.set(row.key,row.bounds);}
+ }
  solveEdges(p,previous,inverseMass,history){
   const h=this.thickness,segment=new Float64Array(6);let contacts=0;
   this.forEachCandidate(p,(i,j)=>{
    const [a,b]=this.edges[i],[c,d]=this.edges[j];
-   segmentDistance(p,a,b,c,d,segment);const distance=segment[5];if(distance>=h||distance<1e-10)return;
+   segmentDistance(p,a,b,c,d,segment);const distance=segment[5];if(distance>=h||(!this.useSweptBounds&&distance<1e-10))return;
    const u=segment[0],v=segment[1],weights=[1-u,u,-(1-v),-v],ids=[a,b,c,d];
-   let nx=segment[2]/distance,ny=segment[3]/distance,nz=segment[4]/distance;
    const oldDelta=[0,1,2].map(k=>ids.reduce((sum,id,j)=>sum+history[id*3+k]*weights[j],0));
+   let nx,ny,nz;
+   if(distance>1e-10){nx=segment[2]/distance;ny=segment[3]/distance;nz=segment[4]/distance;}
+   else{
+    let normal=oldDelta.slice(),length=Math.hypot(...normal);
+    if(length<1e-10){
+     const e=[0,1,2].map(k=>p[b*3+k]-p[a*3+k]),f=[0,1,2].map(k=>p[d*3+k]-p[c*3+k]);
+     normal=[e[1]*f[2]-e[2]*f[1],e[2]*f[0]-e[0]*f[2],e[0]*f[1]-e[1]*f[0]];length=Math.hypot(...normal);
+     if(length<1e-10){normal=Math.abs(e[0])<Math.abs(e[1])?[0,-e[2],e[1]]:[-e[2],0,e[0]];length=Math.hypot(...normal);}
+    }
+    if(length<1e-10)return;[nx,ny,nz]=normal.map(value=>value/length);
+   }
    if(nx*oldDelta[0]+ny*oldDelta[1]+nz*oldDelta[2]<0){nx=-nx;ny=-ny;nz=-nz;}
    const signed=nx*segment[2]+ny*segment[3]+nz*segment[4];
    const denom=ids.reduce((sum,id,j)=>sum+inverseMass[id]*weights[j]**2,0);if(denom<1e-12)return;
-   const lambda=Math.min(.006,h-signed)/denom;
+   let lambda=Math.min(.006,h-signed)/denom;
+   if(this.useSweptBounds){const largest=Math.max(...ids.map((id,j)=>inverseMass[id]*Math.abs(weights[j])));lambda=Math.min(lambda,this.maxVertexCorrection/Math.max(largest,1e-20));}
    ids.forEach((id,j)=>{const w=inverseMass[id]*weights[j]*lambda;if(w!==0)this.changed?.add(id);for(let k=0;k<3;k++){const delta=[nx,ny,nz][k]*w;p[id*3+k]+=delta;previous[id*3+k]+=.8*delta;}});
    contacts++;
   });
@@ -107,7 +144,7 @@ export class SelfContact {
    for(let bj=ai+1;bj<n;bj++){
     const j=this.order[bj],ib=j*6;if(box[ib+first]>limit)break;
     if(otherLo>box[ib+other+1]||otherHi<box[ib+other]||lastLo>box[ib+last+1]||lastHi<box[ib+last])continue;
-    const c=this.edges[j][0],d=this.edges[j][1];if(a===c||a===d||b===c||b===d)continue;
+    const c=this.edges[j][0],d=this.edges[j][1];if(a===c||a===d||b===c||b===d||this.excludeEdgePair?.([a,b],[c,d]))continue;
     callback(i,j);
    }
   }

@@ -1,0 +1,223 @@
+{
+  "format": "canonical-proxy-arm-joints/1",
+  "role": "Same-source MakeHuman arm helper coordinates for initial garment positioning only. This does not change the body, source UV, or physical acceptance.",
+  "canonical_body": {
+    "path": "tools/engine-cloth-lab/reference/assets/makehuman.json",
+    "sha256": "405d3cc8d5ba299b241892d80782cd9faf194da66ce611748ccb8423ab82331d",
+    "positions_f32_sha256": "90b602988387dca525fe267afc9fd0cc46d01acf0d4cd020ca51e44ecb8f0248",
+    "triangles_i32_sha256": "296c568f1fdcbeb5ec60d7afce43926b3544a28957f630877db3636d7faba665",
+    "vertices": 4002,
+    "triangles": 8000
+  },
+  "source_obj": {
+    "path": "experiments/teagan_sites_studio/app/dist/models/makehuman-base.obj",
+    "sha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+    "bytes": 1749303,
+    "vertices": 19158
+  },
+  "rig": {
+    "path": "web/human-studio/assets/human.json",
+    "sha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "provenance_path": "web/human-studio/assets/provenance.json",
+    "provenance_sha256": "7f41bc6cb1df2ffe3dc8075ee7858569ad2991fbb3119ec1074f11cf6952cd5a",
+    "bones": 163,
+    "joint_indexing": "zero-based original OBJ IDs, mean of all listed helpers; human.json vertex coordinates contain female macro targets and MUST NOT be used as the canonical shape"
+  },
+  "transform": {
+    "raw_obj_to_canonical_m_scale": 0.1,
+    "raw_obj_to_canonical_translation_m": [
+      0.0,
+      0.8167969457947636,
+      0.0
+    ],
+    "raw_body_foot_ground_m": 0.81676,
+    "canonical_ground_minus_raw_foot_ground_mm": 0.036945794763543205,
+    "canonical_ground_evidence": "Canonical saved source shoulder landmark minus same raw OBJ upperarm01.L/R helper mean; both sides agree; x/z match <1e-8m. The raw feet differ by decimation/grounding tolerance.",
+    "human_asset_units": "cm; but macro morphed, so direct .01+ground is NOT a shape correspondence",
+    "human_source_ID_reuse": "Original OBJ vertices indexed by human.json joints; do not use morphed human.json vertex coordinates."
+  },
+  "surface_correspondence": {
+    "source_bounds_m": [
+      [
+        -0.49627,
+        3.6945794763543205e-05,
+        -0.10154000000000002
+      ],
+      [
+        0.49627,
+        1.6659269457947636,
+        0.32147000000000003
+      ]
+    ],
+    "canonical_bounds_m": [
+      [
+        -0.496398001909256,
+        0.0,
+        -0.10153999924659729
+      ],
+      [
+        0.496398001909256,
+        1.6659270524978638,
+        0.3216859996318817
+      ]
+    ],
+    "source_volume_m3": 0.05489533795384901,
+    "canonical_original_volume_m3": 0.05489774739243905,
+    "canonical_to_source_surface_distance_mm": {
+      "p50": 0.16546166837529594,
+      "p95": 0.6384998561744076,
+      "p99": 0.9453262759196577,
+      "max": 1.688372277647656
+    }
+  },
+  "joint_coordinates": {
+    "L": {
+      "shoulder": {
+        "helper_name": "upperarm01.L____head",
+        "original_obj_vertex_ids": [
+          14046,
+          14047,
+          14048,
+          14049,
+          14050,
+          14051,
+          14052,
+          14053
+        ],
+        "canonical_m": [
+          0.1677125,
+          1.3413769457947635,
+          0.014605
+        ]
+      },
+      "elbow": {
+        "helper_name": "lowerarm01.L____head",
+        "original_obj_vertex_ids": [
+          14038,
+          14039,
+          14040,
+          14041,
+          14042,
+          14043,
+          14044,
+          14045
+        ],
+        "canonical_m": [
+          0.31293625,
+          1.1661156957947636,
+          0.013201250000000001
+        ]
+      },
+      "wrist": {
+        "helper_name": "wrist.L____head",
+        "original_obj_vertex_ids": [
+          14030,
+          14031,
+          14032,
+          14033,
+          14034,
+          14035,
+          14036,
+          14037
+        ],
+        "canonical_m": [
+          0.43118500000000004,
+          1.0619781957947636,
+          0.17565499999999998
+        ]
+      },
+      "wrist_tail": {
+        "helper_name": "wrist.L____tail",
+        "original_obj_vertex_ids": [
+          14014,
+          14015,
+          14016,
+          14017,
+          14018,
+          14019,
+          14020,
+          14021
+        ],
+        "canonical_m": [
+          0.429115,
+          1.0394219457947635,
+          0.19686
+        ]
+      }
+    },
+    "R": {
+      "shoulder": {
+        "helper_name": "upperarm01.R____head",
+        "original_obj_vertex_ids": [
+          14486,
+          14487,
+          14488,
+          14489,
+          14490,
+          14491,
+          14492,
+          14493
+        ],
+        "canonical_m": [
+          -0.1677125,
+          1.3413769457947635,
+          0.014605
+        ]
+      },
+      "elbow": {
+        "helper_name": "lowerarm01.R____head",
+        "original_obj_vertex_ids": [
+          14478,
+          14479,
+          14480,
+          14481,
+          14482,
+          14483,
+          14484,
+          14485
+        ],
+        "canonical_m": [
+          -0.31293625,
+          1.1661156957947636,
+          0.013201250000000001
+        ]
+      },
+      "wrist": {
+        "helper_name": "wrist.R____head",
+        "original_obj_vertex_ids": [
+          14470,
+          14471,
+          14472,
+          14473,
+          14474,
+          14475,
+          14476,
+          14477
+        ],
+        "canonical_m": [
+          -0.43118500000000004,
+          1.0619781957947636,
+          0.17565499999999998
+        ]
+      },
+      "wrist_tail": {
+        "helper_name": "wrist.R____tail",
+        "original_obj_vertex_ids": [
+          14454,
+          14455,
+          14456,
+          14457,
+          14458,
+          14459,
+          14460,
+          14461
+        ],
+        "canonical_m": [
+          -0.429115,
+          1.0394219457947635,
+          0.19686
+        ]
+      }
+    }
+  }
+}

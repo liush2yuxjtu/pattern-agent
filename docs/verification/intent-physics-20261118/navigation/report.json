@@ -1,0 +1,70 @@
+{
+  "verdict": "PASS",
+  "scope": "Final documentation/navigation/readability; numerical result references independent run37 source reports, not a new solver run.",
+  "modified_files": {
+    "experiments/intent-edit-review/README.md": {
+      "sha256": "5adede2d2540275a11565c7c7bd8a5aa753c058b52f9d4c9d22fb7c37331f5b4",
+      "bytes": 14819
+    },
+    "experiments/intent-edit-review/docs/01-user-guide.md": {
+      "sha256": "f2b15d4bba5b3a6fd5c20096ad6ae4c5fc32e89b9b647738b7bf3feed34d66bf",
+      "bytes": 8315
+    },
+    "experiments/intent-edit-review/docs/02-architecture.md": {
+      "sha256": "503edd7d0291e2f84ce1d20f59fe81b0352dc0e6cf48fb55402dea7254e989b0",
+      "bytes": 8250
+    },
+    "experiments/intent-edit-review/docs/03-data-and-audit.md": {
+      "sha256": "42175721b57108a500a520e21054a63116a177c1df4c28a59f87b0f3ed18985c",
+      "bytes": 8769
+    },
+    "experiments/intent-edit-review/docs/04-build-and-deploy.md": {
+      "sha256": "ada22939e87c9e6449c58218d65e249dc255ecab38af10ac9126125328de2c8b",
+      "bytes": 9209
+    },
+    "web/intent-edit-review/docs/index.html": {
+      "sha256": "cf4a7339b371c103dbe28ddb5eb022e6cc86ac0a3bea2e3e7059a14e561de6c3",
+      "bytes": 50981
+    },
+    "web/intent-edit-review/experiment/index.html": {
+      "sha256": "045d25fa4fce6feb9d0e4ea15fa051c5306135478217e6df1d5d74581caf0c4e",
+      "bytes": 5968631
+    }
+  },
+  "inspected_physics_html": {
+    "sha256": "571fd1460f037ba1d498cc8147f175d7508ce9f484616834d579ec141163ac05",
+    "bytes": 46088590,
+    "modified_by_this_agent": false
+  },
+  "checks": {
+    "verify_docs": "PASS",
+    "deterministic_docs_hub": "PASS",
+    "actual_docs_physics_hub_docs_round_trip": "PASS",
+    "two_cases_complete_yaml_and_exact_downloads": "PASS",
+    "both_svg_204_lines_27_texts": "PASS",
+    "desktop_375_320_overflow": "PASS",
+    "old_comparison_sewn_files_unchanged": 40,
+    "git_diff_check": "PASS"
+  },
+  "visual_review": {
+    "verdict": "PASS",
+    "inspected": [
+      "baseline-3d-desktop.png",
+      "03_cuff_width-2d-desktop.png",
+      "cuff-yaml-320.png",
+      "cuff-header-375.png",
+      "hub-physics-1448.png",
+      "hub-physics-375.png"
+    ],
+    "observations": "完整中文YAML在320px可读；二维源图与三维记录切换明确；61帧离散数值结论、未验证材料/真人条件及三项缺配置的区别可读；无横向溢出。"
+  },
+  "evidence": [
+    "run37-source-status.json",
+    "local-integrity.json",
+    "docs-browser/report.json",
+    "navigation-regression.json",
+    "old-pages-before.json",
+    "old-pages-after.json"
+  ],
+  "draft": "draft-before-final-receipts retained; all actions completed but final byte-stability check caught parent rebuild, so it is not final evidence."
+}

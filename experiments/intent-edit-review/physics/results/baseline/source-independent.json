@@ -1,0 +1,419 @@
+{
+  "verdict": "PASS",
+  "scope": "static source-bound sewn outer shell, on explicitly corrected derived seam lines; not production cut paths or physical fabric fit",
+  "contract": "fitted-tshirt-sewing-v2",
+  "checks": {
+    "flat_patterns": {
+      "max_vertex_edit_mm": 4.407215287511254,
+      "max_processed_seam_residual_mm": 6.035872814891263e-07,
+      "processed_residuals_mm": {
+        "shoulder.left": 6.035872814891263e-07,
+        "side.left": -2.8421709430404007e-13,
+        "shoulder.right": 6.035610056187579e-07,
+        "side.right": -2.8421709430404007e-13,
+        "sleeve.underarm": -1.7053025658242404e-13,
+        "cap.front": 1.9317880628477724e-13,
+        "cap.back": -4.4853010194856324e-13
+      },
+      "original_rest_lengths_mm": {
+        "front.neck.left": 147.5529185467335,
+        "front.neck.right": 147.5529186773621,
+        "front.shoulder.left": 76.91133528523095,
+        "front.shoulder.right": 76.91133528486718,
+        "front.arm.left": 204.40957956012363,
+        "front.arm.right": 204.40958019645757,
+        "front.side.left": 323.7282031640239,
+        "front.side.right": 323.7282033946369,
+        "front.hem": 427.51083507630466,
+        "back.neck.left": 122.70933490836008,
+        "back.neck.right": 122.7093348503766,
+        "back.shoulder.left": 74.52343307869963,
+        "back.shoulder.right": 74.52343307870068,
+        "back.arm.left": 216.36313960709316,
+        "back.arm.right": 216.36313998371517,
+        "back.side.left": 305.21907896157956,
+        "back.side.right": 305.21907901503124,
+        "back.hem": 426.4015567965221,
+        "sleeve.cap.front": 210.45388199908155,
+        "sleeve.cap.back": 217.84928843078484,
+        "sleeve.side.front": 455.8420387313166,
+        "sleeve.side.back": 458.33009298258185,
+        "sleeve.cuff": 161.35711700000002
+      },
+      "derived_rest_lengths_mm": {
+        "front.neck.left": 148.0359836126558,
+        "front.neck.right": 148.03598373875133,
+        "front.shoulder.left": 74.5234336822869,
+        "front.shoulder.right": 74.52343368226168,
+        "front.arm.left": 204.40957956012363,
+        "front.arm.right": 204.40958019645757,
+        "front.side.left": 321.2197693273952,
+        "front.side.right": 321.2197693808469,
+        "front.hem": 427.7622194120847,
+        "back.neck.left": 122.70933490836008,
+        "back.neck.right": 122.7093348503766,
+        "back.shoulder.left": 74.52343307869963,
+        "back.shoulder.right": 74.52343307870068,
+        "back.arm.left": 216.36313960709316,
+        "back.arm.right": 216.36313998371517,
+        "back.side.left": 305.2197693273955,
+        "back.side.right": 305.2197693808472,
+        "back.hem": 426.4014893581795,
+        "sleeve.cap.front": 207.42176006518366,
+        "sleeve.cap.back": 220.88141036468247,
+        "sleeve.side.front": 455.8420387313166,
+        "sleeve.side.back": 455.8420387313168,
+        "sleeve.cuff": 161.38317572074573
+      },
+      "sleeve_front_ease_mm": 3.012180505059837,
+      "sleeve_back_ease_mm": 4.518270757589755,
+      "neckband_body_ratio": 0.8074003981551205,
+      "material_stretch_capacity": "NOT_RUN",
+      "original_pattern_connection": {
+        "verdict": "FAIL",
+        "processed_residuals_mm": {
+          "shoulder.left": 2.3879022065313222,
+          "side.left": 2.5091242024443545,
+          "shoulder.right": 2.387902206166501,
+          "side.right": 2.50912437960568,
+          "sleeve.underarm": -2.4880542512652255,
+          "cap.front": 3.0321219338980767,
+          "cap.back": -3.0321219338980763
+        },
+        "evaluated_under_contract": "fitted-tshirt-sewing-v2"
+      }
+    },
+    "topology": {
+      "vertex_count": 3754,
+      "used_vertex_count": 3754,
+      "orphan_vertices": 0,
+      "triangle_count": 7186,
+      "edge_count": 10942,
+      "connected_components": 1,
+      "boundary_edges": 326,
+      "boundary_components": 4,
+      "boundary_cycles": 4,
+      "boundary_branch_vertices": 0,
+      "nonmanifold_edges": 0,
+      "winding_conflicts": 0,
+      "degenerate_triangles": 0,
+      "duplicate_faces": 0,
+      "euler_characteristic": -2,
+      "closed_oriented_edge_manifold": false,
+      "component_signed_volumes_m3": [
+        0.04435868052819932
+      ],
+      "outward_closed_components": false,
+      "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+    },
+    "vertex_link_failures": 0,
+    "capped_orientation_volume_m3": 0.03015443699881425,
+    "outward_orientation": true,
+    "patches": {
+      "front": {
+        "flat_area_mm2": 174427.47689014673,
+        "triangle_area_mm2": 174427.47689014673,
+        "triangles": 1976,
+        "all_source_boundary_segments_preserved": true
+      },
+      "back": {
+        "flat_area_mm2": 182698.09172347933,
+        "triangle_area_mm2": 182698.09172347933,
+        "triangles": 2022,
+        "all_source_boundary_segments_preserved": true
+      },
+      "sleeve.left": {
+        "flat_area_mm2": 122316.13379183412,
+        "triangle_area_mm2": 122316.13379183412,
+        "triangles": 1400,
+        "all_source_boundary_segments_preserved": true
+      },
+      "sleeve.right": {
+        "flat_area_mm2": 122316.13379183412,
+        "triangle_area_mm2": 122316.13379183412,
+        "triangles": 1400,
+        "all_source_boundary_segments_preserved": true
+      },
+      "band": {
+        "flat_area_mm2": 8743.994140625,
+        "triangle_area_mm2": 8743.994140625,
+        "triangles": 388,
+        "all_source_boundary_segments_preserved": true
+      }
+    },
+    "seams": [
+      {
+        "name": "side.left",
+        "pieces": [
+          "front",
+          "back"
+        ],
+        "samples": 65,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 321.2008485070444,
+        "rest_b_mm": 305.20706865386006,
+        "process_a_mm": -6.0,
+        "process_b_mm": 10.0,
+        "processed_residual_mm": 0.006220146815678618,
+        "sewn_3d_length_mm": 315.2167222228283,
+        "length_error_mm": 0.012763642376114603,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "shoulder.left",
+        "pieces": [
+          "front",
+          "back"
+        ],
+        "samples": 16,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 74.52343345501241,
+        "rest_b_mm": 74.52343307867869,
+        "process_a_mm": 0.0,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 3.7633371618994715e-07,
+        "sewn_3d_length_mm": 74.52343718587088,
+        "length_error_mm": 3.919025317600244e-06,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "armhole.left.front",
+        "pieces": [
+          "sleeve.left",
+          "front"
+        ],
+        "samples": 42,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 207.3325118745283,
+        "rest_b_mm": 204.34518701628264,
+        "process_a_mm": -3.01218050506003,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.024855646814359034,
+        "sewn_3d_length_mm": 204.33568795862124,
+        "length_error_mm": 0.0029287657457643945,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "armhole.left.back",
+        "pieces": [
+          "sleeve.left",
+          "back"
+        ],
+        "samples": 45,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 220.8181050273385,
+        "rest_b_mm": 216.31479997263503,
+        "process_a_mm": -4.518270757589306,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.014965702885831433,
+        "sewn_3d_length_mm": 216.30691019801222,
+        "length_error_mm": 0.0004069231798951023,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "underarm.left",
+        "pieces": [
+          "sleeve.left",
+          "sleeve.left"
+        ],
+        "samples": 93,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 455.84193758331395,
+        "rest_b_mm": 455.84156312021855,
+        "process_a_mm": 0.0,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.00037446309539745926,
+        "sewn_3d_length_mm": 455.76118085185544,
+        "length_error_mm": 0.08056949991078,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "side.right",
+        "pieces": [
+          "front",
+          "back"
+        ],
+        "samples": 65,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 321.2008485466896,
+        "rest_b_mm": 305.20706869149274,
+        "process_a_mm": -6.0,
+        "process_b_mm": 10.0,
+        "processed_residual_mm": 0.006220144803137373,
+        "sewn_3d_length_mm": 315.2167222228283,
+        "length_error_mm": 0.012763603737141693,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "shoulder.right",
+        "pieces": [
+          "front",
+          "back"
+        ],
+        "samples": 16,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 74.52343345499928,
+        "rest_b_mm": 74.52343307867967,
+        "process_a_mm": 0.0,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 3.7631960481121496e-07,
+        "sewn_3d_length_mm": 74.52343718587088,
+        "length_error_mm": 3.919031399846062e-06,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "armhole.right.front",
+        "pieces": [
+          "sleeve.right",
+          "front"
+        ],
+        "samples": 42,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 207.33251187318112,
+        "rest_b_mm": 204.345187644739,
+        "process_a_mm": -3.0121798687260934,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.024855640283988123,
+        "sewn_3d_length_mm": 204.33568907224304,
+        "length_error_mm": 0.002929247646022759,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "armhole.right.back",
+        "pieces": [
+          "sleeve.right",
+          "back"
+        ],
+        "samples": 45,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 220.81810502698693,
+        "rest_b_mm": 216.31480035333647,
+        "process_a_mm": -4.518270380967294,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.014965707316832777,
+        "sewn_3d_length_mm": 216.30691019801222,
+        "length_error_mm": 0.000407301665831028,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "underarm.right",
+        "pieces": [
+          "sleeve.right",
+          "sleeve.right"
+        ],
+        "samples": 93,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 455.84193758331395,
+        "rest_b_mm": 455.84156312021855,
+        "process_a_mm": 0.0,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.00037446309539745926,
+        "sewn_3d_length_mm": 455.76118085185544,
+        "length_error_mm": 0.08056949991078,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "neck.back.neck.left",
+        "pieces": [
+          "band",
+          "back"
+        ],
+        "samples": 26,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 99.50003100000004,
+        "rest_b_mm": 122.68449214189222,
+        "process_a_mm": 23.20930390836004,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.02484276646785588,
+        "sewn_3d_length_mm": 122.6878611104728,
+        "length_error_mm": 0.009052414653353935,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "neck.back.neck.right",
+        "pieces": [
+          "band",
+          "back"
+        ],
+        "samples": 26,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 99.49987800000008,
+        "rest_b_mm": 122.6844921043814,
+        "process_a_mm": 23.209456850376526,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.0248427459952012,
+        "sewn_3d_length_mm": 122.6878611104725,
+        "length_error_mm": 0.00905236690651634,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "neck.front.neck.right",
+        "pieces": [
+          "band",
+          "front"
+        ],
+        "samples": 31,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 119.09999999999991,
+        "rest_b_mm": 148.00361089055997,
+        "process_a_mm": 28.935983738751418,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.03237284819135766,
+        "sewn_3d_length_mm": 148.0186310231503,
+        "length_error_mm": 0.0011662915053420875,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "neck.front.neck.left",
+        "pieces": [
+          "band",
+          "front"
+        ],
+        "samples": 31,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 119.09984699999995,
+        "rest_b_mm": 148.00361075695125,
+        "process_a_mm": 28.936136612655844,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.032372855704551284,
+        "sewn_3d_length_mm": 148.01863102315053,
+        "length_error_mm": 0.0011661616529750063,
+        "welded_shared_vertex_ids": true
+      },
+      {
+        "name": "band.end",
+        "pieces": [
+          "band",
+          "band"
+        ],
+        "samples": 5,
+        "max_gap_mm": 0.0,
+        "rest_a_mm": 20.0,
+        "rest_b_mm": 20.0,
+        "process_a_mm": 0.0,
+        "process_b_mm": 0.0,
+        "processed_residual_mm": 0.0,
+        "sewn_3d_length_mm": 19.999989477890885,
+        "length_error_mm": 1.052210911467455e-05,
+        "welded_shared_vertex_ids": true
+      }
+    ],
+    "max_seam_gap_mm": 0.0,
+    "max_3d_seam_length_error_mm": 0.08056949991078,
+    "proper_self_intersections": 0,
+    "intersection_examples": []
+  },
+  "failures": [],
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "assumptions": [
+    "Millimetres are an explicit input interpretation, not a declaration found in the source.",
+    "One full back is used for this assembly; the source Quantity: 2 remains unresolved for manufacture.",
+    "Derived shoulder, side, sleeve-cap and sleeve-cuff corrections are saved and bounded; original DXF bytes remain unchanged.",
+    "Uniform preview scale transforms canonical process amounts with geometry; this is not production grading.",
+    "All geometry verdicts concern the displayed single-sheet outer shell; sewn allowance stacks, folded inner neck layer and physical material performance are not certified."
+  ],
+  "glb_sha256": "eba7610c33ad3d29968f3a7ca7c81d2e07a5c54d2c5893accf577d0cba28cfe9",
+  "experiment_input_sha256": "bd604bb44a041b5b3400d883601e9cd03e84e43d604049d810862eb41f1c693b"
+}

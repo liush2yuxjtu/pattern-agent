@@ -1,0 +1,44 @@
+{
+  "local_guard_controls": "PASS",
+  "overall_actual_example_gate": "FAIL",
+  "scope": "Discrete Float32 self-step safeguard; no CCD/body/dynamics/fit acceptance",
+  "source_files": {
+    "experiments/intent-edit-review/physics/self_step_guard.mjs": "65f8ea8885ebb291c8b6a51acb0c790d83e2a45141521796a4e516c4bdc051d6",
+    "experiments/intent-edit-review/physics/test_self_step_guard.mjs": "3b8348320db803d0a70b6edfd679d3aed1f4db94dd8d68dcf37e22793e32531d"
+  },
+  "original_input_sha256": "a7cb27be4c80c354d9c40a0166698ba6f4f2770695a93d47568703ebe5562866",
+  "original_preparation_final_sha256": "84252a3816f43c717fbbe02588bda72f94fe7f3f18de751c84078239611de4a3",
+  "accepted_alias_positions_sha256": "0558c1f73b8ce8b851bb34658aff74acbd066b493215c07dcbabb7135710eb3a",
+  "test_checks": 15,
+  "independent_cases": 18,
+  "actual33_fixture_test": "PASS",
+  "actual_result": {
+    "accepted": true,
+    "status": "backtracked",
+    "alpha": 0.5,
+    "iterations": 1,
+    "geometryEvaluations": 3,
+    "triangleCount": 7186,
+    "bvhTriangleCount": 7186,
+    "globalRollbackNorm": 1.1386497254606878,
+    "maxVertexRollback": 0.04724912703465917,
+    "proposedDisplacementNorm": 2.2772995044969435,
+    "acceptedDisplacementNorm": 1.1386497790415104,
+    "fallbackToReference": false,
+    "zeroStoredProgress": false
+  },
+  "independent_gate": {
+    "strict_self_intersections": 0,
+    "inside_samples": 6668,
+    "max_body_penetration_mm": 17.03193784749851,
+    "cloth_edge_body_hits": 1007,
+    "body_edge_cloth_hits": 562,
+    "max_seam_gap_mm": 0.0,
+    "failures": [
+      "Actual body penetration or triangle crossing"
+    ]
+  },
+  "independent_both_arms_threaded": true,
+  "committed": false,
+  "prior_sources_modified_by_this_task": false
+}

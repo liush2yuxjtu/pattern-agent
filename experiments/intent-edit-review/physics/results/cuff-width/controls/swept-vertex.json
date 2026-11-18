@@ -1,0 +1,21 @@
+{
+  "verdict": "PASS",
+  "command": [
+    "node",
+    "/workspace/work/pattern-agent-publish/experiments/intent-edit-review/physics/test_swept_vertex.mjs"
+  ],
+  "exit_code": 0,
+  "wasm_sha256": "846bc4d954c4b3031c8f9c616aa063fc589df1dc10985708e65cd09344c56e3f",
+  "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+  "report": {
+    "verdict": "PASS",
+    "checks": 20,
+    "independentTimeSamples": 432180,
+    "sampledContactCases": 21,
+    "certifiedClearCases": 159,
+    "explicitUncertainCases": 17,
+    "rotatingFalsePlaneMinimum_m": 0.012150276494450796,
+    "actual31FalsePlaneMinimum_m": 0.007568126691824923,
+    "scope": "Pure floating-point linear vertex/triangle CCD controls. Dense sampling is not a general proof; conservative/uncertain results are not exact impact certification. No solver/material/body/acceptance threshold changed."
+  }
+}

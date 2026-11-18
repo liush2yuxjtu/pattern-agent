@@ -14,6 +14,10 @@ id="toc-这个项目交付什么">这个项目交付什么</a></li>
 <li><a href="#三分钟上手" id="toc-三分钟上手">三分钟上手</a></li>
 <li><a href="#四个已经实现的案例"
 id="toc-四个已经实现的案例">四个已经实现的案例</a></li>
+<li><a href="#物理实验台怎么用"
+id="toc-物理实验台怎么用">物理实验台怎么用</a></li>
+<li><a href="#七项验证与整衣验收分别看"
+id="toc-七项验证与整衣验收分别看">七项验证与整衣验收分别看</a></li>
 <li><a href="#如何阅读和交接规格"
 id="toc-如何阅读和交接规格">如何阅读和交接规格</a></li>
 <li><a href="#保存单文件与离线使用"
@@ -28,6 +32,8 @@ id="toc-目前的三维含义">目前的三维含义</a></li>
 id="toc-与仓库其他目录的关系">与仓库其他目录的关系</a></li>
 <li><a href="#单文件构建过程"
 id="toc-单文件构建过程">单文件构建过程</a></li>
+<li><a href="#独立物理项目怎样连接"
+id="toc-独立物理项目怎样连接">独立物理项目怎样连接</a></li>
 <li><a href="#为什么三维没有沿用旧模型"
 id="toc-为什么三维没有沿用旧模型">为什么三维没有沿用旧模型</a></li>
 <li><a href="#浏览器绘制与状态"
@@ -47,6 +53,8 @@ id="toc-每个正向案例的产物">每个正向案例的产物</a></li>
 <li><a href="#dxf-坐标补丁" id="toc-dxf-坐标补丁">DXF 坐标补丁</a></li>
 <li><a href="#三维文件与内嵌索引"
 id="toc-三维文件与内嵌索引">三维文件与内嵌索引</a></li>
+<li><a href="#物理记录和完整来源包"
+id="toc-物理记录和完整来源包">物理记录和完整来源包</a></li>
 <li><a href="#四层独立验证" id="toc-四层独立验证">四层独立验证</a></li>
 <li><a href="#验收结论的边界"
 id="toc-验收结论的边界">验收结论的边界</a></li>
@@ -57,6 +65,8 @@ id="toc-验收结论的边界">验收结论的边界</a></li>
 <li><a href="#构建与预览" id="toc-构建与预览">构建与预览</a></li>
 <li><a href="#原型与输出验证"
 id="toc-原型与输出验证">原型与输出验证</a></li>
+<li><a href="#独立物理-html-的构建与核查"
+id="toc-独立物理-html-的构建与核查">独立物理 HTML 的构建与核查</a></li>
 <li><a href="#文档与确定性重建"
 id="toc-文档与确定性重建">文档与确定性重建</a></li>
 <li><a href="#github-pages-的正确位置"
@@ -101,6 +111,11 @@ href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment
 <p>在线演示：<a
 href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/"
 class="uri">https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/</a>。</p>
+<p>需要检查真实物理记录时，打开独立的 <a
+href="../physics/">物理实验台</a>（发布路径
+<code>/intent-edit-review/physics/</code>）。它另含完整中文
+YAML、当前二维
+SVG、设计意图、原始文件下载及实际三维回放；旧对照页仍保留原有功能。</p>
 </section>
 <section id="两条工作流程" class="level2">
 <h2>两条工作流程</h2>
@@ -167,6 +182,72 @@ class="uri">https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/</a>
 </table>
 <p>每个案例均从同一原型出发。这里没有证明四项操作任意组合或连续改版都可以成立。</p>
 </section>
+<section id="物理实验台怎么用" class="level2">
+<h2>物理实验台怎么用</h2>
+<ol type="1">
+<li>选择原型或袖口加宽案例，先看顶部整衣结论。<strong>本轮两个案例各61/61帧离散数值验收
+PASS</strong>；结论针对记录中的实际来源、条件和保存状态，不代表面料实测或真人合身通过。</li>
+<li>点击“二维纸样”查看本款完整
+SVG。拖动平移，用加减按钮、滚轮或双指缩放，用“复位纸样”回到全图。</li>
+<li>点击“完整规格 YAML”阅读实际中文全文。弹层可滚动、回到顶部；按 Escape
+或关闭返回原入口。下载 YAML 与 DXF 得到真实源文件字节。</li>
+<li>展开“本款设计意图与变化”。袖口案例还可下载
+<code>spec-diff.json</code> 与 <code>geometry-patch.json</code>；独立
+<code>intent.txt</code> 可从中心 README 的案例结果目录取得。</li>
+<li>切回“三维物理”，拖动时间轴检查真实保存状态。正常记录为初始状态加60步，共61帧；seek
+只读保存数组，不重新计算。可切换布料、应变、应力、折角、接触和接缝六种显示，选择15条缝，点击真实面片查看二维材料三角形和数值。</li>
+<li>保存记录 JSON、当前网格 OBJ 或完整
+HTML，再核对本款报告与文件摘要。失败研究轨迹保持
+FAIL；三维外观和下载成功都不能覆盖独立几何结果。</li>
+</ol>
+<p>原型与袖口加宽有当前支持的来源配置。其余袖长、衣长、前领三个输入仍为
+<code>BLOCKED：PROFILE_REQUIRED</code>，不会继承原型的物理结果。</p>
+</section>
+<section id="七项验证与整衣验收分别看" class="level2">
+<h2>七项验证与整衣验收分别看</h2>
+<table>
+<thead>
+<tr class="header">
+<th>项目</th>
+<th>主要检查内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>缝合关系</td>
+<td>实际15条缝、方向、位置别名与漏缝故障对照</td>
+</tr>
+<tr class="even">
+<td>人体碰撞</td>
+<td>实际人体三角面、数值接触及独立双向边面穿越</td>
+</tr>
+<tr class="odd">
+<td>应力应变</td>
+<td>材料坐标重算张量、试片控制与实际热图颜色</td>
+</tr>
+<tr class="even">
+<td>衣服折角</td>
+<td>有向二面角、曲率与折返对照</td>
+</tr>
+<tr class="odd">
+<td>物理回放</td>
+<td>全部保存状态、时钟、逐帧读取与新进程继续计算</td>
+</tr>
+<tr class="even">
+<td>物理调试视图</td>
+<td>真实面片、二维材料坐标、场显示、导出及桌面/移动界面</td>
+</tr>
+<tr class="odd">
+<td>布料连接约束</td>
+<td>实际约束激活、全部别名、固定点、数量与故障注入</td>
+</tr>
+</tbody>
+</table>
+<p>这些机制对照和界面检查各有自己的证据和状态，未执行的项目写
+<code>NOT_RUN</code>。整衣另从实际坐标独立检查接缝、人体穿入、双方边面穿越、严格自交和拓扑。本轮两个案例的61帧均通过这些离散检查，七张卡片不代替整衣报告。完整条件和复跑命令见
+<a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/README.md">物理实验说明</a>。</p>
+</section>
 <section id="如何阅读和交接规格" class="level2">
 <h2>如何阅读和交接规格</h2>
 <p>设计人员先看款式特征、目标尺寸、结构决定和本次差异，再核对明确保持的区域。纸样设计人员继续检查完整几何、接口、定位点及线条用途。裁剪与缝制人员应重点看裁数、净裁角色、缝级、折边和待确认项。</p>
@@ -182,14 +263,17 @@ MB。完整 YAML、DXF、补丁、二维 SVG、五套三维模型、CSS 和 Java
 的目录，验证四案例、旋转、完整 YAML 和 DXF 保存。某些受管浏览器会禁止
 <code>file://</code>；本机遇到的策略限制单独保留，不能靠关闭安全策略来解决。</p>
 <p>本在线文档页是独立辅助页面，不是演示 HTML 的运行依赖。</p>
+<p>物理实验台另有“保存完整
+HTML”：保存实际轨迹、原始规格与二维图后，可用同一份文件阅读和回放。它与约5.9MB的静态对照演示是不同产物，不能互换来源或验收记录。离线字节验证与环境是否允许原生
+<code>file://</code> 打开分别记录。</p>
 </section>
 <section id="目前的三维含义" class="level2">
 <h2>目前的三维含义</h2>
-<p>三维是从每一版自己的真实 DXF
+<p>原对照页的三维是从每一版自己的真实 DXF
 生成的静态几何装配示意。它可以帮助理解袖长、衣长、袖口、领口等修改如何影响空间外观。</p>
-<p>这不是布料物理模拟，也没有证明人体合身。图形单位 U
-尚未标定为毫米，不能根据 CAD
-软件的默认单位直接裁剪。生产批准仍待确认；布料模拟和实际试穿均为
+<p>独立物理页显示真实求解器保存的状态与独立报告。本轮原型及袖口两个案例各61帧离散数值验收通过；原型全程最大主应变185.61%，袖口138.88%，不能据此认定面料耐受、舒适或合身。此前失败保留。图形单位
+U
+尚未标定；物理试验明确假定1U=1mm，不能据此批准实际比例。材料标定、生产批准和真人试穿仍为
 <code>NOT_RUN</code>。</p>
 </section>
 </section>
@@ -214,6 +298,7 @@ MB。完整 YAML、DXF、补丁、二维 SVG、五套三维模型、CSS 和 Java
 ├── style.css                 演示样式
 ├── docs/                     本文档的四份Markdown及HTML模板
 ├── geometry/                 五套模型、生成器与自检
+├── physics/                  独立物理输入、求解、审计与单文件实验台
 ├── verification/             独立内嵌数据审计及故障测试
 ├── verify_browser.py          完整演示的真实浏览器验证
 └── verify_docs.py             在线文档、目录和演示入口验证
@@ -221,7 +306,8 @@ MB。完整 YAML、DXF、补丁、二维 SVG、五套三维模型、CSS 和 Java
 web/intent-edit-review/
 ├── index.html                可单独保存的演示
 ├── experiment/index.html     中心README的在线总览
-└── docs/index.html           无外部资源的在线文档</code></pre>
+├── docs/index.html           无外部资源的在线文档
+└── physics/index.html        含完整规格、二维图和实际记录的物理实验台</code></pre>
 </section>
 <section id="与仓库其他目录的关系" class="level2">
 <h2>与仓库其他目录的关系</h2>
@@ -250,8 +336,16 @@ web/intent-edit-review/
 <td>由原型和四个实际输出分别构建的三维模型</td>
 </tr>
 <tr class="even">
+<td><code>experiments/intent-edit-review/physics/</code></td>
+<td>来源核对、实际数值求解、准备门、完整轨迹、逐帧审计、恢复与独立界面</td>
+</tr>
+<tr class="odd">
 <td><code>docs/verification/intent-edit-review-20261118/</code></td>
 <td>数据、浏览器、下载和线上验收证据</td>
+</tr>
+<tr class="even">
+<td><code>docs/verification/intent-physics-20261118/</code></td>
+<td>本次物理机制、初始/轨迹几何、界面与历史失败证据入口</td>
 </tr>
 <tr class="odd">
 <td><code>scripts/build_pages.py</code></td>
@@ -277,6 +371,63 @@ JSON。最后把样式、视图绘制代码和交互代码内联到 HTML。</p>
 SHA-256，并核对模型与当前 DXF/YAML 的版次。它不通过 <code>fetch</code>
 拉取模型，也不从 CDN 导入三维库。</p>
 </section>
+<section id="独立物理项目怎样连接" class="level2">
+<h2>独立物理项目怎样连接</h2>
+<p>物理代码和发布路径均位于 <code>physics/</code>
+子目录，不替换对照演示或静态缝合结果。详细实现见 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/README.md">物理实验说明</a>。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>阶段</th>
+<th>实际职责</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>prepare_experiment.py</code> /
+<code>verify_source_mesh.py</code></td>
+<td>读取实际
+DXF/YAML、材料坐标、支持配置、15条缝及真实人体，另行核对来源、CAD/UV和拓扑</td>
+</tr>
+<tr class="even">
+<td><code>run_native.mjs</code></td>
+<td>运行本次冻结并编译的 WASM
+核心和接触组件；保存准备状态与独立几何门，失败保留原因</td>
+</tr>
+<tr class="odd">
+<td><code>derive_folds.mjs</code> /
+<code>audit_experiment.py</code></td>
+<td>从真实保存坐标派生折角，并独立复算每帧几何、张量、折角和时钟</td>
+</tr>
+<tr class="even">
+<td><code>verify_resume.py</code></td>
+<td>新建进程从保存状态继续，核对实际下一步；与界面的只读 seek 分开</td>
+</tr>
+<tr class="odd">
+<td><code>build_viewer.py</code> / <code>recording-codec.mjs</code></td>
+<td>校验输入、记录和报告摘要，进行无损记录编码，把实际文件、二维图、脚本和轨迹内嵌到单份
+HTML</td>
+</tr>
+<tr class="even">
+<td><code>verify_viewer.py</code></td>
+<td>在真实浏览器检查原文/原字节、全部帧、GPU颜色、面片、接缝、导出重开与窄屏；收据绑定本次代码和数据</td>
+</tr>
+</tbody>
+</table>
+<p>构建器从已验收对照数据读取 <code>source_package</code>：完整
+<code>files</code>、实际 <code>twoD</code>、自然语言 <code>intent</code>
+与
+<code>changes</code>。文件逐一与仓库原始字节核对，二维来源与物理输入的
+DXF/YAML 摘要一致，不能把旧模型换个标签套到新输出。</p>
+<p>物理输入另存本次条件副本和实际可执行文件摘要；更改默认参数不会改写历史实验。本轮原型和袖口各61/61帧离散数值验收
+PASS，另外三个案例仍为
+<code>BLOCKED：PROFILE_REQUIRED</code>。正式候选轨迹不能绕过初始几何门；历史失败研究记录也不改判。通过范围限于实际保存状态与估计材料模型，材料耐受及真人合身不在本轮通过范围内。</p>
+</section>
 <section id="为什么三维没有沿用旧模型" class="level2">
 <h2>为什么三维没有沿用旧模型</h2>
 <p>五个 <code>*.mesh.json</code>
@@ -289,7 +440,7 @@ SHA-256，并核对模型与当前 DXF/YAML 的版次。它不通过 <code>fetch
 </section>
 <section id="浏览器绘制与状态" class="level2">
 <h2>浏览器绘制与状态</h2>
-<p><code>viewer.js</code> 直接把模型三角形送入 WebGL；WebGL
+<p>静态对照的 <code>viewer.js</code> 直接把模型三角形送入 WebGL；WebGL
 不可用时，使用同一套三角形进行 CPU 投影和 Canvas2D
 绘制，不替换成固定图片。</p>
 <p>两侧共享相机的 <code>yaw</code>、<code>pitch</code> 和
@@ -297,6 +448,11 @@ SHA-256，并核对模型与当前 DXF/YAML 的版次。它不通过 <code>fetch
 <p>完整 YAML 和补丁通过文本节点显示。保存文件时从原始 base64
 恢复字节，生成 Blob 下载。页面不把浏览器内重新序列化的对象当作原始 DXF
 文件。</p>
+<p>物理页的 <code>physics/viewer.mjs</code>
+使用自己的完整画布切换：二维显示真实 SVG，三维显示实际轨迹与场。完整中文
+YAML
+弹层、原始文件下载、意图、补丁、相机和回放状态都属于该单文件；三维需要
+WebGL，不能把旧对照页的软件降级能力推断给它。回放读取保存数组，切帧不会积分或修改源文件。</p>
 </section>
 <section id="哪些文件应该重新生成" class="level2">
 <h2>哪些文件应该重新生成</h2>
@@ -306,8 +462,12 @@ SHA-256，并核对模型与当前 DXF/YAML 的版次。它不通过 <code>fetch
 或规格：先重新运行对应编辑器和独立互校，再重建相关模型、演示和全部来源验证。</li>
 <li>只改文档：运行文档构建和文档浏览器验证；确认演示 HTML
 的摘要未变。</li>
+<li>只改中心 README 或导航：重建 docs/hub 并验证目录、真实页面往返及旧
+comparison/sewn 文件摘要；不必重建旧模型。</li>
 <li>修改三维构造公式：重建五套模型，重新检查几何响应、未改片、实际 UV
 和故障控制，再验证浏览器像素。</li>
+<li>修改物理求解、接触或条件：使用新运行目录冻结源码、重新计算和独立验收；修改物理界面则重建物理
+HTML 并更新匹配代码/数据的浏览器收据。</li>
 </ul>
 <p>不要直接手改发布 HTML 中的 base64、SVG 或模型摘要来跳过这些步骤。</p>
 </section>
@@ -446,6 +606,69 @@ U，模式为 <code>static_geometric_assembly</code>。它们包含来源 DXF/YA
 <p>摘要标签正确不代表文件正确。验证必须检查实际坐标、图元和网格，不能只检查
 <code>source_sha256</code> 一类字段。</p>
 </section>
+<section id="物理记录和完整来源包" class="level2">
+<h2>物理记录和完整来源包</h2>
+<p>独立物理页使用 <code>intent-physics-review/1</code>，与静态对照的
+<code>intent-edit-review/1</code> 分开。每个实际案例包含本次
+<code>input</code>、无损编码的 <code>recording</code>、独立
+<code>audit</code>、完整中文 <code>conditions</code> 和
+<code>source_package</code>。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>数据</th>
+<th>需要核对什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>source_package.files</code></td>
+<td>实际 YAML、DXF及本案例存在的规格 diff/几何
+patch；文件名、MIME、字节长度、SHA-256和base64原始字节</td>
+</tr>
+<tr class="even">
+<td><code>source_package.twoD</code></td>
+<td>完整
+SVG、二维图元与源文件摘要；原型204条线、27处文字，不能用轮廓截图代替</td>
+</tr>
+<tr class="odd">
+<td><code>source_package.intent</code> / <code>changes</code></td>
+<td>实际自然语言意图、修改前后说明；原型明确标注尚未应用新意图</td>
+</tr>
+<tr class="even">
+<td><code>input.json</code></td>
+<td>该次条件副本、实际材料坐标与三角面、15条缝的全部位置别名、真实人体、DXF/YAML来源与求解器身份</td>
+</tr>
+<tr class="odd">
+<td><code>trajectory.json</code></td>
+<td>实际坐标、上一时刻坐标、场、接触与时钟；正常记录61帧，不把准备迭代当成物理时间</td>
+</tr>
+<tr class="even">
+<td><code>preparation-gate.json</code> / <code>audit.json</code></td>
+<td>穿着准备与完整轨迹的独立结论，绑定实际输入和记录摘要</td>
+</tr>
+<tr class="odd">
+<td><code>resume-independent.json</code></td>
+<td>新进程恢复后的下一步检查，不能用网页时间轴成功替代</td>
+</tr>
+<tr class="even">
+<td><code>viewer_sources</code> / 界面收据</td>
+<td>本次查看器代码与实际案例输入/记录的绑定；旧程序或其他案例的 PASS
+不自动套用</td>
+</tr>
+</tbody>
+</table>
+<p>原型可下载完整输入 YAML/DXF；袖口案例可下载新 YAML、输出
+DXF及两份实际补丁。设计意图在页内完整显示，独立 <code>intent.txt</code>
+保存在案例结果目录。记录 JSON、当前帧 OBJ 和完整 HTML
+是物理页的其他导出，不能将 OBJ 当作新版 CAD 源文件。</p>
+<p>二维 U
+尚未标定。1U=1mm只属于明确记录的本次数值假设；应力实际计算单位为Pa、界面以kPa显示，应变以百分比显示，折角以度显示。估计材料参数、标准人体与照片成分不构成实测力学或真人合身证明。</p>
+</section>
 <section id="四层独立验证" class="level2">
 <h2>四层独立验证</h2>
 <ol type="1">
@@ -461,12 +684,20 @@ UV、拓扑、构造公式、内部点、改未改片；用真实指针和键盘
 <p>独立内嵌审计器不导入生成器。现有八项自身测试与六项实际 HTML
 故障控制覆盖了旧
 SVG、来源全被伪造的旧模型、重算摘要后的三维坐标篡改、截断规格及缺案例等情况。</p>
+<p>物理另加独立检查链：先核对
+CAD/UV/来源，再从准备结束时的真实float32坐标检查人体与自交；对全部保存帧独立重算接缝、拓扑、人体穿入、双方边面穿越、严格三角面穿插、张量和折角。人体不入顶点不代表整个面片不穿体，采样几帧也不等于完整轨迹通过。恢复检查和实际浏览器验收各有独立报告。</p>
 </section>
 <section id="验收结论的边界" class="level2">
 <h2>验收结论的边界</h2>
 <p><code>PASS</code>
 必须带对象：文件互校、补丁或浏览器通过，不等于生产、缝合或合身通过。未标定的“加长2厘米”、缺条件的“抬手更舒服”、负值袖口等请求分别应阻止或拒绝。</p>
 <p>保留原型已有微小轮廓间隙和待确认工艺，不把本次坐标编辑冒称完整生产净样修复。物理布料与真实试穿需要另外的输入、求解和验收证据。</p>
+<p><strong>本轮原型及袖口两个案例各61/61帧离散数值验收
+PASS</strong>，另外三例仍为
+<code>BLOCKED：PROFILE_REQUIRED</code>。两案例的全程最大接缝间隙、离散人体穿入、双向边面穿越及严格自交均为0，张量、折角和数值穿袖检查逐帧通过。来源各含15条缝、4个预期开口；两份实际二进制各10组机制对照通过，从0/30/59帧在新进程继续时，坐标、上一坐标、场、接触、步数和时间六项逐字节一致。</p>
+<p>原型全程最大主应变为185.61%（第29帧，末帧139.51%），袖口为138.88%（第60帧）。这是估计材料模型的数值结果，不能推断面料耐受、舒适或真人合身。七项机制/界面检查仍只在自己的证据边界判定；缺少本次证据的项目保留
+<code>NOT_RUN</code>。材料标定、真人试穿及生产批准没有因离散数值 PASS
+而获得批准，原有严格门槛和历史失败继续保留。</p>
 </section>
 </section>
 <section id="release" class="level1">
@@ -494,6 +725,11 @@ python -m http.server 8000 --directory web</code></pre>
 <code>http://127.0.0.1:8000/intent-edit-review/docs/</code>。生产 URL
 多一层 <code>/pattern-agent/</code>
 前缀，因此文档中的返回演示链接使用相对路径，不硬编码站点根。</p>
+<p>独立物理实验台使用
+<code>http://127.0.0.1:8000/intent-edit-review/physics/</code>。它的输入、求解与独立检查方法见
+<a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/physics/README.md">物理实验说明</a>；源码另需Node、现有依赖及指定编译器，页面阅读/回放本身不需要这些开发环境。当前原型与袖口配置受支持，另外三例仍为
+<code>BLOCKED：PROFILE_REQUIRED</code>。</p>
 <p>如果要重建三维模型，先运行：</p>
 <pre class="sh"><code>python experiments/intent-edit-review/geometry/build_meshes.py
 python experiments/intent-edit-review/geometry/verify_meshes.py --output work/intent-edit-review/geometry-check.json</code></pre>
@@ -512,17 +748,38 @@ WebGL
 Chrome 路线、公开源码固定摘要及真正离线文件证据保存在
 <code>docs/verification/intent-edit-review-20261118/live/</code>。</p>
 </section>
+<section id="独立物理-html-的构建与核查" class="level2">
+<h2>独立物理 HTML 的构建与核查</h2>
+<p>先在新的运行目录按物理说明完成来源检查、源码冻结、真实计算、折角、独立审计和恢复检查，再从那些完整运行目录打包；不要把目录名当作已通过。以下
+<code>RUN-A</code>、<code>RUN-B</code> 必须替换为本次实际路径：</p>
+<pre class="sh"><code>python experiments/intent-edit-review/physics/build_viewer.py RUN-A RUN-B --output work/intent-physics/viewer-candidate
+python experiments/intent-edit-review/physics/verify_viewer.py --html work/intent-physics/viewer-candidate/index.html --run RUN-A --output work/intent-physics/ui-A
+python experiments/intent-edit-review/physics/verify_viewer.py --html work/intent-physics/viewer-candidate/index.html --run RUN-B --output work/intent-physics/ui-B</code></pre>
+<p>检查完整中文 YAML、实际二维
+SVG与平移缩放、自然语言意图、原字节文件及输出补丁下载，再检查六种三维显示、全部61帧、15条缝、面片材料坐标、实际GPU颜色、JSON/OBJ/HTML重开、窄屏触控和离线。打开桌面、二维、全文YAML与手机截图复核。</p>
+<p>界面通过收据绑定查看器源码、案例输入和记录；按物理说明传入
+<code>--viewer-receipt</code> 后重建，再对最终 HTML 字节复验，之后才写入
+<code>web/intent-edit-review/physics/</code>。七项机制对照/界面验收与整衣审计分别记录。<strong>本轮原型及袖口两个案例各61帧离散数值验收通过</strong>，材料标定与真人试穿仍为
+<code>NOT_RUN</code>，高应变不构成面料耐受或合身批准；此前失败研究记录继续保留。</p>
+<p>较大HTML的CDP <code>Response.body()</code>
+可能因inspector缓存逐出而失败。用仓库
+<code>scripts/playwright_http.new_api_context</code>
+获取同一实际URL的字节摘要，再正常浏览器导航；保持TLS校验，不替换页面响应。断网上下文读取精确下载字节与原生
+<code>file://</code> 是否受策略阻止分别记录。</p>
+</section>
 <section id="文档与确定性重建" class="level2">
 <h2>文档与确定性重建</h2>
 <pre class="sh"><code>python experiments/intent-edit-review/build_docs.py --output work/intent-edit-review/docs-rebuilt.html
 cmp web/intent-edit-review/docs/index.html work/intent-edit-review/docs-rebuilt.html
 python experiments/intent-edit-review/verify_docs.py --output work/intent-edit-review/docs-browser
-python experiments/intent-edit-review/build.py --output work/intent-edit-review/demo-rebuilt.html
-cmp web/intent-edit-review/index.html work/intent-edit-review/demo-rebuilt.html
+python experiments/intent-edit-review/build_hub.py --output work/intent-edit-review/hub-rebuilt.html
+cmp web/intent-edit-review/experiment/index.html work/intent-edit-review/hub-rebuilt.html
+python experiments/intent-edit-review/verify_hub.py --output work/intent-edit-review/hub-browser
 git diff --check</code></pre>
 <p>文档验证器检查真实
-HTML、桌面和手机布局、目录锚点、演示入口、项目源码链接及控制台错误。只修改文档时，确认主演示
-HTML 的摘要不变，避免意外引入数据或模型改版。</p>
+HTML、桌面和手机布局、目录锚点、演示入口、项目源码链接及控制台错误；总览验证器检查案例库与实际页面往返。只修改文档和导航时，只重建
+docs/hub，确认旧 <code>index.html</code> 与 <code>sewn/</code>
+下全部文件的摘要不变，不重新生成旧 comparison/sewn 或物理轨迹。</p>
 </section>
 <section id="github-pages-的正确位置" class="level2">
 <h2>GitHub Pages 的正确位置</h2>
@@ -559,6 +816,14 @@ HTML 的摘要不变，避免意外引入数据或模型改版。</p>
 <td><code>web/intent-edit-review/docs/index.html</code></td>
 </tr>
 <tr class="even">
+<td>物理源码与复跑说明</td>
+<td><code>experiments/intent-edit-review/physics/README.md</code></td>
+</tr>
+<tr class="odd">
+<td>独立物理发布文件</td>
+<td><code>web/intent-edit-review/physics/index.html</code></td>
+</tr>
+<tr class="even">
 <td>演示 URL</td>
 <td><code>https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/</code></td>
 </tr>
@@ -567,17 +832,22 @@ HTML 的摘要不变，避免意外引入数据或模型改版。</p>
 <td><code>https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/docs/</code></td>
 </tr>
 <tr class="even">
+<td>独立物理 URL</td>
+<td><code>https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/physics/</code></td>
+</tr>
+<tr class="odd">
 <td>中心README</td>
 <td><code>experiments/intent-edit-review/README.md</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>在线总览</td>
 <td><code>https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/</code></td>
 </tr>
 </tbody>
 </table>
 <p>不另建仓库，也不更改现有主页或其他项目页面。静态站点构建器会复制整个
-<code>web/</code>；新增此子目录即可进入同一个项目站点。</p>
+<code>web/</code>；独立 <code>physics/</code>
+子目录沿用同一个项目站点，旧对照、静态缝合与历史证据保留。</p>
 </section>
 <section id="发布顺序" class="level2">
 <h2>发布顺序</h2>
@@ -594,7 +864,8 @@ CI。</li>
 <li>观察既有 <code>Publish GitHub Pages</code>
 发布工作流的部署回执。它只构建和发布，不是验收测试。</li>
 <li>正常 HTTPS 读取新 URL，核对 HTML 实际字节摘要、站点
-<code>build.json</code> 的部署身份，并验证文档到演示的相对导航。</li>
+<code>build.json</code>
+的部署身份，验证文档到演示的相对导航，并对物理路由驱动同一份实际界面验证。</li>
 <li>检查旧首页、旧原型页和旧 T
 恤页仍可访问；保存部署与线上读回证据。</li>
 </ol>
@@ -605,8 +876,7 @@ CI。</li>
 <section id="常见问题" class="level2">
 <h2>常见问题</h2>
 <p><strong>页面打开了，但三维空白。</strong>
-等待文件校验完成，查看页面错误提示和浏览器控制台。模型来源不匹配时应修复输入配对并重建，不删除校验。WebGL
-不可用时应由实际三角形软件绘制降级。</p>
+等待文件校验完成，查看页面错误提示和浏览器控制台。模型来源不匹配时应修复输入配对并重建，不删除校验。静态对照页有实际三角形软件绘制降级；独立物理页需要WebGL，不能以旧模型或静态截图替换失败结果。</p>
 <p><strong>修改了 YAML，却还是旧图。</strong> 先生成并互校对应
 DXF，再重建当前模型和 HTML。只改摘要或标签不会生成新纸样。</p>
 <p><strong>要输入一个新的自然语言设计。</strong>

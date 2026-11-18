@@ -15,3 +15,10 @@ web/garment-body/single-state-evals/**/*.csv whitespace=blank-at-eol,blank-at-eo
 # Frozen inspector embeds binary geometry and a CSP script hash; preserve bytes.
 experiments/fitted_tshirt/seam_inspector/inspector.html binary
 experiments/fitted_tshirt/seam_inspector/accepted-model.glb binary
+
+# Preserve the exact executed physics sources and generated standalone bundle.
+# Their stored SHA-256 values bind independent numerical and browser receipts.
+experiments/intent-edit-review/physics/results/**/frozen-source/** -whitespace
+experiments/intent-edit-review/physics/results/**/frozen-verifier/** -whitespace
+experiments/intent-edit-review/physics/mesh-contact.mjs whitespace=-blank-at-eof
+web/intent-edit-review/physics/index.html binary

@@ -1,0 +1,47 @@
+{
+  "verdict": "PASS",
+  "command": [
+    "node",
+    "/workspace/work/pattern-agent-publish/experiments/intent-edit-review/physics/test_hinges.mjs",
+    "/workspace/work/pattern-agent-publish/work/intent-physics/cuff-run36/solver.wasm"
+  ],
+  "exit_code": 0,
+  "wasm_sha256": "846bc4d954c4b3031c8f9c616aa063fc589df1dc10985708e65cd09344c56e3f",
+  "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+  "report": {
+    "verdict": "PASS",
+    "actualCompiledWasmAngleAndSignedEnergyControls": [
+      {
+        "degrees": 0,
+        "actualRadians": 0
+      },
+      {
+        "degrees": 60,
+        "actualRadians": 1.0471975803375244,
+        "afterOneRealStep": 1.0133209228515625
+      },
+      {
+        "degrees": -60,
+        "actualRadians": -1.0471975803375244,
+        "afterOneRealStep": -1.0133209228515625
+      },
+      {
+        "degrees": 170,
+        "actualRadians": 2.967059850692749
+      },
+      {
+        "degrees": -170,
+        "actualRadians": -2.967059850692749
+      },
+      {
+        "degrees": 179.9,
+        "actualRadians": 3.13984751701355
+      },
+      {
+        "degrees": -179.9,
+        "actualRadians": -3.13984751701355
+      }
+    ],
+    "independentFiniteDifferenceRigidTranslation": true
+  }
+}

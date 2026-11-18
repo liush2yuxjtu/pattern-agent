@@ -1,0 +1,61 @@
+{
+  "verdict": "PASS",
+  "command": [
+    "node",
+    "/workspace/work/pattern-agent-publish/experiments/intent-edit-review/physics/test_contact.mjs"
+  ],
+  "exit_code": 0,
+  "wasm_sha256": "846bc4d954c4b3031c8f9c616aa063fc589df1dc10985708e65cd09344c56e3f",
+  "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+  "report": {
+    "verdict": "PASS",
+    "typedIndexProximityAndSweptControls": [
+      {
+        "inputType": "Array",
+        "targetZ": 0.001,
+        "actualTriangleVisits": 1,
+        "contacts": 1,
+        "finalZ": 0.003000000026077032
+      },
+      {
+        "inputType": "Array",
+        "targetZ": -0.004,
+        "actualTriangleVisits": 1,
+        "contacts": 1,
+        "finalZ": 0.003000000026077032
+      },
+      {
+        "inputType": "Uint16Array",
+        "targetZ": 0.001,
+        "actualTriangleVisits": 1,
+        "contacts": 1,
+        "finalZ": 0.003000000026077032
+      },
+      {
+        "inputType": "Uint16Array",
+        "targetZ": -0.004,
+        "actualTriangleVisits": 1,
+        "contacts": 1,
+        "finalZ": 0.003000000026077032
+      },
+      {
+        "inputType": "Uint32Array",
+        "targetZ": 0.001,
+        "actualTriangleVisits": 1,
+        "contacts": 1,
+        "finalZ": 0.003000000026077032
+      },
+      {
+        "inputType": "Uint32Array",
+        "targetZ": -0.004,
+        "actualTriangleVisits": 1,
+        "contacts": 1,
+        "finalZ": 0.003000000026077032
+      }
+    ],
+    "legacyCustomExclusionFlatSheetPreserved": true,
+    "nonlocalFaceNotExcluded": true,
+    "inverseMassWeightedMaximumMove_m": 0.0004999999073334038,
+    "unboundedFormulaWouldMove_m": 0.29
+  }
+}

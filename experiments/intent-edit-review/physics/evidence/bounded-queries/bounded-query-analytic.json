@@ -1,0 +1,640 @@
+{
+  "verdict": "PASS",
+  "scope": "Query equivalence/resource controls only; no geometry/dynamics/fit acceptance.",
+  "batch_size": 512,
+  "python": "/workspace/work/pattern-agent-publish/work/intent-physics/venv/bin/python",
+  "trimesh_version": "4.12.2",
+  "test_sha256": "302d49b2fbec4d83524bf4c42b2b6c6b8b1194782ccea36008cbb8a824a4e115",
+  "bounded_module_sha256": "6a617b0e6fa3f591f19fbcdbf57a7ad55d35bf07b080b989366e1a72bbcd72d2",
+  "original_oracle_sha256": "c99289464c9165ad48aa9dd9a54ae1979f30acdaa0c3af26d2bb2bd7e06a31e3",
+  "memory_scope": "RSS high-water values are cumulative for this one sequential process, not isolated per-call peaks.",
+  "analytic": [
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 1,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.001255662995390594,
+          "memory_before": {
+            "process_peak_rss_kib": 70820,
+            "current_rss_kib": 71004
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71476,
+            "current_rss_kib": 71708
+          }
+        },
+        "bounded": {
+          "seconds": 0.0010290520003763959,
+          "memory_before": {
+            "process_peak_rss_kib": 71476,
+            "current_rss_kib": 71720
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71836
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 2,
+          "rays_queried": 2,
+          "max_backend_rays": 1
+        }
+      }
+    },
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 2,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0003732629993464798,
+          "memory_before": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71848
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71848
+          }
+        },
+        "bounded": {
+          "seconds": 0.00037171000440139323,
+          "memory_before": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71848
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71848
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 1,
+          "rays_queried": 2,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 7,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.00047701000585220754,
+          "memory_before": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71852
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71860
+          }
+        },
+        "bounded": {
+          "seconds": 0.00035660799767356366,
+          "memory_before": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71860
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71860
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 1,
+          "rays_queried": 2,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 512,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0003353450010763481,
+          "memory_before": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71860
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71864
+          }
+        },
+        "bounded": {
+          "seconds": 0.00035794900031760335,
+          "memory_before": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71864
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71868
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 1,
+          "rays_queried": 2,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 1024,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0003237979981349781,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71872
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71876
+          }
+        },
+        "bounded": {
+          "seconds": 0.0003259710065321997,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71876
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71876
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 1,
+          "rays_queried": 2,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "nonwatertight_conflicting_parity_global_random_retry",
+      "batch_size": 1,
+      "contains": {
+        "points": 3,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0013258590042823926,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71884
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 71952
+          }
+        },
+        "bounded": {
+          "seconds": 0.0033512439986225218,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 71952
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72000
+          }
+        },
+        "backend": {
+          "points": 3,
+          "logical_ray_queries": 2,
+          "backend_calls": 12,
+          "rays_queried": 12,
+          "max_backend_rays": 1
+        }
+      }
+    },
+    {
+      "name": "nonwatertight_conflicting_parity_global_random_retry",
+      "batch_size": 2,
+      "contains": {
+        "points": 3,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0007378429872915149,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72000
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72008
+          }
+        },
+        "bounded": {
+          "seconds": 0.0019056940072914585,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72008
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          }
+        },
+        "backend": {
+          "points": 3,
+          "logical_ray_queries": 2,
+          "backend_calls": 6,
+          "rays_queried": 12,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "nonwatertight_conflicting_parity_global_random_retry",
+      "batch_size": 512,
+      "contains": {
+        "points": 3,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0006848430057289079,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          }
+        },
+        "bounded": {
+          "seconds": 0.0007164900016505271,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          }
+        },
+        "backend": {
+          "points": 3,
+          "logical_ray_queries": 2,
+          "backend_calls": 2,
+          "rays_queried": 12,
+          "max_backend_rays": 6
+        }
+      }
+    },
+    {
+      "name": "empty",
+      "contains": {
+        "points": 0,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 2.3065003915689886e-05,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          }
+        },
+        "bounded": {
+          "seconds": 2.2032996639609337e-05,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          }
+        },
+        "backend": {
+          "points": 0
+        }
+      },
+      "segments": {
+        "segments": 0,
+        "valid_segments": 0,
+        "hits": 0,
+        "old": {
+          "seconds": 0.000135955007863231,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72028
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72032
+          }
+        },
+        "bounded": {
+          "seconds": 3.826004103757441e-06,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72032
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72032
+          }
+        },
+        "backend": {
+          "segments": 0
+        }
+      }
+    },
+    {
+      "name": "true_crossing_empty_short_endpoint_tolerances",
+      "batch_size": 1,
+      "segments": {
+        "segments": 6,
+        "valid_segments": 4,
+        "hits": 2,
+        "old": {
+          "seconds": 0.00041479599894955754,
+          "memory_before": {
+            "process_peak_rss_kib": 71860,
+            "current_rss_kib": 72036
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72072
+          }
+        },
+        "bounded": {
+          "seconds": 0.0009960320021491498,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72072
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72072
+          }
+        },
+        "backend": {
+          "segments": 6,
+          "valid_segments": 4,
+          "backend_calls": 4,
+          "rays_queried": 4,
+          "max_backend_rays": 1
+        }
+      }
+    },
+    {
+      "name": "true_crossing_empty_short_endpoint_tolerances",
+      "batch_size": 2,
+      "segments": {
+        "segments": 6,
+        "valid_segments": 4,
+        "hits": 2,
+        "old": {
+          "seconds": 0.0003001430013682693,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72076
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72076
+          }
+        },
+        "bounded": {
+          "seconds": 0.0007669269980397075,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72076
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72080
+          }
+        },
+        "backend": {
+          "segments": 6,
+          "valid_segments": 4,
+          "backend_calls": 3,
+          "rays_queried": 4,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "true_crossing_empty_short_endpoint_tolerances",
+      "batch_size": 512,
+      "segments": {
+        "segments": 6,
+        "valid_segments": 4,
+        "hits": 2,
+        "old": {
+          "seconds": 0.0002996419934788719,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72080
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72080
+          }
+        },
+        "bounded": {
+          "seconds": 0.00027874100487679243,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72080
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72080
+          }
+        },
+        "backend": {
+          "segments": 6,
+          "valid_segments": 4,
+          "backend_calls": 1,
+          "rays_queried": 4,
+          "max_backend_rays": 4
+        }
+      }
+    },
+    {
+      "name": "true_crossing_empty_short_endpoint_tolerances",
+      "batch_size": 1024,
+      "segments": {
+        "segments": 6,
+        "valid_segments": 4,
+        "hits": 2,
+        "old": {
+          "seconds": 0.0002655809948919341,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72080
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72080
+          }
+        },
+        "bounded": {
+          "seconds": 0.0003217459889128804,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72084
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72084
+          }
+        },
+        "backend": {
+          "segments": 6,
+          "valid_segments": 4,
+          "backend_calls": 1,
+          "rays_queried": 4,
+          "max_backend_rays": 4
+        }
+      }
+    },
+    {
+      "name": "closed_cavity_multiple_hits",
+      "contains": {
+        "points": 3,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0008387049892917275,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72104
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72124
+          }
+        },
+        "bounded": {
+          "seconds": 0.000762980998842977,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72128
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72148
+          }
+        },
+        "backend": {
+          "points": 3,
+          "logical_ray_queries": 1,
+          "backend_calls": 2,
+          "rays_queried": 4,
+          "max_backend_rays": 2
+        }
+      },
+      "segments": {
+        "segments": 1,
+        "valid_segments": 1,
+        "hits": 4,
+        "old": {
+          "seconds": 0.00026087398873642087,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72152
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72152
+          }
+        },
+        "bounded": {
+          "seconds": 0.0003191319992765784,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72152
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72156
+          }
+        },
+        "backend": {
+          "segments": 1,
+          "valid_segments": 1,
+          "backend_calls": 1,
+          "rays_queried": 1,
+          "max_backend_rays": 1
+        }
+      }
+    }
+  ],
+  "real_frames": [],
+  "failures": [],
+  "total_seconds": 0.029100312996888533,
+  "memory_final": {
+    "process_peak_rss_kib": 72116,
+    "current_rss_kib": 72236
+  }
+}

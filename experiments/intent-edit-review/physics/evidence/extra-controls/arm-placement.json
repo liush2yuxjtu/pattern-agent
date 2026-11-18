@@ -1,0 +1,208 @@
+{
+  "contract_verdict": "PASS",
+  "scope": "One actual initial XYZ array; not a physical frame",
+  "input": "/workspace/work/pattern-agent-publish/work/intent-physics/baseline-run30/input.json",
+  "input_sha256": "0f91f459b4b6ab77b080826f6d212537e097ac17b353100dd05503e9f8f5fdf6",
+  "initialisation": {
+    "method": "actual-canonical-arm UV-FEM tube transport/1",
+    "role": "initial sleeve XYZ only; not source reference or physical frame",
+    "physical_acceptance": "NOT_RUN",
+    "physical_fit": "NOT_RUN",
+    "body_contact_acceptance": "NOT_RUN",
+    "self_intersection_acceptance": "NOT_RUN",
+    "does_not_replace_source_reference": true,
+    "joint_record": "proxy-arm-joints.json",
+    "joint_record_sha256": "8c82db001794a38b7e2f099c429b50a6f0ffed539a348aac92d27eb9b82a288f",
+    "original_obj_sha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+    "canonical_body_sha256": "405d3cc8d5ba299b241892d80782cd9faf194da66ce611748ccb8423ab82331d",
+    "canonical_geometry_hashes_verified": true,
+    "source_certificate_sha256_before": "d303558b2d5b2139e00e7df3db4002125fc0e87d00abe22a4157669a0c1fe94d",
+    "source_certificate_sha256_after": "d303558b2d5b2139e00e7df3db4002125fc0e87d00abe22a4157669a0c1fe94d",
+    "panel_declarations_sha256": "741f075d08dd60e8a432a215f06c2bd0892339c95ca0afe29895e489ab81d3d6",
+    "global_ids_sha256": "c4774e69db7868dc90132e93c06f01ac97d344a7ea58963b2d308817b34efb9d",
+    "nonsleeve_positions_bit_exact": true,
+    "sewn_armhole_positions_bit_exact": true,
+    "max_seam_alias_gap_m": 0.0,
+    "changed_vertices": 1532,
+    "max_initialisation_move_m": 0.21529528928619499,
+    "cap_blend_end_u": 0.25,
+    "cuff_beyond_wrist_m": 0.025,
+    "panels": [
+      {
+        "panel": "sleeve.left",
+        "anatomical_side": "R",
+        "domain_method": "unchanged material UV-metric FEM (u,theta)",
+        "rest_uv_sha256": "a494417915ee5fb0ebff364d684a72ab139bb120c6fbbf7e8cd788750813fe54",
+        "local_faces_sha256": "28832f181b8bf4fc8ba171067276e3e44e2ecaf31a6c3f43f011a5214f26186f",
+        "fixed_armhole_vertices": 86,
+        "actual_joints_m": {
+          "shoulder": [
+            -0.1677125,
+            1.3413769457947635,
+            0.014605
+          ],
+          "elbow": [
+            -0.31293625,
+            1.1661156957947636,
+            0.013201250000000001
+          ],
+          "wrist": [
+            -0.43118500000000004,
+            1.0619781957947636,
+            0.17565499999999998
+          ],
+          "wrist_tail": [
+            -0.429115,
+            1.0394219457947635,
+            0.19686
+          ]
+        },
+        "control_points_m": [
+          [
+            -0.15439478401465673,
+            1.2887069797515869,
+            0.054970999769866476
+          ],
+          [
+            -0.31293625,
+            1.1661156957947636,
+            0.013201250000000001
+          ],
+          [
+            -0.43118500000000004,
+            1.0619781957947636,
+            0.17565499999999998
+          ],
+          [
+            -0.4295171382264105,
+            1.0438039411423345,
+            0.1927405115502247
+          ]
+        ],
+        "control_u": [
+          0.0,
+          0.44890806908741504,
+          0.9451792259238104,
+          1.0
+        ],
+        "target_centerline_length_m": 0.46960116962694703
+      },
+      {
+        "panel": "sleeve.right",
+        "anatomical_side": "L",
+        "domain_method": "unchanged material UV-metric FEM (u,theta)",
+        "rest_uv_sha256": "b31ff6913fb482ee96f8c9b908f2c16fc27e0d66bf5ed5f6885894a5019f6c91",
+        "local_faces_sha256": "cd99a106ca3ce1cf508c4d6155933d7b2b6e41f36017d8cfd0a0d8e4aa93bd0f",
+        "fixed_armhole_vertices": 86,
+        "actual_joints_m": {
+          "shoulder": [
+            0.1677125,
+            1.3413769457947635,
+            0.014605
+          ],
+          "elbow": [
+            0.31293625,
+            1.1661156957947636,
+            0.013201250000000001
+          ],
+          "wrist": [
+            0.43118500000000004,
+            1.0619781957947636,
+            0.17565499999999998
+          ],
+          "wrist_tail": [
+            0.429115,
+            1.0394219457947635,
+            0.19686
+          ]
+        },
+        "control_points_m": [
+          [
+            0.15439478401465673,
+            1.2887069797515869,
+            0.054970999769866476
+          ],
+          [
+            0.31293625,
+            1.1661156957947636,
+            0.013201250000000001
+          ],
+          [
+            0.43118500000000004,
+            1.0619781957947636,
+            0.17565499999999998
+          ],
+          [
+            0.4295171382264105,
+            1.0438039411423345,
+            0.1927405115502247
+          ]
+        ],
+        "control_u": [
+          0.0,
+          0.44890806908741504,
+          0.9451792259238104,
+          1.0
+        ],
+        "target_centerline_length_m": 0.46960116962694703
+      }
+    ]
+  },
+  "reference_max_delta_m": 0.0,
+  "sleeves": [
+    {
+      "panel": "sleeve.left",
+      "anatomical_side": "R",
+      "before_joint_inside": [
+        true,
+        false,
+        false
+      ],
+      "after_joint_inside": [
+        true,
+        true,
+        true
+      ],
+      "arm_chain_samples": 65,
+      "actual_body_contains_samples": 65,
+      "before_sleeve_contains_samples": 30,
+      "after_sleeve_contains_samples": 65,
+      "sigma_max": 2.4670056202614155,
+      "sigma_min": 0.11090774344688092,
+      "local_virtual_caps_only": true
+    },
+    {
+      "panel": "sleeve.right",
+      "anatomical_side": "L",
+      "before_joint_inside": [
+        true,
+        false,
+        false
+      ],
+      "after_joint_inside": [
+        true,
+        true,
+        true
+      ],
+      "arm_chain_samples": 65,
+      "actual_body_contains_samples": 65,
+      "before_sleeve_contains_samples": 30,
+      "after_sleeve_contains_samples": 65,
+      "sigma_max": 2.4670056326218432,
+      "sigma_min": 0.11090774373490915,
+      "local_virtual_caps_only": true
+    }
+  ],
+  "strict_self_pairs": 0,
+  "self_examples": [],
+  "body_inside_roots": 1396,
+  "max_inside_depth_mm": 34.06203227307256,
+  "ready_acceptance": "FAIL",
+  "physical_acceptance": "NOT_RUN",
+  "unverified": [
+    "complete triangle/body crossings",
+    "physical preparation and trajectory",
+    "material calibration",
+    "physical fit"
+  ]
+}

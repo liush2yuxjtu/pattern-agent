@@ -1,0 +1,150 @@
+{
+  "baseline-run37": {
+    "audit_sha256": "f4137100564c7b3ba617e91147e8d5e6520d964e1aa4313cd3da0f85bd04e6e9",
+    "verdict": "PASS",
+    "input_sha256": "bd604bb44a041b5b3400d883601e9cd03e84e43d604049d810862eb41f1c693b",
+    "recording_sha256": "c916b899e7ce51a4bc0fd6a71f27bf742b791b402e35f7bdd2d8dd2afb495c09",
+    "frames_checked": 61,
+    "total_frames": 61,
+    "maxima": {
+      "max_seam_gap_mm": 0.0,
+      "max_body_penetration_mm": 0.0,
+      "cloth_edge_body_hits": 0,
+      "body_edge_cloth_hits": 0,
+      "strict_self_intersections": 0,
+      "max_principal_strain_percent": 185.6105192417344
+    },
+    "peak_strain_frame": 29,
+    "last_frame_strain_percent": 139.51156439647764,
+    "tensor_all_pass": true,
+    "fold_all_pass": true,
+    "wear_all_pass": true,
+    "mechanism_groups": {
+      "kernel": "PASS",
+      "implicit": "PASS",
+      "hinges": "PASS",
+      "self-contact": "PASS",
+      "swept-edge": "PASS",
+      "swept-vertex": "PASS",
+      "typed-contact": "PASS",
+      "swept-bounds": "PASS",
+      "self-step-guard": "PASS",
+      "body-feature": "PASS"
+    },
+    "resume": [
+      {
+        "restored_frame": 0,
+        "next_frame": 1,
+        "exact": {
+          "positions": true,
+          "previous": true,
+          "fields": true,
+          "contacts": true,
+          "step": true,
+          "time": true
+        }
+      },
+      {
+        "restored_frame": 30,
+        "next_frame": 31,
+        "exact": {
+          "positions": true,
+          "previous": true,
+          "fields": true,
+          "contacts": true,
+          "step": true,
+          "time": true
+        }
+      },
+      {
+        "restored_frame": 59,
+        "next_frame": 60,
+        "exact": {
+          "positions": true,
+          "previous": true,
+          "fields": true,
+          "contacts": true,
+          "step": true,
+          "time": true
+        }
+      }
+    ],
+    "material_calibration": "NOT_RUN",
+    "physical_fit": "NOT_RUN",
+    "scope": "Discrete recorded geometry and synthetic material mathematics; no calibrated material or real-person fit claim."
+  },
+  "cuff-run37": {
+    "audit_sha256": "731e40088783916f7a021e7adc00cbeb3048c9d8ed9f1156d41d5d9c40cf067d",
+    "verdict": "PASS",
+    "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+    "recording_sha256": "f4209204bc0caacc86edbdcf00baf38fb600093308a0f64cdea1b7ad92fd76c3",
+    "frames_checked": 61,
+    "total_frames": 61,
+    "maxima": {
+      "max_seam_gap_mm": 0.0,
+      "max_body_penetration_mm": 0.0,
+      "cloth_edge_body_hits": 0,
+      "body_edge_cloth_hits": 0,
+      "strict_self_intersections": 0,
+      "max_principal_strain_percent": 138.87651644179343
+    },
+    "peak_strain_frame": 60,
+    "last_frame_strain_percent": 138.87651644179343,
+    "tensor_all_pass": true,
+    "fold_all_pass": true,
+    "wear_all_pass": true,
+    "mechanism_groups": {
+      "kernel": "PASS",
+      "implicit": "PASS",
+      "hinges": "PASS",
+      "self-contact": "PASS",
+      "swept-edge": "PASS",
+      "swept-vertex": "PASS",
+      "typed-contact": "PASS",
+      "swept-bounds": "PASS",
+      "self-step-guard": "PASS",
+      "body-feature": "PASS"
+    },
+    "resume": [
+      {
+        "restored_frame": 0,
+        "next_frame": 1,
+        "exact": {
+          "positions": true,
+          "previous": true,
+          "fields": true,
+          "contacts": true,
+          "step": true,
+          "time": true
+        }
+      },
+      {
+        "restored_frame": 30,
+        "next_frame": 31,
+        "exact": {
+          "positions": true,
+          "previous": true,
+          "fields": true,
+          "contacts": true,
+          "step": true,
+          "time": true
+        }
+      },
+      {
+        "restored_frame": 59,
+        "next_frame": 60,
+        "exact": {
+          "positions": true,
+          "previous": true,
+          "fields": true,
+          "contacts": true,
+          "step": true,
+          "time": true
+        }
+      }
+    ],
+    "material_calibration": "NOT_RUN",
+    "physical_fit": "NOT_RUN",
+    "scope": "Discrete recorded geometry and synthetic material mathematics; no calibrated material or real-person fit claim."
+  }
+}

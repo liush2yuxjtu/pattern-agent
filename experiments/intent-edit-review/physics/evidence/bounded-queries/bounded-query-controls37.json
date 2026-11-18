@@ -1,0 +1,1343 @@
+{
+  "verdict": "PASS",
+  "scope": "Query equivalence/resource controls only; no geometry/dynamics/fit acceptance.",
+  "batch_size": 512,
+  "python": "/workspace/work/pattern-agent-publish/work/intent-physics/venv/bin/python",
+  "trimesh_version": "4.12.2",
+  "test_sha256": "302d49b2fbec4d83524bf4c42b2b6c6b8b1194782ccea36008cbb8a824a4e115",
+  "bounded_module_sha256": "6a617b0e6fa3f591f19fbcdbf57a7ad55d35bf07b080b989366e1a72bbcd72d2",
+  "original_oracle_sha256": "c99289464c9165ad48aa9dd9a54ae1979f30acdaa0c3af26d2bb2bd7e06a31e3",
+  "memory_scope": "RSS high-water values are cumulative for this one sequential process, not isolated per-call peaks.",
+  "analytic": [
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 1,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0017489800084149465,
+          "memory_before": {
+            "process_peak_rss_kib": 70768,
+            "current_rss_kib": 70992
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71744
+          }
+        },
+        "bounded": {
+          "seconds": 0.0014139949926175177,
+          "memory_before": {
+            "process_peak_rss_kib": 71604,
+            "current_rss_kib": 71756
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71872
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 2,
+          "rays_queried": 2,
+          "max_backend_rays": 1
+        }
+      }
+    },
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 2,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0004749270010506734,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71884
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71884
+          }
+        },
+        "bounded": {
+          "seconds": 0.0005119220004417002,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71888
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71888
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 1,
+          "rays_queried": 2,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 7,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.000521206995472312,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71888
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71896
+          }
+        },
+        "bounded": {
+          "seconds": 0.00041726000199560076,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71896
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71896
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 1,
+          "rays_queried": 2,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 512,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0005152079975232482,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71900
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71904
+          }
+        },
+        "bounded": {
+          "seconds": 0.00047187200107146055,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71904
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71908
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 1,
+          "rays_queried": 2,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "inside_outside_surface",
+      "batch_size": 1024,
+      "contains": {
+        "points": 23,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "779c47f7785ef00107abf0d815c9c1d1cf359dc0f7cf1d0e0c2072fcc38d9fd2",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0004856830055359751,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71908
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71912
+          }
+        },
+        "bounded": {
+          "seconds": 0.00048293899453710765,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71912
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71912
+          }
+        },
+        "backend": {
+          "points": 23,
+          "logical_ray_queries": 1,
+          "backend_calls": 1,
+          "rays_queried": 2,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "nonwatertight_conflicting_parity_global_random_retry",
+      "batch_size": 1,
+      "contains": {
+        "points": 3,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.001938385990797542,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71920
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71988
+          }
+        },
+        "bounded": {
+          "seconds": 0.004835098996409215,
+          "memory_before": {
+            "process_peak_rss_kib": 71732,
+            "current_rss_kib": 71992
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72036
+          }
+        },
+        "backend": {
+          "points": 3,
+          "logical_ray_queries": 2,
+          "backend_calls": 12,
+          "rays_queried": 12,
+          "max_backend_rays": 1
+        }
+      }
+    },
+    {
+      "name": "nonwatertight_conflicting_parity_global_random_retry",
+      "batch_size": 2,
+      "contains": {
+        "points": 3,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.001077997003449127,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72036
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72044
+          }
+        },
+        "bounded": {
+          "seconds": 0.0028753000078722835,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72044
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72060
+          }
+        },
+        "backend": {
+          "points": 3,
+          "logical_ray_queries": 2,
+          "backend_calls": 6,
+          "rays_queried": 12,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "nonwatertight_conflicting_parity_global_random_retry",
+      "batch_size": 512,
+      "contains": {
+        "points": 3,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0011095349909737706,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72060
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72064
+          }
+        },
+        "bounded": {
+          "seconds": 0.0011233050026930869,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72064
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72064
+          }
+        },
+        "backend": {
+          "points": 3,
+          "logical_ray_queries": 2,
+          "backend_calls": 2,
+          "rays_queried": 12,
+          "max_backend_rays": 6
+        }
+      }
+    },
+    {
+      "name": "empty",
+      "contains": {
+        "points": 0,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 3.464298788458109e-05,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72064
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72064
+          }
+        },
+        "bounded": {
+          "seconds": 3.430199285503477e-05,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72064
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72064
+          }
+        },
+        "backend": {
+          "points": 0
+        }
+      },
+      "segments": {
+        "segments": 0,
+        "valid_segments": 0,
+        "hits": 0,
+        "old": {
+          "seconds": 0.0002188200014643371,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72064
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72068
+          }
+        },
+        "bounded": {
+          "seconds": 6.610003765672445e-06,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72068
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72068
+          }
+        },
+        "backend": {
+          "segments": 0
+        }
+      }
+    },
+    {
+      "name": "true_crossing_empty_short_endpoint_tolerances",
+      "batch_size": 1,
+      "segments": {
+        "segments": 6,
+        "valid_segments": 4,
+        "hits": 2,
+        "old": {
+          "seconds": 0.0006364809960359707,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72072
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72108
+          }
+        },
+        "bounded": {
+          "seconds": 0.0015148870006669313,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72108
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72108
+          }
+        },
+        "backend": {
+          "segments": 6,
+          "valid_segments": 4,
+          "backend_calls": 4,
+          "rays_queried": 4,
+          "max_backend_rays": 1
+        }
+      }
+    },
+    {
+      "name": "true_crossing_empty_short_endpoint_tolerances",
+      "batch_size": 2,
+      "segments": {
+        "segments": 6,
+        "valid_segments": 4,
+        "hits": 2,
+        "old": {
+          "seconds": 0.0004879160114796832,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72108
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72108
+          }
+        },
+        "bounded": {
+          "seconds": 0.0011223340115975589,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72108
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72112
+          }
+        },
+        "backend": {
+          "segments": 6,
+          "valid_segments": 4,
+          "backend_calls": 3,
+          "rays_queried": 4,
+          "max_backend_rays": 2
+        }
+      }
+    },
+    {
+      "name": "true_crossing_empty_short_endpoint_tolerances",
+      "batch_size": 512,
+      "segments": {
+        "segments": 6,
+        "valid_segments": 4,
+        "hits": 2,
+        "old": {
+          "seconds": 0.00043236299825366586,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72112
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72112
+          }
+        },
+        "bounded": {
+          "seconds": 0.0004848120006499812,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72112
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72112
+          }
+        },
+        "backend": {
+          "segments": 6,
+          "valid_segments": 4,
+          "backend_calls": 1,
+          "rays_queried": 4,
+          "max_backend_rays": 4
+        }
+      }
+    },
+    {
+      "name": "true_crossing_empty_short_endpoint_tolerances",
+      "batch_size": 1024,
+      "segments": {
+        "segments": 6,
+        "valid_segments": 4,
+        "hits": 2,
+        "old": {
+          "seconds": 0.00043641899537760764,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72112
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72112
+          }
+        },
+        "bounded": {
+          "seconds": 0.0004456730093806982,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72112
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72116
+          }
+        },
+        "backend": {
+          "segments": 6,
+          "valid_segments": 4,
+          "backend_calls": 1,
+          "rays_queried": 4,
+          "max_backend_rays": 4
+        }
+      }
+    },
+    {
+      "name": "closed_cavity_multiple_hits",
+      "contains": {
+        "points": 3,
+        "inside": 1,
+        "mismatches": 0,
+        "inside_mask_sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201",
+        "random_state_exact": true,
+        "ray_stream_exact": true,
+        "old": {
+          "seconds": 0.0013609340094262734,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72140
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72152
+          }
+        },
+        "bounded": {
+          "seconds": 0.0012990910036023706,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72156
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72176
+          }
+        },
+        "backend": {
+          "points": 3,
+          "logical_ray_queries": 1,
+          "backend_calls": 2,
+          "rays_queried": 4,
+          "max_backend_rays": 2
+        }
+      },
+      "segments": {
+        "segments": 1,
+        "valid_segments": 1,
+        "hits": 4,
+        "old": {
+          "seconds": 0.00044218701077625155,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72180
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72184
+          }
+        },
+        "bounded": {
+          "seconds": 0.0005493490025401115,
+          "memory_before": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72184
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 71988,
+            "current_rss_kib": 72188
+          }
+        },
+        "backend": {
+          "segments": 1,
+          "valid_segments": 1,
+          "backend_calls": 1,
+          "rays_queried": 1,
+          "max_backend_rays": 1
+        }
+      }
+    }
+  ],
+  "real_frames": [
+    {
+      "verdict": "PASS",
+      "directory": "/workspace/work/pattern-agent-publish/work/intent-physics/baseline-run37",
+      "input_sha256": "bd604bb44a041b5b3400d883601e9cd03e84e43d604049d810862eb41f1c693b",
+      "recording_sha256": "c916b899e7ce51a4bc0fd6a71f27bf742b791b402e35f7bdd2d8dd2afb495c09",
+      "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+      "source_spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "body_positions_sha256": "90b602988387dca525fe267afc9fd0cc46d01acf0d4cd020ca51e44ecb8f0248",
+      "body_indices_sha256": "296c568f1fdcbeb5ec60d7afce43926b3544a28957f630877db3636d7faba665",
+      "frame": 0,
+      "positions_sha256": "c5f72ff0ff9e99290fdf33ceb4bff8b0b1660e990f1e5f7bf10337142548272b",
+      "contains": {
+        "points": 21882,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "63d028f572a32d29459fd9b2bd5dbcfbff7662e4e7df7241f8841412f8cfda8b",
+        "random_state_exact": true,
+        "ray_stream_exact": "covered by analytic controls",
+        "old": {
+          "seconds": 8.127009504009038,
+          "memory_before": {
+            "process_peak_rss_kib": 229648,
+            "current_rss_kib": 165604
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 443268
+          }
+        },
+        "bounded": {
+          "seconds": 9.67423068798962,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 443268
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 451412
+          }
+        },
+        "backend": {
+          "points": 21882,
+          "logical_ray_queries": 1,
+          "backend_calls": 85,
+          "rays_queried": 43412,
+          "max_backend_rays": 512
+        }
+      },
+      "cloth_edges_into_body": {
+        "segments": 10942,
+        "valid_segments": 10942,
+        "hits": 0,
+        "old": {
+          "seconds": 3.1295562110026367,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 451412
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 393912
+          }
+        },
+        "bounded": {
+          "seconds": 4.639680558000691,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 393912
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 453620
+          }
+        },
+        "backend": {
+          "segments": 10942,
+          "valid_segments": 10942,
+          "backend_calls": 22,
+          "rays_queried": 10942,
+          "max_backend_rays": 512
+        }
+      },
+      "body_edges_into_cloth": {
+        "segments": 3608,
+        "valid_segments": 3608,
+        "hits": 0,
+        "old": {
+          "seconds": 1.0718983190017752,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 453620
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 391616
+          }
+        },
+        "bounded": {
+          "seconds": 1.0615739960048813,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 391616
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 435848
+          }
+        },
+        "backend": {
+          "segments": 3608,
+          "valid_segments": 3608,
+          "backend_calls": 8,
+          "rays_queried": 3608,
+          "max_backend_rays": 512
+        }
+      }
+    },
+    {
+      "verdict": "PASS",
+      "directory": "/workspace/work/pattern-agent-publish/work/intent-physics/cuff-run37",
+      "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+      "recording_sha256": "f4209204bc0caacc86edbdcf00baf38fb600093308a0f64cdea1b7ad92fd76c3",
+      "source_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163",
+      "source_spec_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+      "body_positions_sha256": "90b602988387dca525fe267afc9fd0cc46d01acf0d4cd020ca51e44ecb8f0248",
+      "body_indices_sha256": "296c568f1fdcbeb5ec60d7afce43926b3544a28957f630877db3636d7faba665",
+      "frame": 0,
+      "positions_sha256": "9c73137d0e2a1cccfc04bf4079459ec34f7ae8d9153b654db83958e5e75be0c2",
+      "contains": {
+        "points": 21946,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "72becbc024ed54f61f5442bc539f9a1b44da4441a3a8981311d6021f347de3f6",
+        "random_state_exact": true,
+        "ray_stream_exact": "covered by analytic controls",
+        "old": {
+          "seconds": 6.843016412996803,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 435852
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 458852
+          }
+        },
+        "bounded": {
+          "seconds": 7.950484741988475,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 458852
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 460232
+          }
+        },
+        "backend": {
+          "points": 21946,
+          "logical_ray_queries": 1,
+          "backend_calls": 86,
+          "rays_queried": 43604,
+          "max_backend_rays": 512
+        }
+      },
+      "cloth_edges_into_body": {
+        "segments": 10974,
+        "valid_segments": 10974,
+        "hits": 0,
+        "old": {
+          "seconds": 2.8421740919875447,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 460232
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 407816
+          }
+        },
+        "bounded": {
+          "seconds": 3.225606626001536,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 407816
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 458396
+          }
+        },
+        "backend": {
+          "segments": 10974,
+          "valid_segments": 10974,
+          "backend_calls": 22,
+          "rays_queried": 10974,
+          "max_backend_rays": 512
+        }
+      },
+      "body_edges_into_cloth": {
+        "segments": 3568,
+        "valid_segments": 3568,
+        "hits": 0,
+        "old": {
+          "seconds": 0.9289913199900184,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 458396
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 408896
+          }
+        },
+        "bounded": {
+          "seconds": 1.2030519830004778,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 408896
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 445304
+          }
+        },
+        "backend": {
+          "segments": 3568,
+          "valid_segments": 3568,
+          "backend_calls": 7,
+          "rays_queried": 3568,
+          "max_backend_rays": 512
+        }
+      }
+    },
+    {
+      "verdict": "PASS",
+      "directory": "/workspace/work/pattern-agent-publish/work/intent-physics/baseline-run37",
+      "input_sha256": "bd604bb44a041b5b3400d883601e9cd03e84e43d604049d810862eb41f1c693b",
+      "recording_sha256": "c916b899e7ce51a4bc0fd6a71f27bf742b791b402e35f7bdd2d8dd2afb495c09",
+      "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+      "source_spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "body_positions_sha256": "90b602988387dca525fe267afc9fd0cc46d01acf0d4cd020ca51e44ecb8f0248",
+      "body_indices_sha256": "296c568f1fdcbeb5ec60d7afce43926b3544a28957f630877db3636d7faba665",
+      "frame": 30,
+      "positions_sha256": "74c99ed2625f5e48006808c26ff1bc9853eb019a4188cb2aaabf4850a3c1ddca",
+      "contains": {
+        "points": 21882,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "63d028f572a32d29459fd9b2bd5dbcfbff7662e4e7df7241f8841412f8cfda8b",
+        "random_state_exact": true,
+        "ray_stream_exact": "covered by analytic controls",
+        "old": {
+          "seconds": 7.112262864000513,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 445304
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 470720
+          }
+        },
+        "bounded": {
+          "seconds": 7.571278257993981,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 470720
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 470444
+          }
+        },
+        "backend": {
+          "points": 21882,
+          "logical_ray_queries": 1,
+          "backend_calls": 86,
+          "rays_queried": 43764,
+          "max_backend_rays": 512
+        }
+      },
+      "cloth_edges_into_body": {
+        "segments": 10942,
+        "valid_segments": 10942,
+        "hits": 0,
+        "old": {
+          "seconds": 3.0136497110070195,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 470444
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 420624
+          }
+        },
+        "bounded": {
+          "seconds": 3.633484108009725,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 420624
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 443548
+          }
+        },
+        "backend": {
+          "segments": 10942,
+          "valid_segments": 10942,
+          "backend_calls": 22,
+          "rays_queried": 10942,
+          "max_backend_rays": 512
+        }
+      },
+      "body_edges_into_cloth": {
+        "segments": 3761,
+        "valid_segments": 3761,
+        "hits": 0,
+        "old": {
+          "seconds": 1.1414661470043939,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 443548
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 430132
+          }
+        },
+        "bounded": {
+          "seconds": 1.0556674639956327,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 430132
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 485808
+          }
+        },
+        "backend": {
+          "segments": 3761,
+          "valid_segments": 3761,
+          "backend_calls": 8,
+          "rays_queried": 3761,
+          "max_backend_rays": 512
+        }
+      }
+    },
+    {
+      "verdict": "PASS",
+      "directory": "/workspace/work/pattern-agent-publish/work/intent-physics/cuff-run37",
+      "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+      "recording_sha256": "f4209204bc0caacc86edbdcf00baf38fb600093308a0f64cdea1b7ad92fd76c3",
+      "source_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163",
+      "source_spec_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+      "body_positions_sha256": "90b602988387dca525fe267afc9fd0cc46d01acf0d4cd020ca51e44ecb8f0248",
+      "body_indices_sha256": "296c568f1fdcbeb5ec60d7afce43926b3544a28957f630877db3636d7faba665",
+      "frame": 30,
+      "positions_sha256": "3239680886edbbaafd1d6370cedba39f07d9df090cb1fd7fedac8d9facf9d652",
+      "contains": {
+        "points": 21946,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "72becbc024ed54f61f5442bc539f9a1b44da4441a3a8981311d6021f347de3f6",
+        "random_state_exact": true,
+        "ray_stream_exact": "covered by analytic controls",
+        "old": {
+          "seconds": 7.694658104999689,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 485808
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 492808
+          }
+        },
+        "bounded": {
+          "seconds": 8.582314490005956,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 492808
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 480660
+          }
+        },
+        "backend": {
+          "points": 21946,
+          "logical_ray_queries": 1,
+          "backend_calls": 86,
+          "rays_queried": 43892,
+          "max_backend_rays": 512
+        }
+      },
+      "cloth_edges_into_body": {
+        "segments": 10974,
+        "valid_segments": 10974,
+        "hits": 0,
+        "old": {
+          "seconds": 2.6806794889998855,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 480660
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 436276
+          }
+        },
+        "bounded": {
+          "seconds": 3.4664200999977766,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 436276
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 462684
+          }
+        },
+        "backend": {
+          "segments": 10974,
+          "valid_segments": 10974,
+          "backend_calls": 22,
+          "rays_queried": 10974,
+          "max_backend_rays": 512
+        }
+      },
+      "body_edges_into_cloth": {
+        "segments": 3775,
+        "valid_segments": 3775,
+        "hits": 0,
+        "old": {
+          "seconds": 0.8271936789969914,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 462684
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 455896
+          }
+        },
+        "bounded": {
+          "seconds": 1.1814987329998985,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 455896
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 495684
+          }
+        },
+        "backend": {
+          "segments": 3775,
+          "valid_segments": 3775,
+          "backend_calls": 8,
+          "rays_queried": 3775,
+          "max_backend_rays": 512
+        }
+      }
+    },
+    {
+      "verdict": "PASS",
+      "directory": "/workspace/work/pattern-agent-publish/work/intent-physics/baseline-run37",
+      "input_sha256": "bd604bb44a041b5b3400d883601e9cd03e84e43d604049d810862eb41f1c693b",
+      "recording_sha256": "c916b899e7ce51a4bc0fd6a71f27bf742b791b402e35f7bdd2d8dd2afb495c09",
+      "source_dxf_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+      "source_spec_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "body_positions_sha256": "90b602988387dca525fe267afc9fd0cc46d01acf0d4cd020ca51e44ecb8f0248",
+      "body_indices_sha256": "296c568f1fdcbeb5ec60d7afce43926b3544a28957f630877db3636d7faba665",
+      "frame": 60,
+      "positions_sha256": "41b0ac7139155222f19adff199de4c7e2a8603c8e5fccbc8aa6f053c47bc838d",
+      "contains": {
+        "points": 21882,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "63d028f572a32d29459fd9b2bd5dbcfbff7662e4e7df7241f8841412f8cfda8b",
+        "random_state_exact": true,
+        "ray_stream_exact": "covered by analytic controls",
+        "old": {
+          "seconds": 6.671779797994532,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 495688
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 492380
+          }
+        },
+        "bounded": {
+          "seconds": 7.97619450899947,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 492380
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 490784
+          }
+        },
+        "backend": {
+          "points": 21882,
+          "logical_ray_queries": 1,
+          "backend_calls": 86,
+          "rays_queried": 43752,
+          "max_backend_rays": 512
+        }
+      },
+      "cloth_edges_into_body": {
+        "segments": 10942,
+        "valid_segments": 10942,
+        "hits": 0,
+        "old": {
+          "seconds": 3.0019136179907946,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 490784
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 442424
+          }
+        },
+        "bounded": {
+          "seconds": 3.5638814280100632,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 442424
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 465000
+          }
+        },
+        "backend": {
+          "segments": 10942,
+          "valid_segments": 10942,
+          "backend_calls": 22,
+          "rays_queried": 10942,
+          "max_backend_rays": 512
+        }
+      },
+      "body_edges_into_cloth": {
+        "segments": 3846,
+        "valid_segments": 3846,
+        "hits": 0,
+        "old": {
+          "seconds": 1.0204312179994304,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 465000
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 443592
+          }
+        },
+        "bounded": {
+          "seconds": 1.2463164080108982,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 443592
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 455936
+          }
+        },
+        "backend": {
+          "segments": 3846,
+          "valid_segments": 3846,
+          "backend_calls": 8,
+          "rays_queried": 3846,
+          "max_backend_rays": 512
+        }
+      }
+    },
+    {
+      "verdict": "PASS",
+      "directory": "/workspace/work/pattern-agent-publish/work/intent-physics/cuff-run37",
+      "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+      "recording_sha256": "f4209204bc0caacc86edbdcf00baf38fb600093308a0f64cdea1b7ad92fd76c3",
+      "source_dxf_sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163",
+      "source_spec_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+      "body_positions_sha256": "90b602988387dca525fe267afc9fd0cc46d01acf0d4cd020ca51e44ecb8f0248",
+      "body_indices_sha256": "296c568f1fdcbeb5ec60d7afce43926b3544a28957f630877db3636d7faba665",
+      "frame": 60,
+      "positions_sha256": "825a5b112fb4454a169887a973cee663b6094f1763aee6e0545a10b06de57062",
+      "contains": {
+        "points": 21946,
+        "inside": 0,
+        "mismatches": 0,
+        "inside_mask_sha256": "72becbc024ed54f61f5442bc539f9a1b44da4441a3a8981311d6021f347de3f6",
+        "random_state_exact": true,
+        "ray_stream_exact": "covered by analytic controls",
+        "old": {
+          "seconds": 6.991508912993595,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 455936
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 501896
+          }
+        },
+        "bounded": {
+          "seconds": 7.770060473994818,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 501896
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 460156
+          }
+        },
+        "backend": {
+          "points": 21946,
+          "logical_ray_queries": 1,
+          "backend_calls": 86,
+          "rays_queried": 43892,
+          "max_backend_rays": 512
+        }
+      },
+      "cloth_edges_into_body": {
+        "segments": 10974,
+        "valid_segments": 10974,
+        "hits": 0,
+        "old": {
+          "seconds": 2.83309739199467,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 460156
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 463776
+          }
+        },
+        "bounded": {
+          "seconds": 4.220350860006874,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 463776
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 523544
+          }
+        },
+        "backend": {
+          "segments": 10974,
+          "valid_segments": 10974,
+          "backend_calls": 22,
+          "rays_queried": 10974,
+          "max_backend_rays": 512
+        }
+      },
+      "body_edges_into_cloth": {
+        "segments": 3899,
+        "valid_segments": 3899,
+        "hits": 0,
+        "old": {
+          "seconds": 0.9847563000075752,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 523544
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 461340
+          }
+        },
+        "bounded": {
+          "seconds": 1.1580361109954538,
+          "memory_before": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 461340
+          },
+          "memory_after": {
+            "process_peak_rss_kib": 4034328,
+            "current_rss_kib": 515596
+          }
+        },
+        "backend": {
+          "segments": 3899,
+          "valid_segments": 3899,
+          "backend_calls": 8,
+          "rays_queried": 3899,
+          "max_backend_rays": 512
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "total_seconds": 147.01721384799748,
+  "memory_final": {
+    "process_peak_rss_kib": 4034328,
+    "current_rss_kib": 515600
+  }
+}

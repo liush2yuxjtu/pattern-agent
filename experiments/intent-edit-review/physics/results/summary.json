@@ -1,0 +1,52 @@
+{
+  "verdict": "PASS",
+  "scope": "Two source-bound synthetic numerical experiments, all61 discrete frames each; no measured material, continuous collision or real-person fit approval",
+  "cases": [
+    {
+      "case": "baseline",
+      "label": "原型",
+      "verdict": "PASS",
+      "frames": 61,
+      "max_gap_mm": 0.0,
+      "max_body_mm": 0.0,
+      "max_self": 0,
+      "max_crossings": 0,
+      "tensors_pass": true,
+      "folds_pass": true,
+      "arms_threaded": true,
+      "max_strain_percent": 185.6105192417344,
+      "max_stress_kpa": 1419.3964751608673,
+      "max_fold_deg": 168.6842734561149,
+      "preparation_seconds": 126.223168384,
+      "record_seconds": 291.32478599300003,
+      "total_recording_seconds": 430.117623281,
+      "input_sha256": "bd604bb44a041b5b3400d883601e9cd03e84e43d604049d810862eb41f1c693b",
+      "recording_sha256": "c916b899e7ce51a4bc0fd6a71f27bf742b791b402e35f7bdd2d8dd2afb495c09",
+      "wasm_sha256": "40347008832fe53328ddf3e56885ffecf41e33dd23d67bbe19317fb78cc01881"
+    },
+    {
+      "case": "03_cuff_width",
+      "label": "袖口展开宽+10U",
+      "verdict": "PASS",
+      "frames": 61,
+      "max_gap_mm": 0.0,
+      "max_body_mm": 0.0,
+      "max_self": 0,
+      "max_crossings": 0,
+      "tensors_pass": true,
+      "folds_pass": true,
+      "arms_threaded": true,
+      "max_strain_percent": 138.87651644179343,
+      "max_stress_kpa": 789.688912942912,
+      "max_fold_deg": 168.21242749997023,
+      "preparation_seconds": 117.530223486,
+      "record_seconds": 298.03673004600006,
+      "total_recording_seconds": 427.981908236,
+      "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+      "recording_sha256": "f4209204bc0caacc86edbdcf00baf38fb600093308a0f64cdea1b7ad92fd76c3",
+      "wasm_sha256": "846bc4d954c4b3031c8f9c616aa063fc589df1dc10985708e65cd09344c56e3f"
+    }
+  ],
+  "physical_fit": "NOT_RUN",
+  "material_calibration": "NOT_RUN"
+}

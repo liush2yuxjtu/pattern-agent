@@ -1,0 +1,90 @@
+{
+  "verdict": "PASS",
+  "scope": "Jacobi VF+EE contact mechanics, per-pass correction cap and geometric controls; not garment physical acceptance or general VF CCD proof",
+  "coincidentQueryCaps": [
+    {
+      "positionType": "Float32Array",
+      "contacts": 10,
+      "maximumPassMovement_m": 0.0004999999073334038,
+      "cap_m": 0.0005
+    },
+    {
+      "positionType": "Float64Array",
+      "contacts": 10,
+      "maximumPassMovement_m": 0.0005,
+      "cap_m": 0.0005
+    }
+  ],
+  "checks": [
+    {
+      "indexType": "Array",
+      "actualTriangles": 40
+    },
+    {
+      "indexType": "Uint8Array",
+      "actualTriangles": 40
+    },
+    {
+      "indexType": "Uint16Array",
+      "actualTriangles": 40
+    },
+    {
+      "indexType": "Uint32Array",
+      "actualTriangles": 40
+    },
+    {
+      "indexType": "Int32Array",
+      "actualTriangles": 40
+    },
+    {
+      "inverseMassWeighting": "PASS",
+      "queryDisplacement_m": 0.00044444444444444447,
+      "faceVertexDisplacement_m": -0.00011111111111111112
+    },
+    {
+      "VFInitialCurrentZ_m": 0.0005,
+      "historySideFinalZ_m": 0.003
+    },
+    {
+      "VFInitialCurrentZ_m": -0.004,
+      "historySideFinalZ_m": 0.003
+    },
+    {
+      "movingFaceCrossingFinalZ_m": 0.043000000000000003,
+      "perPassMaxima_m": [
+        0.02,
+        0.02,
+        0.0030000000000000027,
+        0
+      ],
+      "totalTravel_m": 0.043000000000000003
+    },
+    {
+      "primitiveOnlyExclusions": "PASS",
+      "customExclusionOptIn": "PASS"
+    },
+    {
+      "EEThroughCrossingFinalZ_m": 0.001,
+      "candidates": 1
+    },
+    {
+      "preparedEERefitRequery": "PASS",
+      "perPassMaxima_m": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0
+      ]
+    },
+    {
+      "endpointDisjointEECandidate": "PASS",
+      "finalX_m": 1.994
+    },
+    {
+      "sweptFaceQueries": 60,
+      "overlappingFaceBoundsRetained": 116
+    }
+  ]
+}

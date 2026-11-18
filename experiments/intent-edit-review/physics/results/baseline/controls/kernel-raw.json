@@ -1,0 +1,40 @@
+{
+  "verdict": "PASS",
+  "wasm_sha256": "40347008832fe53328ddf3e56885ffecf41e33dd23d67bbe19317fb78cc01881",
+  "coupons": [
+    {
+      "coupon": "rest",
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "coupon": "rigid_rotation",
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "coupon": "warp_10pct",
+      "maximum_absolute_error": 0.002029842975389329
+    },
+    {
+      "coupon": "weft_10pct",
+      "maximum_absolute_error": 0.007812499974534148
+    },
+    {
+      "coupon": "shear",
+      "maximum_absolute_error": 0.0034085741735907504
+    }
+  ],
+  "actual_body_queries": 220,
+  "max_body_signed_distance_error_m": 5.615365721120969e-08,
+  "max_closest_point_surface_distance_m": 5.985434008394917e-08,
+  "normal_consistency_error": 1.2271543552902045e-07,
+  "reference": "f64 minimum over every body face; ray parity for sign; closest-point ties allowed",
+  "capacity": {
+    "seams": 700,
+    "bends": 12000,
+    "lastAliasExact": true
+  },
+  "gravity_analytic_12_steps": "PASS",
+  "explicit_velocity_damping": "PASS",
+  "zero_restitution_contact_normal": "PASS",
+  "scope": "Compiled engine controls only. Recorded garment acceptance, measured mechanics and real-person fit are separate."
+}

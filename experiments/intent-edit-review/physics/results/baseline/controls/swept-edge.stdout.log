@@ -1,0 +1,20 @@
+PASS Interior edge crossing survives disjoint final separation of 10mm
+PASS Actual two-triangle non-endpoint edges cross at t=.5
+PASS Iteration exhaustion returns uncertain, never a silent miss
+PASS Time-resolution exhaustion remains explicit uncertainty
+PASS Finite-thickness grazing is retained
+PASS Stationary near, intersecting and far segments are distinguished
+PASS Degenerate edges and undefined coincident normals stay finite
+PASS Rotation and common translation preserve TOI and barycentrics
+PASS Reversing an edge preserves geometry and complements u
+PASS Splitting the same linear motion preserves the global first candidate
+PASS Very narrow complete crossing is not missed by coarse final-state gates
+PASS Near-parallel separation reports conditioning rather than false clearance
+PASS A grazing near-miss can be certified with sufficient iterations
+PASS Rigid common translation of separated segments remains clear
+PASS Finite huge-coordinate box distances do not overflow into false clearance
+PASS Invalid data or budgets are rejected explicitly
+PASS Prepared motion has identical results and owns immutable snapshots/results
+PASS Allocation-free closest kernel agrees exactly with the public feature routine
+PASS Independent dense-time oracle detects no false-negative CCD results
+{"verdict":"PASS","checks":19,"independentTimeSamples":432180,"sampledContactCases":38,"certifiedClearCases":142,"explicitUncertainCases":21,"scope":"Pure arithmetic linear edge-edge CCD controls; no original solver, material, body or threshold changes. Uncertainty is retained, not counted as exact impact certification."}

@@ -262,8 +262,8 @@ def harmonic(points,tri,edges,values):
  result=np.empty((n,values.shape[1]));result[:nb]=values;result[nb:]=spsolve(system,adj[ii,:nb]@values)
  return result,adj
 
-def build(P,spacing=5):
- B=Builder(P,spacing);segments=B.segments;patches={};allv=[];allf=[];offset=0;manifest={'pattern':B.pattern,'pose':B.pose,'seams':B.seams,'openings':B.openings,'patches':{},'segments':{}}
+def build(P,spacing=5,*,builder_class=Builder,triangulator=triangulate):
+ B=builder_class(P,spacing);segments=B.segments;patches={};allv=[];allf=[];offset=0;manifest={'pattern':B.pattern,'pose':B.pose,'seams':B.seams,'openings':B.openings,'patches':{},'segments':{}}
  for name,loop in B.loops.items():
   boundary=[];targets=[];domains=[];ids={}
   for key,rev in loop:
@@ -275,7 +275,7 @@ def build(P,spacing=5):
   boundary=np.array(boundary);nb=len(boundary)
   for key in ids:ids[key]%=nb
   
-  try:points,tri,edges=triangulate(boundary,spacing)
+  try:points,tri,edges=triangulator(boundary,spacing)
   except ValueError as exc:raise ValueError(name+': '+str(exc)) from exc
   if name in ['front','back']:
    v,adj=harmonic(points,tri,edges,np.array(targets));edge_len=np.linalg.norm(points[edges[:,0]]-points[edges[:,1]],axis=1);a,b=edges.T;graph=coo_matrix((np.r_[edge_len,edge_len],(np.r_[a,b],np.r_[b,a])),shape=(len(points),len(points))).tocsr();dist=dijkstra(graph,indices=np.arange(nb),min_only=True,directed=False)

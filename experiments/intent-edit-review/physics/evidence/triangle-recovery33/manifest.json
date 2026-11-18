@@ -1,0 +1,86 @@
+{
+  "verdict": "FAIL",
+  "scope": "Complete-mesh static recovery diagnostic only; not physical trajectory or fit acceptance",
+  "max_passes": 40,
+  "initial_input_sha256": "a7cb27be4c80c354d9c40a0166698ba6f4f2770695a93d47568703ebe5562866",
+  "initial_positions_sha256": "84252a3816f43c717fbbe02588bda72f94fe7f3f18de751c84078239611de4a3",
+  "actual_native_wasm_sha256": "5ec6a37ee129ea387f587cf11609fbef50895e0cedc6fc6091b52cb375d33d15",
+  "inverse_mass_sha256": "376edcd69e086c85c8284b75b1cb7690b307f3a8a3caf556865c9b3459920f8f",
+  "source_files": {
+    "experiments/intent-edit-review/physics/mesh-contact.mjs": "1429a3c09e9f23291f056c96da8c25cdc5c5f2e38a219f5d8902a73c445ccbbf",
+    "experiments/intent-edit-review/physics/triangle-contact.mjs": "32a81d68bb1f104d59e11ae36724c8900705291302a95c9ade3a67193d70b117",
+    "experiments/oneshot_control/independent_oracle_v2.py": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+    "tools/cloth_lab/oracle.py": "c99289464c9165ad48aa9dd9a54ae1979f30acdaa0c3af26d2bb2bd7e06a31e3",
+    "experiments/intent-edit-review/physics/exact_body_oracle.py": "1f5bd0366b4a3ccf0fb1f48688611a657eb21a3f94ced94d2cf859c43771d906",
+    "experiments/intent-edit-review/physics/arm_wear_oracle.py": "d2a9a28ee5064d52578bebd03364f993a44c5f6fccb4c071191c2a9cfa837416"
+  },
+  "recovery_import_source_hashes": {
+    "mesh-contact.mjs": "1429a3c09e9f23291f056c96da8c25cdc5c5f2e38a219f5d8902a73c445ccbbf",
+    "triangle-contact.mjs": "32a81d68bb1f104d59e11ae36724c8900705291302a95c9ade3a67193d70b117"
+  },
+  "initial_shared_counts": {
+    "0": 2,
+    "1": 4
+  },
+  "results": [
+    {
+      "passes": 1,
+      "strict_self_intersections": 6,
+      "original_pairs_remaining": 6,
+      "new_pairs": 0,
+      "inside_samples": 0,
+      "max_body_penetration_mm": 0.0,
+      "cloth_edge_body_hits": 0,
+      "body_edge_cloth_hits": 0,
+      "both_arms_threaded": true,
+      "max_net_displacement_mm": 0.49999238545683766,
+      "max_actual_pass_displacement_mm": 0.49999238545683766,
+      "positions_sha256": "61cdfeea414ddadaa90da2c6942326b38d1e61a7e0cac2d8544bd6e3fc6efcf2"
+    },
+    {
+      "passes": 4,
+      "strict_self_intersections": 10,
+      "original_pairs_remaining": 3,
+      "new_pairs": 7,
+      "inside_samples": 0,
+      "max_body_penetration_mm": 0.0,
+      "cloth_edge_body_hits": 0,
+      "body_edge_cloth_hits": 0,
+      "both_arms_threaded": true,
+      "max_net_displacement_mm": 1.9971367747872029,
+      "max_actual_pass_displacement_mm": 0.4999998080218355,
+      "positions_sha256": "c44d0d94b71ad62afd042bb9a86dae42a6b75d00bdb763aba46301b0322e258d"
+    },
+    {
+      "passes": 10,
+      "strict_self_intersections": 13,
+      "original_pairs_remaining": 3,
+      "new_pairs": 10,
+      "inside_samples": 1,
+      "max_body_penetration_mm": 0.8955895274187979,
+      "cloth_edge_body_hits": 2,
+      "body_edge_cloth_hits": 4,
+      "both_arms_threaded": true,
+      "max_net_displacement_mm": 4.955385051321131,
+      "max_actual_pass_displacement_mm": 0.4999998080218355,
+      "positions_sha256": "c55cac646824525aafcf25056f6a79fe3ac37b93254d44721e8567be3fb31423"
+    },
+    {
+      "passes": 40,
+      "strict_self_intersections": 6,
+      "original_pairs_remaining": 2,
+      "new_pairs": 4,
+      "inside_samples": 25,
+      "max_body_penetration_mm": 9.081816246320106,
+      "cloth_edge_body_hits": 35,
+      "body_edge_cloth_hits": 46,
+      "both_arms_threaded": true,
+      "max_net_displacement_mm": 12.012189118557872,
+      "max_actual_pass_displacement_mm": 0.4999999597477249,
+      "positions_sha256": "fd9e3361d2ff8d8dcbbcc7feed39a9d093daecfb847216f07ced476173a81096"
+    }
+  ],
+  "source_checkpoint_unchanged": true,
+  "source_files_modified_by_this_task": false,
+  "committed": false
+}
