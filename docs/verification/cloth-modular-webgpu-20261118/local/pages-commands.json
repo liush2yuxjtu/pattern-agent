@@ -1,0 +1,79 @@
+{
+  "candidate": "b9b67e79302e02dbb967bfff148446c960217fb6",
+  "environment": {
+    "PYTHONPATH": "/workspace/work/verifydeps",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "commands": [
+    {
+      "name": "build-pages",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/build_pages.py"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794996142.7574515,
+      "exitCode": 0,
+      "finishedAtUnix": 1794996150.0925791
+    },
+    {
+      "name": "artifacts-unit",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_verify_artifacts.py",
+        "-v"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794996150.0926254,
+      "exitCode": 0,
+      "finishedAtUnix": 1794996158.932953
+    },
+    {
+      "name": "artifacts-native",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/verify_artifacts.py",
+        "--cli",
+        "work/tools/opensloper-0.2.0-linux-x86_64/opensloper-cli"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794996158.9330173,
+      "exitCode": 0,
+      "finishedAtUnix": 1794996160.1509924
+    },
+    {
+      "name": "mcp",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/verify_mcp.py"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794996160.1510494,
+      "exitCode": 0,
+      "finishedAtUnix": 1794996160.1930997
+    },
+    {
+      "name": "pages-browser",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/verify_pages.py",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-modular/pages-precommit/browser",
+        "--expected-commit",
+        "b9b67e79302e02dbb967bfff148446c960217fb6"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794996160.193143,
+      "exitCode": 0,
+      "finishedAtUnix": 1794996164.4883277
+    }
+  ],
+  "verdict": "PASS"
+}

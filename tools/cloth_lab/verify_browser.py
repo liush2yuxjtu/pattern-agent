@@ -15,10 +15,12 @@ import statistics
 import sys
 import threading
 import time
+from urllib.parse import quote
 import xml.etree.ElementTree as ET
 
 import numpy as np
 from playwright.sync_api import sync_playwright
+from browser_runtime import (launch_browser, instrument_context, renderer_url, assert_renderer, add_renderer_argument)
 import trimesh
 
 from oracle import ROOT, tensors, verify, seam_audit
@@ -37,11 +39,13 @@ def expect_rejection(call):
 
 
 def run(args,base):
+    base=renderer_url(base,args.renderer)
     out=args.output;out.mkdir(parents=True,exist_ok=True)
     report={'base':base,'startedAtUnix':time.time(),'checks':{},'faults':{},'negativeControls':{},'pageErrors':[],'consoleErrors':[],'badResponses':[]}
     with sync_playwright() as p:
-        browser=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+        browser=launch_browser(p,args.browser)
         context=browser.new_context(viewport={'width':1440,'height':1050},accept_downloads=True)
+        instrument_context(context)
         api=new_api_context(p,base)
         page=context.new_page()
         page.on('pageerror',lambda e:report['pageErrors'].append(str(e)))
@@ -49,6 +53,7 @@ def run(args,base):
         page.on('response',lambda r:report['badResponses'].append({'url':r.url,'status':r.status}) if r.status>=400 else None)
         res=page.goto(base,wait_until='networkidle');assert res.status==200
         page.wait_for_function('window.clothLab?.ready',timeout=30000)
+        report['rendering']=assert_renderer(page,args.renderer)
         report['source']=page.evaluate('clothLab.source')
         actual_html=api.get(base).body()
         report['htmlSha256']=hashlib.sha256(actual_html).hexdigest()
@@ -228,12 +233,12 @@ if __name__=='__main__':
     parser.add_argument('--body-source',type=Path,default=ROOT/'web/human-studio/assets/human.json')
     parser.add_argument('--expected-html-sha')
     parser.add_argument('--expected-commit')
-    args=parser.parse_args()
+    add_renderer_argument(parser);args=parser.parse_args()
     if args.base_url:run(args,args.base_url)
     else:
         class Handler(SimpleHTTPRequestHandler):
             def __init__(self,*a,**k):super().__init__(*a,directory=str(args.html.parent),**k)
             def log_message(self,*a):pass
         server=ThreadingHTTPServer(('127.0.0.1',0),Handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
-        try:run(args,f'http://127.0.0.1:{server.server_port}/')
+        try:run(args,f'http://127.0.0.1:{server.server_port}/{quote(args.html.name)}')
         finally:server.shutdown();server.server_close();thread.join()

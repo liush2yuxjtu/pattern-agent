@@ -1,0 +1,3337 @@
+{
+  "startedAtUnix": 1794995543.942708,
+  "baselineRef": "aa3f497",
+  "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "baselineHtmlSha256": "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+  "launchFlags": [
+    "--no-sandbox",
+    "--use-gl=angle",
+    "--use-angle=swiftshader",
+    "--enable-unsafe-swiftshader",
+    "--enable-unsafe-webgpu",
+    "--enable-features=Vulkan",
+    "--use-vulkan=swiftshader"
+  ],
+  "checks": {
+    "defaultAutoActuallySelectsWebGPU": true,
+    "actualDeviceLossAutoFallbackPreservesPhysicsPointerAndResize": true,
+    "actualDeviceLossForcedWebGPUBlocksWithoutFallbackOrFalseReady": true,
+    "nativeUnavailableAdapterAutoFallbackAndStrictWebGPUFailure": true
+  },
+  "backends": {
+    "webgpu": {
+      "checks": {
+        "realFirstRenderAndFrontSideBackClothing": true,
+        "defaultAndOneAnd60StepsMatchOldPhysicalBytes": true,
+        "trueTensorAndPressureColorsReachDistinctRenderedPixels": true,
+        "zeroRequestSecureOriginOfflineActualBackendAndExactContinuation": true,
+        "recursiveSnapshotAndRecordedSelectionSurviveModuleRefactor": true
+      },
+      "rendering": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 159.3999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 266.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            }
+          ]
+        }
+      },
+      "untouchedFirstReadyPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "firstReadyGeometry": {
+        "fit": {
+          "pressure": {
+            "verdict": "PASS",
+            "samples": 251,
+            "forceN": 3.688368847363021,
+            "peakPa": 59.94184875488281,
+            "forceIntegralErrorN": 1.0444664066966425e-07,
+            "maxContactResidualMm": 0.0019470327866661977,
+            "minNormalAlignment": 0.9999998893968255
+          },
+          "coverage": {
+            "verdict": "PASS",
+            "anatomicalSurfaceSamples": 1709,
+            "views": 8,
+            "totalRays": 13672,
+            "exposedRays": 0,
+            "byView": [
+              {
+                "angleDegrees": 0.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 45.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 90.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 135.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 180.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 225.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 270.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 315.0,
+                "exposed": 0,
+                "rays": 1709
+              }
+            ]
+          },
+          "wear": {
+            "verdict": "PASS",
+            "bodySectionGirthMm": 666.0588056425474,
+            "waistEdgeLengthsMm": [
+              406.6840051894257,
+              300.23699994444615
+            ],
+            "garmentWaistMm": 706.9210051338719,
+            "minWaistGapMm": 6.996127162765317,
+            "maxWaistGapMm": 7.000010747540357,
+            "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+            "patternMismatchMm": 3.478364135389711e-06,
+            "sectionHeightM": 1.0
+          }
+        },
+        "verdict": "PASS",
+        "vertices": 850,
+        "triangles": 1536,
+        "bodyVertices": 13380,
+        "bodyTriangles": 26756,
+        "seam": {
+          "lengthsMm": [
+            600.0000163688787,
+            600.0000210626071
+          ],
+          "mismatchMm": 4.693728328675206e-06,
+          "missing": false,
+          "reversed": false
+        },
+        "maxSeamGapMm": 0.0,
+        "maxBodyPenetrationMm": 0.0,
+        "minBodyClearanceMm": 2.7545450334032004,
+        "sampledPoints": 4770,
+        "insideSamples": 0,
+        "clothEdgeBodyHits": 0,
+        "bodyEdgeClothHits": 0,
+        "maxTensorFieldAbsoluteErrors": [
+          2.4903896878036846e-07,
+          2.637015711348667e-07,
+          2.1705978081598687e-07,
+          0.0521534242634516,
+          0.04739272442566289,
+          2.5254466434754264e-07,
+          2.0488100649362906e-07,
+          8.006209677863252e-08
+        ],
+        "maxPrincipalStrainPercent": 17.53858895290572,
+        "maxPrincipalCauchyKPa": 43.918890991373644,
+        "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+      },
+      "firstReadyPixels": {
+        "front": {
+          "hipROI": [
+            410,
+            225,
+            470,
+            276
+          ],
+          "skinPixels": 0,
+          "pixels": 3060,
+          "fabricPixelFraction": 1.0
+        },
+        "back": {
+          "hipROI": [
+            409,
+            226,
+            471,
+            278
+          ],
+          "skinPixels": 0,
+          "pixels": 3224,
+          "fabricPixelFraction": 1.0
+        },
+        "side": {
+          "hipROI": [
+            428,
+            227,
+            468,
+            280
+          ],
+          "skinPixels": 0,
+          "pixels": 2120,
+          "fabricPixelFraction": 0.9382075471698114
+        }
+      },
+      "arraySha256": [
+        {
+          "positions": "782979219643c3c92f7f40228592ce47a6064d101c6874b5a1620c68e90dee30",
+          "previous": "d7e71b2c431ea2be51b7c9e119fedfe3d97db925a7d2abc82b206b484fe0334c",
+          "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+          "contactFlags": "f9857c4b7664b97e25dab01a57091f269bdb2aea59b69f41c4d850f16374ace2",
+          "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+          "triangleFields": "1818a6e99b59786ccac1c599ce4714e1be01168e74a2d359f0f7337cce438bff",
+          "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+          "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+          "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+        },
+        {
+          "positions": "c32c1fcfe6526e67088e904e5bd8481b520b3b12dac74d6e2202700d4b632576",
+          "previous": "782979219643c3c92f7f40228592ce47a6064d101c6874b5a1620c68e90dee30",
+          "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+          "contactFlags": "f9857c4b7664b97e25dab01a57091f269bdb2aea59b69f41c4d850f16374ace2",
+          "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+          "triangleFields": "9c08c81d14363fae1990ff2f7bbdb76c23dff55d4c4d9e12ce04d3b109c4bd8b",
+          "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+          "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+          "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+        },
+        {
+          "positions": "52d148d4e7d52129baae58500459dd58300a233997baab8e8078ab5c69a0e34b",
+          "previous": "eb8f0fac5379be7a74473a75c40077ab0403d7b9f5d00fa5b065ca9b9327bcda",
+          "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+          "contactFlags": "4bbb4bd5a5667240ccdd04d66678243b992c8696c1673fc9061fd08be1f7a8a1",
+          "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+          "triangleFields": "91d11009a15b52209c6bd53901006eacccb89daf3f641f0f6112d353c7a8c58b",
+          "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+          "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+          "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+        }
+      ],
+      "offlineRendering": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 2,
+          "commandBuffers": 2,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": []
+        }
+      },
+      "offlineEvents": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [],
+        "badResponses": []
+      },
+      "recursiveRendering": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 2,
+          "commandBuffers": 2,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": []
+        }
+      },
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:38887/candidate.html?renderer=webgpu"
+        ],
+        "badResponses": []
+      },
+      "performance": {
+        "stats": {
+          "wear": {
+            "maxWaistGapMm": 7.000022102147341,
+            "minWaistGapMm": 6.996131036430597,
+            "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+            "waistEdgeLengthsMm": [
+              406.68400518942576,
+              300.2369999444461
+            ],
+            "waistPatternMismatchMm": 3.47836419223313e-06,
+            "bodySectionGirthMm": 666.0588056425474,
+            "garmentWaistMm": 706.9210094695209,
+            "sectionHeightM": 1,
+            "fitted": true
+          },
+          "frame": 302,
+          "simulationSeconds": 2.516671895980835,
+          "maxSeamGapMm": 0,
+          "maxBodyPenetrationMm": 0,
+          "minBodyClearanceMm": 5.930416285991669,
+          "maxPrincipalStrainPercent": 17.47685670852661,
+          "maxPrincipalStressKPa": 43.7456875,
+          "contacts": 274,
+          "finite": true,
+          "membraneEnergyJ": 0.04764885827898979,
+          "collisionEnabled": true,
+          "pressure": {
+            "ready": true,
+            "frame": 302,
+            "normalForceN": 3.6873393058776855,
+            "resultantOnClothN": [
+              -0.010060235857963562,
+              0.6659117937088013,
+              -0.35220009088516235
+            ],
+            "maxPressurePa": 59.49357604980469,
+            "loadedAreaM2": 0.1810423731803894,
+            "clothAreaM2": 0.6211546659469604,
+            "contactSamples": 254,
+            "maxConstraintResidualMm": 0.001047013938659802,
+            "minNormalAlignment": 0.9999997615814209,
+            "finite": true,
+            "consistent": true
+          },
+          "coverage": {
+            "bodySamples": 4996,
+            "exposedSamples": 0,
+            "maxDepthDeficitMm": 0,
+            "byView": {
+              "front": 0,
+              "back": 0,
+              "right": 0,
+              "left": 0
+            },
+            "covered": true
+          },
+          "missingSeam": false,
+          "orientationValid": true,
+          "lengthMismatchMm": 0,
+          "stepMs": 17.5,
+          "bodyOffsetMm": 0,
+          "droppedWallSeconds": 0
+        },
+        "frameTimesMs": [],
+        "history": [
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 240,
+            "simulationSeconds": 1.9999984502792358,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.929829552769661,
+            "maxPrincipalStrainPercent": 17.53859519958496,
+            "maxPrincipalStressKPa": 43.9188984375,
+            "contacts": 271,
+            "finite": true,
+            "membraneEnergyJ": 0.04779795929789543,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 240,
+              "normalForceN": 3.688368558883667,
+              "resultantOnClothN": [
+                -0.009159412235021591,
+                0.6669155359268188,
+                -0.34592485427856445
+              ],
+              "maxPressurePa": 59.94184875488281,
+              "loadedAreaM2": 0.18141929805278778,
+              "clothAreaM2": 0.6211761236190796,
+              "contactSamples": 251,
+              "maxConstraintResidualMm": 0.001947017153725028,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 10.985416666666667,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 241,
+            "simulationSeconds": 2.008331775665283,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.929859355092049,
+            "maxPrincipalStrainPercent": 17.52617359161377,
+            "maxPrincipalStressKPa": 43.8748671875,
+            "contacts": 271,
+            "finite": true,
+            "membraneEnergyJ": 0.047780487686395645,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 241,
+              "normalForceN": 3.6890933513641357,
+              "resultantOnClothN": [
+                -0.00976131297647953,
+                0.6669304370880127,
+                -0.34501907229423523
+              ],
+              "maxPressurePa": 59.92333984375,
+              "loadedAreaM2": 0.18142159283161163,
+              "clothAreaM2": 0.6211745738983154,
+              "contactSamples": 251,
+              "maxConstraintResidualMm": 0.0023019019863568246,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 19.899999991059303,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 300,
+            "simulationSeconds": 2.500005006790161,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.930386949330568,
+            "maxPrincipalStrainPercent": 17.475450038909912,
+            "maxPrincipalStressKPa": 43.7368515625,
+            "contacts": 274,
+            "finite": true,
+            "membraneEnergyJ": 0.04764929786324501,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 300,
+              "normalForceN": 3.6876087188720703,
+              "resultantOnClothN": [
+                -0.00994680356234312,
+                0.6660209894180298,
+                -0.35201263427734375
+              ],
+              "maxPressurePa": 59.51424026489258,
+              "loadedAreaM2": 0.181044802069664,
+              "clothAreaM2": 0.6211550235748291,
+              "contactSamples": 254,
+              "maxConstraintResidualMm": 0.0007789785740897059,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 9.968421052945288,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 303,
+            "simulationSeconds": 2.525005340576172,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.930430721491575,
+            "maxPrincipalStrainPercent": 17.477738857269287,
+            "maxPrincipalStressKPa": 43.7499609375,
+            "contacts": 274,
+            "finite": true,
+            "membraneEnergyJ": 0.047650065273046494,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 303,
+              "normalForceN": 3.6872575283050537,
+              "resultantOnClothN": [
+                -0.010089813731610775,
+                0.6658714413642883,
+                -0.3522540330886841
+              ],
+              "maxPressurePa": 59.482696533203125,
+              "loadedAreaM2": 0.1810413897037506,
+              "clothAreaM2": 0.62115478515625,
+              "contactSamples": 254,
+              "maxConstraintResidualMm": 0.0011732554412446916,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 9.899999996026358,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 301,
+            "simulationSeconds": 2.508338451385498,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.930401850491762,
+            "maxPrincipalStrainPercent": 17.47645139694214,
+            "maxPrincipalStressKPa": 43.74230078125,
+            "contacts": 274,
+            "finite": true,
+            "membraneEnergyJ": 0.047648657113313675,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 301,
+              "normalForceN": 3.687499523162842,
+              "resultantOnClothN": [
+                -0.010059849359095097,
+                0.665982723236084,
+                -0.3520834445953369
+              ],
+              "maxPressurePa": 59.50397872924805,
+              "loadedAreaM2": 0.18104340136051178,
+              "clothAreaM2": 0.6211550831794739,
+              "contactSamples": 254,
+              "maxConstraintResidualMm": 0.0009057002898771316,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 11.299999997019768,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 302,
+            "simulationSeconds": 2.516671895980835,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.930416285991669,
+            "maxPrincipalStrainPercent": 17.47685670852661,
+            "maxPrincipalStressKPa": 43.7456875,
+            "contacts": 274,
+            "finite": true,
+            "membraneEnergyJ": 0.04764885827898979,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 302,
+              "normalForceN": 3.6873393058776855,
+              "resultantOnClothN": [
+                -0.010060235857963562,
+                0.6659117937088013,
+                -0.35220009088516235
+              ],
+              "maxPressurePa": 59.49357604980469,
+              "loadedAreaM2": 0.1810423731803894,
+              "clothAreaM2": 0.6211546659469604,
+              "contactSamples": 254,
+              "maxConstraintResidualMm": 0.001047013938659802,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 17.5,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          }
+        ],
+        "renderer": "google · swiftshader",
+        "gpuString": "google · swiftshader",
+        "rendererClass": "software",
+        "pixelRatio": 0.8,
+        "drawCalls": 6,
+        "geometries": 6,
+        "textures": 3,
+        "rendererApi": "WebGPU",
+        "rendererBackend": "WebGPUBackend",
+        "rendererRequested": "webgpu",
+        "rendererDiagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 16,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "wasmBytes": 20919,
+        "wasmMemoryBytes": 16777216,
+        "fingerprint": "0f2afe8f6957102a7ae925f675d0dfc8f2ddbfef350d87b420ab53631ec69fc1",
+        "droppedWallSeconds": 0,
+        "replay": {
+          "pressureBytes": 20320,
+          "totalBytes": 156320,
+          "maxTotalRawBytes": 98145720,
+          "frames": 4,
+          "cursor": 1,
+          "atRecordedState": false,
+          "recording": false,
+          "playing": false,
+          "speed": 1,
+          "maxFrames": 1201,
+          "bytes": 136000,
+          "integratedSteps": 304,
+          "captureTimesMs": [
+            0.29999999701976776,
+            0.09999999403953552,
+            0.10000000894069672,
+            0.09999999403953552
+          ],
+          "seekTimesMs": [
+            14.299999997019768,
+            22
+          ],
+          "playbackTimesMs": []
+        }
+      },
+      "finalRendering": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 16,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 33,
+          "commandBuffers": 33,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 159.3999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 266.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            }
+          ]
+        }
+      }
+    },
+    "webgl": {
+      "checks": {
+        "realFirstRenderAndFrontSideBackClothing": true,
+        "defaultAndOneAnd60StepsMatchOldPhysicalBytes": true,
+        "trueTensorAndPressureColorsReachDistinctRenderedPixels": true,
+        "zeroRequestSecureOriginOfflineActualBackendAndExactContinuation": true,
+        "recursiveSnapshotAndRecordedSelectionSurviveModuleRefactor": true
+      },
+      "rendering": {
+        "diagnostics": {
+          "requested": "webgl",
+          "api": "WebGL2",
+          "backend": "WebGLRenderer",
+          "isWebGPURenderer": false,
+          "isWebGPUBackend": false,
+          "isWebGLRenderer": true,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": true,
+            "samples": 4,
+            "method": "MSAA",
+            "reason": null
+          },
+          "gpuString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": null,
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 0,
+          "adapters": 0,
+          "deviceRequests": 0,
+          "devices": 0,
+          "canvasContexts": [
+            {
+              "type": "webgl2",
+              "nativeClass": "WebGL2RenderingContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 0,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 0,
+          "commandBuffers": 0,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [],
+          "deviceDetails": [],
+          "textureCreations": [],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 204.40000000596046,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4032.2000000029802,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "untouchedFirstReadyPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "firstReadyGeometry": {
+        "fit": {
+          "pressure": {
+            "verdict": "PASS",
+            "samples": 251,
+            "forceN": 3.688368847363021,
+            "peakPa": 59.94184875488281,
+            "forceIntegralErrorN": 1.0444664066966425e-07,
+            "maxContactResidualMm": 0.0019470327866661977,
+            "minNormalAlignment": 0.9999998893968255
+          },
+          "coverage": {
+            "verdict": "PASS",
+            "anatomicalSurfaceSamples": 1709,
+            "views": 8,
+            "totalRays": 13672,
+            "exposedRays": 0,
+            "byView": [
+              {
+                "angleDegrees": 0.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 45.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 90.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 135.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 180.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 225.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 270.0,
+                "exposed": 0,
+                "rays": 1709
+              },
+              {
+                "angleDegrees": 315.0,
+                "exposed": 0,
+                "rays": 1709
+              }
+            ]
+          },
+          "wear": {
+            "verdict": "PASS",
+            "bodySectionGirthMm": 666.0588056425474,
+            "waistEdgeLengthsMm": [
+              406.6840051894257,
+              300.23699994444615
+            ],
+            "garmentWaistMm": 706.9210051338719,
+            "minWaistGapMm": 6.996127162765317,
+            "maxWaistGapMm": 7.000010747540357,
+            "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+            "patternMismatchMm": 3.478364135389711e-06,
+            "sectionHeightM": 1.0
+          }
+        },
+        "verdict": "PASS",
+        "vertices": 850,
+        "triangles": 1536,
+        "bodyVertices": 13380,
+        "bodyTriangles": 26756,
+        "seam": {
+          "lengthsMm": [
+            600.0000163688787,
+            600.0000210626071
+          ],
+          "mismatchMm": 4.693728328675206e-06,
+          "missing": false,
+          "reversed": false
+        },
+        "maxSeamGapMm": 0.0,
+        "maxBodyPenetrationMm": 0.0,
+        "minBodyClearanceMm": 2.7545450334032004,
+        "sampledPoints": 4770,
+        "insideSamples": 0,
+        "clothEdgeBodyHits": 0,
+        "bodyEdgeClothHits": 0,
+        "maxTensorFieldAbsoluteErrors": [
+          2.4903896878036846e-07,
+          2.637015711348667e-07,
+          2.1705978081598687e-07,
+          0.0521534242634516,
+          0.04739272442566289,
+          2.5254466434754264e-07,
+          2.0488100649362906e-07,
+          8.006209677863252e-08
+        ],
+        "maxPrincipalStrainPercent": 17.53858895290572,
+        "maxPrincipalCauchyKPa": 43.918890991373644,
+        "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+      },
+      "firstReadyPixels": {
+        "front": {
+          "hipROI": [
+            410,
+            225,
+            470,
+            276
+          ],
+          "skinPixels": 0,
+          "pixels": 3060,
+          "fabricPixelFraction": 1.0
+        },
+        "back": {
+          "hipROI": [
+            409,
+            226,
+            471,
+            278
+          ],
+          "skinPixels": 0,
+          "pixels": 3224,
+          "fabricPixelFraction": 1.0
+        },
+        "side": {
+          "hipROI": [
+            428,
+            227,
+            468,
+            280
+          ],
+          "skinPixels": 0,
+          "pixels": 2120,
+          "fabricPixelFraction": 0.939622641509434
+        }
+      },
+      "arraySha256": [
+        {
+          "positions": "782979219643c3c92f7f40228592ce47a6064d101c6874b5a1620c68e90dee30",
+          "previous": "d7e71b2c431ea2be51b7c9e119fedfe3d97db925a7d2abc82b206b484fe0334c",
+          "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+          "contactFlags": "f9857c4b7664b97e25dab01a57091f269bdb2aea59b69f41c4d850f16374ace2",
+          "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+          "triangleFields": "1818a6e99b59786ccac1c599ce4714e1be01168e74a2d359f0f7337cce438bff",
+          "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+          "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+          "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+        },
+        {
+          "positions": "c32c1fcfe6526e67088e904e5bd8481b520b3b12dac74d6e2202700d4b632576",
+          "previous": "782979219643c3c92f7f40228592ce47a6064d101c6874b5a1620c68e90dee30",
+          "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+          "contactFlags": "f9857c4b7664b97e25dab01a57091f269bdb2aea59b69f41c4d850f16374ace2",
+          "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+          "triangleFields": "9c08c81d14363fae1990ff2f7bbdb76c23dff55d4c4d9e12ce04d3b109c4bd8b",
+          "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+          "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+          "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+        },
+        {
+          "positions": "52d148d4e7d52129baae58500459dd58300a233997baab8e8078ab5c69a0e34b",
+          "previous": "eb8f0fac5379be7a74473a75c40077ab0403d7b9f5d00fa5b065ca9b9327bcda",
+          "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+          "contactFlags": "4bbb4bd5a5667240ccdd04d66678243b992c8696c1673fc9061fd08be1f7a8a1",
+          "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+          "triangleFields": "91d11009a15b52209c6bd53901006eacccb89daf3f641f0f6112d353c7a8c58b",
+          "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+          "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+          "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+        }
+      ],
+      "offlineRendering": {
+        "diagnostics": {
+          "requested": "webgl",
+          "api": "WebGL2",
+          "backend": "WebGLRenderer",
+          "isWebGPURenderer": false,
+          "isWebGPUBackend": false,
+          "isWebGLRenderer": true,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": true,
+            "samples": 4,
+            "method": "MSAA",
+            "reason": null
+          },
+          "gpuString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": null,
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 0,
+          "adapters": 0,
+          "deviceRequests": 0,
+          "devices": 0,
+          "canvasContexts": [
+            {
+              "type": "webgl2",
+              "nativeClass": "WebGL2RenderingContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 0,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 0,
+          "commandBuffers": 0,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [],
+          "deviceDetails": [],
+          "textureCreations": [],
+          "invalidTextureSizes": [],
+          "viewportSamples": []
+        }
+      },
+      "offlineEvents": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [],
+        "badResponses": []
+      },
+      "recursiveRendering": {
+        "diagnostics": {
+          "requested": "webgl",
+          "api": "WebGL2",
+          "backend": "WebGLRenderer",
+          "isWebGPURenderer": false,
+          "isWebGPUBackend": false,
+          "isWebGLRenderer": true,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": true,
+            "samples": 4,
+            "method": "MSAA",
+            "reason": null
+          },
+          "gpuString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": null,
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 0,
+          "adapters": 0,
+          "deviceRequests": 0,
+          "devices": 0,
+          "canvasContexts": [
+            {
+              "type": "webgl2",
+              "nativeClass": "WebGL2RenderingContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 0,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 0,
+          "commandBuffers": 0,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [],
+          "deviceDetails": [],
+          "textureCreations": [],
+          "invalidTextureSizes": [],
+          "viewportSamples": []
+        }
+      },
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:38887/candidate.html?renderer=webgl"
+        ],
+        "badResponses": []
+      },
+      "performance": {
+        "stats": {
+          "wear": {
+            "maxWaistGapMm": 7.000022102147341,
+            "minWaistGapMm": 6.996131036430597,
+            "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+            "waistEdgeLengthsMm": [
+              406.68400518942576,
+              300.2369999444461
+            ],
+            "waistPatternMismatchMm": 3.47836419223313e-06,
+            "bodySectionGirthMm": 666.0588056425474,
+            "garmentWaistMm": 706.9210094695209,
+            "sectionHeightM": 1,
+            "fitted": true
+          },
+          "frame": 302,
+          "simulationSeconds": 2.516671895980835,
+          "maxSeamGapMm": 0,
+          "maxBodyPenetrationMm": 0,
+          "minBodyClearanceMm": 5.930416285991669,
+          "maxPrincipalStrainPercent": 17.47685670852661,
+          "maxPrincipalStressKPa": 43.7456875,
+          "contacts": 274,
+          "finite": true,
+          "membraneEnergyJ": 0.04764885827898979,
+          "collisionEnabled": true,
+          "pressure": {
+            "ready": true,
+            "frame": 302,
+            "normalForceN": 3.6873393058776855,
+            "resultantOnClothN": [
+              -0.010060235857963562,
+              0.6659117937088013,
+              -0.35220009088516235
+            ],
+            "maxPressurePa": 59.49357604980469,
+            "loadedAreaM2": 0.1810423731803894,
+            "clothAreaM2": 0.6211546659469604,
+            "contactSamples": 254,
+            "maxConstraintResidualMm": 0.001047013938659802,
+            "minNormalAlignment": 0.9999997615814209,
+            "finite": true,
+            "consistent": true
+          },
+          "coverage": {
+            "bodySamples": 4996,
+            "exposedSamples": 0,
+            "maxDepthDeficitMm": 0,
+            "byView": {
+              "front": 0,
+              "back": 0,
+              "right": 0,
+              "left": 0
+            },
+            "covered": true
+          },
+          "missingSeam": false,
+          "orientationValid": true,
+          "lengthMismatchMm": 0,
+          "stepMs": 19.799999997019768,
+          "bodyOffsetMm": 0,
+          "droppedWallSeconds": 0
+        },
+        "frameTimesMs": [],
+        "history": [
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 240,
+            "simulationSeconds": 1.9999984502792358,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.929829552769661,
+            "maxPrincipalStrainPercent": 17.53859519958496,
+            "maxPrincipalStressKPa": 43.9188984375,
+            "contacts": 271,
+            "finite": true,
+            "membraneEnergyJ": 0.04779795929789543,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 240,
+              "normalForceN": 3.688368558883667,
+              "resultantOnClothN": [
+                -0.009159412235021591,
+                0.6669155359268188,
+                -0.34592485427856445
+              ],
+              "maxPressurePa": 59.94184875488281,
+              "loadedAreaM2": 0.18141929805278778,
+              "clothAreaM2": 0.6211761236190796,
+              "contactSamples": 251,
+              "maxConstraintResidualMm": 0.001947017153725028,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 14.091666666666667,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 241,
+            "simulationSeconds": 2.008331775665283,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.929859355092049,
+            "maxPrincipalStrainPercent": 17.52617359161377,
+            "maxPrincipalStressKPa": 43.8748671875,
+            "contacts": 271,
+            "finite": true,
+            "membraneEnergyJ": 0.047780487686395645,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 241,
+              "normalForceN": 3.6890933513641357,
+              "resultantOnClothN": [
+                -0.00976131297647953,
+                0.6669304370880127,
+                -0.34501907229423523
+              ],
+              "maxPressurePa": 59.92333984375,
+              "loadedAreaM2": 0.18142159283161163,
+              "clothAreaM2": 0.6211745738983154,
+              "contactSamples": 251,
+              "maxConstraintResidualMm": 0.0023019019863568246,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 18,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 300,
+            "simulationSeconds": 2.500005006790161,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.930386949330568,
+            "maxPrincipalStrainPercent": 17.475450038909912,
+            "maxPrincipalStressKPa": 43.7368515625,
+            "contacts": 274,
+            "finite": true,
+            "membraneEnergyJ": 0.04764929786324501,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 300,
+              "normalForceN": 3.6876087188720703,
+              "resultantOnClothN": [
+                -0.00994680356234312,
+                0.6660209894180298,
+                -0.35201263427734375
+              ],
+              "maxPressurePa": 59.51424026489258,
+              "loadedAreaM2": 0.181044802069664,
+              "clothAreaM2": 0.6211550235748291,
+              "contactSamples": 254,
+              "maxConstraintResidualMm": 0.0007789785740897059,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 14.13684210573372,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 303,
+            "simulationSeconds": 2.525005340576172,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.930430721491575,
+            "maxPrincipalStrainPercent": 17.477738857269287,
+            "maxPrincipalStressKPa": 43.7499609375,
+            "contacts": 274,
+            "finite": true,
+            "membraneEnergyJ": 0.047650065273046494,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 303,
+              "normalForceN": 3.6872575283050537,
+              "resultantOnClothN": [
+                -0.010089813731610775,
+                0.6658714413642883,
+                -0.3522540330886841
+              ],
+              "maxPressurePa": 59.482696533203125,
+              "loadedAreaM2": 0.1810413897037506,
+              "clothAreaM2": 0.62115478515625,
+              "contactSamples": 254,
+              "maxConstraintResidualMm": 0.0011732554412446916,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 11.933333337306976,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 301,
+            "simulationSeconds": 2.508338451385498,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.930401850491762,
+            "maxPrincipalStrainPercent": 17.47645139694214,
+            "maxPrincipalStressKPa": 43.74230078125,
+            "contacts": 274,
+            "finite": true,
+            "membraneEnergyJ": 0.047648657113313675,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 301,
+              "normalForceN": 3.687499523162842,
+              "resultantOnClothN": [
+                -0.010059849359095097,
+                0.665982723236084,
+                -0.3520834445953369
+              ],
+              "maxPressurePa": 59.50397872924805,
+              "loadedAreaM2": 0.18104340136051178,
+              "clothAreaM2": 0.6211550831794739,
+              "contactSamples": 254,
+              "maxConstraintResidualMm": 0.0009057002898771316,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 14.200000002980232,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          },
+          {
+            "wear": {
+              "maxWaistGapMm": 7.000022102147341,
+              "minWaistGapMm": 6.996131036430597,
+              "maxWaistPlacementErrorMm": 5.281831154335015e-05,
+              "waistEdgeLengthsMm": [
+                406.68400518942576,
+                300.2369999444461
+              ],
+              "waistPatternMismatchMm": 3.47836419223313e-06,
+              "bodySectionGirthMm": 666.0588056425474,
+              "garmentWaistMm": 706.9210094695209,
+              "sectionHeightM": 1,
+              "fitted": true
+            },
+            "frame": 302,
+            "simulationSeconds": 2.516671895980835,
+            "maxSeamGapMm": 0,
+            "maxBodyPenetrationMm": 0,
+            "minBodyClearanceMm": 5.930416285991669,
+            "maxPrincipalStrainPercent": 17.47685670852661,
+            "maxPrincipalStressKPa": 43.7456875,
+            "contacts": 274,
+            "finite": true,
+            "membraneEnergyJ": 0.04764885827898979,
+            "collisionEnabled": true,
+            "pressure": {
+              "ready": true,
+              "frame": 302,
+              "normalForceN": 3.6873393058776855,
+              "resultantOnClothN": [
+                -0.010060235857963562,
+                0.6659117937088013,
+                -0.35220009088516235
+              ],
+              "maxPressurePa": 59.49357604980469,
+              "loadedAreaM2": 0.1810423731803894,
+              "clothAreaM2": 0.6211546659469604,
+              "contactSamples": 254,
+              "maxConstraintResidualMm": 0.001047013938659802,
+              "minNormalAlignment": 0.9999997615814209,
+              "finite": true,
+              "consistent": true
+            },
+            "coverage": {
+              "bodySamples": 4996,
+              "exposedSamples": 0,
+              "maxDepthDeficitMm": 0,
+              "byView": {
+                "front": 0,
+                "back": 0,
+                "right": 0,
+                "left": 0
+              },
+              "covered": true
+            },
+            "missingSeam": false,
+            "orientationValid": true,
+            "lengthMismatchMm": 0,
+            "stepMs": 19.799999997019768,
+            "bodyOffsetMm": 0,
+            "droppedWallSeconds": 0
+          }
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "gpuString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "rendererClass": "software",
+        "pixelRatio": 0.8,
+        "drawCalls": 5,
+        "geometries": 5,
+        "textures": 1,
+        "rendererApi": "WebGL2",
+        "rendererBackend": "WebGLRenderer",
+        "rendererRequested": "webgl",
+        "rendererDiagnostics": {
+          "requested": "webgl",
+          "api": "WebGL2",
+          "backend": "WebGLRenderer",
+          "isWebGPURenderer": false,
+          "isWebGPUBackend": false,
+          "isWebGLRenderer": true,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 16,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": true,
+            "samples": 4,
+            "method": "MSAA",
+            "reason": null
+          },
+          "gpuString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": null,
+          "deviceErrors": []
+        },
+        "wasmBytes": 20919,
+        "wasmMemoryBytes": 16777216,
+        "fingerprint": "0f2afe8f6957102a7ae925f675d0dfc8f2ddbfef350d87b420ab53631ec69fc1",
+        "droppedWallSeconds": 0,
+        "replay": {
+          "pressureBytes": 20320,
+          "totalBytes": 156320,
+          "maxTotalRawBytes": 98145720,
+          "frames": 4,
+          "cursor": 1,
+          "atRecordedState": false,
+          "recording": false,
+          "playing": false,
+          "speed": 1,
+          "maxFrames": 1201,
+          "bytes": 136000,
+          "integratedSteps": 304,
+          "captureTimesMs": [
+            0.20000000298023224,
+            0.19999998807907104,
+            0.20000000298023224,
+            0.19999998807907104
+          ],
+          "seekTimesMs": [
+            13.299999997019768,
+            16
+          ],
+          "playbackTimesMs": []
+        }
+      },
+      "finalRendering": {
+        "diagnostics": {
+          "requested": "webgl",
+          "api": "WebGL2",
+          "backend": "WebGLRenderer",
+          "isWebGPURenderer": false,
+          "isWebGPUBackend": false,
+          "isWebGLRenderer": true,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 16,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": true,
+            "samples": 4,
+            "method": "MSAA",
+            "reason": null
+          },
+          "gpuString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": null,
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 0,
+          "adapters": 0,
+          "deviceRequests": 0,
+          "devices": 0,
+          "canvasContexts": [
+            {
+              "type": "webgl2",
+              "nativeClass": "WebGL2RenderingContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 0,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 0,
+          "commandBuffers": 0,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [],
+          "deviceDetails": [],
+          "textureCreations": [],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 204.40000000596046,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4032.2000000029802,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      }
+    }
+  },
+  "scope": "Real renderer/standalone refactor. Synthetic physical calibration and manufacturing fit NOT_RUN.",
+  "baselineArraySha256": [
+    {
+      "positions": "782979219643c3c92f7f40228592ce47a6064d101c6874b5a1620c68e90dee30",
+      "previous": "d7e71b2c431ea2be51b7c9e119fedfe3d97db925a7d2abc82b206b484fe0334c",
+      "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+      "contactFlags": "f9857c4b7664b97e25dab01a57091f269bdb2aea59b69f41c4d850f16374ace2",
+      "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+      "triangleFields": "1818a6e99b59786ccac1c599ce4714e1be01168e74a2d359f0f7337cce438bff",
+      "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+      "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+      "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+    },
+    {
+      "positions": "c32c1fcfe6526e67088e904e5bd8481b520b3b12dac74d6e2202700d4b632576",
+      "previous": "782979219643c3c92f7f40228592ce47a6064d101c6874b5a1620c68e90dee30",
+      "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+      "contactFlags": "f9857c4b7664b97e25dab01a57091f269bdb2aea59b69f41c4d850f16374ace2",
+      "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+      "triangleFields": "9c08c81d14363fae1990ff2f7bbdb76c23dff55d4c4d9e12ce04d3b109c4bd8b",
+      "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+      "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+      "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+    },
+    {
+      "positions": "52d148d4e7d52129baae58500459dd58300a233997baab8e8078ab5c69a0e34b",
+      "previous": "eb8f0fac5379be7a74473a75c40077ab0403d7b9f5d00fa5b065ca9b9327bcda",
+      "pinPositions": "fb6f775b46b68bbadf1aff844c31852d84afeccde00f0e308c1ef997ae8ecefe",
+      "contactFlags": "4bbb4bd5a5667240ccdd04d66678243b992c8696c1673fc9061fd08be1f7a8a1",
+      "restUV": "af98625829158e5c44dd50578460e0d51158eb1380243cea420370e081f06d75",
+      "triangleFields": "91d11009a15b52209c6bd53901006eacccb89daf3f641f0f6112d353c7a8c58b",
+      "bodyPositions": "062a5ba948758bebaa664196a80c29a50ad52fb09eb07ab25405e84c3a5c550a",
+      "triangles": "4d82b56a60dc08d693ed6f1e23a5197242a8f30a457548ba4f54c8517ca38dac",
+      "bodyTriangles": "813c59ba79d891dabd4f657fe042dbc20bf21518b13a59087bd4b5bf0941f7b3"
+    }
+  ],
+  "defaultAuto": {
+    "diagnostics": {
+      "requested": "auto",
+      "api": "WebGPU",
+      "backend": "WebGPUBackend",
+      "isWebGPURenderer": true,
+      "isWebGPUBackend": true,
+      "isWebGLRenderer": false,
+      "initialized": true,
+      "firstRenderComplete": true,
+      "renderedFrames": 1,
+      "blocked": false,
+      "pending": false,
+      "fallbackReason": null,
+      "antialias": {
+        "enabled": false,
+        "samples": 0,
+        "method": "none",
+        "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+      },
+      "gpuString": "google · swiftshader",
+      "rendererClass": "software",
+      "viewport": {
+        "renderable": true,
+        "cssWidth": 880,
+        "cssHeight": 530,
+        "drawingBufferWidth": 704,
+        "drawingBufferHeight": 424,
+        "skippedDraws": 0
+      },
+      "device": {
+        "label": "Cloth Lab WebGPU device",
+        "features": [
+          "core-features-and-limits"
+        ],
+        "limits": {
+          "maxTextureDimension2D": 8192,
+          "maxBufferSize": 268435456,
+          "maxStorageBufferBindingSize": 134217728,
+          "maxBindGroups": 4
+        },
+        "adapterInfo": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "subgroupMinSize": 4,
+          "subgroupMaxSize": 4,
+          "isFallbackAdapter": true
+        }
+      },
+      "deviceErrors": []
+    },
+    "native": {
+      "adapterRequests": 1,
+      "adapters": 1,
+      "deviceRequests": 1,
+      "devices": 1,
+      "canvasContexts": [
+        {
+          "type": "webgpu",
+          "nativeClass": "GPUCanvasContext"
+        },
+        {
+          "type": "2d",
+          "nativeClass": "CanvasRenderingContext2D"
+        }
+      ],
+      "configurations": 1,
+      "configurationUsesRequestedDevice": true,
+      "queueSubmits": 3,
+      "commandBuffers": 3,
+      "deviceErrors": [],
+      "deviceLosses": [],
+      "adapterInfo": [
+        {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        }
+      ],
+      "deviceDetails": [
+        {
+          "label": "Cloth Lab WebGPU device",
+          "features": [
+            "core-features-and-limits"
+          ],
+          "limits": {
+            "maxTextureDimension2D": 8192,
+            "maxBufferSize": 268435456,
+            "maxStorageBufferBindingSize": 134217728,
+            "maxBindGroups": 4
+          }
+        }
+      ],
+      "textureCreations": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            300,
+            150,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "colorBuffer",
+          "size": [
+            240,
+            120,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "colorBuffer",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "",
+          "size": [
+            128,
+            128,
+            1
+          ],
+          "format": "rgba8unorm-srgb"
+        },
+        {
+          "label": "",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "rgba16float"
+        },
+        {
+          "label": "",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "depth24plus"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "invalidTextureSizes": [],
+      "viewportSamples": [
+        {
+          "reason": "DOMContentLoaded",
+          "time": 201.5,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 292.09999999403954,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        }
+      ]
+    }
+  },
+  "activeDeviceLossAuto": {
+    "diagnostics": {
+      "requested": "auto",
+      "api": "WebGL2",
+      "backend": "WebGLRenderer",
+      "isWebGPURenderer": false,
+      "isWebGPUBackend": false,
+      "isWebGLRenderer": true,
+      "initialized": true,
+      "firstRenderComplete": true,
+      "renderedFrames": 2,
+      "blocked": false,
+      "pending": false,
+      "fallbackReason": "WebGPU device lost: Device was destroyed.",
+      "antialias": {
+        "enabled": true,
+        "samples": 4,
+        "method": "MSAA",
+        "reason": null
+      },
+      "gpuString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "rendererClass": "software",
+      "viewport": {
+        "renderable": true,
+        "cssWidth": 880,
+        "cssHeight": 530,
+        "drawingBufferWidth": 704,
+        "drawingBufferHeight": 424,
+        "skippedDraws": 0
+      },
+      "device": null,
+      "deviceErrors": [
+        {
+          "stage": "device-lost",
+          "message": "Device was destroyed.",
+          "reason": "destroyed"
+        }
+      ]
+    },
+    "native": {
+      "adapterRequests": 1,
+      "adapters": 1,
+      "deviceRequests": 1,
+      "devices": 1,
+      "canvasContexts": [
+        {
+          "type": "webgpu",
+          "nativeClass": "GPUCanvasContext"
+        },
+        {
+          "type": "2d",
+          "nativeClass": "CanvasRenderingContext2D"
+        },
+        {
+          "type": "webgl2",
+          "nativeClass": "WebGL2RenderingContext"
+        }
+      ],
+      "configurations": 1,
+      "configurationUsesRequestedDevice": true,
+      "queueSubmits": 3,
+      "commandBuffers": 3,
+      "deviceErrors": [],
+      "deviceLosses": [
+        {
+          "reason": "destroyed",
+          "message": "Device was destroyed."
+        }
+      ],
+      "adapterInfo": [
+        {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        }
+      ],
+      "deviceDetails": [
+        {
+          "label": "Cloth Lab WebGPU device",
+          "features": [
+            "core-features-and-limits"
+          ],
+          "limits": {
+            "maxTextureDimension2D": 8192,
+            "maxBufferSize": 268435456,
+            "maxStorageBufferBindingSize": 134217728,
+            "maxBindGroups": 4
+          }
+        }
+      ],
+      "textureCreations": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            300,
+            150,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "colorBuffer",
+          "size": [
+            240,
+            120,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "colorBuffer",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "",
+          "size": [
+            128,
+            128,
+            1
+          ],
+          "format": "rgba8unorm-srgb"
+        },
+        {
+          "label": "",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "rgba16float"
+        },
+        {
+          "label": "",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "depth24plus"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "invalidTextureSizes": [],
+      "viewportSamples": [
+        {
+          "reason": "DOMContentLoaded",
+          "time": 201.5,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 292.09999999403954,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        }
+      ]
+    },
+    "canvasBeforeResize": {
+      "width": 704,
+      "height": 424
+    },
+    "canvasAfterResize": {
+      "width": 536,
+      "height": 424
+    }
+  },
+  "activeDeviceLossForced": {
+    "diagnostics": {
+      "requested": "webgpu",
+      "api": "WebGPU",
+      "backend": "WebGPUBackend",
+      "isWebGPURenderer": true,
+      "isWebGPUBackend": true,
+      "isWebGLRenderer": false,
+      "initialized": true,
+      "firstRenderComplete": false,
+      "renderedFrames": 1,
+      "blocked": true,
+      "pending": false,
+      "fallbackReason": null,
+      "antialias": {
+        "enabled": false,
+        "samples": 0,
+        "method": "none",
+        "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+      },
+      "gpuString": "google · swiftshader",
+      "rendererClass": "software",
+      "viewport": {
+        "renderable": true,
+        "cssWidth": 880,
+        "cssHeight": 530,
+        "drawingBufferWidth": 704,
+        "drawingBufferHeight": 424,
+        "skippedDraws": 0
+      },
+      "device": {
+        "label": "Cloth Lab WebGPU device",
+        "features": [
+          "core-features-and-limits"
+        ],
+        "limits": {
+          "maxTextureDimension2D": 8192,
+          "maxBufferSize": 268435456,
+          "maxStorageBufferBindingSize": 134217728,
+          "maxBindGroups": 4
+        },
+        "adapterInfo": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "subgroupMinSize": 4,
+          "subgroupMaxSize": 4,
+          "isFallbackAdapter": true
+        }
+      },
+      "deviceErrors": [
+        {
+          "stage": "device-lost",
+          "message": "Device was destroyed.",
+          "reason": "destroyed"
+        }
+      ]
+    },
+    "native": {
+      "adapterRequests": 1,
+      "adapters": 1,
+      "deviceRequests": 1,
+      "devices": 1,
+      "canvasContexts": [
+        {
+          "type": "webgpu",
+          "nativeClass": "GPUCanvasContext"
+        },
+        {
+          "type": "2d",
+          "nativeClass": "CanvasRenderingContext2D"
+        }
+      ],
+      "configurations": 1,
+      "configurationUsesRequestedDevice": true,
+      "queueSubmits": 3,
+      "commandBuffers": 3,
+      "deviceErrors": [],
+      "deviceLosses": [
+        {
+          "reason": "destroyed",
+          "message": "Device was destroyed."
+        }
+      ],
+      "adapterInfo": [
+        {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        }
+      ],
+      "deviceDetails": [
+        {
+          "label": "Cloth Lab WebGPU device",
+          "features": [
+            "core-features-and-limits"
+          ],
+          "limits": {
+            "maxTextureDimension2D": 8192,
+            "maxBufferSize": 268435456,
+            "maxStorageBufferBindingSize": 134217728,
+            "maxBindGroups": 4
+          }
+        }
+      ],
+      "textureCreations": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            300,
+            150,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "colorBuffer",
+          "size": [
+            240,
+            120,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "colorBuffer",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "",
+          "size": [
+            128,
+            128,
+            1
+          ],
+          "format": "rgba8unorm-srgb"
+        },
+        {
+          "label": "",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "rgba16float"
+        },
+        {
+          "label": "",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "depth24plus"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            704,
+            424,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "invalidTextureSizes": [],
+      "viewportSamples": [
+        {
+          "reason": "DOMContentLoaded",
+          "time": 205.3999999910593,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 301.29999999701977,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        }
+      ]
+    },
+    "lockedControls": {
+      "width": true,
+      "length": true,
+      "material": true,
+      "fault": true,
+      "body-shift": true,
+      "collision": true,
+      "wind": true,
+      "record-start": true,
+      "run": true,
+      "single-step": true,
+      "settle": true,
+      "reset": true,
+      "replay-timeline": true,
+      "import-replay": true
+    },
+    "publicMutators": {
+      "advance": "Error: Renderer is blocked: WebGPU device lost: Device was destroyed.",
+      "reset": "Error: Renderer is blocked: WebGPU device lost: Device was destroyed.",
+      "run": "Error: Renderer is blocked: WebGPU device lost: Device was destroyed.",
+      "record": "Error: Renderer is blocked: WebGPU device lost: Device was destroyed.",
+      "restore": "Error: Renderer is blocked: WebGPU device lost: Device was destroyed.",
+      "inject": "Error: Renderer is blocked: WebGPU device lost: Device was destroyed."
+    }
+  },
+  "unavailableAuto": {
+    "diagnostics": {
+      "requested": "auto",
+      "api": "WebGL2",
+      "backend": "WebGLRenderer",
+      "isWebGPURenderer": false,
+      "isWebGPUBackend": false,
+      "isWebGLRenderer": true,
+      "initialized": true,
+      "firstRenderComplete": true,
+      "renderedFrames": 1,
+      "blocked": false,
+      "pending": false,
+      "fallbackReason": "WebGPU adapter is unavailable",
+      "antialias": {
+        "enabled": true,
+        "samples": 4,
+        "method": "MSAA",
+        "reason": null
+      },
+      "gpuString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "rendererClass": "software",
+      "viewport": {
+        "renderable": true,
+        "cssWidth": 880,
+        "cssHeight": 530,
+        "drawingBufferWidth": 704,
+        "drawingBufferHeight": 424,
+        "skippedDraws": 0
+      },
+      "device": null,
+      "deviceErrors": []
+    },
+    "native": {
+      "adapterRequests": 1,
+      "adapters": 0,
+      "deviceRequests": 0,
+      "devices": 0,
+      "canvasContexts": [
+        {
+          "type": "webgl2",
+          "nativeClass": "WebGL2RenderingContext"
+        },
+        {
+          "type": "2d",
+          "nativeClass": "CanvasRenderingContext2D"
+        }
+      ],
+      "configurations": 0,
+      "configurationUsesRequestedDevice": true,
+      "queueSubmits": 0,
+      "commandBuffers": 0,
+      "deviceErrors": [],
+      "deviceLosses": [],
+      "adapterInfo": [],
+      "deviceDetails": [],
+      "textureCreations": [],
+      "invalidTextureSizes": [],
+      "viewportSamples": [
+        {
+          "reason": "DOMContentLoaded",
+          "time": 227.90000000596046,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 317.6000000089407,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        }
+      ]
+    }
+  },
+  "unavailableAutoPixels": {
+    "front": {
+      "hipROI": [
+        410,
+        225,
+        470,
+        276
+      ],
+      "skinPixels": 0,
+      "pixels": 3060,
+      "fabricPixelFraction": 1.0
+    },
+    "back": {
+      "hipROI": [
+        409,
+        226,
+        471,
+        278
+      ],
+      "skinPixels": 0,
+      "pixels": 3224,
+      "fabricPixelFraction": 1.0
+    },
+    "side": {
+      "hipROI": [
+        428,
+        227,
+        468,
+        280
+      ],
+      "skinPixels": 0,
+      "pixels": 2120,
+      "fabricPixelFraction": 0.939622641509434
+    }
+  },
+  "unavailableAutoEvents": {
+    "pageErrors": [],
+    "consoleErrors": [],
+    "requests": [
+      "http://127.0.0.1:38887/candidate.html?renderer=auto"
+    ],
+    "badResponses": []
+  },
+  "strictUnavailable": {
+    "native": {
+      "adapterRequests": 1,
+      "adapters": 0,
+      "deviceRequests": 0,
+      "devices": 0,
+      "canvasContexts": [],
+      "configurations": 0,
+      "configurationUsesRequestedDevice": true,
+      "queueSubmits": 0,
+      "commandBuffers": 0,
+      "deviceErrors": [],
+      "deviceLosses": [],
+      "adapterInfo": [],
+      "deviceDetails": [],
+      "textureCreations": [],
+      "invalidTextureSizes": [],
+      "viewportSamples": [
+        {
+          "reason": "DOMContentLoaded",
+          "time": 168.79999999701977,
+          "windowWidth": 1280,
+          "windowHeight": 720,
+          "cssWidth": 720,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 269.3999999910593,
+          "windowWidth": 1280,
+          "windowHeight": 720,
+          "cssWidth": 720,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        }
+      ]
+    },
+    "message": "BLOCKED · 初始化失败",
+    "events": {
+      "pageErrors": [],
+      "consoleErrors": [
+        "Error: WebGPU required: WebGPU adapter is unavailable\n    at Xe (http://127.0.0.1:38887/candidate.html?renderer=webgpu:4354:56093)\n    at async Object.H [as boot] (http://127.0.0.1:38887/candidate.html?renderer=webgpu:4357:8773)"
+      ],
+      "requests": [
+        "http://127.0.0.1:38887/candidate.html?renderer=webgpu"
+      ],
+      "badResponses": []
+    }
+  },
+  "verdict": "PASS",
+  "finishedAtUnix": 1794995611.455463
+}

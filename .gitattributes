@@ -3,6 +3,9 @@
 *.pdf binary
 *.dxf binary
 
+# Pinned upstream Three.js source is retained byte-for-byte, including its indent.
+web/human-studio/vendor/three.webgpu.js whitespace=-space-before-tab
+
 # Preserve verbatim case evidence: RFC-style CSV CRLF and raw source excerpt.
 web/garment-body/product-case/*.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 web/garment-body/product-case/model/*.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

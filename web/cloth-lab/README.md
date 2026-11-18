@@ -4,6 +4,41 @@
 `index.html` 嵌入真实 MakeHuman 网格、BVH、WASM、Three.js 与程序化织纹，运行时不需要
 CDN、后端、模型 API 或 MCP。SVG、OBJ、工程 JSON 和包含完整回放的单 HTML 来自同一状态。
 
+## 模块源码与单文件发布
+
+开发时按功能维护独立 ES 模块；发布时 `build.js` 将它们与 WASM、人体和渲染器一起
+打包进一个 HTML。WASM 执行布料物理，WebGPU 绘制三维场景；浏览器界面与文件处理
+使用内嵌 JavaScript。
+
+| 源文件 | 职责 |
+| --- | --- |
+| `src/app.js` | 组装模块依赖 |
+| `src/runtime-context.js` | 共享运行状态、最初 HTML 捕获 |
+| `src/simulation.js` | 布料初始化、WASM 缓冲区、固定步进 |
+| `src/rendering.js` | WebGPU／WebGL、人体与布料网格、热图、相机与真实后端诊断 |
+| `src/diagnostics.js` | 缝合、碰撞、覆盖、腰位、压力与性能判定 |
+| `src/replay.js` | 每步录制、时间轴、无积分回放 |
+| `src/persistence.js` | JSON 校验与恢复、OBJ／单 HTML 导出、递归保存 |
+| `src/controls.js` | 界面控件与事件 |
+| `src/lifecycle.js` | 初始化、实际首帧就绪、公开 API、动画循环 |
+| `src/pattern.js` | 二维扇环纸样与真实尺寸 SVG |
+| `src/trajectory.js` | 轨迹格式、参数校验、Float32 编解码 |
+| `src/contact-state.js` | 接触乘子／法向保存、恢复与压力字段 |
+| `src/pressure.js` | 同 WASM 已知载荷试片 |
+| `src/wear.js` | 实际腰口位置、间隙与纸样边长诊断 |
+
+`src/solver.c` 编译成一份 WASM；原始人体资产、`avatar-fit.json`、模板与 CSS 单独维护。
+单 HTML 发布包包含所有运行数据，无需部署这些源文件供页面加载。
+
+默认 `?renderer=auto` 优先使用 WebGPU；不可用时明确显示实际 WebGL 回退及原因。
+`?renderer=webgpu` 强制使用真实 WebGPU，失败显示 BLOCKED；`?renderer=webgl` 强制
+使用 WebGL。WebGPU 需要浏览器支持和安全上下文。首次真实绘制完成后才发布 ready；
+设备错误有独立的渲染状态，阻止过期的物理 PASS 覆盖渲染失败。
+
+本地 Dawn／SwiftShader 属于软件 GPU。该适配器的透明 MSAA 曾出现白色边缘，因此
+仅软件 WebGPU 关闭 MSAA，并在诊断中记录实际配置；硬件分支保留抗锯齿，未将软件
+测试结果宣称为硬件性能。
+
 ## 打开即完成初始试衣
 
 此前原始摆放在臀部穿透，用户还没点击运行就能看到皮肤。现在默认打开、重置、修改
@@ -96,9 +131,40 @@ JSON 和单 HTML 都包含完整轨迹及压力。格式为 v3，含前后分别
 
 ## 构建与 /verify
 
+在仓库根目录执行，先安装仅用于构建的依赖并提供 Zig 0.14.1：
+
+```sh
+npm --prefix web/cloth-lab ci
+python -m pip install -r web/cloth-lab/requirements-build.txt
+ZIG=/path/to/zig node web/cloth-lab/build.js
+ZIG=/path/to/zig node web/cloth-lab/build.js --out dist/cloth-lab.html
+```
+
+默认生成 `web/cloth-lab/index.html` 与 `build.json`，可直接发布到 GitHub Pages。
+自定义输出生成指定 HTML 及相邻的 `<文件名>.build.json`；`index.html` 对应 `build.json`。
+交付时只需 HTML；相邻 JSON 用于核对构建来源，页面运行不会请求它。
+`--work-dir` 可指定中间文件目录；`--help` 无需编译器即可查看用法。`ZIG`、`ESBUILD`
+和 `PYTHON` 可选择现有本地工具；esbuild 也可从本地 `node_modules/.bin` 或 PATH 查找。
+构建过程不会下载工具或资产。
+
+旧的 Python 入口继续转发到同一 Node 构建器：
+
+```sh
+ZIG=/path/to/zig ESBUILD=/path/to/esbuild python scripts/build_cloth_lab.py
+```
+
+构建递归绑定源码、实际 bundle 依赖、人体／BVH、渲染器出处和许可证摘要；先完成临时
+产物，再原子替换发布文件。来源不兼容或构建失败会保留原输出。release 去掉机器路径
+相关的 WASM custom 元数据，可在不同源码根目录重建相同 HTML；物理可执行 sections、
+ABI、16 MiB 内存和真实数值与拆分前逐字节对照。
+
+完整本地验收：
+
 ```sh
 python tools/cloth_lab/build_avatar_fit.py  # 人体资产变化时重建装配
-ZIG=/path/to/zig ESBUILD=/path/to/esbuild python scripts/build_cloth_lab.py
+python tools/cloth_lab/verify_modular.py --output work/cloth-lab/build-verify
+python tools/cloth_lab/verify_webgpu.py --output work/cloth-lab/webgpu
+python tools/cloth_lab/verify_resize.py --output work/cloth-lab/resize
 python tools/cloth_lab/test_kernel.py
 python tools/cloth_lab/verify_fit.py --output work/cloth-lab/fit
 python tools/cloth_lab/verify_browser.py --output work/cloth-lab/browser

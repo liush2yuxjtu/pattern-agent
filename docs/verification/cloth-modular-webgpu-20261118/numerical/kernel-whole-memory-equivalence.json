@@ -1,0 +1,266 @@
+{
+  "verdict": "PASS",
+  "files": [
+    "/workspace/pattern-agent/work/cloth-lab/build-cli/portable intermediate/solver.wasm",
+    "/workspace/pattern-agent/work/cloth-lab/build-cli/strip-debug/original-root/solver.wasm",
+    "/workspace/pattern-agent/work/cloth-lab/build-cli/strip-debug/copied-root/solver.wasm"
+  ],
+  "actual": {
+    "exports": [
+      {
+        "name": "memory",
+        "kind": "memory"
+      },
+      {
+        "name": "pressure_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_area_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_force_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_summary_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_lambda_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_normal_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_face_start",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_dt",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_stiffness",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_margin",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_restore",
+        "kind": "function"
+      },
+      {
+        "name": "set_gravity",
+        "kind": "function"
+      },
+      {
+        "name": "position_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "previous_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "pin_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "uv_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "face_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "invmass_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "field_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "contacts_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "body_distance_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "stats_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "probe_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "body_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "body_normal_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "body_face_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "body_order_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "body_node_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "configure_body",
+        "kind": "function"
+      },
+      {
+        "name": "configure_material",
+        "kind": "function"
+      },
+      {
+        "name": "configure_cloth",
+        "kind": "function"
+      },
+      {
+        "name": "set_pin",
+        "kind": "function"
+      },
+      {
+        "name": "add_seam",
+        "kind": "function"
+      },
+      {
+        "name": "add_bend",
+        "kind": "function"
+      },
+      {
+        "name": "set_collision",
+        "kind": "function"
+      },
+      {
+        "name": "set_body_offset",
+        "kind": "function"
+      },
+      {
+        "name": "inject_vertex",
+        "kind": "function"
+      },
+      {
+        "name": "material_probe",
+        "kind": "function"
+      },
+      {
+        "name": "collision_probe",
+        "kind": "function"
+      },
+      {
+        "name": "step",
+        "kind": "function"
+      },
+      {
+        "name": "analyze",
+        "kind": "function"
+      },
+      {
+        "name": "set_clock",
+        "kind": "function"
+      },
+      {
+        "name": "finalize_seams",
+        "kind": "function"
+      },
+      {
+        "name": "set_cache",
+        "kind": "function"
+      },
+      {
+        "name": "get_frame",
+        "kind": "function"
+      },
+      {
+        "name": "get_time",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_clear",
+        "kind": "function"
+      },
+      {
+        "name": "coverage_ptr",
+        "kind": "function"
+      },
+      {
+        "name": "pressure_valid",
+        "kind": "function"
+      }
+    ],
+    "imports": [],
+    "tests": [
+      {
+        "name": "gravity12",
+        "memory": 16777216,
+        "fixed": true,
+        "positions": [
+          2.169073098912122e-8,
+          -0.051796380430459976,
+          0,
+          1,
+          -0.05179706960916519,
+          0,
+          1.2208118960188585e-7,
+          0.9482041001319885,
+          0
+        ],
+        "allMemorySha256": "06b1946046e64e097cb0432996ed3af878c552db2264680f5916b6814284aeac"
+      },
+      {
+        "name": "stretch1",
+        "memory": 16777216,
+        "fixed": true,
+        "positions": [
+          0.008933554403483868,
+          0.00007518957136198878,
+          0,
+          1.0909119844436646,
+          -0.0005378696951083839,
+          0,
+          0.00015457627887371927,
+          0.9984189867973328,
+          0
+        ],
+        "allMemorySha256": "61385251989f94382e4f944b3c4da98d636864e40b1f5e3cdd25446fa7103924"
+      },
+      {
+        "name": "stretch60",
+        "memory": 16777216,
+        "fixed": true,
+        "positions": [
+          0.04558117687702179,
+          -1.0328527688980103,
+          0,
+          1.0449657440185547,
+          -0.9959536194801331,
+          0,
+          0.009208940900862217,
+          -0.03430289030075073,
+          0
+        ],
+        "allMemorySha256": "a045f7efeed42f601d6a6c16e6cbc0a0785d7d35753e2cae40115fa4f603d73a"
+      }
+    ]
+  }
+}

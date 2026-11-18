@@ -1,0 +1,51 @@
+[
+  {
+    "flags": [
+      "--no-sandbox",
+      "--use-gl=angle",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu"
+    ],
+    "result": {
+      "error": "Page.evaluate: OperationError: A valid external Instance reference no longer exists."
+    },
+    "pageErrors": []
+  },
+  {
+    "flags": [
+      "--no-sandbox",
+      "--use-gl=angle",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader",
+      "--enable-unsafe-webgpu",
+      "--enable-features=Vulkan",
+      "--use-vulkan=swiftshader",
+      "--disable-vulkan-surface"
+    ],
+    "result": {
+      "secure": true,
+      "gpu": true,
+      "adapter": {
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": true
+      },
+      "deviceFeatures": [
+        "core-features-and-limits"
+      ],
+      "context": "GPUCanvasContext",
+      "format": "rgba8unorm",
+      "pixel": [
+        51,
+        102,
+        204,
+        255
+      ],
+      "errors": []
+    },
+    "pageErrors": []
+  }
+]

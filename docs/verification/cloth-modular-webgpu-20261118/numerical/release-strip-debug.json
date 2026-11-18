@@ -1,0 +1,216 @@
+{
+  "verdict": "PASS",
+  "commands": [
+    {
+      "argv": [
+        "/workspace/work/zig-x86_64-linux-0.14.1/zig",
+        "cc",
+        "-target",
+        "wasm32-freestanding",
+        "-O3",
+        "-nostdlib",
+        "-Wl,--no-entry",
+        "-rdynamic",
+        "-Wl,--initial-memory=16777216",
+        "-Wl,--max-memory=16777216",
+        "-Wl,-z,stack-size=262144",
+        "-Wl,--strip-debug",
+        "/workspace/pattern-agent/web/cloth-lab/src/solver.c",
+        "-o",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/strip-debug/original-root/solver.wasm"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/workspace/work/zig-x86_64-linux-0.14.1/zig",
+        "cc",
+        "-target",
+        "wasm32-freestanding",
+        "-O3",
+        "-nostdlib",
+        "-Wl,--no-entry",
+        "-rdynamic",
+        "-Wl,--initial-memory=16777216",
+        "-Wl,--max-memory=16777216",
+        "-Wl,-z,stack-size=262144",
+        "-Wl,--strip-debug",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/strip-debug/other-root/web/cloth-lab/src/solver.c",
+        "-o",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/strip-debug/copied-root/solver.wasm"
+      ],
+      "cwd": "/workspace/pattern-agent/work/cloth-lab/build-cli/strip-debug/other-root",
+      "exitCode": 0
+    }
+  ],
+  "original": {
+    "path": "/workspace/pattern-agent/work/cloth-lab/build-cli/before-strip/solver.wasm",
+    "bytes": 89828,
+    "sha256": "9bf573ba1f2197ff073e3f81d7cd63983dab6440eddaf4d8e034a2d4369e7a5b"
+  },
+  "release": {
+    "bytes": 20919,
+    "sha256": "6733d451ddba0b16f640c17198b80e59b432821a8eb77e1b95da1d42dabadeb2"
+  },
+  "checks": {
+    "allNonCustomWASMSectionsByteExact": true,
+    "crossSourceRootReleaseFilesByteExact": true,
+    "sameExportsImportsFixedMemoryAndBitExactKernelArraysAndWholeMemory": true
+  },
+  "originalSections": [
+    {
+      "id": 1,
+      "name": "",
+      "bytes": 71,
+      "sha256": "eb1fbaff61a980ae8873521eebb5ada40d8878b5dd717ba157b1a5bd9f9d7623"
+    },
+    {
+      "id": 3,
+      "name": "",
+      "bytes": 57,
+      "sha256": "dcdcb472a13c3bb6be3aa0a746670738943eafb51d45f1ecf6b1da459a4344e8"
+    },
+    {
+      "id": 4,
+      "name": "",
+      "bytes": 5,
+      "sha256": "b9e6dc08ba3a6e51af06434f96bca8e36d6aad4a86ba589b98eadbfa35804860"
+    },
+    {
+      "id": 5,
+      "name": "",
+      "bytes": 6,
+      "sha256": "9b5fbf82b4188d7e7d31fef10218c0402a8b3db3a66c2b6c846f06be084a852b"
+    },
+    {
+      "id": 6,
+      "name": "",
+      "bytes": 8,
+      "sha256": "e8e98690a80a9c24822da31880053d2c2a2dbf86b5e1989d57c714bede27d990"
+    },
+    {
+      "id": 7,
+      "name": "",
+      "bytes": 767,
+      "sha256": "7e5293b4e2d070f3e2fba1150990b0e51aac32730716e3f9ee49d39863cfc30e"
+    },
+    {
+      "id": 10,
+      "name": "",
+      "bytes": 19930,
+      "sha256": "01c37d644677ab3b9586eef80f3469b0e9d4a1b20028545dab5130947629bcb2"
+    },
+    {
+      "id": 11,
+      "name": "",
+      "bytes": 48,
+      "sha256": "a273922484e6c462f145bd5f6ada471e81a7555ceec59a41d4721be6a70350d9"
+    },
+    {
+      "id": 0,
+      "name": ".debug_loc",
+      "bytes": 29916,
+      "sha256": "ae9797d85cfdf5159ac0a052d4b9eba7b8cae4fc7548edd87738f78af92a8ffa"
+    },
+    {
+      "id": 0,
+      "name": ".debug_abbrev",
+      "bytes": 971,
+      "sha256": "87ef68751ade4ed844f170eed7bd4b2a9e3f4e7f9453c7720d5e696c63aad751"
+    },
+    {
+      "id": 0,
+      "name": ".debug_info",
+      "bytes": 15530,
+      "sha256": "412553a1302377e166b30853a3f138235b5c1beeb25fdc6a96e53df95a8ede07"
+    },
+    {
+      "id": 0,
+      "name": ".debug_ranges",
+      "bytes": 6030,
+      "sha256": "56c40cbd45cd4c07183edee8a72347a945f7fa2e13441961fb6406618caec93b"
+    },
+    {
+      "id": 0,
+      "name": ".debug_str",
+      "bytes": 2438,
+      "sha256": "41bb35d91986f695bf495b6eebfa6aaa79eb6b053ceedb52b2ba3722bb7d31d6"
+    },
+    {
+      "id": 0,
+      "name": ".debug_line",
+      "bytes": 12892,
+      "sha256": "5d0209d1c3a2ec6d9b6c90d93b113016f9ace6c318c6f6613b94ff76b0b252f0"
+    },
+    {
+      "id": 0,
+      "name": "name",
+      "bytes": 862,
+      "sha256": "78997de45429776a40b7e5549eb4fc9634f4aff25c259f320a1099b13e112777"
+    },
+    {
+      "id": 0,
+      "name": "producers",
+      "bytes": 137,
+      "sha256": "9fed86db207fb1636290502b646729beeb290c014b98a5d04a07e8d403cfca91"
+    },
+    {
+      "id": 0,
+      "name": "target_features",
+      "bytes": 106,
+      "sha256": "25b2b5df8e8477586ea4df594acb0be9e614360fdc6f2b7c2be53447c5e54684"
+    }
+  ],
+  "releaseSections": [
+    {
+      "id": 1,
+      "name": "",
+      "bytes": 71,
+      "sha256": "eb1fbaff61a980ae8873521eebb5ada40d8878b5dd717ba157b1a5bd9f9d7623"
+    },
+    {
+      "id": 3,
+      "name": "",
+      "bytes": 57,
+      "sha256": "dcdcb472a13c3bb6be3aa0a746670738943eafb51d45f1ecf6b1da459a4344e8"
+    },
+    {
+      "id": 4,
+      "name": "",
+      "bytes": 5,
+      "sha256": "b9e6dc08ba3a6e51af06434f96bca8e36d6aad4a86ba589b98eadbfa35804860"
+    },
+    {
+      "id": 5,
+      "name": "",
+      "bytes": 6,
+      "sha256": "9b5fbf82b4188d7e7d31fef10218c0402a8b3db3a66c2b6c846f06be084a852b"
+    },
+    {
+      "id": 6,
+      "name": "",
+      "bytes": 8,
+      "sha256": "e8e98690a80a9c24822da31880053d2c2a2dbf86b5e1989d57c714bede27d990"
+    },
+    {
+      "id": 7,
+      "name": "",
+      "bytes": 767,
+      "sha256": "7e5293b4e2d070f3e2fba1150990b0e51aac32730716e3f9ee49d39863cfc30e"
+    },
+    {
+      "id": 10,
+      "name": "",
+      "bytes": 19930,
+      "sha256": "01c37d644677ab3b9586eef80f3469b0e9d4a1b20028545dab5130947629bcb2"
+    },
+    {
+      "id": 11,
+      "name": "",
+      "bytes": 48,
+      "sha256": "a273922484e6c462f145bd5f6ada471e81a7555ceec59a41d4721be6a70350d9"
+    }
+  ],
+  "kernelReceipt": "/workspace/pattern-agent/work/cloth-lab/build-cli/strip-debug/kernel.stdout.json"
+}

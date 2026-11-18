@@ -1,0 +1,37 @@
+{
+  "sourceCommit": "aa3f4970ec072beb311a7655db72dd1eff5bf150",
+  "sourceSha256": {
+    "web/cloth-lab/index.html": "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+    "web/cloth-lab/src/solver.c": "a93fcf2d1ccac68bf3d513653edcdab1bd08722776e98a97fed6770f6a697c52",
+    "web/cloth-lab/src/avatar-fit.json": "33d96baeb5a7fba1fb0198bb0e7e9c94568496cd79929c4093b46597b8ce1389",
+    "web/human-studio/assets/human.json": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6"
+  },
+  "build": {
+    "fingerprint": "042ed8f8fefa1882c40aa88a6fc174b773123c035a6de1f12fa1793fa00ff2f1",
+    "htmlSha256": "63863fdc973769eb6d80fb3d0a80b2d4254928aa450b587b07cc55345947d229",
+    "htmlBytes": 2120088,
+    "wasmSha256": "9bf573ba1f2197ff073e3f81d7cd63983dab6440eddaf4d8e034a2d4369e7a5b",
+    "bodySourceSha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "vertices": 13380,
+    "triangles": 26756,
+    "tools": {
+      "zig": "0.14.1",
+      "esbuild": "0.25.12"
+    }
+  },
+  "physicalFields": [
+    "parameters",
+    "body",
+    "positions",
+    "previous",
+    "pinPositions",
+    "contactFlags",
+    "triangles",
+    "restUV",
+    "triangleFields",
+    "pressureState",
+    "fitPressure",
+    "pressureContacts"
+  ],
+  "scope": "Verified pre-refactor real WASM/MakeHuman standalone. Physical arrays and all61 recorded buffers must remain exact; timing and renderer telemetry may change."
+}

@@ -1,0 +1,175 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "help": true,
+    "legacy-help": true,
+    "unknown-option": true,
+    "missing-output": true,
+    "invalid-extension": true,
+    "source-output": true,
+    "missing-compiler": true,
+    "stale-profile": true,
+    "default-build-copy": true,
+    "custom-output": true,
+    "legacy-build": true,
+    "local-esbuild-discovery": true,
+    "deterministicAcrossEntrypointsCwdOutAndWorkDirs": true,
+    "unchangedSolverAndBodySourceHashes": true,
+    "allPackedBodyBVHAndWASMBytesEqualPublishedBaseline": true,
+    "defaultBuildCopyUsesSameInputsBodyAndExecutableWASMSections": true,
+    "completeRelativeSourceHashesMatchConsumerFiles": true,
+    "atomic-rollback": true,
+    "failedManifestRenamePreservesBothPreviousArtifacts": true,
+    "publishedArtifactsUntouched": true
+  },
+  "commands": [
+    {
+      "case": "help",
+      "argv": [
+        "node",
+        "web/cloth-lab/build.js",
+        "--help"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 0
+    },
+    {
+      "case": "legacy-help",
+      "argv": [
+        "python",
+        "scripts/build_cloth_lab.py",
+        "--help"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 0
+    },
+    {
+      "case": "unknown-option",
+      "argv": [
+        "node",
+        "web/cloth-lab/build.js",
+        "--missing"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 1
+    },
+    {
+      "case": "missing-output",
+      "argv": [
+        "node",
+        "web/cloth-lab/build.js",
+        "--out"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 1
+    },
+    {
+      "case": "invalid-extension",
+      "argv": [
+        "node",
+        "web/cloth-lab/build.js",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/bad.json"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 1
+    },
+    {
+      "case": "source-output",
+      "argv": [
+        "node",
+        "web/cloth-lab/build.js",
+        "--out",
+        "web/cloth-lab/src/template.html"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 1
+    },
+    {
+      "case": "missing-compiler",
+      "argv": [
+        "node",
+        "web/cloth-lab/build.js",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/never-written.html"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 1
+    },
+    {
+      "case": "stale-profile",
+      "argv": [
+        "node",
+        "/tmp/cloth-lab-builder-s6pies29/repo/web/cloth-lab/build.js"
+      ],
+      "cwd": "/tmp/cloth-lab-builder-s6pies29",
+      "exitCode": 1
+    },
+    {
+      "case": "default-build-copy",
+      "argv": [
+        "node",
+        "/tmp/cloth-lab-builder-s6pies29/repo/web/cloth-lab/build.js"
+      ],
+      "cwd": "/tmp/cloth-lab-builder-s6pies29",
+      "exitCode": 0
+    },
+    {
+      "case": "custom-output",
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab/build.js",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/portable copy.html",
+        "--work-dir",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/portable intermediate"
+      ],
+      "cwd": "/tmp/cloth-lab-builder-s6pies29",
+      "exitCode": 0
+    },
+    {
+      "case": "legacy-build",
+      "argv": [
+        "python",
+        "/workspace/pattern-agent/scripts/build_cloth_lab.py",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/legacy/index.html"
+      ],
+      "cwd": "/tmp/cloth-lab-builder-s6pies29",
+      "exitCode": 0
+    },
+    {
+      "case": "local-esbuild-discovery",
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab/build.js",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/local-discovery.html"
+      ],
+      "cwd": "/tmp/cloth-lab-builder-s6pies29",
+      "exitCode": 0
+    },
+    {
+      "case": "atomic-rollback",
+      "argv": [
+        "node",
+        "--require",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/inject-rename-failure.cjs",
+        "/workspace/pattern-agent/web/cloth-lab/build.js",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-lab/build-cli/atomic-failure/existing.html"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 1
+    }
+  ],
+  "candidate": {
+    "path": "/workspace/pattern-agent/work/cloth-lab/build-cli/portable copy.html",
+    "fingerprint": "58e781304f1f851fae3ce8a2df3d9de8bae403f199febb12913e810ccfcea0de",
+    "htmlSha256": "4cddb675369ba472a42753e34457606cac1ce7828028808b3015fa0cbaa400a7",
+    "htmlBytes": 2639501,
+    "wasmSha256": "9bf573ba1f2197ff073e3f81d7cd63983dab6440eddaf4d8e034a2d4369e7a5b",
+    "bodySourceSha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6"
+  },
+  "limitation": "Unchanged Zig DWARF includes the source checkout root; same-source builds are byte-identical across caller cwd, output path, work path and Python/Node entrypoints. Source-copy builds have identical non-custom WASM sections."
+}

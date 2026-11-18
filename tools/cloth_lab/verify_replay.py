@@ -18,10 +18,11 @@ import re
 import statistics
 import threading
 import time
-from urllib.parse import urljoin
+from urllib.parse import urljoin, quote
 
 import numpy as np
 from playwright.sync_api import sync_playwright
+from browser_runtime import (launch_browser, instrument_context, renderer_url, assert_renderer, add_renderer_argument)
 
 from verify_browser import ROOT, new_api_context, save_json, expect_rejection
 from oracle import verify
@@ -70,13 +71,15 @@ def colors(page, project, column, scale):
 
 
 def run(args,base):
+    base=renderer_url(base,args.renderer)
     out=args.output;out.mkdir(parents=True,exist_ok=True)
     report={'url':base,'startedAtUnix':time.time(),'checks':{},'pageErrors':[],'consoleErrors':[],
             'badResponses':[],'browserPath':'User-requested repository Playwright; Browser plugin not available.',
             'scope':'Recorded discrete states, seam topology, actual MakeHuman collision and synthetic tensor fields; physical fit NOT_RUN.'}
     with sync_playwright() as p:
-        browser=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+        browser=launch_browser(p,args.browser)
         context=browser.new_context(viewport={'width':1440,'height':1180},accept_downloads=True)
+        instrument_context(context)
         context.add_init_script(INSTRUMENT)
         page=context.new_page()
         page.on('pageerror',lambda e:report['pageErrors'].append(str(e)))
@@ -92,6 +95,7 @@ def run(args,base):
             report['deployedCommit']=build['commit']
         assert page.goto(base,wait_until='networkidle').status==200
         page.wait_for_function('clothLab?.ready')
+        report['rendering']=assert_renderer(page,args.renderer)
         assert page.title()=='Pattern Agent · WASM 布料实验室'
         assert page.locator('h1').inner_text() and page.locator('#replay-status').is_visible()
         report['source']=page.evaluate('clothLab.source')
@@ -317,12 +321,12 @@ if __name__=='__main__':
     parser.add_argument('--browser',default='/usr/bin/chromium')
     parser.add_argument('--body-source',type=Path,default=ROOT/'web/human-studio/assets/human.json')
     parser.add_argument('--expected-html-sha');parser.add_argument('--expected-commit')
-    args=parser.parse_args()
+    add_renderer_argument(parser);args=parser.parse_args()
     if args.base_url:run(args,args.base_url)
     else:
         class Handler(SimpleHTTPRequestHandler):
             def __init__(self,*a,**k):super().__init__(*a,directory=str(args.html.parent),**k)
             def log_message(self,*a):pass
         server=ThreadingHTTPServer(('127.0.0.1',0),Handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
-        try:run(args,f'http://127.0.0.1:{server.server_port}/')
+        try:run(args,f'http://127.0.0.1:{server.server_port}/{quote(args.html.name)}')
         finally:server.shutdown();server.server_close();thread.join()

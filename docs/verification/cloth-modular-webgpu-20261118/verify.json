@@ -1,0 +1,64 @@
+{
+  "skill": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/cloth-lab.md",
+  "candidateParent": "b9b67e79302e02dbb967bfff148446c960217fb6",
+  "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "fingerprint": "0f2afe8f6957102a7ae925f675d0dfc8f2ddbfef350d87b420ab53631ec69fc1",
+  "sourceHashes": "candidate.json",
+  "commands": [
+    "local/original-suites.json",
+    "local/fit-command.json",
+    "local/qa-summary.json",
+    "local/pages-commands.json"
+  ],
+  "observations": {
+    "fit": {
+      "verdict": "PASS",
+      "receipt": "local/fit.json"
+    },
+    "browser": {
+      "verdict": "PASS",
+      "receipt": "local/browser.json"
+    },
+    "replay": {
+      "verdict": "PASS",
+      "receipt": "local/replay.json"
+    },
+    "handoff": {
+      "verdict": "PASS",
+      "receipt": "local/handoff.json"
+    },
+    "build": {
+      "verdict": "PASS",
+      "receipt": "local/build.json"
+    },
+    "renderers": {
+      "verdict": "PASS",
+      "receipt": "local/renderers.json"
+    },
+    "resize": {
+      "verdict": "PASS",
+      "receipt": "local/resize.json"
+    },
+    "waist": {
+      "verdict": "PASS",
+      "receipt": "local/waist.json"
+    }
+  },
+  "allOriginalChecks": 52,
+  "allIndependentRecordedFrames": 61,
+  "kernelAnalyticTests": 3,
+  "waistProbes": 4,
+  "sourceHashRecheck": "PASS",
+  "sourceAndRendererReleaseBoundary": "PASS",
+  "livePublication": "PENDING",
+  "verdict": "PASS",
+  "scope": "Local refactor/standalone/WASM numerical and true WebGPU/WebGL runtime. Physical fit and manufacturing NOT_RUN.",
+  "cleanup": "All browser contexts, servers, and temporary build fixture processes closed.",
+  "recordedAtUtc": "2026-11-18T10:05:14.347860+00:00",
+  "stagedWhitespaceCheck": {
+    "initial": "FAIL:13 upstream space-before-tab lines in verbatim three.webgpu.js",
+    "correction": ".gitattributes exempts only space-before-tab for this pinned vendor file; upstream bytes unchanged",
+    "final": "PASS:git diff --cached --check exit0"
+  }
+}

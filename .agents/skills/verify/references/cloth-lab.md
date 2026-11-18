@@ -1,7 +1,8 @@
 # Inline WASM cloth laboratory
 
 Working directory: repository root. Scope: `web/cloth-lab/`,
-`scripts/build_cloth_lab.py`, `tools/cloth_lab/`, and its link on the Pages index.
+`scripts/build_cloth_lab.py`, `scripts/cloth_lab_body.py`, `tools/cloth_lab/`, and
+its link on the Pages index.
 This recipe does not approve the historical T-shirt or calibrate physical fit.
 
 ## Prerequisites and candidate
@@ -14,7 +15,12 @@ Record base commit, `web/cloth-lab/build.json` source/HTML/WASM/body hashes,
 changed file hashes and raw command exit statuses before each commit.
 
 ```sh
-python scripts/build_cloth_lab.py
+node web/cloth-lab/build.js
+python tools/cloth_lab/verify_modular.py --output work/cloth-modular/build
+mkdir -p work/cloth-modular/baseline
+git show aa3f497:web/cloth-lab/index.html > work/cloth-modular/baseline/index.html
+python tools/cloth_lab/verify_webgpu.py --output work/cloth-modular/renderers
+python tools/cloth_lab/verify_resize.py --output work/cloth-modular/resize
 python tools/cloth_lab/test_kernel.py
 python tools/cloth_lab/verify_fit.py --output work/cloth-lab/fit
 python tools/cloth_lab/verify_browser.py --output work/cloth-lab/local
@@ -73,6 +79,103 @@ reopen with a screenshot when claiming that boundary.
 `verify_browser.py` owns a temporary HTTP server and closes its browsers/server.
 It tests the exact HTML. Raw evidence belongs in ignored `work/cloth-lab/`;
 copy selected receipts, actual exports and images to `docs/verification/`.
+
+## Modular source and standalone renderer boundary
+
+`node web/cloth-lab/build.js` is the build entry. The Python entry transparently
+forwards the same arguments and exit status. `--out path/custom.html` produces
+`path/custom.html` and `path/custom.build.json`; `--work-dir` isolates intermediate
+files. The emitted HTML remains one inline IIFE with actual WASM/body/Three.js,
+and has no runtime module import, package installation or network requirement.
+
+`verify_modular.py` builds twice to different custom output directories and through
+the legacy entry, requiring identical HTML and manifests. It checks every
+recursive source/metafile input against its recorded hash, actual embedded WASM,
+body and BVH against `aa3f497`, and unchanged `solver.c`, `avatar-fit.json` and
+source MakeHuman bytes. The executable WASM sections must remain byte-identical;
+the release builder may only remove the observed `.debug_*`, `name`, `producers`
+and `target_features` custom metadata, with their names/bytes/hashes and old/new
+module hashes retained. No added or modified custom section is accepted. The
+original DWARF embedded absolute source paths,
+so builds in a different checkout changed the fingerprint despite identical
+physics. Require identical complete HTML and manifest in a copied source root
+as well as repeated custom outputs. In that isolated source copy, require stale
+body fit to reject without replacing an existing output, and a nested source
+change to change the fingerprint. This gate does not replace browser/physics
+assertions.
+
+The four existing browser suites default to **forced actual WebGPU**; use
+`--renderer webgl` to exercise their unchanged assertions with WebGL2. The
+local `--html` route requests the URL-quoted actual basename, including custom
+output names with spaces; it must never load a directory listing or silently
+substitute a neighboring `index.html`. The expected HTML digest still applies.
+The shared `browser_runtime.py` launches system Chromium on this managed host with:
+
+```text
+--no-sandbox --use-gl=angle --use-angle=swiftshader
+--enable-unsafe-swiftshader --enable-unsafe-webgpu
+--enable-features=Vulkan --use-vulkan=swiftshader
+```
+
+These are real Dawn/SwiftShader software rendering runs, not hardware benchmarks.
+Do **not** add `--disable-vulkan-surface`: native GPU readback and queue submission
+passed with that flag, but canvas screenshots were entirely transparent. Removing
+it made the native clear appear as the exact expected RGB `[51, 102, 204]` in
+both single-frame and continuous-frame screenshots. Keep that failed control
+alongside the working raw screenshots. No policy, origin security or TLS setting
+is changed. The tests forward native adapter/device/context/queue calls unchanged
+and count actual device creation, canvas configuration with that same device,
+command submission and device errors. Diagnostics alone cannot establish PASS.
+
+`verify_webgpu.py` starts from a real empty localhost document for each offline
+reopen, proves no old app/API/WASM state exists, then disables networking and
+executes the actual downloaded HTML. This retains a secure origin for WebGPU;
+`about:blank` cannot establish that boundary. Require zero subsequent requests,
+the requested actual backend, exact positions/history/pins/contact pressure and
+recorded selection, exact next-step continuation and a recursive save/reopen.
+The original about:blank offline checks remain useful fallback coverage.
+
+Also require actual first-ready front/side/back fabric pixels, independent
+complete-body geometry/coverage/pressure/waist, distinct tensor/pressure pixels
+and original shader tolerances on both backends. Capture the untouched initial
+view before any camera/mode control can trigger another draw: a later redraw
+previously hid black/stale initial uniforms. The current first-render path
+updates world matrices before `compileAsync`, renders on a later animation frame,
+waits for actual queue completion/presentation and rechecks readiness. Software
+WebGPU uses no MSAA after actual transparent-edge artifacts were observed; retain
+the actual AA diagnostic rather than claiming a hardware result.
+The baseline is a real copy of
+`git show aa3f497:web/cloth-lab/index.html` (default
+`work/cloth-modular/baseline/index.html`, override `--baseline-html`). Reopen it
+in Chromium and compare default, +1 and +60 solver-step arrays as Float32 bytes
+encoded in the page before JSON can erase negative zero. Full 61-frame replay
+and all original controls remain separate required gates. Test `auto` selecting
+WebGPU, native `--disable-webgpu` auto fallback, strict `webgpu` failure with no
+GL canvas, and real active-device destruction: auto must preserve physics and
+camera/resize input when switching; strict WebGPU must block and clear readiness.
+After that forced device failure, actual reset/step clicks and public mutators
+must not integrate or alter state. Readable `project()`/`performanceLog()` must
+not replace the visible BLOCKED verdict or unlock the physical controls.
+
+`verify_resize.py` retains the actual zero-width GPU failure control: at software
+pixel ratio `.8`, clamping CSS width to `1` produced a zero-width backing texture
+and a real validation error. Test widths `0`, `1` and `.75` CSS px, heights `0`
+and `1` CSS px, and `display:none`, including a synchronous mode redraw and real
+full-page screenshots. Require zero new GPU submissions/texture allocations
+while layout cannot produce one backing pixel, no invalid native texture size,
+no suppressed device error, unchanged physical bytes, and actual fabric pixels
+after restoring layout. A seventh hidden-at-boot case must remain unready with
+zero GPU submissions until revealed, then present the real first frame after
+the original 240 physical steps. The renderer preserves its last valid backing
+size while paused. Native `createTexture` dimensions and viewport/window/backing
+ResizeObserver samples are retained in the receipt; never ignore a validation
+error or weaken the original fit assertions to recover this path.
+
+Run all browser suites **sequentially**. On this host, the numerical verification
+environment uses `PYTHONPATH=/workspace/work/verifydeps`,
+`OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1`; the existing Zig/esbuild paths are set
+through `ZIG` and `ESBUILD`. Preserve command stdout/stderr and receipts under
+`work/cloth-modular/` before copying the final evidence to `docs/verification/`.
 
 ## Full physical replay
 

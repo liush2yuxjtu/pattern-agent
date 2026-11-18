@@ -1,0 +1,371 @@
+{
+  "startedAtUnix": 1794995656.6471043,
+  "baselineRef": "aa3f497",
+  "checks": {
+    "frozenSolverAvatarProfileAndSourceBodyExact": true,
+    "repeatableIndependentCustomOutputsAndManifest": true,
+    "singleInlineIIFEAndRealWASMBodyNoExternalDependencies": true,
+    "recursiveSourcesAndActualBundleInputsAreHashed": true,
+    "legacyPythonForwardsTheSameCLIAndBuild": true,
+    "staleFitRejectedAndExistingArtifactPreserved": true,
+    "differentSourceRootProducesIdenticalStandaloneBytesAndManifest": true,
+    "nestedSourceChangesFingerprintWithoutChangingKernel": true
+  },
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab/build.js",
+        "--help"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab/build.js",
+        "--unknown-option"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 1
+    },
+    {
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab/build.js",
+        "--out"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 1
+    },
+    {
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab/build.js",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-modular/viewport-fix/build/first/custom.html",
+        "--work-dir",
+        "/workspace/pattern-agent/work/cloth-modular/viewport-fix/build/first/work"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab/build.js",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-modular/viewport-fix/build/second/custom.html",
+        "--work-dir",
+        "/workspace/pattern-agent/work/cloth-modular/viewport-fix/build/second/work"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "python",
+        "/workspace/pattern-agent/scripts/build_cloth_lab.py",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-modular/viewport-fix/build/legacy.html",
+        "--work-dir",
+        "/workspace/pattern-agent/work/cloth-modular/viewport-fix/build/legacy-work"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/cloth-build-contract-zmk0zpj8/web/cloth-lab/build.js",
+        "--out",
+        "/tmp/cloth-build-contract-zmk0zpj8/keep.html",
+        "--work-dir",
+        "/tmp/cloth-build-contract-zmk0zpj8/build-work"
+      ],
+      "cwd": "/tmp/cloth-build-contract-zmk0zpj8",
+      "exitCode": 1
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/cloth-build-contract-zmk0zpj8/web/cloth-lab/build.js",
+        "--out",
+        "/tmp/cloth-build-contract-zmk0zpj8/portable.html",
+        "--work-dir",
+        "/tmp/cloth-build-contract-zmk0zpj8/build-work"
+      ],
+      "cwd": "/tmp/cloth-build-contract-zmk0zpj8",
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/cloth-build-contract-zmk0zpj8/web/cloth-lab/build.js",
+        "--out",
+        "/tmp/cloth-build-contract-zmk0zpj8/nested.html",
+        "--work-dir",
+        "/tmp/cloth-build-contract-zmk0zpj8/build-work"
+      ],
+      "cwd": "/tmp/cloth-build-contract-zmk0zpj8",
+      "exitCode": 0
+    }
+  ],
+  "first": {
+    "kernelIdentity": {
+      "rawSha256": "6733d451ddba0b16f640c17198b80e59b432821a8eb77e1b95da1d42dabadeb2",
+      "baselineRawSha256": "9bf573ba1f2197ff073e3f81d7cd63983dab6440eddaf4d8e034a2d4369e7a5b",
+      "nonCustomSha256": "19536db31ffcfed11684532d92fb2cc08ca7907bce3658094f526c21dd001d94",
+      "nonCustomSectionsBitIdentical": true,
+      "removedCustomSections": [
+        {
+          "name": ".debug_loc",
+          "bytes": 29920,
+          "sha256": "3da40261e7c7251290eb443f0975df3bf0897f2cbf743adff39dc37d438a87ef"
+        },
+        {
+          "name": ".debug_abbrev",
+          "bytes": 974,
+          "sha256": "c49c7223413296a7ce2eb501b89b2e6e1900242ff6b09af2c0a0b124ad97e344"
+        },
+        {
+          "name": ".debug_info",
+          "bytes": 15533,
+          "sha256": "bda18c8e2f6449d1507801d9fb99befcc09ab94e30acd86ac102f1d938bd7002"
+        },
+        {
+          "name": ".debug_ranges",
+          "bytes": 6033,
+          "sha256": "e14719cfe5b24b7686ea99d4e9fc6929f8398ec303e76b6ecd8ed3add11f1c7d"
+        },
+        {
+          "name": ".debug_str",
+          "bytes": 2441,
+          "sha256": "c7176c323697249d5a1a0660c48322ea3ebbec04ec4e93d97a9cc6dea089b90d"
+        },
+        {
+          "name": ".debug_line",
+          "bytes": 12895,
+          "sha256": "7ea07b3c0dfc1391ae540c4ac238c5aa4a4e08c9d5f75a20e87db020bd9b4e8b"
+        },
+        {
+          "name": "name",
+          "bytes": 865,
+          "sha256": "d4d161583d5b0410752997f07494bed213ab5f8a16e2e9b8e574fa9f4107ceb3"
+        },
+        {
+          "name": "producers",
+          "bytes": 140,
+          "sha256": "ccbac0c5ddb038b8bda57ea50273f84367b5fd9b8c472c74f08a5151866c7040"
+        },
+        {
+          "name": "target_features",
+          "bytes": 108,
+          "sha256": "e45c874b0b8728cd23342a20955d6acc01949cbd359cec2b3d6ecc742d7ba030"
+        }
+      ],
+      "sections": [
+        {
+          "id": 1,
+          "name": null,
+          "bytes": 73,
+          "sha256": "056eccfb5434247e80e166b9411e2ddf21756bcb9faa317331f2c0c6da84d6db"
+        },
+        {
+          "id": 3,
+          "name": null,
+          "bytes": 59,
+          "sha256": "9db75399b3899bf1eed3bc4be794897d4d27d088e1de66f34e1a8e05ad73e944"
+        },
+        {
+          "id": 4,
+          "name": null,
+          "bytes": 7,
+          "sha256": "c76f4de1180ab83342c9dc7647fdc8b3999dd865c2bd7154574050855d80c7e0"
+        },
+        {
+          "id": 5,
+          "name": null,
+          "bytes": 8,
+          "sha256": "6f5798f648ecbfead7d9737f823cbc46b86229bcc9056d607f0bc15ee7644ce4"
+        },
+        {
+          "id": 6,
+          "name": null,
+          "bytes": 10,
+          "sha256": "263e50290894a48e0022658e0cf4f1e9860e08d089df9b042ae5b6815f68ac63"
+        },
+        {
+          "id": 7,
+          "name": null,
+          "bytes": 770,
+          "sha256": "28f7296e20330e9b63b393175a956cf5fa478265fee17a4010aa41032dd7b67d"
+        },
+        {
+          "id": 10,
+          "name": null,
+          "bytes": 19934,
+          "sha256": "685f7d5dae8f0747e0c059b6797c079d4cbe5cf4d5336a0406f8a624e303a416"
+        },
+        {
+          "id": 11,
+          "name": null,
+          "bytes": 50,
+          "sha256": "2b525bef16fafd4f2fa5a3259127c81126ddba4651462fe98057a63bb4ec530f"
+        }
+      ]
+    },
+    "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+    "htmlBytes": 2550975,
+    "wasmSha256": "6733d451ddba0b16f640c17198b80e59b432821a8eb77e1b95da1d42dabadeb2",
+    "fingerprint": "0f2afe8f6957102a7ae925f675d0dfc8f2ddbfef350d87b420ab53631ec69fc1",
+    "moduleCount": 14,
+    "sourceCount": 34,
+    "sourceModules": [
+      "web/cloth-lab/src/app.js",
+      "web/cloth-lab/src/contact-state.js",
+      "web/cloth-lab/src/controls.js",
+      "web/cloth-lab/src/diagnostics.js",
+      "web/cloth-lab/src/lifecycle.js",
+      "web/cloth-lab/src/pattern.js",
+      "web/cloth-lab/src/persistence.js",
+      "web/cloth-lab/src/pressure.js",
+      "web/cloth-lab/src/rendering.js",
+      "web/cloth-lab/src/replay.js",
+      "web/cloth-lab/src/runtime-context.js",
+      "web/cloth-lab/src/simulation.js",
+      "web/cloth-lab/src/trajectory.js",
+      "web/cloth-lab/src/wear.js"
+    ]
+  },
+  "second": {
+    "kernelIdentity": {
+      "rawSha256": "6733d451ddba0b16f640c17198b80e59b432821a8eb77e1b95da1d42dabadeb2",
+      "baselineRawSha256": "9bf573ba1f2197ff073e3f81d7cd63983dab6440eddaf4d8e034a2d4369e7a5b",
+      "nonCustomSha256": "19536db31ffcfed11684532d92fb2cc08ca7907bce3658094f526c21dd001d94",
+      "nonCustomSectionsBitIdentical": true,
+      "removedCustomSections": [
+        {
+          "name": ".debug_loc",
+          "bytes": 29920,
+          "sha256": "3da40261e7c7251290eb443f0975df3bf0897f2cbf743adff39dc37d438a87ef"
+        },
+        {
+          "name": ".debug_abbrev",
+          "bytes": 974,
+          "sha256": "c49c7223413296a7ce2eb501b89b2e6e1900242ff6b09af2c0a0b124ad97e344"
+        },
+        {
+          "name": ".debug_info",
+          "bytes": 15533,
+          "sha256": "bda18c8e2f6449d1507801d9fb99befcc09ab94e30acd86ac102f1d938bd7002"
+        },
+        {
+          "name": ".debug_ranges",
+          "bytes": 6033,
+          "sha256": "e14719cfe5b24b7686ea99d4e9fc6929f8398ec303e76b6ecd8ed3add11f1c7d"
+        },
+        {
+          "name": ".debug_str",
+          "bytes": 2441,
+          "sha256": "c7176c323697249d5a1a0660c48322ea3ebbec04ec4e93d97a9cc6dea089b90d"
+        },
+        {
+          "name": ".debug_line",
+          "bytes": 12895,
+          "sha256": "7ea07b3c0dfc1391ae540c4ac238c5aa4a4e08c9d5f75a20e87db020bd9b4e8b"
+        },
+        {
+          "name": "name",
+          "bytes": 865,
+          "sha256": "d4d161583d5b0410752997f07494bed213ab5f8a16e2e9b8e574fa9f4107ceb3"
+        },
+        {
+          "name": "producers",
+          "bytes": 140,
+          "sha256": "ccbac0c5ddb038b8bda57ea50273f84367b5fd9b8c472c74f08a5151866c7040"
+        },
+        {
+          "name": "target_features",
+          "bytes": 108,
+          "sha256": "e45c874b0b8728cd23342a20955d6acc01949cbd359cec2b3d6ecc742d7ba030"
+        }
+      ],
+      "sections": [
+        {
+          "id": 1,
+          "name": null,
+          "bytes": 73,
+          "sha256": "056eccfb5434247e80e166b9411e2ddf21756bcb9faa317331f2c0c6da84d6db"
+        },
+        {
+          "id": 3,
+          "name": null,
+          "bytes": 59,
+          "sha256": "9db75399b3899bf1eed3bc4be794897d4d27d088e1de66f34e1a8e05ad73e944"
+        },
+        {
+          "id": 4,
+          "name": null,
+          "bytes": 7,
+          "sha256": "c76f4de1180ab83342c9dc7647fdc8b3999dd865c2bd7154574050855d80c7e0"
+        },
+        {
+          "id": 5,
+          "name": null,
+          "bytes": 8,
+          "sha256": "6f5798f648ecbfead7d9737f823cbc46b86229bcc9056d607f0bc15ee7644ce4"
+        },
+        {
+          "id": 6,
+          "name": null,
+          "bytes": 10,
+          "sha256": "263e50290894a48e0022658e0cf4f1e9860e08d089df9b042ae5b6815f68ac63"
+        },
+        {
+          "id": 7,
+          "name": null,
+          "bytes": 770,
+          "sha256": "28f7296e20330e9b63b393175a956cf5fa478265fee17a4010aa41032dd7b67d"
+        },
+        {
+          "id": 10,
+          "name": null,
+          "bytes": 19934,
+          "sha256": "685f7d5dae8f0747e0c059b6797c079d4cbe5cf4d5336a0406f8a624e303a416"
+        },
+        {
+          "id": 11,
+          "name": null,
+          "bytes": 50,
+          "sha256": "2b525bef16fafd4f2fa5a3259127c81126ddba4651462fe98057a63bb4ec530f"
+        }
+      ]
+    },
+    "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+    "htmlBytes": 2550975,
+    "wasmSha256": "6733d451ddba0b16f640c17198b80e59b432821a8eb77e1b95da1d42dabadeb2",
+    "fingerprint": "0f2afe8f6957102a7ae925f675d0dfc8f2ddbfef350d87b420ab53631ec69fc1",
+    "moduleCount": 14,
+    "sourceCount": 34,
+    "sourceModules": [
+      "web/cloth-lab/src/app.js",
+      "web/cloth-lab/src/contact-state.js",
+      "web/cloth-lab/src/controls.js",
+      "web/cloth-lab/src/diagnostics.js",
+      "web/cloth-lab/src/lifecycle.js",
+      "web/cloth-lab/src/pattern.js",
+      "web/cloth-lab/src/persistence.js",
+      "web/cloth-lab/src/pressure.js",
+      "web/cloth-lab/src/rendering.js",
+      "web/cloth-lab/src/replay.js",
+      "web/cloth-lab/src/runtime-context.js",
+      "web/cloth-lab/src/simulation.js",
+      "web/cloth-lab/src/trajectory.js",
+      "web/cloth-lab/src/wear.js"
+    ]
+  },
+  "verdict": "PASS",
+  "finishedAtUnix": 1794995660.782629
+}

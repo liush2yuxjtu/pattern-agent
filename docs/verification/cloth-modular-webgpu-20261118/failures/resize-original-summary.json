@@ -1,0 +1,336 @@
+{
+  "verdict": "FAIL",
+  "htmlSha256": "386a0ebbcb18b1d3702a190d637684804965225973e88f3a54e33dfccc74b7d5",
+  "cases": {
+    "zero-width": {
+      "verdict": "FAIL",
+      "invalidTextureSizes": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            0,
+            392,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            0,
+            392,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "layoutSamples": [
+        {
+          "reason": "ResizeObserver",
+          "time": 554.6000000089407,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 4615.100000008941,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 0,
+          "cssHeight": 490,
+          "canvasWidth": 704,
+          "canvasHeight": 424
+        },
+        {
+          "reason": "window-resize",
+          "time": 4771.29999999702,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 0,
+          "cssHeight": 490,
+          "canvasWidth": 0,
+          "canvasHeight": 392
+        }
+      ]
+    },
+    "one-css-pixel-width": {
+      "verdict": "FAIL",
+      "invalidTextureSizes": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            0,
+            392,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            0,
+            392,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "layoutSamples": [
+        {
+          "reason": "ResizeObserver",
+          "time": 280.20000000298023,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 3812.7000000029802,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 1,
+          "cssHeight": 490,
+          "canvasWidth": 704,
+          "canvasHeight": 424
+        },
+        {
+          "reason": "window-resize",
+          "time": 3940.300000011921,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 1,
+          "cssHeight": 490,
+          "canvasWidth": 0,
+          "canvasHeight": 392
+        }
+      ]
+    },
+    "fractional-width": {
+      "verdict": "FAIL",
+      "invalidTextureSizes": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            0,
+            392,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            0,
+            392,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "layoutSamples": [
+        {
+          "reason": "ResizeObserver",
+          "time": 255.3999999910593,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 3690.8999999910593,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 0.75,
+          "cssHeight": 490,
+          "canvasWidth": 704,
+          "canvasHeight": 424
+        },
+        {
+          "reason": "window-resize",
+          "time": 3819.0999999940395,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 0.75,
+          "cssHeight": 490,
+          "canvasWidth": 0,
+          "canvasHeight": 392
+        }
+      ]
+    },
+    "zero-height": {
+      "verdict": "FAIL",
+      "invalidTextureSizes": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            512,
+            0,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            512,
+            0,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "layoutSamples": [
+        {
+          "reason": "ResizeObserver",
+          "time": 256.79999999701977,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 3340.7999999970198,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 640,
+          "cssHeight": 0,
+          "canvasWidth": 704,
+          "canvasHeight": 424
+        },
+        {
+          "reason": "window-resize",
+          "time": 3476.2999999970198,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 640,
+          "cssHeight": 0,
+          "canvasWidth": 512,
+          "canvasHeight": 0
+        }
+      ]
+    },
+    "one-css-pixel-height": {
+      "verdict": "FAIL",
+      "invalidTextureSizes": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            512,
+            0,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            512,
+            0,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "layoutSamples": [
+        {
+          "reason": "ResizeObserver",
+          "time": 246.5,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 3904.7999999970198,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 640,
+          "cssHeight": 1,
+          "canvasWidth": 704,
+          "canvasHeight": 424
+        },
+        {
+          "reason": "window-resize",
+          "time": 4045.2000000029802,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 640,
+          "cssHeight": 1,
+          "canvasWidth": 512,
+          "canvasHeight": 0
+        }
+      ]
+    },
+    "display-none": {
+      "verdict": "FAIL",
+      "invalidTextureSizes": [
+        {
+          "label": "colorBuffer",
+          "size": [
+            0,
+            0,
+            1
+          ],
+          "format": "rgba8unorm"
+        },
+        {
+          "label": "depthBuffer",
+          "size": [
+            0,
+            0,
+            1
+          ],
+          "format": "depth24plus"
+        }
+      ],
+      "layoutSamples": [
+        {
+          "reason": "ResizeObserver",
+          "time": 296.6000000089407,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 880,
+          "cssHeight": 530,
+          "canvasWidth": null,
+          "canvasHeight": null
+        },
+        {
+          "reason": "ResizeObserver",
+          "time": 3529.5,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 0,
+          "cssHeight": 0,
+          "canvasWidth": 704,
+          "canvasHeight": 424
+        },
+        {
+          "reason": "window-resize",
+          "time": 3658.7999999970198,
+          "windowWidth": 1440,
+          "windowHeight": 1200,
+          "cssWidth": 0,
+          "cssHeight": 0,
+          "canvasWidth": 0,
+          "canvasHeight": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "tools/cloth_lab/verify_fit.py",
+    "--html",
+    "work/cloth-modular/viewport-fix/candidate.html",
+    "--expected-html-sha",
+    "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+    "--renderer",
+    "webgpu",
+    "--output",
+    "work/cloth-modular/viewport-fix/fit"
+  ],
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "PYTHONPATH": "/workspace/work/verifydeps"
+  },
+  "cwd": "/workspace/pattern-agent",
+  "startedAtUnix": 1794995323.5388741,
+  "exitCode": 0,
+  "finishedAtUnix": 1794995458.873906
+}

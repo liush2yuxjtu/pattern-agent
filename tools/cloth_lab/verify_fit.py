@@ -6,10 +6,11 @@ rays, exact embedded-WASM load coupons and independent tensor/contact equations.
 import argparse,base64,colorsys,copy,hashlib,io,json,threading
 from pathlib import Path
 from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
-from urllib.parse import urljoin
+from urllib.parse import urljoin, quote
 import numpy as np
 from PIL import Image
 from playwright.sync_api import sync_playwright
+from browser_runtime import (launch_browser, instrument_context, renderer_url, assert_renderer, add_renderer_argument)
 from verify_browser import ROOT,new_api_context,save_json,expect_rejection
 from verify_replay import INSTRUMENT,state,counters
 from oracle import verify
@@ -53,11 +54,12 @@ def pressure_colors(page,project):
 
 
 def run(args,base):
+    base=renderer_url(base,args.renderer)
     out=args.output;out.mkdir(parents=True,exist_ok=True)
     report={'url':base,'checks':{},'cases':{},'pageErrors':[],'consoleErrors':[]}
     with sync_playwright() as p:
-        browser=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
-        context=browser.new_context(viewport={'width':1440,'height':1200},accept_downloads=True);context.add_init_script(INSTRUMENT)
+        browser=launch_browser(p,args.browser)
+        context=browser.new_context(viewport={'width':1440,'height':1200},accept_downloads=True);instrument_context(context);context.add_init_script(INSTRUMENT)
         page=context.new_page();api=new_api_context(p,base)
         page.on('pageerror',lambda e:report['pageErrors'].append(str(e)));page.on('console',lambda m:report['consoleErrors'].append(m.text) if m.type=='error' else None)
         try:
@@ -66,6 +68,7 @@ def run(args,base):
             if args.expected_commit:
                 build=api.get(urljoin(base,'../build.json')).json();assert build['commit']==args.expected_commit;report['rootCommit']=build['commit']
             assert page.goto(base,wait_until='networkidle').status==200;page.wait_for_function('window.clothLab?.ready',timeout=60000)
+            report['rendering']=assert_renderer(page,args.renderer)
             initial=state(page);save_json(out/'first-ready.json',initial);guard_avatar(page,initial)
             assert initial['parameters']['patternType']=='anatomical-sector' and initial['diagnostics']['frame']==240
             assert counters(page)=={'actual':240,'reported':240},'Initial drape must be real physics, with its clock retained'
@@ -176,12 +179,12 @@ def run(args,base):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--base-url');parser.add_argument('--html',type=Path,default=ROOT/'web/cloth-lab/index.html');parser.add_argument('--output',type=Path,required=True);parser.add_argument('--browser',default='/usr/bin/chromium');parser.add_argument('--body-source',type=Path,default=ROOT/'web/human-studio/assets/human.json');parser.add_argument('--expected-html-sha');parser.add_argument('--expected-commit');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--base-url');parser.add_argument('--html',type=Path,default=ROOT/'web/cloth-lab/index.html');parser.add_argument('--output',type=Path,required=True);parser.add_argument('--browser',default='/usr/bin/chromium');parser.add_argument('--body-source',type=Path,default=ROOT/'web/human-studio/assets/human.json');parser.add_argument('--expected-html-sha');parser.add_argument('--expected-commit');add_renderer_argument(parser);args=parser.parse_args()
     if args.base_url:run(args,args.base_url)
     else:
         class Handler(SimpleHTTPRequestHandler):
             def __init__(self,*a,**k):super().__init__(*a,directory=str(args.html.parent),**k)
             def log_message(self,*a):pass
         server=ThreadingHTTPServer(('127.0.0.1',0),Handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
-        try:run(args,f'http://127.0.0.1:{server.server_port}/')
+        try:run(args,f'http://127.0.0.1:{server.server_port}/{quote(args.html.name)}')
         finally:server.shutdown();server.server_close();thread.join()

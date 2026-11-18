@@ -1,0 +1,5669 @@
+{
+  "url": "http://127.0.0.1:44079/",
+  "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "startedAtUnix": 1794995612.2509673,
+  "renderer": "webgpu",
+  "cases": {
+    "zero-width": {
+      "style": {
+        "width": "0px",
+        "height": "490px"
+      },
+      "initialRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 227.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 406,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            }
+          ]
+        }
+      },
+      "invalidPhase": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": false,
+            "cssWidth": 0,
+            "cssHeight": 490,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 227.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 406,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4341.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4469,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 227.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 406,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4341.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4469,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4958.5999999940395,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "afterFullPageScreenshot": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 227.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 406,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4341.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4469,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4958.5999999940395,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 5333.70000000298,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:44079/?renderer=webgpu"
+        ],
+        "badResponses": []
+      }
+    },
+    "one-css-pixel-width": {
+      "style": {
+        "width": "1px",
+        "height": "490px"
+      },
+      "initialRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 159.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 240.19999998807907,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            }
+          ]
+        }
+      },
+      "invalidPhase": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": false,
+            "cssWidth": 1,
+            "cssHeight": 490,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 159.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 240.19999998807907,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3671.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 1,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3832.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 1,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 159.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 240.19999998807907,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3671.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 1,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3832.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 1,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4394.899999991059,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "afterFullPageScreenshot": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 159.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 240.19999998807907,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3671.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 1,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3832.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 1,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4394.899999991059,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4834.399999991059,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:44079/?renderer=webgpu"
+        ],
+        "badResponses": []
+      }
+    },
+    "fractional-width": {
+      "style": {
+        "width": ".75px",
+        "height": "490px"
+      },
+      "initialRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 145.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 230.70000000298023,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            }
+          ]
+        }
+      },
+      "invalidPhase": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": false,
+            "cssWidth": 0.75,
+            "cssHeight": 490,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 145.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 230.70000000298023,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3991.7000000029802,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0.75,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4108.9000000059605,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0.75,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 145.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 230.70000000298023,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3991.7000000029802,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0.75,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4108.9000000059605,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0.75,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4645.5999999940395,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "afterFullPageScreenshot": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 145.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 230.70000000298023,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3991.7000000029802,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0.75,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4108.9000000059605,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0.75,
+              "cssHeight": 490,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4645.5999999940395,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 5022.70000000298,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:44079/?renderer=webgpu"
+        ],
+        "badResponses": []
+      }
+    },
+    "zero-height": {
+      "style": {
+        "width": "640px",
+        "height": "0px"
+      },
+      "initialRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 262,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            }
+          ]
+        }
+      },
+      "invalidPhase": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": false,
+            "cssWidth": 640,
+            "cssHeight": 0,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 262,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3740.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3872.2999999970198,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 262,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3740.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3872.2999999970198,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4401.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "afterFullPageScreenshot": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.8999999910593,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 262,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3740.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3872.2999999970198,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4401.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4761.899999991059,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:44079/?renderer=webgpu"
+        ],
+        "badResponses": []
+      }
+    },
+    "one-css-pixel-height": {
+      "style": {
+        "width": "640px",
+        "height": "1px"
+      },
+      "initialRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.19999998807907,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 280.09999999403954,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            }
+          ]
+        }
+      },
+      "invalidPhase": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": false,
+            "cssWidth": 640,
+            "cssHeight": 1,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.19999998807907,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 280.09999999403954,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3533.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 1,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3651.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 1,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.19999998807907,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 280.09999999403954,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3533.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 1,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3651.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 1,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4166.699999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "afterFullPageScreenshot": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.19999998807907,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 280.09999999403954,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3533.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 1,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3651.199999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 640,
+              "cssHeight": 1,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4166.699999988079,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4520.0999999940395,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:44079/?renderer=webgpu"
+        ],
+        "badResponses": []
+      }
+    },
+    "display-none": {
+      "style": {
+        "display": "none"
+      },
+      "initialRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 307.29999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            }
+          ]
+        }
+      },
+      "invalidPhase": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": false,
+            "cssWidth": 0,
+            "cssHeight": 0,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 307.29999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3720.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3850.4000000059605,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 307.29999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3720.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3850.4000000059605,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4362.70000000298,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "afterFullPageScreenshot": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 3,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 2
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 7,
+          "commandBuffers": 7,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 181.79999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 307.29999999701977,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3720.5,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 3850.4000000059605,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 4362.70000000298,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            },
+            {
+              "reason": "window-resize",
+              "time": 4710.70000000298,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:44079/?renderer=webgpu"
+        ],
+        "badResponses": []
+      }
+    },
+    "boot-hidden": {
+      "hiddenNative": {
+        "adapterRequests": 1,
+        "adapters": 1,
+        "deviceRequests": 1,
+        "devices": 1,
+        "canvasContexts": [
+          {
+            "type": "webgpu",
+            "nativeClass": "GPUCanvasContext"
+          },
+          {
+            "type": "2d",
+            "nativeClass": "CanvasRenderingContext2D"
+          }
+        ],
+        "configurations": 1,
+        "configurationUsesRequestedDevice": true,
+        "queueSubmits": 0,
+        "commandBuffers": 0,
+        "deviceErrors": [],
+        "deviceLosses": [],
+        "adapterInfo": [
+          {
+            "vendor": "google",
+            "architecture": "swiftshader",
+            "device": "",
+            "description": "",
+            "isFallbackAdapter": true
+          }
+        ],
+        "deviceDetails": [
+          {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            }
+          }
+        ],
+        "textureCreations": [
+          {
+            "label": "colorBuffer",
+            "size": [
+              300,
+              150,
+              1
+            ],
+            "format": "rgba8unorm"
+          },
+          {
+            "label": "colorBuffer",
+            "size": [
+              240,
+              120,
+              1
+            ],
+            "format": "rgba8unorm"
+          }
+        ],
+        "invalidTextureSizes": [],
+        "viewportSamples": [
+          {
+            "reason": "DOMContentLoaded",
+            "time": 162.70000000298023,
+            "windowWidth": 1440,
+            "windowHeight": 1200,
+            "cssWidth": 0,
+            "cssHeight": 0,
+            "canvasWidth": null,
+            "canvasHeight": null
+          },
+          {
+            "reason": "ResizeObserver",
+            "time": 250.30000001192093,
+            "windowWidth": 1440,
+            "windowHeight": 1200,
+            "cssWidth": 0,
+            "cssHeight": 0,
+            "canvasWidth": null,
+            "canvasHeight": null
+          }
+        ]
+      },
+      "restoredRenderer": {
+        "diagnostics": {
+          "requested": "webgpu",
+          "api": "WebGPU",
+          "backend": "WebGPUBackend",
+          "isWebGPURenderer": true,
+          "isWebGPUBackend": true,
+          "isWebGLRenderer": false,
+          "initialized": true,
+          "firstRenderComplete": true,
+          "renderedFrames": 1,
+          "blocked": false,
+          "pending": false,
+          "fallbackReason": null,
+          "antialias": {
+            "enabled": false,
+            "samples": 0,
+            "method": "none",
+            "reason": "Software adapter: transparent MSAA edge artifacts observed locally"
+          },
+          "gpuString": "google · swiftshader",
+          "rendererClass": "software",
+          "viewport": {
+            "renderable": true,
+            "cssWidth": 880,
+            "cssHeight": 530,
+            "drawingBufferWidth": 704,
+            "drawingBufferHeight": 424,
+            "skippedDraws": 0
+          },
+          "device": {
+            "label": "Cloth Lab WebGPU device",
+            "features": [
+              "core-features-and-limits"
+            ],
+            "limits": {
+              "maxTextureDimension2D": 8192,
+              "maxBufferSize": 268435456,
+              "maxStorageBufferBindingSize": 134217728,
+              "maxBindGroups": 4
+            },
+            "adapterInfo": {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "subgroupMinSize": 4,
+              "subgroupMaxSize": 4,
+              "isFallbackAdapter": true
+            }
+          },
+          "deviceErrors": []
+        },
+        "native": {
+          "adapterRequests": 1,
+          "adapters": 1,
+          "deviceRequests": 1,
+          "devices": 1,
+          "canvasContexts": [
+            {
+              "type": "webgpu",
+              "nativeClass": "GPUCanvasContext"
+            },
+            {
+              "type": "2d",
+              "nativeClass": "CanvasRenderingContext2D"
+            }
+          ],
+          "configurations": 1,
+          "configurationUsesRequestedDevice": true,
+          "queueSubmits": 3,
+          "commandBuffers": 3,
+          "deviceErrors": [],
+          "deviceLosses": [],
+          "adapterInfo": [
+            {
+              "vendor": "google",
+              "architecture": "swiftshader",
+              "device": "",
+              "description": "",
+              "isFallbackAdapter": true
+            }
+          ],
+          "deviceDetails": [
+            {
+              "label": "Cloth Lab WebGPU device",
+              "features": [
+                "core-features-and-limits"
+              ],
+              "limits": {
+                "maxTextureDimension2D": 8192,
+                "maxBufferSize": 268435456,
+                "maxStorageBufferBindingSize": 134217728,
+                "maxBindGroups": 4
+              }
+            }
+          ],
+          "textureCreations": [
+            {
+              "label": "colorBuffer",
+              "size": [
+                300,
+                150,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                240,
+                120,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "colorBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba8unorm"
+            },
+            {
+              "label": "",
+              "size": [
+                128,
+                128,
+                1
+              ],
+              "format": "rgba8unorm-srgb"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "rgba16float"
+            },
+            {
+              "label": "",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            },
+            {
+              "label": "depthBuffer",
+              "size": [
+                704,
+                424,
+                1
+              ],
+              "format": "depth24plus"
+            }
+          ],
+          "invalidTextureSizes": [],
+          "viewportSamples": [
+            {
+              "reason": "DOMContentLoaded",
+              "time": 162.70000000298023,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 250.30000001192093,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": null,
+              "canvasHeight": null
+            },
+            {
+              "reason": "window-resize",
+              "time": 3053.7000000029802,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 0,
+              "cssHeight": 0,
+              "canvasWidth": 240,
+              "canvasHeight": 120
+            },
+            {
+              "reason": "ResizeObserver",
+              "time": 3393.4000000059605,
+              "windowWidth": 1440,
+              "windowHeight": 1200,
+              "cssWidth": 880,
+              "cssHeight": 530,
+              "canvasWidth": 704,
+              "canvasHeight": 424
+            }
+          ]
+        }
+      },
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "verdict": "PASS",
+      "events": {
+        "pageErrors": [],
+        "consoleErrors": [],
+        "requests": [
+          "http://127.0.0.1:44079/?renderer=webgpu"
+        ],
+        "badResponses": []
+      }
+    }
+  },
+  "checks": {
+    "allZeroSubpixelHiddenLayoutsPauseGPUWithoutInvalidTextures": true,
+    "allRestoredLayoutsRenderActualFabricWithoutPhysicsChanges": true,
+    "actualFullPageScreenshotsPreserveHealthyBackend": true
+  },
+  "verdict": "PASS",
+  "finishedAtUnix": 1794995650.4531481
+}

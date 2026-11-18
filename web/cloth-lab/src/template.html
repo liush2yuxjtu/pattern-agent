@@ -22,6 +22,6 @@
 </section></section>
 <aside class="audit"><p class="eyebrow">03 / MEASURE, THEN JUDGE</p><h2>缝合与接触检查</h2><div id="verdict" role="status">尚未验证</div><dl id="metrics"></dl><button id="pressure-calibrate">校验 1 kPa 载荷</button><p id="pressure-coupon" class="micro" role="status"></p><div id="patterns" aria-label="同源二维纸样"></div><p class="micro">实线裁剪 · 虚线缝合 · 100 mm 校验尺</p><div class="export-grid"><button id="export-svg">1:1 SVG ↓</button><button id="export-obj">场景 OBJ ↓</button><button id="export-json">工程 JSON ↓</button><button id="export-log">诊断记录 ↓</button></div>
 <details><summary>热图如何计算？</summary><p>从每个三角形的原始材料坐标计算 F = Ds · Dm⁻¹。工程主应变为 √λmax(FᵀF) − 1。应力为正交各向异性 StVK 模型的最大主柯西应力 σ = F S Fᵀ / J，单位 kPa。不是接触压力，也不是经标定的 CLO 结果。</p></details>
-<p id="renderer-info" class="micro"></p><p class="micro">缺少 WASM 或 WebGL 时会显示错误，不会伪装成已通过。</p></aside></main>
+<p id="renderer-info" class="micro"></p><p class="micro">WASM 或图形后端初始化失败时会显示错误。</p></aside></main>
 <footer>本地数值验证 ≠ 材料标定或实体试穿批准。<span>MakeHuman CC0 · Three.js r180 MIT · 原创求解器 MIT · <a href="README.md">实现与复现说明</a></span></footer>
 <script id="payload" type="application/json">/*PAYLOAD*/</script><script id="initial-state" type="application/json">null</script><script>/*APP*/</script></body></html>

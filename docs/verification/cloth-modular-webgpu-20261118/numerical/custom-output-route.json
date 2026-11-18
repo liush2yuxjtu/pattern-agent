@@ -1,0 +1,15 @@
+{
+  "verdict": "PASS",
+  "scope": "Actual local SimpleHTTP route used by the four --html verifiers; independent HTTP readback, no browser needed.",
+  "candidateHtmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "encodedBasename": "cloth%20lab%20custom%20output.html",
+  "correctRouteStatus": 200,
+  "correctRouteBytes": 2550975,
+  "rootRouteIsDirectoryListing": true,
+  "rootRouteWouldFailExpectedHash": true,
+  "checks": [
+    "Space-containing basename reaches exact candidate bytes",
+    "Root directory is a distinct listing, never accepted as the HTML artifact"
+  ],
+  "cleanup": "Temporary server and directory removed"
+}

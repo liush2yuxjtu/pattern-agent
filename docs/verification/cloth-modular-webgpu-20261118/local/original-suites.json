@@ -1,0 +1,89 @@
+{
+  "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "candidateParent": "b32a62cf2147299e68525b45b0a604c2f12a38c1",
+  "environment": {
+    "PYTHONPATH": "/workspace/work/verifydeps",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "commands": [
+    {
+      "name": "kernel",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/test_kernel.py"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794995700.2285354,
+      "exitCode": 0,
+      "finishedAtUnix": 1794995701.0735595
+    },
+    {
+      "name": "browser",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_browser.py",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-modular/verified/browser"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794995701.073621,
+      "exitCode": 0,
+      "finishedAtUnix": 1794995836.0008163
+    },
+    {
+      "name": "replay",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_replay.py",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-modular/verified/replay"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794995836.00087,
+      "exitCode": 0,
+      "finishedAtUnix": 1794996059.575035
+    },
+    {
+      "name": "handoff",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_handoff.py",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-modular/verified/handoff"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794996059.575083,
+      "exitCode": 0,
+      "finishedAtUnix": 1794996085.8725595
+    },
+    {
+      "name": "waist",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_waist.py",
+        "--project",
+        "work/cloth-modular/viewport-fix/fit/first-ready.json",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-modular/verified/waist.json"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1794996085.872612,
+      "exitCode": 0,
+      "finishedAtUnix": 1794996087.6560302
+    }
+  ],
+  "verdict": "PASS"
+}

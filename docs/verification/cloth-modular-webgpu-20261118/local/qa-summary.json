@@ -1,0 +1,346 @@
+{
+  "verdict": "PASS",
+  "scope": "QA supplemental build8/renderer14/resize7 gates; separately referenced complete fit16 PASS from renderer agent. Remaining original browser15/replay15/handoff6 are root-owned gates, not declared passed here. Physical calibration/manufacturing fit NOT_RUN.",
+  "candidateHtmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "candidateHtmlBytes": 2550975,
+  "sourceFreeze": {
+    "renderingSha256": "3116988ed6fe6fac31689de7fb00b6aa71b02c55ffd6b97ed762aad510a99426",
+    "buildFingerprint": "0f2afe8f6957102a7ae925f675d0dfc8f2ddbfef350d87b420ab53631ec69fc1"
+  },
+  "commands": {
+    "renderers": "PYTHONPATH=/workspace/work/verifydeps OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python tools/cloth_lab/verify_webgpu.py --html work/cloth-modular/viewport-fix/candidate.html --output work/cloth-modular/viewport-fix/renderers",
+    "resize": "PYTHONPATH=/workspace/work/verifydeps OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python tools/cloth_lab/verify_resize.py --html work/cloth-modular/viewport-fix/candidate.html --output work/cloth-modular/viewport-fix/resize",
+    "build": "PYTHONPATH=/workspace/work/verifydeps OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 ZIG=/workspace/work/zig-x86_64-linux-0.14.1/zig ESBUILD=/workspace/pattern-agent/work/cloth-lab/esbuild python tools/cloth_lab/verify_modular.py --output work/cloth-modular/viewport-fix/build"
+  },
+  "receiptSha256": {
+    "work/cloth-modular/viewport-fix/renderers/receipt.json": "5d1edad6b2b30d475301418316645022716aea0dd44169ba786bf6ef2733f3c7",
+    "work/cloth-modular/viewport-fix/resize/receipt.json": "6bd6a31adac2df0cec4aab87a9e85ccd2467d24a548714bff013fb2e61771b1f",
+    "work/cloth-modular/viewport-fix/build/receipt.json": "2d4071cbf0828de9a967037da3d9beabc014e0ae13fb0fad98bfa35ded6cbb26",
+    "work/cloth-modular/viewport-fix/fit/receipt.json": "f613399ae65398eb9a482f0429f31f4e30514030cd6ebf8a8ce04117f6ffadf7"
+  },
+  "checks": {
+    "build": {
+      "frozenSolverAvatarProfileAndSourceBodyExact": true,
+      "repeatableIndependentCustomOutputsAndManifest": true,
+      "singleInlineIIFEAndRealWASMBodyNoExternalDependencies": true,
+      "recursiveSourcesAndActualBundleInputsAreHashed": true,
+      "legacyPythonForwardsTheSameCLIAndBuild": true,
+      "staleFitRejectedAndExistingArtifactPreserved": true,
+      "differentSourceRootProducesIdenticalStandaloneBytesAndManifest": true,
+      "nestedSourceChangesFingerprintWithoutChangingKernel": true
+    },
+    "renderers": {
+      "webgpu": {
+        "realFirstRenderAndFrontSideBackClothing": true,
+        "defaultAndOneAnd60StepsMatchOldPhysicalBytes": true,
+        "trueTensorAndPressureColorsReachDistinctRenderedPixels": true,
+        "zeroRequestSecureOriginOfflineActualBackendAndExactContinuation": true,
+        "recursiveSnapshotAndRecordedSelectionSurviveModuleRefactor": true
+      },
+      "webgl": {
+        "realFirstRenderAndFrontSideBackClothing": true,
+        "defaultAndOneAnd60StepsMatchOldPhysicalBytes": true,
+        "trueTensorAndPressureColorsReachDistinctRenderedPixels": true,
+        "zeroRequestSecureOriginOfflineActualBackendAndExactContinuation": true,
+        "recursiveSnapshotAndRecordedSelectionSurviveModuleRefactor": true
+      }
+    },
+    "fallbackAndLoss": {
+      "defaultAutoActuallySelectsWebGPU": true,
+      "actualDeviceLossAutoFallbackPreservesPhysicsPointerAndResize": true,
+      "actualDeviceLossForcedWebGPUBlocksWithoutFallbackOrFalseReady": true,
+      "nativeUnavailableAdapterAutoFallbackAndStrictWebGPUFailure": true
+    },
+    "resize": {
+      "allZeroSubpixelHiddenLayoutsPauseGPUWithoutInvalidTextures": true,
+      "allRestoredLayoutsRenderActualFabricWithoutPhysicsChanges": true,
+      "actualFullPageScreenshotsPreserveHealthyBackend": true
+    },
+    "fit": {
+      "firstReadyAnatomyCoveredWithRealInitializedPhysics": true,
+      "completeOpaqueNeutralAvatarAndNormalDepthTesting": true,
+      "defaultStrainBelowUnchanged20PercentWarning": true,
+      "actualWaistLevelClearanceAndSeparateFrontBackPatternLengths": true,
+      "realMultiplierPressureDrivesGPUColors": true,
+      "coveringNonpenetratingButFloatingOrWrongHeightWaistsRejected": true,
+      "sameWASMKnownLoadsInclineRefinementAndDetachedControls": true,
+      "realCalibrationButtonPreservesMainAvatarAndGarment": true,
+      "resetCoveredBeforeAnyUserStep": true,
+      "changedPatternExtremesRemainCoveredWithRecomputedPhysics": true,
+      "trueScaleSectorArcsExact10mmAllowanceAndNoPageClipping": true,
+      "materialAndMovingAvatarPressureCoverageCollisionRecomputed": true,
+      "recordedPressureAndCoverageRestoreWithoutIntegration": true,
+      "offlineSingleHTMLRetainsRealPressureAndCoveredGeometry": true,
+      "fabricatedPressureRejectedByForceLedgerAndContactGeometry": true,
+      "healthyRuntimeAndMobileWithoutOverflow": true
+    }
+  },
+  "resizeCases": {
+    "zero-width": {
+      "verdict": "PASS",
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "invalidTextureSizes": []
+    },
+    "one-css-pixel-width": {
+      "verdict": "PASS",
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "invalidTextureSizes": []
+    },
+    "fractional-width": {
+      "verdict": "PASS",
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "invalidTextureSizes": []
+    },
+    "zero-height": {
+      "verdict": "PASS",
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "invalidTextureSizes": []
+    },
+    "one-css-pixel-height": {
+      "verdict": "PASS",
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "invalidTextureSizes": []
+    },
+    "display-none": {
+      "verdict": "PASS",
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "invalidTextureSizes": []
+    },
+    "boot-hidden": {
+      "verdict": "PASS",
+      "restoredPixels": {
+        "sourcePoints": [
+          [
+            -0.06,
+            0.8,
+            0.14
+          ],
+          [
+            -0.06,
+            0.92,
+            0.14
+          ],
+          [
+            0.06,
+            0.8,
+            0.14
+          ],
+          [
+            0.06,
+            0.92,
+            0.14
+          ]
+        ],
+        "hipROI": [
+          414,
+          231,
+          448,
+          268
+        ],
+        "fabricPixelFraction": 1.0,
+        "skinPixels": 0,
+        "pixels": 1258
+      },
+      "invalidTextureSizes": []
+    }
+  },
+  "firstFailuresPreserved": [
+    "release/fit/receipt.json and release/fit.log: real full-fit failure on original386",
+    "resize-original/summary.json: six actual zero/subpixel/hidden native texture failures on386",
+    "qa-summary-386.json and webgpu-final/: prior supplemental gates passed on386; complete fit still required and later failed",
+    "presentation-probe.json and rendering-smoke-first-black/halo evidence remain preserved"
+  ],
+  "cleanup": "All QA browsers, contexts, servers and temporary build fixtures closed/removed. No QA product-source/index changes, commits or pushes."
+}
