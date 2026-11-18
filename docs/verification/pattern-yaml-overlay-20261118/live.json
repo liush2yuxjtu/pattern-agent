@@ -1,0 +1,68 @@
+{
+  "verdict": "PASS",
+  "tested_pages_commit": "4ddd52b71ff6621b478aea6a5bef8239c2ca9879",
+  "pages_workflow": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44276196559",
+  "pages_source_sha256": "dc171ee6ff630b68783a3d35257dba1002d95a703f9c76de139faf7442847970",
+  "direct_link": {
+    "url": "https://liush2yuxjtu.github.io/pattern-agent/pattern-library/#editor",
+    "anchor_onscreen_and_overlay_selected": [
+      {
+        "viewport": 1440,
+        "editor_top": 20
+      },
+      {
+        "viewport": 390,
+        "editor_top": 20
+      }
+    ]
+  },
+  "editor_overlay": {
+    "placed_paths_per_layer": 204,
+    "changed_paths": 20,
+    "shared_svg_and_transform": true,
+    "pixel_counts": {
+      "desktop": {
+        "before": {
+          "orange": 8756,
+          "blue": 0
+        },
+        "after": {
+          "orange": 0,
+          "blue": 11240
+        },
+        "overlay": {
+          "orange": 520,
+          "blue": 10635
+        }
+      },
+      "mobile": {
+        "before": {
+          "orange": 4153,
+          "blue": 0
+        },
+        "after": {
+          "orange": 0,
+          "blue": 4957
+        },
+        "overlay": {
+          "orange": 89,
+          "blue": 4642
+        }
+      }
+    }
+  },
+  "svg_download_sha256": "90ec9c5c198dc900845ab751c22a93b3581d0bae5627bced05379f6a8d041085",
+  "browser_errors": [],
+  "screenshots_sha256": {
+    "live-gallery/editor-desktop.png": "4329f8363d968bb9c7465e2e5234439c9e7d643c6a90def272429a6972e036bf",
+    "live-gallery/editor-mobile.png": "179946f1692f2e0ca9e51c602b5ab3d68aff3cdad137b20f9225a10f015bb2d5"
+  },
+  "commands": [
+    "verify_gallery.py --directory dist --expected-commit (after rebasing the candidate)",
+    "verify_pages.py --expected-commit (after rebasing the candidate)",
+    "verify_gallery.py --base-url --expected-commit",
+    "verify_pages.py --base-url --expected-commit",
+    "Chromium direct editor anchor check at 1440 px and 390 px",
+    "git diff --cached --check"
+  ]
+}
