@@ -1,0 +1,32 @@
+{
+  "verdict": "FAIL",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/no-such-pattern.pdf",
+  "expectedStatus": 404,
+  "observedStatus": 404,
+  "headers": {
+    "server": "envoy",
+    "content-type": "text/html; charset=utf-8",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=31556952",
+    "etag": "\"6abd0db9-24a3\"",
+    "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'",
+    "x-proxy-cache": "MISS",
+    "x-github-request-id": "729E:1E03B0:1435C9:1677F4:6AFD538E",
+    "x-github-edge-region": "westus3",
+    "accept-ranges": "bytes",
+    "age": "0",
+    "date": "Wed, 18 Nov 2026 07:28:14 GMT",
+    "via": "1.1 varnish",
+    "x-served-by": "cache-sjc1000105-SJC",
+    "x-cache": "MISS",
+    "x-cache-hits": "0",
+    "x-timer": "S1794986894.068367,VS0,VE92",
+    "vary": "Accept-Encoding",
+    "x-fastly-request-id": "5fccbffcb976e48468bca4a131c6c9ce11a56a8d",
+    "content-length": "9379",
+    "x-envoy-upstream-service-time": "114",
+    "connection": "close"
+  },
+  "finding": "Public root regression reached final missing-download assertion and received GitHub Unicorn HTML with HTTP 503. Entry-specific public navigation and unchanged cloth artifact passed separately.",
+  "initialBuildCommit": "7b9bd79f3781e77302759e7e2469966d4257feb2"
+}

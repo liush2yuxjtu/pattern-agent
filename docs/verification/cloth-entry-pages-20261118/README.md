@@ -17,3 +17,8 @@
 新入口检查：python scripts/verify_cloth_entry.py --out work/cloth-entry-local
 公网检查：同一命令增加 --url https://liush2yuxjtu.github.io/pattern-agent/
 现有发布 workflow 仅用于发布；通过与否来自本地驱动实际页面的检查。
+
+公网新入口专项检查已通过。完整公网回归在最后的缺失文件断言收到 GitHub
+Unicorn 503，原始响应和失败保存在 missing-file-recovery/；未放宽预期404。
+随后新增 web/404.html，局部页面、真实返回首页操作及完整本地回归通过。
+这只建立本地候选证据，公网缺失路由是否恢复必须以发布后的实际HTTP结果为准。

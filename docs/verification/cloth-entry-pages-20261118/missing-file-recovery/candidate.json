@@ -1,0 +1,14 @@
+{
+  "verdict": "PASS",
+  "scope": "Local static recovery page layout, return-home navigation and unchanged full local root regression. Hosted missing-route recovery remains pending.",
+  "base": "7b9bd79f3781e77302759e7e2469966d4257feb2",
+  "custom404SHA256": "98b01b7ac3a8f84e0f4633235497d3831505e89755fd14702a9585acbc2c0d17",
+  "homepageSHA256": "2857e9bb151d254471a4efa8472150b7b3e3a0d77bf44b75e815f0754369927f",
+  "commands": [
+    "python scripts/build_pages.py",
+    "python scripts/verify_pages.py --output /workspace/work/related-pages-20261118/404-local",
+    "Python Playwright direct 404.html mobile render and real return-home click",
+    "git diff --check"
+  ],
+  "sourceChange": "GitHub Pages supports a root 404.html; keep the existing exact HTTP 404 assertion and verify the actual provider result after publishing."
+}
