@@ -21,6 +21,9 @@ its failures. No CI, PR or force push.
    real downloads, measured SVG/DXF/PDF, mobile, zero-console-error checks and
    exact offline next-step continuation. Preserve raw performance data and the
    existing <100 ms p95 default-step budget; do not loosen it to pass.
+   Run `verify_heatmap_gpu.py` on the actual downloaded HTML. The active draw
+   color attribute must match independent coordinate/UV-derived strain/stress
+   and linear RGB for every component within 2e-6. Keep its GPU arrays and images.
 4. Run the root six artifact regression tests after `scripts/build_pages.py`,
    inspect current screenshots with view_image and run `git diff --check`.
    Fabric calibration, universal CCD/self-contact and manufacture remain outside

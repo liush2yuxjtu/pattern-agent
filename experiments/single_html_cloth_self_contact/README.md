@@ -39,11 +39,19 @@ python experiments/single_html_cloth_self_contact/verify_browser.py \
   --url http://127.0.0.1:8770/cloth-lab-self-contact.html --out work/self-contact-browser
 python experiments/single_html_cloth_self_contact/independent.py \
   work/self-contact-browser/simulation.json --repo . --out work/self-contact-browser/independent.json
+python experiments/single_html_cloth_self_contact/verify_heatmap_gpu.py \
+  --html work/self-contact-browser/downloaded.html --output work/self-contact-heatmap
 ```
 
 Use the same commands against the public URL after publication. Review actual
 front/side/back, stress/strain/contact, mobile and saved-state screenshots.
 Root project `/verify` and this directory's scoped recipe govern commit/push.
+
+The GPU heatmap check reopens the actual downloaded stateful HTML, disconnects
+its context, and reads the active color attribute from WebGL's draw buffer.
+Independent NumPy coordinates/UV tensors and sRGB-to-linear ramp interpolation
+must agree within 2e-6 for all 32,256 RGB components of each field. Draw calls
+are forwarded unchanged and the buffer binding is restored after readback.
 
 The build uses a function-valued string replacement to insert JavaScript. A
 literal replacement string can corrupt bundled identifiers such as `$&&`

@@ -60,8 +60,8 @@ token corruption. No external runtime scripts, model requests or MCP are needed.
 | --- | ---: | ---: | ---: |
 | Step 120 | 0 | 0 | 3.006 mm |
 | Step 240 | 0 | 0 | 3.017 mm |
-| Step 360 | 0 | 0 | 3.030 mm |
-| Step 480, last 120 with wind 5 m/s² | 0 | 0 | 3.007 mm |
+| Step 360 | 0 | 0 | 3.027 mm |
+| Step 480, last 120 with wind 5 m/s² | 0 | 0 | 3.005 mm |
 
 All four exported states passed the independent NumPy/SciPy triangle oracle at
 1 µm geometric tolerance; no cloth vertices were inside the body. The actual

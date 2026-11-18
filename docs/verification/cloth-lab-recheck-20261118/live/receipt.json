@@ -1,0 +1,170 @@
+{
+  "verdict": "PASS",
+  "applicationCommit": "58f8300371621a4328d4e2aa69d27e0ef91227e4",
+  "evidenceBaseCommit": "58f8300371621a4328d4e2aa69d27e0ef91227e4",
+  "htmlSHA256": "5e035050cf7a940c81928c98073bd412beb6114bfe8e37f7cb25ef3e6252cf83",
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-self-contact.html",
+  "localVsPublicCurrentAndPreviousBitExact": {
+    "step-120": true,
+    "step-240": true,
+    "step-360": true,
+    "wind-step-480": true
+  },
+  "uiChecks": {
+    "passed": 39,
+    "total": 39
+  },
+  "dynamicsChecks": {
+    "correctPage": true,
+    "actualWasmGravity": true,
+    "actualWasmPin": true,
+    "actualWasmElasticConstraint": true,
+    "step-120": true,
+    "step-120-pins": true,
+    "step-240": true,
+    "step-240-pins": true,
+    "step-360": true,
+    "step-360-pins": true,
+    "gravityChangesCloth": true,
+    "actualBodyContacts": true,
+    "windInputChangesActualPhysics": true,
+    "windCollisionAndGeometry": true,
+    "consoleHealthy": true
+  },
+  "geometryStates": {
+    "step-120": {
+      "bodyIntersections": 0,
+      "clothSelfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.005609461826232,
+      "peakStretch_percent": 154.6029467202502,
+      "peakEstimatedStress_kPa": 67.31580962281393
+    },
+    "step-240": {
+      "bodyIntersections": 0,
+      "clothSelfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.0173209917769,
+      "peakStretch_percent": 154.08567780111235,
+      "peakEstimatedStress_kPa": 66.25482026122
+    },
+    "step-360": {
+      "bodyIntersections": 0,
+      "clothSelfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.0265537391215585,
+      "peakStretch_percent": 153.48226078053676,
+      "peakEstimatedStress_kPa": 65.32249484379471
+    },
+    "wind-step-480": {
+      "bodyIntersections": 0,
+      "clothSelfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.005451894386019,
+      "peakStretch_percent": 273.3213496536519,
+      "peakEstimatedStress_kPa": 294.6633185869275
+    }
+  },
+  "wasmGravityMaxError_m": 2.220446049250313e-15,
+  "offlineNextStepExact": true,
+  "defaultPerformance": {
+    "steps": 360,
+    "time_s": 3,
+    "peakStretch": 1.5348226078053677,
+    "peakStress_kPa": 65.3224948437947,
+    "seamGap_mm": 0,
+    "waist_mm": 736.3414168681662,
+    "contacts": 235,
+    "selfContacts": 0,
+    "selfContactTiming_ms": {
+      "pointMs": 7.299999997019768,
+      "edgeMs": 11.799999997019768
+    },
+    "stepTiming_ms": {
+      "elasticMs": 37.80000000447035,
+      "bodyMs": 32,
+      "selfMs": 19.19999999552965,
+      "recheckMs": 0
+    },
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 76.29999999701977,
+    "solver_ms_p95": 92.59999999403954,
+    "frame_ms_p95": 633.3000000000002,
+    "jsHeap_bytes": 34431672
+  },
+  "independentExports": {
+    "OBJ_vertices_and_faces": "exact match",
+    "SVG_panels": "exact match",
+    "SVG_cut_offset_mm": 10,
+    "DXF_panels": "match within 0.000002 mm"
+  },
+  "independentNegativeControls": {
+    "reverse-seam": true,
+    "swap-panel": true,
+    "gap": true,
+    "uv": true,
+    "body-penetration": true,
+    "overlapping-face": true
+  },
+  "heatmapGPUReadback": {
+    "savedHTML_SHA256": "4664cd5b411c7f220dd8c92c9bff31e4920cfaccef5903bcad6cd7b24dd75280",
+    "views": {
+      "strain": {
+        "location": 3,
+        "attributeSize": 3,
+        "attributeType": 5126,
+        "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "componentsCompared": 32256,
+        "maxLinearRGBError": 2.9777832422084316e-08,
+        "verdict": "PASS"
+      },
+      "stress": {
+        "location": 3,
+        "attributeSize": 3,
+        "attributeType": 5126,
+        "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "componentsCompared": 32256,
+        "maxLinearRGBError": 2.978502178230258e-08,
+        "verdict": "PASS"
+      }
+    },
+    "errors": [],
+    "scope": "Actual downloaded HTML, coordinates independently recomputed, actual active draw attribute GPU readback; calibrated material accuracy NOT_RUN",
+    "verdict": "PASS"
+  },
+  "visualReview": [
+    "Public default fabric: full human visible, draped four-panel shell and readable UI",
+    "Public contact: gold/teal regions and body-clearance legend visible",
+    "Public mobile: full page, no horizontal overflow, controls and metric text visible",
+    "Public wind fabric and GPU strain/stress: reviewed separately before acceptance"
+  ],
+  "limits": [
+    "Four discrete dynamic states only; universal continuous collision detection NOT_RUN",
+    "Uncalibrated constitutive model; high local deformation retained",
+    "Manufacture, physical print hardware and wearer fit NOT_RUN",
+    "SwiftShader software rendering; no hardware FPS claim"
+  ],
+  "commands": {
+    "browser": "python experiments/single_html_cloth_self_contact/verify_browser.py --url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-self-contact.html --out LIVE/browser",
+    "dynamics": "python experiments/single_html_cloth_self_contact/verify_dynamics.py --url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-self-contact.html --output LIVE/dynamics",
+    "independent": "python experiments/single_html_cloth_self_contact/independent.py LIVE/browser/simulation.json --repo . --out LIVE/browser/independent.json",
+    "gpu": "python experiments/single_html_cloth_self_contact/verify_heatmap_gpu.py --html LIVE/browser/downloaded.html --output LIVE/heatmap"
+  },
+  "newVerificationSource": {
+    "path": "experiments/single_html_cloth_self_contact/verify_heatmap_gpu.py",
+    "sha256": "2058b86837b9f05ad077bd66c40f35ba2262539cd7720bcba12f354a284ade98"
+  },
+  "cleanup": {
+    "taskOwnedHTTPServerPID": 10917,
+    "action": "SIGTERM sent after inspecting exact http.server 8770 command",
+    "browserContexts": "Closed by completed Playwright scripts",
+    "temporaryHeatmapServer": "shutdown and server_close completed"
+  },
+  "reconciledEvidenceBaseCommit": "ddfb02905e5ea66dea1423580621d54a9a4b28ac",
+  "finalPublicReadback": "final-public-readback.json",
+  "rootArtifactRegressionsAfterReconciliation": "PASS, 6 tests; final-regressions.log"
+}
