@@ -1,0 +1,445 @@
+Updating 2217a8a..801c256
+Fast-forward
+ .agents/skills/clo-fit-export/SKILL.md             |    27 +
+ .../skills/clo-fit-export/scripts/export_fit.py    |   336 +
+ .../skills/clo-fit-export/scripts/fold_preview.py  |   106 +
+ .../skills/clo-fit-export/scripts/requirements.txt |     2 +
+ .../clo-fit-export/scripts/test_fold_preview.py    |    39 +
+ .agents/skills/garment-body-six-view/SKILL.md      |     4 +-
+ .../references/evaluation-workflow.md              |    22 +-
+ .../references/test-status.md                      |     9 +
+ .agents/skills/verify-sleeve-creases/INSTALL.md    |    18 +
+ .../verify-sleeve-creases/LICENSE.FreeSewing.txt   |    24 +
+ .agents/skills/verify-sleeve-creases/LICENSES.md   |     7 +
+ .agents/skills/verify-sleeve-creases/SKILL.md      |    85 +
+ .../fixtures/after-basic.json.gz                   |   Bin 0 -> 68779 bytes
+ .../fixtures/before-basic.json.gz                  |   Bin 0 -> 69022 bytes
+ .../verify-sleeve-creases/fixtures/manifest.json   |    25 +
+ .../verify-sleeve-creases/references/method.md     |    52 +
+ .../verify-sleeve-creases/scripts/inspect.py       |   178 +
+ .../verify-sleeve-creases/scripts/test_inspect.py  |   139 +
+ .agents/skills/verify/SKILL.md                     |     4 +
+ .agents/skills/verify/references/clo-fit-export.md |    15 +
+ .agents/skills/verify/references/cloth-lab.md      |    27 +
+ .../skills/verify/references/intent-sewn-chain.md  |    49 +
+ .agents/skills/verify/references/product-case.md   |    14 +-
+ .agents/skills/verify/references/sleeve-creases.md |    86 +
+ .../verify/references/verification-surfaces.md     |     3 +
+ .claude/skills/verify-sleeve-creases               |     1 +
+ README.md                                          |    18 +
+ .../verification/clo-fit-export-20261118/README.md |    17 +
+ docs/verification/cloth-replay-20261118/README.md  |    69 +
+ .../actual-recordings-and-downloads.zip            |   Bin 0 -> 14652353 bytes
+ .../cloth-replay-20261118/candidate.json           |    59 +
+ .../evidence-commit-verification.json              |    14 +
+ .../cloth-replay-20261118/frame-oracles.json       |  2381 ++
+ .../cloth-replay-20261118/live/README.md           |    43 +
+ .../live/actual-live-recordings.zip                |   Bin 0 -> 14652389 bytes
+ .../cloth-replay-20261118/live/frame-oracles.json  |  2381 ++
+ .../live/local-live-frame-match.json               |     8 +
+ .../cloth-replay-20261118/live/logs/pages.log.gz   |   Bin 0 -> 814 bytes
+ .../live/logs/postcommit-build.log.gz              |   Bin 0 -> 157 bytes
+ .../live/logs/postcommit-mcp.log.gz                |   Bin 0 -> 151 bytes
+ .../live/logs/postcommit-native.log.gz             |   Bin 0 -> 220 bytes
+ .../live/logs/postcommit-pages.log.gz              |   Bin 0 -> 806 bytes
+ .../live/logs/postcommit-unit.log.gz               |   Bin 0 -> 232 bytes
+ .../live/logs/reconciled-pages-build.log.gz        |   Bin 0 -> 158 bytes
+ .../live/logs/reconciled-pages.log.gz              |   Bin 0 -> 807 bytes
+ .../live/logs/regression.log.gz                    |   Bin 0 -> 966 bytes
+ .../cloth-replay-20261118/live/logs/replay.log.gz  |   Bin 0 -> 733 bytes
+ .../cloth-replay-20261118/live/mobile-replay.png   |   Bin 0 -> 376702 bytes
+ .../cloth-replay-20261118/live/mobile-snapshot.yml |   116 +
+ .../live/offline-timeline.png                      |   Bin 0 -> 569120 bytes
+ .../cloth-replay-20261118/live/pages-receipt.json  |    48 +
+ .../live/public-readback.json                      |     8 +
+ .../cloth-replay-20261118/live/publication.json    |    10 +
+ .../cloth-replay-20261118/live/raw-artifacts.json  |    94 +
+ .../cloth-replay-20261118/live/receipt.json        |    88 +
+ .../live/regression-receipt.json                   |  1012 +
+ .../cloth-replay-20261118/live/replay-receipt.json |  5601 +++
+ .../live/replayed-moved-recovery.png               |   Bin 0 -> 633096 bytes
+ .../live/replayed-penetration-fail.png             |   Bin 0 -> 637267 bytes
+ .../cloth-replay-20261118/live/rewind-strain.png   |   Bin 0 -> 629812 bytes
+ .../live/stress-frame-030.png                      |   Bin 0 -> 632876 bytes
+ .../cloth-replay-20261118/logs/build.log.gz        |   Bin 0 -> 373 bytes
+ .../cloth-replay-20261118/logs/kernel.log.gz       |   Bin 0 -> 197 bytes
+ .../logs/native-artifacts.log.gz                   |   Bin 0 -> 220 bytes
+ .../logs/native-reopen.log.gz                      |   Bin 0 -> 151 bytes
+ .../logs/pages-browser.log.gz                      |   Bin 0 -> 806 bytes
+ .../cloth-replay-20261118/logs/pages-build.log.gz  |   Bin 0 -> 158 bytes
+ .../cloth-replay-20261118/logs/pages-unit.log.gz   |   Bin 0 -> 233 bytes
+ .../cloth-replay-20261118/logs/regression.log.gz   |   Bin 0 -> 964 bytes
+ .../cloth-replay-20261118/logs/replay.log.gz       |   Bin 0 -> 727 bytes
+ .../cloth-replay-20261118/mobile-replay.png        |   Bin 0 -> 376670 bytes
+ .../cloth-replay-20261118/mobile-snapshot.yml      |   116 +
+ .../cloth-replay-20261118/offline-timeline.png     |   Bin 0 -> 569204 bytes
+ .../cloth-replay-20261118/pages-receipt.json       |    48 +
+ .../cloth-replay-20261118/raw-artifacts.json       |    94 +
+ .../cloth-replay-20261118/receipt.json             |   168 +
+ .../cloth-replay-20261118/recorded.png             |   Bin 0 -> 629979 bytes
+ .../cloth-replay-20261118/regression-receipt.json  |   952 +
+ .../cloth-replay-20261118/replay-receipt.json      |  5594 +++
+ .../replayed-moved-recovery.png                    |   Bin 0 -> 633201 bytes
+ .../replayed-penetration-fail.png                  |   Bin 0 -> 637237 bytes
+ .../cloth-replay-20261118/rewind-strain.png        |   Bin 0 -> 629829 bytes
+ .../03_cuff_width/independent.json                 |   417 +
+ .../03_cuff_width/independent.log.gz               |   Bin 0 -> 110 bytes
+ .../intent-sewn-chain-20261118/README.md           |   110 +
+ .../baseline/independent.json                      |   417 +
+ .../baseline/independent.log.gz                    |   Bin 0 -> 110 bytes
+ .../browser/03_cuff_width/actual-preview.png       |   Bin 0 -> 83478 bytes
+ .../browser/03_cuff_width/delivery.zip             |   Bin 0 -> 2871763 bytes
+ .../03_cuff_width/downloaded-independent.json      |   417 +
+ .../03_cuff_width/downloaded-independent.log.gz    |   Bin 0 -> 110 bytes
+ .../browser/03_cuff_width/model.glb                |   Bin 0 -> 2495408 bytes
+ .../browser/03_cuff_width/no-webgl-model.glb       |   Bin 0 -> 2495408 bytes
+ .../browser/03_cuff_width/offline-preview.png      |   Bin 0 -> 97744 bytes
+ .../browser/baseline/actual-preview.png            |   Bin 0 -> 83363 bytes
+ .../browser/baseline/delivery.zip                  |   Bin 0 -> 2845564 bytes
+ .../browser/baseline/downloaded-independent.json   |   417 +
+ .../browser/baseline/downloaded-independent.log.gz |   Bin 0 -> 110 bytes
+ .../browser/baseline/model.glb                     |   Bin 0 -> 2477900 bytes
+ .../browser/baseline/no-webgl-model.glb            |   Bin 0 -> 2477900 bytes
+ .../browser/baseline/offline-preview.png           |   Bin 0 -> 98481 bytes
+ .../browser/catalog-320.png                        |   Bin 0 -> 84248 bytes
+ .../browser/catalog-375.png                        |   Bin 0 -> 88057 bytes
+ .../browser/catalog-desktop.png                    |   Bin 0 -> 212976 bytes
+ .../browser/no-webgl.png                           |   Bin 0 -> 113318 bytes
+ .../intent-sewn-chain-20261118/browser/report.json |   182 +
+ .../browser/touch-mobile.png                       |   Bin 0 -> 71202 bytes
+ .../candidate-files.json                           |   194 +
+ .../cross-source-control.json                      |   423 +
+ .../cross-source-control.log.gz                    |   Bin 0 -> 215 bytes
+ .../final-delivery.log.gz                          |   Bin 0 -> 174 bytes
+ .../intent-sewn-chain-20261118/full-tests.log.gz   |   Bin 0 -> 963 bytes
+ .../generation-manifest.json                       |   232 +
+ .../intent-sewn-chain-20261118/publish-02.log.gz   |   Bin 0 -> 170 bytes
+ .../intent-sewn-chain-20261118/publish.log.gz      |   Bin 0 -> 162 bytes
+ .../intent-sewn-chain-20261118/receipt.json        |    42 +
+ .../registration-preflight.json                    |   573 +
+ .../intent-sewn-chain-20261118/run-01.log.gz       |   Bin 0 -> 316 bytes
+ .../intent-sewn-chain-20261118/site-build.log.gz   |   Bin 0 -> 185 bytes
+ .../tests/adversarial-controls.json                |   227 +
+ .../official-eval-format-20261118/README.md        |    63 +
+ .../alias/benchmark.png                            |   Bin 0 -> 128478 bytes
+ .../alias/desktop.png                              |   Bin 0 -> 363612 bytes
+ .../alias/feedback.json                            |    15 +
+ .../official-eval-format-20261118/alias/mobile.png |   Bin 0 -> 79678 bytes
+ .../alias/report.json                              |    45 +
+ .../candidate-files.json                           |    37 +
+ .../details/actual-browser-posed.obj               | 40137 +++++++++++++++++++
+ .../details/before.png                             |   Bin 0 -> 624949 bytes
+ .../details/desktop.png                            |   Bin 0 -> 626653 bytes
+ .../details/draft-feedback.json                    |    19 +
+ .../details/feedback.json                          |    32 +
+ .../details/human-review.png                       |   Bin 0 -> 177090 bytes
+ .../details/mobile.png                             |   Bin 0 -> 1010137 bytes
+ .../details/overlay-zoom.png                       |   Bin 0 -> 835159 bytes
+ .../details/report.json                            |   320 +
+ .../details/selected-editable-model.png            |   Bin 0 -> 198104 bytes
+ .../main/benchmark.png                             |   Bin 0 -> 128487 bytes
+ .../official-eval-format-20261118/main/desktop.png |   Bin 0 -> 363608 bytes
+ .../main/feedback.json                             |    15 +
+ .../official-eval-format-20261118/main/mobile.png  |   Bin 0 -> 79678 bytes
+ .../official-eval-format-20261118/main/report.json |    45 +
+ .../preserved-history.json                         |     6 +
+ .../verification/sleeve-creases-20261118/README.md |    47 +
+ .../sleeve-creases-20261118/candidate-files.json   |   192 +
+ .../sleeve-creases-20261118/cli-runs.json          |    41 +
+ .../independent-comparison.json                    |    40 +
+ .../sleeve-creases-20261118/live-browser.json      |    99 +
+ .../sleeve-creases-20261118/local-browser.json     |    73 +
+ .../sleeve-creases-20261118/local-tests.txt        |    20 +
+ .../sleeve-creases-20261118/package.json           |     7 +
+ .../sleeve-creases-20261118/receipt.json           |    85 +
+ .../solver-checkpoints.json                        |  1193 +
+ .../solver-fold-history.png                        |   Bin 0 -> 129906 bytes
+ experiments/intent-edit-review/README.md           |     2 +
+ experiments/intent-edit-review/sewn/README.md      |    89 +
+ .../intent-edit-review/sewn/publish_review.py      |   108 +
+ .../intent-edit-review/sewn/review-template.html   |    13 +
+ experiments/intent-edit-review/sewn/run_chain.py   |   143 +
+ .../intent-edit-review/sewn/verify_preview.py      |   199 +
+ scripts/build_garment_body_skill_page.py           |     2 +-
+ skill-packages/garment-body-six-view.skill         |   Bin 39158 -> 39864 bytes
+ skill-packages/verify-sleeve-creases.skill         |   Bin 0 -> 151140 bytes
+ tools/cloth_lab/verify_replay.py                   |   310 +
+ .../skill_evals/assets/official-output-gallery.css |     1 +
+ .../skill_evals/assets/official-output-gallery.js  |    85 +
+ tools/skill_evals/build_official_pose_review.py    |   113 +
+ tools/skill_evals/build_pose_guided_review.py      |    27 +-
+ tools/skill_evals/build_single_state_review.py     |    14 +-
+ tools/skill_evals/verify_official_pose_review.cjs  |    36 +
+ tools/skill_evals/verify_pose_feedback.cjs         |     8 -
+ web/cloth-lab/README.md                            |    28 +
+ web/cloth-lab/build.json                           |     8 +-
+ web/cloth-lab/index.html                           |   371 +-
+ web/cloth-lab/src/app.js                           |   122 +-
+ web/cloth-lab/src/solver.c                         |     3 +
+ web/cloth-lab/src/style.css                        |     1 +
+ web/cloth-lab/src/template.html                    |     8 +-
+ web/cloth-lab/src/trajectory.js                    |    59 +
+ web/garment-body/pose-guided-fit/details.html      |    15 +
+ web/garment-body/pose-guided-fit/eval.html         |  1382 +-
+ web/garment-body/pose-guided-fit/index.html        |  1382 +-
+ web/garment-body/pose-guided-fit/manifest.json     |    16 +-
+ .../pose-guided-fit/official-viewer.json           |    11 +
+ .../pose-guided-fit/pose-benchmark.json            |   114 +
+ .../review/baseline/official-overlay.png           |   Bin 0 -> 984409 bytes
+ .../review/final/official-overlay.png              |   Bin 0 -> 976964 bytes
+ web/garment-body/single-state-evals/eval.html      |   161 +-
+ web/garment-body/single-state-evals/history.html   |  1334 +
+ web/garment-body/single-state-evals/manifest.json  |    12 +-
+ .../single-state-evals/official-viewer.json        |    11 +
+ .../single-state-evals/pose-benchmark.json         |   114 +
+ web/garment-body/skill/SKILL.md                    |     4 +-
+ web/garment-body/skill/garment-body-six-view.skill |   Bin 39158 -> 39864 bytes
+ web/garment-body/skill/index.html                  |     2 +-
+ web/garment-body/skill/manifest.json               |    16 +-
+ .../skill/references/evaluation-workflow.md        |    22 +-
+ web/garment-body/skill/references/test-status.md   |     9 +
+ .../sewn/01_sleeve_length/decision.json            |    17 +
+ .../sewn/01_sleeve_length/source-input.dxf         |   Bin 0 -> 108836 bytes
+ .../sewn/01_sleeve_length/source-spec.yaml         |  7172 ++++
+ .../sewn/02_body_length/decision.json              |    17 +
+ .../sewn/02_body_length/source-input.dxf           |   Bin 0 -> 108836 bytes
+ .../sewn/02_body_length/source-spec.yaml           |  7199 ++++
+ .../sewn/03_cuff_width/decision.json               |    64 +
+ .../sewn/03_cuff_width/delivery.zip                |   Bin 0 -> 2871763 bytes
+ .../files/connection-verification.json             |   417 +
+ .../03_cuff_width/files/corrected-seam-lines.svg   |    50 +
+ .../sewn/03_cuff_width/files/model.glb             |   Bin 0 -> 2495408 bytes
+ .../sewn/03_cuff_width/files/original-input.dxf    |   Bin 0 -> 108836 bytes
+ .../sewn/03_cuff_width/files/pattern-revision.json |  3935 ++
+ .../sewn/03_cuff_width/files/preview.html          |    26 +
+ .../sewn/03_cuff_width/files/report.json           |   511 +
+ .../sewn/03_cuff_width/files/viewer.js             |    25 +
+ .../sewn/03_cuff_width/independent.json            |   417 +
+ .../sewn/03_cuff_width/source-input.dxf            |   Bin 0 -> 108836 bytes
+ .../sewn/03_cuff_width/source-spec.yaml            |  7163 ++++
+ .../sewn/04_front_neck/decision.json               |    17 +
+ .../sewn/04_front_neck/source-input.dxf            |   Bin 0 -> 108836 bytes
+ .../sewn/04_front_neck/source-spec.yaml            |  7185 ++++
+ web/intent-edit-review/sewn/baseline/decision.json |    64 +
+ web/intent-edit-review/sewn/baseline/delivery.zip  |   Bin 0 -> 2845564 bytes
+ .../baseline/files/connection-verification.json    |   417 +
+ .../sewn/baseline/files/corrected-seam-lines.svg   |    50 +
+ .../sewn/baseline/files/model.glb                  |   Bin 0 -> 2477900 bytes
+ .../sewn/baseline/files/original-input.dxf         |   Bin 0 -> 108836 bytes
+ .../sewn/baseline/files/pattern-revision.json      |  3935 ++
+ .../sewn/baseline/files/preview.html               |    26 +
+ .../sewn/baseline/files/report.json                |   511 +
+ .../sewn/baseline/files/viewer.js                  |    25 +
+ .../sewn/baseline/independent.json                 |   417 +
+ .../sewn/baseline/source-input.dxf                 |   Bin 0 -> 108836 bytes
+ .../sewn/baseline/source-spec.yaml                 |  7119 ++++
+ web/intent-edit-review/sewn/files-manifest.json    |   154 +
+ web/intent-edit-review/sewn/index.html             |    21 +
+ web/intent-edit-review/sewn/manifest.json          |   240 +
+ .../sewn/preview-verification.json                 |   182 +
+ 237 files changed, 119752 insertions(+), 372 deletions(-)
+ create mode 100644 .agents/skills/clo-fit-export/SKILL.md
+ create mode 100755 .agents/skills/clo-fit-export/scripts/export_fit.py
+ create mode 100644 .agents/skills/clo-fit-export/scripts/fold_preview.py
+ create mode 100644 .agents/skills/clo-fit-export/scripts/requirements.txt
+ create mode 100644 .agents/skills/clo-fit-export/scripts/test_fold_preview.py
+ create mode 100644 .agents/skills/verify-sleeve-creases/INSTALL.md
+ create mode 100644 .agents/skills/verify-sleeve-creases/LICENSE.FreeSewing.txt
+ create mode 100644 .agents/skills/verify-sleeve-creases/LICENSES.md
+ create mode 100644 .agents/skills/verify-sleeve-creases/SKILL.md
+ create mode 100644 .agents/skills/verify-sleeve-creases/fixtures/after-basic.json.gz
+ create mode 100644 .agents/skills/verify-sleeve-creases/fixtures/before-basic.json.gz
+ create mode 100644 .agents/skills/verify-sleeve-creases/fixtures/manifest.json
+ create mode 100644 .agents/skills/verify-sleeve-creases/references/method.md
+ create mode 100644 .agents/skills/verify-sleeve-creases/scripts/inspect.py
+ create mode 100644 .agents/skills/verify-sleeve-creases/scripts/test_inspect.py
+ create mode 100644 .agents/skills/verify/references/clo-fit-export.md
+ create mode 100644 .agents/skills/verify/references/intent-sewn-chain.md
+ create mode 100644 .agents/skills/verify/references/sleeve-creases.md
+ create mode 120000 .claude/skills/verify-sleeve-creases
+ create mode 100644 docs/verification/clo-fit-export-20261118/README.md
+ create mode 100644 docs/verification/cloth-replay-20261118/README.md
+ create mode 100644 docs/verification/cloth-replay-20261118/actual-recordings-and-downloads.zip
+ create mode 100644 docs/verification/cloth-replay-20261118/candidate.json
+ create mode 100644 docs/verification/cloth-replay-20261118/evidence-commit-verification.json
+ create mode 100644 docs/verification/cloth-replay-20261118/frame-oracles.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/README.md
+ create mode 100644 docs/verification/cloth-replay-20261118/live/actual-live-recordings.zip
+ create mode 100644 docs/verification/cloth-replay-20261118/live/frame-oracles.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/local-live-frame-match.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/pages.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/postcommit-build.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/postcommit-mcp.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/postcommit-native.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/postcommit-pages.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/postcommit-unit.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/reconciled-pages-build.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/reconciled-pages.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/regression.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/logs/replay.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/live/mobile-replay.png
+ create mode 100644 docs/verification/cloth-replay-20261118/live/mobile-snapshot.yml
+ create mode 100644 docs/verification/cloth-replay-20261118/live/offline-timeline.png
+ create mode 100644 docs/verification/cloth-replay-20261118/live/pages-receipt.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/public-readback.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/publication.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/raw-artifacts.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/receipt.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/regression-receipt.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/replay-receipt.json
+ create mode 100644 docs/verification/cloth-replay-20261118/live/replayed-moved-recovery.png
+ create mode 100644 docs/verification/cloth-replay-20261118/live/replayed-penetration-fail.png
+ create mode 100644 docs/verification/cloth-replay-20261118/live/rewind-strain.png
+ create mode 100644 docs/verification/cloth-replay-20261118/live/stress-frame-030.png
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/build.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/kernel.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/native-artifacts.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/native-reopen.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/pages-browser.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/pages-build.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/pages-unit.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/regression.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/logs/replay.log.gz
+ create mode 100644 docs/verification/cloth-replay-20261118/mobile-replay.png
+ create mode 100644 docs/verification/cloth-replay-20261118/mobile-snapshot.yml
+ create mode 100644 docs/verification/cloth-replay-20261118/offline-timeline.png
+ create mode 100644 docs/verification/cloth-replay-20261118/pages-receipt.json
+ create mode 100644 docs/verification/cloth-replay-20261118/raw-artifacts.json
+ create mode 100644 docs/verification/cloth-replay-20261118/receipt.json
+ create mode 100644 docs/verification/cloth-replay-20261118/recorded.png
+ create mode 100644 docs/verification/cloth-replay-20261118/regression-receipt.json
+ create mode 100644 docs/verification/cloth-replay-20261118/replay-receipt.json
+ create mode 100644 docs/verification/cloth-replay-20261118/replayed-moved-recovery.png
+ create mode 100644 docs/verification/cloth-replay-20261118/replayed-penetration-fail.png
+ create mode 100644 docs/verification/cloth-replay-20261118/rewind-strain.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/03_cuff_width/independent.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/03_cuff_width/independent.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/README.md
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/baseline/independent.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/baseline/independent.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/03_cuff_width/actual-preview.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/03_cuff_width/delivery.zip
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/03_cuff_width/downloaded-independent.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/03_cuff_width/downloaded-independent.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/03_cuff_width/model.glb
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/03_cuff_width/no-webgl-model.glb
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/03_cuff_width/offline-preview.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/baseline/actual-preview.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/baseline/delivery.zip
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/baseline/downloaded-independent.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/baseline/downloaded-independent.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/baseline/model.glb
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/baseline/no-webgl-model.glb
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/baseline/offline-preview.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/catalog-320.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/catalog-375.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/catalog-desktop.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/no-webgl.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/report.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/browser/touch-mobile.png
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/candidate-files.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/cross-source-control.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/cross-source-control.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/final-delivery.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/full-tests.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/generation-manifest.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/publish-02.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/publish.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/receipt.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/registration-preflight.json
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/run-01.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/site-build.log.gz
+ create mode 100644 docs/verification/intent-sewn-chain-20261118/tests/adversarial-controls.json
+ create mode 100644 docs/verification/official-eval-format-20261118/README.md
+ create mode 100644 docs/verification/official-eval-format-20261118/alias/benchmark.png
+ create mode 100644 docs/verification/official-eval-format-20261118/alias/desktop.png
+ create mode 100644 docs/verification/official-eval-format-20261118/alias/feedback.json
+ create mode 100644 docs/verification/official-eval-format-20261118/alias/mobile.png
+ create mode 100644 docs/verification/official-eval-format-20261118/alias/report.json
+ create mode 100644 docs/verification/official-eval-format-20261118/candidate-files.json
+ create mode 100644 docs/verification/official-eval-format-20261118/details/actual-browser-posed.obj
+ create mode 100644 docs/verification/official-eval-format-20261118/details/before.png
+ create mode 100644 docs/verification/official-eval-format-20261118/details/desktop.png
+ create mode 100644 docs/verification/official-eval-format-20261118/details/draft-feedback.json
+ create mode 100644 docs/verification/official-eval-format-20261118/details/feedback.json
+ create mode 100644 docs/verification/official-eval-format-20261118/details/human-review.png
+ create mode 100644 docs/verification/official-eval-format-20261118/details/mobile.png
+ create mode 100644 docs/verification/official-eval-format-20261118/details/overlay-zoom.png
+ create mode 100644 docs/verification/official-eval-format-20261118/details/report.json
+ create mode 100644 docs/verification/official-eval-format-20261118/details/selected-editable-model.png
+ create mode 100644 docs/verification/official-eval-format-20261118/main/benchmark.png
+ create mode 100644 docs/verification/official-eval-format-20261118/main/desktop.png
+ create mode 100644 docs/verification/official-eval-format-20261118/main/feedback.json
+ create mode 100644 docs/verification/official-eval-format-20261118/main/mobile.png
+ create mode 100644 docs/verification/official-eval-format-20261118/main/report.json
+ create mode 100644 docs/verification/official-eval-format-20261118/preserved-history.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/README.md
+ create mode 100644 docs/verification/sleeve-creases-20261118/candidate-files.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/cli-runs.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/independent-comparison.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/live-browser.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/local-browser.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/local-tests.txt
+ create mode 100644 docs/verification/sleeve-creases-20261118/package.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/receipt.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/solver-checkpoints.json
+ create mode 100644 docs/verification/sleeve-creases-20261118/solver-fold-history.png
+ create mode 100644 experiments/intent-edit-review/sewn/README.md
+ create mode 100644 experiments/intent-edit-review/sewn/publish_review.py
+ create mode 100644 experiments/intent-edit-review/sewn/review-template.html
+ create mode 100644 experiments/intent-edit-review/sewn/run_chain.py
+ create mode 100644 experiments/intent-edit-review/sewn/verify_preview.py
+ create mode 100644 skill-packages/verify-sleeve-creases.skill
+ create mode 100644 tools/cloth_lab/verify_replay.py
+ create mode 100644 tools/skill_evals/assets/official-output-gallery.css
+ create mode 100644 tools/skill_evals/assets/official-output-gallery.js
+ create mode 100644 tools/skill_evals/build_official_pose_review.py
+ create mode 100644 tools/skill_evals/verify_official_pose_review.cjs
+ create mode 100644 web/cloth-lab/src/trajectory.js
+ create mode 100644 web/garment-body/pose-guided-fit/details.html
+ create mode 100644 web/garment-body/pose-guided-fit/official-viewer.json
+ create mode 100644 web/garment-body/pose-guided-fit/pose-benchmark.json
+ create mode 100644 web/garment-body/pose-guided-fit/review/baseline/official-overlay.png
+ create mode 100644 web/garment-body/pose-guided-fit/review/final/official-overlay.png
+ create mode 100644 web/garment-body/single-state-evals/history.html
+ create mode 100644 web/garment-body/single-state-evals/official-viewer.json
+ create mode 100644 web/garment-body/single-state-evals/pose-benchmark.json
+ create mode 100644 web/intent-edit-review/sewn/01_sleeve_length/decision.json
+ create mode 100644 web/intent-edit-review/sewn/01_sleeve_length/source-input.dxf
+ create mode 100644 web/intent-edit-review/sewn/01_sleeve_length/source-spec.yaml
+ create mode 100644 web/intent-edit-review/sewn/02_body_length/decision.json
+ create mode 100644 web/intent-edit-review/sewn/02_body_length/source-input.dxf
+ create mode 100644 web/intent-edit-review/sewn/02_body_length/source-spec.yaml
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/decision.json
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/delivery.zip
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/files/connection-verification.json
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/files/corrected-seam-lines.svg
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/files/model.glb
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/files/original-input.dxf
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/files/pattern-revision.json
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/files/preview.html
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/files/report.json
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/files/viewer.js
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/independent.json
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/source-input.dxf
+ create mode 100644 web/intent-edit-review/sewn/03_cuff_width/source-spec.yaml
+ create mode 100644 web/intent-edit-review/sewn/04_front_neck/decision.json
+ create mode 100644 web/intent-edit-review/sewn/04_front_neck/source-input.dxf
+ create mode 100644 web/intent-edit-review/sewn/04_front_neck/source-spec.yaml
+ create mode 100644 web/intent-edit-review/sewn/baseline/decision.json
+ create mode 100644 web/intent-edit-review/sewn/baseline/delivery.zip
+ create mode 100644 web/intent-edit-review/sewn/baseline/files/connection-verification.json
+ create mode 100644 web/intent-edit-review/sewn/baseline/files/corrected-seam-lines.svg
+ create mode 100644 web/intent-edit-review/sewn/baseline/files/model.glb
+ create mode 100644 web/intent-edit-review/sewn/baseline/files/original-input.dxf
+ create mode 100644 web/intent-edit-review/sewn/baseline/files/pattern-revision.json
+ create mode 100644 web/intent-edit-review/sewn/baseline/files/preview.html
+ create mode 100644 web/intent-edit-review/sewn/baseline/files/report.json
+ create mode 100644 web/intent-edit-review/sewn/baseline/files/viewer.js
+ create mode 100644 web/intent-edit-review/sewn/baseline/independent.json
+ create mode 100644 web/intent-edit-review/sewn/baseline/source-input.dxf
+ create mode 100644 web/intent-edit-review/sewn/baseline/source-spec.yaml
+ create mode 100644 web/intent-edit-review/sewn/files-manifest.json
+ create mode 100644 web/intent-edit-review/sewn/index.html
+ create mode 100644 web/intent-edit-review/sewn/manifest.json
+ create mode 100644 web/intent-edit-review/sewn/preview-verification.json

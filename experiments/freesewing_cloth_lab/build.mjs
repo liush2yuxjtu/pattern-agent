@@ -1,0 +1,27 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {createRequire} from 'node:module';
+import wabtFactory from 'wabt';
+import {build,transform} from 'esbuild';
+const require=createRequire(import.meta.url),here=path.dirname(new URL(import.meta.url).pathname),root=path.resolve(here,'../..');
+const source='web/garment-body/product-case/model/final-neutral.obj';
+const raw=fs.readFileSync(path.join(root,source));
+const expected='2cd7c641d2610148d715f0e33128e9d9d9c7f61283c982fb096a11086e2d3f8c';
+const hash=crypto.createHash('sha256').update(raw).digest('hex');
+if(hash!==expected)throw new Error('MakeHuman source changed; independently review provenance before rebuilding');
+const vv=[],indices=[];
+for(const line of raw.toString().split('\n')){const s=line.trim().split(/\s+/);if(s[0]==='v')vv.push(s.slice(1,4).map(x=>Number(x)/100));if(s[0]==='f')indices.push(...s.slice(1,4).map(x=>Number(x.split('/')[0])-1));}
+const minY=Math.min(...vv.map(x=>x[1])),centerX=(Math.max(...vv.map(x=>x[0]))+Math.min(...vv.map(x=>x[0])))/2;
+const vertices=vv.flatMap(x=>[x[0]-centerX,x[1]-minY,x[2]].map(v=>Number(v.toFixed(7))));
+const body={vertices,indices,provenance:{source:'Pattern Agent authored-morph neutral MakeHuman surface',sourceFile:source,sourceSHA256:hash,license:'CC0-1.0',unit:'metre',vertices:vv.length,triangles:indices.length/3}};
+fs.writeFileSync(here+'/source/body.json',JSON.stringify(body));
+const wabt=await wabtFactory(),mod=wabt.parseWat('solver.wat',fs.readFileSync(here+'/source/solver.wat','utf8'));mod.resolveNames();mod.validate();
+const {buffer}=mod.toBinary({write_debug_names:true});fs.writeFileSync(here+'/source/solver-bytes.json',JSON.stringify([...buffer]));
+const result=await build({entryPoints:[here+'/source/app.js'],bundle:true,format:'esm',minify:true,write:false,target:'es2022',legalComments:'inline'});
+const template=fs.readFileSync(here+'/source/template.html','utf8').replace('<script>/*__APP__*/</script>','<script type="module">/*__APP__*/</script>');
+const notices=['three','three-mesh-bvh'].map(p=>`${p}:\n${fs.readFileSync(path.resolve(path.dirname(require.resolve(p)),'../LICENSE'),'utf8')}`).join('\n\n')+'\n\nFreeSewing 4.10.2 components (MIT):\n'+fs.readFileSync(here+'/FreeSewing-LICENSE.txt','utf8')+'\n\n'+fs.readFileSync(here+'/Runtime-Dependency-LICENSES.txt','utf8');
+const html=template.replace('/*__APP__*/',()=>result.outputFiles[0].text).replace('</body>',`<!-- Embedded dependencies and MakeHuman CC0 core mesh.\n${notices.replaceAll('--','—')}\n--></body>`);
+const embedded=html.match(/<script type="module">([\s\S]*?)<\/script>/)[1];await transform(embedded,{loader:'js',target:'es2022'});
+const target=process.argv[2]||path.join(root,'web/freesewing-cloth-lab.html');const finalHTML=html.replace(/[ \t]+$/gm,'');fs.writeFileSync(target,finalHTML);
+console.log(JSON.stringify({target,bytes:Buffer.byteLength(finalHTML),wasmBytes:buffer.length,bodySHA256:hash,externalImports:result.outputFiles[0].text.match(/import\(/g)?.length||0}));
