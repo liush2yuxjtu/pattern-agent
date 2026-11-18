@@ -21,6 +21,7 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Aster Vercel publication | [vercel-live-deploy](references/vercel-live-deploy.md) — exact deployment and anonymous live URL | project/build identity, content, live browser evidence |
 | Printable skirt and download workbench | [github-pages](references/github-pages.md) — OpenSloper CLI/MCP, PDFs, live Pages browser | native reopen, calibration, real downloads |
 | GarmentCode preview | [garmentcode-preview](references/garmentcode-preview.md) — GLB/downloaded HTML and live browser | mesh pixels, rotation, hashes; garment FAIL separate |
+| CLO stress, strain and fold export | [clo-fit-export](references/clo-fit-export.md) — local CLI on a saved garment GLB | numeric controls, JSON/CSV readback, both fold previews |
 | Full-arm simulation | [full-arm](references/full-arm.md) — pipeline CLI and independently reopened Blender | saved frames, negative controls, renders |
 | Strict static geometry controls | [oneshot-control](references/oneshot-control.md) — experiment CLI and independent oracle | 23 analytic probes and strict fault controls |
 | Recovered motion | [oneshot-motion](references/oneshot-motion.md) — saved meshes and independently reopened replay | 121 full-array matches, UNKNOWN retained |

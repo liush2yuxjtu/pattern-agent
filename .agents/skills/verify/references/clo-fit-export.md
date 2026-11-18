@@ -1,0 +1,15 @@
+# CLO fit export verification
+
+Run these from the repository root with the CLO fit export requirements installed:
+
+```sh
+python -B -m unittest discover -s .agents/skills/clo-fit-export/scripts -p 'test_fold_preview.py' -v
+python -B .agents/skills/clo-fit-export/scripts/export_fit.py /path/to/garment.glb \
+  --out-dir /path/to/new-output --project /path/to/garment.zprj \
+  --stress-front /path/to/front.png --stress-back /path/to/back.png
+```
+
+Use a garment-only CLO GLB with metric pattern UVs. Add confirmed primitive IDs and crop arguments as needed. Independently reopen JSON and CSV, check agreement of counts and units, compare the strain fields against any established reference, and visually inspect the stress/strain map and both fold maps. With no stress samples, numeric stress fields must remain missing. At the CLI, probe a bad input such as a wrong piece-ID count, and check that it is rejected before any outputs are written.
+
+The gate covers the offline exporter. It does not grade simulation, the material, or physical fit.
+[2026-11-18 receipt](../../../../docs/verification/clo-fit-export-20261118/README.md).
