@@ -1,0 +1,18 @@
+{
+  "eval_id": 3,
+  "eval_name": "reformation-heldout",
+  "prompt": "使用提供的独立电商商品模特原图，实际生成一张保持原图动作的 Image Gen 姿态点线引导，再建立可调厘米尺寸与骨骼姿态的人体拟合原图。保存同一状态正侧背、原相机渲染、OpenCV叠加、尺寸来源、代码及复现证据。单张图不能确定的关节、隐藏深度与真实围度保持不确定。本任务仅测试姿态引导和人体拟合分支，不要求重新生成完整六张服装图。",
+  "assertions": [
+    "The original retailer image is preserved and its source/scale provenance distinguishes observed facts from the M170 prior.",
+    "Saved centimetre parameters independently reconstruct the real neutral and posed anatomical mesh within tolerance.",
+    "Actual source-camera and front/side/back images replay from the same saved complete body and pose.",
+    "Every frozen critical original-photo region and centre scanline passes its independent envelope checks.",
+    "Visible original wrist cues and coarse limb directions do not contradict the target action; hidden wrists are not invented.",
+    "Independent actual three-dimensional views show a reference-consistent plausible action without detected severe skin overlap; coverage limitations are explicit.",
+    "Body data and reports preserve measurement definitions and prior/conditional provenance rather than claiming unmeasured real-person accuracy."
+  ],
+  "input_case": "holdout-c-reformation",
+  "configuration": "with_skill",
+  "split": "heldout",
+  "execution_kind": "explicit subagent functional run, not native Claude triggering"
+}

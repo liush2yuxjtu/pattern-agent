@@ -1,0 +1,52 @@
+{
+  "grader_sha256": "e2908f7a4da8ab9eeb79cb05283e5fdc048e47e5604bee28fa73682ec0ed1757",
+  "actual_source_state_sha256": "f4802f2b2a02d685b8efdd106a7e60c2051b6663e2970144570d9ddc69728d80",
+  "controls": [
+    {
+      "name": "disjoint_skin_air_gap",
+      "passed": true,
+      "evidence": "Crossings0,2,5,7 yield two intervals; point3 in air is not inside despite minmax hull."
+    },
+    {
+      "name": "odd_open_ray_unknown",
+      "passed": true,
+      "evidence": "Three unique crossings return UNKNOWN, not collision-free."
+    },
+    {
+      "name": "pixel_view_tamper",
+      "passed": true,
+      "evidence": {
+        "verdict": "FAIL",
+        "hashes_match": true,
+        "joint_reprojection_max_px": 0.0,
+        "independent_mask_iou": 1.0,
+        "png_mean_abs_channel_error": 1.8611111111111112
+      },
+      "grading_sha256": "36f59d2c8017b28769f2231e0a22b531d7761c60b0545ad2c6be89e6450f3904"
+    },
+    {
+      "name": "posed_obj_translation",
+      "passed": true,
+      "evidence": {
+        "posed_max_error_cm": 15.00000000049976,
+        "neutral_max_error_cm": 5.023917971139767e-09,
+        "neutral_target_max_error_cm": 4.0451587011602896e-05,
+        "morph_weight_max_error": 0.0
+      },
+      "grading_sha256": "082263ea6fa4b02ce1a4ab741ed8969c38a5a9c3a0534016e1ff4ca246475146"
+    },
+    {
+      "name": "camera_parameter_alias",
+      "passed": true,
+      "evidence": {
+        "verdict": "PASS",
+        "png_mean_abs_channel_error": 0.0,
+        "independent_mask_iou": 1.0,
+        "camera_basis": "Independent decomposition of authoritative 3x4 matrix; no final-list parameter assumption"
+      },
+      "grading_sha256": "861b9cc44fc7e3c3b21fcd98e748f0e2319e2bc4856eb6ec6394faa009342f2c"
+    }
+  ],
+  "all_passed": true,
+  "limits": "These controls verify specific checker failure detection/invariance, not fitting quality. The real paired outcomes are independently graded and remain FAIL."
+}

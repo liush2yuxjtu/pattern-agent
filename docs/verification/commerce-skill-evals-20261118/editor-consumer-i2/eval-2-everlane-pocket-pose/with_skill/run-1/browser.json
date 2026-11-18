@@ -1,0 +1,38 @@
+{
+  "verdict": "FAIL",
+  "error": "Error: Actual imported photo-fit remains cm adjustable without action reset",
+  "checks": [
+    {
+      "passed": true,
+      "name": "Actual supplied target action loaded"
+    },
+    {
+      "passed": true,
+      "name": "Actual saved photo-fit cm state loaded"
+    },
+    {
+      "passed": true,
+      "name": "Actual browser loaded mesh agrees with graded posed OBJ",
+      "evidence": {
+        "max_delta_cm": 0.000012649335863495089
+      }
+    },
+    {
+      "passed": true,
+      "name": "Actual photo-fit front camera keeps one saved body/action"
+    },
+    {
+      "passed": true,
+      "name": "Actual photo-fit side camera keeps one saved body/action"
+    },
+    {
+      "passed": true,
+      "name": "Actual photo-fit back camera keeps one saved body/action"
+    },
+    {
+      "passed": false,
+      "name": "Actual imported photo-fit remains cm adjustable without action reset"
+    }
+  ],
+  "errors": []
+}

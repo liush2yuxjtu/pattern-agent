@@ -1,0 +1,73 @@
+{
+  "scope": "Review heuristics, not detector truth, pose-fit acceptance or collision simulation. Thresholds are declared diagnostic priors, not evaluator gates.",
+  "profile": "front-pocket",
+  "pocket_sides": [
+    "L"
+  ],
+  "coordinate_system": "Human Studio Y-up; hip L minus R defines lateral axis, anterior is lateral cross up; cm",
+  "torso_lean_deg": 6.669878700474831,
+  "spine_neck_chain": [
+    {
+      "from": "root",
+      "to": "spine05",
+      "tilt_from_up_deg": 90.97169328044745
+    },
+    {
+      "from": "spine05",
+      "to": "spine04",
+      "tilt_from_up_deg": 32.0114072964916
+    },
+    {
+      "from": "spine04",
+      "to": "spine03",
+      "tilt_from_up_deg": 18.846936663496447
+    },
+    {
+      "from": "spine03",
+      "to": "spine02",
+      "tilt_from_up_deg": 7.400760153251557
+    },
+    {
+      "from": "spine02",
+      "to": "spine01",
+      "tilt_from_up_deg": 0.1637369062837244
+    },
+    {
+      "from": "spine01",
+      "to": "neck01",
+      "tilt_from_up_deg": 5.099186779156073
+    }
+  ],
+  "body_forward_axis": [
+    -0.12185181795896052,
+    0.0,
+    0.9925483033384807
+  ],
+  "arms": {
+    "L": {
+      "elbow_flexion_deg": 29.410060490198763,
+      "upper_arm_posterior_sweep_cm": -3.5123599916873953,
+      "wrist_anterior_from_pelvis_cm": 22.5748155366203
+    },
+    "R": {
+      "elbow_flexion_deg": 3.109919000509951,
+      "upper_arm_posterior_sweep_cm": 0.6582524159070606,
+      "wrist_anterior_from_pelvis_cm": 6.770664606042818
+    }
+  },
+  "non_editor_pose_values": [],
+  "review_flags": [
+    "Accumulated spine/neck chain has a segment tilted over 35deg; per-joint bounds alone are insufficient."
+  ],
+  "acceptance": "NOT_ASSESSED",
+  "limitations": [
+    "No original-photo landmark accuracy or true person measurements are evaluated.",
+    "Gesture profile must be selected from the actual reference, never automatically assumed.",
+    "No skin collision, cloth contact or balance/centre-of-mass proof.",
+    "Named joints avoid solver parameter-index ambiguity; source FK/mesh consistency still needs independent verification."
+  ],
+  "source_sha256": {
+    "work/commerce-skill-evals-20261118/iteration-2/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/joints.json": "4234062785fd0bad1e566d98415e5068fcbe2d286927596a21dd9835fe679261",
+    "work/commerce-skill-evals-20261118/iteration-2/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/final-state.json": "1306c8dbbdad7daf26d86b96ae75eee98c919ebfe866ab55b7e92a0cfaf4d08f"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "skill": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/skill-evals.md",
+  "candidate_manifest": "candidate-i2.json",
+  "base_commit": "27789580081307a900de0ac5ada6b765e654f7bd",
+  "local_checks": [
+    {
+      "command": "python -m unittest discover -s .agents/skills/garment-body-six-view/tests -q",
+      "exit_code": 0,
+      "tests": 29
+    },
+    {
+      "command": "python -m unittest discover -s tools/skill_evals -p 'test_*.py' -q",
+      "exit_code": 0,
+      "tests": 20
+    },
+    {
+      "command": "python tools/skill_evals/upstream/scripts/quick_validate.py .agents/skills/garment-body-six-view",
+      "exit_code": 0
+    },
+    {
+      "command": "upstream package_skill.py + scripts/build_garment_body_skill_page.py",
+      "exit_code": 0,
+      "actual_download_crc": "PASS",
+      "exact_source_members": 17
+    },
+    {
+      "command": "python tools/skill_evals/build_commerce_review.py --iteration 2 --include-holdout; python scripts/build_pages.py",
+      "exit_code": 0
+    },
+    {
+      "command": "verify_commerce_review.cjs latest official page",
+      "exit_code": 0,
+      "browser_checks": 462,
+      "report": "iteration-2-browser-stable/report.json"
+    },
+    {
+      "command": "verify_commerce_review.cjs retained iteration-1.html",
+      "exit_code": 0,
+      "browser_checks": 229,
+      "report": "retained-i1-browser-stable/report.json"
+    },
+    {
+      "command": "scripts/verify_garment_body_skill.cjs",
+      "exit_code": 0,
+      "browser_checks": 20,
+      "report": "skill-browser/report.json"
+    },
+    {
+      "command": "Independent guarded grader controls + receipt adapter controls",
+      "exit_code": 0,
+      "actual_cli_controls": 8,
+      "reports": "grader-controls/"
+    },
+    {
+      "command": "Actual official editor model consumers and gallery link probe",
+      "consumer_pass": 5,
+      "consumer_fail": 1,
+      "scope": "Additional consumer assertions, no frozen score change. Aold exact pose import fails from 0.1-degree normalization.",
+      "report": "iteration-2-browser/model-links.json"
+    },
+    {
+      "command": "grade_single_state_editor.cjs --consume-only true --exercise-pose true Bwith",
+      "exit_code": 0,
+      "checks": 12,
+      "report": "editor-pose-probe-stable/browser.json"
+    }
+  ],
+  "observations": [
+    "Inspected actual desktop gallery and Benchmark screenshots; original photo remains visible beneath thin real-OBJ overlay.",
+    "Native Previous Output equals corresponding i1 output for four development runs; heldout C has no fabricated prior.",
+    "Verified frozen v0/v1/v2 manifests unchanged and e2908 numerical grader unchanged.",
+    "Canonical differs from tested v2 only in dated test-status and two eval specification/draft documents; operational source identical.",
+    "All public i2 grades/state bytes equal independently graded originals.",
+    "No native Claude runtime: triggering BLOCKED and resource telemetry null.",
+    "Actual body/photo task results remain FAIL for all10 executions. Assertion means are not person/pose accuracy."
+  ],
+  "edge_probes": [
+    "Stable historical manifest selection fixes later6-run inventory being applied to4-run history; original failed report retained.",
+    "Debounce and asynchronous import readiness correct two premature-read verifier failures; model outputs unmodified.",
+    "Eight real fault/invariance controls reject tampered mesh/image/receipt/source and preserve authoritative camera equivalence."
+  ],
+  "reconciliation": "Fast-forwarded unrelated concurrent main changes through2778958; no Human Studio, generic fit runtime, skill or commerce sources changed in the concurrent commits. Tested affected subtree remains byte-identical.",
+  "verdict": "PASS",
+  "scope": "Implementation and evidence-publication/handoff correctness only; functional person-fit acceptance FAIL, native triggering BLOCKED, physical cloth fit NOT_RUN",
+  "cleanup": "Owned local browser contexts and HTTP8955 stopped; independent live-i1 Firecrawl session stopped. No CI, PR, Issue, new spending or security changes."
+}

@@ -1,0 +1,46 @@
+{
+  "verdict": "PASS",
+  "mode": "consume-only",
+  "checks": [
+    {
+      "passed": true,
+      "name": "Actual supplied target action loaded"
+    },
+    {
+      "passed": true,
+      "name": "Actual saved photo-fit cm state loaded"
+    },
+    {
+      "passed": true,
+      "name": "Actual browser loaded mesh agrees with graded posed OBJ",
+      "evidence": {
+        "max_delta_cm": 0.000012649335863495089
+      }
+    },
+    {
+      "passed": true,
+      "name": "Actual photo-fit front camera keeps one saved body/action"
+    },
+    {
+      "passed": true,
+      "name": "Actual photo-fit side camera keeps one saved body/action"
+    },
+    {
+      "passed": true,
+      "name": "Actual photo-fit back camera keeps one saved body/action"
+    },
+    {
+      "passed": true,
+      "name": "Actual imported photo-fit remains cm adjustable without action reset"
+    },
+    {
+      "passed": true,
+      "name": "No photo-fit consumer runtime errors",
+      "evidence": []
+    }
+  ],
+  "source": "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/iteration-2/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/final-state.json",
+  "executor_final": "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/iteration-2/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/final-state.json",
+  "max_pose_obj_delta_cm": 0.000012649335863495089,
+  "errors": []
+}

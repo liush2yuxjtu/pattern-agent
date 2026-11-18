@@ -1,0 +1,290 @@
+{
+  "analysis_type": "independent_posthoc_skill_creator_analyzer",
+  "iteration": 2,
+  "scope": "Analysis sidecars only. Read frozen v0/v2 instructions, final six grades, benchmark, real TRACE/code and frozen blind/full reviews plus independent editor consumer evidence. Did not rerun fitting, mutate artifacts, grade or revise frozen assertions. Visual findings below are attributed to independent reviewed images, not new pixel inspection by this analyst.",
+  "comparisons": [
+    {
+      "case": "eval-1-everlane-six-view",
+      "split": "development",
+      "comparison_summary": {
+        "winner": "B",
+        "winner_configuration": "old_skill",
+        "winner_skill": "work/commerce-skill-evals-20261118/skill-v0",
+        "loser_skill": "work/commerce-skill-evals-20261118/skill-v2",
+        "comparator_reasoning": "B better preserves the source frontal arms-down action in the actual mannequin/photo render, with near-front camera and side-view wrists near the thigh line. A photo-render visibly rotates into a three-quarter presentation and brings hands forward in side view. Both preserve the important garment construction: wide shallow boatneck, concealed placket, waist darts, long sleeves pushed up. A generated pose/depth also change stance and shoes relative to its own front/model; B six-view illustrations are more consistent in broad stance. Both clearly label body dimensions as conditional prior rather than recovered real-person measurements. Neither can establish hidden back/depth or collision validity from this single photo. Hypothesis-label completeness is UNKNOWN because permitted anonymous outputs exclude report/receipt. Winner is based on visual task quality, not inferred skill identity.",
+        "relative_only": true
+      },
+      "formal_results": {
+        "with_skill": {
+          "summary": {
+            "passed": 6,
+            "failed": 3,
+            "total": 9,
+            "pass_rate": 0.6666666666666666
+          },
+          "overall": "FAIL"
+        },
+        "old_skill": {
+          "summary": {
+            "passed": 6,
+            "failed": 3,
+            "total": 9,
+            "pass_rate": 0.6666666666666666
+          },
+          "overall": "FAIL"
+        }
+      },
+      "evidence_paths": {
+        "comparison": "work/commerce-skill-evals-20261118/review/iteration-2/blind-case-1/blind-comparison.json",
+        "winner_trace": "work/commerce-skill-evals-20261118/iteration-2/eval-1-everlane-six-view/old_skill/run-1/outputs/TRACE.md",
+        "loser_trace": "work/commerce-skill-evals-20261118/iteration-2/eval-1-everlane-six-view/with_skill/run-1/outputs/TRACE.md",
+        "winner_full_review": "work/commerce-skill-evals-20261118/review/iteration-2/eval-1-everlane-six-view/old_skill/manual-review.json",
+        "loser_full_review": "work/commerce-skill-evals-20261118/review/iteration-2/eval-1-everlane-six-view/with_skill/manual-review.json"
+      }
+    },
+    {
+      "case": "eval-2-everlane-pocket-pose",
+      "split": "development",
+      "comparison_summary": {
+        "winner": "A",
+        "winner_configuration": "with_skill",
+        "winner_skill": "work/commerce-skill-evals-20261118/skill-v2",
+        "loser_skill": "work/commerce-skill-evals-20261118/skill-v0",
+        "comparator_reasoning": "A wins narrowly as the less defective 3D result, not an overall pass. Both preserve a documented generic anthropometric prior and both fail the pocket action. A leaves an open hand too low and forward on the thigh and uses an overly broad symmetric stance, but its upright side silhouette and soles are more plausible for the standing input. B hides the hand in the photo/front view by placing it at the rear buttock, exposed in side/back, and adds a bent-knee, feet-forward, tilted-sole stance and excessive head tilt. B has a narrower front stance closer to the input but that does not overcome the depth/action and side-view defects. Exact occluded wrists/knees/hips, person measurements and collision remain UNKNOWN; centimetre calibration and 2D resemblance are not anatomical proof. No mappings, skill versions, actual iteration outputs, other reviews, or TRACE were accessed before freezing this decision.",
+        "relative_only": true
+      },
+      "formal_results": {
+        "with_skill": {
+          "summary": {
+            "passed": 5,
+            "failed": 2,
+            "total": 7,
+            "pass_rate": 0.7142857142857143
+          },
+          "overall": "FAIL"
+        },
+        "old_skill": {
+          "summary": {
+            "passed": 4,
+            "failed": 3,
+            "total": 7,
+            "pass_rate": 0.5714285714285714
+          },
+          "overall": "FAIL"
+        }
+      },
+      "evidence_paths": {
+        "comparison": "work/commerce-skill-evals-20261118/review/iteration-2/blind-case-2/blind-comparison.json",
+        "winner_trace": "work/commerce-skill-evals-20261118/iteration-2/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/TRACE.md",
+        "loser_trace": "work/commerce-skill-evals-20261118/iteration-2/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/TRACE.md",
+        "winner_full_review": "work/commerce-skill-evals-20261118/review/iteration-2/eval-2-everlane-pocket-pose/with_skill/manual-review.json",
+        "loser_full_review": "work/commerce-skill-evals-20261118/review/iteration-2/eval-2-everlane-pocket-pose/old_skill/manual-review.json"
+      }
+    },
+    {
+      "case": "eval-3-reformation-heldout",
+      "split": "heldout",
+      "comparison_summary": {
+        "winner": "A",
+        "winner_configuration": "with_skill",
+        "winner_skill": "work/commerce-skill-evals-20261118/skill-v2",
+        "loser_skill": "work/commerce-skill-evals-20261118/skill-v0",
+        "comparator_reasoning": "A is the relative winner because its head faces forward and its front/side/back views retain a broadly upright, two-foot standing posture. B shows severe chin-up/backward upper-body extension and a pronounced depth-staggered step: foot joint depths differ by 29.35 cm, versus 0.27 cm in A. This conflicts with the source visible head/upper-body action and does not gain credibility from 2D proximity. A still fails full action reconstruction: oblique photo view and generic lowered hand do not demonstrate the visible clutch-support action. Both report conditional M170 model measurements rather than real-person truth; B additionally mislabels its limitation as a synthetic fixture. Winner A does not mean PASS; both fail pose/action completion and collision remains UNKNOWN. Hidden wrist depth and skirt-covered knees/hips are explicitly excluded as visible ground truth.",
+        "relative_only": true
+      },
+      "formal_results": {
+        "with_skill": {
+          "summary": {
+            "passed": 5,
+            "failed": 2,
+            "total": 7,
+            "pass_rate": 0.7142857142857143
+          },
+          "overall": "FAIL"
+        },
+        "old_skill": {
+          "summary": {
+            "passed": 4,
+            "failed": 3,
+            "total": 7,
+            "pass_rate": 0.5714285714285714
+          },
+          "overall": "FAIL"
+        }
+      },
+      "evidence_paths": {
+        "comparison": "work/commerce-skill-evals-20261118/review/iteration-2/blind-case-3/blind-comparison.json",
+        "winner_trace": "work/commerce-skill-evals-20261118/iteration-2/eval-3-reformation-heldout/with_skill/run-1/outputs/TRACE.md",
+        "loser_trace": "work/commerce-skill-evals-20261118/iteration-2/eval-3-reformation-heldout/old_skill/run-1/outputs/TRACE.md",
+        "winner_full_review": "work/commerce-skill-evals-20261118/review/iteration-2/eval-3-reformation-heldout/with_skill/manual-review.json",
+        "loser_full_review": "work/commerce-skill-evals-20261118/review/iteration-2/eval-3-reformation-heldout/old_skill/manual-review.json"
+      }
+    }
+  ],
+  "winner_strengths": [
+    "Case A v0: blind reviewer favors near-frontal arms-down mannequin and side-view wrists near thigh line. Broad manual action PASS is narrower than strict 3D acceptance; severe limited skin-overlap evidence still makes the combined assertion FAIL.",
+    "Case B v2: narrower saved moving-bone set/neutral standing structure and source wrist observations accompany more upright stance and visible wrist improvement (120.06→69.31px). It still leaves an open hand forward on thigh and overly broad symmetric stance rather than completing pocket action.",
+    "Case C v2: original-photo manual wrist observations, conservative standing structure and conditional limb fitting accompany closer visible wrists and upright two-foot stance, contrasting v0 severe spine extension and 29.35cm foot-depth separation. C remains incomplete because camera/head are oblique and clutch grip is not demonstrated.",
+    "V2 normalization before final geometry/generation is executed, rather than merely described: zero non-tenth values in A v2 versus 13 off-step entries in A v0; independent editor consumes all three v2 saved states. B v2 alone has the broader 12-check real UI edit/mesh/export/reimport validation."
+  ],
+  "loser_weaknesses": [
+    "Case A v2 uses 20/10 degree obliquity and wrists further forward than elbows (12.04/8.72cm versus 5.61/3.57cm Z). Its source-camera action regresses relative to v0, and generated pose/depth introduce stance/shoe drift. Straight spine does not remove camera/arm ambiguity.",
+    "Case B v0 has rear-buttock hand placement, bent-knee/feet-forward/tilted-sole stance, and 120.06px visible wrist error. Real guide integration does not guarantee correct action.",
+    "Case C v0 guide-driven residuals permit spine01 [-37.6,-4.1,-2.0], chin-up extension and unsupported depth-staggered stance. Correct source provenance and measurement disclaimers do not rescue actual action.",
+    "All runs remain weak at frozen original-photo critical regions; neither integrity checks nor small neutral reconstruction residuals diagnose the full photographed gesture."
+  ],
+  "instruction_following": {
+    "scale": "Qualitative analyst scores 1–10 for adherence, separate from assertion pass rate and reconstruction quality.",
+    "case_A": {
+      "winner_v0": {
+        "score": 6,
+        "issues": [
+          "Performs actual fitting and independent generation with preserved lineage.",
+          "Leaves exact saved pose off editor step despite inspector rejection, causing actual consumer import failure.",
+          "Guide registration is saved but mapped points do not numerically constrain optimization; generated depth role fails."
+        ]
+      },
+      "loser_v2": {
+        "score": 7,
+        "issues": [
+          "Explicit parameter mapping, pre-export rounding, saved generation inputs and pose diagnostic are executed.",
+          "Diagnostic acceptance remains NOT_ASSESSED with one warning; no evidence warning drove a corrective rerun.",
+          "Original-camera/arm action remains worse despite expected side-view review; guide mappedraw is not used in residual."
+        ]
+      }
+    },
+    "case_B": {
+      "winner_v2": {
+        "score": 7,
+        "issues": [
+          "Pre-export normalization, pose audit and source wrist observations executed; actual editor use subsequently validated.",
+          "Guide arrives during solving, registration is post-fit and no numeric refinement follows; honest fallback still leaves requested guide-to-correction flow incomplete.",
+          "Pocket diagnostic and more upright stance do not resolve open palm/pocket action."
+        ]
+      },
+      "loser_v0": {
+        "score": 6,
+        "issues": [
+          "Genuine registered guide points feed least-squares; normalized second candidate after initial rejection.",
+          "Final side/back hand and standing defects persist despite numerical guide use."
+        ]
+      }
+    },
+    "case_C": {
+      "winner_v2": {
+        "score": 7,
+        "issues": [
+          "Rebuilds observations and uses standing constraints, step normalization, native guide preservation and bundled diagnostic.",
+          "Guide registration follows optimization; solver never reads registered guide points.",
+          "Clutch grip and near-frontal source-camera action remain incomplete."
+        ]
+      },
+      "loser_v0": {
+        "score": 6,
+        "issues": [
+          "Actual ORB-transformed guide coordinates drive residuals and editor state is consumable.",
+          "Large unsupported torso/foot-depth solution retained; clutch contact not solved."
+        ]
+      }
+    }
+  },
+  "improvement_suggestions": [
+    {
+      "priority": "high",
+      "category": "instructions",
+      "suggestion": "Treat source-camera action and actual side/back plausibility as joint candidate acceptance evidence; retain frontal/oblique alternatives and reject camera compensation that changes visible head/arm action. Use source-supported uncertainty rather than forcing an exact hidden depth.",
+      "expected_impact": "Addresses A v2 regression and remaining B/C oblique-camera compensation.",
+      "evidence": [
+        "review/iteration-2/blind-case-1/blind-comparison.json",
+        "A v2 fit.py:15,40-45 selects scalar-loss best camera/pose",
+        "B/C full review source camera yaw approximately -30/20.715 degrees"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "tools",
+      "suggestion": "For a guide-driven workflow, retain explicit raw guide points, transform, semantic corrections and final residual target identifiers; execute a corrective solve after guide acceptance or label the delivered branch manual-original-only.",
+      "expected_impact": "Makes actual dataflow reviewable and distinguishes helpful imagery from guide-driven optimization without treating illustrative points as ground truth.",
+      "evidence": [
+        "A v2 fit.py mappedraw only written to guide-registration.json; loss uses hardcoded target",
+        "B v2 TRACE steps4-5 and guide-points used_as_numeric_target=false",
+        "C v2 TRACE steps4-6 and fit.py obs→targets→residual; no guide read",
+        "B/C v0 actual guide-coordinate consumption verified in full review"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "instructions",
+      "suggestion": "Finish local hand action after stable trunk/camera/elbow fitting: test plausible wrist/finger hypotheses and pocket/clutch relationships in actual views, preserving occlusion uncertainty and collision coverage limits.",
+      "expected_impact": "Prevents an open lowered hand or generic curl from being accepted as insertion/grip.",
+      "evidence": [
+        "B v2 manual 3D observation: open/spread hand against upper thigh",
+        "C v2 wrist.L zero plus 12 degree generic finger curl; clutch support not demonstrated"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "tools",
+      "suggestion": "Keep critical-region and visible-action diagnostics alongside each candidate, with explicit regressions and a worst-region stop/accept decision; do not select solely on aggregate residual or heuristic warning count.",
+      "expected_impact": "Preserves B visible-wrist gain while exposing shoulder/arm regression and all-run region failures.",
+      "evidence": [
+        "B v2 left shoulder outside fraction .1794 versus v0 .1117; arm P95 32.48 versus22.18px",
+        "C v2 left-arm outside .1411 versus .1113",
+        "All six frozen original-region assertions FAIL"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "instructions",
+      "suggestion": "Continue pre-generation editor-step normalization and exact generation-input snapshots, then perform role-specific post-generation review for generated/model action and generated depth semantics; version any future additional assertion before new runs.",
+      "expected_impact": "Retains demonstrated editor compatibility gains while exposing six-role defects the frozen garment assertion does not test.",
+      "evidence": [
+        "A v0 exact consumer import FAIL; five other states PASS",
+        "A v2 generated pose/depth drift; both A generated depth roles FAIL in full claim audit"
+      ]
+    }
+  ],
+  "guide_dataflow_summary": {
+    "A_v0": "Native guide+registration real; manual hardcoded target residual, no numeric guide dataflow.",
+    "A_v2": "Native guide+mappedraw real; manual hardcoded target residual, mappedraw not consumed.",
+    "B_v0": "Registered manually interpreted guide coordinates are consumed by residual; action still FAIL.",
+    "B_v2": "Actual native guide arrives asynchronously; post-fit registration/semantic review only; no refit.",
+    "C_v0": "ORB-transformed guide coordinates consumed in residual; action still FAIL.",
+    "C_v2": "Native guide registered after solve; manual original obs alone feed residual.",
+    "interpretation": "V2 evidence supports honest manual-original fallback and useful local geometry, not completion of guide-driven correction. Process gap is not fabricated generation or a new frozen assertion failure."
+  },
+  "additional_consumer_evidence": {
+    "scope": "Independent later generic editor consumer, separate from executor backend claims and frozen 9/7 assertions. Does not prove custom run-local viewer UI or original-photo fidelity.",
+    "consumer": "editor-consumer-i2-stable: A v0 FAIL exact initial action load; five others PASS eight checks each.",
+    "explicit_pose_probe": "editor-pose-probe-stable/browser.json: B v2 PASS twelve checks including actual selected-angle edit, cm preservation, skinned mesh change, download and reimport.",
+    "synchronization_correction": "Earlier B consumer false failure came from not awaiting the 65ms UI debounce; stable verification synchronizes the update. Raw failed evidence remains; this is test synchronization repair, not changed output.",
+    "limit": "No universal 12-check editing claim for all six outputs; no collision or photograph matching claim from editor success."
+  },
+  "evidence_interpretation_corrections": [
+    "C source/prior PASS in both arms: generic canonical synthetic fixture text describes avatar state. Independent semantic critic found no claim that retailer photo was synthetic. Do not repeat frozen blind incidental wording as established provenance defect or v2 advantage.",
+    "A native six-generation PASS in both arms after independent receipt adapter/revalidation. Raw receipt formats retained; adapter repairs verifier interpretation, not images/receipt substance or frozen criterion. Receipt lineage does not establish generated/model geometric coherence.",
+    "A v0 manual broad 3D action PASS and final strict 3D assertion FAIL are compatible because strict criterion also includes detected severe limited skin overlap. Limited ray evidence is neither universal collision truth nor a reason to erase the manual action finding."
+  ],
+  "candidate_selection": {
+    "recommendation": "Retain v2 as a provisional functional/diagnostic candidate with explicit known failures; do not certify it as a generally better reconstruction workflow or an accepted original-pose solution.",
+    "reasons": [
+      "V2 actual diagnostic/normalization use and independent editor consumption are supported.",
+      "B/C visible-wrist and relative upright-action gains are supported, including one frozen post-freeze heldout C.",
+      "A v0 wins source action; v2 A camera/arm action and generated pose/depth drift remain material regressions.",
+      "All six critical original-region and strict 3D assertions FAIL. Guide-driven correction is incomplete in v2 all three cases."
+    ],
+    "case_decision": {
+      "A": "V0 relative action reference is preferable, but its exact editor state and strict acceptance fail; neither is accepted.",
+      "B": "V2 is a less defective candidate with visible-wrist PASS and actual editor-edit evidence; pocket action/regions remain failed.",
+      "C_heldout": "V2 is a less defective candidate and visible wrists pass; single holdout does not establish broad transfer, grip/source-camera/regions remain failed."
+    },
+    "next_evidence_needed": "A fresh pre-frozen evaluation of corrected camera/action selection, explicit guide-to-corrective-solve dataflow and hand/role coherence, with repeated runs and additional heldout inputs, would be needed for broader performance claims. Do not tune frozen v2 on C retrospectively."
+  },
+  "causal_and_reporting_limits": [
+    "One independently authored run per configuration/case; no controlled ablation isolates v2 prose or diagnostic helper effects.",
+    "Benchmark mean delta +.0952 is descriptive assertion coverage across heterogeneous tasks, not percent pose accuracy or statistical significance. Both development and heldout outcomes should remain visible separately.",
+    "No comparison of i1 v1 and i2 v2 as matched repeated runs; A baseline action improved across fresh executions, illustrating run variation.",
+    "Unknown end-to-end time/tokens and absent native Claude CLI prevent speed, cost and native-trigger claims.",
+    "Canonical post-test status documentation does not change the frozen v2 operational candidate; no heldout-driven skill edits are inferred or recommended."
+  ]
+}

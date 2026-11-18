@@ -6,7 +6,7 @@ const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROMIUM_BIN||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});const checks=[],errors=[],broken=[];const check=(name,value)=>{assert.ok(value,name);checks.push(name);};const context=await browser.newContext({viewport:{width:1600,height:1100},acceptDownloads:true});const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)broken.push(r.url())});
 try{
 check('Official review HTTP200',(await page.goto(args.url,{waitUntil:'networkidle'})).ok());
-const base=new URL('./',args.url),manifest=await(await page.request.get(new URL('manifest.json',base).href)).json();
+const base=new URL('./',args.url),historical=/^iteration-(\d+)\.html$/.exec(path.posix.basename(new URL(args.url).pathname)),manifestName=historical?'manifest-iteration-'+historical[1]+'.json':'manifest.json',manifest=await(await page.request.get(new URL(manifestName,base).href)).json();
 if(!args['allow-pending'])check('All expected actual runs have strict independent grading',manifest.complete===true&&manifest.runs.every(r=>r.graded));
 check('Official native shell is primary, not hidden below a custom page',await page.locator('body>#app>.header').isVisible()&&await page.locator('#pose-review,#pr-history').count()===0);
 const data=await page.evaluate(()=>EMBEDDED_DATA),galleries=await page.evaluate(()=>OUTPUT_GALLERIES);

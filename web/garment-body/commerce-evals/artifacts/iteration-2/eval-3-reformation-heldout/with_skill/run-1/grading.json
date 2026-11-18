@@ -1,0 +1,654 @@
+{
+  "case_id": "holdout-c-reformation",
+  "scope": "original_photo_pose_fit_only",
+  "protocol_sha256": "b74ac3768c4fc8cbae8974d7a6e7bc739ff57ebc53aad6870445add5ac0013a4",
+  "global_protocol_sha256": "f552d5b8f8e17ae2a3e1c15a5085f69ca09dcc81f57a282f178220a5ff8013e1",
+  "input_sha256": "6df3525e4024daf7a96a73461c595a7a65b79fa22d5d2a58acd1f2dcc4f41f05",
+  "reference_sha256": "6df3525e4024daf7a96a73461c595a7a65b79fa22d5d2a58acd1f2dcc4f41f05",
+  "artifact_sha256": {
+    "TRACE.md": "063860762e614186859679beafe3790fedef470c71feef1182548f15b950b859",
+    "artifact-hashes.json": "efc6bbc9206edcd52b3d96103d5ed230d765f95c93841731fe9ad893055c9aee",
+    "bone-lengths.json": "2c705569d7b64b0606b02de17eab29f02519de9130563958a4de9f7882f58cd6",
+    "camera.json": "9ecfb36d33f587da04a49c7a9af19cef909c4177543856d0a32f7aed6fea7d20",
+    "candidate-0-camera.json": "7432d98703541c0e31082c6b6d394961eea86b9a64477e2071a89464c83537d2",
+    "candidate-0-mask.png": "26aac1ec860b3a02e83cf8b217411e777724113b3642da25310fb80d8a60d98b",
+    "candidate-0-render.png": "97b455a6070dcaadccab05d76e16520f97e250a926bafbea3c604caeb8b81d16",
+    "candidate-0-state.json": "8728768ac0ee567eb91f7dde2f89b85949429c01f6299a6f50fd7a79a1aabe69",
+    "candidate-1-camera.json": "d18457a8480bc3352b84678c9c2219cfc09b8fb667894c1bd54a917ad1a22e05",
+    "candidate-1-mask.png": "b0b4553bdb055e79f3e6d6cb18aeea9d71c6faf28d46927c9a80fffe1ac0d9d1",
+    "candidate-1-render.png": "0cbc83d18bc2d1a9038a50939113260126bf1df7b756d4f9563a41e98956f65b",
+    "candidate-1-state.json": "74c7d5d8707750b2c6988b03f3407b774a4c520c29c080af34244a01991d8f95",
+    "depth-valid.png": "d2bee030097f252a2978040a84ddca4290402308c8b2a60738da8d77354bcc23",
+    "depth.png": "806145f573dabed83f8cfb624678d89d12d76a6fd55757f84574aa9c9deef452",
+    "editor/README.md": "778a941257f9a1903acc98a3eb67ae99e6c6afe14a3b56b6e9020f40161c6816",
+    "editor/app.js": "dac8321da0f80cdc7ab719d8f6704abf6f927669fec37c483e7d3d701954ac42",
+    "editor/assets/MAKEHUMAN-CC0.txt": "f6089cba01cb570a24712b41ab8a586ccd3cc5ef53dc266ca50b95c288956d2c",
+    "editor/assets/human.json": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "editor/assets/provenance.json": "7f41bc6cb1df2ffe3dc8075ee7858569ad2991fbb3119ec1074f11cf6952cd5a",
+    "editor/body-engine.js": "311de96371b2eefb795ab013f4e79ee4cc0d2b3ac271f6121c18ebb7589b12a3",
+    "editor/index.html": "824d0b31b510c746943f6416f10a7dbd9f44d7682fe35db89445a576de60021c",
+    "editor/state-contract.js": "32974da0859d9aa03a837d9fd385b3438f02bd8b572b2ce57f594e69ea667c9e",
+    "editor/style.css": "b67bfd12c7dbee3bbec236c5d41160876ddeef81e6a5096e4147817a76981312",
+    "editor/vendor/GLTFExporter.js": "e7c29444454eb321b39e4c8b3062944f4fd5299a0e7483e9cb8c0594cdec829f",
+    "editor/vendor/OrbitControls.js": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c",
+    "editor/vendor/SkeletonUtils.js": "0761b1e003917b215d25dd81439d854b36034b5a57ce84c2cfe3b02428d7b253",
+    "editor/vendor/THREE-LICENSE.txt": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+    "editor/vendor/provenance.json": "48f11c56712b1beb41691d39a2edfeb93d63147cbefca0583f11c4299845bda4",
+    "editor/vendor/three.core.js": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
+    "editor/vendor/three.module.js": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a",
+    "evidence/independent-neutral-check.json": "cb011d8eaad8dee267d44941c0690b1e40d33860b3492eb8b9acb4b1d1c3dded",
+    "evidence/original-landmark-review.png": "1f5faf3fc8586c32d4cc753cf376c4d01482b75bca38efa88bf465aac2ac1e97",
+    "evidence/pose-audit.json": "0e4f1a23ca61b379e3442bb7a29206eb8f2a853279d057d14e36a18c23761b02",
+    "evidence/replay-audit.json": "e397e529d3d1415a3633ed9d2e9bd58c95175c01d1b4e4a3771f9643d61d983f",
+    "evidence/wrist-image-left-crop.png": "8ccda255f51ba2a788740c9c68322925aedc4b035aa9c90b11f9720083f65fdf",
+    "evidence/wrist-image-right-crop.png": "34a9de4f23759f737e5c9a2918ded650e20d55e0aaefa975e0fe9cbff7dacc85",
+    "final-mask.png": "e226fb08b36b002d3fc2b185f939d8c0f983a3110d94c9b5e3ab2b961a903bc4",
+    "final-overlay.png": "80f33a7e18a5ce9f9ab3c0de89b3cdef5112655133df033d31cba80b3aafbf1b",
+    "final-render.png": "c07fc9d3bf01541f85b30d5ce58391413fc7ff2250fb81127ff6e938dd37bedf",
+    "final-state.json": "5b590d5cf788302fad5c9cefc0bb71220317d61da780a8b2dbd812b89f58b601",
+    "finalize.py": "add92d2f86a9a718d958e156da8d12b8fa07ed8119e45ad1251fa7f96973032d",
+    "fit-log.txt": "9d138e22d7ce24223ca170b7dc4e853d287a45d73431e32c21d5eeafcd3d1dd5",
+    "fit-metrics.json": "b0ffcfafc59156075a468286476926bdc088e17761348719a022edbdefe07e17",
+    "fit.py": "dc490fd5ba298151101ff44b3f02b7a5d93553e429574d164b831738f51a4d4c",
+    "generation-receipt.json": "8b79f1d844032a87421231d896a7435f3fc95d974d91588f13bd618c4396791d",
+    "geometric-pose.png": "1a48cc6984b29b0d119737a6669f51390404ea2c0545b47dfbe726041713c668",
+    "imagegen-registration.json": "ada4f662121988037ccfc10512b9581625f08d5246bdb9f5a5198519f84cf5ec",
+    "images/pose-registered.png": "43b28c1d850a73d234bec99e29f54e7889dbfcab0999fac5e1f82fdfcc3561fb",
+    "images/pose.png": "cc8c63c0aff1744c933dd1617c6008359f71b47a95a40e8692599fe5460060a9",
+    "initial-camera.json": "3bda98d3aacc2c685493096b3a183f538ac26d5da7df0b894ba34d44e809563a",
+    "initial-frozen-camera-mask.png": "0ef31328e4726bd0c3598bdb8049176cbf63592ff3ffcb89372ce11a7c87663e",
+    "initial-frozen-camera-overlay.png": "4b68a287f9eb7ba0af4589ba33e9635c7d498514c3a133494ae2c92734242559",
+    "initial-frozen-camera-render.png": "19e1b82c8d48f4ac6d436d717011900e1529309c1ebd65666343e0227162d7f0",
+    "initial-mask.png": "01c2604aa9b28f24cab597bad2be26044acbc148853d60060bafb8b97c6d91bb",
+    "initial-overlay.png": "e873b4a63b457beddb7c403a4d6bc627ba9f35c02a82e2031c028f7acb094e4c",
+    "initial-render.png": "0e18f9124622e7083518ccf28381a2a4f6a6917c90ffef587e35a0cad805fbbb",
+    "initial-state.json": "149cc17e4e1026491651941725b3bce73130d0b22da477a5c4f45a198899c5a2",
+    "input-provenance.json": "cd36f7359f33da9860ae75b28753f8c30a8695e778821bd9d0850c55f9ccf933",
+    "measurements.csv": "8588fcc9036996a29894222f1f5d0808f3095f812fed45085c781697dc10e433",
+    "measurements.json": "dc2b95ff82674852ef0f78119b7ec154311302ea0382133003b7decc6d3b1220",
+    "neutral.obj": "bafc6090e5fff755bcd797161e70fb83592bca29efd1fe585bbbb79e9d696755",
+    "observations.json": "75865408eb5f5e99bb5acd20c571af6cadcc2402439938b252a6d8255f5acd53",
+    "parameter-block-history.json": "5df9ec322ea938aa179e3e7b5cf8ff967c3e3b11461f60374d60786e67017e6a",
+    "photo-render.png": "c07fc9d3bf01541f85b30d5ce58391413fc7ff2250fb81127ff6e938dd37bedf",
+    "posed.obj": "6c594c349430fc1de21f718651a54b7ace4f19e18a836b3f7f561121900ab911",
+    "projected-pose.json": "0b436ca55df1020d57ad8c9d6c52dc320039ae9423eb8e618552cf3fa15537e1",
+    "rawdepth.npy": "1f7e5443e8338d17f28de3299870f1374a1d86c44bbd32c9de57591a3ea9f7b2",
+    "reference/original.jpg": "6df3525e4024daf7a96a73461c595a7a65b79fa22d5d2a58acd1f2dcc4f41f05",
+    "reference/source.json": "0bb36135380b33fc0661db8f406383c78b059bc8257c6305ce911fe49c6f93d2",
+    "reference-mask.png": "4dac82feee6caa5cae914961a054387cd79c5e465c017aa885d65fee361463b6",
+    "reference-segmentation.json": "3e9747709e4b6dfef817cdc970b946099a52caa68536d58286f0a4b726473d22",
+    "report.md": "40bd97648721aeab00df12fef363044467bcf7b8dd2c12f0339a05976360b56e",
+    "run.json": "6a03e846fc9cb6adbca77b561f9ba86c909dd0d5874bf01c1650e1ddfe4b9158",
+    "viewer.html": "f06c128c0b4b126e9a45635ff989accf5b823b109fc7b58b9e0c9896a6200a26",
+    "views/back-mask.png": "d9857e8e9a4632a29dfd821a3e35630d23c1e8d91e8312b50b6f27f35c51af53",
+    "views/back.png": "51f861670b8cc9057a80c4c6c5d8bb1b264f7c27bbe711ba7b9b13fcc064e3ba",
+    "views/camera.json": "c758fe475e19b13dc10f6776982bf6915b3629345ba2c75b5d58588ad71f3d6b",
+    "views/front-mask.png": "af2b971e81e9675cdcab64ee271398d56411da8d5702e6e1da7427522fcc8b92",
+    "views/front.png": "6d9dc12007accf06e1e3590cfb8a88f5c8e6f1019c7233134bbdbdf2f56a841b",
+    "views/joints.json": "ab57f29856ddf3da8ebca87bf0c74a5711af4df9c569debe94673c4b5ea9fb5c",
+    "views/neutral.obj": "bafc6090e5fff755bcd797161e70fb83592bca29efd1fe585bbbb79e9d696755",
+    "views/posed.obj": "6c594c349430fc1de21f718651a54b7ace4f19e18a836b3f7f561121900ab911",
+    "views/side-mask.png": "c5503c6051a79290b68674c712859b7af2ac859e243e3e794398143962b8bcc8",
+    "views/side.png": "f9b9d95ad3c95737d4b061690b9da13bdf7db949b1a587679fa87cd59efa0324",
+    "views/state.json": "518730ed47f2895c00c32885461673f171eb48aba86706d60657ae050ef637a7",
+    "views/view-provenance.json": "2eb72edce9c6f5593c12601bcd208b2275f0b6c3874225748091bd9566aea348"
+  },
+  "grader_implementation_sha256": "e2908f7a4da8ab9eeb79cb05283e5fdc048e47e5604bee28fa73682ec0ed1757",
+  "grader_version": "1.1-paired-crossings",
+  "native_claude_execution": "BLOCKED: explicitly injected functional subagent runs, not native Claude routing",
+  "state_sha256": "5b590d5cf788302fad5c9cefc0bb71220317d61da780a8b2dbd812b89f58b601",
+  "posed_obj_sha256": "6c594c349430fc1de21f718651a54b7ace4f19e18a836b3f7f561121900ab911",
+  "camera_sha256": "9ecfb36d33f587da04a49c7a9af19cef909c4177543856d0a32f7aed6fea7d20",
+  "assertion_spec_sha256": "83572c805852a4dc93094c5149dd802962d74843ff59b49505db21572a9ef41a",
+  "source_reconstruction": {
+    "posed_max_error_cm": 5.016235855257135e-09,
+    "neutral_max_error_cm": 5.021991000355831e-09,
+    "neutral_target_max_error_cm": 4.044085314092172e-05,
+    "morph_weight_max_error": 0.0
+  },
+  "view_integrity": {
+    "verdict": "PASS",
+    "checks": {
+      "same_complete_state": true,
+      "mesh_error_cm": 5.016235855257135e-09,
+      "front": {
+        "verdict": "PASS",
+        "hashes_match": true,
+        "joint_reprojection_max_px": 0.0,
+        "independent_mask_iou": 1.0,
+        "png_mean_abs_channel_error": 0.0
+      },
+      "side": {
+        "verdict": "PASS",
+        "hashes_match": true,
+        "joint_reprojection_max_px": 0.0,
+        "independent_mask_iou": 1.0,
+        "png_mean_abs_channel_error": 0.0
+      },
+      "back": {
+        "verdict": "PASS",
+        "hashes_match": true,
+        "joint_reprojection_max_px": 0.0,
+        "independent_mask_iou": 1.0,
+        "png_mean_abs_channel_error": 0.0
+      },
+      "photo": {
+        "verdict": "PASS",
+        "png_mean_abs_channel_error": 0.0,
+        "independent_mask_iou": 1.0,
+        "camera_basis": "Independent decomposition of authoritative 3x4 matrix; no final-list parameter assumption"
+      }
+    },
+    "failures": []
+  },
+  "original_photo_regions": {
+    "reference_height_px": 931,
+    "regions": {
+      "shoulder_left": {
+        "verdict": "FAIL",
+        "body_pixels": 5790,
+        "outside_fraction": 0.13436960276338514,
+        "exterior_contour_p95_px": 11.068913459777832,
+        "exterior_contour_p95_reference_height_fraction": 0.011889273318773182
+      },
+      "shoulder_right": {
+        "verdict": "FAIL",
+        "body_pixels": 6463,
+        "outside_fraction": 0.12455516014234876,
+        "exterior_contour_p95_px": 10.187599182128906,
+        "exterior_contour_p95_reference_height_fraction": 0.010942641441599255
+      },
+      "arm_left": {
+        "verdict": "FAIL",
+        "body_pixels": 12394,
+        "outside_fraction": 0.14111666935614006,
+        "exterior_contour_p95_px": 9.1968994140625,
+        "exterior_contour_p95_reference_height_fraction": 0.009878517093515038
+      },
+      "arm_right": {
+        "verdict": "PASS",
+        "body_pixels": 12390,
+        "outside_fraction": 0.060694108151735274,
+        "exterior_contour_p95_px": 5.0,
+        "exterior_contour_p95_reference_height_fraction": 0.0053705692803437165
+      },
+      "torso": {
+        "verdict": "PASS",
+        "body_pixels": 22242,
+        "outside_fraction": 0.0,
+        "exterior_contour_p95_px": 0.0,
+        "exterior_contour_p95_reference_height_fraction": 0.0
+      },
+      "waist_hip_left": {
+        "verdict": "PASS",
+        "body_pixels": 21771,
+        "outside_fraction": 0.02429837857700611,
+        "exterior_contour_p95_px": 6.521777629852295,
+        "exterior_contour_p95_reference_height_fraction": 0.007005131718423517
+      },
+      "waist_hip_right": {
+        "verdict": "PASS",
+        "body_pixels": 22616,
+        "outside_fraction": 0.011540502299257164,
+        "exterior_contour_p95_px": 0.0,
+        "exterior_contour_p95_reference_height_fraction": 0.0
+      }
+    },
+    "scanlines": [
+      {
+        "y": 405,
+        "center_error_px": 3.5,
+        "width_ratio": 1.0338164251207729,
+        "verdict": "PASS"
+      },
+      {
+        "y": 435,
+        "center_error_px": 3.0,
+        "width_ratio": 1.028169014084507,
+        "verdict": "PASS"
+      },
+      {
+        "y": 475,
+        "center_error_px": 0.0,
+        "width_ratio": 1.0,
+        "verdict": "PASS"
+      },
+      {
+        "y": 515,
+        "center_error_px": 0.0,
+        "width_ratio": 1.0,
+        "verdict": "PASS"
+      }
+    ]
+  },
+  "observed_action": {
+    "visible_wrist_max_error_px": 23.275000000000002,
+    "cues": {
+      "eye_image_left": {
+        "projected_xy": [
+          372.5156292405063,
+          138.00177692883221
+        ],
+        "target_xy": [
+          349,
+          134
+        ],
+        "error_px": 23.853700701674978,
+        "visibility": "visible",
+        "hard_position_gate": false
+      },
+      "eye_image_right": {
+        "projected_xy": [
+          401.56048425875383,
+          136.23124814439768
+        ],
+        "target_xy": [
+          380,
+          134
+        ],
+        "error_px": 21.67563031964353,
+        "visibility": "visible",
+        "hard_position_gate": false
+      },
+      "wrist_image_left": {
+        "projected_xy": [
+          264.76181203774036,
+          525.4242954205647
+        ],
+        "target_xy": [
+          259,
+          545
+        ],
+        "error_px": 20.40604537237859,
+        "visibility": "visible",
+        "hard_position_gate": true
+      },
+      "wrist_image_right": {
+        "projected_xy": [
+          485.2127816072271,
+          514.8222128182647
+        ],
+        "target_xy": [
+          483,
+          519
+        ],
+        "error_px": 4.727611254867983,
+        "visibility": "visible_surface_boundary",
+        "hard_position_gate": true
+      },
+      "shoulder_image_left": {
+        "projected_xy": [
+          289.14960192603746,
+          260.0524900610686
+        ],
+        "target_xy": [
+          287,
+          237
+        ],
+        "error_px": 23.15249633314066,
+        "visibility": "inferred_under_cloth",
+        "hard_position_gate": false
+      },
+      "shoulder_image_right": {
+        "projected_xy": [
+          456.66108425487164,
+          249.8412529590014
+        ],
+        "target_xy": [
+          452,
+          232
+        ],
+        "error_px": 18.4400654439752,
+        "visibility": "inferred_under_cloth",
+        "hard_position_gate": false
+      },
+      "elbow_image_left": {
+        "projected_xy": [
+          282.36350073690113,
+          402.97418274592167
+        ],
+        "target_xy": [
+          282,
+          388
+        ],
+        "error_px": 14.978594116070633,
+        "visibility": "inferred_under_cloth",
+        "hard_position_gate": false
+      },
+      "elbow_image_right": {
+        "projected_xy": [
+          474.57155829246335,
+          391.67024313575723
+        ],
+        "target_xy": [
+          478,
+          385
+        ],
+        "error_px": 7.499757064871721,
+        "visibility": "inferred_under_cloth",
+        "hard_position_gate": false
+      }
+    },
+    "coarse_directions": {
+      "image_left_shoulder_elbow": {
+        "angle_error_degrees": 0.8219155069989871,
+        "projected_length_px": 143.08270828179334,
+        "reference_hypothesis_length_px": 151.08275877809487
+      },
+      "image_left_elbow_wrist": {
+        "angle_error_degrees": 0.15437072958085193,
+        "projected_length_px": 123.70872862936932,
+        "reference_hypothesis_length_px": 158.67577004697347
+      },
+      "image_right_shoulder_elbow": {
+        "angle_error_degrees": 2.4470674592366266,
+        "projected_length_px": 142.95540400701734,
+        "reference_hypothesis_length_px": 155.1934276958918
+      },
+      "image_right_elbow_wrist": {
+        "angle_error_degrees": 2.8015937544306726,
+        "projected_length_px": 123.61085417679108,
+        "reference_hypothesis_length_px": 134.09325113517085
+      }
+    },
+    "failures": []
+  },
+  "hand_skin_intervals": {
+    "L": {
+      "hand_vertices": 1424,
+      "classified_rays": 249,
+      "coverage": 0.17485955056179775,
+      "odd_or_open_rays_unknown": 1172,
+      "multiple_disjoint_interval_rays": 0,
+      "detected_inside_vertices": 142,
+      "maximum_inside_depth_cm": 1.5685614375434618,
+      "minimum_front_clearance_cm": -1.5685614375434618,
+      "verdict": "LIMITED_CHECK",
+      "limitation": "Only deduplicated even crossing pairs of the selected hand/core skin patch are classified. Odd/open rays are UNKNOWN; disjoint intervals do not fill air. This is not cloth contact or universal collision proof."
+    },
+    "R": {
+      "hand_vertices": 1424,
+      "classified_rays": 77,
+      "coverage": 0.05407303370786517,
+      "odd_or_open_rays_unknown": 1346,
+      "multiple_disjoint_interval_rays": 0,
+      "detected_inside_vertices": 70,
+      "maximum_inside_depth_cm": 4.0818135543970655,
+      "minimum_front_clearance_cm": -4.0818135543970655,
+      "verdict": "LIMITED_CHECK",
+      "limitation": "Only deduplicated even crossing pairs of the selected hand/core skin patch are classified. Odd/open rays are UNKNOWN; disjoint intervals do not fill air. This is not cloth contact or universal collision proof."
+    }
+  },
+  "evaluation_status": "COMPLETE",
+  "manual_review": {
+    "current": true,
+    "path": "work/commerce-skill-evals-20261118/review/iteration-2/eval-3-reformation-heldout/with_skill/manual-review.json",
+    "observations": [
+      {
+        "id": "source_and_prior",
+        "verdict": "PASS",
+        "evidence": "Original JPEG bytes independently hash to 6df3525e4024daf7a96a73461c595a7a65b79fa22d5d2a58acd1f2dcc4f41f05, matching retail Reformation Janu Linen Dress source.json, receipt input hash, and frozen blind input. Source 800x1067 rendition is explicitly not master resolution. Both report and measurement definitions separate authorized M170 priors from published 180.34 cm/33-25-34.5 inch model-page claims and actual-person measurements. Rechecked the full final-state.json context: limitations is adjacent to asset, dimensions, measuredNeutral and measurementDefinition, not reference-photo source fields. Runtime.canonical_state supplies \"Controlled synthetic anatomical fixture; not measurements of a real photographed person.\" This describes the synthetic prior avatar and disclaims real-person measurement. No reviewed source.json, input-provenance.json, report.md or TRACE.md claims the original retail photograph is synthetic. Both arms preserve the original retailer JPEG and explicitly separate published model claims from M170 assumptions. Thus this label alone is not a source contradiction. The word fixture is generic and loses case-specific limitations during normalization; that is a metadata precision limitation, not a failed provenance assertion. Apply this interpretation equally to old_skill final-state and both arms views/state."
+      },
+      {
+        "id": "pose_action_3d",
+        "verdict": "FAIL",
+        "evidence": "A front/side/back show a broadly plausible upright stance, forward head and both feet at similar depth; joints foot.L Z=2.80 and foot.R Z=2.53 cm support that reading. This is substantially closer than B. But photo-render presents a noticeably oblique torso/head while source is nearly frontal (camera final yaw-like entry 20.715 degrees). Image-right hand hangs flat alongside thigh rather than clearly supporting the clutch. Finger flexion 12 degrees on L is a weak generic curl, not demonstrated contact; wrist.L remains zero. Source image-right wrist is partly occluded, so exact wrist angle/depth cannot be judged. Source shoe on image-right points outward; A has both feet more parallel. Skirt-hidden hip/knee positions remain unknown and are not used as truth. Nonblind report openly states clutch contact not solved and collision NOT_RUN. Honesty about these limits is not a separate failure; actual failure is remaining visible action mismatch/incomplete grip. Independently reconstructed saved state produces exactly the reviewed OBJ and camera projection, so these visible defects belong to the final model rather than a stale render."
+      },
+      {
+        "id": "measurement_claims",
+        "verdict": "PASS",
+        "evidence": "measurements.json explicitly defines neutral-pose model paths/distances, not photographed-person measurements; height 170, bust 90, waist 72, hips 96 are prior targets. The source publishes 180.34 cm / 33-25-34.5 inches with its own generic-model caveat. These are different evidence classes, and exact target agreement (maximum error about 0.00004 cm) demonstrates only reported calibration. Real person accuracy remains UNKNOWN. Additional read-only Runtime evaluation reproduced neutral and posed OBJ within 5e-9 cm and the projected joints within 2.3e-13 px. Retained independent-neutral-check JSON gives about 0.00004045 cm target error. These corroborate calibrated model consistency, not true human dimensions. Minor classification discrepancy: measurements.json labels upperArmLength/forearmLength mesh_parameter while CSV writes all rows prior; fitted lengths round back to 29/23, so no real-person accuracy claim follows."
+      }
+    ]
+  },
+  "expectations": [
+    {
+      "text": "The original retailer image is preserved and its source/scale provenance distinguishes observed facts from the M170 prior.",
+      "passed": true,
+      "evidence": "Original JPEG bytes independently hash to 6df3525e4024daf7a96a73461c595a7a65b79fa22d5d2a58acd1f2dcc4f41f05, matching retail Reformation Janu Linen Dress source.json, receipt input hash, and frozen blind input. Source 800x1067 rendition is explicitly not master resolution. Both report and measurement definitions separate authorized M170 priors from published 180.34 cm/33-25-34.5 inch model-page claims and actual-person measurements. Rechecked the full final-state.json context: limitations is adjacent to asset, dimensions, measuredNeutral and measurementDefinition, not reference-photo source fields. Runtime.canonical_state supplies \"Controlled synthetic anatomical fixture; not measurements of a real photographed person.\" This describes the synthetic prior avatar and disclaims real-person measurement. No reviewed source.json, input-provenance.json, report.md or TRACE.md claims the original retail photograph is synthetic. Both arms preserve the original retailer JPEG and explicitly separate published model claims from M170 assumptions. Thus this label alone is not a source contradiction. The word fixture is generic and loses case-specific limitations during normalization; that is a metadata precision limitation, not a failed provenance assertion. Apply this interpretation equally to old_skill final-state and both arms views/state."
+    },
+    {
+      "text": "Saved centimetre parameters independently reconstruct the real neutral and posed anatomical mesh within tolerance.",
+      "passed": true,
+      "evidence": "{\"posed_max_error_cm\": 5.016235855257135e-09, \"neutral_max_error_cm\": 5.021991000355831e-09, \"neutral_target_max_error_cm\": 4.044085314092172e-05, \"morph_weight_max_error\": 0.0}"
+    },
+    {
+      "text": "Actual source-camera and front/side/back images replay from the same saved complete body and pose.",
+      "passed": true,
+      "evidence": "{\"verdict\": \"PASS\", \"checks\": {\"same_complete_state\": true, \"mesh_error_cm\": 5.016235855257135e-09, \"front\": {\"verdict\": \"PASS\", \"hashes_match\": true, \"joint_reprojection_max_px\": 0.0, \"independent_mask_iou\": 1.0, \"png_mean_abs_channel_error\": 0.0}, \"side\": {\"verdict\": \"PASS\", \"hashes_match\": true, \"joint_reprojection_max_px\": 0.0, \"independent_mask_iou\": 1.0, \"png_mean_abs_channel_error\": 0.0}, \"back\": {\"verdict\": \"PASS\", \"hashes_match\": true, \"joint_reprojection_max_px\": 0.0, \"independent_mask_iou\": 1.0, \"png_mean_abs_channel_error\": 0.0}, \"photo\": {\"verdict\": \"PASS\", \"png_mean_abs_channel_error\": 0.0, \"independent_mask_iou\": 1.0, \"camera_basis\": \"Independent decomposition of authoritative 3x4 matrix; no final-list parameter assumption\"}}, \"failures\": []}"
+    },
+    {
+      "text": "Every frozen critical original-photo region and centre scanline passes its independent envelope checks.",
+      "passed": false,
+      "evidence": "{\"reference_height_px\": 931, \"regions\": {\"shoulder_left\": {\"verdict\": \"FAIL\", \"body_pixels\": 5790, \"outside_fraction\": 0.13436960276338514, \"exterior_contour_p95_px\": 11.068913459777832, \"exterior_contour_p95_reference_height_fraction\": 0.011889273318773182}, \"shoulder_right\": {\"verdict\": \"FAIL\", \"body_pixels\": 6463, \"outside_fraction\": 0.12455516014234876, \"exterior_contour_p95_px\": 10.187599182128906, \"exterior_contour_p95_reference_height_fraction\": 0.010942641441599255}, \"arm_left\": {\"verdict\": \"FAIL\", \"body_pixels\": 12394, \"outside_fraction\": 0.14111666935614006, \"exterior_contour_p95_px\": 9.1968994140625, \"exterior_contour_p95_reference_height_fraction\": 0.009878517093515038}, \"arm_right\": {\"verdict\": \"PASS\", \"body_pixels\": 12390, \"outside_fraction\": 0.060694108151735274, \"exterior_contour_p95_px\": 5.0, \"exterior_contour_p95_reference_height_fraction\": 0.0053705692803437165}, \"torso\": {\"verdict\": \"PASS\", \"body_pixels\": 22242, \"outside_fraction\": 0.0, \"exterior_contour_p95_px\": 0.0, \"exterior_contour_p95_reference_height_fraction\": 0.0}, \"waist_hip_left\": {\"verdict\": \"PASS\", \"body_pixels\": 21771, \"outside_fraction\": 0.02429837857700611, \"exterior_contour_p95_px\": 6.521777629852295, \"exterior_contour_p95_reference_height_fraction\": 0.007005131718423517}, \"waist_hip_right\": {\"verdict\": \"PASS\", \"body_pixels\": 22616, \"outside_fraction\": 0.011540502299257164, \"exterior_contour_p95_px\": 0.0, \"exterior_contour_p95_reference_height_fraction\": 0.0}}, \"scanlines\": [{\"y\": 405, \"center_error_px\": 3.5, \"width_ratio\": 1.0338164251207729, \"verdict\": \"PASS\"}, {\"y\": 435, \"center_error_px\": 3.0, \"width_ratio\": 1.028169014084507, \"verdict\": \"PASS\"}, {\"y\": 475, \"center_error_px\": 0.0, \"width_ratio\": 1.0, \"verdict\": \"PASS\"}, {\"y\": 515, \"center_error_px\": 0.0, \"width_ratio\": 1.0, \"verdict\": \"PASS\"}]}"
+    },
+    {
+      "text": "Visible original wrist cues and coarse limb directions do not contradict the target action; hidden wrists are not invented.",
+      "passed": true,
+      "evidence": "{\"visible_wrist_max_error_px\": 23.275000000000002, \"cues\": {\"eye_image_left\": {\"projected_xy\": [372.5156292405063, 138.00177692883221], \"target_xy\": [349, 134], \"error_px\": 23.853700701674978, \"visibility\": \"visible\", \"hard_position_gate\": false}, \"eye_image_right\": {\"projected_xy\": [401.56048425875383, 136.23124814439768], \"target_xy\": [380, 134], \"error_px\": 21.67563031964353, \"visibility\": \"visible\", \"hard_position_gate\": false}, \"wrist_image_left\": {\"projected_xy\": [264.76181203774036, 525.4242954205647], \"target_xy\": [259, 545], \"error_px\": 20.40604537237859, \"visibility\": \"visible\", \"hard_position_gate\": true}, \"wrist_image_right\": {\"projected_xy\": [485.2127816072271, 514.8222128182647], \"target_xy\": [483, 519], \"error_px\": 4.727611254867983, \"visibility\": \"visible_surface_boundary\", \"hard_position_gate\": true}, \"shoulder_image_left\": {\"projected_xy\": [289.14960192603746, 260.0524900610686], \"target_xy\": [287, 237], \"error_px\": 23.15249633314066, \"visibility\": \"inferred_under_cloth\", \"hard_position_gate\": false}, \"shoulder_image_right\": {\"projected_xy\": [456.66108425487164, 249.8412529590014], \"target_xy\": [452, 232], \"error_px\": 18.4400654439752, \"visibility\": \"inferred_under_cloth\", \"hard_position_gate\": false}, \"elbow_image_left\": {\"projected_xy\": [282.36350073690113, 402.97418274592167], \"target_xy\": [282, 388], \"error_px\": 14.978594116070633, \"visibility\": \"inferred_under_cloth\", \"hard_position_gate\": false}, \"elbow_image_right\": {\"projected_xy\": [474.57155829246335, 391.67024313575723], \"target_xy\": [478, 385], \"error_px\": 7.499757064871721, \"visibility\": \"inferred_under_cloth\", \"hard_position_gate\": false}}, \"coarse_directions\": {\"image_left_shoulder_elbow\": {\"angle_error_degrees\": 0.8219155069989871, \"projected_length_px\": 143.08270828179334, \"reference_hypothesis_length_px\": 151.08275877809487}, \"image_left_elbow_wrist\": {\"angle_error_degrees\": 0.15437072958085193, \"projected_length_px\": 123.70872862936932, \"reference_hypothesis_length_px\": 158.67577004697347}, \"image_right_shoulder_elbow\": {\"angle_error_degrees\": 2.4470674592366266, \"projected_length_px\": 142.95540400701734, \"reference_hypothesis_length_px\": 155.1934276958918}, \"image_right_elbow_wrist\": {\"angle_error_degrees\": 2.8015937544306726, \"projected_length_px\": 123.61085417679108, \"reference_hypothesis_length_px\": 134.09325113517085}}, \"failures\": []}"
+    },
+    {
+      "text": "Independent actual three-dimensional views show a reference-consistent plausible action without detected severe skin overlap; coverage limitations are explicit.",
+      "passed": false,
+      "evidence": "{\"independent_manual\": {\"id\": \"pose_action_3d\", \"verdict\": \"FAIL\", \"evidence\": \"A front/side/back show a broadly plausible upright stance, forward head and both feet at similar depth; joints foot.L Z=2.80 and foot.R Z=2.53 cm support that reading. This is substantially closer than B. But photo-render presents a noticeably oblique torso/head while source is nearly frontal (camera final yaw-like entry 20.715 degrees). Image-right hand hangs flat alongside thigh rather than clearly supporting the clutch. Finger flexion 12 degrees on L is a weak generic curl, not demonstrated contact; wrist.L remains zero. Source image-right wrist is partly occluded, so exact wrist angle/depth cannot be judged. Source shoe on image-right points outward; A has both feet more parallel. Skirt-hidden hip/knee positions remain unknown and are not used as truth. Nonblind report openly states clutch contact not solved and collision NOT_RUN. Honesty about these limits is not a separate failure; actual failure is remaining visible action mismatch/incomplete grip. Independently reconstructed saved state produces exactly the reviewed OBJ and camera projection, so these visible defects belong to the final model rather than a stale render.\"}, \"hand_intervals\": {\"L\": {\"hand_vertices\": 1424, \"classified_rays\": 249, \"coverage\": 0.17485955056179775, \"odd_or_open_rays_unknown\": 1172, \"multiple_disjoint_interval_rays\": 0, \"detected_inside_vertices\": 142, \"maximum_inside_depth_cm\": 1.5685614375434618, \"minimum_front_clearance_cm\": -1.5685614375434618, \"verdict\": \"LIMITED_CHECK\", \"limitation\": \"Only deduplicated even crossing pairs of the selected hand/core skin patch are classified. Odd/open rays are UNKNOWN; disjoint intervals do not fill air. This is not cloth contact or universal collision proof.\"}, \"R\": {\"hand_vertices\": 1424, \"classified_rays\": 77, \"coverage\": 0.05407303370786517, \"odd_or_open_rays_unknown\": 1346, \"multiple_disjoint_interval_rays\": 0, \"detected_inside_vertices\": 70, \"maximum_inside_depth_cm\": 4.0818135543970655, \"minimum_front_clearance_cm\": -4.0818135543970655, \"verdict\": \"LIMITED_CHECK\", \"limitation\": \"Only deduplicated even crossing pairs of the selected hand/core skin patch are classified. Odd/open rays are UNKNOWN; disjoint intervals do not fill air. This is not cloth contact or universal collision proof.\"}}, \"near_torso_coverage_required\": false, \"severe_overlap\": true}"
+    },
+    {
+      "text": "Body data and reports preserve measurement definitions and prior/conditional provenance rather than claiming unmeasured real-person accuracy.",
+      "passed": true,
+      "evidence": "measurements.json explicitly defines neutral-pose model paths/distances, not photographed-person measurements; height 170, bust 90, waist 72, hips 96 are prior targets. The source publishes 180.34 cm / 33-25-34.5 inches with its own generic-model caveat. These are different evidence classes, and exact target agreement (maximum error about 0.00004 cm) demonstrates only reported calibration. Real person accuracy remains UNKNOWN. Additional read-only Runtime evaluation reproduced neutral and posed OBJ within 5e-9 cm and the projected joints within 2.3e-13 px. Retained independent-neutral-check JSON gives about 0.00004045 cm target error. These corroborate calibrated model consistency, not true human dimensions. Minor classification discrepancy: measurements.json labels upperArmLength/forearmLength mesh_parameter while CSV writes all rows prior; fitted lengths round back to 29/23, so no real-person accuracy claim follows."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 2,
+    "total": 7,
+    "pass_rate": 0.7142857142857143
+  },
+  "overall_verdict": "FAIL",
+  "claims": [
+    {
+      "type": "process",
+      "claim": "Actual source engine reconstructs the saved adjustable anatomy.",
+      "verified": true,
+      "evidence": "{\"posed_max_error_cm\": 5.016235855257135e-09, \"neutral_max_error_cm\": 5.021991000355831e-09, \"neutral_target_max_error_cm\": 4.044085314092172e-05, \"morph_weight_max_error\": 0.0}"
+    },
+    {
+      "type": "quality",
+      "claim": "This run establishes the photographed person true centimetre dimensions or unique hidden depth.",
+      "verified": false,
+      "evidence": "Single clothed image with generic M170 prior does not identify these quantities."
+    },
+    {
+      "type": "process",
+      "claim": "A native Claude trigger benchmark was executed.",
+      "verified": false,
+      "evidence": "BLOCKED: explicitly injected functional subagent runs, not native Claude routing"
+    },
+    {
+      "claim": "Original retail photograph and native generated guide are preserved unchanged",
+      "verdict": "PASS",
+      "evidence": "Independent native-file/images/pose.png byte comparison is true; both input hashes and native SHA match receipts. Native sizes (1086, 1448).",
+      "formal_assertion_gap": "Receipt file plus native bytes corroborate preservation; original remote call event cannot be reauthenticated from local receipt alone.",
+      "type": "quality",
+      "verified": true
+    },
+    {
+      "claim": "Generated pose guide participates in numerical solving",
+      "verdict": "FAIL",
+      "evidence": "fit.py obs is hard-coded from original manual approximations, and names/ids/targets derive only from obs. Its residual uses these targets, prior penalties and arm/standing constraints. No imagegen-registration.json or images/pose.png read occurs in the solver. TRACE steps 4-6 place SIFT/RANSAC registration after fit. Therefore a real native guide was produced and inspected, but numerical use of generated guide points is NOT demonstrated: registration is post-fit documentation, not solver input. Original manual targets are a legitimate supported fallback, and report explicitly gives them precedence.",
+      "formal_assertion_gap": "Distinguish actual generation and registration from optimizer data flow; do not count a saved guide as solver integration.",
+      "type": "quality",
+      "verified": false
+    },
+    {
+      "claim": "Source-photo identity and synthetic prior avatar are distinguished",
+      "verdict": "PASS",
+      "evidence": "Rechecked the full final-state.json context: limitations is adjacent to asset, dimensions, measuredNeutral and measurementDefinition, not reference-photo source fields. Runtime.canonical_state supplies \"Controlled synthetic anatomical fixture; not measurements of a real photographed person.\" This describes the synthetic prior avatar and disclaims real-person measurement. No reviewed source.json, input-provenance.json, report.md or TRACE.md claims the original retail photograph is synthetic. Both arms preserve the original retailer JPEG and explicitly separate published model claims from M170 assumptions. Thus this label alone is not a source contradiction. The word fixture is generic and loses case-specific limitations during normalization; that is a metadata precision limitation, not a failed provenance assertion. Apply this interpretation equally to old_skill final-state and both arms views/state.",
+      "formal_assertion_gap": "Generic fixture wording can obscure case-specific uncertainty but does not state the original photograph is synthetic.",
+      "type": "quality",
+      "verified": true
+    },
+    {
+      "claim": "Saved state, actual OBJ and source camera agree",
+      "verdict": "PASS",
+      "evidence": "Independent read-only Runtime.evaluate replay: 13380 surface vertices /26756 faces, posed/neutral max absolute residual <5e-9 cm; matrix projected joints max residual 2.2737367544323206e-13 px; canonical views dimensions/full pose equal final-state.",
+      "formal_assertion_gap": "Consistency is not action correctness or collision proof.",
+      "type": "quality",
+      "verified": true
+    },
+    {
+      "claim": "True body dimensions or collision-free clutch support are established",
+      "verdict": "UNKNOWN",
+      "evidence": "Single dressed photo, occluded hand and skirt-covered legs; no cloth/contact/triangle collision solver or ground-truth person measurements. Reports explicitly disclaim these.",
+      "formal_assertion_gap": "Do not convert diagnostic calibration, no obvious intersections, or honestly reported UNKNOWN into physical PASS.",
+      "type": "quality",
+      "verified": false
+    },
+    {
+      "type": "process",
+      "claim": "One genuine native ImageGen pose guide used the actual original retailer photo.",
+      "verified": true,
+      "evidence": {
+        "receipt_path": "work/commerce-skill-evals-20261118/iteration-2/eval-3-reformation-heldout/with_skill/run-1/outputs/generation-receipt.json",
+        "receipt_sha256": "8b79f1d844032a87421231d896a7435f3fc95d974d91588f13bd618c4396791d",
+        "native_path": "/workspace/generated_images/exec-eebaa39b-26b2-43a2-aed1-2f0db0b58f15.png",
+        "source_sha256": "6df3525e4024daf7a96a73461c595a7a65b79fa22d5d2a58acd1f2dcc4f41f05",
+        "native_matches_output": true
+      }
+    },
+    {
+      "type": "process",
+      "claim": "Registered ImageGen guide points entered the actual numerical fitting objective.",
+      "verified": false,
+      "evidence": "fit.py initializes targets exclusively from manual original-image obs at lines14-17 and residual28. TRACE step6 runs SIFT registration after solver/export; no subsequent numerical optimization or guide-target data access is recorded."
+    },
+    {
+      "type": "quality",
+      "claim": "The clutch grip, precise hand depth and true nude measurements are recovered from the source.",
+      "verified": false,
+      "evidence": "Reports explicitly retain weak/neutral finger priors, unverified clutch contact and conditional M170 scale; no observed hidden anatomy or complete skin collision validation."
+    },
+    {
+      "type": "process",
+      "claim": "The actual official Human Studio imports the exact saved body/pose, changes view without resetting it, and edits centimetres while preserving all163pose entries.",
+      "verified": true,
+      "evidence": {
+        "report": "editor-consumer-i2-stable/eval-3-reformation-heldout/with_skill/run-1/browser.json",
+        "report_sha256": "a7801c38d6903fe66a0b4cb3d2f5092a02abae0f12dd0d38e73a9079e667c1b7",
+        "checks": [
+          {
+            "passed": true,
+            "name": "Actual supplied target action loaded"
+          },
+          {
+            "passed": true,
+            "name": "Actual saved photo-fit cm state loaded"
+          },
+          {
+            "passed": true,
+            "name": "Actual browser loaded mesh agrees with graded posed OBJ",
+            "evidence": {
+              "max_delta_cm": 1.2497505943304575e-05
+            }
+          },
+          {
+            "passed": true,
+            "name": "Actual photo-fit front camera keeps one saved body/action"
+          },
+          {
+            "passed": true,
+            "name": "Actual photo-fit side camera keeps one saved body/action"
+          },
+          {
+            "passed": true,
+            "name": "Actual photo-fit back camera keeps one saved body/action"
+          },
+          {
+            "passed": true,
+            "name": "Actual imported photo-fit remains cm adjustable without action reset"
+          },
+          {
+            "passed": true,
+            "name": "No photo-fit consumer runtime errors",
+            "evidence": []
+          }
+        ],
+        "scope": "Additional implicit consumer check only; not retroactively part of frozen9/7 assertions."
+      }
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "Min/max skin-ray hulls can fill air between disconnected anatomical sections; odd/open crossings do not establish clearance.",
+        "suggestion": "Use deduplicated even crossing pairs, keep unclassified coverage UNKNOWN, and test disconnected/odd crossing controls."
+      },
+      {
+        "reason": "A camera.final list is representation-dependent; identical 3x4 camera matrices and content must be judged equally.",
+        "suggestion": "Decompose the authoritative source-camera matrix and independently replay source pixels rather than assume cm-center semantics."
+      },
+      {
+        "reason": "Native image-generation file receipts establish execution and lineage, not preserved anatomy or photo-pose match.",
+        "suggestion": "Keep independent cross-view generated/model/source visual review and report partial regional or wrist regressions explicitly; version any new quality assertion before new executions."
+      },
+      {
+        "reason": "Guide-generation and texture registration do not establish that generated pose guidance influences the fitted model.",
+        "suggestion": "For future evaluation versions, freeze traceable guide registration/semantic correction/solver-use/refit requirements independently of native receipt existence."
+      }
+    ],
+    "overall": "Inspect any non-discriminating assertion, false-positive local control or missing outcome; functional integrity cannot average away visual/action failure. No general skill advantage from n=1 per case."
+  },
+  "checker_pipeline": {
+    "numeric": "commerce_grade.py v1.1",
+    "numeric_implementation_sha256": "e2908f7a4da8ab9eeb79cb05283e5fdc048e47e5604bee28fa73682ec0ed1757",
+    "postprocessor_sha256": "9d2831dfe2e6a83892920e8533a99cdad37fb8d2b030899667898af17e7f07ce",
+    "frozen_thresholds_changed": false,
+    "raw_grade_sha256": "3b64fc9fb60b5bc10b1e713b1256355ebfa6f249dfd55a136225ad6a384112ab"
+  },
+  "independent_manual_review_sha256": "52678be0ad800896a459abd9f7a4d995299705ce051ed6f2c54f6c04a4a35f0e",
+  "execution_metrics": {
+    "initial": {
+      "IoU": 0.5384180819976068,
+      "Dice": 0.6999632782507094,
+      "symmetric_contour_mean_px": 42.795509338378906,
+      "symmetric_contour_P95_px": 128.4528350830078,
+      "interpretation": "clothed silhouette comparison, not naked body accuracy"
+    },
+    "initial_frozen_final_camera": {
+      "IoU": 0.520081516080088,
+      "Dice": 0.6842810870054507,
+      "symmetric_contour_mean_px": 39.915557861328125,
+      "symmetric_contour_P95_px": 115.80872344970703,
+      "interpretation": "clothed silhouette comparison, not naked body accuracy"
+    },
+    "final": {
+      "IoU": 0.7341992319855433,
+      "Dice": 0.8467299701718052,
+      "symmetric_contour_mean_px": 20.203306198120117,
+      "symmetric_contour_P95_px": 81.11085510253906,
+      "interpretation": "clothed silhouette comparison, not naked body accuracy"
+    },
+    "reference_sha256": "6df3525e4024daf7a96a73461c595a7a65b79fa22d5d2a58acd1f2dcc4f41f05",
+    "reference_mask_sha256": "4dac82feee6caa5cae914961a054387cd79c5e465c017aa885d65fee361463b6",
+    "no_pass_claim": true
+  },
+  "timing": {
+    "total_tokens": null,
+    "duration_ms": null,
+    "total_duration_seconds": null,
+    "reason": "No end-to-end resource telemetry in executor completion notification"
+  },
+  "user_notes_summary": {
+    "uncertainties": [
+      "Hidden anatomy under skirt and clutch grip/contact unknown",
+      "Prior/model dimensions do not measure photographed person"
+    ],
+    "needs_review": [
+      "Independent complete action/collision coverage"
+    ],
+    "workarounds": [
+      "Native pose guide interpreted as illustrative, not detector truth"
+    ]
+  },
+  "transcript_audit_sha256": "49136549fb44a8bd8aa5cd461ea3bf71771393e77fdd852be89f1678f8cc4140"
+}

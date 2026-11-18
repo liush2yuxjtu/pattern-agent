@@ -33,6 +33,28 @@ def archive(source,target):
     with zipfile.ZipFile(target) as z:
         if z.testzip():raise ValueError('Archive CRC failure')
 
+
+def release_reproduction(workspace,site):
+    """Release private annotations only after strict final paired-run preflight."""
+    selected=[]
+    for directory in ['skill-v0','skill-v1','skill-v2','fixtures','protocol','review','analysis','editor-consumer-i2-stable','editor-pose-probe-stable']:
+        selected += [p for p in (workspace/directory).rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc']
+    for pattern in ['skill-v*-manifest.json','v2-change-log.json','plan.json','evals.json','iteration-*/analysis.json','iteration-*/benchmark*.json','iteration-*/aggregate-upstream.log']:
+        selected += list(workspace.glob(pattern))
+    selected += list(workspace.glob('grade-evidence/*/controls.json'))
+    selected += [workspace/'grade-evidence/finalize-i2-grades.py']
+    for name in ['grading.raw-v1.1.json','grading.final.json','grading.json','receipt-format-audit.json','transcript-audit.json']:
+        selected += list(workspace.glob('grade-evidence/iteration-*/*/*/'+name))
+    selected=[p for p in selected if p.exists()]
+    target=site/'reproducibility.zip'
+    with zipfile.ZipFile(target,'w',zipfile.ZIP_DEFLATED) as archive_file:
+        for path in sorted(set(selected)):
+            info=zipfile.ZipInfo(str(path.relative_to(workspace)),(1980,1,1,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED
+            archive_file.writestr(info,path.read_bytes())
+    with zipfile.ZipFile(target) as archive_file:
+        if archive_file.testzip():raise ValueError('Reproduction archive CRC failure')
+    write(site/'reproduction-manifest.json',dict(archive_sha256=sha(target),files={str(p.relative_to(workspace)):sha(p) for p in sorted(set(selected))},release='Released after candidate freeze, all executions and independent final grades; private annotations were not executor inputs',instructions='Extract into work/commerce-skill-evals-20261118; extract each public run ZIP into its matching iteration/case/config/run directory; copy public inputs into matching inputs directories. Use committed generic runtime and Human Studio asset. Regenerate geometry/grades with commerce_grade.py and test_commerce_grade_controls.py. Native ImageGen calls cannot be replayed deterministically; receipts and original bytes are retained.'))
+
 def independent_overlay(output,source,target):
     """Review-derived actual mesh projection; never warp or alter the source file."""
     mesh=output/'posed.obj';camera=output/'camera.json'
@@ -60,6 +82,15 @@ def independent_overlay(output,source,target):
         write(review/'overlay-provenance.json',dict(method='Review-derived OpenCV union of actual OBJ triangles projected by declared 3x4 photo camera; 10% alpha and thin contour on unchanged original; no 2D warp',reference_sha256=sha(source),posed_obj_sha256=sha(mesh),camera_sha256=sha(camera),native_size=[photo.shape[1],photo.shape[0]],declared_camera_size=[cam.get('width'),cam.get('height')],limitations='Projection consistency is not measurement or hidden anatomy accuracy'))
         return review/'thin-overlay.png'
     except (ValueError,KeyError,IndexError,TypeError):return None
+
+def public_output_file(path,output):
+    # Full unmodified originals stay in each run ZIP; the page publishes linked
+    # evidence only, avoiding hundreds of MB of duplicate intermediate renders.
+    rel=path.relative_to(output)
+    root_files={'final-state.json','posed.obj','neutral.obj','camera.json','measurements.json','measurements.csv','input-provenance.json','report.md','TRACE.md','photo-render.png','final-mask.png','final-overlay.png','overlay.png','initial-overlay.png'}
+    guides={'guide.png','pose-guide.png','imagegen-guide.png','guide-native.png','pose-guide-native.png','imagegen-pose.png','original-pose-illustrative.png'}
+    view_files={'front.png','side.png','back.png','front-mask.png','side-mask.png','back-mask.png','state.json','camera.json','joints.json','view-provenance.json'}
+    return (len(rel.parts)==1 and rel.name in root_files) or rel.parts[0]=='images' or (rel.parts[0]=='views' and len(rel.parts)==2 and rel.name in view_files) or rel.name.lower() in guides
 
 def output_files(output):
     return {str(p.relative_to(output)):sha(p) for p in sorted(output.rglob('*')) if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc'}
@@ -139,7 +170,7 @@ def snapshot(workspace,site,iteration,allow_pending,include_holdout):
         for name in ['timing.json']:
             if (run/name).exists():shutil.copyfile(run/name,thin_run/name)
         for path in sorted(output.rglob('*')):
-            if path.is_file() and path.suffix.lower() in COPY_EXT and '__pycache__' not in path.parts:
+            if path.is_file() and path.suffix.lower() in COPY_EXT and '__pycache__' not in path.parts and public_output_file(path,output):
                 if path.suffix.lower() in {'.png','.jpg','.jpeg'} and not valid_image(path):
                     if allow_pending:continue
                     raise ValueError('Image decode failure '+str(path))
@@ -173,7 +204,8 @@ def snapshot(workspace,site,iteration,allow_pending,include_holdout):
             if path.suffix.lower() not in {'.png','.jpg','.jpeg'}:continue
             native_names={'guide.png','pose-guide.png','imagegen-guide.png','guide-native.png','pose-guide-native.png','imagegen-pose.png','original-pose-illustrative.png'}
             if not (rel.parts[0]=='images' or path.name.lower() in native_names):continue
-            image=own(str(rel),'Image Gen 原姿态引导','实际生成的示意点线，用于原图拟合；与最终六张角色图分开标注。')
+            derived='register' in path.name.lower()
+            image=own(str(rel),'配准后的引导（派生图）' if derived else 'Image Gen 原姿态引导','配准/重采样后的派生证据，非原生生成字节。' if derived else '实际生成的示意点线；是否参与数值拟合见 TRACE，与最终六张角色图分开。')
             if image and image['src'] not in seen:generated.append(image);seen.add(image['src'])
         renders=[]
         for name,label in [('photo-render.png','原相机实际投影'),('views/front.png','同一状态正面'),('views/side.png','同一状态侧面'),('views/back.png','同一状态背面')]:
@@ -191,7 +223,12 @@ def snapshot(workspace,site,iteration,allow_pending,include_holdout):
             if (target/'outputs'/name).exists():downloads.append(dict(label=name,href=base+'/outputs/'+name))
         if grade:
             zip_path=site/(base+'.zip');archive(run,zip_path);downloads.append(dict(label='完整执行ZIP（含原始深度/代码/失败尝试）',href=base+'.zip'))
-        galleries[key]=dict(title=title,overall=status,version=run.parent.name,source_fingerprints=fingerprints,legacy_feedback_key=None,
+        if iteration>1 and include_holdout and not allow_pending:downloads.append(dict(label='冻结技能/协议/独立评审复现ZIP',href='reproducibility.zip'))
+        consumer=workspace/'editor-consumer-i2-stable'/run.relative_to(origin)/'browser.json'
+        consumer_verdict=read(consumer).get('verdict') if iteration==2 and consumer.exists() else 'NOT_RUN'
+        labels=['来源与先验','厘米人体重建','同状态多视图','原图关键分区','可见腕与动作','三维动作','尺寸声明','六次独立生成','商品构造']
+        failed=[labels[i] for i,e in enumerate(grade.get('expectations',[])) if not e['passed']] if grade else ['尚无完整独立评分']
+        galleries[key]=dict(title=title,overall=status,failed_gates=failed,editor_consumer=consumer_verdict,version=run.parent.name,source_fingerprints=fingerprints,legacy_feedback_key=None,
             stages=[dict(title='1. 原始电商输入',status='原始文件',images=[x for x in inp if x]),dict(title='2. Image Gen 实际输出',status=f'最终六图 {final_count}/6；额外引导 {max(0,len(generated)-final_count)}' if int(meta['eval_id'])==1 else '本任务仅姿态引导；六图 NOT_REQUESTED',images=generated),dict(title='3. 实际人体与三维',status='真实执行' if renders else '尚未完成',images=renders),dict(title='4. OpenCV 比较',status='实际输出' if overlays else '尚未完成',images=overlays)],downloads=downloads,
             model='../../human-studio/?model=../garment-body/commerce-evals/'+base+'/outputs/final-state.json' if fingerprints['state_sha256'] else None)
         inventory.append(dict(id=key,case=case,configuration=run.parent.name,skill_version=skill_version,heldout=heldout,overall=status,source_fingerprints=fingerprints,artifact_sha256=hashes,graded=grade is not None))
@@ -200,6 +237,7 @@ def snapshot(workspace,site,iteration,allow_pending,include_holdout):
 def build(workspace,site,iteration=1,allow_pending=False,include_holdout=False):
     workspace=workspace.resolve();site=site.resolve();site.mkdir(parents=True,exist_ok=True)
     if not allow_pending:preflight(workspace,iteration,include_holdout)
+    if iteration>1 and include_holdout and not allow_pending:release_reproduction(workspace,site)
     if iteration>1:build(workspace,site,iteration-1,allow_pending,False)
     thin,galleries,inventory=snapshot(workspace,site,iteration,allow_pending,include_holdout)
     if not inventory:raise ValueError('No actual runs available')
@@ -217,6 +255,7 @@ def build(workspace,site,iteration=1,allow_pending=False,include_holdout=False):
     script=script.replace('该版本未使用 Image Gen 引导；没有用渲染图替代生成图。','该阶段尚无实际产物；没有用其他图像冒充输出。状态以上方执行标记为准。')
     if '同画幅交互详情（当前候选）' in script:raise ValueError('Shared artifact adapter changed; commerce-specific links were not applied')
     script=script.replace('这是保存候选的实际证据。功能断言计数不是姿态准确率；请查看官方 Formal Grades，并在下方 Feedback 留言。','这是本次独立执行的实际产物。未评分/未运行不会冒充通过；功能断言计数不是原图姿态或真人尺寸准确率。请查看 Formal Grades，并在官方 Feedback 留言。')
+    script=script.replace('content.append(grid,note,links);', "const issues=document.createElement('p');issues.style.color='#a53422';issues.textContent='未通过：'+(data.failed_gates?.join('、')||'见 Formal Grades')+'。额外真实编辑器载入/厘米编辑：'+(data.editor_consumer||'NOT_RUN')+'（独立复核，不改冻结分数）。生成图/模型动作一致性、引导是否实际参与优化及编辑器兼容另见流程审计；六图数量不代表这些通过。';content.append(grid,issues,note,links);")
     payload=json.dumps(galleries,ensure_ascii=False).replace('<',r'\u003c')
     document=document.replace('</head>','<style>'+css+'</style></head>',1).replace('</body>','<script>const OUTPUT_GALLERIES='+payload+';\n'+script+'</script></body>',1)
     (site/f'iteration-{iteration}.html').write_text(document);(site/'eval.html').write_text(document);(site/'index.html').write_text(document)
@@ -224,7 +263,17 @@ def build(workspace,site,iteration=1,allow_pending=False,include_holdout=False):
     for name in ['evals.json','plan.json','skill-v0-manifest.json','skill-v1-manifest.json','skill-v2-manifest.json']:
         if (workspace/name).exists():shutil.copyfile(workspace/name,site/name)
     write(site/'viewer-provenance.json',dict(upstream=upstream,template_sha256=sha(ROOT/'tools/skill_evals/upstream/eval-viewer/viewer.html'),format='Official shell unchanged; gallery only inside native Output',iteration=iteration,previous_iteration=iteration-1 if iteration>1 else None,scope='Explicit injected subagent functional runs; no native Claude trigger result'))
-    write(site/'manifest.json',dict(iteration=iteration,complete=not allow_pending,runs=inventory,scope='Paired actual commerce functional runs; original-photo and 3D failures cannot be averaged away',files={str(p.relative_to(site)):sha(p) for p in sorted(site.rglob('*')) if p.is_file() and p.name!='manifest.json'}))
+    scope='Paired actual commerce functional runs; original-photo and 3D failures cannot be averaged away'
+    # Historical reviews bind only immutable evidence belonging to their own run.
+    # Common landing pages/provenance and later-round manifests are intentionally excluded.
+    input_prefixes=tuple('inputs/'+case+'/' for case in sorted({r['case'] for r in inventory}))
+    own_files={}
+    for path in sorted(site.rglob('*')):
+        if not path.is_file():continue
+        rel=str(path.relative_to(site))
+        if rel.startswith(f'artifacts/iteration-{iteration}/') or rel in {f'iteration-{iteration}.html',f'benchmark-iteration-{iteration}.json'} or rel.startswith(input_prefixes):own_files[rel]=sha(path)
+    write(site/f'manifest-iteration-{iteration}.json',dict(iteration=iteration,complete=not allow_pending,runs=inventory,scope=scope,files=own_files))
+    write(site/'manifest.json',dict(iteration=iteration,complete=not allow_pending,runs=inventory,scope=scope,files={str(p.relative_to(site)):sha(p) for p in sorted(site.rglob('*')) if p.is_file() and p!=site/'manifest.json'}))
     print(json.dumps(dict(site=str(site),iteration=iteration,runs=len(inventory),graded=sum(x['graded'] for x in inventory),complete=not allow_pending)))
 
 if __name__=='__main__':

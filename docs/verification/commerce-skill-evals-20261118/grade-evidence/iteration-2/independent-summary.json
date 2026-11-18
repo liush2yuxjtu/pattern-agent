@@ -1,0 +1,83 @@
+{
+  "rows": [
+    {
+      "eval": "eval-1-everlane-six-view",
+      "config": "old_skill",
+      "summary": {
+        "passed": 6,
+        "failed": 3,
+        "total": 9,
+        "pass_rate": 0.6666666666666666
+      },
+      "overall": "FAIL",
+      "consumer": "FAIL",
+      "grading_sha256": "2a669f98bace50fb1dcba4f13d19e645f98f3020eaacca92e72f2d9bf957eb13"
+    },
+    {
+      "eval": "eval-1-everlane-six-view",
+      "config": "with_skill",
+      "summary": {
+        "passed": 6,
+        "failed": 3,
+        "total": 9,
+        "pass_rate": 0.6666666666666666
+      },
+      "overall": "FAIL",
+      "consumer": "PASS",
+      "grading_sha256": "0c411baf3b08edd6916622731bb97ca9893a749c2746d2e9a637115769221efd"
+    },
+    {
+      "eval": "eval-2-everlane-pocket-pose",
+      "config": "old_skill",
+      "summary": {
+        "passed": 4,
+        "failed": 3,
+        "total": 7,
+        "pass_rate": 0.5714285714285714
+      },
+      "overall": "FAIL",
+      "consumer": "PASS",
+      "grading_sha256": "1a123daa1759cdc4252bf9511342c5d439884ad9860a25ff22fc2127537d0e69"
+    },
+    {
+      "eval": "eval-2-everlane-pocket-pose",
+      "config": "with_skill",
+      "summary": {
+        "passed": 5,
+        "failed": 2,
+        "total": 7,
+        "pass_rate": 0.7142857142857143
+      },
+      "overall": "FAIL",
+      "consumer": "PASS",
+      "grading_sha256": "3477a01ec9189b2c4a1c975314e783d9b44724adfdc026158c20163c69108105"
+    },
+    {
+      "eval": "eval-3-reformation-heldout",
+      "config": "old_skill",
+      "summary": {
+        "passed": 4,
+        "failed": 3,
+        "total": 7,
+        "pass_rate": 0.5714285714285714
+      },
+      "overall": "FAIL",
+      "consumer": "PASS",
+      "grading_sha256": "7266440b4da6dcdb1251b8fd98156ae3da655198c9e3c7882dd73fbc567d347e"
+    },
+    {
+      "eval": "eval-3-reformation-heldout",
+      "config": "with_skill",
+      "summary": {
+        "passed": 5,
+        "failed": 2,
+        "total": 7,
+        "pass_rate": 0.7142857142857143
+      },
+      "overall": "FAIL",
+      "consumer": "PASS",
+      "grading_sha256": "397fae549d063a02de286275824bc39b75342dd86d45a5a149eee1b1583c3cac"
+    }
+  ],
+  "limits": "All cases fail strict original matching. Assertion counts are coverage, not person/body accuracy; one execution per configuration/case. Native Claude triggering NOT_RUN."
+}

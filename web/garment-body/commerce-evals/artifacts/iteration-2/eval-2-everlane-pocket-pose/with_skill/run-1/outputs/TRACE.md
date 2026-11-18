@@ -1,0 +1,11 @@
+# Actual execution trace
+
+1. Read repository AGENTS.md, supplied eval_metadata, public RUN-CONTRACT; read only skill-v2 and referenced public guidance. No private protocol/cases, sibling runs, old fit.py or grader were read. User instruction overrides repository commit/push requirement: no commit.
+2. Viewed unchanged original.jpg using view_image, inspected source.json and generic neutral fixture/runtime/calibrate/render code. Inspected public Human Studio normalization ranges/step.
+3. One actual image_gen.imagegen call with original local path, transparent_background=false; full request and native result hint in imagegen-receipt.json. Native generated file copied without resampling. No front/side/back/closeup/depth ImageGen calls.
+4. Wrote and ran outputs/fit.py from neutral. Three independent candidates; actual SciPy least_squares nfev82/58/91, retained candidate files and log. Numeric runtime measured30.1269s. Node MODULE_TYPELESS_PACKAGE_JSON warning retained in fit.log; execution continued successfully. Render source masks at original2400×3000, canonical views at720×900.
+5. Generated image arrived while numeric job ran; executed SIFT ratio0.7 + homography RANSAC5px, 115 matches/91inliers, mean inlier2.1538px. Rejected generated cuff-as-wrist semantics; no subsequent numeric fit claimed. Kept raw output, registration transform and registered guide.
+6. Actual OpenCV GrabCut five iterations at600×750, original-size final/initial/frozen-camera overlays, metrics. Regional measurements are post hoc diagnostics, not frozen acceptance.
+7. Ran skill-v2/scripts/inspect_human_state.py against actual matchinghuman.json, independent neutral reconstruction. Ran public audit_pose_geometry.py profilefront-pocket/L; result NOT_ASSESSED with one chain-tilt reviewflag. These are public geometry diagnostics, not private self-grading.
+8. Viewed actual canonical front and side PNGs. Noted open/forward left hand and uncertain pocket contact; no skin collision proof. Measured true OBJ topology, full163pose agreement, rawdepth validity; artifact-checks.json.
+9. Created viewer.html using supported Human Studio API and final snapshot; browser validation NOT_RUN. Wrote measurement definitions/source, report and file hashes. End-to-end timing/tokens not available: null.

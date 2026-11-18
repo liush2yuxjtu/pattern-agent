@@ -39,8 +39,27 @@ const check=(ok,name,evidence)=>{checks.push({passed:!!ok,name,evidence});if(!ok
    check(sha((await geometry()).posed)===fingerprint&&JSON.stringify(fullPose(await snapshot(),names))===JSON.stringify(pose0),'Actual photo-fit '+view+' camera keeps one saved body/action');
   }
   const waist=initial.dimensions.waist+.1;await page.locator('#size-waist').fill(String(waist));await page.locator('#size-waist').press('Tab');
+  await page.waitForFunction(value=>humanStudio.getSnapshot().dimensions.waist===value&&!document.getElementById('export-state').disabled,waist);
   check((await snapshot()).dimensions.waist===waist&&sha((await geometry()).rest)!==sha(before.rest)&&JSON.stringify(fullPose(await snapshot(),names))===JSON.stringify(pose0),'Actual imported photo-fit remains cm adjustable without action reset');
-  await page.screenshot({path:path.join(output,'consumed-photo-fit.png')});check(errors.length===0,'No photo-fit consumer runtime errors',errors);
+  await page.screenshot({path:path.join(output,'consumed-photo-fit.png')});
+  if(args['exercise-pose']==='true'){
+   const cmState=await snapshot(),cmGeometry=await geometry(),target=fullPose(cmState,names),joint='upperarm01.L';
+   const angle=Math.round((target[joint][0]+5)*10)/10;target[joint]=[angle,...target[joint].slice(1)];
+   await page.locator('#tab-pose').click();await page.locator('#mirror-pose').uncheck();await page.locator('#joint-select').selectOption(joint);
+   await page.locator('#angle-0').fill(String(angle));await page.locator('#angle-0').press('Tab');
+   const edited=await snapshot(),editedGeometry=await geometry();
+   check(JSON.stringify(fullPose(edited,names))===JSON.stringify(target)&&JSON.stringify(edited.dimensions)===JSON.stringify(cmState.dimensions),'Actual joint UI edit changes only selected angle, preserving cm and other bones');
+   check(sha(editedGeometry.posed)!==sha(cmGeometry.posed)&&sha(editedGeometry.rest)===sha(cmGeometry.rest),'Actual joint UI edit moves skinned mesh while neutral body stays fixed');
+   await page.screenshot({path:path.join(output,'edited-pose.png')});
+   const save=page.waitForEvent('download');await page.locator('#export-state').click();const file=path.join(output,'edited-pose.json');await(await save).saveAs(file);
+   check(JSON.stringify(JSON.parse(fs.readFileSync(file)))===JSON.stringify(edited),'Actual editable model download matches current cm and pose');
+   await page.locator('#state-file').setInputFiles(path.resolve(args.source));
+   await page.waitForFunction(value=>humanStudio.getSnapshot().poseDegrees['upperarm01.L'][0]===value&&!document.getElementById('export-state').disabled,(pose0['upperarm01.L']||[0,0,0])[0]);
+   await page.locator('#state-file').setInputFiles(file);
+   await page.waitForFunction(value=>humanStudio.getSnapshot().poseDegrees['upperarm01.L'][0]===value&&!document.getElementById('export-state').disabled,angle);
+   check(JSON.stringify(fullPose(await snapshot(),names))===JSON.stringify(target),'Actual edited model reimport retains joint posture');
+  }
+  check(errors.length===0,'No photo-fit consumer runtime errors',errors);
   fs.writeFileSync(path.join(output,'browser.json'),JSON.stringify({verdict:'PASS',mode:'consume-only',checks,source:path.resolve(args.source),executor_final:path.resolve(args.final),max_pose_obj_delta_cm:maxDelta,errors},null,2)+'\n');console.log(JSON.stringify({verdict:'PASS',checks:checks.length,mode:'consume-only'}));return;
  }
  await page.locator('#advanced-dimensions > summary').click();

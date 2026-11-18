@@ -1,0 +1,60 @@
+{
+  "skill_name": "garment-body-six-view",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "使用提供的 Everlane 白色船领修身衬衫电商模特原图，完成六张独立高质量 Image Gen 图（正、侧、背、特写、姿态点线、相对深度风格），并建立同一可调厘米尺寸和骨骼姿态的真实人体，拟合原图动作。先用 Image Gen 给原图生成保持裁切与动作的姿态引导；拟合后把原图与实际模型渲染作为最终六图参考。保存真实三维正侧背、OpenCV叠加、人体条件尺寸及可继续编辑的完整状态。深度/姿态生成图明确为示意，另保存实际几何证据。不要用拼图裁成六图，不把先验或隐藏背面当真人测量。",
+      "expected_output": "Actual generated images for requested branch, one calibrated adjustable body, source-bound renders/overlays and evidence; no inflated measurement claims",
+      "files": [
+        "work/commerce-skill-evals-20261118/inputs/everlane-boatneck/original.jpg"
+      ],
+      "assertions": [
+        "The original retailer image is preserved and its source/scale provenance distinguishes observed facts from the M170 prior.",
+        "Saved centimetre parameters independently reconstruct the real neutral and posed anatomical mesh within tolerance.",
+        "Actual source-camera and front/side/back images replay from the same saved complete body and pose.",
+        "Every frozen critical original-photo region and centre scanline passes its independent envelope checks.",
+        "Visible original wrist cues and coarse limb directions do not contradict the target action; hidden wrists are not invented.",
+        "Independent actual three-dimensional views show a reference-consistent plausible action without detected severe skin overlap; coverage limitations are explicit.",
+        "Body data and reports preserve measurement definitions and prior/conditional provenance rather than claiming unmeasured real-person accuracy.",
+        "Six separate native Image Gen outputs and their actual tool receipts are retained, without collage cropping or upsampling claims.",
+        "Independent inspection confirms the generated item preserves observed product features and labels unobserved views as inferred."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "使用提供的 Everlane 浅蓝宽松衬衫全身电商原图，实际生成一张 Image Gen 原姿态点线引导，再建立可调厘米尺寸与骨骼的人体，保持原图动作并拟合。输出同一状态的正侧背、原相机渲染、OpenCV叠加和有来源的人体尺寸数据。处理衣物松量、遮挡和插袋手，无法观测的关节/尺寸如实保留不确定性。本任务只测试姿态引导与人体拟合分支，不要求重新生成完整六张服装图。",
+      "expected_output": "Actual generated images for requested branch, one calibrated adjustable body, source-bound renders/overlays and evidence; no inflated measurement claims",
+      "files": [
+        "work/commerce-skill-evals-20261118/inputs/everlane-blue-shirt/original.jpg"
+      ],
+      "assertions": [
+        "The original retailer image is preserved and its source/scale provenance distinguishes observed facts from the M170 prior.",
+        "Saved centimetre parameters independently reconstruct the real neutral and posed anatomical mesh within tolerance.",
+        "Actual source-camera and front/side/back images replay from the same saved complete body and pose.",
+        "Every frozen critical original-photo region and centre scanline passes its independent envelope checks.",
+        "Visible original wrist cues and coarse limb directions do not contradict the target action; hidden wrists are not invented.",
+        "Independent actual three-dimensional views show a reference-consistent plausible action without detected severe skin overlap; coverage limitations are explicit.",
+        "Body data and reports preserve measurement definitions and prior/conditional provenance rather than claiming unmeasured real-person accuracy."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "使用提供的独立电商商品模特原图，实际生成一张保持原图动作的 Image Gen 姿态点线引导，再建立可调厘米尺寸与骨骼姿态的人体拟合原图。保存同一状态正侧背、原相机渲染、OpenCV叠加、尺寸来源、代码及复现证据。单张图不能确定的关节、隐藏深度与真实围度保持不确定。本任务仅测试姿态引导和人体拟合分支，不要求重新生成完整六张服装图。",
+      "expected_output": "Actual pose-guide and one adjustable source-fit body; full-six generation not requested; hidden cues remain unknown",
+      "files": [
+        "work/commerce-skill-evals-20261118/inputs/holdout-c-reformation/original.jpg"
+      ],
+      "assertions": [
+        "The original retailer image is preserved and its source/scale provenance distinguishes observed facts from the M170 prior.",
+        "Saved centimetre parameters independently reconstruct the real neutral and posed anatomical mesh within tolerance.",
+        "Actual source-camera and front/side/back images replay from the same saved complete body and pose.",
+        "Every frozen critical original-photo region and centre scanline passes its independent envelope checks.",
+        "Visible original wrist cues and coarse limb directions do not contradict the target action; hidden wrists are not invented.",
+        "Independent actual three-dimensional views show a reference-consistent plausible action without detected severe skin overlap; coverage limitations are explicit.",
+        "Body data and reports preserve measurement definitions and prior/conditional provenance rather than claiming unmeasured real-person accuracy."
+      ],
+      "split": "heldout activated after skill-v2 freeze"
+    }
+  ],
+  "scope": "Explicit isolated functional executions, not native Claude triggering. Original cases/protocol released only after final grading."
+}

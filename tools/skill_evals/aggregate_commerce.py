@@ -56,7 +56,7 @@ def aggregate(iteration):
     configs=[k for k in data['run_summary'] if k!='delta']
     a,b=(data['run_summary'][k]['pass_rate']['mean'] for k in configs)
     data['run_summary']['delta']={'pass_rate':f'{a-b:+.4f}'}
-    data['metadata'].update(protocol='Real e-commerce image tasks, explicit isolated subagents with frozen old vs revised skill; not native Claude routing',
+    data['metadata'].update(skill_path='skill-v'+iteration.name.split('-')[-1]+' (with_skill); skill-v0 (old_skill)', executor_model='Codex subagent; model telemetry unavailable', analyzer_model='Evidence review; model telemetry unavailable', protocol='Real e-commerce image tasks, explicit isolated subagents with frozen old vs revised skill; not native Claude routing',
         resource_metrics='Executor completion token and duration telemetry unavailable; actual solver timings have a narrower scope and are not compared.',
         split_run_counts=split_counts)
     data['notes']=[

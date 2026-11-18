@@ -1,0 +1,24 @@
+{
+  "tool": "image_gen.imagegen",
+  "arguments": {
+    "referenced_image_paths": [
+      "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/inputs/holdout-c-reformation/original.jpg"
+    ],
+    "transparent_background": false,
+    "prompt": "Annotate this exact Reformation photograph with sparse anatomical pose guide points and thin connecting lines. Preserve original photograph framing and the model's exact lowered arm action, dress, clutch, face, background and shoes. Place shoulder, elbow, wrist markers on both arms; image-left wrist beside skirt, image-right wrist holding blue clutch. Mark neck base, pelvis centre, knees and ankles; hidden pelvis and knees under skirt use hollow dashed inferred markers. No change of action, no A pose, no new person. This is illustrative guidance, not a detector or measured anatomy."
+  },
+  "result": {
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-a7646e11-6350-4126-8bb1-c7622cd70566.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  "native_file": "/workspace/generated_images/exec-a7646e11-6350-4126-8bb1-c7622cd70566.png",
+  "timing_seconds": null,
+  "tokens": null,
+  "input_hashes": {
+    "original.jpg": "6df3525e4024daf7a96a73461c595a7a65b79fa22d5d2a58acd1f2dcc4f41f05"
+  },
+  "output_sha256": "40421edccf9089216087aaf098e128f4f963e2861caa07208204153073a49f47",
+  "native_size": [
+    1086,
+    1449
+  ]
+}

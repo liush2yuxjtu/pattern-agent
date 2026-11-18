@@ -1,10 +1,10 @@
 {
   "metadata": {
     "skill_name": "garment-body-six-view",
-    "skill_path": "<path/to/skill>",
-    "executor_model": "<model-name>",
-    "analyzer_model": "<model-name>",
-    "timestamp": "2026-11-18T04:12:02Z",
+    "skill_path": "skill-v1 (with_skill); skill-v0 (old_skill)",
+    "executor_model": "Codex subagent; model telemetry unavailable",
+    "analyzer_model": "Evidence review; model telemetry unavailable",
+    "timestamp": "2026-11-18T04:39:09Z",
     "evals_run": [
       1,
       2
@@ -291,6 +291,15 @@
     "Any critical failure vetoes overall acceptance; assertion pass fraction is not pose accuracy, real-person measurement accuracy or physical cloth contact.",
     "A held-out case is activated only after the revised skill is frozen; its result is reported separately and not used for development edits.",
     "Benchmark-upstream-raw.json preserves official arithmetic and its zero fallback placeholders; the displayed benchmark removes unknown token/time values.",
-    "Native Claude triggering remains BLOCKED. No cost, speed or general real-person accuracy advantage is established."
+    "Native Claude triggering remains BLOCKED. No cost, speed or general real-person accuracy advantage is established.",
+    "All four runs pass source/prior provenance, independent anatomical-state reconstruction, same-state view replay and measurement-claim criteria. These integrity controls do not discriminate v1 from v0 in this sample; replay agreement does not establish original-photo pose accuracy.",
+    "Every run fails both frozen original-photo regions and strict three-dimensional action. All centre scanlines pass, but local shoulders fail in every run: the centre/whole-image agreement hides critical local failures. Overall acceptance is FAIL for all four runs.",
+    "Boatneck v1 improves shoulder outside fractions from v0 0.1276/0.2175 to 0.0826/0.1068, while adding a failing right waist/hip contour P95 of 65.80px. Visible wrist errors regress from 114.27/98.74px to 146.45/141.91px; both configurations remain FAIL on visible action.",
+    "Pocket v1 reduces left-shoulder outside fraction from 0.2850 to 0.1159 and changes left arm from FAIL to PASS, yet visible left-wrist error increases from 51.26px to 78.27px against a 71.5px gate. This is the only formal assertion that changes outcome between configurations, from v0 PASS to v1 FAIL; the pocket wrist itself remains unobserved with no hard coordinate gate.",
+    "Frozen anonymous visual comparison picks case-1 A and case-2 B; blind-map-i1 maps both to v1. The judgments favor relative upright torso plausibility while explicitly reporting strict action defects. The formal fraction and relative blind preference describe different outcomes and neither certifies a successful reconstruction.",
+    "Both boatneck runs pass six native generation and observed garment-feature criteria. Full trace/claim review separately finds generated images normalize the submitted mesh pose; this independent generated/model coherence gap is not covered by the frozen garment assertion. Pocket runs do not test full six-image generation.",
+    "Actual guide generation and registration are retained in all traces, but solver targets are manually interpreted raw-photo coordinates after semantic correction. Registration demonstrates image alignment, not anatomical truth; these receipts do not establish guide-driven corrective optimization or a guide contribution ablation.",
+    "End-to-end time, tokens and tool-call telemetry are unavailable/null. Local solver blocks and isolated Image Gen timings are incomplete and non-comparable, so no speed or cost advantage is established. Native Claude routing is BLOCKED and functional skill injection does not measure triggering.",
+    "There is one run per configuration per task, with two heterogeneous development tasks. The reported standard deviations are across those tasks, not repeatability estimates; neither statistical superiority nor generalization is established. Held-out evidence is outside iteration 1."
   ]
 }

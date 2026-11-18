@@ -1,0 +1,20 @@
+{
+  "eval_id": 1,
+  "eval_name": "everlane-six-view",
+  "prompt": "使用提供的 Everlane 白色船领修身衬衫电商模特原图，完成六张独立高质量 Image Gen 图（正、侧、背、特写、姿态点线、相对深度风格），并建立同一可调厘米尺寸和骨骼姿态的真实人体，拟合原图动作。先用 Image Gen 给原图生成保持裁切与动作的姿态引导；拟合后把原图与实际模型渲染作为最终六图参考。保存真实三维正侧背、OpenCV叠加、人体条件尺寸及可继续编辑的完整状态。深度/姿态生成图明确为示意，另保存实际几何证据。不要用拼图裁成六图，不把先验或隐藏背面当真人测量。",
+  "assertions": [
+    "The original retailer image is preserved and its source/scale provenance distinguishes observed facts from the M170 prior.",
+    "Saved centimetre parameters independently reconstruct the real neutral and posed anatomical mesh within tolerance.",
+    "Actual source-camera and front/side/back images replay from the same saved complete body and pose.",
+    "Every frozen critical original-photo region and centre scanline passes its independent envelope checks.",
+    "Visible original wrist cues and coarse limb directions do not contradict the target action; hidden wrists are not invented.",
+    "Independent actual three-dimensional views show a reference-consistent plausible action without detected severe skin overlap; coverage limitations are explicit.",
+    "Body data and reports preserve measurement definitions and prior/conditional provenance rather than claiming unmeasured real-person accuracy.",
+    "Six separate native Image Gen outputs and their actual tool receipts are retained, without collage cropping or upsampling claims.",
+    "Independent inspection confirms the generated item preserves observed product features and labels unobserved views as inferred."
+  ],
+  "input_case": "everlane-boatneck",
+  "configuration": "old_skill",
+  "execution_kind": "explicit subagent functional run, not native Claude triggering",
+  "split": "development"
+}

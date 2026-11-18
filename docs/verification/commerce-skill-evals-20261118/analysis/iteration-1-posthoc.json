@@ -1,0 +1,207 @@
+{
+  "analysis_type": "independent_posthoc_skill_creator_analyzer",
+  "iteration": 1,
+  "scope": "Read-only analysis of frozen evidence. Recommendations are hypotheses for later work, not changes to frozen skills or assertions. This pass did not rerun fitting, grade outputs, or independently inspect original image pixels; visual statements are attributed to frozen blind and full-trace reviewers.",
+  "comparisons": [
+    {
+      "case": "eval-1-everlane-six-view",
+      "comparison_summary": {
+        "winner": "A",
+        "winner_skill": "work/commerce-skill-evals-20261118/skill-v1",
+        "loser_skill": "work/commerce-skill-evals-20261118/skill-v0",
+        "comparator_reasoning": "A wins narrowly because its actual mesh has a substantially more upright and source-compatible head/torso than B. Both fail strict pose reconstruction: A still sweeps the upper arms backward with substantial hidden elbow bends, while B adds a pronounced arched/reclined torso and chin tuck, visible even in the photo-camera render and severe in the canonical side. Both retain the original garment construction very well in generated front/closeup, but generated neutral side views normalize the real mesh pose and unobserved backs remain hypotheses. B deserves credit for explicit illustrative pose/depth labels and clearer mesh-parameter provenance, but labels do not offset the worse actual 3D action or pose-role footwear drift. This is a relative winner, not a successful full reconstruction certification.",
+        "relative_only": true,
+        "strict_overall": {
+          "winner": "FAIL",
+          "loser": "FAIL"
+        }
+      },
+      "formal_results": {
+        "with_skill": {
+          "passed": 6,
+          "failed": 3,
+          "total": 9,
+          "pass_rate": 0.6666666666666666
+        },
+        "old_skill": {
+          "passed": 6,
+          "failed": 3,
+          "total": 9,
+          "pass_rate": 0.6666666666666666
+        }
+      },
+      "evidence_paths": {
+        "blind": "work/commerce-skill-evals-20261118/review/iteration-1/blind-case-1/blind-comparison.json",
+        "winner_trace": "work/commerce-skill-evals-20261118/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/TRACE.md",
+        "loser_trace": "work/commerce-skill-evals-20261118/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/TRACE.md",
+        "winner_full_review": "work/commerce-skill-evals-20261118/review/iteration-1/eval-1-everlane-six-view/with_skill/manual-review.json",
+        "loser_full_review": "work/commerce-skill-evals-20261118/review/iteration-1/eval-1-everlane-six-view/old_skill/manual-review.json"
+      }
+    },
+    {
+      "case": "eval-2-everlane-pocket-pose",
+      "comparison_summary": {
+        "winner": "B",
+        "winner_skill": "work/commerce-skill-evals-20261118/skill-v1",
+        "loser_skill": "work/commerce-skill-evals-20261118/skill-v0",
+        "comparator_reasoning": "B better preserves upright asymmetric original stance with a plausible trunk, arm directions and near-straight legs. A is deeply hunched/forward tilted with flexed knees and fingers emerging through pelvis/inner thigh. Both miss the original front-pocket hand placement: B puts that hand against rear hip/buttock. Neither establishes photographed-person dimensions or contact/collision-free status. Full six-image generation is outside this task.",
+        "relative_only": true,
+        "strict_overall": {
+          "winner": "FAIL",
+          "loser": "FAIL"
+        }
+      },
+      "formal_results": {
+        "with_skill": {
+          "passed": 4,
+          "failed": 3,
+          "total": 7,
+          "pass_rate": 0.5714285714285714
+        },
+        "old_skill": {
+          "passed": 5,
+          "failed": 2,
+          "total": 7,
+          "pass_rate": 0.7142857142857143
+        }
+      },
+      "evidence_paths": {
+        "blind": "work/commerce-skill-evals-20261118/review/iteration-1/blind-case-2/blind-comparison.json",
+        "winner_trace": "work/commerce-skill-evals-20261118/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/TRACE.md",
+        "loser_trace": "work/commerce-skill-evals-20261118/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/TRACE.md",
+        "winner_full_review": "work/commerce-skill-evals-20261118/review/iteration-1/eval-2-everlane-pocket-pose/with_skill/manual-review.json",
+        "loser_full_review": "work/commerce-skill-evals-20261118/review/iteration-1/eval-2-everlane-pocket-pose/old_skill/manual-review.json"
+      }
+    }
+  ],
+  "winner_strengths": [
+    "v1 adds a cross-product reference plus an explicit instruction to rebuild observations and camera/pose priors for each new input. TRACE confirms both v1 executors read it and built new solvers. Both blind reviewers prefer v1 actual torso plausibility; one run per case cannot isolate the reference as the cause.",
+    "Pocket v1 uses explicit (bone, axis) mapping and standing root/leg/spine bounds, in contrast to v0 broad spine allowance. Code limits spine01 to ±10°, root ±6°, legs ±12°; full review reports a more upright mesh, whereas v0 final spine01 reaches 68.7°. This is a plausible mechanism for the observed relative posture improvement, not proof of skill causality.",
+    "All runs preserve real native Image Gen receipts and original references, use true FK/LBS plus numerical fitting and save consistent complete states. v1 does not gain on those shared integrity criteria."
+  ],
+  "loser_weaknesses": [
+    "v0 pocket numerical fit accepts severe torso flexion and hand/pelvis intersection despite a passing visible wrist. v0 boatneck compensates spine02 [-37.8,15.9,17.3] with neck01 [51.3,9.4,5.6], producing reclined chest/chin tuck in frozen visual review.",
+    "Neither skill execution converts action-specific hand semantics into a sufficient objective/acceptance check: pocket v1 still puts the hand behind the hip, and both six-view meshes sweep arms backward. This is also a weakness of the relative winner.",
+    "Numerical loss, neutral calibration and replay integrity remain insufficient acceptance criteria; every run retains original-region and 3D failures. v1 visible wrists regress despite better shoulder fit."
+  ],
+  "instruction_following": {
+    "scale": "Analyst qualitative adherence, 1–10, separate from task accuracy; scores are not benchmark metrics.",
+    "case_1": {
+      "winner": {
+        "score": 7,
+        "issues": [
+          "Reads required v1 references and performs true fitting/generation, but final side-view action remains unsupported.",
+          "fit.py depthfun regularizes xx[18:21], which maps to head (bones index 4), rather than spine03 (index 5, xx[21:24]); world-Z arm clamping does not ensure relaxed body-relative action.",
+          "Generation precedes export-grid normalization; exact prior generation inputs are preserved, but final state cannot retroactively condition old generated outputs."
+        ]
+      },
+      "loser": {
+        "score": 6,
+        "issues": [
+          "Substantial functional workflow and provenance followed, but large torso/neck compensation remains after visual review.",
+          "Generated views depart from the actual mesh action and final generation precedes normalization."
+        ]
+      }
+    },
+    "case_2": {
+      "winner": {
+        "score": 7,
+        "issues": [
+          "New-input observation/reference workflow and true optimization followed, but source visible wrist misses the frozen gate.",
+          "Hidden wrist remains a low-weight invented hypothesis; head/wrist variables are not optimized, and post-fit uniform hidden-hand finger curl does not establish front-pocket action."
+        ]
+      },
+      "loser": {
+        "score": 6,
+        "issues": [
+          "Real guide/registration/FK and fitting are executed, but broad angle ranges permit severe source-inconsistent hunch.",
+          "Projected wrist success survives while actual hand/body intersection and wrong 3D action remain."
+        ]
+      }
+    }
+  },
+  "improvement_suggestions": [
+    {
+      "priority": "high",
+      "category": "tools",
+      "suggestion": "Use named bone/axis mappings and actual accumulated FK/body-relative diagnostics before candidate acceptance. Keep source/front/side/back visual acceptance separate from scalar reprojection loss.",
+      "expected_impact": "Detect wrong regularization targets and torso/arm compensation before selecting a lower-loss but implausible pose.",
+      "evidence": [
+        "iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/fit.py:14,18,35-38",
+        "review/iteration-1/blind-case-1/blind-comparison.json",
+        "review/iteration-1/eval-2-everlane-pocket-pose/with_skill/manual-review.json"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "instructions",
+      "suggestion": "Verify visible wrist location against original skin/hand junction with uncertainty, and retain per-region/per-wrist regressions alongside torso gains. Hidden pocket wrists should remain null measured evidence with only labeled action hypotheses.",
+      "expected_impact": "Avoid trading visible-action fidelity for a more plausible torso and avoid treating cuff/illustrative points as anatomy.",
+      "evidence": [
+        "Pocket wrist error 51.262985→78.266711px; limit 71.5px in raw grading.json",
+        "Boatneck v1 fit.py manual wrist targets [650,2430]/[1730,2420] versus frozen visible cues [656,2544]/[1732,2528]"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "instructions",
+      "suggestion": "Inspect front-pocket forearm/hand position in body-relative side/back views, then evaluate wrist orientation and visible finger gesture while preserving hidden palm ambiguity.",
+      "expected_impact": "Reject posterior-hand or intersecting-hand alternatives without inventing a unique hidden ground truth.",
+      "evidence": [
+        "review/iteration-1/blind-case-2/blind-comparison.json",
+        "Pocket with_skill solve.py obs wrist.L weight .18, no pocket-side spatial term, uniform 12° hidden-hand finger curl"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "tools",
+      "suggestion": "Normalize editor state and rebuild all geometry before final generation; retain exact generation-time state/camera/render hashes and review generated-versus-model action after generation. Any future formal coherence assertion needs its own pre-run version.",
+      "expected_impact": "Separate generation execution from action-conditioning success and prevent final-state lineage drift.",
+      "evidence": [
+        "All four TRACE.md files record initial non-0.1-step export rejection",
+        "Six-view manual-review.json claims mark shared generated pose FAIL while garment_fidelity stays PASS"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "structure",
+      "suggestion": "Bundle reusable FK pose diagnostics and serialization checks observed repeatedly across runs; keep observation interpretation and action profile specific to the new source. Explain what each diagnostic can and cannot establish.",
+      "expected_impact": "Reduce repeated fragile handwritten diagnostics without encoding evaluator coordinates or one-product solutions.",
+      "evidence": [
+        "Repeated independent neutral-state checker/export normalization and own solver/render/check code in all TRACE.md",
+        "upstream SKILL.md Improving the skill: repeated work should become reusable scripts"
+      ]
+    }
+  ],
+  "guide_claim_audit": {
+    "native_generation": "Supported by saved receipts/TRACE and frozen full review.",
+    "registration": "Alignment supported; landmark anatomical correctness is separate.",
+    "optimization_consumption": "Source code uses manually declared raw-photo targets; guide registration is not an explicit residual input. A manual interpretation contribution is possible but no guide-driven correction or causal gain is demonstrated.",
+    "evidence": [
+      "Six-view with_skill fit.py:10-13 declares manual targets after guide inspection",
+      "Pocket with_skill solve.py obs precedes ORB registration and objective uses obs/target, not registered guide points"
+    ]
+  },
+  "v2_alignment_review": {
+    "status": "Frozen v2 read only; effectiveness pending iteration-2 evidence.",
+    "matches_i1_findings": [
+      "Named parameter mapping and accumulated body-relative spine/arm diagnostics address actual fit.py index error and world-Z depth ambiguity.",
+      "Source wrist sanity crops address visible-wrist regression.",
+      "Front-pocket profile with subject-side choice targets posterior hand placement while retaining hidden-depth uncertainty.",
+      "Pre-generation normalization and byte-bound lineage address generation-time/final-state mismatch; post-generation role review acknowledges the coherence gap."
+    ],
+    "limits": [
+      "audit_pose_geometry.py outputs acceptance NOT_ASSESSED and declares heuristic priors; no photo detector, skin collision/contact, physical balance or true-person centimetre check.",
+      "Instruction/tool availability does not establish that iteration-2 executors used diagnostics to correct the accepted candidate.",
+      "Unchanged formal assertions still leave generated/model coherence as an independent claim/eval gap."
+    ]
+  },
+  "causal_and_reporting_limits": [
+    "n=1 per configuration/case; two heterogeneous development cases do not support statistical or general superiority claims.",
+    "v1 differs by new-input reference plus actual independently authored solver choices; no ablation isolates the prose effect.",
+    "All strict overall results FAIL. Blind relative wins must never be labeled successful complete reconstruction.",
+    "Unknown end-to-end telemetry prevents speed/cost claims; native Claude triggering is BLOCKED, and functional injection is not native-trigger evaluation.",
+    "No heldout case, iteration-2 grade or later outcome was used to write iteration-1 diagnosis."
+  ],
+  "candidate_selection": "Iteration 1 supports retaining v1 as an experimental relative visual improvement with explicit wrist tradeoff, not promoting any candidate as accepted. Defer final candidate recommendation until all frozen iteration-2 grades, full reviews and benchmark exist."
+}

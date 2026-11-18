@@ -276,3 +276,14 @@ Benchmark, feedback persistence/download and mobile. Reopen image bytes and
 source/state/OBJ hashes. No native Claude CLI means trigger tests BLOCKED; null
 timing/token observations remain null. Existing Pages workflow publishes only.
 Evidence: [commerce-skill-evals-20261118](../../../../docs/verification/commerce-skill-evals-20261118/).
+
+For commerce history, `iteration-N.html` uses its own scoped
+`manifest-iteration-N.json`; the current manifest covers the whole site and
+hashes historical manifests. Run the same browser verifier on both latest and
+retained pages; a later six-run inventory must not invalidate a four-run page.
+Run the reproducible fault-control CLIs documented in
+`tools/skill_evals/COMMERCE-CONTROLS.md`; unittest imports are safe but do not
+execute these costly CLI controls. Verify actual gallery→Human Studio links,
+exact saved pose/mesh, cm edits and a real joint-edit/download/reimport probe.
+Preserve known consumer failures and test readiness against actual debounce and
+asynchronous import completion rather than reading state prematurely.
