@@ -14,7 +14,7 @@
   <a class="skip" href="#main">跳到主要内容</a>
   <header class="header wrap">
     <a class="brand" href="./" aria-label="Pattern Agent 首页"><span class="brand-mark" aria-hidden="true">pa</span><span>Pattern Agent<span class="brand-caption">尺寸 · 公式 · 纸样</span></span></a>
-    <nav aria-label="主导航"><a href="pattern-library/">纸样与三维图册</a><a href="cloth-lab/">WASM 布料 · 应力应变</a><a href="human-studio/">可调人体 · 姿势与尺寸</a><a href="garment-body/product-case/eval.html">商品六图 · 匹配证据</a><a href="fitted-tshirt/">女士紧身上衣原型</a><a href="#downloads">下载纸样</a><a href="#sizing">尺寸说明</a><a href="garmentcode-preview/">GarmentCode 三维预览 <span aria-hidden="true">↗</span></a><a href="pattern-review/">T 恤审阅工作台 <span aria-hidden="true">↗</span></a></nav>
+    <nav aria-label="主导航"><a href="pattern-library/">纸样与三维图册</a><a href="cloth-lab/">WASM 布料 · 应力应变</a><a href="#freesewing-lab">FreeSewing 四片裙</a><a href="human-studio/">可调人体 · 姿势与尺寸</a><a href="garment-body/product-case/eval.html">商品六图 · 匹配证据</a><a href="fitted-tshirt/">女士紧身上衣原型</a><a href="#downloads">下载纸样</a><a href="#sizing">尺寸说明</a><a href="garmentcode-preview/">GarmentCode 三维预览 <span aria-hidden="true">↗</span></a><a href="pattern-review/">T 恤审阅工作台 <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="title">
@@ -30,6 +30,12 @@
       <figure class="preview-card"><div class="paper-top"><span>STRAIGHT SKIRT / EU40</span><span>01 — 03</span></div><img id="pattern-preview" src="patterns/straight-skirt-eu40/draft-preview.svg" alt="直身裙纸样：左侧后片、右侧对折前片，下方为腰头；含省道、布纹线及缝份" width="780" height="780"><figcaption><span>后片 · 前片 · 腰头</span><button class="text-button" id="open-preview" type="button">放大预览 <span aria-hidden="true">↗</span></button></figcaption></figure>
     </section>
     <div class="status-strip"><div class="wrap"><span><i aria-hidden="true"></i>数字几何检查通过</span><span>前后侧缝差 0.00 mm · 省腿等长</span><span>实体试穿尚未完成</span></div></div>
+    <section id="freesewing-lab" class="section wrap" aria-labelledby="freesewing-title">
+      <div class="section-heading"><div><p class="eyebrow">FREESewing / SINGLE HTML</p><h2 id="freesewing-title">四片裙，从制版到碰撞验证。</h2></div><p>FreeSewing Sandy · MakeHuman · WASM<br>单文件运行，支持离线保存</p></div>
+      <p>同一份参数化纸样连接二维裁片、三维布料、应力应变、接触压力估算和折角／曲率。首次打开、重置与改版先完成 120 步重力及碰撞求解，再显示服装。</p>
+      <p>指定的五个动态／变型状态中，后臀 466 个采样点零裸露，人体穿透与布料自交均为零；公网 Playwright 48/48 项通过。局部伸长率仍达 189.5%，面料和试衣压力尚未实测标定，真实合体性未通过验收。</p>
+      <p><a class="button primary" href="freesewing-cloth-lab.html?v=364ee5c">打开单文件试衣 <span aria-hidden="true">↗</span></a> <a class="inline-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/75207a2d8151e7e2ce50a4ddfc073ad56a5e8301/docs/verification/cloth-coverage-pressure-20261118">查看原始验证记录 ↗</a></p>
+    </section>
     <section id="downloads" class="section wrap" aria-labelledby="download-title">
       <div class="section-heading"><div><p class="eyebrow">YOUR PATTERN FILES</p><h2 id="download-title">把纸样带到裁剪台。</h2></div><p>选适合你的文件格式。<br>源文件与尺寸文件请保存在同一文件夹。</p></div>
       <div class="downloads">

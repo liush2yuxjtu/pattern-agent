@@ -156,3 +156,21 @@ transport; the full new WASM cloth verifier also passed. See
 `docs/verification/cloth-lab-20261117/live/existing-pages.json` and `receipt.json`.
 The earlier Firecrawl-host workaround and earlier BLOCKED observations remain
 historical evidence, not a reason to assume the current host is still blocked.
+
+## FreeSewing homepage entry
+
+For homepage/README entry changes, also run:
+
+```sh
+python scripts/verify_cloth_entry.py --out work/cloth-entry-local
+python scripts/verify_cloth_entry.py --url https://liush2yuxjtu.github.io/pattern-agent/ --out work/cloth-entry-live
+```
+
+This drives the actual desktop navigation to the new section, checks the stated
+limits/evidence link, clicks through to the actual single HTML and binds its
+bytes to the frozen public physics receipt. Require the initial 120-step state
+to have zero exposed posterior vertex samples; inspect desktop/mobile entry
+and navigation screenshots and the real rear garment. A navigation/content
+change does not re-certify material calibration or change the prior physical
+acceptance scope. Pages upkeep uses guarded connector edits and private
+readback receipts outside the public repo; do not publish private Page content.

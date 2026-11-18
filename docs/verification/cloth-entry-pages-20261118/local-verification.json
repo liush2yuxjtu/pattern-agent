@@ -1,0 +1,42 @@
+{
+  "verdict": "PASS",
+  "base": "35f0d53d250a5e3541c78f318ac67cda12296981",
+  "scope": "Homepage navigation and disclosure, README links, reusable real-browser navigation check. No simulation code or source artifact changed.",
+  "files": {
+    "README.md": "f80c10d391b7763c65135ccdf43e27838a7a5f768d0f2556d0a0604c805eb615",
+    "web/index.html": "2857e9bb151d254471a4efa8472150b7b3e3a0d77bf44b75e815f0754369927f",
+    "scripts/verify_cloth_entry.py": "9596d12098c95197bf88f112f7f2f6fcb9e6f6485c05e2f664109336fb69759e",
+    ".agents/skills/verify/references/github-pages.md": "e7a4911b857678296d6a3026cc3123c8d6fc26cf8d15e8b6506c464ee9318b89"
+  },
+  "appSHA256": "de26a1069750fbabc7abeedac7d7040de3aff96e6f40bcec51267a017dc0316a",
+  "rootArtifactRegressions": 6,
+  "homepageBrowserChecks": [
+    "desktop render",
+    "modal open and Escape close",
+    "print details toggle",
+    "four real downloads match deployed hashes",
+    "375 px mobile without overflow",
+    "mobile modal close",
+    "existing workbench zoom and native export",
+    "native edit/import hides invalidated cutlines",
+    "review export stays unapproved",
+    "unsupported parametric import is explicitly rejected",
+    "missing download returns 404"
+  ],
+  "entryChecks": {
+    "scopeAndMetrics": true,
+    "sourceBoundEvidenceLink": true,
+    "unchangedPhysicsArtifact": true,
+    "actualNavigation": true,
+    "mobileNoOverflow": true,
+    "consoleHealthy": true
+  },
+  "privatePages": "Connector content-readback receipts kept outside public repository; no private Page IDs/content copied here.",
+  "commands": [
+    "python scripts/build_pages.py",
+    "python -m unittest discover -s scripts -p test_verify_artifacts.py",
+    "python scripts/verify_pages.py --output /workspace/work/related-pages-20261118/browser",
+    "python scripts/verify_cloth_entry.py --out /workspace/work/related-pages-20261118/final-entry-reviewed",
+    "git diff --check"
+  ]
+}

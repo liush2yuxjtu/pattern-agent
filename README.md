@@ -253,6 +253,28 @@ StVK 应力应变、故障对照与状态化离线 HTML 导出均有独立数值
 材料是合成参数，局部高应变保留可见警告；没有布料自碰撞、实物标定或实体适体批准。
 这不改变历史 T 恤 FAIL，也不将几何/热图验证升级为生产批准。
 
+## FreeSewing Sandy 四片裙：覆盖、碰撞与压力估算
+
+[在线打开单文件 HTML](https://liush2yuxjtu.github.io/pattern-agent/freesewing-cloth-lab.html?v=364ee5c) ·
+[源码与复现](experiments/freesewing_cloth_lab/README.md) ·
+[公网验证与原始状态](docs/verification/cloth-coverage-pressure-20261118/README.md)。
+
+实际 FreeSewing 4.10.2 制版、MakeHuman 人体和 WASM 求解器内嵌于同一 HTML。
+二维纸样、缝合、三维材料坐标、应力／应变、接触压力估算及折角／曲率共用数据；
+支持 SVG、DXF、OBJ、A4 打印、仿真 JSON 与可继续求解的离线 HTML。
+启动、UI 重置和版型修改先完成 120 步重力及人体／布料接触求解，修复首次显示的后臀裸露。
+
+源码提交 `364ee5c`，证据提交 `75207a2`。公网桌面／手机 Playwright 48/48；
+120／240／360 步、最大风力后 480 步及 650 mm／60%／亚麻变型 120 步，
+均为后臀 466 点零裸露、人体三角相交零、自交零、人体内部顶点零，缝隙零毫米。
+五张热图分别独立重算并读取实际 WebGL 颜色缓冲比对，保存压力场后下一步坐标完全一致。
+公网 Chromium／SwiftShader 求解 p95 为 94.5 ms/步；此前 106.7 ms 的性能失败仍归档。
+
+**真实面料合体仍为 NOT_VALIDATED。** 当前腰部保留固定支撑，峰值伸长率 189.5%；
+材料参数未实测标定。接触压力是依赖时间步长的约束反力估算，排除固定腰部反力；
+它与材料应力、穿透深度分别记录。连续碰撞的普遍保证、真实试穿和生产工艺尚未完成。
+本案例不替代历史 T 恤 FAIL，也不沿用其他双片裙或无固定点样件的验收结论。
+
 ## 袖子尖折取证与性能日志
 
 [verify-sleeve-creases 技能](.agents/skills/verify-sleeve-creases/SKILL.md)将可见尖棱
