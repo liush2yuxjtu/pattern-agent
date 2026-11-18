@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/skill-new/scripts/export_body_measurements.py", line 229, in <module>
+    main()
+  File "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/skill-new/scripts/export_body_measurements.py", line 222, in main
+    report = export_report(args.state, args.asset_json, args.neutral_mesh, args.posed_mesh)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/skill-new/scripts/export_body_measurements.py", line 181, in export_report
+    return measure(json.loads(state_bytes), Path(asset_path).read_bytes(), Path(neutral_path).read_bytes(),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/skill-new/scripts/export_body_measurements.py", line 119, in measure
+    require(maximum_error <= MESH_TOLERANCE_CM,
+  File "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/skill-new/scripts/export_body_measurements.py", line 25, in require
+    raise ValueError(message)
+ValueError: Neutral OBJ does not match saved neutral morph geometry; posed, changed or wrongly scaled mesh

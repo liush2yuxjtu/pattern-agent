@@ -1,0 +1,11 @@
+Working directory: /workspace/work/pattern-agent/work/model-size-skill-evals-20261118
+
+python iteration-1/eval-2-residual-cache/old_skill/run-1/outputs/measure.py
+Observed exit code: 0
+Observed maximum target residual: 8.916900485377028 cm
+Observed maximum corresponding neutral vertex error: 0.000007858154371883555 cm
+
+python skill-old/scripts/inspect_human_state.py --state inputs/residual-cache/final-state.json --asset-json inputs/human.json --out iteration-1/eval-2-residual-cache/old_skill/run-1/outputs/old-helper-check.json
+Observed exit code: 2
+Observed result: {"verdict": "FAIL", "error": "False maximumTargetErrorCm"}
+This is an actual bundled-helper observation, not an evaluation score. Independent reconstruction in measure.py ignores the contradictory self-report and checks the complete supplied mesh directly.

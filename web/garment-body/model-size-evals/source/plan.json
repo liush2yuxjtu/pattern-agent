@@ -1,0 +1,11 @@
+{
+  "scope": "Fresh isolated subagent functional execution of skill measurement branch, not native Claude triggering or new image generation",
+  "baseline_commit": "7c7df412^",
+  "same_prompt": "请按提供的已保存人体状态、对应资源和标为neutral.obj的实际网格，交付从人体模型实际测量得到的12项尺寸JSON与CSV。主要数值来自网格，控制目标只作对照，保留单位、测量定义、来源指纹和差值；保持原始形体与姿态文件，不重新拟合或生成服装图。核对网格与所给状态/资源是否对应，不能信任缓存自报数值；若无法验证对应关系，明确拒绝导出成功尺寸并给出可复核原因。请实际执行并保存代码/命令、TRACE和结果说明。",
+  "cases": [
+    "saved-model",
+    "residual-cache",
+    "consistency-check"
+  ],
+  "resource_telemetry": "null if absent"
+}

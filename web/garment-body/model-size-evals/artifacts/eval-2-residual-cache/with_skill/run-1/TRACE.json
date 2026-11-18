@@ -1,0 +1,55 @@
+{
+  "started_utc": "2026-11-18T07:17:07.530762+00:00",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/iteration-1/eval-2-residual-cache/with_skill/run-1/outputs/export_body_measurements.py",
+    "--state",
+    "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/inputs/residual-cache/final-state.json",
+    "--asset-json",
+    "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/inputs/human.json",
+    "--neutral-mesh",
+    "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/inputs/residual-cache/neutral.obj",
+    "--out",
+    "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/iteration-1/eval-2-residual-cache/with_skill/run-1/outputs/measurements.model.json",
+    "--csv",
+    "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/iteration-1/eval-2-residual-cache/with_skill/run-1/outputs/measurements.model.csv"
+  ],
+  "exit_code": 0,
+  "input_hashes_before": {
+    "state": "d5a57172fd3cf87bea4780b772de2612b6b811263bdc6418e291132aa7b206fd",
+    "asset": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "neutral_mesh": "c275a43b605ee6f88b414057827b4b2eb9ce727e888011caadbc91c7022cc17a"
+  },
+  "input_hashes_after": {
+    "state": "d5a57172fd3cf87bea4780b772de2612b6b811263bdc6418e291132aa7b206fd",
+    "asset": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+    "neutral_mesh": "c275a43b605ee6f88b414057827b4b2eb9ce727e888011caadbc91c7022cc17a"
+  },
+  "inputs_unchanged": true,
+  "total_tokens": null,
+  "total_time_seconds": null,
+  "actions": [
+    "Read saved state, matching asset and actual OBJ.",
+    "Verify version, centimetres, asset fingerprint, compact mapping, vertex count, topology and winding.",
+    "Replay saved morph coefficients only and compare every neutral vertex; no target fitting.",
+    "Measure actual neutral OBJ Y extent, declared closed tapes and two-landmark straight distances.",
+    "Compare measured results to control targets and separately inspect untrusted cached claims."
+  ],
+  "script_sha256": "aa9e3351dd645cc98839763dbce3c1c63992e20604ffb6eef48379db054583f0",
+  "geometry_verification": {
+    "neutral_mesh_checked": true,
+    "topology_verified": true,
+    "neutral_reconstruction_max_error_cm": 7.858154371883555e-06,
+    "tolerance_cm": 0.002,
+    "vertices": 13380,
+    "triangles": 26756,
+    "posed_geometry_checked": false
+  },
+  "maximum_absolute_target_delta_cm": 8.916900485377042,
+  "output_sha256": {
+    "measurements.model.json": "b25339c9eb9dbb8ec779bb378b1b4050321254e530f3a2fff591ec257f72ecaa",
+    "measurements.model.csv": "244e0c9fc5a4e315f40956fd7ae7300f74bdab2b748ae76598355e639b0968e6",
+    "control-comparison.json": "162a6fbfd97eeedb4bf771bae151aaa9485d77d580869c9d9b8d369d618c2bd7",
+    "provenance.json": "1f3743f4f3e55c15e8f08b66069ad62b47a1fc9c98cd932d5652445f8ceeb285"
+  }
+}

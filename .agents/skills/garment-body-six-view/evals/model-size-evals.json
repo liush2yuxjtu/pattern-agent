@@ -1,0 +1,61 @@
+{
+  "skill_name": "garment-body-six-view",
+  "scope": "saved-model measurement-only paired subagent functional eval; not native Claude routing",
+  "evals": [
+    {
+      "id": 1,
+      "name": "saved-model",
+      "prompt": "请按提供的已保存人体状态、对应资源和标为neutral.obj的实际网格，交付从人体模型实际测量得到的12项尺寸JSON与CSV。主要数值来自网格，控制目标只作对照，保留单位、测量定义、来源指纹和差值；保持原始形体与姿态文件，不重新拟合或生成服装图。核对网格与所给状态/资源是否对应，不能信任缓存自报数值；若无法验证对应关系，明确拒绝导出成功尺寸并给出可复核原因。请实际执行并保存代码/命令、TRACE和结果说明。",
+      "files": [
+        "work/model-size-skill-evals-20261118/inputs/saved-model/final-state.json",
+        "work/model-size-skill-evals-20261118/inputs/saved-model/neutral.obj",
+        "work/model-size-skill-evals-20261118/inputs/human.json"
+      ],
+      "assertions": [
+        "Actual execution and reproducible commands are evidenced, with original input fingerprints.",
+        "The supplied neutral mesh is checked against the matching asset and saved morph geometry.",
+        "All 12 primary dimensions agree with independent measurements of actual supplied geometry within 0.01 cm, rather than control targets or cached claims.",
+        "Actual JSON and CSV retain the same 12 measured dimensions and centimetre units within 0.01 cm.",
+        "Control targets and achieved mesh measurements are separate, with the real residuals retained.",
+        "Input mesh, saved shape coefficients and target pose are preserved without a replacement refit.",
+        "Definitions, source geometry/state identity and model-versus-person limitations are explicit."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "residual-cache",
+      "prompt": "请按提供的已保存人体状态、对应资源和标为neutral.obj的实际网格，交付从人体模型实际测量得到的12项尺寸JSON与CSV。主要数值来自网格，控制目标只作对照，保留单位、测量定义、来源指纹和差值；保持原始形体与姿态文件，不重新拟合或生成服装图。核对网格与所给状态/资源是否对应，不能信任缓存自报数值；若无法验证对应关系，明确拒绝导出成功尺寸并给出可复核原因。请实际执行并保存代码/命令、TRACE和结果说明。",
+      "files": [
+        "work/model-size-skill-evals-20261118/inputs/residual-cache/final-state.json",
+        "work/model-size-skill-evals-20261118/inputs/residual-cache/neutral.obj",
+        "work/model-size-skill-evals-20261118/inputs/human.json"
+      ],
+      "assertions": [
+        "Actual execution and reproducible commands are evidenced, with original input fingerprints.",
+        "The supplied neutral mesh is checked against the matching asset and saved morph geometry.",
+        "All 12 primary dimensions agree with independent measurements of actual supplied geometry within 0.01 cm, rather than control targets or cached claims.",
+        "Actual JSON and CSV retain the same 12 measured dimensions and centimetre units within 0.01 cm.",
+        "Control targets and achieved mesh measurements are separate, with the real residuals retained.",
+        "Input mesh, saved shape coefficients and target pose are preserved without a replacement refit.",
+        "Definitions, source geometry/state identity and model-versus-person limitations are explicit."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "consistency-check",
+      "prompt": "请按提供的已保存人体状态、对应资源和标为neutral.obj的实际网格，交付从人体模型实际测量得到的12项尺寸JSON与CSV。主要数值来自网格，控制目标只作对照，保留单位、测量定义、来源指纹和差值；保持原始形体与姿态文件，不重新拟合或生成服装图。核对网格与所给状态/资源是否对应，不能信任缓存自报数值；若无法验证对应关系，明确拒绝导出成功尺寸并给出可复核原因。请实际执行并保存代码/命令、TRACE和结果说明。",
+      "files": [
+        "work/model-size-skill-evals-20261118/inputs/consistency-check/final-state.json",
+        "work/model-size-skill-evals-20261118/inputs/consistency-check/neutral.obj",
+        "work/model-size-skill-evals-20261118/inputs/human.json"
+      ],
+      "assertions": [
+        "Actual execution and reproducible commands are evidenced, with original input fingerprints.",
+        "The supplied mesh/state inconsistency is detected with concrete geometric evidence, rather than only trusting a filename or cached fields.",
+        "No successful verified body-size export is claimed for the incompatible supplied mesh; rejected or null outputs are explicit.",
+        "Input mesh, saved shape coefficients and target pose are preserved without a replacement refit.",
+        "The rejection explains the measurement definition, input identities and evidence limits without making real-person accuracy claims."
+      ]
+    }
+  ]
+}

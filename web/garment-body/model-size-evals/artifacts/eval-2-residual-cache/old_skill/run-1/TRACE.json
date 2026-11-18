@@ -1,0 +1,53 @@
+{
+  "events": [
+    {
+      "step": "read_and_hash_inputs",
+      "sha256": {
+        "state": "d5a57172fd3cf87bea4780b772de2612b6b811263bdc6418e291132aa7b206fd",
+        "asset": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6",
+        "mesh": "c275a43b605ee6f88b414057827b4b2eb9ce727e888011caadbc91c7022cc17a"
+      }
+    },
+    {
+      "step": "resource_fingerprint",
+      "matched": true
+    },
+    {
+      "step": "reconstruct_from_saved_weights",
+      "refit": false,
+      "pose_modified": false
+    },
+    {
+      "step": "parse_and_compare_actual_obj",
+      "maximum_vertex_distance_cm": 7.858154371883555e-06,
+      "topology_matches": true
+    },
+    {
+      "step": "measure_actual_obj",
+      "measurement_count": 12,
+      "cache_used": false
+    },
+    {
+      "step": "compare_targets",
+      "maximum_residual_cm": 8.916900485377028
+    },
+    {
+      "step": "rehash_inputs",
+      "unchanged": true
+    },
+    {
+      "step": "bundled_old_helper",
+      "command": "python skill-old/scripts/inspect_human_state.py --state inputs/residual-cache/final-state.json --asset-json inputs/human.json --out iteration-1/eval-2-residual-cache/old_skill/run-1/outputs/old-helper-check.json",
+      "exit_code": 2,
+      "observed_error": "False maximumTargetErrorCm"
+    },
+    {
+      "step": "delivery_consistency",
+      "json_csv_rows": 12,
+      "numeric_values_equal": true,
+      "input_hashes_unchanged": true
+    }
+  ],
+  "total_tokens": null,
+  "total_time_seconds": null
+}

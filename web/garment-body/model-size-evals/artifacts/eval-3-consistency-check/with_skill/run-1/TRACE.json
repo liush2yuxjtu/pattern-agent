@@ -1,0 +1,43 @@
+{
+  "task": "consistency-check",
+  "runtime": "3.12.14",
+  "tokens": null,
+  "elapsed_seconds": null,
+  "commands": [
+    [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/skill-new/scripts/export_body_measurements.py",
+      "--state",
+      "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/inputs/consistency-check/final-state.json",
+      "--asset-json",
+      "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/inputs/human.json",
+      "--neutral-mesh",
+      "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/inputs/consistency-check/neutral.obj",
+      "--out",
+      "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/iteration-1/eval-3-consistency-check/with_skill/run-1/outputs/measurements.success.json",
+      "--csv",
+      "/workspace/work/pattern-agent/work/model-size-skill-evals-20261118/iteration-1/eval-3-consistency-check/with_skill/run-1/outputs/measurements.success.csv"
+    ]
+  ],
+  "exporter_exit_code": 1,
+  "steps": [
+    "Read applicable AGENTS.md, task metadata, skill-new SKILL.md and its three referenced contracts.",
+    "Read bundled exporter source; executed exact exporter against supplied read-only inputs. Export rejected before success files.",
+    "Independently parsed actual OBJ; replayed saved morphWeights against matching human.json without fitting; checked complete topology and vertex correspondence.",
+    "Recorded rejection evidence and 12 null result rows with comparison targets separate."
+  ],
+  "inputs_unchanged": true,
+  "successful_dimensions_exported": false,
+  "self_grade": null,
+  "final_output_verification": {
+    "json_csv_12_null_rows_agree": true,
+    "no_success_files": true,
+    "all_model_inputs_unchanged": true,
+    "source_changes_after_execution": {
+      "iteration-1/eval-3-consistency-check/with_skill/run-1/eval_metadata.json": {
+        "recorded_sha256": "74763a6d872ca090a8909ca1fa0d1d90c1b7bd13a58a08944279af87455a87d3",
+        "current_sha256": "8c06a951304f49e723b17ef1cf18a7512db225f7a122b4b1f87d5fd37793f517"
+      }
+    }
+  }
+}

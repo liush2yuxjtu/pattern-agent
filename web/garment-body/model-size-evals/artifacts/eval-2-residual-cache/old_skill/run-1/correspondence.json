@@ -1,0 +1,60 @@
+{
+  "status": "verified_neutral_mesh",
+  "asset_fingerprint_matches": true,
+  "vertex_count": 13380,
+  "triangle_count": 26756,
+  "topology_matches": true,
+  "correspondence": "Authored original bodyVertexIds to compact OBJ index; exact face array and all corresponding vertices checked",
+  "neutral_reconstruction": "asset vertices + abs(saved morph weight) * corresponding incr/decr sparse delta; translate surface minimum Y to zero",
+  "maximum_vertex_distance_cm": 7.858154371883555e-06,
+  "mean_vertex_distance_cm": 2.789333897387633e-06,
+  "vertex_tolerance_cm": 0.0001,
+  "maximum_absolute_measurement_reconstruction_difference_cm": 4.69265484071002e-06,
+  "bounds_cm": {
+    "min": [
+      -67.795814514,
+      0.0,
+      -12.829732895
+    ],
+    "max": [
+      67.795814514,
+      195.000595093,
+      40.048603058
+    ]
+  },
+  "nonzero_saved_pose": {
+    "root": [
+      0,
+      0,
+      -7
+    ],
+    "upperarm01.L": [
+      17.1,
+      9.5,
+      -19.5
+    ],
+    "lowerarm01.R": [
+      -40.8,
+      -13.9,
+      2
+    ],
+    "lowerarm01.L": [
+      -14.3,
+      5.5,
+      -15.8
+    ],
+    "upperarm01.R": [
+      0.2,
+      -4.9,
+      32.4
+    ]
+  },
+  "pose_note": "The state contains nonzero pose rotations. Dimensions deliberately use independently verified neutral geometry; no pose was applied, modified or inferred from the filename.",
+  "cached_maximumTargetErrorCm": 0,
+  "cached_values_reliable": false,
+  "maximum_cache_discrepancy_cm": 969.0000001490815,
+  "maximum_actual_target_error_cm": 8.916900485377028,
+  "target_tolerance_cm": 0.2,
+  "all_targets_within_tolerance": false,
+  "cache_reason": "Saved 12 measuredNeutral entries are 1000 cm while maximumTargetErrorCm is 0; neither is used for measurement or correspondence."
+}

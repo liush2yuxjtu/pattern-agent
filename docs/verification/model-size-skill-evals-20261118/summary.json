@@ -1,0 +1,157 @@
+{
+  "runs": [
+    {
+      "case": "saved-model",
+      "arm": "old_skill",
+      "passed": 7,
+      "failed": 0,
+      "total": 7,
+      "pass_rate": 1.0
+    },
+    {
+      "case": "saved-model",
+      "arm": "with_skill",
+      "passed": 7,
+      "failed": 0,
+      "total": 7,
+      "pass_rate": 1.0
+    },
+    {
+      "case": "residual-cache",
+      "arm": "old_skill",
+      "passed": 7,
+      "failed": 0,
+      "total": 7,
+      "pass_rate": 1.0
+    },
+    {
+      "case": "residual-cache",
+      "arm": "with_skill",
+      "passed": 7,
+      "failed": 0,
+      "total": 7,
+      "pass_rate": 1.0
+    },
+    {
+      "case": "consistency-check",
+      "arm": "old_skill",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    {
+      "case": "consistency-check",
+      "arm": "with_skill",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    }
+  ],
+  "repeat_count_per_arm_case": 1,
+  "fault_controls": [
+    {
+      "fault": "waist-primary-108",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "validator": {
+        "passed": false,
+        "errors": [
+          "Primary values/nulls disagree with independently measured geometry or rejection"
+        ],
+        "geometry_compatible": true,
+        "numeric": false,
+        "csv": true,
+        "targets": true,
+        "definitions": true,
+        "no_success": false
+      }
+    },
+    {
+      "fault": "waist-primary-1000",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "validator": {
+        "passed": false,
+        "errors": [
+          "Primary values/nulls disagree with independently measured geometry or rejection"
+        ],
+        "geometry_compatible": true,
+        "numeric": false,
+        "csv": true,
+        "targets": true,
+        "definitions": true,
+        "no_success": false
+      }
+    },
+    {
+      "fault": "wrong-neutral-success",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "validator": {
+        "passed": false,
+        "errors": [
+          "Primary values/nulls disagree with independently measured geometry or rejection",
+          "Incompatible geometry must have explicit rejected/null outputs"
+        ],
+        "geometry_compatible": false,
+        "numeric": false,
+        "csv": true,
+        "targets": true,
+        "definitions": true,
+        "no_success": false
+      }
+    },
+    {
+      "fault": "missing-definition",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "validator": {
+        "passed": false,
+        "errors": [
+          "Measurement definitions are missing"
+        ],
+        "geometry_compatible": true,
+        "numeric": true,
+        "csv": true,
+        "targets": true,
+        "definitions": false,
+        "no_success": false
+      }
+    },
+    {
+      "fault": "stale-trace",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "manual_findings": {
+        "execution": {
+          "passed": false,
+          "evidence": "Fixed manual audit is stale: full recursive artifact SHA binding differs."
+        },
+        "geometry": {
+          "passed": false,
+          "evidence": "Fixed manual audit is stale: full recursive artifact SHA binding differs."
+        },
+        "preserve": {
+          "passed": false,
+          "evidence": "Fixed manual audit is stale: full recursive artifact SHA binding differs."
+        },
+        "scope": {
+          "passed": false,
+          "evidence": "Fixed manual audit is stale: full recursive artifact SHA binding differs."
+        },
+        "geometry_reject": {
+          "passed": false,
+          "evidence": "Fixed manual audit is stale: full recursive artifact SHA binding differs."
+        }
+      },
+      "manual_audit_unchanged": true
+    }
+  ],
+  "photo_imagegen": "NOT_RUN",
+  "native_claude": "BLOCKED",
+  "numeric_tolerance_cm": 0.01,
+  "geometry_tolerance_cm": 0.002,
+  "original_artifacts_unchanged": true
+}

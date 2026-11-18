@@ -126,3 +126,15 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 编辑器从真实Float32 rest buffer重新测量，提供JSON、CSV和匹配Neutral OBJ；输入框下持续显示模型实测值。修改厘米后重测，单独改关节保持中性尺寸，导出绑定一次捕获的完整状态/资源/网格/姿态。
 - 实际边界控制把所有目标设到各自上限：腰围目标108cm而可达网格实测约99.0831cm，导出实测值而非108。该控制验证模型输出来源，不是任一商品模特的尺寸。
 - 本次只改测量导出及展示，不新调用图像生成或重新拟合照片；旧配对成绩不解释为当前测量修正的新一轮技能表现。照片动作FAIL、真人准确性未验证、原生Claude触发BLOCKED保持原结论。
+
+
+## 2026-11-18 更新后技能的独立子代理功能执行
+
+- 先冻结更新后的技能和修改前旧版，用同一prompt/输入启动三对全新、隔离上下文的执行者，共6次实际执行；不是开发者脚本单测，也不是Claude原生自动触发。只测保存人体的尺寸导出分支，不新生成图片/拟合照片。
+- 案例：有效保存人体的12项JSON/CSV；目标腰围108cm、实际99.0830995cm且缓存全1000的残差/污染输入；错把posed网格作为neutral时拒绝成功尺寸导出。
+- 第七位子代理用独立OBJ解析、标量morph重建和测量路径计算评分，不import导出器当oracle；人工TRACE判断单独存储，绑定递归原始文件SHA，过期/缺失审计不能通过。
+- 新旧两组均7/7、7/7、5/5，即各19/19。每案例每配置仅一次，未证明新版更准确、可靠或省时；旧执行通过额外手写几何核对也正确完成。
+- 五项真实checker故障控制均被拒：主值伪改108、伪改1000、错误neutral却声明成功、缺少定义、审计后改TRACE。原始输入/输出/技能快照保持不变。
+- 新case3执行者的二次audit复用导出器parser/reconstruct，因此不能称实现独立；该额外claim单列未验证。独立grader仍确认最大46.06276cm中性对应偏差及其正确拒绝。断言满分不代表所有附加声明成立。
+- 官方评审页： https://liush2yuxjtu.github.io/pattern-agent/garment-body/model-size-evals/eval.html 。图库、尺寸表、原始下载与claims在原生Output内，Prompt/Grades/Feedback/Benchmark保持官方流程。缺失token/统一时长保持null。
+- 此段为完成后的实测记录；执行时的skill-new快照不变，当前可执行技能内容与被测版一致。此前照片姿态FAIL、真人准确性未验证、物理试衣NOT_RUN及Claude原生触发BLOCKED不改。

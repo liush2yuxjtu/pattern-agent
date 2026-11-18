@@ -1,0 +1,155 @@
+{
+  "comparison_summary": {
+    "winner": "tie_on_frozen_task_success",
+    "old_skill": "skill-old/SKILL.md",
+    "new_skill": "skill-new/SKILL.md",
+    "reason": "六次真实执行均通过各自冻结的用户语义断言；两组均为 19/19，case 分别 7/7、7/7、5/5。没有 blind comparator 胜者，不能套用胜者/败者叙事。",
+    "scope": "已保存人体模型尺寸分支；非整套六图/照片拟合/动作验收/真人准确性评测。"
+  },
+  "evidence_review": [
+    {
+      "finding": "两版有共同的真实复量基础",
+      "evidence": [
+        "skill-old/SKILL.md §2 已要求独立重建匹配资源的中性网格复量、不能只读自报字段；§4 要求最终保存网格复量而非复述目标。",
+        "iteration-1/eval-1-saved-model/old_skill/run-1/outputs/measure_saved_model.py 与 eval-2-residual-cache/old_skill/run-1/outputs/measure.py 实现 actual OBJ parser、compact mapping、saved-weight replay、实际路径测量。",
+        "grade-evidence/saved-model-*-numeric.json 与 residual-cache-*-numeric.json 均通过，12 项主值与独立 grader 的实际 OBJ 测量在 0.01 cm 内一致。"
+      ],
+      "interpretation": "不能把旧版描述为只能复制控制目标/缓存；旧版执行者使用技能既有原则和可读通用源码补上了可靠代码。"
+    },
+    {
+      "finding": "新版提供明确可复用导出路径",
+      "evidence": [
+        "skill-new/SKILL.md §6 明确实际运行 scripts/export_body_measurements.py；references/model-measurements.md 区分 measured、target、parameter_basis、person_accuracy_verified。",
+        "新版三个 TRACE 均真实运行 bundled exporter；saved/residual exit 0，consistency exit 1 且无 success 文件。",
+        "新版 exporter.measure 从真实 OBJ 顶点测量，缓存 measuredNeutral 不读取，dimensions 只用于测量后的对照。"
+      ],
+      "interpretation": "可确认软件化路径和交付语义更明确；本轮不能将此实现差异升级为 task-success、准确性或耗时优势。"
+    },
+    {
+      "finding": "缓存与残差反例由两组均正确处理",
+      "evidence": [
+        "grade-evidence/residual-cache-independent.json：waist=99.08309951462296，target=108，residual=-8.916900485377042 cm；neck=42.887834209521614，target=44。",
+        "旧 measure.py 用 np.add.at 累积每条 sparse delta，从 OBJ 实测，cache_used=False，并保存不可信缓存供审计；TRACE 记录旧 inspector 的 False maximumTargetErrorCm 错误。",
+        "两组 JSON/CSV 主值均与独立复核一致，未将 108 或 1000 写为腰围主值。"
+      ],
+      "interpretation": "该案例能排除伪完成，但没有在两版间产生差异。"
+    },
+    {
+      "finding": "case3 是拒绝成功而不是匹配成功",
+      "evidence": [
+        "grade-evidence/consistency-check-independent.json：同资源、同拓扑，max=46.062761717058144、RMS=20.00298278720461 cm。",
+        "两组 refusal JSON/CSV 都为 12 null；旧诊断值/重建值、新版目标均与拒绝主值分开。",
+        "新版 case3 report 明确 pose skinning 未重建，不断言实际输入必然是 posed、缩放或其他特定原因。"
+      ],
+      "interpretation": "本轮证明能拒绝无法验证对应的 neutral 输入，不证明人体形状/姿态与照片匹配，也不单凭 max error 证明异常来源。"
+    }
+  ],
+  "independence_claim_audit": {
+    "claim": "新版 case3 reproduce.py/TRACE/report 的 independent audit / independently parsed / 独立重算",
+    "independent_of": [
+      "没有使用缓存 measuredNeutral 作为真值",
+      "没有从 dimensions 拷贝测量值或重新拟合到目标",
+      "直接读实际 OBJ，逐顶点比对保存形体重建，不依赖文件名 neutral.obj 或 exporter 的 exit code 单独判定"
+    ],
+    "not_independent_of": [
+      "reproduce.py 通过 importlib 加载同一 bundled export_body_measurements.py。",
+      "v,f=m.parse_obj(...); exp=m.reconstruct_neutral(...) 直接复用 exporter 的解析和中性重建；拓扑 triangle_identity、阈值 MESH_TOLERANCE_CM 也共享。",
+      "如果这些共享实现有同源错误，该 executor audit 不能排除；TRACE 的 independently parsed 不能按独立实现理解。"
+    ],
+    "external_confirmation": "tools/skill_evals/grade_model_size_skill.py 的 obj()/independent_geometry() 自写 parser、compact 映射与逐 sparse row 标量累积，没有 import exporter/runtime；grade-evidence/consistency-check-with_skill-numeric.json 与 manual.json 支持正确拒绝。",
+    "grading_effect": "只限制过程 claim；没有追溯增加新断言、扣改或倒填冻结核心评分，19/19 不变。",
+    "related_scope": "新版 case1 的 FK/LBS 数学回放是独立手写的，但其 OBJ parser、主要测量调用仍复用 exporter；独立性应逐组件声明。"
+  },
+  "potential_causes_with_limits": [
+    {
+      "hypothesis": "新版集中导出器使常规复量不需每次手写全部测量代码。",
+      "support": "新版 case2 直接运行冻结 exporter 的原样拷贝；旧三案均另写测量或审计脚本。",
+      "limit": "没有完整执行 token/time、干预次数控制或多轮复现；不能声称节省了多少代码/时间或提高成功概率。"
+    },
+    {
+      "hypothesis": "旧版的显式独立复量原则和同一强 prompt 为两组共同成功提供了基础。",
+      "support": "旧 SKILL §2/§4 与三个 TRACE/代码相符；prompt 已明确要求实测、拒绝缓存和不对应输入。",
+      "limit": "没有无技能或弱 prompt 消融，不能分离技能文字、agent 能力、通用源码与用户 prompt 的因果贡献。"
+    },
+    {
+      "hypothesis": "本轮满分共同上限使 task-success 指标无法区分复用性与重复实现的风险。",
+      "support": "所有冻结断言均同向通过，但新旧实现路径、旧 helper 的 cache 报错和新版 audit 同源性不同。",
+      "limit": "这是观测到的覆盖差异，不是对任一版本可靠性的统计结论。"
+    }
+  ],
+  "assertion_assessment": {
+    "discriminating_against_false_completion": [
+      "residual-cache 的真残差与缓存 1000 可以区分真实实测和复制目标/缓存；scratch 108/1000 控制均 FAIL。",
+      "case3 同拓扑/指纹却错误几何的拒绝要求可检出仅信文件名、state inspector PASS 或重建后偷换输入；wrong-neutral-success scratch 控制 FAIL。",
+      "实际 JSON/CSV 数值和单位复核优于仅看文件存在、schema 或 executor PASS。"
+    ],
+    "shared_foundation": [
+      "实际可复现执行、输入哈希、neutral/state correspondence、12 项主值、JSON/CSV 一致、真实 residual、形体/姿态输入保留、测量定义及模型与真人界限均由两组通过。",
+      "saved-model 数值接近目标，只能结合代码与独立几何测量排除复制目标；单凭该案例表格接近不足够。"
+    ],
+    "not_covered": [
+      "无需 bespoke 补代码时的 bundled helper 独立可用性、缺省失败行为与跨任务复用成本。",
+      "实现独立的第二条审计是否存在；该属性已在 claim 审核指出，未纳入冻结任务成功断言。",
+      "更多资源/拓扑/单位、非法权重、稀疏重复索引、路径缺失、非有限值、错绕序、边界容差等输入分布。",
+      "更多独立重复数、完整 executor telemetry 与成功率/资源方差。",
+      "新 ImageGen/原图重拟合/native Claude 触发、浏览器控件更新与导出同版一致、真实人体尺寸和动作视觉验收。"
+    ]
+  },
+  "instruction_following": {
+    "old_skill": {
+      "assessment": "完成本次用户授权范围与技能已有复量原则；没有因为缺 bundled exporter 而失去本次 task success。",
+      "observations": [
+        "真实执行旧 inspector，并明确其 state+asset 不等于 actual OBJ 验证。",
+        "case1 reproduce.sh 曾路径多一级，TRACE 记录修正后成功；没有将初次失败隐藏为成功。",
+        "所有实际模型输入保持原 hash，无 refit 或 ImageGen。"
+      ]
+    },
+    "with_skill": {
+      "assessment": "三个案例都真实使用新版要求的 exporter；拒绝路径另存 null JSON/CSV，未伪造成功。",
+      "observations": [
+        "case1 额外 FK/LBS 验证超出既定成功判据。",
+        "case3 过程描述的独立性超出代码证据；应限定为独立于缓存/目标，不能称 parser/reconstruct 实现独立。",
+        "所有实际模型输入保持原 hash，无 refit 或 ImageGen。"
+      ]
+    },
+    "score_policy": "不为没有胜负的此次并列事后捏造 winner/loser 1–10 评分；以上以可审计事实替代主观分数。"
+  },
+  "followup_validation_suggestions": [
+    {
+      "priority": "high",
+      "category": "tools",
+      "suggestion": "保持现有核心评分不变，另加实现独立性/共享依赖清单审计；第二条核验独立解析实际 OBJ 并重建，不 import exporter/runtime。",
+      "purpose": "区分几何结果正确与同源代码自证，防止 independent 过程 claim 过强。"
+    },
+    {
+      "priority": "high",
+      "category": "examples",
+      "suggestion": "在新的冻结评测轮加入不同合法/非法资产、单位、权重、路径、索引、边界容差和异常几何；预先冻结语义断言并保留 wrong-output 控制。",
+      "purpose": "评估当前三案例以外的覆盖，不能用本轮 n=1 推断泛化可靠性。"
+    },
+    {
+      "priority": "medium",
+      "category": "tools",
+      "suggestion": "对两版开展更多相同条件独立执行，收集真实 executor token/time/tool-call telemetry；单列是否需手写补代码及补代码规模。",
+      "purpose": "检验复用与干预成本，尚不预设新版效率或可靠性更好。"
+    },
+    {
+      "priority": "medium",
+      "category": "instructions",
+      "suggestion": "报告明确区分 independent of cache/targets、independent implementation、model measurements 与 real-person accuracy；将新 case3 的共享实现限制作为案例说明。",
+      "purpose": "缩小过程 claim 到代码能支持的范围。"
+    },
+    {
+      "priority": "medium",
+      "category": "examples",
+      "suggestion": "另立 photo/ImageGen/原图拟合/动作验收与 native trigger 评测，不沿用尺寸分支通过率代表它们。",
+      "purpose": "补足用户实际整套工作流的证据；当前标为 NOT_RUN/BLOCKED。"
+    }
+  ],
+  "resource_metrics": {
+    "executor_tokens": null,
+    "executor_duration_seconds": null,
+    "reason": "六份 grading 的 timing/execution_metrics 以及执行 TRACE 未提供完整可靠 telemetry；不使用代理计时或字符数比较。"
+  },
+  "integrity": "只写 iteration-1/analysis.json 与 analysis/posthoc.json；不执行重跑、不改原 outputs/inputs/skill/grades/web、不 commit。"
+}

@@ -287,3 +287,31 @@ execute these costly CLI controls. Verify actual gallery→Human Studio links,
 exact saved pose/mesh, cm edits and a real joint-edit/download/reimport probe.
 Preserve known consumer failures and test readiness against actual debounce and
 asynchronous import completion rather than reading state prematurely.
+
+
+## Measurement-branch isolated skill execution
+
+Keep `work/model-size-skill-evals-20261118` frozen executor outputs, input/skill
+snapshots,7/7/5 protocol and hash-bound independent manual findings. Run the
+independent grader only with unchanged audited artifacts; missing/stale manual
+evidence must fail. Its scalar OBJ/weight/path implementation imports no exporter.
+The five actual fault controls cover108/1000 fake values, wrong-neutral success,
+missing definitions and stale TRACE. Do not rewrite old grades from new facts.
+
+```sh
+python tools/skill_evals/grade_model_size_skill.py --workspace work/model-size-skill-evals-20261118
+python tools/skill_evals/aggregate_model_size_skill.py work/model-size-skill-evals-20261118/iteration-1
+python tools/skill_evals/build_model_size_review.py --workspace work/model-size-skill-evals-20261118
+python scripts/build_pages.py
+node tools/skill_evals/verify_model_size_review.cjs --url http://127.0.0.1:PORT/garment-body/model-size-evals/eval.html --out OUT
+```
+
+Keep the original Prompt and Output visible in the official layout. Use only an
+Output renderer for galleries/tables/claims: legacy `visual_gallery.inject` moves
+Prompt/Output into custom details and is inappropriate for this contract. Require
+gallery.closest('#outputs-body'), untouched Grades/Feedback, no custom navigation
+or external intro, and Benchmark hiding all added Output content. Actually reopen
+measurement/feedback downloads, run/source ZIP contents and SHA, lightbox, mobile,
+and the explicitly unverified independence claim. Rendered input/reconstruction
+images are review-derived, not executor or ImageGen results. N=1, no statistical
+old/new win, no full photo/garment/ImageGen or native Claude claim.

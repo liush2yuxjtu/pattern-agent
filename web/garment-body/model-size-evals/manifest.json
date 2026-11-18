@@ -1,0 +1,431 @@
+{
+  "review_projection": {
+    "derived": true,
+    "executor_artifact": false,
+    "imagegen": false,
+    "projection": "orthographic front/side; shared bounds within each overlay; no 2D warp",
+    "renderer_sha256": "baffac26ff2996db07b138a97a491c6de7495f568e287dc219fafe9cee6fc30f",
+    "upstream_sha256": "fc9d1b9243fe5ab6012ebd579bd76d0035de1b79fd3b969de114defab26478fb"
+  },
+  "complete": true,
+  "status": "GRADED",
+  "scope": "measurement-only paired subagent execution",
+  "runs": [
+    {
+      "id": "eval-1-saved-model-old_skill-run-1",
+      "eval_id": 1,
+      "case": "saved-model",
+      "config": "old_skill",
+      "archive": "artifacts/eval-1-saved-model/old_skill/run-1.zip",
+      "sha256": "66e9cd33cc5f77315f79409aa17828e3be4b83600eb0245c1c37aec7fa3f3d0a",
+      "measurement_file": "artifacts/eval-1-saved-model/old_skill/run-1/measurements.json",
+      "measurement_values": {
+        "height": 169.99997907,
+        "bust": 90.00003111516375,
+        "waist": 72.00000127186156,
+        "hips": 96.00004044070647,
+        "shoulders": 36.999999576,
+        "upperArm": 27.000002330853015,
+        "thigh": 54.00000799398585,
+        "neck": 32.00001190786671,
+        "upperArmLength": 29.000000824630277,
+        "forearmLength": 23.000002030381218,
+        "thighLength": 40.00003205741465,
+        "calf": 36.0000008183192
+      },
+      "maximum_geometry_error_cm": 5.021991000355831e-09,
+      "grading": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      },
+      "artifact_sha256": {
+        "TRACE.md": "8e7ed05cd22b506a3cea58853cfab750bdfe1fa99b298972b4664245decdfa70",
+        "execution.log": "d585ae4290d5470eb41e322f311595928428b1551d2d51921290fbb64979bf85",
+        "identity-check.json": "bb8de36e6e9e19bdc9d1e73aa817229b8bb281ae2bbddd19e12cf809e6fb6ece",
+        "measure_saved_model.py": "124056653532c42c784e2dacce90843d311d38e4407b024745051125d225b00d",
+        "measurements.csv": "7800d0ebd89470e108a047ea98bdf715ec697ebaa4abf66052a192c7a956fdc4",
+        "measurements.json": "63d040af466b73874a05db512f9ed266dd9eac14a5e3c56cae92d082e7810e21",
+        "provenance.json": "194b720195358c6d69ab999085edb3e382db91d26ec9f0049df17a8b3faa6889",
+        "report.md": "973061d5b3290a15cae609568088b3f4700009bc064a5c49e10d667cebb07489",
+        "reproduce.sh": "b7b1c31e1619baf4f7cf5bc67326be0d53684150b331012133d63b26597cdb03",
+        "state-check.json": "cb011d8eaad8dee267d44941c0690b1e40d33860b3492eb8b9acb4b1d1c3dded",
+        "target-comparison.json": "0cdaade1068caaacb69ec4f6a27651fd766505cd25773e3b59601c46fe2bb033"
+      }
+    },
+    {
+      "id": "eval-1-saved-model-with_skill-run-1",
+      "eval_id": 1,
+      "case": "saved-model",
+      "config": "with_skill",
+      "archive": "artifacts/eval-1-saved-model/with_skill/run-1.zip",
+      "sha256": "da3a469322af5ce90f0a1ad8cdecbf871574493b6adb1c203d4a68d521e259ff",
+      "measurement_file": "artifacts/eval-1-saved-model/with_skill/run-1/measurements.model.json",
+      "measurement_values": {
+        "height": 169.99997907,
+        "bust": 90.00003111516375,
+        "waist": 72.00000127186156,
+        "hips": 96.00004044070647,
+        "shoulders": 36.999999576,
+        "upperArm": 27.000002330853015,
+        "thigh": 54.00000799398585,
+        "neck": 32.00001190786671,
+        "upperArmLength": 29.000000824630277,
+        "forearmLength": 23.000002030381218,
+        "thighLength": 40.00003205741465,
+        "calf": 36.0000008183192
+      },
+      "maximum_geometry_error_cm": 5.021991000355831e-09,
+      "grading": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      },
+      "artifact_sha256": {
+        "TRACE.md": "fa781d5535a6e4a25e60eafa1a3bea5eb9ff6dde8851e4db80c5e2343ac26eb9",
+        "artifact-sha256.json": "6e48a140850de9cd6351b4cf21206430b55bcfdb5fad0c73c889a92bbd387238",
+        "export_body_measurements.py": "aa9e3351dd645cc98839763dbce3c1c63992e20604ffb6eef48379db054583f0",
+        "geometry-verification.json": "1ee4c5fd1dbdbcc77f2d50a2713804ba973f5b22c87cb6af6197197523dc986d",
+        "measurements.model.csv": "79a19abc23f0421bb9213840589eb8d0ae40b51996135c92b741b560ec82b38f",
+        "measurements.model.json": "4e332f491067a7233b5c4430364c4d8b732345fdc957bc45ff78e96576e3deec",
+        "report.md": "fe88b95f940042f87bf5c23bd04bf95a955fbe185b82fa754a5f946ab0486025",
+        "reproduce.sh": "78a040354b346bfce666ae2098ed5918138960c7bc43379c2d9311a7c062b1aa",
+        "target-comparison.csv": "9563400c348b015455238c8fbe71aca0bd4324f14bed3487fa9d44924786be82",
+        "verify_saved_geometry.py": "4ee21fda5f2e666c33d9f2867f061f8e15f7a0c24728c6598c429aa40e22d65d"
+      }
+    },
+    {
+      "id": "eval-2-residual-cache-old_skill-run-1",
+      "eval_id": 2,
+      "case": "residual-cache",
+      "config": "old_skill",
+      "archive": "artifacts/eval-2-residual-cache/old_skill/run-1.zip",
+      "sha256": "7262648223460e22bbbd4b9f86022059d4c92a71b21139f8d9f78ba34a91466d",
+      "measurement_file": "artifacts/eval-2-residual-cache/old_skill/run-1/measurements.json",
+      "measurement_values": {
+        "height": 195.000595093,
+        "bust": 119.72331531702012,
+        "waist": 99.08309951462297,
+        "hips": 126.00002575410136,
+        "shoulders": 46.0,
+        "upperArm": 40.000003700589296,
+        "thigh": 75.99999908780468,
+        "neck": 42.887834209521614,
+        "upperArmLength": 38.000000048247614,
+        "forearmLength": 30.99999985091848,
+        "thighLength": 51.999419827312295,
+        "calf": 47.99999947319351
+      },
+      "maximum_geometry_error_cm": 7.858154371883555e-06,
+      "grading": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      },
+      "artifact_sha256": {
+        "TRACE.json": "961f8a93dab0747d526fbab15dd9171fe885480973db3f15d36e5ef562190e9a",
+        "commands.txt": "843dbf6daa9f325d51a2a714fe7206e206a3fdb5f7032a22ef64ffd00dfe50f4",
+        "correspondence.json": "04abb22b453d0b1244cefdc6d313d83c94e5708fa8e569c47e0cb1be21dc0a69",
+        "measure.py": "2940e235150705ae23b2be1ec69f08360fafbfa075d897c8d376ab163218a3ab",
+        "measurements.csv": "85c2d0b0fe8c5ba258bd823b168490a414bfdc1d2656245e4023e5e01b99b53d",
+        "measurements.json": "cafb732235e40c1f7df4eccd55cf69f29d89b4fb0789d10bc07a6452d6830140",
+        "old-helper-check.json": "adcccc7f92a0c62fd4f25878c01274db501b4a76af607d84dcf1a930fd95e787",
+        "provenance.json": "61a14569a5cfc277adfa8ececf95b024acda2505e30669314183ccf6a8ed08cb",
+        "report.md": "0035ec5050e56c4fc7326b36449a173ac7d463f0d39682b7ceaa34dbcec9b751"
+      }
+    },
+    {
+      "id": "eval-2-residual-cache-with_skill-run-1",
+      "eval_id": 2,
+      "case": "residual-cache",
+      "config": "with_skill",
+      "archive": "artifacts/eval-2-residual-cache/with_skill/run-1.zip",
+      "sha256": "63849f65af2efd838fa83aa0fbba9e3fe3970ff4c1a5a3c9d0a3f147bde82c0a",
+      "measurement_file": "artifacts/eval-2-residual-cache/with_skill/run-1/measurements.model.json",
+      "measurement_values": {
+        "height": 195.000595093,
+        "bust": 119.72331531702012,
+        "waist": 99.08309951462296,
+        "hips": 126.00002575410136,
+        "shoulders": 46.0,
+        "upperArm": 40.0000037005893,
+        "thigh": 75.99999908780468,
+        "neck": 42.887834209521614,
+        "upperArmLength": 38.000000048247614,
+        "forearmLength": 30.99999985091848,
+        "thighLength": 51.999419827312295,
+        "calf": 47.99999947319351
+      },
+      "maximum_geometry_error_cm": 7.858154371883555e-06,
+      "grading": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "pass_rate": 1.0
+      },
+      "artifact_sha256": {
+        "TRACE.json": "65ad423cd8fb86fb6a247ff59f61b9ab36e1ce8517edd8293e9529f3f56a9f8a",
+        "command.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "command.stdout.txt": "c3c2e25cbd3ec2c25344a0db35a56452a8de72c1ed1bb5333601427f9fdfcff9",
+        "control-comparison.json": "162a6fbfd97eeedb4bf771bae151aaa9485d77d580869c9d9b8d369d618c2bd7",
+        "export_body_measurements.py": "aa9e3351dd645cc98839763dbce3c1c63992e20604ffb6eef48379db054583f0",
+        "measurements.model.csv": "244e0c9fc5a4e315f40956fd7ae7300f74bdab2b748ae76598355e639b0968e6",
+        "measurements.model.json": "b25339c9eb9dbb8ec779bb378b1b4050321254e530f3a2fff591ec257f72ecaa",
+        "provenance.json": "1f3743f4f3e55c15e8f08b66069ad62b47a1fc9c98cd932d5652445f8ceeb285",
+        "report.md": "09323ef9ab9f8b608568595eff8614f074b597703da39d2ca4501596b1e311bd",
+        "reproduce.py": "757045fe14a35e1e62ea04497d20250c74f60986f54a4b719815da8ffc580749"
+      }
+    },
+    {
+      "id": "eval-3-consistency-check-old_skill-run-1",
+      "eval_id": 3,
+      "case": "consistency-check",
+      "config": "old_skill",
+      "archive": "artifacts/eval-3-consistency-check/old_skill/run-1.zip",
+      "sha256": "a604c6e810535ba96366c28de7ee96a4ae9129db7619a2ae00d7e47c0fbc8e96",
+      "measurement_file": "artifacts/eval-3-consistency-check/old_skill/run-1/measurements.json",
+      "measurement_values": {
+        "height": null,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "shoulders": null,
+        "upperArm": null,
+        "thigh": null,
+        "neck": null,
+        "upperArmLength": null,
+        "forearmLength": null,
+        "thighLength": null,
+        "calf": null
+      },
+      "maximum_geometry_error_cm": 46.062761717058144,
+      "grading": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "artifact_sha256": {
+        "TRACE.md": "21aebb40c43a6c09a2014fb90c4010ad1271a8d9fda4a369b4eba5c4a93f21e1",
+        "audit_consistency.py": "656c5f86b63dd26bfee6f7422b7131fc541661e8328404976dc2e47a77cfd901",
+        "command-output.log": "a4f37a0b100d7cfbb5e7ea786bd65653100c432fadb8e5dd2fd4426db8518c52",
+        "consistency-audit.json": "c264fd73ef0515960acb679f69d595bb9852c7e7330a5b2daa6b005038c64f19",
+        "measurements.csv": "6541a1ca8da81499894a228c973257b2d2d0de9f1976ecb5607fc98cdf4fc14c",
+        "measurements.json": "a20d3db71fe26e811292ecc4395fcf1a95bda22fe6e048906be364a3c2b75220",
+        "report.md": "7868e2d2f0782e77ee46ef6fcced8af023e01ca45594cfdde218a9f83a933c8a",
+        "reproduce.sh": "f747410ffe299c5b57b32fba28f4dd3a5065b49c70177c0112ad940d01916cb1",
+        "state-reconstruction.json": "cb011d8eaad8dee267d44941c0690b1e40d33860b3492eb8b9acb4b1d1c3dded"
+      }
+    },
+    {
+      "id": "eval-3-consistency-check-with_skill-run-1",
+      "eval_id": 3,
+      "case": "consistency-check",
+      "config": "with_skill",
+      "archive": "artifacts/eval-3-consistency-check/with_skill/run-1.zip",
+      "sha256": "62ee1c283b9b529300186cbcf4343e529b138e2f11cbb21a686872df24813472",
+      "measurement_file": "artifacts/eval-3-consistency-check/with_skill/run-1/measurements.refused.json",
+      "measurement_values": {
+        "height": null,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "shoulders": null,
+        "upperArm": null,
+        "thigh": null,
+        "neck": null,
+        "upperArmLength": null,
+        "forearmLength": null,
+        "thighLength": null,
+        "calf": null
+      },
+      "maximum_geometry_error_cm": 46.062761717058144,
+      "grading": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "artifact_sha256": {
+        "TRACE.json": "880445922692e80dcd73594ff2cf29e8eeb23faf09751a54b8473116c8b6a911",
+        "audit.stdout.json": "f63f3e5dc91438d37a88802dbea64fd63165f39832002d16891dfb30478d8517",
+        "consistency-evidence.json": "f63f3e5dc91438d37a88802dbea64fd63165f39832002d16891dfb30478d8517",
+        "exporter.stderr.txt": "5449f88c4a7aa7438a39bcdb8a1ad595a3bd1958417e520257fcdbd8699bcd9e",
+        "exporter.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "measurements.refused.csv": "0e7b21bc6a3bf8b663b42e5e01999ac401c2bf6ccfe91e0c3f336bb3444bd337",
+        "measurements.refused.json": "e020ac0d58418f05f5ff471709476a6204010dbfc85c1742cd4f85ebcfcfc46f",
+        "report.md": "6cf9ab507c280b163d94fe72ccb7d922f3bf5ff5de7a651c9f4bfc3bab11aa39",
+        "reproduce.py": "9c50d4b81e25b3884d9ede21cc8a223a39e65b49038fe31abe485eca05c6c9f8",
+        "source-hashes.json": "b2ade37b9a2ea99e938fe690291be67e6804ac779a3912904a7da7c458791741"
+      }
+    }
+  ],
+  "source": {
+    "inputs": {
+      "href": "source/inputs.zip",
+      "sha256": "5336b6b9c12c00d87d43d43be903e9f34a60067facc4b72d14ff54a8128e2f7d"
+    },
+    "skill-new": {
+      "href": "source/skill-new.zip",
+      "sha256": "339f115d7e5b8cd257f55ff61735f26093e358ca4b8105a7f2da52b817d10209"
+    },
+    "skill-old": {
+      "href": "source/skill-old.zip",
+      "sha256": "09bc82b16e28cacf2ce46e4b611c004b1e27d382354e884b60d0c5122fa8ca02"
+    },
+    "grade-evidence": {
+      "href": "source/grade-evidence.zip",
+      "sha256": "c7a6dcf7f1fcc9a06525293252065d1d6a0c86338fc303b2bd6f72d5f195953e"
+    },
+    "protocol": {
+      "href": "source/protocol.zip",
+      "sha256": "af0462ea55b8ab14c7809c8c9c74f3d75b088eb8fd5d5ed6929ee3b9495a0cda"
+    },
+    "analysis": {
+      "href": "source/analysis.zip",
+      "sha256": "235c76709c719cdab54c42a6d45e55addd6b477316d7057bd33aba52375a01b6"
+    },
+    "plan.json": {
+      "href": "source/plan.json",
+      "sha256": "8c5c3b707fc5a23a9693793bbd1b3639799a75dddcee23e1e4ed636a6953367c"
+    },
+    "evals.json": {
+      "href": "source/evals.json",
+      "sha256": "dffa39d6f272114313f75f4a2ea9b128d885758b037e4428c642f017dd39e7f6"
+    },
+    "skill-new-manifest.json": {
+      "href": "source/skill-new-manifest.json",
+      "sha256": "e04dab28df851c90b2b632d7cb17d72f8b8fd52291e280f29e23ae49ddcabcb8"
+    },
+    "skill-old-manifest.json": {
+      "href": "source/skill-old-manifest.json",
+      "sha256": "75884f1c035c4d700579375fff4f9e8cb556d8642b088443324c753945f094bc"
+    },
+    "build_model_size_review.py": {
+      "href": "source/build_model_size_review.py",
+      "sha256": "baffac26ff2996db07b138a97a491c6de7495f568e287dc219fafe9cee6fc30f"
+    },
+    "aggregate_model_size_skill.py": {
+      "href": "source/aggregate_model_size_skill.py",
+      "sha256": "d56cff76cef52c1c4207201b57b6a89e9c402aa7112e9d701a8ae3ba2f600528"
+    },
+    "grade_model_size_skill.py": {
+      "href": "source/grade_model_size_skill.py",
+      "sha256": "180be84248eb0aa4aeba49291224222e1fb3043b5011d82dad7bb16cff0420bc"
+    }
+  },
+  "unknown": {
+    "native_claude_trigger": "BLOCKED",
+    "imagegen": "NOT_REQUESTED",
+    "tokens": null,
+    "duration": null
+  },
+  "upstream": {
+    "runs": 6,
+    "storage_key": "pattern-agent:eval-review:86baa3ffcad6fa7a356563d2",
+    "benchmark_tokens": "unknown values omitted/null; no zero placeholders",
+    "upstream": "Anthropic pinned generate_review.py and viewer.html; generated document adapted only"
+  },
+  "files": {
+    "analysis.json": "37e6739e5fa40b6884595c1db3e4c8033c84b0ef5c283bcfbfac7c0ef7bdaee5",
+    "artifacts/eval-1-saved-model/old_skill/run-1/TRACE.md": "8e7ed05cd22b506a3cea58853cfab750bdfe1fa99b298972b4664245decdfa70",
+    "artifacts/eval-1-saved-model/old_skill/run-1/execution.log": "d585ae4290d5470eb41e322f311595928428b1551d2d51921290fbb64979bf85",
+    "artifacts/eval-1-saved-model/old_skill/run-1/identity-check.json": "bb8de36e6e9e19bdc9d1e73aa817229b8bb281ae2bbddd19e12cf809e6fb6ece",
+    "artifacts/eval-1-saved-model/old_skill/run-1/measure_saved_model.py": "124056653532c42c784e2dacce90843d311d38e4407b024745051125d225b00d",
+    "artifacts/eval-1-saved-model/old_skill/run-1/measurements.csv": "7800d0ebd89470e108a047ea98bdf715ec697ebaa4abf66052a192c7a956fdc4",
+    "artifacts/eval-1-saved-model/old_skill/run-1/measurements.json": "63d040af466b73874a05db512f9ed266dd9eac14a5e3c56cae92d082e7810e21",
+    "artifacts/eval-1-saved-model/old_skill/run-1/provenance.json": "194b720195358c6d69ab999085edb3e382db91d26ec9f0049df17a8b3faa6889",
+    "artifacts/eval-1-saved-model/old_skill/run-1/report.md": "973061d5b3290a15cae609568088b3f4700009bc064a5c49e10d667cebb07489",
+    "artifacts/eval-1-saved-model/old_skill/run-1/reproduce.sh": "b7b1c31e1619baf4f7cf5bc67326be0d53684150b331012133d63b26597cdb03",
+    "artifacts/eval-1-saved-model/old_skill/run-1/state-check.json": "cb011d8eaad8dee267d44941c0690b1e40d33860b3492eb8b9acb4b1d1c3dded",
+    "artifacts/eval-1-saved-model/old_skill/run-1/target-comparison.json": "0cdaade1068caaacb69ec4f6a27651fd766505cd25773e3b59601c46fe2bb033",
+    "artifacts/eval-1-saved-model/old_skill/run-1.zip": "66e9cd33cc5f77315f79409aa17828e3be4b83600eb0245c1c37aec7fa3f3d0a",
+    "artifacts/eval-1-saved-model/with_skill/run-1/TRACE.md": "fa781d5535a6e4a25e60eafa1a3bea5eb9ff6dde8851e4db80c5e2343ac26eb9",
+    "artifacts/eval-1-saved-model/with_skill/run-1/artifact-sha256.json": "6e48a140850de9cd6351b4cf21206430b55bcfdb5fad0c73c889a92bbd387238",
+    "artifacts/eval-1-saved-model/with_skill/run-1/export_body_measurements.py": "aa9e3351dd645cc98839763dbce3c1c63992e20604ffb6eef48379db054583f0",
+    "artifacts/eval-1-saved-model/with_skill/run-1/geometry-verification.json": "1ee4c5fd1dbdbcc77f2d50a2713804ba973f5b22c87cb6af6197197523dc986d",
+    "artifacts/eval-1-saved-model/with_skill/run-1/measurements.model.csv": "79a19abc23f0421bb9213840589eb8d0ae40b51996135c92b741b560ec82b38f",
+    "artifacts/eval-1-saved-model/with_skill/run-1/measurements.model.json": "4e332f491067a7233b5c4430364c4d8b732345fdc957bc45ff78e96576e3deec",
+    "artifacts/eval-1-saved-model/with_skill/run-1/report.md": "fe88b95f940042f87bf5c23bd04bf95a955fbe185b82fa754a5f946ab0486025",
+    "artifacts/eval-1-saved-model/with_skill/run-1/reproduce.sh": "78a040354b346bfce666ae2098ed5918138960c7bc43379c2d9311a7c062b1aa",
+    "artifacts/eval-1-saved-model/with_skill/run-1/target-comparison.csv": "9563400c348b015455238c8fbe71aca0bd4324f14bed3487fa9d44924786be82",
+    "artifacts/eval-1-saved-model/with_skill/run-1/verify_saved_geometry.py": "4ee21fda5f2e666c33d9f2867f061f8e15f7a0c24728c6598c429aa40e22d65d",
+    "artifacts/eval-1-saved-model/with_skill/run-1.zip": "da3a469322af5ce90f0a1ad8cdecbf871574493b6adb1c203d4a68d521e259ff",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/TRACE.json": "961f8a93dab0747d526fbab15dd9171fe885480973db3f15d36e5ef562190e9a",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/commands.txt": "843dbf6daa9f325d51a2a714fe7206e206a3fdb5f7032a22ef64ffd00dfe50f4",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/correspondence.json": "04abb22b453d0b1244cefdc6d313d83c94e5708fa8e569c47e0cb1be21dc0a69",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/measure.py": "2940e235150705ae23b2be1ec69f08360fafbfa075d897c8d376ab163218a3ab",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/measurements.csv": "85c2d0b0fe8c5ba258bd823b168490a414bfdc1d2656245e4023e5e01b99b53d",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/measurements.json": "cafb732235e40c1f7df4eccd55cf69f29d89b4fb0789d10bc07a6452d6830140",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/old-helper-check.json": "adcccc7f92a0c62fd4f25878c01274db501b4a76af607d84dcf1a930fd95e787",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/provenance.json": "61a14569a5cfc277adfa8ececf95b024acda2505e30669314183ccf6a8ed08cb",
+    "artifacts/eval-2-residual-cache/old_skill/run-1/report.md": "0035ec5050e56c4fc7326b36449a173ac7d463f0d39682b7ceaa34dbcec9b751",
+    "artifacts/eval-2-residual-cache/old_skill/run-1.zip": "7262648223460e22bbbd4b9f86022059d4c92a71b21139f8d9f78ba34a91466d",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/TRACE.json": "65ad423cd8fb86fb6a247ff59f61b9ab36e1ce8517edd8293e9529f3f56a9f8a",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/command.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/command.stdout.txt": "c3c2e25cbd3ec2c25344a0db35a56452a8de72c1ed1bb5333601427f9fdfcff9",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/control-comparison.json": "162a6fbfd97eeedb4bf771bae151aaa9485d77d580869c9d9b8d369d618c2bd7",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/export_body_measurements.py": "aa9e3351dd645cc98839763dbce3c1c63992e20604ffb6eef48379db054583f0",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/measurements.model.csv": "244e0c9fc5a4e315f40956fd7ae7300f74bdab2b748ae76598355e639b0968e6",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/measurements.model.json": "b25339c9eb9dbb8ec779bb378b1b4050321254e530f3a2fff591ec257f72ecaa",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/provenance.json": "1f3743f4f3e55c15e8f08b66069ad62b47a1fc9c98cd932d5652445f8ceeb285",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/report.md": "09323ef9ab9f8b608568595eff8614f074b597703da39d2ca4501596b1e311bd",
+    "artifacts/eval-2-residual-cache/with_skill/run-1/reproduce.py": "757045fe14a35e1e62ea04497d20250c74f60986f54a4b719815da8ffc580749",
+    "artifacts/eval-2-residual-cache/with_skill/run-1.zip": "63849f65af2efd838fa83aa0fbba9e3fe3970ff4c1a5a3c9d0a3f147bde82c0a",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/TRACE.md": "21aebb40c43a6c09a2014fb90c4010ad1271a8d9fda4a369b4eba5c4a93f21e1",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/audit_consistency.py": "656c5f86b63dd26bfee6f7422b7131fc541661e8328404976dc2e47a77cfd901",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/command-output.log": "a4f37a0b100d7cfbb5e7ea786bd65653100c432fadb8e5dd2fd4426db8518c52",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/consistency-audit.json": "c264fd73ef0515960acb679f69d595bb9852c7e7330a5b2daa6b005038c64f19",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/measurements.csv": "6541a1ca8da81499894a228c973257b2d2d0de9f1976ecb5607fc98cdf4fc14c",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/measurements.json": "a20d3db71fe26e811292ecc4395fcf1a95bda22fe6e048906be364a3c2b75220",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/report.md": "7868e2d2f0782e77ee46ef6fcced8af023e01ca45594cfdde218a9f83a933c8a",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/reproduce.sh": "f747410ffe299c5b57b32fba28f4dd3a5065b49c70177c0112ad940d01916cb1",
+    "artifacts/eval-3-consistency-check/old_skill/run-1/state-reconstruction.json": "cb011d8eaad8dee267d44941c0690b1e40d33860b3492eb8b9acb4b1d1c3dded",
+    "artifacts/eval-3-consistency-check/old_skill/run-1.zip": "a604c6e810535ba96366c28de7ee96a4ae9129db7619a2ae00d7e47c0fbc8e96",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/TRACE.json": "880445922692e80dcd73594ff2cf29e8eeb23faf09751a54b8473116c8b6a911",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/audit.stdout.json": "f63f3e5dc91438d37a88802dbea64fd63165f39832002d16891dfb30478d8517",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/consistency-evidence.json": "f63f3e5dc91438d37a88802dbea64fd63165f39832002d16891dfb30478d8517",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/exporter.stderr.txt": "5449f88c4a7aa7438a39bcdb8a1ad595a3bd1958417e520257fcdbd8699bcd9e",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/exporter.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/measurements.refused.csv": "0e7b21bc6a3bf8b663b42e5e01999ac401c2bf6ccfe91e0c3f336bb3444bd337",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/measurements.refused.json": "e020ac0d58418f05f5ff471709476a6204010dbfc85c1742cd4f85ebcfcfc46f",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/report.md": "6cf9ab507c280b163d94fe72ccb7d922f3bf5ff5de7a651c9f4bfc3bab11aa39",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/reproduce.py": "9c50d4b81e25b3884d9ede21cc8a223a39e65b49038fe31abe485eca05c6c9f8",
+    "artifacts/eval-3-consistency-check/with_skill/run-1/source-hashes.json": "b2ade37b9a2ea99e938fe690291be67e6804ac779a3912904a7da7c458791741",
+    "artifacts/eval-3-consistency-check/with_skill/run-1.zip": "62ee1c283b9b529300186cbcf4343e529b138e2f11cbb21a686872df24813472",
+    "benchmark-upstream-raw.json": "0ed3a155c389901f2c1432572defaf9d3e5b614017141d1b7643f274b13d0c64",
+    "benchmark.json": "c486e1084a94fd3960a8263db11b0f4548c503083ef05e69aad41d9e7bd926d1",
+    "benchmark.md": "5388813da2c2a822d44be3c6bd4afaf7462ea5bdf5f3729d8eaf76a38ebd1420",
+    "eval.html": "519ddae085a857f505c63d84a288630d1a65ed7ed44e5c036a43822528a5f983",
+    "source/aggregate_model_size_skill.py": "d56cff76cef52c1c4207201b57b6a89e9c402aa7112e9d701a8ae3ba2f600528",
+    "source/analysis.zip": "235c76709c719cdab54c42a6d45e55addd6b477316d7057bd33aba52375a01b6",
+    "source/build_model_size_review.py": "baffac26ff2996db07b138a97a491c6de7495f568e287dc219fafe9cee6fc30f",
+    "source/evals.json": "dffa39d6f272114313f75f4a2ea9b128d885758b037e4428c642f017dd39e7f6",
+    "source/grade-evidence.zip": "c7a6dcf7f1fcc9a06525293252065d1d6a0c86338fc303b2bd6f72d5f195953e",
+    "source/grade_model_size_skill.py": "180be84248eb0aa4aeba49291224222e1fb3043b5011d82dad7bb16cff0420bc",
+    "source/inputs.zip": "5336b6b9c12c00d87d43d43be903e9f34a60067facc4b72d14ff54a8128e2f7d",
+    "source/plan.json": "8c5c3b707fc5a23a9693793bbd1b3639799a75dddcee23e1e4ed636a6953367c",
+    "source/protocol.zip": "af0462ea55b8ab14c7809c8c9c74f3d75b088eb8fd5d5ed6929ee3b9495a0cda",
+    "source/skill-new-manifest.json": "e04dab28df851c90b2b632d7cb17d72f8b8fd52291e280f29e23ae49ddcabcb8",
+    "source/skill-new.zip": "339f115d7e5b8cd257f55ff61735f26093e358ca4b8105a7f2da52b817d10209",
+    "source/skill-old-manifest.json": "75884f1c035c4d700579375fff4f9e8cb556d8642b088443324c753945f094bc",
+    "source/skill-old.zip": "09bc82b16e28cacf2ce46e4b611c004b1e27d382354e884b60d0c5122fa8ca02",
+    "visual/consistency-check/front.png": "432a46d4d5cf0e220947cef2077040daa74e42bff7e73960598d3403f82b2507",
+    "visual/consistency-check/overlay-front.png": "57dfc1feac5de70978a0bbdb99973890fbc646460d116568f6b608b27f582170",
+    "visual/consistency-check/overlay-side.png": "6327584001bb10f103cb13d0e482e5b41be89e48d98d23a8ceb67f1b94c04416",
+    "visual/consistency-check/side.png": "2769c32a61097d2233a7961edcf31aacf1634661abce427a5ffe2fc29ca134ae",
+    "visual/residual-cache/front.png": "4d1d7283728f11c2b893f4326cafeda5fef2fd3e21052d218df927fae731e26a",
+    "visual/residual-cache/old_skill-waist-result.png": "6719c2b40ecec62812f653100634950b2a5029379f48078308281200255144c7",
+    "visual/residual-cache/overlay-front.png": "218fec81e986bf28251232a3c146f6c2e123e817e084c7c9a5aebcb9cf3d4c46",
+    "visual/residual-cache/overlay-side.png": "e6943991cabdf66930c0107f7cd2053e29f34b91e5edb4bf83b4585c613f4675",
+    "visual/residual-cache/side.png": "36ec7efcbc05dab7c93adcacec65f0b7bc4948d2623f9271180dea869a4ceba6",
+    "visual/residual-cache/with_skill-waist-result.png": "6719c2b40ecec62812f653100634950b2a5029379f48078308281200255144c7",
+    "visual/saved-model/front.png": "c4312cca10ef8845397126751c09294296bfe1f247a2d0e004ce4f0e51ddc6b5",
+    "visual/saved-model/overlay-front.png": "ea236c3a2fdd2e2981787e293d05834eef9535fe58da0021cbfa508ca469d678",
+    "visual/saved-model/overlay-side.png": "9c6177909b8a2daf4c46616203a3f4c6f069c3be9a027e6a4b690e3cd1dfedb2",
+    "visual/saved-model/side.png": "26e81894ffe771249615d45d1c4da045b21c7fed70e1007a18478732e8f77ac8"
+  }
+}

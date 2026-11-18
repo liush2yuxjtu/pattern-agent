@@ -1,0 +1,129 @@
+{
+  "status": "refused_neutral_export",
+  "sources": {
+    "state": {
+      "path": "inputs/consistency-check/final-state.json",
+      "sha256": "d1eadea6343a897e5c6bbf838f1970c6086eece37f9786336dce2f2e3be40a68"
+    },
+    "mesh": {
+      "path": "inputs/consistency-check/neutral.obj",
+      "sha256": "b139c4f4e09ecbf3267dce1bd0cc0cb408b1346852ca164ebefc32a47a03b46f"
+    },
+    "asset": {
+      "path": "inputs/human.json",
+      "sha256": "a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6"
+    },
+    "skill": {
+      "path": "skill-old/SKILL.md",
+      "sha256": "e90269be53c411b023dfde3998fc3b32a96d458cc3d343769f724a35b8bbda7a"
+    },
+    "helper": {
+      "path": "skill-old/scripts/inspect_human_state.py",
+      "sha256": "dcad171d388e5baea4409b73af23fa9959139bb817e0fedb8f48e1d2cd6365f5"
+    },
+    "runtime": {
+      "path": "/workspace/work/pattern-agent/web/human-studio/body-engine.js",
+      "sha256": "311de96371b2eefb795ab013f4e79ee4cc0d2b3ac271f6121c18ebb7589b12a3"
+    },
+    "audit_code": {
+      "path": "iteration-1/eval-3-consistency-check/old_skill/run-1/outputs/audit_consistency.py",
+      "sha256": "656c5f86b63dd26bfee6f7422b7131fc541661e8328404976dc2e47a77cfd901"
+    }
+  },
+  "asset_fingerprint_matches_state": true,
+  "units": "cm",
+  "coordinate_system": "X left/right, Y up, Z front/back",
+  "vertex_count": 13380,
+  "triangle_count": 26756,
+  "exact_face_index_mapping_matches_asset": true,
+  "neutral_vertex_tolerance_cm": 1e-05,
+  "neutral_vertex_comparison": {
+    "rms_distance_cm": 20.00298278720461,
+    "max_distance_cm": 46.062761717058144,
+    "vertices_above_tolerance": 9038
+  },
+  "supplied_mesh_axis_spans_cm": [
+    47.947475131000004,
+    169.99250581,
+    29.9120639647
+  ],
+  "reconstructed_neutral_axis_spans_cm": [
+    107.09489749187334,
+    169.99997906644242,
+    40.916633050223105
+  ],
+  "nonzero_pose_bones": {
+    "upperarm01.R": [
+      2.4,
+      -0.1,
+      35.7
+    ],
+    "upperarm01.L": [
+      15.7,
+      9.0,
+      -39.3
+    ],
+    "lowerarm01.L": [
+      -30.0,
+      0.0,
+      -1.7
+    ],
+    "neck01": [
+      0.0,
+      0.0,
+      1.5
+    ],
+    "lowerarm01.R": [
+      -30.0,
+      0.0,
+      -0.7
+    ]
+  },
+  "reconstructed_neutral_measurements_cm": {
+    "height": 169.99997906644242,
+    "bust": 90.0000311148626,
+    "waist": 72.00000127492119,
+    "hips": 96.00004044085316,
+    "shoulders": 36.99999957517109,
+    "upperArm": 27.000002331743016,
+    "thigh": 54.00000799360356,
+    "neck": 32.000011906030856,
+    "upperArmLength": 29.000000826222003,
+    "forearmLength": 23.000002032813985,
+    "thighLength": 40.000032057729136,
+    "calf": 36.00000081808714
+  },
+  "reconstruction_minus_cached_cm": {
+    "height": 0.0,
+    "bust": -1.4210854715202004e-14,
+    "waist": -1.4210854715202004e-14,
+    "hips": 1.4210854715202004e-14,
+    "shoulders": 0.0,
+    "upperArm": 3.552713678800501e-15,
+    "thigh": 0.0,
+    "neck": 0.0,
+    "upperArmLength": 3.552713678800501e-15,
+    "forearmLength": 0.0,
+    "thighLength": 0.0,
+    "calf": 0.0
+  },
+  "supplied_mesh_diagnostic_paths_cm": {
+    "height": 169.99250581,
+    "bust": 89.9695006100131,
+    "waist": 72.00000127186156,
+    "hips": 96.00004044070647,
+    "shoulders": 40.12082300614957,
+    "upperArm": 27.371878870536385,
+    "thigh": 54.00000799398585,
+    "neck": 31.9998261683792,
+    "upperArmLength": 28.8667727788732,
+    "forearmLength": 23.085783815219788,
+    "thighLength": 40.00003205741465,
+    "calf": 36.0000008183192
+  },
+  "diagnostic_caveat": "Input topology maps to resource, but vertex geometry is not reconstructed neutral. Mesh path values and Y span are diagnostics only; not valid neutral body dimensions or claimed posed-state correspondence.",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "tokens": null,
+  "elapsed_time_seconds": null
+}
