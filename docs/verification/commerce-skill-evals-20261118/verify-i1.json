@@ -1,0 +1,31 @@
+{
+  "base_commit": "94d41253442400afb6d8a0bcee4c8a45f5d7e62b",
+  "candidate_manifest": "candidate-i1.json",
+  "skill": ".agents/skills/verify/SKILL.md",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s tools/skill_evals -p 'test_*.py' -q",
+      "exit_code": 0,
+      "tests": 20
+    },
+    {
+      "command": "python scripts/build_pages.py",
+      "exit_code": 0
+    },
+    {
+      "command": "node tools/skill_evals/verify_commerce_review.cjs --url http://127.0.0.1:8955/garment-body/commerce-evals/eval.html --out docs/verification/commerce-skill-evals-20261118/root-i1-browser",
+      "exit_code": 0,
+      "checks": 379
+    }
+  ],
+  "observations": [
+    "Four actual outputs inspected; native shell and galleries visible.",
+    "Thin actual-OBJ projection overlay leaves original photograph visible.",
+    "Formal grades, Benchmark, feedback edit/reload/download, image dialog and mobile exercised.",
+    "All current fitted-body overall results remain FAIL; UI PASS is only publication integrity."
+  ],
+  "edge": "Original failed root browser run overlapped dist rebuild, raw failure retained. Stable post-build rerun passed without asset errors. Strict-builder stale/missing-grade negative controls recorded by viewer agent.",
+  "verdict": "PASS",
+  "scope": "Official viewer implementation and source-bound evidence publication only; person-fit FAIL/native trigger BLOCKED",
+  "cleanup": "Owned loopback server stopped after checks; no CI/PR/Issue"
+}

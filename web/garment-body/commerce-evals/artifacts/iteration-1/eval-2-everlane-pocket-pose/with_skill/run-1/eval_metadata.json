@@ -1,0 +1,18 @@
+{
+  "eval_id": 2,
+  "eval_name": "everlane-pocket-pose",
+  "prompt": "使用提供的 Everlane 浅蓝宽松衬衫全身电商原图，实际生成一张 Image Gen 原姿态点线引导，再建立可调厘米尺寸与骨骼的人体，保持原图动作并拟合。输出同一状态的正侧背、原相机渲染、OpenCV叠加和有来源的人体尺寸数据。处理衣物松量、遮挡和插袋手，无法观测的关节/尺寸如实保留不确定性。本任务只测试姿态引导与人体拟合分支，不要求重新生成完整六张服装图。",
+  "assertions": [
+    "The original retailer image is preserved and its source/scale provenance distinguishes observed facts from the M170 prior.",
+    "Saved centimetre parameters independently reconstruct the real neutral and posed anatomical mesh within tolerance.",
+    "Actual source-camera and front/side/back images replay from the same saved complete body and pose.",
+    "Every frozen critical original-photo region and centre scanline passes its independent envelope checks.",
+    "Visible original wrist cues and coarse limb directions do not contradict the target action; hidden wrists are not invented.",
+    "Independent actual three-dimensional views show a reference-consistent plausible action without detected severe skin overlap; coverage limitations are explicit.",
+    "Body data and reports preserve measurement definitions and prior/conditional provenance rather than claiming unmeasured real-person accuracy."
+  ],
+  "input_case": "everlane-blue-shirt",
+  "configuration": "with_skill",
+  "execution_kind": "explicit subagent functional run, not native Claude triggering",
+  "split": "development"
+}

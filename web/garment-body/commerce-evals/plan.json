@@ -1,0 +1,17 @@
+{
+  "guide": "Pinned Anthropic skill-creator: paired actual subagents, frozen old skill, independent grader, analyzer, iteration, official viewer",
+  "development_cases": 2,
+  "heldout_cases": 1,
+  "scope": {
+    "case_a": "full six-image generation plus one adjustable body and original-image fit",
+    "case_b": "pose-guidance and original-image adjustable body fitting branch",
+    "case_c": "sealed holdout pose/body fitting branch; activated only after v2 frozen"
+  },
+  "native_claude_cli": null,
+  "native_trigger_status": "BLOCKED",
+  "baseline": "skill-v0 frozen before editing",
+  "initial_revised": "skill-v1 instructions generalized from previous real red-photo failures",
+  "fairness": "Same raw files, M170 neutral initialization, generic FK/calibration/render tools and generation access; no fitted old-photo parameters or evaluator hidden targets",
+  "iteration_2": "Revise from development results only; rerun paired development cases and final heldout pair. Do not claim heldout skill effects if data contaminated.",
+  "timing_tokens": "Record when actually exposed; otherwise null. No fabricated metadata."
+}

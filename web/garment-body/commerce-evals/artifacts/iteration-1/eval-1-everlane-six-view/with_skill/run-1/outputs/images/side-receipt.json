@@ -1,0 +1,37 @@
+{
+  "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-8aee1ca2-0c10-48df-a1ce-353c89b7330a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Generate ONE independent high-quality image only, no collage, no panels. First reference is authoritative for model identity and garment: Everlane WHITE LIGHTWEIGHT COTTON BOATNECK FITTED SHIRT, broad shallow boatneck without collar, concealed white front button placket, waist darts, long sleeves styled pushed up with broad cuffs, black trousers, long dark straight hair, tiny hoop earring, neutral light gray studio and soft light. No lapels, no standard collar, no added jewelry or logos. Remaining references are actual calibrated MakeHuman cm rig v1 render for conditional avatar size/pose, not measured person: height170 bust90 waist72 hips96 shoulder37cm; preserve one shared pose. Photorealistic true 90-degree SIDE full body catalogue photograph, head to shoes. Same joint pose as mannequin side render, arms naturally lowered beside thighs; keep hands natural. Hidden side garment and lower legs inferred. Maintain neutral gray background, realistic consistent lighting, portrait canvas with generous margins for full body views. Side/back are inferred hypotheses.",
+  "refs": [
+    "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/inputs/everlane-boatneck/original.jpg",
+    "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/photo-render.png",
+    "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/side.png"
+  ],
+  "tool": "image_gen.imagegen",
+  "settings": {
+    "transparent_background": false
+  },
+  "timing": null,
+  "tokens": null,
+  "native_size": [
+    1086,
+    1448
+  ],
+  "sha256": "3d67462c2fe784641cac68fd02ec80c02ac6f5d0a4909f9b424abb56506104ee",
+  "reference_hashes": [
+    {
+      "original_tool_path": "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/inputs/everlane-boatneck/original.jpg",
+      "preserved_exact_input": "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/inputs/everlane-boatneck/original.jpg",
+      "sha256": "eee08dde62e50376cc25fb2b46a59e8a83e5adf5a3f711d75743b0465e945897"
+    },
+    {
+      "original_tool_path": "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/photo-render.png",
+      "preserved_exact_input": "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/generation-input-photo-render.png",
+      "sha256": "94ea324f439a7efc7ec2a34f567d83f440ddd24318daecb6ffbc132e2a3cfc39"
+    },
+    {
+      "original_tool_path": "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/side.png",
+      "preserved_exact_input": "/workspace/work/pattern-agent/work/commerce-skill-evals-20261118/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/generation-input-side.png",
+      "sha256": "a569c9883e42d8690a4e835520469338cac534578fb02e93f137e72310d5c516"
+    }
+  ]
+}

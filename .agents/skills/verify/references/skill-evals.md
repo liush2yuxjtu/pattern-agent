@@ -251,3 +251,28 @@ deployed SHA using `--expected-commit SHA`; also recheck the skill package's rea
 download. Use the existing public-only browser fallback if the local proxy
 blocks Pages. Preserve receipts separately, stop owned servers/browsers, and
 keep native Claude routing BLOCKED and physical fit NOT_RUN where applicable.
+
+## Cross-retailer commerce functional runs
+
+Use the pinned Anthropic reviewer through `build_commerce_review.py`; galleries
+are inside the native Output section. Preserve paired skill snapshots, source
+bytes, generation receipts, complete cm/FK state, independent region/3D grades
+and their hashes. The grader uses the actual 3x4 photo camera, not camera.final
+parameter aliases. Scores count assertions, never real-person accuracy.
+
+```sh
+python -m unittest discover -s tools/skill_evals -p 'test_*.py' -v
+python tools/skill_evals/aggregate_commerce.py work/commerce-skill-evals-20261118/iteration-1
+python tools/skill_evals/build_commerce_review.py --iteration 1
+python scripts/build_pages.py
+node tools/skill_evals/verify_commerce_review.cjs --url http://127.0.0.1:PORT/garment-body/commerce-evals/eval.html --out work/commerce-skill-evals-20261118/browser
+```
+
+For iteration2 add `--iteration 2 --include-holdout`, only after the candidate
+freeze and actual heldout executions. Keep iteration1 and native Previous Output.
+The strict builder must reject missing/stale grading before modifying the site;
+`--allow-pending` is a preview only. Exercise actual galleries, Formal Grades,
+Benchmark, feedback persistence/download and mobile. Reopen image bytes and
+source/state/OBJ hashes. No native Claude CLI means trigger tests BLOCKED; null
+timing/token observations remain null. Existing Pages workflow publishes only.
+Evidence: [commerce-skill-evals-20261118](../../../../docs/verification/commerce-skill-evals-20261118/).

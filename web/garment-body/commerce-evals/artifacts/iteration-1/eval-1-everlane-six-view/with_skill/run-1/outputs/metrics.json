@@ -1,0 +1,138 @@
+{
+  "initial": {
+    "whole": {
+      "iou": 0.6310359148038477,
+      "dice": 0.7737854317938028,
+      "contour_mean_px": 167.6247128142238,
+      "contour_p95_px": 473.0,
+      "model_outside_reference_ratio": 0.17631495568402758
+    },
+    "shoulders": {
+      "iou": 0.8841109344390466,
+      "dice": 0.9384913789083992,
+      "contour_mean_px": 54.725695404688786,
+      "contour_p95_px": 142.697509765625,
+      "model_outside_reference_ratio": 0.10746022455169478
+    },
+    "arms_left": {
+      "iou": 0.2279096282516727,
+      "dice": 0.37121563836285887,
+      "contour_mean_px": 134.76378730034511,
+      "contour_p95_px": 280.5068054199219,
+      "model_outside_reference_ratio": 0.17661511779158837
+    },
+    "arms_right": {
+      "iou": 0.5333140046014851,
+      "dice": 0.6956357314953185,
+      "contour_mean_px": 102.6688011075264,
+      "contour_p95_px": 201.62744140625,
+      "model_outside_reference_ratio": 0.06614588451082506
+    },
+    "torso": {
+      "iou": 0.9050958164642375,
+      "dice": 0.9501840365636307,
+      "contour_mean_px": null,
+      "contour_p95_px": null,
+      "model_outside_reference_ratio": 0.0
+    },
+    "waist_hips": {
+      "iou": 0.9039711911357341,
+      "dice": 0.9495639380935255,
+      "contour_mean_px": null,
+      "contour_p95_px": null,
+      "model_outside_reference_ratio": 0.0
+    }
+  },
+  "final": {
+    "whole": {
+      "iou": 0.8430734174021917,
+      "dice": 0.9148560328003666,
+      "contour_mean_px": 82.07338624112879,
+      "contour_p95_px": 266.1240539550781,
+      "model_outside_reference_ratio": 0.021849566067497946
+    },
+    "shoulders": {
+      "iou": 0.9373767751937263,
+      "dice": 0.9676762797984859,
+      "contour_mean_px": 23.416355602029597,
+      "contour_p95_px": 47.0,
+      "model_outside_reference_ratio": 0.053444121898762444
+    },
+    "arms_left": {
+      "iou": 0.8030743632009455,
+      "dice": 0.8907834081510325,
+      "contour_mean_px": 65.38371039089367,
+      "contour_p95_px": 202.0,
+      "model_outside_reference_ratio": 0.017253683058722782
+    },
+    "arms_right": {
+      "iou": 0.8990074395907994,
+      "dice": 0.9468182386736923,
+      "contour_mean_px": 43.41220093429734,
+      "contour_p95_px": 177.5955810546875,
+      "model_outside_reference_ratio": 0.05363571700811066
+    },
+    "torso": {
+      "iou": 0.9171214574898785,
+      "dice": 0.9567692791782552,
+      "contour_mean_px": null,
+      "contour_p95_px": null,
+      "model_outside_reference_ratio": 0.0
+    },
+    "waist_hips": {
+      "iou": 0.9418227146814404,
+      "dice": 0.9700398574603637,
+      "contour_mean_px": null,
+      "contour_p95_px": null,
+      "model_outside_reference_ratio": 0.0
+    }
+  },
+  "protocol": {
+    "resolution": [
+      2400,
+      3000
+    ],
+    "segmentation": "GrabCut600x750 then nearest resize; includes garment/hair; arm gaps imperfect",
+    "regions": {
+      "whole": [
+        0,
+        0,
+        2400,
+        3000
+      ],
+      "shoulders": [
+        600,
+        900,
+        1800,
+        1300
+      ],
+      "arms_left": [
+        540,
+        1250,
+        830,
+        2900
+      ],
+      "arms_right": [
+        1530,
+        1250,
+        1840,
+        2900
+      ],
+      "torso": [
+        800,
+        1200,
+        1580,
+        2150
+      ],
+      "waist_hips": [
+        740,
+        1800,
+        1690,
+        2750
+      ]
+    },
+    "camera": "same final camera for initial/final",
+    "units": "pixels; not centimetre error",
+    "reference_sha256": "c23afc2fc50d6ab346d7afeb96a26883251e4f8d357bc71282a36f7d847b24d0"
+  }
+}

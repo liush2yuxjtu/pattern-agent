@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen",
+  "prompt": "Annotate this exact source photograph with a sparse anatomical pose guide: small joint dots and thin connecting lines. Preserve original crop, person identity, original clothing, camera, pixel arrangement and action: image-left arm hanging down, image-right elbow bent with hand inside trouser pocket. Do not alter or re-pose the person. Mark obscured image-right wrist/hand as dashed estimated points and explicitly label 'occluded estimate'. Keep shoulders, elbows, torso/pelvis and knees anatomically plausible. This is an illustrative guide, not a detector measurement. Return one annotated image.",
+  "referenced_image_paths": [
+    "inputs/everlane-blue-shirt/original.jpg"
+  ],
+  "transparent_background": false,
+  "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-e66368d7-bbd2-44a5-82cf-d93103229cd9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "native_output": "images/original-pose-illustrative.png",
+  "token_telemetry": null
+}

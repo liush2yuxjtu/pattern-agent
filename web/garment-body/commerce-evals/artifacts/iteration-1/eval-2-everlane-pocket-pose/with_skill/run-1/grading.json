@@ -1,0 +1,457 @@
+{
+  "case_id": "everlane-blue-shirt",
+  "scope": "original_photo_pose_fit_only",
+  "protocol_sha256": "a32b4b9f5466fa6e993e6a0ddc16c022aca0cd31040903e7887b49ff4f404d8c",
+  "global_protocol_sha256": "f552d5b8f8e17ae2a3e1c15a5085f69ca09dcc81f57a282f178220a5ff8013e1",
+  "input_sha256": "fc490bb5e290f2b6403544a2c5ad21dda0afab8eb34e7607f9417322086d7790",
+  "reference_sha256": "fc490bb5e290f2b6403544a2c5ad21dda0afab8eb34e7607f9417322086d7790",
+  "artifact_sha256": {
+    "TRACE.md": "c3b758cb7cd1fcd42215af875ccdfe704b9f42033131e2dba2a37f339629c9f5",
+    "artifact-checks.json": "75260eff075e8c645335b16e1ba495cb43dd9c765c9f7b026f93e2a4ea1c26d5",
+    "camera.json": "3e00c1181bfdd49d471ca5ef61e68ad34646cf0e71c8c019e190416f661f8a08",
+    "errors.json": "25b0835f9dbf0a16bed08d0f3879b2860bb9122f1b4433e43980407a2ce56381",
+    "final-mask.png": "9c6a6dd11f00443ada3c880cab78c506baa589d8af1fe30b73e9ed4daea41a09",
+    "final-overlay.png": "4184340e41c71b16e6a177369bdb2f6600db2553aa05070c94c0f8fc49235eca",
+    "final-render.png": "7d80b22488e3891fb6356f0f32b6fcc6e0684a8e4d622aa66d5a9354a60b22fc",
+    "final-state.json": "f4802f2b2a02d685b8efdd106a7e60c2051b6663e2970144570d9ddc69728d80",
+    "finalize.py": "fba2bc37f38c7522afb30bc11112bccba814a701c05fd72b969e3aecdd4156e4",
+    "guide-points.json": "571294f276e522dfcc52ac9768f5a604f0ae9a09d4e4ef2e61319cc192ce0041",
+    "guide-registration.json": "01aebcc8c334bf686c844be29e826a47d16f1b428c5f0e4fd33e1904b8edd54c",
+    "imagegen-call.json": "38c43164a60c9c4d8f139b6d493187a251c272fadb35d90e462e67e70fb5c54a",
+    "images/original-pose-illustrative.png": "942d2005e62f3d98bd36c6dde958af5b641b9cbd28f060fc32c893f6c4456a1c",
+    "independent-neutral-check.json": "1b91e152ad8fcb1c07c7b4158fc3f571a9588d99c990dec1c6d3fa39a1a17d86",
+    "independent-projection-check.json": "e5170ec79b3ba4a07993da809380a35560f291f9d8c6063a8c6ced2885ff7150",
+    "initial-camera.json": "99e559bd664894023658a4be6edb60cf8a37a54099521a8e1ba030618738cea0",
+    "initial-frozen-camera-mask.png": "3a3150fbf79b91b6bfdc6c52c11b9c3dbfeb35c9e07b7c6003ee578d22281752",
+    "initial-frozen-camera-overlay.png": "31971cb722c78502db6fb3b8156c909fba981141034edffad9681042ed410faf",
+    "initial-frozen-camera-render.png": "e5ab229c187fa8dc5675550c3f7968183f882e1796ad6b18552ef149378baa19",
+    "initial-mask.png": "b125811d06dca3addcd0500991cc2a2ecebea9642808f0496aa90b7febeb56b9",
+    "initial-overlay.png": "11064b70f50a924a9c154752790f459a7e45bd1c5cabe467df28e03d6b7e059b",
+    "initial-posed.obj": "d0e0a456677bb006e9c34974ed22a897e622c2cbdf5119b4b99617c232e9834c",
+    "initial-render.png": "f1acc1ba65af399a21ac20ce1ad374c16884608b5ec7fe7e8c7625315c13d973",
+    "initial-state.json": "4e69a5a71657a3336a68396a7fe5ffac72376ea7c8681a66a34cb38c32fd79b8",
+    "input-provenance.json": "bb83610860d4697f7fcd0dcf714eca5d0e8bc9076c5afeb6c2d5d5dfe4fe4dc1",
+    "joint-residuals.json": "621f92c7f6dbaeb70db1a12d2a186d0b6749f13b00c696f604465266bd41a281",
+    "measurements.csv": "3e4e1f8bdb89592e78fa419fb4818a3220931da473b888cb757934468e49b6b9",
+    "measurements.json": "2791f9734b1b66d8eeb888cf077a45baee1173812728c8bf2761be49c59f9e18",
+    "metrics.json": "ce4ebdb4f6c8cb4e2c6c3908a0c0e4e698d645e11e67a4ff7e05f809e7159b79",
+    "neutral.obj": "42f89fdbb503c20259a7816b4ae4754cb58675235fc4f0be805d4f05ba745806",
+    "observations.json": "da391e975c9433be4822e9b23b1db19e6bc3be34669160d4a32cd813a5b7e1fa",
+    "parameter-block-history.json": "371603a43cd39fad47300a06dc7db056a67c36213c1baf89f8682b2eb64e2e62",
+    "photo-depth-valid.png": "f5e4e2ab868620c90a0225c2a0193492a55295acb969b47e47d973320e6cda39",
+    "photo-depth.png": "9db3f9277fd6adea6b00303344bf83ea8649e01059816c282af48535fb7e7562",
+    "photo-pose-joints.json": "6b20f606e316e8f69dc85dd180621a77786e5f9c42bf1313505f9743677fad08",
+    "photo-rawdepth.npy": "7792481302ce6e34783c7d04cdb748f65c5ab58065d5c291f70e3a4b4ace437b",
+    "photo-render.png": "7d80b22488e3891fb6356f0f32b6fcc6e0684a8e4d622aa66d5a9354a60b22fc",
+    "posed.obj": "38d5e711396e596d5302854db54a0dcf189ed284e13555cd30aac4636e65a350",
+    "reference-mask.png": "dfc348e20da8f4913dd970749bea9e804b0b5ba95ee23394a91ea1c92a767d8b",
+    "regional-diagnostics.json": "986da7aff6e53f67eddb99b57a6f533c9e96ccec3f5c6640570142a28df521e3",
+    "report.md": "e659329f4c5e1fde320159ad3bbefc7db27af761321e17ce9a7deeb4c094e7e1",
+    "reproduce.sh": "9e994a383d5cae7df8fbe811040d7a7e93af01d2a846e965fead0682436b2d2a",
+    "solve.py": "b5eda9f634809ea7a8230ccf60219151de4734c31ff74f4af94b0c5be7ecb191",
+    "solver.log": "2b83b8ea078eeab464fd4547357ff98eea4850a3c1100a01e4a6c0ed99e43881",
+    "timing.json": "8f97ddb5cf441c35178c20a3a3d4c8775b8a692bd57b4c61adac1d3a725f44ed",
+    "viewer.html": "c3499053c6394d44fe927d1378e11895a784fc93b49a9b56c2f4bddfaff6f5b8",
+    "views/back-mask.png": "d383b53e9104524612986607529214108e7fa842900ba1d50d4e84a1bdb79499",
+    "views/back.png": "16949f3cdb4dd77088ada239a6e7653e30e843d657c7651e00401c0a836a4880",
+    "views/camera.json": "a2a33f7101e1d2446f3c13248cdd9518b8dd29db006a4b80cbc2a8584b3387b3",
+    "views/depth-mask.png": "5bc0eb0cf930bafa0534fc4d17317f5ee233af942db88e0add14ed2d1a5b5364",
+    "views/depth-valid.png": "051b7cb5eabd0dc1dec637da48cb026d262c913f378c1289d3c08efd822b40c9",
+    "views/depth.png": "f3f0dc13f5e71aba48c549afe5d345d3951aa66d6b3ae0be8c8f5c01a981c17c",
+    "views/front-mask.png": "5bc0eb0cf930bafa0534fc4d17317f5ee233af942db88e0add14ed2d1a5b5364",
+    "views/front.png": "8a90ed59327288ca985aaae5f45d0d08d97745a7e9098fc513fed706b01c6bb4",
+    "views/joints.json": "a78d41413930eb200b652d95ba185b0ee68d4ce4c0d3fefb53d80d2e85951d16",
+    "views/neutral.obj": "42f89fdbb503c20259a7816b4ae4754cb58675235fc4f0be805d4f05ba745806",
+    "views/pose-mask.png": "5bc0eb0cf930bafa0534fc4d17317f5ee233af942db88e0add14ed2d1a5b5364",
+    "views/pose.png": "1d2a85a53f39074bf301534e00021bb8c77953693cb61906a28fd5fb2a32784e",
+    "views/posed.obj": "38d5e711396e596d5302854db54a0dcf189ed284e13555cd30aac4636e65a350",
+    "views/rawdepth.npy": "cdfa0d0b38ee9cd9b40cb5eb188e07846e5c78cf2b90cb0b6f90d3e7e3b972c8",
+    "views/side-mask.png": "1a0220ba7a1cf070aa6c79bee4b18b6bda4904b589dfd67633ef4d9b42657686",
+    "views/side.png": "21cd42a7128d6c1b64dd50f464aee3fd01aa1416e1ac90087bf557b14f657888",
+    "views/state.json": "f4802f2b2a02d685b8efdd106a7e60c2051b6663e2970144570d9ddc69728d80",
+    "views/view-provenance.json": "ec966b21b71f19f083707065cd2c6ea44914c9f6b9abe9adeb7fac0759f405ba"
+  },
+  "grader_implementation_sha256": "e2908f7a4da8ab9eeb79cb05283e5fdc048e47e5604bee28fa73682ec0ed1757",
+  "grader_version": "1.1-paired-crossings",
+  "native_claude_execution": "BLOCKED: explicitly injected functional subagent runs, not native Claude routing",
+  "state_sha256": "f4802f2b2a02d685b8efdd106a7e60c2051b6663e2970144570d9ddc69728d80",
+  "posed_obj_sha256": "38d5e711396e596d5302854db54a0dcf189ed284e13555cd30aac4636e65a350",
+  "camera_sha256": "3e00c1181bfdd49d471ca5ef61e68ad34646cf0e71c8c019e190416f661f8a08",
+  "assertion_spec_sha256": "83572c805852a4dc93094c5149dd802962d74843ff59b49505db21572a9ef41a",
+  "source_reconstruction": {
+    "posed_max_error_cm": 5.010315769569866e-09,
+    "neutral_max_error_cm": 5.023917971139767e-09,
+    "neutral_target_max_error_cm": 4.0451587011602896e-05,
+    "morph_weight_max_error": 0.0
+  },
+  "view_integrity": {
+    "verdict": "PASS",
+    "checks": {
+      "same_complete_state": true,
+      "mesh_error_cm": 5.010315769569866e-09,
+      "front": {
+        "verdict": "PASS",
+        "hashes_match": true,
+        "joint_reprojection_max_px": 0.0,
+        "independent_mask_iou": 1.0,
+        "png_mean_abs_channel_error": 0.0
+      },
+      "side": {
+        "verdict": "PASS",
+        "hashes_match": true,
+        "joint_reprojection_max_px": 0.0,
+        "independent_mask_iou": 1.0,
+        "png_mean_abs_channel_error": 0.0
+      },
+      "back": {
+        "verdict": "PASS",
+        "hashes_match": true,
+        "joint_reprojection_max_px": 0.0,
+        "independent_mask_iou": 1.0,
+        "png_mean_abs_channel_error": 0.0
+      },
+      "photo": {
+        "verdict": "PASS",
+        "png_mean_abs_channel_error": 0.0,
+        "independent_mask_iou": 1.0,
+        "camera_basis": "Independent decomposition of authoritative 3x4 matrix; no final-list parameter assumption"
+      }
+    },
+    "failures": []
+  },
+  "original_photo_regions": {
+    "reference_height_px": 2860,
+    "regions": {
+      "shoulder_left": {
+        "verdict": "FAIL",
+        "body_pixels": 91480,
+        "outside_fraction": 0.11589418452120683,
+        "exterior_contour_p95_px": 36.35659408569336,
+        "exterior_contour_p95_reference_height_fraction": 0.012712095834158518
+      },
+      "shoulder_right": {
+        "verdict": "PASS",
+        "body_pixels": 126566,
+        "outside_fraction": 0.0030418911872066748,
+        "exterior_contour_p95_px": 5.0,
+        "exterior_contour_p95_reference_height_fraction": 0.0017482517482517483
+      },
+      "arm_left": {
+        "verdict": "PASS",
+        "body_pixels": 135607,
+        "outside_fraction": 0.07002588361957716,
+        "exterior_contour_p95_px": 22.0,
+        "exterior_contour_p95_reference_height_fraction": 0.007692307692307693
+      },
+      "arm_right": {
+        "verdict": "PASS",
+        "body_pixels": 115224,
+        "outside_fraction": 0.00010414496979795876,
+        "exterior_contour_p95_px": 0.0,
+        "exterior_contour_p95_reference_height_fraction": 0.0
+      },
+      "torso": {
+        "verdict": "PASS",
+        "body_pixels": 303343,
+        "outside_fraction": 0.0,
+        "exterior_contour_p95_px": 0.0,
+        "exterior_contour_p95_reference_height_fraction": 0.0
+      },
+      "waist_hip_left": {
+        "verdict": "PASS",
+        "body_pixels": 192171,
+        "outside_fraction": 0.0013633690827440145,
+        "exterior_contour_p95_px": 4.0,
+        "exterior_contour_p95_reference_height_fraction": 0.0013986013986013986
+      },
+      "waist_hip_right": {
+        "verdict": "PASS",
+        "body_pixels": 226867,
+        "outside_fraction": 0.017419898001913015,
+        "exterior_contour_p95_px": 5.0,
+        "exterior_contour_p95_reference_height_fraction": 0.0017482517482517483
+      }
+    },
+    "scanlines": [
+      {
+        "y": 1280,
+        "center_error_px": 13.5,
+        "width_ratio": 0.9563812600969306,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1400,
+        "center_error_px": 13.5,
+        "width_ratio": 0.9563812600969306,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1600,
+        "center_error_px": 5.5,
+        "width_ratio": 1.018363939899833,
+        "verdict": "PASS"
+      },
+      {
+        "y": 1800,
+        "center_error_px": 10.5,
+        "width_ratio": 1.0154373927958833,
+        "verdict": "PASS"
+      }
+    ]
+  },
+  "observed_action": {
+    "visible_wrist_max_error_px": 71.5,
+    "cues": {
+      "eye_image_left": {
+        "projected_xy": [
+          1222.8794666426643,
+          233.18905449064368
+        ],
+        "target_xy": [
+          1112,
+          280
+        ],
+        "error_px": 120.3558089268716,
+        "visibility": "visible",
+        "hard_position_gate": false
+      },
+      "eye_image_right": {
+        "projected_xy": [
+          1303.6022782867194,
+          218.77463913472093
+        ],
+        "target_xy": [
+          1236,
+          280
+        ],
+        "error_px": 91.20642983166647,
+        "visibility": "visible",
+        "hard_position_gate": false
+      },
+      "wrist_image_left": {
+        "projected_xy": [
+          902.3199585422212,
+          1541.9888711824858
+        ],
+        "target_xy": [
+          896,
+          1620
+        ],
+        "error_px": 78.26671128492744,
+        "visibility": "visible_surface_boundary",
+        "hard_position_gate": true
+      },
+      "wrist_image_right": {
+        "projected_xy": [
+          1442.4728530853752,
+          1366.8203729677468
+        ],
+        "target_xy": null,
+        "error_px": null,
+        "visibility": "occluded_in_pocket",
+        "hard_position_gate": false
+      },
+      "shoulder_image_left": {
+        "projected_xy": [
+          1002.8243192860183,
+          658.4845385581625
+        ],
+        "target_xy": [
+          972,
+          628
+        ],
+        "error_px": 43.35257490104246,
+        "visibility": "inferred_under_cloth",
+        "hard_position_gate": false
+      },
+      "shoulder_image_right": {
+        "projected_xy": [
+          1447.5988885056604,
+          579.0625604343904
+        ],
+        "target_xy": [
+          1496,
+          564
+        ],
+        "error_px": 50.690712371470546,
+        "visibility": "inferred_under_cloth",
+        "hard_position_gate": false
+      },
+      "elbow_image_left": {
+        "projected_xy": [
+          914.1109473943955,
+          1127.3669260885135
+        ],
+        "target_xy": [
+          916,
+          1108
+        ],
+        "error_px": 19.458837217693343,
+        "visibility": "inferred_under_cloth",
+        "hard_position_gate": false
+      },
+      "elbow_image_right": {
+        "projected_xy": [
+          1568.8514260428449,
+          974.735520818143
+        ],
+        "target_xy": [
+          1576,
+          1060
+        ],
+        "error_px": 85.56362264288633,
+        "visibility": "inferred_under_cloth",
+        "hard_position_gate": false
+      }
+    },
+    "coarse_directions": {
+      "image_left_shoulder_elbow": {
+        "angle_error_degrees": 4.059393215386367,
+        "projected_length_px": 477.2009594379958,
+        "reference_hypothesis_length_px": 483.2556259372466
+      },
+      "image_left_elbow_wrist": {
+        "angle_error_degrees": 0.6080448546262984,
+        "projected_length_px": 414.78956685483433,
+        "reference_hypothesis_length_px": 512.3904761019666
+      },
+      "image_right_shoulder_elbow": {
+        "angle_error_degrees": 7.875145496411556,
+        "projected_length_px": 413.8348335242563,
+        "reference_hypothesis_length_px": 502.41019097944263
+      }
+    },
+    "failures": [
+      "wrist_image_left observed surface cue too far"
+    ]
+  },
+  "hand_skin_intervals": {
+    "L": {
+      "hand_vertices": 1424,
+      "classified_rays": 1357,
+      "coverage": 0.9529494382022472,
+      "odd_or_open_rays_unknown": 64,
+      "multiple_disjoint_interval_rays": 0,
+      "detected_inside_vertices": 199,
+      "maximum_inside_depth_cm": 4.003695836752803,
+      "minimum_front_clearance_cm": -25.284287655313257,
+      "verdict": "LIMITED_CHECK",
+      "limitation": "Only deduplicated even crossing pairs of the selected hand/core skin patch are classified. Odd/open rays are UNKNOWN; disjoint intervals do not fill air. This is not cloth contact or universal collision proof."
+    },
+    "R": {
+      "hand_vertices": 1424,
+      "classified_rays": 19,
+      "coverage": 0.013342696629213483,
+      "odd_or_open_rays_unknown": 1405,
+      "multiple_disjoint_interval_rays": 0,
+      "detected_inside_vertices": 18,
+      "maximum_inside_depth_cm": 5.2283405066715645,
+      "minimum_front_clearance_cm": -5.306470906876012,
+      "verdict": "LIMITED_CHECK",
+      "limitation": "Only deduplicated even crossing pairs of the selected hand/core skin patch are classified. Odd/open rays are UNKNOWN; disjoint intervals do not fill air. This is not cloth contact or universal collision proof."
+    }
+  },
+  "evaluation_status": "COMPLETE",
+  "manual_review": {
+    "current": true,
+    "path": "work/commerce-skill-evals-20261118/review/iteration-1/eval-2-everlane-pocket-pose/with_skill/manual-review.json",
+    "observations": [
+      {
+        "id": "source_and_prior",
+        "verdict": "PASS",
+        "evidence": "input.jpg actually inspected: near-frontal upright person, image-right shoulder higher, image-left arm lowered with hand visible beside thigh; image-right forearm slopes inward/down into front trouser pocket, wrist/palm hidden. Open oversized light-blue collared long-sleeve shirt with pushed/rolled cuff, separate white inner top, black wide-leg trousers. source.json identifies Everlane original 2400x3000 image, model height/worn size null, and explicitly generic M170 prior. Input SHA256 independently checked against source.json."
+      },
+      {
+        "id": "pose_action_3d",
+        "verdict": "FAIL",
+        "evidence": "FAIL: substantial improvement but imperfect action fidelity. photo-render.png/front.png preserve upright trunk, elevated image-right shoulder, lowered image-left arm and bent image-right elbow; knees/legs are nearly straight and plausible unlike A. However side.png/back.png place the bent-arm hand visibly on posterior buttock/hip with fingers directed toward the rear thigh, rather than the original front trouser-pocket entry. Source-camera head looks to image-right whereas original face looks near camera. Lowered wrist/hand is beside thigh but fingers remain extended. No obvious penetrating fingers in the reviewed B images, but absence of a visible artifact is not a collision/contact guarantee. Pocket palm/wrist/depth and knees under wide trousers remain unobserved."
+      },
+      {
+        "id": "measurement_claims",
+        "verdict": "PASS",
+        "evidence": "measurements.json explicitly labels values as prior/model parameters, never photographed-person measurements; final-state.json measurementDefinition repeats this distinction. Height/bust/waist/hips are conditional 170/90/72/96 cm. B explicitly changes shoulder prior 37 to model target 35.5 cm and arm targets 29/23 to 30/24 cm. Real-person centimetre accuracy is UNKNOWN from this single loose-clothed image. Very small reported neutral target residuals establish only a self-reported parameter calibration; tape-path remeasurement has NOT_RUN. After unblinding, independent-neutral-check.json records successful asset-bound neutral reconstruction with maximum vertex difference 1.4210854715202004e-14 cm; its declared scope explicitly excludes posed skinning, camera, photo match and person accuracy. This review inspected that receipt but did not rerun it."
+      }
+    ]
+  },
+  "expectations": [
+    {
+      "text": "The original retailer image is preserved and its source/scale provenance distinguishes observed facts from the M170 prior.",
+      "passed": true,
+      "evidence": "input.jpg actually inspected: near-frontal upright person, image-right shoulder higher, image-left arm lowered with hand visible beside thigh; image-right forearm slopes inward/down into front trouser pocket, wrist/palm hidden. Open oversized light-blue collared long-sleeve shirt with pushed/rolled cuff, separate white inner top, black wide-leg trousers. source.json identifies Everlane original 2400x3000 image, model height/worn size null, and explicitly generic M170 prior. Input SHA256 independently checked against source.json."
+    },
+    {
+      "text": "Saved centimetre parameters independently reconstruct the real neutral and posed anatomical mesh within tolerance.",
+      "passed": true,
+      "evidence": "{\"posed_max_error_cm\": 5.010315769569866e-09, \"neutral_max_error_cm\": 5.023917971139767e-09, \"neutral_target_max_error_cm\": 4.0451587011602896e-05, \"morph_weight_max_error\": 0.0}"
+    },
+    {
+      "text": "Actual source-camera and front/side/back images replay from the same saved complete body and pose.",
+      "passed": true,
+      "evidence": "{\"verdict\": \"PASS\", \"checks\": {\"same_complete_state\": true, \"mesh_error_cm\": 5.010315769569866e-09, \"front\": {\"verdict\": \"PASS\", \"hashes_match\": true, \"joint_reprojection_max_px\": 0.0, \"independent_mask_iou\": 1.0, \"png_mean_abs_channel_error\": 0.0}, \"side\": {\"verdict\": \"PASS\", \"hashes_match\": true, \"joint_reprojection_max_px\": 0.0, \"independent_mask_iou\": 1.0, \"png_mean_abs_channel_error\": 0.0}, \"back\": {\"verdict\": \"PASS\", \"hashes_match\": true, \"joint_reprojection_max_px\": 0.0, \"independent_mask_iou\": 1.0, \"png_mean_abs_channel_error\": 0.0}, \"photo\": {\"verdict\": \"PASS\", \"png_mean_abs_channel_error\": 0.0, \"independent_mask_iou\": 1.0, \"camera_basis\": \"Independent decomposition of authoritative 3x4 matrix; no final-list parameter assumption\"}}, \"failures\": []}"
+    },
+    {
+      "text": "Every frozen critical original-photo region and centre scanline passes its independent envelope checks.",
+      "passed": false,
+      "evidence": "{\"reference_height_px\": 2860, \"regions\": {\"shoulder_left\": {\"verdict\": \"FAIL\", \"body_pixels\": 91480, \"outside_fraction\": 0.11589418452120683, \"exterior_contour_p95_px\": 36.35659408569336, \"exterior_contour_p95_reference_height_fraction\": 0.012712095834158518}, \"shoulder_right\": {\"verdict\": \"PASS\", \"body_pixels\": 126566, \"outside_fraction\": 0.0030418911872066748, \"exterior_contour_p95_px\": 5.0, \"exterior_contour_p95_reference_height_fraction\": 0.0017482517482517483}, \"arm_left\": {\"verdict\": \"PASS\", \"body_pixels\": 135607, \"outside_fraction\": 0.07002588361957716, \"exterior_contour_p95_px\": 22.0, \"exterior_contour_p95_reference_height_fraction\": 0.007692307692307693}, \"arm_right\": {\"verdict\": \"PASS\", \"body_pixels\": 115224, \"outside_fraction\": 0.00010414496979795876, \"exterior_contour_p95_px\": 0.0, \"exterior_contour_p95_reference_height_fraction\": 0.0}, \"torso\": {\"verdict\": \"PASS\", \"body_pixels\": 303343, \"outside_fraction\": 0.0, \"exterior_contour_p95_px\": 0.0, \"exterior_contour_p95_reference_height_fraction\": 0.0}, \"waist_hip_left\": {\"verdict\": \"PASS\", \"body_pixels\": 192171, \"outside_fraction\": 0.0013633690827440145, \"exterior_contour_p95_px\": 4.0, \"exterior_contour_p95_reference_height_fraction\": 0.0013986013986013986}, \"waist_hip_right\": {\"verdict\": \"PASS\", \"body_pixels\": 226867, \"outside_fraction\": 0.017419898001913015, \"exterior_contour_p95_px\": 5.0, \"exterior_contour_p95_reference_height_fraction\": 0.0017482517482517483}}, \"scanlines\": [{\"y\": 1280, \"center_error_px\": 13.5, \"width_ratio\": 0.9563812600969306, \"verdict\": \"PASS\"}, {\"y\": 1400, \"center_error_px\": 13.5, \"width_ratio\": 0.9563812600969306, \"verdict\": \"PASS\"}, {\"y\": 1600, \"center_error_px\": 5.5, \"width_ratio\": 1.018363939899833, \"verdict\": \"PASS\"}, {\"y\": 1800, \"center_error_px\": 10.5, \"width_ratio\": 1.0154373927958833, \"verdict\": \"PASS\"}]}"
+    },
+    {
+      "text": "Visible original wrist cues and coarse limb directions do not contradict the target action; hidden wrists are not invented.",
+      "passed": false,
+      "evidence": "{\"visible_wrist_max_error_px\": 71.5, \"cues\": {\"eye_image_left\": {\"projected_xy\": [1222.8794666426643, 233.18905449064368], \"target_xy\": [1112, 280], \"error_px\": 120.3558089268716, \"visibility\": \"visible\", \"hard_position_gate\": false}, \"eye_image_right\": {\"projected_xy\": [1303.6022782867194, 218.77463913472093], \"target_xy\": [1236, 280], \"error_px\": 91.20642983166647, \"visibility\": \"visible\", \"hard_position_gate\": false}, \"wrist_image_left\": {\"projected_xy\": [902.3199585422212, 1541.9888711824858], \"target_xy\": [896, 1620], \"error_px\": 78.26671128492744, \"visibility\": \"visible_surface_boundary\", \"hard_position_gate\": true}, \"wrist_image_right\": {\"projected_xy\": [1442.4728530853752, 1366.8203729677468], \"target_xy\": null, \"error_px\": null, \"visibility\": \"occluded_in_pocket\", \"hard_position_gate\": false}, \"shoulder_image_left\": {\"projected_xy\": [1002.8243192860183, 658.4845385581625], \"target_xy\": [972, 628], \"error_px\": 43.35257490104246, \"visibility\": \"inferred_under_cloth\", \"hard_position_gate\": false}, \"shoulder_image_right\": {\"projected_xy\": [1447.5988885056604, 579.0625604343904], \"target_xy\": [1496, 564], \"error_px\": 50.690712371470546, \"visibility\": \"inferred_under_cloth\", \"hard_position_gate\": false}, \"elbow_image_left\": {\"projected_xy\": [914.1109473943955, 1127.3669260885135], \"target_xy\": [916, 1108], \"error_px\": 19.458837217693343, \"visibility\": \"inferred_under_cloth\", \"hard_position_gate\": false}, \"elbow_image_right\": {\"projected_xy\": [1568.8514260428449, 974.735520818143], \"target_xy\": [1576, 1060], \"error_px\": 85.56362264288633, \"visibility\": \"inferred_under_cloth\", \"hard_position_gate\": false}}, \"coarse_directions\": {\"image_left_shoulder_elbow\": {\"angle_error_degrees\": 4.059393215386367, \"projected_length_px\": 477.2009594379958, \"reference_hypothesis_length_px\": 483.2556259372466}, \"image_left_elbow_wrist\": {\"angle_error_degrees\": 0.6080448546262984, \"projected_length_px\": 414.78956685483433, \"reference_hypothesis_length_px\": 512.3904761019666}, \"image_right_shoulder_elbow\": {\"angle_error_degrees\": 7.875145496411556, \"projected_length_px\": 413.8348335242563, \"reference_hypothesis_length_px\": 502.41019097944263}}, \"failures\": [\"wrist_image_left observed surface cue too far\"]}"
+    },
+    {
+      "text": "Independent actual three-dimensional views show a reference-consistent plausible action without detected severe skin overlap; coverage limitations are explicit.",
+      "passed": false,
+      "evidence": "{\"independent_manual\": {\"id\": \"pose_action_3d\", \"verdict\": \"FAIL\", \"evidence\": \"FAIL: substantial improvement but imperfect action fidelity. photo-render.png/front.png preserve upright trunk, elevated image-right shoulder, lowered image-left arm and bent image-right elbow; knees/legs are nearly straight and plausible unlike A. However side.png/back.png place the bent-arm hand visibly on posterior buttock/hip with fingers directed toward the rear thigh, rather than the original front trouser-pocket entry. Source-camera head looks to image-right whereas original face looks near camera. Lowered wrist/hand is beside thigh but fingers remain extended. No obvious penetrating fingers in the reviewed B images, but absence of a visible artifact is not a collision/contact guarantee. Pocket palm/wrist/depth and knees under wide trousers remain unobserved.\"}, \"hand_intervals\": {\"L\": {\"hand_vertices\": 1424, \"classified_rays\": 1357, \"coverage\": 0.9529494382022472, \"odd_or_open_rays_unknown\": 64, \"multiple_disjoint_interval_rays\": 0, \"detected_inside_vertices\": 199, \"maximum_inside_depth_cm\": 4.003695836752803, \"minimum_front_clearance_cm\": -25.284287655313257, \"verdict\": \"LIMITED_CHECK\", \"limitation\": \"Only deduplicated even crossing pairs of the selected hand/core skin patch are classified. Odd/open rays are UNKNOWN; disjoint intervals do not fill air. This is not cloth contact or universal collision proof.\"}, \"R\": {\"hand_vertices\": 1424, \"classified_rays\": 19, \"coverage\": 0.013342696629213483, \"odd_or_open_rays_unknown\": 1405, \"multiple_disjoint_interval_rays\": 0, \"detected_inside_vertices\": 18, \"maximum_inside_depth_cm\": 5.2283405066715645, \"minimum_front_clearance_cm\": -5.306470906876012, \"verdict\": \"LIMITED_CHECK\", \"limitation\": \"Only deduplicated even crossing pairs of the selected hand/core skin patch are classified. Odd/open rays are UNKNOWN; disjoint intervals do not fill air. This is not cloth contact or universal collision proof.\"}}, \"near_torso_coverage_required\": false, \"severe_overlap\": true}"
+    },
+    {
+      "text": "Body data and reports preserve measurement definitions and prior/conditional provenance rather than claiming unmeasured real-person accuracy.",
+      "passed": true,
+      "evidence": "measurements.json explicitly labels values as prior/model parameters, never photographed-person measurements; final-state.json measurementDefinition repeats this distinction. Height/bust/waist/hips are conditional 170/90/72/96 cm. B explicitly changes shoulder prior 37 to model target 35.5 cm and arm targets 29/23 to 30/24 cm. Real-person centimetre accuracy is UNKNOWN from this single loose-clothed image. Very small reported neutral target residuals establish only a self-reported parameter calibration; tape-path remeasurement has NOT_RUN. After unblinding, independent-neutral-check.json records successful asset-bound neutral reconstruction with maximum vertex difference 1.4210854715202004e-14 cm; its declared scope explicitly excludes posed skinning, camera, photo match and person accuracy. This review inspected that receipt but did not rerun it."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 3,
+    "total": 7,
+    "pass_rate": 0.5714285714285714
+  },
+  "overall_verdict": "FAIL",
+  "claims": [
+    {
+      "type": "process",
+      "claim": "Actual source engine reconstructs the saved adjustable anatomy.",
+      "verified": true,
+      "evidence": "{\"posed_max_error_cm\": 5.010315769569866e-09, \"neutral_max_error_cm\": 5.023917971139767e-09, \"neutral_target_max_error_cm\": 4.0451587011602896e-05, \"morph_weight_max_error\": 0.0}"
+    },
+    {
+      "type": "quality",
+      "claim": "This run establishes the photographed person true centimetre dimensions or unique hidden depth.",
+      "verified": false,
+      "evidence": "Single clothed image with generic M170 prior does not identify these quantities."
+    },
+    {
+      "type": "process",
+      "claim": "A native Claude trigger benchmark was executed.",
+      "verified": false,
+      "evidence": "BLOCKED: explicitly injected functional subagent runs, not native Claude routing"
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "Min/max skin-ray hulls can fill air between disconnected anatomical sections; odd/open crossings do not establish clearance.",
+        "suggestion": "Use deduplicated even crossing pairs, keep unclassified coverage UNKNOWN, and test disconnected/odd crossing controls."
+      },
+      {
+        "reason": "A camera.final list is representation-dependent; identical 3x4 camera matrices and content must be judged equally.",
+        "suggestion": "Decompose the authoritative source-camera matrix and independently replay source pixels rather than assume cm-center semantics."
+      },
+      {
+        "reason": "Native image-generation file receipts establish execution and lineage, not preserved anatomy or photo-pose match.",
+        "suggestion": "Keep independent cross-view generated/model/source visual review and report partial regional or wrist regressions explicitly; version any new quality assertion before new executions."
+      }
+    ],
+    "overall": "Inspect any non-discriminating assertion, false-positive local control or missing outcome; functional integrity cannot average away visual/action failure. No general skill advantage from n=1 per case."
+  }
+}
