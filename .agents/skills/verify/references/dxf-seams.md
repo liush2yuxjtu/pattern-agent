@@ -6,6 +6,11 @@ generated from an explicitly corrected derivative of the input sewing lines.
 Original source bytes, v1 failures, unresolved back quantity, folded hidden neck
 layer, material calibration and fit limits must remain visible.
 
+For a complete seam-verification task, use the project-level
+[verify-seaming skill](../../verify-seaming/SKILL.md). It routes geometry,
+inspector, hosted Site and Page persistence claims to their existing recipes;
+this file remains the canonical geometry gate.
+
 ## Local gate
 
 ```sh

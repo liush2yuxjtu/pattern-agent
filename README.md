@@ -205,6 +205,11 @@ are retained separately from the analytic rectangular controls.
 
 ## Verification and history
 
+项目级 [verify-seaming 技能](.agents/skills/verify-seaming/SKILL.md)保存裁片连接的
+验收流程：独立重读源 DXF 与最终 GLB，再按任务核对交互视图、生产 Site 和 Pages
+保存。可显式请求 `$verify-seaming`；Claude 路径通过同名符号链接共用源文件。
+技能复用现有检查器和阈值，保留静态几何、线上交互与实物试穿的独立结论。
+
 The [one-shot pattern roundtrip](experiments/pattern_roundtrip/README.md) separates
 the human/cloth into pure standalone files, unwraps4 actual2D panels and challenges
 armhole fit independently. Representation checks pass, each armhole/cap has a

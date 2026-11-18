@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "claim": "Persist an independent project-level verify-seaming skill with valid shared discovery paths and executable source-bound seam verification instructions",
+  "verdict": "PASS",
+  "candidate": {
+    "base_commit": "8415803cad433cea75738b825586715318bf119c",
+    "files": "candidate-files.json",
+    "note": "Verified working-tree candidate is identified by base commit plus file digests; final commit is its Git history parent, not a fabricated pre-commit SHA."
+  },
+  "verification_skill": ".agents/skills/verify/SKILL.md",
+  "new_project_skill": ".agents/skills/verify-seaming/SKILL.md",
+  "canonical_recipes": ["dxf-seams", "seam-inspector", "seam-sites", "seam-pages"],
+  "python": "3.12.14",
+  "commands": [
+    {
+      "command": "python tools/skill_evals/upstream/scripts/quick_validate.py .agents/skills/verify-seaming",
+      "exit_code": 0,
+      "evidence": "skill-format.log"
+    },
+    {
+      "command": "python services/dxf-preview/verify_connections.py --dxf services/dxf-preview/public/sample.dxf --glb experiments/fitted_tshirt/seam_inspector/accepted-model.glb --units mm --out work/verify-seaming-skill/independent.json",
+      "exit_code": 0,
+      "evidence": "independent.json",
+      "observed": {"verdict": "PASS", "seams": 15, "max_seam_gap_mm": 0.0, "max_3d_seam_length_error_mm": 0.0737491202355045, "proper_self_intersections": 0}
+    },
+    {
+      "command": "SEAM_INSPECTOR_CONTROL_EVIDENCE=work/verify-seaming-skill/controls.json python -m unittest discover -s scripts -p test_seam_inspector_binding.py -v",
+      "exit_code": 0,
+      "evidence": ["controls.json", "controls.log"],
+      "observed": {"cases": 18, "positive": 1, "rejected_negative": 17}
+    },
+    {"command": "git diff --check", "exit_code": 0}
+  ],
+  "manual_checks": {
+    "local_markdown_links": {"count": 13, "verdict": "PASS", "evidence": "local-links.json"},
+    "claude_symlink_matches_canonical": true,
+    "frozen_model_html_report_match_manifest": true,
+    "runtime_scripts_unchanged": true,
+    "remote_main_fast_forwarded_before_edit": true,
+    "existing_parallel_cloth_lab_work_preserved": true
+  },
+  "runtime_browser_retest": {"verdict": "SKIP", "reason": "Only skill and documentation changed; scripts, source and frozen artifacts are unchanged. Prior 12-group artifact browser results remain dated prior evidence."},
+  "native_skill_auto_trigger": "NOT_RUN",
+  "separate_prior_boundary_results": {
+    "authenticated_production_inspector_ui": "BLOCKED",
+    "stored_Site_archive_payload_readback": "BLOCKED",
+    "prior_Page_file_and_content_persistence": "PASS"
+  },
+  "physical_fit": "NOT_RUN",
+  "material_mechanics": "NOT_RUN",
+  "production_cutting_approval": "NOT_RUN",
+  "cleanup": "No browser/server started; no deployment, new paid compute, access change, CI, PR or Issue. Page delivery is a separate native write/readback boundary."
+}

@@ -1,0 +1,111 @@
+{
+  "cases": [
+    {
+      "case": "swapped sewing pair",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_PAIRING side.left"
+    },
+    {
+      "case": "view geometry moved 3mm despite PASS",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_POSITIONS_NOT_ACTUAL_GLB"
+    },
+    {
+      "case": "duplicate HTML certificate block",
+      "expected": "FAIL",
+      "observed": "FAIL"
+    },
+    {
+      "case": "exact accepted cloud artifact",
+      "expected": "PASS",
+      "observed": "PASS"
+    },
+    {
+      "case": "material approval invented",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "FACT_VALUE report.material_mechanics"
+    },
+    {
+      "case": "forged zero length error",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "FACT_VALUE seam.underarm.left.length_error_mm"
+    },
+    {
+      "case": "flat chart detached from GLB certificate",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_SEGMENT_XY front.side.left"
+    },
+    {
+      "case": "report disagrees with independent oracle",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "FACT_VALUE report.checks.max_seam_gap_mm"
+    },
+    {
+      "case": "intended boundary hidden",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_OPENING_COUNT"
+    },
+    {
+      "case": "omitted seam",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_SEAM_SET"
+    },
+    {
+      "case": "false original curve overlay",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_ORIGINAL_CURVE front.side.left"
+    },
+    {
+      "case": "original FAIL relabelled PASS",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "FACT_VALUE summary.original_verdict"
+    },
+    {
+      "case": "displayed seam not exported global vertices",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_SEGMENT_IDS front.side.left"
+    },
+    {
+      "case": "wrong semantic seam label",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_SEAM_LABEL side.left"
+    },
+    {
+      "case": "front/back display label swapped",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_PATCH_LABEL front"
+    },
+    {
+      "case": "view triangle reversed despite PASS",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_INDICES_NOT_ACTUAL_GLB"
+    },
+    {
+      "case": "false model SHA",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_MODEL_HASH_MISMATCH"
+    },
+    {
+      "case": "false DXF SHA",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "reason": "VIEW_DXF_HASH_MISMATCH"
+    }
+  ],
+  "count": 18
+}
