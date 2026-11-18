@@ -4,6 +4,8 @@
 
 反馈按发布方和款式分组。浏览器核对原始评论、批量评论展开和翻页、按部位检索、款式链接和原网页跳转。对照源压缩档验证 40,438 个片段与其源评论和商品 ID。隔离 PostgreSQL 与托管 Supabase 回读均得到 5,451 个来源和款式分组。两个数据集共享的一个匿名商品 ID 分别归组。Zappos 的 Dickies Eisenhower 男式夹克有三条观察。公开浏览角色无专用 schema 和新视图的读取权限。[本地与托管数据库回读](feedback-source-styles.json)
 
+公开的 GitHub Pages 已发布并通过同一套浏览器验收。手机直接打开 Zappos 夹克的款式链接可看到三条观察。中文交接页的三处更新已回读确认。[公开验收记录](live.json) · [发布记录](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44272355391)
+
 从仓库根目录运行本地验收。浏览器使用 Playwright 驱动的 Chromium，截图和原始下载保存在被 Git 忽略的 work 目录。
 
     export PYTHONDONTWRITEBYTECODE=1

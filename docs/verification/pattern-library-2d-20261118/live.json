@@ -1,0 +1,31 @@
+{
+  "verdict": "PASS",
+  "tested_pages_commit": "f2761601dad991016fb60fe6041ccbee17b47e1f",
+  "deployment": "https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44272355391",
+  "base_url": "https://liush2yuxjtu.github.io/pattern-agent/",
+  "source_sha256": "09b92e75def225967061f4519b58421f79cfbdc29730a37224d63383e5b402b0",
+  "paper_previews": 26,
+  "feedback_styles": 5451,
+  "source_review_spans_matched": 40438,
+  "style_permalink_probe": {
+    "url": "https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/?view=feedback&source=publisher%3AZappos&style=Dickies+Eisenhower+%E7%94%B7%E5%BC%8F%E5%A4%B9%E5%85%8B",
+    "visible_observations": 3,
+    "viewport_px": 390
+  },
+  "anonymous_browser_errors": [],
+  "browser_downloads_checked": 11,
+  "ignored_browser_evidence_sha256": {
+    "live-gallery/paper-desktop.png": "c7458df438325d9239ac91dda3c0bdb65bd67d0ff2ce67be2312dd623f33f7b2",
+    "live-gallery/paper-mobile-detail.png": "71ec8d4e4ef3dd9cbeabaf721ff089b2a3ed228f7d7419ea211840b2044e04d0",
+    "live-catalog/zappos-style.png": "e557a3231806d59414bf261704dd485ec57cfde0507fee8e155ff0efde3998be"
+  },
+  "team_page": "https://chatgpt.com/space/page_154e99ebbfdc8191b4ca08917a3e98c6",
+  "team_page_updated_blocks_read_back": 3,
+  "verification": [
+    "verify_gallery.py --base-url with exact expected commit",
+    "verify_catalog.py --base-url with exact expected commit and both original archives",
+    "Chromium on the actual Zappos style permalink with 390px viewport",
+    "Readback of the three updated Page blocks",
+    "git diff --cached --check"
+  ]
+}
