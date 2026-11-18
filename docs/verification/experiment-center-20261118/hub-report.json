@@ -1,0 +1,52 @@
+{
+  "verdict": "PASS",
+  "readme_sha256": "83b0750464f032753d5983211ab21e7a2c2f68dea12420d110fe864320e6495b",
+  "hub_sha256": "6464a30fd78aaab4e2dc83ed014b96ef6f7b29668df8f19286d128ec74de0a32",
+  "errors": [],
+  "bad_responses": [],
+  "round_trips": [
+    {
+      "route": "demo",
+      "target_url": "http://127.0.0.1:45537/intent-edit-review/",
+      "return": "online footer URL checked; local browser Back verified",
+      "target_sha256": "45971ab064b09318662c96bfc55b0dfe80b103fb0a73b9837c699c9c6c677d36"
+    },
+    {
+      "route": "docs",
+      "target_url": "http://127.0.0.1:45537/intent-edit-review/docs/",
+      "return": "actual return-to-center link",
+      "target_sha256": "07cca46840872b7bb44ab6272f0ffd03fe6a4f35382c3f24ea4d34bffcfcdd56"
+    },
+    {
+      "route": "sewn",
+      "target_url": "http://127.0.0.1:45537/intent-edit-review/sewn/",
+      "return": "actual return-to-center link",
+      "target_sha256": "5a27a39a1ee1ebfcee1979f0d5b10cb86b4455c20d4ab2678b92a10eab0110a7"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1448,
+      "overflow": false,
+      "toc_click": true
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "toc_click": true
+    },
+    {
+      "width": 375,
+      "overflow": false,
+      "toc_click": true
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "toc_click": true
+    }
+  ],
+  "url": "http://127.0.0.1:45537/intent-edit-review/experiment/",
+  "repo_links_checked": 40,
+  "toc_links_checked": 9
+}

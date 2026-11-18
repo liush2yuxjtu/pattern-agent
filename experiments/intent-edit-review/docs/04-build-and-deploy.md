@@ -15,6 +15,7 @@
 ```sh
 python experiments/intent-edit-review/build.py
 python experiments/intent-edit-review/build_docs.py
+python experiments/intent-edit-review/build_hub.py
 python -m http.server 8000 --directory web
 ```
 
@@ -65,6 +66,8 @@ git diff --check
 | 文档发布文件 | `web/intent-edit-review/docs/index.html` |
 | 演示 URL | `https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/` |
 | 文档 URL | `https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/docs/` |
+| 中心README | `experiments/intent-edit-review/README.md` |
+| 在线总览 | `https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/` |
 
 不另建仓库，也不更改现有主页或其他项目页面。静态站点构建器会复制整个 `web/`；新增此子目录即可进入同一个项目站点。
 

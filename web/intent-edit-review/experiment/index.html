@@ -1,0 +1,358 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="experiment-readme-sha256" content="83b0750464f032753d5983211ab21e7a2c2f68dea12420d110fe864320e6495b"><link rel="icon" href="data:,"><title>纸样设计意图实验｜统一入口</title>
+<style>
+:root{color-scheme:light;--green:#285347;--ink:#1f2925;--muted:#5d6a63;--line:#d3dbd7}*{box-sizing:border-box}html{scroll-padding-top:24px}body{margin:0;background:#fff;color:var(--ink);font:16px/1.8 system-ui,-apple-system,"Noto Sans CJK SC",sans-serif}header,main,footer{max-width:1320px;margin:auto;padding-inline:30px}header{padding-block:28px 22px;border-bottom:1px solid var(--line)}.eyebrow{font-size:14px;color:var(--muted);margin:0}h1{font-size:34px;line-height:1.4;margin:6px 0 10px}a{color:var(--green);overflow-wrap:anywhere;text-underline-offset:3px}a:focus-visible{outline:3px solid #80ad9b;outline-offset:3px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.actions a{border:1px solid #aebbb4;border-radius:4px;padding:7px 14px;text-decoration:none;min-height:42px}.actions .primary{color:#fff;background:var(--green);border-color:var(--green)}main{display:grid;grid-template-columns:215px minmax(0,1fr);gap:36px;padding-block:28px}nav{position:sticky;top:20px;align-self:start;font-size:14px;max-height:85vh;overflow:auto}nav>p{margin:0 0 10px;font-weight:700}nav ul{list-style:none;padding-left:0;margin:0}nav li{margin:10px 0}nav a{text-decoration:none}nav a:hover{text-decoration:underline}article{min-width:0}article h2{font-size:25px;line-height:1.45;margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}article section:first-child h2{margin-top:0}p{margin:12px 0}li{margin:8px 0}table{width:100%;border-collapse:collapse;table-layout:fixed;margin:18px 0;font-size:15px}th,td{border:1px solid var(--line);text-align:left;vertical-align:top;padding:10px 12px;overflow-wrap:anywhere}th{background:#f3f6f4}code{font:14px/1.7 ui-monospace,Consolas,"Noto Sans CJK SC",monospace;background:#f3f6f4;padding:1px 4px;overflow-wrap:anywhere}pre{overflow:auto;max-width:100%;padding:15px;background:#f3f6f4;border:1px solid var(--line);border-radius:4px}pre code{padding:0;white-space:pre;overflow-wrap:normal}footer{padding-block:18px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+@media(max-width:760px){header,main,footer{padding-inline:18px}header{padding-top:20px}h1{font-size:28px}main{grid-template-columns:1fr;gap:24px}nav{position:static;border:1px solid var(--line);padding:12px 16px;border-radius:4px;max-height:190px}article h2{font-size:23px}th,td{padding:8px 7px}table{font-size:14px}.actions a{font-size:15px;padding-inline:11px}}
+</style></head><body>
+<header><p class="eyebrow">Pattern Agent · 实验总入口</p><h1>纸样设计意图实验</h1><p>本页由实验目录中的 README 生成，输入、代码、结果和证据从同一入口查找。</p><div class="actions"><a class="primary" data-readme href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/README.md">GitHub README</a><a data-route="demo" href="../">原型与改版</a><a data-route="docs" href="../docs/">详细文档</a><a data-route="sewn" href="../sewn/">严格缝合结果</a></div></header>
+<main><nav aria-label="实验总览目录"><p>在本页查找</p><ul>
+<li><a href="#从这里开始" id="toc-从这里开始">从这里开始</a></li>
+<li><a href="#当前结果" id="toc-当前结果">当前结果</a></li>
+<li><a href="#原型与原始输入"
+id="toc-原型与原始输入">原型与原始输入</a></li>
+<li><a href="#四个改版案例" id="toc-四个改版案例">四个改版案例</a></li>
+<li><a href="#代码与模型在哪里"
+id="toc-代码与模型在哪里">代码与模型在哪里</a></li>
+<li><a href="#完整验证证据" id="toc-完整验证证据">完整验证证据</a></li>
+<li><a href="#两条工作流" id="toc-两条工作流">两条工作流</a></li>
+<li><a href="#复跑与发布" id="toc-复跑与发布">复跑与发布</a></li>
+<li><a href="#范围和待确认项"
+id="toc-范围和待确认项">范围和待确认项</a></li>
+</ul></nav><article id="experiment-content"><p><strong>本目录及本 README
+是整个实验的统一入口。</strong>
+原型、编辑代码、案例产物、三维预览、缝合流程和验证证据都从这里查找。相关网页的“实验总入口”也返回同一份内容。</p>
+<p><a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/">在线实验总览</a>
+· <a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/">原型与改版对照</a>
+· <a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/docs/">详细文档</a>
+· <a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/sewn/">真实缝合结果</a></p>
+<section id="从这里开始" class="level2">
+<h2>从这里开始</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>目的</th>
+<th>直接入口</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>查看最小原型输入</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/patterns/fitted-tshirt/input-spec.yaml">输入规格
+YAML</a> · <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/patterns/fitted-tshirt/input.dxf">输入
+DXF</a></td>
+</tr>
+<tr class="even">
+<td>看设计意图如何变成新规格和新纸样</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-benchmark/README.md">改版实验与四个案例</a></td>
+</tr>
+<tr class="odd">
+<td>看原型与改版的二维、三维、完整规格和差异</td>
+<td><a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/">打开对照页</a></td>
+</tr>
+<tr class="even">
+<td>看真正焊接的数字外壳及逐缝验收</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/sewn/README.md">缝合流程说明</a>
+· <a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/sewn/">打开缝合结果页</a></td>
+</tr>
+<tr class="odd">
+<td>在本机复现或继续开发</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/docs/04-build-and-deploy.md">构建、验证与部署手册</a></td>
+</tr>
+<tr class="even">
+<td>审阅完整证据</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/docs/verification/intent-edit-benchmark-20261117">二维改版</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/intent-edit-review-20261118/README.md">对照页</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/intent-sewn-chain-20261118/README.md">严格缝合</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="当前结果" class="level2">
+<h2>当前结果</h2>
+<ul>
+<li>四个具体设计意图均生成了新中文 YAML、规格差异、DXF 坐标补丁和实际
+DXF，二维互校通过。当前是已实现的封闭案例目录，网页不调用任意自然语言生成服务。</li>
+<li>对照页显示原型及四个改版的真实二维图和来源绑定三维几何示意。完整规格、DXF
+和补丁均可下载，共18份文件。</li>
+<li>严格缝合链为
+<code>sew-pattern-to-3d → verify-seaming → verify</code>。原型与袖口加宽的修正外壳几何
+PASS；袖长、衣长、前领三个输入缺少当前支持的配置，五项整体仍为
+<strong>BLOCKED</strong>。</li>
+<li>已通过的两个外壳分别含15条缝、1个连通组件和4个正常开口，严格穿插为0。原始缝线在当前合同下仍为
+FAIL，修正记录与原文件均保留。</li>
+<li>原规格的 U
+未标定；缝合实验只采用明确的毫米数值假定。材料力学、生产批准和真实试穿均为
+NOT_RUN。</li>
+</ul>
+</section>
+<section id="原型与原始输入" class="level2">
+<h2>原型与原始输入</h2>
+<p>原型来源是用户上传的女士贴身长袖圆领T恤纸样。最小输入对为 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/patterns/fitted-tshirt/input-spec.yaml">input-spec.yaml</a>
+与 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/patterns/fitted-tshirt/input.dxf">input.dxf</a>。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>文件</th>
+<th>内容</th>
+<th>字节数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>input-spec.yaml</code></td>
+<td>完整中文语义、尺寸、接口、待确认项和可独立重建的二维几何</td>
+<td>194100</td>
+</tr>
+<tr class="even">
+<td><code>input.dxf</code></td>
+<td>原始 CAD 实体、顶点、文字与容器</td>
+<td>108836</td>
+</tr>
+</tbody>
+</table>
+<p>基准四块纸样，204条曲线/直线、27条文字、1487个多段线顶点。YAML
+SHA-256 为
+<code>88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e</code>；DXF
+为
+<code>1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4</code>。</p>
+<p>完整 YAML
+的几何不依赖原照片才能重建；网页中的几行摘要不能代替全文。两份文件是本次二维改版的几何起点，生产仍需批准单位、材料与工艺。</p>
+</section>
+<section id="四个改版案例" class="level2">
+<h2>四个改版案例</h2>
+<p>每个案例都从同一个原型开始。结果目录包含实际意图
+<code>intent.txt</code>、新规格
+<code>new-spec.yaml</code>、<code>spec-diff.json</code>、<code>geometry-patch.json</code>
+和 <code>output.dxf</code>。</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>案例</th>
+<th>意图与全部产物</th>
+<th>二维互校</th>
+<th>严格缝合</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>袖长增加20U</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/experiments/intent-edit-benchmark/results/01_sleeve_length">01_sleeve_length</a></td>
+<td>PASS</td>
+<td>BLOCKED：PROFILE_REQUIRED</td>
+</tr>
+<tr class="even">
+<td>前后衣身缩短15U</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/experiments/intent-edit-benchmark/results/02_body_length">02_body_length</a></td>
+<td>PASS</td>
+<td>BLOCKED：PROFILE_REQUIRED</td>
+</tr>
+<tr class="odd">
+<td>袖口展开宽增加10U</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/experiments/intent-edit-benchmark/results/03_cuff_width">03_cuff_width</a></td>
+<td>PASS</td>
+<td>修正外壳PASS</td>
+</tr>
+<tr class="even">
+<td>前领加深10U并联动领条</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/experiments/intent-edit-benchmark/results/04_front_neck">04_front_neck</a></td>
+<td>PASS</td>
+<td>BLOCKED：PROFILE_REQUIRED</td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-benchmark/README.md">基准测试说明</a>包含性能统计、三项拒绝对照和补丁重放。组合改版及任意新措辞没有因此获得自动支持。</p>
+</section>
+<section id="代码与模型在哪里" class="level2">
+<h2>代码与模型在哪里</h2>
+<p>本目录保存实验对照、几何示意、缝合编排、文档、总览生成器和浏览器验证。输入、共享服务及证据保持各自的明确位置，通过本
+README 集中连接。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>内容</th>
+<th>仓库位置</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>完整原型输入与原始资料</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/patterns/fitted-tshirt">patterns/fitted-tshirt</a></td>
+</tr>
+<tr class="even">
+<td>自然语言案例、编辑代码、规格/DXF差异与输出</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/experiments/intent-edit-benchmark">intent-edit-benchmark</a></td>
+</tr>
+<tr class="odd">
+<td>本实验显示与打包代码</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/build.py">build.py</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/app.js">app.js</a>
+· <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/viewer.js">viewer.js</a></td>
+</tr>
+<tr class="even">
+<td>五套来源绑定的静态三维示意</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/geometry/README.md">geometry</a></td>
+</tr>
+<tr class="odd">
+<td>三技能缝合编排、状态与复跑</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/sewn/README.md">sewn</a></td>
+</tr>
+<tr class="even">
+<td>共享DXF到GLB转换器与独立检查器</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/services/dxf-preview/README.md">services/dxf-preview</a></td>
+</tr>
+<tr class="odd">
+<td>可单独保存的对照HTML</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/web/intent-edit-review/index.html">web/intent-edit-review/index.html</a></td>
+</tr>
+<tr class="even">
+<td>真正缝合的GLB、完整ZIP、原线/修正线和报告</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/web/intent-edit-review/sewn">web/intent-edit-review/sewn</a></td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/docs/01-user-guide.md">使用指南</a>、<a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/docs/02-architecture.md">项目结构</a>、<a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/docs/03-data-and-audit.md">数据与互校</a>、<a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/docs/04-build-and-deploy.md">构建与发布</a>、<a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/DESIGN.md">视觉设计约定</a>提供进一步说明。</p>
+</section>
+<section id="完整验证证据" class="level2">
+<h2>完整验证证据</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>检查边界</th>
+<th>证据入口</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>设计意图到YAML/DXF、补丁重放与拒绝对照</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/docs/verification/intent-edit-benchmark-20261117">二维改版基准</a></td>
+</tr>
+<tr class="even">
+<td>内嵌18份文件、五套二维/三维、完整YAML阅读和离线</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/intent-edit-review-20261118/README.md">对照页验收</a></td>
+</tr>
+<tr class="odd">
+<td>项目文档与部署</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/intent-edit-review-20261118/project-publication/README.md">文档发布验收</a></td>
+</tr>
+<tr class="even">
+<td>本轮新GLB、独立15缝/拓扑/UV/穿插、27项服务测试</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/intent-sewn-chain-20261118/README.md">三技能缝合验收</a></td>
+</tr>
+<tr class="odd">
+<td>实际线上下载后重开、触摸、窄屏和原始证据包</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/intent-sewn-chain-20261118/live/README.md">缝合线上验收</a></td>
+</tr>
+<tr class="even">
+<td>README中心、页面往返与导航更新</td>
+<td><a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/docs/verification/experiment-center-20261118/README.md">实验中心验收</a></td>
+</tr>
+</tbody>
+</table>
+<p>每个结论必须对应具体文件与检查边界。二维互校、预览交付和数字缝合的
+PASS 不能替代生产或试穿批准。历史 FAIL 与环境限制仍保留在原记录中。</p>
+</section>
+<section id="两条工作流" class="level2">
+<h2>两条工作流</h2>
+<p><strong>建立原型包：</strong> 二维DXF → 完整中文规格 → 二维重建与互校
+→ 来源绑定的三维示意 → 保存原型输入和证据。</p>
+<p><strong>以意图改版：</strong> 原型YAML + 原型DXF + 明确设计意图 →
+新YAML与规格差异 → DXF补丁和新DXF → 二维互校 → 三维示意 →
+支持范围内的新缝合外壳与独立验收。</p>
+<p>原型包的早期流程和参考示例还可在 <a
+href="https://liush2yuxjtu.github.io/pattern-agent/prototype-package/">prototype-package参考页</a>
+查看。当前统一入口以本 README 为准。</p>
+</section>
+<section id="复跑与发布" class="level2">
+<h2>复跑与发布</h2>
+<p>以下命令从仓库根执行。常用环境为Python
+3.12、PyYAML、ezdxf、NumPy、SciPy、Pillow、Playwright及现有Chromium；文档与本README在线总览使用Pandoc
+3.1.11.1。页面运行不依赖这些Python包。</p>
+<pre class="sh"><code>python experiments/intent-edit-review/build.py
+python experiments/intent-edit-review/build_docs.py
+python experiments/intent-edit-review/build_hub.py
+python experiments/intent-edit-review/verify_hub.py --output work/experiment-center/browser
+python experiments/intent-edit-review/verify_browser.py --output work/experiment-center/comparison</code></pre>
+<p>独立数据审计、三维重建和严格缝合的完整命令分别在 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/docs/03-data-and-audit.md">数据说明</a>、<a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/geometry/README.md">三维说明</a>
+与 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/sewn/README.md">缝合说明</a>。</p>
+<p>在线总览由本 README
+生成，数据和链接只有这一份维护入口。改文档或页面导航后须重建对应的
+<code>web/intent-edit-review/</code> 产物并执行适用的本地
+<code>/verify</code>。按根 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/AGENTS.md">AGENTS.md</a>
+直接提交main、非强制推送，沿用既有Pages发布流程，再检查实际线上文件；不新增CI或覆盖无关页面。</p>
+</section>
+<section id="范围和待确认项" class="level2">
+<h2>范围和待确认项</h2>
+<p>对照页是约5.9MB的自包含HTML，完整规格、DXF、补丁、SVG、五套示意模型与脚本内嵌。单独保存后不需要旁边的资源；“实验总入口”是用户选择访问的在线文档链接。</p>
+<p>严格缝合是另一个检查边界。三项超出当前模板的输入需要新的配置与缝合合同，不能通过放宽阈值、改来源标签或沿用旧模型来变成PASS。原型及袖口模型只证明明确修正线的静态单层外壳连接。</p>
+<p>原文件没有物理单位声明；U尚未标定。后身数量2与完整单片装配假定、领条隐藏内层、缝份叠层、材料力学、人体碰撞和真实试穿均待确认。完整中文规格、原始文件、修正对照和所有历史失败保持可查。</p>
+</section></article></main>
+<footer>统一维护入口：experiments/intent-edit-review/README.md。原型输入、模型和历史验证结论保留各自来源。</footer>
+</body></html>

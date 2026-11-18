@@ -1,5 +1,7 @@
 # 使用指南 {#guide}
 
+整个实验从 [统一README入口](https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/README.md) 查找；[在线实验总览](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/) 由同一README生成，集中连接输入、代码、产物及证据。
+
 ## 这个项目交付什么
 
 这是一页原型与改版结果的对照工具。左侧固定展示原型，右侧展示一个已经运行、生成文件并经过独立审计的改版案例。

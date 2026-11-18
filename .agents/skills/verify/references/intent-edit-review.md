@@ -64,3 +64,32 @@ git diff --check
 出现GPU拼接伪影，因此直接保存各章节的真实视口，不将该伪影误报为DOM重复。
 只改文档时，演示HTML应仍逐字节等于已验收版本。正常站点构建后核对两个新子路由，
 不修改现有主页面或导航。线上可用同一脚本的 `--base-url` 指向公开docs路由再验收。
+
+## README 统一入口与关联导航
+
+中心为 `experiments/intent-edit-review/README.md`；`build_hub.py` 用现有 Pandoc
+从该文件生成 `web/intent-edit-review/experiment/index.html`，不维护第二份正文。
+
+```sh
+python experiments/intent-edit-review/build_hub.py
+python experiments/intent-edit-review/build_hub.py --output work/experiment-center/hub-rebuilt.html
+cmp web/intent-edit-review/experiment/index.html work/experiment-center/hub-rebuilt.html
+python experiments/intent-edit-review/verify_hub.py --output work/experiment-center/hub-browser
+python experiments/intent-edit-review/verify_docs.py --output work/experiment-center/docs
+```
+
+`verify_hub.py` 自行启动真实HTTP服务并关闭，核对README摘要、全部仓库链接和目录
+类型、九个目录目标、1448/768/375/320布局，以及总览到对照/文档/缝合页的往返。
+对照页的返回链接为绝对线上地址，方便独立HTML访问；本地只核对该地址并实际后退，
+线上须再点击它、检查新标签确实回到总览。其他两页本地与线上都实际点击返回链接。
+用图像工具检查桌面、手机和表格区域；已有对照与缝合浏览器验收仍须适用地运行。
+
+只更新缝合目录导航时，先运行 `sewn/verify_preview.py`，再执行：
+
+```sh
+python experiments/intent-edit-review/sewn/publish_review.py --refresh-existing web/intent-edit-review/sewn --verification work/experiment-center/sewn/report.json
+```
+
+该模式要求新报告匹配实际目录HTML、完整通过案例及实际模型摘要，并拒绝任意模型、
+源文件或交付包变化；只刷新目录导航证明与文件清单。不能借此重新宣告几何或生产PASS。
+本轮结果见 `docs/verification/experiment-center-20261118/README.md`。

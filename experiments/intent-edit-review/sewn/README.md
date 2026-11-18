@@ -1,13 +1,19 @@
 # 按三个技能生成并验收真实缝合外壳
 
+[返回整个实验的中心README](../README.md) · [在线实验总览](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/)。本页是缝合子流程说明，原型、改版案例、其他页面和完整证据从中心README统一进入。
+
 本目录实际执行用户指定顺序：
 [sew-pattern-to-3d](../../../.agents/skills/sew-pattern-to-3d/SKILL.md) →
 [verify-seaming](../../../.agents/skills/verify-seaming/SKILL.md) →
 [verify](../../../.agents/skills/verify/SKILL.md)。
 
 独立结果页：<https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/sewn/>。
-原有单文件对照页及在线文档不变。本结果页引用本次生成的真实预览，每个预览HTML
+单文件对照页、在线文档与本页通过中心README串联。本结果页引用本次生成的真实预览，每个预览HTML
 内嵌其自己的GLB和脚本，不使用旧模型或图片替代。
+
+只调整本目录页导航时，先运行 `verify_preview.py` 得到与新HTML匹配的真实浏览器报告，
+再用 `publish_review.py --refresh-existing web/intent-edit-review/sewn --verification <报告路径>`
+刷新交付证明。该模式逐项核对原清单，拒绝模型、源文件或交付包变化，保留原整体结论。
 
 ## 本轮真实结论
 

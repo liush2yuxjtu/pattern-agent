@@ -3,6 +3,10 @@
 Runnable Blender garment experiments and independent geometry checks. This is a
 research repository; physical garment fit has not been verified.
 
+## 纸样设计意图实验统一入口
+
+[从实验目录的README开始](experiments/intent-edit-review/README.md)：集中查找原型DXF/YAML、设计意图与差异补丁、二维/三维产物、严格缝合及全部验证证据。[在线实验总览](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/)由同一README生成。
+
 ## Style3D Studio integration
 
 The [Style3D integration record](docs/style3d-integration.md) preserves the official

@@ -2,7 +2,7 @@
 
 ## 独立项目目录
 
-所有本项目源码集中在 `experiments/intent-edit-review/`。发布目录是 `web/intent-edit-review/`，文档源稿位于项目的 `docs/` 子目录。
+本实验的中心目录为 `experiments/intent-edit-review/`，其中 `README.md` 是统一入口。发布目录是 `web/intent-edit-review/`，文档源稿位于项目的 `docs/` 子目录。原始输入、编辑基准、共享转换器和证据按下面的资源关系连接；在线总览从中心README直接生成。
 
 ```text
 experiments/intent-edit-review/
@@ -10,6 +10,7 @@ experiments/intent-edit-review/
 ├── DESIGN.md                 视觉布局、范围和必要差异
 ├── build.py                  生成完整单文件演示
 ├── build_docs.py             从文档源稿生成在线文档
+├── build_hub.py              从中心README生成在线实验总览
 ├── template.html             演示结构
 ├── app.js                    案例、文档、差异和下载交互
 ├── viewer.js                 WebGL及软件三维绘制
@@ -22,6 +23,7 @@ experiments/intent-edit-review/
 
 web/intent-edit-review/
 ├── index.html                可单独保存的演示
+├── experiment/index.html     中心README的在线总览
 └── docs/index.html           无外部资源的在线文档
 ```
 

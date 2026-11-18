@@ -4,7 +4,7 @@
 :root{color-scheme:light;--ink:#1f2925;--muted:#59685e;--green:#285347;--line:#d3dbd7}*{box-sizing:border-box}html{scroll-padding-top:24px}body{margin:0;background:#fff;color:var(--ink);font:16px/1.8 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif}a{color:var(--green);text-underline-offset:3px;overflow-wrap:anywhere}a:focus-visible{outline:3px solid #80ad9b;outline-offset:3px}header,main,footer{max-width:1260px;margin:auto;padding-inline:36px}header{padding-top:30px;padding-bottom:24px;border-bottom:1px solid var(--line)}.project{font-size:14px;color:var(--muted);margin:0 0 8px}header h1{font-size:36px;line-height:1.35;margin:0 0 10px}header p{margin:0 0 16px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:12px}.actions a{padding:7px 15px;border:1px solid #aebbb4;border-radius:4px;text-decoration:none;min-height:42px}.actions .primary{background:var(--green);color:#fff;border-color:var(--green)}main{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;padding-block:30px}nav{position:sticky;top:24px;align-self:start;max-height:calc(100vh - 48px);overflow:auto;font-size:14px;padding-right:12px}nav p{font-weight:700;margin:0 0 8px}nav ul{padding-left:17px;margin:0}nav>ul{padding-left:0;list-style:none}nav li{margin:7px 0}nav a{text-decoration:none}nav a:hover{text-decoration:underline}article{min-width:0}article section.level1{margin-bottom:60px}article h1{font-size:28px;line-height:1.4;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid var(--line)}article h2{font-size:21px;line-height:1.45;margin:32px 0 12px}article h3{font-size:18px}p{margin:12px 0}li{padding-left:3px;margin:8px 0}code{font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,"Noto Sans CJK SC",monospace;overflow-wrap:anywhere;background:#f2f5f3;padding:2px 4px;border-radius:3px}pre{background:#f2f5f3;border:1px solid var(--line);border-radius:5px;padding:16px;overflow:auto;max-width:100%;line-height:1.65}pre code{padding:0;background:none;overflow-wrap:normal;white-space:pre}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:15px;table-layout:fixed}th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#f2f5f3}footer{border-top:1px solid var(--line);padding-block:18px;font-size:14px;color:var(--muted)}
 @media(max-width:760px){header,main,footer{padding-inline:18px}header{padding-top:22px}header h1{font-size:27px}main{grid-template-columns:1fr;gap:26px;padding-top:20px}nav{position:static;max-height:220px;border:1px solid var(--line);border-radius:4px;padding:12px 16px}article h1{font-size:25px}article h2{font-size:20px}table{font-size:14px}th,td{padding:8px 7px}pre{padding:12px}}
 </style></head><body>
-<header><p class="project">Pattern Agent · 独立项目文档</p><h1>原型与改版对照</h1><p>使用指南、数据格式、几何来源、本地验证与 GitHub Pages 发布。</p><div class="actions"><a class="primary" data-demo href="../">打开对照演示</a><a data-source href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/experiments/intent-edit-review/">查看项目源码</a></div></header>
+<header><p class="project">Pattern Agent · 独立项目文档</p><h1>原型与改版对照</h1><p>使用指南、数据格式、几何来源、本地验证与 GitHub Pages 发布。</p><div class="actions"><a class="primary" data-demo href="../">打开对照演示</a><a data-experiment-center href="../experiment/">实验总入口</a><a data-source href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/experiments/intent-edit-review/">查看项目源码与README</a></div></header>
 <main><nav aria-label="文档目录"><p>文档目录</p><ul>
 <li><a href="#guide" id="toc-guide">使用指南</a>
 <ul>
@@ -66,6 +66,11 @@ id="toc-github-pages-的正确位置">GitHub Pages 的正确位置</a></li>
 </ul></li>
 </ul></nav><article id="content"><section id="guide" class="level1">
 <h1>使用指南</h1>
+<p>整个实验从 <a
+href="https://github.com/liush2yuxjtu/pattern-agent/blob/main/experiments/intent-edit-review/README.md">统一README入口</a>
+查找；<a
+href="https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/">在线实验总览</a>
+由同一README生成，集中连接输入、代码、产物及证据。</p>
 <section id="这个项目交付什么" class="level2">
 <h2>这个项目交付什么</h2>
 <p>这是一页原型与改版结果的对照工具。左侧固定展示原型，右侧展示一个已经运行、生成文件并经过独立审计的改版案例。</p>
@@ -192,15 +197,17 @@ MB。完整 YAML、DXF、补丁、二维 SVG、五套三维模型、CSS 和 Java
 <h1>项目结构与重建</h1>
 <section id="独立项目目录" class="level2">
 <h2>独立项目目录</h2>
-<p>所有本项目源码集中在
-<code>experiments/intent-edit-review/</code>。发布目录是
+<p>本实验的中心目录为 <code>experiments/intent-edit-review/</code>，其中
+<code>README.md</code> 是统一入口。发布目录是
 <code>web/intent-edit-review/</code>，文档源稿位于项目的
-<code>docs/</code> 子目录。</p>
+<code>docs/</code>
+子目录。原始输入、编辑基准、共享转换器和证据按下面的资源关系连接；在线总览从中心README直接生成。</p>
 <pre class="text"><code>experiments/intent-edit-review/
 ├── README.md                 项目入口与常用命令
 ├── DESIGN.md                 视觉布局、范围和必要差异
 ├── build.py                  生成完整单文件演示
 ├── build_docs.py             从文档源稿生成在线文档
+├── build_hub.py              从中心README生成在线实验总览
 ├── template.html             演示结构
 ├── app.js                    案例、文档、差异和下载交互
 ├── viewer.js                 WebGL及软件三维绘制
@@ -213,6 +220,7 @@ MB。完整 YAML、DXF、补丁、二维 SVG、五套三维模型、CSS 和 Java
 
 web/intent-edit-review/
 ├── index.html                可单独保存的演示
+├── experiment/index.html     中心README的在线总览
 └── docs/index.html           无外部资源的在线文档</code></pre>
 </section>
 <section id="与仓库其他目录的关系" class="level2">
@@ -479,6 +487,7 @@ Pandoc。</p>
 <h2>构建与预览</h2>
 <pre class="sh"><code>python experiments/intent-edit-review/build.py
 python experiments/intent-edit-review/build_docs.py
+python experiments/intent-edit-review/build_hub.py
 python -m http.server 8000 --directory web</code></pre>
 <p>本机演示地址为
 <code>http://127.0.0.1:8000/intent-edit-review/</code>，文档地址为
@@ -556,6 +565,14 @@ HTML 的摘要不变，避免意外引入数据或模型改版。</p>
 <tr class="odd">
 <td>文档 URL</td>
 <td><code>https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/docs/</code></td>
+</tr>
+<tr class="even">
+<td>中心README</td>
+<td><code>experiments/intent-edit-review/README.md</code></td>
+</tr>
+<tr class="odd">
+<td>在线总览</td>
+<td><code>https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/</code></td>
 </tr>
 </tbody>
 </table>

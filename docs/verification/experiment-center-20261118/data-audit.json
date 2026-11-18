@@ -1,0 +1,513 @@
+{
+  "verdict": "PASS",
+  "cases": [
+    {
+      "case": "baseline",
+      "files": {
+        "yaml": {
+          "bytes": 194100,
+          "sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e"
+        },
+        "dxf": {
+          "bytes": 108836,
+          "sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4"
+        }
+      },
+      "twoD": {
+        "entities": 231,
+        "curves": 204,
+        "text_annotations": 27,
+        "raw_declared_INSUNITS": null,
+        "unit": "YAML U, physical scale uncalibrated"
+      },
+      "threeD": {
+        "panels": [
+          {
+            "id": "front",
+            "source_piece": "前片",
+            "vertices": 703,
+            "triangles": 1236,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.993664504127082e-08,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.008708390551777363
+          },
+          {
+            "id": "back",
+            "source_piece": "后片",
+            "vertices": 717,
+            "triangles": 1274,
+            "boundary_source_error_U": 2.5579538487363607e-13,
+            "maximum_3D_formula_error_U": 4.9938918778025254e-08,
+            "harmonic_residual_U": 8.333333312293689e-08,
+            "source_max_display_join_U": 0.0013813880698615906
+          },
+          {
+            "id": "sleeve_a",
+            "source_piece": "袖片",
+            "vertices": 472,
+            "triangles": 843,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "sleeve_b",
+            "source_piece": "袖片",
+            "vertices": 472,
+            "triangles": 843,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "band",
+            "source_piece": "领条",
+            "vertices": 56,
+            "triangles": 102,
+            "boundary_source_error_U": 0.0,
+            "maximum_3D_formula_error_U": 4.98523036185361e-08,
+            "harmonic_residual_U": 0.0,
+            "source_max_display_join_U": 0.0
+          }
+        ],
+        "units": "U",
+        "mode": "static_geometric_assembly",
+        "physical_fit": "NOT_RUN",
+        "cloth_simulation": "NOT_RUN"
+      },
+      "artifact_sha256": "01f333f3651c181c772824bf0639aed9e7fa6e1c2804352bf44a4155f7486612",
+      "artifact_bytes_match_finalized_source": true
+    },
+    {
+      "case": "01_sleeve_length",
+      "files": {
+        "yaml": {
+          "bytes": 197469,
+          "sha256": "990e2d32160413f1d2bb41ef9714d065e23e42a7adf274bc7f30188ca8e5505c"
+        },
+        "dxf": {
+          "bytes": 108836,
+          "sha256": "830b5eb46cdd4e6eb80b58b86f94f153e85d47ae605ae265e676d43cfcd6bc40"
+        },
+        "spec_diff": {
+          "bytes": 34499,
+          "sha256": "f3ae34e17f4beecb79aa42360363f5fc975ceb288fad5687242541e3251447d6"
+        },
+        "geometry_patch": {
+          "bytes": 35095,
+          "sha256": "464196a2a8f0b0e3b06ca94f35baa021c7ac2dc837df0de36b426973d795e4bf"
+        }
+      },
+      "twoD": {
+        "entities": 231,
+        "curves": 204,
+        "text_annotations": 27,
+        "raw_declared_INSUNITS": null,
+        "unit": "YAML U, physical scale uncalibrated"
+      },
+      "threeD": {
+        "panels": [
+          {
+            "id": "front",
+            "source_piece": "前片",
+            "vertices": 703,
+            "triangles": 1236,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.993664504127082e-08,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.008708390551777363
+          },
+          {
+            "id": "back",
+            "source_piece": "后片",
+            "vertices": 717,
+            "triangles": 1274,
+            "boundary_source_error_U": 2.5579538487363607e-13,
+            "maximum_3D_formula_error_U": 4.9938918778025254e-08,
+            "harmonic_residual_U": 8.333333312293689e-08,
+            "source_max_display_join_U": 0.0013813880698615906
+          },
+          {
+            "id": "sleeve_a",
+            "source_piece": "袖片",
+            "vertices": 485,
+            "triangles": 869,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.500000265281415e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "sleeve_b",
+            "source_piece": "袖片",
+            "vertices": 485,
+            "triangles": 869,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.500000265281415e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "band",
+            "source_piece": "领条",
+            "vertices": 56,
+            "triangles": 102,
+            "boundary_source_error_U": 0.0,
+            "maximum_3D_formula_error_U": 4.98523036185361e-08,
+            "harmonic_residual_U": 0.0,
+            "source_max_display_join_U": 0.0
+          }
+        ],
+        "units": "U",
+        "mode": "static_geometric_assembly",
+        "physical_fit": "NOT_RUN",
+        "cloth_simulation": "NOT_RUN"
+      },
+      "artifact_sha256": "aab5693ceea96225224de0d8924463566e7f0905ce40ac7da1e3054b835844a7",
+      "artifact_bytes_match_finalized_source": true
+    },
+    {
+      "case": "02_body_length",
+      "files": {
+        "yaml": {
+          "bytes": 198299,
+          "sha256": "63312382be180c2a7670e85b64b993f174e7548c6b108f7d75b0bf5291d094fb"
+        },
+        "dxf": {
+          "bytes": 108836,
+          "sha256": "aab08855b2b91d90408593d717d94aec5159ddb149b77c24c1937e11b08112b6"
+        },
+        "spec_diff": {
+          "bytes": 64230,
+          "sha256": "6679afb1e89f126313b015a47726f7456e1863935a82688811399dc49c34ed8b"
+        },
+        "geometry_patch": {
+          "bytes": 74407,
+          "sha256": "c9de5bb8cd56776638839a2161c1942b1ba28f15aaedd3891c611d511d985fcc"
+        }
+      },
+      "twoD": {
+        "entities": 231,
+        "curves": 204,
+        "text_annotations": 27,
+        "raw_declared_INSUNITS": null,
+        "unit": "YAML U, physical scale uncalibrated"
+      },
+      "threeD": {
+        "panels": [
+          {
+            "id": "front",
+            "source_piece": "前片",
+            "vertices": 684,
+            "triangles": 1198,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.993664504127082e-08,
+            "harmonic_residual_U": 8.000000661922968e-08,
+            "source_max_display_join_U": 0.008708390551777363
+          },
+          {
+            "id": "back",
+            "source_piece": "后片",
+            "vertices": 701,
+            "triangles": 1242,
+            "boundary_source_error_U": 2.5579538487363607e-13,
+            "maximum_3D_formula_error_U": 4.9938918778025254e-08,
+            "harmonic_residual_U": 8.333333312293689e-08,
+            "source_max_display_join_U": 0.0013813880698615906
+          },
+          {
+            "id": "sleeve_a",
+            "source_piece": "袖片",
+            "vertices": 472,
+            "triangles": 843,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "sleeve_b",
+            "source_piece": "袖片",
+            "vertices": 472,
+            "triangles": 843,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "band",
+            "source_piece": "领条",
+            "vertices": 56,
+            "triangles": 102,
+            "boundary_source_error_U": 0.0,
+            "maximum_3D_formula_error_U": 4.98523036185361e-08,
+            "harmonic_residual_U": 0.0,
+            "source_max_display_join_U": 0.0
+          }
+        ],
+        "units": "U",
+        "mode": "static_geometric_assembly",
+        "physical_fit": "NOT_RUN",
+        "cloth_simulation": "NOT_RUN"
+      },
+      "artifact_sha256": "9966994c5637446ecb94eea415ebd20034af00b460f46c17a698d2e80bc5bb9a",
+      "artifact_bytes_match_finalized_source": true
+    },
+    {
+      "case": "03_cuff_width",
+      "files": {
+        "yaml": {
+          "bytes": 196859,
+          "sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3"
+        },
+        "dxf": {
+          "bytes": 108836,
+          "sha256": "7436ccd3bae9fe3746922db35646a0bed3ab1304e8a867fa202da2b592c62163"
+        },
+        "spec_diff": {
+          "bytes": 30728,
+          "sha256": "889a1f2705a9a16ce510327c20445971db4bedc0e56b7c50fa7fe89d2af11320"
+        },
+        "geometry_patch": {
+          "bytes": 29872,
+          "sha256": "a7c14e3ecada9df73cfb787ec84a59f719295b1774f765c900ae2f69c1cc17ae"
+        }
+      },
+      "twoD": {
+        "entities": 231,
+        "curves": 204,
+        "text_annotations": 27,
+        "raw_declared_INSUNITS": null,
+        "unit": "YAML U, physical scale uncalibrated"
+      },
+      "threeD": {
+        "panels": [
+          {
+            "id": "front",
+            "source_piece": "前片",
+            "vertices": 703,
+            "triangles": 1236,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.993664504127082e-08,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.008708390551777363
+          },
+          {
+            "id": "back",
+            "source_piece": "后片",
+            "vertices": 717,
+            "triangles": 1274,
+            "boundary_source_error_U": 2.5579538487363607e-13,
+            "maximum_3D_formula_error_U": 4.9938918778025254e-08,
+            "harmonic_residual_U": 8.333333312293689e-08,
+            "source_max_display_join_U": 0.0013813880698615906
+          },
+          {
+            "id": "sleeve_a",
+            "source_piece": "袖片",
+            "vertices": 477,
+            "triangles": 853,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.999999951380232e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "sleeve_b",
+            "source_piece": "袖片",
+            "vertices": 477,
+            "triangles": 853,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.999999951380232e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "band",
+            "source_piece": "领条",
+            "vertices": 56,
+            "triangles": 102,
+            "boundary_source_error_U": 0.0,
+            "maximum_3D_formula_error_U": 4.98523036185361e-08,
+            "harmonic_residual_U": 0.0,
+            "source_max_display_join_U": 0.0
+          }
+        ],
+        "units": "U",
+        "mode": "static_geometric_assembly",
+        "physical_fit": "NOT_RUN",
+        "cloth_simulation": "NOT_RUN"
+      },
+      "artifact_sha256": "9293e4b752da09349e56e25aad1a8df2b2b21323d9a14a0ebaf7b48c98b329e4",
+      "artifact_bytes_match_finalized_source": true
+    },
+    {
+      "case": "04_front_neck",
+      "files": {
+        "yaml": {
+          "bytes": 198097,
+          "sha256": "1f99d8ebd863e83d7b70b7c3aa21993d8cca3dc14e78e09a02de4d3422f59c67"
+        },
+        "dxf": {
+          "bytes": 108836,
+          "sha256": "1f1e5f6c5204afb8b34c8691f6330b2f01c1754146603ef17cd4b518363d573b"
+        },
+        "spec_diff": {
+          "bytes": 43779,
+          "sha256": "37731a20abe07efe2e1dc155ac7618d40789517b3604d1ef47fdcba4bcbf6791"
+        },
+        "geometry_patch": {
+          "bytes": 45904,
+          "sha256": "f40d4f81095c1e2d90fc81300d3bbc3111eece7341655d2859b20b739cd94492"
+        }
+      },
+      "twoD": {
+        "entities": 231,
+        "curves": 204,
+        "text_annotations": 27,
+        "raw_declared_INSUNITS": null,
+        "unit": "YAML U, physical scale uncalibrated"
+      },
+      "threeD": {
+        "panels": [
+          {
+            "id": "front",
+            "source_piece": "前片",
+            "vertices": 697,
+            "triangles": 1224,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.993664504127082e-08,
+            "harmonic_residual_U": 7.999999951380232e-08,
+            "source_max_display_join_U": 0.008708390551777363
+          },
+          {
+            "id": "back",
+            "source_piece": "后片",
+            "vertices": 717,
+            "triangles": 1274,
+            "boundary_source_error_U": 2.5579538487363607e-13,
+            "maximum_3D_formula_error_U": 4.9938918778025254e-08,
+            "harmonic_residual_U": 8.333333312293689e-08,
+            "source_max_display_join_U": 0.0013813880698615906
+          },
+          {
+            "id": "sleeve_a",
+            "source_piece": "袖片",
+            "vertices": 472,
+            "triangles": 843,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "sleeve_b",
+            "source_piece": "袖片",
+            "vertices": 472,
+            "triangles": 843,
+            "boundary_source_error_U": 2.8421709430404007e-13,
+            "maximum_3D_formula_error_U": 4.296036820505833e-06,
+            "harmonic_residual_U": 7.999999240837496e-08,
+            "source_max_display_join_U": 0.0
+          },
+          {
+            "id": "band",
+            "source_piece": "领条",
+            "vertices": 56,
+            "triangles": 102,
+            "boundary_source_error_U": 1.7053025658242404e-13,
+            "maximum_3D_formula_error_U": 4.9246978051087353e-08,
+            "harmonic_residual_U": 0.0,
+            "source_max_display_join_U": 0.0
+          }
+        ],
+        "units": "U",
+        "mode": "static_geometric_assembly",
+        "physical_fit": "NOT_RUN",
+        "cloth_simulation": "NOT_RUN"
+      },
+      "artifact_sha256": "b1a7deff75859e8072ed86b1e3b853aba7b5347f36ee186bfe7e58147d2c93b3",
+      "artifact_bytes_match_finalized_source": true
+    }
+  ],
+  "responses": [
+    {
+      "case": "01_sleeve_length",
+      "changed_instances": [
+        "sleeve_a",
+        "sleeve_b"
+      ],
+      "unchanged_piece_response": "PASS"
+    },
+    {
+      "case": "02_body_length",
+      "changed_instances": [
+        "front",
+        "back"
+      ],
+      "unchanged_piece_response": "PASS"
+    },
+    {
+      "case": "03_cuff_width",
+      "changed_instances": [
+        "sleeve_a",
+        "sleeve_b"
+      ],
+      "unchanged_piece_response": "PASS"
+    },
+    {
+      "case": "04_front_neck",
+      "changed_instances": [
+        "front",
+        "band"
+      ],
+      "unchanged_piece_response": "PASS"
+    }
+  ],
+  "production_readiness": "BLOCKED",
+  "physical_fit": "NOT_RUN",
+  "adversarial_controls": [
+    {
+      "control": "stale_SVG_with_fresh_source_digests",
+      "verdict": "PASS",
+      "actual_rejection": "Actual SVG geometry does not match the embedded/source DXF",
+      "mutated_html_sha256": "1a141885a8ad2c745935f944a5f5e6f0d0fc203dc047f32da3abc2a1cc7678a2"
+    },
+    {
+      "control": "stale_primitives_with_fresh_source_digests",
+      "verdict": "PASS",
+      "actual_rejection": "Embedded 2D primitives are stale or incomplete",
+      "mutated_html_sha256": "996ada772c1f1fd1da7ad0b3b6d88cadcc0db64ee1e9026f37ce7484355fc459"
+    },
+    {
+      "control": "old_3D_with_forged_case_and_piece_digests",
+      "verdict": "PASS",
+      "actual_rejection": "3D boundary UV does not match the actual case DXF",
+      "mutated_html_sha256": "5264549cddf2ce52376d396ab211c15c40e4a588d0f001fe478ec3801317a2e7"
+    },
+    {
+      "control": "altered_3D_positions_with_valid_artifact_digest",
+      "verdict": "PASS",
+      "actual_rejection": "Body 3D boundary is not the documented source-based placement",
+      "mutated_html_sha256": "9e0946c0d74b30f4a634cc274ab8ffa0faf42af8ee2e0607aef31ac5d4030d12"
+    },
+    {
+      "control": "truncated_YAML_with_self_consistent_length_and_digest",
+      "verdict": "PASS",
+      "actual_rejection": "01_sleeve_length: embedded full source bytes differ",
+      "mutated_html_sha256": "2587857696d064a660c4a415d3158e796bcf501a03f3ce60ff3fed41e0255aea"
+    },
+    {
+      "control": "missing_design_intent_case",
+      "verdict": "PASS",
+      "actual_rejection": "Incomplete review payload",
+      "mutated_html_sha256": "785fa24a90dfa0bb56811656ff00eb6fc733834c6943dba4aa47b9473b199674"
+    }
+  ],
+  "html": "web/intent-edit-review/index.html",
+  "html_sha256": "45971ab064b09318662c96bfc55b0dfe80b103fb0a73b9837c699c9c6c677d36"
+}

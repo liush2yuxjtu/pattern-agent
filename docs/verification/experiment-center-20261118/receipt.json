@@ -1,0 +1,127 @@
+{
+  "verdict": "PASS",
+  "recorded_at": "2026-11-18T12:31:23.155512+08:00",
+  "candidate_parent": "4e79c79fbf0022f48099a782b20c4c9c193e6469",
+  "candidate": "working tree identified by source_sha256; subsequently committed directly to main",
+  "verifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/intent-edit-review.md",
+  "source_sha256": {
+    ".agents/skills/verify/references/intent-edit-review.md": "86e875a6baecd3ad28dccb5da179e1c24ab2c6fa867f83a8ed285482dce641c1",
+    "README.md": "19a184014aafdd1a466457443eb9f7f7f1cb27a2fc0a82550e5181c8500a64d9",
+    "experiments/intent-edit-benchmark/README.md": "302934f11d1bb97e650aa354b8452ac20d7bd67e707d4886e74238629f683237",
+    "experiments/intent-edit-review/README.md": "83b0750464f032753d5983211ab21e7a2c2f68dea12420d110fe864320e6495b",
+    "experiments/intent-edit-review/build_hub.py": "9dcb0fc64372c951532b8c9b5407ae2d70c8fc2a4c6556f39c080c7901c3f760",
+    "experiments/intent-edit-review/docs/01-user-guide.md": "70e360fe1a880b3d3f776a2b3612d181300d4b6ef9a73000a8f677060ffe59f9",
+    "experiments/intent-edit-review/docs/02-architecture.md": "dc82491bb478f68f68674d5e34e598c90f9e7857feca3055fc631017d57a47f4",
+    "experiments/intent-edit-review/docs/04-build-and-deploy.md": "9d618f9fe639b160fa936c69d00fc84d7febb5a192c17238341dbdf65c8674c6",
+    "experiments/intent-edit-review/docs/template.html": "19ee12cd1769c489faf2ead467d7eca57e0316b8e75ea3e965b1080c300d3474",
+    "experiments/intent-edit-review/hub-template.html": "129a6c78b6a82d475fe481cd32ed243fd3438927692cf5deedc20ededabcc94a",
+    "experiments/intent-edit-review/sewn/README.md": "292e75ef1a2a3cb3c5728b728da660eb3d1d5fafe9dcc08c5e65669910ed916e",
+    "experiments/intent-edit-review/sewn/publish_review.py": "8c01140aed980f22fc04e95840d88d27f5a0177dd78d26596f90e62c035c4f7b",
+    "experiments/intent-edit-review/sewn/review-template.html": "a9c6dbab7e735092e2e2285e79d1fc10958ccb20c7e07640325a705a3e23493f",
+    "experiments/intent-edit-review/style.css": "a580e81e354314b6ee6332db1db74d91f74645b247781326263978bd49408a4a",
+    "experiments/intent-edit-review/template.html": "8abe18200d7a65ac0a8c3c0c35557b83616ad5ab09ec61be1558ec24d760c849",
+    "experiments/intent-edit-review/verify_hub.py": "13c60ab283a233156fc7a21700508a2c7cfcdbff92588a218ad6f2fd5be71223",
+    "experiments/intent-edit-review/verify_public_hub.py": "6d6a578938966e426a33022bac925d66e23ea3361ab7594fb765db67326798b1",
+    "web/intent-edit-review/docs/index.html": "07cca46840872b7bb44ab6272f0ffd03fe6a4f35382c3f24ea4d34bffcfcdd56",
+    "web/intent-edit-review/experiment/index.html": "6464a30fd78aaab4e2dc83ed014b96ef6f7b29668df8f19286d128ec74de0a32",
+    "web/intent-edit-review/index.html": "45971ab064b09318662c96bfc55b0dfe80b103fb0a73b9837c699c9c6c677d36",
+    "web/intent-edit-review/sewn/files-manifest.json": "acddb70cb53b58f02755d3568f08ca5637a13df8f8ea79ded91f82ae7401dd2d",
+    "web/intent-edit-review/sewn/index.html": "5a27a39a1ee1ebfcee1979f0d5b10cb86b4455c20d4ab2678b92a10eab0110a7",
+    "web/intent-edit-review/sewn/manifest.json": "4dfbb551d2f1fc80ef06bdf5710e2bda693de161c5957a4fb56b247c0d4bf65d",
+    "web/intent-edit-review/sewn/preview-verification.json": "0ca88887da6131b451c293b5d9a9dbd8e21f787a85beb44e8b1389b649d2cd99"
+  },
+  "checks": [
+    {
+      "command": "python experiments/intent-edit-review/build.py",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/build_docs.py",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/build_hub.py",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/build_hub.py --output work/experiment-center/hub-rebuilt.html; cmp web/intent-edit-review/experiment/index.html work/experiment-center/hub-rebuilt.html",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/verify_hub.py --output work/experiment-center/hub-browser",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/verify_docs.py --output work/experiment-center/docs",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/verify_browser.py --output work/experiment-center/comparison",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python -m unittest discover -s experiments/intent-edit-review/verification -p 'test_*.py' -v",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/verification/audit_embedded_review.py --html web/intent-edit-review/index.html --output work/experiment-center/data-audit.json --adversarial",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/sewn/verify_preview.py --output work/experiment-center/sewn",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python experiments/intent-edit-review/sewn/publish_review.py --refresh-existing web/intent-edit-review/sewn --verification work/experiment-center/sewn/report.json",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "python scripts/build_pages.py --output work/experiment-center/site",
+      "exit_code": 0,
+      "verdict": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "verdict": "PASS"
+    }
+  ],
+  "runtime_observations": {
+    "repo_resource_links": 40,
+    "hub_toc_targets": 9,
+    "docs_toc_targets": 32,
+    "actual_downloads": 18,
+    "related_page_round_trips": 3,
+    "widths": [
+      1448,
+      768,
+      375,
+      320
+    ],
+    "independently_reopened_downloaded_models": 2,
+    "all_console_and_resource_errors": 0
+  },
+  "scope": {
+    "navigation_and_local_delivery": "PASS",
+    "strict_sewing_whole_workflow": "BLOCKED",
+    "accepted_models": 2,
+    "unsupported_cases": 3,
+    "embedded_source_payload_unchanged": true,
+    "sewn_model_source_zip_bytes_unchanged": true,
+    "unrelated_web_pages_changed": false,
+    "physical_fit": "NOT_RUN"
+  },
+  "cleanup": "Local verifiers closed their browsers and HTTP servers; publication UI observation follows in a separate receipt."
+}

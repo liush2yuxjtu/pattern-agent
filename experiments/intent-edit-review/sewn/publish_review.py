@@ -101,8 +101,48 @@ def build(run, output, verification=None):
     print(json.dumps({'output': str(output), 'workflow_verdict': manifest['verdict'], 'summary': s, 'files': len(inventory)}, ensure_ascii=False))
 
 
+def refresh_existing(output, verification):
+    """Renew page verification after navigation edits; every model/source file stays exact."""
+    manifest = json.loads((output / 'manifest.json').read_text())
+    report = json.loads(verification.read_text())
+    accepted = {e['id']: e for e in manifest['cases'] if e['verdict'] == 'PASS'}
+    if report['verdict'] != 'PASS' or report['workflow_verdict'] != manifest['verdict']:
+        raise ValueError('Fresh preview verification must preserve workflow outcome')
+    if report['catalog_sha256'] != hashlib.sha256((output / 'index.html').read_bytes()).hexdigest():
+        raise ValueError('Fresh report does not match the changed page')
+    if {r['id'] for r in report['cases']} != set(accepted):
+        raise ValueError('Accepted case coverage changed')
+    for row in report['cases']:
+        actual = hashlib.sha256((output / row['id'] / 'files/model.glb').read_bytes()).hexdigest()
+        if row['model_sha256'] != accepted[row['id']]['model_sha256'] or actual != row['model_sha256'] or row['downloaded_glb_independent'] != 'PASS':
+            raise ValueError('Actual model or downloaded verification changed')
+    for name, old in json.loads((output / 'files-manifest.json').read_text()).items():
+        if name not in ['index.html', 'manifest.json', 'preview-verification.json']:
+            raw = (output / name).read_bytes()
+            if len(raw) != old['bytes'] or hashlib.sha256(raw).hexdigest() != old['sha256']:
+                raise ValueError('Navigation refresh cannot change models or source artifacts: ' + name)
+    previous = manifest.get('preview_verification_sha256')
+    shutil.copyfile(verification, output / 'preview-verification.json')
+    manifest['preview_verification_sha256'] = hashlib.sha256(verification.read_bytes()).hexdigest()
+    manifest.setdefault('navigation_reviews', []).append({'recorded_at': datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(),
+        'catalog_sha256': report['catalog_sha256'], 'previous_report_sha256': previous,
+        'new_report_sha256': manifest['preview_verification_sha256'], 'model_bytes_unchanged': True})
+    (output / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    inventory = {str(p.relative_to(output)): {'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
+                 for p in sorted(output.rglob('*')) if p.is_file() and p.name != 'files-manifest.json'}
+    (output / 'files-manifest.json').write_text(json.dumps(inventory, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps({'navigation_verified': True, 'models_unchanged': True, 'workflow_verdict': manifest['verdict']}))
+
+
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--run', type=Path, required=True); p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--run', type=Path); p.add_argument('--output', type=Path)
     p.add_argument('--verification', type=Path)
-    a = p.parse_args(); build(a.run.resolve(), a.output.resolve(), a.verification.resolve() if a.verification else None)
+    p.add_argument('--refresh-existing', type=Path)
+    a = p.parse_args()
+    if a.refresh_existing:
+        if not a.verification or a.run or a.output: p.error('--refresh-existing needs --verification only')
+        refresh_existing(a.refresh_existing.resolve(), a.verification.resolve())
+    else:
+        if not a.run or not a.output: p.error('--run and --output are required for a new publication')
+        build(a.run.resolve(), a.output.resolve(), a.verification.resolve() if a.verification else None)
