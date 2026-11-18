@@ -1,0 +1,1082 @@
+{
+  "schema_version": 1,
+  "checker_sha256": "4fe1400f67fb602cff5b7d2050b371ee4cf9d7e911d8a73a7387dd945375b55e",
+  "numpy_oracle_sha256": "685fea10301c57b733f98c8e3a1bc26b0f1ed249561a2589b9b0d18bec48d1a9",
+  "analytic_controls": {
+    "test_count": 23,
+    "all_passed": true,
+    "tests": [
+      {
+        "name": "parallel_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_crossing",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "noncoplanar_point_contact_with_plane_straddling",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_positive_area",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "coplanar_edge_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "coplanar_point_contact",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "sub_epsilon_parallel_gap",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "in_plane_disjoint",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_noncoplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_coplanar_positive",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "cross_mesh_disjoint_negative",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_vertex_crossing_beyond_common_point_detected",
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_point_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_coplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "valid_shared_edge_fold_noncoplanar",
+        "expected_intersection": false,
+        "observed_intersection": false,
+        "passed": true
+      },
+      {
+        "name": "shared_edge_positive_area_fold_detected",
+        "expected_intersection": true,
+        "observed_intersection": true,
+        "passed": true
+      },
+      {
+        "name": "closed_cube_connectivity_orientation_volume",
+        "passed": true
+      },
+      {
+        "name": "open_square_tube_two_boundary_cycles",
+        "passed": true
+      },
+      {
+        "name": "independent_solid_angle_interior_exterior",
+        "passed": true
+      },
+      {
+        "name": "claimed_path_outside_armless_cube_rejected",
+        "passed": true
+      },
+      {
+        "name": "intersection_invariant_to_face_winding",
+        "passed": true
+      }
+    ],
+    "epsilon_m": 1e-06,
+    "phase": "analytic_before_legacy_comparison"
+  },
+  "numpy_epsilon_m": 1e-06,
+  "scope": "Saved, supplied discrete surfaces only; no clearance or continuous-time guarantee",
+  "material_stress": "NOT_VALIDATED",
+  "physical_fit": "NOT_RUN",
+  "frames": [
+    {
+      "topology": {
+        "vertex_count": 3569,
+        "used_vertex_count": 3569,
+        "orphan_vertices": 0,
+        "triangle_count": 6958,
+        "edge_count": 10529,
+        "connected_components": 1,
+        "boundary_edges": 184,
+        "boundary_components": 4,
+        "boundary_cycles": 4,
+        "boundary_branch_vertices": 0,
+        "nonmanifold_edges": 0,
+        "winding_conflicts": 0,
+        "degenerate_triangles": 0,
+        "duplicate_faces": 0,
+        "euler_characteristic": -2,
+        "closed_oriented_edge_manifold": false,
+        "component_signed_volumes_m3": [
+          0.053199457367259076
+        ],
+        "outward_closed_components": false,
+        "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+      },
+      "numpy_self_face_pairs": [
+        [
+          4572,
+          4773
+        ],
+        [
+          4574,
+          5291
+        ],
+        [
+          4773,
+          5291
+        ]
+      ],
+      "cgal_self_face_pairs": [
+        [
+          4572,
+          4773
+        ],
+        [
+          4574,
+          5291
+        ],
+        [
+          4773,
+          5291
+        ]
+      ],
+      "self_predicates_agree": true,
+      "body_face_pairs": [],
+      "strict_inside_vertex_ids": null,
+      "interior_verdict": "UNKNOWN_INVALID_BODY",
+      "collision_verdict": "FAIL",
+      "self_pair_centres_m": [
+        [
+          0.17987132390340171,
+          1.2697436650594076,
+          0.015156604945659638
+        ],
+        [
+          0.18050750732421875,
+          1.2693028004964193,
+          0.012223437627156577
+        ],
+        [
+          0.18149779319763185,
+          1.2691819763183594,
+          0.013774813016255699
+        ]
+      ],
+      "frame": "saved_final"
+    }
+  ],
+  "source": {
+    "mesh_sha256": "1d228e1d166a61696814414db0a15469bd2e94e0f007b95a6ac40243172c8131",
+    "body_sha256": "f6b2bdf2881b839089a6da06c39e63993a77607939b21522ae906c0131fa54d9",
+    "mesh_scale_to_m": 0.01,
+    "body_scale_to_m": 1.0
+  },
+  "body_topology": {
+    "vertex_count": 23752,
+    "used_vertex_count": 23752,
+    "orphan_vertices": 0,
+    "triangle_count": 47500,
+    "edge_count": 71250,
+    "connected_components": 1,
+    "boundary_edges": 0,
+    "boundary_components": 0,
+    "boundary_cycles": 0,
+    "boundary_branch_vertices": 0,
+    "nonmanifold_edges": 0,
+    "winding_conflicts": 0,
+    "degenerate_triangles": 0,
+    "duplicate_faces": 0,
+    "euler_characteristic": 2,
+    "closed_oriented_edge_manifold": true,
+    "component_signed_volumes_m3": [
+      0.07295637944276474
+    ],
+    "outward_closed_components": true,
+    "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+  },
+  "body_self_face_pairs_cgal": [
+    [
+      1021,
+      10692
+    ],
+    [
+      1021,
+      10693
+    ],
+    [
+      1021,
+      45058
+    ],
+    [
+      1107,
+      16928
+    ],
+    [
+      1107,
+      45065
+    ],
+    [
+      1175,
+      19126
+    ],
+    [
+      1175,
+      45065
+    ],
+    [
+      4338,
+      39570
+    ],
+    [
+      7701,
+      21749
+    ],
+    [
+      7701,
+      45441
+    ],
+    [
+      7752,
+      19149
+    ],
+    [
+      7752,
+      45054
+    ],
+    [
+      7913,
+      32328
+    ],
+    [
+      9945,
+      19152
+    ],
+    [
+      9945,
+      45047
+    ],
+    [
+      10676,
+      45060
+    ],
+    [
+      10677,
+      45072
+    ],
+    [
+      10678,
+      10698
+    ],
+    [
+      10678,
+      10699
+    ],
+    [
+      10678,
+      10700
+    ],
+    [
+      10678,
+      10701
+    ],
+    [
+      10678,
+      45070
+    ],
+    [
+      10678,
+      45072
+    ],
+    [
+      10680,
+      10696
+    ],
+    [
+      10680,
+      45064
+    ],
+    [
+      10680,
+      45066
+    ],
+    [
+      10680,
+      45068
+    ],
+    [
+      10681,
+      10698
+    ],
+    [
+      10681,
+      10699
+    ],
+    [
+      10681,
+      10700
+    ],
+    [
+      10681,
+      10701
+    ],
+    [
+      10681,
+      45070
+    ],
+    [
+      10681,
+      45072
+    ],
+    [
+      10683,
+      10698
+    ],
+    [
+      10683,
+      10699
+    ],
+    [
+      10683,
+      10700
+    ],
+    [
+      10683,
+      10701
+    ],
+    [
+      10683,
+      45070
+    ],
+    [
+      10683,
+      45072
+    ],
+    [
+      10685,
+      45098
+    ],
+    [
+      10687,
+      10702
+    ],
+    [
+      10687,
+      45076
+    ],
+    [
+      10687,
+      45078
+    ],
+    [
+      10688,
+      10713
+    ],
+    [
+      10688,
+      43585
+    ],
+    [
+      10690,
+      22029
+    ],
+    [
+      10692,
+      21823
+    ],
+    [
+      10692,
+      45501
+    ],
+    [
+      10693,
+      25788
+    ],
+    [
+      10694,
+      25491
+    ],
+    [
+      10696,
+      26097
+    ],
+    [
+      10697,
+      25491
+    ],
+    [
+      10697,
+      45032
+    ],
+    [
+      10698,
+      25961
+    ],
+    [
+      10698,
+      45034
+    ],
+    [
+      10698,
+      45036
+    ],
+    [
+      10698,
+      45038
+    ],
+    [
+      10699,
+      25961
+    ],
+    [
+      10699,
+      45036
+    ],
+    [
+      10699,
+      45038
+    ],
+    [
+      10700,
+      25961
+    ],
+    [
+      10700,
+      45036
+    ],
+    [
+      10700,
+      45038
+    ],
+    [
+      10701,
+      25961
+    ],
+    [
+      10701,
+      45036
+    ],
+    [
+      10701,
+      45038
+    ],
+    [
+      10713,
+      45042
+    ],
+    [
+      11900,
+      45059
+    ],
+    [
+      11991,
+      19152
+    ],
+    [
+      11991,
+      45043
+    ],
+    [
+      15177,
+      18799
+    ],
+    [
+      15177,
+      39569
+    ],
+    [
+      15177,
+      39571
+    ],
+    [
+      15222,
+      39571
+    ],
+    [
+      15576,
+      17416
+    ],
+    [
+      15576,
+      36805
+    ],
+    [
+      15576,
+      36857
+    ],
+    [
+      16816,
+      19153
+    ],
+    [
+      16816,
+      45041
+    ],
+    [
+      16826,
+      19153
+    ],
+    [
+      16826,
+      45047
+    ],
+    [
+      16928,
+      20837
+    ],
+    [
+      16968,
+      45035
+    ],
+    [
+      18758,
+      36805
+    ],
+    [
+      19120,
+      21463
+    ],
+    [
+      19120,
+      45035
+    ],
+    [
+      19126,
+      21463
+    ],
+    [
+      19143,
+      25789
+    ],
+    [
+      19149,
+      39247
+    ],
+    [
+      19149,
+      45917
+    ],
+    [
+      19150,
+      22029
+    ],
+    [
+      19150,
+      45917
+    ],
+    [
+      19153,
+      45077
+    ],
+    [
+      19155,
+      45099
+    ],
+    [
+      20431,
+      20569
+    ],
+    [
+      20431,
+      36857
+    ],
+    [
+      20837,
+      45069
+    ],
+    [
+      21645,
+      39145
+    ],
+    [
+      21646,
+      45588
+    ],
+    [
+      21675,
+      45057
+    ],
+    [
+      21749,
+      21866
+    ],
+    [
+      21866,
+      45443
+    ],
+    [
+      22029,
+      45052
+    ],
+    [
+      22029,
+      45054
+    ],
+    [
+      25491,
+      45060
+    ],
+    [
+      25491,
+      45062
+    ],
+    [
+      25788,
+      45443
+    ],
+    [
+      25789,
+      45057
+    ],
+    [
+      25789,
+      45059
+    ],
+    [
+      25961,
+      45070
+    ],
+    [
+      25961,
+      45072
+    ],
+    [
+      26096,
+      45065
+    ],
+    [
+      26097,
+      45060
+    ],
+    [
+      26097,
+      45064
+    ],
+    [
+      26097,
+      45072
+    ],
+    [
+      26099,
+      45060
+    ],
+    [
+      32328,
+      39568
+    ],
+    [
+      32328,
+      39570
+    ],
+    [
+      32418,
+      39570
+    ],
+    [
+      32419,
+      39571
+    ],
+    [
+      33125,
+      36857
+    ],
+    [
+      36797,
+      39487
+    ],
+    [
+      36797,
+      43083
+    ],
+    [
+      36805,
+      39487
+    ],
+    [
+      39145,
+      45057
+    ],
+    [
+      39145,
+      45440
+    ],
+    [
+      43585,
+      45046
+    ],
+    [
+      45032,
+      45066
+    ],
+    [
+      45034,
+      45068
+    ],
+    [
+      45035,
+      45069
+    ],
+    [
+      45036,
+      45070
+    ],
+    [
+      45036,
+      45072
+    ],
+    [
+      45038,
+      45070
+    ],
+    [
+      45038,
+      45072
+    ],
+    [
+      45040,
+      45078
+    ],
+    [
+      45040,
+      45098
+    ],
+    [
+      45041,
+      45099
+    ],
+    [
+      45042,
+      45098
+    ],
+    [
+      45043,
+      45099
+    ],
+    [
+      45046,
+      45076
+    ],
+    [
+      45053,
+      45917
+    ],
+    [
+      45057,
+      45500
+    ],
+    [
+      45059,
+      45588
+    ],
+    [
+      45440,
+      45588
+    ],
+    [
+      45441,
+      45501
+    ]
+  ],
+  "body_self_face_pairs_numpy": [
+    [
+      1107,
+      16928
+    ],
+    [
+      1107,
+      45065
+    ],
+    [
+      1175,
+      19126
+    ],
+    [
+      1175,
+      45065
+    ],
+    [
+      4338,
+      39570
+    ],
+    [
+      7913,
+      32328
+    ],
+    [
+      10676,
+      45060
+    ],
+    [
+      10677,
+      45072
+    ],
+    [
+      10680,
+      10696
+    ],
+    [
+      10680,
+      45064
+    ],
+    [
+      10680,
+      45066
+    ],
+    [
+      10680,
+      45068
+    ],
+    [
+      10681,
+      10698
+    ],
+    [
+      10694,
+      25491
+    ],
+    [
+      10696,
+      26097
+    ],
+    [
+      10697,
+      25491
+    ],
+    [
+      10697,
+      45032
+    ],
+    [
+      10698,
+      45034
+    ],
+    [
+      11900,
+      45059
+    ],
+    [
+      15177,
+      18799
+    ],
+    [
+      15177,
+      39569
+    ],
+    [
+      15177,
+      39571
+    ],
+    [
+      15222,
+      39571
+    ],
+    [
+      15576,
+      17416
+    ],
+    [
+      15576,
+      36805
+    ],
+    [
+      15576,
+      36857
+    ],
+    [
+      16968,
+      45035
+    ],
+    [
+      18758,
+      36805
+    ],
+    [
+      19120,
+      21463
+    ],
+    [
+      19120,
+      45035
+    ],
+    [
+      19143,
+      25789
+    ],
+    [
+      20431,
+      20569
+    ],
+    [
+      20431,
+      36857
+    ],
+    [
+      20837,
+      45069
+    ],
+    [
+      21645,
+      39145
+    ],
+    [
+      21646,
+      45588
+    ],
+    [
+      21675,
+      45057
+    ],
+    [
+      25491,
+      45060
+    ],
+    [
+      25491,
+      45062
+    ],
+    [
+      25789,
+      45059
+    ],
+    [
+      25961,
+      45072
+    ],
+    [
+      26096,
+      45065
+    ],
+    [
+      26097,
+      45060
+    ],
+    [
+      26097,
+      45064
+    ],
+    [
+      26097,
+      45072
+    ],
+    [
+      26099,
+      45060
+    ],
+    [
+      32328,
+      39568
+    ],
+    [
+      32328,
+      39570
+    ],
+    [
+      32418,
+      39570
+    ],
+    [
+      32419,
+      39571
+    ],
+    [
+      33125,
+      36857
+    ],
+    [
+      36797,
+      39487
+    ],
+    [
+      36797,
+      43083
+    ],
+    [
+      36805,
+      39487
+    ],
+    [
+      39145,
+      45057
+    ],
+    [
+      39145,
+      45440
+    ],
+    [
+      45032,
+      45066
+    ],
+    [
+      45034,
+      45068
+    ],
+    [
+      45035,
+      45069
+    ],
+    [
+      45057,
+      45500
+    ],
+    [
+      45059,
+      45588
+    ]
+  ],
+  "body_volume_valid": false,
+  "body_validity": "FAIL",
+  "verdict": "FAIL",
+  "wall_seconds": 4.48218027499388
+}

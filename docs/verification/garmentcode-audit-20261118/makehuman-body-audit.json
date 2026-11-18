@@ -1,0 +1,52 @@
+{
+  "source_sha256": "405d3cc8d5ba299b241892d80782cd9faf194da66ce611748ccb8423ab82331d",
+  "source": {
+    "name": "MakeHuman base mesh hm08",
+    "license": "CC0-1.0",
+    "sourceURL": "https://github.com/makehumancommunity/makehuman/blob/master/makehuman/data/3dobjs/base.obj",
+    "licenseURL": "https://static.makehumancommunity.org/about/license.html",
+    "unitsEvidenceURL": "https://github.com/makehumancommunity/makehuman/blob/master/makehuman/apps/gui/guiexport.py",
+    "gitBlobSHA": "d26635e9326e3cca30778fd7b9c00062b03cce09",
+    "sourceSHA256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+    "sourceBytes": 1749303,
+    "transform": "MakeHuman OBJ is Y-up, +Z forward. Decimetres to metres by 0.1, translate feet to Y=0. No body shape scaling.",
+    "sourceVertices": 19158,
+    "sourceGroups": 139,
+    "preprocessing": [
+      "select only g body; omit helpers/joint cages",
+      "recalculate outward normals",
+      "triangulate source quads",
+      "Blender quadric collapse decimation to about 8000 triangles",
+      "round coordinates to 1 micrometre"
+    ],
+    "holesFilled": 0,
+    "blenderVersion": "4.3.2"
+  },
+  "topology": {
+    "vertex_count": 4002,
+    "used_vertex_count": 4002,
+    "orphan_vertices": 0,
+    "triangle_count": 8000,
+    "edge_count": 12000,
+    "connected_components": 1,
+    "boundary_edges": 0,
+    "boundary_components": 0,
+    "boundary_cycles": 0,
+    "boundary_branch_vertices": 0,
+    "nonmanifold_edges": 0,
+    "winding_conflicts": 0,
+    "degenerate_triangles": 0,
+    "duplicate_faces": 0,
+    "euler_characteristic": 2,
+    "closed_oriented_edge_manifold": true,
+    "component_signed_volumes_m3": [
+      0.05486685816802441
+    ],
+    "outward_closed_components": true,
+    "limits": "Edge-manifold/connectivity audit; self-intersection requires intersect_pairs separately."
+  },
+  "numpy_self_face_pairs": [],
+  "cgal_self_face_pairs": [],
+  "verdict": "PASS_BODY_GEOMETRY",
+  "limits": "asset geometry only; not matched to this garment or user; not used to substitute original collider"
+}

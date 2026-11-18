@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "sample_name": "example-shirt",
+  "source": "官方 GarmentCode 仓库示例（非下载的数据集条目）",
+  "input": {
+    "file": "/workspace/scratch/72793d054f5c/pattern-agent/.agents/skills/garmentcode-preview/assets/example-shirt_specification.json",
+    "sha256": "048aac4e8b90ffcda38f2b928eebe6354c48a4528ed7f31a885ce38e38ccf88e",
+    "panels": 8,
+    "stitches": 18,
+    "units_in_meter": 100
+  },
+  "mode": "simulate",
+  "garmentcode_commit": "d449629979028123a5c4dc9e732a2ec19b7fce31",
+  "resolution_cm": 1.5,
+  "body": {
+    "file": "/workspace/scratch/72793d054f5c/GarmentCode/assets/bodies/mean_all.obj",
+    "sha256": "f6b2bdf2881b839089a6da06c39e63993a77607939b21522ae906c0131fa54d9",
+    "measurements": "/workspace/scratch/72793d054f5c/GarmentCode/assets/bodies/mean_all.yaml",
+    "measurements_sha256": "aed8c58d445a732a45f8bc9e042d36f7d8c57d8df7a6ef24061f1caa08e794c6",
+    "scale_to_meters": 1.0,
+    "sample_id": null
+  },
+  "units": {
+    "glb": "meters",
+    "simulation_obj": "centimeters"
+  },
+  "simulation": {
+    "executed": true,
+    "solver": "GarmentCode Warp XPBD",
+    "warp_version": "1.0.0-beta.6",
+    "device": "cpu",
+    "warp_source_commit": "63baf6855efdd89b2834b74640f84b3bb0d86b50",
+    "frames": 232,
+    "elapsed_seconds": 108.395,
+    "cpu_static_check_snapshot_fix": true,
+    "static": true,
+    "moving_vertices": 50,
+    "body_intersections": 0,
+    "self_intersections": 2,
+    "max_body_intersections": 35,
+    "max_self_intersections": 300,
+    "upstream_threshold_passed": true,
+    "quality_passed": true,
+    "quality_passed_scope": "upstream_config_thresholds_only",
+    "error": null,
+    "config_sha256": "1fcfd682915d6e32d0152b96605defe2a1afb2e04ae3c91a5d2b8f5b5d5be419"
+  },
+  "release": {
+    "simulation_execution": "PASS",
+    "stability": "PASS",
+    "upstream_threshold_check": "PASS",
+    "strict_zero_body_intersections": "PASS",
+    "strict_zero_self_intersections": "FAIL",
+    "independent_full_geometry_audit": "NOT_RUN",
+    "physical_fit": "NOT_RUN",
+    "reason": "Intersection counters are upstream diagnostics, not an independent garment or physical-fit certificate."
+  },
+  "mesh_generated_this_run": true,
+  "preview_label": "物理仿真完成 · 零穿透检查未通过（研究预览）",
+  "mesh": {
+    "vertices": 3569,
+    "triangles": 6958,
+    "bounds_m": [
+      [
+        -0.5357347770869189,
+        0.9457103829637592,
+        -0.2
+      ],
+      [
+        0.5357347770869189,
+        1.4055698990089327,
+        0.25
+      ]
+    ]
+  }
+}
