@@ -1,0 +1,33 @@
+{
+  "task": "S02-02",
+  "artifact": "Golden Garment YAML 1.1 -> Pattern JSON v2",
+  "date": "2026-11-18",
+  "source": {
+    "path": "patterns/fitted-tshirt/input-spec.yaml",
+    "sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+    "yaml_version": "1.1"
+  },
+  "implemented": {
+    "importer": "tools/pattern-json-v2/import_golden_garment.py",
+    "schema": "tools/pattern-json-v2/pattern-json-v2.schema.json",
+    "test": "tools/pattern-json-v2/test_import_golden_garment.py",
+    "readme": "tools/pattern-json-v2/README.md"
+  },
+  "contract_invariants": {
+    "pieces": 4,
+    "measurements": 23,
+    "interfaces": 25,
+    "coordinate_unit": "U",
+    "mm_per_unit": null,
+    "production_release": false,
+    "unknowns_preserved": true,
+    "null_is_not_zero": true
+  },
+  "checks": {
+    "schema_json_parse": "PASS",
+    "source_sha256_rechecked": "PASS",
+    "runtime_import_test": "NOT_RUN",
+    "reason": "Mac mini MCP returned 429 and grok-bot execution was unavailable during this turn."
+  },
+  "policy": "main-only; no PR; no CI substitution"
+}
