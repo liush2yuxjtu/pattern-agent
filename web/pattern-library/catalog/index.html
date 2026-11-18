@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="可搜索的 Pattern Agent 服装 CAD 原件、设计投诉和版型变体需求。">
+  <title>纸样与版型反馈资料库 · Pattern Agent</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="catalog.css">
+  <script defer src="catalog.js"></script>
+</head>
+<body>
+  <a class="skip" href="#catalog">跳到资料</a>
+  <header class="top"><div class="wrap navigation">
+    <a class="identity" href="../../"><span class="mark" aria-hidden="true">pa</span>Pattern Agent</a>
+    <nav aria-label="项目导航"><a href="../">二维与三维图册</a><a href="../#editor">改版工具</a></nav>
+    <a class="source-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/web/pattern-library/catalog">GitHub ↗</a>
+  </div></header>
+  <main class="wrap catalog" id="catalog">
+    <h1>纸样与版型反馈资料库</h1>
+    <p class="lead">按款式、文件类型、服装部位或关键词查找。纸样附来源和文件核验信息，反馈附原观察和候选改法。</p>
+    <dl class="totals">
+      <div><dt>已归档 CAD 原件</dt><dd id="asset-total">—</dd></div>
+      <div><dt>匹配到改版线索的评论</dt><dd id="review-total">—</dd></div>
+      <div><dt>可筛选的改版线索</dt><dd id="signal-total">—</dd></div>
+      <div><dt>有原网页的人工整理观察</dt><dd id="curated-total">—</dd></div>
+    </dl>
+
+    <div class="catalog-nav" role="group" aria-label="切换资料">
+      <button type="button" class="quiet" data-mode="patterns" aria-pressed="true">CAD 纸样</button>
+      <button type="button" class="quiet" data-mode="feedback" aria-pressed="false">用户反馈</button>
+    </div>
+
+    <section id="filters" aria-label="筛选资料" hidden>
+      <div class="filters">
+        <label class="query">搜索<input id="query" type="search" placeholder="款式、文件名、来源"></label>
+        <label><span id="category-label">文件格式</span><select id="category"></select></label>
+        <label>来源<select id="source"></select></label>
+      </div>
+      <div class="results-bar">
+        <p id="results-count" role="status"></p>
+        <div><a id="download" href="cad-origins.csv" download>下载原件索引 CSV ↓</a> <a id="download-extra" href="cad-publisher-links.csv" download>下载发布方入口 CSV ↓</a> <a href="README.md">数据与来源说明</a></div>
+      </div>
+    </section>
+    <p id="loading" class="message" role="status">正在加载资料。</p>
+    <p id="scope" class="scope"></p>
+    <section id="entries" class="entries" role="list" aria-label="资料记录"></section>
+    <div class="pager" id="pager" hidden>
+      <button type="button" class="quiet" id="previous">上一页</button>
+      <span id="page-number"></span>
+      <button type="button" class="quiet" id="next">下一页</button>
+    </div>
+  </main>
+  <footer class="wrap footer"><span>Pattern Agent · 资料库</span><a href="../">图册与复现文件</a></footer>
+</body>
+</html>

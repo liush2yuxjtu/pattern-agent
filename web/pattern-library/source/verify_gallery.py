@@ -185,8 +185,7 @@ def run(base, output, expected_commit, browser_executable):
                 "#pattern-download", "#model-download", 'a[href="downloads/pattern-agent-editor.zip"]',
                 'a[href="editor/example-output/edit.patch.yaml"]',
                 'a[href="editor/example-output/edited.dxf"]',
-                'a[href="data/pattern-assets.csv"]', 'a[href="data/feedback-catalog.csv"]',
-                'a[href="data/feedback-derived-intents.yaml"]',
+                'a[href="catalog/cad-origins.csv"]', 'a[href="catalog/review-design-intents.yaml"]',
             ):
                 link = page.locator(selector).first
                 url = urljoin(page.url, link.get_attribute("href"))
@@ -204,11 +203,10 @@ def run(base, output, expected_commit, browser_executable):
                 for name in ("edit.patch.yaml", "edited.dxf"):
                     assert digest(archive.read(f"pattern-agent-editor/example-output/{name}")) == downloads[name]
             rows = lambda file: list(DictReader(StringIO((output / file).read_text(encoding="utf-8-sig"))))
-            patterns = rows("pattern-assets.csv")
-            feedback = rows("feedback-catalog.csv")
-            classes = {"project_baseline", "vendor_training", "public_tutorial"}
-            originals = {row["sha256"] for row in patterns if row["dataset_class"] in classes}
-            assert len(originals) == 38, sorted({row["dataset_class"] for row in patterns})
+            patterns = rows("cad-origins.csv")
+            originals = {row["sha256"] for row in patterns}
+            assert len(originals) == len(patterns) == 62
+            feedback = list(DictReader(StringIO(get(urljoin(gallery, "data/feedback-catalog.csv")).decode("utf-8-sig"))))
             assert len(feedback) == 36 and len({row["url"] for row in feedback}) == 28
             assert len({row["id"] for row in feedback}) == 36
 
@@ -230,7 +228,7 @@ def run(base, output, expected_commit, browser_executable):
                 "verdict": "PASS", "base_url": base, "commit": build["commit"],
                 "source_sha256": build["source_sha256"], "hashed_gallery_assets": len(assets),
                 "gallery_manifest_sha256": digest(manifest_contents),
-                "meshes": mesh_checks, "record_counts": {"patterns": len(originals), "feedback": len(feedback)},
+                "meshes": mesh_checks, "record_counts": {"patterns": len(originals), "initial_curated_feedback": len(feedback)},
                 "browser": {
                     "anonymous": True, "navigation": "home -> gallery",
                     "image_changes": 9, "edit_modes": 3, "deep_links": True, "invalid_query_fallback": True,

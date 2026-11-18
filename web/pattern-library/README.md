@@ -1,6 +1,6 @@
 # Pattern Agent 纸样与三维图册
 
-[打开公开图册](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/)
+[打开公开图册](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/) · [浏览完整纸样与反馈资料库](https://liush2yuxjtu.github.io/pattern-agent/pattern-library/catalog/)
 
 图册提供可放大的二维纸样、三个三维视角，以及可以下载并独立检查的原始矢量、网格和验证记录。
 
@@ -28,6 +28,8 @@ python -m pattern_tool serve
 - [样例补丁](editor/example-output/edit.patch.yaml) · [改版 DXF](editor/example-output/edited.dxf) · [量测报告](editor/example-output/report.json)
 
 ## 纸样与需求样本
+
+[完整资料库](catalog/)收录 62 份 CAD 原件及可按部位逐条筛选的评论。新增的 24 份 ZPRJ 来自浙江大学服装皱褶研究档案。下方链接保留初版样本和回归输入。[扩充来源与复现说明](catalog/README.md)
 
 - [纸样索引](data/pattern-assets.csv)记录 38 个去重原件及另列验证样本，含发布页、哈希和核验状态。请从索引中的发布方获取第三方原件。源项目的 [T 恤 DXF](editor/samples/input.dxf)、[衣身 DXF](downloads/bodice-v001.dxf)和 [DXF 回归样本](downloads/dxf-regression-samples.zip)可直接下载。
 - [反馈索引](data/feedback-catalog.csv)收录 28 个公开页面的 36 条观察。[候选意图](data/feedback-derived-intents.yaml)按观察保存可调整部位、所需量法和要保留的部位。把用户意见转成生产指令前，需要确认尺码、量法和改动量。

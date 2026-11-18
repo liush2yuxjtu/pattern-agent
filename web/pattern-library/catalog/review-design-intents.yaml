@@ -1,0 +1,843 @@
+schema: intent-corpus/v1
+interpretation: 根据公开反馈提出候选操作。每条都需核对尺码、实物量法和目标。
+cases:
+- id: intent-e01
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E451096-000/00/reviews
+    locator: Too loose, wide, and long sleeves · 2023-01-12
+    evidence: Petite XS buyer found the body and sleeves too wide and the sleeves
+      too long, and explicitly asked for a petite XS.
+  garment: Cotton Volume Long-Sleeve Blouse
+  region: 变体
+  candidate_request: Draft a petite variant with separate sleeve length and body-width
+    targets.
+  measurement_inputs: Finished sleeve length, flat chest and hem widths, shoulder
+    position, and petite size block.
+  preserve: Retain regular XS and sleeve volume as separate choices.
+  target: null
+  state: needs_confirmation
+- id: intent-e02
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E457373-000/00/reviews
+    locator: Cute with slightly short sleeves · 2023-04-06
+    evidence: Buyer returned an otherwise well-fitting parka because the sleeves were
+      a little short.
+  garment: Reversible Parka
+  region: 袖长
+  candidate_request: Lengthen the lower sleeve with a tall option.
+  measurement_inputs: Shoulder-to-cuff measurement, underarm length, cuff and lining
+    construction.
+  preserve: Keep sleeve cap and body size.
+  target: null
+  state: needs_confirmation
+- id: intent-e03
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E437349-000/00/reviews
+    locator: Size up · 2021-04-11
+    evidence: Usual size fit overall, but the hem exposed the stomach when the buyer
+      lifted an arm.
+  garment: U Fine-Gauge Boat Neck Short-Sleeve Sweater
+  region: 衣长与下摆高度
+  candidate_request: Add finished torso length or test a tall version under the stated
+    reach pose.
+  measurement_inputs: Finished front/back hem drop and required coverage at a named
+    pose.
+  preserve: Keep boat neck, shoulder and upper fit.
+  target: null
+  state: needs_confirmation
+- id: intent-e04
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E448710-000/00/reviews
+    locator: Horrible Fabric, Misleading Name · 2022-04-26
+    evidence: Buyer reported tight arm openings.
+  garment: U Cotton Gathered Sleeveless Shirt
+  region: 袖窿
+  candidate_request: Evaluate a roomier sleeveless arm opening and redraw its facing
+    or binding.
+  measurement_inputs: Underarm clearance, vertical depth, front/back curve lengths
+    and bra coverage.
+  preserve: Keep shoulder position and upper chest where fit is acceptable.
+  target: null
+  state: needs_confirmation
+- id: intent-e05
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E448710-000/00/reviews
+    locator: Horrible Fabric, Misleading Name · 2022-04-26
+    evidence: Buyer expected pure cotton, found the blend stiff and asked for the
+      product title to identify the blend.
+  garment: U Cotton Gathered Sleeveless Shirt
+  region: 面料与弹性
+  candidate_request: Correct the fiber listing for each color and compare drape if
+    changing the fabric.
+  measurement_inputs: Supplier composition by colorway, bending, stretch and recovery.
+  preserve: Keep verified CAD revision during the listing correction.
+  target: null
+  state: needs_confirmation
+- id: intent-e06
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E457012-000/00/reviews
+    locator: Review describing underarm alteration
+    evidence: Buyer liked the shape but sewed the underarm closer because the arm
+      opening gaped.
+  garment: Ultra Stretch AIRism Sleeveless Dress
+  region: 袖窿
+  candidate_request: Reduce underarm gaping and remeasure the facing or binding.
+  measurement_inputs: Front/back gaping location, armhole depth, ease and range of
+    motion.
+  preserve: Keep dress silhouette and drape.
+  target: null
+  state: needs_confirmation
+- id: intent-e07
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E461514-000/00/reviews
+    locator: Review describing rolled sleeves and raised waist
+    evidence: Short buyer liked the longer skirt and higher waist placement, and rolled
+      up sleeves that were a little long.
+  garment: Soft Brushed Long-Sleeve Shirt Dress
+  region: 袖长
+  candidate_request: Shorten sleeves only for a petite option.
+  measurement_inputs: Cuff endpoint delta, placket/hem depth and wearer reach.
+  preserve: Keep raised waist, skirt length and existing pockets.
+  target: null
+  state: needs_confirmation
+- id: intent-e08
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E437834-000/00/reviews
+    locator: Review reporting large armholes and small bust
+    evidence: Buyer sized up for bust room and still found the armholes oversized,
+      with stretched-looking trim.
+  garment: +J Stretch Supima Cotton Sleeveless T-Shirt
+  region: 胸围与胸省
+  candidate_request: Increase bust room while reducing armhole gaping. Recheck trim
+    recovery.
+  measurement_inputs: Bust and high bust, armhole height, binding ratio and fabric
+    recovery.
+  preserve: Keep neckline style and local arm mobility.
+  target: null
+  state: needs_confirmation
+- id: intent-e09
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E457373-000/00/reviews
+    locator: Cute jacket, nice quality! · 2023-04-06
+    evidence: Buyer observed pockets on the solid face only.
+  garment: Reversible Parka
+  region: 口袋
+  candidate_request: Evaluate a reversible pocket-access variant with an opening reachable
+    from both faces.
+  measurement_inputs: Pocket construction, opening and bag dimensions, closures, and
+    reversibility test.
+  preserve: Keep both exterior finishes.
+  target: null
+  state: needs_confirmation
+- id: intent-e10
+  evidence:
+    url: https://www.uniqlo.com/us/en/products/E451096-000/00/reviews
+    locator: Favorite · 2025-09-15
+    evidence: Buyer liked the billowy sleeves and requested a restock of the same
+      blouse.
+  garment: Cotton Volume Long-Sleeve Blouse
+  region: 变体
+  candidate_request: Retain the existing variant as an assortment task.
+  measurement_inputs: Stock and style identity.
+  preserve: Original pattern.
+  target: null
+  state: needs_confirmation
+- id: intent-e11
+  evidence:
+    url: https://www.kuhl.com/kuhl/womens/pants/ws-rydr-pant/customer-reviews/
+    locator: Best women's work pant · 2025-04-29
+    evidence: Buyer wanted the phone pocket on the right, as on the men's pair.
+  garment: Rydr Pant
+  region: 口袋
+  candidate_request: Move pocket opening, bag, marks and seam reinforcement to the
+    right leg.
+  measurement_inputs: Wearer-side coordinates and phone clearance.
+  preserve: Keep fit, inseam and overall pockets.
+  target: null
+  state: needs_confirmation
+- id: intent-e12
+  evidence:
+    url: https://www.kuhl.com/kuhl/womens/pants/ws-rydr-pant/customer-reviews/
+    locator: Best women's work pant · 2025-04-29
+    evidence: Same buyer asked for the waist to sit roughly one to two inches lower.
+  garment: Rydr Pant
+  region: 前后裆深
+  candidate_request: Create a lower-rise variant and redraft waistband and fly reach.
+  measurement_inputs: Choose a final rise delta in the reported range, identify front/back
+    POMs.
+  preserve: Keep thigh fit, draw of pockets, and inseam options.
+  target: null
+  state: needs_confirmation
+- id: intent-e13
+  evidence:
+    url: https://www.kuhl.com/kuhl/womens/pants/renegade-outsider-pant/customer-reviews/
+    locator: My New Favorite Outdoor Pants · 2026-06-07
+    evidence: Buyer asked for a petite length and shortened the legs themselves while
+      liking the waistband and pockets.
+  garment: Renegade Outsider Pant
+  region: 裤长与内长
+  candidate_request: Add a short inseam grade with a knee/hem placement check.
+  measurement_inputs: Finished inseam, outseam, knee position and selected size.
+  preserve: Keep rise, waist fit and pocket placement.
+  target: null
+  state: needs_confirmation
+- id: intent-e14
+  evidence:
+    url: https://www.kuhl.com/kuhl/womens/pants/freeflex-roll-up-pant/?color=Sage
+    locator: Great pants · 2026-10-09
+    evidence: Buyer enlarged the side leg pocket to fit a phone and expected to do
+      the same on a second pair.
+  garment: Freeflex Roll-Up Pant
+  region: 口袋
+  candidate_request: Increase usable pocket opening and depth around an agreed phone
+    envelope.
+  measurement_inputs: Phone and case dimensions, opening and closed storage, roll-up
+    snap clearance.
+  preserve: Keep leg fit and roll-up function.
+  target: null
+  state: needs_confirmation
+- id: intent-e15
+  evidence:
+    url: https://factory.jcrew.com/p/womens/categories/clothing/jeans/wide-leg-denim/wide-leg-patch-pocket-full-length-jean/BY904
+    locator: Review dated 2025-10-10
+    evidence: Buyer found the regular inseam borderline short and wanted enough length
+      to wear heels.
+  garment: Wide-Leg Patch-Pocket Full-Length Jean
+  region: 裤长与内长
+  candidate_request: Offer or test an alternate longer inseam and measure the hem
+    in footwear.
+  measurement_inputs: Target inseam, knee location and hem clearance.
+  preserve: Keep leg silhouette and patch pockets.
+  target: null
+  state: needs_confirmation
+- id: intent-e16
+  evidence:
+    url: https://oldnavy.gap.com/browse/product.do?pid=8057670021602
+    locator: Favorite jeans but quality varies
+    evidence: Repeat buyer reported differing waist fit and slightly different leg
+      lengths between pairs.
+  garment: Extra High-Waisted Wide-Leg Jean
+  region: 纸样交付与质检
+  candidate_request: Measure same-size garments and compare each leg to the approved
+    specification.
+  measurement_inputs: Same size/wash/lot, waist POM, left and right inseam and tolerance.
+  preserve: Keep the approved block until lot or measurement cause is found.
+  target: null
+  state: needs_confirmation
+- id: intent-e17
+  evidence:
+    url: https://oldnavy.gap.com/browse/product.do?pid=6116470025432
+    locator: It is not the same size as previous order
+    evidence: Repeat buyer reported tighter waist and shorter crotch length on a reordered
+      pair.
+  garment: Straight Jeans
+  region: 腰围与腰头
+  candidate_request: Audit same-SKU waist and front/back rise before altering the
+    block.
+  measurement_inputs: Item variant, lot, pre/post-wash state and matching measurement
+    method.
+  preserve: Original approved grade pending lot comparison.
+  target: null
+  state: needs_confirmation
+- id: intent-e18
+  evidence:
+    url: https://www.zappos.com/product/review/9619257
+    locator: Review on length, thigh fit and tools
+    evidence: Reviewer had found other work pants long enough but too skinny or the
+      right width but too short, and needed working tool pockets.
+  garment: Dx Bootcut Workwear Jean
+  region: 大腿松量
+  candidate_request: Specify independent thigh-width and inseam options rather than
+    moving to another waist size.
+  measurement_inputs: Thigh, seat, inseam, movement results and pocket load.
+  preserve: Retain waistband and functional storage where fit passes.
+  target: null
+  state: needs_confirmation
+- id: intent-p01
+  evidence:
+    url: https://forum.freesewing.eu/t/simon-help-with-sleeve-sizing/752/1
+    locator: Opening post · 2025-10-23
+    evidence: Maker could barely pull the short sleeve above the elbow and reported
+      small armholes, while collar and yoke felt right.
+  garment: Simon shirt
+  region: 袖窿
+  candidate_request: Check body landmarks and biceps ease before redrawing the front/back
+    armhole and matching sleeve cap.
+  measurement_inputs: Measured shoulder-to-shoulder, HPS-to-waist, biceps and seam-length
+    matching targets.
+  preserve: Keep collar and yoke unless root cause is found there.
+  target: null
+  state: needs_confirmation
+- id: intent-p02
+  evidence:
+    url: https://forum.freesewing.eu/t/the-simon-pattern-is-very-small-especially-around-the-armpits/1114/1
+    locator: Opening post · 2026-06-01
+    evidence: First mockup was especially tight at the armpits.
+  garment: Simon shirt
+  region: 上臂松量
+  candidate_request: Specify reach and seat-of-sleeve fit. Compare shoulder position,
+    chest ease and cap shape separately.
+  measurement_inputs: Arm pose, pinned alterations, body measurements, material stretch
+    and corresponding notches.
+  preserve: Retain shirt style and verified dimensions.
+  target: null
+  state: needs_confirmation
+- id: intent-p03
+  evidence:
+    url: https://github.com/freesewing/freesewing/issues/5999
+    locator: Issue 5999 · 2024-02-09
+    evidence: Increasing the biceps ease setting reportedly reduced both sleeve panel
+      widths. The project linked a fix.
+  garment: Jaeger jacket
+  region: 上臂松量
+  candidate_request: Test the sleeve-width response over multiple biceps input/ease
+    settings.
+  measurement_inputs: Version, size and expected signed relationship between ease
+    and circumference.
+  preserve: Seam lengths matched to the intended armscye and sleeve division.
+  target: null
+  state: needs_confirmation
+- id: intent-p04
+  evidence:
+    url: https://github.com/freesewing/freesewing/issues/253
+    locator: Issue 253 · 2020-01-03
+    evidence: Maker found sleeve wrist opening and cuff length relationship inconsistent
+      when switching cuff style.
+  garment: Simon shirt
+  region: 袖口
+  candidate_request: Model separate barrel and French cuff overlap and take-up, then
+    walk sleeve opening against cuff.
+  measurement_inputs: Wrist, ease, placket overlap, pleat uptake and seam attachment
+    points.
+  preserve: Keep forearm shape and fastening type for the selected variant.
+  target: null
+  state: needs_confirmation
+- id: intent-p05
+  evidence:
+    url: https://forum.freesewing.eu/t/pants-fitting-time-any-help-is-appreciated/259/1
+    locator: Opening post · 2025-05-26
+    evidence: Maker asked about tummy room, a forward pocket seam and inseam wrinkles.
+  garment: Charlie shorts
+  region: 前后裆深
+  candidate_request: Fit the block first, then record tummy/seat distribution, crotch
+    balance and pocket placement.
+  measurement_inputs: Front/back rise and crotch curve, side-seam hang, fabric and
+    fitting photos.
+  preserve: Treat the intentionally forward pocket opening as a separate design choice.
+  target: null
+  state: needs_confirmation
+- id: intent-p06
+  evidence:
+    url: https://forum.freesewing.eu/t/pants-fitting-time-any-help-is-appreciated/259/1
+    locator: Design notes in opening post · 2025-05-26
+    evidence: Maker considered changing the back dart to a yoke and replacing internal
+      pockets with denim-style patch pockets.
+  garment: Charlie shorts
+  region: 口袋
+  candidate_request: Convert dart suppression to a yoke seam and prototype a patch-pocket
+    variant.
+  measurement_inputs: Dart intake, exact yoke path, signed seam lengths, pocket dimensions
+    and sew order.
+  preserve: Keep waist and seat fit, closures and grain.
+  target: null
+  state: needs_confirmation
+- id: intent-p07
+  evidence:
+    url: https://kristinsews.com/zadie-jumpsuit-pattern-review/
+    locator: Sizing and Pattern Adjustments · 2019-07-04
+    evidence: Maker removed 1 inch at the bodice, 2 inches at the rise and 3.5 inches
+      at the leg bottom for their own fit.
+  garment: Zadie Jumpsuit
+  region: 躯干长度
+  candidate_request: Use three independent alterations as a multi-step test. Record
+    these amounts as one maker's changes.
+  measurement_inputs: Shoulder-to-waist, crotch target and inseam, each with measurement
+    method.
+  preserve: Keep wrap alignment and pocket notch matching.
+  target: null
+  state: needs_confirmation
+- id: intent-p08
+  evidence:
+    url: https://kristinsews.com/zadie-jumpsuit-pattern-review/
+    locator: The Pockets · 2019-07-04
+    evidence: Maker reported pocket notches did not line up and was unsure whether
+      pattern, fabric or their edits caused it.
+  garment: Zadie Jumpsuit
+  region: 口袋
+  candidate_request: Walk original and edited pocket seams and check matched notch
+    station distances.
+  measurement_inputs: Original revision, chosen size, effect of prior alterations
+    and both seam directions.
+  preserve: Keep visible pocket shape if notch relocation resolves the issue.
+  target: null
+  state: needs_confirmation
+- id: intent-p09
+  evidence:
+    url: https://www.mingmakes.com/post/fitting-the-zadie-jumpsuit
+    locator: Pattern adjustments · 2023-06-23
+    evidence: Fitting found back waist length 1 cm longer and front waist length 2
+      cm shorter than the pattern, pointing to front/back balance.
+  garment: Zadie Jumpsuit
+  region: 躯干长度
+  candidate_request: Test a shoulder-balance operation rather than applying one torso
+    delta to both pieces.
+  measurement_inputs: Nape-to-waist and front waist POM definitions, shoulder position
+    and seam walking.
+  preserve: Keep waist and wrap attachment alignment.
+  target: null
+  state: needs_confirmation
+- id: intent-p10
+  evidence:
+    url: https://www.mingmakes.com/post/fitting-the-zadie-jumpsuit
+    locator: Floor-length option · 2023-06-23
+    evidence: Maker considered adding 19 cm to go from cropped to floor length, with
+      an accompanying wider hem for shoes.
+  garment: Zadie Jumpsuit
+  region: 裤腿与脚口
+  candidate_request: Create floor-length option with separate inseam and hem opening
+    targets.
+  measurement_inputs: Footwear and intended floor clearance, inseam and hem-width
+    method.
+  preserve: Keep rise and knee fit.
+  target: null
+  state: needs_confirmation
+- id: intent-p11
+  evidence:
+    url: https://sewpippa.com/2020/07/22/bhl-hannah-part-deux/
+    locator: BHL Hannah, part deux · 2020-07-22
+    evidence: Initial neckline gaped. Maker ended up refining bust adjustment, narrowing
+      shoulder and moving darts to their actual apex.
+  garment: Hannah wrap dress
+  region: 领口
+  candidate_request: Draft separate shoulder, bust and apex edits with an explicit
+    dart transfer.
+  measurement_inputs: Bust/high-bust, shoulder width, neckline fit, apex position
+    and dart intake.
+  preserve: Keep chosen neckline style and preferred back fit.
+  target: null
+  state: needs_confirmation
+- id: intent-p12
+  evidence:
+    url: https://sewing.patternreview.com/SewingDiscussions/topic/123085
+    locator: Zadie wrap gaping thread
+    evidence: Maker worried a gap at the crotch wrap made it unwearable in public.
+  garment: Zadie Jumpsuit
+  region: 开合与门襟
+  candidate_request: Test wrap coverage in sitting and reaching. Adjust overlap, rise
+    or closure only after pinning checks.
+  measurement_inputs: Garment posture, overlap and attachment landmarks.
+  preserve: Keep wrap appearance and ease.
+  target: null
+  state: needs_confirmation
+- id: intent-p13
+  evidence:
+    url: https://curvysewingcollective.com/pattern-review-cashmerette-harrison-shirt-dress-and-minor-hack-pockets/
+    locator: Pocket hack review · 2018-10-22
+    evidence: Reviewer made a pocket variant of the shirt-dress and graded fit through
+      multiple sizes.
+  garment: Harrison Shirt-dress
+  region: 口袋
+  candidate_request: Add pocket bag and matching seam opening with independent grade
+    rules.
+  measurement_inputs: Bag dimensions, side seam position and support, pocket depth
+    and access.
+  preserve: Retain tested bodice and selected hip grading.
+  target: null
+  state: needs_confirmation
+- id: intent-p14
+  evidence:
+    url: https://thefoldline.com/products/the-modern-sewing-co-worker-trousers
+    locator: Mixed feelings review
+    evidence: Buyer made a shorts version using a blog reference and noted a shorts
+      view was missing from the purchased pattern.
+  garment: Worker Trousers
+  region: 裤长与内长
+  candidate_request: Offer a dedicated shorts view with marked hem, seam balance and
+    instructions.
+  measurement_inputs: Shorts inseam, thigh/hem opening and production allowance.
+  preserve: Keep rise, waist and functional pockets.
+  target: null
+  state: needs_confirmation
+- id: intent-p15
+  evidence:
+    url: https://thefoldline.com/products/the-modern-sewing-co-worker-trousers
+    locator: Review describing confusing fly and waistband directions
+    evidence: Experienced maker found the fly and waistband instructions harder to
+      follow than expected.
+  garment: Worker Trousers
+  region: 纸样交付与质检
+  candidate_request: Provide step-by-step diagrams, left/right labels and closure-specific
+    assembly branches.
+  measurement_inputs: Chosen closure and matching piece ids.
+  preserve: Keep geometry unless a fit-checked discrepancy is found.
+  target: null
+  state: needs_confirmation
+- id: intent-p16
+  evidence:
+    url: https://sewing.patternreview.com/SewingDiscussions/topic/127551
+    locator: Bad ETSY PDF thread
+    evidence: Buyer reported back tile misalignment despite a correct test square,
+      plus absent page numbering for the size used.
+  garment: Miranda Hoodie PDF
+  region: 纸样交付与质检
+  candidate_request: Validate tile trim boxes and adjacency after scale check, and
+    add row/column IDs to every page.
+  measurement_inputs: PDF revision, page format, print scale, selected grade and page
+    tiling.
+  preserve: Preserve full-size CAD and compare against it.
+  target: null
+  state: needs_confirmation
+- id: intent-p17
+  evidence:
+    url: https://www.etsy.com/listing/1046232485/jacqueline-classic-trousers-sewing
+    locator: Review describing leg narrowing and hemming
+    evidence: Buyer narrowed the legs about one inch on each side and intentionally
+      hemmed them shorter.
+  garment: Jacqueline Classic Trousers
+  region: 裤腿与脚口
+  candidate_request: Test leg taper with explicit per-edge changes and a separate
+    length operation.
+  measurement_inputs: Confirm whether amount is per edge, finished opening target
+    and taper start.
+  preserve: Keep waist and rise.
+  target: null
+  state: needs_confirmation
+- id: intent-p18
+  evidence:
+    url: https://sewing.patternreview.com/SewingDiscussions/topic/117642
+    locator: How to alter a jacket for petite figure
+    evidence: Wearer described long sleeves and low armscyes while liking fit below
+      bust, and reported improvement from pinching across the upper chest.
+  garment: Bob Mackie jacket
+  region: 躯干长度
+  candidate_request: Prototype a petite shoulder-to-bust adjustment and re-walk sleeve
+    and lining.
+  measurement_inputs: Vertical balance line, retained bust room, sleeve cap shape
+    and movement.
+  preserve: Keep below-bust fit and collar design.
+  target: null
+  state: needs_confirmation
+- id: intent-c-01
+  evidence:
+    url: https://www.kuhl.com/kuhl/mens/pants/renegade-pant/customer-reviews/
+    locator: Wish they had a 33″ inseam
+    evidence: 买家提出 33 英寸内长选项。32 英寸能盖鞋，34 英寸会落到鞋后跟下。
+  garment: Renegade 男式徒步裤
+  region: 裤长与内长
+  candidate_request: 补齐两档之间的内长变体。
+  measurement_inputs: 实穿时裤口到鞋后跟距离、内侧缝长
+  preserve: 裤口宽、膝位和腰臀围
+  target: null
+  state: needs_confirmation
+- id: intent-c-02
+  evidence:
+    url: https://www.kuhl.com/kuhl/mens/outerwear/ms-arktik-jacket/customer-reviews/
+    locator: The medium fit me well except the shoulder area
+    evidence: M 码叠穿余量足够，双手抱胸时肩部有轻微限制。
+  garment: Arktik 男式夹克
+  region: 肩宽与肩点
+  candidate_request: 测试在背肩和后袖窿局部增加活动量。
+  measurement_inputs: 肩宽、背宽、双臂前伸量
+  preserve: 衣身胸围和静态肩点
+  target: null
+  state: needs_confirmation
+- id: intent-c-03
+  evidence:
+    url: https://www.kuhl.com/kuhl/mens/pants/free-rydr/customer-reviews/
+    locator: They ride lower
+    evidence: 穿过同品牌另一条牛仔裤的买家认为此款腰位更低，腰部不如前款舒适。
+  garment: Free Rydr 男式工装裤
+  region: 腰线高度
+  candidate_request: 对比两款前后裆深，评估较高腰版本。
+  measurement_inputs: 前中与后中腰头到裆点的长度
+  preserve: 腿型、口袋和臀围
+  target: null
+  state: needs_confirmation
+- id: intent-c-04
+  evidence:
+    url: https://www.zappos.com/product/review/9011333/page/53/orderBy/best
+    locator: The sleeves are way too long
+    evidence: 买家认为袖子过长，退货后换小一码。
+  garment: Dickies Eisenhower 男式夹克
+  region: 袖长
+  candidate_request: 提供短袖长尺码，先验证衣身与袖长是否能独立选。
+  measurement_inputs: 肩点到袖口距离
+  preserve: 肩宽、胸围、袖口宽
+  target: null
+  state: needs_confirmation
+- id: intent-c-05
+  evidence:
+    url: https://www.zappos.com/product/review/9011333/page/53/orderBy/best
+    locator: A second button on the cuff
+    evidence: 另一位买家需要把袖口卷起来，提出加第二个扣位来调节。
+  garment: Dickies Eisenhower 男式夹克
+  region: 袖口
+  candidate_request: 增加袖口可调扣位，量化两档展开宽。
+  measurement_inputs: 扣位间距、袖口围、手掌穿脱宽
+  preserve: 袖长和袖底缝对位
+  target: null
+  state: needs_confirmation
+- id: intent-c-06
+  evidence:
+    url: https://www.zappos.com/product/review/9011333/page/53/orderBy/best
+    locator: Stomach region is way too loose
+    evidence: 肌肉型体型买家认为腹部区域很宽，肩胸比例与衣身下段不匹配。
+  garment: Dickies Eisenhower 男式夹克
+  region: 腰围与腰头
+  candidate_request: 做较大肩胸、较窄下衣身的变体。
+  measurement_inputs: 腹围、胸腹差和下摆围
+  preserve: 肩部活动量与上胸松量
+  target: null
+  state: needs_confirmation
+- id: intent-c-07
+  evidence:
+    url: https://www.gap.com/browse/product.do?pid=7088110121603
+    locator: Straight pants but rather narrow legs
+    evidence: 买家表示直筒款的裤腿对偏瘦的孩子仍显窄。
+  garment: Kids Uniform Ponte 童装校服裤
+  region: 裤腿与脚口
+  candidate_request: 增加直筒裤的膝下宽度或推出标准腿宽选项。
+  measurement_inputs: 膝围、脚口展开宽和步幅
+  preserve: 可调腰头和裤长
+  target: null
+  state: needs_confirmation
+- id: intent-c-08
+  evidence:
+    url: https://www.amazon.com/Amazon-Essentials-Girls-Front-Uniform/dp/B0BKS4QJTR
+    locator: 10 slim with adjustable waist at the tightest setting
+    evidence: 买家需用较大尺码取得足够裤长，但偏瘦孩子使用最紧腰头仍感到腰部偏大。
+  garment: Amazon Essentials 女童制服裤
+  region: 变体
+  candidate_request: 增加细腰长裤身变体，加大腰头调节范围。
+  measurement_inputs: 儿童腰围、内长、腰头最大最小有效宽
+  preserve: 坐下余量和裤脚宽
+  target: null
+  state: needs_confirmation
+- id: intent-c-09
+  evidence:
+    url: https://factory.jcrew.com/p/boys/categories/clothing/pants/khakis/boys-slim-pant-in-flex-chino/L1633
+    locator: The 8 is too short, the 10 is way too big
+    evidence: 买家反馈相邻两码之间，8 码长度不足，10 码对瘦体型过宽。
+  garment: Flex Chino 男童校服裤
+  region: 变体
+  candidate_request: 把裤身长短与腰围尺码独立设置。
+  measurement_inputs: 两码实际内长、腰围和臀围
+  preserve: 原有面料和原版尺码
+  target: null
+  state: needs_confirmation
+- id: intent-c-10
+  evidence:
+    url: https://factory.jcrew.com/p/boys/categories/clothing/pants/khakis/boys-slim-fit-tech-chino-pant/CB985
+    locator: They changed the sizing from prior years
+    evidence: 回购者认为更新后的同系列比历年款宽松，不再符合孩子此前的腰围和裤长组合。
+  garment: Tech Chino 男童校服裤
+  region: 腰围与腰头
+  candidate_request: 核对改版前后腰围及放码，保留旧窄版。
+  measurement_inputs: 实测腰围、侧缝长、旧新版对应码
+  preserve: 腰头可调结构
+  target: null
+  state: needs_confirmation
+- id: intent-c-11
+  evidence:
+    url: https://www.macys.com/shop/product/lands-end-school-uniform-child-girls-sweatpants?ID=16168286
+    locator: Sizing is totally inconsistent from one style of sweatpants to another
+    evidence: 买家发现同品牌同一尺码，直脚裤过长且腰围过大，束脚款反而接近偏小。
+  garment: Lands’ End 女童校服运动裤
+  region: 尺码级差
+  candidate_request: 统一款式间尺码量测说明并核对一致性。
+  measurement_inputs: 两款同码实际腰围、内长和基准人体数据
+  preserve: 脚口样式和裤腿型
+  target: null
+  state: needs_confirmation
+- id: intent-c-12
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/149303
+    locator: Pattern alterations · front and back rise
+    evidence: 制作者后裆加长、前裆缩短，另外改了裆点与膝部。
+  garment: Vogue 1522 抽绳长裤
+  region: 前后裆深
+  candidate_request: 把前后裆深设为独立操作，并重对齐裆底。
+  measurement_inputs: 前中和后中至裆点、膝线位置
+  preserve: 腰围、内长、左右裤片
+  target: null
+  state: needs_confirmation
+- id: intent-c-13
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/149303
+    locator: Adjust the pockets after removing from center front
+    evidence: 制作者因缩短前裆，明确提出口袋也需要跟着改。
+  garment: Vogue 1522 抽绳长裤
+  region: 口袋
+  candidate_request: 让袋口定位跟随前片腰线和前裆改动。
+  measurement_inputs: 袋口到腰头距离、袋布净深
+  preserve: 口袋入口尺寸和可用容积
+  target: null
+  state: needs_confirmation
+- id: intent-c-14
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/159553
+    locator: Drop shoulder was so long
+    evidence: 制作者认为落肩过长，试版时重做肩部并换成装袖。
+  garment: Simplicity 8700 女外套
+  region: 肩宽与肩点
+  candidate_request: 做正常肩点和装袖版，重算袖窿。
+  measurement_inputs: 想保留的落肩量、肩点至袖山剪口距离
+  preserve: 胸围、前后身平衡
+  target: null
+  state: needs_confirmation
+- id: intent-c-15
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/159553
+    locator: First muslin · bust adjustment
+    evidence: 制作者按高胸围选码，试样后在胸部增加余量。
+  garment: Simplicity 8700 女外套
+  region: 胸围与胸省
+  candidate_request: 把上胸与全胸分别输入，并调整胸部松量。
+  measurement_inputs: 高胸围、全胸围、胸点位置
+  preserve: 肩线、领口和衣长
+  target: null
+  state: needs_confirmation
+- id: intent-c-16
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/159553
+    locator: Buttons to zipper with flap
+    evidence: 制作者把纽扣改成拉链加风挡，并与其他结构一起试版。
+  garment: Simplicity 8700 女外套
+  region: 开合与门襟
+  candidate_request: 为原扣式衣身设计拉链和挡片变体。
+  measurement_inputs: 拉链有效长、挡片宽、前中重叠量
+  preserve: 领点和下摆对位
+  target: null
+  state: needs_confirmation
+- id: intent-c-17
+  evidence:
+    url: https://curvysewingcollective.com/same-pattern-different-bodies-forget-me-not-clementine/
+    locator: Full bust adjustment and cowl change
+    evidence: 试作者分别增加胸部空间与垂坠领深度，调整后认为合身。
+  garment: Clementine 垂坠领上衣
+  region: 胸围与胸省
+  candidate_request: 胸部松量和垂坠领深度独立控制。
+  measurement_inputs: 高胸围、全胸围、垂坠领露出高度
+  preserve: 基础肩线和袖窿接口
+  target: null
+  state: needs_confirmation
+- id: intent-c-18
+  evidence:
+    url: https://curvysewingcollective.com/same-pattern-different-bodies-forget-me-not-clementine/
+    locator: Lengthened the top
+    evidence: 同款试作者偏好更长的上衣，自行延长衣身并将腰部向臀部放码。
+  garment: Clementine 垂坠领上衣
+  region: 衣长与下摆高度
+  candidate_request: 提供可选衣长和独立腰臀放量。
+  measurement_inputs: 肩至下摆、腰臀之间长度和围度
+  preserve: 胸位、领口与袖山
+  target: null
+  state: needs_confirmation
+- id: intent-c-19
+  evidence:
+    url: https://curvysewingcollective.com/same-pattern-different-bodies-forget-me-not-clementine/
+    locator: I do wish the size range was bigger
+    evidence: 试作者做完后表示希望尺码范围更广。
+  garment: Clementine 垂坠领上衣
+  region: 变体
+  candidate_request: 扩展尺码区间并复核胸腰臀放码。
+  measurement_inputs: 现有最大码与目标码的人体及成衣尺寸
+  preserve: 原码级差和风格松量
+  target: null
+  state: needs_confirmation
+- id: intent-c-20
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/185784
+    locator: Standard petite alterations and swayback
+    evidence: 制作者缩短前后衣身和袖子，并做了背腰调整，后续还需释放公主线的胸量。
+  garment: McCall’s 8040 女衬衫
+  region: 躯干长度
+  candidate_request: 建立娇小版肩腰长度，并允许单独改变背腰和胸部。
+  measurement_inputs: 肩腰长、后腰量、胸腰差和袖长
+  preserve: 肩点、领线与合体风格
+  target: null
+  state: needs_confirmation
+- id: intent-c-21
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/185784
+    locator: Comment on gaping at the back neck
+    evidence: 另一位试作者在无袖试样上发现后领张口、公主线位置不对和后腰拉纹。
+  garment: McCall’s 8040 女衬衫
+  region: 领口
+  candidate_request: 定位后领张口来源，分别核对后片长度与领口。
+  measurement_inputs: 后领口净长、背宽、后腰褶余量
+  preserve: 肩线、前领和后中方向
+  target: null
+  state: needs_confirmation
+- id: intent-c-22
+  evidence:
+    url: https://kristinsews.com/mccalls-7950-pattern-review/
+    locator: Pinch out some underarm gaping
+    evidence: 制作者将纽扣版衣身每边收去一小段以消除腋下张口，同时缩短了两个版本的上身。
+  garment: McCall’s 7950 纽扣前襟连衣裙
+  region: 袖窿
+  candidate_request: 收前袖窿松量并保持对照，衣身长另测。
+  measurement_inputs: 袖窿张口量、侧片接缝长、肩腰长度
+  preserve: 前门襟和胸臀位置
+  target: null
+  state: needs_confirmation
+- id: intent-c-23
+  evidence:
+    url: https://kristinsews.com/mccalls-7950-pattern-review/
+    locator: Raised the patch pockets
+    evidence: 制作者缩短中长裙后将贴袋向上移动，让指尖能自然够到袋底。
+  garment: McCall’s 7950 纽扣前襟连衣裙
+  region: 口袋
+  candidate_request: 让贴袋位置随裙长调整，并用触及范围核对。
+  measurement_inputs: 袋口距腰线、垂手位置、袋底高度
+  preserve: 袋口宽和上下口袋对称
+  target: null
+  state: needs_confirmation
+- id: intent-c-24
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/21648
+    locator: Front and back size blending
+    evidence: 制作者按上胸选择肩部版型，前身从腋下开始拼接到更大的尺码，后身保留较窄上背。
+  garment: Vogue 8151 针织上衣
+  region: 胸围与胸省
+  candidate_request: 前胸与后背分别放码，在腋下回接。
+  measurement_inputs: 上胸、全胸、前后胸宽、侧缝线长
+  preserve: 原肩宽和袖山对位
+  target: null
+  state: needs_confirmation
+- id: intent-c-25
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/184730
+    locator: Front opening instead of back
+    evidence: 制作者在前中折线加余量，把后开改为前开，方便搭配。
+  garment: Vogue 9285 女上衣
+  region: 开合与门襟
+  candidate_request: 增加前开襟版并审核前中门襟。
+  measurement_inputs: 开口长、门襟量、领带与前中关系
+  preserve: 后片和领口总缝长
+  target: null
+  state: needs_confirmation
+- id: intent-c-26
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/184730
+    locator: Widened the sleeve at the head
+    evidence: 制作者加宽袖山区域并调整打褶方式，准备与原袖型对比。
+  garment: Vogue 9285 女上衣
+  region: 上臂松量
+  candidate_request: 做更宽袖山及不同褶量的独立选项。
+  measurement_inputs: 袖山高度和弧长、褶量和袖窿缝长
+  preserve: 袖口长、袖窿剪口
+  target: null
+  state: needs_confirmation
+- id: intent-c-27
+  evidence:
+    url: https://sewing.patternreview.com/review/pattern/177292
+    locator: Shortening the bodice front and front sleeves
+    evidence: 制作者按上胸确定肩领码，胸臀混合用码，并分别缩短前身和前袖。
+  garment: Pattydoo Carmen 上衣
+  region: 躯干长度
+  candidate_request: 前身和前袖联动改长，重检两片对位。
+  measurement_inputs: 前衣长、前袖定位点、前后接缝长
+  preserve: 后片轮廓与领口宽度
+  target: null
+  state: needs_confirmation

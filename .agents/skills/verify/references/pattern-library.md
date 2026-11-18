@@ -36,3 +36,23 @@ Run the gallery browser verifier with `--expected-commit DEPLOYED_SHA` against
 workflow completes. The verifier uses a clean browser context and closes its
 browser and loopback server. Raw evidence belongs in ignored work. Record the
 candidate, verdict and selected evidence under `docs/verification/`.
+
+## Searchable CAD and feedback catalog
+
+Use the same static build and execute the specific catalog browser gate after
+regenerating the data as described in
+[the catalog README](../../../../web/pattern-library/catalog/README.md).
+
+```sh
+python web/pattern-library/source/verify_catalog.py --directory dist \
+  --output work/verify-catalog --source work/corpus/nicapotato.zip \
+  --fit-source work/corpus/fitdata.zip
+```
+
+The source option checks every published evidence span against its original
+review and product ID. The browser exercise enters the catalog from the gallery,
+filters by format, publisher, part and keyword, checks empty results and
+pagination, compares all four CSV downloads with the build hashes, and opens a
+filtered mobile permalink. Use the same verifier against the live Pages root
+with `--expected-commit` after publication. Keep CAD-byte deduplication and
+publisher-only entries distinct in the receipt.

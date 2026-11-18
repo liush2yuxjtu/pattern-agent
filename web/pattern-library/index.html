@@ -18,7 +18,7 @@
       <nav aria-label="项目导航">
         <a href="#gallery" aria-current="location">图册</a>
         <a href="#editor">改版工具</a>
-        <a href="#data">资料下载</a>
+        <a href="catalog/">完整资料库</a>
       </nav>
       <a class="source-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/web/pattern-library">GitHub <span aria-hidden="true">↗</span></a>
     </div>
@@ -31,7 +31,10 @@
           <h1 id="gallery-title">纸样与三维图册</h1>
           <p>从同一个样本查看二维裁片、三维渲染和可下载的复现文件。</p>
         </div>
-        <a class="button primary" href="downloads/pattern-agent-editor.zip" download>下载改版工具 <span aria-hidden="true">↓</span></a>
+        <div class="intro-actions">
+          <a class="button primary" href="catalog/">查看全部纸样和反馈 <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="downloads/pattern-agent-editor.zip" download>下载改版工具 <span aria-hidden="true">↓</span></a>
+        </div>
       </div>
 
       <div class="sample-picker" role="group" aria-label="选择纸样样本">
@@ -111,18 +114,19 @@ python -m pattern_tool serve</code></pre>
 
     <section id="data" class="section data-section" aria-labelledby="data-title">
       <div class="section-lead">
-        <div><h2 id="data-title">纸样清单与用户反馈</h2><p>清单保留来源、文件类型和 SHA-256。公开反馈可用来编写带量法、目标和保护部位的改版请求。</p></div>
+        <div><h2 id="data-title">纸样清单与用户反馈</h2><p>在完整资料库按文件格式、款式、调整部位或原文关键词逐条查看。</p></div>
+        <a class="button secondary" href="catalog/">打开完整资料库</a>
       </div>
       <div class="data-grid">
         <article>
           <h3>CAD 纸样清单</h3>
-          <p>38 份按内容去重的原件。17 份 PRJ、15 份 ZPRJ、4 份 DXF、2 份 ZPAC。</p>
-          <div class="data-links"><a href="data/pattern-assets.csv" download>下载原件索引 CSV</a><a href="downloads/dxf-regression-samples.zip" download>DXF 验证样本 ZIP</a></div>
+          <p>62 份按内容去重的原件。含 17 份 PRJ、39 份 ZPRJ、4 份 DXF 和 2 份 ZPAC。</p>
+          <div class="data-links"><a href="catalog/cad-origins.csv" download>下载原件索引 CSV</a><a href="downloads/dxf-regression-samples.zip" download>DXF 验证样本 ZIP</a></div>
         </article>
         <article>
           <h3>真实反馈样本</h3>
-          <p>36 条观察来自 28 个公开页面，涉及袖长、袖窿、袖口、裤长和口袋等部位。</p>
-          <div class="data-links"><a href="data/feedback-catalog.csv" download>下载反馈 CSV</a><a href="data/feedback-derived-intents.yaml" download>下载候选意图 YAML</a></div>
+          <p>批量评论线索和人工整理观察覆盖袖长、胸腰臀围、裆深、裤长、口袋及变体。</p>
+          <div class="data-links"><a href="catalog/?view=feedback">浏览反馈和候选改法</a><a href="catalog/review-design-intents.yaml" download>下载候选意图 YAML</a></div>
         </article>
         <article>
           <h3>原型与复现</h3>
