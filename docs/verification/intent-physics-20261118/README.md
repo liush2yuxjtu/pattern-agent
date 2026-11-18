@@ -93,5 +93,10 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
 公开发布只使用既有Pages工作流作发布，本地 `/verify` 是验收依据。线上字节和真实浏览器
 回归在发布后补存，不把发布成功当成应用通过。
 
+归档入库核对另外发现两份 `dist/models` 中的原始模型快照被Git忽略规则排除，
+已通过后续提交补齐。265份清单文件及最终HTML共266项均与Git索引中的实际blob
+逐字节一致；页面、WASM及数值结果没有更改。
+[入库字节收据](repository-byte-readback.json)记录这次修复，未隐藏失败或改写原快照。
+
 历史T恤 FAIL（7.6455mm接缝间隙、20处穿插）继续保留。新页面使用独立
 `/intent-edit-review/physics/` 路径，不覆盖旧对照页或静态缝合页。
