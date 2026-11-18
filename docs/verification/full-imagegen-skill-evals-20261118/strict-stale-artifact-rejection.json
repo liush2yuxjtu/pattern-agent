@@ -1,0 +1,10 @@
+{
+  "control": "Actual STATUS output copied to isolated temporary workspace; append after saved artifact SHA binding",
+  "expected": "REJECT",
+  "actual": "REJECT",
+  "original_outputs_modified": false,
+  "previous_review_unchanged": true,
+  "bound_sha256": "58ade480a305db014f249af1b4c8cd6e6b74c582e9e4896f4470fb1024c492f9",
+  "changed_sha256": "dd2c023a1b40f3be1cb625334f3a6cdc29efb7c6eb1557041faf215e73d9c3c0",
+  "stderr": "Traceback (most recent call last):\n  File \"/workspace/work/pattern-agent/tools/skill_evals/build_full_imagegen_review.py\", line 338, in <module>\n    print(json.dumps(build(a.workspace.resolve(), a.site.resolve(), a.allow_pending)))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/work/pattern-agent/tools/skill_evals/build_full_imagegen_review.py\", line 128, in build\n    assert grade.get('artifact_sha256') == current_hashes, 'Independent grade is stale or lacks full output hash binding'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Independent grade is stale or lacks full output hash binding\n"
+}

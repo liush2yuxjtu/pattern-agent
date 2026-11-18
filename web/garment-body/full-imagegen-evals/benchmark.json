@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "skill_name": "Full ImageGen workflow candidate acceptance",
+    "skill_path": "work/full-imagegen-skill-evals-20261118/skill-executed",
+    "executor_model": "Explicit Codex subagents and root ImageGen orchestration; model telemetry unavailable",
+    "analyzer_model": "Independent grader; model telemetry unavailable",
+    "timestamp": "2026-11-18T08:11:57Z",
+    "evals_run": [
+      1
+    ],
+    "runs_per_configuration": 1,
+    "protocol": "One actual candidate N=1; no paired old/new comparison; no native Claude trigger run",
+    "resource_metrics": "Token/duration telemetry unavailable: null, never inferred from source size"
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8461538461538461,
+        "passed": 11,
+        "failed": 2,
+        "total": 13,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "原始电商商品照片实际读取并保存来源、尺寸、SHA，生成内容可追溯到本次原图。",
+          "passed": true,
+          "evidence": "run.json records actual original1000×1276, ASOS product/CDN URL, SHA6fd6310b…; original was actually visually read. Independently checked all receipt reference SHA against bytes. Historical retrieved source is explicitly reused, no false fresh CDN retrieval claim."
+        },
+        {
+          "text": "本轮实际调用Image Gen生成正面、侧面、背面、特写、姿态、相对深度六张独立原生图；非历史复用、拼图裁块或插值放大。",
+          "passed": true,
+          "evidence": "Actual tool transcript has7 native calls: six requested views plus separate raw-photo pose guide. grader/final/artifact-audit.json independently reopened all native files; six distinct tool paths and hashes byte-identical to output PNGs. front/side/back/pose/depth1024×1536; closeup1199×1312; raw guide1110×1417. No crop/upscale."
+        },
+        {
+          "text": "逐图核对红色商品领口、袖长、材质、上下装结构，差异与推断结构明确记录；严重错款不得通过。",
+          "passed": true,
+          "evidence": "Independent visual inspection of original and every output: red pointelle outfit, shallow neckline, low hem-pinching hands and trousers broadly retained. product-visual-audit.md explicitly records micro-knit changes, ambiguous cuff length, inferred legs/back and potentially invented rear waistband decoration. This passes audit/disclosure, not exact garment reconstruction."
+        },
+        {
+          "text": "六图对应同一人体与同一指定提衣动作；点线和深度图明确illustrative而非检测器/厘米真值，实际像素与receipt完整。",
+          "passed": false,
+          "evidence": "FAIL: same identity and broad low-hand gesture are visible, but exact same body/pose across separately generated views is not established: side is more upright, back lean/foot stance cannot be reconciled to a saved3D state. pose neck dot is on garment neckline and hip dots near waistband; depth retains nongeometric trim/lighting. Both are correctly labeled illustrative, which does not establish same frozen geometry. See inspected images/{front,side,back,pose,depth}.png and run.json; final model was not generation input."
+        },
+        {
+          "text": "从本轮Image Gen姿态引导与未改动原图建立对应，保存注册变换、语义关键点、可见性和误差；遮挡不编造检测真值。",
+          "passed": true,
+          "evidence": "model-fit/targets/registration.json stores actual similarity transform with153 matches/120 inliers, mean1.476333px/P953.342754px and raw/guide hashes. pose-targets.json gives native/raw coordinates, visibility, weights/uncertainty; neckline explicitly garment surface, waist proxies explicitly low waistband, not cervical/pelvis joints. Actual registered overlays inspected; original remains unwarped."
+        },
+        {
+          "text": "真实解剖人体支持厘米体形和骨骼/关节姿态调整，至少一次实际shape与pose变更引起真实顶点变化且可保存重开。",
+          "passed": true,
+          "evidence": "Actual Human Studio import/edit/download/reimport run22 checks; desktop and edited-pose screenshots visually inspected. Independent grader reopened downloaded initial/edited neutral OBJ and measurements: actual waist+2.00864035cm, max vertex movement0.57424252cm, JSON/OBJ error1.75e-9cm; saved left upperarmX30.2→37.2degrees. Complete163-bone maps and real morph/FK vertices reconstructed without exporter/runtime imports."
+        },
+        {
+          "text": "本轮实际执行体形、姿态、骨骼/相机拟合；初始最终参数/损失可复算，原始动作固定目标，不以A-pose替代。",
+          "passed": true,
+          "evidence": "Five actual saved optimization candidates/logs include neutral initialization and posthoc spine/waistband corrections. final state not A-pose; actual shoulder target37→36.4cm and bones/pose/camera changed. Independent OBJ/FK correspondence5.02e-9cm. Fixed-camera initial/final OBJ reprojections exist in comparison; loops/parameters/candidate losses retained, including failures."
+        },
+        {
+          "text": "前侧背真实渲染共享同一最终dimensions/morphWeights/完整pose及网格，仅相机变化；相机与网格指纹保存。",
+          "passed": true,
+          "evidence": "grader/final/artifact-audit.json independently confirms final dimensions/morphWeights/complete pose/asset equal views/state, actual posed OBJ bytes identical, allfront/side/back/pose/depth provenance SHA match state/pose/mesh; only views/camera differ. Independently rebuilt posed vertices match actualOBJ within5.02e-9cm."
+        },
+        {
+          "text": "OpenCV初始最终叠加来自实际照片与真实网格投影；保留未warp画幅及肩臂、躯干、腰臀、腕部局部误差与掩膜。",
+          "passed": true,
+          "evidence": "Actual source1000×1276 and actual OBJ+final camera independently rasterized; mask is pixel-identical to final-mask.png (IoU1). comparison initial/final overlays use same final camera withoutwarp; seven shoulder/arm/torso/waist-hip region errors are saved, wrist point residuals in final-cue-residual.json. Independent mask audit and actual contour/alpha overlay visually inspected; clothing/hair envelope statistics not naked-person accuracy."
+        },
+        {
+          "text": "独立几何和目视检查确认关键肩臂/躯干/腰臀无明显偏移，真实侧视腕手方向与双手空间关系符合提衣动作；局部失败否决整体匹配。",
+          "passed": false,
+          "evidence": "FAIL: actual final photo overlay retains visible waist/hip drift; comparison region metrics leftwaistP9532px and right36px/outside10.3805% fail historical regionalheuristics. True side/front render shows cupped/upturned hands, not the reference hem pinch. Independent actualOBJ ray/triangle audit reproduces left455/1424 covered, min frontclearance18.436949435cm; right1424/1424,min4.518556425cm. Zeroinside among covered rays does not prove grasp/contact; unclassified raysUNKNOWN. Overall pose/visual matchFAIL even though other function assertions pass."
+        },
+        {
+          "text": "最终尺寸JSON/CSV从同版本真实neutral网格实际复量，12项来源/单位/定义/输入目标残差分列；不读缓存当主值。",
+          "passed": true,
+          "evidence": "grader/final/geometry-audit.json independently parses13,380vertices/26,756triangles, sparse morph/FK and12measurement paths. Saved neutral reconstructionmax5.02e-9cm; all12 primary JSON/CSV values agree with actualneutral OBJ within3.56e-15cm. Definitions, cm, controltargets/residuals, sourcehashes separated; person_accuracy_verified false. Actual waist71.000002416cm, bust90.000031824cm, hips96.000040430cm conditionalavatar."
+        },
+        {
+          "text": "官方评审Output展示原图、六张实际ImageGen、真实模拟、初始最终OpenCV叠加图库及下载，保留原生Prompt/Grades/Feedback/Benchmark。",
+          "passed": true,
+          "evidence": "Independent actual Playwright visit to full official pending Output: native header/Prompt/Output/Grades/Feedback/Benchmark DOM preserved; all24 displayed main/thumbnail images decode; four stages contain raw/guide, sixnative imagegen, actual modelviews and initial/finaloverlay. All added content inside#outputs-body. ActualHTTP measurementJSON38342B/CSV1744B/full-runZIP76951092B reopened200. grader/viewer-check.json and real official-page.png. Final graded strict build must retain this contract."
+        },
+        {
+          "text": "证据结论区分功能、生成质量、二维匹配、三维合理性、真人准确度；无可靠真实尺度时仅条件人体，native触发与物理试衣不虚称完成。",
+          "passed": true,
+          "evidence": "run.json, STATUS.md, model-fit/REPORT.md and root visualaudit distinguish actualfunctionalexecution, generativequality,2D/3D failures, conditional170cm prior, nativeClaudeBLOCKED and clothNOT_RUN. Overall originalphoto match explicitlyFAIL; no recovered trueperson accuracy or final-model-conditioned generation claim. This is singlecandidateN1, no new/old superiority claim."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.8462,
+        "stddev": 0.0,
+        "min": 0.8462,
+        "max": 0.8462
+      }
+    }
+  },
+  "notes": [
+    "Full flow candidate acceptance: original product photo, actual ImageGen six images, adjustable anatomical model, actual fitting/render/overlay, final neutral mesh measurements.",
+    "N=1, no baseline: this does not establish improvement, reliability, real-person accuracy, or trigger rates.",
+    "All frozen assertions graded independently. A failed critical visual/3D match is not rescued by a high file/functional pass count.",
+    "ImageGen pose/depth are illustrative; original photo and independent model geometry evidence are separate."
+  ]
+}

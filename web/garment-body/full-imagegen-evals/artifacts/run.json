@@ -1,0 +1,39 @@
+{
+  "mode": "prior_avatar",
+  "execution": "current full workflow explicit tool orchestration with isolated fit and independent grading subagents; not native trigger",
+  "source": {
+    "path": "reference/original-product.jpg",
+    "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
+    "pixels": [
+      1000,
+      1276
+    ],
+    "product_url": "https://www.asos.com/us/asos-design/asos-design-lounge-pointelle-boatneck-3-4-sleeve-top-in-red/prd/211010805",
+    "source_image_url": "https://images.asos-media.com/products/asos-design-lounge-pointelle-boatneck-3-4-sleeve-top-in-red/211010805-1-red",
+    "retrieval": "Recovered original bytes and historical official-page verification reused; this round actually reads saved original, no claim of fresh CDN retrieval"
+  },
+  "generation": {
+    "receipt": "generation-receipts.json",
+    "actual_calls": 7,
+    "six_views": [
+      "front",
+      "side",
+      "back",
+      "closeup",
+      "pose",
+      "depth"
+    ],
+    "separate_raw_photo_pose_guide": "images/raw-pose-guide.png",
+    "same_final_model_used_as_generation_input": false,
+    "lineage": "front uses raw product and explicitly historical mannequin render; five outputs use raw product plus newly generated front; raw guide uses raw product only. Subsequent final model fitting must be checked against these frozen images, not represented as their input."
+  },
+  "scope": {
+    "single_candidate": true,
+    "baseline": null,
+    "time_tokens": null,
+    "native_claude": "BLOCKED",
+    "real_person_measurement_accuracy": "NOT_VERIFIED",
+    "cloth_physical_fit": "NOT_RUN"
+  },
+  "imagegen_pose_depth_semantics": "illustrative only; actual geometry outputs are separate; cannot treat generated dots or grayscale as detector or metric truth"
+}

@@ -138,3 +138,14 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 新case3执行者的二次audit复用导出器parser/reconstruct，因此不能称实现独立；该额外claim单列未验证。独立grader仍确认最大46.06276cm中性对应偏差及其正确拒绝。断言满分不代表所有附加声明成立。
 - 官方评审页： https://liush2yuxjtu.github.io/pattern-agent/garment-body/model-size-evals/eval.html 。图库、尺寸表、原始下载与claims在原生Output内，Prompt/Grades/Feedback/Benchmark保持官方流程。缺失token/统一时长保持null。
 - 此段为完成后的实测记录；执行时的skill-new快照不变，当前可执行技能内容与被测版一致。此前照片姿态FAIL、真人准确性未验证、物理试衣NOT_RUN及Claude原生触发BLOCKED不改。
+
+
+## 2026-11-18 实际完整 Image Gen 端到端验收
+
+- 用户指出尺寸分支缺少 Image Gen 后，重新执行完整链：原始红衣商品照 → 本轮实际 Image Gen六张独立原生图（另有raw姿态引导）→ 可调MakeHuman人体五轮真实拟合 → 同状态模拟前侧背/骨架/Z-buffer → OpenCV前后叠加 → 最终neutral网格12尺寸JSON/CSV。生成原生图指纹、像素、提示和引用均保存；非拼图裁切/放大/历史复用。
+- 显式root工具编排与隔离模型执行、独立评分子代理共同完成；单案例N=1，无旧版基线，不声称技能性能提升或native Claude触发。执行时技能快照单独保存，执行后的scope文档修正不倒填。
+- 独立grader按冻结13项评分11通过/2失败，overall FAIL：六图同一精确三维姿势未建立；真实模型腰臀局部偏移、杯状/离体双手未恢复原图捏衣。84.6%只是断言通过比例，不是照片匹配/真人尺寸准确率。
+- 真正中性起步优化与合理性约束/腕部/腰带标记语义修正共5候选；固定最终相机IoU0.6858→0.8220，衣物外溢12.59%→3.72%。腰臀P95仍32/36px，手部左侧射线覆盖455/1424且最小前间距18.44cm，不能用平均指标或零inside掩盖失败。
+- 独立标量几何/FK重建neutral/posed误差约5e-9cm，12项尺寸JSON/CSV与独立路径复量差<4e-15cm，独立相机三角投影mask逐像素一致，独立射线复现手部问题。Human Studio实际导入/厘米+2/关节+7°/下载重开22项通过。
+- 六图生成输入为原图及明确历史人体引导/new front，先于新final拟合，不能反称本批生成已使用最终模型。生成姿态/深度仅illustrative；真实几何图另列。身高170cm及体形仍为条件人体先验，模型实测不证明真人尺寸准确。
+- 官方评阅页 https://liush2yuxjtu.github.io/pattern-agent/garment-body/full-imagegen-evals/eval.html ：原图、六生成图、最终模拟、最终叠加默认并列，初始/失败候选与完整复现ZIP保留，关键FAIL醒目。原生Claude触发BLOCKED、物理试衣NOT_RUN保持。

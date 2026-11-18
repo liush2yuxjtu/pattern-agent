@@ -1,0 +1,98 @@
+{
+  "simulation": [
+    {
+      "path": "final/photo-render.png",
+      "label": "最终·原图相机真实裸模",
+      "caption": "final/final-state.json同一真实posed.obj，原图相机1000×1276；视觉匹配FAIL。"
+    },
+    {
+      "path": "final/views/front.png",
+      "label": "最终·正面",
+      "caption": "同一final state与posed mesh，仅相机变化；不是各视角独立摆姿。"
+    },
+    {
+      "path": "final/views/side.png",
+      "label": "最终·侧面",
+      "caption": "真实同状态侧视，手部杯状/远离躯干仍需修复，不能视为动作已匹配。"
+    },
+    {
+      "path": "final/views/back.png",
+      "label": "最终·背面",
+      "caption": "同一final状态，隐藏背面是先验，不是原图观察。"
+    },
+    {
+      "path": "final/views/pose.png",
+      "label": "模拟·真实骨架",
+      "caption": "实际FK骨架投影，不是ImageGen姿态估计真值。"
+    },
+    {
+      "path": "final/views/depth.png",
+      "label": "模拟·Z-buffer",
+      "caption": "实际同状态几何相对深度；rawdepth.npy与有效掩膜保留。"
+    },
+    {
+      "path": "initial/front.png",
+      "label": "中性初始化",
+      "caption": "从neutral-new-guide/initial-state保存的初始网格，全部大骨架角0；手指有公开闭合先验。"
+    },
+    {
+      "path": "editor-probe/edited-pose.png",
+      "label": "实际编辑器·cm和pose修改",
+      "caption": "最终state实际导入后改腰围+2cm、左上臂+7°，下载重开/恢复验证22checks；测试编辑副本不替代最终模型。"
+    }
+  ],
+  "overlay": [
+    {
+      "path": "comparison/initial-frozen-camera-overlay.png",
+      "label": "初始·固定最终相机叠加",
+      "caption": "实际初始OBJ重投影，和最终使用相同final camera，禁止warp。"
+    },
+    {
+      "path": "comparison/final-frozen-camera-overlay.png",
+      "label": "最终·固定相机叠加",
+      "caption": "绿色重合/粉色原图独有/青色模型独有，透明16%+细轮廓；腰臀仍FAIL。"
+    },
+    {
+      "path": "targets/raw-target-overlay.png",
+      "label": "新pose guide配准与语义核查",
+      "caption": "新ImageGen标记经SIFT/RANSAC映射未修改原图；领口/腰带是衣物表面，不当颈/髋关节。"
+    },
+    {
+      "path": "final/final-overlay.png",
+      "label": "最终·点线残差",
+      "caption": "实际网格与原图、示意点线对照，示意guide均值17.07px不能替代区域/3D匹配。"
+    }
+  ],
+  "measurement_json": "measurements.model.json",
+  "measurement_csv": "measurements.model.csv",
+  "state": "final/final-state.json",
+  "verdict": "FAIL: original-photo pose/visual match; functional execution and adjustable-model probe completed",
+  "notes": [
+    "本轮实际执行原图配准、neutral初始化优化、真实FK/LBS多视图、OpenCV叠加、模型实测与编辑器导出重开。",
+    "最终候选 neutral-waistband-semantic；功能可用不等于三维提衣动作通过。腰臀区域仍FAIL，手部杯状/离躯干过远，整体视觉匹配FAIL。",
+    "ImageGen六图在最终拟合前已生成，输入为明确保存的旧状态；最终模型不能反向冒充生成输入。",
+    "身高170cm、胸90/腰71/臀96为假设M170先验；模型实测不是真人围度真值。",
+    "新ImageGen原图pose guide仅示意。SIFT配准120内点，均值1.476px/P953.343px，不等于关节准确率。",
+    "低腰shorts waistband标记映射Y95cm表面代理；此前Y105自然腰代理语义不对应，修正轮次保留。",
+    "最终手部ray覆盖L455/1424、R1424/1424，0inside只适用于已覆盖ray，L最小前间距18.44cm；不表示提衣接触通过。"
+  ],
+  "model_files": [
+    "final/neutral.obj",
+    "final/posed.obj",
+    "final/posed.glb",
+    "final/neutral.glb",
+    "initial/neutral.obj",
+    "initial/posed.obj",
+    "initial/state.json"
+  ],
+  "required_files": [
+    "final/camera.json",
+    "final/joints.json",
+    "final/views/view-provenance.json",
+    "final/views/depth-valid.png",
+    "comparison/metrics.json",
+    "targets/registration.json",
+    "reference/segmentation.json",
+    "editor-probe/report.json"
+  ]
+}

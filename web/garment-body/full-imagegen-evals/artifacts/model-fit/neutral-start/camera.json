@@ -1,0 +1,239 @@
+{
+  "protocol": "orthographic-oblique-v1",
+  "units": "cm",
+  "width": 1000,
+  "height": 1276,
+  "rotation_order": "YXZ degrees",
+  "initial": [
+    13.2,
+    6.5,
+    124.0,
+    -12.0,
+    0.0,
+    0.0
+  ],
+  "final": [
+    14.319661209653887,
+    -19.999999999901178,
+    115.13601469966642,
+    -49.99999999992244,
+    17.999999999991,
+    -4.526829155768939
+  ],
+  "formula": "q=R(YXZ)*world; u=500+s*(qx-cx), v=638-s*(qy-cy)",
+  "near_far_cm": [
+    -200,
+    200
+  ],
+  "world_to_pixel_homogeneous": [
+    [
+      9.44332716306675,
+      -2.652713035669842,
+      -10.432611504361656,
+      786.3932241916626
+    ],
+    [
+      1.0748766176305524,
+      -13.576323037135499,
+      4.425018667472629,
+      2286.7087235289528
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "multiplication": "column homogeneous [x,y,z,1] cm; pixel homogeneous=M@world; divide by third component",
+  "views": {
+    "front": {
+      "axis": "front",
+      "px_per_cm": 4.8,
+      "center_cm": [
+        0,
+        85
+      ],
+      "world_to_pixel_homogeneous": [
+        [
+          4.8,
+          0.0,
+          0.0,
+          300.0
+        ],
+        [
+          0,
+          -4.8,
+          0,
+          858.0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "side": {
+      "axis": "side",
+      "px_per_cm": 4.8,
+      "center_cm": [
+        0,
+        85
+      ],
+      "world_to_pixel_homogeneous": [
+        [
+          0.0,
+          0.0,
+          4.8,
+          300.0
+        ],
+        [
+          0,
+          -4.8,
+          0,
+          858.0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "back": {
+      "axis": "back",
+      "px_per_cm": 4.8,
+      "center_cm": [
+        0,
+        85
+      ],
+      "world_to_pixel_homogeneous": [
+        [
+          -4.8,
+          0.0,
+          0.0,
+          300.0
+        ],
+        [
+          0,
+          -4.8,
+          0,
+          858.0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "closeup": {
+      "axis": "front",
+      "px_per_cm": 10,
+      "center_cm": [
+        0,
+        120
+      ],
+      "world_to_pixel_homogeneous": [
+        [
+          10,
+          0,
+          0,
+          300
+        ],
+        [
+          0,
+          -10,
+          0,
+          1650
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "pose": {
+      "axis": "front",
+      "px_per_cm": 4.8,
+      "center_cm": [
+        0,
+        85
+      ],
+      "world_to_pixel_homogeneous": [
+        [
+          4.8,
+          0.0,
+          0.0,
+          300.0
+        ],
+        [
+          0,
+          -4.8,
+          0,
+          858.0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "depth": {
+      "axis": "front",
+      "px_per_cm": 4.8,
+      "center_cm": [
+        0,
+        85
+      ],
+      "world_to_pixel_homogeneous": [
+        [
+          4.8,
+          0.0,
+          0.0,
+          300.0
+        ],
+        [
+          0,
+          -4.8,
+          0,
+          858.0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    }
+  },
+  "initial_world_to_pixel_homogeneous": [
+    [
+      12.911548329686234,
+      -0.0,
+      -2.744434318794423,
+      414.2
+    ],
+    [
+      -0.0,
+      -13.199999999999998,
+      0.0,
+      2274.8
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ]
+}

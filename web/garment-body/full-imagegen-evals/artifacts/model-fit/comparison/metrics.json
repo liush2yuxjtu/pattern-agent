@@ -1,0 +1,110 @@
+{
+  "initial": {
+    "mesh_sha256": "7ab143ffa86307e26c85db7c26a9dbeb86881ea7c84fd6c7f0c2496783c1dc69",
+    "silhouette_iou": 0.6858156659161233,
+    "silhouette_dice": 0.8136306712316975,
+    "body_outside_clothing_fraction": 0.1259443689855205,
+    "regions": {
+      "shoulder_left": {
+        "outside_fraction": 0.1678298800436205,
+        "exterior_contour_p95_px": 35.150394439697266,
+        "body_pixels": 45850,
+        "heuristic_verdict": "FAIL"
+      },
+      "shoulder_right": {
+        "outside_fraction": 0.0,
+        "exterior_contour_p95_px": 0.0,
+        "body_pixels": 30238,
+        "heuristic_verdict": "PASS"
+      },
+      "arm_left": {
+        "outside_fraction": 0.30432741950624237,
+        "exterior_contour_p95_px": 58.54998779296875,
+        "body_pixels": 21306,
+        "heuristic_verdict": "FAIL"
+      },
+      "arm_right": {
+        "outside_fraction": 0.28916375521244225,
+        "exterior_contour_p95_px": 82.97476196289062,
+        "body_pixels": 35492,
+        "heuristic_verdict": "FAIL"
+      },
+      "torso": {
+        "outside_fraction": 0.0063602410975113705,
+        "exterior_contour_p95_px": 0.0,
+        "body_pixels": 135215,
+        "heuristic_verdict": "PASS"
+      },
+      "waist_hip_left": {
+        "outside_fraction": 0.05197840835933244,
+        "exterior_contour_p95_px": 32.0,
+        "body_pixels": 100965,
+        "heuristic_verdict": "FAIL"
+      },
+      "waist_hip_right": {
+        "outside_fraction": 0.22882019563861275,
+        "exterior_contour_p95_px": 237.21348571777344,
+        "body_pixels": 75343,
+        "heuristic_verdict": "FAIL"
+      }
+    }
+  },
+  "final": {
+    "mesh_sha256": "5974ac69e64c5a327be0b131d80d1be67d1d290957866d2bdb98c7b4961218a8",
+    "silhouette_iou": 0.8219606409839418,
+    "silhouette_dice": 0.90228144614589,
+    "body_outside_clothing_fraction": 0.03715741822716694,
+    "regions": {
+      "shoulder_left": {
+        "outside_fraction": 0.04235052754982415,
+        "exterior_contour_p95_px": 16.768604278564453,
+        "body_pixels": 40944,
+        "heuristic_verdict": "PASS"
+      },
+      "shoulder_right": {
+        "outside_fraction": 0.03828200192492782,
+        "exterior_contour_p95_px": 14.421401023864746,
+        "body_pixels": 41560,
+        "heuristic_verdict": "PASS"
+      },
+      "arm_left": {
+        "outside_fraction": 0.02576017464525183,
+        "exterior_contour_p95_px": 11.19999885559082,
+        "body_pixels": 32065,
+        "heuristic_verdict": "PASS"
+      },
+      "arm_right": {
+        "outside_fraction": 0.06823923299345609,
+        "exterior_contour_p95_px": 12.384498596191406,
+        "body_pixels": 32855,
+        "heuristic_verdict": "PASS"
+      },
+      "torso": {
+        "outside_fraction": 0.015110343944062734,
+        "exterior_contour_p95_px": 13.39689826965332,
+        "body_pixels": 148309,
+        "heuristic_verdict": "PASS"
+      },
+      "waist_hip_left": {
+        "outside_fraction": 0.04960422712474387,
+        "exterior_contour_p95_px": 32.0,
+        "body_pixels": 96141,
+        "heuristic_verdict": "FAIL"
+      },
+      "waist_hip_right": {
+        "outside_fraction": 0.10380518379023332,
+        "exterior_contour_p95_px": 36.0,
+        "body_pixels": 69563,
+        "heuristic_verdict": "FAIL"
+      }
+    }
+  },
+  "method": {
+    "camera": "Both masks independently reprojected from actual OBJ with final camera frozen; no warp",
+    "reference": "fresh GrabCut clothing/hair silhouette, NOT naked-body truth",
+    "thresholds": "Historical regional-v1 heuristics reused: exterior8%,P9525px; FAIL region veto. Hair/global symmetric scores descriptive only.",
+    "registration_sha256": "8a163e3ceb9dc45d0ae0d48e629d485a6f1dd3132ee874eeceac7c8f232baebd",
+    "camera_sha256": "3259e1af62aef506b4f73e9a168b52c9a44d896242ff038c5f6cdda621efa390",
+    "final_state_sha256": "e3dcbe1fad9dd6ea0faf62dae929b32882e76ebaeb039eef8ac7857a255287f4"
+  }
+}

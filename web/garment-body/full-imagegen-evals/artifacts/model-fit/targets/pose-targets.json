@@ -1,0 +1,422 @@
+{
+  "schema": "illustrative-pose-targets-v1",
+  "provenance": "Fresh ImageGen pose image manually digitized then OpenCV similarity-registered to original photo; original face landmarks separate. NOT pose detector or real anatomy truth.",
+  "coordinate_system": "raw original 1000x1276 top-left pixels; ids image_left/image_right refer viewer image sides",
+  "registration": "registration.json",
+  "raw_source": "../reference/original-product.jpg",
+  "imagegen_source": "../reference/imagegen-pose.png",
+  "points": [
+    {
+      "id": "eye_image_left",
+      "native_xy": null,
+      "raw_xy": [
+        260.6405389996062,
+        159.31289395181562
+      ],
+      "semantic": "right eye center",
+      "confidence": 0.85,
+      "visibility": "visible original surface",
+      "weight": 0.85,
+      "uncertainty_px": 8,
+      "digitization": {
+        "method": "Original source-photo visible face landmark, reviewed at same pixels; no generated face dot exists"
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "eye_image_right",
+      "native_xy": null,
+      "raw_xy": [
+        348.1659375380635,
+        164.55253444506636
+      ],
+      "semantic": "left eye center",
+      "confidence": 0.85,
+      "visibility": "visible original surface",
+      "weight": 0.85,
+      "uncertainty_px": 8,
+      "digitization": {
+        "method": "Original source-photo visible face landmark, reviewed at same pixels; no generated face dot exists"
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "nose",
+      "native_xy": null,
+      "raw_xy": [
+        293.9624060702527,
+        217.9955065188086
+      ],
+      "semantic": "nose tip",
+      "confidence": 0.85,
+      "visibility": "visible original surface",
+      "weight": 0.85,
+      "uncertainty_px": 8,
+      "digitization": {
+        "method": "Original source-photo visible face landmark, reviewed at same pixels; no generated face dot exists"
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "neckline_center",
+      "native_xy": [
+        428,
+        447
+      ],
+      "raw_xy": [
+        385.0416340130082,
+        402.68584443691424
+      ],
+      "semantic": "upper chest/neckline surface proxy; NOT cervical joint",
+      "confidence": 0.65,
+      "visibility": "visible garment surface",
+      "weight": 0.65,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          428,
+          447
+        ]
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "shoulder_image_left",
+      "native_xy": [
+        194,
+        458
+      ],
+      "raw_xy": [
+        174.4260304053229,
+        412.9633760014514
+      ],
+      "semantic": "right shoulder joint approximate; garment surface marker",
+      "confidence": 0.45,
+      "visibility": "joint hidden by garment",
+      "weight": 0.45,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          194,
+          458
+        ]
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "shoulder_image_right",
+      "native_xy": [
+        666,
+        420
+      ],
+      "raw_xy": [
+        599.2320993008684,
+        377.9996107121241
+      ],
+      "semantic": "left shoulder joint approximate; garment surface marker",
+      "confidence": 0.45,
+      "visibility": "joint hidden by garment",
+      "weight": 0.45,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          666,
+          420
+        ]
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "elbow_image_left",
+      "native_xy": [
+        132,
+        758
+      ],
+      "raw_xy": [
+        119.09922263991731,
+        683.1056544368678
+      ],
+      "semantic": "right elbow approximate",
+      "confidence": 0.5,
+      "visibility": "joint hidden by garment",
+      "weight": 0.5,
+      "uncertainty_px": 25,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          132,
+          758
+        ]
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "elbow_image_right",
+      "native_xy": [
+        775,
+        759
+      ],
+      "raw_xy": [
+        697.8922707570143,
+        682.9726900646384
+      ],
+      "semantic": "left elbow approximate",
+      "confidence": 0.5,
+      "visibility": "joint hidden by garment",
+      "weight": 0.5,
+      "uncertainty_px": 25,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          775,
+          759
+        ]
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "wrist_image_left",
+      "native_xy": [
+        207,
+        866
+      ],
+      "raw_xy": [
+        186.78341178051673,
+        780.2005108592452
+      ],
+      "semantic": "right wrist surface center",
+      "confidence": 0.8,
+      "visibility": "visible surface",
+      "weight": 0.8,
+      "uncertainty_px": 15,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          207,
+          866
+        ]
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "wrist_image_right",
+      "native_xy": [
+        500,
+        901
+      ],
+      "raw_xy": [
+        450.58131390540007,
+        811.2347258217807
+      ],
+      "semantic": "left wrist surface center",
+      "confidence": 0.8,
+      "visibility": "visible surface",
+      "weight": 0.8,
+      "uncertainty_px": 15,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          500,
+          901
+        ]
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "torso_midline",
+      "native_xy": [
+        411,
+        700
+      ],
+      "raw_xy": [
+        370.14571093575546,
+        630.4491375800412
+      ],
+      "semantic": "front torso surface midline near lower sternum; NOT spine head",
+      "confidence": 0.5,
+      "visibility": "surface beneath garment",
+      "weight": 0.5,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Manually selected point on generated green torso line, weak clothing-surface proxy",
+        "native_seed_xy": [
+          411,
+          700
+        ]
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "waist_image_left",
+      "native_xy": [
+        212,
+        1065
+      ],
+      "raw_xy": [
+        191.60385566400265,
+        959.3207772815744
+      ],
+      "semantic": "right waistband/iliac surface proxy; NOT femoral hip joint",
+      "confidence": 0.6,
+      "visibility": "visible waistband surface",
+      "weight": 0.6,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          212,
+          1065
+        ]
+      },
+      "anatomical_side": "right"
+    },
+    {
+      "id": "waist_image_right",
+      "native_xy": [
+        536,
+        1071
+      ],
+      "raw_xy": [
+        483.25957208608804,
+        964.2010605096898
+      ],
+      "semantic": "left waistband/iliac surface proxy; NOT femoral hip joint",
+      "confidence": 0.6,
+      "visibility": "visible waistband surface",
+      "weight": 0.6,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          536,
+          1071
+        ]
+      },
+      "anatomical_side": "left"
+    },
+    {
+      "id": "waist_midline",
+      "native_xy": [
+        373,
+        1068
+      ],
+      "raw_xy": [
+        336.53157166443964,
+        961.7625255932726
+      ],
+      "semantic": "front waistband center; NOT pelvis bone head",
+      "confidence": 0.65,
+      "visibility": "visible waistband surface",
+      "weight": 0.65,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          373,
+          1068
+        ]
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "hand_left_palm",
+      "native_xy": [
+        246,
+        901
+      ],
+      "raw_xy": [
+        221.94519241155567,
+        811.6428270224651
+      ],
+      "semantic": "subject right palm/knuckle proxy; not verified MCP",
+      "confidence": 0.45,
+      "visibility": "illustrative hand nodes",
+      "weight": 0.45,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          246,
+          901
+        ]
+      },
+      "anatomical_side": null
+    },
+    {
+      "id": "hand_right_palm",
+      "native_xy": [
+        399,
+        929
+      ],
+      "raw_xy": [
+        359.7119381681594,
+        836.6009841804294
+      ],
+      "semantic": "subject left palm/knuckle proxy; not verified MCP",
+      "confidence": 0.45,
+      "visibility": "illustrative hand nodes",
+      "weight": 0.45,
+      "uncertainty_px": 20,
+      "digitization": {
+        "method": "Fresh generated image inspected; manually seeded visible marker center",
+        "native_seed_xy": [
+          399,
+          929
+        ]
+      },
+      "anatomical_side": null
+    }
+  ],
+  "links": [
+    [
+      "neckline_center",
+      "torso_midline"
+    ],
+    [
+      "torso_midline",
+      "waist_midline"
+    ],
+    [
+      "neckline_center",
+      "shoulder_image_left"
+    ],
+    [
+      "neckline_center",
+      "shoulder_image_right"
+    ],
+    [
+      "shoulder_image_left",
+      "elbow_image_left"
+    ],
+    [
+      "elbow_image_left",
+      "wrist_image_left"
+    ],
+    [
+      "shoulder_image_right",
+      "elbow_image_right"
+    ],
+    [
+      "elbow_image_right",
+      "wrist_image_right"
+    ],
+    [
+      "waist_image_left",
+      "waist_midline"
+    ],
+    [
+      "waist_midline",
+      "waist_image_right"
+    ]
+  ],
+  "fitting_guidance": [
+    "Use neutral M-size cm priors only as assumed scale, never recovered measurements.",
+    "Map neckline/torso/waist markers to front surface proxies at appropriate model heights; do not equate them with bone heads.",
+    "ImageGen hip points mark waistband, not femoral joints. Fit pelvis/waist position and torso rotation using surface landmarks plus raw contours.",
+    "Use eyes/nose/wrists relatively more; elbows/shoulders are garment-occluded and uncertain. Hand points are contour/direction proxies, not validated MCP joints.",
+    "A low point residual does not prove photo match. Inspect raw-photo overlays, torso/waist alignment, garment-vs-body contour semantics, hand direction, and shared 3D state."
+  ]
+}

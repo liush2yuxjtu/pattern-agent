@@ -315,3 +315,29 @@ measurement/feedback downloads, run/source ZIP contents and SHA, lightbox, mobil
 and the explicitly unverified independence claim. Rendered input/reconstruction
 images are review-derived, not executor or ImageGen results. N=1, no statistical
 old/new win, no full photo/garment/ImageGen or native Claude claim.
+
+
+## Full Image Gen workflow acceptance
+
+For an explicit end-to-end request, use the complete six native Image Gen files,
+actual original photo, current editable anatomical model, fresh fit attempts,
+actual same-state renders/OpenCV overlays, and final mesh-derived measurements.
+A measurement-only suite cannot stand in for this boundary. Keep the executed
+skill snapshot distinct from post-execution documentation fixes. Preserve failed
+pose/3D outcomes even when all operations ran. No baseline means no delta claim.
+
+```sh
+python tools/skill_evals/build_full_imagegen_review.py --workspace work/full-imagegen-skill-evals-20261118
+python scripts/build_pages.py
+node tools/skill_evals/verify_full_imagegen_review.cjs --url http://127.0.0.1:PORT/garment-body/full-imagegen-evals/eval.html --out OUT
+```
+
+Independent grading binds all recursive output hashes; strict builder rejects
+missing/stale grades, changed native generation/ref hashes and missing views
+before publishing. Check six full-resolution originals, source-versus-final
+model generation lineage, model/overlay gallery and lightbox, real measurement
+JSON/CSV downloads, feedback persistence/download, mobile and native Output DOM.
+Large intermediate OBJ/GLB/depth arrays are preserved in compressed reproduction
+archives; public gallery files and complete executor hash inventory are separate.
+Single-case execution is functional acceptance, not general skill improvement.
+Evidence: `docs/verification/full-imagegen-skill-evals-20261118/`.

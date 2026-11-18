@@ -1,0 +1,7 @@
+{
+  "control": "ungraded actual six-image execution must not strict-publish as graded",
+  "expected": "REJECT",
+  "actual": "REJECT",
+  "previous_review_unchanged": true,
+  "stderr": "Traceback (most recent call last):\n  File \"/workspace/work/pattern-agent/tools/skill_evals/build_full_imagegen_review.py\", line 251, in <module>\n    print(json.dumps(build(a.workspace.resolve(), a.site.resolve(), a.allow_pending)))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/work/pattern-agent/tools/skill_evals/build_full_imagegen_review.py\", line 83, in build\n    raise ValueError('NOT_GRADED: independent grading required; use --allow-pending only for visible preview')\nValueError: NOT_GRADED: independent grading required; use --allow-pending only for visible preview\n"
+}

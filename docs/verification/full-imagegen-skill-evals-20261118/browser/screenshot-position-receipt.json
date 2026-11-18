@@ -1,0 +1,10 @@
+{
+  "problem": "scrollIntoViewIfNeeded on the entire tall Output gallery scrolled to the measurement table, hiding images from the screenshot",
+  "fix": "Wait for all gallery images to decode; scroll specifically .evidence-grid; assert grid bounding rectangle y>=100 and y<600,width>1000; assert final overlay hero is decoded; save a new verified filename",
+  "manual_visual_review": "Both final-source and final-dist four-stage-gallery-verified.png actually opened with view_image; raw image, six ImageGen gallery, final mannequin, final overlay and explicit FAIL all visible",
+  "source_and_dist_checks": 236,
+  "verified_screenshots": {
+    "final-source/four-stage-gallery-verified.png": "18b9f49fc434dd7490439ec5be889f7f480eaa54902826fb4f3b60d42283c1fc",
+    "final-dist/four-stage-gallery-verified.png": "18b9f49fc434dd7490439ec5be889f7f480eaa54902826fb4f3b60d42283c1fc"
+  }
+}

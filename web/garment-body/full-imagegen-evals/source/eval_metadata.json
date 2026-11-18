@@ -1,0 +1,25 @@
+{
+  "eval_id": 1,
+  "eval_name": "original-red-product-full-imagegen",
+  "prompt": "以提供的原始红色服装电商模特照片完整执行garment-body-six-view技能：实际使用Image Gen生成front/side/back/closeup/pose/depth六张独立高清图，保持原图提衣动作；以生成姿态引导和原图建立同一个可调厘米尺寸与骨骼姿态的解剖人体，实际优化并保存模型，用真实前侧背渲染和OpenCV初始最终叠加验证动作与体形，最后从最终中性模型实测导出尺寸JSON/CSV。保留所有真实工具receipt、输入输出指纹、失败与限制，在Anthropic官方格式eval.html内交付四阶段图库。不得把尺寸脚本测试当完整端到端成功，不得把生成图当真人尺寸真值。",
+  "assertions": [
+    "原始电商商品照片实际读取并保存来源、尺寸、SHA，生成内容可追溯到本次原图。",
+    "本轮实际调用Image Gen生成正面、侧面、背面、特写、姿态、相对深度六张独立原生图；非历史复用、拼图裁块或插值放大。",
+    "逐图核对红色商品领口、袖长、材质、上下装结构，差异与推断结构明确记录；严重错款不得通过。",
+    "六图对应同一人体与同一指定提衣动作；点线和深度图明确illustrative而非检测器/厘米真值，实际像素与receipt完整。",
+    "从本轮Image Gen姿态引导与未改动原图建立对应，保存注册变换、语义关键点、可见性和误差；遮挡不编造检测真值。",
+    "真实解剖人体支持厘米体形和骨骼/关节姿态调整，至少一次实际shape与pose变更引起真实顶点变化且可保存重开。",
+    "本轮实际执行体形、姿态、骨骼/相机拟合；初始最终参数/损失可复算，原始动作固定目标，不以A-pose替代。",
+    "前侧背真实渲染共享同一最终dimensions/morphWeights/完整pose及网格，仅相机变化；相机与网格指纹保存。",
+    "OpenCV初始最终叠加来自实际照片与真实网格投影；保留未warp画幅及肩臂、躯干、腰臀、腕部局部误差与掩膜。",
+    "独立几何和目视检查确认关键肩臂/躯干/腰臀无明显偏移，真实侧视腕手方向与双手空间关系符合提衣动作；局部失败否决整体匹配。",
+    "最终尺寸JSON/CSV从同版本真实neutral网格实际复量，12项来源/单位/定义/输入目标残差分列；不读缓存当主值。",
+    "官方评审Output展示原图、六张实际ImageGen、真实模拟、初始最终OpenCV叠加图库及下载，保留原生Prompt/Grades/Feedback/Benchmark。",
+    "证据结论区分功能、生成质量、二维匹配、三维合理性、真人准确度；无可靠真实尺度时仅条件人体，native触发与物理试衣不虚称完成。"
+  ],
+  "files": [
+    "web/garment-body/product-case/reference/original-product.jpg"
+  ],
+  "scope": "one actual end-to-end candidate acceptance; no old/new improvement claim",
+  "native_claude_trigger": "BLOCKED"
+}

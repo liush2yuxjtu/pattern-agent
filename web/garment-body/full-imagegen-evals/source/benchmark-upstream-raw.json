@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "skill_name": "Full ImageGen workflow",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-18T08:11:57Z",
+    "evals_run": [
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8461538461538461,
+        "passed": 11,
+        "failed": 2,
+        "total": 13,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "\u539f\u59cb\u7535\u5546\u5546\u54c1\u7167\u7247\u5b9e\u9645\u8bfb\u53d6\u5e76\u4fdd\u5b58\u6765\u6e90\u3001\u5c3a\u5bf8\u3001SHA\uff0c\u751f\u6210\u5185\u5bb9\u53ef\u8ffd\u6eaf\u5230\u672c\u6b21\u539f\u56fe\u3002",
+          "passed": true,
+          "evidence": "run.json records actual original1000\u00d71276, ASOS product/CDN URL, SHA6fd6310b\u2026; original was actually visually read. Independently checked all receipt reference SHA against bytes. Historical retrieved source is explicitly reused, no false fresh CDN retrieval claim."
+        },
+        {
+          "text": "\u672c\u8f6e\u5b9e\u9645\u8c03\u7528Image Gen\u751f\u6210\u6b63\u9762\u3001\u4fa7\u9762\u3001\u80cc\u9762\u3001\u7279\u5199\u3001\u59ff\u6001\u3001\u76f8\u5bf9\u6df1\u5ea6\u516d\u5f20\u72ec\u7acb\u539f\u751f\u56fe\uff1b\u975e\u5386\u53f2\u590d\u7528\u3001\u62fc\u56fe\u88c1\u5757\u6216\u63d2\u503c\u653e\u5927\u3002",
+          "passed": true,
+          "evidence": "Actual tool transcript has7 native calls: six requested views plus separate raw-photo pose guide. grader/final/artifact-audit.json independently reopened all native files; six distinct tool paths and hashes byte-identical to output PNGs. front/side/back/pose/depth1024\u00d71536; closeup1199\u00d71312; raw guide1110\u00d71417. No crop/upscale."
+        },
+        {
+          "text": "\u9010\u56fe\u6838\u5bf9\u7ea2\u8272\u5546\u54c1\u9886\u53e3\u3001\u8896\u957f\u3001\u6750\u8d28\u3001\u4e0a\u4e0b\u88c5\u7ed3\u6784\uff0c\u5dee\u5f02\u4e0e\u63a8\u65ad\u7ed3\u6784\u660e\u786e\u8bb0\u5f55\uff1b\u4e25\u91cd\u9519\u6b3e\u4e0d\u5f97\u901a\u8fc7\u3002",
+          "passed": true,
+          "evidence": "Independent visual inspection of original and every output: red pointelle outfit, shallow neckline, low hem-pinching hands and trousers broadly retained. product-visual-audit.md explicitly records micro-knit changes, ambiguous cuff length, inferred legs/back and potentially invented rear waistband decoration. This passes audit/disclosure, not exact garment reconstruction."
+        },
+        {
+          "text": "\u516d\u56fe\u5bf9\u5e94\u540c\u4e00\u4eba\u4f53\u4e0e\u540c\u4e00\u6307\u5b9a\u63d0\u8863\u52a8\u4f5c\uff1b\u70b9\u7ebf\u548c\u6df1\u5ea6\u56fe\u660e\u786eillustrative\u800c\u975e\u68c0\u6d4b\u5668/\u5398\u7c73\u771f\u503c\uff0c\u5b9e\u9645\u50cf\u7d20\u4e0ereceipt\u5b8c\u6574\u3002",
+          "passed": false,
+          "evidence": "FAIL: same identity and broad low-hand gesture are visible, but exact same body/pose across separately generated views is not established: side is more upright, back lean/foot stance cannot be reconciled to a saved3D state. pose neck dot is on garment neckline and hip dots near waistband; depth retains nongeometric trim/lighting. Both are correctly labeled illustrative, which does not establish same frozen geometry. See inspected images/{front,side,back,pose,depth}.png and run.json; final model was not generation input."
+        },
+        {
+          "text": "\u4ece\u672c\u8f6eImage Gen\u59ff\u6001\u5f15\u5bfc\u4e0e\u672a\u6539\u52a8\u539f\u56fe\u5efa\u7acb\u5bf9\u5e94\uff0c\u4fdd\u5b58\u6ce8\u518c\u53d8\u6362\u3001\u8bed\u4e49\u5173\u952e\u70b9\u3001\u53ef\u89c1\u6027\u548c\u8bef\u5dee\uff1b\u906e\u6321\u4e0d\u7f16\u9020\u68c0\u6d4b\u771f\u503c\u3002",
+          "passed": true,
+          "evidence": "model-fit/targets/registration.json stores actual similarity transform with153 matches/120 inliers, mean1.476333px/P953.342754px and raw/guide hashes. pose-targets.json gives native/raw coordinates, visibility, weights/uncertainty; neckline explicitly garment surface, waist proxies explicitly low waistband, not cervical/pelvis joints. Actual registered overlays inspected; original remains unwarped."
+        },
+        {
+          "text": "\u771f\u5b9e\u89e3\u5256\u4eba\u4f53\u652f\u6301\u5398\u7c73\u4f53\u5f62\u548c\u9aa8\u9abc/\u5173\u8282\u59ff\u6001\u8c03\u6574\uff0c\u81f3\u5c11\u4e00\u6b21\u5b9e\u9645shape\u4e0epose\u53d8\u66f4\u5f15\u8d77\u771f\u5b9e\u9876\u70b9\u53d8\u5316\u4e14\u53ef\u4fdd\u5b58\u91cd\u5f00\u3002",
+          "passed": true,
+          "evidence": "Actual Human Studio import/edit/download/reimport run22 checks; desktop and edited-pose screenshots visually inspected. Independent grader reopened downloaded initial/edited neutral OBJ and measurements: actual waist+2.00864035cm, max vertex movement0.57424252cm, JSON/OBJ error1.75e-9cm; saved left upperarmX30.2\u219237.2degrees. Complete163-bone maps and real morph/FK vertices reconstructed without exporter/runtime imports."
+        },
+        {
+          "text": "\u672c\u8f6e\u5b9e\u9645\u6267\u884c\u4f53\u5f62\u3001\u59ff\u6001\u3001\u9aa8\u9abc/\u76f8\u673a\u62df\u5408\uff1b\u521d\u59cb\u6700\u7ec8\u53c2\u6570/\u635f\u5931\u53ef\u590d\u7b97\uff0c\u539f\u59cb\u52a8\u4f5c\u56fa\u5b9a\u76ee\u6807\uff0c\u4e0d\u4ee5A-pose\u66ff\u4ee3\u3002",
+          "passed": true,
+          "evidence": "Five actual saved optimization candidates/logs include neutral initialization and posthoc spine/waistband corrections. final state not A-pose; actual shoulder target37\u219236.4cm and bones/pose/camera changed. Independent OBJ/FK correspondence5.02e-9cm. Fixed-camera initial/final OBJ reprojections exist in comparison; loops/parameters/candidate losses retained, including failures."
+        },
+        {
+          "text": "\u524d\u4fa7\u80cc\u771f\u5b9e\u6e32\u67d3\u5171\u4eab\u540c\u4e00\u6700\u7ec8dimensions/morphWeights/\u5b8c\u6574pose\u53ca\u7f51\u683c\uff0c\u4ec5\u76f8\u673a\u53d8\u5316\uff1b\u76f8\u673a\u4e0e\u7f51\u683c\u6307\u7eb9\u4fdd\u5b58\u3002",
+          "passed": true,
+          "evidence": "grader/final/artifact-audit.json independently confirms final dimensions/morphWeights/complete pose/asset equal views/state, actual posed OBJ bytes identical, allfront/side/back/pose/depth provenance SHA match state/pose/mesh; only views/camera differ. Independently rebuilt posed vertices match actualOBJ within5.02e-9cm."
+        },
+        {
+          "text": "OpenCV\u521d\u59cb\u6700\u7ec8\u53e0\u52a0\u6765\u81ea\u5b9e\u9645\u7167\u7247\u4e0e\u771f\u5b9e\u7f51\u683c\u6295\u5f71\uff1b\u4fdd\u7559\u672awarp\u753b\u5e45\u53ca\u80a9\u81c2\u3001\u8eaf\u5e72\u3001\u8170\u81c0\u3001\u8155\u90e8\u5c40\u90e8\u8bef\u5dee\u4e0e\u63a9\u819c\u3002",
+          "passed": true,
+          "evidence": "Actual source1000\u00d71276 and actual OBJ+final camera independently rasterized; mask is pixel-identical to final-mask.png (IoU1). comparison initial/final overlays use same final camera withoutwarp; seven shoulder/arm/torso/waist-hip region errors are saved, wrist point residuals in final-cue-residual.json. Independent mask audit and actual contour/alpha overlay visually inspected; clothing/hair envelope statistics not naked-person accuracy."
+        },
+        {
+          "text": "\u72ec\u7acb\u51e0\u4f55\u548c\u76ee\u89c6\u68c0\u67e5\u786e\u8ba4\u5173\u952e\u80a9\u81c2/\u8eaf\u5e72/\u8170\u81c0\u65e0\u660e\u663e\u504f\u79fb\uff0c\u771f\u5b9e\u4fa7\u89c6\u8155\u624b\u65b9\u5411\u4e0e\u53cc\u624b\u7a7a\u95f4\u5173\u7cfb\u7b26\u5408\u63d0\u8863\u52a8\u4f5c\uff1b\u5c40\u90e8\u5931\u8d25\u5426\u51b3\u6574\u4f53\u5339\u914d\u3002",
+          "passed": false,
+          "evidence": "FAIL: actual final photo overlay retains visible waist/hip drift; comparison region metrics leftwaistP9532px and right36px/outside10.3805% fail historical regionalheuristics. True side/front render shows cupped/upturned hands, not the reference hem pinch. Independent actualOBJ ray/triangle audit reproduces left455/1424 covered, min frontclearance18.436949435cm; right1424/1424,min4.518556425cm. Zeroinside among covered rays does not prove grasp/contact; unclassified raysUNKNOWN. Overall pose/visual matchFAIL even though other function assertions pass."
+        },
+        {
+          "text": "\u6700\u7ec8\u5c3a\u5bf8JSON/CSV\u4ece\u540c\u7248\u672c\u771f\u5b9eneutral\u7f51\u683c\u5b9e\u9645\u590d\u91cf\uff0c12\u9879\u6765\u6e90/\u5355\u4f4d/\u5b9a\u4e49/\u8f93\u5165\u76ee\u6807\u6b8b\u5dee\u5206\u5217\uff1b\u4e0d\u8bfb\u7f13\u5b58\u5f53\u4e3b\u503c\u3002",
+          "passed": true,
+          "evidence": "grader/final/geometry-audit.json independently parses13,380vertices/26,756triangles, sparse morph/FK and12measurement paths. Saved neutral reconstructionmax5.02e-9cm; all12 primary JSON/CSV values agree with actualneutral OBJ within3.56e-15cm. Definitions, cm, controltargets/residuals, sourcehashes separated; person_accuracy_verified false. Actual waist71.000002416cm, bust90.000031824cm, hips96.000040430cm conditionalavatar."
+        },
+        {
+          "text": "\u5b98\u65b9\u8bc4\u5ba1Output\u5c55\u793a\u539f\u56fe\u3001\u516d\u5f20\u5b9e\u9645ImageGen\u3001\u771f\u5b9e\u6a21\u62df\u3001\u521d\u59cb\u6700\u7ec8OpenCV\u53e0\u52a0\u56fe\u5e93\u53ca\u4e0b\u8f7d\uff0c\u4fdd\u7559\u539f\u751fPrompt/Grades/Feedback/Benchmark\u3002",
+          "passed": true,
+          "evidence": "Independent actual Playwright visit to full official pending Output: native header/Prompt/Output/Grades/Feedback/Benchmark DOM preserved; all24 displayed main/thumbnail images decode; four stages contain raw/guide, sixnative imagegen, actual modelviews and initial/finaloverlay. All added content inside#outputs-body. ActualHTTP measurementJSON38342B/CSV1744B/full-runZIP76951092B reopened200. grader/viewer-check.json and real official-page.png. Final graded strict build must retain this contract."
+        },
+        {
+          "text": "\u8bc1\u636e\u7ed3\u8bba\u533a\u5206\u529f\u80fd\u3001\u751f\u6210\u8d28\u91cf\u3001\u4e8c\u7ef4\u5339\u914d\u3001\u4e09\u7ef4\u5408\u7406\u6027\u3001\u771f\u4eba\u51c6\u786e\u5ea6\uff1b\u65e0\u53ef\u9760\u771f\u5b9e\u5c3a\u5ea6\u65f6\u4ec5\u6761\u4ef6\u4eba\u4f53\uff0cnative\u89e6\u53d1\u4e0e\u7269\u7406\u8bd5\u8863\u4e0d\u865a\u79f0\u5b8c\u6210\u3002",
+          "passed": true,
+          "evidence": "run.json, STATUS.md, model-fit/REPORT.md and root visualaudit distinguish actualfunctionalexecution, generativequality,2D/3D failures, conditional170cm prior, nativeClaudeBLOCKED and clothNOT_RUN. Overall originalphoto match explicitlyFAIL; no recovered trueperson accuracy or final-model-conditioned generation claim. This is singlecandidateN1, no new/old superiority claim."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.8462,
+        "stddev": 0.0,
+        "min": 0.8462,
+        "max": 0.8462
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.85",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}
