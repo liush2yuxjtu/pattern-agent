@@ -1,0 +1,25 @@
+{
+  "schema": "sleeve-crease-controls/1",
+  "units": {
+    "vertices": "m",
+    "points2d": "mm"
+  },
+  "controls": {
+    "before": {
+      "file": "before-basic.json.gz",
+      "sha256": "b8053e4604887bafce93e4e73c72a029744c07baa1209e60f79ce0e05b608389",
+      "decompressedSha256": "0f49fea0a922a69622edf8659cb7c6d1e353ab3a4c13d1833b56f353e557b6c1",
+      "expectedStatus": "FAIL",
+      "expectedSharpCount": 161,
+      "expectedMaxDeg": 179.65791251667937
+    },
+    "after": {
+      "file": "after-basic.json.gz",
+      "sha256": "1899876e1885a63d051c9cd965881694f386c5622f454c567a14924401c1e975",
+      "decompressedSha256": "362e047ce4d0931321c85fc0dda8c657f8d3d5707876ab126ba09f55ca76cd9f",
+      "expectedStatus": "PASS",
+      "expectedSharpCount": 0,
+      "expectedMaxDeg": 31.902069243381185
+    }
+  }
+}

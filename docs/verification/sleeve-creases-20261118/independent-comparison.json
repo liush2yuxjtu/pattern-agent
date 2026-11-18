@@ -1,0 +1,40 @@
+{
+  "verification": "PASS",
+  "checks": [
+    {
+      "case": "legacy-basic",
+      "status": "FAIL",
+      "sharpCount": 161,
+      "maxDeg": 179.6579125166809,
+      "comparedEdges": 4060,
+      "maxIndependentAngleDifferenceDeg": 5.684341886080802e-14
+    },
+    {
+      "case": "basic",
+      "status": "PASS",
+      "sharpCount": 0,
+      "maxDeg": 31.9020692433812,
+      "comparedEdges": 4058,
+      "maxIndependentAngleDifferenceDeg": 1.4210854715202004e-14
+    },
+    {
+      "case": "relaxed",
+      "status": "PASS",
+      "sharpCount": 0,
+      "maxDeg": 31.257386105844226,
+      "comparedEdges": 5368,
+      "maxIndependentAngleDifferenceDeg": 1.0658141036401503e-14
+    },
+    {
+      "case": "cropped",
+      "status": "PASS",
+      "sharpCount": 0,
+      "maxDeg": 32.59072753795121,
+      "comparedEdges": 3808,
+      "maxIndependentAngleDifferenceDeg": 1.1546319456101628e-14
+    }
+  ],
+  "totalEdges": 17294,
+  "historicalFailurePreserved": true,
+  "physicalFit": "NOT_RUN"
+}

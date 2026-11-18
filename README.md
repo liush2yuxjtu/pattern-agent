@@ -248,3 +248,21 @@ The [anatomical skill functional review](https://liush2yuxjtu.github.io/pattern-
 StVK 应力应变、故障对照与状态化离线 HTML 导出均有独立数值及浏览器验证。
 材料是合成参数，局部高应变保留可见警告；没有布料自碰撞、实物标定或实体适体批准。
 这不改变历史 T 恤 FAIL，也不将几何/热图验证升级为生产批准。
+
+## 袖子尖折取证与性能日志
+
+[verify-sleeve-creases 技能](.agents/skills/verify-sleeve-creases/SKILL.md)将可见尖棱
+定位到真实网格边，用原纸样材料边配对修复前后，并独立重算，不使用渲染平滑法线。
+随技能提供标准库 CLI、15项本地正反例、冻结袖片与来源摘要；Claude发现路径
+共用 canonical 源。可显式请求 `$verify-sleeve-creases`。
+[下载技能包](skill-packages/verify-sleeve-creases.skill) ·
+[安装说明](.agents/skills/verify-sleeve-creases/INSTALL.md)。
+
+[原作者 Site 的彩色对照与取证页](https://pattern-atelier-three-wasm.liushiyuxjtu.chatgpt.site/sleeve-debugger.html)
+沿用原私有访问范围。旧 Teagan 网格有161条 >45° 的袖片内部边，修复后基础款为0；
+选定可见尖棱的同一材料边从117.43°降至6.62°。这些是当前网格的局部几何检查，
+不是所有服装的审美或材料标准。性能追踪记录检测耗时；只有实际重算产生的迭代日志
+才称为求解过程。
+
+[本次复核记录](docs/verification/sleeve-creases-20261118/README.md)保留独立检查、
+浏览器／下载与真实求解观察；历史 T 恤 FAIL与实物合体 NOT_RUN保持原结论。

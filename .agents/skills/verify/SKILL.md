@@ -42,6 +42,7 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Source-bound sewing inspector | [seam-inspector](references/seam-inspector.md) — exact HTML/GLB/report binding and real local browser actions | independent data/fault controls, all seam buttons, 2D/3D clicks, touch, downloads and offline replay |
 | Hosted sewing inspector | [seam-sites](references/seam-sites.md) — actual existing production Site as its authorized owner | exact source/archive/publication plus authenticated live interactions; local artifact is separate |
 | Sewing inspector Page files | [seam-pages](references/seam-pages.md) — native file upload and guarded Page readback | exact delivered-file digest/size, accessible reference and preserved content; file link is not embed proof |
+| Sleeve crease evidence and debugger | [sleeve-creases](references/sleeve-creases.md) — actual mesh adjacency, same-material-edge pair and live logging | independent CLI/fault controls, colored pixels, current-generation solver checkpoints and trace downloads |
 | Historical T-shirt claims | [legacy-cloth](references/legacy-cloth.md) — archived evidence; unavailable legacy runtime | known FAIL and NOT_RUN limitations |
 
 The question is whether the changed behavior works for a real caller. Shift tests left by running them locally before the commit, then verify the running product surface. Tests, type checks, builds, CI green, Vercel READY, and static review are supporting evidence; they do not replace runtime evidence when a real user/programmatic surface exists.
@@ -169,3 +170,4 @@ current official documentation when needed, record its URL and applicability,
 then rerun the affected claim. Do not bypass trust, authentication or environmental
 restrictions, change protection settings, weaken thresholds, or replace a real
 surface with mocks to obtain PASS. Record a concrete recovery point if blocked.
+

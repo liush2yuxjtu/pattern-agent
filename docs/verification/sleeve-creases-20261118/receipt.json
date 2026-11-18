@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "scope": "new sleeve crease diagnostic skill, independent helper and actual private debugger/studio workflow",
+  "projectVerifier": ".agents/skills/verify/SKILL.md",
+  "recipe": ".agents/skills/verify/references/sleeve-creases.md",
+  "sourceSiteCommit": "fa0f009efc1d403018622306389fad5a617d0a14",
+  "siteVersion": 11,
+  "siteUrl": "https://pattern-atelier-three-wasm.liushiyuxjtu.chatgpt.site/sleeve-debugger.html",
+  "siteAudience": "owner-private unchanged",
+  "siteSourceSha256": {
+    "src/crease-diagnostics.mjs": "b52298229faee592180a1a68808c31286ba70333e4e0961b40e53c1661c7c025",
+    "src/crease-overlay.mjs": "82e4ab543a0cdfbb63b84162b9a9ee8ec26005c02d68fa0ff138c31d545074b9",
+    "src/diagnostic-log.mjs": "7599c45de26960e2eec5ad76c842b3abb6cea87916574d9bc73761cad006727c",
+    "src/sleeve-debugger.mjs": "b56485e520b342dbb14128ce0fa9d9e405a6ae619aad295b86cc78677f2905af",
+    "src/main.js": "b683d8107f97e3a645b33a4d36bb9ebd863d6598b23253af6a4d5107be552d12",
+    "src/garment-fit.mjs": "8709704a3c6dc852d32f02194dae05b99971193e3323cf24a302a7951b5b15fc",
+    "src/cloth-bending.mjs": "406efb02bff5fcc0551e1a66bb07a0fd41b83af0561966d76fc5f8b380ca680b",
+    "src/wear-worker.js": "40269968e66aa878f1efe23cb2f8ea20d6f99188e1f304e62fe8bc3d4c617958",
+    "dist/sleeve-debugger.html": "57df1bd48b1fd74393cf64984f0fec04d6b8a259ef61c411bff3d2fb0f1c84c1",
+    "dist/sleeve-debugger.js": "47f8ab21d1d721737075a64757175ab1d7b045e39507a04de47a1349afa7555d",
+    "dist/sleeve-debugger.css": "36131472678fb46843ae1d42a3d4bfe34bb3dbfebc8fb8951c1eda615949d8c3",
+    "dist/studio.js": "5035a7c0e320ccbebbce5f1e63c40b9ec89a97d95fdfa93d2199a3da51a0ca58",
+    "dist/wear-worker.js": "5450ccb09ecae9e9ebf342b1ff28144c9691196e0aa2f000be92cf1807d86615"
+  },
+  "independentTests": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".agents/skills/verify-sleeve-creases/scripts",
+      "-p",
+      "test_inspect.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "testCount": 15
+  },
+  "independentComparedEdges": 17294,
+  "maxIndependentAngleDifferenceDeg": 5.684341886080802e-14,
+  "localBrowserChecks": 37,
+  "liveBrowserChecks": 48,
+  "matchedRidge": {
+    "beforeEdge": "sleeve-right:374:400",
+    "afterEdge": "sleeve-right:373:399",
+    "beforeDeg": 117.4297761571478,
+    "afterDeg": 6.620925165370991,
+    "uvEndpointMaxErrorMm": 0,
+    "toleranceMm": 0.01
+  },
+  "actualSolverCheckpoints": 36,
+  "firstLiveMaxDeg": 175.81457023589635,
+  "finalLiveMaxDeg": 31.902069243381654,
+  "maxLoggingRecomputeDifferenceM": 2.1510571102112408e-15,
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "package": {
+    "status": "PASS",
+    "package": "skill-packages/verify-sleeve-creases.skill",
+    "bytes": 151140,
+    "files": 10,
+    "sha256": "2029ebdad14ebdfce79a95014a982159312ae935d4c7cd7e2ae890ede53d3966"
+  },
+  "nativeSkillAutoTriggering": "NOT_RUN",
+  "physicalFit": "NOT_RUN",
+  "materialCalibration": "NOT_RUN",
+  "strictClothSelfIntersection": "NOT_RUN_BY_THIS_DIAGNOSTIC",
+  "historicalTshirtFailure": "PRESERVED: 7.6455 mm seam gap and 20 nonadjacent intersections",
+  "browserDriver": "Installed Playwright Chromium with SwiftShader; native MCP UNAVAILABLE Connection failed",
+  "liveTransport": "actual origin, existing owner authorization, system-verified TLS; exact remote bytes delivered to Chromium; no local content substituted for production requests",
+  "localTransport": "exact local dist bytes via Playwright route.fulfill on a secure test origin; no preview server",
+  "notes": [
+    "Local browser numeric hashing canonicalizes only signed numerical zero because JSON serializes -0 as0.",
+    "Observed and fixed own-export import size limit and hidden SVG chart before final accepted run.",
+    "Source provenance metadata was clarified after local functional checks; exact final production asset SHA256 and full workflow were rechecked live."
+  ],
+  "candidateGitBase": {
+    "repository": "liush2yuxjtu/pattern-agent",
+    "branch": "main",
+    "head": "2ef738b636f5656790109fc51a547b6e412d3eb2",
+    "tree": "8aed36640fea884b98ac581558bb106a38a25e84"
+  },
+  "candidateFilesManifest": "candidate-files.json"
+}

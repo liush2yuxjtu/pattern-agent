@@ -1,0 +1,41 @@
+{
+  "verification": "PASS",
+  "runs": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/work/pattern-agent/.agents/skills/verify-sleeve-creases/scripts/inspect.py",
+        "--input",
+        "/workspace/work/pattern-agent/.agents/skills/verify-sleeve-creases/fixtures/after-basic.json.gz",
+        "--out",
+        "/workspace/work/crease-debug/cli/after.json",
+        "--trace",
+        "/workspace/work/crease-debug/cli/after-trace.json"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "stdout": "{\"status\": \"PASS\", \"sharpCount\": 0, \"maxDeg\": 31.90206924338119, \"elapsedMs\": 246.694481}\n",
+      "stderr": "",
+      "reportStatus": "PASS",
+      "sourceSha256": "1899876e1885a63d051c9cd965881694f386c5622f454c567a14924401c1e975"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/work/pattern-agent/.agents/skills/verify-sleeve-creases/scripts/inspect.py",
+        "--input",
+        "/workspace/work/pattern-agent/.agents/skills/verify-sleeve-creases/fixtures/before-basic.json.gz",
+        "--out",
+        "/workspace/work/crease-debug/cli/before.json",
+        "--trace",
+        "/workspace/work/crease-debug/cli/before-trace.json"
+      ],
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "stdout": "{\"status\": \"FAIL\", \"sharpCount\": 161, \"maxDeg\": 179.6579125166809, \"elapsedMs\": 215.941201}\n",
+      "stderr": "",
+      "reportStatus": "FAIL",
+      "sourceSha256": "b8053e4604887bafce93e4e73c72a029744c07baa1209e60f79ce0e05b608389"
+    }
+  ]
+}
