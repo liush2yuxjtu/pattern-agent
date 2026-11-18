@@ -1,0 +1,235 @@
+{
+  "capturedAt": "2026-11-18T10:15:05.504Z",
+  "checks": [
+    {
+      "step": "initial",
+      "numberInputs": 12,
+      "rangeInputs": 12,
+      "overallFields": 0,
+      "quarterWidth": "287.5"
+    },
+    {
+      "step": "typeFraction",
+      "input": {
+        "complete": false,
+        "sa": 0,
+        "paperless": false,
+        "scale": 1,
+        "measurements": {
+          "biceps": 340,
+          "chest": 1000.123456,
+          "hpsToBust": 280,
+          "hpsToWaistBack": 450,
+          "neck": 380,
+          "shoulderToShoulder": 460,
+          "shoulderSlope": 15,
+          "waistToArmpit": 230,
+          "waistToHips": 180,
+          "shoulderToWrist": 600,
+          "wrist": 180
+        },
+        "options": {}
+      },
+      "quarterWidth": "287.5354936"
+    },
+    {
+      "step": "requiredMissing",
+      "svgEnabled": false,
+      "paperCount": 0,
+      "input": {
+        "complete": false,
+        "sa": 0,
+        "paperless": false,
+        "scale": 1,
+        "measurements": {
+          "biceps": 340,
+          "hpsToBust": 280,
+          "hpsToWaistBack": 450,
+          "neck": 380,
+          "shoulderToShoulder": 460,
+          "shoulderSlope": 15,
+          "waistToArmpit": 230,
+          "waistToHips": 180,
+          "shoulderToWrist": 600,
+          "wrist": 180
+        },
+        "options": {}
+      }
+    },
+    {
+      "step": "highBustProvidedOnly",
+      "quarterWidth": "287.5354936",
+      "input": {
+        "complete": false,
+        "sa": 0,
+        "paperless": false,
+        "scale": 1,
+        "measurements": {
+          "biceps": 340,
+          "chest": 1000.123456,
+          "hpsToBust": 280,
+          "hpsToWaistBack": 450,
+          "neck": 380,
+          "shoulderToShoulder": 460,
+          "shoulderSlope": 15,
+          "waistToArmpit": 230,
+          "waistToHips": 180,
+          "shoulderToWrist": 600,
+          "wrist": 180,
+          "highBust": 940
+        },
+        "options": {}
+      }
+    },
+    {
+      "step": "highBustDraftEnabled",
+      "effectiveChest": "1000.123456",
+      "quarterWidth": "287.5354936",
+      "observation": "immediate after checkbox event"
+    },
+    {
+      "step": "highBustDraftSettled",
+      "effectiveChest": "940",
+      "quarterWidth": "270.25",
+      "input": {
+        "complete": false,
+        "sa": 0,
+        "paperless": false,
+        "scale": 1,
+        "measurements": {
+          "biceps": 340,
+          "chest": 1000.123456,
+          "hpsToBust": 280,
+          "hpsToWaistBack": 450,
+          "neck": 380,
+          "shoulderToShoulder": 460,
+          "shoulderSlope": 15,
+          "waistToArmpit": 230,
+          "waistToHips": 180,
+          "shoulderToWrist": 600,
+          "wrist": 180,
+          "highBust": 940
+        },
+        "options": {
+          "draftForHighBust": true
+        }
+      }
+    },
+    {
+      "step": "outsideOldBounds",
+      "chest": 2100.123456,
+      "sliderMax": "3150.185184",
+      "quarterWidth": "603.7854935999999"
+    }
+  ],
+  "final": {
+    "chest": "1000.123456",
+    "effectiveChest": "1000.123456",
+    "jsonDisabled": false,
+    "numberInputs": 12,
+    "numberRules": [
+      {
+        "max": null,
+        "min": null,
+        "name": "biceps",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "chest",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "hpsToBust",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "hpsToWaistBack",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "neck",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "shoulderToShoulder",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "shoulderSlope",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "waistToArmpit",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "waistToHips",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "shoulderToWrist",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "wrist",
+        "step": "any"
+      },
+      {
+        "max": null,
+        "min": null,
+        "name": "highBust",
+        "step": "any"
+      }
+    ],
+    "quarterWidth": "287.5354936",
+    "rangeInputs": 12,
+    "rawInput": {
+      "complete": false,
+      "measurements": {
+        "biceps": 340,
+        "chest": 1000.123456,
+        "hpsToBust": 280,
+        "hpsToWaistBack": 450,
+        "neck": 380,
+        "shoulderSlope": 15,
+        "shoulderToShoulder": 460,
+        "shoulderToWrist": 600,
+        "waistToArmpit": 230,
+        "waistToHips": 180,
+        "wrist": 180
+      },
+      "options": {},
+      "paperless": false,
+      "sa": 0,
+      "scale": 1
+    },
+    "status": "已实时更新",
+    "svgDisabled": false,
+    "title": "Brian · 拖动尺寸，实时生成 SVG",
+    "url": "https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/"
+  },
+  "downloads": {
+    "json": "brian-native-input.json",
+    "svg": "brian-native-pattern.svg"
+  }
+}
