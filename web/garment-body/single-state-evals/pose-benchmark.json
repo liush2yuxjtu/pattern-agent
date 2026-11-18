@@ -1,0 +1,114 @@
+{
+  "metadata": {
+    "skill_name": "garment-body-six-view",
+    "evals_run": [
+      1
+    ],
+    "runs_per_configuration": 1,
+    "protocol": "Archived actual candidates, not a controlled skill experiment"
+  },
+  "run_summary": {
+    "candidate": {
+      "pass_rate": {
+        "mean": 0.4,
+        "stddev": 0,
+        "min": 0.4,
+        "max": 0.4
+      }
+    },
+    "baseline": {
+      "pass_rate": {
+        "mean": 0.4,
+        "stddev": 0,
+        "min": 0.4,
+        "max": 0.4
+      }
+    }
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "保存模型的原图姿态核验",
+      "configuration": "candidate",
+      "run_number": 1,
+      "result": {
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "pass_rate": 0.4
+      },
+      "expectations": [
+        {
+          "text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.",
+          "passed": true,
+          "evidence": "5.0152641286948735e-09 cm maximum vertex error; see functional_integrity."
+        },
+        {
+          "text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.",
+          "passed": true,
+          "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: PASS"
+        },
+        {
+          "text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.",
+          "passed": false,
+          "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."
+        },
+        {
+          "text": "Original visible wrists and coarse limb directions do not contradict the reference action.",
+          "passed": false,
+          "evidence": "{\"verdict\": \"FAIL\", \"failures\": [\"wrist_image_right original visible wrist too far\"], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 25.37916959474208, \"wrist_image_right\": 39.47906710922058}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"
+        },
+        {
+          "text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.",
+          "passed": false,
+          "evidence": "Photo-render still shows cupped/upward palms with fingers gathered below original horizontal hem grasp; canonical views show separated hand orientation. Actual cloth contact is not simulated; this is not accepted replication of original two-hand shirt holding."
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "保存模型的原图姿态核验",
+      "configuration": "baseline",
+      "run_number": 1,
+      "result": {
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "pass_rate": 0.4
+      },
+      "expectations": [
+        {
+          "text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.",
+          "passed": true,
+          "evidence": "5.0167446729095024e-09 cm maximum vertex error; see functional_integrity."
+        },
+        {
+          "text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.",
+          "passed": false,
+          "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: NOT_RUN"
+        },
+        {
+          "text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.",
+          "passed": false,
+          "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."
+        },
+        {
+          "text": "Original visible wrists and coarse limb directions do not contradict the reference action.",
+          "passed": true,
+          "evidence": "{\"verdict\": \"PASS\", \"failures\": [], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 0.43401468100077106, \"wrist_image_right\": 1.026241233372752}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"
+        },
+        {
+          "text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.",
+          "passed": false,
+          "evidence": "Photo-render curled/open hands do not recreate source two-hand grasp; body pelvis misalignment remains severe in overlay."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "这是保存的基线与当前候选各一次独立复算，非新旧技能配对执行或原生 Claude benchmark。",
+    "两个版本整体均 FAIL；40% 仅为 2/5 断言计数，不是人体或姿态准确率。",
+    "n=1，没有统计显著性、token 或耗时优势结论。真实尺寸和隐藏深度仍不确定。",
+    "历史六次技能功能执行及原有成绩单独保留在 history.html；未混入这次候选比较。"
+  ]
+}

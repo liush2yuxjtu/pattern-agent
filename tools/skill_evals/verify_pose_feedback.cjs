@@ -42,14 +42,6 @@ exports.verifyFeedback = async function(page, {manifest, base, url, out, check})
   await page.locator('#pr-human-review').scrollIntoViewIfNeeded();
   await page.screenshot({path:path.join(out,'human-review.png')});
 
-  const alternate = new URL(url.includes('/single-state-evals/') ? '../pose-guided-fit/eval.html' : '../single-state-evals/eval.html',url);
-  const shared = await page.context().newPage();
-  try {
-    await shared.goto(alternate.href,{waitUntil:'networkidle'});
-    await shared.waitForFunction(value => document.querySelector('#pr-human-feedback')?.value === value,modelText);
-    check('Both real eval URLs share the same source-bound draft',await shared.locator('#pr-human-acceptance').inputValue() === 'needs_changes');
-  } finally {await shared.close();}
-
   const changed = structuredClone(manifest); changed.files['model/final-state.json'] = 'a'.repeat(64);
   const isolated = await page.context().newPage();
   try {

@@ -193,13 +193,9 @@ def build(workspace, site, allow_pending=False):
     extra='<section id="model-handoffs" style="margin:20px 0;padding:16px;background:#e5ede5;border-radius:10px"><h3>当前执行的实际模型与文件</h3>'+''.join(panels)+'</section>'
     script="""<script>(()=>{const handoff=document.createElement('div');handoff.innerHTML=HANDOFF;document.getElementById('quick-review').append(handoff);function sync(){const id=EMBEDDED_DATA.runs[currentIndex].id;document.querySelectorAll('[data-model-id]').forEach(p=>p.hidden=p.dataset.modelId!==id);}const previous=showRun;showRun=function(i){previous(i);sync();};let remembered=null;try{remembered=localStorage.getItem(STATIC_REVIEW_KEY+':visual-case');}catch{}if(remembered===null){const first=EMBEDDED_DATA.runs.findIndex(r=>VISUAL_EVIDENCE[r.id].title.includes('原始商品图')&&VISUAL_EVIDENCE[r.id].title.includes('修订技能'));if(first>=0)showRun(first);}sync();})();</script>""".replace('HANDOFF',json.dumps(extra,ensure_ascii=False).replace('<',r'\u003c'))
     document=document.replace('</body>',script+'\n</body>',1)
-    # Keep the immutable six-run review below the current failure-sensitive fit.
-    # The optional public manifest is produced only from actual new artifacts.
-    if (site.parent/'pose-guided-fit/manifest.json').exists():
-        from build_pose_guided_review import inject_history
-        document=inject_history(document)
-    (site/'eval.html').write_text(document)
-    copied.add('eval.html')
+    # Historical six-run data retain their original official viewer and feedback key.
+    (site/'history.html').write_text(document)
+    copied.add('history.html')
     write(site/'gallery.json',gallery);copied.add('gallery.json')
     for name in ('evals.json','frozen-assertions.json'):
         copy(workspace/name,name)
@@ -246,10 +242,14 @@ new or changed candidates require new visual review and matching artifact hashes
     (site/'REPRODUCE.md').write_text(reproduction)
     copied.add('REPRODUCE.md')
     for name in previous-copied:
+        if name in {'eval.html','index.html','pose-benchmark.json','official-viewer.json'}:continue
         p=(site/name).resolve()
         if site.resolve() in p.parents and p.is_file():p.unlink()
     manifest=dict(scope='Six executed explicitly injected subagent functional trials, not native Claude routing or fresh Image Gen',complete=complete,upstream=upstream,runs=inventory,models=models,unknown=dict(tokens=None,duration=None,native_claude_trigger='BLOCKED',physical_fit='NOT_RUN'),files={str(p.relative_to(site)):digest(p) for p in sorted(site.rglob('*')) if p.is_file() and p.name!='manifest.json'})
     write(site/'manifest.json',manifest)
+    if (site.parent/'pose-guided-fit/manifest.json').exists():
+        from build_official_pose_review import build as build_official
+        build_official(site.parent/'pose-guided-fit')
     print(json.dumps(dict(complete=complete,runs=len(runs),images=sum(len(s['images']) for g in gallery.values() for s in g['stages']),files=len(manifest['files']))))
 
 

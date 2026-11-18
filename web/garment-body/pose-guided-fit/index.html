@@ -1,15 +1,1367 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>姿态引导 · 原图同画幅匹配</title></head><body><link rel="stylesheet" href="review.css"><section id="pose-review" data-prefix="">
-    <nav><a href="#pr-human-review">本轮评阅与反馈</a> · <a href="../skill/">当前技能</a> · <a href="manifest.json">完整文件哈希</a> · <a href="eval.html">独立大图评阅</a></nav>
-    <header><p class="eyebrow">本轮：Image Gen 姿态引导 → 真实可调人体拟合</p><h1>先看身体哪里没对齐</h1><p id="pr-summary">正在读取真实产物与独立评分…</p><p class="pr-caution">原图固定为 1000 × 1276；只有真实三维相机投影可与它叠加。Image Gen 是示意姿态线索，不是检测器真值或人体尺寸测量。</p></header>
-    <div class="pr-toolbar"><fieldset><legend>真实模型版本</legend><button id="pr-before">修改前 · 旧差拟合</button><button id="pr-after">修改后 · 最新候选</button></fieldset><label>模型透明度 <input id="pr-opacity" type="range" min="0" max="1" value="0.35" step="0.05"><output id="pr-opacity-value">0.35</output></label><label><input id="pr-contour" type="checkbox" checked> 真实轮廓</label><label><input id="pr-real-skeleton" type="checkbox"> 真实骨架</label><label><input id="pr-skeleton" type="checkbox"> 目标点线</label><button id="pr-zoom">放大叠加图</button></div>
-    <div class="pr-grid"><figure><h2>1 · 原始商品照片</h2><button class="pr-image" data-zoom="reference/original-product.jpg"><img src="reference/original-product.jpg" alt="原始商品照片，固定像素画幅"></button><figcaption>原始文件保持不变，不变形、不重绘。</figcaption></figure>
-    <figure><h2>2 · Image Gen 姿态线索</h2><button class="pr-image" id="pr-guide-zoom"><img id="pr-guide" src="targets/raw-target-overlay.png" alt="映射回原图的姿态标注"></button><label><input id="pr-guide-native" type="checkbox"> 查看 Image Gen 原始输出</label><figcaption id="pr-registration"></figcaption></figure>
-    <figure><h2>3 · 原相机真实模型投影</h2><button class="pr-image" id="pr-model-zoom"><img id="pr-projection" alt="真实三维裸模的原相机裁切投影"></button><figcaption id="pr-model-caption">等待模型文件</figcaption></figure>
-    <figure><h2>4 · 原图与真实模型叠加</h2><button class="pr-image pr-stack" id="pr-overlay-zoom"><img src="reference/original-product.jpg" alt="固定原图"><img id="pr-render-layer" alt="透明真实网格投影"><img id="pr-contour-layer" alt="真实网格轮廓"><img id="pr-real-skeleton-layer" alt="真实FK骨架相机投影" hidden><img id="pr-skeleton-layer" src="targets/transparent-targets.png" alt="示意目标点线" hidden></button><figcaption>青色细线来自真实网格边界；透明度可调，错位必须保留可见。</figcaption></figure></div>
-    <section class="pr-section"><h2>关键区域验收：不以平均分掩盖失败</h2><p id="pr-verdict"></p><p class="pr-scroll-hint">手机可左右滑动下表，查看超出比例与轮廓误差。</p><div class="pr-table-scroll"><table id="pr-regions"><thead><tr><th>原图区域</th><th>修改前</th><th>修改后</th><th>前 → 后：超出衣服比例</th><th>前 → 后：外轮廓 P95 px</th></tr></thead><tbody></tbody></table></div><p id="pr-thresholds"></p><p><a download href="review/acceptance.json">冻结验收阈值</a> · <a download href="protocol.json">拟合协议</a> · <a href="review/README.md">独立复算说明</a> · <a href="review/pose-sanity-contract.json">补充动作反例门槛</a> · <a href="review/grader-hill-climb.md">评分器如何被反例修正</a> · <a download href="review/negative-controls/summary.json">负例控制结果</a></p><p>这是照片二维包络检查；衣服遮挡、隐藏关节、深度歧义和人体真实厘米尺寸仍有不确定性。通过二维检查不能证明三维姿态完美恢复。</p><p id="pr-action-gate"></p><p id="pr-integrity"></p><div id="pr-action-failures"></div><details><summary>腰髋逐行残差与独立原始评分</summary><pre id="pr-raw-grade"></pre></details></section>
-    <section class="pr-section"><h2>同一保存状态的正 / 侧 / 背面</h2><div id="pr-views" class="pr-views"></div><p>这些视图用于检查同一姿态的三维合理性；背面与深度不是原图中已观测的事实。</p><p id="pr-model-link"></p><div id="pr-downloads"></div></section>
-    <section class="pr-section" id="pr-human-review"><h2>本轮评阅：证据 → 人工反馈 → 下一轮改进</h2><p id="pr-assertion-version"></p><p>逐项核对实际输出；功能通过不抵消动作失败。这里保留评分器原始证据，不把文件数量当作质量分。</p><ol id="pr-expectations"></ol><a id="pr-expectations-source">查看此版本完整 grading.json</a><details><summary>评分器自身有哪些漏检？</summary><ul id="pr-eval-critique"></ul></details><h3>记录你的判断</h3><p id="pr-feedback-version"></p><label for="pr-human-acceptance">此版本的人工结论</label><select id="pr-human-acceptance" disabled><option value="not_reviewed">尚未评阅</option><option value="needs_changes">仍需改进</option><option value="accepted">可以接受</option></select><label for="pr-human-feedback">哪些部位不匹配？下一轮优先修哪里？</label><textarea id="pr-human-feedback" disabled rows="5" placeholder="例如：左肘过低，双掌仍朝上；请保持腰臀与相机，先修肘腕和握衣手势。"></textarea><p id="pr-feedback-status" role="status">正在读取此版本反馈…</p><button id="pr-export-feedback" disabled>导出 feedback.json</button><p>仅本地保存和下载，不自动发送。修改前后分别保存，原图、模型或相机变更后不会沿用旧验收。</p></section>
-    <details class="pr-section" id="pr-rejected"><summary>失败迭代：为什么低二维点误差仍不能验收</summary><p>以下是同一目标动作的真实三维失败候选，不是新生成的模特商品图，也不是选定最终结果。</p><div id="pr-rejected-cases"></div></details>
-    <details class="pr-section"><summary>来源、状态和网格哈希</summary><pre id="pr-provenance"></pre></details>
-    <dialog id="pr-dialog"><div class="pr-dialog-toolbar"><button id="pr-close">关闭</button><button id="pr-zoom-out">缩小</button><button id="pr-zoom-in">放大</button><button id="pr-modal-before">修改前</button><button id="pr-modal-after">修改后</button><label>透明度 <input id="pr-modal-opacity" type="range" min="0" max="1" step="0.05" value="0.35"></label><span>滚动查看原始细节 · Esc 关闭</span></div><div id="pr-large"></div></dialog>
-    </section><script src="review.js"></script><script src="review-feedback.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+<style>#official-case-gallery .og-content{padding:16px}#official-case-gallery .og-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}#official-case-gallery h3{font:600 15px/1.4 system-ui;margin:0 0 8px}#official-case-gallery p{font:13px/1.5 system-ui;margin:8px 0;overflow-wrap:anywhere}#official-case-gallery .og-image{display:block;border:0;padding:0;background:#eef0eb;width:100%;cursor:zoom-in}#official-case-gallery .og-image img{display:block;width:100%;height:260px;object-fit:contain}#official-case-gallery .og-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}#official-case-gallery .og-thumbs img{height:70px}#official-case-gallery .og-empty{padding:20px;background:#f4f3ee;min-height:230px}#official-case-gallery .og-links a{display:inline-block;margin:4px 8px 4px 0;color:#396a4b}#official-image-dialog{width:min(95vw,1100px);max-height:94vh;border:1px solid #ccc;padding:16px}#official-image-dialog::backdrop{background:#000b}#official-image-dialog>img{display:block;max-width:100%;height:65vh;object-fit:contain;margin:auto}.og-dialog-head{display:flex;gap:16px;align-items:center;justify-content:space-between}.og-dialog-head button{padding:8px 12px;cursor:pointer}@media(max-width:900px){#official-case-gallery .og-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:500px){#official-case-gallery .og-grid{grid-template-columns:1fr}#official-case-gallery .og-image img{height:300px}.og-dialog-head{flex-wrap:wrap}}
+</style></head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1><p id="functional-scope" style="font-size:0.8rem;max-width:40rem;margin-top:0.5rem">Saved original-photo candidates, independently replayed. Both overall FAIL. Assertion counts are not pose accuracy or a new Claude skill benchmark.</p>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. Submit All Reviews downloads feedback.json for your next review round.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback was downloaded as feedback.json. Keep the file and share it with your agent to continue the review.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "garment-body-six-view", "runs": [{"id": "eval-1-source-pose-baseline-run-1", "prompt": "\u4f7f\u7528\u539f\u59cb\u5546\u54c1\u7167\u7247\u548c\u7528\u6237\u9009\u5b9a\u7684 Image Gen \u59ff\u6001\u5f15\u5bfc\uff0c\u8c03\u6574\u540c\u4e00\u4e2a\u53ef\u8c03\u5398\u7c73\u5c3a\u5bf8\u4e0e\u9aa8\u9abc\u59ff\u6001\u7684\u4eba\u4f53\uff1b\u6b63\u4fa7\u80cc\u5171\u4eab\u5b8c\u6574\u72b6\u6001\uff0c\u7528\u5b9e\u9645\u4e09\u7ef4\u6e32\u67d3\u3001OpenCV \u53e0\u52a0\u4e0e\u72ec\u7acb\u8bc4\u5206\u6838\u9a8c\u3002\n\n\u4fee\u6539\u524d\u57fa\u7ebf\uff1a\u6b64\u5904\u67e5\u770b\u5df2\u4fdd\u5b58\u5e76\u72ec\u7acb\u590d\u7b97\u7684\u5b9e\u9645\u4ea7\u7269\uff0c\u4e0d\u662f\u65b0\u6267\u884c\u7684 Claude \u6280\u80fd\u6d4b\u8bd5\u3002\u539f\u56fe\u52a8\u4f5c\u4e0e\u5c3a\u5bf8\u51c6\u786e\u6027\u4e0d\u80fd\u7531\u6587\u4ef6/\u7f16\u8f91\u5668\u529f\u80fd\u901a\u8fc7\u6765\u8bc1\u660e\u3002", "eval_id": 1, "outputs": [{"name": "01-result.txt", "type": "text", "content": "\u4fee\u6539\u524d\u57fa\u7ebf\n\nOVERALL: FAIL\n\n\u6765\u6e90\uff1a\u5df2\u4fdd\u5b58\u7684\u771f\u5b9e\u6a21\u578b\u53ca\u72ec\u7acb\u91cd\u7b97\uff0c\u4e0d\u91cd\u65b0\u751f\u6210\u56fe\u7247\u6216\u5192\u5145\u65b0\u65e7\u6280\u80fd\u914d\u5bf9\u5b9e\u9a8c\u3002\n2/5 \u53ea\u63cf\u8ff0\u65ad\u8a00\u8ba1\u6570\uff0c\u4e0d\u662f\u59ff\u6001\u51c6\u786e\u7387\uff1b\u5173\u952e\u5339\u914d\u5931\u8d25\u4e0d\u80fd\u88ab\u529f\u80fd\u901a\u8fc7\u5e73\u5747\u62b5\u6d88\u3002\n\u539f\u56fe SHA256: 6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53\n\u72b6\u6001 SHA256: 594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15\n\u7f51\u683c SHA256: 721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580\n\u76f8\u673a SHA256: 73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd\n\n\u5b9e\u9645\u9010\u9879\u8bc1\u636e\u89c1\u5b98\u65b9 Formal Grades\uff1b\u56fe\u5e93\u3001\u4e0b\u8f7d\u3001\u53ef\u8c03\u4eba\u4f53\u5165\u53e3\u5728\u672c\u6848\u4f8b Outputs \u5185\u3002\n\u5f53\u524d\u5019\u9009\u4ecd\u6709\u624b\u81c2/\u8170\u81c0\u8f6e\u5ed3\u3001\u53f3\u8155\u548c\u63d0\u8863\u638c\u578b\u5931\u914d\uff1b\u771f\u5b9e\u4eba\u4f53\u5c3a\u5bf8\u548c\u9690\u85cf\u6df1\u5ea6\u4e0d\u786e\u5b9a\u3002\n"}, {"name": "02-human-state.json", "type": "text", "content": "{\n  \"version\": \"makehuman-cm-rig-v1\",\n  \"asset\": \"a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6\",\n  \"units\": \"cm\",\n  \"dimensions\": {\n    \"height\": 170,\n    \"bust\": 90,\n    \"waist\": 71,\n    \"hips\": 96,\n    \"shoulders\": 37,\n    \"upperArm\": 27,\n    \"thigh\": 54,\n    \"neck\": 32,\n    \"upperArmLength\": 29,\n    \"forearmLength\": 23,\n    \"thighLength\": 40,\n    \"calf\": 36\n  },\n  \"morphWeights\": [\n    0.08368810939264755,\n    0.2923394738151214,\n    -0.18943291087377212,\n    -0.03548317171288927,\n    0.4078693356345489,\n    0.1740534572665026,\n    0.22753433059380898,\n    0.48376173838612785,\n    0.35297175066382375,\n    0.21105672850672677,\n    0.48021862272290716,\n    -0.011005653642295396\n  ],\n  \"measuredNeutral\": {\n    \"height\": 169.99997873469175,\n    \"bust\": 90.00003225682458,\n    \"waist\": 71.00000240353106,\n    \"hips\": 96.00004042899096,\n    \"shoulders\": 36.99999958633709,\n    \"upperArm\": 27.000002336675646,\n    \"thigh\": 54.00000799295681,\n    \"neck\": 32.00001191743654,\n    \"upperArmLength\": 29.000000836714268,\n    \"forearmLength\": 23.00000204178579,\n    \"thighLength\": 40.000032391686304,\n    \"calf\": 36.000000819882295\n  },\n  \"maximumTargetErrorCm\": 4.042899095679786e-05,\n  \"poseDegrees\": {\n    \"shoulder01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal4.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"temporalis01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperarm01.R\": [\n      -16.1,\n      -14.8,\n      -6.0\n    ],\n    \"orbicularis04.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator03.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-3.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"pelvis.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"temporalis02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator04.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe1-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-2.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special01\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"risorius03.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerarm01.L\": [\n      48.4,\n      -28.3,\n      -43.8\n    ],\n    \"spine01\": [\n      -6.8,\n      12.0,\n      8.2\n    ],\n    \"risorius02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris03.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special03\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-2.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"lowerleg02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris05\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris06\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-1.R\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"levator05.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue06.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-1.L\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"orbicularis04.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"neck03\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerleg02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue00\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"temporalis01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe1-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator05.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"foot.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator06.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special05.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerarm01.R\": [\n      60.3,\n      44.5,\n      41.2\n    ],\n    \"finger2-2.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"levator04.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-2.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"lowerleg01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-1.L\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"wrist.R\": [\n      -39.1,\n      2.3,\n      -0.2\n    ],\n    \"head\": [\n      11.2,\n      18.8,\n      -13.8\n    ],\n    \"toe5-3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe1-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-1.R\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"oculi02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue02\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperleg01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"spine04\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"breast.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"shoulder01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-3.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"foot.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-2.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-1.R\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"oris01\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"neck01\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperleg01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oculi01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe1-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"clavicle.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris04.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-2.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-1.R\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"tongue05.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-3.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-3.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"spine05\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue04\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"breast.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerarm02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-3.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"jaw\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal4.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special05.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue06.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-1.L\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"risorius03.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special04\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-1.L\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"pelvis.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperleg02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"orbicularis03.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris07.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"root\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-1.L\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"orbicularis03.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"eye.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperarm01.L\": [\n      28.1,\n      30.3,\n      -3.4\n    ],\n    \"metacarpal1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue03\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"temporalis02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerarm02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oculi01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"risorius02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerleg01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special06.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"eye.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-3.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"levator06.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-2.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-2.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"oculi02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue01\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris06.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"neck02\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris03.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-3.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris02\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue05.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue07.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue07.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"wrist.L\": [\n      -12.5,\n      -0.5,\n      -0.8\n    ],\n    \"finger4-3.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"clavicle.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-1.R\": [\n      35.0,\n      0.0,\n      0.0\n    ],\n    \"spine02\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris06.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris04.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special06.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-3.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-2.L\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-2.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"spine03\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperleg02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator03.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperarm02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris07.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperarm02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-3.R\": [\n      50.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ]\n  },\n  \"measurementDefinition\": \"Neutral-pose surface tape paths or named landmark distances on the model; not measurements of a photographed person.\",\n  \"limitations\": [\n    \"Single real clothed photograph; generic M170 prior, not recovered true body measurements.\",\n    \"Unobserved side/back and hand depths are regularized hypotheses; no tissue/cloth collision simulation.\"\n  ]\n}\n"}], "grading": {"protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3", "posed_obj_sha256": "721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580", "state_sha256": "594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15", "camera_sha256": "73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd", "functional_integrity": {"verdict": "PASS", "independent_pose_cues": {"shoulder_image_left": {"target_xy": [171.1686432866435, 412.5927465968696], "projected_xy": [213.53587717939388, 462.5766540518148], "error_px": 65.52383926623611, "confidence": 0.45, "visibility": "joint hidden by garment", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "elbow_image_left": {"target_xy": [114.95680847827688, 702.1241678252306], "projected_xy": [96.64184079158065, 711.6611980375174], "error_px": 20.64928537830781, "confidence": 0.5, "visibility": "joint hidden by garment", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "wrist_image_left": {"target_xy": [168.45265191065027, 790.3180058532392], "projected_xy": [183.5817150649384, 785.8842137468232], "error_px": 15.765375490909056, "confidence": 0.8, "visibility": "visible surface", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "shoulder_image_right": {"target_xy": [582.8751794799581, 370.70652814667596], "projected_xy": [593.0005053807387, 418.9028222233592], "error_px": 49.24840086056752, "confidence": 0.45, "visibility": "joint hidden by garment", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "elbow_image_right": {"target_xy": [675.1573073205569, 712.162209927069], "projected_xy": [713.9133837249406, 697.9016032446784], "error_px": 41.296469113136816, "confidence": 0.5, "visibility": "joint hidden by garment", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "wrist_image_right": {"target_xy": [440.72604238951203, 807.5238104503824], "projected_xy": [454.0101508894327, 813.270868616461], "error_px": 14.473984116405386, "confidence": 0.8, "visibility": "visible surface", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}}, "limb_directions": {"image_left_shoulder_elbow": {"angle_error_degrees": 14.153260221159139, "interpretation": "2D direction only; depth unobserved"}, "image_left_elbow_wrist": {"angle_error_degrees": 18.27188773825349, "interpretation": "2D direction only; depth unobserved"}, "image_right_shoulder_elbow": {"angle_error_degrees": 8.307502487120269, "interpretation": "2D direction only; depth unobserved"}, "image_right_elbow_wrist": {"angle_error_degrees": 1.800671788093416, "interpretation": "2D direction only; depth unobserved"}}, "independent_source_state_mesh_max_error_cm": 5.0167446729095024e-09, "vertices": 13380, "reason": "Fresh source dimension calibration + 163-bone FK/LBS compared vertexwise; no saved metrics trusted."}, "visual_alignment_2d": {"verdict": "FAIL", "regions": {"shoulder_left": {"body_pixels": 34382, "outside_fraction": 0.006544121924262696, "exterior_contour_p95_px": 6.0, "verdict": "PASS", "failures": []}, "shoulder_right": {"body_pixels": 44350, "outside_fraction": 0.06574971815107103, "exterior_contour_p95_px": 17.9844970703125, "verdict": "PASS", "failures": []}, "arm_left": {"body_pixels": 38733, "outside_fraction": 0.16828027779929258, "exterior_contour_p95_px": 32.05232238769531, "verdict": "FAIL", "failures": ["body outside clothing", "exterior contour distance"]}, "arm_right": {"body_pixels": 48188, "outside_fraction": 0.1720760355275172, "exterior_contour_p95_px": 29.772869110107422, "verdict": "FAIL", "failures": ["body outside clothing", "exterior contour distance"]}, "torso": {"body_pixels": 155000, "outside_fraction": 0.058303225806451614, "exterior_contour_p95_px": 16.342004776000977, "verdict": "PASS", "failures": []}, "waist_hip_left": {"body_pixels": 18203, "outside_fraction": 0.0, "exterior_contour_p95_px": 0.0, "verdict": "PASS", "failures": []}, "waist_hip_right": {"body_pixels": 139331, "outside_fraction": 0.5236594871205977, "exterior_contour_p95_px": 213.55699157714844, "verdict": "FAIL", "failures": ["body outside clothing", "exterior contour distance"]}}, "waist_hip_scanlines": [{"y": 950, "center_error_px": 189.0, "width_ratio": 0.94, "verdict": "FAIL"}, {"y": 1000, "center_error_px": 210.5, "width_ratio": 0.983132530120482, "verdict": "FAIL"}, {"y": 1100, "center_error_px": 223.5, "width_ratio": 0.9796839729119639, "verdict": "FAIL"}, {"y": 1200, "center_error_px": 205.5, "width_ratio": 0.8995901639344263, "verdict": "FAIL"}], "worst_region": "waist_hip_right", "regional_gate_verdict": "FAIL"}, "pose_plausibility_3d": {"verdict": "FAIL", "method": "Actual baseline photo-render/front/side/back direct visual review.", "observations": [{"id": "standing_balance", "verdict": "PASS", "evidence": "Baseline side feet lie on ground, torso roughly upright."}, {"id": "connected_limbs", "verdict": "PASS", "evidence": "Side/back show connected limbs."}, {"id": "shirt_grasp_action", "verdict": "FAIL", "evidence": "Photo-render curled/open hands do not recreate source two-hand grasp; body pelvis misalignment remains severe in overlay."}, {"id": "true_depth", "verdict": "UNKNOWN", "evidence": "No reference side/back/depth observations."}], "limits": "Saved baseline state/mesh individually source-verified, but copied legacy view PNG provenance has not been replayed in this bundle.", "input_hashes": {"final-state.json": "594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15", "posed.obj": "721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580", "camera.json": "73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd"}, "recorded_review_path": "work/pose-guided-fit-20261118/review/baseline/manual-review.json"}, "claims": [{"claim": "These outputs are an accurately recovered original 3D grasp and real-person body dimensions.", "type": "quality", "verified": false, "evidence": "Single photo has ambiguous depth and garment ease; actual grasp needs manual/geometry/contact evidence. M dimensions are conditional avatar parameters."}, {"claim": "Actual output mesh comes from the real adjustable cm/FK body engine.", "type": "process", "verified": true, "evidence": "Fresh source reconstruction and vertexwise comparison recorded."}, {"claim": "The native Anthropic Claude skill execution benchmark ran.", "type": "process", "verified": false, "evidence": "NOT_RUN: current checks are local executed functional/geometry and artifact reviews, not native Claude runs."}], "action_alignment_2d": {"verdict": "PASS", "failures": [], "protocol": "pose-sanity-supplement-v2", "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad", "original_visible_wrist_errors_px": {"wrist_image_left": 0.43401468100077106, "wrist_image_right": 1.026241233372752}, "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."}, "expectations": [{"text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.", "passed": true, "evidence": "5.0167446729095024e-09 cm maximum vertex error; see functional_integrity."}, {"text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.", "passed": false, "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: NOT_RUN"}, {"text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.", "passed": false, "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."}, {"text": "Original visible wrists and coarse limb directions do not contradict the reference action.", "passed": true, "evidence": "{\"verdict\": \"PASS\", \"failures\": [], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 0.43401468100077106, \"wrist_image_right\": 1.026241233372752}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"}, {"text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.", "passed": false, "evidence": "Photo-render curled/open hands do not recreate source two-hand grasp; body pelvis misalignment remains severe in overlay."}], "summary": {"passed": 2, "failed": 3, "total": 5, "pass_rate": 0.4, "interpretation": "Descriptive count only; NEVER overall acceptance. Any critical expectation failure vetoes acceptance."}, "overall_verdict": "FAIL", "claim_limits": "Projection evidence only; photo cannot determine true 3D pose or true cm girths.", "execution_metrics": {"native_claude_execution": "NOT_RUN", "unknown_tool_counts_and_timing": "Not invented; no complete native execution metrics/timing transcript supplied."}, "user_notes_summary": {"uncertainties": ["Hidden joint depth and true photographed body girths unidentified."], "needs_review": ["All critical FAIL or UNKNOWN findings remain visible."], "workarounds": ["ImageGen is illustrative weak cue; original visible wrist points and regional source-image evidence are separate."]}, "eval_feedback": {"suggestions": [{"assertion": "Historical20/20 file/editor/controlled-fixture checks imply original-photo pose accuracy.", "reason": "Baseline independently fails both arm contours and right waist/hip by213.56pxP95; functional capabilities cannot establish raw-photo alignment."}, {"assertion": "Body lies inside clothing silhouette implies the original action.", "reason": "Actual changed arm moved inside garment and regional left-arm gate passed; wrist182.46px and forearm reversal157degrees required explicitv2 coarse action veto."}, {"assertion": "Low2D wrist error implies correct3D grasp.", "reason": "Round9 has low wrist errors but one arm extends far forward, and round13 has cupped palms/collapsed reversed forearm; direct canonical views and actual geometry checks are required."}, {"assertion": "Zero detected torso intersections means both hands are collision-free.", "reason": "Round13 left hand has zero classified rays; coverage0 is UNKNOWN, not PASS. Skin ray checks do not prove fabric contact."}], "overall": "Discriminating regional gates, coarse action gates, actual mesh/PNG replay and independent manual3D review are separate vetoes. Descriptive pass_rate never overrides criticalFAIL. Thev2 addition was explicitly made after a real negative control exposed a gap; regional-v1 thresholds remain frozen."}}}, {"id": "eval-1-source-pose-candidate-run-1", "prompt": "\u4f7f\u7528\u539f\u59cb\u5546\u54c1\u7167\u7247\u548c\u7528\u6237\u9009\u5b9a\u7684 Image Gen \u59ff\u6001\u5f15\u5bfc\uff0c\u8c03\u6574\u540c\u4e00\u4e2a\u53ef\u8c03\u5398\u7c73\u5c3a\u5bf8\u4e0e\u9aa8\u9abc\u59ff\u6001\u7684\u4eba\u4f53\uff1b\u6b63\u4fa7\u80cc\u5171\u4eab\u5b8c\u6574\u72b6\u6001\uff0c\u7528\u5b9e\u9645\u4e09\u7ef4\u6e32\u67d3\u3001OpenCV \u53e0\u52a0\u4e0e\u72ec\u7acb\u8bc4\u5206\u6838\u9a8c\u3002\n\n\u5f53\u524d\u5019\u9009 \u00b7 round14\uff1a\u6b64\u5904\u67e5\u770b\u5df2\u4fdd\u5b58\u5e76\u72ec\u7acb\u590d\u7b97\u7684\u5b9e\u9645\u4ea7\u7269\uff0c\u4e0d\u662f\u65b0\u6267\u884c\u7684 Claude \u6280\u80fd\u6d4b\u8bd5\u3002\u539f\u56fe\u52a8\u4f5c\u4e0e\u5c3a\u5bf8\u51c6\u786e\u6027\u4e0d\u80fd\u7531\u6587\u4ef6/\u7f16\u8f91\u5668\u529f\u80fd\u901a\u8fc7\u6765\u8bc1\u660e\u3002", "eval_id": 1, "outputs": [{"name": "01-result.txt", "type": "text", "content": "\u5f53\u524d\u5019\u9009 \u00b7 round14\n\nOVERALL: FAIL\n\n\u6765\u6e90\uff1a\u5df2\u4fdd\u5b58\u7684\u771f\u5b9e\u6a21\u578b\u53ca\u72ec\u7acb\u91cd\u7b97\uff0c\u4e0d\u91cd\u65b0\u751f\u6210\u56fe\u7247\u6216\u5192\u5145\u65b0\u65e7\u6280\u80fd\u914d\u5bf9\u5b9e\u9a8c\u3002\n2/5 \u53ea\u63cf\u8ff0\u65ad\u8a00\u8ba1\u6570\uff0c\u4e0d\u662f\u59ff\u6001\u51c6\u786e\u7387\uff1b\u5173\u952e\u5339\u914d\u5931\u8d25\u4e0d\u80fd\u88ab\u529f\u80fd\u901a\u8fc7\u5e73\u5747\u62b5\u6d88\u3002\n\u539f\u56fe SHA256: 6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53\n\u72b6\u6001 SHA256: d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db\n\u7f51\u683c SHA256: 3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca\n\u76f8\u673a SHA256: 04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f\n\n\u5b9e\u9645\u9010\u9879\u8bc1\u636e\u89c1\u5b98\u65b9 Formal Grades\uff1b\u56fe\u5e93\u3001\u4e0b\u8f7d\u3001\u53ef\u8c03\u4eba\u4f53\u5165\u53e3\u5728\u672c\u6848\u4f8b Outputs \u5185\u3002\n\u5f53\u524d\u5019\u9009\u4ecd\u6709\u624b\u81c2/\u8170\u81c0\u8f6e\u5ed3\u3001\u53f3\u8155\u548c\u63d0\u8863\u638c\u578b\u5931\u914d\uff1b\u771f\u5b9e\u4eba\u4f53\u5c3a\u5bf8\u548c\u9690\u85cf\u6df1\u5ea6\u4e0d\u786e\u5b9a\u3002\n"}, {"name": "02-human-state.json", "type": "text", "content": "{\n  \"version\": \"makehuman-cm-rig-v1\",\n  \"asset\": \"a75b6a2d59b2fa60ea29393e380182174627ba66d0993c649c8c571a6ccecda6\",\n  \"units\": \"cm\",\n  \"dimensions\": {\n    \"height\": 170,\n    \"bust\": 90,\n    \"waist\": 71,\n    \"hips\": 96,\n    \"shoulders\": 37,\n    \"upperArm\": 27,\n    \"thigh\": 54,\n    \"neck\": 32,\n    \"upperArmLength\": 28,\n    \"forearmLength\": 25,\n    \"thighLength\": 40,\n    \"calf\": 36\n  },\n  \"morphWeights\": [\n    0.08368807714282887,\n    0.29233951802164737,\n    -0.18943284627993076,\n    -0.03548307916025903,\n    0.4078694026349394,\n    0.18012026289288294,\n    0.22753435807267788,\n    0.48376179352132376,\n    0.20815797814699402,\n    0.5241025856630857,\n    0.48021876603073277,\n    -0.011005621709138646\n  ],\n  \"measuredNeutral\": {\n    \"height\": 169.9999778926795,\n    \"bust\": 90.00003223487381,\n    \"waist\": 71.00000239665154,\n    \"hips\": 96.00004043698506,\n    \"shoulders\": 36.99999957363598,\n    \"upperArm\": 27.000000884164034,\n    \"thigh\": 54.00000799361479,\n    \"neck\": 32.00001190552659,\n    \"upperArmLength\": 28.00000049493166,\n    \"forearmLength\": 25.000008954833117,\n    \"thighLength\": 40.00003320662753,\n    \"calf\": 36.000000819106795\n  },\n  \"maximumTargetErrorCm\": 4.043698505995508e-05,\n  \"poseDegrees\": {\n    \"oculi01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue06.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue03\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-1.L\": [\n      75.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-1.R\": [\n      75.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-1.L\": [\n      56.4,\n      -5.7,\n      6.9\n    ],\n    \"upperleg02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe1-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue05.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"clavicle.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerleg02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris06\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special01\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe1-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"temporalis01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperarm02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"breast.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"spine04\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue07.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris05\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-2.R\": [\n      90.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"orbicularis04.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris07.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-2.R\": [\n      90.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oculi01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special04\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris07.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"orbicularis03.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"spine02\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperarm01.R\": [\n      -38.7,\n      32.9,\n      41.4\n    ],\n    \"toe1-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"temporalis02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator06.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue07.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator03.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-3.R\": [\n      65.0,\n      0.0,\n      0.0\n    ],\n    \"risorius03.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"spine01\": [\n      4.2,\n      -18.0,\n      7.7\n    ],\n    \"toe3-3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris06.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"foot.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"risorius03.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"orbicularis03.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator05.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-2.L\": [\n      69.2,\n      5.4,\n      10.7\n    ],\n    \"neck02\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator03.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator04.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-3.L\": [\n      65.0,\n      0.0,\n      0.0\n    ],\n    \"head\": [\n      28.0,\n      9.8,\n      -22.2\n    ],\n    \"special03\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-1.R\": [\n      75.0,\n      0.0,\n      0.0\n    ],\n    \"special05.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"eye.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"neck01\": [\n      -15.9,\n      -0.9,\n      21.1\n    ],\n    \"toe5-3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oculi02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special06.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-2.R\": [\n      90.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-1.L\": [\n      75.0,\n      0.0,\n      0.0\n    ],\n    \"pelvis.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"spine03\": [\n      -17.8,\n      12.5,\n      -1.6\n    ],\n    \"tongue05.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"tongue00\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-2.L\": [\n      43.4,\n      24.0,\n      17.6\n    ],\n    \"toe4-1.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"wrist.L\": [\n      21.9,\n      -45.8,\n      24.0\n    ],\n    \"tongue02\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-3.L\": [\n      65.0,\n      0.0,\n      0.0\n    ],\n    \"lowerarm02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"temporalis01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"pelvis.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe3-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal4.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris02\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris01\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"eye.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-2.L\": [\n      90.0,\n      0.0,\n      0.0\n    ],\n    \"toe2-3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerleg01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oculi02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerarm01.R\": [\n      112.0,\n      12.0,\n      73.9\n    ],\n    \"oris06.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal4.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-3.R\": [\n      65.0,\n      0.0,\n      0.0\n    ],\n    \"temporalis02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"neck03\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperleg01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerarm02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"breast.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger5-3.R\": [\n      65.0,\n      0.0,\n      0.0\n    ],\n    \"special06.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperleg02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-3.L\": [\n      65.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-3.R\": [\n      55.0,\n      -2.3,\n      -19.5\n    ],\n    \"wrist.R\": [\n      36.9,\n      -89.0,\n      35.9\n    ],\n    \"metacarpal3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-1.L\": [\n      41.3,\n      -2.7,\n      29.5\n    ],\n    \"orbicularis04.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"upperarm02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris04.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator06.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris03.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-1.R\": [\n      68.2,\n      7.0,\n      -5.9\n    ],\n    \"spine05\": [\n      11.5,\n      15.3,\n      4.2\n    ],\n    \"tongue01\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-3.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"clavicle.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe5-2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"risorius02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal1.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-2.R\": [\n      49.7,\n      16.4,\n      -9.7\n    ],\n    \"finger5-2.L\": [\n      90.0,\n      0.0,\n      0.0\n    ],\n    \"foot.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-3.R\": [\n      75.3,\n      -3.5,\n      -8.0\n    ],\n    \"toe3-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-3.L\": [\n      75.2,\n      -50.0,\n      -19.7\n    ],\n    \"tongue06.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"levator05.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger3-1.L\": [\n      75.0,\n      0.0,\n      0.0\n    ],\n    \"upperleg01.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"metacarpal2.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"toe4-3.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger1-1.R\": [\n      42.0,\n      13.6,\n      0.4\n    ],\n    \"finger2-3.L\": [\n      66.3,\n      6.7,\n      -5.4\n    ],\n    \"lowerleg01.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"shoulder01.L\": [\n      11.9,\n      11.6,\n      11.4\n    ],\n    \"toe1-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-2.L\": [\n      90.0,\n      0.0,\n      0.0\n    ],\n    \"risorius02.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"jaw\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerarm01.L\": [\n      -0.8,\n      -24.1,\n      -93.6\n    ],\n    \"oris03.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"shoulder01.R\": [\n      -9.7,\n      6.2,\n      -11.1\n    ],\n    \"root\": [\n      -0.6,\n      -1.3,\n      -3.5\n    ],\n    \"upperarm01.L\": [\n      27.6,\n      -14.8,\n      4.0\n    ],\n    \"tongue04\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"oris04.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"lowerleg02.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"special05.L\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger2-2.R\": [\n      77.7,\n      9.3,\n      -9.1\n    ],\n    \"toe5-2.R\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"finger4-1.R\": [\n      75.0,\n      0.0,\n      0.0\n    ],\n    \"levator04.R\": [\n      0.0,\n      0.0,\n      0.0\n    ]\n  },\n  \"measurementDefinition\": \"Neutral-pose surface tape paths or named landmark distances on the model; not measurements of a photographed person.\",\n  \"limitations\": [\n    \"Generic M170 assumed scale; no true person cm recovery from this one photo.\",\n    \"Image Gen cues are illustrative surface hypotheses, not detector truth.\",\n    \"Hidden side/back and depth are regularized hypotheses; no cloth physics/contact validation.\"\n  ]\n}\n"}], "grading": {"protocol_sha256": "5b34feadce3641f7c5b0b50955a569c8fcb26435bcf6ad836d56e9a559e6aad3", "posed_obj_sha256": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca", "state_sha256": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db", "camera_sha256": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f", "functional_integrity": {"verdict": "PASS", "independent_pose_cues": {"shoulder_image_left": {"target_xy": [171.1686432866435, 412.5927465968696], "projected_xy": [184.80432566745327, 427.9537069249866], "error_px": 20.539983841091775, "confidence": 0.45, "visibility": "joint hidden by garment", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "elbow_image_left": {"target_xy": [114.95680847827688, 702.1241678252306], "projected_xy": [122.01811975813723, 747.8365492540627], "error_px": 46.25455580681876, "confidence": 0.5, "visibility": "joint hidden by garment", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "wrist_image_left": {"target_xy": [168.45265191065027, 790.3180058532392], "projected_xy": [160.42717456530943, 795.4034116332471], "error_px": 9.501033552615004, "confidence": 0.8, "visibility": "visible surface", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "shoulder_image_right": {"target_xy": [582.8751794799581, 370.70652814667596], "projected_xy": [596.6177382741123, 453.9691985095094], "error_px": 84.38915924548986, "confidence": 0.45, "visibility": "joint hidden by garment", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "elbow_image_right": {"target_xy": [675.1573073205569, 712.162209927069], "projected_xy": [703.0154868261267, 675.01583258656], "error_px": 46.43200959346927, "confidence": 0.5, "visibility": "joint hidden by garment", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}, "wrist_image_right": {"target_xy": [440.72604238951203, 807.5238104503824], "projected_xy": [415.6991236261156, 816.7467127003542], "error_px": 26.67224378829388, "confidence": 0.8, "visibility": "visible surface", "interpretation": "Weak illustrative cue; hidden shoulder/elbow not anatomical truth"}}, "limb_directions": {"image_left_shoulder_elbow": {"angle_error_degrees": 0.11762288931222716, "interpretation": "2D direction only; depth unobserved"}, "image_left_elbow_wrist": {"angle_error_degrees": 7.680215086075306, "interpretation": "2D direction only; depth unobserved"}, "image_right_shoulder_elbow": {"angle_error_degrees": 10.579688057832884, "interpretation": "2D direction only; depth unobserved"}, "image_right_elbow_wrist": {"angle_error_degrees": 4.121322260517914, "interpretation": "2D direction only; depth unobserved"}}, "independent_source_state_mesh_max_error_cm": 5.0152641286948735e-09, "vertices": 13380, "reason": "Fresh source dimension calibration + 163-bone FK/LBS compared vertexwise; no saved metrics trusted."}, "visual_alignment_2d": {"verdict": "FAIL", "regions": {"shoulder_left": {"body_pixels": 41256, "outside_fraction": 0.08216986620127982, "exterior_contour_p95_px": 17.393798828125, "verdict": "FAIL", "failures": ["body outside clothing"]}, "shoulder_right": {"body_pixels": 37781, "outside_fraction": 0.02495963579577036, "exterior_contour_p95_px": 11.984498977661133, "verdict": "PASS", "failures": []}, "arm_left": {"body_pixels": 42364, "outside_fraction": 0.1287649891417241, "exterior_contour_p95_px": 33.06573486328125, "verdict": "FAIL", "failures": ["body outside clothing", "exterior contour distance"]}, "arm_right": {"body_pixels": 39129, "outside_fraction": 0.1190165861637149, "exterior_contour_p95_px": 14.986048698425293, "verdict": "FAIL", "failures": ["body outside clothing"]}, "torso": {"body_pixels": 156901, "outside_fraction": 0.028495675617108876, "exterior_contour_p95_px": 18.938920974731445, "verdict": "PASS", "failures": []}, "waist_hip_left": {"body_pixels": 92825, "outside_fraction": 0.005763533530837597, "exterior_contour_p95_px": 10.75, "verdict": "PASS", "failures": []}, "waist_hip_right": {"body_pixels": 73266, "outside_fraction": 0.10838588158218, "exterior_contour_p95_px": 35.5596923828125, "verdict": "FAIL", "failures": ["body outside clothing", "exterior contour distance"]}}, "waist_hip_scanlines": [{"y": 950, "center_error_px": 33.0, "width_ratio": 0.975, "verdict": "PASS"}, {"y": 1000, "center_error_px": 35.0, "width_ratio": 0.9710843373493976, "verdict": "PASS"}, {"y": 1100, "center_error_px": 30.5, "width_ratio": 1.020316027088036, "verdict": "PASS"}, {"y": 1200, "center_error_px": 1.0, "width_ratio": 0.9918032786885246, "verdict": "PASS"}], "worst_region": "waist_hip_right", "regional_gate_verdict": "FAIL"}, "pose_plausibility_3d": {"verdict": "FAIL", "selected_candidate": "round-14", "method": "Independent actual original photo vs photo-render plus front/side/back direct review, fresh source FK/LBS + matrix raster + PNG replay + actual torso-triangle hand rays.", "observations": [{"id": "standing_balance_connected_limbs", "verdict": "PASS", "evidence": "Actual canonical side/front/back show upright supported feet and connected limbs; no round2 global lean or round9 extended-arm regression."}, {"id": "hand_torso_ray_intervals", "verdict": "PASS", "evidence": "Fresh triangle test: L1402/1424 and R1424/1424 hand vertices have classified rays; zero inside on covered rays; min front clearance L3.182cm/R1.438cm.22L vertices remain unclassified, no whole-body collision claim."}, {"id": "left_image_forearm_direction", "verdict": "PASS", "evidence": "Projected elbow above wrist again; direction no longer round13 inverted/collapsed. Exact elbow location still about46px off illustrative cue."}, {"id": "shirt_grasp_action", "verdict": "FAIL", "evidence": "Photo-render still shows cupped/upward palms with fingers gathered below original horizontal hem grasp; canonical views show separated hand orientation. Actual cloth contact is not simulated; this is not accepted replication of original two-hand shirt holding."}, {"id": "true_hidden_depth_body_measurements", "verdict": "UNKNOWN", "evidence": "Original single crop cannot establish true3D depth or actual real-person girths; source M prior is conditional avatar."}], "hand_check_summary": {"L": {"hand_vertices": 1424, "rays_with_two_torso_surfaces": 1402, "inside_torso_count": 0, "maximum_inside_depth_cm": 0.0, "minimum_front_clearance_cm": 3.1823126549660774, "front_clearance_p05_cm": 5.094448563104421}, "R": {"hand_vertices": 1424, "rays_with_two_torso_surfaces": 1424, "inside_torso_count": 0, "maximum_inside_depth_cm": 0.0, "minimum_front_clearance_cm": 1.4382715436010507, "front_clearance_p05_cm": 2.565744886507927}}, "input_hashes": {"final-state.json": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db", "posed.obj": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca", "camera.json": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f"}, "recommendation": "Latest explainable improvement candidate, overallFAIL. Retain7 comparison, reject13 reversed forearm. Correcting penetration does not override wrong grasp or regional failures.", "recorded_review_path": "work/pose-guided-fit-20261118/review/round-14/manual-review.json"}, "claims": [{"claim": "These outputs are an accurately recovered original 3D grasp and real-person body dimensions.", "type": "quality", "verified": false, "evidence": "Single photo has ambiguous depth and garment ease; actual grasp needs manual/geometry/contact evidence. M dimensions are conditional avatar parameters."}, {"claim": "Actual output mesh comes from the real adjustable cm/FK body engine.", "type": "process", "verified": true, "evidence": "Fresh source reconstruction and vertexwise comparison recorded."}, {"claim": "The native Anthropic Claude skill execution benchmark ran.", "type": "process", "verified": false, "evidence": "NOT_RUN: current checks are local executed functional/geometry and artifact reviews, not native Claude runs."}], "action_alignment_2d": {"verdict": "FAIL", "failures": ["wrist_image_right original visible wrist too far"], "protocol": "pose-sanity-supplement-v2", "protocol_sha256": "f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad", "original_visible_wrist_errors_px": {"wrist_image_left": 25.37916959474208, "wrist_image_right": 39.47906710922058}, "limits": "Coarse contradiction gates, not proof of grasp action; manual action review remains required."}, "view_integrity": {"verdict": "PASS", "checks": {"same_pose_dimensions": true, "main_mesh_vs_view_state_error_cm": 5.0152641286948735e-09, "front": {"verdict": "PASS", "hashes_match": true, "joint_reprojection_max_px": 0.0, "independent_mask_iou": 1.0, "replay_png_mean_abs_channel_error": 0.0}, "side": {"verdict": "PASS", "hashes_match": true, "joint_reprojection_max_px": 0.0, "independent_mask_iou": 1.0, "replay_png_mean_abs_channel_error": 0.0}, "back": {"verdict": "PASS", "hashes_match": true, "joint_reprojection_max_px": 0.0, "independent_mask_iou": 1.0, "replay_png_mean_abs_channel_error": 0.0}, "photo": {"verdict": "PASS", "camera_formula_matrix_max_abs_error": 0.0, "replay_png_mean_abs_channel_error": 0.0}}, "failures": [], "method": "One fresh FK/LBS state: independent silhouette raster, joint reprojection, hash contract and deterministic saved RGB renderer replay per front/side/back; excludes only differing cameras."}, "expectations": [{"text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.", "passed": true, "evidence": "5.0152641286948735e-09 cm maximum vertex error; see functional_integrity."}, {"text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.", "passed": true, "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: PASS"}, {"text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.", "passed": false, "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."}, {"text": "Original visible wrists and coarse limb directions do not contradict the reference action.", "passed": false, "evidence": "{\"verdict\": \"FAIL\", \"failures\": [\"wrist_image_right original visible wrist too far\"], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 25.37916959474208, \"wrist_image_right\": 39.47906710922058}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"}, {"text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.", "passed": false, "evidence": "Photo-render still shows cupped/upward palms with fingers gathered below original horizontal hem grasp; canonical views show separated hand orientation. Actual cloth contact is not simulated; this is not accepted replication of original two-hand shirt holding."}], "summary": {"passed": 2, "failed": 3, "total": 5, "pass_rate": 0.4, "interpretation": "Descriptive count only; NEVER overall acceptance. Any critical expectation failure vetoes acceptance."}, "overall_verdict": "FAIL", "claim_limits": "Projection evidence only; photo cannot determine true 3D pose or true cm girths.", "execution_metrics": {"native_claude_execution": "NOT_RUN", "unknown_tool_counts_and_timing": "Not invented; no complete native execution metrics/timing transcript supplied."}, "user_notes_summary": {"uncertainties": ["Hidden joint depth and true photographed body girths unidentified."], "needs_review": ["All critical FAIL or UNKNOWN findings remain visible."], "workarounds": ["ImageGen is illustrative weak cue; original visible wrist points and regional source-image evidence are separate."]}, "eval_feedback": {"suggestions": [{"assertion": "Historical20/20 file/editor/controlled-fixture checks imply original-photo pose accuracy.", "reason": "Baseline independently fails both arm contours and right waist/hip by213.56pxP95; functional capabilities cannot establish raw-photo alignment."}, {"assertion": "Body lies inside clothing silhouette implies the original action.", "reason": "Actual changed arm moved inside garment and regional left-arm gate passed; wrist182.46px and forearm reversal157degrees required explicitv2 coarse action veto."}, {"assertion": "Low2D wrist error implies correct3D grasp.", "reason": "Round9 has low wrist errors but one arm extends far forward, and round13 has cupped palms/collapsed reversed forearm; direct canonical views and actual geometry checks are required."}, {"assertion": "Zero detected torso intersections means both hands are collision-free.", "reason": "Round13 left hand has zero classified rays; coverage0 is UNKNOWN, not PASS. Skin ray checks do not prove fabric contact."}], "overall": "Discriminating regional gates, coarse action gates, actual mesh/PNG replay and independent manual3D review are separate vetoes. Descriptive pass_rate never overrides criticalFAIL. Thev2 addition was explicitly made after a real negative control exposed a gap; regional-v1 thresholds remain frozen."}}}], "previous_feedback": {}, "previous_outputs": {"eval-1-source-pose-candidate-run-1": [{"name": "previous-result.txt", "type": "text", "content": "\u4fee\u6539\u524d\u4fdd\u5b58\u7684\u5019\u9009\uff1b\u6574\u4f53 FAIL\u3002\u53f3\u8170\u81c0\u5916\u8f6e\u5ed3 P95 213.56 px\u3002\n\u72b6\u6001 SHA256: 594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15"}]}, "benchmark": {"metadata": {"skill_name": "garment-body-six-view", "evals_run": [1], "runs_per_configuration": 1, "protocol": "Archived actual candidates, not a controlled skill experiment"}, "run_summary": {"candidate": {"pass_rate": {"mean": 0.4, "stddev": 0, "min": 0.4, "max": 0.4}}, "baseline": {"pass_rate": {"mean": 0.4, "stddev": 0, "min": 0.4, "max": 0.4}}}, "runs": [{"eval_id": 1, "eval_name": "\u4fdd\u5b58\u6a21\u578b\u7684\u539f\u56fe\u59ff\u6001\u6838\u9a8c", "configuration": "candidate", "run_number": 1, "result": {"passed": 2, "failed": 3, "total": 5, "pass_rate": 0.4, "tokens": null}, "expectations": [{"text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.", "passed": true, "evidence": "5.0152641286948735e-09 cm maximum vertex error; see functional_integrity."}, {"text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.", "passed": true, "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: PASS"}, {"text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.", "passed": false, "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."}, {"text": "Original visible wrists and coarse limb directions do not contradict the reference action.", "passed": false, "evidence": "{\"verdict\": \"FAIL\", \"failures\": [\"wrist_image_right original visible wrist too far\"], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 25.37916959474208, \"wrist_image_right\": 39.47906710922058}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"}, {"text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.", "passed": false, "evidence": "Photo-render still shows cupped/upward palms with fingers gathered below original horizontal hem grasp; canonical views show separated hand orientation. Actual cloth contact is not simulated; this is not accepted replication of original two-hand shirt holding."}]}, {"eval_id": 1, "eval_name": "\u4fdd\u5b58\u6a21\u578b\u7684\u539f\u56fe\u59ff\u6001\u6838\u9a8c", "configuration": "baseline", "run_number": 1, "result": {"passed": 2, "failed": 3, "total": 5, "pass_rate": 0.4, "tokens": null}, "expectations": [{"text": "Fresh source calibration and FK/LBS reproduce the saved actual body mesh.", "passed": true, "evidence": "5.0167446729095024e-09 cm maximum vertex error; see functional_integrity."}, {"text": "Canonical front/side/back and photo PNGs use the same real pose/mesh and declared cameras.", "passed": false, "evidence": "Actual PNG replay, camera matrix formula, projected joints and independent silhouettes: NOT_RUN"}, {"text": "Every frozen critical body region and waist/hip center scanline satisfies the regional protocol.", "passed": false, "evidence": "Regional gate FAIL; worst region waist_hip_right; inspect all regional numbers, never average."}, {"text": "Original visible wrists and coarse limb directions do not contradict the reference action.", "passed": true, "evidence": "{\"verdict\": \"PASS\", \"failures\": [], \"protocol\": \"pose-sanity-supplement-v2\", \"protocol_sha256\": \"f4ce4ef40c450839214e15e1c6d24e873110682b2505e9dc73959957db1db3ad\", \"original_visible_wrist_errors_px\": {\"wrist_image_left\": 0.43401468100077106, \"wrist_image_right\": 1.026241233372752}, \"limits\": \"Coarse contradiction gates, not proof of grasp action; manual action review remains required.\"}"}, {"text": "Actual three-dimensional renders reproduce the original opposing shirt-hem grasp.", "passed": false, "evidence": "Photo-render curled/open hands do not recreate source two-hand grasp; body pelvis misalignment remains severe in overlay."}]}], "notes": ["\u8fd9\u662f\u4fdd\u5b58\u7684\u57fa\u7ebf\u4e0e\u5f53\u524d\u5019\u9009\u5404\u4e00\u6b21\u72ec\u7acb\u590d\u7b97\uff0c\u975e\u65b0\u65e7\u6280\u80fd\u914d\u5bf9\u6267\u884c\u6216\u539f\u751f Claude benchmark\u3002", "\u4e24\u4e2a\u7248\u672c\u6574\u4f53\u5747 FAIL\uff1b40% \u4ec5\u4e3a 2/5 \u65ad\u8a00\u8ba1\u6570\uff0c\u4e0d\u662f\u4eba\u4f53\u6216\u59ff\u6001\u51c6\u786e\u7387\u3002", "n=1\uff0c\u6ca1\u6709\u7edf\u8ba1\u663e\u8457\u6027\u3001token \u6216\u8017\u65f6\u4f18\u52bf\u7ed3\u8bba\u3002\u771f\u5b9e\u5c3a\u5bf8\u548c\u9690\u85cf\u6df1\u5ea6\u4ecd\u4e0d\u786e\u5b9a\u3002", "\u5386\u53f2\u516d\u6b21\u6280\u80fd\u529f\u80fd\u6267\u884c\u53ca\u539f\u6709\u6210\u7ee9\u5355\u72ec\u4fdd\u7559\u5728 history.html\uff1b\u672a\u6df7\u5165\u8fd9\u6b21\u5019\u9009\u6bd4\u8f83\u3002"]}};
+
+    // ---- State ----
+    const STATIC_REVIEW_KEY = "pattern-agent:eval-review:9f7e8e4e0a4ebfb87629a341";
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Restore this exact review build only; prior iterations have separate keys.
+      try {
+        const stored = JSON.parse(localStorage.getItem(STATIC_REVIEW_KEY) || "{}");
+        const ids = new Set(EMBEDDED_DATA.runs.map(run => run.id));
+        for (const [id, value] of Object.entries(stored)) {
+          if (ids.has(id) && typeof value === "string") feedbackMap[id] = value;
+        }
+      } catch { /* browser storage may be disabled */ }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    // Static-only adaptation: no server endpoint or credential-bearing request.
+    function persistStaticFeedback() {
+      try {
+        localStorage.setItem(STATIC_REVIEW_KEY, JSON.stringify(feedbackMap));
+        document.getElementById("feedback-status").textContent = "Saved in this browser; submit to download";
+      } catch {
+        document.getElementById("feedback-status").textContent = "Browser storage unavailable; submit to download";
+      }
+    }
+
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") delete feedbackMap[run.id];
+      else feedbackMap[run.id] = text;
+      persistStaticFeedback();
+    }
+
+    function showDoneDialog() {
+      saveCurrentFeedback();
+      const timestamp = new Date().toISOString();
+      const reviews = EMBEDDED_DATA.runs.map(run => ({run_id: run.id, feedback: feedbackMap[run.id] || "", timestamp}));
+      const payload = JSON.stringify({reviews, status: "complete"}, null, 2);
+      const url = URL.createObjectURL(new Blob([payload], {type: "application/json"}));
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = "feedback.json";
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      document.getElementById("done-overlay").classList.add("visible");
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+<script>const OUTPUT_GALLERIES={"eval-1-source-pose-candidate-run-1": {"title": "当前候选 · round14", "overall": "FAIL", "version": "model", "source_fingerprints": {"reference_sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53", "state_sha256": "d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db", "posed_obj_sha256": "3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca", "camera_sha256": "04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f"}, "legacy_feedback_key": "pattern-agent:human-review:v1:pose-guided-fit:model:6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53:d1d61c9411b3dac4720a19a076ae0ccbb741e601f2bdaf6a91c63db21e6a06db:3faa53cf55017c811246123cc35271734447d474bb68a2c883ac0e3281648bca:04dc8138040a48687913c90de99fe270f65db8c91096f2da974ae1b8d9f1906f", "stages": [{"title": "1. 原始商品照片", "status": "实际输入", "images": [{"src": "../pose-guided-fit/reference/original-product.jpg", "label": "原始商品图", "caption": "原始文件未改动。", "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"}]}, {"title": "2. Image Gen 姿态引导", "status": "REUSED · illustrative", "images": [{"src": "../pose-guided-fit/reference/imagegen-pose.png", "label": "实际 Image Gen 姿态图", "caption": "复用已有示意输出；不是姿态检测真值。", "sha256": "cb69b41525e09b07020c4017e0260e654469e225f171d4d74ce05d9def8f1cb4"}, {"src": "../pose-guided-fit/targets/raw-target-overlay.png", "label": "映回原图的引导点线", "caption": "全局配准，无人体像素扭曲。", "sha256": "0a286fd7b1918521889f28db7488c3b05eb10f05f22d03105f24b996de3772bc"}]}, {"title": "3. 实际三维模型", "status": "真实渲染", "images": [{"src": "../pose-guided-fit/model/photo-render.png", "label": "原相机真实模型投影", "caption": "同一实际人体，原图 1000×1276 画幅。", "sha256": "50ec56753ad1560e8aad5d3d7fc96ef240021562c4831da5738d429fee08991b"}, {"src": "../pose-guided-fit/model/views/front.png", "label": "真实三维正面", "caption": "同一完整状态，仅观察相机不同。", "sha256": "0305cde7653b7091833c237fd2144ce2ae14a79357a45ede1bdbb3823f1a8b65"}, {"src": "../pose-guided-fit/model/views/side.png", "label": "真实三维侧面", "caption": "同一完整状态，仅观察相机不同。", "sha256": "f536ff837674afd3c85a7524d132dc5b22555407877b72b480bf4f0251cbdffd"}, {"src": "../pose-guided-fit/model/views/back.png", "label": "真实三维背面", "caption": "同一完整状态，仅观察相机不同。", "sha256": "73f8ede71b9ac680467a5c72dc2236f6258d12cb089702a20635cd663d1c554d"}]}, {"title": "4. OpenCV 叠加", "status": "实际网格轮廓", "images": [{"src": "../pose-guided-fit/review/final/official-overlay.png", "label": "原图与真实模型细轮廓", "caption": "浅青色来自保存模型的实际投影掩膜，不遮住偏差。", "sha256": "3be0d717f65387998b84bf010cfa9b0a24f2c10b3c07c57a1967b6defc59c1fd"}]}], "downloads": [{"label": "final-state.json", "href": "../pose-guided-fit/model/final-state.json"}, {"label": "posed.obj", "href": "../pose-guided-fit/model/posed.obj"}, {"label": "neutral.obj", "href": "../pose-guided-fit/model/neutral.obj"}, {"label": "posed.glb", "href": "../pose-guided-fit/model/posed.glb"}, {"label": "camera.json", "href": "../pose-guided-fit/model/camera.json"}, {"label": "measurements.json", "href": "../pose-guided-fit/model/measurements.json"}, {"label": "pose-guided-reproduction.zip", "href": "../pose-guided-fit/model/pose-guided-reproduction.zip"}], "model": "../../human-studio/?model=../garment-body/pose-guided-fit/model/final-state.json"}, "eval-1-source-pose-baseline-run-1": {"title": "修改前基线", "overall": "FAIL", "version": "baseline", "source_fingerprints": {"reference_sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53", "state_sha256": "594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15", "posed_obj_sha256": "721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580", "camera_sha256": "73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd"}, "legacy_feedback_key": "pattern-agent:human-review:v1:pose-guided-fit:baseline:6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53:594199c0e15c5835d48570ab9d0fc89cbd827a9a02be75343e18869c70ec8a15:721c19c8430bab7ea12efce5e004d4260bd6c38c6be76e56d0082201263f7580:73548122f70d2112a3d6d8c59a5d70bad60b077e79598366cb3166aee2835abd", "stages": [{"title": "1. 原始商品照片", "status": "实际输入", "images": [{"src": "../pose-guided-fit/reference/original-product.jpg", "label": "原始商品图", "caption": "原始文件未改动。", "sha256": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53"}]}, {"title": "2. Image Gen 姿态引导", "status": "基线未使用此引导", "images": []}, {"title": "3. 实际三维模型", "status": "真实渲染", "images": [{"src": "../pose-guided-fit/baseline/photo-render.png", "label": "原相机真实模型投影", "caption": "同一实际人体，原图 1000×1276 画幅。", "sha256": "3e0fc4ca970c1cd9f53d6966dfd4c589f822ecf8e366c5c294901a78dee0eff0"}, {"src": "../pose-guided-fit/baseline/front.png", "label": "真实三维正面", "caption": "同一完整状态，仅观察相机不同。", "sha256": "509fcffcddd233fa78d837a90db8993df1a3676907ab3008cf93e4abaa8a6874"}, {"src": "../pose-guided-fit/baseline/side.png", "label": "真实三维侧面", "caption": "同一完整状态，仅观察相机不同。", "sha256": "79372bfa7d9327038957c2253db913da0aa4306a2f1669b2caa785f2cb38eaff"}, {"src": "../pose-guided-fit/baseline/back.png", "label": "真实三维背面", "caption": "同一完整状态，仅观察相机不同。", "sha256": "fb2b70f1cdc2e5b30aaa3f9ddb9503bd4014dc4ff8ab610ba58e11ad063f4e94"}]}, {"title": "4. OpenCV 叠加", "status": "实际网格轮廓", "images": [{"src": "../pose-guided-fit/review/baseline/official-overlay.png", "label": "原图与真实模型细轮廓", "caption": "浅青色来自保存模型的实际投影掩膜，不遮住偏差。", "sha256": "a809e0e728263016dad5a355b605d4693599a86ed9260c36d23630822a3ad084"}]}], "downloads": [{"label": "final-state.json", "href": "../pose-guided-fit/baseline/final-state.json"}, {"label": "posed.obj", "href": "../pose-guided-fit/baseline/posed.obj"}, {"label": "neutral.obj", "href": "../pose-guided-fit/baseline/neutral.obj"}, {"label": "camera.json", "href": "../pose-guided-fit/baseline/camera.json"}], "model": "../../human-studio/?model=../garment-body/pose-guided-fit/baseline/final-state.json"}};
+// Artifact renderer only: do not replace the official viewer's shell or feedback.
+(() => {
+  const dialog = document.createElement('dialog'); dialog.id = 'official-image-dialog';
+  dialog.innerHTML = '<div class="og-dialog-head"><strong id="og-image-title"></strong><button id="og-close">Close ×</button></div><img id="og-image" alt=""><p id="og-caption"></p><div class="og-dialog-head"><button id="og-prev">← Previous image</button><button id="og-next">Next image →</button><a id="og-original" target="_blank" rel="noopener">Open original</a></div>';
+  document.body.append(dialog);
+  let images = [], position = 0, opener;
+  const find = s => dialog.querySelector(s);
+  function paint() {
+    const item = images[position]; find('#og-image-title').textContent = item.label;
+    find('#og-image').src = item.src; find('#og-image').alt = item.label;
+    find('#og-caption').textContent = item.caption; find('#og-original').href = item.src;
+    find('#og-prev').disabled = position === 0; find('#og-next').disabled = position === images.length - 1;
+  }
+  function close() {dialog.close(); opener?.focus();}
+  find('#og-close').onclick = close;
+  find('#og-prev').onclick = () => {if (position > 0) {position--; paint();}};
+  find('#og-next').onclick = () => {if (position < images.length - 1) {position++; paint();}};
+  document.addEventListener('keydown', event => {
+    if (!dialog.open || !['ArrowLeft','ArrowRight','Escape'].includes(event.key)) return;
+    event.preventDefault(); event.stopImmediatePropagation();
+    if (event.key === 'Escape') close(); else find(event.key === 'ArrowLeft' ? '#og-prev' : '#og-next').click();
+  }, true);
+  function button(item, index) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'og-image';
+    b.setAttribute('aria-label', 'Open ' + item.label);
+    const image = document.createElement('img'); image.src = item.src; image.alt = item.label;
+    b.append(image); b.onclick = () => {opener = b; position = index; paint(); dialog.showModal();};
+    return b;
+  }
+  const originalOutputs = renderOutputs;
+  renderOutputs = function(run) {
+    originalOutputs(run);
+    const data = OUTPUT_GALLERIES[run.id]; if (!data) return;
+    const block = document.createElement('section'); block.id = 'official-case-gallery'; block.className = 'output-file';
+    const heading = document.createElement('div'); heading.className = 'output-file-header';
+    heading.textContent = data.title + ' · OVERALL ' + data.overall;
+    const content = document.createElement('div'); content.className = 'og-content';
+    const grid = document.createElement('div'); grid.className = 'og-grid'; images = [];
+    for (const stage of data.stages) {
+      const card = document.createElement('section'), title = document.createElement('h3'), status = document.createElement('p');
+      title.textContent = stage.title; status.textContent = stage.status; card.append(title,status);
+      if (!stage.images.length) {const empty = document.createElement('p'); empty.className = 'og-empty'; empty.textContent = '该版本未使用 Image Gen 引导；没有用渲染图替代生成图。'; card.append(empty);}
+      else {
+        const start = images.length; images.push(...stage.images); card.append(button(stage.images[0],start));
+        const caption = document.createElement('p'); caption.textContent = stage.images[0].caption; card.append(caption);
+        if (stage.images.length > 1) {const strip = document.createElement('div'); strip.className = 'og-thumbs'; stage.images.forEach((item,j)=>strip.append(button(item,start+j)));card.append(strip);}
+      }
+      grid.append(card);
+    }
+    const links = document.createElement('p'); links.className = 'og-links';
+    for (const item of [{label:'打开此版本可调人体',href:data.model},...data.downloads,
+      {label:'同画幅交互详情（当前候选）',href:'../pose-guided-fit/details.html'},
+      {label:'历史六次技能执行及原始 Benchmark',href:'../single-state-evals/history.html'}]) {
+      const a = document.createElement('a'); a.href = item.href; a.textContent = item.label;
+      if (data.downloads.includes(item)) a.setAttribute('download',''); links.append(a,document.createTextNode(' · '));
+    }
+    const note = document.createElement('p'); note.textContent = '这是保存候选的实际证据。功能断言计数不是姿态准确率；请查看官方 Formal Grades，并在下方 Feedback 留言。';
+    content.append(grid,note,links); block.append(heading,content);
+    document.querySelector('#outputs-body').prepend(block);
+  };
+  // Preserve comments from the replaced custom form only for identical source hashes.
+  let nativeDraftExists = false, migrated = false;
+  try {nativeDraftExists = localStorage.getItem(STATIC_REVIEW_KEY) !== null;} catch {}
+  for (const run of nativeDraftExists ? [] : EMBEDDED_DATA.runs) {
+    const data = OUTPUT_GALLERIES[run.id];
+    if (feedbackMap[run.id] || !data) continue;
+    try {
+      const draft = JSON.parse(localStorage.getItem(data.legacy_feedback_key) || 'null');
+      if (!draft || JSON.stringify(draft.source_fingerprints) !== JSON.stringify(data.source_fingerprints)) continue;
+      if (typeof draft.feedback !== 'string') continue;
+      const labels = {needs_changes:'仍需改进',accepted:'可以接受'};
+      const decision = labels[draft.acceptance];
+      if (draft.feedback.trim() || decision) {
+        feedbackMap[run.id] = (decision ? '[从旧表恢复，原人工判断：'+decision+']\n' : '') + draft.feedback;
+        migrated = true;
+      }
+    } catch { /* A malformed draft is not a reviewed case. */ }
+  }
+  if (migrated) persistStaticFeedback();
+  const priorShow = showRun, selectionKey = STATIC_REVIEW_KEY + ':official-case';
+  showRun = function(index) {priorShow(index);try {localStorage.setItem(selectionKey,String(index));} catch {}};
+  let selected = EMBEDDED_DATA.runs.findIndex(r => r.id.includes('-candidate-'));
+  try {const saved = localStorage.getItem(selectionKey);if (saved !== null && Number.isInteger(Number(saved)) && Number(saved)>=0 && Number(saved)<EMBEDDED_DATA.runs.length) selected=Number(saved);} catch {}
+  showRun(selected < 0 ? 0 : selected);
+})();
+</script></body>
+</html>

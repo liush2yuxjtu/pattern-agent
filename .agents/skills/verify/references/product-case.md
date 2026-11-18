@@ -67,8 +67,8 @@ python tools/skill_evals/grade_pose_guided_fit.py --artifact-root web/garment-bo
 python tools/skill_evals/build_pose_guided_review.py
 python tools/skill_evals/build_single_state_review.py
 python scripts/build_pages.py
-node tools/skill_evals/verify_pose_guided_review.cjs --url http://127.0.0.1:PORT/garment-body/pose-guided-fit/eval.html --out work/pose-guided-focused-browser
-node tools/skill_evals/verify_pose_guided_review.cjs --url http://127.0.0.1:PORT/garment-body/single-state-evals/eval.html --out work/pose-guided-existing-browser
+node tools/skill_evals/verify_official_pose_review.cjs --url http://127.0.0.1:PORT/garment-body/pose-guided-fit/eval.html --out work/pose-guided-focused-browser
+node tools/skill_evals/verify_official_pose_review.cjs --url http://127.0.0.1:PORT/garment-body/single-state-evals/eval.html --out work/pose-guided-existing-browser
 node scripts/verify_human_studio_handoff.cjs --url http://127.0.0.1:PORT/human-studio/ --model-url ../garment-body/pose-guided-fit/model/final-state.json --output work/pose-guided-handoff
 ```
 
@@ -88,3 +88,13 @@ actual assertion evidence, baseline/candidate drafts, reload, shared URL storage
 real feedback.json download, explicit acceptance separate from automatic grade,
 changed-model isolation and corrupt-cache fallback. These are executed browser
 checks, not human acceptance. See `docs/verification/pose-review-feedback-20261118/`.
+
+The default eval.html uses the pinned official viewer shell. Gallery extensions
+are confined to #outputs-body; Prompt, Formal Grades, Previous Output, tabs,
+case navigation and Submit All Reviews remain native. The six old runs are in
+single-state-evals/history.html with their original embedded data/storage key.
+Advanced custom controls are optional in pose-guided-fit/details.html, verified
+with verify_pose_guided_review.cjs. New official-format checks also exercise
+image keyboard navigation, real feedback download, cross-URL persistence and
+source-matched migration from the old custom form; mismatched drafts cannot
+migrate or overwrite newer native feedback. No new model fit is implied.

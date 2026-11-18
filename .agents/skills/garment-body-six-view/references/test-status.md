@@ -92,3 +92,12 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 人工反馈按原图/state/mesh/camera 指纹隔离，修改前后分别保存，两个评阅 URL 共享同源草稿；导出 reviews/run_id/feedback/timestamp/status，并保留显式接受状态。空反馈不自动通过。
 - 本轮实际检查覆盖重载持久化、真实 JSON 下载、版本隔离、跨 URL 草稿、损坏缓存恢复与不可信文本安全展示。自动化测试内容明确不是人工验收。
 - 本轮修改的是技能评测流程及评阅交互，没有新生成图片或重新调模型。既有候选动作仍 FAIL；没有新增原生 Claude benchmark、触发率提升或人体精度提升结论。
+
+
+## 2026-11-18 官方 eval.html 格式恢复
+
+- 按用户要求，默认页面恢复固定 Anthropic 查看器外壳：Prompt、Output、Previous Output、Formal Grades、Feedback、Outputs/Benchmark、Previous/Next 与 Submit All Reviews 保持原组件；图库只在 Output 内渲染。
+- 基线和 round14 是两个已保存候选的独立复核，不是新旧技能实验。两个版本均整体 FAIL；Benchmark 的 2/5 只描述断言计数，n=1，不代表姿态准确率或技能优势。
+- 历史六例单独保留 history.html，原数据/成绩/反馈键不改；复杂叠加控件在可选 details.html，不再把官方查看器折叠在自定义页下。
+- 同源官方页面共享反馈；旧自定义草稿只在四项源指纹完全一致时恢复，不覆盖较新的官方留言。原生格式、图库、Formal Grades、Previous Output、Benchmark、真实反馈导出及移动端均经实际浏览器验证。
+- 原模型、图片、姿态失配及 native Claude BLOCKED 均未改变。

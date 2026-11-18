@@ -30,16 +30,18 @@
 ## 把实际结果交给人看
 
 通用配对执行使用固定的官方 `eval-viewer/generate_review.py`，后续轮次带
-`--previous-workspace`，保留 Outputs、Benchmark 与反馈。用户要求专门的图像评阅布局时，
-可以加同画幅图库和叠加交互，但保留官方历史查看器及原始成绩，不伪造新 benchmark。
+`--previous-workspace`，保留 Outputs、Benchmark 与反馈。图像证据作为每个案例 Output 中的图库，不能以自定义仪表盘替换官方外壳，也不把官方查看器
+藏进历史折叠区。需要复杂叠加控件时提供独立的 details.html，并从 Output 链接过去。
 
-当前 Pattern Agent 的 `eval.html` 首屏展示原图、引导、实际投影及前后叠加；直接显示实际
-断言及证据、评分器漏检说明与三维动作结论。人体尺寸和动作编辑入口应载入同一保存状态。
+当前 `eval.html` 使用固定官方模板，Output 展示原图、引导、实际投影及前后叠加，Formal Grades
+展示实际断言和证据，Feedback / Submit All Reviews 采用官方流程。基线与候选的描述性断言
+比较不称为新旧技能实验；历史六次执行另存 history.html，原始分数不混合。人体尺寸和动作
+编辑入口载入当前案例的同一状态。
 
-人工反馈绑定原图、state、posed mesh 和相机 SHA，修改前/后各自保存，两个评阅 URL 共享
-同源草稿。反馈导出保留官方 `reviews[{run_id,feedback,timestamp}]` 与 `status` 字段，并另附
-版本指纹和显式接受状态。没有填写或明确接受时仍是未评阅；自动化测试文本不是人工验收。
-浏览器仅本地保存与下载，不自动向外发送反馈。
+官方反馈键绑定本轮包含源指纹的实际输出；基线与候选按 run_id 分别保存，两个 URL 共享
+同源草稿。Submit All Reviews 导出官方 `reviews[{run_id,feedback,timestamp}]` 与 `status`。
+旧自定义表仅在本轮没有官方草稿、且原图/state/mesh/camera 指纹全部相同时恢复文本及显式判断，不覆盖新的
+官方反馈，也不改自动评分。自动化测试文本不是人工验收；仅本地保存与下载，不自动外发。
 
 ## 下一轮与停止条件
 

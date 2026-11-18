@@ -3225,8 +3225,9 @@
     "baseline/skeleton-projection.json": "73f4ac94182c571b256f0757291fdb15bec5041dcdeb35220b1375e57c2561ea",
     "baseline/transparent-render.png": "2003a9b2b0345582e1392f7dc293d365903b97878f398a4335d60e92d460fce0",
     "baseline/transparent-skeleton.png": "c6f7996d15c54063533c30319712568d784afbbecd84c698194202c3e60257f8",
-    "eval.html": "30afab7657c4a4bde86f50f96f784dbe56966542130c3f8165f45df6a9583977",
-    "index.html": "30afab7657c4a4bde86f50f96f784dbe56966542130c3f8165f45df6a9583977",
+    "details.html": "440122af4399e75c44b3154d08269765a7fc567b432e9d65324db4114f38c216",
+    "eval.html": "719acdaa7385129b1a5d2f2397d7ea114602aa42e39809fb968a612f1104fe33",
+    "index.html": "719acdaa7385129b1a5d2f2397d7ea114602aa42e39809fb968a612f1104fe33",
     "model/README.md": "89d633f8db3c5035667792c49e3731a12cb4472afe3c50f2b6bb6090467855f6",
     "model/back.png": "73f8ede71b9ac680467a5c72dc2236f6258d12cb089702a20635cd663d1c554d",
     "model/baseline-cue-residual.json": "e3b17a58726b2becf5dea7b25ac078e0ce25ba723bec6408200035f0b8be9825",
@@ -3295,6 +3296,8 @@
     "model/views/state.json": "cd034786ecf47884ffc25e751ea58f6dbc03d213cba898d3fbfb7a077a3a5403",
     "model/views/view-provenance.json": "951d91d410695343917b621e7f721a8b9ccebd4c934d5dd11b3e5ad3482207e3",
     "model/zip-replay-verification.json": "57a1d95a65292c7e9f30c6fd2e35a07c1c7085029cb0d5ebe89f4928c4a3854e",
+    "official-viewer.json": "502ff36ea80f6348b49a019da59805d5f567903a1a9db9663fb836900e057e3d",
+    "pose-benchmark.json": "33f46a493ae5b13722e28e1d297b95a2c76c9c2d2e950de04dd3034ae08ef5a7",
     "protocol.json": "7cd4a839677e0447e00ac21aa51133360dbe0f0661e38393e6b7cee6cc05306d",
     "reference/imagegen-pose.png": "cb69b41525e09b07020c4017e0260e654469e225f171d4d74ce05d9def8f1cb4",
     "reference/original-product.jpg": "6fd6310bc225b6ba4e80f5b49a57ef75f737c08e5fbd983a95694afb402e1e53",
@@ -3314,6 +3317,7 @@
     "review/baseline/grading.json": "0bc3d597d5755cfd8d3b7c4c237634cfe83fc995da5dd84790625a4a10fadfd0",
     "review/baseline/independently-projected-mask.png": "68230a57ca627c7716e62aff2652854f5cc2a634d1cb5ff91be867912a8d20e9",
     "review/baseline/manual-review.json": "7ccd9bf73b7f4aa4fc8825cb29873c849ed277bf90f451bc9d5cb00cfc2aff5e",
+    "review/baseline/official-overlay.png": "a809e0e728263016dad5a355b605d4693599a86ed9260c36d23630822a3ad084",
     "review/baseline/region-mask-definition.png": "6837986028ee7d4a61f39859a591426560c16ad82a83b9024a8af387a70f1d27",
     "review/baseline/regional-exterior-overlay.png": "0d6231531d328f8c2cec63712c48536065108418102ff6c8a6224d739629d23e",
     "review/baseline-failures.json": "ba3a6089f26310857ff524768d01ecde1832c979853e99326dc8f9cf4e0cbc78",
@@ -3325,6 +3329,7 @@
     "review/final/independent-review.md": "617c3dca69cb891686ccc0d31a6e4ff5008897c2eb132a18f377512ffd71877c",
     "review/final/independently-projected-mask.png": "1dbef302abc442d07049468f0206b3444b698422de6c8c60f3de68b667eb42c1",
     "review/final/manual-review.json": "bcf1a9ad5f37d7192e00e0c30c177f603397927413908aebe8b0dca123844d01",
+    "review/final/official-overlay.png": "3be0d717f65387998b84bf010cfa9b0a24f2c10b3c07c57a1967b6defc59c1fd",
     "review/final/region-mask-definition.png": "606fe01ee1f15897a7357000fd6697b16713c143acf5f05309141d0f374f58c3",
     "review/final/regional-exterior-overlay.png": "70d6e6a8c5e49b6adb0f99d4d63bb98fd2ea4e6d09a4c66cc592e0fa025036de",
     "review/grader-hill-climb.md": "5fd4ef1b8647b8f8699e04981e69f257c5102869709ea54d8dbb8eb4ed6ff2b1",
@@ -3471,5 +3476,12 @@
     "targets/registration-feature-matches.jpg": "f12b0d14592d13680e43fdf84fc1ce5fc5fc9ce2e8db074bf87440c96a3bfbce",
     "targets/registration.json": "1064395f264ee5443b61b58efc7cf17f74e448981aacde64eb69685763bbbcde",
     "targets/transparent-targets.png": "ca743dbd652384b46841f0b2b06ddc072c34bddce0b2c7c9f8e5d87165398615"
+  },
+  "current_viewer": {
+    "format": "Anthropic skill-creator",
+    "runs": 2,
+    "comparison": "archived body candidates, not new skill executions",
+    "history": "../single-state-evals/history.html",
+    "details": "../pose-guided-fit/details.html"
   }
 }
