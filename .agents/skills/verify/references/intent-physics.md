@@ -58,3 +58,22 @@ builder的 `--viewer-receipt`，再对最终字节复验。必须覆盖完整YAM
 只发布独立新路由。按根规则本地 `/verify`、直接main、非强制push；既有Pages
 仅作发布。公开路由用同一verifier的 `--base-url` 再驱动，要求与候选HTML摘要一致。
 记录并保留实际FAIL；历史T恤及fit NOT_RUN不得改写。
+
+物理页还须强制无WebGL验证，不能只看软件GL正常的headless环境：
+
+```sh
+python experiments/intent-edit-review/physics/verify_svg_fallback.py \
+  --html web/intent-edit-review/physics/index.html --run RUN-A --run RUN-B --output SVG-RECEIPT
+python experiments/intent-edit-review/physics/verify_gpu_buffers.py \
+  --expected-html-sha256 INDEPENDENTLY-FROZEN-SHA --run RUN-A --run RUN-B --output GL-RECEIPT
+```
+
+前者令getContext(webgl*)返回null，必须出现同一真实网格的SVG三维，检查切帧、字段、
+相机、2D↔3D真正hidden、全文及下载；GPU统计必须为null。后者只在真实draw后读当前
+color VBO，核对FLOAT3连续布局、还原绑定，等待新draw token，再与原记录NumPy颜色比较。
+CPU BufferAttribute比较不能被称为GL读回；SwiftShader也不能被称为硬件GPU。
+
+公开API取回字节和本机浏览器导航是不同证据；后者曾被环境TLS阻断，禁止ignoreHTTPS。
+已连接Playwright工具若不可用，可对用户明确要求的公开app使用云浏览器实测，保留
+具体工具限制。云浏览器关闭WebGL不意味着网站被bot拦截，也不能更改安全/图形设置；
+页面自身应能软件绘制及读取原规格。公开测试不得用本地截图冒充。

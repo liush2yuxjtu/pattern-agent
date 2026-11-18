@@ -54,7 +54,7 @@ python experiments/intent-edit-review/physics/verify_viewer.py --html work/inten
 python experiments/intent-edit-review/physics/verify_viewer.py --html work/intent-physics/viewer-candidate/index.html --run RUN-B --output work/intent-physics/ui-B
 ```
 
-检查完整中文 YAML、实际二维 SVG与平移缩放、自然语言意图、原字节文件及输出补丁下载，再检查六种三维显示、全部61帧、15条缝、面片材料坐标、实际GPU颜色、JSON/OBJ/HTML重开、窄屏触控和离线。打开桌面、二维、全文YAML与手机截图复核。
+检查完整中文 YAML、实际二维 SVG与平移缩放、自然语言意图、原字节文件及输出补丁下载，再检查六种三维显示、全部61帧、15条缝、面片材料坐标、颜色属性、JSON/OBJ/HTML重开、窄屏触控和离线。另用 `verify_gpu_buffers.py` 从真实WebGL2颜色缓冲区读回比对，用 `verify_svg_fallback.py` 强制无WebGL核对软件三维；两者分别验收。打开桌面、二维、全文YAML与手机截图复核。
 
 界面通过收据绑定查看器源码、案例输入和记录；按物理说明传入 `--viewer-receipt` 后重建，再对最终 HTML 字节复验，之后才写入 `web/intent-edit-review/physics/`。七项机制对照/界面验收与整衣审计分别记录。**本轮原型及袖口两个案例各61帧离散数值验收通过**，材料标定与真人试穿仍为 `NOT_RUN`，高应变不构成面料耐受或合身批准；此前失败研究记录继续保留。
 
@@ -107,7 +107,7 @@ git diff --check
 
 ## 常见问题
 
-**页面打开了，但三维空白。** 等待文件校验完成，查看页面错误提示和浏览器控制台。模型来源不匹配时应修复输入配对并重建，不删除校验。静态对照页有实际三角形软件绘制降级；独立物理页需要WebGL，不能以旧模型或静态截图替换失败结果。
+**页面打开了，但三维空白。** 等待文件校验完成，查看页面错误提示和浏览器控制台。模型来源不匹配时应修复输入配对并重建，不删除校验。独立物理页优先WebGL，禁用时用同网格SVG软件投影，仍可旋转、切帧、查看字段；二维纸样与全文YAML照常使用。不能用旧模型或静态截图替换失败结果，也不需要更改浏览器安全设置。
 
 **修改了 YAML，却还是旧图。** 先生成并互校对应 DXF，再重建当前模型和 HTML。只改摘要或标签不会生成新纸样。
 

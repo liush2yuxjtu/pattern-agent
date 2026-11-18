@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="experiment-readme-sha256" content="5adede2d2540275a11565c7c7bd8a5aa753c058b52f9d4c9d22fb7c37331f5b4"><link rel="icon" href="data:,"><title>纸样设计意图实验｜案例库</title>
+<meta name="experiment-readme-sha256" content="1f9e7bc2930b56b79e0a453c0729d283d965825fb153e7d7e00147995d4f687f"><link rel="icon" href="data:,"><title>纸样设计意图实验｜案例库</title>
 <style>:root{color-scheme:light;--green:#285347;--ink:#1f2925;--muted:#66716b;--line:#d3dbd7;--preview:#eef1f3}
 *{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Noto Sans CJK SC",sans-serif}button,input,a{font:inherit}button,a,input,summary{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:wait;opacity:.6}a{color:var(--green);text-underline-offset:3px}svg{display:block}button svg,a svg,.search svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible,canvas:focus-visible{outline:3px solid #80ad9b;outline-offset:3px}[hidden]{display:none!important}
 .app-rail{position:fixed;inset:0 auto 0 0;width:205px;padding:22px 14px;border-right:1px solid var(--line);display:flex;flex-direction:column;background:#fff;z-index:2}.brand{font-size:23px;font-weight:700;letter-spacing:-.6px;text-decoration:none;white-space:nowrap;margin:0 9px 32px}.app-nav{display:flex;flex-direction:column;gap:6px}.app-nav button,.app-nav a,.rail-docs{display:flex;align-items:center;gap:13px;min-height:46px;padding:10px 12px;border:0;border-radius:6px;background:none;color:var(--ink);text-decoration:none;text-align:left;font-size:16px;white-space:nowrap}.app-nav button[aria-pressed=true]{background:var(--green);color:white;font-weight:600}.app-nav button:hover:not([aria-pressed=true]),.app-nav a:hover,.rail-docs:hover{background:#f0f4f2}.rail-docs{margin-top:auto;border-top:1px solid var(--line);border-radius:0;padding-top:20px}
@@ -167,6 +167,7 @@ FAIL 均保留。</p>
 <ul>
 <li>“二维纸样”显示当前文件的完整 SVG，可平移、缩放和复位；“完整规格
 YAML”显示原始中文全文，可滚动阅读并下载。</li>
+<li>三维优先使用WebGL；不可用时自动用同一真实网格作软件三维绘制，完整规格和二维入口照常可用，不需要更改浏览器设置。</li>
 <li>展开“本款设计意图与变化”核对自然语言要求。可下载实际
 YAML、DXF；袖口案例另有实际 <code>spec-diff.json</code> 与
 <code>geometry-patch.json</code>。独立 <code>intent.txt</code>

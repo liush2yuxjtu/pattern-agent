@@ -109,6 +109,10 @@ flowchart LR
 
 浏览器重放保存状态，未在浏览器中重新求解物理。新进程续算的证明来自原生WASM命令，不把播放器的“播放”按钮写成实时模拟。页面可以切换原型与袖口加宽，读取完整中文规格、原二维图、实际三维帧及热图；袖口案例另外下载规格差异和DXF改版补丁。
 
+三维优先使用WebGL2；浏览器禁用它时，自动使用同一scene、camera、全部实际网格和保存帧进行SVG软件投影，仍能旋转、缩放、切帧和查看字段。界面标示“CPU三维”，不会伪造GPU统计或替换成静态图。软件路径只在画面状态变化时重画；二维、全文规格及原文件功能始终可以初始化。
+
+两条绘制路径分别验收。WebGL界面每例11组通过；强制禁用WebGL时，两案例的全部61帧、五类实际数组、字段、相机、二维及全文下载同样通过。另从实际WebGL2绘制后的颜色VBO读回36组数据，与原记录独立计算的颜色比较，最大误差1.493e-7，小于2e-6。该测试使用SwiftShader软件GL，不认证硬件GPU性能；它与仅比较CPU颜色属性的早期检查分开保存。
+
 `results/` 中的输入与轨迹采用无损gzip，不减少帧、不四舍五入坐标。每个包保存原DXF/中文YAML、实际条件、生成C、实际WASM、来源壳、准备末态、完整独立报告及源码快照。`frozen-source/` 是计算前的来源记录；`frozen-verifier/` 保存验收程序的具体版本，方便在仓库副本中恢复原检查。
 
 折角图报告真实邻面二面角，包括自由接缝。配置中的120°是有限迭代的试验约束参数，不是全网格折角永远小于120°的认证。高应变和应力数值保留原值；缺少实测材料极限时不把数值计算通过解释为面料耐受通过。
@@ -241,5 +245,20 @@ python experiments/intent-edit-review/physics/verify_controls.py work/intent-phy
 人体负例是明确标记的稀疏单帧见证，不是完整物理轨迹；自交负例是明确失败的准备末态。两者不会出现在通过的回放里冒充合格衣服。每次独立完整审计仍要求全部61帧。并发五个未分批的大射线检查曾触发16GB内存限制，没有产生PASS；复核时应限制总并发，保留失败日志后完成全量重试。
 
 [bounded_queries.py](bounded_queries.py) 另行提供每批最多512条底层射线的内存有界组件。14项解析控制及两个真实案例的0、30、60帧共6项对照通过；原内外布尔数组、双向交叉计数、射线方向和随机回退状态精确一致。它主要控制内存，不宣称提速。**本轮两套权威61帧报告仍使用原独立检查器，两worker、逐案例完成；该可选组件没有替换它们。**
+
+最终页面的独立绘制检查：
+
+```sh
+python experiments/intent-edit-review/physics/verify_svg_fallback.py \
+  --html web/intent-edit-review/physics/index.html \
+  --run work/intent-physics/MY-BASELINE --run work/intent-physics/MY-CUFF \
+  --output work/intent-physics/svg-review
+python experiments/intent-edit-review/physics/verify_gpu_buffers.py \
+  --expected-html-sha256 80ccaf68114ad1d650ccfec248c812cc77d31ab5c9383e56d4904f18f617c872 \
+  --run work/intent-physics/MY-BASELINE --run work/intent-physics/MY-CUFF \
+  --output work/intent-physics/actual-gl-review
+```
+
+上面的摘要对应本轮交付；重建新页面应使用独立冻结的新摘要。原生公开HTTPS导航如遇环境证书限制，保留BLOCKED及错误证据，不关闭证书校验。实际发布字节单独核对，公开页面再用可用浏览器操作检查。
 
 构建和发布只走仓库现有的本地 `/verify`、直接提交 main、非强制 push 与既有 Pages 发布。新实验放在独立路径，不覆盖无关旧页面；发布成功也不能代替实际公开网页的再次检查。

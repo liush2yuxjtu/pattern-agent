@@ -32,6 +32,7 @@
 [打开 `/intent-edit-review/physics/`](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/physics/)，或查看 [代码、条件与复跑方法](physics/README.md)。该页面使用独立发布路径，旧对照页、静态缝合页和历史 FAIL 均保留。
 
 - “二维纸样”显示当前文件的完整 SVG，可平移、缩放和复位；“完整规格 YAML”显示原始中文全文，可滚动阅读并下载。
+- 三维优先使用WebGL；不可用时自动用同一真实网格作软件三维绘制，完整规格和二维入口照常可用，不需要更改浏览器设置。
 - 展开“本款设计意图与变化”核对自然语言要求。可下载实际 YAML、DXF；袖口案例另有实际 `spec-diff.json` 与 `geometry-patch.json`。独立 `intent.txt` 在对应案例结果目录中。
 - “三维物理”读取实际保存状态，提供布料、应变、应力、折角、接触、接缝六种显示，检查15条缝及所选面片的二维材料坐标；记录 JSON、当前网格 OBJ 和完整 HTML 可保存。
 - 原型 `baseline` 与袖口加宽 `03_cuff_width` 有本次支持的来源配置。袖长、衣长、前领三个案例仍为 `PROFILE_REQUIRED`，不能借用原型的模型或结果。

@@ -63,7 +63,9 @@ web/intent-edit-review/
 | `derive_folds.mjs` / `audit_experiment.py` | 从真实保存坐标派生折角，并独立复算每帧几何、张量、折角和时钟 |
 | `verify_resume.py` | 新建进程从保存状态继续，核对实际下一步；与界面的只读 seek 分开 |
 | `build_viewer.py` / `recording-codec.mjs` | 校验输入、记录和报告摘要，进行无损记录编码，把实际文件、二维图、脚本和轨迹内嵌到单份 HTML |
-| `verify_viewer.py` | 在真实浏览器检查原文/原字节、全部帧、GPU颜色、面片、接缝、导出重开与窄屏；收据绑定本次代码和数据 |
+| `verify_viewer.py` | 在真实浏览器检查原文/原字节、全部帧、颜色属性、面片、接缝、导出重开与窄屏；收据绑定本次代码和数据 |
+| `verify_gpu_buffers.py` | 观察真实WebGL2绘制，从当前颜色属性VBO读回数据；不以CPU属性数组代替缓冲区读回 |
+| `verify_svg_fallback.py` | 强制禁用WebGL，核对同一网格的软件三维、完整保存状态、二维及规格功能 |
 
 构建器从已验收对照数据读取 `source_package`：完整 `files`、实际 `twoD`、自然语言 `intent` 与 `changes`。文件逐一与仓库原始字节核对，二维来源与物理输入的 DXF/YAML 摘要一致，不能把旧模型换个标签套到新输出。
 
@@ -87,7 +89,7 @@ web/intent-edit-review/
 
 完整 YAML 和补丁通过文本节点显示。保存文件时从原始 base64 恢复字节，生成 Blob 下载。页面不把浏览器内重新序列化的对象当作原始 DXF 文件。
 
-物理页的 `physics/viewer.mjs` 使用自己的完整画布切换：二维显示真实 SVG，三维显示实际轨迹与场。完整中文 YAML 弹层、原始文件下载、意图、补丁、相机和回放状态都属于该单文件；三维需要 WebGL，不能把旧对照页的软件降级能力推断给它。回放读取保存数组，切帧不会积分或修改源文件。
+物理页的 `physics/viewer.mjs` 使用自己的完整画布切换：二维显示真实 SVG，三维显示实际轨迹与场。优先使用WebGL；浏览器未提供WebGL2时，使用同一套scene、camera、全部网格及保存状态作SVG软件投影，不替换成静态图片。软件路径只在视角、帧、模式、可见对象等变化时重画，并标示“CPU三维”。完整中文 YAML、二维图与原文件下载不依赖WebGL。回放读取保存数组，切帧不会积分或修改源文件。
 
 ## 哪些文件应该重新生成
 

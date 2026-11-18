@@ -1,5 +1,6 @@
 import * as THREE from '../../freesewing_cloth_lab/node_modules/three/build/three.module.js';
 import {OrbitControls} from '../../freesewing_cloth_lab/node_modules/three/examples/jsm/controls/OrbitControls.js';
+import {SVGRenderer} from '../../freesewing_cloth_lab/node_modules/three/examples/jsm/renderers/SVGRenderer.js';
 import {decodeBlock,encodeBase64} from './recording-codec.mjs';
 
 const $=id=>document.getElementById(id), decode=(s,Type=Float32Array)=>{
@@ -10,13 +11,27 @@ const saved=$('saved-state')?JSON.parse($('saved-state').textContent):null;
 const bytes=Uint8Array.from(atob($('physics-payload').textContent.trim()),c=>c.charCodeAt(0));
 const blob=new Blob([bytes]);
 const payload=JSON.parse(await new Response(blob.stream().pipeThrough(new DecompressionStream('gzip'))).text());
-const host=$('canvas-host'),renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#e9eee8');renderer.outputColorSpace=THREE.SRGBColorSpace;
-host.prepend(renderer.domElement);renderer.domElement.setAttribute('aria-label','实际布料三维模型');
+const host=$('canvas-host');
+let renderer,rendererBackend='webgl',rendererFailure=null,renderDirty=true,svgRenderCount=0;
+try{
+ // Probe on the same canvas/context used by Three, so a disabled WebGL context
+ // cannot abort the independent source-file and two-dimensional controls.
+ const canvas=document.createElement('canvas'),context=canvas.getContext('webgl2',{antialias:true,preserveDrawingBuffer:true,alpha:false,depth:true,stencil:false,premultipliedAlpha:true});
+ if(!context)throw Error('浏览器未提供 WebGL2 上下文');
+ renderer=new THREE.WebGLRenderer({canvas,context,antialias:true,preserveDrawingBuffer:true});
+}catch(error){
+ rendererBackend='svg';rendererFailure=String(error?.message||error);renderer=new SVGRenderer();
+}
+renderer.setPixelRatio?.(Math.min(devicePixelRatio,2));renderer.setClearColor('#e9eee8');renderer.outputColorSpace=THREE.SRGBColorSpace;
+host.prepend(renderer.domElement);renderer.domElement.setAttribute('aria-label','实际布料三维模型');renderer.domElement.dataset.rendererBackend=rendererBackend;
+$('renderer-status').textContent=rendererBackend==='svg'?'CPU 三维 · WebGL 不可用':'WebGL 三维';
+$('renderer-status').title=rendererFailure||'实际网格与保存状态';
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(34,1,.01,30);
 const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.12;
+controls.addEventListener('change',()=>{renderDirty=true;});
 scene.add(new THREE.HemisphereLight(0xffffff,0x667361,2.5));const light=new THREE.DirectionalLight(0xffffff,3);light.position.set(-2,4,3);scene.add(light);
-const clothMaterial=new THREE.MeshStandardMaterial({color:0xffffff,vertexColors:true,roughness:.85,metalness:0,side:THREE.DoubleSide});
+if(rendererBackend==='svg'){light.intensity=.85;scene.add(new THREE.AmbientLight(0xffffff,.65));}
+const clothMaterial=rendererBackend==='svg'?new THREE.MeshLambertMaterial({color:0xffffff,vertexColors:true,side:THREE.DoubleSide}):new THREE.MeshStandardMaterial({color:0xffffff,vertexColors:true,roughness:.85,metalness:0,side:THREE.DoubleSide});
 let cloth,body,wire,seamLine,selection,geometry,current,index=0,mode='cloth',playing=false,anchor=0,lastTime=0,selectedFace=-1;
 let seekCount=0;const framesDecoded=new Map(),ray=new THREE.Raycaster(),pointer=new THREE.Vector2();
 let viewMode='3d',patternSVG=null,patternBaseBox=null,patternBox=null,patternBaseText='',specOpener=null,sourceReady=false;
@@ -65,7 +80,7 @@ function setView(value){
  if(viewMode==='2d')setPlaying(false);
  const two=viewMode==='2d';
  $('view-2d').setAttribute('aria-pressed',String(two));$('view-3d').setAttribute('aria-pressed',String(!two));
- $('pattern-2d').hidden=!two;$('pattern-tools').hidden=!two;renderer.domElement.hidden=two;
+ $('pattern-2d').hidden=!two;$('pattern-tools').hidden=!two;renderer.domElement.toggleAttribute('hidden',two);
  for(const id of ['three-tools','three-hint','replay-controls','three-foot'])$(id).hidden=two;
  controls.enabled=!two;patternPointers.clear();patternGesture=null;$('pattern-svg-host').classList.remove('dragging');
  paint();
@@ -141,6 +156,7 @@ function frameData(i){
  return framesDecoded.get(i);
 }
 function paint(){
+ renderDirty=true;
  if(!geometry)return;const f=frameData(index),faces=current.input.triangles,colors=geometry.attributes.color.array,counts=new Uint32Array(f.positions.length/3);colors.fill(0);
  for(let t=0;t<faces.length;t++){
   let color=[.53,.71,.58];
@@ -174,6 +190,7 @@ function updateSeam(){
 }
 function inspectTriangle(face){
  if(face<0)return;selectedFace=face;const ids=current.input.triangles[face],f=frameData(index),panel=current.input.panels.find(p=>face>=p.face_start&&face<p.face_start+p.faces),flat=ids.map(id=>current.input.uv[id].map((v,k)=>(v+(panel.uv_origin_m?.[k]||0))*1000));
+ renderDirty=true;
  const lo=[0,1].map(k=>Math.min(...flat.map(v=>v[k]))),hi=[0,1].map(k=>Math.max(...flat.map(v=>v[k]))),size=Math.max(hi[0]-lo[0],hi[1]-lo[1],1),points=flat.map(v=>`${100+(v[0]-(lo[0]+hi[0])/2)*65/size},${45-(v[1]-(lo[1]+hi[1])/2)*65/size}`).join(' ');
  $('uv-preview').innerHTML=`<polygon points="${points}" fill="#e0ede2" stroke="#306a50" stroke-width="1.5"/>`;
  $('picked').textContent=`#${face} · ${panel.name}`;const fields=f.fields.subarray(face*8,face*8+8),fold=f.folds?.[face*2];
@@ -197,7 +214,7 @@ function loadCase(id){
  for(const object of [wire,cloth,body,seamLine,selection])disposeObject(object);
  const input=current.input,flat=input.triangles.flat();geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(new Float32Array(input.positions.length*3),3));geometry.setAttribute('color',new THREE.Float32BufferAttribute(new Float32Array(input.positions.length*3),3));geometry.setIndex(flat);
  cloth=new THREE.Mesh(geometry,clothMaterial);scene.add(cloth);wire=new THREE.LineSegments(new THREE.WireframeGeometry(geometry),new THREE.LineBasicMaterial({color:'#214e3a',transparent:true,opacity:.18}));wire.visible=$('wire').checked;scene.add(wire);
- const bodyGeometry=new THREE.BufferGeometry();bodyGeometry.setAttribute('position',new THREE.BufferAttribute(decode(input.body.positions),3));bodyGeometry.setIndex(new THREE.BufferAttribute(decode(input.body.indices,Uint32Array),1));bodyGeometry.computeVertexNormals();body=new THREE.Mesh(bodyGeometry,new THREE.MeshStandardMaterial({color:'#ccbdb0',roughness:1,transparent:true,opacity:.58,depthWrite:false}));body.visible=$('body').checked;scene.add(body);
+ const bodyGeometry=new THREE.BufferGeometry();bodyGeometry.setAttribute('position',new THREE.BufferAttribute(decode(input.body.positions),3));bodyGeometry.setIndex(new THREE.BufferAttribute(decode(input.body.indices,Uint32Array),1));bodyGeometry.computeVertexNormals();const bodyMaterial=rendererBackend==='svg'?new THREE.MeshLambertMaterial({color:'#ccbdb0',transparent:true,opacity:.58,depthWrite:false}):new THREE.MeshStandardMaterial({color:'#ccbdb0',roughness:1,transparent:true,opacity:.58,depthWrite:false});body=new THREE.Mesh(bodyGeometry,bodyMaterial);body.visible=$('body').checked;scene.add(body);
  seamLine=new THREE.LineSegments(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:'#e77b2a',depthTest:false}));seamLine.renderOrder=3;scene.add(seamLine);
  selection=new THREE.Line(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:'#aa372e',depthTest:false}));selection.renderOrder=4;scene.add(selection);
  $('seam').replaceChildren(...input.source_sewing.seams.map(s=>new Option(s.name,s.name)));$('timeline').max=current.recording.frames.length-1;
@@ -209,7 +226,7 @@ function fullRecording(){const recording=structuredClone(current.recording);for(
 for(const c of payload.cases)$('case').add(new Option(c.label,c.input.case));
 $('case').onchange=()=>loadCase($('case').value);$('timeline').oninput=e=>{setPlaying(false);seek(e.target.value);};
 $('play').onclick=()=>{if(index===current.recording.frames.length-1)seek(0);setPlaying(!playing);};$('prev').onclick=()=>{setPlaying(false);seek(index-1);};$('next').onclick=()=>{setPlaying(false);seek(index+1);};
-$('speed').onchange=()=>{anchor=index;lastTime=performance.now();};$('body').onchange=e=>body.visible=e.target.checked;$('wire').onchange=e=>wire.visible=e.target.checked;$('reset-camera').onclick=resetCamera;
+$('speed').onchange=()=>{anchor=index;lastTime=performance.now();};$('body').onchange=e=>{body.visible=e.target.checked;renderDirty=true;};$('wire').onchange=e=>{wire.visible=e.target.checked;renderDirty=true;};$('reset-camera').onclick=resetCamera;
 $('seam').onchange=()=>{mode='seams';paint();updateSeam();};for(const b of document.querySelectorAll('[data-mode]'))b.onclick=()=>{mode=b.dataset.mode;paint();};
 $('view-2d').onclick=()=>setView('2d');$('view-3d').onclick=()=>setView('3d');
 $('pattern-zoom-in').onclick=()=>zoomPattern(1.25);$('pattern-zoom-out').onclick=()=>zoomPattern(.8);$('pattern-reset').onclick=resetPattern;
@@ -238,17 +255,17 @@ $('download-html').onclick=()=>{const doc=cleanDocument.cloneNode(true);doc.quer
 $('download-obj').onclick=()=>{const f=frameData(index),rows=['# actual physical recording in metres',`# source DXF sha256 ${current.input.source_dxf_sha256}`,`# frame ${index}; actual fit NOT_RUN`];for(let i=0;i<f.positions.length;i+=3)rows.push(`v ${f.positions[i]} ${f.positions[i+1]} ${f.positions[i+2]}`);for(const face of current.input.triangles)rows.push('f '+face.map(i=>i+1).join(' '));download(`${current.input.case}-frame-${index}.obj`,rows.join('\n'),'text/plain');};
 let down;renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);renderer.domElement.addEventListener('pointerup',e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5)return;const r=renderer.domElement.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(pointer,camera);const hit=ray.intersectObject(cloth)[0];if(hit)inspectTriangle(hit.faceIndex);});
 window.addEventListener('keydown',e=>{if(viewMode!=='3d'||$('spec-dialog').open||['INPUT','SELECT','BUTTON'].includes(document.activeElement.tagName))return;if(e.code==='Space'){e.preventDefault();$('play').click();}if(e.code==='ArrowRight')$('next').click();if(e.code==='ArrowLeft')$('prev').click();});
-const observer=new ResizeObserver(()=>{const r=host.getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();});observer.observe(host);
+const observer=new ResizeObserver(()=>{const r=host.getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();renderDirty=true;});observer.observe(host);
 $('engines').innerHTML=payload.engines.map((e,i)=>`<article class="engine"><span class="engine-number">0${i+1}</span><h3>${e.name}</h3><span class="status ${e.verdict==='PASS'?'':e.verdict==='FAIL'?'failed':'pending'}">${i===5?'界面验收':'机制对照'} ${e.verdict==='NOT_RUN'?'待验证':e.verdict}</span><p>${e.note}</p></article>`).join('');
 loadCase(payload.cases[0].input.case);
 if(saved){$('case').value=saved.case;loadCase(saved.case);mode=saved.mode;seek(saved.index);body.visible=$('body').checked=saved.body;wire.visible=$('wire').checked=saved.wire;inspectTriangle(saved.selectedFace);camera.position.fromArray(saved.camera);controls.target.fromArray(saved.target);controls.update();if(validBox(saved.patternViewBox)&&patternBaseBox)applyPatternBox(saved.patternViewBox);setView(saved.view||'3d');}
-function animate(now){requestAnimationFrame(animate);if(playing){const next=Math.min(current.recording.frames.length-1,anchor+Math.floor((now-lastTime)*Number($('speed').value)*120/1000));if(next!==index)seek(next);if(index===current.recording.frames.length-1)setPlaying(false);}if(viewMode==='3d'){controls.update();renderer.render(scene,camera);}}requestAnimationFrame(animate);
+function animate(now){requestAnimationFrame(animate);if(playing){const next=Math.min(current.recording.frames.length-1,anchor+Math.floor((now-lastTime)*Number($('speed').value)*120/1000));if(next!==index)seek(next);if(index===current.recording.frames.length-1)setPlaying(false);}if(viewMode==='3d'){controls.update();if(rendererBackend==='webgl'||renderDirty){renderDirty=false;renderer.render(scene,camera);if(rendererBackend==='svg')svgRenderCount++;}}}requestAnimationFrame(animate);
 window.physicsReview={
  info:()=>({case:current.input.case,index,frames:current.recording.frames.length,playing,mode,seekCount,integrationCallsDuringReplay:0,selectedFace,sourceDXF:current.input.source_dxf_sha256,sourceSpec:current.input.source_spec_sha256,verdict:current.audit.verdict,view:viewMode,patternViewBox:patternBox?.slice()||null,specOpen:$('spec-dialog').open,viewerSources:{...payload.viewer_sources}}),
  state:()=>({positions:Array.from(geometry.attributes.position.array),previous:Array.from(frameData(index).previous),fields:Array.from(frameData(index).fields),contacts:Array.from(frameData(index).contacts),folds:frameData(index).folds?Array.from(frameData(index).folds):null,clock:current.recording.frames[index].time}),
  surface:()=>({positions:Array.from(geometry.attributes.position.array),colors:Array.from(geometry.attributes.color.array),triangles:current.input.triangles,mode}),
  source:()=>({input:current.input,recording:fullRecording(),audit:current.audit}),
  sources:()=>structuredClone(current.source_package??null),
- renderer:()=>({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries}),
+ renderer:()=>({backend:rendererBackend,gpu:rendererBackend==='webgl',calls:rendererBackend==='webgl'?renderer.info.render.calls:null,triangles:rendererBackend==='webgl'?renderer.info.render.triangles:null,geometries:rendererBackend==='webgl'?renderer.info.memory.geometries:null,svgFaces:rendererBackend==='svg'?renderer.info.render.faces:null,svgPaths:rendererBackend==='svg'?renderer.domElement.querySelectorAll('path').length:null,svgRenderCount:rendererBackend==='svg'?svgRenderCount:null,sourceTriangles:current.input.triangles.length}),
  projectPoint:vertex=>{const p=new THREE.Vector3().fromArray(geometry.attributes.position.array,vertex*3).project(camera),r=renderer.domElement.getBoundingClientRect();return{x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2};}
 };

@@ -1,0 +1,106 @@
+{
+  "verdict": "PASS",
+  "html_sha256": "80ccaf68114ad1d650ccfec248c812cc77d31ab5c9383e56d4904f18f617c872",
+  "bytes": 46107845,
+  "viewer_sources": {
+    "viewer.mjs": "32a92a3bebaa713ae5de0527bb6343ec77d81041121cbadf4cd28d3e71dea0a2",
+    "viewer.css": "94f8ff30a4cdcbf8f0f005d86c7a8b5cbb1a07dd077e8a7769f0848fccf0e767",
+    "viewer.template.html": "8b208cf50a80ff08b2e9d995ddc11cc9515191023a06bea1c3fa1ecdd37ea25b",
+    "recording-codec.mjs": "df887538c543d4fde955a38b715aa4910eef410256041f600ca6619b50a16c68"
+  },
+  "inline_bundle_sha256": "c0d32c527b1103203df7cfac85b366a59a773fc722f4ebb10b5fcd900a6938b0",
+  "exact_current_source_bundle_template_css": true,
+  "all_frames_payload_bytes": {
+    "baseline": {
+      "input_sha256": "bd604bb44a041b5b3400d883601e9cd03e84e43d604049d810862eb41f1c693b",
+      "recording_sha256": "c916b899e7ce51a4bc0fd6a71f27bf742b791b402e35f7bdd2d8dd2afb495c09",
+      "audit_sha256": "f4137100564c7b3ba617e91147e8d5e6520d964e1aa4313cd3da0f85bd04e6e9",
+      "arrays": {
+        "positions": {
+          "frames": 61,
+          "decoded_sha256": "dde20e3cf6622dbe5d26e3d1715e027aa04da95a1065512fa3fac643f1041cff"
+        },
+        "previous": {
+          "frames": 61,
+          "decoded_sha256": "27847d92035d11b95166cff89d36550750d2c328fa47a1695347f360ab19dcd5"
+        },
+        "fields": {
+          "frames": 61,
+          "decoded_sha256": "7c2c7f07bf0d95932a03d47e9fd1eab7b06264eea430293c88edde0b4877c79c"
+        },
+        "contacts": {
+          "frames": 61,
+          "decoded_sha256": "90030a1bd7b292a4f6c1c8f215ae710527067ef379977af602b6f56b7761d3bb"
+        },
+        "folds": {
+          "frames": 61,
+          "decoded_sha256": "aaf92bc41c41d14d68ac495dd67f0a6a2227a7cb9545c53c0a39080f22d4066d"
+        }
+      }
+    },
+    "03_cuff_width": {
+      "input_sha256": "09795154c6b40b54e1221de882c56887aa075b2883b2109b19fe99b9be1ea73d",
+      "recording_sha256": "f4209204bc0caacc86edbdcf00baf38fb600093308a0f64cdea1b7ad92fd76c3",
+      "audit_sha256": "731e40088783916f7a021e7adc00cbeb3048c9d8ed9f1156d41d5d9c40cf067d",
+      "arrays": {
+        "positions": {
+          "frames": 61,
+          "decoded_sha256": "09d39179c9f3b6a23c3289fe40cb7b5c7639df6cfa948cbfd7f35056eee38a4f"
+        },
+        "previous": {
+          "frames": 61,
+          "decoded_sha256": "fc35d97f18506147193764efe8b35e95543efbe0b5a55cd0d5d7ceb96b1cb03c"
+        },
+        "fields": {
+          "frames": 61,
+          "decoded_sha256": "cc990bacb38a5aba6094af13c01da6ef9390e592fa7f5d3f01be4d73105f23b4"
+        },
+        "contacts": {
+          "frames": 61,
+          "decoded_sha256": "012f9ebf60b87787b40cac94ed0e8017d1d950da7c97d740c7f8f13d275511e1"
+        },
+        "folds": {
+          "frames": 61,
+          "decoded_sha256": "1ec3d9bb11019c75f5356f2b6abd59359fdb3136d443f305388415aafbcb2ef7"
+        }
+      }
+    }
+  },
+  "browser_cases": [
+    {
+      "case": "baseline",
+      "backend": "svg",
+      "frames": 61,
+      "verified_endpoints": [
+        0,
+        60
+      ],
+      "yaml_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "exact_download": true,
+      "source_triangles": 7186
+    },
+    {
+      "case": "03_cuff_width",
+      "backend": "svg",
+      "frames": 61,
+      "verified_endpoints": [
+        0,
+        60
+      ],
+      "yaml_sha256": "18b68f9cac56db0d39c60306695317dd450dea290f7a11cc9e5ed64b6c7efeb3",
+      "exact_download": true,
+      "source_triangles": 7206
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [],
+  "visual_review": {
+    "verdict": "PASS",
+    "inspected": [
+      "baseline-actual-svg.png",
+      "mobile-full-yaml.png"
+    ],
+    "note": "最终HTML禁用WebGL时真实分面衣片与375px完整中文YAML均可见，CPU后备标记明确。"
+  },
+  "narrow_verifier_sha256": "323377beb0aa0cd1c448a173274ffe6680126e9e93340c93698458178c7f5ed5"
+}
