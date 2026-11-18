@@ -147,3 +147,7 @@ setPose 替换整张表，局部编辑先合并；细节与当前 0.1 步长见 
 `scripts/verify_masks.py` 计算 OpenCV 指标/叠加；`measure_mesh.py` 测真实连通截面；
 `inspect_human_state.py` 有匹配 human.json 时独立重建中性网格，无资源时仅结构检查。
 脚本不替代原图、拟合、生成服务或解剖判断；完整浏览器与导出验证入口见 Human Studio 参考。
+
+修改本技能或评分器时，按 [反馈与功能评测迭代](references/evaluation-workflow.md) 执行：
+先保留用户看到的旧结果，再用实际输出检验断言与漏检反例，展示证据并收集绑定模型版本的
+人工反馈。功能通过率不能代替动作验收；单个案例调参也不能写成通用技能或触发率提升。

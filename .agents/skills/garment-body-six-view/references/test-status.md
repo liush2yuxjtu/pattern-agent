@@ -84,3 +84,11 @@ https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
 - 新评阅页在同画幅中显示原图、实际 Image Gen 引导、真实相机渲染和可调透明度前后叠加；区分黄色示意目标与真实 FK 骨架，直接显示三维动作失败，不以功能分平均。
 - 这是单一原图案例的拟合与评分器迭代，不是新旧技能随机配对 benchmark。仍不支持原真人厘米准确率、唯一三维深度或通用技能优势结论；原生 Claude 触发 BLOCKED，物理试衣 NOT_RUN。
 - 最新实际结论和原始产物： https://liush2yuxjtu.github.io/pattern-agent/garment-body/pose-guided-fit/eval.html 。完整运行及失败记录见仓库 docs/verification/pose-guided-fit-20261118/。
+
+## 2026-11-18 技能与人工评阅闭环更新
+
+- 新增按需的反馈/功能评测流程，要求保留旧版、检查断言的判别力、审查实际输出并依据人工反馈改进；保持技能正文精简，不将案例坐标写成通用规则。
+- 原图评阅页直接展示官方格式 expectations 及原始证据、eval_feedback 漏检说明；人工判断与自动 overall 结论分开。
+- 人工反馈按原图/state/mesh/camera 指纹隔离，修改前后分别保存，两个评阅 URL 共享同源草稿；导出 reviews/run_id/feedback/timestamp/status，并保留显式接受状态。空反馈不自动通过。
+- 本轮实际检查覆盖重载持久化、真实 JSON 下载、版本隔离、跨 URL 草稿、损坏缓存恢复与不可信文本安全展示。自动化测试内容明确不是人工验收。
+- 本轮修改的是技能评测流程及评阅交互，没有新生成图片或重新调模型。既有候选动作仍 FAIL；没有新增原生 Claude benchmark、触发率提升或人体精度提升结论。

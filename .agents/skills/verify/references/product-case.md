@@ -82,3 +82,9 @@ exported model can still FAIL the requested pose. Critical regional failures,
 visible-wrist/coarse-direction contradictions and 3D grasp failure cannot be
 averaged into a functional pass score. Keep negative controls and rejected real
 renders. See `docs/verification/pose-guided-fit-20261118/` for observed boundaries.
+
+The pose review verifier also drives the source-bound human feedback workflow:
+actual assertion evidence, baseline/candidate drafts, reload, shared URL storage,
+real feedback.json download, explicit acceptance separate from automatic grade,
+changed-model isolation and corrupt-cache fallback. These are executed browser
+checks, not human acceptance. See `docs/verification/pose-review-feedback-20261118/`.
