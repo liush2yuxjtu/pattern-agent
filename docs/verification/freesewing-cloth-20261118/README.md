@@ -1,5 +1,9 @@
 # FreeSewing single HTML: local verification PASS
 
+This is the historical initial 2.0 local run. The final 2.1 public verification
+is recorded in [live/README.md](live/README.md), including the first public
+performance failure and the verified recovery.
+
 New artifact: `web/freesewing-cloth-lab.html`. Source and runnable tests:
 [`experiments/freesewing_cloth_lab`](../../../experiments/freesewing_cloth_lab).
 Old HTMLs and their failure receipts are preserved. This new version is an

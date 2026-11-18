@@ -1,0 +1,292 @@
+{
+  "verdict": "PASS",
+  "applicationCommit": "27789580081307a900de0ac5ada6b765e654f7bd",
+  "htmlSHA256": "a2caea0725050369387d639e1a8510bcb9e8674740c00bfd428e886d353e1dfc",
+  "bytes": 1645085,
+  "url": "https://liush2yuxjtu.github.io/pattern-agent/freesewing-cloth-lab.html?v=2778958",
+  "localVsPublicBitExact": {
+    "step-120": {
+      "positions": true,
+      "previous": true,
+      "materialCoordinates": true
+    },
+    "step-240": {
+      "positions": true,
+      "previous": true,
+      "materialCoordinates": true
+    },
+    "step-360": {
+      "positions": true,
+      "previous": true,
+      "materialCoordinates": true
+    },
+    "wind-step-480": {
+      "positions": true,
+      "previous": true,
+      "materialCoordinates": true
+    }
+  },
+  "ui": {
+    "passed": 45,
+    "total": 45
+  },
+  "defaultPerformance": {
+    "steps": 360,
+    "time_s": 3,
+    "peakStretch": 1.8945071434708856,
+    "peakStress_kPa": 124.921848428569,
+    "peakFoldAngle_deg": 136.65375154559536,
+    "peakCurvature_per_m": 542.6379039173743,
+    "wrinkleProxyTrianglePercent": 41.127232142857146,
+    "seamGap_mm": 0,
+    "waist_mm": 736.3414168681662,
+    "contacts": 252,
+    "selfContacts": 13,
+    "selfContactTiming_ms": {
+      "pointMs": 6.299999997019768,
+      "edgeMs": 12.200000002980232
+    },
+    "stepTiming_ms": {
+      "elasticMs": 36.29999999701977,
+      "bodyMs": 16.5,
+      "selfMs": 18.600000001490116,
+      "recheckMs": 1.1000000014901161
+    },
+    "renderedFrames": 15,
+    "render_submit_ms_p95": 74.70000000298023,
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 74,
+    "solver_ms_p95": 87.39999999850988,
+    "frame_ms_p95": 633.2740000000001,
+    "jsHeap_bytes": 20327755
+  },
+  "upstreamSource": {
+    "upstream": "@freesewing/sandy@4.10.2",
+    "maxMaterialCoordinateError_m": 2.4868995751603504e-16,
+    "maxLumpedMassRelativeError": 4.440892098500626e-16,
+    "materialArea_m2": 0.7939732110139758,
+    "mass_kg": 0.12703571376223613
+  },
+  "folds": {
+    "hinges": 5312,
+    "maxErrors": {
+      "angle_rad": 4.440892098500626e-16,
+      "curvature_per_m": 1.1368683772161603e-13,
+      "currentDualLength_m": 1.3877787807814457e-17
+    },
+    "wrinkleProxyFacePercent": 41.127232142857146,
+    "peakAngle_deg": 136.65375154559536,
+    "peakSpatialCurvature_per_m": 542.6379039173743,
+    "physicalCreaseCalibration": "NOT_RUN"
+  },
+  "downloadedExports": {
+    "native_FreeSewing_SVG": "byte-exact independent upstream re-draft",
+    "OBJ_vertices_and_faces": "exact match",
+    "SVG_panels": "exact match",
+    "SVG_cut_offset_mm": 10,
+    "DXF_panels": "match within 0.000002 mm"
+  },
+  "negativeControls": {
+    "reverse-seam": true,
+    "swap-panel": true,
+    "gap": true,
+    "uv": true,
+    "fold-angle": true,
+    "curvature": true,
+    "freesewing-source": true,
+    "body-penetration": true,
+    "overlapping-face": true
+  },
+  "gpuFields": {
+    "strain": {
+      "location": 3,
+      "attributeSize": 3,
+      "attributeType": 5126,
+      "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "componentsCompared": 32256,
+      "maxLinearRGBError": 2.9786149546850993e-08,
+      "verdict": "PASS"
+    },
+    "stress": {
+      "location": 3,
+      "attributeSize": 3,
+      "attributeType": 5126,
+      "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "componentsCompared": 32256,
+      "maxLinearRGBError": 2.9789758104747932e-08,
+      "verdict": "PASS"
+    },
+    "fold": {
+      "location": 3,
+      "attributeSize": 3,
+      "attributeType": 5126,
+      "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "componentsCompared": 32256,
+      "maxLinearRGBError": 2.9804987033976715e-08,
+      "verdict": "PASS"
+    },
+    "curvature": {
+      "location": 3,
+      "attributeSize": 3,
+      "attributeType": 5126,
+      "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "componentsCompared": 32256,
+      "maxLinearRGBError": 2.979222868404463e-08,
+      "verdict": "PASS"
+    }
+  },
+  "dynamicsChecks": {
+    "correctPage": true,
+    "actualWasmGravity": true,
+    "actualWasmPin": true,
+    "actualWasmElasticConstraint": true,
+    "actualPreparedWasmConstraint": true,
+    "step-120": true,
+    "step-120-pins": true,
+    "step-240": true,
+    "step-240-pins": true,
+    "step-360": true,
+    "step-360-pins": true,
+    "gravityChangesCloth": true,
+    "actualBodyContacts": true,
+    "windInputChangesActualPhysics": true,
+    "windCollisionAndGeometry": true,
+    "consoleHealthy": true
+  },
+  "wasmGravityMaxError_m": 2.220446049250313e-15,
+  "states": {
+    "step-120": {
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.0513890393158984,
+      "peakStretch_percent": 187.39619043768442,
+      "peakMaterialStress_kPa": 122.61000569149364,
+      "folds": {
+        "hinges": 5312,
+        "maxErrors": {
+          "angle_rad": 3.3306690738754696e-16,
+          "curvature_per_m": 8.526512829121202e-14,
+          "currentDualLength_m": 1.3877787807814457e-17
+        },
+        "wrinkleProxyFacePercent": 42.885044642857146,
+        "peakAngle_deg": 140.27949832139217,
+        "peakSpatialCurvature_per_m": 352.4069465647899,
+        "physicalCreaseCalibration": "NOT_RUN"
+      }
+    },
+    "step-240": {
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.069020220609708,
+      "peakStretch_percent": 161.71587896334054,
+      "peakMaterialStress_kPa": 79.85576481731148,
+      "folds": {
+        "hinges": 5312,
+        "maxErrors": {
+          "angle_rad": 4.163336342344337e-16,
+          "curvature_per_m": 4.618527782440651e-14,
+          "currentDualLength_m": 1.3877787807814457e-17
+        },
+        "wrinkleProxyFacePercent": 39.70424107142857,
+        "peakAngle_deg": 79.45077300222913,
+        "peakSpatialCurvature_per_m": 151.1717768763808,
+        "physicalCreaseCalibration": "NOT_RUN"
+      }
+    },
+    "step-360": {
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.0348133158371264,
+      "peakStretch_percent": 189.4507143470886,
+      "peakMaterialStress_kPa": 124.92184842856898,
+      "folds": {
+        "hinges": 5312,
+        "maxErrors": {
+          "angle_rad": 4.440892098500626e-16,
+          "curvature_per_m": 1.1368683772161603e-13,
+          "currentDualLength_m": 1.3877787807814457e-17
+        },
+        "wrinkleProxyFacePercent": 41.127232142857146,
+        "peakAngle_deg": 136.65375154559536,
+        "peakSpatialCurvature_per_m": 542.6379039173743,
+        "physicalCreaseCalibration": "NOT_RUN"
+      }
+    },
+    "wind-step-480": {
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.1011614597396995,
+      "peakStretch_percent": 193.0026603253773,
+      "peakMaterialStress_kPa": 130.76610524734195,
+      "folds": {
+        "hinges": 5312,
+        "maxErrors": {
+          "angle_rad": 4.163336342344337e-16,
+          "curvature_per_m": 1.4210854715202004e-13,
+          "currentDualLength_m": 1.0408340855860843e-17
+        },
+        "wrinkleProxyFacePercent": 28.822544642857146,
+        "peakAngle_deg": 138.23767285585507,
+        "peakSpatialCurvature_per_m": 606.6186436293059,
+        "physicalCreaseCalibration": "NOT_RUN"
+      }
+    }
+  },
+  "editedProfile": {
+    "length_mm": 650,
+    "circleRatio": 0.6,
+    "material": "linen",
+    "bodyIntersections": 0,
+    "selfIntersections": 0,
+    "checks": {
+      "realEditedPattern": true,
+      "materialCoordinatesChange": true,
+      "editedPhysicalState": true,
+      "consoleHealthy": true
+    }
+  },
+  "offlineNextStepExact": true,
+  "limits": [
+    "Discrete states only; universal CCD NOT_RUN",
+    "Uncalibrated principal second Piola\u2013Kirchhoff material stress; no measured crease law",
+    "Dihedral, centroid-dual curvature and 15-degree face fraction are geometric and mesh-dependent",
+    "Native waistband/closure/hem construction, physical print hardware and wearer fit NOT_RUN",
+    "Software rendering; no hardware FPS or real-time claim"
+  ],
+  "visualReview": [
+    "Actual public desktop fold and curvature: model, field legends, pattern and metrics visible",
+    "Actual public mobile: full human visible below wrapped toolbar; no horizontal overflow",
+    "Other raw public fabric, stress, strain, contact, side/back, print and saved-state captures retained"
+  ],
+  "offlineSavedView": true,
+  "verificationEnvironment": {
+    "reason": "Match software-rendering concurrency to the actual container CPU allocation",
+    "cpuMax": [
+      "400000",
+      "100000"
+    ],
+    "visibleCpuCount": 5,
+    "availableAffinityCount": 5,
+    "selectedCpuCount": 4,
+    "selectedCpuIds": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "cleanup": {
+    "localServerPID": 15241,
+    "localPort8771Stopped": false,
+    "browserContexts": "Closed by successful Playwright scripts",
+    "temporaryOfflineServers": "shutdown and server_close completed"
+  }
+}
