@@ -5,10 +5,10 @@ const sampleButtons = [...document.querySelectorAll("[data-sample]")];
 const viewButtons = [...document.querySelectorAll("[data-view]")];
 const editButtons = [...document.querySelectorAll("[data-edit]")];
 const views = {angle: "斜前", front: "正面", back: "背面"};
-const edits = {
-  overlay: ["editor/example-output/before-after.svg", "原版灰色虚线与改版蓝色纸样叠加"],
-  before: ["edits/original.svg", "袖长修改前的 M 码贴身长袖 T 恤纸样"],
-  after: ["editor/example-output/edited.svg", "袖长增加 23 U 后的 M 码纸样"]
+const editLabels = {
+  overlay: "改前与改后的二维裁片叠加",
+  before: "改前二维裁片",
+  after: "改后二维裁片",
 };
 
 function press(buttons, key, value) {
@@ -28,15 +28,33 @@ function showImage(img, path, description) {
   img.alt = description;
 }
 
-function selectEdit(name) {
-  const [path, alt] = edits[name];
-  showImage($("edit-img"), path, alt);
-  press(editButtons, "edit", name);
+function initializeEditCanvas() {
+  const canvas = $("edit-canvas");
+  if (!canvas) return;
+
+  function bindLayers() {
+    const svgDocument = canvas.contentDocument;
+    const before = svgDocument?.getElementById("pattern-before");
+    const after = svgDocument?.getElementById("pattern-after");
+    if (!before || !after) return;
+
+    for (const button of editButtons) {
+      button.disabled = false;
+      button.onclick = () => {
+        const mode = button.dataset.edit;
+        before.setAttribute("display", mode === "after" ? "none" : "inline");
+        after.setAttribute("display", mode === "before" ? "none" : "inline");
+        canvas.setAttribute("aria-label", editLabels[mode]);
+        press(editButtons, "edit", mode);
+      };
+    }
+  }
+
+  canvas.addEventListener("load", bindLayers);
+  bindLayers();
 }
 
-for (const button of editButtons) {
-  button.addEventListener("click", () => selectEdit(button.dataset.edit));
-}
+initializeEditCanvas();
 
 $("zoom-pattern")?.addEventListener("click", () => {
   const img = $("pattern-img");

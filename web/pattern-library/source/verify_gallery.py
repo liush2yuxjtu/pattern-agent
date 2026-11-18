@@ -23,6 +23,7 @@ GALLERY = "pattern-library/"
 SAMPLES = ("sandy-standard", "sandy-flared", "shirt-cuff")
 VIEWS = ("angle", "front", "back")
 SVG = "{http://www.w3.org/2000/svg}"
+EDIT_OVERLAY = "editor/example-output/before-after.svg"
 
 
 def digest(content):
@@ -159,6 +160,91 @@ def check_paper_page(page, gallery, entries, output):
     page.screenshot(path=str(output / "paper-mobile.png"), animations="disabled")
     page.set_viewport_size({"width": 1440, "height": 1040})
 
+def check_edit_geometry(get, gallery, build):
+    def checked_svg(path):
+        contents = get(urljoin(gallery, path))
+        assert digest(contents) == build["files"][GALLERY + path]
+        return ET.fromstring(contents)
+
+    def paths(node):
+        return [tuple(tuple(map(float, point.split(","))) for point in line.attrib["points"].split())
+                for line in node.iter(SVG + "polyline")]
+
+    overlay = checked_svg(EDIT_OVERLAY)
+    assert "viewBox" in overlay.attrib
+    layers = {}
+    for name, source in (("before", "edits/original.svg"), ("after", "editor/example-output/edited.svg")):
+        group = overlay.find(f"{SVG}g[@id='pattern-{name}']")
+        assert group is not None
+        layers[name] = paths(group)
+        original = paths(checked_svg(source))
+        assert len(layers[name]) == len(original) == 204
+        for actual, expected in zip(layers[name], original, strict=True):
+            for point, control in zip(actual, expected, strict=True):
+                assert max(abs(a - b) for a, b in zip(point, control, strict=True)) < 1e-6
+    changed = sum(before != after for before, after in zip(layers["before"], layers["after"], strict=True))
+    assert 0 < changed < len(layers["before"])
+    return {"placed_paths_per_layer": len(layers["before"]), "changed_paths": changed}
+
+
+def check_edit_canvas(page, output):
+    canvas = page.locator("#edit-canvas")
+    overlay = page.locator('[data-edit="overlay"]')
+    expect(overlay).to_be_enabled()
+    expect(overlay).to_have_attribute("aria-pressed", "true")
+    source = canvas.evaluate_handle("object => object.contentDocument")
+
+    def state():
+        return canvas.evaluate("""(object, frame) => {
+            const svg = object.contentDocument.documentElement;
+            const matrix = svg.getScreenCTM();
+            return {
+                sameDocument: object.contentDocument === frame,
+                viewBox: svg.getAttribute("viewBox"),
+                matrix: [matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f],
+                visible: [...svg.querySelectorAll(":scope > g")].filter(layer =>
+                    frame.defaultView.getComputedStyle(layer).display !== "none"
+                ).map(layer => layer.id),
+            };
+        }""", source)
+
+    def check_color_pixels(mode, content):
+        with Image.open(BytesIO(content)) as image:
+            pixels = image.convert("RGB")
+            colors = pixels.getcolors(pixels.width * pixels.height)
+            orange = sum(count for count, (r, g, b) in colors if r > g + 29 and r > b + 30)
+            blue = sum(count for count, (r, g, b) in colors if b > r + 35 and b > g + 24)
+        assert (orange > 10) == (mode != "after"), (mode, orange)
+        assert (blue > 10) == (mode != "before"), (mode, blue)
+        return {"orange": orange, "blue": blue}
+
+    results = {}
+    for name, viewport in (("desktop", None), ("mobile", {"width": 390, "height": 850})):
+        if viewport:
+            page.set_viewport_size(viewport)
+        baseline = state()
+        assert baseline["sameDocument"] and baseline["visible"] == ["pattern-before", "pattern-after"]
+        assert baseline["matrix"][0] > 0 and baseline["matrix"][3] > 0
+        results[name] = {}
+        for mode, visible in (
+            ("before", ["pattern-before"]), ("after", ["pattern-after"]), ("overlay", ["pattern-before", "pattern-after"])
+        ):
+            button = page.locator(f'[data-edit="{mode}"]')
+            if mode == "before":
+                button.press("Enter")
+            else:
+                button.click()
+            expect(button).to_have_attribute("aria-pressed", "true")
+            current = state()
+            assert current == {**baseline, "visible": visible}, (name, mode, baseline, current)
+            results[name][mode] = check_color_pixels(mode, canvas.screenshot(animations="disabled"))
+        assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        page.locator("#editor").screenshot(path=str(output / f"editor-{name}.png"), animations="disabled")
+    page.set_viewport_size({"width": 1440, "height": 1040})
+    source.dispose()
+    return results
+
+
 def run(base, output, expected_commit, browser_executable):
     base = base.rstrip("/") + "/"
     gallery = urljoin(base, GALLERY)
@@ -189,6 +275,7 @@ def run(base, output, expected_commit, browser_executable):
                 assets[file] = content
 
             paper_entries = check_paper_assets(get, base, gallery, build)
+            edit_geometry = check_edit_geometry(get, gallery, build)
             mesh_checks = {}
             for sample in manifest["samples"]:
                 file = sample["evidence"]
@@ -278,17 +365,9 @@ def run(base, output, expected_commit, browser_executable):
                 download_file(selector)
             page.get_by_role("link", name="打开改版工具").click()
             page.wait_for_url(gallery + "#editor")
-            for mode, path in {
-                "before": "edits/original.svg",
-                "after": "editor/example-output/edited.svg",
-                "overlay": "editor/example-output/before-after.svg",
-            }.items():
-                button = page.locator(f'[data-edit="{mode}"]')
-                button.click()
-                assert button.get_attribute("aria-pressed") == "true"
-                wait_image(page, "#edit-img", path)
-            page.locator("#editor").screenshot(path=str(output / "editor.png"), animations="disabled")
+            edit_pixels = check_edit_canvas(page, output)
             for selector in (
+                f'a[href="{EDIT_OVERLAY}"][download]',
                 'a[href="downloads/pattern-agent-editor.zip"]', 'a[href="editor/example-output/edit.patch.yaml"]',
                 'a[href="editor/example-output/edited.dxf"]', 'a[href="catalog/cad-origins.csv"]',
                 'a[href="catalog/review-design-intents.yaml"]',
@@ -296,7 +375,7 @@ def run(base, output, expected_commit, browser_executable):
                 download_file(selector)
             with ZipFile(output / "pattern-agent-editor.zip") as archive:
                 assert archive.testzip() is None
-                for name in ("edit.patch.yaml", "edited.dxf"):
+                for name in ("edit.patch.yaml", "edited.dxf", "before-after.svg"):
                     assert digest(archive.read(f"pattern-agent-editor/example-output/{name}")) == downloads[name]
             rows = lambda file: list(DictReader(StringIO((output / file).read_text(encoding="utf-8-sig"))))
             patterns = rows("cad-origins.csv")
@@ -329,6 +408,9 @@ def run(base, output, expected_commit, browser_executable):
                 "paper_previews": len(paper_entries),
                 "research_2d_layouts": sum(entry["source"] == "zju" for entry in paper_entries),
                 "meshes": mesh_checks, "record_counts": {"patterns": len(originals), "initial_curated_feedback": len(feedback)},
+                "editor_overlay": {
+                    **edit_geometry, "shared_svg_and_transform": True, "pixel_counts": edit_pixels,
+                },
                 "browser": {
                     "anonymous": True, "navigation": "home -> 2D gallery -> 3D cases -> YAML editor",
                     "image_changes": 9, "edit_modes": 3, "deep_links": True, "invalid_query_fallback": True,

@@ -59,7 +59,7 @@ h1 { font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.16; letter-spacing:
 .pattern-stage, .render-stage { height: clamp(315px, 35vw, 445px); display: grid; place-items: center; overflow: hidden; }
 .pattern-stage { background-color: #f8faf6; background-image: radial-gradient(#d9e4d8 0.8px, transparent 1px); background-size: 17px 17px; padding: 13px; }
 .render-stage { background: #e8eae5; }
-.pattern-stage img, .render-stage img, .edit-stage img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+.pattern-stage img, .render-stage img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
 
 .panel-foot { padding: 10px 16px; min-height: 45px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 21px; border-top: 1px solid var(--line); }
 .panel-foot a, .data-links a { font-weight: 650; font-size: 13px; }
@@ -74,7 +74,13 @@ h1 { font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.16; letter-spacing:
 .section-lead { margin-bottom: 17px; }
 .section-lead h2 { font-size: clamp(1.47rem, 3.3vw, 2.1rem); letter-spacing: -.015em; }
 .editor-layout { grid-template-columns: minmax(0, 1.55fr) minmax(300px, .85fr); }
-.edit-stage { height: 330px; padding: 12px; background: #f7faf7; }
+.edit-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 9px 16px 0; background: #f7faf7; color: var(--muted); font-size: 12px; }
+.edit-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.edit-legend span::before { content: ""; width: 19px; border-top: 2px solid; }
+.edit-legend .edit-before::before { border-color: #a5452e; border-top-style: dashed; }
+.edit-legend .edit-after::before { border-color: #176b97; }
+.edit-stage { padding: 4px 12px 12px; background: #f7faf7; }
+.edit-stage object { display: block; width: 100%; aspect-ratio: 5 / 3; }
 .handoff { border: 1px solid var(--line); border-radius: 11px; padding: 18px; background: var(--paper); }
 .handoff h3 { font-size: 16px; }
 .handoff p { margin-top: 9px; color: var(--muted); }
@@ -119,7 +125,7 @@ dialog p { margin: 10px 16px 15px; color: var(--muted); font-size: 13px; }
   .panel-title h3 { font-size: 12.5px; }
   .view-picker button { padding-inline: 5px; font-size: 12px; }
   .pattern-stage, .render-stage { height: 290px; }
-  .edit-stage { height: 250px; }
+  .edit-stage, .edit-legend { padding-inline: 8px; }
 }
 
 .paper-filters { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }

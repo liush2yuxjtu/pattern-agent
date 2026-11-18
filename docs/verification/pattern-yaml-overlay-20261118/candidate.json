@@ -1,0 +1,84 @@
+{
+  "verdict": "PASS",
+  "base_commit": "255581100bab299eea9e73bbb07bdabfa1e6c374",
+  "staged_tree_before_receipt": "bb62bc2db91bc68ebcb62d857a34b50bb1fe2304",
+  "staged_file_sha256": {
+    ".agents/skills/verify/references/pattern-library.md": "02e3d9568ee6c4de3f1afa42b169b16a1d881af0a9f3e88223fa9e8b013263ae",
+    "web/pattern-library/downloads/pattern-agent-editor.zip": "ca46c96abdcfd1b626ab4ebc1860e7320d522dce1eb50d3d1f2c5103c3c93472",
+    "web/pattern-library/editor/README.md": "e6dc73ad8b87f9070e1c84e709b9df40dd65c2a2582db3844d0b627faf2bd493",
+    "web/pattern-library/editor/example-output/before-after.svg": "90ec9c5c198dc900845ab751c22a93b3581d0bae5627bced05379f6a8d041085",
+    "web/pattern-library/editor/pattern_tool/__main__.py": "dca858d96a2cd86fb1fc04c9450b91fef718757076c3d6368c99713d6674063d",
+    "web/pattern-library/gallery.js": "491ee093921e2cff4e8e129d5acb6528d81e3dd41ea06c1257a17de8d099784c",
+    "web/pattern-library/gallery/manifest.json": "4e3b12ab1ba53e6cd81845365efc4e31abd8efc50a6d7db2f8637b86a52c7b62",
+    "web/pattern-library/index.html": "70a7ec57be620332cf311dff72cc4362fe7f4555da5c188c16edeee046e4c750",
+    "web/pattern-library/source/verify_gallery.py": "0a00001310cd81057271f9db099522cf0500022d22c612233fcd42acf05aa28d",
+    "web/pattern-library/style.css": "603a9034d6f03a035d7af7313fe4f8aaaa0e4426f2db8cda7bb20b0a07940f2b"
+  },
+  "pages_source_sha256": "e16fbcb4aaf76ca4f8c10546de327aaa72e750b3b6711ab31959dcb99986e257",
+  "overlay": {
+    "placed_paths_per_layer": 204,
+    "changed_paths": 20,
+    "shared_svg_and_transform": true,
+    "pixel_counts": {
+      "desktop": {
+        "before": {
+          "orange": 8756,
+          "blue": 0
+        },
+        "after": {
+          "orange": 0,
+          "blue": 11240
+        },
+        "overlay": {
+          "orange": 520,
+          "blue": 10635
+        }
+      },
+      "mobile": {
+        "before": {
+          "orange": 4153,
+          "blue": 0
+        },
+        "after": {
+          "orange": 0,
+          "blue": 4957
+        },
+        "overlay": {
+          "orange": 89,
+          "blue": 4642
+        }
+      }
+    }
+  },
+  "editor_tests_passed": 10,
+  "actual_browser_downloads_sha256": {
+    "pattern.svg": "11df9c149225c5892c68f281c1acb458b950510678f71c211c857debf9a81aa7",
+    "model.glb": "ffb75cedd87eac81ef39250715e5ae1cf3d1c9230304c6ed01b60afa2bc42835",
+    "before-after.svg": "90ec9c5c198dc900845ab751c22a93b3581d0bae5627bced05379f6a8d041085",
+    "pattern-agent-editor.zip": "ca46c96abdcfd1b626ab4ebc1860e7320d522dce1eb50d3d1f2c5103c3c93472",
+    "edit.patch.yaml": "1320d683d0cab356ef1be5c53c87445cdc93c520e2a490445bbe4af69f5f0c33",
+    "edited.dxf": "6fee5cbfa5c7e802dbe37854c202a8413a18d5df7f33a18902497cca11d34b0c",
+    "cad-origins.csv": "7b9ec266564bdcb4b848590f774d0a34aad3cbda7b564201f4b41e8f98bf1f40",
+    "review-design-intents.yaml": "329f36db5e8617d5eb3ecce2823ad4e7b00b6284f63e9ee2d64a941daf6b9fbb"
+  },
+  "downloaded_zip_replay": {
+    "matched_files": 7,
+    "overlay_sha256": "90ec9c5c198dc900845ab751c22a93b3581d0bae5627bced05379f6a8d041085"
+  },
+  "browser_errors": [],
+  "initial_browser_gate": "FAIL: verifier had omitted the SVG download click. Added the click and reran the entire gate.",
+  "commands": [
+    "python -m unittest discover -s tests -v (from web/pattern-library/editor)",
+    "python -m pattern_tool run --intent samples/intent.yaml --output <ignored new directory>",
+    "node --check web/pattern-library/gallery.js",
+    "git diff --cached --check",
+    "python scripts/build_pages.py",
+    "python web/pattern-library/source/verify_gallery.py --directory dist --output work/pattern-overlay/local-gallery",
+    "python scripts/verify_pages.py --output work/pattern-overlay/local-pages",
+    "Extracted the browser download, ran pattern_tool compile and apply separately, and compared seven example files."
+  ],
+  "ignored_browser_screenshots": {
+    "local-gallery/editor-desktop.png": "4329f8363d968bb9c7465e2e5234439c9e7d643c6a90def272429a6972e036bf",
+    "local-gallery/editor-mobile.png": "179946f1692f2e0ca9e51c602b5ab3d68aff3cdad137b20f9225a10f015bb2d5"
+  }
+}

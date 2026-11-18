@@ -33,27 +33,28 @@ def overlay(base, edited):
     box = f"{x0-margin} {-y1-margin} {x1-x0+2*margin} {y1-y0+2*margin}"
     drawing = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{box}" role="img">',
-        '<title>Original and revised 2D pattern overlay</title>',
-        '<desc>Gray is the original. Blue is the revised geometry. Coordinates are in drawing units U.</desc>',
+        '<title>改前与改后的二维纸样叠加</title>',
+        '<desc>橙色虚线是改前，蓝色实线是改后。坐标使用原图形单位 U。</desc>',
     ]
-    for rows, color, width, dash in (
-        (new_rows, "#176b97", "1.8", ""),
-        (old_rows, "#6d7d86", "0.85", ' stroke-dasharray="4 5" opacity="0.78"'),
+    for layer, rows, color, width, dash in (
+        ("before", old_rows, "#a5452e", "1.2", ' stroke-dasharray="4 3"'),
+        ("after", new_rows, "#176b97", "1.3", ""),
     ):
+        drawing.append(f'<g id="pattern-{layer}">')
         drawing.append(f'<g stroke="{color}" stroke-width="{width}" fill="none"{dash}>')
         for row in rows:
             if row["线型"] == "文字":
                 continue
             pts = row["点位"] + ([row["点位"][0]] if row["闭合"] else [])
             coords = " ".join(f"{x:.6f},{-y:.6f}" for x, y in pts)
-            drawing.append(f'<polyline points="{coords}"/>')
-        drawing.append("</g>")
-    drawing.append('<g fill="#274155" font-size="7" font-family="sans-serif">')
-    for row in new_rows:
-        if row["线型"] == "文字":
-            x, y = row["位置"]
-            drawing.append(f'<text x="{x:.6f}" y="{-y:.6f}">{escape(row["内容"])}</text>')
-    drawing.extend(["</g>", "</svg>"])
+            drawing.append(f'<polyline points="{coords}" vector-effect="non-scaling-stroke"/>')
+        drawing.append('</g><g fill="#274155" font-size="7" font-family="sans-serif">')
+        for row in rows:
+            if row["线型"] == "文字":
+                x, y = row["位置"]
+                drawing.append(f'<text x="{x:.6f}" y="{-y:.6f}">{escape(row["内容"])}</text>')
+        drawing.append("</g></g>")
+    drawing.append("</svg>")
     return ("\n".join(drawing) + "\n").encode()
 
 

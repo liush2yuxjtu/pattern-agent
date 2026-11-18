@@ -56,7 +56,7 @@ evidence_ids: [E01, E07]
 
 - `edit.patch.yaml` 保存修改前的值、三个输入的 SHA-256 和输出哈希。
 - `edited-pattern.yaml`、`edited-spec.yaml` 和 `edited.dxf` 可用作下一版输入。
-- `edited.svg` 展示新纸样，`before-after.svg` 叠加灰色原版虚线和蓝色改版。
+- `edited.svg` 展示新纸样，`before-after.svg` 在相同坐标上叠加改前的橙色虚线和改后的蓝色实线。
 - `report.json` 记录目标实测、接口变化、原有轮廓缝隙和待确认的生产条件。
 - [数据结构](SCHEMA.md)说明当前执行范围、意图字段，以及工业 CAD 和其他服装所需的扩展字段。
 - `python -m unittest discover -s tests -v` 运行测试。交付记录在 [verification.json](verification.json)。

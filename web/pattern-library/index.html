@@ -59,13 +59,22 @@
           <figcaption class="panel-title">
             <h3>贴身长袖 T 恤 · 袖长加 23 U</h3>
             <div class="view-picker" role="group" aria-label="选择改版状态">
-              <button type="button" data-edit="overlay" aria-pressed="true">叠加</button>
-              <button type="button" data-edit="before" aria-pressed="false">改前</button>
-              <button type="button" data-edit="after" aria-pressed="false">改后</button>
+              <button type="button" data-edit="overlay" aria-pressed="true" aria-controls="edit-canvas" disabled>叠加</button>
+              <button type="button" data-edit="before" aria-pressed="false" aria-controls="edit-canvas" disabled>改前</button>
+              <button type="button" data-edit="after" aria-pressed="false" aria-controls="edit-canvas" disabled>改后</button>
             </div>
           </figcaption>
-          <div class="edit-stage"><img id="edit-img" src="editor/example-output/before-after.svg" alt="原版灰色虚线与改版蓝色纸样叠加" width="940" height="600"></div>
+          <div class="edit-legend">
+            <span class="edit-before">改前 · 橙色虚线</span>
+            <span class="edit-after">改后 · 蓝色实线</span>
+          </div>
+          <div class="edit-stage">
+            <object id="edit-canvas" type="image/svg+xml" data="editor/example-output/before-after.svg" aria-label="改前与改后的二维裁片叠加" tabindex="-1">
+              <a href="editor/example-output/before-after.svg">打开纸样叠加图</a>
+            </object>
+          </div>
           <div class="panel-foot">
+            <a href="editor/example-output/before-after.svg" download>叠加 SVG</a>
             <a href="editor/example-output/edit.patch.yaml" download>YAML 补丁</a>
             <a href="editor/example-output/edited.dxf" download>改版 DXF</a>
             <a href="editor/example-output/report.json" download>量测报告</a>

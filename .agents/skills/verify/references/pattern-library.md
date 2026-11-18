@@ -24,7 +24,9 @@ regression. Generation commands and the sample scope are under
   the results to the example output included in the ZIP.
 - Run the actual site at the Pages project prefix with the commands below.
   Observe navigation from home to the 2D gallery, the three 3D cases, all nine
-  render changes, the three 2D edit states,
+  render changes, and three layer visibility states on one SVG. Confirm both
+  layers match the original and revised coordinates and that toggling keeps
+  the SVG document, viewBox, and transform fixed on desktop and mobile. Check
   keyboard zoom, focus restoration, deep links, invalid-query fallback, mobile
   overflow, and SHA-256 of actual browser downloads. Record the screenshots
   and the metadata commit in the receipt.
