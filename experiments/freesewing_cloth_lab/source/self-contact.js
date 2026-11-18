@@ -27,12 +27,11 @@ export class SelfContact {
    this.vertices.set(p);this.tree.refit();
    const point=new THREE.Vector3(),closest=new THREE.Vector3(),bary=new THREE.Vector3();
    const hit=new THREE.Vector3(),normal=new THREE.Vector3(),swept=new THREE.Box3(),startPoint=new THREE.Vector3(),n0=new THREE.Vector3(),n1=new THREE.Vector3(),a0=new THREE.Vector3(),b0=new THREE.Vector3(),c0=new THREE.Vector3(),rootPoint=new THREE.Vector3(),rootTri=new THREE.Triangle(),hitNormal=new THREE.Vector3(),scratch0=new THREE.Vector3(),scratch1=new THREE.Vector3(),scratch2=new THREE.Vector3();
-   for(let id=0;id<p.length/3;id++){
-    point.fromArray(p,id*3);startPoint.fromArray(history,id*3);swept.setFromPoints([startPoint,point]).expandByScalar(this.thickness+maxMotion);let best=this.thickness,bestFace=-1,bestWeights,crossing=false,firstTime=2;
-    this.tree.shapecast({
+   let queryId,best,bestFace,bestWeights,crossing,firstTime;
+   const callbacks={
      intersectsBounds:box=>box.intersectsBox(swept),
      intersectsTriangle:(triangle,face)=>{
-      const ids=this.faceIndices[face];if(ids.includes(id))return false;
+      const ids=this.faceIndices[face];if(ids.includes(queryId))return false;
       triangle.closestPointToPoint(point,closest);const d=point.distanceTo(closest);
       // Both a vertex and a triangle move by at most maxMotion. A feature
       // farther than h + 2*maxMotion cannot enter the contact band this step.
@@ -53,13 +52,16 @@ export class SelfContact {
       }
       return false;
      }
-    });
+   };
+   for(let id=0;id<p.length/3;id++){
+    queryId=id;point.fromArray(p,id*3);startPoint.fromArray(history,id*3);swept.min.copy(startPoint).min(point);swept.max.copy(startPoint).max(point);swept.expandByScalar(this.thickness+maxMotion);best=this.thickness;bestFace=-1;bestWeights=undefined;crossing=false;firstTime=2;
+    this.tree.shapecast(callbacks);
     if(bestFace<0)continue;
     const ids=this.faceIndices[bestFace],weights=bestWeights;
     if(crossing)normal.copy(hitNormal);else normal.copy(point).sub(hit).normalize();
     const before=[0,1,2].map(k=>history[id*3+k]-ids.reduce((s,v,j)=>s+history[v*3+k]*weights[j],0));
     if(!crossing&&(normal.x*before[0]+normal.y*before[1]+normal.z*before[2]<0))normal.negate();
-    const signed=normal.dot(point.clone().sub(hit));
+    const signed=normal.dot(scratch0.subVectors(point,hit));
     const denom=inverseMass[id]+ids.reduce((s,v,j)=>s+inverseMass[v]*weights[j]**2,0);
     if(denom<1e-12)continue;
     const correction=Math.min(.02,this.thickness-signed)/denom;

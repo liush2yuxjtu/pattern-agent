@@ -1,0 +1,225 @@
+{
+  "verdict": "PASS",
+  "scope": "Actual 2.1 artifact after measured 2.0 performance failure; source/physical/GPU/user boundaries only",
+  "htmlSHA256": "a2caea0725050369387d639e1a8510bcb9e8674740c00bfd428e886d353e1dfc",
+  "bytes": 1645085,
+  "baseCommit": "d8bf6518485b12a7d8f3c0ac72f13dace7c79d81",
+  "ui": {
+    "passed": 45,
+    "total": 45
+  },
+  "environment": {
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "vendor": "Google Inc. (Google)",
+    "app": "2.1.0",
+    "htmlSHA256": "a2caea0725050369387d639e1a8510bcb9e8674740c00bfd428e886d353e1dfc",
+    "visibleCpus": 5,
+    "selectedAffinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "cpuMax": "400000 100000"
+  },
+  "performance": {
+    "steps": 360,
+    "time_s": 3,
+    "peakStretch": 1.8945071434708856,
+    "peakStress_kPa": 124.921848428569,
+    "peakFoldAngle_deg": 136.65375154559536,
+    "peakCurvature_per_m": 542.6379039173743,
+    "wrinkleProxyTrianglePercent": 41.127232142857146,
+    "seamGap_mm": 0,
+    "waist_mm": 736.3414168681662,
+    "contacts": 252,
+    "selfContacts": 13,
+    "selfContactTiming_ms": {
+      "pointMs": 7.399999998509884,
+      "edgeMs": 12.299999997019768
+    },
+    "stepTiming_ms": {
+      "elasticMs": 34.399999998509884,
+      "bodyMs": 28,
+      "selfMs": 19.799999997019768,
+      "recheckMs": 0.9000000059604645
+    },
+    "renderedFrames": 15,
+    "render_submit_ms_p95": 114.79999999701977,
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 74.10000000149012,
+    "solver_ms_p95": 91.19999999552965,
+    "frame_ms_p95": 516.5999999999999,
+    "jsHeap_bytes": 20489847
+  },
+  "unchangedBaselineCoordinates": {
+    "step-120": {
+      "positions": true,
+      "previous": true,
+      "materialCoordinates": true
+    },
+    "step-240": {
+      "positions": true,
+      "previous": true,
+      "materialCoordinates": true
+    },
+    "step-360": {
+      "positions": true,
+      "previous": true,
+      "materialCoordinates": true
+    },
+    "wind-step-480": {
+      "positions": true,
+      "previous": true,
+      "materialCoordinates": true
+    }
+  },
+  "upstream": {
+    "upstream": "@freesewing/sandy@4.10.2",
+    "maxMaterialCoordinateError_m": 2.4868995751603504e-16,
+    "maxLumpedMassRelativeError": 4.440892098500626e-16,
+    "materialArea_m2": 0.7939732110139758,
+    "mass_kg": 0.12703571376223613
+  },
+  "folds": {
+    "hinges": 5312,
+    "maxErrors": {
+      "angle_rad": 4.440892098500626e-16,
+      "curvature_per_m": 1.1368683772161603e-13,
+      "currentDualLength_m": 1.3877787807814457e-17
+    },
+    "wrinkleProxyFacePercent": 41.127232142857146,
+    "peakAngle_deg": 136.65375154559536,
+    "peakSpatialCurvature_per_m": 542.6379039173743,
+    "physicalCreaseCalibration": "NOT_RUN"
+  },
+  "negativeControls": {
+    "reverse-seam": true,
+    "swap-panel": true,
+    "gap": true,
+    "uv": true,
+    "fold-angle": true,
+    "curvature": true,
+    "freesewing-source": true,
+    "body-penetration": true,
+    "overlapping-face": true
+  },
+  "exports": {
+    "native_FreeSewing_SVG": "byte-exact independent upstream re-draft",
+    "OBJ_vertices_and_faces": "exact match",
+    "SVG_panels": "exact match",
+    "SVG_cut_offset_mm": 10,
+    "DXF_panels": "match within 0.000002 mm"
+  },
+  "gpuFields": {
+    "strain": {
+      "location": 3,
+      "attributeSize": 3,
+      "attributeType": 5126,
+      "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "componentsCompared": 32256,
+      "maxLinearRGBError": 2.9786149546850993e-08,
+      "verdict": "PASS"
+    },
+    "stress": {
+      "location": 3,
+      "attributeSize": 3,
+      "attributeType": 5126,
+      "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "componentsCompared": 32256,
+      "maxLinearRGBError": 2.9789758104747932e-08,
+      "verdict": "PASS"
+    },
+    "fold": {
+      "location": 3,
+      "attributeSize": 3,
+      "attributeType": 5126,
+      "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "componentsCompared": 32256,
+      "maxLinearRGBError": 2.9804987033976715e-08,
+      "verdict": "PASS"
+    },
+    "curvature": {
+      "location": 3,
+      "attributeSize": 3,
+      "attributeType": 5126,
+      "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "componentsCompared": 32256,
+      "maxLinearRGBError": 2.979222868404463e-08,
+      "verdict": "PASS"
+    }
+  },
+  "dynamicsChecks": {
+    "correctPage": true,
+    "actualWasmGravity": true,
+    "actualWasmPin": true,
+    "actualWasmElasticConstraint": true,
+    "actualPreparedWasmConstraint": true,
+    "step-120": true,
+    "step-120-pins": true,
+    "step-240": true,
+    "step-240-pins": true,
+    "step-360": true,
+    "step-360-pins": true,
+    "gravityChangesCloth": true,
+    "actualBodyContacts": true,
+    "windInputChangesActualPhysics": true,
+    "windCollisionAndGeometry": true,
+    "consoleHealthy": true
+  },
+  "states": {
+    "step-120": {
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.0513890393158984
+    },
+    "step-240": {
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.069020220609708
+    },
+    "step-360": {
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.0348133158371264
+    },
+    "wind-step-480": {
+      "bodyIntersections": 0,
+      "selfIntersections": 0,
+      "insideBodyVertices": 0,
+      "sampledClearance_mm": 3.1011614597396995
+    }
+  },
+  "editedProfile": {
+    "checks": {
+      "realEditedPattern": true,
+      "materialCoordinatesChange": true,
+      "editedPhysicalState": true,
+      "consoleHealthy": true
+    },
+    "bodyIntersections": 0,
+    "selfIntersections": 0
+  },
+  "offlineNextStepExact": true,
+  "offlineSavedView": true,
+  "rejectedAttempts": [
+    "2.0 public p95 134.8 ms > unchanged 100 ms gate",
+    "Geometric query cache: wind self-intersections 7, rejected",
+    "Plane-certificate cache: exact 120-step coordinates but no speed benefit, rejected"
+  ],
+  "limits": [
+    "Uncalibrated material stress S, not measured Cauchy stress",
+    "Mesh-dependent geometric fold/curvature proxies, no permanent crease law",
+    "Native waistband/closure/hem, manufacturing, print hardware and wearer fit NOT_RUN",
+    "Discrete sampled states; universal CCD NOT_RUN",
+    "Five visible CPUs, four-core quota; headless SwiftShader; no hardware FPS claim"
+  ]
+}

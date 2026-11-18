@@ -1,0 +1,725 @@
+Updating 94d4125..d8bf651
+Fast-forward
+ .../skills/verify/references/intent-edit-review.md |    36 +
+ .agents/skills/verify/references/skill-evals.md    |    25 +
+ README.md                                          |     4 +
+ .../commerce-skill-evals-20261118/README.md        |    34 +
+ .../candidate-i1.json                              |   308 +
+ .../iteration-1-browser/benchmark.png              |   Bin 0 -> 129886 bytes
+ .../iteration-1-browser/desktop.png                |   Bin 0 -> 364678 bytes
+ .../iteration-1-browser/feedback.json              |    25 +
+ .../iteration-1-browser/mobile.png                 |   Bin 0 -> 93078 bytes
+ .../iteration-1-browser/report.json                |   391 +
+ .../root-i1-browser/benchmark.png                  |   Bin 0 -> 129886 bytes
+ .../root-i1-browser/desktop.png                    |   Bin 0 -> 364685 bytes
+ .../root-i1-browser/feedback.json                  |    25 +
+ .../root-i1-browser/mobile.png                     |   Bin 0 -> 93078 bytes
+ .../root-i1-browser/report.json                    |   391 +
+ .../commerce-skill-evals-20261118/verify-i1.json   |    31 +
+ .../experiment-center-20261118/README.md           |    58 +
+ .../comparison-footer.png                          |   Bin 0 -> 158812 bytes
+ .../comparison-report.json                         |   321 +
+ .../experiment-center-20261118/data-audit.json     |   513 +
+ .../experiment-center-20261118/data-audit.log      |     5 +
+ .../experiment-center-20261118/docs-desktop.png    |   Bin 0 -> 212757 bytes
+ .../experiment-center-20261118/docs-report.json    |    34 +
+ .../hub-cases-mobile.png                           |   Bin 0 -> 72073 bytes
+ .../experiment-center-20261118/hub-desktop.png     |   Bin 0 -> 172954 bytes
+ .../experiment-center-20261118/hub-mobile.png      |   Bin 0 -> 70687 bytes
+ .../experiment-center-20261118/hub-report.json     |    52 +
+ .../experiment-center-20261118/invariants.json     |    21 +
+ .../experiment-center-20261118/live/README.md      |    32 +
+ .../live/public-comparison-footer.png              |   Bin 0 -> 158812 bytes
+ .../live/public-hub-1448.png                       |   Bin 0 -> 137148 bytes
+ .../live/public-hub-320.png                        |   Bin 0 -> 70107 bytes
+ .../live/public-hub-375.png                        |   Bin 0 -> 76740 bytes
+ .../live/public-hub-768.png                        |   Bin 0 -> 128981 bytes
+ .../live/publication.json                          |    59 +
+ .../live/recording-verify.json                     |    18 +
+ .../experiment-center-20261118/live/report.json    |    52 +
+ .../experiment-center-20261118/receipt.json        |   127 +
+ .../experiment-center-20261118/sewn-mobile.png     |   Bin 0 -> 89500 bytes
+ .../experiment-center-20261118/sewn-report.json    |   182 +
+ .../experiment-center-20261118/site-build.log      |     6 +
+ .../experiment-center-20261118/unit-tests.log      |    13 +
+ .../pattern-json-v2-20261118/receipt.json          |    33 +
+ experiments/intent-edit-benchmark/README.md        |     2 +
+ experiments/intent-edit-review/README.md           |   116 +-
+ experiments/intent-edit-review/build_hub.py        |    61 +
+ .../intent-edit-review/docs/01-user-guide.md       |     2 +
+ .../intent-edit-review/docs/02-architecture.md     |     4 +-
+ .../intent-edit-review/docs/04-build-and-deploy.md |     3 +
+ experiments/intent-edit-review/docs/template.html  |     2 +-
+ experiments/intent-edit-review/hub-template.html   |     9 +
+ experiments/intent-edit-review/sewn/README.md      |     8 +-
+ .../intent-edit-review/sewn/publish_review.py      |    44 +-
+ .../intent-edit-review/sewn/review-template.html   |     2 +-
+ experiments/intent-edit-review/style.css           |     1 +
+ experiments/intent-edit-review/template.html       |     2 +-
+ experiments/intent-edit-review/verify_hub.py       |   125 +
+ .../intent-edit-review/verify_public_hub.py        |   113 +
+ tools/pattern-json-v2/README.md                    |    54 +
+ tools/pattern-json-v2/import_golden_garment.py     |   221 +
+ tools/pattern-json-v2/pattern-json-v2.schema.json  |    23 +
+ .../pattern-json-v2/test_import_golden_garment.py  |    28 +
+ tools/skill_evals/aggregate_commerce.py            |    82 +
+ tools/skill_evals/build_commerce_review.py         |   231 +
+ tools/skill_evals/commerce_grade.py                |   331 +
+ tools/skill_evals/verify_commerce_review.cjs       |    34 +
+ .../eval-1-everlane-six-view/old_skill/run-1.zip   |   Bin 0 -> 30151466 bytes
+ .../old_skill/run-1/eval_metadata.json             |    20 +
+ .../old_skill/run-1/grading.json                   |   658 +
+ .../old_skill/run-1/outputs/TRACE.md               |    12 +
+ .../old_skill/run-1/outputs/artifact-hashes.json   |    69 +
+ .../old_skill/run-1/outputs/camera.json            |    39 +
+ .../old_skill/run-1/outputs/depth-valid.png        |   Bin 0 -> 30952 bytes
+ .../evidence/generated-inspection-sheet.jpg        |   Bin 0 -> 71009 bytes
+ .../run-1/outputs/evidence/mesh-topology.json      |    20 +
+ .../evidence/neutral-independent-final.json        |    25 +
+ .../outputs/evidence/neutral-independent.json      |     4 +
+ .../run-1/outputs/evidence/run-consistency.json    |     8 +
+ .../old_skill/run-1/outputs/final-mask.png         |   Bin 0 -> 30914 bytes
+ .../old_skill/run-1/outputs/final-state.json       |   869 +
+ .../old_skill/run-1/outputs/finish.py              |    19 +
+ .../run-1/outputs/generation-receipts.json         |   190 +
+ .../old_skill/run-1/outputs/geometry-depth.png     |   Bin 0 -> 259093 bytes
+ .../old_skill/run-1/outputs/geometry-pose.png      |   Bin 0 -> 720856 bytes
+ .../old_skill/run-1/outputs/images/back.png        |   Bin 0 -> 1562781 bytes
+ .../old_skill/run-1/outputs/images/closeup.png     |   Bin 0 -> 1791627 bytes
+ .../old_skill/run-1/outputs/images/depth.png       |   Bin 0 -> 1091147 bytes
+ .../old_skill/run-1/outputs/images/front.png       |   Bin 0 -> 1646387 bytes
+ .../old_skill/run-1/outputs/images/pose.png        |   Bin 0 -> 1652525 bytes
+ .../old_skill/run-1/outputs/images/side.png        |   Bin 0 -> 1576443 bytes
+ .../old_skill/run-1/outputs/initial-camera.json    |    40 +
+ .../old_skill/run-1/outputs/initial-mask.png       |   Bin 0 -> 32679 bytes
+ .../old_skill/run-1/outputs/initial-overlay.png    |   Bin 0 -> 3438449 bytes
+ .../old_skill/run-1/outputs/initial-render.png     |   Bin 0 -> 756842 bytes
+ .../old_skill/run-1/outputs/initial-state.json     |   870 +
+ .../old_skill/run-1/outputs/initial.obj            | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/input-provenance.json  |    13 +
+ .../old_skill/run-1/outputs/measurements.csv       |    19 +
+ .../old_skill/run-1/outputs/measurements.json      |   155 +
+ .../old_skill/run-1/outputs/metrics.json           |    62 +
+ .../old_skill/run-1/outputs/neutral.obj            | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/overlay.png            |   Bin 0 -> 3435219 bytes
+ .../run-1/outputs/parameter-block-history.json     |   149 +
+ .../old_skill/run-1/outputs/photo-render.png       |   Bin 0 -> 719501 bytes
+ .../old_skill/run-1/outputs/posed.obj              | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/projected-joints.json  |  2287 ++
+ .../old_skill/run-1/outputs/reference-mask.png     |   Bin 0 -> 25397 bytes
+ .../run-1/outputs/reference/generation-back.png    |   Bin 0 -> 126177 bytes
+ .../outputs/reference/generation-final-state.json  |   869 +
+ .../run-1/outputs/reference/generation-front.png   |   Bin 0 -> 131081 bytes
+ .../outputs/reference/generation-photo-render.png  |   Bin 0 -> 721076 bytes
+ .../run-1/outputs/reference/generation-side.png    |   Bin 0 -> 93881 bytes
+ .../run-1/outputs/reference/manual-joints.json     |    50 +
+ .../old_skill/run-1/outputs/reference/mask-640.png |   Bin 0 -> 4844 bytes
+ .../run-1/outputs/reference/pose-guide.png         |   Bin 0 -> 1679581 bytes
+ .../run-1/outputs/reference/registration.json      |    23 +
+ .../old_skill/run-1/outputs/reference/source.json  |    30 +
+ .../old_skill/run-1/outputs/report.md              |    19 +
+ .../old_skill/run-1/outputs/reproduce.py           |    68 +
+ .../old_skill/run-1/outputs/run.json               |     9 +
+ .../old_skill/run-1/outputs/software-versions.json |     6 +
+ .../old_skill/run-1/outputs/views/back-mask.png    |   Bin 0 -> 6892 bytes
+ .../old_skill/run-1/outputs/views/back.png         |   Bin 0 -> 126201 bytes
+ .../old_skill/run-1/outputs/views/camera.json      |    34 +
+ .../old_skill/run-1/outputs/views/front-mask.png   |   Bin 0 -> 6869 bytes
+ .../old_skill/run-1/outputs/views/front.png        |   Bin 0 -> 131072 bytes
+ .../old_skill/run-1/outputs/views/joints.json      |  1471 +
+ .../old_skill/run-1/outputs/views/neutral.obj      | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/views/posed.obj        | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/views/side-mask.png    |   Bin 0 -> 5298 bytes
+ .../old_skill/run-1/outputs/views/side.png         |   Bin 0 -> 93907 bytes
+ .../old_skill/run-1/outputs/views/state.json       |   869 +
+ .../run-1/outputs/views/view-provenance.json       |  1979 +
+ .../old_skill/run-1/review/overlay-provenance.json |    15 +
+ .../old_skill/run-1/review/thin-overlay.png        |   Bin 0 -> 3719837 bytes
+ .../old_skill/run-1/timing.json                    |     6 +
+ .../eval-1-everlane-six-view/with_skill/run-1.zip  |   Bin 0 -> 32173431 bytes
+ .../with_skill/run-1/eval_metadata.json            |    20 +
+ .../with_skill/run-1/grading.json                  |   707 +
+ .../with_skill/run-1/outputs/TRACE.md              |    11 +
+ .../with_skill/run-1/outputs/artifact-hashes.json  |    82 +
+ .../run-1/outputs/camera-initialization.json       |    38 +
+ .../with_skill/run-1/outputs/camera.json           |    38 +
+ .../with_skill/run-1/outputs/candidate-1.json      |   882 +
+ .../with_skill/run-1/outputs/candidate-2.json      |   882 +
+ .../with_skill/run-1/outputs/depth-valid.png       |   Bin 0 -> 31482 bytes
+ .../run-1/outputs/evidence/bone-lengths.json       |   169 +
+ .../run-1/outputs/evidence/depth-check.json        |     9 +
+ .../evidence/neutral-independent-check.json        |    25 +
+ .../evidence/rejected-first-depth/camera.json      |    34 +
+ .../evidence/rejected-first-depth/joints.json      |  1471 +
+ .../evidence/rejected-first-depth/neutral.obj      | 40137 +++++++++++++++++++
+ .../evidence/rejected-first-depth/posed.obj        | 40137 +++++++++++++++++++
+ .../evidence/rejected-first-depth/side-mask.png    |   Bin 0 -> 8065 bytes
+ .../outputs/evidence/rejected-first-depth/side.png |   Bin 0 -> 127447 bytes
+ .../evidence/rejected-first-depth/state.json       |   869 +
+ .../rejected-first-depth/view-provenance.json      |   661 +
+ .../with_skill/run-1/outputs/final-mask.png        |   Bin 0 -> 31464 bytes
+ .../with_skill/run-1/outputs/final-overlay.png     |   Bin 0 -> 3537657 bytes
+ .../with_skill/run-1/outputs/final-render.png      |   Bin 0 -> 756368 bytes
+ .../with_skill/run-1/outputs/final-state.json      |   869 +
+ .../with_skill/run-1/outputs/finalize.py           |    25 +
+ .../with_skill/run-1/outputs/fit.py                |    50 +
+ .../with_skill/run-1/outputs/geometric-depth.png   |   Bin 0 -> 253507 bytes
+ .../with_skill/run-1/outputs/geometric-pose.png    |   Bin 0 -> 831819 bytes
+ .../run-1/outputs/images/back-receipt.json         |    37 +
+ .../with_skill/run-1/outputs/images/back.png       |   Bin 0 -> 1588137 bytes
+ .../run-1/outputs/images/closeup-receipt.json      |    37 +
+ .../with_skill/run-1/outputs/images/closeup.png    |   Bin 0 -> 1788206 bytes
+ .../run-1/outputs/images/depth-receipt.json        |    37 +
+ .../with_skill/run-1/outputs/images/depth.png      |   Bin 0 -> 1702679 bytes
+ .../run-1/outputs/images/front-receipt.json        |    37 +
+ .../with_skill/run-1/outputs/images/front.png      |   Bin 0 -> 1630622 bytes
+ .../run-1/outputs/images/pose-receipt.json         |    37 +
+ .../with_skill/run-1/outputs/images/pose.png       |   Bin 0 -> 1688128 bytes
+ .../run-1/outputs/images/side-receipt.json         |    37 +
+ .../with_skill/run-1/outputs/images/side.png       |   Bin 0 -> 1590556 bytes
+ .../with_skill/run-1/outputs/initial-camera.json   |    38 +
+ .../with_skill/run-1/outputs/initial-mask.png      |   Bin 0 -> 32442 bytes
+ .../with_skill/run-1/outputs/initial-overlay.png   |   Bin 0 -> 3541634 bytes
+ .../with_skill/run-1/outputs/initial-render.png    |   Bin 0 -> 737393 bytes
+ .../with_skill/run-1/outputs/initial-state.json    |   870 +
+ .../with_skill/run-1/outputs/input-provenance.json |    39 +
+ .../with_skill/run-1/outputs/measurements.csv      |    13 +
+ .../with_skill/run-1/outputs/measurements.json     |   162 +
+ .../with_skill/run-1/outputs/metrics.json          |   138 +
+ .../with_skill/run-1/outputs/metrics.py            |    11 +
+ .../with_skill/run-1/outputs/neutral.obj           | 40137 +++++++++++++++++++
+ .../run-1/outputs/parameter-history.json           |   178 +
+ .../with_skill/run-1/outputs/photo-render.png      |   Bin 0 -> 756368 bytes
+ .../with_skill/run-1/outputs/posed.obj             | 40137 +++++++++++++++++++
+ .../with_skill/run-1/outputs/projected-pose.json   |  2775 ++
+ .../with_skill/run-1/outputs/reference-mask.png    |   Bin 0 -> 25175 bytes
+ .../outputs/reference/generation-input-back.png    |   Bin 0 -> 146600 bytes
+ .../outputs/reference/generation-input-front.png   |   Bin 0 -> 159490 bytes
+ .../reference/generation-input-photo-render.png    |   Bin 0 -> 756118 bytes
+ .../outputs/reference/generation-input-side.png    |   Bin 0 -> 101821 bytes
+ .../run-1/outputs/reference/guide-receipt.json     |    16 +
+ .../outputs/reference/guide-registration.json      |    23 +
+ .../with_skill/run-1/outputs/reference/guide.png   |   Bin 0 -> 1665817 bytes
+ .../run-1/outputs/reference/landmarks.json         |    59 +
+ .../run-1/outputs/reference/original.jpg           |   Bin 0 -> 256200 bytes
+ .../with_skill/run-1/outputs/reference/source.json |    30 +
+ .../with_skill/run-1/outputs/report.md             |    25 +
+ .../with_skill/run-1/outputs/run.json              |     8 +
+ .../run-1/outputs/solver-continuous-state.json     |   869 +
+ .../with_skill/run-1/outputs/views/back-mask.png   |   Bin 0 -> 8526 bytes
+ .../with_skill/run-1/outputs/views/back.png        |   Bin 0 -> 146386 bytes
+ .../with_skill/run-1/outputs/views/camera.json     |    34 +
+ .../with_skill/run-1/outputs/views/front-mask.png  |   Bin 0 -> 8575 bytes
+ .../with_skill/run-1/outputs/views/front.png       |   Bin 0 -> 159612 bytes
+ .../with_skill/run-1/outputs/views/joints.json     |  1471 +
+ .../with_skill/run-1/outputs/views/neutral.obj     | 40137 +++++++++++++++++++
+ .../with_skill/run-1/outputs/views/posed.obj       | 40137 +++++++++++++++++++
+ .../with_skill/run-1/outputs/views/side-mask.png   |   Bin 0 -> 6231 bytes
+ .../with_skill/run-1/outputs/views/side.png        |   Bin 0 -> 101540 bytes
+ .../with_skill/run-1/outputs/views/state.json      |   869 +
+ .../run-1/outputs/views/view-provenance.json       |  1979 +
+ .../run-1/review/overlay-provenance.json           |    15 +
+ .../with_skill/run-1/review/thin-overlay.png       |   Bin 0 -> 3722995 bytes
+ .../with_skill/run-1/timing.json                   |     6 +
+ .../old_skill/run-1.zip                            |   Bin 0 -> 23665470 bytes
+ .../old_skill/run-1/eval_metadata.json             |    18 +
+ .../old_skill/run-1/grading.json                   |   455 +
+ .../old_skill/run-1/outputs/TRACE.md               |    22 +
+ .../old_skill/run-1/outputs/artifact-hashes.json   |    65 +
+ .../old_skill/run-1/outputs/camera.json            |    44 +
+ .../old_skill/run-1/outputs/depth-valid.png        |   Bin 0 -> 33135 bytes
+ .../old_skill/run-1/outputs/depth.png              |   Bin 0 -> 165432 bytes
+ .../old_skill/run-1/outputs/export-normalized.py   |    17 +
+ .../old_skill/run-1/outputs/final-mask.png         |   Bin 0 -> 32993 bytes
+ .../old_skill/run-1/outputs/final-overlay.png      |   Bin 0 -> 2787894 bytes
+ .../old_skill/run-1/outputs/final-render.png       |   Bin 0 -> 667005 bytes
+ .../old_skill/run-1/outputs/final-state.json       |   869 +
+ .../run-1/outputs/images/imagegen-receipt.json     |    25 +
+ .../run-1/outputs/images/pose-illustrative.png     |   Bin 0 -> 1613406 bytes
+ .../run-1/outputs/images/registered-guide.png      |   Bin 0 -> 5134815 bytes
+ .../run-1/outputs/images/registration.json         |    31 +
+ .../independent-neutral-check-initial-error.json   |     4 +
+ .../run-1/outputs/independent-neutral-check.json   |    25 +
+ .../old_skill/run-1/outputs/initial-camera.json    |    12 +
+ .../old_skill/run-1/outputs/initial-mask.png       |   Bin 0 -> 36343 bytes
+ .../run-1/outputs/initial-original-mask.png        |   Bin 0 -> 36092 bytes
+ .../run-1/outputs/initial-original-overlay.png     |   Bin 0 -> 2792371 bytes
+ .../run-1/outputs/initial-original-render.png      |   Bin 0 -> 686498 bytes
+ .../old_skill/run-1/outputs/initial-overlay.png    |   Bin 0 -> 2792336 bytes
+ .../old_skill/run-1/outputs/initial-posed.obj      | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/initial-render.png     |   Bin 0 -> 711533 bytes
+ .../old_skill/run-1/outputs/initial-state.json     |   870 +
+ .../old_skill/run-1/outputs/input-provenance.json  |    57 +
+ .../old_skill/run-1/outputs/joint-residuals.json   |   170 +
+ .../old_skill/run-1/outputs/measurements.csv       |    13 +
+ .../old_skill/run-1/outputs/measurements.json      |   170 +
+ .../old_skill/run-1/outputs/metrics.json           |    30 +
+ .../old_skill/run-1/outputs/neutral.obj            | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/parameter-history.json |   263 +
+ .../old_skill/run-1/outputs/photo-render.png       |   Bin 0 -> 667005 bytes
+ .../old_skill/run-1/outputs/pose-joints.json       |  2287 ++
+ .../old_skill/run-1/outputs/posed.obj              | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/reference-mask.png     |   Bin 0 -> 25234 bytes
+ .../old_skill/run-1/outputs/report.md              |    21 +
+ .../old_skill/run-1/outputs/solve.py               |    77 +
+ .../old_skill/run-1/outputs/source-landmarks.json  |   118 +
+ .../old_skill/run-1/outputs/timing.json            |     6 +
+ .../run-1/outputs/unrounded-optimized-state.json   |   869 +
+ .../old_skill/run-1/outputs/views/back-mask.png    |   Bin 0 -> 5962 bytes
+ .../old_skill/run-1/outputs/views/back.png         |   Bin 0 -> 101298 bytes
+ .../old_skill/run-1/outputs/views/camera.json      |    50 +
+ .../old_skill/run-1/outputs/views/depth-mask.png   |   Bin 0 -> 5962 bytes
+ .../old_skill/run-1/outputs/views/depth-valid.png  |   Bin 0 -> 5989 bytes
+ .../old_skill/run-1/outputs/views/depth.png        |   Bin 0 -> 19993 bytes
+ .../old_skill/run-1/outputs/views/front-mask.png   |   Bin 0 -> 5962 bytes
+ .../old_skill/run-1/outputs/views/front.png        |   Bin 0 -> 102885 bytes
+ .../old_skill/run-1/outputs/views/joints.json      |  1471 +
+ .../old_skill/run-1/outputs/views/neutral.obj      | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/views/pose-mask.png    |   Bin 0 -> 5962 bytes
+ .../old_skill/run-1/outputs/views/pose.png         |   Bin 0 -> 107008 bytes
+ .../old_skill/run-1/outputs/views/posed.obj        | 40137 +++++++++++++++++++
+ .../old_skill/run-1/outputs/views/side-mask.png    |   Bin 0 -> 4250 bytes
+ .../old_skill/run-1/outputs/views/side.png         |   Bin 0 -> 68684 bytes
+ .../old_skill/run-1/outputs/views/state.json       |   869 +
+ .../run-1/outputs/views/view-provenance.json       |  3297 ++
+ .../old_skill/run-1/review/overlay-provenance.json |    15 +
+ .../old_skill/run-1/review/thin-overlay.png        |   Bin 0 -> 2981020 bytes
+ .../old_skill/run-1/timing.json                    |     6 +
+ .../with_skill/run-1.zip                           |   Bin 0 -> 18801882 bytes
+ .../with_skill/run-1/eval_metadata.json            |    18 +
+ .../with_skill/run-1/grading.json                  |   457 +
+ .../with_skill/run-1/outputs/TRACE.md              |    12 +
+ .../with_skill/run-1/outputs/artifact-checks.json  |    14 +
+ .../with_skill/run-1/outputs/camera.json           |    45 +
+ .../with_skill/run-1/outputs/errors.json           |    12 +
+ .../with_skill/run-1/outputs/final-mask.png        |   Bin 0 -> 34003 bytes
+ .../with_skill/run-1/outputs/final-overlay.png     |   Bin 0 -> 2792356 bytes
+ .../with_skill/run-1/outputs/final-render.png      |   Bin 0 -> 666888 bytes
+ .../with_skill/run-1/outputs/final-state.json      |   869 +
+ .../with_skill/run-1/outputs/finalize.py           |    19 +
+ .../with_skill/run-1/outputs/guide-points.json     |    86 +
+ .../run-1/outputs/guide-registration.json          |    27 +
+ .../with_skill/run-1/outputs/imagegen-call.json    |    11 +
+ .../outputs/images/original-pose-illustrative.png  |   Bin 0 -> 1620573 bytes
+ .../run-1/outputs/independent-neutral-check.json   |    25 +
+ .../outputs/independent-projection-check.json      |    11 +
+ .../with_skill/run-1/outputs/initial-camera.json   |    12 +
+ .../run-1/outputs/initial-frozen-camera-mask.png   |   Bin 0 -> 36666 bytes
+ .../outputs/initial-frozen-camera-overlay.png      |   Bin 0 -> 2794259 bytes
+ .../run-1/outputs/initial-frozen-camera-render.png |   Bin 0 -> 697484 bytes
+ .../with_skill/run-1/outputs/initial-mask.png      |   Bin 0 -> 35717 bytes
+ .../with_skill/run-1/outputs/initial-overlay.png   |   Bin 0 -> 2791581 bytes
+ .../with_skill/run-1/outputs/initial-posed.obj     | 40137 +++++++++++++++++++
+ .../with_skill/run-1/outputs/initial-render.png    |   Bin 0 -> 681186 bytes
+ .../with_skill/run-1/outputs/initial-state.json    |   870 +
+ .../with_skill/run-1/outputs/input-provenance.json |    34 +
+ .../with_skill/run-1/outputs/joint-residuals.json  |   114 +
+ .../with_skill/run-1/outputs/measurements.csv      |    13 +
+ .../with_skill/run-1/outputs/measurements.json     |   233 +
+ .../with_skill/run-1/outputs/metrics.json          |    25 +
+ .../with_skill/run-1/outputs/neutral.obj           | 40137 +++++++++++++++++++
+ .../with_skill/run-1/outputs/observations.json     |   134 +
+ .../run-1/outputs/parameter-block-history.json     |   276 +
+ .../with_skill/run-1/outputs/photo-depth-valid.png |   Bin 0 -> 34096 bytes
+ .../with_skill/run-1/outputs/photo-depth.png       |   Bin 0 -> 211171 bytes
+ .../run-1/outputs/photo-pose-joints.json           |  2936 ++
+ .../with_skill/run-1/outputs/photo-render.png      |   Bin 0 -> 666888 bytes
+ .../with_skill/run-1/outputs/posed.obj             | 40137 +++++++++++++++++++
+ .../with_skill/run-1/outputs/reference-mask.png    |   Bin 0 -> 25219 bytes
+ .../run-1/outputs/regional-diagnostics.json        |    55 +
+ .../with_skill/run-1/outputs/report.md             |    23 +
+ .../with_skill/run-1/outputs/solve.py              |    85 +
+ .../with_skill/run-1/outputs/timing.json           |     5 +
+ .../with_skill/run-1/outputs/views/back-mask.png   |   Bin 0 -> 6637 bytes
+ .../with_skill/run-1/outputs/views/back.png        |   Bin 0 -> 109752 bytes
+ .../with_skill/run-1/outputs/views/camera.json     |    50 +
+ .../with_skill/run-1/outputs/views/depth-mask.png  |   Bin 0 -> 6667 bytes
+ .../with_skill/run-1/outputs/views/depth-valid.png |   Bin 0 -> 6753 bytes
+ .../with_skill/run-1/outputs/views/depth.png       |   Bin 0 -> 24754 bytes
+ .../with_skill/run-1/outputs/views/front-mask.png  |   Bin 0 -> 6667 bytes
+ .../with_skill/run-1/outputs/views/front.png       |   Bin 0 -> 114350 bytes
+ .../with_skill/run-1/outputs/views/joints.json     |  1471 +
+ .../with_skill/run-1/outputs/views/neutral.obj     | 40137 +++++++++++++++++++
+ .../with_skill/run-1/outputs/views/pose-mask.png   |   Bin 0 -> 6667 bytes
+ .../with_skill/run-1/outputs/views/pose.png        |   Bin 0 -> 119833 bytes
+ .../with_skill/run-1/outputs/views/posed.obj       | 40137 +++++++++++++++++++
+ .../with_skill/run-1/outputs/views/side-mask.png   |   Bin 0 -> 4916 bytes
+ .../with_skill/run-1/outputs/views/side.png        |   Bin 0 -> 87082 bytes
+ .../with_skill/run-1/outputs/views/state.json      |   869 +
+ .../run-1/outputs/views/view-provenance.json       |  3297 ++
+ .../run-1/review/overlay-provenance.json           |    15 +
+ .../with_skill/run-1/review/thin-overlay.png       |   Bin 0 -> 2980667 bytes
+ .../with_skill/run-1/timing.json                   |     6 +
+ .../commerce-evals/benchmark-iteration-1.json      |   296 +
+ web/garment-body/commerce-evals/eval.html          |  1365 +
+ web/garment-body/commerce-evals/evals.json         |    41 +
+ web/garment-body/commerce-evals/index.html         |  1365 +
+ .../inputs/everlane-blue-shirt/original.jpg        |   Bin 0 -> 206967 bytes
+ .../inputs/everlane-blue-shirt/source.json         |    46 +
+ .../inputs/everlane-boatneck/original.jpg          |   Bin 0 -> 256200 bytes
+ .../inputs/everlane-boatneck/source.json           |    30 +
+ web/garment-body/commerce-evals/iteration-1.html   |  1365 +
+ web/garment-body/commerce-evals/manifest.json      |   651 +
+ web/garment-body/commerce-evals/plan.json          |    17 +
+ .../commerce-evals/skill-v0-manifest.json          |    51 +
+ .../commerce-evals/skill-v1-manifest.json          |    52 +
+ .../commerce-evals/viewer-provenance.json          |    13 +
+ web/intent-edit-review/docs/index.html             |    25 +-
+ web/intent-edit-review/experiment/index.html       |   358 +
+ web/intent-edit-review/index.html                  |     3 +-
+ web/intent-edit-review/sewn/files-manifest.json    |    10 +-
+ web/intent-edit-review/sewn/index.html             |     2 +-
+ web/intent-edit-review/sewn/manifest.json          |    11 +-
+ .../sewn/preview-verification.json                 |     4 +-
+ 371 files changed, 904873 insertions(+), 46 deletions(-)
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/README.md
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/candidate-i1.json
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/iteration-1-browser/benchmark.png
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/iteration-1-browser/desktop.png
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/iteration-1-browser/feedback.json
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/iteration-1-browser/mobile.png
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/iteration-1-browser/report.json
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/root-i1-browser/benchmark.png
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/root-i1-browser/desktop.png
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/root-i1-browser/feedback.json
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/root-i1-browser/mobile.png
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/root-i1-browser/report.json
+ create mode 100644 docs/verification/commerce-skill-evals-20261118/verify-i1.json
+ create mode 100644 docs/verification/experiment-center-20261118/README.md
+ create mode 100644 docs/verification/experiment-center-20261118/comparison-footer.png
+ create mode 100644 docs/verification/experiment-center-20261118/comparison-report.json
+ create mode 100644 docs/verification/experiment-center-20261118/data-audit.json
+ create mode 100644 docs/verification/experiment-center-20261118/data-audit.log
+ create mode 100644 docs/verification/experiment-center-20261118/docs-desktop.png
+ create mode 100644 docs/verification/experiment-center-20261118/docs-report.json
+ create mode 100644 docs/verification/experiment-center-20261118/hub-cases-mobile.png
+ create mode 100644 docs/verification/experiment-center-20261118/hub-desktop.png
+ create mode 100644 docs/verification/experiment-center-20261118/hub-mobile.png
+ create mode 100644 docs/verification/experiment-center-20261118/hub-report.json
+ create mode 100644 docs/verification/experiment-center-20261118/invariants.json
+ create mode 100644 docs/verification/experiment-center-20261118/live/README.md
+ create mode 100644 docs/verification/experiment-center-20261118/live/public-comparison-footer.png
+ create mode 100644 docs/verification/experiment-center-20261118/live/public-hub-1448.png
+ create mode 100644 docs/verification/experiment-center-20261118/live/public-hub-320.png
+ create mode 100644 docs/verification/experiment-center-20261118/live/public-hub-375.png
+ create mode 100644 docs/verification/experiment-center-20261118/live/public-hub-768.png
+ create mode 100644 docs/verification/experiment-center-20261118/live/publication.json
+ create mode 100644 docs/verification/experiment-center-20261118/live/recording-verify.json
+ create mode 100644 docs/verification/experiment-center-20261118/live/report.json
+ create mode 100644 docs/verification/experiment-center-20261118/receipt.json
+ create mode 100644 docs/verification/experiment-center-20261118/sewn-mobile.png
+ create mode 100644 docs/verification/experiment-center-20261118/sewn-report.json
+ create mode 100644 docs/verification/experiment-center-20261118/site-build.log
+ create mode 100644 docs/verification/experiment-center-20261118/unit-tests.log
+ create mode 100644 docs/verification/pattern-json-v2-20261118/receipt.json
+ create mode 100644 experiments/intent-edit-review/build_hub.py
+ create mode 100644 experiments/intent-edit-review/hub-template.html
+ create mode 100644 experiments/intent-edit-review/verify_hub.py
+ create mode 100644 experiments/intent-edit-review/verify_public_hub.py
+ create mode 100644 tools/pattern-json-v2/README.md
+ create mode 100644 tools/pattern-json-v2/import_golden_garment.py
+ create mode 100644 tools/pattern-json-v2/pattern-json-v2.schema.json
+ create mode 100644 tools/pattern-json-v2/test_import_golden_garment.py
+ create mode 100644 tools/skill_evals/aggregate_commerce.py
+ create mode 100644 tools/skill_evals/build_commerce_review.py
+ create mode 100644 tools/skill_evals/commerce_grade.py
+ create mode 100644 tools/skill_evals/verify_commerce_review.cjs
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1.zip
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/eval_metadata.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/grading.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/TRACE.md
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/artifact-hashes.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/depth-valid.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/evidence/generated-inspection-sheet.jpg
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/evidence/mesh-topology.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/evidence/neutral-independent-final.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/evidence/neutral-independent.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/evidence/run-consistency.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/final-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/final-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/finish.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/generation-receipts.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/geometry-depth.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/geometry-pose.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/images/back.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/images/closeup.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/images/depth.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/images/front.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/images/pose.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/images/side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/initial-camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/initial-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/initial-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/initial-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/initial-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/initial.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/input-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/measurements.csv
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/measurements.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/metrics.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/parameter-block-history.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/photo-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/projected-joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/generation-back.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/generation-final-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/generation-front.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/generation-photo-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/generation-side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/manual-joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/mask-640.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/pose-guide.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/registration.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reference/source.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/report.md
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/reproduce.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/run.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/software-versions.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/back-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/back.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/front-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/front.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/side-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/outputs/views/view-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/review/overlay-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/review/thin-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/old_skill/run-1/timing.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1.zip
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/eval_metadata.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/grading.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/TRACE.md
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/artifact-hashes.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/camera-initialization.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/candidate-1.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/candidate-2.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/depth-valid.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/bone-lengths.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/depth-check.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/neutral-independent-check.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/rejected-first-depth/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/rejected-first-depth/joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/rejected-first-depth/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/rejected-first-depth/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/rejected-first-depth/side-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/rejected-first-depth/side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/rejected-first-depth/state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/evidence/rejected-first-depth/view-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/final-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/final-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/final-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/final-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/finalize.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/fit.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/geometric-depth.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/geometric-pose.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/back-receipt.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/back.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/closeup-receipt.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/closeup.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/depth-receipt.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/depth.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/front-receipt.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/front.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/pose-receipt.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/pose.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/side-receipt.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/images/side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/initial-camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/initial-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/initial-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/initial-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/initial-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/input-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/measurements.csv
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/measurements.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/metrics.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/metrics.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/parameter-history.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/photo-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/projected-pose.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/generation-input-back.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/generation-input-front.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/generation-input-photo-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/generation-input-side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/guide-receipt.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/guide-registration.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/guide.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/landmarks.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/original.jpg
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/reference/source.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/report.md
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/run.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/solver-continuous-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/back-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/back.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/front-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/front.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/side-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/outputs/views/view-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/review/overlay-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/review/thin-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-1-everlane-six-view/with_skill/run-1/timing.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1.zip
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/eval_metadata.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/grading.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/TRACE.md
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/artifact-hashes.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/depth-valid.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/depth.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/export-normalized.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/final-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/final-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/final-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/final-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/images/imagegen-receipt.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/images/pose-illustrative.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/images/registered-guide.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/images/registration.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/independent-neutral-check-initial-error.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/independent-neutral-check.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-original-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-original-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-original-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/initial-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/input-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/joint-residuals.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/measurements.csv
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/measurements.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/metrics.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/parameter-history.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/photo-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/pose-joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/reference-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/report.md
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/solve.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/source-landmarks.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/timing.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/unrounded-optimized-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/back-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/back.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/depth-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/depth-valid.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/depth.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/front-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/front.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/pose-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/pose.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/side-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/outputs/views/view-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/review/overlay-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/review/thin-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/old_skill/run-1/timing.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1.zip
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/eval_metadata.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/grading.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/TRACE.md
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/artifact-checks.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/errors.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/final-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/final-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/final-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/final-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/finalize.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/guide-points.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/guide-registration.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/imagegen-call.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/images/original-pose-illustrative.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/independent-neutral-check.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/independent-projection-check.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-frozen-camera-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-frozen-camera-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-frozen-camera-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/initial-state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/input-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/joint-residuals.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/measurements.csv
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/measurements.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/metrics.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/observations.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/parameter-block-history.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/photo-depth-valid.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/photo-depth.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/photo-pose-joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/photo-render.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/reference-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/regional-diagnostics.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/report.md
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/solve.py
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/timing.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/back-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/back.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/camera.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/depth-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/depth-valid.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/depth.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/front-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/front.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/joints.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/neutral.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/pose-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/pose.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/posed.obj
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/side-mask.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/side.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/state.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/outputs/views/view-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/review/overlay-provenance.json
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/review/thin-overlay.png
+ create mode 100644 web/garment-body/commerce-evals/artifacts/iteration-1/eval-2-everlane-pocket-pose/with_skill/run-1/timing.json
+ create mode 100644 web/garment-body/commerce-evals/benchmark-iteration-1.json
+ create mode 100644 web/garment-body/commerce-evals/eval.html
+ create mode 100644 web/garment-body/commerce-evals/evals.json
+ create mode 100644 web/garment-body/commerce-evals/index.html
+ create mode 100644 web/garment-body/commerce-evals/inputs/everlane-blue-shirt/original.jpg
+ create mode 100644 web/garment-body/commerce-evals/inputs/everlane-blue-shirt/source.json
+ create mode 100644 web/garment-body/commerce-evals/inputs/everlane-boatneck/original.jpg
+ create mode 100644 web/garment-body/commerce-evals/inputs/everlane-boatneck/source.json
+ create mode 100644 web/garment-body/commerce-evals/iteration-1.html
+ create mode 100644 web/garment-body/commerce-evals/manifest.json
+ create mode 100644 web/garment-body/commerce-evals/plan.json
+ create mode 100644 web/garment-body/commerce-evals/skill-v0-manifest.json
+ create mode 100644 web/garment-body/commerce-evals/skill-v1-manifest.json
+ create mode 100644 web/garment-body/commerce-evals/viewer-provenance.json
+ create mode 100644 web/intent-edit-review/experiment/index.html

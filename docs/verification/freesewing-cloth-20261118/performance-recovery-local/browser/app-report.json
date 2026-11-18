@@ -1,0 +1,199 @@
+{
+  "schema": "pattern-agent-cloth-lab-verification-1",
+  "time": "2026-11-18T04:33:09.526Z",
+  "scope": "Digital skirt demonstrator; sample tests do not certify exact triangle intersections, cloth self-collision, calibrated physics, print hardware, sewability or fit; self-contact is discrete",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "claim": "Finite solver state",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Four correctly directed equal-length seam pairs",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Maximum seam gap \u2264 2 mm",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "One sewn shell, Euler 0, two intended boundary loops",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Body clearance samples: penetration \u2264 0.5 mm",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Analytic strain and stress controls",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Actual FreeSewing Sandy draft and unfolded side lengths",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Finite signed fold-angle and curvature fields",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Gravity has been simulated (\u2265 1 second)",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Cloth changed from the initial arrangement",
+      "verdict": "PASS"
+    }
+  ],
+  "stats": {
+    "steps": 360,
+    "time_s": 3,
+    "peakStretch": 1.8945071434708856,
+    "peakStress_kPa": 124.921848428569,
+    "peakFoldAngle_deg": 136.65375154559536,
+    "peakCurvature_per_m": 542.6379039173743,
+    "wrinkleProxyTrianglePercent": 41.127232142857146,
+    "seamGap_mm": 0,
+    "waist_mm": 736.3414168681662,
+    "contacts": 252,
+    "selfContacts": 13,
+    "selfContactTiming_ms": {
+      "pointMs": 7.399999998509884,
+      "edgeMs": 12.299999997019768
+    },
+    "stepTiming_ms": {
+      "elasticMs": 34.399999998509884,
+      "bodyMs": 28,
+      "selfMs": 19.799999997019768,
+      "recheckMs": 0.9000000059604645
+    },
+    "renderedFrames": 15,
+    "render_submit_ms_p95": 114.79999999701977,
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 74.10000000149012,
+    "solver_ms_p95": 91.19999999552965,
+    "frame_ms_p95": 516.5999999999999,
+    "jsHeap_bytes": 20489847
+  },
+  "topology": {
+    "vertices": 1856,
+    "edges": 5440,
+    "faces": 3584,
+    "euler": 0,
+    "boundaryLoops": 2,
+    "nonmanifold": 0,
+    "windingErrors": 0
+  },
+  "collision": {
+    "samples": 16192,
+    "minClearance_mm": 3.0348133158371264,
+    "penetratingSamples": 0,
+    "contactSamples": 2550,
+    "tolerance_mm": 0.5,
+    "method": "signed nearest body triangle, vertices + edge midpoints + centroids; independent exact triangle intersections also required"
+  },
+  "numericControls": {
+    "identity": {
+      "stretch": 1,
+      "minStretch": 1,
+      "stress": 0,
+      "green": [
+        0,
+        0,
+        0
+      ],
+      "sigma": [
+        0,
+        0,
+        0
+      ]
+    },
+    "rotation": {
+      "stretch": 1,
+      "minStretch": 1,
+      "stress": 0,
+      "green": [
+        0,
+        0,
+        0
+      ],
+      "sigma": [
+        0,
+        0,
+        0
+      ]
+    },
+    "extension10": {
+      "stretch": 1.1,
+      "minStretch": 0.9999999999999999,
+      "stress": 9.230769230769239,
+      "green": [
+        0.1050000000000001,
+        0,
+        0
+      ],
+      "sigma": [
+        9230.76923076924,
+        2769.230769230772,
+        0
+      ]
+    },
+    "doubleModulus": {
+      "stretch": 1.1,
+      "minStretch": 0.9999999999999999,
+      "stress": 18.461538461538478,
+      "green": [
+        0.1050000000000001,
+        0,
+        0
+      ],
+      "sigma": [
+        18461.53846153848,
+        5538.461538461544,
+        0
+      ]
+    },
+    "pass": true
+  },
+  "revision": 1,
+  "bodyProvenance": {
+    "source": "Pattern Agent authored-morph neutral MakeHuman surface",
+    "sourceFile": "web/garment-body/product-case/model/final-neutral.obj",
+    "sourceSHA256": "2cd7c641d2610148d715f0e33128e9d9d9c7f61283c982fb096a11086e2d3f8c",
+    "license": "CC0-1.0",
+    "unit": "metre",
+    "vertices": 13380,
+    "triangles": 26756
+  },
+  "material": {
+    "E": 80000,
+    "nu": 0.3,
+    "density": 0.16,
+    "thickness": 0.00035,
+    "bend": 4e-05,
+    "color": 12416852,
+    "calibrated": false
+  },
+  "fitAssessment": {
+    "verdict": "NOT_VALIDATED",
+    "trianglesAbove120Percent": 88
+  },
+  "physics": {
+    "solver": "XPBD distance constraints / Verlet, embedded WebAssembly",
+    "dt_s": 0.008333333333333333,
+    "iterations": 120,
+    "skinOffset_m": 0.005,
+    "waistPinned": true,
+    "selfCollision": true,
+    "selfContactThickness_m": 0.003
+  },
+  "notRun": [
+    "Calibrated fabric testing",
+    "Continuous collision detection and universal self-contact robustness",
+    "Manufacturing sample and wearer fit"
+  ]
+}

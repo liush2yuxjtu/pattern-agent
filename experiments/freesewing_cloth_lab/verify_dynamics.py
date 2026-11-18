@@ -58,7 +58,7 @@ def run(args):
           x.set([0,1,0,2,1,0]);weights.set([1,1]);
           const e=new DataView(w.memory.buffer);e.setInt32(112,0,true);e.setInt32(116,1,true);e.setFloat64(120,1,true);e.setFloat64(128,0,true);e.setFloat64(136,0,true);
           w.solve(1,0,96,112,(1/120)**2);
-          return {gravity,elastic:Array.from(x),memoryBytes:w.memory.buffer.byteLength};
+          const elastic=Array.from(x);x.set([0,1,0,2,1,0]);w.prepare(1,0,96,112,160,(1/120)**2);w.solve_prepared(1,160,1);return {gravity,elastic,preparedElastic:Array.from(x),memoryBytes:w.memory.buffer.byteLength};
         }''')
         velocity=displacement=0.
         for _ in range(12):
@@ -71,6 +71,7 @@ def run(args):
         result['checks']['actualWasmGravity']=gravity_error<1e-10
         result['checks']['actualWasmPin']=probe['gravity'][3:]==[1,2,3]
         result['checks']['actualWasmElasticConstraint']=abs(result['kernel']['elasticDistanceAfter_m']-1)<1e-10
+        prepared=np.array(probe['preparedElastic']).reshape(-1,3);result['kernel']['preparedElasticDistanceAfter_m']=float(np.linalg.norm(prepared[1]-prepared[0]));result['checks']['actualPreparedWasmConstraint']=abs(result['kernel']['preparedElasticDistanceAfter_m']-1)<1e-10
         initial=page.evaluate('clothLab.project()')
         p0=np.array(initial['positions']).reshape(-1,3);nc=initial['parameters']['NC']
         initial_report=page.evaluate('clothLab.verify()')

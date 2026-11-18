@@ -12,9 +12,10 @@ const NC=64, NR=28, PER=NC/4, DT=1/120, THICK=.005, YWAIST=1.055;
 const seamColors=['#b16a42','#398a83','#7687ac','#b08b34'];
 const materials={cotton:{E:80000,nu:.3,density:.160,thickness:.00035,bend:4e-5,color:0xbd7754},linen:{E:160000,nu:.28,density:.220,thickness:.00045,bend:8e-6,color:0xb4a585},silk:{E:30000,nu:.32,density:.080,thickness:.00018,bend:2e-4,color:0x657d79}};
 const SAVED=JSON.parse($('savedProject').textContent||'{}');
-let mat=materials[SAVED.materialKey]||materials.cotton,slant=SAVED.parameters?.slant_m||.56,hem=SAVED.parameters?.hem_m||2.1,wind=SAVED.wind||0,circleRatio=SAVED.parameters?.circle_ratio||.387547980686,mode='fabric',selectedSeam=-1,running=false,stepCount=0,lastReport=null;
-let p,old,inv,edges,edgeMeta,triangles,uvs,panels,seamMaps,seed,waistPoints,waistLength,cPtr=0,pPtr=0,oldPtr=0,massPtr=0;
-let draft=null,hinges=[],folds=null;
+let mat=materials[SAVED.materialKey]||materials.cotton,slant=SAVED.parameters?.slant_m||.56,hem=SAVED.parameters?.hem_m||2.1,wind=SAVED.wind||0,circleRatio=SAVED.parameters?.circle_ratio||.387547980686,mode=SAVED.view||'fabric',selectedSeam=-1,running=false,stepCount=0,lastReport=null;
+let p,old,inv,edges,edgeMeta,triangles,uvs,panels,seamMaps,seed,waistPoints,waistLength,cPtr=0,pPtr=0,oldPtr=0,massPtr=0,preparedPtr=0;
+let draft=null,hinges=[],folds=null;let drawDirty=true,framesDrawn=0;
+let stepHistory,contactingScratch,freeIndices;const bodyDelta=new THREE.Vector3();
 let surfaceSamples=[],selfContact=null,selfContactsLast=0,lastStepProfile=null;
 let simMs=[],renderMs=[],frames=[],lastFrame=performance.now(),collisionsLast=0,revision=0;
 const wasm=(await WebAssembly.instantiate(new Uint8Array(WASM),{})).instance.exports;
@@ -25,7 +26,7 @@ renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.shadowMap.enable
 renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
 let narrowFrame=innerWidth<700;
 const camera=new THREE.PerspectiveCamera(32,1,.02,20);camera.position.set(1.65,1.30,narrowFrame?4.4:3.0);
-const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,.91,.055);controls.enableDamping=true;controls.dampingFactor=.12;controls.minDistance=.75;controls.maxDistance=5;controls.maxPolarAngle=Math.PI*.85;controls.update();
+const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,.91,.055);controls.enableDamping=true;controls.dampingFactor=.12;controls.minDistance=.75;controls.maxDistance=5;controls.maxPolarAngle=Math.PI*.85;controls.update();controls.addEventListener('change',()=>{drawDirty=true;});
 scene.add(new THREE.HemisphereLight(0xffffff,0x7d8c7e,2.0));
 const key=new THREE.DirectionalLight(0xfff5e8,3.2);key.position.set(-2.5,4,3);key.castShadow=true;key.shadow.mapSize.set(1024,1024);key.shadow.camera.left=-1.3;key.shadow.camera.right=1.3;key.shadow.camera.top=2.1;key.shadow.camera.bottom=-.3;key.shadow.normalBias=.015;scene.add(key);key.target.position.set(0,.7,0);scene.add(key.target);
 const rim=new THREE.DirectionalLight(0xdce9ff,1.6);rim.position.set(2,2,-2);scene.add(rim);
@@ -126,8 +127,10 @@ function makePattern(){
   const stiffness=mat.E*mat.thickness,compliance=e.type==='bend'?mat.bend:1/stiffness*(e.type==='shear'?4:1)*.0007;
   dataView.setFloat64(ptr+16,compliance,true);dataView.setFloat64(ptr+24,0,true);
  }
+ preparedPtr=cPtr+edgeMeta.length*32;if(preparedPtr+edgeMeta.length*56>wasm.memory.buffer.byteLength)throw new Error("Prepared constraint buffer exceeds WASM memory");wasm.prepare(edgeMeta.length,pPtr,massPtr,cPtr,preparedPtr,DT*DT);
  surfaceSamples=[];const sampleEdges=new Set();
  for(let t=0;t<triangles.length;t+=3){const ids=triangles.slice(t,t+3);surfaceSamples.push({ids,weights:[1/3,1/3,1/3]});for(let j=0;j<3;j++){const edge=[ids[j],ids[(j+1)%3]].sort((a,b)=>a-b),key=edge.join(':');if(!sampleEdges.has(key)){sampleEdges.add(key);surfaceSamples.push({ids:edge,weights:[.5,.5]});}}}
+ stepHistory=new Float64Array(p.length);contactingScratch=new Uint8Array(n);freeIndices=Array.from({length:n-NC},(_,i)=>i+NC);
  old.set(p);seed=Array.from(p);stepCount=0;revision++;lastReport=null;
  seamMaps=Array.from({length:4},(_,k)=>({id:'S'+(k+1),a:{panel:'P'+(k+1),edge:'right',direction:'waist-to-hem'},b:{panel:'P'+((k+1)%4+1),edge:'left',direction:'waist-to-hem'},lengthA_mm:slant*1000,lengthB_mm:slant*1000,notches:[.25,.5,.75],vertexPairs:Array.from({length:NR+1},(_,r)=>[index(r,(k+1)*PER),index(r,(k+1)*PER)])}));
  const count=triangles.length;clothGeo.setAttribute('position',new THREE.Float32BufferAttribute(new Float32Array(count*3),3));clothGeo.setAttribute('normal',new THREE.Float32BufferAttribute(new Float32Array(count*3),3));clothGeo.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));clothGeo.setAttribute('color',new THREE.Float32BufferAttribute(new Float32Array(count*3),3));
@@ -137,9 +140,8 @@ function makePattern(){
 }
 function substep(){
  lastReport=null;
- const start=performance.now(),history=new Float64Array(p);wasm.integrate(p.length/3,pPtr,oldPtr,massPtr,DT,wind*Math.sin(stepCount*DT*2));
- for(let k=0;k<edgeMeta.length;k++)dataView.setFloat64(cPtr+k*32+24,0,true);
- for(let k=0;k<120;k++)wasm.solve(edgeMeta.length,pPtr,massPtr,cPtr,DT*DT);
+ const start=performance.now(),history=stepHistory;history.set(p);wasm.integrate(p.length/3,pPtr,oldPtr,massPtr,DT,wind*Math.sin(stepCount*DT*2));
+ wasm.solve_prepared(edgeMeta.length,preparedPtr,120);
  const elasticEnd=performance.now();collideWithBody();const bodyEnd=performance.now();
  selfContactsLast=selfContact.solve(p,old,inv,1,history);
  const selfEnd=performance.now();if(selfContactsLast>0){const first=collisionsLast;collideWithBody(selfContact.changed);collisionsLast+=first;}
@@ -147,32 +149,35 @@ function substep(){
  stepCount++;simMs.push(performance.now()-start);if(simMs.length>240)simMs.shift();
 }
 function collideWithBody(changed=null){
- collisionsLast=0;const contacting=new Uint8Array(p.length/3);
- const candidates=changed?Array.from(changed).filter(i=>i>=NC):Array.from({length:p.length/3-NC},(_,i)=>i+NC);
+ collisionsLast=0;const contacting=contactingScratch;contacting.fill(0);
+ const candidates=changed||freeIndices;
  for(const i of candidates){
-  if(changed)contacting[i]=1;const o=i*3;
+  if(i<NC)continue;if(changed)contacting[i]=1;const o=i*3;
   for(let pass=0;pass<4;pass++){
    const signed=bodyDistance(p[o],p[o+1],p[o+2]);
    if(signed>=THICK-.000001)break;
-   // Project to the actual nearest surface along the signed distance gradient.
-   // Face-normal-only projection can oscillate inside anatomical concavities.
-   const delta=new THREE.Vector3(p[o],p[o+1],p[o+2]).sub(nearest.point);
+   const delta=bodyDelta.set(p[o],p[o+1],p[o+2]).sub(nearest.point);
    if(delta.lengthSq()<1e-16)delta.copy(normal);else delta.normalize().multiplyScalar(signed<0?-1:1);
    for(let k=0;k<3;k++){const next=nearest.point.getComponent(k)+THICK*delta.getComponent(k),shift=next-p[o+k];p[o+k]=next;old[o+k]+=shift*.78;}
    if(pass===0){collisionsLast++;contacting[i]=1;}
   }
  }
- // Barycentric face/edge contacts prevent a triangle from cutting through a
- // curved body even when its three particle vertices are outside the skin.
  for(let pass=0;pass<2;pass++)for(const sample of surfaceSamples){
-  const {ids,weights}=sample;if(!ids.some(i=>contacting[i]))continue;
-  const q=[0,1,2].map(k=>ids.reduce((sum,id,j)=>sum+p[id*3+k]*weights[j],0));
-  const signed=bodyDistance(...q);if(signed>=THICK*.6)continue;
-  const delta=new THREE.Vector3(...q).sub(nearest.point);
+  const {ids,weights}=sample;let touches=false;
+  for(let j=0;j<ids.length;j++)if(contacting[ids[j]]){touches=true;break;}
+  if(!touches)continue;
+  let qx=0,qy=0,qz=0;
+  for(let j=0;j<ids.length;j++){const i=ids[j]*3,w=weights[j];qx+=p[i]*w;qy+=p[i+1]*w;qz+=p[i+2]*w;}
+  const signed=bodyDistance(qx,qy,qz);if(signed>=THICK*.6)continue;
+  const delta=bodyDelta.set(qx,qy,qz).sub(nearest.point);
   if(delta.lengthSq()<1e-16)delta.copy(normal);else delta.normalize().multiplyScalar(signed<0?-1:1);
-  const correction=[0,1,2].map(k=>nearest.point.getComponent(k)+THICK*delta.getComponent(k)-q[k]);
-  const denom=ids.reduce((sum,id,j)=>sum+inv[id]*weights[j]**2,0);if(denom===0)continue;
-  ids.forEach((id,j)=>{const w=inv[id]*weights[j]/denom;for(let k=0;k<3;k++){const shift=w*correction[k];p[id*3+k]+=shift;old[id*3+k]+=shift*.78;}});
+  const cx=nearest.point.x+THICK*delta.x-qx,cy=nearest.point.y+THICK*delta.y-qy,cz=nearest.point.z+THICK*delta.z-qz;
+  let denom=0;for(let j=0;j<ids.length;j++)denom+=inv[ids[j]]*weights[j]**2;
+  if(denom===0)continue;
+  for(let j=0;j<ids.length;j++){
+   const id=ids[j],i=id*3,w=inv[id]*weights[j]/denom,sx=w*cx,sy=w*cy,sz=w*cz;
+   p[i]+=sx;old[i]+=sx*.78;p[i+1]+=sy;old[i+1]+=sy*.78;p[i+2]+=sz;old[i+2]+=sz*.78;
+  }
  }
 }
 function measureTriangle(t,positions=p){
@@ -193,6 +198,7 @@ const ramp=[new THREE.Color('#256bc2'),new THREE.Color('#29b9a5'),new THREE.Colo
 function colorAt(q){q=THREE.MathUtils.clamp(q,0,1)*5;const i=Math.min(4,Math.floor(q));return ramp[i].clone().lerp(ramp[i+1],q-i);}
 let currentMeasures=[];
 function updateGeometry(){
+ drawDirty=true;
  const arr=clothGeo.attributes.position.array,colors=clothGeo.attributes.color.array;currentMeasures=[];folds=foldFields(p,triangles,hinges);
  for(let t=0;t<triangles.length/3;t++){
   const m=measureTriangle(t);currentMeasures.push(m);let col=mode==='stress'?colorAt(m.stress/20):mode==='fold'?colorAt(Math.abs(folds.triangleAngle_deg[t])/60):mode==='curvature'?colorAt(Math.abs(folds.triangleCurvature_per_m[t])/100):colorAt((m.stretch-1)/.2);
@@ -208,8 +214,8 @@ function updateGeometry(){
  if(meshWire){scene.remove(meshWire);meshWire.geometry.dispose();meshWire.material.dispose();meshWire=null;}
  if(wireOn){meshWire=new THREE.LineSegments(new THREE.WireframeGeometry(clothGeo),new THREE.LineBasicMaterial({color:0x375847,transparent:true,opacity:.18}));scene.add(meshWire);}
 }
-let wireOn=false;
-function stats(){return {steps:stepCount,time_s:stepCount*DT,peakStretch:Math.max(...currentMeasures.map(m=>m.stretch)),peakStress_kPa:Math.max(...currentMeasures.map(m=>m.stress)),peakFoldAngle_deg:Math.max(...Array.from(folds?.angle_rad||[],x=>Math.abs(x)*180/Math.PI)),peakCurvature_per_m:Math.max(...Array.from(folds?.curvature_per_m||[],Math.abs)),wrinkleProxyTrianglePercent:100*Array.from(folds?.triangleAngle_deg||[]).filter(x=>Math.abs(x)>=15).length/(triangles.length/3),seamGap_mm:Math.max(...seamMaps.flatMap(s=>s.vertexPairs.map(([a,b])=>Math.hypot(...[0,1,2].map(k=>p[a*3+k]-p[b*3+k]))*1000))),waist_mm:waistLength*1000,contacts:collisionsLast,selfContacts:selfContactsLast,selfContactTiming_ms:selfContact?.lastProfile,stepTiming_ms:lastStepProfile,wasm:true,render:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles},solver_ms_p50:percentile(simMs,.5),solver_ms_p95:percentile(simMs,.95),frame_ms_p95:percentile(frames,.95),jsHeap_bytes:performance.memory?.usedJSHeapSize||null};}
+let wireOn=SAVED.wireOn||false;
+function stats(){return {steps:stepCount,time_s:stepCount*DT,peakStretch:Math.max(...currentMeasures.map(m=>m.stretch)),peakStress_kPa:Math.max(...currentMeasures.map(m=>m.stress)),peakFoldAngle_deg:Math.max(...Array.from(folds?.angle_rad||[],x=>Math.abs(x)*180/Math.PI)),peakCurvature_per_m:Math.max(...Array.from(folds?.curvature_per_m||[],Math.abs)),wrinkleProxyTrianglePercent:100*Array.from(folds?.triangleAngle_deg||[]).filter(x=>Math.abs(x)>=15).length/(triangles.length/3),seamGap_mm:Math.max(...seamMaps.flatMap(s=>s.vertexPairs.map(([a,b])=>Math.hypot(...[0,1,2].map(k=>p[a*3+k]-p[b*3+k]))*1000))),waist_mm:waistLength*1000,contacts:collisionsLast,selfContacts:selfContactsLast,selfContactTiming_ms:selfContact?.lastProfile,stepTiming_ms:lastStepProfile,renderedFrames:framesDrawn,render_submit_ms_p95:percentile(renderMs,.95),wasm:true,render:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles},solver_ms_p50:percentile(simMs,.5),solver_ms_p95:percentile(simMs,.95),frame_ms_p95:percentile(frames,.95),jsHeap_bytes:performance.memory?.usedJSHeapSize||null};}
 function percentile(arr,q){if(!arr.length)return 0;const a=[...arr].sort((a,b)=>a-b);return a[Math.min(a.length-1,Math.floor(a.length*q))];}
 function updateMetrics(){const s=stats();$('waistMetric').textContent=s.waist_mm.toFixed(1)+' mm';$('gapMetric').textContent=s.seamGap_mm.toFixed(3)+' mm';$('gapMetric').className='pass';$('strainMetric').textContent=(s.peakStretch*100).toFixed(1)+'%';$('stressMetric').textContent=s.peakStress_kPa.toFixed(2)+' kPa';$('foldMetric').textContent=s.peakFoldAngle_deg.toFixed(1)+'°';$('curvatureMetric').textContent=s.peakCurvature_per_m.toFixed(1)+' m⁻¹';$('wrinkleMetric').textContent=s.wrinkleProxyTrianglePercent.toFixed(1)+'% faces';$('time').textContent=s.time_s.toFixed(2)+' s';$('performance').textContent=`WASM ${s.solver_ms_p50.toFixed(1)} ms/step · ${s.render.triangles.toLocaleString()} tris · ${s.render.calls} draws`;
  let min=Infinity;for(let i=0;i<p.length;i+=3)min=Math.min(min,bodyDistance(p[i],p[i+1],p[i+2]));if(lastReport&&lastReport.stats.steps===stepCount)min=lastReport.collision.minClearance_mm/1000;$('collisionMetric').textContent=(min*1000).toFixed(2)+' mm';$('collisionMetric').className=min>=-.0005?'pass':'fail';
@@ -249,13 +255,13 @@ function verify(){running=false;syncRun();updateGeometry();const tp=topology(),c
  $('stepVerify').className='current';$('stepDrape').className='';$('reportSummary').textContent=`${lastReport.verdict} for current digital checks. ${s.steps} fixed steps, ${(s.time_s).toFixed(2)} seconds; ${col.samples.toLocaleString()} body samples.`;
  $('reportChecks').innerHTML=lastReport.checks.map(x=>`<div class="check-row"><span>${x.claim}</span><strong class="${x.verdict==='PASS'?'pass':'fail'}">${x.verdict}</strong></div>`).join('');updateMetrics();console.info('[ClothLab verification]',JSON.stringify(lastReport));return lastReport;
 }
-function project(){return {schema:'pattern-agent-cloth-lab-1',units:'metre',patternUnits:'mm',parameters:{slant_m:slant,hem_m:hem,circle_ratio:circleRatio,waist_m:waistLength,NC,NR,YWAIST},positions:Array.from(p),previous:Array.from(old),initialPositions:seed,inverseMass:Array.from(inv),triangles,materialCoordinates:uvs,panels:panels.map(x=>({...x,cutOutline:offsetPolygon(x.polygon,10),seamAllowance_mm:10})),seams:seamMaps,body:BODY,material:{...mat,calibrated:false},selfContact:{enabled:true,thickness_m:.003,method:'discrete vertex-triangle and edge-edge PBD contacts; no CCD'},freesewing:draft.profile,folding:{hinges,angle_rad:Array.from(folds.angle_rad),curvature_per_m:Array.from(folds.curvature_per_m),currentDualLength_m:Array.from(folds.currentDualLength_m),triangleAngle_deg:Array.from(folds.triangleAngle_deg),triangleCurvature_per_m:Array.from(folds.triangleCurvature_per_m),definition:'Signed oriented dihedral, flat=0; curvature=theta/current centroid-dual spacing; per-face maximum absolute over incident hinges',wrinkleProxy:{threshold_deg:15,definition:'Fraction of faces with |dihedral| >= 15 degrees; mesh-dependent geometric indicator, not permanent crease prediction'}},constraints:edgeMeta,triangleMeasures:currentMeasures,simulation:stats(),report:lastReport};}
+function project(){return {schema:'pattern-agent-cloth-lab-1',view:mode,wireOn,units:'metre',patternUnits:'mm',parameters:{slant_m:slant,hem_m:hem,circle_ratio:circleRatio,waist_m:waistLength,NC,NR,YWAIST},positions:Array.from(p),previous:Array.from(old),initialPositions:seed,inverseMass:Array.from(inv),triangles,materialCoordinates:uvs,panels:panels.map(x=>({...x,cutOutline:offsetPolygon(x.polygon,10),seamAllowance_mm:10})),seams:seamMaps,body:BODY,material:{...mat,calibrated:false},selfContact:{enabled:true,thickness_m:.003,method:'discrete vertex-triangle and edge-edge PBD contacts; no CCD'},freesewing:draft.profile,folding:{hinges,angle_rad:Array.from(folds.angle_rad),curvature_per_m:Array.from(folds.curvature_per_m),currentDualLength_m:Array.from(folds.currentDualLength_m),triangleAngle_deg:Array.from(folds.triangleAngle_deg),triangleCurvature_per_m:Array.from(folds.triangleCurvature_per_m),definition:'Signed oriented dihedral, flat=0; curvature=theta/current centroid-dual spacing; per-face maximum absolute over incident hinges',wrinkleProxy:{threshold_deg:15,definition:'Fraction of faces with |dihedral| >= 15 degrees; mesh-dependent geometric indicator, not permanent crease prediction'}},constraints:edgeMeta,triangleMeasures:currentMeasures,simulation:stats(),report:lastReport};}
 function save(name,data,type='application/json'){const url=URL.createObjectURL(new Blob([data],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('Saved '+name);}
 let toastTimer;function toast(text){$('toast').textContent=text;$('toast').style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').style.display='none',3000);}
 function exportOBJ(){let out='# Pattern Agent. Units: metres. MakeHuman CC0; garment retains rest UVs.\no MakeHuman\n';for(let i=0;i<BODY.vertices.length;i+=3)out+=`v ${BODY.vertices.slice(i,i+3).join(' ')}\n`;for(let i=0;i<BODY.indices.length;i+=3)out+=`f ${BODY.indices.slice(i,i+3).map(x=>x+1).join(' ')}\n`;out+='o Simulated_skirt\n';for(let i=0;i<p.length;i+=3)out+=`v ${Array.from(p.subarray(i,i+3)).join(' ')}\n`;for(let i=0;i<uvs.length;i+=2)out+=`vt ${uvs[i]} ${uvs[i+1]}\n`;const off=BODY.vertices.length/3;for(let i=0;i<triangles.length;i+=3)out+=`f ${[0,1,2].map(k=>`${triangles[i+k]+off+1}/${i+k+1}`).join(' ')}\n`;return out;}
 function dxf(){let out='0\nSECTION\n2\nHEADER\n9\n$INSUNITS\n70\n4\n0\nENDSEC\n0\nSECTION\n2\nENTITIES\n';const poly=(pts,layer,closed=true)=>{out+=`0\nLWPOLYLINE\n8\n${layer}\n90\n${pts.length}\n70\n${closed?1:0}\n`;for(const [x,y]of pts)out+=`10\n${x.toFixed(6)}\n20\n${(-y).toFixed(6)}\n`;};const L=patternLayout();panels.forEach((p,k)=>{const translate=q=>[q[0]+30-L.minX+k*L.w,q[1]+30-L.minY];poly(p.polygon.map(translate),'P'+(k+1)+'_STITCH');poly(offsetPolygon(p.polygon,10).map(translate),'P'+(k+1)+'_CUT');poly([[0,100],[0,300]].map(translate),'P'+(k+1)+'_GRAIN',false);for(const side of[0,PER])for(const f of[.25,.5,.75]){const q=flat(NR*f,side).map(x=>x*1000);poly([[q[0]-4,q[1]],[q[0]+4,q[1]]].map(translate),'NOTCH',false);}});poly([[0,0],[100,0],[100,-100],[0,-100]],'CALIBRATION_100MM');return out+'0\nENDSEC\n0\nEOF\n';}
 function printA4(){const L=patternLayout(),cols=Math.ceil(L.width/190),rows=Math.ceil(L.height/277),inner=patternInner();let pages='';for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)pages+=`<section><div>Pattern Agent · tile ${r+1}/${rows} × ${c+1}/${cols} · 100%, headers off</div><svg xmlns="http://www.w3.org/2000/svg" width="190mm" height="277mm" viewBox="${c*190} ${r*277} 190 277">${inner}</svg><span>${r+1}-${c+1}</span></section>`;const win=window.open('','_blank');if(!win){toast('Allow this print window, then try again.');return;}win.document.write(`<!doctype html><html><head><title>Pattern Agent — A4 pattern, 100% scale</title><style>@page{size:A4;margin:10mm}*{box-sizing:border-box}body{margin:0;font:8px sans-serif}section{width:190mm;height:277mm;break-after:page;position:relative;overflow:hidden}section:last-child{break-after:auto}section>div{position:absolute;top:0;left:0;background:white}section>span{position:absolute;right:0;bottom:0}svg{display:block}@media screen{body{background:#ddd}section{background:white;margin:20px auto;outline:1px solid #aaa}}</style></head><body>${pages}</body></html>`);win.document.close();win.focus();toast(`${cols*rows} A4 tiles prepared. Print at 100% scale.`);}
-function syncRun(){$('run').textContent=running?'Pause':'Run drape';$('status').textContent=running?'SIMULATING':lastReport?.verdict||'PAUSED';}
+function syncRun(){updateMetrics();$('run').textContent=running?'Pause':'Run drape';$('status').textContent=running?'SIMULATING':lastReport?.verdict||'PAUSED';}
 document.querySelectorAll('[data-view]').forEach(el=>el.onclick=()=>{selectedSeam=-1;setView(el.dataset.view);drawPatterns();});
 $('run').onclick=()=>{running=!running;lastFrame=performance.now();syncRun();};
 $('reset').onclick=()=>{running=false;makePattern();syncRun();};
@@ -267,16 +273,16 @@ $('reportExport').onclick=()=>save('cloth-lab-verification.json',JSON.stringify(
 $('nativeExport').onclick=()=>save('freesewing-sandy-native.svg',draft.nativeSVG,'image/svg+xml');
 $('svgExport').onclick=()=>save('four-panel-skirt-mm.svg',patternSVG(),'image/svg+xml');$('dxfExport').onclick=()=>save('four-panel-skirt-mm.dxf',dxf(),'application/dxf');$('printExport').onclick=printA4;
 $('projectExport').onclick=()=>save('cloth-lab-simulation.json',JSON.stringify(project()));$('download3d').onclick=()=>save('makehuman-and-simulated-skirt.obj',exportOBJ(),'text/plain');
-$('saveHtml').onclick=()=>{const doc=document.documentElement.cloneNode(true);doc.querySelector('#savedProject').textContent=JSON.stringify({parameters:{slant_m:slant,hem_m:hem,circle_ratio:circleRatio},materialKey:$('material').value,wind,steps:stepCount,positions:Array.from(p),previous:Array.from(old)});doc.querySelectorAll('dialog').forEach(x=>x.removeAttribute('open'));doc.querySelector('#boot').style.display='grid';doc.querySelector('#toast').style.display='none';save('pattern-agent-freesewing-cloth-lab.html','<!doctype html>\n'+doc.outerHTML,'text/html');};
+$('saveHtml').onclick=()=>{const doc=document.documentElement.cloneNode(true);doc.querySelector('#savedProject').textContent=JSON.stringify({parameters:{slant_m:slant,hem_m:hem,circle_ratio:circleRatio},materialKey:$('material').value,wind,view:mode,wireOn,steps:stepCount,positions:Array.from(p),previous:Array.from(old)});doc.querySelectorAll('dialog').forEach(x=>x.removeAttribute('open'));doc.querySelector('#boot').style.display='grid';doc.querySelector('#toast').style.display='none';save('pattern-agent-freesewing-cloth-lab.html','<!doctype html>\n'+doc.outerHTML,'text/html');};
 for(const id of ['front','side','back'])$(id).onclick=()=>{const d=innerWidth<700?4.6:3.5;camera.position.set(id==='side'?d:0,1.02,id==='front'?d:id==='back'?-d:.055);controls.target.set(0,.91,.055);controls.update();};
 $('wire').onclick=()=>{wireOn=!wireOn;$('wire').classList.toggle('primary',wireOn);updateGeometry();};
 const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let pointerDown;
 renderer.domElement.addEventListener('pointerdown',e=>pointerDown=[e.clientX,e.clientY]);renderer.domElement.addEventListener('pointerup',e=>{if(!pointerDown||Math.hypot(e.clientX-pointerDown[0],e.clientY-pointerDown[1])>4)return;const r=renderer.domElement.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObject(cloth);if(hits.length){const m=currentMeasures[hits[0].faceIndex];$('pick').textContent=`Triangle ${hits[0].faceIndex} · ${(m.stretch*100).toFixed(2)}% · ${m.stress.toFixed(2)} kPa (est.) · θ ${folds.triangleAngle_deg[hits[0].faceIndex].toFixed(1)}° · κ ${folds.triangleCurvature_per_m[hits[0].faceIndex].toFixed(1)} m⁻¹`;}});
-new ResizeObserver(()=>{const narrow=innerWidth<700;if(narrow!==narrowFrame){narrowFrame=narrow;camera.position.set(1.65,1.30,narrow?4.4:3.0);controls.target.set(0,.91,.055);controls.update();}const r=renderer.domElement.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}).observe(renderer.domElement.parentElement);
+new ResizeObserver(()=>{const narrow=innerWidth<700;if(narrow!==narrowFrame){narrowFrame=narrow;camera.position.set(1.65,1.30,narrow?4.4:3.0);controls.target.set(0,.91,.055);controls.update();}drawDirty=true;const r=renderer.domElement.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}).observe(renderer.domElement.parentElement);
 $('length').value=slant*1000;$('hem').value=circleRatio*100;$('material').value=SAVED.materialKey||'cotton';$('wind').value=wind;$('windValue').textContent=wind.toFixed(1)+' m/s²';clothMat.color.setHex(mat.color);
-makePattern();if(SAVED.positions?.length===p.length){p.set(SAVED.positions);old.set(SAVED.previous||p);stepCount=SAVED.steps||0;updateGeometry();updateMetrics();}$('boot').style.display='none';
+makePattern();if(SAVED.positions?.length===p.length){p.set(SAVED.positions);old.set(SAVED.previous||p);stepCount=SAVED.steps||0;updateGeometry();updateMetrics();}setView(mode);$('wire').classList.toggle('primary',wireOn);$('boot').style.display='none';
 let tick=0,accumulator=0;
-function animate(now){requestAnimationFrame(animate);const rawElapsed=(now-lastFrame)/1000,elapsed=Math.min(.05,rawElapsed);lastFrame=now;frames.push(rawElapsed*1000);if(frames.length>240)frames.shift();if(running){accumulator+=elapsed;let n=0;while(accumulator>=DT&&n<4){substep();accumulator-=DT;n++;}if(n===4)accumulator=0;updateGeometry();}controls.update();const start=performance.now();renderer.render(scene,camera);renderMs.push(performance.now()-start);if(renderMs.length>240)renderMs.shift();if(tick++%20===0)updateMetrics();}
+function animate(now){requestAnimationFrame(animate);const rawElapsed=(now-lastFrame)/1000,elapsed=Math.min(.05,rawElapsed);lastFrame=now;frames.push(rawElapsed*1000);if(frames.length>240)frames.shift();if(running){accumulator+=elapsed;let n=0;while(accumulator>=DT&&n<4){substep();accumulator-=DT;n++;}if(n===4)accumulator=0;updateGeometry();}controls.update();if(drawDirty){const start=performance.now();renderer.render(scene,camera);framesDrawn++;drawDirty=false;renderMs.push(performance.now()-start);if(renderMs.length>240)renderMs.shift();}if(running&&tick++%20===0)updateMetrics();}
 requestAnimationFrame(animate);
-window.clothLab={ready:true,version:'2.0.0',nativeSVG:()=>draft.nativeSVG,stats,project,verify,patternSVG,dxf,exportOBJ,deformation,bodyDistance,numericControls,setView,reset:()=>{running=false;makePattern();syncRun();},step:n=>{running=false;for(let i=0;i<n;i++)substep();updateGeometry();updateMetrics();syncRun();return stats();},snapshot:()=>({positions:Array.from(p),...stats()}),camera:()=>({position:camera.position.toArray(),target:controls.target.toArray()}),negativeControl:(type)=>{if(type==='seam'){const s=structuredClone(seamMaps);s[0].lengthB_mm+=10;return {detected:s[0].lengthA_mm!==s[0].lengthB_mm};}if(type==='body'){return {inside:bodyDistance(0,YWAIST,.05)<0};}if(type==='strain'){return {detected:Math.abs(deformation([1.1,0,0],[0,1,0],80000,.3).stretch-1)>.05};}}};
+window.clothLab={ready:true,version:'2.1.0',nativeSVG:()=>draft.nativeSVG,stats,project,verify,patternSVG,dxf,exportOBJ,deformation,bodyDistance,numericControls,setView,reset:()=>{running=false;makePattern();syncRun();},step:n=>{running=false;for(let i=0;i<n;i++)substep();updateGeometry();updateMetrics();syncRun();return stats();},snapshot:()=>({positions:Array.from(p),...stats()}),camera:()=>({position:camera.position.toArray(),target:controls.target.toArray()}),negativeControl:(type)=>{if(type==='seam'){const s=structuredClone(seamMaps);s[0].lengthB_mm+=10;return {detected:s[0].lengthA_mm!==s[0].lengthB_mm};}if(type==='body'){return {inside:bodyDistance(0,YWAIST,.05)<0};}if(type==='strain'){return {detected:Math.abs(deformation([1.1,0,0],[0,1,0],80000,.3).stretch-1)>.05};}}};
 console.info('[ClothLab ready]',JSON.stringify({body:BODY.provenance,wasmBytes:WASM.length,vertices:p.length/3,constraints:edgeMeta.length,renderer:renderer.getContext().getParameter(renderer.getContext().VERSION)}));

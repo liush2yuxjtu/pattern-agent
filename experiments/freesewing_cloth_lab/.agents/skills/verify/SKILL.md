@@ -3,16 +3,25 @@ name: verify-freesewing-cloth
 description: Verify the actual upstream draft, cloth/body contacts, material and wrinkle fields, real GPU colors, downloads and offline state before direct publication.
 ---
 
-Work from repository root. Follow root AGENTS.md and `.agents/skills/verify/`.
+Work from repository root. Use this package’s `run_check.py` wrapper for the
+Python verifiers so browser concurrency matches the observed cgroup CPU quota.
+Preserve its resource metadata; do not change test thresholds. Follow root AGENTS.md and `.agents/skills/verify/`.
 Keep previous HTMLs, failure receipts and thresholds. Add this new version;
 do not replace the earlier self-contact page. No CI or PR.
 
 1. Record base HEAD, package lock, source and final HTML SHA-256. Run the build
-   and both Node tests documented in this package's README. Require actual
+   and all Node tests documented in this package's README. Require actual
    upstream Sandy dimension changes and flat/±60°/rotation/scale hinge controls,
    plus the existing proximity/swept/edge/edge and complete broad-phase controls.
+   Preserve the first public performance FAIL and rejected-cache attempts. Run
+   `verify_allocation_ab.py` against the actual application-commit 2.0 HTML;
+   require exact current/previous/material coordinates at 120 steps. Also run
+   `test_prepared_solver.mjs` after building; five coupled frames must match
+   the original kernel bit for bit, and the dynamics probe must exercise the
+   actual prepared export. No
+   triangle-query skipping or mesh-resolution reduction is active in 2.1.
 2. Serve the exact final HTML on 127.0.0.1:8771. Run `verify_browser.py` and
-   `independent.py`. Require all 44 UI/download/mobile/offline checks, exact next
+   `independent.py`. Require all 45 UI/download/mobile/offline checks, exact next
    step, no external requests or console errors, actual A4 calibration and
    unchanged p95 solver budget <100 ms. The reopener independently re-drafts
    pinned Sandy without importing the app adapter. Every material coordinate,

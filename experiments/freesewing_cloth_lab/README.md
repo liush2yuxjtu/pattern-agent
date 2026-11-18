@@ -49,6 +49,7 @@ npm ci --ignore-scripts --prefix experiments/freesewing_cloth_lab
 node experiments/freesewing_cloth_lab/test_pattern_fold.mjs
 node experiments/freesewing_cloth_lab/test_self_contact.mjs
 node experiments/freesewing_cloth_lab/build.mjs
+node experiments/freesewing_cloth_lab/test_prepared_solver.mjs
 python -m http.server 8771 --bind 127.0.0.1 --directory web
 ```
 
@@ -61,15 +62,15 @@ NumPy, SciPy, PyMuPDF and Playwright; system Chromium is used. The project geome
 oracle supplies independent triangle intersections and solid-angle membership.
 
 ```sh
-python experiments/freesewing_cloth_lab/verify_browser.py \
+python experiments/freesewing_cloth_lab/run_check.py browser \
   --url http://127.0.0.1:8771/freesewing-cloth-lab.html --out work/fs-browser
-python experiments/freesewing_cloth_lab/independent.py \
+python experiments/freesewing_cloth_lab/run_check.py independent \
   work/fs-browser/simulation.json --repo . --out work/fs-browser/independent.json
-python experiments/freesewing_cloth_lab/verify_heatmap_gpu.py \
+python experiments/freesewing_cloth_lab/run_check.py gpu \
   --html work/fs-browser/downloaded.html --output work/fs-heatmap
-python experiments/freesewing_cloth_lab/verify_dynamics.py \
+python experiments/freesewing_cloth_lab/run_check.py dynamics \
   --url http://127.0.0.1:8771/freesewing-cloth-lab.html --output work/fs-dynamics
-python experiments/freesewing_cloth_lab/verify_variants.py \
+python experiments/freesewing_cloth_lab/run_check.py variant \
   --url http://127.0.0.1:8771/freesewing-cloth-lab.html --output work/fs-variant
 ```
 
@@ -96,3 +97,47 @@ Libraries are bundled at build time. This is not a zero-third-party-code claim:
 FreeSewing, Three.js, three-mesh-bvh and their runtime dependencies are third-party
 open-source code with embedded license notices. No third-party service or MCP
 is required to run the delivered HTML.
+
+## Performance recovery (2.1)
+
+The first public 2.0 run failed the unchanged 100 ms p95 solver gate despite
+passing functional checks. Its raw failure is preserved. Two query-cache
+prototypes were rejected: geometric exclusion changed the trajectory and caused
+seven wind self-intersections; the stricter plane certificate preserved the
+trajectory but its construction cost erased the performance benefit. Neither
+cache is active in the delivered solver. Their tests, source and states are
+archived with the performance-recovery evidence.
+
+Version 2.1 reuses the per-step history, contact masks and vectors, and evaluates
+the same barycentric sums/projections without temporary arrays or callbacks.
+All body queries, margins, constraint iterations and grid dimensions are kept.
+An actual baseline/candidate A/B requires exact current/previous/material
+coordinate equality; the full geometry matrix is rerun on the final artifact.
+
+Idle scenes redraw only when geometry, material, camera or viewport changes.
+`renderedFrames` counts actual submitted draws, `render_submit_ms_p95` measures
+CPU submission time, and `frame_ms_p95` records rAF callback intervals. These
+are not interchangeable with hardware FPS or GPU frame time. Saved HTML now
+restores its selected heatmap and wire view as well as its physical state.
+
+To reproduce the A/B, save the actual 2.0 HTML from application commit
+`94d41253442400afb6d8a0bcee4c8a45f5d7e62b`, then run:
+
+```sh
+python experiments/freesewing_cloth_lab/verify_allocation_ab.py \
+  --url http://127.0.0.1:8771/freesewing-cloth-lab.html \
+  --baseline-html work/baseline-2.0.html --output work/allocation-ab
+```
+
+The fixed-timestep WASM kernel additionally prepares constant addresses, masses,
+compliance and denominators once per draft. Its float64 iteration preserves the
+original operation order. A five-frame coupled unequal-mass/compliance test
+requires bit-identical positions/previous coordinates against the original
+WASM export; the actual prepared export is also probed by the dynamics verifier.
+
+Use `run_check.py` for repeatable headless QA. On the observed host, five CPUs
+were visible while the cgroup quota was four. The wrapper limits only its own
+process and children to the allocated CPU count; it grants no extra resources.
+It logs the exact affinity/quota and leaves all geometry, render quality and
+performance gates unchanged. Report these software-rendering conditions with
+results; they are not a hardware frame-rate measurement.

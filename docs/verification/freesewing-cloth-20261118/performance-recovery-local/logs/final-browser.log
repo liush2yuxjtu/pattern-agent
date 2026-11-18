@@ -1,0 +1,127 @@
+{"verificationEnvironment": {"reason": "Match software-rendering concurrency to the actual container CPU allocation", "cpuMax": ["400000", "100000"], "visibleCpuCount": 5, "availableAffinityCount": 5, "selectedCpuCount": 4, "selectedCpuIds": [0, 1, 2, 3]}}
+127.0.0.1 - - [18/Nov/2026 12:33:34] "GET /downloaded.html HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 12:33:39] "GET /edited.html HTTP/1.1" 200 -
+{
+  "verdict": "PASS",
+  "url": "http://127.0.0.1:8771/freesewing-cloth-lab.html",
+  "html_sha256": "a2caea0725050369387d639e1a8510bcb9e8674740c00bfd428e886d353e1dfc",
+  "browser": "Chromium / SwiftShader; Playwright explicitly requested; Browser plugin absent",
+  "viewports": [
+    "1440x1100",
+    "390x844"
+  ],
+  "checks": {
+    "identity": true,
+    "meaningful_render": true,
+    "no_overlay": true,
+    "real_run_pause": true,
+    "verification_dialog": true,
+    "view_strain": true,
+    "view_stress": true,
+    "view_seams": true,
+    "view_contact": true,
+    "view_fold": true,
+    "view_curvature": true,
+    "trace_seam": true,
+    "camera_side": true,
+    "camera_back": true,
+    "camera_front": true,
+    "orbit_pointer": true,
+    "download_pattern.svg": true,
+    "download_freesewing-native.svg": true,
+    "download_pattern.dxf": true,
+    "download_garment.obj": true,
+    "download_simulation.json": true,
+    "download_downloaded.html": true,
+    "native_freesewing_svg": true,
+    "svg_mm": true,
+    "svg_100mm_calibration": true,
+    "dxf_mm": true,
+    "obj_geometry": true,
+    "a4_tiles": true,
+    "pdf_100mm_line": true,
+    "length_input": true,
+    "freesewing_ratio_input": true,
+    "material_input": true,
+    "reset": true,
+    "offline_single_file": true,
+    "offline_saved_view": true,
+    "offline_state_exact": true,
+    "offline_next_step_exact": true,
+    "offline_edited_design": true,
+    "mobile_no_overflow": true,
+    "mobile_drape": true,
+    "research_dialog": true,
+    "console_errors": true,
+    "network": true,
+    "solver_budget": true,
+    "scene_budget": true
+  },
+  "performance": {
+    "steps": 360,
+    "time_s": 3,
+    "peakStretch": 1.8945071434708856,
+    "peakStress_kPa": 124.921848428569,
+    "peakFoldAngle_deg": 136.65375154559536,
+    "peakCurvature_per_m": 542.6379039173743,
+    "wrinkleProxyTrianglePercent": 41.127232142857146,
+    "seamGap_mm": 0,
+    "waist_mm": 736.3414168681662,
+    "contacts": 252,
+    "selfContacts": 13,
+    "selfContactTiming_ms": {
+      "pointMs": 7.399999998509884,
+      "edgeMs": 12.299999997019768
+    },
+    "stepTiming_ms": {
+      "elasticMs": 34.399999998509884,
+      "bodyMs": 28,
+      "selfMs": 19.799999997019768,
+      "recheckMs": 0.9000000059604645
+    },
+    "renderedFrames": 15,
+    "render_submit_ms_p95": 114.79999999701977,
+    "wasm": true,
+    "render": {
+      "calls": 4,
+      "triangles": 30726
+    },
+    "solver_ms_p50": 74.10000000149012,
+    "solver_ms_p95": 91.19999999552965,
+    "frame_ms_p95": 516.5999999999999,
+    "jsHeap_bytes": 20489847
+  },
+  "printing": {
+    "pages": 42,
+    "format": "A4, 210 x 297 mm",
+    "calibration100mm": true,
+    "page_format_tolerance_mm": 0.22,
+    "calibration_line_tolerance_mm": 0.053
+  },
+  "warnings": [
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x2634001ec200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x2634001ec200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x2634001ec200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x2634001ec200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    }
+  ],
+  "limitations": [
+    "Software rendering does not establish real-device 60 fps",
+    "Managed Chrome blocks file://; saved HTML tested over document-only local HTTP with network disabled after load",
+    "Stress uncalibrated; fit NOT_VALIDATED",
+    "Discrete self-contact enabled; independent geometry checked separately; universal CCD not certified",
+    "FreeSewing Sandy skirt shell; native waistband not simulated",
+    "Fold/curvature are geometric wrinkle proxies; permanent crease/material calibration NOT_RUN"
+  ]
+}
