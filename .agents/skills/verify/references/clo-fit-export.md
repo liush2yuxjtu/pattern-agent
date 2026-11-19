@@ -37,7 +37,7 @@ readback and separate visual verification scope.
 
 Register this checkout in an isolated Codex profile, install
 `clo-local@pattern-agent` and `clo-rust-boat@pattern-agent`, and confirm the
-four namespaced skills via app-server `skills/list`. Check the portable
+enabled namespaced skills via app-server `skills/list`. Check the portable
 archives against the installed files and verify the root manifest in each.
 
 For CLO Local, run the installed exporter on saved CLO inputs with
@@ -54,3 +54,15 @@ confirm that altered UVs or a mismatched digest cause rejection. A native
 local build can check the analysis and report path when the authorized Boat
 sandbox is unavailable. Record the actual runtime and scope.
 [Two-plugin verification](../../../../docs/verification/clo-plugin-pair-20261119.md).
+
+## Boat batch entry points
+
+Run the installed `run_boat.py` on an authorized running sandbox with
+`seam-walk`, `review` and `fit-export`. Check the returned architecture
+and executable digest. Compare the reopened seam audit, constraints and
+strict connectivity against the input. For a full fit-export batch, match
+the four map categories for every pose and verify the native PNGs against
+their sources byte-for-byte. Probe a missing native capture with the
+strict and permissive modes. Keep active Boat verification separate from
+local Linux checks of bundled binaries.
+[Boat runtime and mirrored entry points](../../../../docs/verification/clo-rust-boat-mirror-20261119.md).

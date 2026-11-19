@@ -3,12 +3,11 @@
 import argparse
 import base64
 import csv
-import hashlib
 from html import escape
 import io
 import json
 from pathlib import Path
-import re
+import shutil
 import subprocess
 
 import matplotlib
@@ -17,6 +16,9 @@ import matplotlib.pyplot as plt
 from matplotlib.collections import PolyCollection
 from matplotlib.colors import Normalize
 import numpy as np
+from PIL import Image
+
+from batch_io import NATIVE_MAPS, native_maps, read_manifest, review_seams, run_native, seam_sources
 
 
 def read_vtk(path):
@@ -67,7 +69,25 @@ def figure(data, caption, media="image/png"):
     return f'<figure><img src="data:{media};base64,{payload}" alt="{label}"><figcaption>{label}</figcaption></figure>'
 
 
-def write_report(output, inputs, manifest, records, draft, seams):
+def validate_native_maps(inputs, poses, strict):
+    maps = {}
+    for pose in poses:
+        pairs = {}
+        for kind, sources in native_maps(inputs, pose).items():
+            if all(path.is_file() for path in sources):
+                for path in sources:
+                    with Image.open(path) as image:
+                        if image.format != "PNG":
+                            raise ValueError(f"需要 CLO 原生 PNG：{path.name}")
+                        image.load()
+                pairs[kind] = sources
+            elif strict:
+                raise ValueError(f'{pose["label"]} 缺少{NATIVE_MAPS[kind][0]}正面或背面')
+        maps[pose["id"]] = pairs
+    return maps
+
+
+def write_report(output, inputs, manifest, records, draft, seams, maps, runtime_label):
     all_triangles = np.concatenate([item[2].reshape(-1, 3) for item in records])
     lo, hi = all_triangles.min(axis=0), all_triangles.max(axis=0)
     margin = (hi[1] - lo[1]) * .04
@@ -90,19 +110,47 @@ def write_report(output, inputs, manifest, records, draft, seams):
                      '<p>两组公开量体各出 20 种裁片模板。上游出样警告保存在工程资料中。</p></section>'
                      if patterns else "")
     parts = []
-    ranges = (("engineering_strain_pct", -3, 25, "viridis", "主应变（%）· 正面与背面", front_back),
-              ("fold_angle_deg", 0, 45, "magma", "折角（度）· 正面、背面、两侧", four))
+    ranges = (("strain", "engineering_strain_pct", -3, 25, "viridis",
+               "应变图 · 主应变（%）· 正面与背面", front_back),
+              ("wrinkles", "fold_angle_deg", 0, 45, "magma",
+               "褶皱图 · 折角（度）· 正面、背面、两侧", four))
+    status = []
     for pose, stats, triangles, fields in records:
+        folder = output / "maps" / pose["id"]
+        folder.mkdir(parents=True)
         drawings = []
-        for field, low, high, palette, caption, views in ranges:
+        pose_maps = {}
+        for kind, (caption, _) in NATIVE_MAPS.items():
+            sources = maps[pose["id"]].get(kind)
+            if sources:
+                drawings.extend(figure(source.read_bytes(), f"{caption} · CLO 存档 · {side}")
+                                for source, side in zip(sources, ("正面", "背面")))
+                for source in sources:
+                    shutil.copyfile(source, folder / source.name)
+                pose_maps[kind] = {"status": "complete", "source": "CLO native PNG",
+                                   "files": [f"maps/{pose['id']}/{source.name}" for source in sources]}
+            else:
+                pose_maps[kind] = {"status": "missing", "source": "CLO native PNG", "files": []}
+        for kind, field, low, high, palette, caption, views in ranges:
             norm, cmap = Normalize(low, high, clip=True), matplotlib.colormaps[palette]
             colors = cmap(norm(fields[field]))
             if field == "engineering_strain_pct":
                 colors[fields["strain_is_valid"] == 0] = (.7, .74, .78, 1)
-            drawings.append(figure(plot(triangles, views, colors, limits, (norm, cmap)), caption))
+            png = plot(triangles, views, colors, limits, (norm, cmap))
+            filename = kind + ".png"
+            (folder / filename).write_bytes(png)
+            pose_maps[kind] = {"status": "complete", "source": "Rust metric pose mesh",
+                               "files": [f"maps/{pose['id']}/{filename}"]}
+            drawings.append(figure(png, caption))
+        missing = "、".join(NATIVE_MAPS[kind][0] for kind, row in pose_maps.items()
+                           if row["status"] == "missing")
+        if missing:
+            drawings.append(f"<p>本姿势缺少 CLO 原生存档：{missing}。</p>")
+        status.append({"id": pose["id"], "label": pose["label"], "maps": pose_maps})
         parts.append(f'<section><h2>{escape(pose["label"])}</h2><p>{len(stats)} 片裁片，'
                      f'{len(triangles):,} 个三角面。色标在各姿势间固定。</p>'
                      f'{"".join(drawings)}</section>')
+    (output / "map-status.json").write_text(json.dumps(status, ensure_ascii=False, indent=2) + "\n")
     seam_text = "".join(f'<li>{escape(item)}</li>' for item in seams)
     html = f"""<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -114,8 +162,8 @@ figure{{margin:0 0 10px;background:#fff;border:1px solid #d4ded7;border-radius:8
 figure img{{width:100%;display:block}}figcaption{{padding:8px 12px}}.pair{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
 .pair img{{height:clamp(210px,42vw,490px);object-fit:contain}}@media(max-width:560px){{.pair img{{height:210px}}figcaption{{font-size:14px}}}}
 </style></head><body><main><header><h1>CLO_RUST 多姿势评估</h1>
-<p>Boat Linux · {escape(manifest["mesh_source"])}</p>
-<p>基于已保存姿势网格复算几何。动态试穿、合体分类、材料应力与压力处于未生成状态。</p></header>
+<p>{escape(runtime_label)} · {escape(manifest["mesh_source"])}</p>
+<p>应变与折角来自 Rust 几何复算。试穿分类与应力图来自匹配的 CLO 存档。动态模拟与压力读数需要另外采集。</p></header>
 <section><h2>正面外观对照</h2><div class="pair">{contrast}</div>
 <p>服装外观图以输入网格正投影生成。不同视角或扣合状态需要回查原工程。</p></section>
 {draft_section}{''.join(parts)}
@@ -127,34 +175,35 @@ figure img{{width:100%;display:block}}figcaption{{padding:8px 12px}}.pair{{displ
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("project", type=Path)
-    parser.add_argument("input", type=Path)
-    parser.add_argument("output", type=Path)
+    parser.add_argument("paths", type=Path, nargs="+", metavar="PATH")
+    parser.add_argument("--native", type=Path)
+    parser.add_argument("--runtime-label", default="Rust 几何复核")
+    parser.add_argument("--require-all-maps", action="store_true")
     parser.add_argument("--carlton", action="store_true")
     args = parser.parse_args()
-    inputs, output = args.input.resolve(), args.output.resolve()
-    native = args.project.resolve() / "target/release/pattern-native"
-    manifest = json.loads((inputs / "manifest.json").read_text())
-    if manifest["units"] != "mm" or not manifest["poses"]:
-        parser.error("需要至少一组毫米制姿势")
-    for pose in manifest["poses"]:
-        if not re.fullmatch(r"pose-[0-9]{2,4}", pose["id"]):
-            parser.error("无效姿势文件名")
-        path = inputs / (pose["id"]+".glb")
-        if hashlib.sha256(path.read_bytes()).hexdigest() != pose["input_sha256"]:
-            parser.error(f'姿势输入摘要不一致：{pose["label"]}')
+    if len(args.paths) == 3:
+        project_dir, inputs, output = (x.resolve() for x in args.paths)
+    elif len(args.paths) == 2 and args.native and not args.carlton:
+        inputs, output = (x.resolve() for x in args.paths)
+        project_dir = None
+    else:
+        parser.error("使用 PROJECT INPUT OUTPUT 或 INPUT OUTPUT --native PATH")
+    native = args.native or (project_dir / "target/release/pattern-native")
+    try:
+        manifest = read_manifest(inputs)
+        maps = validate_native_maps(inputs, manifest["poses"], args.require_all_maps)
+    except (OSError, ValueError, KeyError) as exc:
+        parser.error(str(exc))
     output.mkdir(parents=True)
     (output / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
 
     def run(command, name):
-        result = subprocess.check_output([native, *command])
-        (output / (name+".json")).write_bytes(result)
-        return json.loads(result)
+        return run_native(native, output, command, name)
 
     draft = []
     seam_notes = []
     if args.carlton:
-        js = args.project.resolve() / "vendor/draft-carlton.mjs"
+        js = project_dir / "vendor/draft-carlton.mjs"
         for mode, size in (("baseline", 1000), ("chest-plus-40", 1040)):
             source, svg = output/f"draft-{size}.json", output/f"draft-{size}.svg"
             subprocess.run(["node", js, mode, source, svg], check=True)
@@ -165,16 +214,8 @@ def main():
                 raise ValueError(f"Carlton {size} 毫米纸样重开后审计不一致")
             draft.append((f"胸围 {size} 毫米 · Carlton", svg))
         seam_notes.append("两种尺码分别出样和重开，均通过 Rust 工程审计。")
-    sewing = inputs / "seams"
-    if sewing.is_dir():
-        project = output/"sewn.pattern.json"
-        audit = run(["clo-import", sewing/"edges.json", sewing/"edge-map.json",
-                     sewing/"seams.json", project], "seam-audit")
-        count = len(run(["constraints", project], "constraints"))
-        net = run(["connectivity", sewing/"connectivity.json", "--strict"], "connectivity")
-        seam_notes.append(f'{audit["declared_seams"]} 组外层缝合生成 {count:,} 对约束。'
-                          f'已有工程 {net["pieces"]} 片、{net["seam_groups"]} 组连成 '
-                          f'{len(net["components"])} 个组件。')
+    if seam_files := seam_sources(inputs):
+        seam_notes.extend(review_seams(native, seam_files, output))
     records = []
     rows = []
     for pose in manifest["poses"]:
@@ -190,7 +231,8 @@ def main():
         writer = csv.DictWriter(file, fieldnames=rows[0])
         writer.writeheader()
         writer.writerows(rows)
-    write_report(output, inputs, manifest, records, draft, seam_notes or ["没有提供既有缝合定义。"])
+    write_report(output, inputs, manifest, records, draft,
+                 seam_notes or ["没有提供既有缝合定义。"], maps, args.runtime_label)
     print(f"完成 {len(records)} 个姿势、{len(rows)} 条裁片统计")
 
 
