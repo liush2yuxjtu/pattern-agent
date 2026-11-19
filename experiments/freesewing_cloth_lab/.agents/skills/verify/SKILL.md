@@ -96,3 +96,11 @@ native GPU validation errors at zero and reject blank mobile/canvas images.
 GPU uploaded body data must equal the collision asset despite different index
 representations. The immutable normal cache and math isolation must preserve
 positions, previous positions, UV, mass and pressure at every archived state.
+
+
+For 2.5 use `web/freesewing-responsive.html`. Run `node test_body_query.mjs`
+after the build. Run `run_check.py responsiveness` with the preserved 2.4 HTML
+and the exact 2.5 candidate. Require twice-as-fast readiness, playback long-task
+p95 at most half the baseline, a real run and pause, coverage, no browser errors,
+and a matching fresh 120-step replay. Preserve the previous physics budgets
+and checks, including the longer contact-support simulations.

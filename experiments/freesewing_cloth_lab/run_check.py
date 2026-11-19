@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 import sys
 
-checks = {'browser': 'verify_browser.py', 'dynamics': 'verify_dynamics.py',
+checks = {'responsiveness': 'verify_responsiveness.py', 'browser': 'verify_browser.py', 'dynamics': 'verify_dynamics.py',
           'independent': 'independent.py', 'gpu': 'verify_heatmap_gpu.py',
           'webgpu':'verify_webgpu.py', 'support':'verify_free_waist.py', 'variant': 'verify_variants.py', 'ab': 'verify_allocation_ab.py'}
 if len(sys.argv) < 2 or sys.argv[1] not in checks:

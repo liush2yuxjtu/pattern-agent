@@ -130,7 +130,7 @@ export class SelfContact {
  }
  forEachCandidate(p,callback){
   const n=this.edges.length,h=this.thickness;
-  if(!this.bounds||this.bounds.length!==n*6){this.bounds=new Float64Array(n*6);this.order=Array.from({length:n},(_,i)=>i);}
+  if(!this.bounds||this.bounds.length!==n*6){this.bounds=new Float64Array(n*6);this.sortedBounds=new Float64Array(n*6);this.order=Array.from({length:n},(_,i)=>i);}
   const box=this.bounds,low=[Infinity,Infinity,Infinity],high=[-Infinity,-Infinity,-Infinity],width=[0,0,0];
   for(let i=0;i<n;i++){const [a,b]=this.edges[i];for(let k=0;k<3;k++){
    const lo=Math.min(p[a*3+k],p[b*3+k])-h,hi=Math.max(p[a*3+k],p[b*3+k])+h;
@@ -139,13 +139,51 @@ export class SelfContact {
   let axis=0;for(let k=1;k<3;k++)if((high[k]-low[k])/width[k]>(high[axis]-low[axis])/width[axis])axis=k;
   const first=axis*2,other=(axis+1)%3*2,last=(axis+2)%3*2;
   this.order.sort((a,b)=>box[a*6+first]-box[b*6+first]||a-b);
+  // Lay the frozen bounds out in sweep order so the inner scan reads
+  // contiguous memory. Candidate visit order and the tests stay identical.
+  const sorted=this.sortedBounds;
+  for(let i=0;i<n;i++){
+   const src=this.order[i]*6,dst=i*6;
+   sorted[dst]=box[src+first];sorted[dst+1]=box[src+first+1];
+   sorted[dst+2]=box[src+other];sorted[dst+3]=box[src+other+1];
+   sorted[dst+4]=box[src+last];sorted[dst+5]=box[src+last+1];
+  }
+  // Each exact overlap on the secondary axis shares at least one bin.
+  // Assign a pair to its first shared bin; merge candidates back into the
+  // same primary-axis order before applying any position corrections.
+  const binCount=32, span=high[other/2]-low[other/2];
+  const binFor=value=>span===0?0:Math.min(binCount-1,Math.floor((value-low[other/2])*binCount/span));
+  const bins=Array.from({length:binCount},()=>[]);
+  const firstBins=new Uint8Array(n),lastBins=new Uint8Array(n);
+  for(let i=0;i<n;i++){
+   const k=i*6;
+   firstBins[i]=binFor(sorted[k+2]);lastBins[i]=binFor(sorted[k+3]);
+   for(let bin=firstBins[i];bin<=lastBins[i];bin++)bins[bin].push(i);
+  }
+  const cursors=new Int32Array(binCount),candidates=[];
   for(let ai=0;ai<n;ai++){
-   const i=this.order[ai],ia=i*6,a=this.edges[i][0],b=this.edges[i][1],limit=box[ia+first+1],otherLo=box[ia+other],otherHi=box[ia+other+1],lastLo=box[ia+last],lastHi=box[ia+last+1];
-   for(let bj=ai+1;bj<n;bj++){
-    const j=this.order[bj],ib=j*6;if(box[ib+first]>limit)break;
-    if(otherLo>box[ib+other+1]||otherHi<box[ib+other]||lastLo>box[ib+last+1]||lastHi<box[ib+last])continue;
-    const c=this.edges[j][0],d=this.edges[j][1];if(a===c||a===d||b===c||b===d||this.excludeEdgePair?.([a,b],[c,d]))continue;
-    callback(i,j);
+   const i=this.order[ai],ia=ai*6,[a,b]=this.edges[i];
+   const limit=sorted[ia+1],otherLo=sorted[ia+2],otherHi=sorted[ia+3],lastLo=sorted[ia+4],lastHi=sorted[ia+5];
+   candidates.length=0;
+   for(let bin=firstBins[ai];bin<=lastBins[ai];bin++){
+    const list=bins[bin];
+    let start=cursors[bin];
+    while(start<list.length&&list[start]<=ai)start++;
+    cursors[bin]=start;
+    for(let candidate=start;candidate<list.length;candidate++){
+     const bj=list[candidate],ib=bj*6;
+     if(sorted[ib]>limit)break;
+     if(bin!==Math.max(firstBins[ai],firstBins[bj]))continue;
+     if(otherLo>sorted[ib+3]||otherHi<sorted[ib+2]||lastLo>sorted[ib+5]||lastHi<sorted[ib+4])continue;
+     const j=this.order[bj],[c,d]=this.edges[j];
+     if(a===c||a===d||b===c||b===d)continue;
+     candidates.push(bj);
+    }
+   }
+   if(lastBins[ai]!==firstBins[ai])candidates.sort((a,b)=>a-b);
+   for(const bj of candidates){
+    const j=this.order[bj];
+    if(!this.excludeEdgePair?.(this.edges[i].slice(),this.edges[j].slice()))callback(i,j);
    }
   }
  }

@@ -1,6 +1,6 @@
 # FreeSewing → single-file cloth and wrinkle laboratory
 
-Version 2.4 artifact: `web/freesewing-webgpu.html`.
+Version 2.5 artifact: `web/freesewing-responsive.html`. The original 2.4 build is preserved at `web/freesewing-webgpu.html`.
 The 2.3 zero-pin reference remains `web/freesewing-free-waist.html`. The historical pinned
 2.2 artifact remains `web/freesewing-cloth-lab.html`. Earlier HTML files and their
 historical failures are preserved. No runtime CDN, MCP or server dependency.
@@ -107,7 +107,7 @@ node experiments/freesewing_cloth_lab/test_waist_ring.mjs
 python -m http.server 8771 --bind 127.0.0.1 --directory web
 ```
 
-Open <http://127.0.0.1:8771/freesewing-webgpu.html>.
+Open <http://127.0.0.1:8771/freesewing-responsive.html>.
 
 ## Verify the actual artifact
 
@@ -117,17 +117,17 @@ oracle supplies independent triangle intersections and solid-angle membership.
 
 ```sh
 python experiments/freesewing_cloth_lab/run_check.py browser \
-  --url http://127.0.0.1:8771/freesewing-webgpu.html --out work/fs-browser
+  --url http://127.0.0.1:8771/freesewing-responsive.html --out work/fs-browser
 python experiments/freesewing_cloth_lab/run_check.py independent \
   work/fs-browser/simulation.json --repo . --out work/fs-browser/independent.json
 python experiments/freesewing_cloth_lab/run_check.py gpu \
   --html work/fs-browser/downloaded.html --output work/fs-heatmap
 python experiments/freesewing_cloth_lab/run_check.py dynamics \
-  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-dynamics
+  --url http://127.0.0.1:8771/freesewing-responsive.html --output work/fs-dynamics
 python experiments/freesewing_cloth_lab/run_check.py variant \
-  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-variant
+  --url http://127.0.0.1:8771/freesewing-responsive.html --output work/fs-variant
 python experiments/freesewing_cloth_lab/run_check.py support \
-  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-support
+  --url http://127.0.0.1:8771/freesewing-responsive.html --output work/fs-support
 ```
 
 The independent reopener imports no application drafter or solver. A separate
@@ -238,9 +238,9 @@ destruction and exact recovery, and missing/null/denied adapter fallbacks:
 
 ```sh
 CLOTH_WEBGPU=1 python experiments/freesewing_cloth_lab/run_check.py webgpu \
-  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-webgpu
+  --url http://127.0.0.1:8771/freesewing-responsive.html --output work/fs-webgpu
 CLOTH_WEBGPU=1 python experiments/freesewing_cloth_lab/run_check.py webgpu \
-  --url http://127.0.0.1:8771/freesewing-webgpu.html --output work/fs-webgpu --timing-only
+  --url http://127.0.0.1:8771/freesewing-responsive.html --output work/fs-webgpu --timing-only
 ```
 
 Run timing alone, after other browsers finish. This test-only environment uses
@@ -249,3 +249,31 @@ The normal UI suite now has 52 checks, including actual backend and nonblank
 mobile canvas. Forced software WebGPU is a separate diagnostic: preserve a FAIL
 when its p95 exceeds 100 ms. Do not silently omit that check or describe it as
 hardware acceleration. See `docs/verification/cloth-webgpu-20261118/`.
+
+
+## Responsiveness verification
+
+The default cotton drape includes the positions, Verlet history and contact
+ledger captured after the original 120 solver steps. The archive was made from
+`docs/verification/cloth-webgpu-20261118/live/dynamics/step-120.json.gz`.
+The browser regenerates the paper pattern, masses, constraints and collider
+on launch. A saved garment has priority over the default checkpoint. A browser
+without gzip decompression computes the default from the raw arrangement.
+
+Live playback schedules the original constraint/contact stages in short
+tasks. Renders use completed simulation steps. A verified/exported snapshot
+finishes any pending step first. Detected software renderers use a smaller
+drawing buffer and reuse the last shadow during playback.
+
+Run the same-viewport Playwright comparison with distinct fresh Chromium
+instances for the previously published and new HTML files:
+
+```sh
+python experiments/freesewing_cloth_lab/run_check.py responsiveness \
+  --baseline http://127.0.0.1:8771/freesewing-webgpu.html \
+  --url http://127.0.0.1:8771/freesewing-responsive.html \
+  --output work/fs-responsiveness
+```
+
+The receipt includes readiness, playback long tasks, step counts, wall time,
+both screenshots, both HTML hashes and a fresh 120-step checkpoint replay.

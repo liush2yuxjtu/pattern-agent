@@ -1,0 +1,9 @@
+{"verificationEnvironment": {"reason": "Match software-rendering concurrency to the actual container CPU allocation", "cpuMax": ["400000", "100000"], "visibleCpuCount": 5, "availableAffinityCount": 5, "selectedCpuCount": 4, "selectedCpuIds": [0, 1, 2, 3]}}
+Traceback (most recent call last):
+  File "/workspace/work/pattern-agent/experiments/freesewing_cloth_lab/independent.py", line 145, in <module>
+    if args.project.name=='simulation.json':result['downloaded_exports']=reopen_exports(args.project.parent,data)
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/pattern-agent/experiments/freesewing_cloth_lab/independent.py", line 88, in reopen_exports
+    native=(folder/'freesewing-native.svg').read_text();assert native==redraft(data)['nativeSVG']
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

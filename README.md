@@ -265,6 +265,10 @@ StVK 应力应变、故障对照与状态化离线 HTML 导出均有独立数值
 材料是合成参数，局部高应变保留可见警告；没有布料自碰撞、实物标定或实体适体批准。
 这不改变历史 T 恤 FAIL，也不将几何/热图验证升级为生产批准。
 
+## FreeSewing 四片裙 2.5 响应速度优化
+
+默认穿着从验证过的第 120 步恢复，仍支持从原始排布重新求解。交互播放以短任务执行物理计算，软件渲染使用较小的画布缓冲。[打开 2.5 单文件](https://liush2yuxjtu.github.io/pattern-agent/freesewing-responsive.html?v=64db4c51) · [对照截图与验证](docs/verification/cloth-responsive-20261119/README.md)
+
 ## FreeSewing 四片裙 2.4 硬件 WebGPU 优先
 
 [打开单文件](https://liush2yuxjtu.github.io/pattern-agent/freesewing-webgpu.html?v=293e34af) ·

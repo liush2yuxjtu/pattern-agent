@@ -32,9 +32,9 @@
     <div class="status-strip"><div class="wrap"><span><i aria-hidden="true"></i>数字几何检查通过</span><span>前后侧缝差 0.00 mm · 省腿等长</span><span>实体试穿尚未完成</span></div></div>
     <section id="freesewing-lab" class="section wrap" aria-labelledby="freesewing-title">
       <div class="section-heading"><div><p class="eyebrow">FREESewing / SINGLE HTML</p><h2 id="freesewing-title">硬件 WebGPU，零固定点试衣。</h2></div><p>FreeSewing Sandy · MakeHuman · WASM<br>单文件运行，支持离线保存</p></div>
-      <p>硬件 GPU 可用时优先使用 WebGPU 渲染；软件、不可用或被拒绝的适配器回退到 WebGL2。物理仍由 CPU 上的 WASM Float64 求解，重力与零固定点承托保持不变；腰口为加固边近似，完整腰头尚未建模。</p>
+      <p>硬件 GPU 可用时优先使用 WebGPU 渲染；软件、不可用或被拒绝的适配器回退到 WebGL2。物理仍由 CPU 上的 WASM Float64 求解，重力与零固定点承托保持不变；腰口为加固边近似，完整腰头尚未建模。默认打开时恢复首个已验证的垂坠状态，播放期间分批处理物理计算，让浏览器及时处理操作。</p>
       <p>默认模式 Playwright 52/52 项通过；另核验实际 WebGPU 绘制、五张热图缓冲、人体缓冲一致性、离线与设备丢失恢复。后臀 466 点覆盖及碰撞、长时间承托和自由落体维持原有结果。强制软件 WebGPU 性能未达门槛，真实显卡提速尚未测量。局部伸长率仍达 193.7%，面料与压力未标定，真实合体性未通过验收。</p>
-      <p><a class="button primary" href="freesewing-webgpu.html?v=293e34af">打开单文件试衣 <span aria-hidden="true">↗</span></a> <a class="inline-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/docs/verification/cloth-webgpu-20261118">查看原始验证记录 ↗</a></p>
+      <p><a class="button primary" href="freesewing-responsive.html?v=64db4c51">打开单文件试衣 <span aria-hidden="true">↗</span></a> <a class="inline-link" href="https://github.com/liush2yuxjtu/pattern-agent/tree/main/docs/verification/cloth-responsive-20261119">查看原始验证记录 ↗</a></p>
     </section>
     <section id="downloads" class="section wrap" aria-labelledby="download-title">
       <div class="section-heading"><div><p class="eyebrow">YOUR PATTERN FILES</p><h2 id="download-title">把纸样带到裁剪台。</h2></div><p>选适合你的文件格式。<br>源文件与尺寸文件请保存在同一文件夹。</p></div>

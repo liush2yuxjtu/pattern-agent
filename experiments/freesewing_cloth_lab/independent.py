@@ -1,7 +1,7 @@
 """Reopen actual browser exports with NumPy and the repo's strict triangle oracle.
 No rendering or application measurement code is imported here. Metres / mm.
 """
-import argparse,copy,hashlib,importlib.util,json,sys,time,xml.etree.ElementTree as ET
+import argparse,copy,hashlib,importlib.util,json,re,sys,time,xml.etree.ElementTree as ET
 from pathlib import Path
 import numpy as np
 from independent_support import audit as support_audit
@@ -49,6 +49,33 @@ def tensor_reopen(data):
     source=freesewing_reopen(data)
     return {'peak_stretch_percent':float(principal.max()*100),'peak_stress_kPa':float(stress.max()),'max_stretch_error':stretch_error,'max_stress_error_kPa':stress_error,'freesewing':source}
 
+def compare_native_svg(downloaded, independent):
+    # Node and Chromium may round upstream trigonometry differently. Check
+    # the entire file verbatim apart from numeric operands in SVG transforms.
+    numbers = re.compile(r'[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?')
+    transforms = re.compile(r'transform="([^"]*)"')
+
+    def signature(svg):
+        operands = []
+
+        def replace_transform(match):
+            def replace_number(number):
+                operands.append(float(number[0]))
+                return '#'
+
+            return 'transform="' + numbers.sub(replace_number, match[1]) + '"'
+
+        return transforms.sub(replace_transform, svg), operands
+
+    actual_text, actual_operands = signature(downloaded)
+    expected_text, expected_operands = signature(independent)
+    assert actual_text == expected_text and len(actual_operands) == len(expected_operands)
+    max_error = max((abs(a-b) for a,b in zip(actual_operands, expected_operands)), default=0.0)
+    assert max_error < 1e-9
+    return {'byte_exact': downloaded == independent, 'max_transform_operand_error': max_error,
+            'all_other_bytes_exact': True}
+
+
 def reopen_exports(folder,data):
     """Check actual independently parsed OBJ/SVG/DXF downloads against material data."""
     lines=(folder/'garment.obj').read_text().splitlines()
@@ -85,8 +112,9 @@ def reopen_exports(folder,data):
         for suffix,key in [('STITCH','polygon'),('CUT','cutOutline')]:
             item=next(x for x in polylines if x['layer']==panel['id']+'_'+suffix);actual=np.array(item['points']);expected=np.array(panel[key]);assert actual.shape==expected.shape
             assert np.max(np.abs((actual-actual[0])-(expected-expected[0])))<2e-6
-    native=(folder/'freesewing-native.svg').read_text();assert native==redraft(data)['nativeSVG']
-    return {'native_FreeSewing_SVG':'byte-exact independent upstream re-draft','OBJ_vertices_and_faces':'exact match','SVG_panels':'exact match','SVG_cut_offset_mm':10,'DXF_panels':'match within 0.000002 mm'}
+    native=(folder/'freesewing-native.svg').read_bytes().decode('utf-8')
+    native_check=compare_native_svg(native,redraft(data)['nativeSVG'])
+    return {'native_FreeSewing_SVG':native_check,'OBJ_vertices_and_faces':'exact match','SVG_panels':'exact match','SVG_cut_offset_mm':10,'DXF_panels':'match within 0.000002 mm'}
 
 def run(data,root,negative=True):
     oracle,path=load_oracle(root);v=np.array(data['positions']).reshape(-1,3);f=np.array(data['triangles']).reshape(-1,3);bv=np.array(data['body']['vertices']).reshape(-1,3);bf=np.array(data['body']['indices']).reshape(-1,3)

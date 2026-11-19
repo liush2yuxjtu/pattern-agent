@@ -1,0 +1,45 @@
+{
+  "verdict": "PASS",
+  "htmlSHA256": "64db4c517a40a6990be601ef02189ed4a568058efc15755f5ae46702e944920b",
+  "gates": [
+    "browser",
+    "responsiveness",
+    "independent",
+    "dynamics",
+    "variant",
+    "support",
+    "webgpu",
+    "webgl",
+    "entry"
+  ],
+  "solverP95_ms": 90.19999998807907,
+  "exactStates": 8,
+  "performance": {
+    "before_s": 13.517,
+    "after_s": 2.9035999999940394,
+    "longTasksBefore_ms": 943,
+    "longTasksAfter_ms": 197
+  },
+  "baseCommit": "7a9887953e35f1f91dfc74aa4ea7904702b2c210",
+  "siteBuild": {
+    "output": "dist",
+    "commit": "bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+    "source_sha256": "86537b52f17fb08315d5982eae64029c0c0178d6d43f6186dbf27267672213d0",
+    "files": 2217
+  },
+  "commands": [
+    "node build.mjs",
+    "node test_*.mjs (five suites)",
+    "run_check.py browser",
+    "run_check.py responsiveness",
+    "run_check.py dynamics",
+    "run_check.py support",
+    "run_check.py variant",
+    "run_check.py independent",
+    "CLOTH_WEBGPU=1 run_check.py webgpu",
+    "run_check.py gpu --html <saved HTML>",
+    "scripts/build_pages.py",
+    "scripts/verify_cloth_entry.py",
+    "unittest test_verify_artifacts"
+  ]
+}
