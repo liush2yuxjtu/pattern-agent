@@ -1,0 +1,143 @@
+{
+  "parent": "3686e1994b63cb4fce95c464165754fadce0410d",
+  "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "environment": {
+    "PYTHONPATH": "/workspace/work/verifydeps",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "ZIG": "/workspace/work/zig-x86_64-linux-0.14.1/zig",
+    "ESBUILD": "/workspace/pattern-agent/work/cloth-lab/esbuild"
+  },
+  "commands": [
+    {
+      "name": "default-build",
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab-standalone/build.js"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058014.7631342,
+      "expectedExitCode": 0,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058015.637498
+    },
+    {
+      "name": "custom-build-other-cwd",
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab-standalone/build.js",
+        "--out",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/local/directory with spaces/cloth standalone.html",
+        "--work-dir",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/local/custom work"
+      ],
+      "cwd": "/workspace",
+      "startedAtUnix": 1795058015.6433992,
+      "expectedExitCode": 0,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058016.2968252
+    },
+    {
+      "name": "help-without-compilers",
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab-standalone/build.js",
+        "--help"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058016.2988813,
+      "expectedExitCode": 0,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058016.3282971
+    },
+    {
+      "name": "bad-option-preserves-output",
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab-standalone/build.js",
+        "--not-an-option"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058016.3297226,
+      "expectedExitCode": 1,
+      "exitCode": 1,
+      "finishedAtUnix": 1795058016.3884885
+    },
+    {
+      "name": "failed-compiler-preserves-output",
+      "argv": [
+        "node",
+        "/workspace/pattern-agent/web/cloth-lab-standalone/build.js"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058016.3898954,
+      "expectedExitCode": 1,
+      "exitCode": 1,
+      "finishedAtUnix": 1795058016.4645336
+    },
+    {
+      "name": "browser",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_browser.py",
+        "--html",
+        "/workspace/pattern-agent/web/cloth-lab-standalone/index.html",
+        "--renderer",
+        "webgpu",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/local/browser"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058016.472691,
+      "expectedExitCode": 0,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058147.7866259
+    },
+    {
+      "name": "handoff",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_handoff.py",
+        "--html",
+        "/workspace/pattern-agent/web/cloth-lab-standalone/index.html",
+        "--renderer",
+        "webgpu",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/local/handoff"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058147.787994,
+      "expectedExitCode": 0,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058174.0045397
+    },
+    {
+      "name": "existing-pages-gate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "work/cloth-modular/run-pages-gate.py",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/local/existing-pages",
+        "--expected-commit",
+        "3686e1994b63cb4fce95c464165754fadce0410d"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058174.0055938,
+      "expectedExitCode": 0,
+      "exitCode": 1,
+      "finishedAtUnix": 1795058182.3578465
+    }
+  ],
+  "checks": {
+    "newFolderDefaultContainsCompleteCanonicalHTMLAndManifest": true,
+    "customFilenameAndWorkDirectoryFromAnotherCwdAreByteIdentical": true,
+    "helpDescribesNewFolderWithoutBuildTools": true,
+    "realBuildFailuresPropagateAndPreserveBothExistingOutputs": true,
+    "allCanonicalModulesKernelBodyVendorSourcesStillExact": true
+  },
+  "verdict": "FAIL"
+}

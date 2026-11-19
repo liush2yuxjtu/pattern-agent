@@ -1,6 +1,8 @@
 # 单文件 WASM 布料与试衣验收
 
 入口：<https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/>。
+独立交付目录：[cloth-lab-standalone](../cloth-lab-standalone/README.md)，
+对应在线入口：<https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/>。
 `index.html` 嵌入真实 MakeHuman 网格、BVH、WASM、Three.js 与程序化织纹，运行时不需要
 CDN、后端、模型 API 或 MCP。SVG、OBJ、工程 JSON 和包含完整回放的单 HTML 来自同一状态。
 

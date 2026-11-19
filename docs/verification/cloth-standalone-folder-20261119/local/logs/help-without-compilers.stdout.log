@@ -1,0 +1,9 @@
+Build the Pattern Agent standalone cloth distribution.
+
+Usage: node web/cloth-lab-standalone/build.js [--out file.html] [--work-dir directory]
+
+Default output: web/cloth-lab-standalone/index.html and build.json.
+--out paths are relative to the current working directory.
+The canonical modules and compiler entry are in web/cloth-lab/.
+Requires Node >=18, Zig 0.14.1, esbuild 0.25.12, Python 3 and NumPy.
+ZIG, ESBUILD and PYTHON select existing local build tools. No downloads occur.

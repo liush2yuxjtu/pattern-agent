@@ -1,6 +1,7 @@
 # Inline WASM cloth laboratory
 
 Working directory: repository root. Scope: `web/cloth-lab/`,
+its standalone distribution `web/cloth-lab-standalone/`,
 `scripts/build_cloth_lab.py`, `scripts/cloth_lab_body.py`, `tools/cloth_lab/`, and
 its link on the Pages index.
 This recipe does not approve the historical T-shirt or calibrate physical fit.
@@ -220,6 +221,20 @@ offline test still executes the actual downloaded HTML bytes via set_content
 with networking disabled, reopens the timeline and checks exact continuation.
 
 ## Published surface
+
+The additional distribution at `/cloth-lab-standalone/` is a complete HTML,
+not a redirect. `node web/cloth-lab-standalone/build.js` defaults to that folder
+and forwards custom `--out`/`--work-dir` to the canonical builder. Require its
+actual HTML and adjacent manifest to match `web/cloth-lab/` byte-for-byte;
+exercise the default entry, a different cwd/custom filename, help without tools,
+and failed builds preserving existing outputs. Run the existing browser scripts
+with `--html web/cloth-lab-standalone/index.html` locally. For publication, use the
+same four complete suites below with base URL
+`https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/` and require the
+deployed root commit and HTML digest. Preserve prior physics evidence separately.
+Do not rebuild the shared `dist/` while `test_verify_artifacts.py` copies its
+fixtures. Run all site build/test gates sequentially; preserve and rerun any
+copy failure caused by a concurrent rebuild.
 
 Push a verified direct-to-main commit without force; observe the EXISTING Pages
 publication workflow only. Do not add/run CI verification. After deployment:
