@@ -29,7 +29,15 @@
 - 两次 `chatgpt_space_edit_page` 使用原有相邻块定位新增章节；随后分别 `chatgpt_space_read_page`，比较原有块的 ID、哈希、原文与标题，并检查全部新增块存在。收据和新增正文见 [pages-readback.json](pages-readback.json)。
 - 提交前执行 `git diff --check`、检查上述 JSON 和仓库相对链接；确认应用 HTML、计算记录及旧网页字节无改动。
 
-本轮 JSON 解析通过；两份相关 README 的34个仓库相对链接全部存在。三个实际公开响应均为200，摘要全部相同。两处 Pages 合计269个旧块保留、19个新块读回。`git diff --check` 无错误，`web/` 与物理 `results/` 相对候选基准的差异为空。
+本轮 JSON 解析通过；最终两份相关 README 的36个仓库相对链接全部存在。三个实际公开响应均为200，摘要全部相同。两处 Pages 合计269个旧块保留、19个新块读回。`git diff --check` 无错误；本次交付文档变更没有修改 `web/` 或物理 `results/`。
+
+## 本次重新发布与最终 Pages 回读
+
+交接记录已在 [f5b875a](https://github.com/liush2yuxjtu/pattern-agent/commit/f5b875a52d7fa69cb57712d652191dbfa493c848)提交并推送。随后手动调用既有静态发布流程，[发布44450109647](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44450109647)成功。公开 `build.json` 的提交为该精确候选；发布前后2207项文件摘要全部相同，公开应用重新 GET 为200且字节相同，见 [republication.json](republication.json)。`build.json` 的发布元数据随版本更新。
+
+部署后，两处 Pages 的本次交付段落又补充了上述精确提交与发布链接。项目总页最终为第29序列，编辑验收页为第17序列；逐段读回通过，见 [pages-publication-readback.json](pages-publication-readback.json)。最终回执以文档提交封存，网页运行字节仍对应已经公开核实的 f5b875a。
+
+封存前再次读取远端，发现并以 fast-forward 保留了其他工作的 `34b7cc2ed404f3742d99082a8b4a8668438c18ce`（新增 Garment GPU Studio 独立目录）。该提交不改本实验目录或路由。最终封存候选为该远端版本加本轮三份交付文档与回执；再次按 `/verify` 检查 JSON、36个相对链接及文档差异，运行时重复验收为 SKIP。
 
 ## 实际结果与保留事项
 
