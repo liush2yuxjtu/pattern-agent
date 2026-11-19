@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createHash}from 'node:crypto';
+import {build}from 'esbuild';
+import './build-wasm.js';
+const root=path.resolve(new URL('..',import.meta.url).pathname);process.chdir(root);
+const result=await build({entryPoints:['src/app.js'],bundle:true,format:'iife',target:'es2022',minify:true,legalComments:'eof',write:false,metafile:true});
+const bundle=result.outputFiles[0].text.replaceAll('</script','<\\/script'),css=fs.readFileSync('styles.css','utf8');
+const html=fs.readFileSync('index.template.html','utf8').replace('/*STYLE*/',()=>css).replace('/*BUNDLE*/',()=>bundle);
+fs.mkdirSync('dist',{recursive:true});fs.writeFileSync('dist/garment-gpu-studio.html',html);
+const hash=createHash('sha256').update(html).digest('hex');fs.writeFileSync('evidence/build.json',JSON.stringify({sha256:hash,bytes:Buffer.byteLength(html),builtAt:new Date().toISOString(),inputs:Object.keys(result.metafile.inputs)},null,2));
+console.log(JSON.stringify({file:'dist/garment-gpu-studio.html',bytes:Buffer.byteLength(html),sha256:hash}));

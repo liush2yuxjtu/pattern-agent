@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "htmlSha256": "9ac4e216f3cdf66ec8fc7d8a672b0ac76afa606f4f886d944f27abb834effb68",
+  "moduleChecks": 48,
+  "browserChecks": 48,
+  "independentCases": [
+    {
+      "label": "baseline",
+      "status": "PASS",
+      "p95": 0.05614126472108469,
+      "max": 0.1751261418946357,
+      "bodyCrossings": 0,
+      "selfCrossings": 0,
+      "seamGapMm": 0
+    },
+    {
+      "label": "wide",
+      "status": "PASS",
+      "p95": 0.06339931832958196,
+      "max": 0.22519432003109108,
+      "bodyCrossings": 0,
+      "selfCrossings": 0,
+      "seamGapMm": 0
+    }
+  ],
+  "adapter": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "device": "",
+    "description": "",
+    "isFallbackAdapter": true,
+    "backend": "Hybrid WebGPU PBD predictor + CPU XPBD collision/self-contact corrector",
+    "iterations": 128,
+    "gpuIterations": 4,
+    "predictorMotionLimitMm": 1,
+    "render": "Three.js WebGL2",
+    "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+  },
+  "scope": "Automated module, real-browser and independent discrete geometry assertions. No real-fabric calibration, physical GPU speed, continuous collision or human-fit claim."
+}

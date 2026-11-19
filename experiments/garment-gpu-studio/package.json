@@ -1,0 +1,24 @@
+{
+  "name": "garment-gpu-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "verify": "node scripts/verify.js",
+    "verify:browser": "python3 tests/browser.py",
+    "verify:unit": "node scripts/verify.js --unit-only",
+    "build:verifier": "node scripts/build-verifier.js"
+  },
+  "dependencies": {
+    "@freesewing/config": "4.10.2",
+    "@freesewing/plugin-transform": "4.10.2",
+    "@freesewing/teagan": "4.10.2",
+    "earcut": "3.0.2",
+    "esbuild": "0.28.2",
+    "three": "0.186.0"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

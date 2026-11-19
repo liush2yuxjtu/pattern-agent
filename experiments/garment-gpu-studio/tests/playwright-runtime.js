@@ -1,0 +1,4 @@
+import {pathToFileURL} from 'node:url';
+import fs from 'node:fs';
+export async function loadPlaywright(){try{return await import('playwright');}catch(e){const directory=process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES||'/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules';const p=directory+'/playwright/index.mjs';if(!fs.existsSync(p))throw new Error('Install verification dependency: npm install --save-dev playwright@1.62.1');return import(pathToFileURL(p).href);}}
+export function launchSettings(){const software=process.platform==='linux';const executable=process.env.GARMENT_CHROMIUM||'/usr/lib/chromium/chromium';return {headless:true,...(fs.existsSync(executable)?{executablePath:executable}:{}),args:software?['--no-sandbox','--enable-unsafe-webgpu','--use-angle=vulkan','--use-vulkan=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface']:[]};}

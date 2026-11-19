@@ -1,0 +1,1267 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "App: real anatomical mesh displayed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WASM: active f64 diagnostic kernel",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WebGPU: compute adapter and device",
+      "status": "PASS",
+      "detail": {
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": true,
+        "backend": "Hybrid WebGPU PBD predictor + CPU XPBD collision/self-contact corrector",
+        "iterations": 128,
+        "gpuIterations": 4,
+        "render": "Three.js WebGL2",
+        "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+      }
+    },
+    {
+      "name": "WebGPU: raw GPU predictor changes actual read-back positions",
+      "status": "PASS",
+      "detail": {
+        "dispatches": 94,
+        "rawPredictorDeltaMm": 1.0000579805150638
+      }
+    },
+    {
+      "name": "WebGPU: shader validation error free",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "WebGPU: finite stable simulation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "seams: real equality constraints, zero residual",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "collision: morphed mesh queried for current frame",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "settled geometry: no full-face body crossing",
+      "status": "PASS",
+      "detail": 0
+    },
+    {
+      "name": "settled geometry: no cloth self crossing",
+      "status": "PASS",
+      "detail": 0
+    },
+    {
+      "name": "settled geometry: principal strain p95 <= 10%",
+      "status": "PASS",
+      "detail": 0.05614126472108483
+    },
+    {
+      "name": "settled geometry: maximum principal strain <= 25%",
+      "status": "PASS",
+      "detail": 0.1751261418946357
+    },
+    {
+      "name": "view: pattern",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "view: strain",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "view: stress",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "view: folds",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "view: collision",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "view: debug",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "view: fabric",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "replay: seeking preserves live solver step",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "replay: exact recorded coordinates",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "replay: next frame button",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "edit: immediately invalidates old physics",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "edit: stale PASS removed from screen",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "edit: new version and reset replay",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "body: new requested chest remeasured < 1 mm",
+      "status": "PASS",
+      "detail": {
+        "chest": -0.0006286618572630687,
+        "waist": 0.0025571720171910783,
+        "hip": -0.001263332319467736
+      }
+    },
+    {
+      "name": "WebGPU: rebuilt size really simulates",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "resized body: complete discrete geometry acceptance",
+      "status": "PASS",
+      "detail": {
+        "finite": true,
+        "strainP95": 0.06339931832958196,
+        "strainMax": 0.22519432003109108,
+        "referenceStressMaxKPa": 34.83813630538345,
+        "seamGapMm": 0,
+        "penetrationMm": 0,
+        "penetratingVertices": 0,
+        "penetratingSamples": 0,
+        "bodyFaceCrossings": 0,
+        "selfFaceCrossings": 0,
+        "fullCollision": true,
+        "foldMaxDeg": 124.60186523360987,
+        "step": 181,
+        "time": 1.5083333333333333,
+        "lastStepMs": 253.5,
+        "contactQueries": 8094
+      }
+    },
+    {
+      "name": "grading: three independently redrafted patterns",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "export: downloaded OBJ equals displayed frame",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "export: downloaded SVG has real 100 mm scale",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "offline: GPU continues with network disabled",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "standalone: no remote runtime requests",
+      "status": "PASS",
+      "detail": [
+        "http://127.0.0.1:8047/garment-gpu-studio.html"
+      ]
+    },
+    {
+      "name": "mobile: no horizontal overflow",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "runtime: no page exceptions",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "snapshots": [
+    "gpu-snapshot.json"
+  ],
+  "initial": {
+    "version": "b9ec13ee86b5340a9277a0d67712a0bb76eafffb4224ba4e09254b1513daf12b",
+    "revision": 1,
+    "stale": false,
+    "busy": false,
+    "running": false,
+    "mode": "fabric",
+    "backend": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true,
+      "backend": "Hybrid WebGPU PBD predictor + CPU XPBD collision/self-contact corrector",
+      "iterations": 128,
+      "gpuIterations": 4,
+      "render": "Three.js WebGL2",
+      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+    },
+    "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "step": 0,
+    "dispatches": 0,
+    "gpuCandidateDeltaMm": 0,
+    "wasm": {
+      "active": true,
+      "exports": [
+        "principal_max",
+        "principal_min",
+        "green_normal",
+        "plane_stress",
+        "shear_stress"
+      ],
+      "precision": "f64"
+    },
+    "frameCount": 1,
+    "cursor": 0,
+    "displayedFrame": 0,
+    "metrics": {
+      "finite": true,
+      "strainP95": 0.6928496680571343,
+      "strainMax": 1.2797742698770422,
+      "referenceStressMaxKPa": 230.65728730273665,
+      "seamGapMm": 0,
+      "penetrationMm": 0,
+      "penetratingVertices": 0,
+      "penetratingSamples": 0,
+      "bodyFaceCrossings": 0,
+      "selfFaceCrossings": 0,
+      "fullCollision": true,
+      "foldMaxDeg": 118.63616281748308,
+      "step": 0,
+      "time": 0,
+      "lastStepMs": 0,
+      "contactQueries": 7950
+    },
+    "verdict": {
+      "geometry": "FAIL",
+      "physicalFit": "NOT_RUN",
+      "checks": [
+        {
+          "id": "finite",
+          "name": "坐标有限",
+          "status": "PASS",
+          "value": true
+        },
+        {
+          "id": "seams",
+          "name": "缝合关系及间隙 ≤ 2 mm",
+          "status": "PASS",
+          "value": 0,
+          "unit": "mm"
+        },
+        {
+          "id": "body",
+          "name": "人体内部顶点 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "samples",
+          "name": "内部边中点/面心 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "strain",
+          "name": "三角面主应变 p95 ≤ 10%",
+          "status": "FAIL",
+          "value": 69.28496680571344,
+          "unit": "%"
+        },
+        {
+          "id": "maxStrain",
+          "name": "最大主应变 ≤ 25%",
+          "status": "FAIL",
+          "value": 127.97742698770422,
+          "unit": "%"
+        },
+        {
+          "id": "bodyFaces",
+          "name": "人体三角面横穿 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "self",
+          "name": "布料三角面横穿 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "ccd",
+          "name": "连续碰撞 CCD",
+          "status": "NOT_RUN",
+          "value": null
+        },
+        {
+          "id": "calibration",
+          "name": "真实面料/真人合身",
+          "status": "NOT_RUN",
+          "value": null
+        }
+      ]
+    },
+    "measurements": {
+      "chest": -0.0018311739755745293,
+      "waist": 0.004667254799528564,
+      "hip": -0.0030908154319604364
+    },
+    "bodyVertices": 4002,
+    "bodyFaces": 8000,
+    "pieces": 4,
+    "vertices": 1431,
+    "seams": {
+      "status": "PASS",
+      "errors": [],
+      "rows": [
+        {
+          "id": "right-side",
+          "pairs": 20,
+          "lengthAmm": 457.11526888563117,
+          "lengthBmm": 457.11526888563117,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-shoulder",
+          "pairs": 6,
+          "lengthAmm": 89.19241988632733,
+          "lengthBmm": 89.19241988632734,
+          "mismatch": 1.593280542596921e-16,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-front-sleeve",
+          "pairs": 13,
+          "lengthAmm": 210.88728379882156,
+          "lengthBmm": 210.81427297271364,
+          "mismatch": 0.0003462078167670254,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-back-sleeve",
+          "pairs": 13,
+          "lengthAmm": 209.03331269971767,
+          "lengthBmm": 208.8428581950912,
+          "mismatch": 0.0009111203480761284,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-underarm",
+          "pairs": 4,
+          "lengthAmm": 67.47242346792096,
+          "lengthBmm": 67.47242346792096,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-side",
+          "pairs": 20,
+          "lengthAmm": 457.1152688856313,
+          "lengthBmm": 457.1152688856313,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-shoulder",
+          "pairs": 6,
+          "lengthAmm": 89.19241988632733,
+          "lengthBmm": 89.19241988632733,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-front-sleeve",
+          "pairs": 13,
+          "lengthAmm": 210.88728379882158,
+          "lengthBmm": 210.81427297271364,
+          "mismatch": 0.0003462078167671601,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-back-sleeve",
+          "pairs": 13,
+          "lengthAmm": 209.0333126997177,
+          "lengthBmm": 208.8428581950912,
+          "mismatch": 0.0009111203480762643,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-underarm",
+          "pairs": 4,
+          "lengthAmm": 67.47242346792096,
+          "lengthBmm": 67.47242346792096,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        }
+      ],
+      "maxGapMm": 0,
+      "maxMismatch": 0.0009111203480762643
+    },
+    "grade": null,
+    "errors": []
+  },
+  "adapter": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "device": "",
+    "description": "",
+    "isFallbackAdapter": true,
+    "backend": "Hybrid WebGPU PBD predictor + CPU XPBD collision/self-contact corrector",
+    "iterations": 128,
+    "gpuIterations": 4,
+    "render": "Three.js WebGL2",
+    "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+  },
+  "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "settled": {
+    "version": "b9ec13ee86b5340a9277a0d67712a0bb76eafffb4224ba4e09254b1513daf12b",
+    "revision": 1,
+    "stale": false,
+    "busy": false,
+    "running": false,
+    "mode": "fabric",
+    "backend": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true,
+      "backend": "Hybrid WebGPU PBD predictor + CPU XPBD collision/self-contact corrector",
+      "iterations": 128,
+      "gpuIterations": 4,
+      "render": "Three.js WebGL2",
+      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+    },
+    "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "step": 181,
+    "dispatches": 17014,
+    "gpuCandidateDeltaMm": 1.0000479955126504,
+    "wasm": {
+      "active": true,
+      "exports": [
+        "principal_max",
+        "principal_min",
+        "green_normal",
+        "plane_stress",
+        "shear_stress"
+      ],
+      "precision": "f64"
+    },
+    "frameCount": 50,
+    "cursor": 49,
+    "displayedFrame": 181,
+    "metrics": {
+      "finite": true,
+      "strainP95": 0.05614126472108483,
+      "strainMax": 0.1751261418946357,
+      "referenceStressMaxKPa": 30.386209300338514,
+      "seamGapMm": 0,
+      "penetrationMm": 0,
+      "penetratingVertices": 0,
+      "penetratingSamples": 0,
+      "bodyFaceCrossings": 0,
+      "selfFaceCrossings": 0,
+      "fullCollision": true,
+      "foldMaxDeg": 166.78997623637792,
+      "step": 181,
+      "time": 1.5083333333333333,
+      "lastStepMs": 204.19999999552965,
+      "contactQueries": 7950
+    },
+    "verdict": {
+      "geometry": "PASS",
+      "physicalFit": "NOT_RUN",
+      "checks": [
+        {
+          "id": "finite",
+          "name": "坐标有限",
+          "status": "PASS",
+          "value": true
+        },
+        {
+          "id": "seams",
+          "name": "缝合关系及间隙 ≤ 2 mm",
+          "status": "PASS",
+          "value": 0,
+          "unit": "mm"
+        },
+        {
+          "id": "body",
+          "name": "人体内部顶点 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "samples",
+          "name": "内部边中点/面心 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "strain",
+          "name": "三角面主应变 p95 ≤ 10%",
+          "status": "PASS",
+          "value": 5.614126472108483,
+          "unit": "%"
+        },
+        {
+          "id": "maxStrain",
+          "name": "最大主应变 ≤ 25%",
+          "status": "PASS",
+          "value": 17.51261418946357,
+          "unit": "%"
+        },
+        {
+          "id": "bodyFaces",
+          "name": "人体三角面横穿 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "self",
+          "name": "布料三角面横穿 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "ccd",
+          "name": "连续碰撞 CCD",
+          "status": "NOT_RUN",
+          "value": null
+        },
+        {
+          "id": "calibration",
+          "name": "真实面料/真人合身",
+          "status": "NOT_RUN",
+          "value": null
+        }
+      ]
+    },
+    "measurements": {
+      "chest": -0.0018311739755745293,
+      "waist": 0.004667254799528564,
+      "hip": -0.0030908154319604364
+    },
+    "bodyVertices": 4002,
+    "bodyFaces": 8000,
+    "pieces": 4,
+    "vertices": 1431,
+    "seams": {
+      "status": "PASS",
+      "errors": [],
+      "rows": [
+        {
+          "id": "right-side",
+          "pairs": 20,
+          "lengthAmm": 457.11526888563117,
+          "lengthBmm": 457.11526888563117,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-shoulder",
+          "pairs": 6,
+          "lengthAmm": 89.19241988632733,
+          "lengthBmm": 89.19241988632734,
+          "mismatch": 1.593280542596921e-16,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-front-sleeve",
+          "pairs": 13,
+          "lengthAmm": 210.88728379882156,
+          "lengthBmm": 210.81427297271364,
+          "mismatch": 0.0003462078167670254,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-back-sleeve",
+          "pairs": 13,
+          "lengthAmm": 209.03331269971767,
+          "lengthBmm": 208.8428581950912,
+          "mismatch": 0.0009111203480761284,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-underarm",
+          "pairs": 4,
+          "lengthAmm": 67.47242346792096,
+          "lengthBmm": 67.47242346792096,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-side",
+          "pairs": 20,
+          "lengthAmm": 457.1152688856313,
+          "lengthBmm": 457.1152688856313,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-shoulder",
+          "pairs": 6,
+          "lengthAmm": 89.19241988632733,
+          "lengthBmm": 89.19241988632733,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-front-sleeve",
+          "pairs": 13,
+          "lengthAmm": 210.88728379882158,
+          "lengthBmm": 210.81427297271364,
+          "mismatch": 0.0003462078167671601,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-back-sleeve",
+          "pairs": 13,
+          "lengthAmm": 209.0333126997177,
+          "lengthBmm": 208.8428581950912,
+          "mismatch": 0.0009111203480762643,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-underarm",
+          "pairs": 4,
+          "lengthAmm": 67.47242346792096,
+          "lengthBmm": 67.47242346792096,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        }
+      ],
+      "maxGapMm": 0,
+      "maxMismatch": 0.0009111203480762643
+    },
+    "grade": null,
+    "errors": []
+  },
+  "wideSettled": {
+    "version": "ba5dd26eae4ff7a20f1853e113940dfae78bb0d5b6a3fee837e1f44fab79a9d9",
+    "revision": 3,
+    "stale": false,
+    "busy": false,
+    "running": false,
+    "mode": "fabric",
+    "backend": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true,
+      "backend": "Hybrid WebGPU PBD predictor + CPU XPBD collision/self-contact corrector",
+      "iterations": 128,
+      "gpuIterations": 4,
+      "render": "Three.js WebGL2",
+      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+    },
+    "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "step": 181,
+    "dispatches": 14842,
+    "gpuCandidateDeltaMm": 1.0000532614280668,
+    "wasm": {
+      "active": true,
+      "exports": [
+        "principal_max",
+        "principal_min",
+        "green_normal",
+        "plane_stress",
+        "shear_stress"
+      ],
+      "precision": "f64"
+    },
+    "frameCount": 50,
+    "cursor": 49,
+    "displayedFrame": 181,
+    "metrics": {
+      "finite": true,
+      "strainP95": 0.06339931832958196,
+      "strainMax": 0.22519432003109108,
+      "referenceStressMaxKPa": 34.83813630538345,
+      "seamGapMm": 0,
+      "penetrationMm": 0,
+      "penetratingVertices": 0,
+      "penetratingSamples": 0,
+      "bodyFaceCrossings": 0,
+      "selfFaceCrossings": 0,
+      "fullCollision": true,
+      "foldMaxDeg": 124.60186523360987,
+      "step": 181,
+      "time": 1.5083333333333333,
+      "lastStepMs": 253.5,
+      "contactQueries": 8094
+    },
+    "verdict": {
+      "geometry": "PASS",
+      "physicalFit": "NOT_RUN",
+      "checks": [
+        {
+          "id": "finite",
+          "name": "坐标有限",
+          "status": "PASS",
+          "value": true
+        },
+        {
+          "id": "seams",
+          "name": "缝合关系及间隙 ≤ 2 mm",
+          "status": "PASS",
+          "value": 0,
+          "unit": "mm"
+        },
+        {
+          "id": "body",
+          "name": "人体内部顶点 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "samples",
+          "name": "内部边中点/面心 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "strain",
+          "name": "三角面主应变 p95 ≤ 10%",
+          "status": "PASS",
+          "value": 6.339931832958196,
+          "unit": "%"
+        },
+        {
+          "id": "maxStrain",
+          "name": "最大主应变 ≤ 25%",
+          "status": "PASS",
+          "value": 22.51943200310911,
+          "unit": "%"
+        },
+        {
+          "id": "bodyFaces",
+          "name": "人体三角面横穿 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "self",
+          "name": "布料三角面横穿 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "ccd",
+          "name": "连续碰撞 CCD",
+          "status": "NOT_RUN",
+          "value": null
+        },
+        {
+          "id": "calibration",
+          "name": "真实面料/真人合身",
+          "status": "NOT_RUN",
+          "value": null
+        }
+      ]
+    },
+    "measurements": {
+      "chest": -0.0006286618572630687,
+      "waist": 0.0025571720171910783,
+      "hip": -0.001263332319467736
+    },
+    "bodyVertices": 4002,
+    "bodyFaces": 8000,
+    "pieces": 4,
+    "vertices": 1455,
+    "seams": {
+      "status": "PASS",
+      "errors": [],
+      "rows": [
+        {
+          "id": "right-side",
+          "pairs": 20,
+          "lengthAmm": 456.31089249025956,
+          "lengthBmm": 456.31089249025956,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-shoulder",
+          "pairs": 6,
+          "lengthAmm": 92.84706033160748,
+          "lengthBmm": 92.84706033160748,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-front-sleeve",
+          "pairs": 13,
+          "lengthAmm": 225.8307309582291,
+          "lengthBmm": 225.64503969510127,
+          "mismatch": 0.0008222586108627648,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-back-sleeve",
+          "pairs": 13,
+          "lengthAmm": 223.8070167143642,
+          "lengthBmm": 223.54024612533064,
+          "mismatch": 0.0011919670479949166,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-underarm",
+          "pairs": 4,
+          "lengthAmm": 52.88270948289265,
+          "lengthBmm": 52.882709482892665,
+          "mismatch": 2.6872402821567145e-16,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-side",
+          "pairs": 20,
+          "lengthAmm": 456.3108924902596,
+          "lengthBmm": 456.3108924902596,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-shoulder",
+          "pairs": 6,
+          "lengthAmm": 92.84706033160748,
+          "lengthBmm": 92.84706033160748,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-front-sleeve",
+          "pairs": 13,
+          "lengthAmm": 225.83073095822908,
+          "lengthBmm": 225.64503969510133,
+          "mismatch": 0.0008222586108623873,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-back-sleeve",
+          "pairs": 13,
+          "lengthAmm": 223.80701671436418,
+          "lengthBmm": 223.5402461253306,
+          "mismatch": 0.0011919670479949166,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-underarm",
+          "pairs": 4,
+          "lengthAmm": 52.88270948289265,
+          "lengthBmm": 52.882709482892665,
+          "mismatch": 2.6872402821567145e-16,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        }
+      ],
+      "maxGapMm": 0,
+      "maxMismatch": 0.0011919670479949166
+    },
+    "grade": null,
+    "errors": []
+  },
+  "final": {
+    "version": "ba5dd26eae4ff7a20f1853e113940dfae78bb0d5b6a3fee837e1f44fab79a9d9",
+    "revision": 3,
+    "stale": false,
+    "busy": false,
+    "running": false,
+    "mode": "fabric",
+    "backend": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true,
+      "backend": "Hybrid WebGPU PBD predictor + CPU XPBD collision/self-contact corrector",
+      "iterations": 128,
+      "gpuIterations": 4,
+      "render": "Three.js WebGL2",
+      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+    },
+    "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "step": 182,
+    "dispatches": 14924,
+    "gpuCandidateDeltaMm": 1.0000557674113326,
+    "wasm": {
+      "active": true,
+      "exports": [
+        "principal_max",
+        "principal_min",
+        "green_normal",
+        "plane_stress",
+        "shear_stress"
+      ],
+      "precision": "f64"
+    },
+    "frameCount": 51,
+    "cursor": 50,
+    "displayedFrame": 182,
+    "metrics": {
+      "finite": true,
+      "strainP95": 0.06340120558538379,
+      "strainMax": 0.22519522526921087,
+      "referenceStressMaxKPa": 34.83868514401935,
+      "seamGapMm": 0,
+      "penetrationMm": 0,
+      "penetratingVertices": 0,
+      "penetratingSamples": 0,
+      "bodyFaceCrossings": null,
+      "selfFaceCrossings": null,
+      "fullCollision": false,
+      "foldMaxDeg": 124.60124196404574,
+      "step": 182,
+      "time": 1.5166666666666666,
+      "lastStepMs": 224.79999999701977,
+      "contactQueries": 1455
+    },
+    "verdict": {
+      "geometry": "NOT_RUN",
+      "physicalFit": "NOT_RUN",
+      "checks": [
+        {
+          "id": "finite",
+          "name": "坐标有限",
+          "status": "PASS",
+          "value": true
+        },
+        {
+          "id": "seams",
+          "name": "缝合关系及间隙 ≤ 2 mm",
+          "status": "PASS",
+          "value": 0,
+          "unit": "mm"
+        },
+        {
+          "id": "body",
+          "name": "人体内部顶点 = 0",
+          "status": "PASS",
+          "value": 0
+        },
+        {
+          "id": "samples",
+          "name": "内部边中点/面心 = 0",
+          "status": "NOT_RUN",
+          "value": 0
+        },
+        {
+          "id": "strain",
+          "name": "三角面主应变 p95 ≤ 10%",
+          "status": "PASS",
+          "value": 6.340120558538379,
+          "unit": "%"
+        },
+        {
+          "id": "maxStrain",
+          "name": "最大主应变 ≤ 25%",
+          "status": "PASS",
+          "value": 22.519522526921087,
+          "unit": "%"
+        },
+        {
+          "id": "bodyFaces",
+          "name": "人体三角面横穿 = 0",
+          "status": "NOT_RUN",
+          "value": null
+        },
+        {
+          "id": "self",
+          "name": "布料三角面横穿 = 0",
+          "status": "NOT_RUN",
+          "value": null
+        },
+        {
+          "id": "ccd",
+          "name": "连续碰撞 CCD",
+          "status": "NOT_RUN",
+          "value": null
+        },
+        {
+          "id": "calibration",
+          "name": "真实面料/真人合身",
+          "status": "NOT_RUN",
+          "value": null
+        }
+      ]
+    },
+    "measurements": {
+      "chest": -0.0006286618572630687,
+      "waist": 0.0025571720171910783,
+      "hip": -0.001263332319467736
+    },
+    "bodyVertices": 4002,
+    "bodyFaces": 8000,
+    "pieces": 4,
+    "vertices": 1455,
+    "seams": {
+      "status": "PASS",
+      "errors": [],
+      "rows": [
+        {
+          "id": "right-side",
+          "pairs": 20,
+          "lengthAmm": 456.31089249025956,
+          "lengthBmm": 456.31089249025956,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-shoulder",
+          "pairs": 6,
+          "lengthAmm": 92.84706033160748,
+          "lengthBmm": 92.84706033160748,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-front-sleeve",
+          "pairs": 13,
+          "lengthAmm": 225.8307309582291,
+          "lengthBmm": 225.64503969510127,
+          "mismatch": 0.0008222586108627648,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-back-sleeve",
+          "pairs": 13,
+          "lengthAmm": 223.8070167143642,
+          "lengthBmm": 223.54024612533064,
+          "mismatch": 0.0011919670479949166,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "right-underarm",
+          "pairs": 4,
+          "lengthAmm": 52.88270948289265,
+          "lengthBmm": 52.882709482892665,
+          "mismatch": 2.6872402821567145e-16,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-side",
+          "pairs": 20,
+          "lengthAmm": 456.3108924902596,
+          "lengthBmm": 456.3108924902596,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-shoulder",
+          "pairs": 6,
+          "lengthAmm": 92.84706033160748,
+          "lengthBmm": 92.84706033160748,
+          "mismatch": 0,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-front-sleeve",
+          "pairs": 13,
+          "lengthAmm": 225.83073095822908,
+          "lengthBmm": 225.64503969510133,
+          "mismatch": 0.0008222586108623873,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-back-sleeve",
+          "pairs": 13,
+          "lengthAmm": 223.80701671436418,
+          "lengthBmm": 223.5402461253306,
+          "mismatch": 0.0011919670479949166,
+          "gapMm": 0,
+          "directionB": 1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        },
+        {
+          "id": "left-underarm",
+          "pairs": 4,
+          "lengthAmm": 52.88270948289265,
+          "lengthBmm": 52.882709482892665,
+          "mismatch": 2.6872402821567145e-16,
+          "gapMm": 0,
+          "directionB": -1,
+          "easeRule": "arc-length paired; original edge rest lengths retained",
+          "status": "PASS"
+        }
+      ],
+      "maxGapMm": 0,
+      "maxMismatch": 0.0011919670479949166
+    },
+    "grade": [
+      {
+        "label": "S",
+        "chest": 894.9989362753648,
+        "area": 598
+      },
+      {
+        "label": "M",
+        "chest": 934.9993713381427,
+        "area": 619
+      },
+      {
+        "label": "L",
+        "chest": 974.9993891115278,
+        "area": 639
+      }
+    ],
+    "errors": []
+  },
+  "acceleration": "Software Vulkan/SwiftShader WebGPU unless adapter states hardware; no physical GPU performance claim."
+}

@@ -1,0 +1,206 @@
+{
+  "status": "PASS",
+  "count": 48,
+  "results": [
+    {
+      "name": "WASM: rigid rest",
+      "status": "PASS"
+    },
+    {
+      "name": "WASM: rigid rotation invariant",
+      "status": "PASS"
+    },
+    {
+      "name": "WASM: 10% stretch tensor",
+      "status": "PASS"
+    },
+    {
+      "name": "WASM: extreme collapse 1e-9 retained",
+      "status": "PASS"
+    },
+    {
+      "name": "WASM: degenerate finite",
+      "status": "PASS"
+    },
+    {
+      "name": "WASM: pure shear independent eigenvalues",
+      "status": "PASS"
+    },
+    {
+      "name": "WASM: material modulus changes stress only",
+      "status": "PASS"
+    },
+    {
+      "name": "body: full anatomical topology retained",
+      "status": "PASS"
+    },
+    {
+      "name": "body: dimensions remeasured after morph, < 1 mm error",
+      "status": "PASS"
+    },
+    {
+      "name": "body: height matches requested cm",
+      "status": "PASS"
+    },
+    {
+      "name": "body: render/collision share morphed geometry",
+      "status": "PASS"
+    },
+    {
+      "name": "body: rebuilt BVH contains every child",
+      "status": "PASS"
+    },
+    {
+      "name": "body: chest cross-section independently closed",
+      "status": "PASS"
+    },
+    {
+      "name": "body: inside negative/outside positive control",
+      "status": "PASS"
+    },
+    {
+      "name": "body: invalid dimensions rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "seams: all ten pairs present",
+      "status": "PASS"
+    },
+    {
+      "name": "seams: valid edge references and matching lengths",
+      "status": "PASS"
+    },
+    {
+      "name": "seams: equality constraint groups give exact zero gap",
+      "status": "PASS"
+    },
+    {
+      "name": "seams: broken seam is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "seams: duplicate boundary is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "seams: reversed pairing is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "seams: invalid piece edge is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "seams: stale length metadata is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "GPU constraints: no shared write in a dispatch color",
+      "status": "PASS"
+    },
+    {
+      "name": "GPU constraints: rest distances from independent 2D UV",
+      "status": "PASS"
+    },
+    {
+      "name": "GPU constraints: no artificial seam-distance springs",
+      "status": "PASS"
+    },
+    {
+      "name": "replay: stores a copy, not live positions",
+      "status": "PASS"
+    },
+    {
+      "name": "replay: seeking does not run physics",
+      "status": "PASS"
+    },
+    {
+      "name": "replay: stale input rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "replay: bounded storage keeps first/latest",
+      "status": "PASS"
+    },
+    {
+      "name": "collision: strict segment transverse hit",
+      "status": "PASS"
+    },
+    {
+      "name": "collision: segment miss rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "collision: coplanar is not labeled a transverse hit",
+      "status": "PASS"
+    },
+    {
+      "name": "collision: two-way full triangle crossing",
+      "status": "PASS"
+    },
+    {
+      "name": "collision: face crossing prevents false overall PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "collision: detects six historical body crossings despite zero inside vertices",
+      "status": "PASS"
+    },
+    {
+      "name": "collision: 38 historical self crossings independently agree with NumPy",
+      "status": "PASS"
+    },
+    {
+      "name": "folds: flat signed dihedral = 0",
+      "status": "PASS"
+    },
+    {
+      "name": "folds: perpendicular faces = 90 degrees",
+      "status": "PASS"
+    },
+    {
+      "name": "pattern: real FreeSewing four-piece Teagan",
+      "status": "PASS"
+    },
+    {
+      "name": "export: metric full-size SVG + 100 mm box",
+      "status": "PASS"
+    },
+    {
+      "name": "export: current-frame OBJ coordinates",
+      "status": "PASS"
+    },
+    {
+      "name": "verification: incomplete physical checks cannot give fit PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "verification: strain threshold detects a failing frame",
+      "status": "PASS"
+    },
+    {
+      "name": "grading: three independently redrafted sizes",
+      "status": "PASS"
+    },
+    {
+      "name": "negative control: initial arranged cloth is not fit PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "initial: finite positions and no sampled penetration",
+      "status": "PASS"
+    },
+    {
+      "name": "standalone: no external runtime scripts/styles/assets",
+      "status": "PASS"
+    }
+  ],
+  "htmlSha256": "9ac4e216f3cdf66ec8fc7d8a672b0ac76afa606f4f886d944f27abb834effb68",
+  "initial": {
+    "p95": 0.6927181591776522,
+    "max": 1.2797247179655789,
+    "insideVertices": 0,
+    "insideSamples": 0
+  },
+  "gpu": "NOT_RUN: this file contains Node/WASM/unit checks only."
+}
