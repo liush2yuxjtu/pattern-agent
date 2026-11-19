@@ -1,6 +1,6 @@
 # Garment Lab 验证报告
 
-**当前交付：PASS。** 已完成单文件离线 HTML、18 个分功能 JavaScript 模块、WASM f64 诊断内核、实际 WebGPU 预测和 CPU XPBD 碰撞校正。
+**当前交付：PASS。** 已完成单文件离线 HTML、20 个分功能 JavaScript 模块、WASM f64 诊断内核、实际 WebGPU 预测和 CPU XPBD 碰撞校正。
 
 ## 自动验收
 
@@ -59,6 +59,6 @@ node verify-garment.js garment-gpu-studio.html
 
 主证据：evidence/verification-js.json、evidence/browser-report-js.json、evidence/independent-report-js.json。回归反例与此前候选保存在 evidence/history。额外 NumPy 审计保留为交叉证据。
 
-交付 HTML SHA-256：`9ac4e216f3cdf66ec8fc7d8a672b0ac76afa606f4f886d944f27abb834effb68`。
+交付 HTML SHA-256：`a49be626c04c3d4c2b1ce6dd36b47d1bd6fec6e4dc55894d8dcbbc0b73f9821c`。
 
 本次需用户批准的事项：无。

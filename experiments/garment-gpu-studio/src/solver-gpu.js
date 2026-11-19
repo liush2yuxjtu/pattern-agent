@@ -1,5 +1,5 @@
 import {expandPositions}from './constraints.js';
-import {createSimulation}from './solver-corrector.js';
+import {createCorrector}from './corrector.js';
 const predictionWGSL=`
 struct Params {dt:f32,gravity:f32,damping:f32,wind:f32};
 @group(0) @binding(0) var<storage,read_write> p:array<vec4f>;
@@ -26,7 +26,7 @@ export class GPUSolver {
     if(!globalThis.isSecureContext)throw new Error('WebGPU 需要安全上下文。请在 Chrome/Edge 中直接打开下载的 HTML，或使用 localhost / HTTPS。');
     if(!navigator.gpu)throw new Error('当前浏览器没有 WebGPU。请使用支持 WebGPU 的 Chrome/Edge。');
     const adapter=await navigator.gpu.requestAdapter({powerPreference:'high-performance'});if(!adapter)throw new Error('WebGPU 未提供可用适配器。');
-    const device=await adapter.requestDevice(),solver=new GPUSolver(device,adapter,model,contact,options);await solver.init();return solver;
+    const device=await adapter.requestDevice(),solver=new GPUSolver(device,adapter,model,contact,options);try{await solver.init();return solver;}catch(error){solver.dispose();throw error;}
   }
   constructor(device,adapter,model,contact,options){Object.assign(this,{device,adapter,model,contact});this.options={gravity:9.81,wind:0,iterations:128,pinned:false,...options};this.steps=0;this.dispatches=0;this.dt=1/120;this.errors=[];this.destroyed=false;this.generation=0;this.p=model.initial.slice();this.info={...Object.fromEntries(['vendor','architecture','device','description','isFallbackAdapter'].map(k=>[k,adapter.info?.[k]??null])),backend:'Hybrid WebGPU PBD predictor + CPU XPBD collision/self-contact corrector',iterations:this.options.iterations,gpuIterations:4,predictorMotionLimitMm:1,render:'Three.js WebGL2',hybrid:'GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics.'};device.addEventListener('uncapturederror',e=>this.errors.push(String(e.error)));device.lost.then(x=>{if(!this.destroyed)this.errors.push('GPU lost: '+x.message);});this.buffers=[];}
   buffer(data,usage){const b=this.device.createBuffer({size:Math.max(16,data.byteLength),usage:usage|GPUBufferUsage.COPY_DST});this.device.queue.writeBuffer(b,0,data);this.buffers.push(b);return b;}
@@ -34,7 +34,8 @@ export class GPUSolver {
   bind(pipeline,buffers){return this.device.createBindGroup({layout:pipeline.getBindGroupLayout(0),entries:buffers.map((buffer,binding)=>({binding,resource:{buffer}}))});}
   async init(){
     if(!this.options.document||!this.options.body)throw new Error('Hybrid corrector requires canonical garment and body');
-    this.corrector=createSimulation(this.options.document,this.options.body,{iterations:this.options.iterations,gravity:0,pinned:this.options.pinned,selfContact:true,clearance:.005});
+    this.corrector=await createCorrector(this.options.document,this.options.body,{iterations:this.options.iterations,gravity:0,pinned:this.options.pinned,selfContact:true,clearance:.005});
+    this.info.correctorThread=this.corrector.thread;
     this.device.pushErrorScope('validation');
     this.pos=this.buffer(this.p,GPUBufferUsage.STORAGE|GPUBufferUsage.COPY_SRC);this.prev=this.buffer(this.p,GPUBufferUsage.STORAGE);this.config=this.buffer(new Float32Array([this.dt,this.options.gravity,.96,this.options.wind]),GPUBufferUsage.UNIFORM);
     this.planes=this.buffer(this.contact.planes(this.p),GPUBufferUsage.STORAGE);
@@ -56,12 +57,15 @@ export class GPUSolver {
       run(this.limitMotion,this.limitMotionBind,this.model.nodeCount);
       pass.end();encoder.copyBufferToBuffer(this.pos,0,this.read,0,this.p.byteLength);this.device.queue.submit([encoder.finish()]);
       await this.read.mapAsync(GPUMapMode.READ);this.p=new Float32Array(this.read.getMappedRange()).slice();this.read.unmap();
-      this.lastGpuDeltaMm=0;for(let i=0;i<this.model.nodeCount;i++)this.lastGpuDeltaMm=Math.max(this.lastGpuDeltaMm,1000*Math.hypot(...[0,1,2].map(a=>this.p[i*4+a]-before[i*4+a])));
+      this.lastGpuDeltaMm=0;
+      for(let i=0;i<before.length;i+=4){
+        const delta=Math.hypot(this.p[i]-before[i],this.p[i+1]-before[i+1],this.p[i+2]-before[i+2]);
+        this.lastGpuDeltaMm=Math.max(this.lastGpuDeltaMm,1000*delta);
+      }
       if(!this.p.every(Number.isFinite)||this.p.some(x=>Math.abs(x)>10))throw new Error('GPU 布料状态发散，已停止。请重新生成。');
       // Local CPU narrow phase and XPBD projection refine the real GPU candidate.
       // Gravity is zero in this projection stage: physical integration occurs once.
-      this.corrector.setPositions(expandPositions(this.model,this.p));this.corrector.setPinned(this.options.pinned);
-      const corrected=this.corrector.step();for(let i=0;i<this.model.groups.length;i++){const group=this.model.groups[i];for(let a=0;a<3;a++)this.p[i*4+a]=group.reduce((sum,node)=>sum+corrected[node*3+a],0)/group.length;}
+      const corrected=await this.corrector.step(expandPositions(this.model,this.p),this.options.pinned);for(let i=0;i<this.model.groups.length;i++){const group=this.model.groups[i];for(let a=0;a<3;a++)this.p[i*4+a]=group.reduce((sum,node)=>sum+corrected[node*3+a],0)/group.length;}
       this.device.queue.writeBuffer(this.pos,0,this.p);
       this.steps++;this.lastStepMs=performance.now()-start;
     }

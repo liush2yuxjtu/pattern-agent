@@ -150,7 +150,7 @@ async function verifyBrowser(root, { steps = 180, url = "http://127.0.0.1:8047/g
     await page.locator("#step").click();
     await page.waitForFunction((n) => window.garmentState.step === n && !window.garmentState.busy, next, { timeout: 9e4 });
     check("offline physical step really runs", (await state()).step === next);
-    check("no remote runtime dependency requests", requests.every((u) => u.startsWith(new URL(url).origin + "/")), requests);
+    check("no remote runtime dependency requests", requests.every((u) => new URL(u).origin === new URL(url).origin), requests);
     await page.setViewportSize({ width: 390, height: 844 });
     check("mobile has no document horizontal overflow", await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
     await page.setViewportSize({ width: 1440, height: 1050 });

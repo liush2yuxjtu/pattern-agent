@@ -25,7 +25,8 @@
         "gpuIterations": 4,
         "predictorMotionLimitMm": 1,
         "render": "Three.js WebGL2",
-        "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+        "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics.",
+        "correctorThread": "worker"
       }
     },
     {
@@ -244,7 +245,9 @@
       "name": "no remote runtime dependency requests",
       "status": "PASS",
       "detail": [
-        "http://127.0.0.1:39839/garment-gpu-studio.html"
+        "http://127.0.0.1:37373/garment-gpu-studio.html",
+        "blob:http://127.0.0.1:37373/5352ad13-e0cc-413d-8245-939128312dc9",
+        "blob:http://127.0.0.1:37373/f95feebd-db2e-48e4-9ef5-fffde9485e9e"
       ]
     },
     {
@@ -265,7 +268,7 @@
   ],
   "errors": [],
   "cases": {},
-  "htmlSha256": "9ac4e216f3cdf66ec8fc7d8a672b0ac76afa606f4f886d944f27abb834effb68",
+  "htmlSha256": "a49be626c04c3d4c2b1ce6dd36b47d1bd6fec6e4dc55894d8dcbbc0b73f9821c",
   "initial": {
     "version": "b5c9ce38a630035dac6a3537b1cf167520ed8cfa57e898fdd1e0c58597916b4f",
     "revision": 1,
@@ -284,7 +287,8 @@
       "gpuIterations": 4,
       "predictorMotionLimitMm": 1,
       "render": "Three.js WebGL2",
-      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics.",
+      "correctorThread": "worker"
     },
     "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
     "step": 0,
@@ -531,7 +535,8 @@
     "gpuIterations": 4,
     "predictorMotionLimitMm": 1,
     "render": "Three.js WebGL2",
-    "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+    "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics.",
+    "correctorThread": "worker"
   },
   "settled": {
     "version": "b5c9ce38a630035dac6a3537b1cf167520ed8cfa57e898fdd1e0c58597916b4f",
@@ -551,7 +556,8 @@
       "gpuIterations": 4,
       "predictorMotionLimitMm": 1,
       "render": "Three.js WebGL2",
-      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics.",
+      "correctorThread": "worker"
     },
     "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
     "step": 181,
@@ -586,7 +592,7 @@
       "foldMaxDeg": 166.78997623637792,
       "step": 181,
       "time": 1.5083333333333333,
-      "lastStepMs": 245.29999999701977,
+      "lastStepMs": 166,
       "contactQueries": 7950
     },
     "verdict": {
@@ -805,7 +811,8 @@
       "gpuIterations": 4,
       "predictorMotionLimitMm": 1,
       "render": "Three.js WebGL2",
-      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics.",
+      "correctorThread": "worker"
     },
     "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
     "step": 181,
@@ -840,7 +847,7 @@
       "foldMaxDeg": 124.60186523360987,
       "step": 181,
       "time": 1.5083333333333333,
-      "lastStepMs": 220.39999999850988,
+      "lastStepMs": 195.90000000002328,
       "contactQueries": 8094
     },
     "verdict": {
@@ -1059,12 +1066,13 @@
       "gpuIterations": 4,
       "predictorMotionLimitMm": 1,
       "render": "Three.js WebGL2",
-      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics."
+      "hybrid": "GPU integration, colored stretch/bend and vertex-contact predictor. CPU XPBD corrects actual mesh contacts, self contacts and seam equalities. WASM f64 diagnostics.",
+      "correctorThread": "worker"
     },
     "render": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
-    "step": 189,
-    "dispatches": 15498,
-    "gpuCandidateDeltaMm": 1.000054268630259,
+    "step": 184,
+    "dispatches": 15088,
+    "gpuCandidateDeltaMm": 1.0000558918256928,
     "wasm": {
       "active": true,
       "exports": [
@@ -1076,14 +1084,14 @@
       ],
       "precision": "f64"
     },
-    "frameCount": 58,
-    "cursor": 57,
-    "displayedFrame": 189,
+    "frameCount": 53,
+    "cursor": 52,
+    "displayedFrame": 184,
     "metrics": {
       "finite": true,
-      "strainP95": 0.06342891897215062,
-      "strainMax": 0.22521293365185913,
-      "referenceStressMaxKPa": 34.84151212106416,
+      "strainP95": 0.06341053031218465,
+      "strainMax": 0.22519490181972412,
+      "referenceStressMaxKPa": 34.8383870276716,
       "seamGapMm": 0,
       "penetrationMm": 0,
       "penetratingVertices": 0,
@@ -1091,10 +1099,10 @@
       "bodyFaceCrossings": null,
       "selfFaceCrossings": null,
       "fullCollision": false,
-      "foldMaxDeg": 124.58401689082234,
-      "step": 189,
-      "time": 1.575,
-      "lastStepMs": 258.90000000596046,
+      "foldMaxDeg": 124.59612134709522,
+      "step": 184,
+      "time": 1.5333333333333334,
+      "lastStepMs": 159.09999999997672,
       "contactQueries": 1455
     },
     "verdict": {
@@ -1130,14 +1138,14 @@
           "id": "strain",
           "name": "三角面主应变 p95 ≤ 10%",
           "status": "PASS",
-          "value": 6.342891897215062,
+          "value": 6.341053031218465,
           "unit": "%"
         },
         {
           "id": "maxStrain",
           "name": "最大主应变 ≤ 25%",
           "status": "PASS",
-          "value": 22.52129336518591,
+          "value": 22.51949018197241,
           "unit": "%"
         },
         {
