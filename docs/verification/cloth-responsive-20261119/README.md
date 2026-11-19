@@ -28,3 +28,16 @@ The [rear view](back.png), [pressure map](pressure.png) and [mobile view](mobile
 are actual browser captures. [Earlier failing runs](rejected) are retained.
 
 Reproduction commands and the acceptance criteria are in the [scoped verifier](../../../experiments/freesewing_cloth_lab/.agents/skills/verify/SKILL.md).
+
+## Published site
+
+GitHub Pages published [bc355ab](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44452622027). A fresh browser verified
+the exact public HTML, homepage navigation, covered opening state, playback,
+pause, and the physical check at step 146. See the
+[public receipt](public/playwright.json), [rear view](public/back.png) and
+[pressure view](public/pressure.png).
+
+A separate fixed-work comparison used fresh local Chromium sessions, fenced
+the starting render and stepped exactly 240 times through the same simulation.
+Elapsed time fell from 18.94 to 16.22 seconds.
+See [the raw timing samples](solver-ab.json).
