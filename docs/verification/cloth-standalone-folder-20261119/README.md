@@ -1,7 +1,7 @@
 # Standalone folder delivery
 
-Local `/verify`: **PASS**. Hosted publication and its independent browser checks
-are pending. This change adds a new folder to the existing
+Local and new public-route `/verify`: **PASS**. Publication and the complete
+independent public-browser flow are retained in `live/`. This change adds a new folder to the existing
 `liush2yuxjtu/pattern-agent` repository; it creates no repository or CI workflow.
 
 ## Artifact and source
@@ -77,3 +77,73 @@ The existing Pages workflow will publish this new `web/` directory.
 Physical fit, measured material calibration, cloth self-collision, CCD and finished
 construction remain outside this numerical example; historical T-shirt FAIL is
 unchanged.
+
+
+## Actual new public route
+
+Source commit `bc8d43fa762f7913f248e54fe2a8af00d97f94b4` was pushed directly to
+the existing repository. Its existing Pages publication
+[44450952292](https://github.com/liush2yuxjtu/pattern-agent/actions/runs/44450952292)
+finished successfully: [run](live/publication-run.json), [job](live/publication-jobs.json).
+The publication workflow was only observed; verification stayed local.
+A concurrent unrelated publication advanced the root deployment to
+`bc355ab5942dbce81704761bf21a2e225c9ce8da`. One restart was blocked by the old
+root-commit assertion before executing replay. The [independent proof](live/repin-proof.json)
+confirms this source commit is its ancestor, all relevant sources/verifiers and
+the full runtime HTML are unchanged, and the [new publication](live/repin-publication.json)
+succeeded. Remaining commands pin their actual root commit; the
+[blocked attempt](live/failures/repin-first-attempt-commands.json) and
+[trace](live/failures/repin-first-attempt.stderr.log) are preserved.
+[Public HTTP readback](live/http-identity.json) requires the complete new-path HTML,
+its manifest and the root deployment commit to match.
+
+The actual [new URL](https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc8d43fa762f7913f248e54fe2a8af00d97f94b4)
+passes all **52 unchanged** original checks:
+[fit16](live/fit.json), [browser15](live/browser.json),
+[replay15](live/replay.json), [handoff6](live/handoff.json).
+Every one of the **61** recorded physical states is independently reopened:
+[all-frame reports](live/frame-oracles.json). Corresponding raw Float32 buffers,
+pressure states, frame/time/parameters and event kinds remain exact against the
+pre-refactor export: [comparison](live/physical-equivalence.json),
+[actual recording](live/actual-recording.json.gz).
+The adjacent [public site/download flow](live/site-browser.json) also passes.
+All [commands/exit statuses](live/commands.json),
+[raw inventory](live/inventory.json) and [final verdict](live/verify.json) are retained.
+
+A first public replay run failed the unchanged playback bound: a 0.5-second clip
+at 0.5x took 1.1951 seconds rather than 1 second, beyond the 0.15 second tolerance.
+Its [first commands](live/failures/first-public-commands.json),
+[timing samples](live/failures/first-playback-timings.json) and
+[trace](live/failures/first-replay.stderr.log) remain FAIL. Product code and the
+timing assertion were unchanged. A fresh native-WebGPU
+[eight-run timing probe](live/timing-probe.json) passes all four speeds twice,
+including exact selected-state restoration and zero integration, then the complete
+fresh replay suite passes. The cause of the single overrun is not established;
+the observed software-rendering timings remain visible rather than hidden.
+The portable probe is persisted as `tools/cloth_lab/probe_replay_timing.py` and
+its own [eight actual runs](live/portable-timing-probe.json) pass. An initial
+input guard assumed a 60-step float32 clock differed from exactly 0.5 seconds
+by less than 1 microsecond. The actual valid clip spans 0.49999237060546875 seconds
+with per-step error 1.2716e-7 seconds, within the original 3e-7 bound. The
+[guard failure](live/failures/portable-clock-guard.stderr.log) is retained; the
+portable tool now checks all 61 consecutive frames and the original per-step
+clock bound. The unchanged 0.15 second playback bound is still enforced.
+
+Actual public [untouched first view](live/step-000.png),
+[front](live/first-ready-front.png), [back](live/first-ready-back.png),
+[side](live/first-ready-side.png), [pressure](live/first-ready-pressure.png),
+[stress](live/stress.png), [strain](live/strain.png),
+[mobile](live/mobile.png) and [offline replay](live/offline-timeline.png) images
+are retained. Default frame 240 has zero sewn gap, zero sampled body penetration,
+zero exposed target skin pixels, and about 17.54% maximum strain. The original 20%
+warning remains unchanged. Native events confirm actual software WebGPU online,
+with no page/console/HTTP errors. Performance samples, real adapter/resource counts
+and [performance screenshot](live/performance.png) remain separate from hardware claims.
+
+Original-suite offline windows use `about:blank` and actually select WebGL2 there,
+as their screenshots state. Secure-origin actual offline WebGPU was separately
+validated on the byte-identical HTML in the modular renderer14 record; no fallback
+image is presented as native WebGPU evidence. The actual
+[downloaded standalone](live/actual-downloaded.html.gz),
+[first-ready state](live/first-ready.json.gz) and [millimetre SVG](live/pattern.svg)
+are available for reopen. Later documentation commits are not newly deployed code.

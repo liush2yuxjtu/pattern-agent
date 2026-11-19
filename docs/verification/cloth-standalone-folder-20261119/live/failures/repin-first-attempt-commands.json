@@ -1,0 +1,85 @@
+{
+  "deployedCommit": "bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+  "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "baseUrl": "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+  "environment": {
+    "PYTHONPATH": "/workspace/work/verifydeps",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "commands": [
+    {
+      "name": "fit",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_fit.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-commit",
+        "bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/live/fit"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058690.1757383,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058820.3444016
+    },
+    {
+      "name": "browser",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_browser.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-commit",
+        "bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/live/browser"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058820.344531,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058951.407757
+    },
+    {
+      "name": "replay",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_replay.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-commit",
+        "bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/live/replay-corrected"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795059431.8266976,
+      "exitCode": 1,
+      "finishedAtUnix": 1795059434.3470569
+    }
+  ],
+  "verdict": "FAIL",
+  "firstFailedRun": "commands.json",
+  "timingProbe": {
+    "receipt": "timing-probe/receipt.json",
+    "verdict": "PASS",
+    "runs": 8,
+    "exitCode": 0,
+    "thresholdSeconds": 0.15,
+    "productSourceChanges": false
+  }
+}

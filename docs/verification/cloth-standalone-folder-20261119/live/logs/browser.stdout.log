@@ -1,0 +1,136 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "stepwiseSimulationAndIndependentGeometry": true,
+    "materialRestRotationStretchShear": true,
+    "physicalFieldsReachRealRenderedColors": true,
+    "physicalScaleSVGAndActualSceneOBJ": true,
+    "runtimeBVHMatchesIndependentBodyQueries": true,
+    "actualPenetrationDetectedAndRecovered": true,
+    "movingActualBodyCollision": true,
+    "sameParametersDrivePatternAndRestMesh": true,
+    "resetGPUResourcesAndWASMMemoryStable": true,
+    "bothMaterialPresetsAndVerticalGrain": true,
+    "realRunPauseAndPerformanceSample": true,
+    "mobileWithoutOverflow": true,
+    "recursiveSaveAndMovedPinContinuation": true,
+    "offlineSnapshotExactStateAndContinuation": true,
+    "collisionBroadPhaseMatchesFullQueriesBitForBit": true
+  },
+  "settled": {
+    "fit": {
+      "pressure": {
+        "verdict": "PASS",
+        "samples": 256,
+        "forceN": 3.6908117496284794,
+        "peakPa": 59.22557067871094,
+        "forceIntegralErrorN": 1.1403032651458034e-07,
+        "maxContactResidualMm": 0.00042101273648056616,
+        "minNormalAlignment": 0.9999998893968254
+      },
+      "coverage": {
+        "verdict": "PASS",
+        "anatomicalSurfaceSamples": 1709,
+        "views": 8,
+        "totalRays": 13672,
+        "exposedRays": 0,
+        "byView": [
+          {
+            "angleDegrees": 0.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 45.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 90.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 135.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 180.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 225.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 270.0,
+            "exposed": 0,
+            "rays": 1709
+          },
+          {
+            "angleDegrees": 315.0,
+            "exposed": 0,
+            "rays": 1709
+          }
+        ]
+      },
+      "wear": {
+        "verdict": "PASS",
+        "bodySectionGirthMm": 666.0588056425474,
+        "waistEdgeLengthsMm": [
+          406.6840051894257,
+          300.23699994444615
+        ],
+        "garmentWaistMm": 706.9210051338719,
+        "minWaistGapMm": 6.996127162765317,
+        "maxWaistGapMm": 7.000010747540357,
+        "maxSkinWaistHeightErrorMm": 0.0006045753060401893,
+        "patternMismatchMm": 3.478364135389711e-06,
+        "sectionHeightM": 1.0
+      }
+    },
+    "verdict": "PASS",
+    "vertices": 850,
+    "triangles": 1536,
+    "bodyVertices": 13380,
+    "bodyTriangles": 26756,
+    "seam": {
+      "lengthsMm": [
+        600.0000163688787,
+        600.0000210626071
+      ],
+      "mismatchMm": 4.693728328675206e-06,
+      "missing": false,
+      "reversed": false
+    },
+    "maxSeamGapMm": 0.0,
+    "maxBodyPenetrationMm": 0.0,
+    "minBodyClearanceMm": 2.765016496967292,
+    "sampledPoints": 4770,
+    "insideSamples": 0,
+    "clothEdgeBodyHits": 0,
+    "bodyEdgeClothHits": 0,
+    "maxTensorFieldAbsoluteErrors": [
+      2.3217639477657315e-07,
+      2.802271039659132e-07,
+      2.1261318550180874e-07,
+      0.0530998750236904,
+      0.04706118707326823,
+      2.491713669838802e-07,
+      2.083345220782462e-07,
+      9.16436694517464e-08
+    ],
+    "maxPrincipalStrainPercent": 17.4279481585899,
+    "maxPrincipalCauchyKPa": 43.57892000952583,
+    "scope": "Discrete mesh collision and stated synthetic constitutive model. Self-collision and physical fit NOT_RUN."
+  },
+  "performance": {
+    "medianFrameMs": 83.40000000000873,
+    "p95FrameMs": 116.69999999999709,
+    "sampleFrames": 61,
+    "rendererClass": "software"
+  }
+}

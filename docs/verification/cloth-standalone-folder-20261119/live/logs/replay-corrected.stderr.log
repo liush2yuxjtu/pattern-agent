@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/pattern-agent/tools/cloth_lab/verify_replay.py", line 325, in <module>
+    if args.base_url:run(args,args.base_url)
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/pattern-agent/tools/cloth_lab/verify_replay.py", line 94, in run
+    assert build['commit']==args.expected_commit
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

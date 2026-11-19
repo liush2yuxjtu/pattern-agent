@@ -326,6 +326,23 @@ eight-run probe and the complete isolated replay suite must pass; retain the
 first failure and actual timing log. Numerical worker processes may independently
 reopen immutable snapshots, but all frame results are required before PASS.
 
+The portable native-WebGPU timing probe imports a REAL downloaded 61-frame JSON:
+
+```sh
+python tools/cloth_lab/probe_replay_timing.py \
+  --base-url https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/ \
+  --project ACTUAL_DOWNLOADED_REPLAY.json --expected-html-sha HTML_SHA \
+  --output work/cloth-lab/timing-probe
+```
+
+It uses the original click-to-completion clock and 0.15 s bound, runs all four
+speeds twice, requires actual WebGPU, unchanged selected-frame buffers and zero
+integration. A single software-renderer overrun remains a recorded FAIL; fresh
+passing probes do not erase it or establish its cause. Preserve a root-commit
+mismatch separately if another publication advances while app bytes stay exact;
+independently prove the new committed/runtime HTML and source ancestry before
+pinning the new root commit for the remaining suites.
+
 The first-ready exposure, pressure-convergence failure, original PNGs, exact
 local/public buffer comparisons and final public receipts are retained in
 [the dated verification record](../../../../docs/verification/wasm-cloth-first-ready-20261118/README.md).

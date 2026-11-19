@@ -1,0 +1,53 @@
+{
+  "verdict": "PASS",
+  "base_url": "https://liush2yuxjtu.github.io/pattern-agent/",
+  "commit": "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+  "missing_download": {
+    "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/no-such-pattern.pdf",
+    "status": 404,
+    "content_type": "text/html; charset=utf-8"
+  },
+  "source_sha256": "1aba8c3001b5058b2ad03724aa5a70c50a2442e8891636363e9a39bfdf51f3f8",
+  "downloads": [
+    {
+      "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/straight-skirt-eu40/print-a4.pdf",
+      "file": "straight-skirt-eu40-a4.pdf",
+      "sha256": "a524be81dffb911837dc54d2749046deaa4fd7092b68ba1c986263fb826d7e4b",
+      "bytes": 72356
+    },
+    {
+      "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/straight-skirt-eu40/print-fullsize.pdf",
+      "file": "straight-skirt-eu40-fullsize.pdf",
+      "sha256": "09e2559c3275850c81bc1b100c9c587345c8aac8c59ebe6f5bb334341cf0ef8a",
+      "bytes": 10436
+    },
+    {
+      "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/straight-skirt-eu40/使用说明.pdf",
+      "file": "straight-skirt-eu40-guide-cn.pdf",
+      "sha256": "103256afa162d115babb699d5550826c9910e99f48efeafc996fac9f1b1a810b",
+      "bytes": 107648
+    },
+    {
+      "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/straight-skirt-eu40.zip",
+      "file": "straight-skirt-eu40.zip",
+      "sha256": "65eb8dccc5864df8bde437f79dd1c45885629a7b87bd360585593d383da5841a",
+      "bytes": 187769
+    }
+  ],
+  "checks": [
+    "desktop render",
+    "modal open and Escape close",
+    "print details toggle",
+    "four real downloads match deployed hashes",
+    "375 px mobile without overflow",
+    "mobile modal close",
+    "existing workbench zoom and native export",
+    "native edit/import hides invalidated cutlines",
+    "review export stays unapproved",
+    "unsupported parametric import is explicitly rejected",
+    "missing download returns 404"
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "asset_http_errors": []
+}

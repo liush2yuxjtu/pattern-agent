@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/pattern-agent/tools/cloth_lab/probe_replay_timing.py", line 82, in <module>
+    run(parser.parse_args())
+  File "/workspace/pattern-agent/tools/cloth_lab/probe_replay_timing.py", line 19, in run
+    assert abs(frames[-1]['time']-frames[0]['time']-.5)<1e-6
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

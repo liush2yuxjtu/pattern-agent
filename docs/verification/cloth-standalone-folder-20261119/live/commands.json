@@ -1,0 +1,164 @@
+{
+  "sourceCommit": "bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+  "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+  "baseUrl": "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+  "commands": [
+    {
+      "name": "fit",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_fit.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-commit",
+        "bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/live/fit"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058690.1757383,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058820.3444016
+    },
+    {
+      "name": "browser",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_browser.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-commit",
+        "bc8d43fa762f7913f248e54fe2a8af00d97f94b4",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/live/browser"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "startedAtUnix": 1795058820.344531,
+      "exitCode": 0,
+      "finishedAtUnix": 1795058951.407757
+    },
+    {
+      "name": "replay",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_replay.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc355ab5942dbce81704761bf21a2e225c9ce8da",
+        "--expected-commit",
+        "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/live/replay-final"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "deployedRootCommit": "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+      "startedAtUnix": 1795059686.1276047,
+      "exitCode": 0,
+      "finishedAtUnix": 1795059915.1533554
+    },
+    {
+      "name": "handoff",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/verify_handoff.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/?v=bc355ab5942dbce81704761bf21a2e225c9ce8da",
+        "--expected-commit",
+        "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--renderer",
+        "webgpu",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/live/handoff"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "deployedRootCommit": "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+      "startedAtUnix": 1795059915.6699266,
+      "exitCode": 0,
+      "finishedAtUnix": 1795059942.3207736
+    },
+    {
+      "name": "existing-pages",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "work/cloth-modular/run-pages-gate.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/",
+        "--expected-commit",
+        "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+        "--output",
+        "/workspace/pattern-agent/work/cloth-standalone-delivery/live/existing-pages"
+      ],
+      "cwd": "/workspace/pattern-agent",
+      "deployedRootCommit": "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+      "startedAtUnix": 1795059942.7629085,
+      "exitCode": 0,
+      "finishedAtUnix": 1795059947.5790625
+    },
+    {
+      "name": "portable-timing-probe",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "tools/cloth_lab/probe_replay_timing.py",
+        "--base-url",
+        "https://liush2yuxjtu.github.io/pattern-agent/cloth-lab-standalone/",
+        "--project",
+        "work/cloth-standalone-delivery/live/replay-final/downloaded-replay.json",
+        "--expected-html-sha",
+        "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+        "--output",
+        "work/cloth-standalone-delivery/live/portable-timing-final"
+      ],
+      "exitCode": 0,
+      "receipt": "portable-timing-final/receipt.json"
+    }
+  ],
+  "firstFailedRun": "commands.json",
+  "firstRepinFailure": "acceptance-commands.json",
+  "timingProbe": "timing-probe/receipt.json",
+  "deploymentProofs": [
+    {
+      "deployedRootCommit": "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+      "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+      "sourceCommitIsAncestor": true,
+      "relevantSourcesChanged": [],
+      "observedAtUnix": 1795059686.1271553
+    },
+    {
+      "deployedRootCommit": "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+      "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+      "sourceCommitIsAncestor": true,
+      "relevantSourcesChanged": [],
+      "observedAtUnix": 1795059915.669178
+    },
+    {
+      "deployedRootCommit": "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+      "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+      "sourceCommitIsAncestor": true,
+      "relevantSourcesChanged": [],
+      "observedAtUnix": 1795059942.7620344
+    },
+    {
+      "deployedRootCommit": "bc355ab5942dbce81704761bf21a2e225c9ce8da",
+      "htmlSha256": "55950b75f7f5abc4923d943a029b08492f4d8cfb03f38d031faf8fe193ee50af",
+      "sourceCommitIsAncestor": true,
+      "relevantSourcesChanged": [],
+      "observedAtUnix": 1795059947.78369
+    }
+  ],
+  "verdict": "PASS",
+  "portableProbeFirstAttempt": "final-commands.json",
+  "finishedAtUtc": "2026-11-19T03:48:41.539028+00:00"
+}
