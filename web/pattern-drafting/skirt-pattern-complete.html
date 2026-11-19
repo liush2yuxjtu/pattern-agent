@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src data:; font-src data:; media-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>从零打版｜A 字裙全流程</title>
+<style>
+:root {color-scheme:light dark;--background:#f5f0e7;--foreground:#2e222c;--card:#fffaf2;--viz-series-1:#a6344d}
+@media(prefers-color-scheme:dark){:root{--background:#251e25;--foreground:#f9eae5;--card:#30252e;--viz-series-1:#ff9bb0}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--background);color:var(--foreground);font:16px/1.55 system-ui,sans-serif}
+main{width:min(100% - 28px,880px);margin:28px auto 48px}
+header{border-top:3px solid var(--foreground);padding:12px 0 15px}
+h1{font-size:clamp(31px,5vw,55px);letter-spacing:-.045em;line-height:1.1;margin:0}
+header p{margin:8px 0 0;color:var(--viz-series-1)}
+#fused-skirt h2{font-size:clamp(24px,4vw,34px);line-height:1.2}
+#fused-skirt [data-scene]{background:var(--card);border-radius:10px}
+.btn{font:inherit;color:var(--foreground);background:var(--card);border:1px solid color-mix(in srgb,var(--foreground) 27%,var(--card));padding:7px 11px;min-height:44px;border-radius:7px;cursor:pointer}
+.btn[aria-pressed="true"],.btn-primary{background:var(--foreground);color:var(--card)}
+.btn:disabled{opacity:.42;cursor:default}
+:focus-visible{outline:3px solid var(--viz-series-1);outline-offset:3px}
+main>details{margin-top:18px;border-top:1px solid color-mix(in srgb,var(--foreground) 25%,var(--background));padding-top:10px}
+details p,details ul{max-width:68ch}
+summary{cursor:pointer}
+a{color:var(--viz-series-1)}
+</style>
+</head>
+<body>
+<main>
+<header><h1>从零打版</h1><p>一条 A 字裙，从款式图到裁片</p></header>
+<style>
+#fused-skirt {
+  --ink:var(--foreground,#211d28);
+  --paper:var(--card,#fffaf2);
+  --accent-ink:var(--viz-series-1,#ad3449);
+  --soft:color-mix(in srgb,var(--accent-ink) 13%,var(--paper));
+  --cloth:color-mix(in srgb,var(--accent-ink) 31%,var(--paper));
+  --rule:color-mix(in srgb,var(--ink) 16%,var(--paper));
+  color:var(--ink); display:grid; gap:12px; min-width:0;
+}
+#fused-skirt [data-steps],#fused-skirt .actions {display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#fused-skirt .actions {justify-content:space-between}
+#fused-skirt h2,#fused-skirt p {margin:0}
+#fused-skirt .stage {min-width:0}
+#fused-skirt svg {display:block;width:100%;height:auto}
+#fused-skirt svg text {fill:var(--ink);font:500 25px system-ui,sans-serif}
+#fused-skirt svg .small {font-size:24px}
+#fused-skirt svg .measure {font-size:30px;font-weight:650}
+#fused-skirt svg .outline {fill:none;stroke:var(--ink);stroke-width:2.6}
+#fused-skirt svg .paper {fill:var(--paper);stroke:var(--ink);stroke-width:2.6}
+#fused-skirt svg .cloth {fill:var(--cloth);stroke:var(--ink);stroke-width:2.6}
+#fused-skirt svg .highlight {fill:var(--soft);stroke:var(--accent-ink);stroke-width:2.6}
+#fused-skirt svg .accent {fill:none;stroke:var(--accent-ink);stroke-width:3}
+#fused-skirt svg .guide {fill:none;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:7 6;opacity:.5}
+#fused-skirt svg .rule {fill:none;stroke:var(--rule);stroke-width:1.2}
+#fused-skirt svg .cut {fill:var(--soft);stroke:var(--ink);stroke-width:2.6}
+#fused-skirt svg .dot {fill:var(--accent-ink);stroke:var(--paper);stroke-width:2}
+#fused-skirt .draw {stroke-dasharray:1;stroke-dashoffset:0}
+#fused-skirt .playing .draw {animation:skirt-draw 850ms ease both;animation-delay:var(--delay,0ms)}
+#fused-skirt .playing .appear {animation:skirt-appear 300ms ease both;animation-delay:var(--delay,0ms)}
+@keyframes skirt-draw {from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes skirt-appear {from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  #fused-skirt .playing .draw,#fused-skirt .playing .appear {animation:none}
+}
+#fused-skirt {--ink:var(--foreground,#33232c);--paper:var(--background,#f9f1e9);--mark:var(--viz-series-1,#a63550);display:grid;gap:12px;color:var(--ink)}
+#fused-skirt nav{display:flex;gap:6px;flex-wrap:wrap}
+#fused-skirt p,#fused-skirt h2{margin:0}
+#fused-skirt svg{width:100%;height:auto;display:block}
+#fused-skirt svg text{font:500 26px system-ui,sans-serif;fill:var(--ink)}
+#fused-skirt svg .big{font-size:38px;font-weight:650}
+#fused-skirt svg .small{font-size:24px}
+#fused-skirt svg .line{fill:none;stroke:var(--ink);stroke-width:2.4}
+#fused-skirt svg .paper{fill:var(--paper);stroke:var(--ink);stroke-width:2.6}
+#fused-skirt svg .tint{fill:color-mix(in srgb,var(--mark) 19%,var(--paper));stroke:var(--ink);stroke-width:2.2}
+#fused-skirt svg .blue{fill:none;stroke:var(--mark);stroke-width:3.4}
+#fused-skirt svg .ghost{fill:none;stroke:var(--ink);stroke-width:1.7;stroke-dasharray:7 6;opacity:.55}
+#fused-skirt svg .blank{fill:none;stroke:none}
+#fused-skirt svg .dot{fill:var(--mark);stroke:var(--paper);stroke-width:1.8}
+#fused-skirt .trace{stroke-dasharray:1;animation:skirt-number-trace 820ms ease both;animation-delay:var(--wait,0ms)}
+#fused-skirt .rise{animation:skirt-number-rise 650ms ease both;animation-delay:var(--wait,0ms)}
+@keyframes skirt-number-trace{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes skirt-number-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){#fused-skirt .trace,#fused-skirt .rise{animation:none}}
+
+#fused-skirt {
+  --accent-ink:var(--mark);
+  --soft:color-mix(in srgb,var(--mark) 13%,var(--paper));
+  --cloth:color-mix(in srgb,var(--mark) 31%,var(--paper));
+  --rule:color-mix(in srgb,var(--ink) 16%,var(--paper));
+}
+#fused-skirt [hidden] {display:none !important}
+#fused-skirt [data-substeps],#fused-skirt [data-selectors] {display:flex;flex-wrap:wrap;gap:6px 10px}
+#fused-skirt [data-substeps]{padding-bottom:4px;border-bottom:1px solid var(--rule)}
+#fused-skirt [data-scene] svg{max-width:820px;margin-inline:auto}
+#fused-skirt .still .rise,#fused-skirt .still .trace{animation:none}
+#fused-skirt [data-help] summary{cursor:pointer}
+#fused-skirt [data-help] p{margin-top:6px;max-width:65ch}
+#fused-skirt .page-actions {display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+#fused-skirt .page-actions [data-progress]{margin-inline-start:auto}
+#fused-skirt [data-quiz] summary{cursor:pointer}
+#fused-skirt [data-check]{margin-top:10px;display:grid;gap:5px}
+#fused-skirt [data-check] div{display:flex;gap:6px;flex-wrap:wrap}
+#fused-skirt [data-feedback]:empty{display:none}
+</style>
+
+<section id="fused-skirt" aria-label="A 字裙打版全流程">
+  <nav data-chapters aria-label="章节"></nav>
+  <nav data-substeps aria-label="本章步骤" hidden></nav>
+  <div data-selectors hidden>
+    <nav data-people aria-label="示例尺寸" hidden>
+      <button class="btn" type="button">原来的尺寸</button>
+      <button class="btn" type="button">换一个人</button>
+    </nav>
+    <nav data-panels aria-label="选择半片" hidden>
+      <button class="btn" type="button">半前片</button>
+      <button class="btn" type="button">半后片</button>
+    </nav>
+  </div>
+  <div aria-live="polite">
+    <h2 data-title>准备工具</h2>
+    <p data-caption></p>
+    <p data-start-hint>点「下一步」看动画，展开「怎么做 · 为什么」跟画。</p>
+  </div>
+  <div data-scene></div>
+  <div class="page-actions" aria-label="播放和翻页">
+    <button class="btn" type="button" data-back>上一步</button>
+    <button class="btn" type="button" data-replay>重播</button>
+    <button class="btn btn-primary" type="button" data-next>下一步</button>
+    <span data-progress aria-label="当前步数"></span>
+  </div>
+  <details data-help>
+    <summary>怎么做 · 为什么</summary>
+    <p data-note></p>
+  </details>
+  <details data-quiz hidden>
+    <summary>小自测</summary>
+    <section data-check aria-label="收量">
+      <p>收腰 6.5，两个省各 2，侧缝收多少？</p>
+      <div>
+        <button class="btn" type="button" data-choice data-explanation="还要减掉另一个省。">4.5</button>
+        <button class="btn" type="button" data-choice data-answer data-explanation="6.5－2－2＝2.5 厘米。">2.5</button>
+      </div>
+      <p data-feedback aria-live="polite"></p>
+    </section>
+    <section data-check aria-label="前片折边">
+      <p>前中折边剪开吗？</p>
+      <div>
+        <button class="btn" type="button" data-choice data-answer data-explanation="展开后得到一整张前片。">保留</button>
+        <button class="btn" type="button" data-choice data-explanation="回想前片展开后应有几片。">剪开</button>
+      </div>
+      <p data-feedback aria-live="polite"></p>
+    </section>
+  </details>
+</section>
+<script>
+(() => {
+const garment = (() => {
+  const shell = (name, art) => `<svg viewBox="0 0 640 425" role="img" aria-label="${name}" stroke-linejoin="round" stroke-linecap="round">
+    <defs>
+      <pattern id="sk-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path class="rule" d="M20 0H0V20" opacity=".48"/></pattern>
+      <marker id="sk-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="var(--accent-ink)" stroke-width="1.5"/></marker>
+      <pattern id="sk-weave" width="11" height="11" patternUnits="userSpaceOnUse"><path class="rule" d="M0 3H11M3 0V11"/></pattern>
+    </defs>
+    ${art}</svg>`;
+  const path = (d, cls = 'outline', extra = '') => `<path d="${d}" class="${cls}" ${extra}/>`;
+  const label = (x, y, words, cls = '') => `<text x="${x}" y="${y}" text-anchor="middle" class="${cls}">${words}</text>`;
+  const point = (x, y) => `<circle class="dot" cx="${x}" cy="${y}" r="5"/>`;
+  const line = (d, cls = 'accent', delay = 0) => path(d, cls + ' draw', `pathLength="1" style="--delay:${delay}ms"`);
+  const arrow = (d, both = false) => path(d, 'accent', `marker-end="url(#sk-arrow)" ${both ? 'marker-start="url(#sk-arrow)"' : ''}`);
+  const appear = (art, delay) => `<g class="appear" style="--delay:${delay}ms">${art}</g>`;
+  const grid = '<rect x="16" y="8" width="608" height="409" rx="9" fill="url(#sk-grid)"/>';
+  const skirt = 'M-62 0Q0 11 62 0C63 42 88 107 125 231Q0 254 -125 231C-88 107 -63 42 -62 0Z';
+  const belt = 'M-62 0Q0 11 62 0L64 22Q0 34 -64 22Z';
+  const block = 'M0 0H135Q150 37 150 120V360H0Z';
+  const dartOne = 'M35 0L41 54L47 0';
+  const dartTwo = 'M81 0L87 72L93 0';
+  const hem = 'M0 350Q90 358 212 336';
+  const stylePiece = 'M0 0Q64 4 137 0C156 20 159 66 168 104L212 336Q90 358 0 350Z';
+  const finalPiece = 'M0 0Q64 4 116 1Q147 37 168 104L212 336Q90 358 0 350Z';
+  const steps = [
+    {
+      short:'定款', caption:'梭织裙。腰合身，裙摆放宽。',
+      alt:'正反面款式图。前片有腰省，后中有拉链，裙摆呈 A 字。右下角是梭织布样。',
+      draw:() => `
+        ${grid}
+        <g transform="translate(167 70) scale(.96 1.18)">
+          ${path(skirt,'cloth')}${path(belt,'paper')}
+          ${path('M-30 27l4 34M30 27l-4 34','outline')}
+          ${path('M-120 222Q0 243 120 222','guide')}
+        </g>
+        <g transform="translate(435 70) scale(.96 1.18)">
+          ${path(skirt,'cloth')}${path(belt,'paper')}
+          ${path('M-33 27l4 47M33 27l-4 47M0 83V240','guide')}
+          ${line('M0 8V83','accent',220)}
+          ${path('M0 18h7v13H0','outline')}
+        </g>
+        ${label(165,49,'正面')}${label(435,49,'背面')}
+        ${arrow('M66 387H266',true)}
+        ${label(166,415,'宽摆','small')}
+        <g transform="translate(548 319) rotate(-8)">
+          ${path('M0 0H62V62H0Z','highlight')}
+          <path d="M0 0H62V62H0Z" fill="url(#sk-weave)"/>
+        </g>${label(575,413,'布样','small')}`
+    },
+    {
+      short:'量体', caption:'软尺绕腰臀一圈，贴身不勒。',
+      alt:'量腰围 72 厘米、最丰满处臀围 96 厘米、腰到臀的垂直高度 20 厘米、腰到裙摆 60 厘米。',
+      draw:() => `
+        ${path('M267 25Q250 41 220 48Q217 77 245 98Q251 115 231 143Q202 170 206 205L226 388H254L279 228L304 388H332L352 205Q356 170 327 143Q307 115 313 98Q341 77 338 48Q308 41 291 25','cloth')}
+        ${path('M279 37V220','guide')}
+        ${path('M247 104C247 88 311 88 311 104M205 189C205 166 353 166 353 189','guide')}
+        ${line('M247 104C247 122 311 122 311 104','accent',0)}
+        ${line('M205 189C205 216 353 216 353 189','accent',350)}
+        ${path('M141 108H240M144 190H198M321 108H540M359 190H440M344 386H540','guide')}
+        ${arrow('M422 110V188',true)}${arrow('M533 110V384',true)}
+        ${label(105,69,'腰围')}${label(108,103,'72 厘米','measure')}
+        ${label(104,154,'臀围')}${label(108,188,'96 厘米','measure')}
+        ${label(420,224,'臀高')}${label(421,258,'20 厘米','measure')}
+        ${label(534,307,'裙长')}${label(533,342,'60 厘米','measure')}`
+    },
+    {
+      short:'画原型', caption:'原型是合身的底版。用侧缝和腰省收腰。',
+      alt:'从矩形框线开始。示例臀围加 4 厘米后除以 4，半片宽 25 厘米。目标腰宽为腰围加 2 厘米后除以 4，即 18.5 厘米。侧缝收 2.5 厘米，两个腰省各收 2 厘米。后片省画得更深。',
+      draw:() => `
+        ${grid}
+        ${label(189,31,'半前片')}${label(405,31,'半后片')}
+        <g transform="translate(121 66) scale(.87)">
+          ${path('M0 0H150V360H0Z M0 120H150','guide')}
+          ${line(block,'outline',280)}
+          ${line(dartOne + ' ' + dartTwo,'accent',820)}
+        </g>
+        <g transform="translate(340 66) scale(.87)">
+          ${path('M0 0H150V360H0Z M0 120H150','guide')}
+          ${line(block,'outline',480)}
+          ${line('M35 0L41 84L47 0 M81 0L87 84L93 0','accent',980)}
+        </g>
+        ${arrow('M121 391H251',true)}
+        ${label(186,414,'25 厘米','small')}
+        ${label(65,176,'臀线','small')}
+        ${appear(arrow('M560 104H470L456 74') + label(557,92,'收侧缝','small'),1100)}
+        ${appear(arrow('M552 207H499L416 125') + label(553,192,'腰省','small'),1250)}`
+    },
+    {
+      short:'转省放摆', caption:'剪到省尖，留铰点。合拢外侧腰省，裙摆随之张开。',
+      alt:'半前片的外侧腰省是一块三角形。沿省腿和省尖到下摆的虚线剪开，绕省尖转动右半块，使两条省腿合拢。下方张开的三角空隙用纸补上。半后片同理。',
+      draw:() => `
+        ${grid}
+        <g transform="translate(189 42)">
+          ${path(block,'guide')}
+          ${path('M0 0H81L87 72V360H0Z','paper')}
+          ${path(dartOne,'accent')}
+          <path data-opening class="highlight" d="M87 72V360H87Z"/>
+          <g data-wing>
+            ${path('M93 0H135Q150 37 150 120V360H87V72Z','cloth')}
+            ${path('M93 0L87 72','accent')}
+          </g>
+          ${path('M87 72V360','guide')}
+          ${point(87,72)}
+        </g>
+        ${label(104,49,'合腰省')}
+        ${arrow('M151 46H254')}
+        ${label(494,125,'省尖')}
+        ${arrow('M448 117H288')}
+        ${appear(label(493,302,'补纸') + arrow('M455 316Q392 325 305 361') + arrow('M278 415H321',true),1000)}
+        ${appear(label(494,362,'顺修下摆','small'),1150)}`
+    },
+    {
+      short:'试穿改版', caption:'用近似面料做样衣。站、坐、走。把别针位置改回纸样。',
+      alt:'示例样衣的腰口在侧边偏松。用别针在两侧收掉多余量，把新的腰点转回前后纸样，顺接到原臀线，再复试。虚线为旧线，实线为新线。',
+      draw:() => `
+        ${label(171,43,'别针收腰')}${label(480,43,'改回纸样')}
+        <g transform="translate(171 116) scale(.96 1.06)">
+          ${path('M-42 -77Q-43 -37 -67 -4M42 -77Q43 -37 67 -4','outline')}
+          ${path('M-83 0Q0 11 83 0C77 47 90 107 125 231Q0 254 -125 231C-90 107 -77 47 -83 0Z','cloth')}
+          ${path('M-62 0Q0 11 62 0','guide')}
+          ${path('M-82 5L-64 3L-73 50Z M82 5L64 3L73 50Z','highlight')}
+          ${appear(path('M-91 16l28 10M91 16L63 26','accent'),280)}
+          ${path('M-99 116Q0 140 99 116','guide')}
+        </g>
+        ${appear(arrow('M315 211H363'),540)}
+        <g transform="translate(383 94) scale(.85)">
+          ${path(stylePiece,'paper')}
+          ${path(hem,'guide')}
+          ${path('M116 1Q147 37 168 104','guide')}
+          ${line('M0 0Q64 4 116 1Q147 37 168 104','accent',750)}
+          ${point(116,1)}
+        </g>
+        ${appear(arrow('M536 392C481 421 241 421 181 383') + label(356,391,'再试穿','small'),1150)}`
+    },
+    {
+      short:'出裁片', caption:'沿缝线核对前后侧缝，再加缝份、布纹线和对位剪口。',
+      alt:'裁剪图有前片沿前中对折裁一片、后片镜像裁两片、直腰头一条。虚线为缝线，外实线为裁边，前中折线不加缝份。腰头按修正后腰口配长并留搭门。',
+      draw:() => `
+        ${grid}
+        ${label(149,38,'前片')}${label(386,38,'后片')}
+        <g transform="translate(65 65) scale(.72)">
+          ${path('M0 -11Q60 -7 123 -11Q157 27 180 101L226 350Q95 379 0 372Z','cut')}
+          ${path(finalPiece,'guide')}${path(dartOne,'outline')}
+          ${path('M0 -11V372','accent')}
+          ${arrow('M55 111V246',true)}
+          ${path('M162 104l18 -3','accent')}
+          ${path('M0 350Q90 358 212 336','guide')}
+        </g>
+        <g transform="translate(299 65) scale(.72)">
+          ${path('M-12 -11Q60 -7 123 -11Q157 27 180 101L226 350Q95 379 -12 372Z','cut')}
+          ${path(finalPiece,'guide')}${path('M35 0L41 86L47 0','outline')}
+          ${arrow('M55 111V246',true)}
+          ${path('M162 104l18 -3M0 0V97','accent')}
+        </g>
+        ${label(145,363,'对折裁一片','small')}${label(384,363,'镜像裁两片','small')}
+        <g transform="translate(513 67)">
+          ${path('M0 0H44V258H0Z','cut')}
+          ${path('M8 8H36V250H8Z M22 8V250 M0 226H44','guide')}
+          ${arrow('M22 85V174',true)}
+        </g>
+        ${label(536,363,'腰头','small')}
+        ${appear(path('M112 402h29','accent') + label(184,410,'布纹线','small') +
+          path('M272 402h28','guide') + label(335,410,'缝线','small') +
+          path('M407 402h28','outline') + label(470,410,'裁边','small'),450)}`
+    }
+  ];
+
+
+  return {steps,shell};
+})();
+const numbers = (() => {
+  const examples = [
+    {length:60,depth:20,hips:[48,48],waists:[36,36],hipEase:[2,2],waistEase:[1,1],dart:[2,2],places:[[7,14.5],[7,14.5]]},
+    {length:65,depth:22,hips:[51,57],waists:[38,42],hipEase:[2,2],waistEase:[1,1],dart:[2,2.5],places:[[8,16],[9,18]]}
+  ];
+  const sum = (items) => items.reduce((a,b)=>a+b,0);
+  const fmt = (n) => Number(n.toFixed(2));
+  const path = (d, kind='line', traits='') => `<path d="${d}" class="${kind}" ${traits}/>`;
+  const label = (x,y,str,kind='',anchor='middle') => `<text x="${x}" y="${y}" class="${kind}" text-anchor="${anchor}">${str}</text>`;
+  const trace = (d,wait=0) => path(d,'blue trace',`pathLength="1" style="--wait:${wait}ms"`);
+  const rise = (body,wait=0) => `<g class="rise" style="--wait:${wait}ms">${body}</g>`;
+  const dot = (x,y) => `<circle cx="${x}" cy="${y}" r="5.5" class="dot"/>`;
+  const dim = (x1,x2,y) => path(`M${x1} ${y}H${x2}`,'blue','marker-start="url(#numbers-arrow)" marker-end="url(#numbers-arrow)"');
+  const arrow = (d) => path(d,'blue','marker-end="url(#numbers-arrow)"');
+  const arc = (upper) => upper ? 'M-104 0C-104 -65 104 -65 104 0' : 'M-104 0C-104 74 104 74 104 0';
+  const ring = (x,y,front,rear) => `<g transform="translate(${x} ${y})">
+    ${path('M-104 0C-104 -65 104 -65 104 0C104 74 -104 74 -104 0Z','tint')}
+    ${path('M-104 0H104','ghost')}${trace(arc(true))}${trace(arc(false),220)}
+    ${dot(-104,0)}${dot(104,0)}${label(0,-12,`前 ${front}`,'small')}${label(0,36,`后 ${rear}`,'small')}
+  </g>`;
+
+  const steps = [
+    {name:'量臀围', caption:'软尺经过臀部最丰满处。全圈量完，再以两侧为界读前后两段。', alt:'从软尺量出的臀围开始，标出身体两侧，分别读取前臀弧和后臀弧。',
+      art:(d)=>`
+        ${label(320,41,'俯视臀围')}${ring(320,153,...d.hips)}
+        ${label(164,159,'体侧','small')}${label(477,159,'体侧','small')}
+        ${rise(label(320,284,`${d.hips[0]} ＋ ${d.hips[1]} ＝ ${sum(d.hips)}`,'big'),440)}
+        ${label(320,341,'臀围 · 厘米','small')}`},
+    {name:'加余量', caption:'这次整圈臀加 4、腰加 2 厘米。前后各分一半余量。', alt:'在净臀围和净腰围上分别加入本例的活动余量。',
+      art:(d)=>`
+        ${label(122,70,'臀围')}${label(122,239,'腰围')}
+        ${path(`M80 130H${80+sum(d.hips)*3.3} M80 295H${80+sum(d.waists)*3.3}`,'line','style="stroke-width:14"')}
+        ${trace(`M${80+sum(d.hips)*3.3} 130h13.2 M${80+sum(d.waists)*3.3} 295h6.6`,250)}
+        ${rise(label(320,183,`${sum(d.hips)} ＋ 4 ＝ ${sum(d.hips)+4}`,'big'),450)}
+        ${rise(label(320,349,`${sum(d.waists)} ＋ 2 ＝ ${sum(d.waists)+2}`,'big'),600)}`},
+    {name:'算半片', caption:'每段只画左或右一半，所以前后弧长各除以 2。', alt:'用前后臀弧和腰弧分别加余量再除二，得到半前片、半后片的臀宽和成品目标腰宽。',
+      art:(d)=>d.panels.map((p,i)=>{
+        const x=176+i*288;
+        return `${label(x,47,i===0?'半前片':'半后片')}
+          ${path(`M${x-91} 88h182v252h-182Z`,'ghost')}
+          ${label(x,126,'臀宽','small')}
+          ${rise(label(x,174,`(${d.hips[i]}＋2)÷2`)+label(x,223,`＝ ${p.hip}`,'big'),180+i*200)}
+          ${label(x,267,'目标腰宽','small')}
+          ${rise(label(x,305,`(${d.waists[i]}＋1)÷2 ＝ ${p.waist}`,'small'),420+i*160)}`;
+      }).join('')},
+    {name:'分收量', caption:'臀宽减目标腰宽。先试分给两个省，剩下的交给侧缝。', alt:'从半片臀宽减去目标腰宽得总收量，再减两个腰省宽度得侧缝起始收量。',
+      art:(d)=>d.panels.map((p,i)=>{
+        const x=164+i*312;
+        return `${label(x,52,i===0?'半前片':'半后片')}
+        ${label(x,104,`${p.hip} − ${p.waist} ＝ ${p.delta}`)}
+        ${path(`M${x-120} 158h240v58h-240Z`,'tint')}
+        ${trace(`M${x-120+240*p.dart/p.delta} 158v58 M${x-120+480*p.dart/p.delta} 158v58`,220+i*140)}
+        ${[p.dart,p.dart,p.side].map((v,j)=>{
+          const offset=j===0?p.dart/2:j===1?p.dart*1.5:p.dart*2+p.side/2;
+          return rise(label(x-120+240*offset/p.delta,196,v,'small'),450+j*130);
+        }).join('')}
+        ${label(x,265,'两省 ＋ 侧缝','small')}
+        ${rise(label(x,330,`${p.delta} − ${p.dart} − ${p.dart} ＝ ${p.side}`),690)}
+        `;
+      }).join('')},
+    {name:'放省位', caption:(d)=>d.index===0?'原图两点比三等分点各靠中线 0.5 厘米。':'按新腰线重找三等分点，再按体型和样衣微调。',
+      alt:'从前中或后中量到侧腰，按未合省腰线找到近似三等分点，再把选定的省中心标上去。',
+      art:(d)=>d.panels.map((p,i)=>{
+        const left=43+i*309, unit=9;
+        const scaled = (n)=>left+n*unit;
+        const right=scaled(p.flat);
+        return `${label(left+116,45,i===0?'半前片':'半后片')}
+        ${label(left+116,95,`${p.hip} − ${p.side} ＝ ${p.flat}`)}
+        ${dim(left,right,132)}
+        ${path(`M${left} 195H${right}Q${right+23} 239 ${scaled(p.hip)} 335H${left}Z`,'paper')}
+        ${[1,2].map((j)=>{
+          const base = scaled(p.flat*j/3), spot=scaled(p.places[j-1]);
+          const tip= i===0 ? [273,294][j-1] : [302,302][j-1];
+          return path(`M${base} 146V231`,'ghost') +
+            label(base,171,fmt(p.flat*j/3),'small') +
+            trace(`M${spot-p.dart*unit/2} 195L${spot} ${tip}L${spot+p.dart*unit/2} 195`,250+180*j) +
+            rise(dot(spot,195) + label(spot,374,p.places[j-1],'small'),500+110*j);
+        }).join('')}
+        ${label(left+3,224,'中线','small','start')}`;
+      }).join('')},
+    {name:'试穿改版', caption:'看侧缝是否垂直，腰口哪里空，哪里勒。先别针标记，再改纸。', alt:'以样衣为准，示例中把侧腰的零点五厘米收量移给一个腰省，合计仍相同。',
+      art:(d)=>`
+        ${label(142,48,'样衣')}${label(483,48,'纸样')}
+        ${path('M79 84Q91 119 67 160M205 84Q192 119 217 160','line')}
+        ${path('M57 151Q142 179 228 151C224 187 246 225 256 302Q142 324 29 302C40 227 61 188 57 151Z','tint')}
+        ${path('M61 161Q142 190 226 161','ghost')}
+        ${trace('M67 168l15 13 M217 168l-15 13')}
+        ${rise(arrow('M274 212H329'),390)}
+        ${path('M360 149H573Q584 198 596 304H360Z','paper')}
+        ${path('M414 149L426 226L438 149 M475 149L487 238L499 149 M565 149Q582 198 596 304','ghost')}
+        ${trace('M410 149L426 226L442 149 M573 149Q584 198 596 304',500)}
+        ${rise(label(483,103,'示例：侧缝 → 腰省','small'),680)}
+        ${rise(label(483,341,`侧缝 ${d.panels[0].side} → ${d.panels[0].side-0.5}`,'small')+label(483,377,'一省 2 → 2.5','small'),800)}`}
+  ];
+
+
+  function getData(caseIndex) {
+    const d = {...examples[caseIndex],index:caseIndex};
+    d.panels=d.hips.map((value,j)=>{
+      const hip=(value+d.hipEase[j])/2;
+      const waist=(d.waists[j]+d.waistEase[j])/2;
+      const delta=hip-waist;
+      const dart=d.dart[j];
+      const side=delta-2*dart;
+      return {hip,waist,delta,dart,side,flat:hip-side,places:d.places[j]};
+    });
+
+    return d;
+  }
+  function shell(alt,art,viewBox='0 0 640 395') {
+    return `<svg viewBox="${viewBox}" role="img" aria-label="${alt}" stroke-linejoin="round" stroke-linecap="round">
+      <defs><marker id="numbers-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" class="blue" style="stroke-width:1.5"/></marker></defs>
+      ${art}</svg>`;
+  }
+  return {steps,shell,getData};
+})();
+const drafting = (() => {
+  const fmt = (value) => Number(value.toFixed(2));
+  const path = (d, css, attrs = '') => `<path d="${d}" class="${css}" ${attrs}/>`;
+  const trace = (d, wait = 0) => path(d, 'blue trace', `pathLength="1" style="--wait:${wait}ms"`);
+  const label = (x,y,text,anchor='middle') => `<text x="${x}" y="${y}" text-anchor="${anchor}">${text}</text>`;
+  const dot = (x,y) => `<circle cx="${x}" cy="${y}" r="5.5" class="dot"/>`;
+  const dim = (d) => path(d,'blue','marker-start="url(#numbers-arrow)" marker-end="url(#numbers-arrow)"');
+  const rise = (art, wait = 0) => `<g class="rise" style="--wait:${wait}ms">${art}</g>`;
+  const unit = 5;
+  const left = 260;
+  const top = 53;
+  const names = ['画中线','画框与臀线','收侧缝','画腰省'];
+  const alts = [
+    '从纸的左上点垂直量下裙长，作为纸样中线。',
+    '画出以半片臀宽和裙长为边的矩形，横向标出臀线。',
+    '沿腰线上向内收出侧缝量，再用平滑曲线接到侧臀点。',
+    '沿未合省腰线标出两个省中心和省脚，从省中心量下省长后把两只省脚分别连到各自省尖。'
+  ];
+  function scene(p, data, isRear, index) {
+    const {length,depth} = data;
+    const right=left+p.hip*unit, hem=top+length*unit, hip=top+depth*unit;
+    const side=left+p.flat*unit;
+    const darts = isRear ? [14,14] : [9,12];
+    const frame = `M${left} ${top}H${right}V${hem}H${left}Z`;
+    const center = `M${left} ${top}V${hem}`;
+    const hipLine = `M${left} ${hip}H${right}`;
+    const contour = `M${side} ${top}Q${right} ${top+0.48*(hip-top)} ${right} ${hip}`;
+    const tag = label(490,84,isRear?'半后片':'半前片');
+    if (index === 0) return trace(center)+dot(left,top)+dot(left,hem)+dim(`M232 ${top}V${hem}`)
+      +label(161,(top+hem)/2,`${length} 厘米`)
+      +label(left+20,top+8,'腰点','start')+label(left+20,hem+8,'下摆点','start')+tag;
+    if (index === 1) return path(center,'line')+trace(`M${left} ${top}H${right}V${hem}H${left}`)
+      +trace(hipLine,490)+dim(`M${left} 33H${right}`)+label((left+right)/2,28,`${p.hip} 厘米`)
+      +dim(`M232 ${top}V${hip}`)+label(163,(top+hip)/2,`${depth} 厘米`)+label(right+26,hip+7,'臀线','start')+tag;
+    if (index === 2) return path(frame,'ghost')+path(hipLine,'ghost')+trace(contour)
+      +trace(`M${left} ${top}H${side} M${right} ${hip}V${hem}H${left}V${top}`,300)
+      +dot(side,top)+dot(right,hip)+path(`M${(right+side)/2} ${top-7}l28 -18h25`,'blue')
+      +label(right+65,34,`向内 ${p.side} 厘米`,'start')
+      +label(right+27,hip+7,'侧臀点','start')+tag;
+    return path(`${contour}V${hem}H${left}V${top}H${side}`,'paper')+path(hipLine,'ghost')+tag
+      +label((left+side)/2,29,`每个省宽 ${p.dart} 厘米`)
+      +p.places.map((value,j)=>{
+        const x=left+value*unit, spread=p.dart*unit/2, tip=top+darts[j]*unit;
+        const leader=j===0?`M${x-6} ${tip}H211`:`M${x+6} ${tip}H${right+38}`;
+        const detail=j===0?label(146,tip+8,`${darts[j]} 厘米`):label(right+52,tip+8,`${darts[j]} 厘米`,'start');
+        return trace(`M${x-spread} ${top}L${x} ${tip}L${x+spread} ${top}`,j*280)
+          +rise(path(leader,'blue')+detail+dot(x,tip),360+j*280);
+      }).join('')
+      +label((left+side)/2,hem+29,`省中心距中线 ${p.places.map(fmt).join('、')} 厘米`);
+  }
+  return {names,alts,scene};
+})();
+const zero = (() => {
+  const path = (d,css='line')=>`<path d="${d}" class="${css}"/>`;
+  const trace = (d,wait=0)=>`<path d="${d}" class="blue trace" pathLength="1" style="--wait:${wait}ms"/>`;
+  const label=(x,y,text)=>`<text x="${x}" y="${y}" text-anchor="middle">${text}</text>`;
+  const arrow=(d)=>`<path d="${d}" class="blue" marker-end="url(#numbers-arrow)"/>`;
+  const rise=(art,wait)=>`<g class="rise" style="--wait:${wait}ms">${art}</g>`;
+  const tools=()=>numbers.shell('准备纸、铅笔、直尺进行绘图，准备软尺量体。后面需要剪刀、胶带、样布和针线。',`
+    ${path('M41 60h118l31 32v145H41Z','paper')}
+    ${path('M159 60v32h31 M64 114h98m-98 28h98m-98 28h98','ghost')}
+    ${path('M53 211h139v19H53Z','tint')}
+    ${path('M63 211v10m15 -10v7m15 -7v10m15 -10v7m15 -7v10m15 -10v7m15 -7v10m15 -10v7','line')}
+    ${rise(path('M151 184l40 -60 13 8 -41 60 -17 10Z','tint'),180)}
+    ${label(123,283,'纸 · 笔 · 尺')}
+    ${path('M290 179c-68 0 -64 -105 4 -105 68 0 72 96 14 96 -41 0 -49 -56 -12 -56 29 0 28 35 4 35','tint')}
+    ${path('M290 179q37 23 94 5l9 25q-67 24 -107 -4Z','paper')}
+    ${trace('M299 187l-3 9m20 -3 -1 10m22 -9 1 11m20 -13 3 10m19 -16 3 10',390)}
+    ${label(320,283,'软尺')}
+    ${path('M465 73h119v117H465Z','tint')}
+    ${path('M465 104h119m-119 29h119m-119 29h119m-88 -88v117m30 -117v117m30 -117v117','ghost')}
+    <circle cx="491" cy="226" r="14" class="line"/><circle cx="520" cy="226" r="14" class="line"/>
+    ${trace('M501 216l53 -89m-42 89 -45 -89',580)}
+    ${label(523,283,'样布 · 剪刀')}
+  `,'0 0 640 320');
+  const quarters=()=>numbers.shell('把整圈裙身摊开，得到左前、右前、左后、右后。左右对称时纸上只需画半前片和半后片各一张。',`
+    ${label(320,44,'整圈裙身摊平')}
+    ${path('M78 102Q186 125 289 102L316 254Q181 272 48 254Z','paper')}
+    ${path('M350 102Q455 125 561 102L592 254Q455 272 326 254Z','paper')}
+    ${rise(path('M195 113Q251 113 289 102L316 254Q265 264 195 262Z','tint'),220)}
+    ${rise(path('M350 102Q390 112 444 113V262Q381 263 326 254Z','tint'),400)}
+    ${trace('M195 113V262 M444 113V262',500)}
+    ${label(124,195,'左前')}${label(260,195,'右前')}${label(379,195,'左后')}${label(518,195,'右后')}
+    ${label(195,313,'前中')}${label(444,313,'后中')}
+    ${label(320,370,'纸上先画半前、半后各一张')}
+  `);
+  const sample=()=>numbers.shell('左图将V形腰省的两个省脚对在一起，沿省腿从腰线缝到省尖。右图把前后布片沿侧边临时缝合，后中上段留开口。',`
+    ${label(154,43,'合省脚')}${label(472,43,'缝前后片')}
+    ${path('M52 101h205v225H52Z','paper')}
+    ${path('M120 101l35 159 35 -159','line')}
+    ${path('M155 101v158','ghost')}
+    ${rise(arrow('M87 131q20 -28 51 -27')+arrow('M213 132q-18 -29 -46 -28'),200)}
+    ${trace('M120 101L155 260',600)}
+    ${rise(arrow('M278 231h58'),650)}
+    ${path('M382 112Q464 126 547 112L581 324Q465 344 353 324Z','tint')}
+    ${trace('M388 116l-27 201 M541 116l31 201 M465 192v139',660)}
+    ${path('M426 120l8 58m74 -58 -8 57','line')}
+    ${path('M457 119v70m17 -70v70','ghost')}
+    ${label(472,372,'后中上段留开口')}
+  `);
+  const layout=()=>numbers.shell('前纸样的前中边贴在布折边上，剪开外侧并展开得到一整片。后片剪一对互为镜像的裁片，后中裁开。',`
+    ${label(148,44,'前片贴折边')}${label(469,44,'后片镜像一对')}
+    ${path('M38 68h219v238H38Z','tint')}
+    ${path('M79 69v236','line')}
+    ${path('M79 92q45 7 98 1l44 172q-62 17 -142 7Z','paper')}
+    ${trace('M79 92v180',220)}
+    ${trace('M79 92q45 7 98 1l44 172q-62 17 -142 7',360)}
+    ${arrow('M149 175V240')}
+    ${label(148,356,'折边保留')}
+    ${path('M446 104q-38 5 -71 -1l-31 169q40 15 102 3Z M492 104q38 5 71 -1l31 169q-40 15 -102 3Z','tint')}
+    ${trace('M446 104v171 M492 104v171',550)}
+    ${label(469,356,'后中裁开')}
+  `);
+  return {tools,quarters,sample,layout};
+})();
+const root = document.getElementById('fused-skirt');
+const nav = root.querySelector('[data-chapters]');
+const details = root.querySelector('[data-substeps]');
+const selectors = root.querySelector('[data-selectors]');
+const people = Array.from(root.querySelectorAll('[data-people] button'));
+const panels = Array.from(root.querySelectorAll('[data-panels] button'));
+const scene = root.querySelector('[data-scene]');
+const title = root.querySelector('[data-title]');
+const caption = root.querySelector('[data-caption]');
+const note = root.querySelector('[data-note]');
+const help = root.querySelector('[data-help]');
+const next = root.querySelector('[data-next]');
+const back = root.querySelector('[data-back]');
+const replay = root.querySelector('[data-replay]');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+let page = 0;
+let person = 0;
+let panel = 0;
+let frame = 0;
+
+const base = (n, fields={}) => ({
+  title: garment.steps[n].short, caption: garment.steps[n].caption,
+  picture: () => garment.shell(garment.steps[n].alt,garment.steps[n].draw()), ...fields
+});
+const calculation = (n, fields={}) => ({
+  title: numbers.steps[n].name, caption: numbers.steps[n].caption, person:true,
+  picture: (data) => numbers.shell(numbers.steps[n].alt,numbers.steps[n].art(data)), ...fields
+});
+const lesson = [
+  {name:'开始',steps:[
+    {
+      title:'准备工具',caption:'纸样是裁布用的纸模板。先准备纸、铅笔、尺和软尺。',
+      note:'纸要够大，一张至少容得下裙长和半片臀宽。后面准备纸剪、胶带。做试穿样衣另备近似的样布、布剪、针线和别针。画纸样时，用尺在纸上按图标出的厘米数下笔。',
+      picture:zero.tools
+    },
+    base(0, {
+    title:'定款式',
+    caption:'裙腰在自然腰附近，裙摆向下放宽。背后正中开拉链。',
+    note:'先画正面和背面。侧弯时腰侧折起来的位置，可帮助找到自然腰。选略有挺度的布，裙摆更能撑出轮廓。腰省是缝起来的一小块三角，把平布收成立体。腰口比臀围窄，所以在背后正中留拉链。'
+  })]},
+  {name:'量体',steps:[
+    calculation(0, {
+      sub:'量臀围',
+      note:'站直，用软尺水平绕过臀部最丰满处。标出左右两侧的位置，从一侧贴着身体绕到另一侧，前后各量一遍。腰也同样分前后量。软尺贴身，别拉紧。'
+    }),
+    base(1,{
+      sub:'量腰围和长度', title:'量腰围和长度', person:true,
+      caption:'腰围量一圈。腰到臀线是臀高。腰到目标下摆是裙长。',
+      note:'在打算放腰头的位置水平量腰围，并记下前后各一段。记住臀围软尺所在的高度。从同一腰点沿体侧往下，竖直量到臀线，再量到想要的下摆位置。',
+      picture:(data)=>{
+        const svg=garment.steps[1].draw()
+          .replace('72 厘米',`${data.waists[0]+data.waists[1]} 厘米`)
+          .replace('96 厘米',`${data.hips[0]+data.hips[1]} 厘米`)
+          .replace('20 厘米',`${data.depth} 厘米`)
+          .replace('60 厘米',`${data.length} 厘米`);
+        return garment.shell(`腰围 ${data.waists[0]+data.waists[1]} 厘米，臀围 ${data.hips[0]+data.hips[1]} 厘米，臀高 ${data.depth} 厘米，裙长 ${data.length} 厘米。`,svg);
+      }
+    })
+  ]},
+  {name:'算尺寸',steps:[
+    {
+      title:'一圈怎么画成半片',sub:'认半片',
+      caption:'横着拆开一圈裙身。左右对称时，只需画半前和半后。',
+      note:'一个半前片就是从前中线到一侧侧缝；半后片从后中线到一侧侧缝。前后可以宽窄不同，每一片都是对应那一段的一半。',
+      picture:zero.quarters
+    },
+    calculation(1,{note:'余量是给穿着活动留的空间。示例选择臀加 4、腰加 2 厘米，前后各分一半。面料、款式和试穿都会影响余量。'}),
+    calculation(2,{note:(d)=>d.index===0?'练习先把前后分得一样宽，所以也能用整圈除以四。半前片镜像后是完整前片，半后片镜像后是完整后片。':'真实前后身可以不同宽。前臀 51、后臀 57，前腰 38、后腰 42，各自加分到的余量，再各除以二。'}),
+    calculation(3,{note:(d)=>d.index===0?'25－18.5＝6.5。先给两个省各分 2，侧缝收剩下的 2.5。这是试画分配。':'前片收 7，后片收 8。这个例子先给前省各 2、后省各 2.5，算出前后侧腰各收 3。其他体型可以有不同的分法。'}),
+    calculation(4,{note:(d)=>d.index===0?'沿未合省的腰线 22.5 厘米找三等分点 7.5 和 15。原练习取 7 和 14.5，各向中线靠 0.5。省位最后由身体曲线和试穿决定。':'前腰线 23.5，参考三等分点，试画 8、16。后腰线 26.5，试画 9、18。都从各自的中线量。'})
+  ]},
+  {name:'画原型',steps:drafting.names.map((name,i)=>({
+    title:name, person:true, panel:true,
+    caption:(d)=>{
+      const p=d.panels[panel];
+      if(i===0)return `用尺从腰点垂直往下画 ${d.length} 厘米。`;
+      if(i===1)return `向右画 ${p.hip} 厘米的框。从腰点向下 ${d.depth} 厘米画臀线。`;
+      if(i===2)return `右上角向中线退 ${p.side} 厘米，顺着弧线接到侧臀点。`;
+      return `两个省中心距中线 ${p.places.join('、')} 厘米，各宽 ${p.dart} 厘米。`;
+    },
+    note:[
+      '原型是一张合身的基础纸样，以后可以拿它改新款。这条竖线是裙子正前方或正后方的中线。先画半前片，再用另一张纸画半后片。',
+      '矩形左边是中线，右边是侧缝的起稿参考线。腰线与臀线都垂直于中线。',
+      '臀线以下保留直线。画好两个半片后检查侧缝相接的长度和臀线记号。',
+      '在每个省中心左右各量半个省宽作省脚。前片省长试画 9、12 厘米，后片各 14 厘米。沿省中心折纸，让两个省脚对齐。在折好的纸上顺画一条没有拐角的腰线，再展开。下一章会做试穿件。'
+    ][i],
+    picture:(data)=>numbers.shell(drafting.alts[i],drafting.scene(data.panels[panel],data,panel===1,i),'0 0 640 425')
+  }))},
+  {name:'改成新款',steps:[
+    {
+      title:'缝省，试原型',sub:'试原型',
+      caption:'样衣是用样布做的试穿件。先缝省，再临时缝起前后片。',
+      note:'描下两张原型的缝线，在要缝合的边外多留布，例如 1.5 厘米，这圈额外的布叫缝份。前片贴布折边剪一整片，后片剪左右各一片。把每个省的两边对齐，从腰线缝到尖。把前后布片将来朝外的面贴在一起，沿两侧缝线和后中开口以下，用大针脚临时缝合。试穿时用别针合上开口，检查腰口是否勒、臀线是否水平、侧缝是否垂直。',
+      picture:zero.sample
+    },
+    base(3,{
+      title:'转省放摆',pivot:true,
+      caption:'沿线剪到省尖旁，留一点纸作转轴。合拢靠侧缝的省，裙摆就张开。',
+      note:'先描出试穿过的原型。沿外侧省腿和省尖到下摆的直线剪开，尖端留一点纸。转动、补纸、贴牢，再顺修腰线和下摆。前后片都做。图演示同一转动原理。'
+    })
+  ]},
+  {name:'试穿与裁片',steps:[
+    base(4,{sub:'试样衣',title:'试样衣',caption:'用近似面料做样衣，站、坐、走。再把别针位置转回纸样。',note:'看腰口松紧、臀线是否水平、侧缝是否垂直。例子里腰口偏松，先用别针夹出合适的侧缝。量原缝线到别针线的距离，在纸样对应位置向内移相同距离，再顺接到原线。前后分别记录，改完核对两条侧缝再试穿。'}),
+    calculation(5,{sub:'移动收量',title:'移动收量',caption:'也可以把侧腰的收量移给腰省，让腰围总量保持一样。',note:'如果侧腰太紧、附近腰口却空，可先还给侧缝 0.5，再在附近腰省多收 0.5。腰围整体偏松时，才减少腰围总量。两种改法都要复试。'}),
+    base(5,{title:'标记裁片',caption:'沿虚线缝、沿外边裁。布纹箭头顺布边，短记号帮助两片对齐。',note:'合省后核对前后侧缝的缝线长度和臀线剪口。然后加缝份、下摆折量、布纹线及剪口。前片沿前中对折裁一片，后片镜像裁两片，后中留拉链。腰头是缝在裙腰上的布带。沿修正后的腰口量取腰头长度，另留扣合时重叠的一段和缝份。'}),
+    {
+      title:'把纸样排在布上',sub:'看裁布',
+      caption:'前中贴折边，剪完展开成一整片。后片左右各裁一片。',
+      note:'让纸样箭头与布的织边平行。织边是布卷两侧原本织好的长边。前中折边保留，不从中间剪开。后中有接缝和拉链，要沿裁边剪开。两张后裁片像左右手一样互为镜像。',
+      picture:zero.layout
+    }
+  ]}
+];
+
+function makeButton(text, callback){
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='btn';
+  button.textContent=text;
+  button.addEventListener('click',callback);
+  return button;
+}
+const pages=lesson.flatMap((chapter,chapterIndex)=>chapter.steps.map(step=>({step,chapterIndex})));
+const chapterButtons=lesson.map((chapter,i)=>{
+  const target=pages.findIndex(item=>item.chapterIndex===i);
+  const button=makeButton(`${i+1} ${chapter.name}`,()=>show(target));
+  nav.append(button);
+  return button;
+});
+
+function runPivot(play) {
+  const wing=scene.querySelector('[data-wing]');
+  const opening=scene.querySelector('[data-opening]');
+  const endAngle=-2*Math.atan2(6,72);
+  function setAngle(value) {
+    const x=87-288*Math.sin(value);
+    const y=72+288*Math.cos(value);
+    wing.setAttribute('transform',`rotate(${value*180/Math.PI} 87 72)`);
+    opening.setAttribute('d',`M87 72V360L${x} ${y}Z`);
+  }
+  if(!play || reduced.matches){setAngle(endAngle);return;}
+  const started=performance.now();
+  function tick(now){
+    const t=Math.min(1,Math.max(0,(now-started-220)/830));
+    setAngle(endAngle*t*t*(3-2*t));
+    if(t<1)frame=requestAnimationFrame(tick);
+  }
+  frame=requestAnimationFrame(tick);
+}
+
+function show(i,play=true,restoreSubstepFocus=false) {
+  cancelAnimationFrame(frame);
+  const pageChanged=page!==i;
+  page=i;
+  const {step,chapterIndex}=pages[i];
+  const data=numbers.getData(person);
+  const toText=(value)=>typeof value==='function'?value(data):value;
+  chapterButtons.forEach((button,j)=>button.setAttribute('aria-pressed',String(j===chapterIndex)));
+  const sectionPages=pages.map((entry,index)=>({...entry,index})).filter(entry=>entry.chapterIndex===chapterIndex);
+  details.hidden=sectionPages.length===1;
+  details.replaceChildren();
+  if(!details.hidden) sectionPages.forEach(entry=>{
+    const button=makeButton(entry.step.sub||entry.step.title,()=>show(entry.index,true,true));
+    button.setAttribute('aria-pressed',String(entry.index===page));
+    details.append(button);
+    if(restoreSubstepFocus && entry.index===page)button.focus({preventScroll:true});
+  });
+  selectors.hidden=!step.person && !step.panel;
+  root.querySelector('[data-people]').hidden=!step.person;
+  root.querySelector('[data-panels]').hidden=!step.panel;
+  people.forEach((button,j)=>button.setAttribute('aria-pressed',String(j===person)));
+  panels.forEach((button,j)=>button.setAttribute('aria-pressed',String(j===panel)));
+  title.textContent=step.title;
+  caption.textContent=toText(step.caption)||'';
+  note.textContent=toText(step.note)||'';
+  help.hidden=!step.note;
+  if(pageChanged)help.open=false;
+  root.querySelector('[data-progress]').textContent=`${i+1}／${pages.length}`;
+  next.textContent=i===pages.length-1?'回到开头':'下一步';
+  back.disabled=i===0;
+  scene.classList.toggle('playing',play&&!reduced.matches);
+  scene.classList.toggle('still',!play||reduced.matches);
+  scene.innerHTML=step.picture(data);
+  const hint = root.querySelector('[data-start-hint]');
+  hint.hidden = i !== 0;
+  root.querySelector('[data-quiz]').hidden = i !== pages.length-1;
+  if(step.pivot)runPivot(play);
+}
+
+people.forEach((button,i)=>button.addEventListener('click',()=>{person=i;show(page)}));
+panels.forEach((button,i)=>button.addEventListener('click',()=>{panel=i;show(page)}));
+back.addEventListener('click',()=>show(Math.max(0,page-1)));
+next.addEventListener('click',()=>show((page+1)%pages.length));
+replay.addEventListener('click',()=>show(page));
+reduced.addEventListener('change',()=>show(page,false));
+root.querySelectorAll('[data-check]').forEach((group)=>{
+  const answer=group.querySelector('[data-answer]');
+  const feedback=group.querySelector('[data-feedback]');
+  group.addEventListener('click',(event)=>{
+    const choice=event.target.closest('button[data-choice]');
+    if(!choice)return;
+    const correct=choice===answer;
+    feedback.textContent=(correct?'答对了。':'再试一下。')+(correct?answer.dataset.explanation:choice.dataset.explanation);
+  });
+});
+show(0,false);
+
+})();
+</script>
+<details><summary>资料</summary>
+<ul>
+<li><a href="https://catalog.fitnyc.edu/undergraduate/courses/fd/">时装技术学院｜平面打版</a></li>
+<li><a href="https://continuinged.fitnyc.edu/search/publicCourseSearchDetails.do?courseId=1053041&amp;method=load">时装技术学院｜立裁</a></li>
+<li><a href="https://egyankosh.ac.in/bitstream/123456789/61432/3/Unit-2.pdf">开放大学｜裙原型</a></li>
+<li><a href="https://anicka.design/how-to-draft-basic-skirt-pattern/">基础裙原型｜省量分配与省位</a></li>
+<li><a href="https://www.dresspatternmaking.com/images/measurement-charts/downloads/measurements-size-14-excel.pdf">版师尺寸表｜前后臀弧</a></li>
+<li><a href="https://dresspatternmaking.com/patternmaking-basics/terminology/dart">省道塑形</a></li>
+<li><a href="https://dresspatternmaking.com/patternmaking-basics/garment-elements/skirts-e/a-line-skirt-from-2-dart-block">双省改 A 字裙</a></li>
+<li><a href="https://extension.oregonstate.edu/sites/extd8/files/documents/4-h320-18.pdf">州立大学｜纸样标记</a></li>
+</ul>
+</details>
+</main>
+</body>
+</html>

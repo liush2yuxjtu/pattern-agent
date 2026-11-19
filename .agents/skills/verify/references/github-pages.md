@@ -174,3 +174,22 @@ and navigation screenshots and the real rear garment. A navigation/content
 change does not re-certify material calibration or change the prior physical
 acceptance scope. Pages upkeep uses guarded connector edits and private
 readback receipts outside the public repo; do not publish private Page content.
+
+## Guided pattern drafting lessons
+
+Scope: the homepage link and `web/pattern-drafting/`. From the repository root,
+run the focused Playwright verifier with a local Chromium and `playwright-core`.
+Set `CHROMIUM_PATH` for a system browser and `PLAYWRIGHT_MODULE` for an isolated
+dependency installation.
+
+```sh
+node scripts/verify_pattern_drafting.mjs
+node scripts/verify_pattern_drafting.mjs https://liush2yuxjtu.github.io/pattern-agent/
+```
+
+The local mode serves the actual static HTML under the project URL prefix. It
+follows the homepage link and uses real pointer clicks to finish all eight
+workbench styles, check undo and reset, reopen a selected tutorial step, and
+exercise dart rotation and the first drafting point at 320 px. Use the URL
+argument to repeat the same checks after publication. This verifies guided
+drafting, not the fit of a sewn garment.

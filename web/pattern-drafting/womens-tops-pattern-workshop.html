@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src data:; font-src data:; media-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>女式上衣打版｜T 恤与衬衣</title>
+<style>
+:root{color-scheme:light dark;--background:#f4efe4;--foreground:#24342e;--card:#fffcf5;--green:#216a61;--orange:#934635}
+@media(prefers-color-scheme:dark){:root{--background:#202825;--foreground:#f1efe3;--card:#2a342f;--green:#a0dfca;--orange:#f7a98c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--background);color:var(--foreground);font:16px/1.55 system-ui,sans-serif}
+main{width:min(100% - 28px,940px);margin:27px auto 45px}
+header{padding:13px 0 18px;border-top:3px solid var(--foreground)}
+h1{margin:0;font-size:clamp(29px,5.3vw,56px);line-height:1.02;letter-spacing:-.04em}
+header p{margin:9px 0 0}
+#tops-workshop h2{font-size:clamp(24px,3.4vw,34px);line-height:1.22}
+#tops-workshop [data-art]{background:var(--card);border-radius:9px;padding:6px}
+.btn{font:inherit;color:var(--foreground);background:var(--card);border:1px solid color-mix(in srgb,var(--foreground) 25%,var(--card));border-radius:7px;padding:7px 11px;min-height:44px;cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--accent);color:var(--background);border-color:var(--accent)}
+.btn-primary{background:var(--foreground);color:var(--background)}
+.btn:disabled{opacity:.44;cursor:default}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+main>details{margin-top:18px;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--foreground) 20%,var(--background))}
+a{color:var(--green)}
+@media(max-width:380px){.btn{padding-inline:9px}}
+</style>
+</head>
+<body>
+<main>
+<header><h1>女式上衣，从零打版</h1><p>选一款，点「下一步」跟画。 <a href="womens-tops-interactive-drafting.html">在白纸上动手画</a></p></header>
+<style>
+#tops-workshop {
+  --paper:var(--background,#fbf8ef);
+  --ink:var(--foreground,#222c28);
+  --accent:var(--green,#216a61);
+  --rule:color-mix(in srgb,var(--ink) 17%,var(--paper));
+  min-width:0;color:var(--ink);display:grid;gap:12px;
+}
+#tops-workshop[data-family="shirt"]{--accent:var(--orange,#9a4638)}
+#tops-workshop [hidden]{display:none !important}
+#tops-workshop [data-paper] button{margin-inline-end:2px}
+#tops-workshop h2,#tops-workshop p{margin:0}
+#tops-workshop .style-row{display:grid;grid-template-columns:7em 1fr;align-items:center;gap:8px;margin-bottom:7px}
+#tops-workshop .style-options,#tops-workshop [data-lessons],#tops-workshop [data-draft-tabs],#tops-workshop [data-paper],#tops-workshop .controls{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+#tops-workshop [data-lessons]{border-top:1px solid var(--rule);padding-top:10px}
+#tops-workshop [data-view-name]{color:var(--accent);font-weight:600}
+#tops-workshop [data-art]{min-width:0}
+#tops-workshop svg{display:block;width:100%;height:auto;max-width:850px;margin-inline:auto}
+#tops-workshop svg text{fill:var(--ink);font:500 27px system-ui,sans-serif}
+#tops-workshop svg text.small{font-size:25.5px}
+#tops-workshop svg text.value{font-size:30px;font-weight:650}
+#tops-workshop svg .line{fill:none;stroke:var(--ink);stroke-width:2.5}
+#tops-workshop svg .paper{fill:var(--paper);stroke:var(--ink);stroke-width:2.6}
+#tops-workshop svg .fill{fill:color-mix(in srgb,var(--accent) 22%,var(--paper));stroke:var(--ink);stroke-width:2.6}
+#tops-workshop svg .added{fill:var(--accent);stroke:var(--ink);stroke-width:1.8}
+#tops-workshop svg .ghost{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:6 5;opacity:.52}
+#tops-workshop svg .alert{fill:none;stroke:var(--accent);stroke-width:3.5}
+#tops-workshop svg .point{fill:var(--accent);stroke:var(--paper);stroke-width:1.6}
+#tops-workshop svg .arrowhead{fill:none;stroke:var(--accent);stroke-width:1.8}
+#tops-workshop svg .gridline{stroke:var(--rule);fill:none;opacity:.55}
+#tops-workshop .animated .trace{stroke-dasharray:1;animation:tops-trace 900ms ease both;animation-delay:var(--delay,0ms)}
+#tops-workshop .animated .appear{animation:tops-appear 500ms ease both;animation-delay:var(--delay,0ms)}
+@keyframes tops-trace{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes tops-appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+#tops-workshop .progress-line{margin-inline-start:auto;display:flex;gap:8px;align-items:center}
+#tops-workshop progress{width:min(13vw,85px);height:8px;accent-color:var(--accent)}
+#tops-workshop details p{margin-top:8px;max-width:70ch}
+#tops-workshop summary{cursor:pointer}
+@media(max-width:540px){#tops-workshop .style-row{grid-template-columns:1fr;gap:4px}}
+@media(prefers-reduced-motion:reduce){#tops-workshop .animated .trace,#tops-workshop .animated .appear{animation:none}}
+</style>
+<section id="tops-workshop" aria-label="女式 T 恤与衬衣打版教程">
+  <nav data-styles aria-label="八个子页"></nav>
+  <nav data-lessons aria-label="本款步骤"></nav>
+  <nav data-draft-tabs aria-label="本步落笔顺序" hidden></nav>
+  <div data-paper aria-label="半片选择" hidden>
+    <button class="btn" type="button" data-side="0">半前片</button>
+    <button class="btn" type="button" data-side="1">半后片</button>
+  </div>
+  <div aria-live="polite">
+    <p data-view-name></p>
+    <h2 data-heading>定款</h2>
+    <p data-caption></p>
+  </div>
+  <div data-art></div>
+  <div class="controls">
+    <button class="btn" type="button" data-prev>上一步</button>
+    <button class="btn" type="button" data-replay>重播</button>
+    <button class="btn btn-primary" type="button" data-next>下一步</button>
+    <div class="progress-line"><progress max="9" value="1" data-progress aria-label="本款进度"></progress><span data-status></span></div>
+  </div>
+  <details data-detail>
+    <summary>怎么做 · 为什么</summary>
+    <p data-note></p>
+  </details>
+</section>
+
+<script>
+(() => {
+const body = {
+  chest:[46,42], waist:[36,36], hip:[48,48],
+  shoulders:38, arm:28, neck:35, wrist:16, bustHeight:26, bustSpan:18,
+  shoulderToWaist:40, shoulderToHip:60, shoulderToWrist:56
+};
+const styles = {
+  tee:[
+    {id:'loose',name:'宽松',summary:'胸腰留空间，轻落肩，短袖自然垂。',ease:[14,28,12],drop:2,bodyLength:63,sleeve:19,armEase:9,neck:[8,8,2.5],fit:'抬臂时看看衣身会不会被腋下带起来。',fix:'侧缝后移或前移，先核查前后胸宽和袖子有没有装反。下摆上提时同时检查袖窿深度和袖身宽度。'},
+    {id:'classic',name:'合身',summary:'肩缝靠近肩点，胸腰有少量活动空间。',ease:[8,16,8],drop:0,bodyLength:60,sleeve:17,armEase:6,neck:[7.5,7.5,2.5],fit:'肩缝贴近肩点。抱臂时胸前和袖口都要能动。',fix:'胸前横向拉纹先解开侧缝，在拉紧的位置加量。如果放开侧缝后前摆仍高，再查前衣长和胸部立体量。'},
+    {id:'slim',name:'修身',summary:'腰线更明显，选有弹性且能回弹的针织。',ease:[2,6,4],drop:0,bodyLength:60,sleeve:16,armEase:3,neck:[7,7.5,2.5],fit:'先试套头，再坐下、抱臂。腰贴近身体，布料仍要回弹。',fix:'如果套头困难，先检查领口周长和领条弹性。如果胸腰勒住，按位置加量。换低弹面料时重新试版。'},
+    {id:'oversize',name:'超宽松',summary:'明显落肩、宽袖和较长衣身，刻意放大轮廓。',ease:[28,44,26],drop:5,bodyLength:69,sleeve:23,armEase:13,neck:[8.5,8,2.5],fit:'落肩是款式。抬手和伸手时，袖窿仍要允许手臂活动。',fix:'整件随手臂抬起时，先查腋下是否挖得过低，以及袖宽是否足够。用样衣判断抬高腋点会不会改善活动。'}
+  ],
+  shirt:[
+    {id:'loose',name:'宽松',summary:'轻落肩、直身，门襟扣好后仍有活动空间。',ease:[16,30,16],drop:2,bodyLength:66,sleeve:54,armEase:12,neck:[7.5,7,2.5],dart:'侧胸省按试穿决定',waistDart:0,fit:'扣好前门襟，坐下、前伸双臂，后背应有余量。',fix:'前伸就绷紧，查后背宽和袖窿。保留宽松轮廓，先检查卡住的是哪一段缝。'},
+    {id:'classic',name:'合身',summary:'肩点清楚，胸省容纳胸部，侧缝轻收腰。',ease:[10,18,10],drop:0,bodyLength:63,sleeve:56,armEase:9,neck:[7.5,7,2.5],dart:'示例加侧胸省',waistDart:0,fit:'扣好门襟，检查胸口有没有张开，侧缝应接近垂直。',fix:'如果门襟在胸点附近张开，先查前胸宽和前长，再调胸省。确认活动空间后，复核胸高附近的扣位。'},
+    {id:'slim',name:'修身',summary:'胸省营造立体量，腰省令腰部更贴合。',ease:[6,10,8],drop:0,bodyLength:61,sleeve:56,armEase:7,neck:[7.5,7,2.5],dart:'侧胸省＋前后腰省',waistDart:1.5,fit:'扣好扣子再坐下、抱臂，胸口和腰口都应有活动空间。',fix:'胸口张开，优先查前胸宽和前长。腰太紧，可减小腰省或放开腰节侧缝，再重新核对前后侧缝。'},
+    {id:'oversize',name:'超宽松',summary:'明显落肩和宽袖，衣身加长，保留翻领和门襟。',ease:[30,48,30],drop:6,bodyLength:73,sleeve:50,armEase:14,neck:[8,7.5,2.5],dart:'示例用直身，胸省按体型决定',waistDart:0,fit:'试袖口能否落在手腕附近，再检查深袖窿是否妨碍伸手。',fix:'伸手带起整件衣服时，先配对检查袖窿和袖山。侧缝够宽也可能需要抬高腋点。落肩后要重测袖长。'}
+  ]
+};
+const families={
+  tee:{name:'女式 T 恤',tab:'T 恤',cloth:'针织',color:'#216a61',wash:'先试拉布再放开。修身款尤其看布能否弹回原长。'},
+  shirt:{name:'女式衬衣',tab:'衬衣',cloth:'梭织',color:'#9a4638',wash:'先用相近的梭织布试版。领、领座和袖口可按面料配衬。'}
+};
+const pairs = [body.chest,body.waist,body.hip];
+const sum = xs => xs.reduce((a,b)=>a+b,0);
+const calc = (family,index)=>{
+  const s=styles[family][index];
+  return {...s,family,isShirt:family==='shirt',meta:families[family],
+    rows:pairs.map((part,i)=>({name:['胸围','腰围','臀围'][i],body:sum(part),ease:s.ease[i],finished:sum(part)+s.ease[i],
+      halves:part.map(n=>(n+s.ease[i]/2)/2)})),
+    shoulder:body.shoulders+2*s.drop,arm:body.arm+s.armEase};
+};
+
+const svg = (() => {
+  const path=(d,c='line',attr='')=>`<path d="${d}" class="${c}" ${attr}/>`;
+  const text=(x,y,t,c='',anchor='middle')=>`<text x="${x}" y="${y}" class="${c}" text-anchor="${anchor}">${t}</text>`;
+  const dot=(x,y)=>`<circle cx="${x}" cy="${y}" r="4.4" class="point"/>`;
+  const trace=(d,ms=0)=>path(d,'alert trace',`pathLength="1" style="--delay:${ms}ms"`);
+  const rise=(art,ms=0)=>`<g class="appear" style="--delay:${ms}ms">${art}</g>`;
+  const group=(x,y,art,scale=1)=>`<g transform="translate(${x} ${y}) scale(${scale})">${art}</g>`;
+  const arrow=(d,both=false)=>path(d,'alert',`marker-end="url(#top-tip)" ${both?'marker-start="url(#top-tip)"':''}`);
+  const grid='<rect x="12" y="10" width="616" height="380" rx="8" fill="url(#top-grid)"/>';
+  const shell=(art,alt)=>`<svg viewBox="0 0 640 400" role="img" aria-label="${alt}" stroke-linecap="round" stroke-linejoin="round">
+    <defs>
+      <marker id="top-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path class="arrowhead" d="M2 1L8 5L2 9"/></marker>
+      <pattern id="top-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" class="gridline"/></pattern>
+    </defs>${art}</svg>`;
+  function flat(s,rear=false){
+    const [c,w,h]=s.rows.map(r=>r.halves[rear?1:0]*2.62);
+    const sd=s.shoulder*1.31, drop=s.drop;
+    const baseY=110+drop*2, hem=180+s.bodyLength*.9;
+    const sleeveEnd=sd+(s.isShirt?48:Math.round(s.sleeve*2.45));
+    const sy=s.isShirt?220+drop*2:96+s.sleeve*1.7;
+    const near=s.isShirt?c+21:c+12;
+    const neck=s.neck[0]*2.15, neckDeep=(rear?s.neck[2]:s.neck[1])*2.15;
+    const left=`L${-sd} ${32+drop*2}L${-sleeveEnd} ${sy-15}L${-near} ${sy}L${-c} ${baseY}Q${-w} 145 ${-w} 173L${-h} ${hem}`;
+    const right=`L${h} ${hem}L${w} 173Q${w} 145 ${c} ${baseY}L${near} ${sy}L${sleeveEnd} ${sy-15}L${sd} ${32+drop*2}L${neck} 15`;
+    let drawing=path(`M${-neck} 15${left}Q0 ${hem+8} ${h} ${hem}${right}Q0 ${15+neckDeep*2} ${-neck} 15Z`,'fill');
+    drawing+=path(`M${-sd} ${34+drop*2}Q${-sd+10} 79 ${-c} ${baseY}M${sd} ${34+drop*2}Q${sd-10} 79 ${c} ${baseY}`,'line');
+    if(!s.isShirt){
+      drawing+=path(`M${-neck-5} 18Q0 ${22+neckDeep*2} ${neck+5} 18`,'line');
+      drawing+=path(`M${-h+2} ${hem-7}Q0 ${hem+1} ${h-2} ${hem-7}`,'ghost');
+    } else if(rear){
+      drawing+=path(`M${-sd+6} ${55+drop*2}Q0 ${75+drop} ${sd-6} ${55+drop*2}`,'line');
+      if(s.waistDart) drawing+=path('M-25 135l-6 42 6 49 6 -49ZM25 135l-6 42 6 49 6 -49Z','ghost');
+    } else {
+      drawing+=path(`M-20 14L-7 8Q0 14 7 8L20 14L30 38L10 53L0 34L-10 53L-30 38Z`,'paper');
+      drawing+=path(`M-6 37V${hem+2}M6 37V${hem+2}`,'line');
+      drawing+=Array.from({length:6},(_,i)=>dot(0,65+i*32)).join('');
+      drawing+=path(`M${-sleeveEnd+6} ${sy-24}L${-near-4} ${sy-7}M${sleeveEnd-6} ${sy-24}L${near+4} ${sy-7}`,'line');
+      if(s.id==='classic'||s.id==='slim') drawing+=path(`M${-c+1} 121L-35 119L${-c+1} 132M${c-1} 121L35 119L${c-1} 132`,'ghost');
+      if(s.waistDart) drawing+=path('M-24 140l-5 37 5 45 5 -45ZM24 140l-5 37 5 45 5 -45Z','ghost');
+    }
+    return drawing;
+  }
+  function sketch(s){
+    const neck=s.isShirt?'翻领 · 前开扣':'圆领 · 套头';
+    return shell(grid+group(166,75,flat(s),.93)+group(474,75,flat(s,true),.93)
+      +text(165,55,'正面')+text(476,55,'背面')
+      +rise(text(320,382,neck,'small'),600),`${s.meta.name}${s.name}款的正面和背面平面款式示意。${s.summary}`);
+  }
+  function measure(s){
+    const bust=sum(body.chest), waist=sum(body.waist), hip=sum(body.hip);
+    const figure='M276 34Q255 68 220 72Q212 91 229 117Q251 140 243 162Q223 214 237 252L258 351H286L301 268L316 351H344L365 252Q379 214 359 162Q351 140 373 117Q390 91 382 72Q347 68 326 34';
+    return shell(path(figure,'fill')+
+      trace('M237 123q64 25 128 0',0)+trace('M244 164q57 18 114 0',240)+trace('M235 225q66 26 132 0',460)
+      +text(122,126,`胸围 ${bust}`)+text(122,170,`腰围 ${waist}`)+text(122,235,`臀围 ${hip}`)
+      +arrow('M233 84H369',true)+text(301,59,`肩宽 ${body.shoulders}`,'small')
+      +path('M365 126H442M359 165H442M368 228H442','ghost')
+      +text(514,104,s.isShirt?`领围 ${body.neck}`:`上臂 ${body.arm}`)
+      +text(514,158,s.isShirt?`腕围 ${body.wrist}`:`肩颈到胸点 ${body.bustHeight}`,'small')
+      +text(514,211,s.isShirt?`上臂 ${body.arm}`:`胸点间距 ${body.bustSpan}`,'small')
+      +arrow('M405 77V285',true)+text(500,303,`款式衣长 ${s.bodyLength}`,'small')+text(500,342,'厘米','small'),
+      '以同一人体示例量胸、腰、臀、肩和上臂。需要定位胸点时量肩颈点到胸点及两胸点距离。衣长按款式选。');
+  }
+  function ease(s){
+    const baseline=107, unit=2.6;
+    return shell(text(215,35,'净尺寸 ＋ 余量 ＝ 成衣','small')+text(515,35,'厘米','small')
+      +s.rows.map((r,i)=>{
+        const y=88+105*i, x0=baseline, x1=x0+r.body*unit, x2=x1+r.ease*unit;
+        return text(56,y+8,r.name,'small')
+          +path(`M${x0} ${y-10}H${x1}v22H${x0}Z`,'fill')
+          +rise(path(`M${x1} ${y-10}H${x2}v22H${x1}Z`,'added'),i*180+220)
+          +rise(text(517,y+9,`${r.body}＋${r.ease}＝${r.finished}`,'value'),i*180+340)
+          +text(280,y+56,`半前 ${r.halves[0]}　半后 ${r.halves[1]}`,'small');
+      }).join(''),
+      '胸腰臀的净尺寸加松量成为成衣围度。前后身净尺寸各加一半松量，再除以二，得到左或右半片的成品缝线宽。');
+  }
+  function block(s){
+    const lineYs=[165,235,320];
+    return shell(grid + [0,1].map((i)=>{
+      const x=62+i*302;
+      const [c,w,h]=s.rows.map(r=>x+r.halves[i]*6.2);
+      const wc=w+(s.waistDart||0)*6.2;
+      const nx=x+s.neck[0]*6.2, end=x+s.shoulder*3.1;
+      const head=66+(i?s.neck[2]:s.neck[1])*4.1;
+      const curveY=76+Math.min(20,s.drop*2);
+      const profile=`M${x} ${head}Q${nx-15} ${head} ${nx} 49L${end} ${curveY}Q${end-17} 104 ${c} 136L${c} 165C${c} 184 ${wc} 201 ${wc} 235Q${wc} 272 ${h} 320L${h} 347Q${x+72} 363 ${x} 351Z`;
+      const center=`M${x} 48V352`;
+      const a=text(x+93,35,i?'半后片':'半前片');
+      const guides=[c,w,h].map((r,j)=>path(`M${x} ${lineYs[j]}H${Math.max(r,j===1?wc:r)}`,'ghost')
+        +text(x+22,lineYs[j]-8,['胸','腰','臀'][j],'small')
+        +text((x+r)/2+13,lineYs[j]+26,s.rows[j].halves[i],'small')).join('');
+      const darts=s.waistDart?trace(`M${x+62} 174L${x+57} 235L${x+62} 290L${x+67} 235Z`,820):'';
+      const bustDart=s.isShirt&&!i&&(s.id==='classic'||s.id==='slim')?
+        rise(path(`M${c-4} 166L${x+82} 160L${c-5} 177`,'alert')+dot(x+63,158),1000):'';
+      const placket=s.isShirt&&!i?rise(path(`M${x-16} ${head+2}V353M${x-7} ${head+1}V353`,'alert'),1000):'';
+      return a+path(profile,'paper')+path(center,'ghost')+guides+
+        trace(`M${x} ${head}Q${nx-15} ${head} ${nx} 49L${end} ${curveY}Q${end-17} 104 ${c} 136`,180)
+        +trace(`M${c} 136V165C${c} 184 ${wc} 201 ${wc} 235Q${wc} 272 ${h} 320`,450)
+        +darts+bustDart+placket+(s.waistDart?text(x+98,386,'腰线先含省量','small'):'');
+    }).join(''),`画${s.meta.name}半前和半后片。标出中线及胸、腰、臀横线，再画领口、肩线、袖窿、侧缝。标注是合省后的有效宽度。`);
+  }
+  function sleeve(s){
+    const L = 196 - (s.arm-31)*2;
+    const R = 444 + (s.arm-31)*2;
+    const shoulderY = 62 + s.drop*5;
+    const underarmY = 187;
+    const lower = 290 + Math.min(52,s.sleeve);
+    const bottomWidth = s.isShirt ? 51 : (R-L)*.43;
+    const cap = `M${L} ${underarmY}C${L+55} 165 253 ${shoulderY+4} 320 ${shoulderY}C382 ${shoulderY+2} ${R-62} 156 ${R} ${underarmY}`;
+    return shell(grid
+      +path(`${cap}L${320+bottomWidth} ${lower}H${320-bottomWidth}Z`,'paper')
+      +path(`M320 ${shoulderY}V${lower}`,'ghost')
+      +arrow(`M${L+7} ${underarmY}H${R-7}`,true)
+      +trace(cap,160)+trace(`M${L} ${underarmY}L${320-bottomWidth} ${lower}H${320+bottomWidth}L${R} ${underarmY}`,670)
+      +dot(320,shoulderY)+text(320,40,'袖山顶')
+      +text(320,226,`袖肥 ${s.arm} 厘米`,'small')
+      +text(320,380,`袖长 ${s.sleeve} 厘米`,'small')
+      +text(148,110,'前袖山','small')+text(491,110,'后袖山','small')
+      +arrow('M159 121l42 24')+arrow('M476 122l-36 25')
+      +(s.isShirt?path(`M${320+bottomWidth-22} ${lower}v-40`,'alert'):''),
+      '从袖山顶向下量袖长，腋点之间是袖肥。前后各一段袖山要分别与前后衣身袖窿配对。');
+  }
+  function structure(s){
+    if(!s.isShirt){
+      return shell(text(166,40,'量领口')+text(466,40,'试接领条')
+        +path('M39 129l62 -57q65 113 130 0l61 58 -35 76 -32 -8v125H103V198l-29 8Z','fill')
+        +trace('M101 72q65 113 130 0',280)
+        +path('M362 135h213v48H362Z','paper')+trace('M366 159h205',490)
+        +path('M363 261q100 -60 205 0q-101 54 -205 0Z','fill')
+        +trace('M363 261q100 -60 205 0q-101 54 -205 0',780)
+        +text(466,335,'拉开后要能回弹','small')+text(166,368,'沿缝线量长','small'),
+        '沿缝线量领口，再用实际领条布做搭接试样。领条要能拉开套头，缝后能服帖回弹。');
+    }
+    return shell(text(155,40,'翻领与领座')+text(477,40,'门襟与袖口')
+      +path('M35 101q120 45 240 0l-21 66q-103 34 -199 0Z','paper')
+      +path('M52 211q106 42 218 0l-1 31q-113 38 -217 0Z','fill')
+      +trace('M52 241q104 38 217 0',200)
+      +arrow('M153 245V291')+text(160,331,'沿缝线核对领口','small')
+      +path('M384 72h63v203h-63Z','paper')+path('M402 74v199m21 -199v199','ghost')
+      +trace('M414 91v166',440)
+      +[108,148,188,228].map(y=>dot(414,y)).join('')
+      +path('M505 73h92v199h-92Z','fill')+path('M505 239h92','line')+trace('M551 239v-66',620)
+      +text(415,314,'门襟','small')+text(552,314,'袖衩 · 袖口','small')
+      +text(475,373,'扣合量另计','small'),
+      '翻领装在领座上，领座沿领口缝线核对长度。衬衣前中心单独计门襟搭接，长袖需要袖口及袖衩。');
+  }
+  function fit(s){
+    const i=s.id;
+    const spot=i==='oversize'?['M492 133Q451 127 437 119','查腋点']:(s.isShirt?
+      ['M501 146H365','查门襟']:['M500 184Q443 184 417 191','查侧缝']);
+    return shell(group(290,58,flat(s),1.03)+trace('M99 113q-60 32 -32 76',260)+arrow('M68 185L58 168')
+      +trace('M98 266q-47 15 -40 49',650)+arrow('M58 312l-11 -16')+text(88,104,'伸手','small')+text(83,352,'坐下','small')
+      +rise(arrow(spot[0])+text(539,i==='oversize'?107:(s.isShirt?137:170),spot[1],'small'),940)
+      +text(320,378,s.isShirt?'扣好再试':'穿脱也要试','small'),
+      `试穿动作与检查重点。${s.fit}`);
+  }
+  function cutting(s){
+    const front=s.isShirt?'前片镜像两张':'前片贴折边';
+    const frontP='M72 101q20 1 32 -25l51 15q-7 40 29 69l9 138H72Z';
+    const backP='M245 94q22 0 34 -17l48 12q-5 39 30 69l9 140H245Z';
+    const sleeveP='M411 175q35 -91 103 -83 48 11 72 83l-25 76H436Z';
+    return shell(path('M54 52h144v276H54Z M228 52h154v276H228Z M401 52h204v276H401Z','fill')
+      +(s.isShirt?path('M65 101V298','ghost'):path('M72 54v272','ghost'))+path('M245 54v272','ghost')+text(130,38,front,'small')+text(300,38,'后片贴折边','small')+text(502,38,'两袖镜像','small')
+      +path(frontP,'paper')+path(backP,'paper')+path(sleeveP,'paper')
+      +(s.isShirt?trace('M65 101V298',140):trace('M72 119V298',140))+trace('M245 99V298',250)
+      +arrow('M126 151V255')+arrow('M299 151V255')+arrow('M514 132V227')
+      +path('M183 173l-10 -1m183 -1 -11 -2m71 -9 8 3m145 -21 -10 4m16 7 -10 4','alert')
+      +rise(path(s.isShirt?'M412 273h80v20h-80Z M506 273h80v20h-80Z':'M412 273h172v23H412Z','paper'),590)
+      +text(500,357,s.isShirt?'另裁领、领座等':'另裁领条','small')
+      +text(172,357,s.isShirt?'门襟边保留搭量':'前中折边保留','small'),
+      s.isShirt?'衬衣左前与右前分别裁，后片贴折边，袖片互为镜像。另裁门襟、领、领座、袖衩和袖口等。':'前后片中线贴折边，保留折边，不剪开。两袖镜像裁，领条按合适的伸缩方向排。');
+  }
+  return {sketch,measure,ease,block,sleeve,structure,fit,cutting};
+})();
+
+const draft = (() => {
+  const r = (n,k=2) => Number(n.toFixed(k));
+  const p = (x,y) => [x,y];
+  const d = (a,b) => Math.hypot(a[0]-b[0],a[1]-b[1]);
+  const path = (str,c='line',attrs='')=>`<path d="${str}" class="${c}" ${attrs}/>`;
+  const txt = (x,y,str,c='small',align='middle')=>`<text x="${x}" y="${y}" class="${c}" text-anchor="${align}">${str}</text>`;
+  const dot = (x,y)=>`<circle cx="${x}" cy="${y}" r="4.5" class="point"/>`;
+  const trace = (str,ms=0)=>path(str,'alert trace',`pathLength="1" style="--delay:${ms}ms"`);
+  const rise = (art,ms=0)=>`<g class="appear" style="--delay:${ms}ms">${art}</g>`;
+  const line = (a,b)=>`M${a}L${b}`;
+  const unit = '所有尺寸用厘米。';
+  const drawCurve=seg=>`M${seg[0]}C${seg[1]} ${seg[2]} ${seg[3]}`;
+  function curvePoint(seg,t){
+    const m=1-t;
+    return [0,1].map(axis=>m*m*m*seg[0][axis]+3*m*m*t*seg[1][axis]+3*m*t*t*seg[2][axis]+t*t*t*seg[3][axis]);
+  }
+  function length(seg){
+    let total=0,last=seg[0];
+    for(let i=1;i<=160;i++){
+      const point=curvePoint(seg,i/160);
+      total+=d(last,point);
+      last=point;
+    }
+    return total;
+  }
+  function fromEnd(seg,dist){
+    let total=0,last=seg[3];
+    for(let i=159;i>=0;i--){
+      const point=curvePoint(seg,i/160), step=d(last,point);
+      if(total+step>=dist){
+        const t=(dist-total)/step;
+        return [0,1].map(axis=>last[axis]+(point[axis]-last[axis])*t);
+      }
+      total+=step;
+      last=point;
+    }
+    return seg[0];
+  }
+  const guides=seg=>[.25,.5,.75].map(t=>curvePoint(seg,t));
+  const notchDistance=(length,i)=>r(length*(i?.4:.35),1);
+  const notches=(seg,base,i,map)=>[base,...(i?[base+.5]:[])].map(n=>dot(...map(fromEnd(seg,n)))).join('');
+  const mapCurve=(pts,map)=>drawCurve(pts.map(map));
+  const read=(xy)=>`（${xy.map(n=>r(n)).join('，')}）`;
+  const table=(pairs,x=433,top=85,gap=43)=>pairs.map(([k,v],i)=>'<g data-readout>'+txt(x,top+i*gap,k,'small','start')+txt(612,top+i*gap,v,'small','end')+'</g>').join('');
+  function shell(art,alt){
+    return `<svg viewBox="0 0 640 400" role="img" aria-label="${alt}" stroke-linejoin="round" stroke-linecap="round">
+      <defs><pattern id="draft-grid" width="22" height="22" patternUnits="userSpaceOnUse"><path class="gridline" d="M22 0H0V22"/></pattern></defs>
+      <rect x="15" y="19" width="402" height="360" rx="6" fill="url(#draft-grid)"/>
+      ${art}</svg>`;
+  }
+
+  function bodice(s,i){
+    const [chest,waist,hip]=s.rows.map(z=>z.halves[i]);
+    const shoulderDrop=r(3.5+.35*s.drop,1);
+    const armDepth=20+[2,1,.5,4][styles[s.family].findIndex(z=>z.id===s.id)];
+    const bust=26;
+    const dartSize=s.isShirt&&!i ? ({classic:1.8,slim:2.2}[s.id]||0) : 0;
+    const c=p(chest,bust), w=p(waist+(s.waistDart||0),40+dartSize), h=p(hip,60+dartSize);
+    const b=p(hip,s.bodyLength+dartSize);
+    const center=p(0,b[1]), n=p(s.neck[0],0), f=p(0,s.neck[i?2:1]), sh=p(s.shoulder/2,shoulderDrop), u=p(chest,armDepth);
+    const ar=[sh,p(sh[0]-(i?.9:2.3),sh[1]+(armDepth-sh[1])*.64),p(chest-(i?4.8:5.7),armDepth),u];
+    const neck=[f,p(s.neck[0]*.58,f[1]),p(n[0],f[1]*.42),n];
+    const bustPoint=p(body.bustSpan/2,bust);
+    const dartEnds=[c,p(c[0],c[1]+dartSize)];
+    const tip=p(bustPoint[0]+2.5,bust+dartSize/2);
+    const waistDart=s.waistDart?[
+      p(9,w[1]-9),p(9-s.waistDart/2,w[1]),p(9,w[1]+10),p(9+s.waistDart/2,w[1])
+    ]:[];
+    const lowerStart=dartSize?dartEnds[1]:c;
+    const sideCurve=[lowerStart,p(chest,lowerStart[1]+(w[1]-lowerStart[1])*.58),p(w[0],w[1]-5),w];
+    const hipCurve=[w,p(w[0],w[1]+6),p(hip,h[1]-8),h];
+    return {c,w,h,b,center,n,f,sh,u,ar,neck,dartSize,bustPoint,dartEnds,tip,waistDart,sideCurve,hipCurve,
+      armLength:length(ar),neckLength:length(neck),sideLength:d(u,c)+length(sideCurve)+length(hipCurve)+d(h,b),
+      shoulderDrop,armDepth};
+  }
+  const styleMid = [
+    ['立中线和横线','先立中线','横线'],
+    ['领点和肩点','标领肩','领肩'],
+    ['腋点与侧缝','画袖窿和侧缝','侧缝'],
+    ['省道与合缝','画省、核缝','核缝']
+  ];
+  const sleeveMid = [['摆袖肥线','摆袖肥线'],['连接袖山','画袖山'],['画袖口与对位','画袖口']];
+  const neckMid = [['量领口','量领口'],['做领条或领座','画领条／领座'],['前中或领条折法','核对细节']];
+  function bodiceLesson(s,i,idx){
+    const a=bodice(s,i), other=bodice(s,1-i);
+    const zoom=idx===1?11:4.25;
+    const ox=92, oy=47;
+    const map=([x,y])=>p(ox+x*zoom,oy+y*zoom);
+    const mark=(point,label,dx=7,dy=-9)=>{
+      const [x,y]=map(point);
+      return dot(x,y)+txt(x+dx,y+dy,label,'small','start');
+    };
+    const stroke=(v,w,num)=>trace(line(map(v),map(w)),num);
+    const ink=(v,w)=>path(line(map(v),map(w)),'ghost');
+    const formula = [
+      ['胸高',26],['腰高',r(a.w[1])],['臀高',r(a.h[1])],['下摆',r(a.b[1])]
+    ];
+    let art='',cap='',info='';
+    if(idx===0){
+      art=stroke(p(0,0),a.center,0)+mark(p(0,0),'原点')
+        +[[a.u,'腋'],[a.c,'胸'],[a.w,'腰'],[a.h,'臀'],[a.b,'摆']].map(([pt,name],j)=>{
+          if(j===4 && a.h[1]===a.b[1])return '';
+          const [x,y]=map(pt);
+          const symbol=j===3 && a.h[1]===a.b[1]?'臀／摆':name;
+          return trace(line(p(ox,y),p(x,y)),220+120*j)+dot(x,y)
+            +txt(j===0?39: j===4?128:66,y+(j===4?22:7),symbol);
+        }).join('')+table(formula,445,107,58);
+      cap='左边画中线。最高水平线作零位，向下量，再向右量。';
+      info=`先在离纸左上边各约一掌的位置标原点。向下画中线到 ${r(a.b[1])}。在距原点 ${a.armDepth}、26、${r(a.w[1])}、${r(a.h[1])} 厘米处用直角尺画腋、胸、腰、臀横线。胸、腰、臀原始高度分别来自示例量体 26、40、60。腋深从实量 20 加本款试加量 ${r(a.armDepth-20)}。走到胸横线再向右量 ${a.c[0]}，腰线向右 ${a.w[0]}，臀线向右 ${a.h[0]}。${a.dartSize?`本半前片的胸省先试 ${a.dartSize}，开省以下的腰、臀和摆线一同下移 ${a.dartSize}。`:''}${a.waistDart.length?'腰横宽包含 1.5 厘米试画腰省。':''}${s.bodyLength===60?'这个款式臀线和摆线重合。':''}`;
+    }else if(idx===1){
+      art=ink(p(0,0),p(0,17))+ink(p(0,0),p(30,0))+trace(mapCurve(a.neck,map),220)+stroke(a.n,a.sh,770)
+        +mark(a.f,'领中',8,24)+mark(a.n,'领侧')+mark(a.sh,'肩点',9,28)
+        +table([['领宽',a.n[0]],['领深',a.f[1]],['半肩宽',a.sh[0]],['肩斜落差',a.sh[1]]],435,104,60);
+      cap='领中点往下量，领侧点横着量，肩点再向外、向下。';
+      info=`从原点向下 ${a.f[1]} 找领中，再回原点向右 ${a.n[0]} 找领侧。用曲线尺连这两点，起笔沿领中水平，靠领侧近竖直。从原点向右 ${a.sh[0]}、向下 ${a.sh[1]} 标肩点，连接领侧与肩点。半肩宽＝（实量两肩点 38＋2×本款落肩增加 ${s.drop}）÷2。示例肩斜落差取实量 3.5＋本款外放后的小调整 ${r(a.sh[1]-3.5)}。领宽、领深是该款的试画值，前后共用领侧点和肩点；扣领最终以试样领为准。`;
+    }else if(idx===2){
+      const [P,,,S]=a.ar;
+      const pin=guides(a.ar);
+      art=ink(p(0,0),a.center)+trace(mapCurve(a.neck,map))+stroke(a.n,a.sh)
+        +pin.map(k=>dot(...map(k))).join('')
+        +trace(mapCurve(a.ar,map),250)+stroke(a.u,a.c,420)
+        +(a.dartSize?ink(...a.dartEnds):'')+trace(mapCurve(a.sideCurve,map),670)+trace(mapCurve(a.hipCurve,map),820)
+        +stroke(a.h,a.b,930)+stroke(a.b,a.center,1040)+mark(P,'肩点',7,-9)+mark(S,'腋点',25,-12)
+        +table([['腋深',a.armDepth],['胸宽',a.c[0]],['开省腰',a.w[0]],['臀宽',a.h[0]],['袖窿弧',r(a.armLength)]],425,70,59);
+      cap='从肩画到腋；侧缝沿胸、腰、臀圆顺过渡。';
+      info=`腋点坐标 ${read(S)}。先在纸上按（向右，向下）标三个弧上点 ${pin.map(read).join('、')}。从肩点依次穿过三点，下半段逐渐转平接到腋点。接下来从腋点向下连胸宽点，再顺到腰、臀、下摆。侧腰到臀弧还可用中间点 ${read(curvePoint(a.hipCurve,.5))}。先用曲线尺轻画，再用立起的软尺沿缝线量。图袖窿弧是 ${r(a.armLength)}。从腋点沿弧量 ${notchDistance(a.armLength,i)} 做对位点${i?'，再朝肩量 0.5 多做一个':''}。实画时乘同样的比例定点：前段取全弧 35%，后段取 40%。`;
+    }else{
+      art=ink(p(0,0),a.center)+path(mapCurve(a.neck,map),'line')+path(line(map(a.n),map(a.sh)))+path(mapCurve(a.ar,map))
+        +path(line(map(a.u),map(a.c)))+path(mapCurve(a.sideCurve,map))+path(mapCurve(a.hipCurve,map))+path(line(map(a.b),map(a.center)));
+      if(a.dartSize){
+        art+=mark(a.bustPoint,'胸点',-64,-11)+trace(`M${map(a.dartEnds[0])}L${map(a.tip)}L${map(a.dartEnds[1])}`,360);
+      }
+      art+=notches(a.ar,notchDistance(a.armLength,i),i,map);
+      if(a.waistDart.length)art+=trace(`M${a.waistDart.map(map).join('L')}Z`,620);
+      art+=table([['胸省宽',a.dartSize],['腰省宽',s.waistDart||0],['本侧缝',r(a.sideLength)],['对侧缝',r(other.sideLength)]],436,93,63);
+      cap='先合省，再从腋下逐段核对前后侧缝。';
+      info=(a.dartSize?`左边中线起量 9，向下 26 标胸点。胸省从侧缝胸高处取上省脚，沿侧缝方向向下 ${a.dartSize} 标下省脚，二者连到胸点向侧缝方向退 2.5 的省尖。省宽、尖端距离都是起稿试值，试穿后改。`:'此半片的示例先不画侧胸省。')+
+        (a.waistDart.length?`从中线横量 9 放腰省中心，中心左右各量 0.75，沿中心向上 9、向下 10 定省尖，再连四边。合省后还原净腰宽 ${s.rows[1].halves[i]}。`:'腰围靠侧缝曲线塑形。')+
+        `侧缝 ${r(a.sideLength)} 和 ${r(other.sideLength)} 以数字图线为例，胸省开口不计入缝长。在纸上捏合省脚，对齐前后腋点、腰和臀，沿两条侧缝用软尺立量。图中约差 ${r(Math.abs(a.sideLength-other.sideLength))}，在纸上合省后，从腋点对走两条缝，把较短一侧的摆端顺接至对应点，再修顺底摆，复量两条可缝段直到相合。`;
+    }
+    return {title:styleMid[idx][0],cap,info:unit+info,art:shell(art,`${i?'半后片':'半前片'}。${cap}`)};
+  }
+  const arcCap=(x,h,side) => [p(0,0),p(x*(side?.46:.53),0),p(x*.63,h*.93),p(x,h)];
+  function sleeveGeometry(s){
+    const lens=[0,1].map(i=>bodice(s,i).armLength);
+    const extra=s.isShirt?[.4,.6]:[0,0];
+    const target=lens.map((x,i)=>x+extra[i]);
+    function bestSplit(h){
+      let l=.1,v=s.arm-.1;
+      for(let k=0;k<35;k++){
+        const x=(l+v)/2;
+        const error=length(arcCap(x,h,0))-target[0]-(length(arcCap(s.arm-x,h,1))-target[1]);
+        if(error<0)l=x;else v=x;
+      }
+      const split=(l+v)/2;
+      return {split,residual:length(arcCap(split,h,0))-target[0]};
+    }
+    let lo=0,hi=Math.min(s.sleeve-(s.isShirt?6:1),40);
+    const exact=bestSplit(lo).residual<=0&&bestSplit(hi).residual>=0;
+    for(let t=0;t<38;t++){
+      const h=(lo+hi)/2;
+      if(bestSplit(h).residual<0)lo=h;else hi=h;
+    }
+    const height=(lo+hi)/2, {split}=bestSplit(height);
+    const curves = [arcCap(split,height,0).map(([x,y])=>[-x,y]),arcCap(s.arm-split,height,1)];
+    return {height,split,lens,target,extra,exact,curves,actual:curves.map(length),bottom:s.isShirt?s.sleeve-5:s.sleeve,
+      opening:s.isShirt?24:s.arm-2};
+  }
+  function sleeveLesson(s,idx){
+    const g=sleeveGeometry(s);
+    const zoom = 4.5, ox = 211, oy = 62;
+    const map=([x,y])=>p(ox+x*zoom,oy+y*zoom);
+    const U=p(-g.split,g.height),V=p(s.arm-g.split,g.height);
+    const C=p(-g.opening/2,g.bottom),D=p(g.opening/2,g.bottom);
+    const capTop=dot(ox,oy)+txt(ox,43,'袖山顶');
+    const lineUp=path(line(map(p(0,0)),map(p(0,g.bottom))),'ghost');
+    const fore=map(U),back=map(V);
+    const outline=idx>0?g.curves.map((curve,j)=>trace(mapCurve(curve,map),220+j*310)+
+      (idx===1?rise(guides(curve).map(k=>dot(...map(k))).join(''),400):notches(curve,notchDistance(g.lens[j],j),j,map))).join(''):'';
+    const bottom=idx>1?trace(`M${fore}L${map(C)}L${map(D)}L${back}`,760)+
+      (s.isShirt?trace(line(map(p(D[0]-3,g.bottom)),map(p(D[0]-3,g.bottom-9))),920):''):'';
+    const rows=idx===0?[['上臂净围',body.arm],['试加余量',s.armEase],['袖肥',s.arm],['袖山高',r(g.height)],['顶左',r(g.split)],['顶右',r(s.arm-g.split)]]:
+      idx===1?[['前袖窿',r(g.lens[0])],['后袖窿',r(g.lens[1])],['前袖山',r(g.actual[0])],['后袖山',r(g.actual[1])]]:[['纸样袖长',g.bottom],['袖口线宽',g.opening]];
+    const art=shell(lineUp+capTop+trace(line(fore,back),150)+dot(...fore)+dot(...back)
+      +txt(fore[0]-13,fore[1]+24,'前')+txt(back[0]+12,back[1]+24,'后')+outline+bottom+table(rows,431,96,idx===0?48:55),
+      '按腋点跨度和前后袖窿画出一片完整袖子的教学图。');
+    const caps=['从袖山顶往下量袖山高，过这一点画袖肥横线。','把左、右腋点各接到袖山顶。再分前后量弧。','从山顶量袖长，画袖口线，再连两个袖底边。'];
+    const info=[
+      `上臂围 28＋本款试加 ${s.armEase}＝${s.arm}。整条袖肥线宽 ${s.arm}；在顶点下 ${r(g.height)} 处画水平线，从中线向左量 ${r(g.split)}、向右量 ${r(s.arm-g.split)}。图中这三个落点由袖肥和前后袖窿弧长反算，不能直接沿用到别的身片。纸上实际弧长不合时微调袖山高和左右分量后重新量。`,
+      `软尺立起来，从前腋点沿前袖窿走到肩点，再单独走后片，数字图是 ${r(g.lens[0])} 和 ${r(g.lens[1])}。本例前后目标分别加 ${g.extra[0]} 和 ${g.extra[1]} 厘米。在袖山顶作原点，向左为负。前弧从顶依次过 ${guides(g.curves[0]).map(read).join('、')}；后弧依次过 ${guides(g.curves[1]).map(read).join('、')}，最后分别接腋点。量弧示例为 ${r(g.actual[0])} 和 ${r(g.actual[1])}，用纸样实量替代。下一图的对位点从两腋点沿弧量 ${notchDistance(g.lens[0],0)} 和 ${notchDistance(g.lens[1],1)}，后侧再向顶多量 0.5 作第二个记号。`,
+      s.isShirt?`从顶往下 ${s.sleeve} 是含袖口的目标长，扣掉先试的 5 厘米袖口高度，袖身下缘在 ${g.bottom}。本例袖口线宽 24＝腕围 16＋4 活动量＋4 给袖口打褶。过中线左右各 12。两侧各接对应腋点。在后侧袖口近外侧向内 3、往上 9 画袖衩，试穿后按手掌能否通过调整。`:
+      `从顶点往下 ${g.bottom} 是本款试选袖长。短袖口线以中线为中心，纸样宽 ${g.opening}＝袖肥 ${s.arm}－2 的示例收窄量；两端各离中线 ${g.opening/2}。连两端到同侧腋点，沿两袖底缝核对并修齐。下摆折边量在裁剪时另加。`
+    ];
+    return {title:sleeveMid[idx][0],cap:caps[idx],info:unit+info[idx],art};
+  }
+  function neckLesson(s,idx){
+    const [f,b]=[0,1].map(i=>bodice(s,i).neckLength);
+    const half=f+b, full=2*half;
+    let art='',cap='',info='';
+    if(idx===0){
+      const map=i=>([x,y])=>p(66+i*191+x*12,79+y*13);
+      art=[0,1].map(i=>{
+        const a=bodice(s,i),xy=map(i);
+        return trace(mapCurve(a.neck,xy),200+i*420)+dot(...xy(a.f))+dot(...xy(a.n))
+          +txt(120+i*191,230,i?'后半领':'前半领')+
+          txt(120+i*191,270,r(a.neckLength));
+      }).join('')+table([['沿半前领',r(f)],['沿半后领',r(b)],['整圈领弧',r(full)]],438,100,67)
+        +txt(215,337,'从中线量到肩领交点');
+      cap='软尺立在纸样缝线上。从前中、后中分别量到肩。';
+      info=`合上前后肩缝。在无缝份的领线上量半前 ${r(f)} 和半后 ${r(b)}，整圈＝2×（半前＋半后）≈${r(full)}。各数字四舍五入，所以用未舍入弧长求整圈。布上试穿改领后用你实量的领弧替换示例。`;
+    }else if(!s.isShirt){
+      const band=full*.9,cut=band+1.4;
+      const rBand=100*(55/band-1), rNeck=100*(55/full-1);
+      if(idx===1){
+        art=path('M43 95H392V219H43Z','paper')+path('M51 111H384V203H51Z','ghost')
+          +trace('M51 157H384',340)+txt(218,77,'领条纸样')+txt(219,254,'虚线为缝线，横线对折')
+          +table([['缝合圈长',r(band)],['裁长',r(cut)],['裁宽',5.4]],424,104,60);
+        cap='用实际布试做一圈。过得了头，放开能回弹。';
+        info=`示例先取领弧的 90%：${r(full)}×0.9≈${r(band)}，这是合成圈的长度。短边两端各加 0.7 缝份，裁条长 ${r(cut)}。成品领条露宽先试 2，沿长边对折，原宽＝2×2＋2×0.7＝5.4。长向顺布最合适的伸缩方向。90% 是试料起点，会随材料改变。`;
+      }else{
+        art=path('M61 102h286v113H61Z','paper')+trace('M61 158H347',200)+path('M72 112v94m262 -94v94','ghost')
+          +trace('M100 303q92 -74 185 0q-91 62 -185 0',570)
+          +table([['示例头围','55'],['领口拉伸',`${r(rNeck,0)}%`],['领条拉伸',`${r(rBand,0)}%`]],432,100,60);
+        cap='短边先合成圈，沿长边对折，试套头再缝进领口。';
+        info=`示例头围量帽线一圈得 55；衣身领口需要约（55÷${r(full)}－1）×100%＝${r(rNeck,0)}% 拉伸，领条约 ${r(rBand,0)}%。样布量 10 厘米，实际拉开约需分别到 ${r(10*55/full,1)} 和 ${r(10*55/band,1)} 厘米，再放手看回弹。要用实际缝好的样圈同时确认缝线也能伸。如果拉不开或不回弹，重选领条长度、面料或放大领口并复量。`;
+      }
+    }else if(idx===1){
+      art=path('M61 102h323v87H61Z','paper')+path('M61 250H351L382 214H61Z','paper')
+        +trace('M61 188H384',100)+trace('M61 104H348',460)+path('M346 102v87m19 -87v87','ghost')
+        +txt(222,143,'半领座')+txt(222,284,'半翻领贴领座上口')+txt(62,216,'后中')
+        +table([['半领弧',r(half)],['搭到前中外',1.5],['领座高',3],['翻领宽',3.5]],420,98,61);
+      cap='从后中画半领座。下口先标前中，再加扣合端。';
+      info=`先画一条长 ${r(half)} 的底线当半领口装领段。从左端后中，到右端前中，再向右加 1.5 厘米扣合端。以底线往上画 3 厘米高试纸领座，前端倒圆，后中折开成整条。上口从前中往后退 1 厘米定翻领终点，量到后中；直线试样是 ${r(half-1)} 厘米。用这个实量复制半翻领下口，向上量 3.5 画翻领宽，前尖试向外延 1.5。试纸领或样布领后如给领座修弧，要重走上下缝线再配翻领。领周长还要检验扣起来能容下颈根 35 和实际活动量。`;
+    }else{
+      art=path('M75 36h277v328H75Z','paper')+path('M185 40v320M155 40v320M95 40v320','ghost')
+        +trace('M185 42v318',190)+[87,127,169,210,251,294,335].map(y=>dot(185,y)).join('')
+        +txt(251,117,'前中扣线')+txt(114,388,'向外折')
+        +table([['成品门襟',3],['前中到折边',1.5],['内折带',3],['藏毛边',1],['合计外加',5.5]],421,99,54);
+      cap='以扣线为前中，向外依次定外边、内折线和裁线。';
+      info=`在半前片的前中向外 1.5 标成品边，再外量 3 标内折线，再外量 1 作向内藏毛边，外加总量 5.5。沿成品边把门襟翻到反面，藏住毛边后沿内边试缝。两边扣好时，两纸样原前中线重合。示例第一颗衣身扣离原点下 8，胸点高 26 处放一颗，中间 17；再按 9 厘米间隔向下标，末扣离下摆至少 5。穿样后检查领下与胸口扣距。袖口另画矩形，扣合后的内围 20＝手腕 16＋4 活动，再加搭口 2.5；成品高 5，表里两层各加缝份。`;
+    }
+    const headings=s.isShirt?['量领口','画领座和翻领','画门襟与扣位']:['量领口','画领条','试领条回弹'];
+    return {title:headings[idx],info:unit+info,cap,art:shell(art,cap)};
+  }
+  function measureLesson(s,idx){
+    if(idx===0)return {
+      title:'量围度',
+      cap:'胸、腰、臀分前后量，手指能放松移动软尺。',
+      info:unit+'净尺寸是在身体上量的。胸围在最丰满处，前弧从一侧腋下对应位置绕前胸到另一侧，后弧同样沿背面量。示例胸前 46、胸后 42，合计 88。腰前后各 36，合计 72。臀前后各 48，合计 96。另外量上臂最粗处 28；领根一圈 35，手腕一圈 16；针织试套头另量头围 55。',
+      art:svg.measure(s)
+    };
+    const anatomy='M175 83l14 25l82 31q35 19 41 39v110l-35 60H89l-14 -56V180q11 -25 47 -41l48 -27Z';
+    const art=shell(path(anatomy,'fill')+trace('M187 108H270V145',180)+trace('M164 109V286',420)
+      +path('M119 198H292M119 255H292M100 308H285','ghost')+trace('M293 109V192 M284 192H310',670)
+      +dot(187,108)+dot(270,145)+txt(190,63,'肩颈点')+txt(301,163,'肩点','small','start')
+      +table([['肩宽',38],['肩斜落差',3.5],['净腋深',20],['胸高',26],['腰高',40],['臀高',60]],427,92,48),
+      '肩颈点作高度零位。肩端本身向下，腋下水平线另量。');
+    return {title:'量落笔高度',cap:'肩颈点当零位，肩斜落差和腋深分别量。',info:unit+
+      '找领侧与肩线交会处作为肩颈点。肩宽在两肩点之间水平量，示例为 38。以肩颈点为高度零位，竖直量外肩点低多少，本例 3.5。腋下夹一把横尺，量肩颈点水平线到横尺的垂直距离，本例 20。用同一零位记录胸点 26、腰 40、臀 60 的高度。两胸点间距 18，所以半片胸点离中线 9。衣长和袖长是各款试选的长度。',art};
+  }
+  function overview(s){
+    const scale=4;
+    const mapper=(x,y)=>([u,v])=>p(x+u*scale,y+v*scale);
+    const arrow=(a,b)=>path(line(a,b),'alert','marker-start="url(#top-tip)" marker-end="url(#top-tip)"');
+    const lineFragment=(curve,m)=>mapCurve(curve,m).split('C')[1];
+    const ticks=(curve,base,i,m)=>[0,...(i?[.5]:[])].map(offset=>{
+      const pos=base+offset;
+      const mark=m(fromEnd(curve,pos)), nearby=m(fromEnd(curve,pos+.2));
+      const norm=d(mark,nearby);
+      const dx=(nearby[1]-mark[1])*6/norm, dy=(mark[0]-nearby[0])*6/norm;
+      return path(line(p(mark[0]-dx,mark[1]-dy),p(mark[0]+dx,mark[1]+dy)),'alert','style="stroke-width:1.4"');
+    }).join('');
+    const marks = [];
+    const profiles=[0,1].map((i)=>{
+      const a=bodice(s,i);
+      const shirtFront=s.isShirt && i===0;
+      const m=mapper(i===0?61:244,74);
+      const edge=shirtFront?-5.5:0;
+      const start=m(p(edge,a.f[1]));
+      const hem=m(p(edge,a.b[1]));
+      const outline=`M${start}L${m(a.f)}C${lineFragment(a.neck,m)}L${m(a.sh)}C${lineFragment(a.ar,m)}L${m(a.c)}`
+        +(a.dartSize?`L${m(a.dartEnds[1])}`:'')
+        +`C${lineFragment(a.sideCurve,m)}C${lineFragment(a.hipCurve,m)}L${m(a.b)}L${hem}Z`;
+      const center=line(m(a.f),m(a.center));
+      const b=shirtFront?` ${path(line(m(p(-1.5,a.f[1])),m(p(-1.5,a.b[1]))),'ghost')}
+        ${path(line(m(p(-4.5,a.f[1])),m(p(-4.5,a.b[1]))),'ghost')}`:'';
+      const yLast=a.b[1]-5;
+      let buttons='';
+      if(shirtFront){
+        for(let y=8;y<=yLast;y+=9) buttons+=dot(...m(p(0,y)));
+      }
+      const waistGuide=line(m(p(0,a.w[1])),m(a.w));
+      const grain=arrow(m(p(a.c[0]*.72,31)),m(p(a.c[0]*.72,53)));
+      const dart=a.dartSize?path(`M${m(a.dartEnds[0])}L${m(a.tip)}L${m(a.dartEnds[1])}`,'alert'):'';
+      const waistDart=a.waistDart.length?path(`M${a.waistDart.map(m).join('L')}Z`,'alert'):'';
+      marks.push(trace(mapCurve(a.ar,m),250+200*i)+ticks(a.ar,notchDistance(a.armLength,i),i,m));
+      return txt(i===0?121:304,46,i===0?'半前片':'半后片')+path(outline,'paper')
+        +path(center,shirtFront?'ghost':'alert')+b+buttons+path(waistGuide,'ghost')+grain+dart+waistDart
+        +txt(i===0?121:304,392,shirtFront?'左右各一片':'中线贴折边');
+    }).join('');
+    const g=sleeveGeometry(s);
+    const m=mapper(501,74);
+    const left=g.curves[0][3],right=g.curves[1][3];
+    const bottomL=p(-g.opening/2,g.bottom),bottomR=p(g.opening/2,g.bottom);
+    const arm=path(`M${m(left)}L${m(bottomL)}L${m(bottomR)}L${m(right)}C${lineFragment([...g.curves[1]].reverse(),m)}C${lineFragment(g.curves[0],m)}Z`,'paper')
+      +path(line(m(left),m(right)),'ghost')
+      +arrow(m(p(0,g.height+2)),m(p(0,g.bottom-1.5)))
+      +(s.isShirt?path(line(m(p(bottomR[0]-3,g.bottom)),m(p(bottomR[0]-3,g.bottom-9))),'alert'):'')
+      +txt(500,46,'完整袖片')+txt(500,392,'镜像裁两片');
+    const match=g.curves.map((curve,i)=>trace(mapCurve(curve,m),680+i*180)
+      +ticks(curve,notchDistance(g.lens[i],i),i,m)).join('')+dot(...m(p(0,0)));
+    const halfNeck=bodice(s,0).neckLength+bodice(s,1).neckLength;
+    let extras='';
+    let height=512;
+    if(s.isShirt){
+      const standW=(halfNeck+1.5)*scale, bladeW=(halfNeck-1)*scale;
+      extras=txt(105,442,'半领座')+txt(311,442,'半翻领')+txt(508,442,'袖口')
+        +path(`M62 462h${standW}v12H62Z`,'paper')
+        +path(`M62 462v12m${halfNeck*scale} -12v12`,'ghost')
+        +path(`M270 474h${bladeW}l6 -14H270Z`,'paper')+path('M270 460v14','alert')
+        +path('M464 454h90v20H464Z','paper')+path('M544 454v20','ghost')
+        +txt(105,514,'后中折边')+txt(311,514,'后中折边')+txt(508,514,'22.5 × 5')
+        +path('M62 553h96v12H62Z','fill')+txt(177,568,'袖衩包条 · 24 × 3','small','start');
+      height=608;
+    }else{
+      const band=(halfNeck*2*.9+1.4)*scale;
+      extras=txt(120,447,'领条')+path(`M198 428h${band}v21.6H198Z`,'paper')
+        +path(`M198 438.8h${band}`,'ghost')+txt(410,447,`${r(band/scale)} × 5.4 厘米`,'small','start');
+    }
+    return `<svg viewBox="0 0 640 ${height}" role="img" aria-label="${s.meta.name}${s.name}款的二维纸样总览。含前、后、袖和领口部件。门襟、袖口及袖衩按款式标出。" stroke-linecap="round" stroke-linejoin="round">
+      <defs>
+        <pattern id="draft-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path class="gridline" d="M20 0H0V20"/></pattern>
+        <marker id="top-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path class="arrowhead" d="M2 1L8 5L2 9"/></marker>
+      </defs>
+      <rect x="15" y="10" width="610" height="${height-20}" rx="7" fill="url(#draft-grid)"/>
+      ${profiles}${arm}${marks.join('')}${match}${rise(extras,850)}
+    </svg>`;
+  }
+  function workbench(s){
+    const result=[];
+    const scale=4;
+    const map=(x,y)=>([u,v])=>p(x+u*scale,y+v*scale);
+    const cm=n=>r(n,2);
+    const label=(x,y,z)=>txt(x,y,z,'small');
+    const stroke=d=>path(d,'work-stroke','pathLength="1"');
+    const dash=d=>path(d,'work-guide');
+    const point=xy=>`<circle class="work-point" cx="${xy[0]}" cy="${xy[1]}" r="3"/>`;
+    const pos=xy=>`横量 ${cm(xy[0])}，向下 ${cm(xy[1])} 厘米`;
+    const add=(phase,title,note,position,ink)=>result.push({phase,title,note,position,ink});
+    const top=74;
+    const fold=(a,b)=>path(line(a,b),'work-fold');
+    const grain=(a,b)=>path(line(a,b),'work-grain','marker-start="url(#work-arrow)" marker-end="url(#work-arrow)"');
+    [0,1].forEach(i=>{
+      const a=bodice(s,i);
+      const phase=i?'半后片':'半前片';
+      const m=map(i?244:62,top);
+      const orig=m(p(0,0));
+      const chestY=a.c[1];
+      const originLine=dash(line(orig,m(p(a.sh[0]+4,0))));
+      add(phase,'定原点','先点纸上原点。以后每个坐标都从这个点起量。',orig,
+        point(orig)+originLine+label(i?308:120,47,phase));
+      add(phase,'画中线',`从原点竖直向下 ${cm(a.b[1])} 厘米，点下摆处。中线随手补直。${a.dartSize?`这里含胸省开量 ${a.dartSize} 厘米。`:''}`,
+        m(a.center),dash(line(orig,m(a.center)))+point(m(a.center)));
+      [[a.c,'胸',26],[a.w,'腰',40],[a.h,'臀',60]].forEach(([xy,name,height],j)=>{
+        const [x,y]=xy;
+        const row=s.rows[j];
+        const extra=j===1&&s.waistDart?`另加腰省 ${s.waistDart} 厘米。`:'';
+        const lowering=j>0&&a.dartSize?`净高度 ${height} 加开省量 ${a.dartSize}。`:'';
+        add(phase,`标${name}线宽度`,`从原点 ${pos(xy)}。${name}宽以半片 ${row.halves[i]} 厘米为基础。${extra}${lowering}`,
+          m(xy),dash(line(m(p(0,y)),m(xy)))+point(m(xy)));
+      });
+      add(phase,'点领中',`从原点沿中线向下 ${a.f[1]} 厘米。这是本款${i?'后':'前'}领深。`,m(a.f),
+        point(m(a.f)));
+      add(phase,'点领侧并接领弧',`原点向外量 ${a.n[0]} 厘米。从领中顺接到这一点，起笔近水平。`,m(a.n),
+        point(m(a.n))+stroke(mapCurve(a.neck,m)));
+      add(phase,'点肩并连肩线',`从原点 ${pos(a.sh)}。横量＝半肩宽；向下＝肩斜落差。`,m(a.sh),
+        point(m(a.sh))+stroke(line(m(a.n),m(a.sh))));
+      add(phase,'定腋点',`从原点 ${pos(a.u)}。腋深＝净腋深 20＋本款 ${cm(a.armDepth-20)} 厘米。`,m(a.u),
+        point(m(a.u))+dash(line(m(p(0,a.u[1])),m(a.u)))+guides(a.ar).map(v=>point(m(v))).join(''));
+      add(phase,'接袖窿弧',`从肩到腋，沿三个弧上点连顺。中间点从原点 ${pos(curvePoint(a.ar,.5))}。`,
+        m(curvePoint(a.ar,.5)),stroke(mapCurve(a.ar,m)));
+      const side=stroke(line(m(a.u),m(a.c)))+stroke(mapCurve(a.sideCurve,m))+stroke(mapCurve(a.hipCurve,m))
+        +stroke(line(m(a.h),m(a.b)))+stroke(line(m(a.b),m(a.center)));
+      add(phase,'连侧缝和底摆',`用已标的胸、腰、臀点顺接侧缝，再把下摆接回中线。点下摆外角。合缝前要走缝核对。`,
+        m(a.b),side);
+      if(a.dartSize){
+        const [up,down]=a.dartEnds;
+        add(phase,'画侧胸省',`两省脚在胸线旁，间隔 ${a.dartSize} 厘米。点胸省尖：从原点 ${pos(a.tip)}。缝时对齐两省脚。`,
+          m(a.tip),stroke(`M${m(up)}L${m(a.tip)}L${m(down)}`)+point(m(a.tip)));
+      }
+      if(a.waistDart.length){
+        add(phase,'画腰省',`从中线向外 9 定省心，腰线上左右各 0.75，上尖距腰 9、下尖距腰 10 厘米。`,
+          m(p(9,a.w[1])),stroke(`M${a.waistDart.map(m).join('L')}Z`));
+      }
+      const notch=notchDistance(a.armLength,i);
+      const registration=[notch,...(i?[notch+.5]:[])].map(n=>point(m(fromEnd(a.ar,n)))).join('');
+      const markAt=fromEnd(a.ar,notch);
+      add(phase,'标袖窿对位',`从腋点沿弧走 ${notch} 厘米。${i?'后片再向肩加 0.5 厘米做第二个记号。':'前片做一个记号。'}`,
+        m(markAt),registration+grain(m(p(a.c[0]*.70,32)),m(p(a.c[0]*.70,53))));
+      if(s.isShirt&&!i){
+        const f=a.f[1], h=a.b[1];
+        const placket=stroke(`M${m(a.f)}H${m(p(-5.5,f))[0]}V${m(p(-5.5,h))[1]}H${m(a.center)[0]}`)
+          +[-1.5,-4.5].map(x=>dash(line(m(p(x,f)),m(p(x,h))))).join('');
+        const buttonPts=[];
+        for(let y=8;y<=h-5;y+=9)buttonPts.push(point(m(p(0,y))));
+        add(phase,'在前中外画门襟', '从前中向外 1.5、再外量 3、再外量 1，合计 5.5 厘米。点门襟外下角。',
+          m(p(-5.5,h)),placket+buttonPts.join(''));
+      }else{
+        add(phase,'标出折边','点中线下端，标记中线贴布折边。折边不剪开。',
+          m(a.center),fold(m(a.f),m(a.center)));
+      }
+    });
+    const g=sleeveGeometry(s);
+    const sm=map(500,top);
+    const center=p(0,0), left=g.curves[0][3], right=g.curves[1][3];
+    const cuffLeft=p(-g.opening/2,g.bottom),cuffRight=p(g.opening/2,g.bottom);
+    add('袖片','定袖山顶','从右边空白起一片完整袖，先点袖山顶作原点。',
+      sm(center),point(sm(center))+label(500,47,'完整袖片'));
+    add('袖片','点前腋点',`从顶向左 ${cm(g.split)}、向下 ${cm(g.height)} 厘米。`,
+      sm(left),point(sm(left))+dash(line(sm(p(0,g.height)),sm(left))));
+    add('袖片','点后腋点',`从顶向右 ${cm(s.arm-g.split)}、向下 ${cm(g.height)}。闭合这条水平参考线，整条袖肥 ${s.arm} 厘米。`,
+      sm(right),point(sm(right))+dash(line(sm(left),sm(right))));
+    [0,1].forEach(i=>{
+      const curve=g.curves[i], side=i?'后':'前';
+      const dist=notchDistance(g.lens[i],i);
+      const marks=[dist,...(i?[dist+.5]:[])].map(n=>point(sm(fromEnd(curve,n)))).join('');
+      add('袖片',`连${side}袖山并标记`,`从袖山顶接到${side}腋点。图上弧长约 ${cm(g.actual[i])} 厘米；${side}袖窿 ${cm(g.lens[i])}＋吃量 ${g.extra[i]}。点弧上标记位置。`,sm(fromEnd(curve,dist)),
+        stroke(mapCurve(curve,sm))+marks);
+    });
+    add('袖片','点前袖口',`从顶往下 ${g.bottom}，向左 ${g.opening/2}。接到前腋点。`,sm(cuffLeft),
+      point(sm(cuffLeft))+stroke(line(sm(left),sm(cuffLeft))));
+    add('袖片','点后袖口并闭合',`从顶往下 ${g.bottom}，向右 ${g.opening/2}。接到后腋点，再合上袖口线。`,
+      sm(cuffRight),point(sm(cuffRight))+stroke(line(sm(right),sm(cuffRight)))+stroke(line(sm(cuffLeft),sm(cuffRight)))
+      +grain(sm(p(0,g.height+2)),sm(p(0,g.bottom-1.5))));
+    if(s.isShirt){
+      const slot=p(cuffRight[0]-3,g.bottom-9);
+      add('袖片','点袖衩顶','从后侧袖口边向内 3，再向上 9 厘米。由袖口往上画开口线。',
+        sm(slot),stroke(line(sm(p(slot[0],g.bottom)),sm(slot))));
+    }
+    const half=bodice(s,0).neckLength+bodice(s,1).neckLength;
+    const rect=(x,y,w,h)=>stroke(`M${x} ${y}h${w*scale}v${h*scale}h${-w*scale}Z`);
+    if(s.isShirt){
+      const stand=half+1.5, collar=half-1;
+      add('领与袖口','画半领座',`半领弧约 ${cm(half)}，前端再加 1.5；高 3 厘米。点底线右端。`,p(62+stand*scale,436),
+        rect(62,424,stand,3)+fold(p(62,424),p(62,436))+label(113,475,'半领座'));
+      add('领与袖口','画半翻领',`直线试样的下口约 ${cm(collar)}，宽 3.5，前尖先外延 1.5 厘米。点翻领外尖。`,p(266+collar*scale+6,420),
+        stroke(`M266 434h${collar*scale}l6 -14H266Z`)+fold(p(266,420),p(266,434))+label(309,475,'半翻领'));
+      add('领与袖口','画袖口', '袖口长 22.5＝腕围 16＋活动量 4＋搭口 2.5；高度 5 厘米。点右下角。',
+        p(551,443),rect(461,423,22.5,5)+dash('M541 423v20')+label(504,475,'袖口'));
+      add('领与袖口','画袖衩包条','例用 24 × 3 厘米包住袖衩两边。点包条的右下角。',
+        p(158,518),rect(62,506,24,3)+label(262,520,'袖衩包条'));
+    }else{
+      const cut=half*2*.9+1.4;
+      add('领条','画领条外框',`整领弧约 ${cm(half*2)}。用 90% 试起，再加两端共 1.4，得裁长 ${cm(cut)}；裁宽 5.4 厘米。`,
+        p(149+cut*scale,449.6),rect(149,428,cut,5.4)+label(86,446,'领条'));
+      add('领条','画对折线','把 5.4 厘米的宽度对半分，中点离边 2.7。过中点画长向对折线，试缝领条并检查回弹。',
+        p(149+cut*scale*.5,438.8),dash(`M149 438.8h${cut*scale}`));
+    }
+    return {actions:result,height:s.isShirt?553:494};
+  }
+  const chapters={1:[['量围度','量围度'],['量落笔高度','量高度']],3:styleMid,4:sleeveMid,5:neckMid};
+  function count(step){return chapters[step]?.length??1;}
+  function names(step){return (chapters[step]||[]).map(row=>row[1]);}
+  function screen(s,step,plate,side){
+    if(step===1)return measureLesson(s,plate);
+    if(step===3)return bodiceLesson(s,side,plate);
+    if(step===4)return sleeveLesson(s,plate);
+    return neckLesson(s,plate);
+  }
+  return {count,names,screen,bodice,sleeveGeometry,overview,workbench};
+})();
+
+const steps = [
+  {name:'定款',draw:svg.sketch,caption:s=>s.summary,
+    note:s=>s.isShirt
+      ?'从白纸先画正反款式图。这个系列选梭织翻领长袖衬衣，保留前开扣、翻领和袖口。四款分别调整成衣围度、肩宽、衣长和胸腰塑形。准备纸、铅笔、直尺、曲线尺、软尺、纸剪、样布和针线。'
+      :'从白纸先画正反款式图。这个系列选针织圆领短袖 T 恤。四款分别调整成衣围度、肩宽、衣长和侧缝。准备纸、铅笔、直尺、曲线尺、软尺、纸剪、样布和针线。'},
+  {name:'量体',draw:svg.measure,caption:s=>s.isShirt?'胸、腰、臀分前后量。另量领围、上臂和手腕。':'胸、腰、臀分前后量。另量肩宽、上臂和衣长。',
+    note:s=>`软尺水平绕身体，贴身不勒。示例前后胸弧是 46、42，前后腰弧各 36，前后臀弧各 48 厘米。胸弧从一侧腋下对应位置绕过最丰满处量到另一侧，前后分开记。肩宽量左右肩点。另从肩颈点往下量到胸点、腰线和臀线，示例为 26、40、60 厘米；胸点间距 18，半前片上离前中 9 厘米。${s.isShirt?'再量颈根一圈、上臂最粗处、手腕和肩点到手腕的长度。':'量上臂最粗处，按款式选袖长。面料弹性及回弹另用实际布样测试。'}`},
+  {name:'算尺寸',draw:svg.ease,caption:s=>`胸围 ${s.rows[0].finished}，肩宽 ${s.shoulder}，衣长 ${s.bodyLength} 厘米。`,
+    note:s=>{
+      const chest=s.rows[0];
+      return `这款整圈胸、腰、臀的活动余量分别试用 ${s.ease.join('、')} 厘米。示例前后各分一半余量。半前片胸宽＝（46＋${s.ease[0]/2}）÷2＝${chest.halves[0]}，半后片胸宽＝（42＋${s.ease[0]/2}）÷2＝${chest.halves[1]}；腰、臀同理。每侧肩点向外试放 ${s.drop} 厘米，肩宽＝38＋2×${s.drop}＝${s.shoulder}。图上的宽度沿缝线计算，缝份在最后另加。余量会随面料、体型、穿着方式而改变。`;
+    }},
+  {name:'画身片',draw:svg.block,caption:s=>s.isShirt?`画半前、半后。前中外另画门襟。${s.dart}。`:'画半前、半后。先定位领肩和腋点，再连胸、腰、臀侧缝。',
+    note:s=>`先画竖直中线；肩颈点所在水平线当零位，向下标胸点高 26、腰线 40、臀线 60，衣长 ${s.bodyLength} 厘米。沿水平线量图标出的半片宽。从中线向外量到领侧点，领宽先试 ${s.neck[0]}；前、后领深先试 ${s.neck[1]}、${s.neck[2]} 厘米，画平滑领弧。肩点水平位置先用半肩宽 ${s.shoulder/2}，高度按实量肩斜。腋点高度单独量，画前后不同的袖窿弧，再连侧缝。${s.isShirt
+      ? `保留前中扣位线，门襟搭量以这条线为基准另加。胸省尖朝向胸点并提前停，放多少靠前胸长度、形体和试穿判断。${s.waistDart?'这里每个半片的腰省先试 1.5 厘米，画侧腰时先加回 1.5，合省才回到图上标的净纸样腰宽。':''}本示例后片用整片；若另画过肩，要把分割线两边各加缝份。`
+      : '前后领深不同。用纸样检查肩线能配对；针织修身款仍须确认前胸空间、套头和回弹。'}`},
+  {name:'画袖片',draw:svg.sleeve,caption:s=>`袖肥 ${s.arm}，袖长先试 ${s.sleeve} 厘米。前后袖山分别配袖窿。`,
+    note:s=>`袖肥是上臂附近的成衣袖围，从上臂 28＋余量 ${s.armEase} 得 ${s.arm} 厘米。画一片完整袖子时，沿袖肥线两腋点之间取这个宽度。从袖山顶往下量 ${s.sleeve} 找袖口线。画弧后沿缝线分别核对前袖山与前袖窿、后袖山与后袖窿，给两段做不同的对位记号。袖山高和吃量按款式、面料和试样定。${s.isShirt?'本例是长袖，手臂往前伸时复核袖口位置。':'针织袖山通常接近袖窿长度，按实测缝线和试缝结果定。'}`},
+  {name:'画领口',draw:svg.structure,caption:s=>s.isShirt?'领座配领口。再画翻领、门襟和袖口。':'先量领口缝线，再用实际布试接领条。',
+    note:s=>s.isShirt
+      ?'合肩后沿前后领口缝线量长。领座下口的装领段配领口，门襟搭接和领座扣合端单独核对。翻领下口配领座上缘装领段。长袖留袖衩，方便手穿过。示例腕围 16 厘米，可先试 4 厘米活动量，闭合后的袖口围为 20；纸样再另加扣合重叠量和缝份。'
+      :'沿缝线量整圈领口，拿实际领条布试接。领条通常略短，用样布暂缝成圈，试拉至头围再放开。合适的领条能顺利套头、缝完服帖并恢复原形。'},
+  {name:'试穿改版',draw:svg.fit,caption:s=>s.fit,
+    note:s=>`${s.meta.wash} 先做试样：在要缝的边外留缝份，缝上胸腰省（如果有），合肩和侧缝，按前后记号临时接袖；T 恤试领条，衬衣把前中线对齐并暂固定门襟，再配一个试纸领或样领。 ${s.fix} 用别针或画线标出试穿位置，量改动值并转回纸样。改了肩、腋点或袖窿，就再核对袖片；改了领口，就重新核对领条或领座。`},
+  {name:'标记裁剪',draw:svg.cutting,caption:s=>s.isShirt?'前片分左右，后中贴折边，袖片镜像。另裁领、门襟和袖口。':'前后分别贴折边，各裁一整片。两只袖子互为镜像。',
+    note:s=>`缝份是缝线外多留的布。沿缝线外量出缝份再画裁边。示例针织接缝先留 0.7、下摆留 2；梭织普通接缝先留 1、下摆双卷各 0.7 厘米。改用别的缝法时重定。标清裁边、缝线、布纹箭头和对位剪口。箭头与布的织边平行，有方向的布按同方向排。合缝先对记号。${s.isShirt
+      ?'前中是扣位线，沿门襟最外的裁边剪，保留已画的折量。按设计另裁翻领、领座、袖衩、袖口、门襟和所需的衬；把胸腰省、扣位和扣眼线转到布上。'
+      :'贴折边的前后中线保留，不加缝份。领条的长度方向按所需横向弹性排。把袖山前后对位点、肩点和下摆折线转到布上。'}`},
+  {name:'二维纸样总览',draw:draft.overview,
+    caption:s=>s.isShirt?'半前、半后、完整袖片，以及领座、翻领、袖口和袖衩包条。':'半前、半后、完整袖片和领条。按本款尺寸一起核对。',
+    note:s=>`实线为起稿轮廓，箭头是布纹方向，前袖窿单记号对袖山单记号，后袖窿双记号对袖山双记号。腰线虚线供对齐；有省时先合省，再核对缝长。 ${s.isShirt?'门襟已经画在前片外侧。领座、翻领从后中展开，袖口表里各两片，数字含搭口，不含缝份。袖衩包条示例为 24 × 3 厘米，包 9 厘米袖衩两边后再修端。':'前后中线都贴折边；领条长向按所需弹性排，标注的领条长宽含缝份。'}身片和袖片仍需按试穿结果修正后加缝份。本图按部件比例显示，供跟画核对。`},
+];
+
+const app = document.getElementById('tops-workshop');
+const chooser = app.querySelector('[data-styles]');
+const tabs = app.querySelector('[data-lessons]');
+const stage = app.querySelector('[data-art]');
+const heading = app.querySelector('[data-heading]');
+const note = app.querySelector('[data-note]');
+const detail = app.querySelector('[data-detail]');
+const caption = app.querySelector('[data-caption]');
+const prev = app.querySelector('[data-prev]');
+const next = app.querySelector('[data-next]');
+const status = app.querySelector('[data-status]');
+const viewName = app.querySelector('[data-view-name]');
+const progress = app.querySelector('[data-progress]');
+const usedVisuals = window.matchMedia('(prefers-reduced-motion: reduce)');
+const styleButtons=[];
+const lessonButtons=[];
+let current = {family:'tee',index:0,step:0,plate:0,side:0};
+const draftTabs=app.querySelector('[data-draft-tabs]');
+const paper=app.querySelector('[data-paper]');
+const sideButtons=Array.from(paper.querySelectorAll('button'));
+
+function button(label,onClick,className='btn'){
+  const node=document.createElement('button');
+  node.type='button';
+  node.className=className;
+  node.textContent=label;
+  node.addEventListener('click',onClick);
+  return node;
+}
+
+for(const family of Object.keys(styles)){
+  const row=document.createElement('div');
+  row.className='style-row';
+  const groupTitle=document.createElement('p');
+  groupTitle.textContent=families[family].name;
+  row.append(groupTitle);
+  const options=document.createElement('div');
+  options.className='style-options';
+  options.setAttribute('role','group');
+  options.setAttribute('aria-label',families[family].name);
+  styles[family].forEach((s,i)=>{
+    const choice=button(s.name,()=>go(family,i,0));
+    choice.setAttribute('aria-label',`${families[family].name} · ${s.name}`);
+    options.append(choice);
+    styleButtons.push({family,index:i,choice});
+  });
+  row.append(options);
+  chooser.append(row);
+}
+steps.forEach((s,i)=>{
+  const control = button(s.name,()=>go(current.family,current.index,i));
+  lessonButtons.push(control);
+  tabs.append(control);
+});
+
+function fromHash(){
+  const [family,slug,page,sub,part]=location.hash.slice(1).split('/');
+  if(!Object.hasOwn(styles,family))return {family:'tee',index:0,step:0,plate:0,side:0};
+  const index=styles[family].findIndex(s=>s.id===slug);
+  const pageIndex=Number(page)-1;
+  const step=Number.isInteger(pageIndex)&&pageIndex>=0&&pageIndex<steps.length?pageIndex:0;
+  const n=Number(sub)-1;
+  return {family,index:Math.max(0,index),step,plate:Number.isInteger(n)&&n>=0&&n<draft.count(step)?n:0,side:part==='back'?1:0};
+}
+
+function render(state,animate){
+  const old=current;
+  current=state;
+  const {family,index,step,plate,side}=state;
+  const s=calc(family,index);
+  const lesson=steps[step];
+  const pages=draft.names(step);
+  const drawing=pages.length?draft.screen(s,step,plate,side):null;
+  const subnavChanged=old.step!==step || draftTabs.children.length!==pages.length;
+  draftTabs.hidden=!pages.length;
+  paper.hidden=step!==3;
+  if(subnavChanged){
+    draftTabs.replaceChildren(...pages.map((title,i)=>button(title,()=>go(current.family,current.index,current.step,i,current.side))));
+  }
+  [...draftTabs.children].forEach((node,i)=>node.setAttribute('aria-pressed',String(i===plate)));
+  sideButtons.forEach((node,i)=>node.setAttribute('aria-pressed',String(i===side)));
+  if(old.family!==family||old.index!==index||old.step!==step)detail.open=Boolean(drawing);
+  app.dataset.family=family;
+  styleButtons.forEach(({family:f,index:i,choice})=>choice.setAttribute('aria-pressed',String(f===family&&i===index)));
+  lessonButtons.forEach((control,i)=>control.setAttribute('aria-pressed',String(i===step)));
+  viewName.textContent=`${s.meta.name} · ${s.name}`;
+  heading.textContent=drawing?.title||lesson.name;
+  caption.textContent=drawing?.cap||lesson.caption(s);
+  note.textContent=drawing?.info||lesson.note(s);
+  status.textContent=`${step+1}／${steps.length}`+(pages.length?` · ${plate+1}／${pages.length}`:'');
+  progress.value=step+1;
+  prev.disabled=step===0;
+  next.textContent=step===steps.length-1?'回本款开头':'下一步';
+  stage.classList.toggle('animated',animate&&!usedVisuals.matches);
+  stage.innerHTML=drawing?.art||lesson.draw(s);
+}
+function go(family,index,step,plate=0,side=0){
+  const newState={family,index,step,plate,side};
+  if(['file:','http:','https:'].includes(location.protocol)){
+    const hash=`#${family}/${styles[family][index].id}/${step+1}`+(plate||side?`/${plate+1}${side?'/back':''}`:'');
+    if(location.hash!==hash)history.replaceState(null,'',hash);
+  }
+  render(newState,true);
+}
+prev.addEventListener('click',()=>{
+  const {family,index,step,plate,side}=current;
+  if(plate>0){go(family,index,step,plate-1,side);return;}
+  if(step===3&&side===1){go(family,index,step,draft.count(step)-1,0);return;}
+  const before=Math.max(0,step-1);
+  go(family,index,before,draft.count(before)-1);
+});
+next.addEventListener('click',()=>{
+  const {family,index,step,plate,side}=current;
+  if(plate+1<draft.count(step)){go(family,index,step,plate+1,side);return;}
+  if(step===3&&side===0){go(family,index,step,0,1);return;}
+  go(family,index,(step+1)%steps.length);
+});
+sideButtons.forEach((node,i)=>node.addEventListener('click',()=>go(current.family,current.index,current.step,0,i)));
+app.querySelector('[data-replay]').addEventListener('click',()=>render(current,true));
+usedVisuals.addEventListener('change',()=>render(current,false));
+window.addEventListener('hashchange',()=>render(fromHash(),false));
+render(fromHash(),false);
+if(draft.names(current.step).length)detail.open=true;
+
+})();
+</script>
+<details><summary>资料与示例</summary>
+<p>图中的数值是同一体型的八款教学起稿。曲线是示意，需按实量核对缝线并做试样衣。</p>
+<ul>
+<li><a href="https://freesewing.eu/docs/designs/teagan/options/">针织 T 恤｜松量与袖山</a></li>
+<li><a href="https://freesewing.eu/docs/designs/simone/options/">女式衬衣｜胸省与门襟</a></li>
+<li><a href="https://www.seamwork.com/sewing-tutorials/installing-a-sleeve">装袖｜袖山配袖窿</a></li>
+<li><a href="https://extension.oregonstate.edu/sites/extd8/files/documents/4-h320-18.pdf">布纹与剪口</a></li>
+</ul>
+</details>
+</main>
+</body>
+</html>
