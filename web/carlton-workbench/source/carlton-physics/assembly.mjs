@@ -1,4 +1,5 @@
-import { originalOutline } from './pattern.mjs'
+import { originalOutline, baselineDraft } from './pattern.mjs'
+import { interpolate, onSurface } from './mounts.mjs'
 
 export const decode = text => Uint8Array.from(atob(text),c=>c.charCodeAt(0)).buffer
 
@@ -61,7 +62,11 @@ function buildPanel(range,uv,edge) {
     const refs=all.map(s=>({...s,w:Math.min(s.length,35)/(s.d**3)}))
     return {du,dv:signV,refs,sum:refs.reduce((s,r)=>s+r.w,0)}
   })
-  return {...range,original,samples}
+  return {
+    ...range,original,samples,
+    toDraft:([u,v])=>[signU===1?x0+1000*(u-u0):x1-1000*(u-u0),signV===1?y0+1000*(v-v0):y1-1000*(v-v0)],
+    toUv:([x,y])=>[u0+(signU===1?x-x0:x1-x)*.001,v0+(signV===1?y-y0:y1-y)*.001],
+  }
 }
 
 // Estimate the local 3D tangents of the reference fabric coordinates.
@@ -100,7 +105,31 @@ export function makeAssembly(cloth,faces){
   const boundary=boundaryVertices(faces)
   const panels=cloth.ranges.map(range=>buildPanel(range,uv,boundary))
   const gradient=tangents(reference,uv,faces)
-  return function assemble(draft){
+  const findPanel=id=>panels.find(({offset,count})=>id>=offset&&id<offset+count)
+  const hostFaces=new Map(panels.filter(panel=>panel.part==='front').map(panel=>[
+    panel,faces.filter(id=>id>=panel.offset&&id<panel.offset+panel.count),
+  ]))
+  const trimDefinitions=cloth.trims.map(trim=>({...trim}))
+  for(const kind of ['button','buttonhole'])for(const row of [1,2,3]){
+    const pair=trimDefinitions.filter(trim=>trim.kind===kind&&trim.key.startsWith('button'+row))
+    const draftX=({anchor})=>findPanel(anchor[0]).toDraft(interpolate(uv,anchor,2))[0]
+    pair.sort((a,b)=>draftX(a)-draftX(b))
+    pair[0].key='button'+row+'Left'
+    pair[1].key='button'+row+'Right'
+  }
+  const pocketFrame=(points,prefix)=>{
+    const {x,y}=points[prefix+'TopLeft']
+    return {x,y,width:points[prefix+'TopRight'].x-x,height:points[prefix+'BottomLeft'].y-y}
+  }
+  function movedAnchor(originalAnchor,panel,flat,move){
+    const point=interpolate(baselineFlat,originalAnchor,2)
+    const target=panel.toUv(move(panel.toDraft(point)))
+    if(Math.hypot(target[0]-point[0],target[1]-point[1])<1e-9&&flat.every((v,i)=>v===baselineFlat[i])){
+      return {anchor:originalAnchor,point,distance:0}
+    }
+    return {...onSurface(target,flat,hostFaces.get(panel),2),point:target}
+  }
+  function deform(draft){
     const position=reference.slice()
     const flat=uv.slice()
     const changedPanels=[]
@@ -126,6 +155,45 @@ export function makeAssembly(cloth,faces){
       }
     }
     return {position,flat,changedPanels}
+  }
+  const baselineFlat=deform(baselineDraft).flat
+  return function assemble(draft){
+    const {position,flat,changedPanels}=deform(draft)
+    const pocketMoves=new Map()
+    let pocketProjectionMm=0
+    const pockets=cloth.pockets.map(([id,...originalAnchor])=>{
+      const piece=findPanel(id)
+      const front=findPanel(originalAnchor[0])
+      const before=pocketFrame(baselineDraft.front,piece.part)
+      const after=pocketFrame(draft.front,piece.part)
+      const hit=movedAnchor(originalAnchor,front,flat,([x,y])=>[
+        after.x+(x-before.x)*after.width/before.width,
+        after.y+(y-before.y)*after.height/before.height,
+      ])
+      pocketProjectionMm=Math.max(pocketProjectionMm,1000*hit.distance)
+      const start=interpolate(position,originalAnchor,3)
+      const end=interpolate(position,hit.anchor,3)
+      const translation=end.map((v,i)=>v-start[i])
+      if(!pocketMoves.has(piece))pocketMoves.set(piece,[])
+      pocketMoves.get(piece).push(translation)
+      return [id,...hit.anchor]
+    })
+    for(const [piece,moves] of pocketMoves){
+      const mean=[0,1,2].map(axis=>moves.reduce((sum,m)=>sum+m[axis],0)/moves.length)
+      if(Math.hypot(...mean)>.000001){
+        if(!changedPanels.includes(piece.name))changedPanels.push(piece.name)
+        for(let id=piece.offset;id<piece.offset+piece.count;id++){
+          for(let axis=0;axis<3;axis++)position[3*id+axis]+=mean[axis]
+        }
+      }
+    }
+    const trims=trimDefinitions.map(trim=>{
+      const from=baselineDraft.front[trim.key],to=draft.front[trim.key]
+      const panel=findPanel(trim.anchor[0])
+      const hit=movedAnchor(trim.anchor,panel,flat,([x,y])=>[x+to.x-from.x,y+to.y-from.y])
+      return {...trim,anchor:hit.anchor,targetUv:hit.point,projectionMm:1000*hit.distance}
+    })
+    return {position,flat,changedPanels,pockets,trims,pocketProjectionMm}
   }
 }
 

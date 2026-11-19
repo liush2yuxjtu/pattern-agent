@@ -12,6 +12,8 @@ if(evidenceDir)await mkdir(evidenceDir,{recursive:true})
 const screenshot=(page,name)=>evidenceDir?page.screenshot({path:join(evidenceDir,name+'.png')}):null
 const expectedCommit=process.argv[3]
 const body=await readFile(new URL('evidence.tgz',import.meta.url))
+const {cloth}=JSON.parse(await readFile(new URL('source/carlton-physics/mesh.json',import.meta.url),'utf8'))
+const paper=new Float32Array(Uint8Array.from(Buffer.from(cloth.uv,'base64')).buffer)
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex')
 const local=name=>readFile(new URL(name,import.meta.url))
 const browser=await chromium.launch({
@@ -50,12 +52,12 @@ try{
   const chest=page.locator('[data-value-key="chest"]')
   const length=page.locator('[data-value-key="coatLength"]')
   const readings=[]
-  async function settle(chestMm,lengthMm){
-    await page.waitForFunction(([chest,length])=>{
+  async function settle(chestMm,lengthMm,after=0){
+    await page.waitForFunction(([chest,length,after])=>{
       const data=document.querySelector('#viewport').dataset
       return data.state==='error'||data.state==='unsupported-pattern'||
-        (data.state==='complete'&&data.chest===chest&&data.length===length)
-    },[chestMm,lengthMm],{timeout:120000})
+        (data.state==='complete'&&data.chest===chest&&data.length===length&&Number(data.revision)>after)
+    },[chestMm,lengthMm,after],{timeout:120000})
     const data=await viewport.evaluate(node=>({...node.dataset}))
     assert.equal(data.state,'complete',await page.locator('#readout').textContent())
     assert.equal(data.backend,'webgpu')
@@ -66,14 +68,25 @@ try{
     assert.equal(data.finite,'true')
     assert.equal(data.selfEnabled,'true')
     assert.ok(Number(data.selfTotal)>0)
-    assert.ok(Number(data.pocketGap)<0.5)
+    assert.ok(Number(data.pocketGap)<.65)
+    assert.ok(Number(data.turnbackGap)<.8)
     assert.ok(Number(data.dartGap)<2)
+    const collars=Object.values(JSON.parse(data.collarGaps))
+    assert.equal(collars.length,7)
+    assert.ok(collars.every(seam=>seam.max<4&&seam.samples>=5))
+    const details=JSON.parse(data.trimDetails)
+    for(const kind of ['button','buttonhole']){
+      assert.equal(new Set(details.filter(t=>t.kind===kind).map(t=>t.key)).size,6)
+    }
+    assert.equal(await page.locator('#trim-status').isVisible(),true)
     assert.equal(await svg.locator('g[id*="-part-"]').count(),20)
     assert.equal(await viewport.locator('canvas').count(),1)
     const outline=digest((await svg.locator('g[id*="-part-"] path[d]').evaluateAll(
       paths=>paths.map(path=>path.getAttribute('d'))
     )).join(','))
-    readings.push({...data,outline})
+    const current={...data,outline}
+    readings.push(current)
+    return current
   }
   const mode=key=>page.locator('[data-diagnostic="'+key+'"]')
   async function checkMaps(label){
@@ -83,7 +96,7 @@ try{
       assert.equal(await viewport.getAttribute('data-diagnostic'),key)
       assert.equal(await viewport.getAttribute('data-diagnostic-ready'),'true')
       assert.ok(Number(await viewport.getAttribute('data-field-max'))>0)
-      assert.equal(await viewport.getAttribute('data-field-samples'),key==='pressure'?'3331':'5764')
+      assert.equal(await viewport.getAttribute('data-field-samples'),String(key==='pressure'?cloth.vertices:cloth.triangles))
       assert.equal(await page.locator('#diagnostic-scale').isVisible(),true)
       hashes.push(digest(await viewport.screenshot()))
       await screenshot(page,label+'-'+key)
@@ -113,12 +126,27 @@ try{
   await page.getByRole('button',{name:'背面',exact:true}).click()
   await screenshot(page,'editor-back')
   await page.getByRole('button',{name:'恢复 M 码'}).click()
-  await settle('1053','1302.96')
+  const restored=await settle('1053','1302.96')
   for(const key of ['restHash','assemblyHash','resultHash','outline']){
     assert.equal(new Set(readings.slice(0,3).map(row=>row[key])).size,3,key)
     assert.equal(readings[0][key],readings[3][key],key)
   }
-  assert.ok(await page.evaluate(()=>window.computeCalls)>=4*480)
+  await page.locator('[data-value-key="pocketPlacementVertical"]').fill('9')
+  const pocket=await settle('1053','1302.96',Number(restored.revision))
+  const paperV=(d)=>JSON.parse(d.pocketLinks).map(([,a,b,c,u,v,w])=>u*paper[2*a+1]+v*paper[2*b+1]+w*paper[2*c+1])
+  const before=paperV(restored)
+  assert.ok(paperV(pocket).every((value,i)=>Math.abs(value-before[i])>.003))
+  assert.notEqual(pocket.outline,restored.outline)
+  await page.locator('[data-value-key="buttonSpacingHorizontal"]').fill('49.5')
+  const buttons=await settle('1053','1302.96',Number(pocket.revision))
+  const spacing=(d,kind)=>{
+    const [a,b]=JSON.parse(d.trimDetails).filter(t=>t.kind===kind&&t.key.startsWith('button2'))
+    return Math.abs(a.targetUv[0]-b.targetUv[0])
+  }
+  for(const kind of ['button','buttonhole'])assert.ok(spacing(buttons,kind)-spacing(pocket,kind)>.012)
+  await page.getByRole('button',{name:'正面',exact:true}).click()
+  await screenshot(page,'editor-trims')
+  assert.ok(await page.evaluate(()=>window.computeCalls)>=6*480)
   const svgPending=page.waitForEvent('download')
   await page.getByRole('button',{name:'下载 SVG'}).click()
   assert.match(await readFile(await (await svgPending).path(),'utf8'),/width="[\d.]+mm"/)
@@ -129,8 +157,8 @@ try{
   assert.deepEqual(await page.locator('img').evaluateAll(nodes=>Promise.all(nodes.map(async node=>{
     await node.decode()
     return node.naturalWidth>0
-  }))),Array(18).fill(true))
-  assert.equal(await page.locator('table tbody tr').count(),4)
+  }))),Array(26).fill(true))
+  assert.equal(await page.locator('table tbody tr').count(),6)
   await screenshot(page,'review')
   const archivePending=page.waitForEvent('download')
   await page.getByRole('link',{name:'下载逐片 JSON、字段与 VTK'}).click()
@@ -149,8 +177,8 @@ try{
   assert.deepEqual(errors,[])
   console.log(JSON.stringify({
     verdict:'PASS',base:base.href,commit:expectedCommit??null,appSha256:digest(await local('index.html')),
-    archiveSha256:digest(body),runs:readings,reportImages:18,mobileWidth:390,
-    observed:'4 × 480 steps, GPU dispatches, 3 distinct maps, front line-art, stale clearing, real SVG and VTK downloads, 2D operation without WebGPU',
+    archiveSha256:digest(body),runs:readings.map(({trimDetails,pocketLinks,...row})=>row),reportImages:26,mobileWidth:390,
+    observed:'6 × 480 steps, GPU dispatches, 3 distinct maps, front line-art, accessory linkage, stale clearing, real SVG and VTK downloads, 2D operation without WebGPU',
   },null,2))
 }finally{
   await browser.close()

@@ -5,6 +5,7 @@ import { forAssembly } from './pattern.mjs'
 import { decode, fingerprint, makeAssembly } from './assembly.mjs'
 import { setupDiagnostics } from './diagnostics.mjs'
 import { createIntegrator } from './gpu.mjs'
+import { makeTrimView } from './trim-view.mjs'
 
 const get = id => document.getElementById(id)
 const viewport=get('viewport'),readout=get('readout')
@@ -14,6 +15,7 @@ let renderer,scene,camera,controls,coat,solver,assemble,integrate,current
 let diagnostics,frontCamera,avatar,floor,resize,displayMode='appearance'
 let generation=0, timer=0, busy=false, pending=null
 let active=false,runtimeFailed=false
+let trims,activeAssembly
 
 const unpack = text => new Response(
   new Blob([decode(text.trim())]).stream().pipeThrough(new DecompressionStream('gzip'))
@@ -48,7 +50,7 @@ function draw(){
 function update(message, stats=solver.stats()) {
   Object.assign(viewport.dataset,{
     steps:String(stats.steps),finite:String(stats.finite),contacts:String(stats.contacts),
-    movement:String(stats.movingMm),seamGap:String(stats.seamMm),waistGap:String(stats.waistGap),dartGap:String(stats.dartGap),pocketGap:String(stats.pocketGap),
+    movement:String(stats.movingMm),seamGap:String(stats.seamMm),waistGap:String(stats.waistGap),dartGap:String(stats.dartGap),pocketGap:String(stats.pocketGap),turnbackGap:String(stats.turnbackGap),
     selfContacts:String(stats.selfContacts),selfTotal:String(stats.selfTotal),selfEnabled:String(stats.selfEnabled),
   })
   get('time').textContent=stats.seconds.toFixed(2)+' / 4.00 s'
@@ -59,6 +61,20 @@ function update(message, stats=solver.stats()) {
   diagnostics.shell.attributes.position.array.set(solver.positions())
   diagnostics.shell.attributes.position.needsUpdate=true
   diagnostics.shell.computeVertexNormals()
+  if(activeAssembly){
+    const details=trims.update(solver.positions(),activeAssembly.flat,activeAssembly.trims)
+    if(stats.steps===steps){
+      viewport.dataset.trimDetails=JSON.stringify(details)
+      viewport.dataset.pocketLinks=JSON.stringify(activeAssembly.pockets)
+      viewport.dataset.collarGaps=JSON.stringify(stats.collarGaps)
+      const collarMax=Math.max(...Object.values(stats.collarGaps).map(seam=>seam.max))
+      get('pocket-check').textContent='袋缝最大 '+stats.pocketGap.toFixed(2)+' mm'
+      get('collar-check').textContent='领缝最大 '+collarMax.toFixed(2)+' mm'
+      const buttons=details.filter(item=>item.kind==='button').length
+      get('button-check').textContent=buttons+' 颗扣子 · '+(details.length-buttons)+' 个扣眼标记'
+      get('trim-status').hidden=false
+    }
+  }
   draw()
   return stats
 }
@@ -93,7 +109,8 @@ async function drain(){
       let assembly
       try {
         assembly=assemble(draft)
-        solver.reset(assembly.position,assembly.flat)
+        solver.reset(assembly.position,assembly.flat,true,assembly.pockets)
+        activeAssembly=assembly
       } catch (error) {
         console.warn(error)
         viewport.dataset.state='unsupported-pattern'
@@ -104,7 +121,7 @@ async function drain(){
       Object.assign(viewport.dataset,{
         state:'running',chest:String(chest),length:String(length),revision:String(job),
         restHash:fingerprint(flat),assemblyHash:fingerprint(position),resultHash:'',
-        gpuSteps:'0',changedPanels:String(changedPanels.length),
+        gpuSteps:'0',pocketProjectionMm:String(assembly.pocketProjectionMm),changedPanels:String(changedPanels.length),trimDetails:'',pocketLinks:'',collarGaps:'',
       })
       get('geometry').textContent=(changedPanels.length?changedPanels.length+' 片更新 · ':'')+solver.faces.length/3+' 个三角面'
       update('正在模拟当前纸样…')
@@ -135,6 +152,7 @@ async function drain(){
 function queue(detail,delay=190){
   const job=++generation
   pending=null
+  get('trim-status').hidden=true
   clearTimeout(timer)
   current={...detail,job}
   if(runtimeFailed)return
@@ -194,6 +212,7 @@ async function init(){
   coat=createModel(Float32Array.from(solver.positions()),solver.faces,0x286557)
   coat.frustumCulled=false
   scene.add(coat)
+  trims=makeTrimView(scene,saved.mesh.cloth.trims)
   scene.add(new T.HemisphereLight(0xfffcf2,0x697e7b,2.35))
   const sun=new T.DirectionalLight(0xfff8eb,2.3)
   sun.position.set(2,3,3)
@@ -213,6 +232,7 @@ async function init(){
   }
   diagnostics=setupDiagnostics({coat,solver,get,onMode:mode=>{
     displayMode=mode
+    trims.setMode(mode)
     const line=mode==='line'
     avatar.visible=floor.visible=controls.enabled=!line
     get('line-reference').hidden=!line

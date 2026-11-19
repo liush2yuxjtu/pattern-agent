@@ -1,6 +1,7 @@
 import { Carlton } from '@freesewing/carlton'
 import { plugin as theme } from '@freesewing/plugin-theme'
 import source from './joost.json'
+import standard from '../page-carlton-inputs/standard-m.json'
 
 const settings = source.settings
 export const frontLength = pattern => {
@@ -49,4 +50,10 @@ function sample(path) {
 const outline = (pattern,part) => sample(pattern.parts[0]['carlton.'+part].paths.seam)
 export const originalOutline = part => outline(original,part)
 
-export const forAssembly = pattern => ({outline:part=>outline(pattern,part)})
+const frontPoints = pattern => pattern.parts[0]['carlton.front'].points
+export const forAssembly = pattern => ({
+  outline:part=>outline(pattern,part),
+  front:frontPoints(pattern),
+})
+
+export const baselineDraft = forAssembly(new Carlton({...standard,options:{},sa:0,layout:false}).draft())

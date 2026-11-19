@@ -13,6 +13,7 @@ export async function loadSolver(binary, mesh) {
   const faces=new Int32Array(bytes(cloth.faces).buffer)
   const reference=new Float32Array(bytes(cloth.position).buffer)
   let start=reference
+  let pockets=cloth.pockets
   const bends=[]
   const edges=new Map()
   for(let i=0;i<faces.length;i+=3) for(let j=0;j<3;j++){
@@ -27,8 +28,9 @@ export async function loadSolver(binary, mesh) {
   const flat=new Float32Array(bytes(cloth.uv).buffer)
   const previous=()=>new Float32Array(k.memory.buffer,k.previous_ptr(),cloth.vertices*3)
   const inverseMass=()=>new Float32Array(k.memory.buffer,k.invmass_ptr(),cloth.vertices)
-  function reset(position=reference, uv=null, selfCollision=true){
+  function reset(position=reference, uv=null, selfCollision=true, pocketStitches=cloth.pockets){
     start=position
+    pockets=pocketStitches
     positions().set(position)
     new Float32Array(k.memory.buffer,k.uv_ptr(),flat.length).set(uv??flat)
     copy('face_ptr',cloth.faces)
@@ -36,8 +38,8 @@ export async function loadSolver(binary, mesh) {
     if(uv) k.configure_cloth(cloth.vertices,cloth.triangles)
     else k.configure_placed_cloth(cloth.vertices,cloth.triangles)
     for(const [a,b] of cloth.pairs)k.add_seam(a,b,1)
-    for(const [p,a,b,t] of [...cloth.stitches,...cloth.darts])k.add_edge_stitch(p,a,b,t)
-    for(const stitch of cloth.pockets)k.add_surface_stitch(...stitch)
+    for(const [p,a,b,t] of [...cloth.stitches,...cloth.darts,...Object.values(cloth.collars).flat()])k.add_edge_stitch(p,a,b,t)
+    for(const stitch of [...pockets,...cloth.pocketTurnbacks])k.add_surface_stitch(...stitch)
     for(const pin of cloth.anchored)k.set_pin(pin)
     for(const [a,b] of bends)k.add_bend(a,b,Math.hypot(start[3*a]-start[3*b],start[3*a+1]-start[3*b+1],start[3*a+2]-start[3*b+2]))
     k.finalize_seams()
@@ -52,14 +54,20 @@ export async function loadSolver(binary, mesh) {
     let displacement=0
     for(let i=0;i<pos.length;i+=3)displacement=Math.max(displacement,Math.hypot(pos[i]-start[i],pos[i+1]-start[i+1],pos[i+2]-start[i+2]))
     const gaps=stitches=>stitches.map(([p,a,b,t])=>Math.hypot(...[0,1,2].map(d=>pos[3*p+d]-(1-t)*pos[3*a+d]-t*pos[3*b+d])))
-    const pocketGap=1000*Math.max(0,...cloth.pockets.map(([p,a,b,c,u,v,w])=>Math.hypot(
+    const surfaceGap=stitches=>1000*Math.max(0,...stitches.map(([p,a,b,c,u,v,w])=>Math.hypot(
       ...[0,1,2].map(i=>pos[3*p+i]-u*pos[3*a+i]-v*pos[3*b+i]-w*pos[3*c+i])
     )))
+    const pocketGap=surfaceGap(pockets)
+    const turnbackGap=surfaceGap(cloth.pocketTurnbacks)
+    const collarGaps=Object.fromEntries(Object.entries(cloth.collars).map(([name,stitches])=>{
+      const values=gaps(stitches).sort((a,b)=>a-b)
+      return [name,{samples:values.length,max:1000*values.at(-1),p95:1000*values[Math.floor(.95*(values.length-1))]}]
+    }))
     const dartGap=1000*Math.max(0,...gaps(cloth.darts))
     const stitchGaps=gaps(cloth.stitches)
     stitchGaps.sort((a,b)=>a-b)
     const waistGap=1000*(stitchGaps[Math.floor(.95*(stitchGaps.length-1))]??0)
-    return {waistGap,pocketGap,dartGap,selfContacts:s[12],selfTotal:s[13],selfEnabled:!!s[14],steps:s[0],seconds:s[1],seamMm:s[2]*1000,penetrationMm:s[3]*1000,contacts:s[7],finite:!!s[8],movingMm:displacement*1000,collision:!!s[10],strain:s[5]*100}
+    return {waistGap,pocketGap,turnbackGap,collarGaps,dartGap,selfContacts:s[12],selfTotal:s[13],selfEnabled:!!s[14],steps:s[0],seconds:s[1],seamMm:s[2]*1000,penetrationMm:s[3]*1000,contacts:s[7],finite:!!s[8],movingMm:displacement*1000,collision:!!s[10],strain:s[5]*100}
   }
   reset()
   const fields=()=>new Float32Array(k.memory.buffer,k.field_ptr(),cloth.triangles*8)
