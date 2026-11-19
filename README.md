@@ -3,6 +3,14 @@
 Runnable Blender garment experiments and independent geometry checks. This is a
 research repository; physical garment fit has not been verified.
 
+## Design Cloth：纸样到试穿验收
+
+从 [`design-cloth`](.agents/skills/design-cloth/SKILL.md) 进入同一条服装流程。可从设计意图、原型 DXF、FreeSewing JS、分码 DXF 或已有 CLO 工程开始。主流程按需调用人台、面料、缝合、仿真和辅件技能，由 [`verify-finish`](.agents/skills/verify-finish/SKILL.md) 验收证据并给出复测条件。
+
+[主流程](.agents/skills/design-cloth/references/workflows.md) · [本机 CLO、CLO_RUST MCP／CLI 与 Boat VM 支持矩阵](.agents/skills/design-cloth/references/runtime-support.md)
+
+仓库包含入口、验收、人台和通用辅件核查技能。本机原生仿真和 Boat 批处理分别使用 `clo-local` 和 `clo-rust-boat` 插件。FreeSewing 新设计、面料选择、线稿对照和 Carlton 工作台专项技能依各步骤在客户端安装或提供。
+
 ## FreeSewing Brian：拖动尺寸，实时生成 SVG
 
 [打开 Brian 实时纸样](https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/) · [全部图解](https://liush2yuxjtu.github.io/pattern-agent/freesewing/) · [源码与复现](tools/freesewing-brian/README.md)。原生 mm/° 输入直接遵循 Brian 4.10.2 的 11 项必填尺寸与可选上胸围；保留小数、使用官方默认松量 15%，附输入 JSON 和零容差源码对照。
