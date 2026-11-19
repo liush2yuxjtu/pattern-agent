@@ -32,3 +32,25 @@ test project, and verify that replay is blocked by the expected starting count.
 Restore the saved working checkpoint. Record the package version, real
 readback and separate visual verification scope.
 [Batch seam verification](../../../../docs/verification/clo-seam-walk-20261119.md).
+
+## CLO Local and CLO Rust Boat
+
+Register this checkout in an isolated Codex profile, install
+`clo-local@pattern-agent` and `clo-rust-boat@pattern-agent`, and confirm the
+four namespaced skills via app-server `skills/list`. Check the portable
+archives against the installed files and verify the root manifest in each.
+
+For CLO Local, run the installed exporter on saved CLO inputs with
+`--require-all-maps` and front/back pairs for fit and stress. Include the two
+native strain images if available. Compare the JSON map status and CSV piece
+counts, and apply the seam and pose controls above. Report native bridge
+availability separately from replay with saved inputs.
+
+For CLO Rust Boat, follow the installed skill's
+[runbook](../../../../plugins/clo-rust-boat/skills/clo-rust-boat-fit-review/references/boat-run.md).
+Use the installed preparation and review scripts on a flat baseline and bent
+poses. Compare JSON with VTK and CSV, read the offline page in a browser, and
+confirm that altered UVs or a mismatched digest cause rejection. A native
+local build can check the analysis and report path when the authorized Boat
+sandbox is unavailable. Record the actual runtime and scope.
+[Two-plugin verification](../../../../docs/verification/clo-plugin-pair-20261119.md).

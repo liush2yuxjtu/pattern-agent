@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "clo-rust-boat",
+  "version": "0.1.0",
+  "description": "Run offline garment seam and mesh geometry reviews with CLO_RUST in an authorized Boat sandbox.",
+  "repository": "https://github.com/liush2yuxjtu/pattern-agent",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "CLO Rust Boat",
+        "shortDescription": "在 Boat 复核服装网格",
+        "category": "Productivity",
+        "defaultPrompt": "在 Boat 中用 CLO_RUST 复核已保存服装姿势的应变与折角。"
+      }
+    }
+  }
+}

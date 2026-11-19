@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "clo-local",
+  "version": "0.1.0",
+  "description": "Run native CLO garment sewing, multi-pose fit review, and map exports with an existing local CLO MCP bridge.",
+  "repository": "https://github.com/liush2yuxjtu/pattern-agent",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "CLO Local",
+        "shortDescription": "本机缝合、试穿与四图",
+        "category": "Productivity",
+        "defaultPrompt": "用本机 CLO 桥接核查裁片和缝线，按姿势完成模拟和四图复核。"
+      }
+    }
+  }
+}
