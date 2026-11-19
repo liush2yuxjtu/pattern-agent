@@ -7,7 +7,7 @@ codex plugin marketplace add liush2yuxjtu/pattern-agent --ref main
 codex plugin add clo-fit@pattern-agent
 ```
 
-Use **clo-dxf-fit-review** for the full DXF-to-CLO workflow and **clo-fit-export** for offline strain and fold analysis of an existing garment GLB. Live simulation and pressure capture require CLO and a working CLO bridge. The exporter needs Python 3.10+ and the packages in [requirements.txt](skills/clo-fit-export/scripts/requirements.txt). Creating a native ChatGPT Page requires Pages access.
+Use **clo-dxf-fit-review** for the full DXF-to-CLO workflow, including comparison with design line art when supplied and **clo-fit-export** for offline strain and fold analysis of an existing garment GLB. Live simulation and pressure capture require CLO and a working CLO bridge. The exporter needs Python 3.10+ and the packages in [requirements.txt](skills/clo-fit-export/scripts/requirements.txt). Creating a native ChatGPT Page requires Pages access.
 
 Try “用 clo-dxf-fit-review 从原始 DXF 生成多姿势试穿报告，让我选择下一步改版方案。”
 
