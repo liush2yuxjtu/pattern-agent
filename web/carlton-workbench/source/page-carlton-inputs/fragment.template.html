@@ -1,0 +1,80 @@
+<div id="carlton-input-explorer">
+  <div class="topline">
+    <div class="baseline"><strong>M 码试样基准</strong><span>FreeSewing 男装 40 · 胸围 1053 mm · 颈围 400 mm</span></div>
+    <button class="btn" type="button" data-reset>恢复 M 码</button>
+  </div>
+  <div class="workspace">
+    <section class="input-pane" aria-label="Carlton 输入滑块">
+      <div class="slider-sections" data-group-panels></div>
+    </section>
+    <section class="piece-pane" aria-label="Carlton 裁片变化">
+      <p class="text-small text-muted" data-hint></p>
+      <div class="pane-title">
+        <strong data-atlas-title>全部 20 块裁片</strong>
+        <button class="btn" type="button" data-back hidden>返回全览</button>
+      </div>
+      <div class="viz-row full-actions">
+        <button class="btn" type="button" data-show-full aria-pressed="false">完整 2D SVG</button>
+        <button class="btn" type="button" data-download-full>下载 SVG</button>
+      </div>
+      <div class="full-sheet" data-full hidden></div>
+      <div class="tiles" data-tiles></div>
+      <div data-detail hidden>
+        <svg class="piece-plot" role="img" data-piece-plot></svg>
+        <p class="text-small text-muted">虚线为 M 码基准，实线为当前纸样。</p>
+      </div>
+      <p class="text-small" data-status role="status" aria-live="polite">正在加载 Carlton…</p>
+    </section>
+  </div>
+</div>
+<style>
+#carlton-input-explorer{display:grid;gap:.75em}
+#carlton-input-explorer [hidden]{display:none!important}
+#carlton-input-explorer .topline,#carlton-input-explorer .pane-title{display:flex;align-items:center;justify-content:space-between;gap:.5em}
+#carlton-input-explorer .baseline{display:grid;gap:.16em}
+#carlton-input-explorer .baseline span{color:var(--muted-foreground);font-size:.87em}
+#carlton-input-explorer .workspace{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1em;align-items:start}
+#carlton-input-explorer .input-pane,#carlton-input-explorer .piece-pane{min-width:0;display:grid;gap:.6em}
+#carlton-input-explorer .piece-pane{position:sticky;top:.75em;align-self:start}
+#carlton-input-explorer .slider-sections{display:grid;gap:.9em}
+#carlton-input-explorer .slider-section{min-width:0}
+#carlton-input-explorer .section-label{font-size:1em;font-weight:650;margin:0 0 .25em;padding-bottom:.23em;border-bottom:1px solid var(--border)}
+#carlton-input-explorer .slider-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2em .8em}
+#carlton-input-explorer .slider-field{display:grid;min-width:0;gap:0;padding:.17em 0;border-bottom:1px solid var(--border)}
+#carlton-input-explorer .slider-head{display:flex;align-items:baseline;justify-content:space-between;gap:.22em;min-width:0}
+#carlton-input-explorer .slider-label{min-width:0;font-size:.88em;line-height:1.25;overflow-wrap:anywhere}
+#carlton-input-explorer .slider-value{display:flex;align-items:center;gap:.18em;flex:none;white-space:nowrap;font-size:.83em;font-variant-numeric:tabular-nums}
+#carlton-input-explorer .value-field{width:4.35em;font:inherit;color:inherit;background:transparent;border:1px solid var(--border);border-radius:.22em;padding:.18em;text-align:right}
+#carlton-input-explorer .value-unit{min-width:1.4em;color:var(--muted-foreground)}
+#carlton-input-explorer .slider-field input[type=range]{width:100%;margin:0}
+#carlton-input-explorer [data-hint]{min-height:1.15em}
+#carlton-input-explorer .full-actions{gap:.4em}
+#carlton-input-explorer .full-sheet{min-width:0;background:#fff;border:1px solid var(--border);overflow:auto}
+#carlton-input-explorer .full-sheet>svg{width:100%;height:auto;display:block}
+#carlton-input-explorer .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.25em}
+#carlton-input-explorer .piece-btn{display:grid;justify-items:center;align-content:center;gap:.16em;min-width:0;min-height:3.65em;border:1px solid var(--border);border-radius:.3em;background:transparent;color:var(--muted-foreground);padding:.22em;font:inherit}
+#carlton-input-explorer .piece-btn.affected{color:var(--viz-series-1);border-color:var(--viz-series-1);background:color-mix(in srgb,var(--viz-series-1) 11%,transparent)}
+#carlton-input-explorer .piece-btn svg{display:block;width:100%;height:2.1em;pointer-events:none}
+#carlton-input-explorer .piece-btn path{stroke:currentColor;stroke-width:1.2;vector-effect:non-scaling-stroke}
+#carlton-input-explorer .piece-btn.affected path{stroke-width:2}
+#carlton-input-explorer .piece-label{font-size:.8em;line-height:1.1;word-break:break-all}
+#carlton-input-explorer .piece-plot{display:block;width:100%;height:285px}
+#carlton-input-explorer .piece-plot path{vector-effect:non-scaling-stroke;stroke-linejoin:round}
+#carlton-input-explorer .before{stroke:var(--muted-foreground);stroke-width:1.5;stroke-dasharray:5 4}
+#carlton-input-explorer .after{stroke:var(--viz-series-1);stroke-width:2}
+#carlton-input-explorer .detail{stroke:var(--viz-series-1);stroke-width:1;opacity:.62}
+#carlton-input-explorer .sa{stroke:var(--viz-series-2);stroke-width:1.35;stroke-dasharray:6 3}
+#carlton-input-explorer .mark{fill:var(--viz-series-1)}
+#carlton-input-explorer [data-status]{margin:0;color:var(--muted-foreground)}
+#carlton-input-explorer [data-status].text-destructive{color:var(--destructive,var(--viz-series-2))}
+@media(min-width:950px){#carlton-input-explorer .tiles{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:640px){
+  #carlton-input-explorer .workspace{grid-template-columns:1fr}
+  #carlton-input-explorer .piece-pane{position:static;grid-row:1}
+  #carlton-input-explorer .tiles{grid-template-columns:repeat(5,minmax(0,1fr))}
+  #carlton-input-explorer .value-field{min-width:2.5em}
+  #carlton-input-explorer .baseline span{max-width:18em}
+}
+</style>
+<script>__BUNDLE__</script>
+<!-- __NOTICES__ -->

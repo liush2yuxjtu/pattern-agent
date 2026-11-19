@@ -1,0 +1,30 @@
+<section class="physics-panel" aria-labelledby="view-title">
+  <div class="panel-head"><h2 id="view-title">3D 外层试穿</h2><div class="tools" role="group" aria-label="试穿视角">
+    <button id="front" disabled>正面</button><button id="angle" disabled>斜侧</button><button id="back" disabled>背面</button>
+  </div></div>
+  <div class="tools diagnostic-controls" id="diagnostic-controls" role="group" aria-label="试穿检验">
+    <button data-diagnostic="appearance" aria-pressed="true" disabled>外观</button>
+    <button data-diagnostic="strain" aria-pressed="false" disabled>应变</button>
+    <button data-diagnostic="stress" aria-pressed="false" disabled>应力</button>
+    <button data-diagnostic="pressure" aria-pressed="false" disabled>试穿压力</button>
+    <button data-diagnostic="line" aria-pressed="false" disabled>正面线稿对照</button>
+  </div>
+  <div id="viewer-row">
+    <figure id="line-reference" hidden><img src="data:image/png;base64,__LINE_ART__" alt="FreeSewing Carlton 正面原版设计线稿"><figcaption>原版设计线稿 · 正面</figcaption></figure>
+    <div id="viewport" role="img" aria-label="可旋转的 Carlton 大衣与 Joost 参考人台"></div>
+  </div>
+  <p class="meta panel-foot" id="diagnostic-note" hidden>右侧为当前大衣的正交正面投影。线稿袖臂垂下，模拟为 Joost 斜展姿势。两图等比适配，各自的扣合状态可影响外观。</p>
+  <div id="diagnostic-legend" class="panel-foot" hidden>
+    <div id="diagnostic-scale" hidden><strong id="diagnostic-name"></strong><span class="heat-ramp" aria-hidden="true"></span><span id="diagnostic-range"></span></div>
+    <p class="meta" id="diagnostic-caption"></p>
+  </div>
+  <div class="panel-foot"><button id="run" disabled>重新模拟</button><span class="meta" id="geometry"></span></div>
+  <div class="physics-status">
+    <p id="readout" role="status">正在初始化 WebGPU…</p>
+    <dl>
+      <div><dt>模拟时间</dt><dd id="time">—</dd></div><div><dt>步数</dt><dd id="steps">—</dd></div>
+      <div><dt>人台接触</dt><dd id="contacts">—</dd></div><div><dt>自碰撞修正累计</dt><dd id="self-contacts">—</dd></div>
+    </dl>
+  </div>
+  <p class="meta panel-foot">固定 Joost 人台 · 示例面料 · 外层裁片自碰撞</p>
+</section>

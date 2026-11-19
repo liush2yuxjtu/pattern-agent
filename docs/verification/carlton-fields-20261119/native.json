@@ -1,0 +1,114 @@
+{
+  "verdict": "PASS",
+  "runner": "Boat Linux x86_64 · CLO_RUST · bx_q8qcjfhk",
+  "cases": [
+    {
+      "label": "M 码基准",
+      "triangles": 5764,
+      "strainWasmMaxDeltaPp": 0.0038496216766361613,
+      "strainNativeMaxDeltaPp": 1.8189894035458565e-12,
+      "stressRegularFaces": 5764,
+      "stressCheckJacobianMin": 0.025,
+      "stressRelativeP99": 6.86429612342311e-05,
+      "strainP95Pct": 12.553028798173104,
+      "stressP95kPa": 79.17097580491743,
+      "peakStressKPaRaw": 3569917.5,
+      "pressurePeakKPa": 0.6451057195663452,
+      "normalForceN": 13.256596565246582,
+      "pressurePaMaxDelta": 0.00017263346182971873,
+      "dartGapMm": 1.587215784981691,
+      "pocketGapMm": 0.20986273018620702
+    },
+    {
+      "label": "胸围加 30 mm",
+      "triangles": 5764,
+      "strainWasmMaxDeltaPp": 0.003034313585089876,
+      "strainNativeMaxDeltaPp": 1.2050804798491299e-11,
+      "stressRegularFaces": 5764,
+      "stressCheckJacobianMin": 0.025,
+      "stressRelativeP99": 6.710979089258443e-05,
+      "strainP95Pct": 13.779634559320007,
+      "stressP95kPa": 81.90475822896768,
+      "peakStressKPaRaw": 2030960.125,
+      "pressurePeakKPa": 0.4651547074317932,
+      "normalForceN": 14.029552459716797,
+      "pressurePaMaxDelta": 7.811010931391138e-05,
+      "dartGapMm": 1.6488074136006883,
+      "pocketGapMm": 0.19052667371273646
+    },
+    {
+      "label": "衣长再加 80 mm",
+      "triangles": 5764,
+      "strainWasmMaxDeltaPp": 0.0030856077031558016,
+      "strainNativeMaxDeltaPp": 2.6147972675971687e-12,
+      "stressRegularFaces": 5764,
+      "stressCheckJacobianMin": 0.025,
+      "stressRelativeP99": 6.886895561492558e-05,
+      "strainP95Pct": 11.820501625229666,
+      "stressP95kPa": 69.31194371785266,
+      "peakStressKPaRaw": 90716.3203125,
+      "pressurePeakKPa": 0.6332218647003174,
+      "normalForceN": 14.104711532592773,
+      "pressurePaMaxDelta": 0.0001285773226982201,
+      "dartGapMm": 1.635405264351234,
+      "pocketGapMm": 0.23983908889480843
+    },
+    {
+      "label": "上臂围再加 10 mm",
+      "triangles": 5764,
+      "strainWasmMaxDeltaPp": 0.0030340213375552594,
+      "strainNativeMaxDeltaPp": 3.126388037344441e-12,
+      "stressRegularFaces": 5764,
+      "stressCheckJacobianMin": 0.025,
+      "stressRelativeP99": 6.99405364622181e-05,
+      "strainP95Pct": 11.833075786398778,
+      "stressP95kPa": 68.96228366958958,
+      "peakStressKPaRaw": 88826.765625,
+      "pressurePeakKPa": 0.6331299543380737,
+      "normalForceN": 14.036157608032227,
+      "pressurePaMaxDelta": 0.00011088010535331705,
+      "dartGapMm": 1.6358507168202083,
+      "pocketGapMm": 0.24314799923170186
+    }
+  ],
+  "coupon": {
+    "verdict": "PASS",
+    "expectedPa": 3.9240000000000004,
+    "stationary": [
+      {
+        "cells": 3,
+        "steps": 480,
+        "collision": true,
+        "total": 0.15696073323488235,
+        "mean": 3.9240183614787214
+      },
+      {
+        "cells": 6,
+        "steps": 480,
+        "collision": true,
+        "total": 0.1569607540150173,
+        "mean": 3.9240183485061095
+      }
+    ],
+    "separated": {
+      "cells": 3,
+      "steps": 3,
+      "collision": true,
+      "total": 0,
+      "mean": 0
+    },
+    "off": {
+      "cells": 3,
+      "steps": 10,
+      "collision": false,
+      "total": 0,
+      "mean": 0
+    }
+  },
+  "limits": {
+    "strain_atol_pp": 0.002,
+    "strain_rtol": 0.0002,
+    "stress_relative_p99": 0.001,
+    "force_relative_error": 5e-05
+  }
+}

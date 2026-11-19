@@ -75,12 +75,41 @@ try{
     )).join(','))
     readings.push({...data,outline})
   }
+  const mode=key=>page.locator('[data-diagnostic="'+key+'"]')
+  async function checkMaps(label){
+    const hashes=[]
+    for(const key of ['strain','stress','pressure']){
+      await mode(key).click()
+      assert.equal(await viewport.getAttribute('data-diagnostic'),key)
+      assert.equal(await viewport.getAttribute('data-diagnostic-ready'),'true')
+      assert.ok(Number(await viewport.getAttribute('data-field-max'))>0)
+      assert.equal(await viewport.getAttribute('data-field-samples'),key==='pressure'?'3331':'5764')
+      assert.equal(await page.locator('#diagnostic-scale').isVisible(),true)
+      hashes.push(digest(await viewport.screenshot()))
+      await screenshot(page,label+'-'+key)
+    }
+    assert.equal(new Set(hashes).size,3)
+    await mode('line').click()
+    assert.equal(await viewport.getAttribute('data-diagnostic'),'line')
+    const reference=page.locator('#line-reference img')
+    assert.equal(await reference.evaluate(async image=>{await image.decode();return image.naturalWidth}),1000)
+    const [a,b]=await Promise.all([reference.boundingBox(),viewport.boundingBox()])
+    assert.ok(Math.abs(a.y-b.y)<2&&a.x<b.x)
+    assert.equal(await page.getByRole('button',{name:'背面',exact:true}).isDisabled(),true)
+    await screenshot(page,label+'-line')
+    await mode('appearance').click()
+  }
   assert.equal(await page.locator('input[type="range"]').count(),62)
   await settle('1053','1302.96')
+  await checkMaps('baseline')
   await chest.fill('1083')
   await settle('1083','1302.96')
+  await mode('pressure').click()
   await length.fill('1382.96')
+  await page.waitForFunction(()=>document.querySelector('#viewport').dataset.diagnosticReady==='false')
+  assert.equal(await page.locator('#diagnostic-scale').isVisible(),false)
   await settle('1083','1382.96')
+  await checkMaps('length')
   await page.getByRole('button',{name:'背面',exact:true}).click()
   await screenshot(page,'editor-back')
   await page.getByRole('button',{name:'恢复 M 码'}).click()
@@ -97,15 +126,14 @@ try{
   await page.getByRole('link',{name:'验收报告',exact:true}).click()
   const review=await reviewPending
   assert.equal(digest(await review.body()),digest(await local('review.html')))
-  await page.locator('details summary').click()
   assert.deepEqual(await page.locator('img').evaluateAll(nodes=>Promise.all(nodes.map(async node=>{
     await node.decode()
     return node.naturalWidth>0
-  }))),Array(22).fill(true))
+  }))),Array(18).fill(true))
   assert.equal(await page.locator('table tbody tr').count(),4)
   await screenshot(page,'review')
   const archivePending=page.waitForEvent('download')
-  await page.getByRole('link',{name:'下载逐片 JSON 与 VTK'}).click()
+  await page.getByRole('link',{name:'下载逐片 JSON、字段与 VTK'}).click()
   assert.equal(digest(await readFile(await (await archivePending).path())),digest(body))
 
   const phone=await context.newPage()
@@ -121,8 +149,8 @@ try{
   assert.deepEqual(errors,[])
   console.log(JSON.stringify({
     verdict:'PASS',base:base.href,commit:expectedCommit??null,appSha256:digest(await local('index.html')),
-    archiveSha256:digest(body),runs:readings,reportImages:22,mobileWidth:390,
-    observed:'4 × 480 steps, GPU dispatches, real SVG and VTK downloads, 2D operation without WebGPU',
+    archiveSha256:digest(body),runs:readings,reportImages:18,mobileWidth:390,
+    observed:'4 × 480 steps, GPU dispatches, 3 distinct maps, front line-art, stale clearing, real SVG and VTK downloads, 2D operation without WebGPU',
   },null,2))
 }finally{
   await browser.close()

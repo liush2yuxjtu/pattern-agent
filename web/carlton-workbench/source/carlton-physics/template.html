@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'unsafe-inline'; img-src data:">
+<link rel="icon" href="data:,"><title>Carlton 打版与 3D 试穿</title>
+<style>
+:root{font:14px/1.5 system-ui,-apple-system,"PingFang SC",sans-serif;color:#253631;background:#efefe6;--border:#d2d9ca;--muted-foreground:#496156;--viz-series-1:#256957;--viz-series-2:#a14926}
+*{box-sizing:border-box}body{margin:0}main{max-width:1670px;margin:auto;padding:18px clamp(11px,2.1vw,32px)}
+h1,h2,p,dl{margin:0}h1{font-size:clamp(23px,2.6vw,32px);letter-spacing:-.04em}h2{font-size:16px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+small,.meta{color:var(--muted-foreground);font-size:12px}
+button{font:inherit;border:1px solid #cbd4c6;background:#fff;color:inherit;border-radius:5px;padding:4px 8px;cursor:pointer}
+button[aria-pressed=true]{background:#e5eee2;border-color:#7e9f8f}button:disabled{opacity:.55;cursor:default}
+button:focus-visible,input:focus-visible{outline:2px solid #2b7465;outline-offset:2px}input[type=range]{accent-color:#245b4f}
+#carlton-input-explorer[data-physics] .workspace{display:grid;grid-template-columns:minmax(250px,.85fr) minmax(300px,1.06fr) minmax(320px,1.15fr);gap:10px;align-items:start}
+#carlton-input-explorer[data-physics] .topline{display:grid;grid-template-columns:minmax(0,1fr) minmax(285px,1.55fr) max-content;background:#fcfcf6;padding:8px 12px;border:1px solid var(--border);border-radius:8px;gap:14px}
+#carlton-input-explorer[data-physics] .topline .slider-field{border:none}
+#carlton-input-explorer[data-physics] .topline .value-field{width:6em}
+#carlton-input-explorer[data-physics] .input-pane,#carlton-input-explorer[data-physics] .piece-pane,.physics-panel{min-width:0;background:#fcfcf6;border:1px solid var(--border);border-radius:8px;padding:10px}
+#carlton-input-explorer[data-physics] .input-pane{max-height:calc(100dvh - 150px);overflow:auto;scrollbar-color:#a2b5a7 #f7f8ef}
+#carlton-input-explorer[data-physics] .piece-pane{position:static}
+#carlton-input-explorer[data-physics] .tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+#carlton-input-explorer[data-physics] .full-sheet>svg{max-height:58vh;object-fit:contain}
+#carlton-input-explorer .viz-row{display:flex;flex-wrap:wrap}.text-small{font-size:12px}.text-muted{color:var(--muted-foreground)}
+.physics-panel{padding:0;overflow:hidden}.panel-head,.panel-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;padding:8px 10px}
+.panel-foot{justify-content:flex-start;border-top:1px solid var(--border)}.tools{display:flex;flex-wrap:wrap;gap:4px}.tools button{font-size:12px}
+#viewport{height:clamp(335px,60vh,680px);position:relative;background:#e9ebe1;border-top:1px solid var(--border)}
+#viewport canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#readout{font-size:12px;color:#274e43}.physics-status{padding:8px 10px;border-top:1px solid var(--border)}
+.physics-panel [hidden]{display:none!important}
+.diagnostic-controls{padding:0 10px 8px}
+#diagnostic-legend{display:block}
+#diagnostic-scale{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;font-size:12px}
+.heat-ramp{height:9px;min-width:70px;flex:1;background:linear-gradient(90deg,#203c57,#23858e,#e1cb59,#cf433b);border-radius:2px}
+#diagnostic-caption{margin-top:4px}
+#viewer-row.line-compare{display:grid;grid-template-columns:1fr 1fr;align-items:start;background:#fff}
+#viewer-row.line-compare #viewport{height:auto;min-height:0;aspect-ratio:1}
+#viewer-row.line-compare #viewport canvas{cursor:default}
+#line-reference{margin:0;min-width:0;background:#fff;text-align:center;border-top:1px solid var(--border)}
+#line-reference img{display:block;width:100%;aspect-ratio:1;object-fit:contain;padding:6%}
+#line-reference figcaption{font-size:11px;color:var(--muted-foreground)}
+dl{display:flex;flex-wrap:wrap;gap:5px 12px;font-size:11px;margin-top:4px}dl>div{display:flex;gap:4px}dt{color:#4d6559}dd{margin:0;font-variant-numeric:tabular-nums}
+@media(max-width:1000px){
+  #carlton-input-explorer[data-physics] .workspace{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #carlton-input-explorer[data-physics] .input-pane{grid-column:1/-1;grid-row:2;max-height:none;overflow:visible}
+  #carlton-input-explorer[data-physics] .slider-sections{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:640px){
+  header{display:block}
+  #carlton-input-explorer[data-physics] .workspace{display:flex;flex-direction:column}
+  #carlton-input-explorer[data-physics] .workspace>*{width:100%}
+  #carlton-input-explorer[data-physics] .input-pane{order:3}
+  #carlton-input-explorer[data-physics] .topline{grid-template-columns:1fr auto}
+  #carlton-input-explorer [data-key-inputs]{grid-area:2/1/3/-1}
+  #carlton-input-explorer[data-physics] .slider-sections{grid-template-columns:1fr}
+  #viewport{height:47vh;min-height:300px}
+}
+</style>
+</head>
+<body><main>
+<header><h1>Carlton 打版与 3D 试穿</h1><small>FreeSewing · Rust/WASM · WebGPU · <a href="review.html" style="color:inherit">验收报告</a></small></header>
+__EDITOR__
+</main>
+<script type="application/octet-stream" id="payload">__PAYLOAD__</script>
+<script>__APP__</script>
+<!-- __NOTICES__ -->
+</body></html>
