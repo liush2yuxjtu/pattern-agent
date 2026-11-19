@@ -21,3 +21,14 @@ For changes under `plugins/clo-fit`, register the repository as a local marketpl
 For line-art workflow changes, use the installed skill and its report guide on a saved case with an original design illustration and a traceable ordinary-material screenshot. Inspect the paired view and original image links. Record the project version, pose, display mode and whether closure was confirmed. Keep the four fit maps and the original report usable if the illustration is unavailable. Verify the enabled, namespaced plugin skills and their installed paths through Codex app-server `skills/list`. Run a wrong-mesh control with a known altered pose manifest and confirm that the installed comparison rejects it before writing a CSV. [Carlton line-art verification](../../../../docs/verification/clo-fit-line-art-20261119.md).
 
 For standalone HTML, run the installed `inline_report_images.py` on a real report draft. Copy the result to an otherwise empty directory and open it offline in Chromium at desktop and mobile sizes. Check that the paired line drawing and material photo are side by side, every inline figure decodes with a visible box, the SVG paper patterns render, and the report makes no external requests. Probe an absent or external image and confirm the helper exits before writing. [Carlton HTML verification](../../../../docs/verification/clo-fit-html-20261119.md).
+
+For `clo-seam-walk`, run the installed reference script with the packaged
+example catalog and plan. Confirm exactly two groups are planned and coverage
+is complete. Run the same CLI on a plan with matching lengths that omits a
+required hem span and require a nonzero exit with the measured gap. From a
+safely backed-up CLO session, run `run_clo` in one bridge call on a test project.
+Confirm group increments and membership on both pieces, save and reopen the
+test project, and verify that replay is blocked by the expected starting count.
+Restore the saved working checkpoint. Record the package version, real
+readback and separate visual verification scope.
+[Batch seam verification](../../../../docs/verification/clo-seam-walk-20261119.md).

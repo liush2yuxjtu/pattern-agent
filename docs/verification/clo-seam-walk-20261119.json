@@ -1,0 +1,360 @@
+{
+  "clo_version": "2026.1.382",
+  "native_fixture_groups_after_reopening": 2,
+  "restored_carlton_checkpoint": {
+    "patterns": 28,
+    "groups": 203
+  },
+  "receipts": {
+    "delivered-example": {
+      "status": "plan_passed",
+      "routes": [
+        {
+          "id": "side-to-hem",
+          "a_length_mm": 100.0,
+          "b_length_mm": 100.0,
+          "a_minus_b_mm": 0.0,
+          "max_delta_mm": 0.5,
+          "pairs": 2
+        }
+      ],
+      "issues": [],
+      "coverage_gaps": [],
+      "planned_groups": 2,
+      "pairs": [
+        {
+          "route": "side-to-hem",
+          "a": {
+            "piece": "Front",
+            "line": 0,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Back",
+            "line": 0,
+            "start": 1.0,
+            "end": 0.4
+          }
+        },
+        {
+          "route": "side-to-hem",
+          "a": {
+            "piece": "Front",
+            "line": 1,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Back",
+            "line": 0,
+            "start": 0.4,
+            "end": 0.0
+          }
+        }
+      ]
+    },
+    "live-carlton-old": {
+      "status": "blocked",
+      "groups_added": 0,
+      "simulation_steps": 0,
+      "routes": [
+        {
+          "id": "Carlton left side to hem",
+          "a_length_mm": 820.799988,
+          "b_length_mm": 820.799988,
+          "a_minus_b_mm": 0.0,
+          "max_delta_mm": 0.5,
+          "pairs": 3
+        }
+      ],
+      "issues": [
+        "Expected seam coverage has gaps"
+      ],
+      "coverage_gaps": [
+        {
+          "piece": "Front L",
+          "line": 12,
+          "start": 0.8648431747979242,
+          "end": 1,
+          "length_mm": 78.262558
+        }
+      ],
+      "planned_groups": 3,
+      "pairs": [
+        {
+          "route": "Carlton left side to hem",
+          "a": {
+            "piece": "Front L",
+            "line": 10,
+            "start": 0.8308351177730192,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Tail L",
+            "line": 2,
+            "start": 1.0,
+            "end": 0.9534520482507902
+          }
+        },
+        {
+          "route": "Carlton left side to hem",
+          "a": {
+            "piece": "Front L",
+            "line": 11,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Tail L",
+            "line": 2,
+            "start": 0.9534520482507902,
+            "end": 0.6101211467560164
+          }
+        },
+        {
+          "route": "Carlton left side to hem",
+          "a": {
+            "piece": "Front L",
+            "line": 12,
+            "start": 0.0,
+            "end": 0.8648431747979242
+          },
+          "b": {
+            "piece": "Tail L",
+            "line": 2,
+            "start": 0.6101211467560164,
+            "end": 0.0
+          }
+        }
+      ],
+      "groups_before": 203,
+      "groups_after": 203
+    },
+    "live-carlton-fixed": {
+      "status": "plan_passed",
+      "groups_added": 0,
+      "simulation_steps": 0,
+      "routes": [
+        {
+          "id": "Carlton left side to hem",
+          "a_length_mm": 899.062546,
+          "b_length_mm": 820.799988,
+          "a_minus_b_mm": 78.262558,
+          "max_delta_mm": 79.0,
+          "pairs": 3
+        }
+      ],
+      "issues": [],
+      "coverage_gaps": [],
+      "planned_groups": 3,
+      "pairs": [
+        {
+          "route": "Carlton left side to hem",
+          "a": {
+            "piece": "Front L",
+            "line": 10,
+            "start": 0.8308351177730192,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Tail L",
+            "line": 2,
+            "start": 1.0,
+            "end": 0.9575040041351666
+          }
+        },
+        {
+          "route": "Carlton left side to hem",
+          "a": {
+            "piece": "Front L",
+            "line": 11,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Tail L",
+            "line": 2,
+            "start": 0.9575040041351666,
+            "end": 0.644059738127498
+          }
+        },
+        {
+          "route": "Carlton left side to hem",
+          "a": {
+            "piece": "Front L",
+            "line": 12,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Tail L",
+            "line": 2,
+            "start": 0.644059738127498,
+            "end": 0.0
+          }
+        }
+      ],
+      "groups_before": 203,
+      "groups_after": 203
+    },
+    "live-fixture-receipt": {
+      "status": "native_groups_verified",
+      "groups_added": 2,
+      "simulation_steps": 0,
+      "routes": [
+        {
+          "id": "two edges onto one",
+          "a_length_mm": 100.0,
+          "b_length_mm": 100.0,
+          "a_minus_b_mm": 0.0,
+          "max_delta_mm": 0.01,
+          "pairs": 2
+        }
+      ],
+      "issues": [],
+      "coverage_gaps": [],
+      "planned_groups": 2,
+      "pairs": [
+        {
+          "route": "two edges onto one",
+          "a": {
+            "piece": "Front A",
+            "line": 0,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Back",
+            "line": 0,
+            "start": 1.0,
+            "end": 0.4
+          }
+        },
+        {
+          "route": "two edges onto one",
+          "a": {
+            "piece": "Front B",
+            "line": 0,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Back",
+            "line": 0,
+            "start": 0.4,
+            "end": 0.0
+          }
+        }
+      ],
+      "groups_before": 0,
+      "groups_after": 2
+    },
+    "live-replay-receipt": {
+      "status": "error",
+      "groups_added": 0,
+      "simulation_steps": 0,
+      "routes": [
+        {
+          "id": "two edges onto one",
+          "a_length_mm": 100.0,
+          "b_length_mm": 100.0,
+          "a_minus_b_mm": 0.0,
+          "max_delta_mm": 0.01,
+          "pairs": 2
+        }
+      ],
+      "issues": [],
+      "coverage_gaps": [],
+      "planned_groups": 2,
+      "pairs": [
+        {
+          "route": "two edges onto one",
+          "a": {
+            "piece": "Front A",
+            "line": 0,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Back",
+            "line": 0,
+            "start": 1.0,
+            "end": 0.4
+          }
+        },
+        {
+          "route": "two edges onto one",
+          "a": {
+            "piece": "Front B",
+            "line": 0,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Back",
+            "line": 0,
+            "start": 0.4,
+            "end": 0.0
+          }
+        }
+      ],
+      "groups_before": 2,
+      "groups_after": 2,
+      "error": "Group count changed: expected 0, got 2"
+    },
+    "partial-failure-receipt": {
+      "status": "error",
+      "groups_added": 1,
+      "simulation_steps": 0,
+      "routes": [
+        {
+          "id": "side-to-hem",
+          "a_length_mm": 100.0,
+          "b_length_mm": 100.0,
+          "a_minus_b_mm": 0.0,
+          "max_delta_mm": 0.5,
+          "pairs": 2
+        }
+      ],
+      "issues": [],
+      "coverage_gaps": [],
+      "planned_groups": 2,
+      "pairs": [
+        {
+          "route": "side-to-hem",
+          "a": {
+            "piece": "Front",
+            "line": 0,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Back",
+            "line": 0,
+            "start": 1.0,
+            "end": 0.4
+          }
+        },
+        {
+          "route": "side-to-hem",
+          "a": {
+            "piece": "Front",
+            "line": 1,
+            "start": 0.0,
+            "end": 1.0
+          },
+          "b": {
+            "piece": "Back",
+            "line": 0,
+            "start": 0.4,
+            "end": 0.0
+          }
+        }
+      ],
+      "groups_before": 0,
+      "groups_after": 1,
+      "error": "synthetic API failure after mutation"
+    }
+  }
+}
