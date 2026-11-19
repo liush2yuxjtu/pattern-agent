@@ -4,6 +4,8 @@
 
 [打开独立物理实验台](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/physics/) · [提交的完整记录](results/) · [机制及失败对照](evidence/) · [可复现负例输入](fixtures/)
 
+ChatGPT Pages 交接：[项目总页](https://chatgpt.com/space/page_6afa77cb1b64819183bc62be09296842)及[二维编辑与验收记录](https://chatgpt.com/space/page_957e91c1b9388191ae2da7a7b649f626)已补充本实验的独立目录、公开入口、输入输出、七项计算和结论边界。[2026年11月19日交付核对](../../../docs/verification/intent-physics-handoff-20261119/README.md)保存线上原件摘要和两处 Pages 的保存后读回；原有页面内容完整保留。
+
 **运行成功、热图能显示、某个试片通过，都不能替整件衣服签发 PASS。** 本实验分别保存计算机制、初始穿着状态、完整轨迹及真人试穿的结论。历史失败保留；没有实测的数据写明估计或未验证。
 
 ## 本轮实际结果

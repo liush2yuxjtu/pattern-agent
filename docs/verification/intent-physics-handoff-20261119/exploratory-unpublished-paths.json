@@ -1,0 +1,35 @@
+{
+  "verdict": "FAIL",
+  "checked_at": "2026-11-19T11:10:41.909020+08:00",
+  "tls_validation": "enabled",
+  "scope": "Fresh public HTTPS byte readback only. Existing browser interaction evidence remains separately linked; this is not a new browser or physics acceptance.",
+  "checks": [
+    {
+      "url": "https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/physics/",
+      "local": "web/intent-edit-review/physics/index.html",
+      "status": 200,
+      "bytes": 46107845,
+      "actual_sha256": "80ccaf68114ad1d650ccfec248c812cc77d31ab5c9383e56d4904f18f617c872",
+      "expected_sha256": "80ccaf68114ad1d650ccfec248c812cc77d31ab5c9383e56d4904f18f617c872",
+      "exact_match": true
+    },
+    {
+      "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/fitted-tshirt/input-spec.yaml",
+      "local": "patterns/fitted-tshirt/input-spec.yaml",
+      "status": 404,
+      "bytes": 794,
+      "actual_sha256": "98b01b7ac3a8f84e0f4633235497d3831505e89755fd14702a9585acbc2c0d17",
+      "expected_sha256": "88a84e697273724cdb5b4a05116c00cd53b0cb75a4d7e6bdfa5d0b7fd34f181e",
+      "exact_match": false
+    },
+    {
+      "url": "https://liush2yuxjtu.github.io/pattern-agent/patterns/fitted-tshirt/input.dxf",
+      "local": "patterns/fitted-tshirt/input.dxf",
+      "status": 404,
+      "bytes": 794,
+      "actual_sha256": "98b01b7ac3a8f84e0f4633235497d3831505e89755fd14702a9585acbc2c0d17",
+      "expected_sha256": "1f82b2c4ca094983657ce49fc73cf06aec24d3329a53dcc3472dd5ca2cee87f4",
+      "exact_match": false
+    }
+  ]
+}
