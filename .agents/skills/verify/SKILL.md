@@ -53,6 +53,10 @@ Read only the applicable recipes from the [surface index](references/verificatio
 
 The question is whether the changed behavior works for a real caller. Shift tests left by running them locally before the commit, then verify the running product surface. Tests, type checks, builds, CI green, Vercel READY, and static review are supporting evidence; they do not replace runtime evidence when a real user/programmatic surface exists.
 
+### CLO MCP backend compatibility
+
+Use the [CLO Rust /verify recipes](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#verify-the-48-public-clo-mcp-tools) from a CLO Rust checkout at the revision being tested. Keep the MCP contract check, the 48-tool Rust call smoke (`python -m clo_mcp.sweep_compat`), and the dual-backend behavior verdicts as separate evidence. For a Pattern Agent workflow, replay the same tool sequence with the same fixture on official CLO 3D and CLO Rust. Record the two repository SHAs, the CLO version, the tool requests, returned data and errors, and the observable scene or file readback. Mark the live comparison BLOCKED when the CLO bridge is unavailable. Count a tool as matched once the applicable dual-backend cases have passed.
+
 ## Invariant: persist the repo's verification path
 
 **Every time the user says verify, first inspect the target repository for a project-level verifier.**
