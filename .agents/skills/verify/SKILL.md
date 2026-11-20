@@ -61,6 +61,18 @@ For a worked example, set `CLO_MCP_OFFICIAL_COMMAND` in the CLO Rust checkout an
 
 Copy the [per-case evidence record](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#what-to-verify-for-each-tool) into the workflow report. Link the exact input fixture hash, both MCP responses, and the before/after readback. For example, the `strapless` / `mini` preview returns four panels and six seams with all fields equal. Sending `{"spec":[]}` then returns an MCP error on both backends and preserves each previous spec. Record this as a passing preview case and retain the verdicts for the other applicable cases.
 
+Audit the exact names in the pinned contract, Rust smoke report and 48-row
+evidence table using the [CLO Rust coverage commands](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#verify-the-48-public-clo-mcp-tools).
+The name audit confirms that the three records account for the same tools.
+Only applicable dual-backend case verdicts determine the matched-tool count.
+
+For an existing scene that the workflow simulates and saves, the
+[CLO Rust continuation replay](https://github.com/liush2yuxjtu/clo-rust/blob/main/docs/verification/clo-mcp-acceptance.md#已有原生工程续算后的再次保存)
+checks ZPRJ, ZPAC and checkpoints. Use both writers and both readers, then
+inspect the saved pose, rest mesh and scene data. Keep each writer's result as
+the reference for its file readback. A matching readback is evidence for
+persistence. Claims about the solver require their own motion measurements.
+
 For a workflow that saves or exports a scene, record the actual MCP call sequence
 emitted by Pattern Agent. Replay it on independent copies of the same input.
 Compare the response and query the resulting scene or reopen the artifact.
