@@ -1,6 +1,6 @@
 ---
 name: design-cloth
-description: 用 FreeSewing、Style3D、CLO 3D、CLO_RUST 或 Boat 设计、试穿与验收服装。适用于起版与 DXF、选布、量体、缝合、配饰和扣件检查、线稿对照、原生模拟、修复及复测。
+description: 用 FreeSewing、Style3D、CLO 3D、CLO_RUST 或 Boat 设计、试穿与验收服装。适用于起版与 DXF、选布、量体、缝合、配饰和扣件检查、线稿或效果图对照、原生模拟、修复、复测与验收报告。
 ---
 
 # 服装设计与试穿
@@ -21,7 +21,8 @@ flowchart TD
     Gate --> Report["报告与下一步分诊<br/>按优先级写明部位、证据、执行方或工具、复测条件"]
     Report -->|确认缺陷| Repair["修复缺陷"]
     Report -->|证据不足| Collect["补采证据"]
-    Report -->|全部通过| Publish["发布正式报告<br/>Markdown 与独立证据图"]
+    Report -->|局部验收交付或整衣待补证| Scoped["交当轮复核报告<br/>注明结论、范围和复测条件"]
+    Report -->|整衣四姿势五类通过| Publish["发布正式报告<br/>Markdown 与独立证据图"]
     Publish --> Deliver["打样定稿<br/>同版纸样 · 3D 渲染 · 定稿报告"]
     Repair --> Return["复查受影响项"]
     Collect -->|取得证据| Return
@@ -41,7 +42,7 @@ flowchart TD
     class Idea,Done terminal;
     class Human,Fit hitl;
     class Methods verification;
-    class Report,Publish reportNode;
+    class Report,Scoped,Publish reportNode;
 ```
 
 ## 服装开发
@@ -56,9 +57,13 @@ flowchart TD
 
 - **有缺陷。** 自动修复范围内已确认的问题，重查受影响项，回到同一验收关口。
 - **证据不足。** 自主补采或做受控对比。仍需用户输入或决定时，按[疑难交接](references/workflows.md#定稿与疑难交接)用 `AskUserQuestion` 提问，并给出证据和建议下一步。收到反馈后继续当前验收。
-- **全部适用项通过。** 交付同版定稿纸样、3D 渲染和[定稿报告](references/试穿报告模板.md)。需要实物验证时，由实际样衣和试穿证据判定。
+- **整衣验收通过。** 交付同版定稿纸样、3D 渲染和[定稿报告](references/试穿报告模板.md)。需要实物验证时，由实际样衣和试穿证据判定。
 
-试穿、复验和定稿报告面向版师、服装设计师及没有服装背景的工程师。正文先用日常语言说明服装部位、改动和结果。每轮验收后在[结论与复测标准](references/试穿报告模板.md#七结论与复测标准)按优先级给出下一步、对应证据、执行方或工具及复测条件。正式交付前按[四姿势五类验收](references/workflows.md#四姿势五类验收)完成检查，再按[报告模板](references/试穿报告模板.md)交付 Markdown（.md）和随附的独立证据图。用[导出脚本](scripts/bake-report.mjs)校验发布清单并生成默认 Markdown。正文用大图和短图注，采用多级标题，所有表格集中放在结论前。
+**当轮验收报告。** 每次向用户交付验收结果时，按[报告模板](references/试穿报告模板.md)交付有独立证据图的 Markdown。效果图对照、局部验收和证据不足的交接也有当轮报告。发送最终答复前，打开报告并检查证据链接。在答复开头用明确的报告名链接文件，作为第一条交付链接，旁边写明本轮状态与范围。答复中的本地报告链接用实际绝对路径，报告内的证据图用相对路径。用户只要求对话简报时，直接在答复中呈现同等结论和关键证据。
+
+**用户交接触发条件。** 写完当轮「结论与复测标准」后，若首个尚未解决的步骤明确交由用户或其版师补证、选择方案或决定是否改版，在发送最终答复前实际调用 `AskUserQuestion` 或当前环境的结构化提问工具（例如 `request_user_input_async`）。报告中的复测清单、写给版师的建议和最终答复里的文字都不能代替这次调用。工具不可用时才在对话中提问。可自主完成的步骤继续执行。
+
+试穿、复验和定稿报告面向版师、服装设计师及没有服装背景的工程师。正文先用日常语言说明服装部位、改动和结果。每轮验收后在[结论与复测标准](references/试穿报告模板.md#七结论与复测标准)按优先级给出下一步、对应证据、执行方或工具、复测姿势及可观察或可量化的通过条件。正式报告和打样定稿须先通过[四姿势五类验收](references/workflows.md#四姿势五类验收)，再用[导出脚本](scripts/bake-report.mjs)校验发布清单并生成默认 Markdown。正文用大图和短图注，采用多级标题，所有表格集中放在结论前。
 
 ## Style3D MCP / 原生 API Playbook
 
