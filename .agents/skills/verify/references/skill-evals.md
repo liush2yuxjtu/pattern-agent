@@ -388,3 +388,29 @@ bytes, not just new-directory size. Existing HTTPS_PROXY must be explicitly
 passed to Playwright APIRequest for real external SHA checks in this environment;
 Chrome/curl already use that configured route. Do not mock external downloads or
 disable TLS. Preserve the initial direct-DNS failure and actual corrected run.
+
+## Design Cloth follow-up
+
+From the repository root, run the Codex app-server cases and the drafting
+release-gate controls.
+
+```sh
+python3 .agents/skills/design-cloth/evals/run-handoff-evals.py work/design-cloth-handoff
+python3 .agents/skills/design-cloth/evals/test-zero-draft-gates.py -v
+python3 scripts/build_pages.py
+node tools/skill_evals/verify_design_cloth_followup.cjs
+```
+
+Use an authenticated Codex CLI for the first command. The runner starts
+transient sessions, disables configured MCP servers, and injects only the
+isolated CAD calls defined by its fixtures. Review both calls and results in
+`events.jsonl`. Case 37 requires comparison, one native request, and a
+readback against the same working copy after the fixture answer. Case 38
+requires one open-zipper comparison and no request. Keep production garment
+fitting outside this verdict.
+
+For the browser check, make `playwright-core` available to Node and set
+`PATTERN_EVAL_CHROME` to a local Chromium executable when necessary. The
+script opens a loopback server, exercises both evaluation pages and closes the
+server and browser. After the site deploys, pass its `design-cloth/` URL as
+the first argument to repeat the interaction and verify both served hashes.

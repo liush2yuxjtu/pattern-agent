@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "id": 33,
+      "name": "zero-skirt",
+      "prompt": "手上没有现成版型或 CAD。帮我从零起一条好裁缝的梭织微 A 字松紧裙，前后各一片、每片为完整展开片，松紧带另配。成衣上口总围 1040 毫米，臀围 1000 毫米，成衣下摆总围 1320 毫米，裙长 580 毫米。做一份裙长加 20 毫米的修订版，其他尺寸不变。每条边留 10 毫米缝份。交可编辑工程、原尺寸整幅纸样和家庭打印拼接版。",
+      "base": {"garment":"skirt","length_mm":580,"top_mm":520,"hem_mm":660,"allowance_mm":10},
+      "revision": {"garment":"skirt","length_mm":600,"top_mm":520,"hem_mm":660,"allowance_mm":10},
+      "pieces": ["FRONT", "BACK"]
+    },
+    {
+      "id": 34,
+      "name": "zero-apron",
+      "prompt": "请从一段需求直接出一个全幅围裙纸样，手头没有任何母版。梭织单片，直下摆宽 700 毫米，前胸上口宽 260 毫米，长 780 毫米，距顶部向下 300 毫米达到 700 毫米全宽。左右对称，织带另配。所有外边留 10 毫米缝份。再出一个前胸上口加宽 40 毫米的对照版，其他要求不动。我要可编辑工程和能按原尺寸拼接打印的文件。",
+      "base": {"garment":"apron","length_mm":780,"top_mm":260,"hem_mm":700,"transition_mm":300,"allowance_mm":10},
+      "revision": {"garment":"apron","length_mm":780,"top_mm":300,"hem_mm":700,"transition_mm":300,"allowance_mm":10},
+      "pieces": ["APRON"]
+    }
+  ]
+}
