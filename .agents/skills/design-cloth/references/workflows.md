@@ -1,60 +1,78 @@
-# Design cloth workflow
+# 服装设计与试穿工作流程
 
-## 1. Establish the brief and current state
+## 一、确认需求和当前进度
 
-Identify the intended garment, design references, target body sizes, material constraints, required poses, and acceptance criteria. Inventory existing draft inputs, DXFs, CLO projects, and evidence. Resume at the first incomplete step and keep good evidence from the same revision. A limited request uses the relevant step and ends with that result.
+确认款式与设计参考、目标人体尺寸、材料约束、必测姿势和验收条件。清点现有起版输入、DXF、CLO 工程和证据，从第一项未完成的步骤继续，复用同版本仍适用的证据。单项任务完成对应步骤即可。
 
-If an intent-only brief needs a starting pattern, look for compatible designs, blocks, or parts in the [FreeSewing catalog](https://freesewing.eu/designs/). Check the draft's construction and fabric requirements against the design. For a reference-only request, return a recommended base and relevant alternatives.
+只有设计意图且需要母版时，从 [FreeSewing 款式目录](https://freesewing.eu/designs/)查找合适的款式、原型或裁片，核对结构和面料条件。只做参考选型时，交付首选母版及相关备选。
 
-## 2. Set the material and body inputs
+## 二、确定面料和人台
 
-- Carry forward the material specified by the user or design. Call `clo-fabric-selection` if material is open, a substitute is needed, or its suitability is unclear. Give it the intent, reference, draft, and any available swatch or supplier data. If stretch, drape, or support affects the draft, settle a provisional material before drafting and confirm it against the checked pattern.
-- Use target body measurements for a wearer-specific draft. For an avatar-first prototype without target dimensions, call `clo-avatar-setup` to select a CLO stock or designated avatar and measure the dimensions required by the draft. Carry that measurement set into drafting and reuse the same avatar for fitting. Record estimates and proxy limitations.
+- 沿用用户或设计指定的材料。面料未定、需要替代或适用性不明时，调用 `clo-fabric-selection`，传入设计意图、参考、纸样及布样或供应商资料。弹性、垂感或支撑性会影响起版时，先确定临时方案，纸样核对后再复核。
+- 按目标穿着者的实际尺寸起版。若先定人台且暂无目标尺寸，调用 `clo-avatar-setup` 选择指定或软件自带的人台，测量起版需要的尺寸，并在试穿中复用同一人台。记录估算值和代用人台的适用范围。
 
-## 3. Prepare the pattern and size run
+## 三、准备纸样与各尺码
 
-Use the source that fits the request. The resulting candidate feeds the same CLO and verification steps.
-
-| Paper pattern input or deliverable | What to do when needed |
+| 输入或目标 | 处理方式 |
 | --- | --- |
-| Modify a prototype DXF | Use the authorized native CLO pattern editor or existing project editor on a working copy. Check the exported or re-imported units, pieces, sewing outlines, allowances, notches, grain, and mating edges as applicable. |
-| Adjust an existing FreeSewing JS design | Call `freesewing-new-design`. Record the base version and original and revised options or body measurements. Draft and check the resulting pattern. |
-| Create a new FreeSewing JS design | Call `freesewing-new-design` with the brief and any chosen reference or block. Keep runnable source, exact input settings, and parametric checks. |
-| Receive or generate a size run, such as S, M, L, XL | Map incoming files to their documented sizes and body measurements. For generation, use each size's measurement set or authorized grading rules. Keep a distinct DXF and revision record for each size. Record which sizes had pattern checks and actual avatar fitting. |
+| 修改样版 DXF | 用已授权的原生 CLO 纸样编辑功能或现有工程编辑器，在副本上修改。按需核对导出或回导的单位、裁片、净缝线、缝份、刀口、丝缕与配对边。 |
+| 修改现有 FreeSewing 参数纸样 | 调用 `freesewing-new-design`，记录母版版本、修改前后的参数或量体数据，重新出样并核对。 |
+| 从零建立 FreeSewing 参数纸样 | 向 `freesewing-new-design` 提供需求、参考或母版，保留可运行源码、准确的输入和参数化检查记录。 |
+| 接收或生成一组尺码 | 对照已记录的尺码和人体尺寸识别每份来样。生成时采用各尺码实测数据或约定的放码规则。每个尺码保留独立 DXF 和版本记录，写明实际完成纸样检查和人台试穿的尺码。 |
 
-An existing checked DXF or CLO project can enter the next step directly. Keep the source revision and a separate candidate for edits.
+已核对的 DXF 或 CLO 工程可直接进入下一步。修改时从原版建立候选副本。
 
-## 4. Assemble, simulate, or review saved evidence
+## 四、装配、模拟或复核已有结果
 
-Use the [runtime support matrix](runtime-support.md) to choose the approved environment for this step. New native simulation and native maps use a verified CLO bridge. Rust and Boat can independently review compatible saved evidence. The independent Boat solver applies to verified DXF configurations. The inputs and checks below follow the chosen scope.
+按[运行环境对照](runtime-support.md)选择适合本轮的执行环境。新原生模拟和原生图依赖已验证的 CLO 桥接。CLO_RUST 与 Boat 可独立复核兼容的已存证据。Boat 独立求解限于已验证的 DXF 配置。
 
-- Check the loaded avatar against the exact drafting body data or DXF size chart. Call `clo-avatar-setup` when the comparison is missing, stale, or requires adjustment. If the body target is unknown, record that limitation in the fit scope.
-- Check the sewing state, including edge coverage, direction, intended ease, and closure. Call `clo-local:clo-seam-walk` when sewing or its evidence needs work. Verify the actual main, lining, and interfacing assignments and grain direction in the candidate. Record the material choice, properties and source, and the actual fabrics used. Label a CLO preset used as a proxy.
-- Use `clo-local:clo-fit-review` to select the fitting workflow when that dispatcher is installed. Otherwise choose the direct specialist from the runtime matrix. Call `clo-dxf-fit-review` for native CLO simulation or collection from the matching saved simulation. Retain the settled project and evidence for each required size and pose. Collect what the final scope needs, including the material record and these five evidence groups:
+- 把已加载人台的实测值与起版数据或 DXF 尺码表对照。对照缺失、过期或需要调整时，调用 `clo-avatar-setup`。目标尺寸未知时，在试穿范围中注明。
+- 核对缝边覆盖、方向、工艺放量及门襟闭合。缝合异常或缺证据时调用 `clo-local:clo-seam-walk`。核对工作副本上面布、里布和衬料的实际赋值及丝缕方向。记录选料依据、相关物性、单位、来源和实际用料。代用预设要标明。
+- 用 `clo-local:clo-fit-review` 选择试穿路径，按需调用 `clo-dxf-fit-review` 做原生模拟或从匹配的已存模拟取证。保存每个必测尺码和姿势的稳定工程与证据。按本轮目标采集试穿证据，整衣验收按第六节复核各必验项。
 
-| Evidence | Output |
+| 证据类别 | 取证方法 |
 | --- | --- |
-| Fabric stress | Native stress visualization and recorded values or numeric export. |
-| Fabric strain | Strain visualization and native or verified calculated data from the corresponding mesh. |
-| Appearance | Worn view compared with the design line art from a comparable camera and closure state. Call `clo-line-art-review` as needed. |
-| Body contact pressure | Native pressure visualization and recorded values or numeric export. |
-| Fold angles | Fold-angle or wrinkle visualization and corresponding angle data. |
+| 上身外观 | 采集正背面和必要侧视。对照设计时，同排放置视角与闭合状态可比的上身图和线稿，按需调用 `clo-line-art-review`。标出轮廓、衣长、领口或配饰差异。有可靠比例时可报距离。 |
+| 应变 | 用原生图或匹配网格的经验证计算结果。保留百分比色标、应变定义、方向和受影响区域。 |
+| 应力 | 保存原生 CLO 应力图、单位及色标。有对应的原生测点或数值导出时，记录位置与读数。 |
+| 试穿压力 | 保存原生人体接触压力图、单位及色标。有原生读数时，标出施压部位和采样覆盖，注明统计按接触样本还是整个区域计算。 |
+| 褶皱与折角 | 用折角图或标注褶皱的视图定位。保留同一网格的角度数据、单位、定义与测量部位。 |
 
-Reuse valid captures. `clo-fit-export` or CLO_RUST can help collect or verify supported evidence when needed. Use native recorded samples or exports for numeric stress and pressure. Pass evidence with the corresponding size, pose, project revision, avatar, and actual fabric.
+优先复用有效证据。按需用 `clo-fit-export` 或 CLO_RUST 采集和复核支持的数据。每组证据随附尺码、姿势、工程版本、人台、实际面料和闭合状态。应力和压力的数值以对应原生测点或导出为准。
 
-## 5. Diagnose and repair only the affected item
+## 五、诊断、修复与同条件复测
 
-When a fit issue has an unknown cause, isolate suspected variables in this order. Route directly to the responsible specialist if the evidence already identifies the cause.
+原因不明时，按下列顺序逐步排查。证据已指向具体原因时，直接处理该项。
 
-1. **Simulation.** `clo-dxf-fit-review` checks scene, pose, arrangement, collision, closure state, and settling.
-2. **Material.** `clo-fabric-selection` assesses suitability. `clo-dxf-fit-review` checks actual assignments or runs a matched fabric-only comparison.
-3. **Avatar.** `clo-avatar-setup` compares the loaded body's actual dimensions with the draft target.
-4. **Sewing.** `clo-local:clo-seam-walk` checks and, when approved, repairs affected seams.
-5. **Accessories.** `clo-accessory-review` checks the affected part or fastening. For the Carlton browser workbench, use `clo-carlton-accessory-review` for its specialized repair and review. Keep browser and native CLO evidence tied to their respective runs.
-6. **Pattern.** If the evidence points to geometry after plausible setup and construction causes are checked, return to step 3 with the affected piece, dimension, and proposed change. Directly requested pattern design changes can enter step 3.
+1. **模拟。** 由 `clo-dxf-fit-review` 检查场景、姿势、摆位、碰撞、闭合和求解稳定性。
+2. **面料。** 由 `clo-fabric-selection` 核对材料适用性。由 `clo-dxf-fit-review` 核对实际赋值或用相同条件做只换面料的对比。
+3. **人台。** 由 `clo-avatar-setup` 将载入人台的实测尺寸与起版数据核对。
+4. **缝合。** 由 `clo-local:clo-seam-walk` 检查并修复范围内的配对问题、覆盖缺口、方向或工艺放量。
+5. **配饰和扣件。** 由 `clo-accessory-review` 复查相应部件及实际扣合。Carlton 网页工作台调用 `clo-carlton-accessory-review`，网页与原生 CLO 的证据分别注明所属运行。
+6. **纸样。** 证据指向几何时，回到第三步，注明待改裁片、位置和量值。用户直接要求改版时，可从第三步开始。
 
-Obtain approval for fit-derived changes. After a fix, repeat the affected checks and compare the same size, avatar, material, poses, and settings, except for the approved change. A body or material change can also reopen drafting or sewing if it affects ease or construction.
+自动执行范围内、有证据支持的修复。保留基准版和各次测试版，记下问题、改动量与实际效果。除待验证的变量外，保持尺码、人台、面料、姿势、求解设置、闭合状态和视角可比。面料或人台变化影响松量或结构时，重查起版与缝合。有退步时保留验证表现较好的版本，继续尝试有证据支持的下一条修复路径。涉及设计意图、尺码与姿势、验收条件或固定输入的变更，由用户决定。
 
-## 6. Close or continue
+## 六、判定与交付报告
 
-For full acceptance, submit the candidate and available evidence to `verify-finish`. It reports PASS, FAIL, or PENDING, includes the actual material record, and names any checks that need more evidence. After a FAIL, route approved repairs through step 5. For PENDING, call the relevant specialist for the missing evidence when available. Feed the updated package back through the same gate. Keep results scoped to the sizes and poses actually verified.
+### 按任务范围验收
+
+整衣任务将当前候选及对应证据提交给 `verify-finish`，核对人台尺寸、用料、缝合、配饰、姿势稳定性和各项试穿证据。
+
+- **通过。** 所有必验尺码和姿势的适用项有符合约定条件的证据。
+- **未通过。** 已有证据表明某项不合格。自动修复和复测，同时补采可独立取得的必验证据。
+- **不适用。** 该项依约定范围或款式确实不适用，简述理由。
+
+整衣缺证时，把缺项或 `verify-finish` 返回的待验证项转为当前轮的取证任务。按尺码、姿势、版本和检查项定位缺口，先查可复用的同版原图、原生读数和网格，再补采、复算或重跑受影响的姿势。补图后实际完成视觉评审，同时取得相应数值或完成可核对的线稿对照。原生应力和压力用同版原生点测或导出，匹配色标、单位和部位。原路径失败时，诊断并尝试已有授权的可行替代路径，再提交验收。
+
+整衣任务持续到所有适用检查通过，或可行处理路径已用尽。真正受阻时明确标为受阻，注明整衣验收尚未完成，保留已证实的失败项，记录尝试过的方法、缺失证据以及恢复所需的具体输入、运行能力或设计决定。仅复查或探索时，按本轮范围写明已有发现与限制；每个局部判断均配能支撑该判断的整体定位图或局部图。
+
+### 按问题安排正文
+
+使用[试穿报告模板](试穿报告模板.md)，沿用 M 码女式紧身针织 T 恤四姿势范本的阅读顺序。正文按问题组织，五类证据用于核对验收覆盖。
+
+- 开头用大图和短句给出范围、结论和优先问题，再比较各必测姿势的整体上身。每个重点部位把局部图、取样范围、关键统计和一句结论放在一起。跨姿势和修前修后比较用可比的尺码、部位、视角、闭合状态和色标。
+- 图文速览之后给详细分析、试穿条件和修复复测记录，再给全部已取得的数值结果摘要和全部结果图缩略索引。原图、工程或网格及原始测量记录通过索引访问。五类证据可按问题组合，选配图随本轮问题取舍。
+- 末尾把第一优先行动讲完整，依次列其他必要动作。每项写明部位、依据、负责工具、要单独改变或补采的内容、复测姿势和通过条件。需要用户决定的设计取舍在这里列出。
+
+试穿或评审交付一份可直接打开的报告，嵌入关键图并在交付前核对原图、数值和工程链接。报告可用离线文件或用户指定的页面格式。明确只要单项检查或状态时，可以在对话中简报；涉及局部试穿判断时仍须附合适的图。

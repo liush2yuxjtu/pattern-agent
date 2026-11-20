@@ -1,29 +1,28 @@
-# CLO runtime support matrix
+# 运行环境对照
 
-Choose the execution location and the tool interface separately. MCP is an interface. An MCP call runs where its server is configured. Record the engine, host, tool or skill, and evidence source for every fitted size and pose.
+分别确认运行主机和调用接口。MCP 请求在服务配置的主机上执行。每个已试穿的尺码和姿势均应记录求解器、主机、工具和证据来源。
 
-| Runtime and interface | Pattern, seams, and avatar | New cloth simulation | Fit evidence |
+| 环境与接口 | 纸样、缝合与人台 | 新模拟 | 试穿证据 |
 | --- | --- | --- | --- |
-| **Local native CLO 3D via CLO MCP** | Import DXF, build or edit the working CLO project, use native sewing, and load or measure the avatar. Route through `clo-local:clo-fit-review`, `clo-dxf-fit-review`, `clo-local:clo-seam-walk`, and `clo-avatar-setup` as needed. | Run native CLO on the approved avatar, fabric, and poses when the live bridge supports the required operations. Save the corresponding project. | Source for native appearance and fit, stress, and body-contact pressure. Collect actual numeric samples or exports where available, and export meshes for supported strain and fold calculations. |
-| **CLO_RUST via MCP** | Audit normalized patterns and seam records or mappings. Measure a supported exported body mesh and, when requested, resize supported geometry and independently remeasure it. | Review or replay saved cloth results. Use a separate verified solver route for new poses. | Recompute supported strain and fold angles from matching garment meshes. Preserve or check recorded native stress and pressure maps and numeric samples. Reuse matching native imagery for appearance or line-art comparison. |
-| **CLO_RUST CLI on a local machine** | Run the corresponding supported pattern, seam, or mesh audit with a compatible `pattern-native` binary and prepared inputs. | Use this route for offline computation and saved-result checks. | Outputs depend on the command and input. Record binary version and retain the matching meshes, maps, and receipts. |
-| **CLO_RUST batch on Boat Linux VM** | Use `clo-boat-fit-review`, or the repository's `clo-rust-boat-fit-review` when the dispatcher is unavailable, for prepared seam, review, and fit-export batches with the supported Linux binary. | Batch saved-pose review. A separate Boat solver path is listed below. | Recompute strain and fold data and assemble same-revision native evidence supplied with the batch. Run the installed Boat review's pose and five-map checks when a complete Boat review is requested, then use `verify-finish` for the agreed garment acceptance. |
-| **Independent DXF fit on Boat Linux VM** | Use the installed `clo-rust-boat-fit-review` independent DXF recipe only when the garment, seam/placement mapping, avatar collision setup, and poses match a verified configuration. The documented starting case is a fitted long-sleeve sample with upright and whole-body lean poses. | New simulation via the headless Pattern Agent WASM solver for supported cases. Current evidence covers the documented configuration. Other garments, arm motions, or avatars need their own verified setup. | Report geometric checks, strain and fold angles, and any reference stress or contact results with their provenance. Obtain native CLO maps or calibrated numeric values separately when the acceptance scope requires them. |
+| **本机 CLO 3D，经 CLO MCP 调用** | 导入 DXF，在工作副本中装配、修改及缝合，并加载或测量人台。按需调用 `clo-local:clo-fit-review`、`clo-dxf-fit-review`、`clo-local:clo-seam-walk` 和 `clo-avatar-setup`。 | 实时桥接支持所需操作时，按确定的人台、面料和姿势做原生模拟，保存对应工程。 | 获取原生上身、合体、应力和人体接触压力图。有原生数值时保留测点或导出，另存网格以便复算应变与折角。 |
+| **CLO_RUST，经 MCP 调用** | 审计已规范化的纸样与缝合记录或配对表。量测支持的人台网格，按需调整尺寸并独立复量。 | 复核或回放已保存的布料结果。新姿势需要另有已验证的求解路径。 | 从匹配网格复算应变、折角。核对归档的原生应力和压力图、点测数值，沿用同版原生图做外观或线稿对照。 |
+| **本机 CLO_RUST 命令行** | 用兼容的 `pattern-native` 程序和已准备的输入检查纸样、缝合和网格。 | 适用于离线计算和已存结果复核。 | 按命令与输入记录输出。保存程序版本、匹配网格、图像和运行回执。 |
+| **Boat 虚拟机的 Linux 环境，批量运行 CLO_RUST** | 用 `clo-boat-fit-review` 及支持的程序执行已准备的缝合、试穿复核与导出批次。 | 批量复核已存姿势。独立求解见下一行。 | 复算应变和折角，汇总传入的同版原生证据。完整 Boat 评审时，执行该技能要求的姿势与五类图检查，再交 `verify-finish` 判定约定的整衣范围。 |
+| **Boat 虚拟机的 Linux 环境，独立 DXF 试穿** | 仅在服装、缝边与摆位映射、人台碰撞和姿势均符合已验证配置时使用 `clo-rust-boat-fit-review`。已验证的起点是直立与整体侧倾的合体长袖样衣。 | 用无界面的 Pattern Agent WASM 求解器做支持配置的新模拟。换款式、手臂动作或人台时，需先验证相应配置。 | 报告几何检查、应变、折角，以及注明来源的参考应力或接触结果。验收需要原生 CLO 图或经校准数值时，通过相应环境取证。 |
 
-The documented Boat Linux routes run Rust or the independent WASM solver. A remote native CLO session is a different setup. Treat it as a native route only after confirming an authorized, working CLO installation and live bridge on that host.
+上表的 Boat Linux 路径使用 CLO_RUST 或独立 WASM 求解器。要用远程原生 CLO，先确认该主机上已获授权的 CLO 安装、实时桥接和所需接口均可用。
 
-## Select the route for this stage
+## 选择本轮路径
 
-1. Honor the user's requested environment. For a new native CLO project, new native poses, material changes, or new native fit, stress, or pressure evidence, start with the checked native bridge. Verify `clo_status` and a read-only scene query. A registered MCP server by itself does not confirm a working live scene.
-2. For saved geometry, use the available Rust MCP or compatible CLI. Use Boat when requested, the files already reside there, or the authorized batch requires Linux. Check the prepared inputs and runtime version. Start or transfer work to a VM only within the user's authorization.
-3. For a native run plus an independent check, collect the native artifacts first and pass the exact matching manifests, seam records, meshes, maps, and numeric samples to Rust or Boat. Confirm matching revision, size, pose, avatar, body dimensions, material, closure state, and units. Check garment mesh coordinates and pattern UVs before recomputing strain or fold angles. A batch tool's name alone does not identify the host.
-4. If the chosen route cannot supply a required operation or evidence item, complete supported checks and mark the missing item PENDING for `verify-finish`. Name the required input or runtime. Change environments or add a solver run only as authorized.
+1. 按用户指定的环境执行。建原生工程、新跑原生姿势、更换实际模拟面料，或采集原生合体、应力和压力时，先确认 `clo_status`，再读一次场景确认桥接可用。
+2. 处理已保存的几何时，用现有 CLO_RUST 接口或兼容的命令行。用户指定 Boat、文件已在 Boat、或约定批处理依赖 Linux 时，可用 Boat。启动虚拟机或传输文件前核对授权、输入和运行版本。
+3. 需要原生试穿加独立复核时，先采原生工程与证据，再传匹配的清单、缝合记录、网格、图和测点。核对工程版本、尺码、姿势、人台与量体、用料、闭合和单位。复算应变与折角前，核对网格坐标和裁片的纹理坐标。按实际回执记录执行主机。
+4. 整衣验收缺少必需操作或证据时，按[工作流程第六节](workflows.md)继续取证。先查同版证据，再恢复当前取证能力或用已授权的可行环境完成受影响的视觉评审和测量。取得证据后交 `verify-finish` 复核。可行路径用尽时记录阻塞与恢复条件。
 
-For Rust avatar measurement, identify the exact Y-up mesh and closed torso sections used for circumference. An independently measured or resized mesh establishes the reported geometric dimensions of that file. A fitting run also needs a compatible collision body and pose setup.
+用 CLO_RUST 量体时，标明采用纵轴向上的哪一份人台网格，以及围度测量采用的闭合躯干截面。量测或改尺结果说明该文件的几何尺寸。实际试穿还需匹配的人台碰撞体和姿势。
 
-## Reproduction references
+## 参考资料
 
-- [CLO Local plugin](../../../../plugins/clo-local/README.md)
-- [Boat batch and runtime verification](../../../../docs/verification/clo-rust-boat-mirror-20261119.md)
-- [Long-sleeve avatar sizing and Boat case](../../../../docs/cases/long-sleeve-avatar-sizing/README.md)
-- [Carlton native fitting case](../../../../docs/cases/carlton-joost/README.md)
+- [CLO Local 与 CLO Rust Boat 使用指南](https://chatgpt.com/space/page_a9065980100c8191bee5ded855220aaa)
+- [CLO Rust Boat 多姿势五图评审验收](https://chatgpt.com/space/page_18807a8b1fa08191b91d5b3c67622018)
+- [Carlton 配饰与三姿势试穿综合验收](https://chatgpt.com/space/page_32c5183930c481919e480cf330ea0b89)

@@ -1,13 +1,13 @@
 ---
 name: design-cloth
-description: Run one garment workflow from brief or an existing pattern through fabric and avatar setup, pattern work, native CLO simulation, diagnosis, repair, and final verification. Start or resume from intent, a FreeSewing source, prototype or graded DXFs, a CLO project, or existing fit evidence. Call specialist skills as needed.
+description: 从服装设计需求、FreeSewing 源码、单码或放码 DXF、CLO 工程或既有试穿证据开始，完成选料、量体、纸样、缝合、原生模拟、诊断、自动修复、复验和中文试穿报告。支持整衣验收、局部复查与续跑。
 ---
 
-# Design cloth
+# 服装设计与试穿
 
-Drive the garment project through [one workflow](references/workflows.md). The user brings a goal and available artifacts here. Choose the first unfinished step, reuse valid evidence, and carry the work through the requested stopping point. Use the [runtime support matrix](references/runtime-support.md) when choosing between native CLO, Rust MCP or CLI, and Boat VM.
+按[工作流程](references/workflows.md)从第一项未完成的步骤接手，复用仍适用的证据。按[运行环境对照](references/runtime-support.md)选择本机 CLO、CLO_RUST 或 Boat。用中文说明进度、结论、图注和交付内容。工具调用和原始证据保留软件名、标识与单位。
 
-1. Confirm the design goal, candidate revision, target sizes and poses, and acceptance scope. Use the same workflow for a new project, an existing DXF, a single check, or a retest.
-2. Honor the user's skill-use approval rule. Name the specialist skills the scope needs and wait for approval when required. Call an approved specialist when a step needs its output. Ask before implementing fit-derived design changes.
-3. Pass each specialist the current revision, inputs, and expected evidence. Continue from completed results. Use `verify-finish` for the final verdict when the scope includes full acceptance. Route only the checks or repairs needed and return their results to the same workflow.
-4. Report the result, evidence, unresolved findings, and next step or blocker. Keep the original files and earlier evidence available when revising the garment.
+1. 确认设计目标、候选版本、目标尺码、姿势和验收范围。新项目、现有纸样、单项检查与复测使用同一流程，推进到用户要求的阶段。
+2. 端到端任务自动调用所需专项技能，在工作副本上执行有证据、在约定范围内的修复，包括由试穿结果推导出的改版，无需逐项确认。保留原工程和早期证据，遵守用户对范围、工具、环境和编辑的明确限制。
+3. 把当前版本、输入、所需证据和修复范围传给专项技能。整衣验收由 `verify-finish` 判定。缺必要证据时立即补采对应图像与数值、完成视觉评审并重新提交；未通过项自动修复并复测。持续到所有适用检查通过，或范围内的可行路径已经用尽。受阻时写明实际障碍及恢复条件。单项或仅评审任务按指定范围完成，并用合适的图支撑局部结论。
+4. 按[试穿报告模板](references/试穿报告模板.md)交付可直接打开的中文报告，以 M 码女式针织 T 恤四姿势报告为范本。先用大图和短句看结论、整体上身和重点部位，每个部位把局部图、取样范围、统计和结论放在一起。随后给详细分析、全部数值结果摘要和全部结果图缩略索引，最后按优先级列下一步和复测标准。探索、失败或受阻的试穿也交付有图的报告并链接原始证据。
