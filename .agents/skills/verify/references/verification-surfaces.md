@@ -13,6 +13,7 @@ applicable recipes; local checks do not stand in for hosted or physical acceptan
 | pattern-library | Native FreeSewing vectors, linked render meshes, the downloadable YAML editor and live Pages interactions | [pattern-library.md](pattern-library.md) |
 | garmentcode-preview | GLB/downloaded HTML and live browser | [garmentcode-preview.md](garmentcode-preview.md) |
 | clo-fit-export | local CLI on a saved CLO garment GLB | [clo-fit-export.md](clo-fit-export.md) |
+| clo-mcp-compatibility | matching calls against official CLO 3D and CLO Rust over MCP stdio | [CLO Rust /verify and 48-tool acceptance matrix](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#verify-the-48-public-clo-mcp-tools) |
 | full-arm | pipeline CLI and independently reopened Blender | [full-arm.md](full-arm.md) |
 | oneshot-control | experiment CLI and independent oracle | [oneshot-control.md](oneshot-control.md) |
 | oneshot-motion | saved meshes and independently reopened replay | [oneshot-motion.md](oneshot-motion.md) |

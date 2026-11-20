@@ -23,6 +23,7 @@ Read only the applicable recipes from the [surface index](references/verificatio
 | Paper pattern gallery and editor handoff | [pattern-library](references/pattern-library.md) — exact FreeSewing drafts, rendered views, locally replayed ZIP and live Pages browser | source meshes, image bounds, mobile, controls and download hashes |
 | GarmentCode preview | [garmentcode-preview](references/garmentcode-preview.md) — GLB/downloaded HTML and live browser | mesh pixels, rotation, hashes; garment FAIL separate |
 | CLO stress, strain and fold export | [clo-fit-export](references/clo-fit-export.md) — local CLI on a saved garment GLB | numeric controls, JSON/CSV readback, both fold previews |
+| CLO MCP backend compatibility | [CLO Rust /verify](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#verify-the-48-public-clo-mcp-tools) — same MCP stdio calls on official CLO 3D and Rust | signed-off cases for parameters, results, state transitions and errors; contract and behavioral evidence recorded separately |
 | Full-arm simulation | [full-arm](references/full-arm.md) — pipeline CLI and independently reopened Blender | saved frames, negative controls, renders |
 | Strict static geometry controls | [oneshot-control](references/oneshot-control.md) — experiment CLI and independent oracle | 23 analytic probes and strict fault controls |
 | Recovered motion | [oneshot-motion](references/oneshot-motion.md) — saved meshes and independently reopened replay | 121 full-array matches, UNKNOWN retained |
