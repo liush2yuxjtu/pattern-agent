@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Boat 虚拟机 Style3D 动作验收报告 · Pattern Agent</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header class="wrap site-header">
+    <a class="brand" href="../">Pattern Agent</a>
+    <nav aria-label="页面导航"><a href="./">返回十项动作复验</a></nav>
+  </header>
+  <main class="wrap report">
+<h1>Boat 虚拟机 Style3D 动作验收报告</h1>
+<p><strong>人台动作兼容性通过。</strong> 2026 年 11 月 20 日，在 Boat 虚拟机 中使用 Style3D Studio 10.1.1077 复验了全部 20 个动作文件。女款 V4 和男款 V4 人台各通过 10 项。动画编辑器以 30 帧/秒、1 倍时间缩放运行，所有动作的时间轴总帧数均与源文件一致。</p>
+<p>输入文件为参考对话中的 <code>Style3D-10项服装复验动作包.zip</code>。我通过 Studio 的动画文件选择器导入了 16 个自制动作，并在逐字节比对一致后，使用虚拟机预装的四个原厂走秀动作进行验证。虚拟机 V4 动作库中的全部 20 个文件均通过 SHA-256 校验，与动作包中的对应文件一致。<a href="https://help.style3d.com/studio/en/c4905/c74f/3365/a314/a6db3/0cf5/2d99a">Style3D 动作导入说明</a></p>
+<p>Studio 原生动画控制器共检查了 56 个采样帧。两个自然站立版本在第 45 帧均保持静止。每个动态版本在至少一个参考帧上都出现了人台网格位置变化。Studio 为每个动作原生导出了一张截图用于目视核查。<a href="https://help.style3d.com/studio/en/c4905/c2c8/38ae/5b8a">Style3D 动画编辑器说明</a></p>
+<h2>三维人台动作视频</h2>
+<ul>
+<li><a href="media/avatar-female.mp4">女款 V4 的 10 项人台动作（MP4，约 1 分 16 秒）</a></li>
+<li><a href="media/avatar-male.mp4">男款 V4 的 10 项人台动作（MP4，约 1 分 15 秒）</a></li>
+</ul>
+<p>视频在 Boat 虚拟机内使用 Style3D 的男女 V4 人台模型逐帧渲染。画面使用实际的人体表面和发型，以统一灰色材质从斜前方和侧面展示。女款视频采用赤足人台，以便观察足部动作。男款视频保留默认鞋履。两段视频均为 30 帧/秒，走秀和转身时镜头跟随人台。视频由独立渲染器制作，下面的截图由 Style3D Studio 原生导出。</p>
+<h2>Style3D 原生截图</h2>
+<p><img src="media/avatar-female.jpg" alt="女款 V4 人台的十项动作截图" /></p>
+<p><img src="media/avatar-male.jpg" alt="男款 V4 人台的十项动作截图" /></p>
+<p>截图使用 Studio 的普通渲染模式和已安装的 V4 人台。女款 V4 人台保留了默认高跟鞋，两个走秀动作仍使用动作包中的平底鞋版文件。每张截图独立取景。</p>
+<h2>逐项验收结果</h2>
+<div class="scroll" role="region" aria-label="报告数据表" tabindex="0"><table>
+<thead>
+<tr>
+  <th>动作</th>
+  <th style="text-align:right">女款总帧数</th>
+  <th style="text-align:right">男款总帧数</th>
+  <th style="text-align:right">女款视频起点</th>
+  <th style="text-align:right">男款视频起点</th>
+  <th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>01 自然站立，双臂下垂</td>
+  <td style="text-align:right">91</td>
+  <td style="text-align:right">91</td>
+  <td style="text-align:right">00:00.00</td>
+  <td style="text-align:right">00:00.00</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>02 直线走秀</td>
+  <td style="text-align:right">499</td>
+  <td style="text-align:right">508</td>
+  <td style="text-align:right">00:03.03</td>
+  <td style="text-align:right">00:03.03</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>03 T 台走秀</td>
+  <td style="text-align:right">600</td>
+  <td style="text-align:right">607</td>
+  <td style="text-align:right">00:19.67</td>
+  <td style="text-align:right">00:19.97</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>04 转身约 180° 后走回</td>
+  <td style="text-align:right">120</td>
+  <td style="text-align:right">73</td>
+  <td style="text-align:right">00:39.67</td>
+  <td style="text-align:right">00:40.20</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>05 双臂前伸</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">00:43.67</td>
+  <td style="text-align:right">00:42.63</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>06 双臂侧举</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">00:47.87</td>
+  <td style="text-align:right">00:46.83</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>07 双臂举过头顶</td>
+  <td style="text-align:right">151</td>
+  <td style="text-align:right">151</td>
+  <td style="text-align:right">00:52.07</td>
+  <td style="text-align:right">00:51.03</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>08 坐下再起身</td>
+  <td style="text-align:right">181</td>
+  <td style="text-align:right">181</td>
+  <td style="text-align:right">00:57.10</td>
+  <td style="text-align:right">00:56.07</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>09 左右交替抬脚模拟上台阶</td>
+  <td style="text-align:right">218</td>
+  <td style="text-align:right">218</td>
+  <td style="text-align:right">01:03.13</td>
+  <td style="text-align:right">01:02.10</td>
+  <td>均通过</td>
+</tr>
+<tr>
+  <td>10 左右转体</td>
+  <td style="text-align:right">181</td>
+  <td style="text-align:right">181</td>
+  <td style="text-align:right">01:10.40</td>
+  <td style="text-align:right">01:09.37</td>
+  <td>均通过</td>
+</tr>
+</tbody>
+</table></div>
+<h2>验收范围与限制</h2>
+<p>每次测试仅载入一个人台。帧数和代表性姿势已核查，Style3D 内的连续播放、布料模拟、碰撞和服装合身尚待验证。Studio 启动时提示，虚拟机未检测到 NVIDIA 显卡，模拟功能将被禁用。<a href="media/boat-gpu-warning.jpg">Studio 启动提示原图</a></p>
+
+  </main>
+</body>
+</html>
