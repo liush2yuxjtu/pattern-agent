@@ -59,6 +59,8 @@ Use the [CLO Rust /verify recipes](https://github.com/liush2yuxjtu/clo-rust/blob
 
 For a worked example, set `CLO_MCP_OFFICIAL_COMMAND` in the CLO Rust checkout and run `python -m clo_mcp.smoke_compat --compare-strapped-draft-preview`. It compares all returned fields for seven identical specs, checks the invalid spec error, and reads back `garment_last_spec` on both sides. This isolated preview uses `use_scene_measurements=false`. For a live scene workflow, capture `clo_status.bridge=up` in the same run before counting the scene case. Use the [CLO Rust evidence table](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#read-the-evidence-and-reproduce-a-matched-case) to report the three results.
 
+Copy the [per-case evidence record](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#what-to-verify-for-each-tool) into the workflow report. Link the exact input fixture hash, both MCP responses, and the before/after readback. For example, the `strapless` / `mini` preview returns four panels and six seams with all fields equal. Sending `{"spec":[]}` then returns an MCP error on both backends and preserves each previous spec. Record this as a passing preview case and retain the verdicts for the other applicable cases.
+
 For a workflow that saves or exports a scene, record the actual MCP call sequence
 emitted by Pattern Agent. Replay it on independent copies of the same input.
 Compare the response and query the resulting scene or reopen the artifact.
