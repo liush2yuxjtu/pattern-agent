@@ -57,6 +57,8 @@ The question is whether the changed behavior works for a real caller. Shift test
 
 Use the [CLO Rust /verify recipes](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#verify-the-48-public-clo-mcp-tools) from a CLO Rust checkout at the revision being tested. Keep the MCP contract check, the 48-tool Rust call smoke (`python -m clo_mcp.sweep_compat`), and the dual-backend behavior verdicts as separate evidence. For a Pattern Agent workflow, replay the same tool sequence with the same fixture on official CLO 3D and CLO Rust. Record the two repository SHAs, the CLO version, the tool requests, returned data and errors, and the observable scene or file readback. Mark the live comparison BLOCKED when the CLO bridge is unavailable. Count a tool as matched once the applicable dual-backend cases have passed.
 
+For a worked example, set `CLO_MCP_OFFICIAL_COMMAND` in the CLO Rust checkout and run `python -m clo_mcp.smoke_compat --compare-strapped-draft-preview`. It compares all returned fields for seven identical specs, checks the invalid spec error, and reads back `garment_last_spec` on both sides. This isolated preview uses `use_scene_measurements=false`. For a live scene workflow, capture `clo_status.bridge=up` in the same run before counting the scene case. Use the [CLO Rust evidence table](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#read-the-evidence-and-reproduce-a-matched-case) to report the three results.
+
 ## Invariant: persist the repo's verification path
 
 **Every time the user says verify, first inspect the target repository for a project-level verifier.**
