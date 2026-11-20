@@ -59,6 +59,15 @@ Use the [CLO Rust /verify recipes](https://github.com/liush2yuxjtu/clo-rust/blob
 
 For a worked example, set `CLO_MCP_OFFICIAL_COMMAND` in the CLO Rust checkout and run `python -m clo_mcp.smoke_compat --compare-strapped-draft-preview`. It compares all returned fields for seven identical specs, checks the invalid spec error, and reads back `garment_last_spec` on both sides. This isolated preview uses `use_scene_measurements=false`. For a live scene workflow, capture `clo_status.bridge=up` in the same run before counting the scene case. Use the [CLO Rust evidence table](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#read-the-evidence-and-reproduce-a-matched-case) to report the three results.
 
+For a workflow that saves or exports a scene, record the actual MCP call sequence
+emitted by Pattern Agent. Replay it on independent copies of the same input.
+Compare the response and query the resulting scene or reopen the artifact.
+Include an invalid request and check the state left after it. The
+[live colorway export example](https://github.com/liush2yuxjtu/clo-rust/blob/main/.agents/skills/verify/SKILL.md#worked-example-from-a-live-clo-scene)
+shows how to compare ordered outputs when the backends use different filesystem
+roots. Record garment fit and solver acceptance separately for any workflow that
+claims those outcomes.
+
 ## Invariant: persist the repo's verification path
 
 **Every time the user says verify, first inspect the target repository for a project-level verifier.**
