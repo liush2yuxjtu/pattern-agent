@@ -239,18 +239,26 @@ def publish(out, cases, batch):
     write_csv(out / "stats.csv", rows[0].keys(), rows)
     fields = ("尺码", "动作", "CLO帧", "秒", "快照", "视频", *batch.UNITS, "crossings", "coverage")
     write_csv(out / "frames.csv", fields, details)
-    page = """<!doctype html><html lang="zh-CN"><meta charset="utf-8">
+    page = """<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CLO 四尺码十动作复验</title><style>
 body{font:16px system-ui;margin:24px auto;max-width:1140px;padding:0 16px;background:#111b22;color:#eef5f6}
 a{color:#a5dfef} video,img{width:100%;display:block} video{max-width:720px}
 figure{margin:0 0 20px}.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
-section{padding:8px 0 20px;border-bottom:1px solid #476270}</style>
+section{padding:8px 0 20px;border-bottom:1px solid #476270}</style></head><body>
 <h1>CLO 四尺码十动作复验</h1><p><a href="stats.csv">统计表</a> · <a href="frames.csv">关键帧索引</a></p>"""
     videos = join_videos(out, clips)
     overview = "<nav>" + " · ".join(f'<a href="{path}">{size} 码视频</a>'
                                        for size, path in videos.items()) + "</nav>"
-    (out / "index.html").write_text(page + overview + "".join(sections) + "</html>\n", encoding="utf-8")
-    return ("FAIL" if any("FAIL" in (row["统计判定"], row["目视判定"]) for row in rows)
-            else "PASS" if all(row["统计判定"] == row["目视判定"] == "PASS" for row in rows)
-            else "BLOCKED")
+    status = ("FAIL" if any("FAIL" in (row["统计判定"], row["目视判定"]) for row in rows)
+              else "PASS" if all(row["统计判定"] == row["目视判定"] == "PASS" for row in rows)
+              else "BLOCKED")
+    if status == "PASS":
+        follow_up = "四个尺码的十项动作均通过统计和目视验收，本轮试穿结案。"
+    else:
+        follow_up = ("按组合查看统计表的问题和目视备注。在 Boat CLO 重跑失败组合或补取缺失的同帧证据，"
+                     "然后复核该组合的关键帧与原生点测。")
+    closing = (f'<section id="follow-up"><h2>分诊与下一步复测</h2><p>{follow_up} '
+               '<a href="stats.csv">组合统计</a></p></section></body></html>\n')
+    (out / "index.html").write_text(page + overview + "".join(sections) + closing, encoding="utf-8")
+    return status
