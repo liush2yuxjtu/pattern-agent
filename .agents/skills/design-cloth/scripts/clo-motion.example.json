@@ -1,0 +1,276 @@
+{
+  "revision": "填写 FreeSewing 纸样与 CLO 工程版次",
+  "sizes": {
+    "S": {
+      "project": "projects/S.zprj",
+      "design": "design/front.png",
+      "checks": {
+        "pieces_mm2": {},
+        "area_tolerance_mm2": 5
+      }
+    },
+    "M": {
+      "project": "projects/M.zprj",
+      "design": "design/front.png",
+      "checks": {
+        "pieces_mm2": {},
+        "area_tolerance_mm2": 5
+      }
+    },
+    "L": {
+      "project": "projects/L.zprj",
+      "design": "design/front.png",
+      "checks": {
+        "pieces_mm2": {},
+        "area_tolerance_mm2": 5
+      }
+    },
+    "XL": {
+      "project": "projects/XL.zprj",
+      "design": "design/front.png",
+      "checks": {
+        "pieces_mm2": {},
+        "area_tolerance_mm2": 5
+      }
+    }
+  },
+  "motions": {
+    "01": {
+      "label": "自然站立",
+      "sanim": "motions/01.sanim",
+      "fbx": "motions/01.fbx",
+      "frames": [
+        0,
+        22,
+        45,
+        67,
+        90
+      ],
+      "checks": {
+        "source_frames": 91,
+        "fps": 30
+      }
+    },
+    "02": {
+      "label": "直线走秀",
+      "sanim": "motions/02.sanim",
+      "fbx": "motions/02.fbx",
+      "frames": [
+        0,
+        12,
+        30,
+        60,
+        90,
+        120,
+        128,
+        150,
+        180,
+        186,
+        210,
+        240,
+        245,
+        270,
+        300,
+        305,
+        330,
+        360,
+        372,
+        390,
+        420,
+        440,
+        470,
+        498
+      ],
+      "checks": {
+        "source_frames": 499,
+        "fps": 30
+      }
+    },
+    "03": {
+      "label": "T 台走秀",
+      "sanim": "motions/03.sanim",
+      "fbx": "motions/03.fbx",
+      "frames": [
+        0,
+        12,
+        30,
+        60,
+        70,
+        90,
+        120,
+        128,
+        150,
+        180,
+        210,
+        225,
+        240,
+        270,
+        300,
+        330,
+        360,
+        375,
+        390,
+        420,
+        450,
+        480,
+        510,
+        525,
+        540,
+        570,
+        599
+      ],
+      "checks": {
+        "source_frames": 600,
+        "fps": 30
+      }
+    },
+    "04": {
+      "label": "转身走回",
+      "sanim": "motions/04.sanim",
+      "fbx": "motions/04.fbx",
+      "frames": [
+        0,
+        19,
+        20,
+        21,
+        39,
+        40,
+        41,
+        60,
+        69,
+        90,
+        117,
+        118,
+        119
+      ],
+      "checks": {
+        "source_frames": 120,
+        "fps": 30
+      }
+    },
+    "05": {
+      "label": "双臂前伸",
+      "sanim": "motions/05.sanim",
+      "fbx": "motions/05.fbx",
+      "frames": [
+        0,
+        25,
+        49,
+        60,
+        72,
+        100,
+        125
+      ],
+      "checks": {
+        "source_frames": 126,
+        "fps": 30
+      }
+    },
+    "06": {
+      "label": "双臂侧举",
+      "sanim": "motions/06.sanim",
+      "fbx": "motions/06.fbx",
+      "frames": [
+        0,
+        25,
+        49,
+        60,
+        72,
+        100,
+        125
+      ],
+      "checks": {
+        "source_frames": 126,
+        "fps": 30
+      }
+    },
+    "07": {
+      "label": "双臂举过头顶",
+      "sanim": "motions/07.sanim",
+      "fbx": "motions/07.fbx",
+      "frames": [
+        0,
+        30,
+        61,
+        68,
+        81,
+        115,
+        150
+      ],
+      "checks": {
+        "source_frames": 151,
+        "fps": 30
+      }
+    },
+    "08": {
+      "label": "坐下再起身",
+      "sanim": "motions/08.sanim",
+      "fbx": "motions/08.fbx",
+      "frames": [
+        0,
+        36,
+        71,
+        85,
+        99,
+        132,
+        180
+      ],
+      "checks": {
+        "source_frames": 181,
+        "fps": 30
+      }
+    },
+    "09": {
+      "label": "交替抬脚上台阶",
+      "sanim": "motions/09.sanim",
+      "fbx": "motions/09.fbx",
+      "frames": [
+        0,
+        26,
+        52,
+        86,
+        109,
+        135,
+        161,
+        195,
+        217
+      ],
+      "checks": {
+        "source_frames": 218,
+        "fps": 30
+      }
+    },
+    "10": {
+      "label": "左右转体",
+      "sanim": "motions/10.sanim",
+      "fbx": "motions/10.fbx",
+      "frames": [
+        0,
+        25,
+        53,
+        85,
+        125,
+        150,
+        180
+      ],
+      "checks": {
+        "source_frames": 181,
+        "fps": 30
+      }
+    }
+  },
+  "thresholds": {
+    "pressure": 1,
+    "stress": 22,
+    "strain": 60,
+    "fold": 70,
+    "crossings": 0,
+    "coverage": 0
+  },
+  "boat": {
+    "workers": [],
+    "clo_version": "2026.1.382",
+    "concurrent_seats": 0,
+    "timeout_seconds": 900
+  }
+}

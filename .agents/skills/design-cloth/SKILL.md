@@ -78,3 +78,7 @@ flowchart TD
 ## Style3D MCP / 原生 API Playbook
 
 指定 Style3D 时先读 [Style3D 操作约定](references/verification/style3d.md)，再从[验证方法索引](references/verification/index.md)选对应的 Style3D 手册。只核对工具能力时使用目录和 schema。原生工程读写、导出与模拟按本轮授权和当前版本能力执行。指定 CLO 3D 时读 [CLO 3D MCP 操作约定](references/verification/clo3d.md)及对应手册。
+
+## Boat CLO 3D 四尺码十动作
+
+使用 [Boat CLO 3D 四尺码十动作](references/verification/clo-motion-batch.md) 的固定入口。配置列出四码原生工程、动作、关键帧和阈值；命令并行调用专用 Boat worker，输出逐帧五图审查卡与统计表。先查统计缺证与失败，再看逐项关键帧和异常片段。
