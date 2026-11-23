@@ -1,6 +1,6 @@
 # 原生 CLO 3D · 四尺码十动作
 
-在独立 Boat Wine fork 中使用有授权的 CLO 3D 编辑器。先确认每台的并发授权及当前编辑器版本，并打开 **Edit → Python Script**。每个 worker 专用，脚本会替换其当前工程和 Python Editor 内容。准备好本轮的 S、M、L、XL 原生 `.zprj`、FreeSewing 量体与裁片记录、线稿及动作包。示例里的项目位置、阈值和机器列表由执行者按本轮实际内容填写。
+在独立 Boat Wine fork 中使用有授权的 CLO 3D 编辑器。先确认每台的并发授权及当前编辑器版本，依次打开 **Animation → Animation Editor** 和 **Edit → Python Script**。每个 worker 专用，脚本会替换其当前工程和 Python Editor 内容。准备好本轮的 S、M、L、XL 原生 `.zprj`、FreeSewing 量体与裁片记录、线稿及动作包。示例里的项目位置、阈值和机器列表由执行者按本轮实际内容填写。
 
 ```sh
 python3 scripts/clo-motion-batch.py --config /path/to/batch.json --out /path/to/evidence --jobs auto
@@ -8,7 +8,7 @@ python3 scripts/clo-motion-batch.py --config /path/to/batch.json --out /path/to/
 
 配置模板为 [clo-motion.example.json](../../scripts/clo-motion.example.json)。路径相对配置文件。并行上限是待运行组合、专用 worker 和验证可同时使用的 CLO 席位三者的最小值。配置并发机器前，先从独立 fork 验证登录与录制。检查 Boat 的当前并发、创建配额和计划用量，以可用容量启动 worker。
 
-Boat worker 需要 `xdotool`、`xclip` 和经试跑的 CLO Wine 2026.1.382 默认桌面布局。Python 3.9+ 需要 Pillow。折角复用同仓库 `clo-fit-export` 的 NumPy 和 Matplotlib 脚本。视频汇总需要 FFmpeg 或 `imageio-ffmpeg`。若修改了工程、动作、阈值或抽查帧，程序按新输入指纹生成独立证据。使用相同输出目录可续跑。加 `--review-only` 可从已下载的原生记录离线生成审查包。
+Boat worker 需要 `xdotool`、`xclip` 和经试跑的 CLO Wine 2026.1.382 桌面。安装 `wmctrl` 时可以移动 Python Editor。默认使用 `scp`。SSH 连接不可用时，可把 `boat.transfer` 设为 `"exec"`，通过 Boat 已认证命令通道分块传输并校验 SHA-256。同一 worker 会按 SHA-256 复用已传入的工程和动作。Python 3.9+ 需要 Pillow。折角复用同仓库 `clo-fit-export` 的 NumPy 和 Matplotlib 脚本。视频汇总需要 FFmpeg 或 `imageio-ffmpeg`。若修改了工程、动作、阈值或抽查帧，程序按新输入指纹生成独立证据。使用相同输出目录可续跑。加 `--review-only` 可从已下载的原生记录离线生成审查包。
 
 ## 动作包
 
@@ -21,6 +21,12 @@ blender --background --factory-startup --python-exit-code 3 \
 ```
 
 转换以同一动作变换和皮肤绑定为输入。检查 Style3D 每帧读回与源一致、Blender 导入的 FBX 关节位置和网格，并从 `motions.json` 查看帧数、帧率及误差。CLO 中导入 FBX、读取实际时间轴和关节位置，再核对姿态峰值、行进轨迹和回位。已独立验证的 `.mtn` 在动作配置填写，保留工程内的尺码人台。直接使用 FBX 人台时，先核对同一尺码及着装对齐，再在该尺码的 `checks` 中设置 `use_fbx_avatar: true`，读取工程时只载入服装。FBX 离线读回与原生 CLO 导入是两项独立验证。
+
+逐尺码的动作文件填在 `motions.<动作>.fbx_by_size`。`sizes.<尺码>.checks.fbx_scale` 以 CLO 导入后回读的人台网格为准，工程缝组数可填 `seam_group_count`。包含人台修正形变动画时设置 `fbx_blend_shapes: true`。`motions.<动作>.checks.warmup_frames` 对应原生录制开头的预热段，动作帧号与导出视频从预热结束后开始计数。
+
+`pieces_mm2` 取经独立核对的已保存 `.zprj` 的裁片面积。CLO 的曲线保存和重载会导致原始绘制面积出现微小差异。请分别保留纸样轮廓和已保存工程的回读记录。
+
+检查动态人台表面时，使用原生服装录制对应的 Avatar Cache Animation（Alembic）。2026.1.382 的 FBX 人台 OBJ 导出在试跑中重复输出结束帧的身体。用两个动作幅度明显不同的原生帧确认缓存确实随帧变化，再用同帧的数字网格核算穿插。
 
 ## 审查
 

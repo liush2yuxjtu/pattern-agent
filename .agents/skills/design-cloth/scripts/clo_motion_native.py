@@ -94,9 +94,14 @@ def raw_capture(root, result, request, receipt):
     expected = checks.get("pieces_mm2", {})
     actual = {piece["name"]: piece["area_mm2"] for piece in pieces}
     tolerance = checks.get("area_tolerance_mm2", 0)
+    expected_seams = checks.get("seam_group_count")
+    get_seam_count = getattr(pattern_api, "GetSeamlinePairGroupCount", None)
+    seam_groups = get_seam_count() if get_seam_count else None
+    receipt["seam_group_count"] = seam_groups
     receipt["project_checks_pass"] = (bool(expected) and set(expected) == set(actual)
         and all(abs(actual[name] - value) <= tolerance for name, value in expected.items())
-        and all(piece["seams"] for piece in pieces))
+        and all(piece["seams"] for piece in pieces)
+        and (expected_seams is None or seam_groups == expected_seams))
     require(bool(pieces), "起始工程没有读取到裁片")
 
     receipt["stage"] = "project_readback"
@@ -113,20 +118,40 @@ def raw_capture(root, result, request, receipt):
             raise RuntimeError("此 CLO 版本未提供 FBX 关节动画导入选项")
         require(direct_avatar_verified,
                 "需要同一尺码的已验证 FBX 人台，或用于原人台的 CLO MTN 动作")
+        receipt["avatars_before_fbx"] = list(export_api.GetAvatarNameList())
+        require(not receipt["avatars_before_fbx"], "仅载入服装的工程仍包含原人台")
         options.bAdd = True
-        options.bMoveGarment = True
+        options.bAutoTranslate = False
+        options.bMoveGarment = False
+        options.scale = checks.get("fbx_scale", 1.0)
+        if checks.get("fbx_blend_shapes"):
+            require(hasattr(options, "bCreateAvatarBlendShapeAnimation"),
+                    "此 CLO 版本未提供 FBX 形变动画导入选项")
+            options.bCreateAvatarBlendShapeAnimation = True
         require(import_api.ImportFBX(str(root / "motion.fbx"), options), "CLO 未导入 FBX 动作")
+        receipt["avatars_after_fbx"] = list(export_api.GetAvatarNameList())
+        require(len(receipt["avatars_after_fbx"]) == 1, "FBX 导入后没有恰好一具匹配人台")
+        utility_api.SetShowHideAvatar(True)
     layer_range = (utility_api.GetAnimationLayerFrameRange(0)
                    if hasattr(utility_api, "GetAnimationLayerFrameRange") else
                    (utility_api.GetStartAnimationFrame(), utility_api.GetEndAnimationFrame()))
     first, last = map(round, layer_range)
     receipt["import_timeline"] = {"first": first, "last": last}
-    expected_count = request["motion_checks"].get("source_frames")
-    require(last > first and (expected_count is None or last - first + 1 == expected_count),
-            f"CLO 原生时间轴 {first}–{last} 与动作帧数 {expected_count} 不一致")
+    motion_checks = request["motion_checks"]
+    warmup = motion_checks.get("warmup_frames", 0)
+    expected_count = motion_checks.get("source_frames")
+    action_start = first + warmup
+    source_count = last - action_start + 1
+    require(last > action_start and (expected_count is None or source_count == expected_count),
+            f"CLO 原生时间轴 {action_start}–{last} 与动作帧数 {expected_count} 不一致")
     receipt["stage"] = "motion_imported"
     write(result / "receipt.json", receipt)
     utility_api.SetCurrentAnimationFrame(first)
+    utility_api.SetStartAnimationFrame(first)
+    utility_api.SetEndAnimationFrame(last)
+    if "native_simulation_quality" in motion_checks:
+        utility_api.SetSimulationQuality(*motion_checks["native_simulation_quality"])
+        receipt["simulation_quality"] = utility_api.GetSimulationQuality()
     receipt["stage"] = "native_recording"
     write(result / "receipt.json", receipt)
     if hasattr(utility_api, "RunAnimationRecording"):
@@ -144,9 +169,13 @@ def raw_capture(root, result, request, receipt):
 
     project = first_file(export_api.ExportZPrj(str(result / "recorded.zprj")))
     require(project, "CLO 未保存录制工程")
-    receipt["recording"] = {"project": project.name, "source_frames": last - first + 1,
-                            "last_frame": last - first}
-    fps = request["motion_checks"]["fps"]
+    receipt["recording"] = {"project": project.name, "source_frames": source_count,
+                            "last_frame": source_count - 1, "native_action_start": action_start,
+                            "native_action_end": last}
+    if hasattr(utility_api, "GetAnimationLayerFrameRange"):
+        receipt["recording"]["native_layers"] = [utility_api.GetAnimationLayerFrameRange(i)
+                                                 for i in range(2)]
+    fps = motion_checks["fps"]
     options = ApiTypes.ImportExportOption()
     options.bExportGarment = True
     options.bExportAvatar = False
@@ -157,18 +186,20 @@ def raw_capture(root, result, request, receipt):
     options.bUnifiedUVCoordinates = False
     options.scale = 0.001
     options.axisX, options.axisY, options.axisZ = 0, 1, 2
-    for index in sorted({*request["frames"], last - first}):
-        require(index <= last - first, f"抽查帧 {index} 超出 CLO 原生时间轴")
+    for index in sorted({*request["frames"], source_count - 1}):
+        require(index < source_count, f"抽查帧 {index} 超出 CLO 原生时间轴")
         move = getattr(utility_api, "MoveAnimationFrame", utility_api.SetCurrentAnimationFrame)
-        move(first + index)
+        native_frame = action_start + index
+        move(native_frame)
         utility_api.Refresh3DWindow()
-        require(round(utility_api.GetCurrentAnimationFrame()) == first + index,
+        require(round(utility_api.GetCurrentAnimationFrame()) == native_frame,
                 f"CLO 时间轴无法定位到 {index}")
         folder = result / f"native-{index:06}"
         folder.mkdir(exist_ok=True)
         mesh = first_file(export_api.ExportGLTF(str(folder / "cloth.gltf"), options, True))
         maps = capture_views(result, folder, index)
-        receipt["frames"].append({"index": index, "seconds": index / fps, "maps": maps,
+        receipt["frames"].append({"index": index, "native_frame": native_frame,
+                                  "seconds": index / fps, "maps": maps,
                                   "cloth_mesh": mesh.relative_to(result).as_posix() if mesh else None})
         write(result / "receipt.json", receipt)
     if hasattr(ApiTypes, "VideoExportOption"):
@@ -176,7 +207,7 @@ def raw_capture(root, result, request, receipt):
         video_options.width = 1280
         video_options.height = 720
         video_options.fps = {24: 0, 25: 1, 30: 2, 60: 3}.get(fps, -1)
-        video_options.startFrame = first
+        video_options.startFrame = action_start
         video_options.endFrame = last
         video = first_file(export_api.ExportAnimationVideo(str(result / "native.avi"), video_options))
         if video:
@@ -198,6 +229,7 @@ def main(working_root, boat_id, clo_version):
     }
     try:
         raw_capture(root, result, request, receipt)
+        receipt["stage"] = "captured"
     except Exception as error:
         receipt["reason"] = str(error)
         write(result / "native-error.json", traceback.format_exc())

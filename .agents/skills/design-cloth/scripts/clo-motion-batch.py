@@ -47,7 +47,16 @@ def run(*args, timeout=120, check=True):
 
 def boat(*args, timeout=120):
     response = run("boat", "--no-update", "--json", *args, timeout=timeout)
-    return json.loads(response.stdout)
+    try:
+        return json.loads(response.stdout)
+    except json.JSONDecodeError:
+        # Longer exec calls use JSONL until the guest process exits.
+        events = [json.loads(line) for line in response.stdout.splitlines() if line.strip()]
+        if not events or events[-1].get("type") != "exit":
+            raise ValueError("Boat returned an incomplete command result") from None
+        return {**events[-1],
+                **{stream: "".join(event["data"] for event in events if event.get("type") == stream)
+                   for stream in ("stdout", "stderr")}}
 
 
 def finite(number):
@@ -64,19 +73,40 @@ def read_config(path):
         raise ValueError("定量阈值必须是有限非负数")
     if not config["revision"]:
         raise ValueError("需要样衣版次")
+    if config["boat"].get("transfer", "scp") not in {"scp", "exec"}:
+        raise ValueError("Boat 文件传输方式必须为 scp 或 exec")
     for motion in config["motions"].values():
         frames = motion["frames"]
         if (not frames or frames[0] != 0 or sorted(set(frames)) != frames
                 or any(type(frame) is not int or frame < 0 for frame in frames)):
             raise ValueError("抽查帧必须是从 0 开始的有序唯一整数")
+        if motion.get("fbx_by_size") and set(motion["fbx_by_size"]) != set(SIZES):
+            raise ValueError("按尺码指定 FBX 时需要提供全部四码")
+        checks = motion["checks"]
+        quality = checks.get("native_simulation_quality")
+        if quality is not None and (not isinstance(quality, list) or len(quality) != 2
+                                     or any(type(value) is not int or value < 0 for value in quality)):
+            raise ValueError("CLO 模拟质量需要两个非负整数")
+        warmup = checks.get("warmup_frames", 0)
+        if type(warmup) is not int or warmup < 0:
+            raise ValueError("预热帧数必须为非负整数")
+        source_frames = checks.get("source_frames")
+        if source_frames is not None and (type(source_frames) is not int
+                                          or source_frames < 2 or frames[-1] >= source_frames):
+            raise ValueError("抽查帧必须处在源动作范围内")
+    for size in config["sizes"].values():
+        scale = size["checks"].get("fbx_scale", 1.0)
+        if not finite(scale) or scale <= 0:
+            raise ValueError("FBX 导入比例必须为有限正数")
     return config
 
 
 def inputs(config, root, size, motion):
     size_config, motion_config = config["sizes"][size], config["motions"][motion]
+    fbx = motion_config["fbx_by_size"][size] if motion_config.get("fbx_by_size") else motion_config["fbx"]
     paths = {key: (root / value).resolve() for key, value in {
         "project": size_config["project"], "design": size_config["design"],
-        "fbx": motion_config["fbx"], "sanim": motion_config["sanim"],
+        "fbx": fbx, "sanim": motion_config["sanim"],
         **({"mtn": motion_config["mtn"]} if motion_config.get("mtn") else {}),
     }.items()}
     files = {key: digest(path) if path.is_file() else None for key, path in paths.items()}
@@ -206,25 +236,41 @@ def copy_boat(source, target):
     run("boat", "--no-update", "scp", str(source), str(target), timeout=900)
 
 
-def run_case(worker, folder, request, paths, native_timeout):
+def run_case(worker, folder, request, paths, native_timeout, transfer):
     # Upload only declared inputs. Each worker handles one project at a time.
     work = f"/tmp/clo-motion-{request['fingerprint'][:20]}"
+    names = {"project": "seed.zprj", "design": "design.png", "fbx": "motion.fbx", "mtn": "motion.mtn"}
+    native_inputs = {key: paths[key] for key in names if key in paths}
+    materialize = ""
+    if transfer == "exec":
+        from clo_motion_transfer import get, put
+        cache = "/tmp/clo-motion-inputs"
+        response = boat("exec", worker, "--timeout", "15", f"mkdir -p {cache}")
+        if not response.get("success"):
+            raise RuntimeError("Boat could not prepare the input cache")
+        for key, source in native_inputs.items():
+            sha = request["files"][key]
+            remote = f"{cache}/{sha}"
+            put(worker, source, remote, expected_sha=sha)
+            materialize += f"cp {remote} {names[key]} && "
     with TemporaryDirectory() as staging:
         staging = Path(staging)
         save(staging / "request.json", request)
-        payload = staging / "inputs.tar"
-        with tarfile.open(payload, "w") as archive:
+        payload = staging / "inputs.tgz"
+        with tarfile.open(payload, "w:gz") as archive:
             archive.add(staging / "request.json", arcname="request.json")
-            for key, name in (("project", "seed.zprj"), ("design", "design.png"),
-                              ("fbx", "motion.fbx"), ("mtn", "motion.mtn")):
-                if key in paths:
-                    archive.add(paths[key], arcname=name)
+            if transfer == "scp":
+                for key, source in native_inputs.items():
+                    archive.add(source, arcname=names[key])
             for script in ("clo-motion-guest.sh", "clo_motion_native.py"):
                 archive.add(HERE / script, arcname=script)
-        copy_boat(payload, f"{worker}:{work}.tar")
+        if transfer == "exec":
+            put(worker, payload, f"{work}.tgz")
+        else:
+            copy_boat(payload, f"{worker}:{work}.tgz")
         command = (
-            f'mkdir -p {work} && cd {work} && tar -xf {work}.tar '
-            f'&& rm -f result/native.done && CLO_CASE_TIMEOUT={native_timeout - 5} '
+            f'mkdir -p {work} && cd {work} && tar -xzf {work}.tgz && {materialize}'
+            f'rm -f result/native.done && CLO_CASE_TIMEOUT={native_timeout - 5} '
             f'bash clo-motion-guest.sh {worker} {request["clo_version"]} '
             '&& tar -czf evidence.tgz -C result .'
         )
@@ -232,7 +278,10 @@ def run_case(worker, folder, request, paths, native_timeout):
         if response.get("exitCode") != 0:
             raise RuntimeError((response.get("stderr") or response.get("stdout") or "CLO worker failed")[-500:])
         bundle = staging / "evidence.tgz"
-        copy_boat(f"{worker}:{work}/evidence.tgz", bundle)
+        if transfer == "exec":
+            get(worker, f"{work}/evidence.tgz", bundle)
+        else:
+            copy_boat(f"{worker}:{work}/evidence.tgz", bundle)
         with tarfile.open(bundle) as archive:
             for member in archive.getmembers():
                 resolved = (folder / member.name).resolve()
@@ -291,7 +340,8 @@ def dispatch(cases, config, requested):
                 return
             folder, request, paths = task
             try:
-                run_case(worker, folder, request, paths, machinery["timeout_seconds"])
+                run_case(worker, folder, request, paths, machinery["timeout_seconds"],
+                         machinery.get("transfer", "scp"))
                 (folder / "blocked.txt").unlink(missing_ok=True)
             except (OSError, subprocess.SubprocessError, ValueError, RuntimeError) as error:
                 (folder / "blocked.txt").write_text(str(error) + "\n", encoding="utf-8")

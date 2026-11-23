@@ -50,7 +50,8 @@ def card(folder, frame, request, reference, api):
     number = frame["index"]
     source = frame.get("seconds")
     time = f"{source:.2f}s" if api["finite"](source) else "待补"
-    draw.text((20, 15), f"{request['size']} / {request['label']} / CLO 帧 {number} / {time}",
+    native = frame.get("native_frame", number)
+    draw.text((20, 15), f"{request['size']} / {request['label']} / 动作帧 {number} / CLO 帧 {native} / {time}",
               font=regular, fill="white")
     for index, (key, label) in enumerate(titles.items()):
         x, y = 20 + (index % 3) * 520, 62 + (index // 3) * 465
