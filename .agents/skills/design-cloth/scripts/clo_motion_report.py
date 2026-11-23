@@ -90,13 +90,14 @@ def card(folder, frame, request, reference, api):
 
 def browser_video(source):
     target = source.parent / "review-clip.mp4"
-    if target.is_file() and target.stat().st_mtime_ns >= source.stat().st_mtime_ns:
+    latest_input = max(source.stat().st_mtime_ns, Path(__file__).stat().st_mtime_ns)
+    if target.is_file() and target.stat().st_mtime_ns >= latest_input:
         return target
     temporary = target.with_suffix(".tmp.mp4")
     subprocess.run([executable(), "-v", "error", "-y", "-i", str(source), "-an",
                     "-vf", "scale=1280:720:force_original_aspect_ratio=decrease,"
-                    "pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p",
-                    "-c:v", "libx264", "-preset", "fast", "-movflags", "+faststart", str(temporary)],
+                    "pad=1280:720:(ow-iw)/2:(oh-ih)/2,format=yuv420p",
+                    "-r", "30", "-c:v", "libx264", "-preset", "fast", "-movflags", "+faststart", str(temporary)],
                    capture_output=True, text=True, check=True)
     temporary.replace(target)
     return target
@@ -107,7 +108,7 @@ def join_videos(out, clips):
     for size, paths in clips.items():
         if not paths:
             continue
-        with TemporaryDirectory() as temporary:
+        with TemporaryDirectory(dir=out) as temporary:
             temporary = Path(temporary)
             segments = []
             for index, path in enumerate(paths):
@@ -117,10 +118,12 @@ def join_videos(out, clips):
             concat = temporary / "list.txt"
             concat.write_text("".join(f"file {path.name}\n" for path in segments), encoding="utf-8")
             video = out / f"CLO-{size}.mp4"
+            combined = temporary / video.name
             subprocess.run([executable(), "-v", "error", "-y", "-f", "concat", "-safe", "1",
-                            "-i", str(concat), "-c", "copy", "-movflags", "+faststart", str(video)],
+                            "-i", str(concat), "-c", "copy", "-movflags", "+faststart", str(combined)],
                            capture_output=True, text=True, check=True)
-            if video_duration(video) > 0:
+            if video_duration(combined) > 0:
+                combined.replace(video)
                 published[size] = video.name
     return published
 

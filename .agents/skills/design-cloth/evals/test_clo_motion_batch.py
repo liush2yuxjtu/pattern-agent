@@ -1,10 +1,13 @@
 import importlib
 import json
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 
 from PIL import Image
+
+from clo_motion_report import browser_video, executable, join_videos
 
 batch = importlib.import_module("clo-motion-batch")
 
@@ -85,6 +88,24 @@ class MotionEvidenceTest(unittest.TestCase):
         self.assertEqual(self.result()["status"], "PASS")
         self.request["fingerprint"] = "changed seed"
         self.assertEqual(self.result()["status"], "BLOCKED")
+
+
+class ReviewVideoTest(unittest.TestCase):
+    def frame_count(self, file):
+        result = subprocess.run([executable(), "-v", "error", "-i", str(file), "-map", "0:v:0", "-f", "null", "-",
+                                 "-progress", "pipe:1"], capture_output=True, text=True, check=True)
+        return int([line.split("=", 1)[1] for line in result.stdout.splitlines() if line.startswith("frame=")][-1])
+
+    def test_resized_and_combined_30_fps_video_keeps_each_frame(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)
+            source = path / "native.mp4"
+            subprocess.run([executable(), "-v", "error", "-f", "lavfi", "-i", "testsrc2=size=96x72:rate=30",
+                            "-frames:v", "31", "-c:v", "libx264", str(source)], check=True)
+            normalized = browser_video(source)
+            self.assertEqual(self.frame_count(normalized), 31)
+            output = join_videos(path, {"S": [normalized, normalized]})
+            self.assertEqual(self.frame_count(path / output["S"]), 62)
 
 
 if __name__ == "__main__":
