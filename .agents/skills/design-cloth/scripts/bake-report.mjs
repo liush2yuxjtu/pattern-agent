@@ -12,6 +12,7 @@ const kinds = [
   ['folds', '褶皱与折角'],
 ];
 const formats = { png:'image/png', jpeg:'image/jpeg', webp:'image/webp' };
+const followUpTitle = '分诊与下一步复测';
 const text = (v) => typeof v === 'string' && v.trim() !== '';
 const object = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const escape = (v) => String(v).replace(/[&<>"']/g, (c) =>
@@ -46,6 +47,9 @@ async function preflight(input, root, sharp) {
   if (!object(input)) throw new Error('图片清单必须是 JSON 对象。');
   for (const field of ['title','revision','size']) {
     if (!text(input[field])) errors.push('缺少 '+field+'（报告标题、工程版次或尺码）');
+  }
+  if (!Array.isArray(input.nextSteps) || !input.nextSteps.length || !input.nextSteps.every(text)) {
+    errors.push('nextSteps 须列出按优先级安排的复测动作，或说明本轮结案依据。');
   }
   const postures = Array.isArray(input.postures) ? input.postures : [];
   if (postures.length !== 4) errors.push('需要 4 个约定姿势，当前 '+postures.length+' 个。');
@@ -86,9 +90,10 @@ async function preflight(input, root, sharp) {
   return inspected;
 }
 
-function list(items, title, tag) {
+function list(items, title, tag, id = '') {
   const body = Array.isArray(items) ? items.filter(text).map((v) => '<li>'+escape(v)+'</li>').join('\n') : '';
-  return body ? '<section><h2>'+title+'</h2><'+tag+'>'+body+'</'+tag+'></section>\n' : '';
+  const anchor = id ? ' id="'+id+'"' : '';
+  return body ? '<section'+anchor+'><h2>'+title+'</h2><'+tag+'>'+body+'</'+tag+'></section>\n' : '';
 }
 
 function readTables(tables) {
@@ -110,6 +115,7 @@ const markdownText = (value) => escape(String(value).replace(/\s+/g, ' ').trim()
   .replace(/[\\\`*_{}\[\]()#+.!|~-]/g, '\\$&');
 
 function renderMarkdown(input, postures, tables, output) {
+  const outputDirectory = realpathSync(dirname(output));
   const lines = ['# '+markdownText(input.title), '', '尺码 '+markdownText(input.size)
     +' · 工程版次 '+markdownText(input.revision), ''];
   function items(title, values, marker) {
@@ -123,7 +129,7 @@ function renderMarkdown(input, postures, tables, output) {
   for (const {label,figures} of postures) {
     lines.push('### '+markdownText(label),'');
     for (const {title,caption,picture} of figures) {
-      const path = relative(dirname(output),picture.file).split(sep).map((part) =>
+      const path = relative(outputDirectory,picture.file).split(sep).map((part) =>
         encodeURIComponent(part).replace(/[()]/g, (char) => char === '(' ? '%28' : '%29')).join('/');
       lines.push('#### '+title,'','!['+markdownText(caption)+']('+path+')','',
         markdownText(caption),'');
@@ -137,7 +143,7 @@ function renderMarkdown(input, postures, tables, output) {
         '| '+headers.map(() => '---').join(' | ')+' |',...rows.map(row),'');
     }
   }
-  items('结论与复测标准',input.nextSteps,(i) => (i+1)+'. ');
+  items(followUpTitle,input.nextSteps,(i) => (i+1)+'. ');
   return lines.join('\n');
 }
 
@@ -156,9 +162,9 @@ function renderHtml(input, postures, tables) {
     + '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src data:; style-src \'unsafe-inline\'; base-uri \'none\'">'
     + '<title>'+escape(input.title)+'</title>'
     + '<style>body{max-width:58rem;margin:auto;padding:1.25rem;color:#192532;background:white;font:17px/1.6 system-ui,sans-serif;overflow-wrap:anywhere}h1,h2,h3{line-height:1.25}section{margin-top:1.6rem}figure{margin:1.5rem 0}img{display:block;max-width:100%;height:auto;margin:auto}figcaption{margin:.5em 0;color:#45566b}@media(max-width:480px){body{padding:.8rem;font-size:16px}h1{font-size:1.65em}}</style></head><body>'
-    + '<h1>'+escape(input.title)+'</h1><p>尺码 '+escape(input.size)+' · 工程版次 '+escape(input.revision)+'</p>\n'
+    + '<main><h1>'+escape(input.title)+'</h1><p>尺码 '+escape(input.size)+' · 工程版次 '+escape(input.revision)+'</p>\n'
     + list(input.findings,'主要发现','ul')+contents+'\n'+summaries
-    +list(input.nextSteps,'结论与复测标准','ol')+'</body></html>\n';
+    +list(input.nextSteps,followUpTitle,'ol','follow-up')+'</main></body></html>\n';
 }
 
 async function main(args) {

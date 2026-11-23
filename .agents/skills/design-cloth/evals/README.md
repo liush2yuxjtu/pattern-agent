@@ -1,5 +1,19 @@
 # Design Cloth 功能复测
 
+## 试穿与复验报告
+
+评测直接读取交付文件。Markdown 和 HTML 都须以唯一、可见的「分诊与下一步复测」章节收尾，正文包括具体待办或有依据的结案。评测会拒绝附录在后、标题藏在引用或隐藏块内、只有占位符或链接等情形。用例 39、40 再核查固定编号、修复与补证顺序、复测门槛、放行依赖，以及已结案的验收范围。
+
+在技能目录使用 Python 3.10+，在当前 Python 环境安装 `markdown-it-py==4.0.0`。报告导出测试另需 Node 和 `sharp`，可以把 `DESIGN_CLOTH_SHARP` 指向已有的 `node_modules/sharp`。配对实跑需要已登录的 Codex CLI，`--baseline` 指向含 `SKILL.md` 和 `references/` 的旧版技能目录。
+
+```sh
+python3 evals/check-report-follow-up.py /path/to/review.md /path/to/review.html
+python3 evals/test-report-follow-up.py -v
+python3 evals/run-report-evals.py /path/to/new-eval-run --baseline /path/to/old-skill
+```
+
+脚本逐文件返回通过或失败，配对运行保存原始报告、逐项评分和模型事件。用例的读数来自文字夹具。脚本核对尾节结构和用例指定要素，交付前另核对每项证据、实际执行人、通过条件与真实验收状态。HTML 可见性检查覆盖常见隐藏标记、内联隐藏样式和折叠内容。预览时再确认实际样式及图片加载。
+
 ## 用户交接
 
 使用已登录的 Codex CLI，在技能目录运行。输出目录由脚本新建。

@@ -414,3 +414,26 @@ For the browser check, make `playwright-core` available to Node and set
 script opens a loopback server, exercises both evaluation pages and closes the
 server and browser. After the site deploys, pass its `design-cloth/` URL as
 the first argument to repeat the interaction and verify both served hashes.
+
+### Design Cloth report triage
+
+Use Python 3.10+ with `markdown-it-py`, Node with `sharp`, and the authenticated
+Codex CLI. Keep a copy of the base skill before changing report instructions.
+
+```sh
+skill=.agents/skills/design-cloth
+python3 "$skill/evals/test-report-follow-up.py" -v
+python3 "$skill/evals/run-report-evals.py" work/report-evals --baseline /path/to/base-skill
+python3 "$skill/evals/check-report-follow-up.py" /path/to/report.md /path/to/report.html
+```
+
+Review the saved reports and grader evidence for cases 39 and 40. Read closing
+actions against the fixture, including issue IDs, retest criteria, release
+dependencies and the evidence for scoped closure. Also read final delivery
+files through the public checker. Render an actual `bake-report.mjs` HTML export
+in Chromium with the network offline. Inspect the visible closing section and
+decode all 20 images. For Markdown, confirm the emitted relative paths still
+resolve after moving the report with its images. Keep local reports and input
+assets outside the repository. Record the scope and exact candidate under
+`docs/verification/`. The verdict covers delivery and triage evidence.
+The first run is recorded in [the report triage receipt](../../../../docs/verification/design-cloth-report-triage-20261123.md).
