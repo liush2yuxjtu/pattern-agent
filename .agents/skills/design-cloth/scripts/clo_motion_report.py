@@ -40,22 +40,26 @@ def card(folder, frame, request, reference, api):
 
     titles = {"pressure": "试身压力", "stress": "应力", "strain": "应变",
               "appearance": "试穿效果与设计稿", "fold": "褶皱折角"}
-    sheet = Image.new("RGB", (1584, 1008), "#132028")
+    number = frame["index"]
+    maps = frame.get("maps", {})
+    points = {key: api["evidence_path"](folder, panel.get("point_image"))
+              for key, panel in maps.items() if panel.get("frame") == number and panel.get("point_image")}
+    proof_height = 50 if any(points.values()) else 0
+    sheet = Image.new("RGB", (1584, 1008 + proof_height), "#132028")
     draw = ImageDraw.Draw(sheet)
     fonts = ("/System/Library/Fonts/Hiragino Sans GB.ttc",
              "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc")
     font_path = next((path for path in fonts if Path(path).exists()), "DejaVuSans.ttf")
     regular = ImageFont.truetype(font_path, 24)
     small = ImageFont.truetype(font_path, 18)
-    number = frame["index"]
     source = frame.get("seconds")
     time = f"{source:.2f}s" if api["finite"](source) else "待补"
     native = frame.get("native_frame", number)
     draw.text((20, 15), f"{request['size']} / {request['label']} / 动作帧 {number} / CLO 帧 {native} / {time}",
               font=regular, fill="white")
     for index, (key, label) in enumerate(titles.items()):
-        x, y = 20 + (index % 3) * 520, 62 + (index // 3) * 465
-        panel = frame.get("maps", {}).get(key, {})
+        x, y = 20 + (index % 3) * 520, 62 + (index // 3) * (465 + proof_height)
+        panel = maps.get(key, {})
         path = api["evidence_path"](folder, panel.get("image")) if panel.get("frame") == number else None
         draw.text((x, y), label, font=regular, fill="white")
         value = panel.get("value")
@@ -82,7 +86,18 @@ def card(folder, frame, request, reference, api):
                                        top + (height - tile.height) // 2))
             except OSError:
                 draw.text((left + 8, top + 8), "图像待补证", font=small, fill="#ffd5a4")
-        draw.text((x, y + 426), f"{notes} · {source_label}", font=small, fill="#cfdee2")
+        caption = f"{notes} · {source_label}"
+        point = points.get(key)
+        if point:
+            try:
+                with Image.open(point) as picture:
+                    proof = ImageOps.contain(picture.convert("RGB"), (186, 62))
+                sheet.paste(proof, (x + 310, y + 422))
+                label = "同帧应变增量" if key == "strain" else "同帧复读"
+                caption = f"{label} {notes}\n{source_label}"
+            except OSError:
+                pass
+        draw.multiline_text((x, y + 426), caption, font=small, fill="#cfdee2", spacing=3)
     path = folder / f"frame-{number:06}.jpg"
     sheet.save(path, quality=92)
     return path
