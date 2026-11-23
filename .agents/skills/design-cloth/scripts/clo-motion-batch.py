@@ -22,6 +22,7 @@ UNITS = {"pressure": "kPa", "stress": "kPa", "strain": "%", "fold": "deg"}
 SIZE_MOTION_OVERRIDES = {
     "warmup_frames", "native_simulation_quality",
     "native_simulation_substeps", "native_self_collision_iterations",
+    "native_particle_distance_mm",
 }
 HERE = Path(__file__).resolve().parent
 
@@ -82,6 +83,10 @@ def validate_motion_checks(checks, frames):
     iterations = checks.get("native_self_collision_iterations", 1)
     if type(iterations) is not int or iterations < 1:
         raise ValueError("CLO 自碰撞迭代次数必须为正整数")
+    if "native_particle_distance_mm" in checks:
+        distance = checks["native_particle_distance_mm"]
+        if not finite(distance) or distance <= 0:
+            raise ValueError("CLO 粒子间距必须为有限正数（mm）")
     warmup = checks.get("warmup_frames", 0)
     if type(warmup) is not int or warmup < 0:
         raise ValueError("预热帧数必须为非负整数")

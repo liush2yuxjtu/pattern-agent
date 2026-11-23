@@ -34,6 +34,16 @@ def configure_simulation(checks):
             require(callable(apply_setting), f"此 CLO 版本缺少 {setter}")
             apply_setting(checks[key])
             applied[key] = checks[key]
+    if "native_particle_distance_mm" in checks:
+        distance = checks["native_particle_distance_mm"]
+        setter = getattr(pattern_api, "SetParticleDistanceOfPatterns", None)
+        getter = getattr(pattern_api, "GetParticleDistanceOfPattern", None)
+        require(callable(setter) and callable(getter), "此 CLO 版本缺少粒子间距设置或回读 API")
+        setter(distance)
+        actual = [getter(index) for index in range(pattern_api.GetPatternCount())]
+        require(actual and all(abs(value - distance) < .01 for value in actual),
+                f"CLO 裁片粒子间距回读与设定的 {distance} mm 不一致：{actual}")
+        applied["particle_distance_mm"] = actual
     return applied
 
 
