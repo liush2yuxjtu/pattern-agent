@@ -44,6 +44,18 @@ def configure_simulation(checks):
         require(actual and all(abs(value - distance) < .01 for value in actual),
                 f"CLO 裁片粒子间距回读与设定的 {distance} mm 不一致：{actual}")
         applied["particle_distance_mm"] = actual
+    if "native_avatar_skin_offset_mm" in checks:
+        offset = checks["native_avatar_skin_offset_mm"]
+        setter = getattr(utility_api, "SetAvatarProperties", None)
+        getter = getattr(utility_api, "GetAvatarProperties", None)
+        require(callable(setter) and callable(getter), "此 CLO 版本缺少人台皮肤偏移设置或回读 API")
+        before = float(getter(0)["SkinOffsetMM"])
+        setter(0, {"SkinOffsetMM": f"{offset:.6f}"})
+        actual = float(getter(0)["SkinOffsetMM"])
+        require(abs(actual - offset) < .01,
+                f"CLO 人台皮肤偏移回读为 {actual} mm，与设定的 {offset} mm 不一致")
+        applied["avatar_skin_offset_before_mm"] = before
+        applied["avatar_skin_offset_mm"] = actual
     return applied
 
 

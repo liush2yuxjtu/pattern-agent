@@ -70,7 +70,8 @@ class MotionEvidenceTest(unittest.TestCase):
         before, _ = batch.inputs(config, self.path, "L", "01")
         motion["checks_by_size"] = {"XL": {"warmup_frames": 162, "native_simulation_substeps": 4,
                                             "native_self_collision_iterations": 5,
-                                            "native_particle_distance_mm": 8}}
+                                            "native_particle_distance_mm": 8,
+                                            "native_avatar_skin_offset_mm": 2}}
         setup = self.path / "batch.json"
         batch.save(setup, config)
         accepted = batch.read_config(setup)
@@ -81,11 +82,17 @@ class MotionEvidenceTest(unittest.TestCase):
         self.assertEqual(xl["motion_checks"]["warmup_frames"], 162)
         self.assertEqual(xl["motion_checks"]["native_simulation_substeps"], 4)
         self.assertEqual(xl["motion_checks"]["native_particle_distance_mm"], 8)
+        self.assertEqual(xl["motion_checks"]["native_avatar_skin_offset_mm"], 2)
         motion["checks_by_size"]["XL"]["native_particle_distance_mm"] = 0
         batch.save(setup, config)
         with self.assertRaisesRegex(ValueError, "粒子间距"):
             batch.read_config(setup)
         motion["checks_by_size"]["XL"]["native_particle_distance_mm"] = 8
+        motion["checks_by_size"]["XL"]["native_avatar_skin_offset_mm"] = -1
+        batch.save(setup, config)
+        with self.assertRaisesRegex(ValueError, "人台皮肤偏移"):
+            batch.read_config(setup)
+        motion["checks_by_size"]["XL"]["native_avatar_skin_offset_mm"] = 2
         motion["checks_by_size"]["XL"]["source_frames"] = 60
         batch.save(setup, config)
         with self.assertRaisesRegex(ValueError, "逐尺码只可调整"):

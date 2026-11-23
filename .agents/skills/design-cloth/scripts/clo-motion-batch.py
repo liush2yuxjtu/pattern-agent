@@ -22,7 +22,7 @@ UNITS = {"pressure": "kPa", "stress": "kPa", "strain": "%", "fold": "deg"}
 SIZE_MOTION_OVERRIDES = {
     "warmup_frames", "native_simulation_quality",
     "native_simulation_substeps", "native_self_collision_iterations",
-    "native_particle_distance_mm",
+    "native_particle_distance_mm", "native_avatar_skin_offset_mm",
 }
 HERE = Path(__file__).resolve().parent
 
@@ -87,6 +87,10 @@ def validate_motion_checks(checks, frames):
         distance = checks["native_particle_distance_mm"]
         if not finite(distance) or distance <= 0:
             raise ValueError("CLO 粒子间距必须为有限正数（mm）")
+    if "native_avatar_skin_offset_mm" in checks:
+        offset = checks["native_avatar_skin_offset_mm"]
+        if not finite(offset) or offset < 0:
+            raise ValueError("CLO 人台皮肤偏移必须为有限非负数（mm）")
     warmup = checks.get("warmup_frames", 0)
     if type(warmup) is not int or warmup < 0:
         raise ValueError("预热帧数必须为非负整数")

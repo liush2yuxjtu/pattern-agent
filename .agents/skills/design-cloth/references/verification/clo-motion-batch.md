@@ -24,7 +24,7 @@ blender --background --factory-startup --python-exit-code 3 \
 
 逐尺码的动作文件填在 `motions.<动作>.fbx_by_size`。`sizes.<尺码>.checks.fbx_scale` 以 CLO 导入后回读的人台网格为准，工程缝组数可填 `seam_group_count`。包含人台修正形变动画时设置 `fbx_blend_shapes: true`。`motions.<动作>.checks.warmup_frames` 对应原生录制开头的预热段，动作帧号与导出视频从预热结束后开始计数。
 
-同一动作的某个尺码需要更多预热或更细的求解时，在 `motions.<动作>.checks_by_size.<尺码>` 覆盖 `warmup_frames`、`native_simulation_quality`、`native_simulation_substeps`、`native_self_collision_iterations` 或 `native_particle_distance_mm`。设置粒子间距后，录制前逐片回读，单位为毫米。原动作帧数、抽查帧、帧率和验收阈值继续由共同配置确定。有效设置随该组合的输入指纹保存。 [CLO Python API](https://developer.clo3d.com/list.html)
+同一动作的某个尺码需要更多预热或更细的求解时，在 `motions.<动作>.checks_by_size.<尺码>` 覆盖 `warmup_frames`、`native_simulation_quality`、`native_simulation_substeps`、`native_self_collision_iterations`、`native_particle_distance_mm` 或 `native_avatar_skin_offset_mm`。录制前回读各裁片粒子间距以及人台实际皮肤偏移。两项均以毫米记录。皮肤偏移是 CLO 的碰撞设置，同帧实际人体和衣片网格仍用于独立穿插检查。原动作帧数、抽查帧、帧率和验收阈值继续由共同配置确定。有效设置随该组合的输入指纹保存。 [CLO Python API](https://developer.clo3d.com/list.html)
 
 `pieces_mm2` 取经独立核对的已保存 `.zprj` 的裁片面积。CLO 的曲线保存和重载会导致原始绘制面积出现微小差异。请分别保留纸样轮廓和已保存工程的回读记录。
 
