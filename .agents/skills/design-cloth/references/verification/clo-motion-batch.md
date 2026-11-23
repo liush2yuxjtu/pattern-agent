@@ -24,6 +24,8 @@ blender --background --factory-startup --python-exit-code 3 \
 
 逐尺码的动作文件填在 `motions.<动作>.fbx_by_size`。`sizes.<尺码>.checks.fbx_scale` 以 CLO 导入后回读的人台网格为准，工程缝组数可填 `seam_group_count`。包含人台修正形变动画时设置 `fbx_blend_shapes: true`。`motions.<动作>.checks.warmup_frames` 对应原生录制开头的预热段，动作帧号与导出视频从预热结束后开始计数。
 
+同一动作的某个尺码需要更多预热或更细的求解时，在 `motions.<动作>.checks_by_size.<尺码>` 覆盖 `warmup_frames`、`native_simulation_quality`、`native_simulation_substeps` 或 `native_self_collision_iterations`。原动作帧数、抽查帧、帧率和验收阈值继续由共同配置确定。有效设置随该组合的输入指纹保存。 [CLO Python API](https://developer.clo3d.com/list.html)
+
 `pieces_mm2` 取经独立核对的已保存 `.zprj` 的裁片面积。CLO 的曲线保存和重载会导致原始绘制面积出现微小差异。请分别保留纸样轮廓和已保存工程的回读记录。
 
 检查动态人台表面时，使用原生服装录制对应的 Avatar Cache Animation（Alembic）。2026.1.382 的 FBX 人台 OBJ 导出在试跑中重复输出结束帧的身体。用两个动作幅度明显不同的原生帧确认缓存确实随帧变化，再用同帧的数字网格核算穿插。

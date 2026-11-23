@@ -53,11 +53,36 @@ class MotionEvidenceTest(unittest.TestCase):
         self.assertEqual(self.result()["status"], "BLOCKED")
 
     def test_pressure_visual_only(self):
-        del self.receipt["frames"][1]["maps"]["pressure"]["value"]
-        result = self.result()
-        self.assertEqual(result["status"], "BLOCKED")
-        self.assertIn("1 帧缺少有效 pressure 读数", result["issues"])
-        self.assertTrue(result["frames"][1]["maps"]["pressure"]["image"])
+        pressure = self.receipt["frames"][1]["maps"]["pressure"]
+        del pressure["value"]
+        for invalid in (None, -0.01):
+            with self.subTest(value=invalid):
+                if invalid is not None:
+                    pressure["value"] = invalid
+                result = self.result()
+                self.assertEqual(result["status"], "BLOCKED")
+                self.assertIn("1 帧缺少有效 pressure 读数", result["issues"])
+                self.assertTrue(result["frames"][1]["maps"]["pressure"]["image"])
+
+    def test_size_recipe_preserves_original_timeline(self):
+        config = batch.load(batch.HERE / "clo-motion.example.json")
+        motion = config["motions"]["01"]
+        before, _ = batch.inputs(config, self.path, "L", "01")
+        motion["checks_by_size"] = {"XL": {"warmup_frames": 162, "native_simulation_substeps": 4,
+                                            "native_self_collision_iterations": 5}}
+        setup = self.path / "batch.json"
+        batch.save(setup, config)
+        accepted = batch.read_config(setup)
+        l, _ = batch.inputs(accepted, self.path, "L", "01")
+        xl, _ = batch.inputs(accepted, self.path, "XL", "01")
+        self.assertEqual(l["fingerprint"], before["fingerprint"])
+        self.assertEqual(xl["frames"], l["frames"])
+        self.assertEqual(xl["motion_checks"]["warmup_frames"], 162)
+        self.assertEqual(xl["motion_checks"]["native_simulation_substeps"], 4)
+        motion["checks_by_size"]["XL"]["source_frames"] = 60
+        batch.save(setup, config)
+        with self.assertRaisesRegex(ValueError, "逐尺码只可调整"):
+            batch.read_config(setup)
 
     def test_missing_map_mismatched_frame_and_truncated_track(self):
         self.receipt["frames"][1]["maps"]["stress"]["frame"] = 2

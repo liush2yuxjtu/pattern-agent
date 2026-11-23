@@ -20,6 +20,23 @@ def require(condition, message):
         raise RuntimeError(message)
 
 
+def configure_simulation(checks):
+    applied = {}
+    if "native_simulation_quality" in checks:
+        utility_api.SetSimulationQuality(*checks["native_simulation_quality"])
+        applied["simulation_quality"] = utility_api.GetSimulationQuality()
+    for key, setter in (
+        ("native_self_collision_iterations", "SetSimulationSelfCollisionIterationCount"),
+        ("native_simulation_substeps", "SetSimulationNumberOfSimulation"),
+    ):
+        if key in checks:
+            apply_setting = getattr(utility_api, setter, None)
+            require(callable(apply_setting), f"此 CLO 版本缺少 {setter}")
+            apply_setting(checks[key])
+            applied[key] = checks[key]
+    return applied
+
+
 def first_file(returned):
     if isinstance(returned, (tuple, list)):
         for item in returned:
@@ -149,9 +166,7 @@ def raw_capture(root, result, request, receipt):
     utility_api.SetCurrentAnimationFrame(first)
     utility_api.SetStartAnimationFrame(first)
     utility_api.SetEndAnimationFrame(last)
-    if "native_simulation_quality" in motion_checks:
-        utility_api.SetSimulationQuality(*motion_checks["native_simulation_quality"])
-        receipt["simulation_quality"] = utility_api.GetSimulationQuality()
+    receipt.update(configure_simulation(motion_checks))
     receipt["stage"] = "native_recording"
     write(result / "receipt.json", receipt)
     if hasattr(utility_api, "RunAnimationRecording"):

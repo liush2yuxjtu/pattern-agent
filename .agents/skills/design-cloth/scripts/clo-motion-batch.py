@@ -19,6 +19,10 @@ SIZES = ("S", "M", "L", "XL")
 MOTIONS = tuple(f"{number:02}" for number in range(1, 11))
 MAPS = ("pressure", "stress", "strain", "appearance", "fold")
 UNITS = {"pressure": "kPa", "stress": "kPa", "strain": "%", "fold": "deg"}
+SIZE_MOTION_OVERRIDES = {
+    "warmup_frames", "native_simulation_quality",
+    "native_simulation_substeps", "native_self_collision_iterations",
+}
 HERE = Path(__file__).resolve().parent
 
 
@@ -63,6 +67,30 @@ def finite(number):
     return type(number) in (float, int) and math.isfinite(number)
 
 
+def motion_checks(motion, size):
+    return {**motion["checks"], **motion.get("checks_by_size", {}).get(size, {})}
+
+
+def validate_motion_checks(checks, frames):
+    quality = checks.get("native_simulation_quality")
+    if quality is not None and (not isinstance(quality, list) or len(quality) != 2
+                                 or any(type(value) is not int or value < 0 for value in quality)):
+        raise ValueError("CLO 模拟质量需要两个非负整数")
+    substeps = checks.get("native_simulation_substeps", 1)
+    if type(substeps) is not int or not 1 <= substeps <= 50:
+        raise ValueError("CLO 模拟子步数必须是 1 到 50 之间的整数")
+    iterations = checks.get("native_self_collision_iterations", 1)
+    if type(iterations) is not int or iterations < 1:
+        raise ValueError("CLO 自碰撞迭代次数必须为正整数")
+    warmup = checks.get("warmup_frames", 0)
+    if type(warmup) is not int or warmup < 0:
+        raise ValueError("预热帧数必须为非负整数")
+    source_frames = checks.get("source_frames")
+    if source_frames is not None and (type(source_frames) is not int
+                                      or source_frames < 2 or frames[-1] >= source_frames):
+        raise ValueError("抽查帧必须处在源动作范围内")
+
+
 def read_config(path):
     config = load(path)
     if set(config["sizes"]) != set(SIZES) or set(config["motions"]) != set(MOTIONS):
@@ -82,18 +110,14 @@ def read_config(path):
             raise ValueError("抽查帧必须是从 0 开始的有序唯一整数")
         if motion.get("fbx_by_size") and set(motion["fbx_by_size"]) != set(SIZES):
             raise ValueError("按尺码指定 FBX 时需要提供全部四码")
-        checks = motion["checks"]
-        quality = checks.get("native_simulation_quality")
-        if quality is not None and (not isinstance(quality, list) or len(quality) != 2
-                                     or any(type(value) is not int or value < 0 for value in quality)):
-            raise ValueError("CLO 模拟质量需要两个非负整数")
-        warmup = checks.get("warmup_frames", 0)
-        if type(warmup) is not int or warmup < 0:
-            raise ValueError("预热帧数必须为非负整数")
-        source_frames = checks.get("source_frames")
-        if source_frames is not None and (type(source_frames) is not int
-                                          or source_frames < 2 or frames[-1] >= source_frames):
-            raise ValueError("抽查帧必须处在源动作范围内")
+        validate_motion_checks(motion["checks"], frames)
+        overrides = motion.get("checks_by_size", {})
+        if not isinstance(overrides, dict) or set(overrides) - set(SIZES):
+            raise ValueError("按尺码覆盖动作设置时只允许 S、M、L、XL")
+        for size, options in overrides.items():
+            if not isinstance(options, dict) or set(options) - SIZE_MOTION_OVERRIDES:
+                raise ValueError("逐尺码只可调整预热与 CLO 模拟设置")
+            validate_motion_checks(motion_checks(motion, size), frames)
     for size in config["sizes"].values():
         scale = size["checks"].get("fbx_scale", 1.0)
         if not finite(scale) or scale <= 0:
@@ -117,7 +141,7 @@ def inputs(config, root, size, motion):
         "worker_code": {name: digest(HERE / name) for name in ("clo_motion_native.py", "clo-motion-guest.sh")},
         "clo_version": config["boat"]["clo_version"],
         "native_record_timeout_seconds": config["boat"]["timeout_seconds"] - 30, "project_checks": size_config["checks"],
-        "motion_checks": motion_config["checks"],
+        "motion_checks": motion_checks(motion_config, size),
     }
     request["fingerprint"] = hashlib.sha256(
         json.dumps(request, sort_keys=True, ensure_ascii=False).encode()
@@ -198,7 +222,8 @@ def review(folder, request):
             if key in UNITS:
                 value = panel.get("value")
                 expected_source = "CLO mesh dihedral" if key == "fold" else "CLO native"
-                if panel.get("source") != expected_source or panel.get("unit") != UNITS[key] or not finite(value):
+                if (panel.get("source") != expected_source or panel.get("unit") != UNITS[key]
+                        or not finite(value) or (key == "pressure" and value < 0)):
                     issues.append(f"{index} 帧缺少有效 {key} 读数")
                 elif value > request["thresholds"][key]:
                     failures.append(f"{index} 帧 {key}={value} {UNITS[key]}")
