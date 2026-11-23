@@ -38,4 +38,6 @@ blender --background --factory-startup --python-exit-code 3 \
 
 有同帧点测截图时，可在该图层记录 `point_image` 相对路径，审查卡把原生点测截图排在统计值旁。色图保留采集时的光标。应变截图显示 CLO 原始百分比，统计显示相对 100% 的应变增量。
 
+应变的 `legend_image` 可指向原生色标截图，`legend_note` 可记录现场读回的显示范围。修改应变显示范围后，使用对应的原生截图更新说明。 [CLO 应变图设置](https://support.clo3d.com/hc/en-us/articles/56500755006617--Fit-Map-Strain-Map)
+
 原生采集尝试读取 CLO 的动画时间轴、录制和保存工程、逐帧导出网格及外观图。需要同时核对 CLO 实际支持的拟合图采集和数值导出能力。数据缺失或只取得截图时，定量判定保留为待补证。

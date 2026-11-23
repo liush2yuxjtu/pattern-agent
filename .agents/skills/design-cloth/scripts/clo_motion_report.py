@@ -98,6 +98,19 @@ def card(folder, frame, request, reference, api):
             except OSError:
                 pass
         draw.multiline_text((x, y + 426), caption, font=small, fill="#cfdee2", spacing=3)
+
+    strain = maps.get("strain", {})
+    legend = api["evidence_path"](folder, strain.get("legend_image")) if strain.get("frame") == number else None
+    if legend:
+        x, y = 1060, 527 + proof_height
+        try:
+            with Image.open(legend) as picture:
+                tile = ImageOps.contain(picture.convert("RGB"), (315, 320))
+            draw.text((x, y), "应变色标", font=regular, fill="white")
+            sheet.paste(tile, (x, y + 35))
+            draw.text((x, y + 366), strain.get("legend_note", "CLO 原生色标"), font=small, fill="#cfdee2")
+        except OSError:
+            pass
     path = folder / f"frame-{number:06}.jpg"
     sheet.save(path, quality=92)
     return path
