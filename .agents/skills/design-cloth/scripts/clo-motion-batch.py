@@ -150,6 +150,13 @@ def review(folder, request):
         index = frame.get("index")
         if not finite(frame.get("seconds")) or frame["seconds"] < 0:
             issues.append(f"{index} 帧无有效视频时间")
+        stress = frame.get("maps", {}).get("stress", {})
+        strain = frame.get("maps", {}).get("strain", {})
+        stress_image = evidence_path(folder, stress.get("image"))
+        strain_image = evidence_path(folder, strain.get("image"))
+        if stress_image and strain_image:
+            if digest(stress_image) == digest(strain_image):
+                issues.append(f"{index} 帧应力和应变图内容相同，需要核实原生图层")
         for key in MAPS:
             panel = frame.get("maps", {}).get(key, {})
             if panel.get("frame") != index or not decodable_image(evidence_path(folder, panel.get("image"))):

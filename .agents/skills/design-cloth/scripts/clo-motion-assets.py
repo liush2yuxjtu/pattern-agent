@@ -16,6 +16,9 @@ import bpy
 import numpy as np
 from mathutils import Matrix, Vector
 
+# Style3D V4 stores this source rig in centimetres. Blender uses metres.
+SOURCE_UNIT_METRES = 0.01
+
 
 def world(bones, frame):
     positions, rotations = fk(bones, frame)
@@ -23,7 +26,7 @@ def world(bones, frame):
     matrices = []
     for position, rotation in zip(positions, rotations):
         transform = Matrix(rotation).to_4x4()
-        transform.translation = Vector(position) * 0.001
+        transform.translation = Vector(position) * SOURCE_UNIT_METRES
         matrices.append(to_blender @ transform @ to_blender.inverted())
     return matrices
 
@@ -94,7 +97,7 @@ def skin(path, armature, names, rest):
             rest_point = Vector((0.0, 0.0, 0.0))
             combined = {}
             for weight, joint, cluster in zip(weights, joints.ravel(), clusters.ravel()):
-                local = Vector((inverse[cluster] @ np.r_[point, 1.0])[:3]) * 0.001
+                local = Vector((inverse[cluster] @ np.r_[point, 1.0])[:3]) * SOURCE_UNIT_METRES
                 rest_point += (rest[joint] @ (to_blender.to_3x3() @ local)) * float(weight)
                 combined[joint] = combined.get(joint, 0.0) + float(weight)
             positions.append(rest_point)
@@ -130,6 +133,8 @@ def export(bones, path, output, fps, avatar):
     skin(avatar, obj, names, rest)
     scene = bpy.context.scene
     scene.render.fps = fps
+    scene.unit_settings.system = "METRIC"
+    scene.unit_settings.scale_length = 1.0
     scene.frame_start, scene.frame_end = 0, len(frames) - 1
     previous = {}
     for index, frame in enumerate(frames):
@@ -171,11 +176,15 @@ def export(bones, path, output, fps, avatar):
         for name, point in zip(names, expected):
             actual = imported.matrix_world @ imported.pose.bones[name].matrix.translation
             errors.append((actual - Vector(point)).length)
+    source_height = max(point[2] for point in source_positions[0]) - min(point[2] for point in source_positions[0])
+    if not 1.2 < source_height < 2.3:
+        raise ValueError(f"V4 source rig height {source_height:.3f} m is outside the expected range")
     if max(errors) > 0.005:
         raise ValueError(f"FBX sampled joint readback drift {max(errors):.6f} m for {path.name}")
     return {"name": path.stem, "frames": len(frames), "fps": fps,
             "sanim_sha256": sha(sanim), "fbx_sha256": sha(fbx),
-            "source_sha256": sha(path), "fbx_max_sampled_joint_error_m": max(errors)}
+            "source_sha256": sha(path), "fbx_max_sampled_joint_error_m": max(errors),
+            "source_joint_height_m": source_height}
 
 
 def main():

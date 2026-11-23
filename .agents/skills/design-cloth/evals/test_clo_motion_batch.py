@@ -18,6 +18,7 @@ class MotionEvidenceTest(unittest.TestCase):
                         "thresholds": dict(pressure=1, stress=22, strain=60,
                                            fold=70, crossings=0, coverage=0)}
         Image.new("RGB", (64, 64), "blue").save(self.path / "map.png")
+        Image.new("RGB", (64, 64), "red").save(self.path / "strain.png")
         (self.path / "test.avi").touch()
         (self.path / "recorded.zprj").touch()
         self.receipt = {
@@ -32,6 +33,7 @@ class MotionEvidenceTest(unittest.TestCase):
         maps = {key: {"image": "map.png", "frame": index, "value": .5, "unit": unit,
                       "source": "CLO mesh dihedral" if key == "fold" else "CLO native"}
                 for key, unit in batch.UNITS.items()}
+        maps["strain"]["image"] = "strain.png"
         maps["appearance"] = {"image": "map.png", "frame": index,
                               "views": {"back": "map.png", "side": "map.png"}}
         return {"index": index, "seconds": index / 30, "maps": maps, "crossings": 0, "coverage": 0}
@@ -69,6 +71,12 @@ class MotionEvidenceTest(unittest.TestCase):
         self.assertEqual(result["status"], "BLOCKED")
         self.assertIn("缺少规定抽查帧或末帧", result["issues"])
         self.assertIn("1 帧缺少或错配 pressure 图", result["issues"])
+
+    def test_identical_fit_maps_block(self):
+        self.receipt["frames"][1]["maps"]["strain"]["image"] = "map.png"
+        result = self.result()
+        self.assertEqual(result["status"], "BLOCKED")
+        self.assertIn("1 帧应力和应变图内容相同，需要核实原生图层", result["issues"])
 
     def test_path_traversal(self):
         self.assertIsNone(batch.evidence_path(self.path, "../another-run.png"))

@@ -38,7 +38,9 @@ def capture_views(result, folder, frame):
     if std_view:
         views = {}
         for name, view in (("front", 2), ("back", 8), ("side", 4)):
-            image = first_file(std_view(view, str(folder / f"{name}.png"), 0, 960, 960, True))
+            target = folder / f"{name}.png"
+            reported = std_view(view, str(target), 0, 960, 960, True)
+            image = first_file(str(target)) or first_file(reported)
             if image and image.is_relative_to(result):
                 views[name] = image.relative_to(result).as_posix()
         if "front" in views:
@@ -69,14 +71,18 @@ def raw_capture(root, result, request, receipt):
     )
     require(all(callable(getattr(utility_api, method, None)) for method in required),
             "此 CLO 版本缺少 Python 动作录制或时间轴 API")
+    motion = root / "motion.mtn"
+    direct_avatar_verified = request["project_checks"].get("use_fbx_avatar") is True
     seed = str(root / "seed.zprj")
     if hasattr(import_api, "ImportZprj") and hasattr(ApiTypes, "ImportZPRJOption"):
         project_options = ApiTypes.ImportZPRJOption()
         project_options.bAppend = False
         project_options.bLoadGarment = True
-        project_options.bLoadAvatar = True
+        project_options.bLoadAvatar = motion.is_file() or not direct_avatar_verified
         require(import_api.ImportZprj(seed, project_options), "CLO 未打开起始工程")
     else:
+        require(not direct_avatar_verified or motion.is_file(),
+                "此版本不能无原人台读入 .zprj，直接 FBX 会加入第二个人台")
         require(import_api.ImportFile(seed), "CLO 未打开起始工程")
     count = pattern_api.GetPatternCount()
     pieces = [{"name": pattern_api.GetPatternPieceName(index),
@@ -95,7 +101,6 @@ def raw_capture(root, result, request, receipt):
 
     receipt["stage"] = "project_readback"
     write(result / "receipt.json", receipt)
-    motion = root / "motion.mtn"
     if motion.is_file():
         require(import_api.ImportFile(str(motion)), "CLO 未导入 MTN")
     else:
@@ -106,6 +111,8 @@ def raw_capture(root, result, request, receipt):
             options.bCreateAnimation = True
         else:
             raise RuntimeError("此 CLO 版本未提供 FBX 关节动画导入选项")
+        require(direct_avatar_verified,
+                "需要同一尺码的已验证 FBX 人台，或用于原人台的 CLO MTN 动作")
         options.bAdd = True
         options.bMoveGarment = True
         require(import_api.ImportFBX(str(root / "motion.fbx"), options), "CLO 未导入 FBX 动作")
@@ -152,7 +159,8 @@ def raw_capture(root, result, request, receipt):
     options.axisX, options.axisY, options.axisZ = 0, 1, 2
     for index in sorted({*request["frames"], last - first}):
         require(index <= last - first, f"抽查帧 {index} 超出 CLO 原生时间轴")
-        utility_api.SetCurrentAnimationFrame(first + index)
+        move = getattr(utility_api, "MoveAnimationFrame", utility_api.SetCurrentAnimationFrame)
+        move(first + index)
         utility_api.Refresh3DWindow()
         require(round(utility_api.GetCurrentAnimationFrame()) == first + index,
                 f"CLO 时间轴无法定位到 {index}")

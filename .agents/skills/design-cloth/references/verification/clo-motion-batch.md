@@ -20,7 +20,7 @@ blender --background --factory-startup --python-exit-code 3 \
   --out /path/to/motions /path/to/ordered-motion-files/*.sanim
 ```
 
-转换以同一动作变换和皮肤绑定为输入。检查 Style3D 每帧读回与源一致、Blender 导入的 FBX 关节位置和网格，并从 `motions.json` 查看帧数、帧率及误差。CLO 中导入 FBX、读取实际时间轴和关节位置，再核对姿态峰值、行进轨迹和回位。已独立验证的 `.mtn` 也可在动作配置填写。FBX 离线读回与原生 CLO 导入是两项独立验证。
+转换以同一动作变换和皮肤绑定为输入。检查 Style3D 每帧读回与源一致、Blender 导入的 FBX 关节位置和网格，并从 `motions.json` 查看帧数、帧率及误差。CLO 中导入 FBX、读取实际时间轴和关节位置，再核对姿态峰值、行进轨迹和回位。已独立验证的 `.mtn` 在动作配置填写，保留工程内的尺码人台。直接使用 FBX 人台时，先核对同一尺码及着装对齐，再在该尺码的 `checks` 中设置 `use_fbx_avatar: true`，读取工程时只载入服装。FBX 离线读回与原生 CLO 导入是两项独立验证。
 
 ## 审查
 
