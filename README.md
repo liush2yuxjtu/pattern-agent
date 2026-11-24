@@ -6,6 +6,8 @@
 
 ![Pattern Agent 工作流示意：输入设计意图、DXF 或工程，经可用工具生成同版产物，再核查证据；不是仿真录像](docs/assets/readme/workflow.svg)
 
+[查看原尺寸流程示意](docs/assets/readme/workflow.svg) · 文本流：输入设计意图 / DXF / 工程 → `design-cloth` 选择真实可用工具 → 保留同版产物 → `verify-finish` 汇总证据验收（非运行回执）。
+
 > **研究边界**：数字几何、软件交互、仿真与实物合身分别判定。历史 T-shirt 仍为 **FAIL**：最大缝隙 **7.6455 mm（阈值 2 mm）**、**20 处非相邻面相交（阈值 0）**；实物试穿 **NOT_RUN**。新案例不能覆盖旧失败。
 
 ## 先选一个任务
@@ -58,11 +60,35 @@ python3 .agents/skills/verify-sleeve-creases/scripts/inspect.py \
 | 环境 | 如何接入 | 前提与限制 |
 | --- | --- | --- |
 | Codex 项目技能 | 仓库内 `.agents/skills/`；显式请求 `$design-cloth` 或 `$verify-sleeve-creases` | 在仓库会话加载对应 SKILL.md；[袖片安装说明](.agents/skills/verify-sleeve-creases/INSTALL.md)。文件存在不证明原生自动触发 |
-| Claude 项目技能 | `.claude/skills/verify-sleeve-creases` 链接到 canonical 源 | 仅列实际存在的发现路径；`design-cloth` 不宣称有同名 Claude 链接；[路由评测限制](tools/skill_evals/README.md) |
+| Claude 项目技能 | `.claude/skills/` 链接 6 项 canonical 技能（含 `verify-sleeve-creases`、`garment-body-six-view`、`garmentcode-preview` 等） | 仅列实际存在的软链；`design-cloth` 无同名 Claude 链接；[路由评测限制](tools/skill_evals/README.md) |
 | 本地 Python CLI | 不依赖 Agent 客户端，按上方首次任务运行 | 可重测冻结样例；处理新网格需匹配的 geometry 输入 |
 | FreeSewing Brian | [网页 / 离线 HTML 与复现说明](tools/freesewing-brian/README.md) | 4.10.2；本地构建需 Node 24+，运行制版不等于合体验收 |
 | 原生 CLO 3D / CLO_RUST | [运行环境矩阵与插件入口](.agents/skills/design-cloth/references/runtime-support.md) | 原生 CLO 需授权安装与可用桥接；CLO_RUST 已存结果复核与新模拟须分开确认 |
 | Style3D | [接入记录](docs/style3d-integration.md) / [只读发现 CLI](tools/style3d/README.md) | 真实集成仍 **BLOCKED**；协议测试不证明原生模拟可用，需目标版本安装与账号登录 |
+
+<details>
+<summary>更多技能、.skill 包与 Codex 插件安装索引（按需展开）</summary>
+
+以下为仓库内已存在的技能源、可安装 `.skill` 包与 Codex 插件路径；**客户端安装与自动触发未在本轮实测**，原生 CLO / Boat 仍依赖对应授权环境。
+
+| 技能 / 插件 | 源码与安装入口 | 适用范围与前提 |
+| --- | --- | --- |
+| `garment-body-six-view` | [SKILL.md](.agents/skills/garment-body-six-view/SKILL.md) · [安装说明](.agents/skills/garment-body-six-view/INSTALL.md) · [`.skill` 包](skill-packages/garment-body-six-view.skill) | 六视图与 Human Studio 裸模拟合；有 `.claude/skills/` 软链；图像生成与 3D 资源由运行环境提供 |
+| `garmentcode-preview` | [SKILL.md](.agents/skills/garmentcode-preview/SKILL.md) · [复现说明](web/garmentcode-preview/README.md) · [`.skill` 包](web/garmentcode-preview/garmentcode-preview.skill) | GarmentCode 网格与三维下垂预览；有 `.claude/skills/` 软链；仿真需 Python 3.11 与上游 Warp 分支 |
+| `sew-pattern-to-3d` / `verify-seaming` | [sew-pattern-to-3d](.agents/skills/sew-pattern-to-3d/SKILL.md) · [verify-seaming](.agents/skills/verify-seaming/SKILL.md) | DXF 裁片缝合到 GLB 及独立接缝验收；均有 `.claude/skills/` 软链；自动构建仅支持 `fitted-tshirt-v1` |
+| `verify-sleeve-creases` 打包版 | [`.skill` 包](skill-packages/verify-sleeve-creases.skill) · [安装说明](.agents/skills/verify-sleeve-creases/INSTALL.md) | 解压后保留完整目录即可离线运行标准库 CLI；无需账号 |
+| `verify-finish` / `clo-*` 专项技能 | [verify-finish](.agents/skills/verify-finish/SKILL.md) · [clo-avatar-setup](.agents/skills/clo-avatar-setup/SKILL.md) · [clo-accessory-review](.agents/skills/clo-accessory-review/SKILL.md) · [clo-fit-export](.agents/skills/clo-fit-export/SKILL.md) | 配合 `design-cloth` 完成人台量体、辅件复核、GLB 折角导出与整衣验收 |
+| Codex 插件：`clo-local` / `clo-rust-boat` / `clo-fit` | [clo-local](plugins/clo-local/README.md) · [clo-rust-boat](plugins/clo-rust-boat/README.md) · [clo-fit](plugins/clo-fit/README.md) | 本机 CLO 或 Boat Linux 批处理；`clo-local` 与 `clo-fit` 技能重叠请二选一，`clo-rust-boat` 需已有授权原生程序 |
+
+文档记录的 Codex 插件安装命令（按需选装，非本轮实测）：
+
+```sh
+codex plugin marketplace add liush2yuxjtu/pattern-agent --ref main
+codex plugin add clo-local@pattern-agent
+# Boat Linux 批处理改用：codex plugin add clo-rust-boat@pattern-agent
+```
+
+</details>
 
 ## 给 Agent 的任务提示词
 
@@ -107,11 +133,11 @@ $verify-sleeve-creases
 
 [![GarmentCode 历史研究预览：实际网格、初始/仿真结果切换及下载入口；图中自穿透未通过，不代表当前整衣放行](web/garmentcode-preview/preview.png)](https://liush2yuxjtu.github.io/pattern-agent/garmentcode-preview/)
 
-这是仓库已有截图，不是本轮新录屏。它说明“纸样 → 网格 → 预览/下载”的产物关系；截图下方同时保留 **自穿透 2 处、人体穿透 0 处**，严格几何发布仍 **FAIL**，实物检查未运行。[源码、复现与结果边界](web/garmentcode-preview/README.md) · [打开可旋转预览](https://liush2yuxjtu.github.io/pattern-agent/garmentcode-preview/)
+这是仓库已有截图，不是本轮新录屏。它说明“纸样 → 网格 → 预览/下载”的产物关系；截图下方同时保留 **自穿透 2 处、人体穿透 0 处**，严格几何发布仍 **FAIL**，实物检查未运行。[查看原尺寸截图](web/garmentcode-preview/preview.png) · [源码、复现与结果边界](web/garmentcode-preview/README.md) · [打开可旋转预览](https://liush2yuxjtu.github.io/pattern-agent/garmentcode-preview/)
 
 ![真实二维纸样全版与袖口局部：橙虚线改前、蓝实线改后，直接复用原始矢量，U 非毫米，不表示合体改善](docs/assets/readme/pattern-comparison.svg)
 
-上图仅用原始矢量的全版与裁取视窗解释二维差异，没有变形或平滑。[原始 before/after SVG](web/pattern-library/editor/example-output/before-after.svg)供独立核对；两张图都为静态媒体，未提供 GIF/视频。
+上图仅用原始矢量的全版与裁取视窗解释二维差异，没有变形或平滑。[查看原尺寸对比图](docs/assets/readme/pattern-comparison.svg) · [原始 before/after SVG](web/pattern-library/editor/example-output/before-after.svg)供独立核对；两张图都为静态媒体，未提供 GIF/视频。
 
 ## FAQ · 只展开需要的细节
 
@@ -140,4 +166,4 @@ $verify-sleeve-creases
 
 - [完整历史 README](docs/readme-history.md)：保留旧入口、实验、阈值和失败，不将历史运行当作本轮重新验证。
 - [验证流程](.agents/skills/verify/SKILL.md) / [验证记录目录](docs/verification/)：按改动范围本地 `/verify`，不以 CI 代替验收。
-- [贡献说明](docs/contributing.md) · [真实提交贡献记录](https://github.com/liush2yuxjtu/pattern-agent/commits/main/) · [已有问题与反馈](https://github.com/liush2yuxjtu/pattern-agent/issues)。仓库维护按 [AGENTS.md](AGENTS.md) 的 main 工作流，不新建 PR/Issue 作为交付步骤。
+- [贡献说明](docs/contributing.md) · 维护者 [@liush2yuxjtu](https://github.com/liush2yuxjtu)（[main 提交记录](https://github.com/liush2yuxjtu/pattern-agent/commits/main/)，不虚构社区规模）· [已有问题与反馈](https://github.com/liush2yuxjtu/pattern-agent/issues)。仓库维护按 [AGENTS.md](AGENTS.md) 的 main 工作流，不新建 PR/Issue 作为交付步骤。
