@@ -1,345 +1,143 @@
 # Pattern Agent
 
-Runnable Blender garment experiments and independent geometry checks. This is a
-research repository; physical garment fit has not been verified.
+**面向服装研究者与编码 Agent 的纸样、人体编辑和独立几何核查工具集。** 从设计意图、DXF 或已有工程接手，用真实工具生成产物，再按同版证据复核；不是一键成衣系统。
 
-## Design Cloth：纸样到试穿验收
+[立即体验 Brian 纸样](https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/) · [本地首次任务](#本地首次任务无需账号) · [复制任务提示词](#给-agent-的任务提示词) · [研究与历史索引](docs/readme-history.md)
 
-从 [`design-cloth`](.agents/skills/design-cloth/SKILL.md) 进入同一条服装流程。可从设计意图、原型 DXF、FreeSewing JS、分码 DXF 或已有 CLO 工程开始。主流程按需调用人台、面料、缝合、仿真和辅件技能，由 [`verify-finish`](.agents/skills/verify-finish/SKILL.md) 验收证据并给出复测条件。
+![Pattern Agent 工作流示意：输入设计意图、DXF 或工程，经可用工具生成同版产物，再核查证据；不是仿真录像](docs/assets/readme/workflow.svg)
 
-[主流程](.agents/skills/design-cloth/references/workflows.md) · [本机 CLO、CLO_RUST MCP／CLI 与 Boat VM 支持矩阵](.agents/skills/design-cloth/references/runtime-support.md)
+> **研究边界**：数字几何、软件交互、仿真与实物合身分别判定。历史 T-shirt 仍为 **FAIL**：最大缝隙 **7.6455 mm（阈值 2 mm）**、**20 处非相邻面相交（阈值 0）**；实物试穿 **NOT_RUN**。新案例不能覆盖旧失败。
 
-仓库包含入口、验收、人台和通用辅件核查技能。本机原生仿真和 Boat 批处理分别使用 `clo-local` 和 `clo-rust-boat` 插件。FreeSewing 新设计、面料选择、线稿对照和 Carlton 工作台专项技能依各步骤在客户端安装或提供。
+## 先选一个任务
 
-## FreeSewing Brian：拖动尺寸，实时生成 SVG
+| 任务 | 入口与实际产物 | 状态 / 不能据此推断 |
+| --- | --- | --- |
+| 调整尺寸、看二维纸样 | [Brian 在线工具](https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/) → SVG 与输入 JSON；[输入契约](web/freesewing/brian/input-contract.json) | 可用的研究工具；原生 FreeSewing Brian 4.10.2，长度 mm / 肩斜 °，不提供布料仿真或工厂放码表 |
+| 调整人体与姿势 | [Human Studio](https://liush2yuxjtu.github.io/pattern-agent/human-studio/) → 状态文件、PNG、OBJ cm / GLB m；[源码与量测定义](web/human-studio/README.md) | 可用的研究编辑器；12 项 cm 尺寸、163 骨骼；网格尺寸不等于真人尺寸 |
+| 从设计意图或工程接手 | [`design-cloth`](.agents/skills/design-cloth/SKILL.md) → 按范围生成纸样、取证与复核报告 | 流程技能；产物依赖已安装工具、工程与证据，不能保证整衣通过 |
+| 独立复算袖片尖折 | [`verify-sleeve-creases`](.agents/skills/verify-sleeve-creases/SKILL.md) → JSON 指标与追踪日志 | 冻结样例可离线重测；只判当前网格的局部几何，不判材料或审美 |
+| 复现设计意图与模拟研究 | [实验总入口](experiments/intent-edit-review/README.md) / [Teagan 源码归档](experiments/teagan_sites_studio/README.md) | 实验 / 历史；各自保留 PASS、FAIL、UNKNOWN 和未验证项，不是通用合体承诺 |
 
-[打开 Brian 实时纸样](https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/) · [全部图解](https://liush2yuxjtu.github.io/pattern-agent/freesewing/) · [源码与复现](tools/freesewing-brian/README.md)。原生 mm/° 输入直接遵循 Brian 4.10.2 的 11 项必填尺寸与可选上胸围；保留小数、使用官方默认松量 15%，附输入 JSON 和零容差源码对照。
+### 同一任务：只看预览，还是复核证据？
 
-## Teagan Sites 二维与三维工作室归档
+以“这件衣服是否可以放行”为例，下面是**工作方式对照，不是效果或效率实测**。
 
-[第 14 版完整源码、运行说明与中文交接](experiments/teagan_sites_studio/README.md)
-保存真实 Teagan 原型、二维编辑、人体叠加、四种独立视图、形变及全衣折角热图、
-诊断日志和状态机修复。原始 93 个文件逐项绑定 SHA-256，附开源许可、历史负例、
-已有线上证据与新目录本地复跑记录。[本次归档验证](docs/verification/teagan-sites-archive-20261118/README.md)
-区分软件/几何检查与仍未运行的物理合体，不覆盖仓库历史 T-shirt 的 FAIL。
+| 只看一张渲染图 | 使用本仓库的证据流程 |
+| --- | --- |
+| 能看外观，但不知道输入、单位与版次 | 保留输入、工程、尺码和姿势，将纸样、网格、图与报告对应 |
+| 视觉上闭合，不代表缝边和穿透通过 | 独立核查适用几何项；失败项保留数值和阈值 |
+| 容易把“好看”误作“合身” | 分开数字检查与实物试穿；缺证则补采或交接，不自动宣告成功 |
 
-## 纸样设计意图实验统一入口
+代价是要准备匹配文件、运行相应工具并人工签核；只需二维演示时，直接用 Brian，不必启动完整验收。
 
-[从实验目录的README开始](experiments/intent-edit-review/README.md)：集中查找原型DXF/YAML、设计意图与差异补丁、二维/三维产物、严格缝合及全部验证证据。[在线实验总览](https://liush2yuxjtu.github.io/pattern-agent/intent-edit-review/experiment/)由同一README生成。
+## 本地首次任务（无需账号）
 
-## Style3D Studio integration
-
-The [Style3D integration record](docs/style3d-integration.md) preserves the official
-8.0.513 installation and Wine login-screen evidence, V10.1 MCP and CPU simulation
-references, licensing limits, and the remaining DXF/sewing/simulation acceptance.
-The [read-only MCP discovery CLI](tools/style3d/README.md) lists actual server tools
-without modifying a garment. Its local protocol tests do not establish that
-Style3D MCP or garment simulation works; the real integration remains BLOCKED
-pending target-version installation and account login.
-
-## Human Studio — articulated model with cm controls
-
-[Open Human Studio](https://liush2yuxjtu.github.io/pattern-agent/human-studio/)
-to adjust an anatomical MakeHuman adult-female mesh with 12 centimetre dimensions
-and 163 bones. Change body shape, pose individual joints or use presets, then
-save/import the model, render a 2×PNG, or export a posed centimetre OBJ and rigged
-GLB (metres). Dimensions are calibrated from neutral-pose mesh tape paths and
-landmarks; they remain separate from joint angles.
-
-The old loft figures remain archived synthetic evaluation fixtures. The current
-editor uses detailed anatomical geometry and authored skin weights.
-[Source and measurement definitions](web/human-studio/README.md) ·
-[verification evidence](docs/verification/human-studio-20261117/README.md).
-
-## Apparel six-view and adjustable-body skill
-
-The [garment-body-six-view skill](.agents/skills/garment-body-six-view/SKILL.md)
-connects original apparel photos, six independent images, an adjustable neutral
-body, actual 3D snapshots, OpenCV overlays and provenance-qualified parameters.
-The `.claude/skills/garment-body-six-view` symlink points Claude’s skill path at the canonical source.
-Download the [installable skill package](skill-packages/garment-body-six-view.skill)
-or read the [installation guide](.agents/skills/garment-body-six-view/INSTALL.md).
-The [published skill workflow and download](https://liush2yuxjtu.github.io/pattern-agent/garment-body/skill/) now use Human Studio: anatomical mesh, 12 cm dimensions, 163 bones, versioned state, OBJ cm / GLB m and independent neutral-mesh checks.
-
-The [real garment case gallery](https://liush2yuxjtu.github.io/pattern-agent/garment-body/product-case/eval.html) shows the original ASOS reference, six separate native Image Gen outputs, actual anatomical renders and OpenCV before/after overlays. It preserves the failed first generation and separates conditional avatar fitting from real-person measurements. The case model opens directly in Human Studio with editable cm dimensions and joint angles.
-
-The [single-state functional review](https://liush2yuxjtu.github.io/pattern-agent/garment-body/single-state-evals/eval.html) compares the clarified skill with its frozen predecessor in six actual subagent executions: joint cm/bone/pose/camera fitting, same-action editor persistence, and original-photo fitting. Each final body's views share one pose and mesh; numerical, browser and visual checks are reported separately.
-Historical loft evaluations retain their original scope and scores.
-
-[Native trigger evaluation tools](tools/skill_evals/README.md) include the pinned
-Anthropic skill-creator, 20 balanced routing queries, a reserved final holdout and
-unmeasured description candidates. Current local helper tests and CLI controls
-pass; native Claude routing/hill climbing is **BLOCKED** because this execution
-environment has no authenticated Claude CLI. File installation is not proof of
-live auto-triggering. See the [verification receipt](docs/verification/garment-body-six-view-20261116/receipt.json).
-
-[The subagent hill-climb benchmark](docs/verification/garment-body-subagent-hillclimb-20261117/README.md)
-compares four prior descriptions and a shorter v4 candidate on development data
-and a new blinded holdout. It reports explicit routing judgments, not native
-Claude trigger rates; installed v0 is retained.
-
-[Functional evaluation and review](https://liush2yuxjtu.github.io/pattern-agent/garment-body/eval.html)
-contains12 real subagent executions across two iterations, actual mesh/browser
-evidence, a targeted cache-state improvement and downloadable review feedback.
-The current skill body includes that verified guard; its original trigger
-description is retained. [Evidence and limitations](docs/verification/garment-body-functional-20261117/README.md)
-separate synthetic software checks from human anatomy and image-generation quality.
-
-Generated side/back views establish internal consistency only; their agreement
-with a body proxy does not validate real anatomical dimensions or physical fit.
-
-## 女士紧身长袖上衣原型
-
-[打开原型预览与下载](https://liush2yuxjtu.github.io/pattern-agent/fitted-tshirt/)。原始中码裁剪文件驱动的参数化外观重建，提供三面渲染、可旋转模型、可编辑场景和完整资料包。[源码、重现步骤与限制](experiments/fitted_tshirt/README.md)保留面料差异、未解码工程文件和所有待确认项目。它不是校准的布料仿真；物理试穿和严格接缝／自交发布门槛 **NOT_RUN**，不覆盖历史实验的失败记录。
-
-[在线上传纸样生成预览](https://pattern-agent-convert.vercel.app/) · [接口文档](https://pattern-agent-convert.vercel.app/docs) · [函数源码与部署说明](services/dxf-preview/README.md)。该服务提供独立的 Linux／Vercel FastAPI 接口：上传已支持拓扑的 DXF，返回本次计算的 GLB、报告或可断网打开的预览包。第一版仅支持上述上衣的 126 条多段线结构，显式指定单位，支持受限的平移、重排及等比缩放；不同款式需要新的裁片配置。它不运行物理布料仿真，也不创建持久任务。
-
-## Printable straight skirt and GitHub Pages
-
-The static download site is prepared for
-[GitHub Pages](https://liush2yuxjtu.github.io/pattern-agent/). It includes the
-EU40 straight-skirt preview, A4 and full-size PDFs, Chinese instructions and a
-complete editable source bundle. The existing T-shirt review workbench remains
-at `/pattern-agent/pattern-review/`.
-
-The [skirt source and measurement assumptions](patterns/straight-skirt-eu40/README.md)
-are tracked separately from the older T-shirt experiments. Its digital geometry
-checks pass; sewn-sample and human-fit verification remain NOT_RUN.
+先用冻结的真实袖片样例重测几何检查器。只需 **Git 与 Python 3.9+ 标准库**，不需要 CLO、模型 API、云算力或付费账号。
 
 ```sh
-python3 scripts/build_pages.py
-python3 -m pip install -r scripts/requirements-verify.txt
-python3 -m unittest discover -s scripts -p test_verify_artifacts.py -v
-python3 scripts/verify_artifacts.py --cli /path/to/opensloper-cli
-python3 scripts/verify_pages.py --output work/verify-pages
+git clone --depth 1 https://github.com/liush2yuxjtu/pattern-agent.git
+cd pattern-agent
+python3 -m unittest discover \
+  -s .agents/skills/verify-sleeve-creases/scripts -p test_inspect.py -v
 ```
 
-For OpenSloper on Linux x86_64, run `bash scripts/install_opensloper.sh`. It checks
-the pinned official release archive and installs under ignored `work/tools/`.
-The project `.mcp.json` starts the installed CLI through
-`scripts/opensloper-mcp.sh`. Set `OPENSLOPER_CLI` to use another installation.
-
-`.github/workflows/pages.yml` performs publication only: build static files,
-upload the Pages artifact, and deploy. Generic verification stays local. GitHub
-Pages must use **Settings → Pages → Source → GitHub Actions**; this workflow does
-not change account permissions, enable paid services, or bypass environment rules.
-The working verification recipe and receipt are in `.agents/skills/verify/`
-and `docs/verification/`.
-
-## GarmentCode mesh and 3D preview
-
-[Open the GarmentCode 3D preview](https://liush2yuxjtu.github.io/pattern-agent/garmentcode-preview/)
-to rotate the generated garment, inspect its wireframe, compare the initial and
-CPU-simulated meshes, and download the skill, GLB, input pattern or offline viewer.
-The [separate handoff folder](web/garmentcode-preview/README.md) includes readable
-skill source and simulation provenance. This is an official repository example,
-not a downloaded GarmentCodeData row. The 232-frame result has two self-intersection
-counts: strict zero-intersection geometry release is **FAIL**, physical fit **NOT_RUN**.
-
-The installable [agent skill](.agents/skills/garmentcode-preview/SKILL.md) has a
-Claude discovery link and a generated, byte-checked web download.
-[Optimization evidence](docs/verification/garmentcode-skill-optimization-20261116/README.md)
-records real old/new CPU runs, standalone existing-mesh preview, missing-body
-controls, and routing-proxy evaluations. Native activation remains separately BLOCKED.
-
-## Aster developable dress studio
-
-[Open the Three.js studio](https://aster-pattern-studio-161126.liushiyuxjtu.chatgpt.site/)
-or [open expert 3D and 2D review](https://aster-pattern-studio-161126.liushiyuxjtu.chatgpt.site/#review).
-The [self-contained handoff](experiments/aster_dress/README.md) preserves the HTML,
-readable source, full-scale SVG, seam map checks, decisions and verification record.
-It models 8 conical bodice sectors and 8 skirt gores with 24 releasable seam pairs.
-
-Geometry checks and 13 DOM integration checks pass. Real-browser visual/GPU
-verification is BLOCKED in the build environment; fabric mechanics and human fit
-are NOT_RUN. This is a developable concept study, not a production garment block.
-The [repository handoff receipt](docs/verification/aster-20261116/receipt.json)
-records the candidate source manifest, commands and verification limits.
-
-### Vercel deployments
-
-- **Current Aster production:** [3D studio](https://aster-dress-pattern-studio.vercel.app/) · [expert 3D/2D review](https://aster-dress-pattern-studio.vercel.app/#review).
-- **Downloads:** [standalone HTML](https://aster-dress-pattern-studio.vercel.app/aster-studio.html) · [complete handoff ZIP](https://aster-dress-pattern-studio.vercel.app/aster-handoff.zip).
-- **Original Sites publication:** [Aster on Sites](https://aster-pattern-studio-161126.liushiyuxjtu.chatgpt.site/) remains available.
-
-| Published | Variant | Vercel project | Artifact source | Fixed deployment URL |
-| --- | --- | --- | --- | --- |
-| 2026-11-16 | Aster 01 developable dress | `aster-dress-pattern-studio` | [8555490](https://github.com/liush2yuxjtu/pattern-agent/commit/855549017ec7bdf92c1dccca303c9cfcfe2042e7), `experiments/aster_dress/` | [Aster 01 snapshot](https://aster-dress-pattern-studio-fagpddri4-nyn5255-8475s-projects.vercel.app/) |
-
-Deployment ID: `dpl_CSyNWEo8fVhkX2UEkcLuMaK94UCb`. This is a manual static-file
-publication, with no Git-connected CI or automatic build pipeline. The production
-alias may point to a later release; the fixed URL identifies this deployment.
-For subsequent releases, append a dated row with its artifact commit and fixed
-URL. Keep distinct design variants in separately identified projects and preserve
-older rows. The related `pattern-agent-review` and `first-skirt-pattern-9gla3`
-projects are separate from Aster and were not replaced.
-
-**Deployment verification:** Vercel reports READY. Connector HTTP retrieval returned
-200 for the production HTML, fixed-deployment HTML and baseline SVG; their full
-contents matched the uploaded artifacts exactly. These are publication/integrity
-checks, not browser or garment acceptance. The live Playwright command
-`node verify-live.mjs` using Chromium at the fixed URL stopped at
-`page.goto: net::ERR_TUNNEL_CONNECTION_FAILED`, before any interaction ran.
-Real-browser application acceptance remains **BLOCKED**. The earlier 30,720
-geometry-edge comparisons, 96 seam-pair checks and 13 DOM checks retain their
-limited scope; cloth behavior and physical fit remain NOT_RUN.
-
-## Current full-arm experiment
-
-Code is in `experiments/full_arm/`. It creates a complete synthetic mannequin and
-preassembled T-shirt, runs real Blender Cloth, exports measured meshes, checks
-every saved frame, and creates a portable replay with independent reload checks.
-
-The preserved 241-frame experiment has **arm-routing checks PASS in all 241
-frames**, but **cloth geometry FAIL in 161 frames**. Cloth self-intersections peak
-at 535 pairs; cloth/body and body self-intersections are zero. These numbers do
-not establish armhole sizing, calibrated material behavior, or physical fit.
+预期：**15 项测试通过**，含正例、负例与来源对应检查。也可直接处理包内样例并写出真实结果：
 
 ```sh
-cd experiments/full_arm
-python3 -m unittest discover -s verification -p test_pipeline_gate.py -v
-blender -b -t 1 --python-exit-code 2 --python verification/test_geometry.py
-python3 run_pipeline.py --out runs/full-arm --frames 241 --render-video
+python3 .agents/skills/verify-sleeve-creases/scripts/inspect.py \
+  --input .agents/skills/verify-sleeve-creases/fixtures/after-basic.json.gz \
+  --out /tmp/pattern-agent-creases.json --trace /tmp/pattern-agent-creases-trace.json
 ```
 
-Prerequisites: Python 3.11+, Blender 4.3.2 with NumPy, and FFmpeg for video.
-The selected full-motion baseline intentionally exits 2 for quality failure;
-execution completion is separate from the physical and geometric verdict.
-Use a fresh output directory to preserve evidence.
+预期标准输出含 `"status": "PASS"`、`"sharpCount": 0`，并生成结果与追踪文件；耗时因机器而异。这不是新模拟，也不证明实物合身。[样例与来源清单](.agents/skills/verify-sleeve-creases/fixtures/manifest.json) · [CLI 与输入说明](.agents/skills/verify-sleeve-creases/SKILL.md) · [完整安装说明](.agents/skills/verify-sleeve-creases/INSTALL.md)
 
-## Controlled verification experiment
+## Works with：按实际条件选环境
 
-The completed [one-shot control experiment](experiments/oneshot_control/README.md)
-includes a standalone full-body model and T-shirt, independent geometry code,
-input fixtures and results. Four positive controls pass; eight invalid cases
-are rejected by the independent static gate.
+这是**文档支持范围**，不是所有客户端/后端均已端到端实测的兼容认证。
 
-**Both problems are real:** the strict v2 audit of all241 old frames confirms161
-frames with garment self-crossings and a595-pair peak. Earlier v1 evidence is
-historical and incomplete because v1 also excluded shared-vertex pairs.
-new controls expose false approvals for a displaced body with stale paths and
-64 coplanar overlaps omitted by the legacy Blender BVH. A clean static mesh does
-not establish cloth simulation or physical fit. Download the two files in
-[`experiments/oneshot_control/assets/`](experiments/oneshot_control/assets/).
+| 环境 | 如何接入 | 前提与限制 |
+| --- | --- | --- |
+| Codex 项目技能 | 仓库内 `.agents/skills/`；显式请求 `$design-cloth` 或 `$verify-sleeve-creases` | 在仓库会话加载对应 SKILL.md；[袖片安装说明](.agents/skills/verify-sleeve-creases/INSTALL.md)。文件存在不证明原生自动触发 |
+| Claude 项目技能 | `.claude/skills/verify-sleeve-creases` 链接到 canonical 源 | 仅列实际存在的发现路径；`design-cloth` 不宣称有同名 Claude 链接；[路由评测限制](tools/skill_evals/README.md) |
+| 本地 Python CLI | 不依赖 Agent 客户端，按上方首次任务运行 | 可重测冻结样例；处理新网格需匹配的 geometry 输入 |
+| FreeSewing Brian | [网页 / 离线 HTML 与复现说明](tools/freesewing-brian/README.md) | 4.10.2；本地构建需 Node 24+，运行制版不等于合体验收 |
+| 原生 CLO 3D / CLO_RUST | [运行环境矩阵与插件入口](.agents/skills/design-cloth/references/runtime-support.md) | 原生 CLO 需授权安装与可用桥接；CLO_RUST 已存结果复核与新模拟须分开确认 |
+| Style3D | [接入记录](docs/style3d-integration.md) / [只读发现 CLI](tools/style3d/README.md) | 真实集成仍 **BLOCKED**；协议测试不证明原生模拟可用，需目标版本安装与账号登录 |
 
-The exact recovered single-file dynamic generators and a newly executed121-frame
-reproduction are in [`experiments/oneshot_motion`](experiments/oneshot_motion/).
-Its portable model/cloth files, all saved meshes and independent reload evidence
-are retained separately from the analytic rectangular controls.
+## 给 Agent 的任务提示词
 
-## Verification and history
+先在本仓库打开相应 SKILL.md；`$技能名` 是显式请求语法，不代表本次已验证客户端自动触发。替换方括号中的真实输入。代码块可用 GitHub 原生复制按钮复制，未加入自定义复制组件。
 
-项目级 [sew-pattern-to-3d 技能](.agents/skills/sew-pattern-to-3d/SKILL.md)保存从 DXF
-裁片、走缝配对、二维剖分、三维形状映射到实际焊接与离线预览的可运行流程。
-显式请求 `$sew-pattern-to-3d`，生成后交给下方接缝验收技能；形状中的前后深度与袖姿
-假定、片内非等距限制及当前仅支持本款配置的范围均保留。Claude 通过同名符号链接共用源文件。
+<details>
+<summary>任务 1 · 已有 DXF / 工程 → 当轮复核报告（design-cloth）</summary>
 
-项目级 [verify-seaming 技能](.agents/skills/verify-seaming/SKILL.md)保存裁片连接的
-验收流程：独立重读源 DXF 与最终 GLB，再按任务核对交互视图、生产 Site 和 Pages
-保存。可显式请求 `$verify-seaming`；Claude 路径通过同名符号链接共用源文件。
-技能复用现有检查器和阈值，保留静态几何、线上交互与实物试穿的独立结论。
+```text
+$design-cloth
+输入：工程或 DXF=[路径]；目标尺码与单位=[值]；姿势=[范围]；
+本轮允许使用的本机工具=[实际可用环境]。先读本仓库的 design-cloth/SKILL.md。
+保留原件，在副本上接手；先核对现有同版证据，再执行范围内最小复测。
+产物：按实际执行交付纸样/网格/图，并给出含独立证据图的 Markdown 当轮报告，
+列明输入、工具版本、执行命令或调用、已确认问题、缺证项与复测条件。
+边界：工具未就绪、材料未标定、缺姿势或原生图时如实标注；
+不得把静态几何通过写成整衣或实物合身。未经授权不启动远程算力。
+```
 
-The [one-shot pattern roundtrip](experiments/pattern_roundtrip/README.md) separates
-the human/cloth into pure standalone files, unwraps4 actual2D panels and challenges
-armhole fit independently. Representation checks pass, each armhole/cap has a
-23.27mm transfer mismatch, and the forward solver fails atlas invariance. Real
-fit remains UNKNOWN; the source patterns have no seam allowance.
+输入尚不完整时按技能流程补证，不拿演示尺寸冒充用户尺寸。[完整机制与放行条件](.agents/skills/design-cloth/SKILL.md)
 
-Follow `AGENTS.md` and `.agents/skills/verify/SKILL.md` before committing.
-Runtime recipes and observations are recorded under `docs/verification/`.
-No generic GitHub Actions verification workflow is used.
+</details>
 
-The recovered original documentation is preserved in
-[`docs/historical-tshirt-readme.md`](docs/historical-tshirt-readme.md). Its referenced
-paper-pattern implementation and original assets are not currently restored in
-this checkout. Its historical 7.6455 mm seam gap and 20 self-intersection FAIL
-remain separate from the newer synthetic experiment.
+<details>
+<summary>任务 2 · 袖片 geometry JSON → 可重算尖折指标（verify-sleeve-creases）</summary>
 
-Private workspace notes and connected-storage artifacts are maintained outside
-this public repository.
+```text
+$verify-sleeve-creases
+输入：含 geometry 的工作室导出 JSON=[路径]，如需前后对照，提供同源材料边对应数据。
+先读本仓库的 verify-sleeve-creases/SKILL.md，核对输入 schema 与来源后，
+实际运行其 scripts/inspect.py --input [输入.json] --out [结果.json] --trace [追踪.json]。
+产物：结果 JSON、真实追踪日志，以及可见尖棱对应的网格边与阈值说明。
+边界：不要用平滑法线掩盖尖折；无对应数据时不编造前后配对；
+检测日志不是求解迭代，局部几何结果不是材料合体或整衣通过。
+```
 
+[输入格式、阈值与方法](.agents/skills/verify-sleeve-creases/SKILL.md) · [冻结样例](.agents/skills/verify-sleeve-creases/fixtures/manifest.json)
 
-The [anatomical skill functional review](https://liush2yuxjtu.github.io/pattern-agent/garment-body/anatomical-evals/eval.html) contains 14 executed subagent runs, real mesh fits, OpenCV overlays, projected joints and raw depth checks. The selected core instructions are 40.03% shorter; this is not an end-to-end clothed image generation benchmark or a native Claude trigger score.
+</details>
 
-## 单文件 WASM 布料实验室
+## 看真实产物，而不是效果承诺
 
-[在线打开](https://liush2yuxjtu.github.io/pattern-agent/cloth-lab/) ·
-[实现与复现](web/cloth-lab/README.md) ·
-[本地验证配方](.agents/skills/verify/references/cloth-lab.md)。
+[![GarmentCode 历史研究预览：实际网格、初始/仿真结果切换及下载入口；图中自穿透未通过，不代表当前整衣放行](web/garmentcode-preview/preview.png)](https://liush2yuxjtu.github.io/pattern-agent/garmentcode-preview/)
 
-同一份毫米纸样驱动二维 SVG 和三维材料坐标；单个 HTML 内嵌 WASM、Three.js
-以及 MakeHuman 成人女性资产。实际人体三角形 BVH 碰撞、理想缝合、正交各向异性
-StVK 应力应变、故障对照与状态化离线 HTML 导出均有独立数值及浏览器验证。
-材料是合成参数，局部高应变保留可见警告；没有布料自碰撞、实物标定或实体适体批准。
-这不改变历史 T 恤 FAIL，也不将几何/热图验证升级为生产批准。
+这是仓库已有截图，不是本轮新录屏。它说明“纸样 → 网格 → 预览/下载”的产物关系；截图下方同时保留 **自穿透 2 处、人体穿透 0 处**，严格几何发布仍 **FAIL**，实物检查未运行。[源码、复现与结果边界](web/garmentcode-preview/README.md) · [打开可旋转预览](https://liush2yuxjtu.github.io/pattern-agent/garmentcode-preview/)
 
-## FreeSewing 四片裙 2.5 响应速度优化
+![真实二维纸样全版与袖口局部：橙虚线改前、蓝实线改后，直接复用原始矢量，U 非毫米，不表示合体改善](docs/assets/readme/pattern-comparison.svg)
 
-默认穿着从验证过的第 120 步恢复，仍支持从原始排布重新求解。交互播放以短任务执行物理计算，软件渲染使用较小的画布缓冲。[打开 2.5 单文件](https://liush2yuxjtu.github.io/pattern-agent/freesewing-responsive.html?v=64db4c51) · [对照截图与验证](docs/verification/cloth-responsive-20261119/README.md)
+上图仅用原始矢量的全版与裁取视窗解释二维差异，没有变形或平滑。[原始 before/after SVG](web/pattern-library/editor/example-output/before-after.svg)供独立核对；两张图都为静态媒体，未提供 GIF/视频。
 
-## FreeSewing 四片裙 2.4 硬件 WebGPU 优先
+## FAQ · 只展开需要的细节
 
-[打开单文件](https://liush2yuxjtu.github.io/pattern-agent/freesewing-webgpu.html?v=293e34af) ·
-[源码与复现](experiments/freesewing_cloth_lab/README.md) ·
-[验证证据](docs/verification/cloth-webgpu-20261118/README.md)。
+<details>
+<summary>这是新制版算法、物理仿真产品，还是工作流？</summary>
 
-硬件适配器使用 WebGPU 渲染，软件／不可用／拒绝访问时选择 WebGL2。
-**物理仍是 CPU 上的 WASM Float64**；全部零固定点、重力、碰撞、应力应变和承托模型保留。
-默认兼容模式 52/52 浏览器检查通过，WebGPU 专项 15 项通过，包括实际绘制缓冲、
-五张不同热图、GPU 人体与碰撞资产逐项相等、离线保存、真实设备销毁及状态精确恢复。
-八组轨迹的坐标、旧坐标、材料坐标、质量与压力和 2.3 版本逐项完全一致。
+核心入口是技能工作流，仓库也保存可运行工具与多个实验。Brian 直接调用 FreeSewing 原库，不是自研算法；Blender/WASM/原生软件的实验各有边界。[历史全索引](docs/readme-history.md)保留逐项记录；[整衣验收](.agents/skills/design-cloth/references/finish-verification.md)说明数字证据与人工签核的区别。
 
-软件 GPU 的强制 WebGPU 全套检查为 **FAIL（性能门槛）**，记录保留；默认策略会回退。
-真实硬件提速仍为 NOT_RUN，不能将 API 支持或软件适配器结果当作显卡性能证明。
-当前面料、压力与真实合体仍 NOT_VALIDATED。旧 HTML 文件继续保留。
+</details>
 
-## FreeSewing 四片裙 2.3：取消固定点，保留重力
+<details>
+<summary>哪些结论仍失败或未验证？</summary>
 
-[在线打开零固定点单文件](https://liush2yuxjtu.github.io/pattern-agent/freesewing-free-waist.html?v=c74e6c5d) ·
-[实现与复现](experiments/freesewing_cloth_lab/README.md) ·
-[原始验证记录](docs/verification/cloth-free-waist-20261118/README.md)。
+首屏已列出历史 T-shirt 的失败阈值与实物状态。[历史原始记录](docs/historical-tshirt-readme.md)、[控制实验](experiments/oneshot_control/README.md)及[roundtrip](experiments/pattern_roundtrip/README.md)各自保留独立结论。Style3D 集成仍 BLOCKED。生成的侧/背面图与人体代理一致，只能说明内部一致性，不能证明真人尺寸或穿着效果。
 
-全部 1,856 个布料顶点均有质量；g = 9.81 m/s² 持续作用。闭合加固腰口采用
-保留平移／旋转自由度的形状匹配，人体法向接触与库仑摩擦承托重量。无人体／世界坐标锚点。
-腰口是刚性加固边近似，完整 FreeSewing 腰头尚未建模。压力／材料仍未标定，真实合体性
-NOT_VALIDATED（360 步峰值伸长率 193.7%）。新版新增为独立 HTML，保留下面的历史版本。
+</details>
 
-## 历史 FreeSewing Sandy 2.2：固定腰口、覆盖与压力估算
+<details>
+<summary>需要什么账号、软件或额外技能？</summary>
 
-[在线打开单文件 HTML](https://liush2yuxjtu.github.io/pattern-agent/freesewing-cloth-lab.html?v=364ee5c) ·
-[源码与复现](experiments/freesewing_cloth_lab/README.md) ·
-[公网验证与原始状态](docs/verification/cloth-coverage-pressure-20261118/README.md)。
+冻结袖片测试不需要账号。网页演示与本地 CLI 不等同原生 CLO/Style3D 操作；后者依赖授权安装、桥接、版本与输入。新设计、面料或专项工作台技能可能需客户端另行提供；[运行环境矩阵](.agents/skills/design-cloth/references/runtime-support.md)与[主流程](.agents/skills/design-cloth/references/workflows.md)列出条件，不承诺默认全装。私有 Site 仍需原有权限，无权访问时使用公开离线样例。
 
-实际 FreeSewing 4.10.2 制版、MakeHuman 人体和 WASM 求解器内嵌于同一 HTML。
-二维纸样、缝合、三维材料坐标、应力／应变、接触压力估算及折角／曲率共用数据；
-支持 SVG、DXF、OBJ、A4 打印、仿真 JSON 与可继续求解的离线 HTML。
-启动、UI 重置和版型修改先完成 120 步重力及人体／布料接触求解，修复首次显示的后臀裸露。
+</details>
 
-源码提交 `364ee5c`，证据提交 `75207a2`。公网桌面／手机 Playwright 48/48；
-120／240／360 步、最大风力后 480 步及 650 mm／60%／亚麻变型 120 步，
-均为后臀 466 点零裸露、人体三角相交零、自交零、人体内部顶点零，缝隙零毫米。
-五张热图分别独立重算并读取实际 WebGL 颜色缓冲比对，保存压力场后下一步坐标完全一致。
-公网 Chromium／SwiftShader 求解 p95 为 94.5 ms/步；此前 106.7 ms 的性能失败仍归档。
+## 研究归档与贡献
 
-**真实面料合体仍为 NOT_VALIDATED。** 当前腰部保留固定支撑，峰值伸长率 189.5%；
-材料参数未实测标定。接触压力是依赖时间步长的约束反力估算，排除固定腰部反力；
-它与材料应力、穿透深度分别记录。连续碰撞的普遍保证、真实试穿和生产工艺尚未完成。
-本案例不替代历史 T 恤 FAIL，也不沿用其他双片裙或无固定点样件的验收结论。
-
-## 袖子尖折取证与性能日志
-
-[verify-sleeve-creases 技能](.agents/skills/verify-sleeve-creases/SKILL.md)将可见尖棱
-定位到真实网格边，用原纸样材料边配对修复前后，并独立重算，不使用渲染平滑法线。
-随技能提供标准库 CLI、15项本地正反例、冻结袖片与来源摘要；Claude发现路径
-共用 canonical 源。可显式请求 `$verify-sleeve-creases`。
-[下载技能包](skill-packages/verify-sleeve-creases.skill) ·
-[安装说明](.agents/skills/verify-sleeve-creases/INSTALL.md)。
-
-[原作者 Site 的彩色对照与取证页](https://pattern-atelier-three-wasm.liushiyuxjtu.chatgpt.site/sleeve-debugger.html)
-沿用原私有访问范围。旧 Teagan 网格有161条 >45° 的袖片内部边，修复后基础款为0；
-选定可见尖棱的同一材料边从117.43°降至6.62°。这些是当前网格的局部几何检查，
-不是所有服装的审美或材料标准。性能追踪记录检测耗时；只有实际重算产生的迭代日志
-才称为求解过程。
-
-[本次复核记录](docs/verification/sleeve-creases-20261118/README.md)保留独立检查、
-浏览器／下载与真实求解观察；历史 T 恤 FAIL与实物合体 NOT_RUN保持原结论。
+- [完整历史 README](docs/readme-history.md)：保留旧入口、实验、阈值和失败，不将历史运行当作本轮重新验证。
+- [验证流程](.agents/skills/verify/SKILL.md) / [验证记录目录](docs/verification/)：按改动范围本地 `/verify`，不以 CI 代替验收。
+- [贡献说明](docs/contributing.md) · [真实提交贡献记录](https://github.com/liush2yuxjtu/pattern-agent/commits/main/) · [已有问题与反馈](https://github.com/liush2yuxjtu/pattern-agent/issues)。仓库维护按 [AGENTS.md](AGENTS.md) 的 main 工作流，不新建 PR/Issue 作为交付步骤。
