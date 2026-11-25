@@ -1,6 +1,6 @@
 # 原生 CLO 3D · 四尺码十动作
 
-在独立 Boat Wine fork 中使用有授权的 CLO 3D 编辑器。先确认每台的并发授权及当前编辑器版本，依次打开 **Animation → Animation Editor** 和 **Edit → Python Script**。每个 worker 专用，脚本会替换其当前工程和 Python Editor 内容。准备好本轮的 S、M、L、XL 原生 `.zprj`、FreeSewing 量体与裁片记录、线稿及动作包。示例里的项目位置、阈值和机器列表由执行者按本轮实际内容填写。
+按[启动与桥接](../boat-clo-mcp.md)准备独立 Boat Wine worker。使用有授权的 CLO 3D 编辑器。先确认每台的并发授权及当前编辑器版本，依次打开 **Animation → Animation Editor** 和 **Edit → Python Script**。每个 worker 专用，脚本会替换其当前工程和 Python Editor 内容。准备好本轮的 S、M、L、XL 原生 `.zprj`、FreeSewing 量体与裁片记录、线稿及动作包。示例里的项目位置、阈值和机器列表由执行者按本轮实际内容填写。
 
 ```sh
 python3 scripts/clo-motion-batch.py --config /path/to/batch.json --out /path/to/evidence --jobs auto
@@ -8,7 +8,7 @@ python3 scripts/clo-motion-batch.py --config /path/to/batch.json --out /path/to/
 
 配置模板为 [clo-motion.example.json](../../scripts/clo-motion.example.json)。路径相对配置文件。并行上限是待运行组合、专用 worker 和验证可同时使用的 CLO 席位三者的最小值。配置并发机器前，先从独立 fork 验证登录与录制。检查 Boat 的当前并发、创建配额和计划用量，以可用容量启动 worker。
 
-Boat worker 需要 `xdotool`、`xclip` 和经试跑的 CLO Wine 2026.1.382 桌面。安装 `wmctrl` 时可以移动 Python Editor。默认使用 `scp`。SSH 连接不可用时，可把 `boat.transfer` 设为 `"exec"`，通过 Boat 已认证命令通道分块传输并校验 SHA-256。同一 worker 会按 SHA-256 复用已传入的工程和动作。Python 3.9+ 需要 Pillow。折角复用同仓库 `clo-fit-export` 的 NumPy 和 Matplotlib 脚本。视频汇总需要 FFmpeg 或 `imageio-ffmpeg`。若修改了工程、动作、阈值或抽查帧，程序按新输入指纹生成独立证据。使用相同输出目录可续跑。加 `--review-only` 可从已下载的原生记录离线生成审查包。
+Boat worker 需要 `xdotool`、`xclip` 和经试跑的 CLO Wine 2026.1.382 桌面。安装 `wmctrl` 时可以移动 Python Editor。默认使用 `scp`。SSH 连接不可用时，可把 `boat.transfer` 设为 `"exec"`，通过 Boat 已认证命令通道分块传输并校验 SHA-256。同一 worker 会按 SHA-256 复用已传入的工程和动作。Python 3.9+ 需要 Pillow。折角从同级 `clo-fit-export/scripts` 读取。安装本技能时一并提供仓库中的 `clo-fit-export`。按该目录的 `requirements.txt` 安装 NumPy 和 Matplotlib。视频汇总需要 FFmpeg 或 `imageio-ffmpeg`。若修改了工程、动作、阈值或抽查帧，程序按新输入指纹生成独立证据。使用相同输出目录可续跑。加 `--review-only` 可从已下载的原生记录离线生成审查包。
 
 ## 动作包
 
