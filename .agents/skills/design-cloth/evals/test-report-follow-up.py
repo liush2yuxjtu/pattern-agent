@@ -165,7 +165,7 @@ class BakeReport(unittest.TestCase):
             command.extend(("--sharp", sharp))
         return output, subprocess.run(command, capture_output=True, text=True)
 
-    def test_bakes_markdown_with_twenty_relative_evidence_images_and_final_triage(self):
+    def test_bakes_markdown_with_twenty_embedded_evidence_images_and_final_triage(self):
         self.data["recommendation"] = "保留圆领，按已验范围定稿。"
         output, result = self.bake(".md")
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -177,8 +177,8 @@ class BakeReport(unittest.TestCase):
         self.assertLess(rendered.index("<strong>保留圆领"), rendered.index("<details>"))
         self.assertEqual(rendered.split("</details>")[0].count("<img "), 20)
         self.assertLess(rendered.index("</details>"), rendered.index("<h2>分诊与下一步复测"))
-        relative = re.findall(r"^!\[.*\]\(([^)]+)\)$", output.read_text(encoding="utf-8"), re.MULTILINE)
-        self.assertEqual([self.root / image for image in relative], [path for path, _ in self.images])
+        images = re.findall(r'data:image/png;base64,([^"\s]+)', rendered)
+        self.assertEqual([b64decode(image, validate=True) for image in images], [data for _, data in self.images])
 
     def test_bakes_html_with_twenty_original_embeds_and_final_triage(self):
         output, result = self.bake(".html")

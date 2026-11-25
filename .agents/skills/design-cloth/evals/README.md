@@ -62,3 +62,22 @@ python3 evals/run-handoff-evals.py /path/to/handoff-run --baseline /path/to/prev
 随后等待真人亲自审版并完成同版足尺试印。人工回执可通过 `--approvals /path/to/decision.json` 输入。字典以 `33/with_skill` 之类的用例及配置键索引，包含报告中当前 `subject.fingerprint`、`reviewer`、`review_date`（年-月-日）和 `decision`（`approve` 或 `reject`）。批准还须提供 `actual_size_printed`、`scale_x_mm`、`scale_y_mm`、`design_matches_brief`、`cut_markings_readable` 和 `all_tile_joins_aligned`。两边试印量测各允许一毫米偏差。将真人实际给出的量测与明确决定原样记录，评测器和智能体不可代签。版次摘要覆盖修订输入、DXF、整幅及分幅打印文件。
 
 新版全部用例放行退出零；数字失败、退回或回执无效退出一；数字通过但待人工签核退出二。程序控制用的合成记录只用于判定回归测试，不能提交到真实验收。
+
+## 时装设计师与版师的 Markdown 报告
+
+历史试穿原图使用单独的取证目录。这些文件由用例方提供。设置环境变量指向包含 `appearance`、`boat-style3d-v02` 和 `s07-report` 的目录。
+
+```sh
+python3 -m pip install markdown-it-py Pillow
+export DESIGN_CLOTH_REPORT_FIXTURES=/path/to/private/fixtures
+python3 evals/run-report-eval.py /path/to/run-19 --case 19 --without-skill
+python3 evals/run-report-eval.py /path/to/run-35 --case 35 --without-skill
+python3 evals/run-report-eval.py /path/to/run-43 --case 43 --without-skill
+python3 evals/grade-report-readability.py /path/to/run-43/current --case 43
+```
+
+用例 19 核对牛仔裤外观、裤脚覆盖、磨白和前袋。保留五张原图。用例 35 核对针织短袖侧举脱袖、右肩意外露肤和左露肩设计。按题面保留二十七张原图。用例 43 核对 S 码长袖放臂后的回位。保留三张原图。三个用例复用存档证据。原生仿真执行未纳入此评测。
+
+运行器保存原始报告和交付答复。发布器内嵌证据图。评分器检查首段定稿意见、服装决策、仿真职责、折叠内容、开发者工件和交付。结果写入 `grading.json`。有技能组须通过全部关口。无技能组使用相同题面和证据，作为对照。
+
+在评测页逐份展示报告。打开折叠区。检查实际图片加载。Markdown 解析与浏览器渲染分别验证。

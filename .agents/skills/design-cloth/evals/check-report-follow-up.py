@@ -156,7 +156,24 @@ def read_closing_section(report):
             from markdown_it import MarkdownIt
         except ModuleNotFoundError as exc:
             raise ValueError("检查 Markdown 需要 markdown-it-py。见 evals/README.md。") from exc
-        content = MarkdownIt("commonmark").enable("table").render(content)
+        parser = MarkdownIt("commonmark").enable("table")
+        tokens = parser.parse(content)
+        content = parser.renderer.render(tokens, parser.options, {})
+        errors, closing = closing_section(content)
+        if errors == [EMPTY]:
+            import sys
+            sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+            from report_follow_up import has_triage_table_action, paragraph_text
+
+            start = next((i for i, token in enumerate(tokens[:-1]) if token.type == "heading_open"
+                          and token.level == 0 and is_follow_up_heading(tokens[i + 1].content)), None)
+            if start is not None and has_triage_table_action(tokens[start:]):
+                rows = []
+                for token, previous in zip(tokens[start+1:], tokens[start:]):
+                    if token.type == "inline" and previous.type == "td_open":
+                        rows.append(paragraph_text(token))
+                return [], "\n".join(rows)
+        return errors, closing
     elif report.suffix.lower() not in {".html", ".htm"}:
         raise ValueError("报告须为 Markdown 或 HTML")
     return closing_section(content)

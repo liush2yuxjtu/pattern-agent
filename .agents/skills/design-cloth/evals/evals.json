@@ -2,6 +2,109 @@
   "skill_name": "design-cloth",
   "evals": [
     {
+      "id": 19,
+      "name": "appearance-report-handoff",
+      "prompt": "M 码牛仔裤已按我给的效果图复验。请根据附件把本轮验收结果交付给我，我要转给版师。",
+      "files": [
+        "fixtures/appearance/evidence.md",
+        "fixtures/appearance/reference.jpg",
+        "fixtures/appearance/standing-front.jpg",
+        "fixtures/appearance/standing-back.jpg",
+        "fixtures/appearance/angled-front.jpg",
+        "fixtures/appearance/angled-back.jpg"
+      ],
+      "expected_output": "可独立打开的 M 码效果图外观复核 Markdown 报告，附独立证据图。最终答复开头先链接报告并明确本轮范围。正式试穿验收待补证。",
+      "assertions": [
+        "最终答复的第一个交付链接明确标为报告，使用实际存在的本地 Markdown 文件的绝对路径。",
+        "报告在开头给出 M 码、R4、直立与斜站及外观判定。复用效果图及两姿势独立证据图，图链能打开。",
+        "外观结论以附件为据，保留袋口功能、目标人台和面料物性、整衣证据缺口。正式发布仍须满足每尺码四姿势五类验收。",
+        "报告标题后第一段直接给定稿意见及优先服装问题。问题、服装对照和完整验收范围可按需展开。",
+        "正文、折叠区、图注和交付答复只保留时装设计师与版师理解或决定服装所需内容。说明可见现象、建议保留什么、调整哪一处和服装通过条件。",
+        "正文、折叠区和交付答复不展示或链接原生工程、原始 CSV／JSON、脚本、日志、帧号、求解设置、网格或样本计数、内部目录、序列化字段和原始统计。答案首个报告链接允许使用报告的绝对路径。",
+        "分诊尾节只指明时装设计师或版师需要决定或执行的具体设计与纸样动作。无需这类动作时写明本轮无设计或纸样待办。",
+        "智能体负责选择并执行授权范围内的仿真、取证和复测。报告不给用户或版师分派技术任务，不要求人工批准运行仿真，也不声称已进行了题面之外的仿真。"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "boat-style3d-v02-inline-evidence",
+      "prompt": "Boat 上的 Style3D 针织短袖 V02 四个姿势都跑完了。按附件把这轮试穿复核写成可转交版师的 Markdown 报告。请纳入证据清单里已经取得的全部图片，给出验收状态、主要失败和复测标准，并写给我交付时的答复。",
+      "files": [
+        "fixtures/boat-style3d-v02/evidence.md",
+        "fixtures/boat-style3d-v02/证据/V02/V01-A-修前正面.png",
+        "fixtures/boat-style3d-v02/证据/V02/V02-A-修后正面.png",
+        "fixtures/boat-style3d-v02/证据/V02/V02-A-露肩侧面.png",
+        "fixtures/boat-style3d-v02/证据/V02/V02-A-背面.png",
+        "fixtures/boat-style3d-v02/证据/V02/I-正面.png",
+        "fixtures/boat-style3d-v02/证据/V02/T-正面.png",
+        "fixtures/boat-style3d-v02/证据/V02/P02-正面.png",
+        "fixtures/boat-style3d-v02/证据/V02/A-strain.png",
+        "fixtures/boat-style3d-v02/证据/V02/A-stress.png",
+        "fixtures/boat-style3d-v02/证据/V02/A-人体侧压力叠层.png",
+        "fixtures/boat-style3d-v02/证据/V02/A-folds.png",
+        "fixtures/boat-style3d-v02/证据/V02/A-cloth-pressure.png",
+        "fixtures/boat-style3d-v02/证据/V02/I-strain.png",
+        "fixtures/boat-style3d-v02/证据/V02/I-stress.png",
+        "fixtures/boat-style3d-v02/证据/V02/I-人体侧压力叠层.png",
+        "fixtures/boat-style3d-v02/证据/V02/I-cloth-pressure.png",
+        "fixtures/boat-style3d-v02/证据/V02/I-folds.png",
+        "fixtures/boat-style3d-v02/证据/V02/T-strain.png",
+        "fixtures/boat-style3d-v02/证据/V02/T-stress.png",
+        "fixtures/boat-style3d-v02/证据/V02/T-人体侧压力叠层.png",
+        "fixtures/boat-style3d-v02/证据/V02/T-cloth-pressure.png",
+        "fixtures/boat-style3d-v02/证据/V02/T-folds.png",
+        "fixtures/boat-style3d-v02/证据/V02/P02-strain.png",
+        "fixtures/boat-style3d-v02/证据/V02/P02-stress.png",
+        "fixtures/boat-style3d-v02/证据/V02/P02-人体侧压力叠层.png",
+        "fixtures/boat-style3d-v02/证据/V02/P02-cloth-pressure.png",
+        "fixtures/boat-style3d-v02/证据/V02/P02-folds.png"
+      ],
+      "references": [
+        "workflows.md",
+        "finish-verification.md",
+        "试穿报告模板.md"
+      ],
+      "image_attachments": [
+        "V02-A-修后正面.png",
+        "T-正面.png",
+        "A-人体侧压力叠层.png"
+      ],
+      "expected_output": "实际 Markdown 首链打开且 27 份真图均在正文独立显示，报告给出试穿复核范围及先行复测的可观察条件。",
+      "assertions": [
+        "首条交付链接指向实际 Markdown，正文最后一节是有内容的「分诊与下一步复测」。",
+        "单文件 Markdown 正文渲染 27 张独立且可解码的证据图，内嵌图像数据与附件逐张匹配。删除图片目录不影响显示。",
+        "明确四个姿势静态收敛、整衣未通过；保留 T 双袖脱离、Pose02 右肩非设计露肤以及人体侧压力仅定性，布侧标注独立。",
+        "报告标题后第一段直接给定稿意见及优先服装问题。问题、服装对照和完整验收范围可按需展开。",
+        "正文、折叠区、图注和交付答复只保留时装设计师与版师理解或决定服装所需内容。说明可见现象、建议保留什么、调整哪一处和服装通过条件。",
+        "正文、折叠区和交付答复不展示或链接原生工程、原始 CSV／JSON、脚本、日志、帧号、求解设置、网格或样本计数、内部目录、序列化字段和原始统计。答案首个报告链接允许使用报告的绝对路径。",
+        "分诊尾节只指明时装设计师或版师需要决定或执行的具体设计与纸样动作。无需这类动作时写明本轮无设计或纸样待办。",
+        "智能体负责选择并执行授权范围内的仿真、取证和复测。报告不给用户或版师分派技术任务，不要求人工批准运行仿真，也不声称已进行了题面之外的仿真。",
+        "用服装语言写清同版袖筒覆盖、左右肩露肤及静态与连续动作的验收边界。保留题面明确要求的全部图层。图注解释服装用途。"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "s07-designer-readable-report",
+      "prompt": "给时装设计师和版师写这件 S 码长袖上衣的本轮试穿评审，交可预览的 Markdown。根据已有证据给定稿意见、改版和复测做法。",
+      "files": [
+        "fixtures/s07-report/evidence.md",
+        "fixtures/s07-report/证据/S07-起始-正面.jpg",
+        "fixtures/s07-report/证据/S07-回位-正面.jpg",
+        "fixtures/s07-report/证据/S07-回位-背面.jpg"
+      ],
+      "expected_output": "适合时装设计师和版师直接审阅的试穿复核报告。首段暂缓定稿，内嵌三张对照图。保留原领口、肩线及衣长。用厘米说明回位偏差。原生工程与技术参数由智能体留档。",
+      "assertions": [
+        "答复首个链接说明是报告。链接指向实际交付的 Markdown 绝对路径。",
+        "三张独立证据图全部内嵌，解码后逐张匹配附件。分别显示起始正面、回位正面和回位背面。",
+        "说明 S07 放臂后前领高约 2.4 cm、前下摆高约 4.0 cm，后腰仍有横褶。不得从现有证据断定具体牵扯裁片或给出未经验证的改量。",
+        "报告标题后第一段直接给定稿意见及优先服装问题。问题、服装对照和完整验收范围可按需展开。",
+        "正文、折叠区、图注和交付答复只保留时装设计师与版师理解或决定服装所需内容。说明可见现象、建议保留什么、调整哪一处和服装通过条件。",
+        "正文、折叠区和交付答复不展示或链接原生工程、原始 CSV／JSON、脚本、日志、帧号、求解设置、网格或样本计数、内部目录、序列化字段和原始统计。答案首个报告链接允许使用报告的绝对路径。",
+        "分诊尾节只指明时装设计师或版师需要决定或执行的具体设计与纸样动作。无需这类动作时写明本轮无设计或纸样待办。",
+        "智能体负责选择并执行授权范围内的仿真、取证和复测。报告不给用户或版师分派技术任务，不要求人工批准运行仿真，也不声称已进行了题面之外的仿真。"
+      ]
+    },
+    {
       "id": 26,
       "name": "验收失败的排查优先级",
       "prompt": "R9 短夹克已有缝合和试穿工程，抬臂时腰侧发紧，现在还没有证据支持某个原因。版师建议直接加腰松量。我想知道验收失败时怎么排查。请按优先级列出检查内容，写清什么时候才改纸样。",

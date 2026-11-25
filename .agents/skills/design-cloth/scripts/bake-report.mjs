@@ -114,8 +114,7 @@ function readTables(tables) {
 const markdownText = (value) => escape(String(value).replace(/\s+/g, ' ').trim())
   .replace(/[\\\`*_{}\[\]()#+.!|~-]/g, '\\$&');
 
-function renderMarkdown(input, postures, tables, output) {
-  const outputDirectory = realpathSync(dirname(output));
+function renderMarkdown(input, postures, tables) {
   const lines = ['# '+markdownText(input.title), '', '尺码 '+markdownText(input.size)
     +' · 工程版次 '+markdownText(input.revision), ''];
   function items(title, values, marker) {
@@ -128,13 +127,14 @@ function renderMarkdown(input, postures, tables, output) {
   const opinion = text(input.recommendation) ? input.recommendation : findings.find(text) ?? input.nextSteps.find(text);
   lines.splice(2, 0, '**'+markdownText(opinion)+'**', '');
   if (input.findings?.length) items('主要发现',input.findings,() => '- ');
+  const definitions = [];
   lines.push('<details>', '<summary>完整验收 · 试穿证据</summary>', '');
   for (const {label,figures} of postures) {
     lines.push('### '+markdownText(label),'');
     for (const {title,caption,picture} of figures) {
-      const path = relative(outputDirectory,picture.file).split(sep).map((part) =>
-        encodeURIComponent(part).replace(/[()]/g, (char) => char === '(' ? '%28' : '%29')).join('/');
-      lines.push('#### '+title,'','!['+markdownText(caption)+']('+path+')','',
+      const label = 'fit-report-embedded-'+(definitions.length+1);
+      definitions.push('['+label+']: data:'+picture.mime+';base64,'+picture.bytes.toString('base64'));
+      lines.push('#### '+title,'','!['+markdownText(caption)+']['+label+']','',
         markdownText(caption),'');
     }
   }
@@ -148,7 +148,7 @@ function renderMarkdown(input, postures, tables, output) {
   }
   lines.push('</details>', '');
   items(followUpTitle,input.nextSteps,(i) => (i+1)+'. ');
-  return lines.join('\n');
+  return [...lines, ...definitions, ''].join('\n');
 }
 
 function renderHtml(input, postures, tables) {
@@ -193,7 +193,7 @@ async function main(args) {
   const staging = mkdtempSync(join(dirname(output),'.bake-report-'));
   try {
     const draft = join(staging,'report'+format);
-    const report = format === '.md' ? renderMarkdown(input,postures,tables,output)
+    const report = format === '.md' ? renderMarkdown(input,postures,tables)
       : renderHtml(input,postures,tables);
     writeFileSync(draft,report,'utf8');
     renameSync(draft,output);
