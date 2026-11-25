@@ -17,6 +17,7 @@
 | 调整尺寸、看二维纸样 | [Brian 在线工具](https://liush2yuxjtu.github.io/pattern-agent/freesewing/brian/) → SVG 与输入 JSON；[输入契约](web/freesewing/brian/input-contract.json) | 可用的研究工具；原生 FreeSewing Brian 4.10.2，长度 mm / 肩斜 °，不提供布料仿真或工厂放码表 |
 | 调整人体与姿势 | [Human Studio](https://liush2yuxjtu.github.io/pattern-agent/human-studio/) → 状态文件、PNG、OBJ cm / GLB m；[源码与量测定义](web/human-studio/README.md) | 可用的研究编辑器；12 项 cm 尺寸、163 骨骼；网格尺寸不等于真人尺寸 |
 | 从设计意图或工程接手 | [`design-cloth`](.agents/skills/design-cloth/SKILL.md) → 按范围生成纸样、取证与复核报告 | 流程技能；产物依赖已安装工具、工程与证据，不能保证整衣通过 |
+| 用二维纸样做原生 CLO 试穿 | [`pattern-to-fit`](.agents/skills/pattern-to-fit/SKILL.md) → 装配、缝合、试穿与复核报告 | [默认报告模板](.agents/skills/pattern-to-fit/references/试穿报告模板.md) 打开即显示 TLDR 和关键对照图，默认折叠代理实施记录与技术证据。[版式验收记录](docs/verification/pattern-to-fit-report-default-20261125.md) |
 | 独立复算袖片尖折 | [`verify-sleeve-creases`](.agents/skills/verify-sleeve-creases/SKILL.md) → JSON 指标与追踪日志 | 冻结样例可离线重测；只判当前网格的局部几何，不判材料或审美 |
 | 复现设计意图与模拟研究 | [实验总入口](experiments/intent-edit-review/README.md) / [Teagan 源码归档](experiments/teagan_sites_studio/README.md) | 实验 / 历史；各自保留 PASS、FAIL、UNKNOWN 和未验证项，不是通用合体承诺 |
 
