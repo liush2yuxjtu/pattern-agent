@@ -19,7 +19,7 @@ description: 把 ET、CLO、Style3D 导出的 2D DXF、FreeSewing JS 或已有�
 
 五类验证都需要同版的独立图像、可读数据表和明确判据。五类图审与表审全部通过，并且适用的导入、缝合与模拟检查通过，才给该尺码和姿势 `PASS`。已确认有失败时判 `FAIL`。缺图、缺数据、状态错配或缺必需阈值时，补证或复测，可行路径用尽后标 `PENDING`。若已有可信失败，同时记录仍待确认的项目。全部约定尺码和姿势都通过，才在相应范围结案。
 
-默认交付可重开工程、独立证据图、CSV、证据清单和单文件静态 Markdown 试穿报告。用[V2.3 报告模板](references/试穿报告模板.md)和[图片发布器](scripts/publish_report.py)。报告先给出[本轮判断](references/pattern-fit-verification.md#报告排版)，说明适用范围、是否放行、优先处理哪一处及依据。再放五视角及各证据图。有原始设计图和修前证据时，把对照放在开头。输入只有二维纸样时，标出缺少的对照并保留可追溯的纸样基准。集中放五类统计及状态表，最后写「分诊与下一步复测」。用[报告末节检查](evals/check-report-follow-up.py)和[试穿评分器](evals/grade-fit.py)检查最终交付。只把最终 Markdown 放入空目录，验证内嵌图，记录实际阅览器。
+默认交付可重开工程、独立证据图、CSV、证据清单和单文件静态 Markdown 试穿报告。用[V2.3 报告模板](references/试穿报告模板.md)和[图片发布器](scripts/publish_report.py)。打开报告即显示放行意见、TLDR 和关键对照图。代理实施记录及技术证据默认折叠。末节「分诊与下一步复测」默认可见。按[报告排版](references/pattern-fit-verification.md#报告排版)组织五视角和五类验收。用[报告末节检查](evals/check-report-follow-up.py)和[试穿评分器](evals/grade-fit.py)检查最终交付。把最终 Markdown 单独放入空目录。在目标阅读器检查首屏、默认折叠状态和展开后的证据图。记录实际使用的阅读器。
 
 本技能的默认报告覆盖约定的 2D 到 3D 试穿范围。若任务包含原技能的正式整衣验收，读[整衣放行规则](references/finish-verification.md)和[四姿势五类验收](references/workflows.md#四姿势五类验收)，通过后使用原[正式报告生成脚本](scripts/bake-report.mjs)。
 
