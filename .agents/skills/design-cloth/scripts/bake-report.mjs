@@ -124,8 +124,11 @@ function renderMarkdown(input, postures, tables, output) {
       lines.push(...values.filter(text).map((value, i) => marker(i)+markdownText(value)), '');
     }
   }
+  const findings = Array.isArray(input.findings) ? input.findings : [];
+  const opinion = text(input.recommendation) ? input.recommendation : findings.find(text) ?? input.nextSteps.find(text);
+  lines.splice(2, 0, '**'+markdownText(opinion)+'**', '');
   if (input.findings?.length) items('主要发现',input.findings,() => '- ');
-  lines.push('## 试穿证据','');
+  lines.push('<details>', '<summary>完整验收 · 试穿证据</summary>', '');
   for (const {label,figures} of postures) {
     lines.push('### '+markdownText(label),'');
     for (const {title,caption,picture} of figures) {
@@ -143,6 +146,7 @@ function renderMarkdown(input, postures, tables, output) {
         '| '+headers.map(() => '---').join(' | ')+' |',...rows.map(row),'');
     }
   }
+  lines.push('</details>', '');
   items(followUpTitle,input.nextSteps,(i) => (i+1)+'. ');
   return lines.join('\n');
 }
